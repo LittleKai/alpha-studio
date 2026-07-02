@@ -221,9 +221,9 @@ export default function SkillDetailPage() {
 
   const getTierColor = (tier: string) => {
     switch (tier.toLowerCase()) {
-      case 'gold': return 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30';
-      case 'silver': return 'bg-slate-400/10 text-slate-600 dark:text-white border-slate-400/30';
-      case 'bronze': return 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/30';
+      case 'gold': return 'tier-badge-gold';
+      case 'silver': return 'tier-badge-silver';
+      case 'bronze': return 'tier-badge-bronze';
       default: return 'bg-gray-500/10 text-gray-500 dark:text-white border-gray-500/30';
     }
   };
@@ -336,7 +336,7 @@ export default function SkillDetailPage() {
         </div>
         
         {/* TOP HEADER SECTION (Matches screenshot layout) */}
-        <div className="relative bg-[var(--bg-card)] p-8 rounded-xl border border-[var(--border-primary)] mb-8 overflow-hidden">
+        <div className="relative bg-[var(--bg-card)] p-6 rounded-xl border border-[var(--border-primary)] mb-6 overflow-hidden">
           <div className="flex flex-col md:flex-row gap-6 items-start">
             {/* Orange-Tinted Skill Icon Box */}
             <div className="w-16 h-16 shrink-0 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-3xl select-none">
@@ -392,7 +392,7 @@ export default function SkillDetailPage() {
                 <span className="px-2.5 py-1 rounded bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)]">
                   {t('skills.categories.' + getCategoryKey(skill.category))}
                 </span>
-                <span className="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                <span className="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-theme">
                   ⏱ {t('skills.savesPerUse').replace('{time}', formatTimeSaving(skill.estimated_time_saving, language) || t('skills.timeRangeMedium'))}
                 </span>
               </div>
@@ -422,7 +422,7 @@ export default function SkillDetailPage() {
             
             {/* Quick Install terminal style card */}
             {skill.install_command && (
-              <div className="bg-[#0b1629] p-6 rounded-xl border border-[var(--border-primary)] space-y-4 shadow-xl">
+              <div className="bg-[#0b1629] p-5 rounded-xl border border-[var(--border-primary)] space-y-3 shadow-xl">
                 <div className="space-y-2">
                   <h3 className="text-sm font-bold text-[var(--text-primary)]">{t('skills.quickInstall')}</h3>
                   <div className="bg-[#060c18] rounded-lg border border-[var(--border-primary)] overflow-hidden">
@@ -440,16 +440,17 @@ export default function SkillDetailPage() {
                       </code>
                       <button 
                         onClick={() => handleCopyCommand(skill.install_command, setCopiedInstall)}
-                        className="shrink-0 p-1.5 bg-[var(--bg-secondary)] hover:bg-[var(--bg-secondary)]/80 text-[var(--accent-primary)] rounded border border-[var(--border-primary)] transition-all cursor-pointer focus:outline-none"
+                        className="shrink-0 p-1.5 bg-[var(--bg-secondary)] hover:bg-[var(--bg-primary)] hover:border-[var(--accent-primary)]/40 hover:shadow-[0_0_10px_rgba(97,232,255,0.05)] text-[var(--accent-primary)] hover:text-[#61e8ff] active:text-emerald-400 rounded border border-[var(--border-primary)] transition-all duration-200 cursor-pointer focus:outline-none flex items-center justify-center"
                         title={t('skills.installCommand')}
                       >
                         {copiedInstall ? (
-                          <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          <svg className="w-4 h-4 text-emerald-400 animate-in fade-in zoom-in duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
                           </svg>
                         ) : (
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2" />
+                          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                           </svg>
                         )}
                       </button>
@@ -462,9 +463,9 @@ export default function SkillDetailPage() {
                     href={skill.source_repo_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full text-center py-2.5 bg-[var(--bg-secondary)] hover:bg-[var(--bg-secondary)]/80 border border-[var(--border-primary)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="w-full text-center py-2.5 bg-[var(--bg-secondary)] hover:bg-[var(--accent-primary)]/10 border border-[var(--border-primary)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] hover:text-[var(--accent-primary)] rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-[0_0_15px_rgba(97,232,255,0.08)] group/git"
                   >
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 transition-transform group-hover/git:scale-105" fill="currentColor" viewBox="0 0 24 24">
                       <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z" />
                     </svg>
                     {t('skills.viewOnGithub')}
@@ -473,7 +474,7 @@ export default function SkillDetailPage() {
               </div>
             )}
             {/* Jump To vertical menu card */}
-            <div className="bg-[var(--bg-card)] p-5 rounded-xl border border-[var(--border-primary)] space-y-3 shadow-md select-none">
+            <div className="bg-[var(--bg-card)] p-4 rounded-xl border border-[var(--border-primary)] space-y-3 shadow-md select-none">
               <h4 className="text-xs font-semibold text-[var(--text-tertiary)] uppercase tracking-wider px-3 pb-2 border-b border-[var(--border-primary)]/50">
                 {t('skills.jumpTo')}
               </h4>
@@ -543,7 +544,7 @@ export default function SkillDetailPage() {
               </nav>
             </div>
             {/* Author Profile card */}
-            <div className="bg-[var(--bg-card)] p-5 rounded-xl border border-[var(--border-primary)] flex gap-4 items-center shadow-md">
+            <div className="bg-[var(--bg-card)] p-4 rounded-xl border border-[var(--border-primary)] flex gap-4 items-center shadow-md">
               <div className="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-2xl select-none">
                 🔥
               </div>
@@ -559,7 +560,7 @@ export default function SkillDetailPage() {
             </div>
 
             {/* Need Help promo B2B card */}
-            <div className="bg-[var(--bg-card)] p-5 rounded-xl border border-orange-500/20 shadow-md space-y-3 relative overflow-hidden">
+            <div className="bg-[var(--bg-card)] p-4 rounded-xl border border-orange-500/20 shadow-md space-y-3 relative overflow-hidden">
               <h4 className="font-bold text-sm text-[var(--text-primary)]">{t('skills.needHelp')}</h4>
               <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                 {t('skills.b2bPromoText')}
@@ -573,7 +574,7 @@ export default function SkillDetailPage() {
             </div>
 
             {/* Using this skill promo card */}
-            <div className="bg-[var(--bg-card)] p-5 rounded-xl border border-[var(--border-primary)] shadow-md space-y-3">
+            <div className="bg-[var(--bg-card)] p-4 rounded-xl border border-[var(--border-primary)] shadow-md space-y-3">
               <h4 className="font-bold text-sm text-[var(--text-primary)]">{t('skills.usingThisSkill')}</h4>
               <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                 {t('skills.discoverStackText')}
@@ -610,7 +611,7 @@ export default function SkillDetailPage() {
                   <h3 className="text-lg font-bold text-[var(--text-primary)]">{t('skills.useCases')}</h3>
                   <div className="grid gap-4 sm:grid-cols-2">
                     {useCases.map((uc, idx) => (
-                      <div key={idx} className="bg-[var(--bg-card)] p-5 rounded-xl border border-[var(--border-primary)] space-y-3">
+                      <div key={idx} className="bg-[var(--bg-card)] p-4 rounded-xl border border-[var(--border-primary)] space-y-3">
                         <div className="w-8 h-8 rounded-full bg-orange-500/10 flex items-center justify-center text-base select-none">
                           🎯
                         </div>
@@ -682,18 +683,19 @@ export default function SkillDetailPage() {
                       <code className="text-emerald-400 select-all truncate block" title={skill.install_command}>
                         {skill.install_command}
                       </code>
-                      <button 
+                       <button 
                         onClick={() => handleCopyCommand(skill.install_command, setCopiedInstall)}
-                        className="shrink-0 p-2 bg-[var(--bg-secondary)] hover:bg-[var(--bg-secondary)]/80 text-[var(--accent-primary)] rounded border border-[var(--border-primary)] transition-all cursor-pointer focus:outline-none"
+                        className="shrink-0 p-2 bg-[var(--bg-secondary)] hover:bg-[var(--bg-primary)] hover:border-[var(--accent-primary)]/40 hover:shadow-[0_0_10px_rgba(97,232,255,0.05)] text-[var(--accent-primary)] hover:text-[#61e8ff] active:text-emerald-400 rounded-lg border border-[var(--border-primary)] transition-all duration-200 cursor-pointer focus:outline-none flex items-center justify-center"
                         title={t('skills.installCommand')}
                       >
                         {copiedInstall ? (
-                          <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          <svg className="w-4 h-4 text-emerald-400 animate-in fade-in zoom-in duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
                           </svg>
                         ) : (
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2" />
+                          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                           </svg>
                         )}
                       </button>
@@ -720,16 +722,17 @@ export default function SkillDetailPage() {
                       </code>
                       <button 
                         onClick={() => handleCopyCommand(`git clone ${skill.source_repo_url}`, setCopiedAlternative)}
-                        className="shrink-0 p-2 bg-[var(--bg-secondary)] hover:bg-[var(--bg-secondary)]/80 text-[var(--accent-primary)] rounded border border-[var(--border-primary)] transition-all cursor-pointer focus:outline-none"
+                        className="shrink-0 p-2 bg-[var(--bg-secondary)] hover:bg-[var(--bg-primary)] hover:border-[var(--accent-primary)]/40 hover:shadow-[0_0_10px_rgba(97,232,255,0.05)] text-[var(--accent-primary)] hover:text-[#61e8ff] active:text-emerald-400 rounded-lg border border-[var(--border-primary)] transition-all duration-200 cursor-pointer focus:outline-none flex items-center justify-center"
                         title={t('skills.installCommand')}
                       >
                         {copiedAlternative ? (
-                          <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          <svg className="w-4 h-4 text-emerald-400 animate-in fade-in zoom-in duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
                           </svg>
                         ) : (
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2" />
+                          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                           </svg>
                         )}
                       </button>
@@ -743,11 +746,11 @@ export default function SkillDetailPage() {
                 <h3 className="text-lg font-bold text-[var(--text-primary)]">{t('skills.requirements')}</h3>
                 <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                   <li className="flex items-center gap-2">
-                    <span className="text-emerald-400">✓</span> {t('skills.claudeCodeReq')}
+                    <span className="text-emerald-theme">✓</span> {t('skills.claudeCodeReq')}
                   </li>
                   {skill.works_with && skill.works_with.length > 0 && (
                     <li className="flex items-center gap-2">
-                      <span className="text-emerald-400">✓</span> {t('skills.worksWith')}: {skill.works_with.join(', ')}
+                      <span className="text-emerald-theme">✓</span> {t('skills.worksWith')}: {skill.works_with.join(', ')}
                     </li>
                   )}
                 </ul>
@@ -829,17 +832,26 @@ export default function SkillDetailPage() {
                 <div className="bg-[#0b1629] rounded-lg border border-[var(--border-primary)] overflow-hidden shadow-inner">
                   <div className="flex items-center justify-between px-4 py-2 bg-[#060c18] border-b border-[var(--border-primary)]">
                     <span className="text-[10px] font-mono text-[var(--text-tertiary)]">{t('skills.instructionScript')}</span>
-                    <button 
+                     <button 
                       onClick={() => handleCopyCommand(usage, setCopiedUsage)}
-                      className="p-1 hover:bg-[var(--bg-secondary)] rounded text-[var(--accent-primary)] transition-all cursor-pointer focus:outline-none"
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-[var(--bg-secondary)] hover:bg-[var(--bg-primary)] hover:border-[var(--accent-primary)]/40 hover:shadow-[0_0_10px_rgba(97,232,255,0.05)] text-[var(--accent-primary)] hover:text-[#61e8ff] active:text-emerald-400 rounded-lg border border-[var(--border-primary)] transition-all duration-200 cursor-pointer focus:outline-none"
                       title={t('skills.copySuccess')}
                     >
                       {copiedUsage ? (
-                        <span className="text-xs text-emerald-400 font-sans font-bold">{t('skills.copied')}!</span>
+                        <>
+                          <svg className="w-3.5 h-3.5 text-emerald-400 animate-in fade-in zoom-in duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                          </svg>
+                          <span className="text-[10px] text-emerald-400 font-sans font-bold animate-in fade-in slide-in-from-right-1 duration-200">{t('skills.copied')}</span>
+                        </>
                       ) : (
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2" />
-                        </svg>
+                        <>
+                          <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                          </svg>
+                          <span className="text-[10px] text-[var(--text-secondary)] font-semibold transition-all group-hover:text-[var(--text-primary)]">{t('skills.copyPrompt')}</span>
+                        </>
                       )}
                     </button>
                   </div>
@@ -918,7 +930,7 @@ export default function SkillDetailPage() {
                       <div
                         key={s.slug}
                         onClick={() => window.open(`/studio/skills/${s.slug}`, '_blank')}
-                        className="group bg-[var(--bg-card)] p-5 rounded-xl border border-[var(--border-primary)] hover:border-[#ff5a1f] transition-all cursor-pointer hover:-translate-y-0.5"
+                        className="group bg-[var(--bg-card)] p-4 rounded-xl border border-[var(--border-primary)] hover:border-[#ff5a1f] transition-all cursor-pointer hover:-translate-y-0.5"
                       >
                         <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] mb-2 inline-block">
                           {t('skills.categories.' + getCategoryKey(s.category))}

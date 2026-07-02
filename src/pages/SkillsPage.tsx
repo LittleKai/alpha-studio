@@ -333,9 +333,9 @@ export default function SkillsPage() {
 
   const getTierColor = (tier: string) => {
     switch (tier.toLowerCase()) {
-      case 'gold': return 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30';
-      case 'silver': return 'bg-slate-400/10 text-slate-600 dark:text-white border-slate-400/30';
-      case 'bronze': return 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/30';
+      case 'gold': return 'tier-badge-gold';
+      case 'silver': return 'tier-badge-silver';
+      case 'bronze': return 'tier-badge-bronze';
       default: return 'bg-gray-500/10 text-gray-500 dark:text-white border-gray-500/30';
     }
   };
@@ -495,9 +495,11 @@ export default function SkillsPage() {
                   onChange={() => handleTierToggle(tier)}
                   className="w-4 h-4 rounded border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[#ff5a1f] focus:ring-0 cursor-pointer"
                 />
-                <span className="text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors flex items-center gap-1.5">
-                  <span>{getTierEmoji(tier)}</span>
-                  <span>{t('skills.tiers.' + getTierKey(tier))}</span>
+                <span className="transition-colors flex items-center gap-1.5 select-none">
+                  <span className={`text-[9px] font-bold tracking-wider px-2 py-0.5 rounded border shrink-0 flex items-center gap-1 ${getTierColor(tier)}`}>
+                    <span>{getTierEmoji(tier)}</span>
+                    <span>{t('skills.tiers.' + getTierKey(tier)).toUpperCase()}</span>
+                  </span>
                   <span className="text-xs text-[var(--text-tertiary)]">({tierCounts[tier] || 0})</span>
                 </span>
               </label>
@@ -599,39 +601,43 @@ export default function SkillsPage() {
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pb-20">
       <SEOHead title={t('skills.title')} description={t('skills.subtitle')} path="/studio/skills" />
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        {/* Back to Studio navigation */}
-        <div className="flex items-center justify-start mb-6">
+      <div className="max-w-7xl mx-auto px-6 pt-4 pb-12">
+        {/* Header Navigation and Premium Badge Row */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
           <button 
             onClick={() => navigate('/studio')}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[#ff5a1f] text-[var(--text-secondary)] hover:text-[#ff5a1f] text-xs font-semibold transition-all cursor-pointer focus:outline-none shadow-sm"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[#ff5a1f] text-[var(--text-secondary)] hover:text-[#ff5a1f] text-xs font-semibold transition-all cursor-pointer focus:outline-none shadow-sm shrink-0"
           >
             &larr; {t('skills.backToStudio')}
           </button>
-        </div>
-        {/* Hero Banner Section */}
-        <div className="text-center max-w-4xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--accent-primary)]/10 border border-[var(--accent-primary)]/20 text-[var(--accent-primary)] text-sm font-semibold mb-6">
-            <svg className="w-4 h-4 text-[var(--accent-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--accent-primary)]/10 border border-[var(--accent-primary)]/20 text-[var(--accent-primary)] text-xs md:text-sm font-semibold shadow-sm select-none">
+            <svg className="w-3.5 h-3.5 md:w-4 md:h-4 text-[var(--accent-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 21l8.904-4.473L21 21l-1.813-5.096m-7.374-1.63L3 19l4.473-8.904L3 3l5.096 1.813M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l-.707.707" />
             </svg>
             {t('skills.badgeText')}
           </div>
-          
-          <h1 className="text-3xl md:text-5xl font-extrabold text-[var(--text-primary)] mb-6 tracking-tight flex items-center justify-center gap-3 flex-wrap">
+
+          {/* Balanced spacer for desktop centering */}
+          <div className="hidden sm:block w-[140px]"></div>
+        </div>
+
+        {/* Hero Banner Section */}
+        <div className="text-center max-w-4xl mx-auto mb-10">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-[var(--text-primary)] mb-4 tracking-tight flex items-center justify-center gap-3 flex-wrap">
             {t('skills.heroTitle')}
             <span className="px-2 py-0.5 text-xs font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 rounded uppercase tracking-wider select-none leading-normal">
               Beta
             </span>
           </h1>
           
-          <p className="text-base md:text-lg text-[var(--text-secondary)] mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-sm md:text-base text-[var(--text-secondary)] mb-6 max-w-2xl mx-auto leading-relaxed">
             {t('skills.subtitle')}
           </p>
 
           {/* Search bar */}
-          <div className="relative max-w-2xl mx-auto mb-8 shadow-[0_4px_30px_rgba(0,0,0,0.4)]">
-            <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--text-tertiary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <div className="relative max-w-xl mx-auto mb-6 shadow-[0_4px_25px_rgba(0,0,0,0.3)]">
+            <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-tertiary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             <input 
@@ -642,28 +648,28 @@ export default function SkillsPage() {
                 setSearchQuery(e.target.value);
                 setCurrentPage(1);
               }}
-              className="w-full pl-12 pr-4 py-4 text-base bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-xl focus:border-[var(--accent-primary)] focus:outline-none transition-all text-[var(--text-primary)]"
+              className="w-full pl-11 pr-4 py-3 text-sm bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-xl focus:border-[var(--accent-primary)] focus:outline-none transition-all text-[var(--text-primary)] placeholder:text-white/80"
             />
           </div>
 
           {/* Quick Metrics stats */}
-          <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <div className="bg-[var(--bg-card)] px-4 py-2 rounded-xl border border-[var(--border-primary)]">
-              <span className="font-bold text-[var(--text-primary)] text-lg">{skills.length}</span> <span className="text-[var(--text-secondary)]">{t('skills.statsSkills')}</span>
+          <div className="flex flex-wrap justify-center gap-4 text-xs">
+            <div className="bg-[var(--bg-card)] px-3.5 py-1.5 rounded-lg border border-[var(--border-primary)]">
+              <span className="font-bold text-[var(--text-primary)] text-sm">{skills.length}</span> <span className="text-[var(--text-secondary)]">{t('skills.statsSkills')}</span>
             </div>
-            <div className="bg-[var(--bg-card)] px-4 py-2 rounded-xl border border-[var(--border-primary)]">
-              <span className="font-bold text-[var(--text-primary)] text-lg">
+            <div className="bg-[var(--bg-card)] px-3.5 py-1.5 rounded-lg border border-[var(--border-primary)]">
+              <span className="font-bold text-[var(--text-primary)] text-sm">
                 {skills.filter(s => s.tier === 'Gold' || s.tier === 'Silver').length}
               </span> <span className="text-[var(--text-secondary)]">{t('skills.statsVerified')}</span>
             </div>
-            <div className="bg-[var(--bg-card)] px-4 py-2 rounded-xl border border-[var(--border-primary)] text-emerald-400">
-              <svg className="w-4 h-4 inline mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <div className="bg-[var(--bg-card)] px-3.5 py-1.5 rounded-lg border border-[var(--border-primary)] text-emerald-theme">
+              <svg className="w-3.5 h-3.5 inline mr-1 align-text-top" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span className="font-bold text-lg">
+              <span className="font-bold text-sm">
                 {Math.round(skills.reduce((sum, s) => sum + parseTimeSaving(s.estimated_time_saving), 0) / 60)}
                 +
-              </span> <span className="text-emerald-400/90">{t('skills.statsTimeSaved')}</span>
+              </span> <span className="opacity-90">{t('skills.statsTimeSaved')}</span>
             </div>
           </div>
         </div>
@@ -768,10 +774,10 @@ export default function SkillsPage() {
                         <div
                           key={skill.slug}
                           onClick={() => window.open(`/studio/skills/${skill.slug}`, '_blank')}
-                          className="group bg-[var(--bg-card)] p-6 rounded-xl border border-[var(--border-primary)] hover:border-[#ff5a1f] transition-all flex flex-col h-full cursor-pointer relative overflow-hidden"
+                          className="group bg-gradient-to-br from-[var(--bg-card)] to-[rgba(7,17,31,0.6)] p-5 rounded-2xl border border-[var(--border-primary)] hover:border-[#ff5a1f] hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(255,90,31,0.08)] transition-all duration-300 flex flex-col h-full cursor-pointer relative overflow-hidden min-h-[200px]"
                           style={{
-                            backgroundImage: 'radial-gradient(rgba(205, 235, 255, 0.03) 1px, transparent 1px)',
-                            backgroundSize: '14px 14px'
+                            backgroundImage: 'radial-gradient(rgba(205, 235, 255, 0.04) 1.5px, transparent 1.5px)',
+                            backgroundSize: '16px 16px'
                           }}
                         >
                           {/* Card Top Title Row */}
@@ -784,7 +790,7 @@ export default function SkillsPage() {
                                 @{skill.author}
                               </span>
                             </div>
-                                            {skill.tier && (
+                            {skill.tier && (
                               <span className={`text-[9px] font-bold tracking-wider px-2 py-0.5 rounded border shrink-0 flex items-center gap-1 ${getTierColor(skill.tier)}`}>
                                 <span>{getTierEmoji(skill.tier)}</span>
                                 <span>{t('skills.tiers.' + getTierKey(skill.tier)).toUpperCase()}</span>
@@ -793,7 +799,7 @@ export default function SkillsPage() {
                           </div>
 
                           {/* Category and Difficulty Tag Badges */}
-                          <div className="flex flex-wrap gap-1.5 mt-3 mb-3">
+                          <div className="flex flex-wrap gap-1.5 mt-2 mb-2">
                             <span className="text-[9px] font-medium px-2 py-0.5 rounded bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)]">
                               {t('skills.categories.' + getCategoryKey(skill.category))}
                             </span>
@@ -805,12 +811,12 @@ export default function SkillsPage() {
                           </div>
 
                           {/* Description */}
-                          <p className="text-sm text-[var(--text-secondary)] line-clamp-3 mb-6 flex-1 leading-relaxed">
+                          <p className="text-sm text-[var(--text-secondary)] line-clamp-3 mb-4 flex-1 leading-relaxed">
                             {shortDesc}
                           </p>
 
                           {/* Bottom Row: Stars and Time saving indicator */}
-                          <div className="border-t border-[var(--border-primary)] pt-4 mt-auto flex justify-between items-center text-xs text-[var(--text-secondary)]">
+                          <div className="border-t border-[var(--border-primary)] pt-3 mt-auto flex justify-between items-center text-xs text-[var(--text-secondary)]">
                             <div className="flex items-center gap-1 select-none">
                               <span className="text-yellow-500 text-sm">★</span>
                               <span className="font-medium text-[var(--text-secondary)]">
@@ -818,8 +824,8 @@ export default function SkillsPage() {
                               </span>
                             </div>
                             
-                            <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
-                              <svg className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                            <div className="text-xs font-semibold text-emerald-theme flex items-center gap-1">
+                              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                               </svg>
                               <span>{t('skills.savesPerTask').replace('{time}', formatTimeSaving(skill.estimated_time_saving, language) || t('skills.timeRangeMedium'))}</span>
@@ -839,10 +845,10 @@ export default function SkillsPage() {
                       const shortDesc = isVi ? skill.short_description_vi : skill.short_description;
 
                       return (
-                        <div
+                         <div
                           key={skill.slug}
                           onClick={() => window.open(`/studio/skills/${skill.slug}`, '_blank')}
-                          className="group bg-[var(--bg-card)] p-5 rounded-xl border border-[var(--border-primary)] hover:border-[#ff5a1f] transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4 cursor-pointer"
+                          className="group bg-gradient-to-br from-[var(--bg-card)] to-[rgba(7,17,31,0.6)] p-4 rounded-xl border border-[var(--border-primary)] hover:border-[#ff5a1f] hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(255,90,31,0.06)] transition-all duration-300 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 cursor-pointer"
                         >
                           <div className="flex-1 space-y-2 min-w-0">
                             <div className="flex flex-wrap items-center gap-2">
@@ -885,8 +891,8 @@ export default function SkillsPage() {
                               </span>
                             </div>
                             
-                            <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1 md:justify-end">
-                              <svg className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                            <div className="text-xs font-semibold text-emerald-theme flex items-center gap-1 md:justify-end">
+                              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                               </svg>
                               <span>{t('skills.savesPerTask').replace('{time}', formatTimeSaving(skill.estimated_time_saving, language) || t('skills.timeRangeMedium'))}</span>

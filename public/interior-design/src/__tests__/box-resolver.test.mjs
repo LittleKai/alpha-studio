@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { transformBox, resolveItemBoxes } from "../core/box-resolver.js";
+import { colorFaces, transformBox, resolveItemBoxes } from "../core/box-resolver.js";
 import { registerInlineTemplates } from "../template-engine/loader.js";
 
 test("transformBox keeps east-direction boxes in item world frame", () => {
@@ -75,4 +75,43 @@ test("resolveItemBoxes returns one default box for non-templated items", () => {
     { x: 1, y: 2, z: 3, w: 40, h: 50, d: 60 }
   );
   assert.equal(boxes[0].faces.front, "#c9986b");
+});
+
+test("resolveItemBoxes honors raw item color with shaded faces", () => {
+  const boxes = resolveItemBoxes({ x: 0, y: 0, z: 0, width: 40, height: 50, depth: 60, color: "#1a1a2e" }, "wood-oak");
+  assert.equal(boxes.length, 1);
+  assert.equal(boxes[0].faces.front, "#1a1a2e");
+  assert.equal(boxes[0].faces.top, "#2c2c3f");
+  assert.equal(boxes[0].faces.right, "#171728");
+});
+
+test("colorFaces expands short hex colors", () => {
+  const faces = colorFaces("#123", "wood-oak");
+  assert.equal(faces.front, "#123");
+  assert.equal(faces.top, "#243443");
+});
+
+test("resolveItemBoxes preserves roundedBox and cylinder primitive metadata", () => {
+  registerInlineTemplates({
+    "primitive-test-template": {
+      id: "primitive-test-template",
+      params: {
+        width: { default: 80 },
+        height: { default: 86 },
+        depth: { default: 60 }
+      },
+      boxes: [
+        { type: "roundedBox", x: 0, y: 0, z: 0, w: "{{width}}", h: "{{height}}", d: "{{depth}}", radius: 10, faces: { front: "$woodFront" } },
+        { type: "cylinder", x: 10, y: 20, z: 30, radius: 2, length: 5, axis: "z", faces: { front: "$metal" } }
+      ]
+    }
+  });
+  const item = { _isTemplate: true, tpl: "primitive-test-template", x: 100, y: 5, z: 40, width: 90, height: 86, depth: 60 };
+  const boxes = resolveItemBoxes(item, "wood-oak");
+  assert.equal(boxes[0].type, "roundedBox");
+  assert.equal(boxes[0].radius, 10);
+  assert.equal(boxes[1].type, "cylinder");
+  assert.equal(boxes[1].axis, "z");
+  assert.equal(boxes[1].radius, 2);
+  assert.equal(boxes[1].length, 5);
 });

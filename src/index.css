@@ -1356,4 +1356,40 @@ html[data-theme="light"] .user-dropdown-card .list.logout-list .element:hover sv
   animation: path-mean-bird 3.5s ease-in-out infinite;
 }
 
+/* AI Skill Tier Badges Styles */
+.tier-badge-gold {
+  background-color: rgba(245, 158, 11, 0.1) !important;
+  border-color: rgba(245, 158, 11, 0.25) !important;
+  color: #d97706 !important;
+}
+html[data-theme="dark"] .tier-badge-gold {
+  color: #fbbf24 !important;
+}
+
+.tier-badge-silver {
+  background-color: rgba(148, 163, 184, 0.1) !important;
+  border-color: rgba(148, 163, 184, 0.25) !important;
+  color: #475569 !important;
+}
+html[data-theme="dark"] .tier-badge-silver {
+  color: #ffffff !important;
+}
+
+.tier-badge-bronze {
+  background-color: rgba(249, 115, 22, 0.1) !important;
+  border-color: rgba(249, 115, 22, 0.25) !important;
+  color: #ea580c !important;
+}
+html[data-theme="dark"] .tier-badge-bronze {
+  color: #fb923c !important;
+}
+
+/* Adaptive Emerald Text Color */
+.text-emerald-theme {
+  color: #059669 !important; /* emerald-600 */
+}
+html[data-theme="dark"] .text-emerald-theme {
+  color: #34d399 !important; /* emerald-400 */
+}
+
 

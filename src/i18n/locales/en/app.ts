@@ -348,6 +348,7 @@ export default {
       worksWith: "Works with",
       installCommand: "Install Command",
       copySuccess: "Install command copied!",
+      copyPrompt: "Copy Prompt",
       backToList: "Back to list",
       backToStudio: "Back to Studio",
       backToSkills: "Back to Skills Hub",

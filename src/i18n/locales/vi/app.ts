@@ -348,6 +348,7 @@ export default {
       worksWith: "Hoạt động với",
       installCommand: "Lệnh cài đặt",
       copySuccess: "Đã sao chép lệnh!",
+      copyPrompt: "Sao chép Prompt",
       backToList: "Quay lại danh sách",
       backToStudio: "Quay lại Studio",
       backToSkills: "Quay lại thư viện kỹ năng",
