@@ -1,45 +1,9 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
+import { getSkills, type Skill, type FilterCounts, type PaginationInfo } from '../services/skillService';
 
-interface Skill {
-  source: string;
-  url: string;
-  slug: string;
-  name: string;
-  headline: string;
-  headline_vi: string;
-  short_description: string;
-  short_description_vi: string;
-  tier: string;
-  category: string;
-  difficulty: string;
-  install_type: string;
-  estimated_time_saving: string;
-  author: string;
-  install_command: string;
-  source_repo_url: string;
-  works_with: string[];
-  tags: string[];
-}
-
-const mapCategory = (rawCat: string): string => {
-  if (!rawCat) return 'Productivity';
-  const cat = rawCat.toLowerCase().trim();
-  if (cat.includes('seo') || cat === 'optimization') return 'SEO';
-  if (cat.includes('design') || cat === 'designers') return 'Design';
-  if (cat === 'development') return 'Development';
-  if (cat === 'developers' || cat === 'ai engineers' || cat.includes('developer tool') || cat.includes('engineer')) return 'Developer Tools';
-  if (cat.includes('analytics') || cat.includes('data')) return 'Data & Analytics';
-  if (cat.includes('pipeline') || cat.includes('crm')) return 'CRM & Pipeline';
-  if (cat.includes('sales') || cat.includes('outreach') || cat.includes('sdrae') || cat.includes('revops')) return 'Sales & Outreach';
-  if (cat.includes('marketing') || cat.includes('growth')) return 'Marketing';
-  if (cat.includes('research') || cat.includes('intelligence')) return 'Research & Intelligence';
-  if (cat.includes('communication')) return 'Communication';
-  if (cat.includes('content')) return 'Marketing & Content';
-  return 'Productivity';
-};
 
 const getCategoryKey = (cat: string): string => {
   if (!cat) return 'productivity';
@@ -101,15 +65,35 @@ const formatTimeSaving = (timeStr: string, lang: string): string => {
   return timeStr;
 };
 
+// Map frontend sortBy to API sort param
+const mapSortToApi = (sortBy: string): string => {
+  switch (sortBy) {
+    case 'az': return 'az';
+    case 'popular': return 'popular';
+    case 'timeSaved': return 'timeSaved';
+    case 'quickest': return 'quickest';
+    case 'recent': return '-createdAt';
+    default: return '-createdAt'; // 'recommended'
+  }
+};
+
 export default function SkillsPage() {
   const { t, language } = useTranslation();
   const navigate = useNavigate();
   const PAGE_SIZE = 12;
-  const [skills, setSkills] = useState<Skill[]>([]);
+
+  // API-driven state
+  const [visibleSkills, setVisibleSkills] = useState<Skill[]>([]);
   const [loading, setLoading] = useState(true);
+  const [pagination, setPagination] = useState<PaginationInfo>({ total: 0, page: 1, limit: PAGE_SIZE, pages: 0 });
+  const [filterCounts, setFilterCounts] = useState<FilterCounts>({
+    categories: {}, tiers: {}, difficulties: {}, installTypes: {},
+    totalSkills: 0, verifiedCount: 0, totalTimeSavedHours: 0,
+  });
   
   // Search & Filter State
   const [searchQuery, setSearchQuery] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>('all');
   const [selectedTiers, setSelectedTiers] = useState<string[]>([]);
@@ -129,150 +113,62 @@ export default function SkillsPage() {
   const [collapseTime, setCollapseTime] = useState(false);
   const [collapseInstall, setCollapseInstall] = useState(false);
 
+  // Debounce search input (400ms)
+  const searchTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   useEffect(() => {
-    fetch('/data/skills-index.json')
-      .then(res => res.json())
-      .then(data => {
-        setSkills(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error('Error loading skills:', err);
-        setLoading(false);
+    searchTimerRef.current = setTimeout(() => {
+      setDebouncedSearch(searchQuery);
+      setCurrentPage(1);
+    }, 400);
+    return () => clearTimeout(searchTimerRef.current);
+  }, [searchQuery]);
+
+  // Fetch skills from API whenever filters/sort/page change
+  const fetchSkills = useCallback(async () => {
+    setLoading(true);
+    try {
+      const response = await getSkills({
+        page: currentPage,
+        limit: PAGE_SIZE,
+        search: debouncedSearch || undefined,
+        category: selectedCategories.length === 1 ? selectedCategories[0] : undefined,
+        difficulty: selectedDifficulty !== 'all' ? selectedDifficulty : undefined,
+        tier: selectedTiers.length === 1 ? selectedTiers[0] : undefined,
+        install_type: selectedInstallTypes.length === 1 ? selectedInstallTypes[0] : undefined,
+        timeSaving: selectedTimeSavings.length === 1 ? selectedTimeSavings[0] : undefined,
+        sort: mapSortToApi(sortBy),
       });
-  }, []);
 
-  // Time savings helper parser (e.g. "120 min" -> 120, "2 hours" -> 120)
-  const parseTimeSaving = (timeStr: string): number => {
-    if (!timeStr) return 0;
-    const match = timeStr.match(/(\d+)/);
-    if (!match) return 0;
-    const val = parseInt(match[1], 10);
-    if (timeStr.toLowerCase().includes('hour') || timeStr.toLowerCase().includes('hr')) {
-      return val * 60;
-    }
-    return val;
-  };
-
-  // Get dynamic filter data and counts using useMemo
-  const { categories, difficulties, tiers, installTypes, categoryCounts, difficultyCounts, tierCounts, installCounts } = useMemo(() => {
-    const catsSet = new Set<string>();
-    const diffsSet = new Set<string>();
-    const tiersSet = new Set<string>();
-    const instSet = new Set<string>();
-    
-    const catC: Record<string, number> = {};
-    const diffC: Record<string, number> = {};
-    const tierC: Record<string, number> = {};
-    const instC: Record<string, number> = {};
-
-    skills.forEach(s => {
-      const mappedCat = mapCategory(s.category);
-      catsSet.add(mappedCat);
-      catC[mappedCat] = (catC[mappedCat] || 0) + 1;
-      if (s.difficulty) {
-        diffsSet.add(s.difficulty);
-        diffC[s.difficulty] = (diffC[s.difficulty] || 0) + 1;
+      setVisibleSkills(response.data);
+      setPagination(response.pagination);
+      if (response.filterCounts) {
+        setFilterCounts(response.filterCounts);
       }
-      if (s.tier) {
-        tiersSet.add(s.tier);
-        tierC[s.tier] = (tierC[s.tier] || 0) + 1;
-      }
-      if (s.install_type) {
-        instSet.add(s.install_type);
-        instC[s.install_type] = (instC[s.install_type] || 0) + 1;
-      }
-    });
-
-    return {
-      categories: Array.from(catsSet).sort(),
-      difficulties: Array.from(diffsSet).sort(),
-      tiers: Array.from(tiersSet).sort(),
-      installTypes: Array.from(instSet).sort(),
-      categoryCounts: catC,
-      difficultyCounts: diffC,
-      tierCounts: tierC,
-      installCounts: instC
-    };
-  }, [skills]);
-
-  // Filter Logic using useMemo
-  const filteredSkills = useMemo(() => {
-    return skills.filter(skill => {
-      const isVi = language === 'vi';
-      const headline = isVi ? skill.headline_vi : skill.headline;
-      const description = isVi ? skill.short_description_vi : skill.short_description;
-      
-      const matchesSearch = 
-        !searchQuery ||
-        skill.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (headline && headline.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (description && description.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (skill.author && skill.author.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (skill.tags && skill.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())));
-
-      const mappedCat = mapCategory(skill.category);
-      const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(mappedCat);
-      
-      const matchesDifficulty = 
-        selectedDifficulty === 'all' || 
-        skill.difficulty.toLowerCase() === selectedDifficulty.toLowerCase();
-      
-      const matchesTier = selectedTiers.length === 0 || selectedTiers.includes(skill.tier);
-      
-      let matchesTimeSaving = true;
-      if (selectedTimeSavings.length > 0) {
-        const minutes = parseTimeSaving(skill.estimated_time_saving);
-        matchesTimeSaving = selectedTimeSavings.some(range => {
-          if (range === 'short') return minutes < 60;
-          if (range === 'medium') return minutes >= 60 && minutes <= 180;
-          if (range === 'long') return minutes > 180;
-          return true;
-        });
-      }
-
-      const matchesInstallType = selectedInstallTypes.length === 0 || selectedInstallTypes.includes(skill.install_type);
-
-      return matchesSearch && matchesCategory && matchesDifficulty && matchesTier && matchesTimeSaving && matchesInstallType;
-    });
-  }, [skills, searchQuery, selectedCategories, selectedDifficulty, selectedTiers, selectedTimeSavings, selectedInstallTypes, language]);
-
-  // Sort Logic using useMemo
-  const sortedSkills = useMemo(() => {
-    const result = [...filteredSkills];
-    if (sortBy === 'timeSaved') {
-      return result.sort((a, b) => parseTimeSaving(b.estimated_time_saving) - parseTimeSaving(a.estimated_time_saving));
+    } catch (err) {
+      console.error('Error fetching skills:', err);
+      setVisibleSkills([]);
+    } finally {
+      setLoading(false);
     }
-    if (sortBy === 'quickest') {
-      return result.sort((a, b) => parseTimeSaving(a.estimated_time_saving) - parseTimeSaving(b.estimated_time_saving));
-    }
-    if (sortBy === 'az') {
-      return result.sort((a, b) => a.name.localeCompare(b.name));
-    }
-    if (sortBy === 'popular') {
-      const tierRank = (t?: string) => {
-        if (t === 'Gold') return 1;
-        if (t === 'Silver') return 2;
-        if (t === 'Bronze') return 3;
-        return 4;
-      };
-      return result.sort((a, b) => tierRank(a.tier) - tierRank(b.tier));
-    }
-    if (sortBy === 'recent') {
-      return result.reverse();
-    }
-    return result; // 'recommended' - default JSON order
-  }, [filteredSkills, sortBy]);
+  }, [currentPage, debouncedSearch, selectedCategories, selectedDifficulty, selectedTiers, selectedTimeSavings, selectedInstallTypes, sortBy]);
 
-  // Total pages computation
-  const totalPages = useMemo(() => {
-    return Math.ceil(sortedSkills.length / PAGE_SIZE);
-  }, [sortedSkills, PAGE_SIZE]);
+  useEffect(() => {
+    fetchSkills();
+  }, [fetchSkills]);
 
-  // Paginated Skills
-  const visibleSkills = useMemo(() => {
-    return sortedSkills.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
-  }, [sortedSkills, currentPage, PAGE_SIZE]);
+  // Derived filter data from API filterCounts
+  const categories = Object.keys(filterCounts.categories).sort();
+  const difficulties = Object.keys(filterCounts.difficulties).sort();
+  const tiers = Object.keys(filterCounts.tiers).sort();
+  const installTypes = Object.keys(filterCounts.installTypes).sort();
+  const categoryCounts = filterCounts.categories;
+  const difficultyCounts = filterCounts.difficulties;
+  const tierCounts = filterCounts.tiers;
+  const installCounts = filterCounts.installTypes;
+
+  // Pagination values from server
+  const totalPages = pagination.pages;
+  const totalFiltered = pagination.total;
 
   const getPageNumbers = () => {
     const pages: (number | string)[] = [];
@@ -646,7 +542,6 @@ export default function SkillsPage() {
               value={searchQuery}
               onChange={e => {
                 setSearchQuery(e.target.value);
-                setCurrentPage(1);
               }}
               className="w-full pl-11 pr-4 py-3 text-sm bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-xl focus:border-[var(--accent-primary)] focus:outline-none transition-all text-[var(--text-primary)] placeholder:text-white/80"
             />
@@ -655,11 +550,11 @@ export default function SkillsPage() {
           {/* Quick Metrics stats */}
           <div className="flex flex-wrap justify-center gap-4 text-xs">
             <div className="bg-[var(--bg-card)] px-3.5 py-1.5 rounded-lg border border-[var(--border-primary)]">
-              <span className="font-bold text-[var(--text-primary)] text-sm">{skills.length}</span> <span className="text-[var(--text-secondary)]">{t('skills.statsSkills')}</span>
+              <span className="font-bold text-[var(--text-primary)] text-sm">{filterCounts.totalSkills}</span> <span className="text-[var(--text-secondary)]">{t('skills.statsSkills')}</span>
             </div>
             <div className="bg-[var(--bg-card)] px-3.5 py-1.5 rounded-lg border border-[var(--border-primary)]">
               <span className="font-bold text-[var(--text-primary)] text-sm">
-                {skills.filter(s => s.tier === 'Gold' || s.tier === 'Silver').length}
+                {filterCounts.verifiedCount}
               </span> <span className="text-[var(--text-secondary)]">{t('skills.statsVerified')}</span>
             </div>
             <div className="bg-[var(--bg-card)] px-3.5 py-1.5 rounded-lg border border-[var(--border-primary)] text-emerald-theme">
@@ -667,8 +562,7 @@ export default function SkillsPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <span className="font-bold text-sm">
-                {Math.round(skills.reduce((sum, s) => sum + parseTimeSaving(s.estimated_time_saving), 0) / 60)}
-                +
+                {filterCounts.totalTimeSavedHours}+
               </span> <span className="opacity-90">{t('skills.statsTimeSaved')}</span>
             </div>
           </div>
@@ -741,13 +635,13 @@ export default function SkillsPage() {
             {/* Showing skills count indicator */}
             <div className="text-xs text-[var(--text-tertiary)] mb-4 font-mono">
               {t('skills.showingStats')
-                .replace('{start}', String(sortedSkills.length > 0 ? (currentPage - 1) * PAGE_SIZE + 1 : 0))
-                .replace('{end}', String(Math.min(currentPage * PAGE_SIZE, sortedSkills.length)))
-                .replace('{total}', String(sortedSkills.length))}
+                .replace('{start}', String(totalFiltered > 0 ? (currentPage - 1) * PAGE_SIZE + 1 : 0))
+                .replace('{end}', String(Math.min(currentPage * PAGE_SIZE, totalFiltered)))
+                .replace('{total}', String(totalFiltered))}
             </div>
 
             {/* Empty State */}
-            {sortedSkills.length === 0 ? (
+            {visibleSkills.length === 0 && !loading ? (
               <div className="text-center py-20 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl">
                 <svg className="w-16 h-16 text-[var(--text-tertiary)] mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

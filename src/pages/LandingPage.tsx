@@ -364,7 +364,14 @@ const LandingPage: React.FC = () => {
             </section>
 
             {/* Featured Courses Section */}
-            <section className="py-10 bg-[var(--bg-secondary)]/50 border-t border-[var(--border-primary)]">
+            <section className="py-10 border-t border-[var(--border-primary)] relative overflow-hidden">
+                {/* Background Image */}
+                <div
+                    className="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: "url('/images/bg-courses-section.webp')" }}
+                />
+                {/* Dark overlay for readability */}
+                <div className="absolute inset-0 -z-10 bg-[var(--bg-secondary)]/85 backdrop-blur-[2px]" />
                 <div className="container mx-auto px-6">
                     <Reveal y={20} className="flex justify-between items-end mb-16">
                         <div className="space-y-2">

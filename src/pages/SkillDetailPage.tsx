@@ -2,37 +2,9 @@ import { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
+import { getSkillBySlug, type SkillDetail, type Skill } from '../services/skillService';
 
-interface Skill {
-  source: string;
-  url: string;
-  slug: string;
-  name: string;
-  headline: string;
-  headline_vi: string;
-  short_description: string;
-  short_description_vi: string;
-  tier: string;
-  category: string;
-  difficulty: string;
-  install_type: string;
-  estimated_time_saving: string;
-  author: string;
-  install_command: string;
-  source_repo_url: string;
-  works_with: string[];
-  tags: string[];
-  sections: {
-    overview: string;
-    overview_vi: string;
-    setup: string;
-    setup_vi: string;
-    usage: string;
-    usage_vi: string;
-    requirements: string[];
-    related_skills: string[];
-  };
-}
+// Skill interface now imported from skillService
 
 const mapCategory = (rawCat: string): string => {
   if (!rawCat) return 'Productivity';
@@ -150,8 +122,8 @@ export default function SkillDetailPage() {
   const navigate = useNavigate();
   const { t, language } = useTranslation();
 
-  const [skills, setSkills] = useState<Skill[]>([]);
-  const [skill, setSkill] = useState<Skill | null>(null);
+  const [relatedSkills, setRelatedSkills] = useState<Skill[]>([]);
+  const [skill, setSkill] = useState<SkillDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [copiedInstall, setCopiedInstall] = useState(false);
   const [copiedUsage, setCopiedUsage] = useState(false);
@@ -160,16 +132,10 @@ export default function SkillDetailPage() {
 
   useEffect(() => {
     setLoading(true);
-    Promise.all([
-      fetch(`/data/skills/${slug}.json`).then(res => {
-        if (!res.ok) throw new Error('Skill not found');
-        return res.json();
-      }),
-      fetch('/data/skills-index.json').then(res => res.json())
-    ])
-      .then(([detailData, indexData]) => {
-        setSkill(detailData);
-        setSkills(indexData);
+    getSkillBySlug(slug!)
+      .then(response => {
+        setSkill(response.data);
+        setRelatedSkills(response.relatedSkills || []);
         setLoading(false);
       })
       .catch(err => {
@@ -279,14 +245,8 @@ export default function SkillDetailPage() {
     return '⚙️';
   }, [skill]);
 
-  // Get related skills: same category, maximum 3
-  const related = useMemo(() => {
-    if (!skill) return [];
-    const mappedTargetCat = mapCategory(skill.category);
-    return skills
-      .filter(s => mapCategory(s.category) === mappedTargetCat && s.slug !== skill.slug)
-      .slice(0, 3);
-  }, [skills, skill]);
+  // Related skills now come from the API response
+  const related = relatedSkills;
 
   if (loading) {
     return (
