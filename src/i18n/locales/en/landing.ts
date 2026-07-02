@@ -74,7 +74,10 @@ export default {
       error: "Failed to load courses",
       noCourses: "No courses available",
       enrolled: "enrolled",
-      free: "Free"
+      free: "Free",
+      swipeToSeeMore: "Swipe to see more",
+      consultingTitle: "COURSE CONSULTING",
+      consultingDesc: "Scan QR to get personalized learning path advice"
     },
     features: {
       title: "Unlimited connection with",

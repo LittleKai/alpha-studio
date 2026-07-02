@@ -316,6 +316,39 @@ html[data-theme="light"] input[type="checkbox"]:checked::after {
   }
 }
 
+/* ─── Courses Slider Section ─────────────────────────────────── */
+.courses-slider-card {
+  --bg-card: rgba(17, 34, 58, 0.88);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, border-color, box-shadow;
+}
+
+/* Light theme adjustments for slider cards */
+html[data-theme="light"] .courses-slider-card {
+  background: var(--bg-secondary-light, #fff);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Reduced motion: disable slider drag animation */
+@media (prefers-reduced-motion: reduce) {
+  .courses-slider-card {
+    transition: none;
+  }
+}
+
+/* Slider track — transparent rail */
+.courses-slider-track {
+  background: transparent;
+  border: none;
+}
+
+html[data-theme="light"] .courses-slider-track {
+  background: transparent;
+  border: none;
+}
+
 /* Student Showcase Card (stupid-bullfrog-39 implementation - Upgraded to Premium Portfolio Card) */
 .student-card {
   width: 100%;

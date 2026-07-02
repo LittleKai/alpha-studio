@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
@@ -41,12 +41,281 @@ const levelKeys: Record<string, string> = {
     'advanced': 'courseCatalog.levels.advanced'
 };
 
+const levelBadgeStyles: Record<string, { bg: string; text: string; border: string }> = {
+    'beginner': { bg: '#065f46', text: '#6ee7b7', border: '#34d399' },
+    'intermediate': { bg: '#78350f', text: '#fcd34d', border: '#f59e0b' },
+    'advanced': { bg: '#881337', text: '#fda4af', border: '#f43f5e' },
+};
+
 const getHeroImageSrc = (width: number): string => {
     if (width >= 1600) return '/images/hero-gate-21x9.webp?v=5';
     if (width >= 1024) return '/images/hero-gate-16x9.webp?v=5';
     if (width >= 768) return '/images/hero-gate-1x1.webp?v=5';
     if (width >= 480) return '/images/hero-gate-4x5.webp?v=5';
     return '/images/hero-gate-9x16.webp?v=5';
+};
+
+// ─── Courses Slider Section (Split Layout) ───────────────────────────
+interface CoursesSliderProps {
+    courses: Course[];
+    t: (key: string) => string;
+    getLocalizedText: (text: { vi: string; en: string }) => string;
+    formatPrice: (price: number) => string;
+}
+
+const CARD_WIDTH = 320;
+const CARD_GAP = 24;
+
+const CoursesSliderSection: React.FC<CoursesSliderProps> = ({
+    courses, t, getLocalizedText, formatPrice
+}) => {
+    const sliderRef = useRef<HTMLDivElement>(null);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [dragConstraintRight, setDragConstraintRight] = useState(0);
+
+    const totalCards = courses.length;
+    const maxIndex = Math.max(0, totalCards - 1);
+
+    // Calculate drag constraint based on container width
+    useEffect(() => {
+        const updateConstraint = () => {
+            if (sliderRef.current) {
+                const containerWidth = sliderRef.current.parentElement?.clientWidth || 0;
+                const totalSliderWidth = totalCards * (CARD_WIDTH + CARD_GAP) - CARD_GAP;
+                setDragConstraintRight(Math.max(0, totalSliderWidth - containerWidth));
+            }
+        };
+        updateConstraint();
+        window.addEventListener('resize', updateConstraint);
+        return () => window.removeEventListener('resize', updateConstraint);
+    }, [totalCards]);
+
+    const goTo = useCallback((index: number) => {
+        const clamped = Math.max(0, Math.min(index, maxIndex));
+        setActiveIndex(clamped);
+    }, [maxIndex]);
+
+    const handleDragEnd = useCallback((_: any, info: { offset: { x: number }; velocity: { x: number } }) => {
+        const threshold = CARD_WIDTH / 3;
+        const velocity = info.velocity.x;
+        if (info.offset.x < -threshold || velocity < -200) {
+            goTo(activeIndex + 1);
+        } else if (info.offset.x > threshold || velocity > 200) {
+            goTo(activeIndex - 1);
+        }
+    }, [activeIndex, goTo]);
+
+    const sliderX = -(activeIndex * (CARD_WIDTH + CARD_GAP));
+
+    return (
+        <div className="relative">
+            {/* Background Banner Image — full-bleed, flush to the viewport's left edge
+                (left: 50% - 50vw breaks out of the centered container). Extends right to
+                ~half of the first card (424px = 200 ml + 40 arrow + 12 gap + 12 track pad
+                + 160 half card) and starts slightly above the cards. Bottom overshoots so
+                the section's overflow-hidden clips it exactly at the section bottom edge.
+                On mobile it spans the full viewport width to keep the image proportions. */}
+            <div
+                className="block absolute z-0 overflow-hidden left-[calc(50%-50vw)] w-screen md:w-[calc(50vw-50%+424px)]"
+                style={{
+                    top: '-24px',
+                    bottom: '-160px',
+                    WebkitMaskImage: 'linear-gradient(to right, black 60%, transparent 100%)',
+                    maskImage: 'linear-gradient(to right, black 60%, transparent 100%)',
+                }}
+            >
+                <picture>
+                    <source
+                        type="image/webp"
+                        srcSet="/images/course-consulting.webp"
+                    />
+                    <img
+                        src="/images/course-consulting.jpg"
+                        alt="Course consulting"
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        style={{
+                            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 15%)',
+                            maskImage: 'linear-gradient(to bottom, transparent 0%, black 15%)',
+                        }}
+                    />
+                </picture>
+            </div>
+
+            {/* Main slider content — pushed right on desktop to leave room for banner + left arrow */}
+            <div className="md:ml-[200px] relative z-[1]">
+                {/* Arrow + Track + Arrow row */}
+                <div className="flex items-center gap-3">
+                    {/* Left Arrow — always rendered for layout, visibility toggled */}
+                    <button
+                        onClick={() => goTo(activeIndex - 1)}
+                        className={`flex-shrink-0 w-10 h-10 rounded-full bg-[var(--bg-card)] backdrop-blur-md border border-[var(--border-primary)] text-[var(--text-primary)] items-center justify-center hover:bg-[var(--bg-card)]/90 hover:border-[var(--accent-primary)] transition-all cursor-pointer hidden md:flex ${
+                            activeIndex <= 0 ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                        }`}
+                        aria-label="Previous"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                    </button>
+
+                    {/* Slider Track — visible rail background */}
+                    <div className="courses-slider-track flex-1 min-w-0 overflow-hidden rounded-2xl" style={{ padding: '12px' }}>
+                        <motion.div
+                            ref={sliderRef}
+                            className="flex cursor-grab active:cursor-grabbing"
+                            style={{ gap: `${CARD_GAP}px` }}
+                            drag="x"
+                            dragConstraints={{ left: -dragConstraintRight, right: 0 }}
+                            dragElastic={0.1}
+                            onDragEnd={handleDragEnd}
+                            animate={{ x: sliderX }}
+                            transition={{
+                                type: 'tween',
+                                ease: [0.16, 1, 0.3, 1],
+                                duration: 0.5
+                            }}
+                        >
+                            {courses.map((course, index) => {
+                                const isActive = index === activeIndex;
+                                return (
+                                    <Link
+                                        key={course._id}
+                                        to={`/courses/${course.slug}`}
+                                        className="courses-slider-card flex-shrink-0 flex flex-col rounded-xl overflow-hidden bg-[var(--bg-card)] border transition-all duration-400"
+                                        style={{
+                                            width: `${CARD_WIDTH}px`,
+                                            opacity: isActive ? 1 : 0.95,
+                                            borderColor: isActive ? 'var(--accent-primary)' : 'var(--border-primary)',
+                                            borderWidth: isActive ? '2px' : '1px',
+                                            boxShadow: isActive
+                                                ? '0 0 20px rgba(97, 232, 255, 0.45), 0 4px 20px rgba(0,0,0,0.3)'
+                                                : '0 2px 8px rgba(0,0,0,0.15)',
+                                        }}
+                                        onClick={(e) => {
+                                            if (!isActive) {
+                                                e.preventDefault();
+                                                goTo(index);
+                                            }
+                                        }}
+                                        draggable={false}
+                                    >
+                                        {/* Thumbnail */}
+                                        <div className="relative h-44 overflow-hidden">
+                                            {course.thumbnail ? (
+                                                <img
+                                                    src={course.thumbnail}
+                                                    alt={getLocalizedText(course.title)}
+                                                    className="w-full h-full object-cover"
+                                                    draggable={false}
+                                                />
+                                            ) : (
+                                                <div className={`w-full h-full ${categoryGradients[course.category] || 'bg-slate-900'} flex items-center justify-center`}>
+                                                    <span className="text-5xl">{categoryIcons[course.category] || '📚'}</span>
+                                                </div>
+                                            )}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)]/80 to-transparent" />
+                                            {/* Level Badge */}
+                                            {(() => {
+                                                const style = levelBadgeStyles[course.level] || levelBadgeStyles['beginner'];
+                                                return (
+                                                    <span
+                                                        className="absolute top-3 left-3 px-2.5 py-1 rounded-full backdrop-blur-md text-[10px] font-black uppercase tracking-widest shadow-md"
+                                                        style={{
+                                                            backgroundColor: style.bg,
+                                                            color: style.text,
+                                                            border: `2px solid ${style.border}`,
+                                                        }}
+                                                    >
+                                                        {t(levelKeys[course.level] || 'courseCatalog.levels.beginner')}
+                                                    </span>
+                                                );
+                                            })()}
+                                            {/* Price Badge */}
+                                            <span className="absolute top-3 right-3 px-2.5 py-0.5 rounded-full bg-[var(--accent-primary)] text-[var(--text-on-accent)] text-[11px] font-black">
+                                                {course.discount > 0 ? formatPrice(course.finalPrice) : formatPrice(course.price)}
+                                            </span>
+                                        </div>
+
+                                        {/* Content */}
+                                        <div className="p-5 flex flex-col flex-grow">
+                                            <div className="space-y-2 flex-grow">
+                                                <h3 className="text-base font-bold text-[var(--text-primary)] line-clamp-2 leading-snug">
+                                                    {getLocalizedText(course.title)}
+                                                </h3>
+                                                <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-2">
+                                                    {getLocalizedText(course.description)}
+                                                </p>
+                                            </div>
+
+                                            <div className="mt-3">
+                                                <span className="w-full py-2 rounded-lg bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] font-bold text-xs border border-[var(--accent-primary)]/20 hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all flex items-center justify-center gap-1.5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                                                    </svg>
+                                                    {t('landing.course.startLearning')}
+                                                </span>
+                                            </div>
+
+                                            {/* Stats row */}
+                                            <div className="flex justify-between items-center mt-3 pt-3 border-t border-[var(--border-primary)] text-[10px] font-bold text-[var(--text-tertiary)]">
+                                                <div className="flex gap-3">
+                                                    <span>📚 {course.totalLessons} {t('landing.course.lessons')}</span>
+                                                    <span>⏱ {course.duration} {t('landing.course.hours')}</span>
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    {course.rating > 0 ? (
+                                                        <span className="flex items-center gap-0.5 text-yellow-400">
+                                                            ⭐ {course.rating.toFixed(1)}
+                                                        </span>
+                                                    ) : (
+                                                        <span>⭐ —</span>
+                                                    )}
+                                                    <span>👥 {course.enrolledCount}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                );
+                            })}
+                        </motion.div>
+                    </div>
+
+                    {/* Right Arrow — always rendered for layout, visibility toggled */}
+                    <button
+                        onClick={() => goTo(activeIndex + 1)}
+                        className={`flex-shrink-0 w-10 h-10 rounded-full bg-[var(--bg-card)] backdrop-blur-md border border-[var(--border-primary)] text-[var(--text-primary)] items-center justify-center hover:bg-[var(--bg-card)]/90 hover:border-[var(--accent-primary)] transition-all cursor-pointer hidden md:flex ${
+                            activeIndex >= maxIndex ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                        }`}
+                        aria-label="Next"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+
+                {/* Bottom row: Dots + Swipe hint */}
+                <div className="flex items-center justify-center mt-5">
+                    {/* Dot Indicators */}
+                    <div className="flex gap-2.5 justify-center">
+                        {courses.map((_, idx) => (
+                            <button
+                                key={idx}
+                                onClick={() => goTo(idx)}
+                                className={`rounded-full transition-all duration-300 cursor-pointer ${
+                                    idx === activeIndex
+                                        ? 'w-7 h-3 bg-[var(--accent-primary)] shadow-[0_0_8px_var(--accent-primary)]'
+                                        : 'w-3 h-3 bg-[var(--text-tertiary)] hover:bg-[var(--text-secondary)]'
+                                }`}
+                                aria-label={`Go to slide ${idx + 1}`}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 };
 
 const LandingPage: React.FC = () => {
@@ -364,25 +633,12 @@ const LandingPage: React.FC = () => {
             </section>
 
             {/* Featured Courses Section */}
-            <section className="py-10 border-t border-[var(--border-primary)] relative overflow-hidden">
-                {/* Background Image */}
-                <div
-                    className="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat"
-                    style={{ backgroundImage: "url('/images/bg-courses-section.webp')" }}
-                />
-                {/* Dark overlay for readability */}
-                <div className="absolute inset-0 -z-10 bg-[var(--bg-secondary)]/85 backdrop-blur-[2px]" />
+            <section className="py-10 border-t border-[var(--border-primary)] relative overflow-hidden bg-[var(--bg-tertiary)]">
                 <div className="container mx-auto px-6">
-                    <Reveal y={20} className="flex justify-between items-end mb-16">
-                        <div className="space-y-2">
-                            <h2 className="text-4xl font-black text-[var(--text-primary)]">{t('landing.courses.title')}</h2>
-                            <p className="text-[var(--text-secondary)]">{t('landing.courses.subtitle')}</p>
-                        </div>
-                        <div className="hidden md:block">
-                            <Link to="/courses" className="text-[11px] font-bold text-[var(--accent-primary)] border-b border-[var(--accent-primary)] pb-1 cursor-pointer hover:opacity-80 transition-opacity">
-                                {t('landing.courses.viewAll')}
-                            </Link>
-                        </div>
+                    {/* Centered Header */}
+                    <Reveal y={20} className="text-center mb-12 space-y-2">
+                        <h2 className="text-4xl font-black text-[var(--text-primary)]">{t('landing.courses.title')}</h2>
+                        <p className="text-[var(--text-secondary)]">{t('landing.courses.subtitle')}</p>
                     </Reveal>
 
                     {/* Loading State */}
@@ -417,97 +673,26 @@ const LandingPage: React.FC = () => {
                         </div>
                     )}
 
-                    {/* Courses Grid */}
+                    {/* Split Layout: Left Banner + Right Slider */}
                     {!coursesLoading && !coursesError && courses.length > 0 && (
-                        <Reveal staggerChildren={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {courses.map(course => (
-                                <RevealItem key={course._id}>
-                                    <HoverSpring scale={1.02} y={-6} className="h-full">
-                                        <Link
-                                            to={`/courses/${course.slug}`}
-                                            className="group glass-card rounded-xl overflow-hidden hover:bg-[var(--bg-card)] transition-all duration-500 cursor-pointer relative flex flex-col h-full"
-                                        >
-                                            {/* Thumbnail */}
-                                            {course.thumbnail ? (
-                                                <div className="relative h-48 overflow-hidden">
-                                                    <img
-                                                        src={course.thumbnail}
-                                                        alt={getLocalizedText(course.title)}
-                                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                                    />
-                                                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] to-transparent opacity-60"></div>
-                                                    {/* Level Badge */}
-                                                    <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[var(--bg-tertiary)]/80 backdrop-blur-sm border border-[var(--border-primary)] text-[10px] font-black uppercase tracking-widest text-[var(--accent-primary)]">
-                                                        {t(levelKeys[course.level] || 'courseCatalog.levels.beginner')}
-                                                    </span>
-                                                    {/* Price Badge */}
-                                                    <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[var(--accent-primary)] text-[var(--text-on-accent)] text-[11px] font-black">
-                                                        {course.discount > 0 ? formatPrice(course.finalPrice) : formatPrice(course.price)}
-                                                    </span>
-                                                </div>
-                                            ) : (
-                                                <div className={`relative h-48 ${categoryGradients[course.category] || 'bg-slate-900 border-b border-[var(--border-primary)]'} flex items-center justify-center`}>
-                                                    <span className="text-6xl">{categoryIcons[course.category] || '📚'}</span>
-                                                    {/* Level Badge */}
-                                                    <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-[10px] font-black uppercase tracking-widest text-white">
-                                                        {t(levelKeys[course.level] || 'courseCatalog.levels.beginner')}
-                                                    </span>
-                                                    {/* Price Badge */}
-                                                    <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-white text-[var(--accent-primary)] text-[11px] font-black">
-                                                        {course.discount > 0 ? formatPrice(course.finalPrice) : formatPrice(course.price)}
-                                                    </span>
-                                                </div>
-                                            )}
-
-                                            <div className="p-6 flex flex-col flex-grow">
-                                                <div className="space-y-3 flex-grow">
-                                                    <h3 className="text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors line-clamp-2">
-                                                        {getLocalizedText(course.title)}
-                                                    </h3>
-                                                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed line-clamp-2">
-                                                        {getLocalizedText(course.description)}
-                                                    </p>
-                                                </div>
-
-                                                <div className="mt-4">
-                                                    <span className="w-full py-2.5 rounded-xl bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] font-bold text-sm border border-[var(--accent-primary)]/20 hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all flex items-center justify-center gap-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                                                        </svg>
-                                                        {t('landing.course.startLearning')}
-                                                    </span>
-                                                </div>
-
-                                                <div className="flex justify-between items-center mt-4 pt-4 border-t border-[var(--border-primary)] text-[11px] font-bold text-[var(--text-tertiary)]">
-                                                    <div className="flex gap-4">
-                                                        <span>⏱ {course.duration} {t('landing.course.hours')}</span>
-                                                        <span>📚 {course.totalLessons} {t('landing.course.lessons')}</span>
-                                                    </div>
-                                                    <div className="flex items-center gap-3">
-                                                        {course.rating > 0 ? (
-                                                            <span className="flex items-center gap-1 text-yellow-400">
-                                                                ⭐ {course.rating.toFixed(1)}
-                                                                <span className="text-[var(--text-tertiary)]">({course.reviewCount})</span>
-                                                            </span>
-                                                        ) : (
-                                                            <span className="text-[var(--text-tertiary)]">⭐ —</span>
-                                                        )}
-                                                        <span>👥 {course.enrolledCount} {t('landing.courses.enrolled')}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    </HoverSpring>
-                                </RevealItem>
-                            ))}
-                        </Reveal>
+                        <CoursesSliderSection
+                            courses={courses}
+                            t={t}
+                            getLocalizedText={getLocalizedText}
+                            formatPrice={formatPrice}
+                        />
                     )}
 
-                    {/* Mobile View All Link */}
-                    <div className="md:hidden mt-8 text-center">
-                        <Link to="/courses" className="py-3 px-8 rounded-full border border-[var(--border-primary)] hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-all text-sm font-bold text-[var(--accent-primary)]">
-                            {t('landing.courses.viewAll')}
-                        </Link>
+                    {/* View All Button - Pill style */}
+                    <div className="mt-10 text-center">
+                        <HoverSpring scale={1.04} y={-2} className="inline-block">
+                            <Link
+                                to="/courses"
+                                className="py-3 px-8 rounded-full border border-[var(--border-secondary)] bg-[var(--bg-card-alpha)] backdrop-blur-sm hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-all duration-300 text-sm font-bold text-[var(--accent-primary)] inline-block"
+                            >
+                                {t('landing.courses.viewAll')}
+                            </Link>
+                        </HoverSpring>
                     </div>
                 </div>
             </section>

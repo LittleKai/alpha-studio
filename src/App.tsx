@@ -1,5 +1,5 @@
-import React, { Suspense, lazy } from 'react';
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import React, { Suspense, lazy, useEffect } from 'react';
+import { Routes, Route, useNavigate, Navigate, useLocation } from 'react-router-dom';
 // Routing Components (keep these non-lazy as they're small and used everywhere)
 import { ProtectedRoute } from './components/routing';
 import { Layout } from './components/layout';
@@ -317,9 +317,18 @@ const NotFoundPage: React.FC = () => {
     );
 };
 
+const ScrollToTop: React.FC = () => {
+    const { pathname } = useLocation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+    return null;
+};
+
 const App: React.FC = () => {
     return (
         <Suspense fallback={<LoadingSpinner />}>
+            <ScrollToTop />
             <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<Layout><Suspense fallback={<LoadingSpinner />}><LandingPage /></Suspense></Layout>} />

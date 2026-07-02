@@ -74,7 +74,10 @@ export default {
       error: "Không thể tải khóa học",
       noCourses: "Chưa có khóa học",
       enrolled: "đã đăng ký",
-      free: "Miễn phí"
+      free: "Miễn phí",
+      swipeToSeeMore: "Kéo để xem thêm",
+      consultingTitle: "ĐĂNG KÝ TƯ VẤN",
+      consultingDesc: "Quét QR để được tư vấn lộ trình học phù hợp"
     },
     features: {
       title: "Kết nối không giới hạn với",
