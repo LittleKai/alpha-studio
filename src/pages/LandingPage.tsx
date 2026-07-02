@@ -48,11 +48,11 @@ const levelBadgeStyles: Record<string, { bg: string; text: string; border: strin
 };
 
 const getHeroImageSrc = (width: number): string => {
-    if (width >= 1600) return '/images/hero-gate-21x9.webp?v=5';
-    if (width >= 1024) return '/images/hero-gate-16x9.webp?v=5';
-    if (width >= 768) return '/images/hero-gate-1x1.webp?v=5';
-    if (width >= 480) return '/images/hero-gate-4x5.webp?v=5';
-    return '/images/hero-gate-9x16.webp?v=5';
+    if (width >= 1600) return 'https://res.cloudinary.com/dzchj4ysj/image/upload/v1783019376/landing/hero-gate-21x9.webp';
+    if (width >= 1024) return 'https://res.cloudinary.com/dzchj4ysj/image/upload/v1783019379/landing/hero-gate-16x9.webp';
+    if (width >= 768) return 'https://res.cloudinary.com/dzchj4ysj/image/upload/v1783019381/landing/hero-gate-1x1.webp';
+    if (width >= 480) return 'https://res.cloudinary.com/dzchj4ysj/image/upload/v1783019383/landing/hero-gate-4x5.webp';
+    return 'https://res.cloudinary.com/dzchj4ysj/image/upload/v1783019386/landing/hero-gate-9x16.webp';
 };
 
 // ─── Courses Slider Section (Split Layout) ───────────────────────────
@@ -127,10 +127,10 @@ const CoursesSliderSection: React.FC<CoursesSliderProps> = ({
                 <picture>
                     <source
                         type="image/webp"
-                        srcSet="/images/course-consulting.webp"
+                        srcSet="https://res.cloudinary.com/dzchj4ysj/image/upload/v1783019388/landing/course-consulting.webp"
                     />
                     <img
-                        src="/images/course-consulting.jpg"
+                        src="https://res.cloudinary.com/dzchj4ysj/image/upload/v1783019391/landing/course-consulting-jpg.jpg"
                         alt="Course consulting"
                         className="w-full h-full object-cover"
                         loading="lazy"
@@ -734,7 +734,7 @@ const LandingPage: React.FC = () => {
                                 cardClass="vocab-card"
                                 onClick={() => navigate('/studio/vocab')}
                                 logo={<img src="/vocab/icons/Icon-192.png" alt="VocabFlip" />}
-                                previewImage="/images/vocab/vocab-preview.png"
+                                previewImage="https://res.cloudinary.com/dzchj4ysj/image/upload/v1783019393/landing/vocab-preview.png"
                                 title={t('landing.toolsShowcase.vocab.title')}
                                 desc={t('landing.toolsShowcase.vocab.desc')}
                                 stats={[
