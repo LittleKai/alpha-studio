@@ -177,27 +177,12 @@ const CoursesSliderSection: React.FC<CoursesSliderProps> = ({
                             }}
                         >
                             {courses.map((course, index) => {
-                                const isActive = index === activeIndex;
                                 return (
                                     <Link
                                         key={course._id}
                                         to={`/courses/${course.slug}`}
-                                        className="courses-slider-card flex-shrink-0 flex flex-col rounded-xl overflow-hidden bg-[var(--bg-card)] border transition-all duration-400"
-                                        style={{
-                                            width: `${CARD_WIDTH}px`,
-                                            opacity: isActive ? 1 : 0.95,
-                                            borderColor: isActive ? 'var(--accent-primary)' : 'var(--border-primary)',
-                                            borderWidth: isActive ? '2px' : '1px',
-                                            boxShadow: isActive
-                                                ? '0 0 20px rgba(97, 232, 255, 0.45), 0 4px 20px rgba(0,0,0,0.3)'
-                                                : '0 2px 8px rgba(0,0,0,0.15)',
-                                        }}
-                                        onClick={(e) => {
-                                            if (!isActive) {
-                                                e.preventDefault();
-                                                goTo(index);
-                                            }
-                                        }}
+                                        className="courses-slider-card flex-shrink-0 flex flex-col rounded-xl overflow-hidden bg-[var(--bg-card)] border border-[var(--border-primary)] transition-all duration-400"
+                                        style={{ width: `${CARD_WIDTH}px` }}
                                         draggable={false}
                                     >
                                         {/* Thumbnail */}

@@ -319,10 +319,18 @@ html[data-theme="light"] input[type="checkbox"]:checked::after {
 /* ─── Courses Slider Section ─────────────────────────────────── */
 .courses-slider-card {
   --bg-card: rgba(17, 34, 58, 0.88);
+  opacity: 0.95;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, border-color, box-shadow;
+}
+
+.courses-slider-card:hover {
+  opacity: 1;
+  border-color: var(--accent-primary) !important;
+  border-width: 2px;
+  box-shadow: 0 0 20px rgba(97, 232, 255, 0.45), 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Light theme adjustments for slider cards */
