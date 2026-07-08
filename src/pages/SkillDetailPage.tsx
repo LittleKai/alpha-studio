@@ -37,6 +37,7 @@ const getCategoryKey = (cat: string): string => {
   if (c.includes('research') || c.includes('intelligence')) return 'researchIntel';
   if (c === 'communication') return 'communication';
   if (c.includes('content')) return 'marketingContent';
+  if (c.includes('optimi')) return 'optimization';
   return 'productivity';
 };
 

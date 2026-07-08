@@ -13,6 +13,22 @@ interface ToolCard {
 }
 
 const TOOLS: ToolCard[] = [
+  {
+    key: 'skills',
+    to: '/studio/skills',
+    cardClass: 'skills-card',
+    logo: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="text-white">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+      </svg>
+    ),
+    previewImage: '/skills-preview.png',
+    getStats: (lang) => [
+      { bigText: '3000+', regularText: lang === 'vi' ? 'Kỹ năng' : 'Skills' },
+      { bigText: 'Open', regularText: lang === 'vi' ? 'Mã nguồn' : 'Source' },
+      { bigText: 'Pro', regularText: lang === 'vi' ? 'AI Agent' : 'AI Agent' },
+    ],
+  },
   /*
   {
     key: 'generate',
@@ -59,6 +75,7 @@ const TOOLS: ToolCard[] = [
       { bigText: 'Web/App', regularText: lang === 'vi' ? 'Đa nền tảng' : 'Platform' },
     ],
   },
+  /*
   {
     key: 'interior',
     to: '/studio/interior-design',
@@ -76,6 +93,7 @@ const TOOLS: ToolCard[] = [
       { bigText: 'Scale', regularText: lang === 'vi' ? 'Chính xác' : 'Precision' },
     ],
   },
+  */
   {
     key: 'vocab',
     to: '/studio/vocab',
@@ -86,22 +104,6 @@ const TOOLS: ToolCard[] = [
       { bigText: 'Smart', regularText: lang === 'vi' ? 'Học từ vựng' : 'Study' },
       { bigText: 'Win/Apk', regularText: lang === 'vi' ? 'Hỗ trợ' : 'Supports' },
       { bigText: 'Shared', regularText: lang === 'vi' ? 'Thư viện' : 'Library' },
-    ],
-  },
-  {
-    key: 'skills',
-    to: '/studio/skills',
-    cardClass: 'skills-card',
-    logo: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="text-white">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-      </svg>
-    ),
-    previewImage: '/skills-preview.png',
-    getStats: (lang) => [
-      { bigText: '20+', regularText: lang === 'vi' ? 'Thực chiến' : 'Skills' },
-      { bigText: 'Daily', regularText: lang === 'vi' ? 'Cập nhật' : 'Updates' },
-      { bigText: 'AI-Gen', regularText: lang === 'vi' ? 'Tài nguyên' : 'Resources' },
     ],
   },
 ];

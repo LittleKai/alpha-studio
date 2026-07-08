@@ -171,7 +171,7 @@ const CoursesSliderSection: React.FC<CoursesSliderProps> = ({
                                 duration: 0.5
                             }}
                         >
-                            {courses.map((course, index) => {
+                            {courses.map((course) => {
                                 return (
                                     <Link
                                         key={course._id}

@@ -19,8 +19,16 @@ const getCategoryKey = (cat: string): string => {
   if (c.includes('research') || c.includes('intelligence')) return 'researchIntel';
   if (c === 'communication') return 'communication';
   if (c.includes('content')) return 'marketingContent';
+  if (c.includes('optimi')) return 'optimization';
   return 'productivity';
 };
+
+// Canonical display order for category filter panel
+const CATEGORY_DISPLAY_ORDER = [
+  'design', 'optimization', 'seo', 'development', 'marketing',
+  'salesOutreach', 'marketingContent', 'dataAnalytics', 'crmPipeline',
+  'productivity', 'researchIntel', 'communication', 'devTools',
+];
 
 const getDifficultyKey = (diff: string): string => {
   if (!diff) return 'beginner';
@@ -90,6 +98,8 @@ export default function SkillsPage() {
     categories: {}, tiers: {}, difficulties: {}, installTypes: {},
     totalSkills: 0, verifiedCount: 0, totalTimeSavedHours: 0,
   });
+  // Ref to hold the latest categoryKey → rawCategories[] mapping for use in fetchSkills callback
+  const categoryKeyToRawMapRef = useRef<Record<string, string[]>>({});
   
   // Search & Filter State
   const [searchQuery, setSearchQuery] = useState('');
@@ -131,7 +141,9 @@ export default function SkillsPage() {
         page: currentPage,
         limit: PAGE_SIZE,
         search: debouncedSearch || undefined,
-        category: selectedCategories.length === 1 ? selectedCategories[0] : undefined,
+        category: selectedCategories.length > 0
+          ? selectedCategories.flatMap(key => categoryKeyToRawMapRef.current[key] || []).join(',')
+          : undefined,
         difficulty: selectedDifficulty !== 'all' ? selectedDifficulty : undefined,
         tier: selectedTiers.length === 1 ? selectedTiers[0] : undefined,
         install_type: selectedInstallTypes.length === 1 ? selectedInstallTypes[0] : undefined,
@@ -157,11 +169,27 @@ export default function SkillsPage() {
   }, [fetchSkills]);
 
   // Derived filter data from API filterCounts
-  const categories = Object.keys(filterCounts.categories).sort();
+  // Group raw categories by display key and aggregate counts
+  const { groupedCategoryCounts, categoryKeyToRawMap } = (() => {
+    const counts: Record<string, number> = {};
+    const rawMap: Record<string, string[]> = {};
+    for (const [rawCat, count] of Object.entries(filterCounts.categories)) {
+      const key = getCategoryKey(rawCat);
+      counts[key] = (counts[key] || 0) + count;
+      if (!rawMap[key]) rawMap[key] = [];
+      rawMap[key].push(rawCat);
+    }
+    return { groupedCategoryCounts: counts, categoryKeyToRawMap: rawMap };
+  })();
+  // Keep ref in sync so fetchSkills callback always has the latest mapping
+  categoryKeyToRawMapRef.current = categoryKeyToRawMap;
+  const categories = CATEGORY_DISPLAY_ORDER.filter(k => groupedCategoryCounts[k]);
+  const categoryCounts = groupedCategoryCounts;
   const difficulties = Object.keys(filterCounts.difficulties).sort();
-  const tiers = Object.keys(filterCounts.tiers).sort();
+  const tierOrder: Record<string, number> = { Bronze: 0, Silver: 1, Gold: 2 };
+  const tiers = Object.keys(filterCounts.tiers).sort((a, b) => (tierOrder[a] ?? 99) - (tierOrder[b] ?? 99));
   const installTypes = Object.keys(filterCounts.installTypes).sort();
-  const categoryCounts = filterCounts.categories;
+  // categoryCounts already defined above via groupedCategoryCounts
   const difficultyCounts = filterCounts.difficulties;
   const tierCounts = filterCounts.tiers;
   const installCounts = filterCounts.installTypes;
@@ -311,7 +339,7 @@ export default function SkillsPage() {
                   className="w-4 h-4 rounded border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[#ff5a1f] focus:ring-0 cursor-pointer"
                 />
                 <span className="text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
-                  {t('skills.categories.' + getCategoryKey(cat))} <span className="text-xs text-[var(--text-tertiary)]">({categoryCounts[cat] || 0})</span>
+                  {t('skills.categories.' + cat)} <span className="text-xs text-[var(--text-tertiary)]">({categoryCounts[cat] || 0})</span>
                 </span>
               </label>
             ))}

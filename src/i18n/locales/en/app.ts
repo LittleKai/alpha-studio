@@ -332,7 +332,7 @@ export default {
         },
         skills: {
           title: "AI Skills Hub",
-          desc: "Browse, inspect, and install programming skills for your AI Agents"
+          desc: "Explore 3000+ open-source skills to supercharge your AI Agents"
         }
       }
     },
@@ -442,7 +442,8 @@ export default {
         researchIntel: "Research & Intelligence",
         communication: "Communication",
         marketingContent: "Marketing & Content",
-        productivity: "Productivity"
+        productivity: "Productivity",
+        optimization: "Optimization"
       },
       bestForTags: {
         seo: ["SEO", "Optimization"],
@@ -456,7 +457,8 @@ export default {
         researchIntel: ["Research", "Intelligence"],
         communication: ["Communication", "Collaboration"],
         marketingContent: ["Marketing", "Content"],
-        productivity: ["Productivity", "Operations"]
+        productivity: ["Productivity", "Operations"],
+        optimization: ["Optimization", "Performance"]
       },
       difficulties: {
         beginner: "Beginner",

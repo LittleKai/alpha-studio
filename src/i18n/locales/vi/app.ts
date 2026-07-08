@@ -332,7 +332,7 @@ export default {
         },
         skills: {
           title: "Thư viện Kỹ năng AI",
-          desc: "Khám phá, tham khảo và cài đặt các kỹ năng lập trình cho AI Agent của bạn"
+          desc: "Khám phá 3000+ kỹ năng mã nguồn mở giúp mở rộng năng lực AI Agent của bạn"
         }
       }
     },
@@ -442,7 +442,8 @@ export default {
         researchIntel: "Nghiên cứu & Tình báo",
         communication: "Giao tiếp",
         marketingContent: "Tiếp thị & Nội dung",
-        productivity: "Hiệu suất"
+        productivity: "Hiệu suất",
+        optimization: "Tối ưu hóa"
       },
       bestForTags: {
         seo: ["SEO", "Tối ưu hóa"],
@@ -456,7 +457,8 @@ export default {
         researchIntel: ["Nghiên cứu", "Thông tin"],
         communication: ["Giao tiếp", "Kết nối"],
         marketingContent: ["Tiếp thị", "Nội dung"],
-        productivity: ["Hiệu suất", "Vận hành"]
+        productivity: ["Hiệu suất", "Vận hành"],
+        optimization: ["Tối ưu", "Hiệu năng"]
       },
       difficulties: {
         beginner: "Sơ cấp",
