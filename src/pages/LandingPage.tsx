@@ -47,13 +47,8 @@ const levelBadgeStyles: Record<string, { bg: string; text: string; border: strin
     'advanced': { bg: '#881337', text: '#fda4af', border: '#f43f5e' },
 };
 
-const getHeroImageSrc = (width: number): string => {
-    if (width >= 1600) return 'https://res.cloudinary.com/dzchj4ysj/image/upload/v1783019376/landing/hero-gate-21x9.webp';
-    if (width >= 1024) return 'https://res.cloudinary.com/dzchj4ysj/image/upload/v1783019379/landing/hero-gate-16x9.webp';
-    if (width >= 768) return 'https://res.cloudinary.com/dzchj4ysj/image/upload/v1783019381/landing/hero-gate-1x1.webp';
-    if (width >= 480) return 'https://res.cloudinary.com/dzchj4ysj/image/upload/v1783019383/landing/hero-gate-4x5.webp';
-    return 'https://res.cloudinary.com/dzchj4ysj/image/upload/v1783019386/landing/hero-gate-9x16.webp';
-};
+const HERO_VIDEO_LIGHT = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4';
+const HERO_VIDEO_DARK = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_105406_16f4600d-7a92-4292-b96e-b19156c7830a.mp4';
 
 // ─── Courses Slider Section (Split Layout) ───────────────────────────
 interface CoursesSliderProps {
@@ -316,30 +311,6 @@ const LandingPage: React.FC = () => {
     // Scroll indicator state
     const [showScrollIndicator, setShowScrollIndicator] = useState(true);
     const [scrollY, setScrollY] = useState(0);
-    const [heroImageSrc, setHeroImageSrc] = useState(() => getHeroImageSrc(
-        typeof window === 'undefined' ? 0 : window.innerWidth
-    ));
-
-    useEffect(() => {
-        let resizeTimer: number | undefined;
-
-        const updateHeroImage = () => {
-            const nextSrc = getHeroImageSrc(window.innerWidth);
-            setHeroImageSrc((currentSrc) => currentSrc === nextSrc ? currentSrc : nextSrc);
-        };
-
-        const handleResize = () => {
-            window.clearTimeout(resizeTimer);
-            resizeTimer = window.setTimeout(updateHeroImage, 120);
-        };
-
-        updateHeroImage();
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.clearTimeout(resizeTimer);
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -492,55 +463,26 @@ const LandingPage: React.FC = () => {
                 jsonLd={landingJsonLd}
             />
             {/* Hero Section - Event Gate Redesign based on image.png */}
-            {/* Responsive hero image - keep mobile assets full-width without background cropping */}
+            {/* Theme-aware fullscreen video background (light/dark sources) */}
             <style dangerouslySetInnerHTML={{__html: `
                 .alpha-hero {
                     min-height: 100dvh;
-                }
-                .alpha-hero-media {
-                    position: absolute;
-                    inset: 0;
-                    z-index: 0;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    overflow: hidden;
-                    pointer-events: none;
-                }
-                .alpha-hero-image {
-                    display: block;
-                    width: var(--image-natural-width, auto);
-                    height: 100%;
-                    max-width: none;
-                    max-height: none;
-                    object-fit: cover;
-                    user-select: none;
                 }
             `}} />
             <section
                 data-hero
                 className="alpha-hero relative w-full flex items-center justify-center overflow-hidden border-b border-[var(--border-primary)] bg-[var(--bg-secondary)] transition-colors duration-300"
             >
-                <div className="alpha-hero-media" aria-hidden="true">
-                    <img
-                        src={heroImageSrc}
-                        alt=""
-                        className="alpha-hero-image"
-                        draggable={false}
-                        onLoad={(event) => {
-                            const img = event.currentTarget;
-                            const section = img.closest('[data-hero]') as HTMLElement | null;
-                            img.style.setProperty('--image-natural-width', `${img.naturalWidth}px`);
-                            console.group(`[Hero loaded] ${window.innerWidth}x${window.innerHeight}`);
-                            console.log('selected src         :', heroImageSrc);
-                            console.log('loaded currentSrc    :', img.currentSrc);
-                            console.log('section offsetHeight :', section?.offsetHeight ?? 'N/A', 'px');
-                            console.log('img naturalSize      :', `${img.naturalWidth}x${img.naturalHeight}`);
-                            console.log('img clientSize       :', `${img.clientWidth}x${img.clientHeight}`);
-                            console.groupEnd();
-                        }}
-                    />
-                </div>
+                <video
+                    key={theme}
+                    src={theme === 'dark' ? HERO_VIDEO_DARK : HERO_VIDEO_LIGHT}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    aria-hidden="true"
+                    className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
+                />
 
                 {/* Theme-aware darkening overlay */}
                 <div className={`absolute inset-0 z-[1] pointer-events-none transition-opacity duration-300 ${
@@ -600,17 +542,23 @@ const LandingPage: React.FC = () => {
                             }
                             .scroll-mouse-glow {
                                 box-shadow: 0 0 15px rgba(97, 232, 255, 0.15), inset 0 0 5px rgba(255, 255, 255, 0.15);
-                                background: rgba(7, 17, 31, 0.4);
+                                background: color-mix(in srgb, var(--bg-primary) 50%, transparent);
+                                backdrop-filter: blur(6px);
+                                border-color: color-mix(in srgb, var(--text-primary) 35%, transparent);
+                            }
+                            .scroll-hint-text {
+                                color: var(--text-primary);
+                                background: color-mix(in srgb, var(--bg-primary) 55%, transparent);
                                 backdrop-filter: blur(6px);
                             }
                         `}} />
-                        <div className="w-6 h-10 md:w-7 md:h-12 rounded-full border-2 border-white/30 flex justify-center p-1.5 scroll-mouse-glow transition-all duration-300 hover:border-[var(--accent-primary)]/50">
-                            <div 
+                        <div className="w-6 h-10 md:w-7 md:h-12 rounded-full border-2 flex justify-center p-1.5 scroll-mouse-glow transition-all duration-300 hover:border-[var(--accent-primary)]/50">
+                            <div
                                 className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[var(--accent-primary)]"
                                 style={{ animation: 'scroll-dot-slide 1.8s cubic-bezier(0.16, 1, 0.3, 1) infinite' }}
                             />
                         </div>
-                        <span className="text-[10px] md:text-xs font-black text-white tracking-[0.25em] md:tracking-[0.35em] uppercase text-center drop-shadow-md">
+                        <span className="scroll-hint-text px-3 py-1 rounded-full text-[10px] md:text-xs font-black tracking-[0.25em] md:tracking-[0.35em] uppercase text-center">
                             {t('landing.hero.scrollDown')}
                         </span>
                     </div>
