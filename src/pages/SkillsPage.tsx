@@ -1,8 +1,8 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
-import { getSkills, type Skill, type FilterCounts, type PaginationInfo } from '../services/skillService';
+import { getSkills, type Skill } from '../services/skillService';
 
 
 const getCategoryKey = (cat: string): string => {
@@ -73,16 +73,16 @@ const formatTimeSaving = (timeStr: string, lang: string): string => {
   return timeStr;
 };
 
-// Map frontend sortBy to API sort param
-const mapSortToApi = (sortBy: string): string => {
-  switch (sortBy) {
-    case 'az': return 'az';
-    case 'popular': return 'popular';
-    case 'timeSaved': return 'timeSaved';
-    case 'quickest': return 'quickest';
-    case 'recent': return '-createdAt';
-    default: return '-createdAt'; // 'recommended'
-  }
+
+
+const parseTimeSavingMinutes = (str: string): number => {
+  if (!str) return 0;
+  const match = str.match(/([\d.]+)\s*(hour|minute|min|hr)/i);
+  if (!match) return 0;
+  const value = parseFloat(match[1]);
+  const unit = match[2].toLowerCase();
+  if (unit.startsWith('hour') || unit.startsWith('hr')) return value * 60;
+  return value;
 };
 
 export default function SkillsPage() {
@@ -90,17 +90,10 @@ export default function SkillsPage() {
   const navigate = useNavigate();
   const PAGE_SIZE = 12;
 
-  // API-driven state
-  const [visibleSkills, setVisibleSkills] = useState<Skill[]>([]);
+  // Skills raw data
+  const [allSkills, setAllSkills] = useState<Skill[]>([]);
   const [loading, setLoading] = useState(true);
-  const [pagination, setPagination] = useState<PaginationInfo>({ total: 0, page: 1, limit: PAGE_SIZE, pages: 0 });
-  const [filterCounts, setFilterCounts] = useState<FilterCounts>({
-    categories: {}, tiers: {}, difficulties: {}, installTypes: {},
-    totalSkills: 0, verifiedCount: 0, totalTimeSavedHours: 0,
-  });
-  // Ref to hold the latest categoryKey → rawCategories[] mapping for use in fetchSkills callback
-  const categoryKeyToRawMapRef = useRef<Record<string, string[]>>({});
-  
+
   // Search & Filter State
   const [searchQuery, setSearchQuery] = useState('');
   const [debouncedSearch, setDebouncedSearch] = useState('');
@@ -133,70 +126,219 @@ export default function SkillsPage() {
     return () => clearTimeout(searchTimerRef.current);
   }, [searchQuery]);
 
-  // Fetch skills from API whenever filters/sort/page change
-  const fetchSkills = useCallback(async () => {
-    setLoading(true);
-    try {
-      const response = await getSkills({
-        page: currentPage,
-        limit: PAGE_SIZE,
-        search: debouncedSearch || undefined,
-        category: selectedCategories.length > 0
-          ? selectedCategories.flatMap(key => categoryKeyToRawMapRef.current[key] || []).join(',')
-          : undefined,
-        difficulty: selectedDifficulty !== 'all' ? selectedDifficulty : undefined,
-        tier: selectedTiers.length === 1 ? selectedTiers[0] : undefined,
-        install_type: selectedInstallTypes.length === 1 ? selectedInstallTypes[0] : undefined,
-        timeSaving: selectedTimeSavings.length === 1 ? selectedTimeSavings[0] : undefined,
-        sort: mapSortToApi(sortBy),
-      });
-
-      setVisibleSkills(response.data);
-      setPagination(response.pagination);
-      if (response.filterCounts) {
-        setFilterCounts(response.filterCounts);
-      }
-    } catch (err) {
-      console.error('Error fetching skills:', err);
-      setVisibleSkills([]);
-    } finally {
-      setLoading(false);
-    }
-  }, [currentPage, debouncedSearch, selectedCategories, selectedDifficulty, selectedTiers, selectedTimeSavings, selectedInstallTypes, sortBy]);
-
+  // Load all skills once on mount (with sessionStorage cache)
   useEffect(() => {
-    fetchSkills();
-  }, [fetchSkills]);
+    const CACHE_KEY = 'alpha_skills_cache';
+    const CACHE_TS_KEY = 'alpha_skills_cache_ts';
+    const CACHE_MAX_AGE = 30 * 60 * 1000; // 30 minutes
+
+    const loadAllSkills = async () => {
+      setLoading(true);
+      try {
+        // Check sessionStorage cache first
+        const cachedTs = sessionStorage.getItem(CACHE_TS_KEY);
+        if (cachedTs && Date.now() - Number(cachedTs) < CACHE_MAX_AGE) {
+          const cached = sessionStorage.getItem(CACHE_KEY);
+          if (cached) {
+            setAllSkills(JSON.parse(cached));
+            setLoading(false);
+            return;
+          }
+        }
+
+        // Cache miss or expired — fetch from API
+        const response = await getSkills({ limit: 10000 });
+        const skills = response.data || [];
+        setAllSkills(skills);
+
+        // Store in sessionStorage
+        try {
+          sessionStorage.setItem(CACHE_KEY, JSON.stringify(skills));
+          sessionStorage.setItem(CACHE_TS_KEY, String(Date.now()));
+        } catch {
+          // sessionStorage full — silently ignore
+        }
+      } catch (err) {
+        console.error('Error loading skills:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadAllSkills();
+  }, []);
+
+  // Compute global filter counts once from all skills
+  const filterCounts = useMemo(() => {
+    const counts = {
+      categories: {} as Record<string, number>,
+      tiers: {} as Record<string, number>,
+      difficulties: {} as Record<string, number>,
+      installTypes: {} as Record<string, number>,
+      totalSkills: allSkills.length,
+      verifiedCount: 0,
+      totalTimeSavedHours: 0
+    };
+
+    let totalTimeSavedMinutes = 0;
+
+    for (const skill of allSkills) {
+      // Category count
+      const cat = skill.category || 'Productivity';
+      counts.categories[cat] = (counts.categories[cat] || 0) + 1;
+
+      // Tier count
+      const tier = skill.tier || 'Bronze';
+      counts.tiers[tier] = (counts.tiers[tier] || 0) + 1;
+
+      // Difficulty count
+      const diff = skill.difficulty || 'Beginner';
+      counts.difficulties[diff] = (counts.difficulties[diff] || 0) + 1;
+
+      // Install type count
+      if (skill.install_type) {
+        counts.installTypes[skill.install_type] = (counts.installTypes[skill.install_type] || 0) + 1;
+      }
+
+      // Verified count (Gold & Silver tiers)
+      if (tier === 'Gold' || tier === 'Silver') {
+        counts.verifiedCount += 1;
+      }
+
+      // Time savings
+      const mins = parseTimeSavingMinutes(skill.estimated_time_saving);
+      if (mins > 0) {
+        totalTimeSavedMinutes += mins;
+      }
+    }
+
+    counts.totalTimeSavedHours = Math.round(totalTimeSavedMinutes / 60);
+    return counts;
+  }, [allSkills]);
 
   // Derived filter data from API filterCounts
   // Group raw categories by display key and aggregate counts
-  const { groupedCategoryCounts, categoryKeyToRawMap } = (() => {
+  const { groupedCategoryCounts } = useMemo(() => {
     const counts: Record<string, number> = {};
-    const rawMap: Record<string, string[]> = {};
     for (const [rawCat, count] of Object.entries(filterCounts.categories)) {
       const key = getCategoryKey(rawCat);
       counts[key] = (counts[key] || 0) + count;
-      if (!rawMap[key]) rawMap[key] = [];
-      rawMap[key].push(rawCat);
     }
-    return { groupedCategoryCounts: counts, categoryKeyToRawMap: rawMap };
-  })();
-  // Keep ref in sync so fetchSkills callback always has the latest mapping
-  categoryKeyToRawMapRef.current = categoryKeyToRawMap;
+    return { groupedCategoryCounts: counts };
+  }, [filterCounts]);
+
   const categories = CATEGORY_DISPLAY_ORDER.filter(k => groupedCategoryCounts[k]);
   const categoryCounts = groupedCategoryCounts;
   const difficulties = Object.keys(filterCounts.difficulties).sort();
   const tierOrder: Record<string, number> = { Bronze: 0, Silver: 1, Gold: 2 };
   const tiers = Object.keys(filterCounts.tiers).sort((a, b) => (tierOrder[a] ?? 99) - (tierOrder[b] ?? 99));
   const installTypes = Object.keys(filterCounts.installTypes).sort();
-  // categoryCounts already defined above via groupedCategoryCounts
+  
   const difficultyCounts = filterCounts.difficulties;
   const tierCounts = filterCounts.tiers;
   const installCounts = filterCounts.installTypes;
 
-  // Pagination values from server
-  const totalPages = pagination.pages;
-  const totalFiltered = pagination.total;
+  // Filter and Sort allSkills in-memory
+  const filteredAndSortedSkills = useMemo(() => {
+    // 1. Filter
+    let result = allSkills.filter(skill => {
+      // Search query
+      if (debouncedSearch) {
+        const term = debouncedSearch.toLowerCase().trim();
+        const matchName = skill.name?.toLowerCase().includes(term);
+        const matchHeadline = skill.headline?.toLowerCase().includes(term) || skill.headline_vi?.toLowerCase().includes(term);
+        const matchDesc = skill.short_description?.toLowerCase().includes(term) || skill.short_description_vi?.toLowerCase().includes(term);
+        const matchAuthor = skill.author?.toLowerCase().includes(term);
+        const matchTags = skill.tags?.some(tag => tag.toLowerCase().includes(term));
+        if (!matchName && !matchHeadline && !matchDesc && !matchAuthor && !matchTags) {
+          return false;
+        }
+      }
+
+      // Category filter (grouped keys)
+      if (selectedCategories.length > 0) {
+        const key = getCategoryKey(skill.category);
+        if (!selectedCategories.includes(key)) {
+          return false;
+        }
+      }
+
+      // Difficulty filter
+      if (selectedDifficulty !== 'all') {
+        if (skill.difficulty?.toLowerCase() !== selectedDifficulty.toLowerCase()) {
+          return false;
+        }
+      }
+
+      // Tier filter
+      if (selectedTiers.length > 0) {
+        if (!selectedTiers.includes(skill.tier)) {
+          return false;
+        }
+      }
+
+      // Install type filter
+      if (selectedInstallTypes.length > 0) {
+        if (!selectedInstallTypes.includes(skill.install_type)) {
+          return false;
+        }
+      }
+
+      // Time saving filter
+      if (selectedTimeSavings.length > 0) {
+        const mins = parseTimeSavingMinutes(skill.estimated_time_saving);
+        let matchRange = false;
+        for (const range of selectedTimeSavings) {
+          if (range === 'short' && mins > 0 && mins < 60) matchRange = true;
+          if (range === 'medium' && mins >= 60 && mins <= 180) matchRange = true;
+          if (range === 'long' && mins > 180) matchRange = true;
+        }
+        if (!matchRange) {
+          return false;
+        }
+      }
+
+      return true;
+    });
+
+    // 2. Sort
+    const sortTierOrder: Record<string, number> = { Gold: 1, Silver: 2, Bronze: 3 };
+    result.sort((a, b) => {
+      if (sortBy === 'az') {
+        return a.name.localeCompare(b.name);
+      }
+      if (sortBy === 'popular') {
+        const rankA = sortTierOrder[a.tier] ?? 4;
+        const rankB = sortTierOrder[b.tier] ?? 4;
+        if (rankA !== rankB) return rankA - rankB;
+        return a.name.localeCompare(b.name);
+      }
+      if (sortBy === 'timeSaved') {
+        const minsA = parseTimeSavingMinutes(a.estimated_time_saving);
+        const minsB = parseTimeSavingMinutes(b.estimated_time_saving);
+        if (minsA !== minsB) return minsB - minsA;
+        return a.name.localeCompare(b.name);
+      }
+      if (sortBy === 'quickest') {
+        const minsA = parseTimeSavingMinutes(a.estimated_time_saving);
+        const minsB = parseTimeSavingMinutes(b.estimated_time_saving);
+        if (minsA !== minsB) return minsA - minsB;
+        return a.name.localeCompare(b.name);
+      }
+      // 'recommended' or default: return in original load order (by MongoDB creation)
+      return 0; 
+    });
+
+    return result;
+  }, [allSkills, debouncedSearch, selectedCategories, selectedDifficulty, selectedTiers, selectedTimeSavings, selectedInstallTypes, sortBy]);
+
+  // Pagination values computed client-side
+  const totalFiltered = filteredAndSortedSkills.length;
+  const totalPages = Math.ceil(totalFiltered / PAGE_SIZE);
+
+  // Paginated skills for visible rendering
+  const visibleSkills = useMemo(() => {
+    return filteredAndSortedSkills.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+  }, [filteredAndSortedSkills, currentPage]);
 
   const getPageNumbers = () => {
     const pages: (number | string)[] = [];
@@ -274,7 +416,14 @@ export default function SkillsPage() {
   };
 
   // Generate a deterministic star count based on slug and tier for screenshot alignment
-  const getStarCount = (slug: string, tier: string) => {
+  // or return actual GitHub stars if available
+  const getStarCount = (slug: string, tier: string, githubStars?: number) => {
+    if (githubStars !== undefined && githubStars > 0) {
+      if (githubStars >= 1000) {
+        return `${(githubStars / 1000).toFixed(1)}K`;
+      }
+      return String(githubStars);
+    }
     let hash = 0;
     for (let i = 0; i < slug.length; i++) {
       hash = slug.charCodeAt(i) + ((hash << 5) - hash);
@@ -742,7 +891,7 @@ export default function SkillsPage() {
                             <div className="flex items-center gap-1 select-none">
                               <span className="text-yellow-500 text-sm">★</span>
                               <span className="font-medium text-[var(--text-secondary)]">
-                                {getStarCount(skill.slug, skill.tier)}
+                                {getStarCount(skill.slug, skill.tier, skill.github_stars)}
                               </span>
                             </div>
                             
@@ -809,7 +958,7 @@ export default function SkillsPage() {
                             <div className="flex items-center gap-1.5 md:justify-end select-none">
                               <span className="text-yellow-500 text-sm">★</span>
                               <span className="font-bold text-[var(--text-primary)]">
-                                {getStarCount(skill.slug, skill.tier)}
+                                {getStarCount(skill.slug, skill.tier, skill.github_stars)}
                               </span>
                             </div>
                             

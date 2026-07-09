@@ -20,6 +20,7 @@ export interface Skill {
   author: string;
   install_command: string;
   source_repo_url: string;
+  github_stars?: number;
   works_with: string[];
   tags: string[];
 }
