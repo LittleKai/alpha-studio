@@ -128,8 +128,8 @@ export default function SkillsPage() {
 
   // Load all skills once on mount (with sessionStorage cache)
   useEffect(() => {
-    const CACHE_KEY = 'alpha_skills_cache';
-    const CACHE_TS_KEY = 'alpha_skills_cache_ts';
+    const CACHE_KEY = 'alpha_skills_cache_v3';
+    const CACHE_TS_KEY = 'alpha_skills_cache_ts_v3';
     const CACHE_MAX_AGE = 30 * 60 * 1000; // 30 minutes
 
     const loadAllSkills = async () => {
@@ -307,6 +307,11 @@ export default function SkillsPage() {
         return a.name.localeCompare(b.name);
       }
       if (sortBy === 'popular') {
+        const starsA = a.github_stars ?? 0;
+        const starsB = b.github_stars ?? 0;
+        if (starsA !== starsB) return starsB - starsA;
+        
+        // Fallback to tier rank
         const rankA = sortTierOrder[a.tier] ?? 4;
         const rankB = sortTierOrder[b.tier] ?? 4;
         if (rankA !== rankB) return rankA - rankB;
@@ -324,8 +329,17 @@ export default function SkillsPage() {
         if (minsA !== minsB) return minsA - minsB;
         return a.name.localeCompare(b.name);
       }
-      // 'recommended' or default: return in original load order (by MongoDB creation)
-      return 0; 
+      
+      // 'recommended' or default: Tier rank first (Gold > Silver > Bronze), then stars descending
+      const rankA = sortTierOrder[a.tier] ?? 4;
+      const rankB = sortTierOrder[b.tier] ?? 4;
+      if (rankA !== rankB) return rankA - rankB;
+      
+      const starsA = a.github_stars ?? 0;
+      const starsB = b.github_stars ?? 0;
+      if (starsA !== starsB) return starsB - starsA;
+      
+      return a.name.localeCompare(b.name);
     });
 
     return result;
@@ -415,24 +429,21 @@ export default function SkillsPage() {
     }
   };
 
-  // Generate a deterministic star count based on slug and tier for screenshot alignment
-  // or return actual GitHub stars if available
-  const getStarCount = (slug: string, tier: string, githubStars?: number) => {
-    if (githubStars !== undefined && githubStars > 0) {
-      if (githubStars >= 1000) {
-        return `${(githubStars / 1000).toFixed(1)}K`;
-      }
-      return String(githubStars);
+  // Return actual GitHub stars if available, formatted cleanly
+  const getStarCount = (repoUrl: string, githubStars?: number) => {
+    if (!repoUrl || !repoUrl.startsWith('http')) return null;
+    
+    // Ignore dummy placeholder repos (newsnotfound, copy-editing, popsicle)
+    const lowerRepo = repoUrl.toLowerCase();
+    if (lowerRepo.includes('newsnotfound') || lowerRepo.includes('copy-editing') || lowerRepo.includes('popsicle')) {
+      return null;
     }
-    let hash = 0;
-    for (let i = 0; i < slug.length; i++) {
-      hash = slug.charCodeAt(i) + ((hash << 5) - hash);
+
+    const stars = githubStars ?? 0;
+    if (stars >= 1000) {
+      return `${(stars / 1000).toFixed(1)}K`;
     }
-    const base = Math.abs(hash % 90) + 10; // 10 to 99
-    if (tier === 'Gold') return `${base + 50}.9K`;
-    if (tier === 'Silver') return `${base + 20}.3K`;
-    if (tier === 'Bronze') return `${base}.5K`;
-    return `${Math.abs(hash % 9) + 1}.2K`;
+    return String(stars);
   };
 
 
@@ -888,12 +899,16 @@ export default function SkillsPage() {
 
                           {/* Bottom Row: Stars and Time saving indicator */}
                           <div className="border-t border-[var(--border-primary)] pt-3 mt-auto flex justify-between items-center text-xs text-[var(--text-secondary)]">
-                            <div className="flex items-center gap-1 select-none">
-                              <span className="text-yellow-500 text-sm">★</span>
-                              <span className="font-medium text-[var(--text-secondary)]">
-                                {getStarCount(skill.slug, skill.tier, skill.github_stars)}
-                              </span>
-                            </div>
+                            {getStarCount(skill.source_repo_url, skill.github_stars) ? (
+                              <div className="flex items-center gap-1 select-none">
+                                <span className="text-yellow-500 text-sm">★</span>
+                                <span className="font-medium text-[var(--text-secondary)]">
+                                  {getStarCount(skill.source_repo_url, skill.github_stars)}
+                                </span>
+                              </div>
+                            ) : (
+                              <div />
+                            )}
                             
                             <div className="text-xs font-semibold text-emerald-theme flex items-center gap-1">
                               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
@@ -955,12 +970,16 @@ export default function SkillsPage() {
                           </div>
 
                           <div className="flex md:flex-col items-between md:items-end justify-between w-full md:w-auto shrink-0 pt-4 md:pt-0 border-t md:border-t-0 border-[var(--border-primary)] text-xs text-[var(--text-secondary)] gap-3">
-                            <div className="flex items-center gap-1.5 md:justify-end select-none">
-                              <span className="text-yellow-500 text-sm">★</span>
-                              <span className="font-bold text-[var(--text-primary)]">
-                                {getStarCount(skill.slug, skill.tier, skill.github_stars)}
-                              </span>
-                            </div>
+                            {getStarCount(skill.source_repo_url, skill.github_stars) ? (
+                              <div className="flex items-center gap-1.5 md:justify-end select-none">
+                                <span className="text-yellow-500 text-sm">★</span>
+                                <span className="font-bold text-[var(--text-primary)]">
+                                  {getStarCount(skill.source_repo_url, skill.github_stars)}
+                                </span>
+                              </div>
+                            ) : (
+                              <div className="md:h-5" />
+                            )}
                             
                             <div className="text-xs font-semibold text-emerald-theme flex items-center gap-1 md:justify-end">
                               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
