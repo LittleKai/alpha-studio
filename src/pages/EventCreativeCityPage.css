@@ -1,0 +1,808 @@
+/* Token mặc định = concept "event-creative-city" / theme "neon-night". React ghi đè bằng
+   inline style trên .ecc-page theo concept + theme đang chọn (xem concepts trong
+   EventCreativeCityPage.tsx). */
+.ecc-page {
+    --ecc-bg: #07111f;
+    --ecc-surface: rgba(8, 21, 38, 0.82);
+    --ecc-ink: #f8fafc;
+    --ecc-muted: #c3d5e6;
+    --ecc-accent: #61e8ff;
+    --ecc-secondary: #8b7dff;
+    --ecc-highlight: #ffb454;
+    --ecc-border: rgba(255, 255, 255, 0.13);
+    --ecc-on-accent: #07111f;
+    --ecc-shadow: rgba(0, 0, 0, 0.34);
+    min-height: 100vh;
+    overflow: clip;
+    color: var(--ecc-ink);
+    background:
+        radial-gradient(circle at 50% 20%, color-mix(in srgb, var(--ecc-accent) 12%, transparent), transparent 30%),
+        var(--ecc-bg);
+}
+
+.ecc-header {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: 78px;
+    padding: 0 clamp(20px, 4vw, 68px);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--ecc-bg) 92%, transparent), transparent);
+    pointer-events: none;
+}
+
+.ecc-header a {
+    pointer-events: auto;
+}
+
+.ecc-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    color: var(--ecc-ink);
+    text-decoration: none;
+}
+
+.ecc-brand img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 14px color-mix(in srgb, var(--ecc-accent) 35%, transparent));
+}
+
+.ecc-brand span {
+    display: grid;
+    gap: 2px;
+}
+
+.ecc-brand strong {
+    font-size: 12px;
+    letter-spacing: 0.16em;
+}
+
+.ecc-brand small {
+    color: var(--ecc-accent);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+}
+
+/* Bộ chọn dùng chung cho 2 cấp: --concept (cấp 1) và --theme (cấp 2, chỉ Event Creative City) */
+.ecc-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 4px;
+    border: 1px solid var(--ecc-border);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--ecc-bg) 52%, transparent);
+    backdrop-filter: blur(14px) saturate(1.1);
+    pointer-events: auto;
+}
+
+.ecc-switch button {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 13px;
+    border: 0;
+    border-radius: 999px;
+    color: color-mix(in srgb, var(--ecc-ink) 62%, transparent);
+    background: transparent;
+    cursor: pointer;
+    transition: color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.ecc-switch button:hover {
+    color: var(--ecc-ink);
+}
+
+.ecc-switch button.is-active {
+    color: var(--ecc-ink);
+    background: color-mix(in srgb, var(--ecc-accent) 16%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ecc-accent) 38%, transparent);
+}
+
+.ecc-switch button:focus-visible {
+    outline: 2px solid var(--ecc-accent);
+    outline-offset: 2px;
+}
+
+.ecc-switch button[data-pending='true'] {
+    animation: ecc-switch-pulse 900ms ease-in-out infinite;
+}
+
+/* Cấp 1: nhãn đọc được, sentence case */
+.ecc-switch--concept button {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+/* Cấp 2: micro-label phụ thuộc, đặt ngay dưới header */
+.ecc-switch--theme {
+    position: absolute;
+    top: calc(100% - 10px);
+    left: 50%;
+    padding: 3px;
+    transform: translateX(-50%);
+}
+
+.ecc-switch--theme button {
+    padding: 6px 11px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.ecc-theme-swatch {
+    display: block;
+    width: 9px;
+    height: 9px;
+    flex: 0 0 9px;
+    border-radius: 50%;
+}
+
+.ecc-switch-label-short {
+    display: none;
+}
+
+.ecc-header nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.ecc-header nav a {
+    color: color-mix(in srgb, var(--ecc-ink) 76%, transparent);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.ecc-header nav a:hover {
+    color: var(--ecc-ink);
+}
+
+.ecc-header .ecc-header-cta {
+    padding: 10px 16px;
+    border: 1px solid color-mix(in srgb, var(--ecc-accent) 34%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--ecc-bg) 48%, transparent);
+    backdrop-filter: blur(12px);
+}
+
+.ecc-header .ecc-header-cta:hover {
+    border-color: var(--ecc-accent);
+    background: color-mix(in srgb, var(--ecc-accent) 12%, transparent);
+}
+
+.ecc-world {
+    position: relative;
+    height: calc(var(--ecc-scene-count) * 100svh);
+}
+
+.ecc-sticky {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    min-height: 620px;
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--ecc-bg);
+}
+
+.ecc-sticky::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, color-mix(in srgb, var(--ecc-bg) 90%, transparent) 0%, color-mix(in srgb, var(--ecc-bg) 34%, transparent) 28%, transparent 52%),
+        linear-gradient(180deg, color-mix(in srgb, var(--ecc-bg) 28%, transparent), transparent 22%, transparent 76%, color-mix(in srgb, var(--ecc-bg) 58%, transparent));
+}
+
+.ecc-scenes,
+.ecc-scene,
+.ecc-scene-image-wrap {
+    position: absolute;
+    inset: 0;
+}
+
+.ecc-scene {
+    pointer-events: none;
+}
+
+.ecc-scene[aria-hidden='false'] {
+    pointer-events: auto;
+}
+
+.ecc-scene-image-wrap {
+    display: grid;
+    place-items: center;
+    will-change: opacity, transform;
+    transition: opacity 80ms linear;
+}
+
+.ecc-scene-image-wrap::after {
+    content: '';
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    background:
+        linear-gradient(90deg, color-mix(in srgb, var(--ecc-bg) 58%, transparent) 0%, color-mix(in srgb, var(--ecc-bg) 10%, transparent) 34%, transparent 58%),
+        radial-gradient(circle at 54% 48%, transparent 28%, color-mix(in srgb, var(--ecc-bg) 12%, transparent) 60%, color-mix(in srgb, var(--ecc-bg) 78%, transparent) 100%);
+}
+
+.ecc-scene-image {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    user-select: none;
+}
+
+/* Lớp ảnh của theme cũ nằm đè lên ảnh mới và mờ dần → crossfade khi đổi theme */
+.ecc-scene-image--outgoing {
+    z-index: 2;
+    pointer-events: none;
+    animation: ecc-theme-crossfade 380ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.ecc-copy-shell {
+    position: absolute;
+    z-index: 40;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    padding: 92px clamp(28px, 7vw, 118px) 66px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 220ms ease, transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ecc-scene[aria-hidden='true'] .ecc-copy-shell {
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+.ecc-scene--right .ecc-copy-shell {
+    justify-content: flex-end;
+}
+
+.ecc-copy {
+    width: min(510px, 43vw);
+    padding: clamp(22px, 3vw, 36px);
+    border: 1px solid var(--ecc-border);
+    border-radius: 28px;
+    background: linear-gradient(145deg, var(--ecc-surface), color-mix(in srgb, var(--ecc-surface) 58%, transparent));
+    box-shadow: 0 28px 80px var(--ecc-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(22px) saturate(1.15);
+    animation: ecc-copy-swap 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ecc-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ecc-accent);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+}
+
+.ecc-eyebrow span {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid color-mix(in srgb, var(--ecc-accent) 40%, transparent);
+    border-radius: 50%;
+    color: var(--ecc-ink);
+    background: color-mix(in srgb, var(--ecc-accent) 10%, transparent);
+    letter-spacing: 0;
+}
+
+.ecc-copy h1 {
+    margin: 18px 0 14px;
+    max-width: 13ch;
+    color: var(--ecc-ink);
+    font-size: clamp(38px, 4.45vw, 72px);
+    font-weight: 900;
+    letter-spacing: -0.055em;
+    line-height: 0.98;
+    text-wrap: balance;
+}
+
+.ecc-copy p {
+    margin: 0;
+    max-width: 51ch;
+    color: var(--ecc-muted);
+    font-size: clamp(14px, 1.25vw, 18px);
+    line-height: 1.62;
+}
+
+.ecc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 22px;
+}
+
+.ecc-tags span {
+    padding: 7px 10px;
+    border: 1px solid color-mix(in srgb, var(--ecc-secondary) 26%, transparent);
+    border-radius: 999px;
+    color: var(--ecc-ink);
+    background: color-mix(in srgb, var(--ecc-secondary) 12%, transparent);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+}
+
+.ecc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 26px;
+}
+
+.ecc-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 900;
+    text-decoration: none;
+    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.ecc-actions a:hover {
+    transform: translateY(-2px);
+}
+
+.ecc-primary-action {
+    color: var(--ecc-on-accent);
+    background: var(--ecc-accent);
+    box-shadow: 0 12px 34px color-mix(in srgb, var(--ecc-accent) 26%, transparent);
+}
+
+.ecc-secondary-action {
+    border: 1px solid color-mix(in srgb, var(--ecc-ink) 24%, transparent);
+    color: var(--ecc-ink);
+    background: color-mix(in srgb, var(--ecc-ink) 7%, transparent);
+}
+
+.ecc-route-rail {
+    position: absolute;
+    z-index: 60;
+    top: 50%;
+    right: clamp(18px, 2.7vw, 46px);
+    display: grid;
+    gap: 12px;
+    transform: translateY(-50%);
+}
+
+.ecc-route-line {
+    position: absolute;
+    z-index: -1;
+    top: 12px;
+    bottom: 12px;
+    left: 6px;
+    width: 1px;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--ecc-ink) 20%, transparent);
+}
+
+.ecc-route-line span {
+    display: block;
+    width: 100%;
+    background: linear-gradient(var(--ecc-accent), var(--ecc-secondary));
+    transition: height 80ms linear;
+}
+
+.ecc-route-rail button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 170px;
+    padding: 0;
+    border: 0;
+    color: color-mix(in srgb, var(--ecc-ink) 48%, transparent);
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+}
+
+.ecc-route-dot {
+    display: block;
+    width: 13px;
+    height: 13px;
+    flex: 0 0 13px;
+    border: 2px solid color-mix(in srgb, var(--ecc-ink) 34%, transparent);
+    border-radius: 50%;
+    background: var(--ecc-bg);
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.ecc-route-label {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateX(6px);
+    transition: opacity 180ms ease, transform 180ms ease, color 180ms ease;
+}
+
+.ecc-route-rail button:hover .ecc-route-label,
+.ecc-route-rail button.is-active .ecc-route-label {
+    color: var(--ecc-ink);
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.ecc-route-rail button.is-active .ecc-route-dot {
+    border-color: var(--ecc-accent);
+    background: var(--ecc-accent);
+    box-shadow:
+        0 0 0 5px color-mix(in srgb, var(--ecc-accent) 14%, transparent),
+        0 0 18px color-mix(in srgb, var(--ecc-accent) 65%, transparent);
+    transform: scale(1.08);
+}
+
+.ecc-scroll-cue {
+    position: absolute;
+    z-index: 60;
+    bottom: 24px;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    color: color-mix(in srgb, var(--ecc-ink) 64%, transparent);
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+}
+
+.ecc-scroll-cue i {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 32px;
+    border: 1px solid color-mix(in srgb, var(--ecc-ink) 30%, transparent);
+    border-radius: 999px;
+}
+
+.ecc-scroll-cue i::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    width: 3px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--ecc-accent);
+    transform: translateX(-50%);
+    animation: ecc-scroll 1.7s ease-in-out infinite;
+}
+
+.ecc-progress {
+    position: absolute;
+    z-index: 70;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: color-mix(in srgb, var(--ecc-ink) 12%, transparent);
+}
+
+.ecc-progress span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--ecc-accent), var(--ecc-secondary), var(--ecc-highlight));
+    transform-origin: left center;
+}
+
+.ecc-ambient {
+    position: absolute;
+    z-index: 30;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.ecc-ambient span {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--ecc-accent);
+    box-shadow: 0 0 14px var(--ecc-accent);
+    opacity: 0.45;
+    animation: ecc-drift 8s ease-in-out infinite alternate;
+}
+
+.ecc-ambient span:nth-child(1) { left: 17%; top: 27%; }
+.ecc-ambient span:nth-child(2) { right: 22%; top: 19%; animation-delay: -3s; animation-duration: 11s; }
+.ecc-ambient span:nth-child(3) { right: 31%; bottom: 20%; animation-delay: -6s; animation-duration: 9s; }
+
+@keyframes ecc-scroll {
+    0% { opacity: 0; transform: translate(-50%, 0); }
+    30% { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, 11px); }
+}
+
+@keyframes ecc-drift {
+    from { transform: translate3d(0, -8px, 0); opacity: 0.18; }
+    to { transform: translate3d(18px, 16px, 0); opacity: 0.68; }
+}
+
+@keyframes ecc-theme-crossfade {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes ecc-switch-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+}
+
+/* Copy đổi theo concept → thay bằng một nhịp fade ngắn thay vì nhảy cứng */
+@keyframes ecc-copy-swap {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+    .ecc-header {
+        height: 66px;
+        padding-inline: 18px;
+    }
+
+    .ecc-header nav > a:first-child {
+        display: none;
+    }
+
+    .ecc-header .ecc-header-cta {
+        padding: 8px 12px;
+        font-size: 10px;
+    }
+
+    .ecc-brand strong {
+        font-size: 10px;
+    }
+
+    /* Header quá hẹp cho 2 bộ chọn → xếp chồng dưới header, lệch trái để không đè
+       lên route rail (top: 84px; right: 16px). */
+    .ecc-switch {
+        position: fixed;
+        left: 16px;
+        gap: 1px;
+        padding: 3px;
+        transform: none;
+    }
+
+    .ecc-switch--concept {
+        top: 76px;
+    }
+
+    .ecc-switch--theme {
+        top: 112px;
+    }
+
+    .ecc-switch button {
+        gap: 5px;
+        padding: 7px 10px;
+    }
+
+    .ecc-switch--concept button,
+    .ecc-switch--theme button {
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .ecc-switch-label {
+        display: none;
+    }
+
+    .ecc-switch-label-short {
+        display: inline;
+    }
+
+    .ecc-theme-swatch {
+        width: 8px;
+        height: 8px;
+        flex-basis: 8px;
+    }
+
+    .ecc-sticky {
+        min-height: 560px;
+    }
+
+    .ecc-sticky::before {
+        background: none;
+    }
+
+    .ecc-scene-image-wrap::after {
+        background:
+            linear-gradient(180deg, color-mix(in srgb, var(--ecc-bg) 10%, transparent) 0%, transparent 42%, color-mix(in srgb, var(--ecc-bg) 28%, transparent) 61%, color-mix(in srgb, var(--ecc-bg) 92%, transparent) 84%),
+            radial-gradient(circle at 50% 36%, transparent 30%, color-mix(in srgb, var(--ecc-bg) 22%, transparent) 82%);
+    }
+
+    .ecc-scene-image {
+        object-fit: cover;
+        object-position: center 35%;
+    }
+
+    .ecc-copy-shell,
+    .ecc-scene--right .ecc-copy-shell {
+        align-items: flex-end;
+        justify-content: center;
+        padding: 76px 18px max(38px, env(safe-area-inset-bottom));
+    }
+
+    .ecc-copy {
+        width: min(100%, 560px);
+        padding: 20px;
+        border-radius: 22px;
+        background: linear-gradient(145deg, color-mix(in srgb, var(--ecc-bg) 45%, var(--ecc-surface)), var(--ecc-surface));
+    }
+
+    .ecc-copy h1 {
+        margin-top: 13px;
+        font-size: clamp(31px, 9.6vw, 50px);
+    }
+
+    .ecc-copy p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .ecc-tags {
+        margin-top: 14px;
+    }
+
+    .ecc-route-rail {
+        top: 84px;
+        right: 16px;
+        display: flex;
+        gap: 8px;
+        transform: none;
+    }
+
+    .ecc-route-rail button {
+        width: auto;
+    }
+
+    .ecc-route-label,
+    .ecc-route-line {
+        display: none;
+    }
+
+    .ecc-route-dot {
+        width: 9px;
+        height: 9px;
+        flex-basis: 9px;
+        border-width: 1px;
+    }
+
+    .ecc-scroll-cue {
+        display: none;
+    }
+}
+
+@media (max-width: 520px) {
+    .ecc-brand small {
+        display: none;
+    }
+
+    .ecc-brand img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .ecc-switch {
+        left: 12px;
+    }
+
+    .ecc-switch--concept {
+        top: 72px;
+    }
+
+    .ecc-switch--theme {
+        top: 105px;
+    }
+
+    .ecc-switch--concept button,
+    .ecc-switch--theme button {
+        padding: 6px 9px;
+        font-size: 8px;
+    }
+
+    .ecc-theme-swatch {
+        display: none;
+    }
+
+    .ecc-copy {
+        padding: 17px;
+    }
+
+    .ecc-eyebrow {
+        font-size: 9px;
+    }
+
+    .ecc-eyebrow span {
+        width: 25px;
+        height: 25px;
+    }
+
+    .ecc-copy h1 {
+        max-width: 15ch;
+        margin-bottom: 10px;
+    }
+
+    .ecc-tags span {
+        padding: 5px 8px;
+        font-size: 8px;
+    }
+
+    .ecc-actions {
+        margin-top: 17px;
+    }
+
+    .ecc-actions a {
+        min-height: 40px;
+        padding-inline: 14px;
+        font-size: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ecc-scene,
+    .ecc-copy-shell,
+    .ecc-route-dot,
+    .ecc-route-label,
+    .ecc-actions a,
+    .ecc-switch button {
+        transition: none !important;
+    }
+
+    /* Đổi concept/theme tức thì, không crossfade */
+    .ecc-scene-image--outgoing {
+        display: none;
+    }
+
+    .ecc-copy,
+    .ecc-switch button[data-pending='true'] {
+        animation: none !important;
+    }
+
+    .ecc-ambient,
+    .ecc-scroll-cue {
+        display: none;
+    }
+}
