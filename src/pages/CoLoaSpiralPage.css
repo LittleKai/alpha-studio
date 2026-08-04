@@ -1,0 +1,543 @@
+/* Bảng màu lấy từ chính bộ render Cổ Loa: gỗ óc chó, ánh hổ phách, lụa kem, trần than. */
+.cls-page {
+    --cls-bg: #14100c;
+    --cls-surface: rgba(32, 24, 17, 0.82);
+    --cls-ink: #f6ecdd;
+    --cls-muted: #cbb69b;
+    --cls-accent: #e8a54b;
+    --cls-secondary: #a9773f;
+    --cls-moss: #7c8f5a;
+    --cls-border: rgba(255, 255, 255, 0.13);
+    --cls-on-accent: #1e1a17;
+    --cls-shadow: rgba(0, 0, 0, 0.45);
+    min-height: 100vh;
+    overflow: clip;
+    color: var(--cls-ink);
+    background: var(--cls-bg);
+}
+
+/* ─── Header ─────────────────────────────────────────────────────── */
+
+.cls-header {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: 78px;
+    padding: 0 clamp(20px, 4vw, 68px);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--cls-bg) 92%, transparent), transparent);
+    pointer-events: none;
+}
+
+.cls-header a {
+    pointer-events: auto;
+}
+
+.cls-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    color: var(--cls-ink);
+    text-decoration: none;
+}
+
+.cls-brand img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 14px color-mix(in srgb, var(--cls-accent) 38%, transparent));
+}
+
+.cls-brand span {
+    display: grid;
+    gap: 2px;
+}
+
+.cls-brand strong {
+    font-size: 12px;
+    letter-spacing: 0.16em;
+}
+
+.cls-brand small {
+    color: var(--cls-accent);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+}
+
+.cls-header nav {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(12px, 2vw, 26px);
+}
+
+.cls-header nav a {
+    color: color-mix(in srgb, var(--cls-ink) 74%, transparent);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 180ms ease;
+}
+
+.cls-header nav a:hover {
+    color: var(--cls-ink);
+}
+
+.cls-header-cta {
+    padding: 9px 18px;
+    border-radius: 999px;
+    color: var(--cls-on-accent) !important;
+    background: var(--cls-accent);
+    box-shadow: 0 10px 30px color-mix(in srgb, var(--cls-accent) 26%, transparent);
+}
+
+/* ─── Sân khấu cuộn ──────────────────────────────────────────────── */
+
+/* Chiều cao trang = tổng số màn hình cuộn của mọi cảnh (mỗi cảnh khai báo `scroll` riêng
+   trong CoLoaSpiralPage.tsx). Cảnh nào cần đọng lâu thì cho scroll cao hơn. */
+.cls-world {
+    position: relative;
+    height: calc(var(--cls-scroll-total) * 100svh);
+}
+
+.cls-sticky {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    min-height: 600px;
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--cls-bg);
+}
+
+.cls-stage,
+.cls-layer {
+    position: absolute;
+    inset: 0;
+}
+
+/* Crossfade ở mối nối. Khoá khung đúng thì 120ms là thừa; nó tồn tại để che hai
+   thứ: độ trễ decoder của clip kế, và độ lệch camera nhỏ mà end-image của Veo để
+   lại (rõ nhất ở mối L2→L3 và L3→L4 — xem ghi chú QA trong PROJECT_SUMMARY). */
+.cls-layer {
+    transition: opacity 120ms linear;
+}
+
+.cls-video,
+.cls-still {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    user-select: none;
+    pointer-events: none;
+}
+
+.cls-video {
+    z-index: 1;
+}
+
+/* Poster nằm ĐÈ lên video và chỉ mờ đi khi video báo đã vẽ được khung đầu.
+   Bỏ sớm sẽ thấy khoảng đen trên iOS Safari (video muted chưa từng play). */
+.cls-still {
+    z-index: 2;
+    transition: opacity 260ms ease;
+}
+
+.cls-scrim {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, color-mix(in srgb, var(--cls-bg) 76%, transparent) 0%, color-mix(in srgb, var(--cls-bg) 22%, transparent) 34%, transparent 60%),
+        linear-gradient(180deg, color-mix(in srgb, var(--cls-bg) 42%, transparent), transparent 24%, transparent 70%, color-mix(in srgb, var(--cls-bg) 62%, transparent));
+}
+
+/* ─── Copy ───────────────────────────────────────────────────────── */
+
+.cls-copy-shell {
+    position: absolute;
+    z-index: 40;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    padding: 92px clamp(28px, 7vw, 118px) 66px;
+}
+
+.cls-copy-shell--right {
+    justify-content: flex-end;
+}
+
+.cls-copy {
+    width: min(510px, 43vw);
+    padding: clamp(22px, 3vw, 36px);
+    border: 1px solid var(--cls-border);
+    border-radius: 28px;
+    background: linear-gradient(145deg, var(--cls-surface), color-mix(in srgb, var(--cls-surface) 56%, transparent));
+    box-shadow: 0 28px 80px var(--cls-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(22px) saturate(1.15);
+    animation: cls-copy-swap 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cls-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--cls-accent);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.cls-eyebrow span {
+    display: inline-grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--cls-accent) 42%, transparent);
+    background: color-mix(in srgb, var(--cls-accent) 12%, transparent);
+    font-size: 10px;
+}
+
+.cls-copy h1 {
+    margin: 16px 0 12px;
+    font-size: clamp(28px, 3.4vw, 46px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 24px color-mix(in srgb, var(--cls-bg) 70%, transparent);
+}
+
+.cls-copy p {
+    margin: 0;
+    color: var(--cls-muted);
+    font-size: clamp(14px, 1.05vw, 16px);
+    line-height: 1.62;
+}
+
+.cls-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.cls-tags span {
+    padding: 6px 13px;
+    border: 1px solid var(--cls-border);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--cls-accent) 8%, transparent);
+    color: color-mix(in srgb, var(--cls-ink) 84%, transparent);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.cls-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 11px;
+    margin-top: 24px;
+}
+
+.cls-primary-action,
+.cls-secondary-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.cls-primary-action {
+    color: var(--cls-on-accent);
+    background: var(--cls-accent);
+    box-shadow: 0 14px 34px color-mix(in srgb, var(--cls-accent) 30%, transparent);
+}
+
+.cls-secondary-action {
+    color: var(--cls-ink);
+    border: 1px solid var(--cls-border);
+    background: color-mix(in srgb, var(--cls-bg) 40%, transparent);
+}
+
+.cls-primary-action:hover,
+.cls-secondary-action:hover {
+    transform: translateY(-2px);
+}
+
+/* ─── Thanh lộ trình ─────────────────────────────────────────────── */
+
+.cls-route-rail {
+    position: absolute;
+    z-index: 50;
+    top: 50%;
+    right: clamp(16px, 2.4vw, 38px);
+    display: grid;
+    gap: 4px;
+    padding-left: 16px;
+    transform: translateY(-50%);
+}
+
+.cls-route-line {
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 5px;
+    width: 2px;
+    border-radius: 2px;
+    background: color-mix(in srgb, var(--cls-ink) 16%, transparent);
+    overflow: hidden;
+}
+
+.cls-route-line span {
+    display: block;
+    width: 100%;
+    background: linear-gradient(180deg, var(--cls-accent), var(--cls-secondary));
+    transition: height 120ms linear;
+}
+
+.cls-route-rail button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0 5px 0;
+    border: 0;
+    background: transparent;
+    color: color-mix(in srgb, var(--cls-ink) 45%, transparent);
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-align: left;
+    cursor: pointer;
+    transition: color 180ms ease;
+}
+
+.cls-route-dot {
+    position: absolute;
+    left: -16px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid color-mix(in srgb, var(--cls-ink) 26%, transparent);
+    background: var(--cls-bg);
+    transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+.cls-route-label {
+    opacity: 0.55;
+    transition: opacity 180ms ease;
+}
+
+.cls-route-rail button:hover,
+.cls-route-rail button.is-active {
+    color: var(--cls-ink);
+}
+
+.cls-route-rail button:hover .cls-route-label,
+.cls-route-rail button.is-active .cls-route-label {
+    opacity: 1;
+}
+
+.cls-route-rail button.is-active .cls-route-dot {
+    border-color: var(--cls-accent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--cls-accent) 18%, transparent);
+    transform: scale(1.1);
+}
+
+.cls-route-rail button:focus-visible {
+    outline: 2px solid var(--cls-accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+/* ─── Gợi ý cuộn & thanh tiến độ ─────────────────────────────────── */
+
+.cls-scroll-cue {
+    position: absolute;
+    z-index: 45;
+    bottom: calc(30px + env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    display: grid;
+    justify-items: center;
+    gap: 9px;
+    transform: translateX(-50%);
+    color: color-mix(in srgb, var(--cls-ink) 62%, transparent);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    pointer-events: none;
+    animation: cls-cue-in 700ms ease both;
+}
+
+.cls-scroll-cue i {
+    position: relative;
+    width: 1px;
+    height: 34px;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--cls-accent) 70%, transparent), transparent);
+}
+
+.cls-scroll-cue i::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -2px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--cls-accent);
+    animation: cls-cue-drop 1.7s ease-in-out infinite;
+}
+
+.cls-progress {
+    position: absolute;
+    z-index: 60;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: color-mix(in srgb, var(--cls-ink) 12%, transparent);
+}
+
+.cls-progress span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--cls-secondary), var(--cls-accent));
+    transform-origin: left center;
+    transition: transform 90ms linear;
+}
+
+@keyframes cls-copy-swap {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cls-cue-in {
+    from { opacity: 0; transform: translate(-50%, 10px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes cls-cue-drop {
+    0% { transform: translateY(0); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: translateY(30px); opacity: 0; }
+}
+
+/* ─── Mobile ─────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+    .cls-header {
+        height: 64px;
+        padding: 0 16px;
+    }
+
+    .cls-header nav a:not(.cls-header-cta) {
+        display: none;
+    }
+
+    .cls-header-cta {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+
+    .cls-sticky {
+        min-height: 520px;
+    }
+
+    /* Copy xuống đáy, chừa notch và home indicator */
+    .cls-copy-shell,
+    .cls-copy-shell--right {
+        align-items: flex-end;
+        justify-content: center;
+        padding: 74px 14px calc(46px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .cls-copy {
+        width: 100%;
+        max-width: 520px;
+        padding: 18px 18px 20px;
+        border-radius: 22px;
+    }
+
+    .cls-copy h1 {
+        margin: 12px 0 9px;
+        font-size: clamp(22px, 6.4vw, 30px);
+    }
+
+    .cls-copy p {
+        font-size: 13.5px;
+        line-height: 1.55;
+    }
+
+    .cls-scrim {
+        background: linear-gradient(180deg, color-mix(in srgb, var(--cls-bg) 52%, transparent), transparent 26%, transparent 46%, color-mix(in srgb, var(--cls-bg) 86%, transparent));
+    }
+
+    .cls-route-rail {
+        top: auto;
+        right: 12px;
+        bottom: calc(50% + 10px);
+        gap: 0;
+        padding-left: 12px;
+        transform: none;
+    }
+
+    .cls-route-label {
+        display: none;
+    }
+
+    .cls-route-line {
+        left: 3px;
+    }
+
+    .cls-route-dot {
+        left: -12px;
+        width: 9px;
+        height: 9px;
+    }
+
+    .cls-route-rail button {
+        padding: 7px 0;
+    }
+
+    .cls-scroll-cue {
+        display: none;
+    }
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────── */
+
+/* Không nạp/scrub video (React đã bỏ hẳn thẻ <video>) — trang rơi về chuỗi ảnh tĩnh. */
+@media (prefers-reduced-motion: reduce) {
+    .cls-layer,
+    .cls-still,
+    .cls-progress span,
+    .cls-route-line span {
+        transition: none;
+    }
+
+    .cls-copy {
+        animation: none;
+    }
+
+    .cls-scroll-cue i::after {
+        animation: none;
+    }
+}
