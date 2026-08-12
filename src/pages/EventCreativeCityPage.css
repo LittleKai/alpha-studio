@@ -253,6 +253,61 @@
     user-select: none;
 }
 
+/* Hai concept có video dùng một stack scrub riêng; article vẫn giữ copy và route state. */
+.ecc-video-stack,
+.ecc-video-layer,
+.ecc-scene-video,
+.ecc-video-poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ecc-video-stack {
+    z-index: 10;
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--ecc-bg);
+    animation: ecc-video-enter 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.ecc-video-stack::after {
+    content: '';
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, color-mix(in srgb, var(--ecc-bg) 58%, transparent) 0%, color-mix(in srgb, var(--ecc-bg) 10%, transparent) 34%, transparent 58%),
+        radial-gradient(circle at 54% 48%, transparent 28%, color-mix(in srgb, var(--ecc-bg) 12%, transparent) 60%, color-mix(in srgb, var(--ecc-bg) 78%, transparent) 100%);
+}
+
+.ecc-video-layer {
+    pointer-events: none;
+    will-change: opacity;
+}
+
+.ecc-scene-video,
+.ecc-video-poster {
+    object-fit: cover;
+    object-position: center;
+    user-select: none;
+}
+
+.ecc-scene-video {
+    z-index: 1;
+}
+
+.ecc-video-poster {
+    z-index: 2;
+    transition: opacity 120ms linear;
+}
+
+.ecc-page[data-video='true'] .ecc-scene-image-wrap {
+    display: none;
+}
+
 /* Lớp ảnh của theme cũ nằm đè lên ảnh mới và mờ dần → crossfade khi đổi theme */
 .ecc-scene-image--outgoing {
     z-index: 2;
@@ -564,6 +619,11 @@
     to { opacity: 0; }
 }
 
+@keyframes ecc-video-enter {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 @keyframes ecc-switch-pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.45; }
@@ -656,6 +716,17 @@
     .ecc-scene-image {
         object-fit: cover;
         object-position: center 35%;
+    }
+
+    .ecc-scene-video,
+    .ecc-video-poster {
+        object-position: center 35%;
+    }
+
+    .ecc-video-stack::after {
+        background:
+            linear-gradient(180deg, color-mix(in srgb, var(--ecc-bg) 10%, transparent) 0%, transparent 42%, color-mix(in srgb, var(--ecc-bg) 28%, transparent) 61%, color-mix(in srgb, var(--ecc-bg) 92%, transparent) 84%),
+            radial-gradient(circle at 50% 36%, transparent 30%, color-mix(in srgb, var(--ecc-bg) 22%, transparent) 82%);
     }
 
     .ecc-copy-shell,
@@ -797,7 +868,8 @@
     }
 
     .ecc-copy,
-    .ecc-switch button[data-pending='true'] {
+    .ecc-switch button[data-pending='true'],
+    .ecc-video-stack {
         animation: none !important;
     }
 

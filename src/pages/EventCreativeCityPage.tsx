@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/ui/SEOHead';
+import EventCreativeCityVideoLayer from './EventCreativeCityVideoLayer';
 import './EventCreativeCityPage.css';
 
 type CityScene = {
@@ -360,6 +361,13 @@ const SCENE_COUNT = concepts[DEFAULT_CONCEPT].scenes.length;
 const getSceneImage = (concept: ConceptId, theme: VisualThemeId, index: number) =>
     `${concepts[concept].themes[theme].basePath}/${concepts[concept].scenes[index].file}`;
 
+/** Chỉ hai look này đã có đủ bảy clip scrub; các lựa chọn còn lại tiếp tục dùng ảnh tĩnh. */
+const getVideoBasePath = (concept: ConceptId, theme: VisualThemeId) => {
+    if (concept === 'living-storyboard') return '/event-creative-city/vid/living-storyboard';
+    if (concept === 'event-creative-city' && theme === 'neon-night') return '/event-creative-city/vid/neon';
+    return null;
+};
+
 const preloadImages = (urls: string[]) => Promise.all(
     urls.map((url) => new Promise<void>((resolve) => {
         const image = new Image();
@@ -392,8 +400,8 @@ const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, v
 const EventCreativeCityPage: React.FC = () => {
     const worldRef = useRef<HTMLElement>(null);
     const frameRequestRef = useRef<number | null>(null);
-    const scenePositionRef = useRef(0);
-    const [scenePosition, setScenePosition] = useState(0);
+    const activeIndexRef = useRef(0);
+    const [progress, setProgress] = useState(0);
 
     const [activeConcept, setActiveConcept] = useState<ConceptId>(
         () => readStored(CONCEPT_STORAGE_KEY, conceptIds, DEFAULT_CONCEPT),
@@ -413,9 +421,7 @@ const EventCreativeCityPage: React.FC = () => {
 
         const rect = root.getBoundingClientRect();
         const scrollableHeight = Math.max(1, rect.height - window.innerHeight);
-        const progress = clamp(-rect.top / scrollableHeight);
-        scenePositionRef.current = progress * (SCENE_COUNT - 1);
-        setScenePosition(scenePositionRef.current);
+        setProgress(clamp(-rect.top / scrollableHeight));
     }, []);
 
     useEffect(() => {
@@ -461,7 +467,7 @@ const EventCreativeCityPage: React.FC = () => {
         setPending({ concept, theme });
 
         // Ưu tiên scene đang xem cùng hai scene lân cận để hoàn tất chuyển cảnh sớm
-        const current = Math.round(scenePositionRef.current);
+        const current = activeIndexRef.current;
         const nearIndexes = [current - 1, current, current + 1].filter((i) => i >= 0 && i < SCENE_COUNT);
         const restIndexes = Array.from({ length: SCENE_COUNT }, (_, i) => i)
             .filter((i) => !nearIndexes.includes(i));
@@ -489,11 +495,31 @@ const EventCreativeCityPage: React.FC = () => {
 
     const concept = concepts[activeConcept];
     const scenes = concept.scenes;
-    const activeIndex = Math.round(scenePosition);
-    const overallProgress = scenePosition / (SCENE_COUNT - 1);
+    const videoBasePath = getVideoBasePath(activeConcept, activeTheme);
+    const videoPosition = progress * SCENE_COUNT;
+    const staticPosition = progress * (SCENE_COUNT - 1);
+    const activeIndex = videoBasePath
+        ? Math.min(SCENE_COUNT - 1, Math.floor(videoPosition))
+        : Math.round(staticPosition);
+    const overallProgress = progress;
+    activeIndexRef.current = activeIndex;
+
+    const videoPosters = useMemo(
+        () => scenes.map((_, index) => getSceneImage(activeConcept, activeTheme, index)),
+        [activeConcept, activeTheme, scenes],
+    );
+    const videoAlts = useMemo(() => scenes.map((scene) => scene.alt), [scenes]);
 
     const sceneStyles = useMemo(() => scenes.map((_, index) => {
-        const delta = index - scenePosition;
+        if (videoBasePath) {
+            return {
+                opacity: index === activeIndex ? 1 : 0,
+                transform: 'none',
+                zIndex: index === activeIndex ? 20 : 1,
+            };
+        }
+
+        const delta = index - staticPosition;
         const opacity = clamp(1 - Math.abs(delta));
         const scale = 1.02 + clamp(-delta, -1, 1) * 0.085;
         const translateY = clamp(delta, -1, 1) * 2.5;
@@ -503,7 +529,7 @@ const EventCreativeCityPage: React.FC = () => {
             transform: `translate3d(0, ${translateY}%, 0) scale(${scale})`,
             zIndex: Math.max(1, 20 - Math.round(Math.abs(delta) * 10)),
         };
-    }), [scenes, scenePosition]);
+    }), [activeIndex, scenes, staticPosition, videoBasePath]);
 
     const jumpToScene = (index: number) => {
         const root = worldRef.current;
@@ -511,7 +537,10 @@ const EventCreativeCityPage: React.FC = () => {
 
         const rootTop = window.scrollY + root.getBoundingClientRect().top;
         const scrollableHeight = Math.max(1, root.offsetHeight - window.innerHeight);
-        const target = rootTop + (index / (SCENE_COUNT - 1)) * scrollableHeight;
+        const targetProgress = videoBasePath
+            ? (index + 0.5) / SCENE_COUNT
+            : index / (SCENE_COUNT - 1);
+        const target = rootTop + targetProgress * scrollableHeight;
         window.scrollTo({ top: target, behavior: 'smooth' });
     };
 
@@ -520,6 +549,7 @@ const EventCreativeCityPage: React.FC = () => {
             className="ecc-page"
             data-concept={activeConcept}
             data-visual-theme={activeTheme}
+            data-video={videoBasePath ? 'true' : 'false'}
             style={concept.themes[activeTheme].tokens as React.CSSProperties}
         >
             <SEOHead
@@ -600,7 +630,7 @@ const EventCreativeCityPage: React.FC = () => {
                 ref={worldRef}
                 className="ecc-world"
                 aria-label="Hành trình qua Event Creative City"
-                style={{ '--ecc-scene-count': SCENE_COUNT } as React.CSSProperties}
+                style={{ '--ecc-scene-count': videoBasePath ? SCENE_COUNT + 1 : SCENE_COUNT } as React.CSSProperties}
             >
                 <div className="ecc-sticky">
                     <div className="ecc-ambient" aria-hidden="true">
@@ -610,6 +640,16 @@ const EventCreativeCityPage: React.FC = () => {
                     </div>
 
                     <div className="ecc-scenes">
+                        {videoBasePath && (
+                            <EventCreativeCityVideoLayer
+                                key={videoBasePath}
+                                basePath={videoBasePath}
+                                posters={videoPosters}
+                                alts={videoAlts}
+                                progress={progress}
+                                activeIndex={activeIndex}
+                            />
+                        )}
                         {scenes.map((scene, index) => {
                             const isActive = index === activeIndex;
                             return (
