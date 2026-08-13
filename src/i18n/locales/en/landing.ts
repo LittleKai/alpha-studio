@@ -25,6 +25,24 @@ export default {
       subtitle: "Comprehensive AI learning and working ecosystem for Event Designers & Creative Staff. Integrated with high-performance RTX 4090 GPU servers.",
       exploreStudio: "EXPLORE STUDIO",
       gpuServer: "GPU SERVER",
+      videoAlt: "Alpha Studio's event creative journey",
+      stats: {
+        courses: "Courses",
+        students: "Students",
+        partners: "Partners",
+        gpu: "GPU server"
+      },
+      journeyLabel: "Now playing",
+      journey: {
+        step1: "Creative gateway",
+        step2: "Unpack the brief",
+        step3: "Shape the concept",
+        step4: "Build the storyboard",
+        step5: "Production plan",
+        step6: "Visuals & lighting",
+        step7: "Showtime"
+      },
+      journeyNote: "Seven stages of an event, told through visuals Alpha Studio produced end to end.",
       workflow: {
         workspace: "AI Core Engine",
         subworkspace: "AI Core Hub",
@@ -66,6 +84,13 @@ export default {
       },
       scrollDown: "Scroll to explore the ecosystem"
     },
+    sections: {
+      coursesEyebrow: "Learning paths",
+      toolsEyebrow: "Toolset",
+      connectEyebrow: "Connected platform",
+      showcaseEyebrow: "Community",
+      partnersEyebrow: "Network"
+    },
     courses: {
       title: "Featured Courses",
       subtitle: "In-depth learning path from Concept to Execution for the Event industry.",
@@ -87,7 +112,13 @@ export default {
       item2: "Staff and client communication",
       item3: "High-performance GPU server sync",
       item4: "Exclusive prompt library",
-      cta: "OPEN ALPHA CONNECT"
+      cta: "OPEN ALPHA CONNECT",
+      bento: {
+        concept: "Concept",
+        storyboard: "Storyboard",
+        production: "Production",
+        showtime: "Showtime"
+      }
     },
     toolsShowcase: {
       title: "AI Studio Tools Ecosystem",
@@ -164,7 +195,12 @@ export default {
       backToList: "Back to list"
     },
     footer: {
-      copyright: "PROFESSIONAL AI TRAINING PLATFORM. ALL RIGHTS RESERVED."
+      copyright: "PROFESSIONAL AI TRAINING PLATFORM. ALL RIGHTS RESERVED.",
+      tagline: "An AI academy for the event industry: hands-on courses, production tools, and a professional network in one platform.",
+      exploreTitle: "Explore",
+      toolsTitle: "Tools",
+      companyTitle: "Alpha Studio",
+      eventCity: "See Event Creative City"
     }
   }
 };

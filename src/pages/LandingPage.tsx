@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
 import { useAuth } from '../auth/context';
-import { useTheme } from '../theme/context';
 import type { FeaturedStudent } from '../types';
 import Login from '../components/ui/Login';
 import { getFeaturedCourses, Course } from '../services/courseService';
@@ -13,10 +12,9 @@ import { getFeaturedStudents } from '../services/featuredStudentsService';
 import { motion } from 'framer-motion';
 import Reveal, { RevealItem } from '../components/motion/Reveal';
 import HoverSpring from '../components/motion/HoverSpring';
-import TextReveal from '../components/motion/TextReveal';
 import { ToolShowcaseCard } from '../components/studio/ToolShowcaseCard';
-
-
+import LandingHero from '../components/landing/LandingHero';
+import ConnectBento from '../components/landing/ConnectBento';
 
 // Category to style mapping (Neon Terminal / Restrained strategy)
 const categoryGradients: Record<string, string> = {
@@ -24,14 +22,6 @@ const categoryGradients: Record<string, string> = {
     'ai-advanced': 'bg-purple-950/40 text-purple-400 border border-purple-500/20',
     'ai-studio': 'bg-cyan-950/40 text-cyan-400 border border-cyan-500/20',
     'ai-creative': 'bg-orange-950/40 text-orange-400 border border-orange-500/20'
-};
-
-// Category to icon mapping
-const categoryIcons: Record<string, string> = {
-    'ai-basic': '📚',
-    'ai-advanced': '💎',
-    'ai-studio': '🎬',
-    'ai-creative': '✨'
 };
 
 // Level to translation key mapping
@@ -47,8 +37,72 @@ const levelBadgeStyles: Record<string, { bg: string; text: string; border: strin
     'advanced': { bg: '#881337', text: '#fda4af', border: '#f43f5e' },
 };
 
-const HERO_VIDEO_LIGHT = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4';
-const HERO_VIDEO_DARK = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_105406_16f4600d-7a92-4292-b96e-b19156c7830a.mp4';
+// ─── Inline icons (thay cho emoji để đồng nhất với màu chữ) ──────────
+type IconProps = { className?: string };
+
+const IconBook: React.FC<IconProps> = ({ className = 'h-3.5 w-3.5' }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+    </svg>
+);
+
+const IconClock: React.FC<IconProps> = ({ className = 'h-3.5 w-3.5' }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" />
+    </svg>
+);
+
+const IconStar: React.FC<IconProps> = ({ className = 'h-3.5 w-3.5' }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2.5l2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.35 6.19 20.4 7.3 13.93 2.6 9.35l6.5-.95L12 2.5z" />
+    </svg>
+);
+
+const IconUsers: React.FC<IconProps> = ({ className = 'h-3.5 w-3.5' }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M16 20v-1.5a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4V20" /><circle cx="9" cy="7" r="3.5" /><path d="M22 20v-1.5a4 4 0 0 0-3-3.87" /><path d="M16.5 3.75a4 4 0 0 1 0 7" />
+    </svg>
+);
+
+const IconSparkles: React.FC<IconProps> = ({ className = 'h-8 w-8' }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z" /><path d="M18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2z" />
+    </svg>
+);
+
+const IconArrow: React.FC<IconProps> = ({ className = 'h-4 w-4' }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M5 12h14" /><path d="m13 6 6 6-6 6" />
+    </svg>
+);
+
+const IconCheck: React.FC<IconProps> = ({ className = 'h-3 w-3' }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="m5 13 4 4L19 7" />
+    </svg>
+);
+
+// ─── Section heading (eyebrow + title + optional action) ─────────────
+interface SectionHeadingProps {
+    eyebrow: string;
+    title: string;
+    subtitle?: string;
+    action?: React.ReactNode;
+}
+
+const SectionHeading: React.FC<SectionHeadingProps> = ({ eyebrow, title, subtitle, action }) => (
+    <Reveal y={20} className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div className="space-y-3 max-w-[62ch]">
+            <span className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.24em] text-[var(--accent-primary)]">
+                <span className="w-6 h-px bg-[var(--accent-primary)]" aria-hidden="true" />
+                {eyebrow}
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[var(--text-primary)]">{title}</h2>
+            {subtitle && <p className="text-[var(--text-secondary)] leading-relaxed">{subtitle}</p>}
+        </div>
+        {action && <div className="flex-shrink-0">{action}</div>}
+    </Reveal>
+);
 
 // ─── Courses Slider Section (Split Layout) ───────────────────────────
 interface CoursesSliderProps {
@@ -191,7 +245,7 @@ const CoursesSliderSection: React.FC<CoursesSliderProps> = ({
                                                 />
                                             ) : (
                                                 <div className={`w-full h-full ${categoryGradients[course.category] || 'bg-slate-900'} flex items-center justify-center`}>
-                                                    <span className="text-5xl">{categoryIcons[course.category] || '📚'}</span>
+                                                    <IconSparkles className="h-10 w-10" />
                                                 </div>
                                             )}
                                             <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)]/80 to-transparent" />
@@ -230,28 +284,22 @@ const CoursesSliderSection: React.FC<CoursesSliderProps> = ({
 
                                             <div className="mt-3">
                                                 <span className="w-full py-2 rounded-lg bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] font-bold text-xs border border-[var(--accent-primary)]/20 hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all flex items-center justify-center gap-1.5">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                                                    </svg>
                                                     {t('landing.course.startLearning')}
+                                                    <IconArrow className="h-3.5 w-3.5" />
                                                 </span>
                                             </div>
 
                                             {/* Stats row */}
                                             <div className="flex justify-between items-center mt-3 pt-3 border-t border-[var(--border-primary)] text-[10px] font-bold text-[var(--text-tertiary)]">
                                                 <div className="flex gap-3">
-                                                    <span>📚 {course.totalLessons} {t('landing.course.lessons')}</span>
-                                                    <span>⏱ {course.duration} {t('landing.course.hours')}</span>
+                                                    <span className="inline-flex items-center gap-1"><IconBook className="h-3 w-3" /> {course.totalLessons} {t('landing.course.lessons')}</span>
+                                                    <span className="inline-flex items-center gap-1"><IconClock className="h-3 w-3" /> {course.duration} {t('landing.course.hours')}</span>
                                                 </div>
                                                 <div className="flex items-center gap-2">
-                                                    {course.rating > 0 ? (
-                                                        <span className="flex items-center gap-0.5 text-yellow-400">
-                                                            ⭐ {course.rating.toFixed(1)}
-                                                        </span>
-                                                    ) : (
-                                                        <span>⭐ —</span>
-                                                    )}
-                                                    <span>👥 {course.enrolledCount}</span>
+                                                    <span className="inline-flex items-center gap-1 text-yellow-400">
+                                                        <IconStar className="h-3 w-3" /> {course.rating > 0 ? course.rating.toFixed(1) : '—'}
+                                                    </span>
+                                                    <span className="inline-flex items-center gap-1"><IconUsers className="h-3 w-3" /> {course.enrolledCount}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -301,30 +349,11 @@ const CoursesSliderSection: React.FC<CoursesSliderProps> = ({
 const LandingPage: React.FC = () => {
     const { t, language } = useTranslation();
     const { isAuthenticated } = useAuth();
-    const { theme } = useTheme();
     const navigate = useNavigate();
 
     // Login dialog state (for content CTAs)
     const [showLoginDialog, setShowLoginDialog] = useState(false);
     const [pendingNavigation, setPendingNavigation] = useState<string | null>(null);
-
-    // Scroll indicator state
-    const [showScrollIndicator, setShowScrollIndicator] = useState(true);
-    const [scrollY, setScrollY] = useState(0);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const currentScrollY = window.scrollY;
-            setScrollY(currentScrollY);
-            if (currentScrollY > window.innerHeight * 0.5) {
-                setShowScrollIndicator(false);
-            } else {
-                setShowScrollIndicator(true);
-            }
-        };
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     // Courses state
     const [courses, setCourses] = useState<Course[]>([]);
@@ -413,14 +442,17 @@ const LandingPage: React.FC = () => {
         setPendingNavigation(null);
     };
 
-    const navigateToProtectedPage = (path: string) => {
+    const navigateToProtectedPage = useCallback((path: string) => {
         if (isAuthenticated) {
             navigate(path);
         } else {
             setPendingNavigation(path);
             setShowLoginDialog(true);
         }
-    };
+    }, [isAuthenticated, navigate]);
+
+    const goToStudio = useCallback(() => navigate('/studio'), [navigate]);
+    const goToGpuServer = useCallback(() => navigateToProtectedPage('/server'), [navigateToProtectedPage]);
 
     const desc = language === 'vi'
         ? 'Học AI thực chiến cùng Alpha Studio. Khóa học AI sáng tạo, công cụ AI Studio chuyên nghiệp, và cộng đồng freelancer hàng đầu Việt Nam.'
@@ -454,6 +486,33 @@ const LandingPage: React.FC = () => {
         ]
     };
 
+    const footerColumns = [
+        {
+            title: t('landing.footer.exploreTitle'),
+            links: [
+                { label: t('landing.nav.academy'), to: '/courses' },
+                { label: t('landing.nav.enterStudio'), to: '/studio' },
+                { label: t('landing.nav.aiCloud'), to: '/server' },
+            ],
+        },
+        {
+            title: t('landing.footer.toolsTitle'),
+            links: [
+                { label: t('landing.toolsShowcase.crm.title'), to: '/studio/crm/subscription' },
+                { label: t('landing.toolsShowcase.vocab.title'), to: '/studio/vocab' },
+                { label: t('landing.toolsShowcase.skills.title'), to: '/studio/skills' },
+            ],
+        },
+        {
+            title: t('landing.footer.companyTitle'),
+            links: [
+                { label: t('landing.nav.about'), to: '/about' },
+                { label: t('landing.nav.services'), to: '/services' },
+                { label: t('landing.nav.news'), to: '/news' },
+            ],
+        },
+    ];
+
     return (
         <>
             <SEOHead
@@ -462,125 +521,46 @@ const LandingPage: React.FC = () => {
                 path="/"
                 jsonLd={landingJsonLd}
             />
-            {/* Hero Section - Event Gate Redesign based on image.png */}
-            {/* Theme-aware fullscreen video background (light/dark sources) */}
-            <style dangerouslySetInnerHTML={{__html: `
-                .alpha-hero {
-                    min-height: 100dvh;
-                }
-            `}} />
-            <section
-                data-hero
-                className="alpha-hero relative w-full flex items-center justify-center overflow-hidden border-b border-[var(--border-primary)] bg-[var(--bg-secondary)] transition-colors duration-300"
-            >
-                <video
-                    key={theme}
-                    src={theme === 'dark' ? HERO_VIDEO_DARK : HERO_VIDEO_LIGHT}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    aria-hidden="true"
-                    className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
-                />
 
-                {/* Theme-aware darkening overlay */}
-                <div className={`absolute inset-0 z-[1] pointer-events-none transition-opacity duration-300 ${
-                    theme === 'dark' 
-                        ? 'bg-gradient-to-b from-[#07111f]/85 via-[#07111f]/65 to-[#07111f]/90' 
-                        : 'bg-white/10'
-                }`} />
-
-                {/* Central Floating Glassmorphic Card */}
-                <Reveal staggerChildren={0.12} delay={0.05} className="z-10 w-full max-w-[800px] mx-auto px-6 py-10 md:py-14 text-center rounded-[20px] border border-white/15 bg-gradient-to-br from-slate-950/70 via-slate-950/50 to-indigo-950/20 backdrop-blur-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.18)] flex flex-col items-center justify-center space-y-6 md:space-y-8">
-                    <RevealItem tag="h1" y={15} className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight text-white uppercase select-none">
-                        <TextReveal text={t('landing.hero.title1')} delay={0.05} /> <br />
-                        <span className="text-white font-black">
-                            <TextReveal text={t('landing.hero.title2')} delay={0.25} />
-                        </span>
-                    </RevealItem>
-
-                    <RevealItem tag="p" y={15} className="text-sm md:text-base lg:text-lg font-medium leading-relaxed text-white max-w-[65ch] mx-auto">
-                        {t('landing.hero.subtitle')}
-                    </RevealItem>
-
-                    <RevealItem y={15} className="flex flex-wrap justify-center gap-5 pt-2 w-full">
-                        <HoverSpring scale={1.03} y={-2} className="inline-block">
-                            <button 
-                                onClick={() => navigate('/studio')} 
-                                className="py-3 px-8 font-black text-xs md:text-sm rounded-full bg-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/80 text-[var(--bg-primary)] tracking-wider uppercase transition-all duration-300 cursor-pointer shadow-lg shadow-cyan-500/20"
-                            >
-                                {t('landing.hero.exploreStudio')}
-                            </button>
-                        </HoverSpring>
-                        <HoverSpring scale={1.03} y={-2} className="inline-block">
-                            <button 
-                                onClick={() => navigateToProtectedPage('/server')} 
-                                className="py-3 px-8 font-black text-xs md:text-sm rounded-full border border-white/35 hover:border-white hover:bg-white/10 text-white tracking-wider uppercase transition-all duration-300 cursor-pointer"
-                            >
-                                {t('landing.hero.gpuServer')}
-                            </button>
-                        </HoverSpring>
-                    </RevealItem>
-                </Reveal>
-
-                {/* Bottom Scroll Indicator - Sticky fade linked to scroll position */}
-                {showScrollIndicator && (
-                    <div 
-                        className="fixed bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 select-none z-10 hidden md:flex hover:opacity-100 transition-opacity duration-300"
-                        style={{
-                            opacity: Math.max(0, 0.8 - (scrollY / (window.innerHeight * 0.5)) * 0.8),
-                            pointerEvents: scrollY > 50 ? 'none' : 'auto'
-                        }}
-                    >
-                        <style dangerouslySetInnerHTML={{__html: `
-                            @keyframes scroll-dot-slide {
-                                0% { transform: translateY(0); opacity: 0; }
-                                20% { opacity: 1; }
-                                80% { opacity: 1; }
-                                100% { transform: translateY(14px); opacity: 0; }
-                            }
-                            .scroll-mouse-glow {
-                                box-shadow: 0 0 15px rgba(97, 232, 255, 0.15), inset 0 0 5px rgba(255, 255, 255, 0.15);
-                                background: color-mix(in srgb, var(--bg-primary) 50%, transparent);
-                                backdrop-filter: blur(6px);
-                                border-color: color-mix(in srgb, var(--text-primary) 35%, transparent);
-                            }
-                            .scroll-hint-text {
-                                color: var(--text-primary);
-                                background: color-mix(in srgb, var(--bg-primary) 55%, transparent);
-                                backdrop-filter: blur(6px);
-                            }
-                        `}} />
-                        <div className="w-6 h-10 md:w-7 md:h-12 rounded-full border-2 flex justify-center p-1.5 scroll-mouse-glow transition-all duration-300 hover:border-[var(--accent-primary)]/50">
-                            <div
-                                className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[var(--accent-primary)]"
-                                style={{ animation: 'scroll-dot-slide 1.8s cubic-bezier(0.16, 1, 0.3, 1) infinite' }}
-                            />
-                        </div>
-                        <span className="scroll-hint-text px-3 py-1 rounded-full text-[10px] md:text-xs font-black tracking-[0.25em] md:tracking-[0.35em] uppercase text-center">
-                            {t('landing.hero.scrollDown')}
-                        </span>
-                    </div>
-                )}
-            </section>
+            <LandingHero
+                stats={{ courses: courses.length, students: featuredStudents.length, partners: partners.length }}
+                onExploreStudio={goToStudio}
+                onOpenGpuServer={goToGpuServer}
+            />
 
             {/* Featured Courses Section */}
-            <section className="py-10 border-t border-[var(--border-primary)] relative overflow-hidden bg-[var(--bg-tertiary)]">
+            <section className="py-20 border-t border-[var(--border-primary)] relative overflow-hidden bg-[var(--bg-tertiary)]">
                 <div className="container mx-auto px-6">
-                    {/* Centered Header */}
-                    <Reveal y={20} className="text-center mb-12 space-y-2">
-                        <h2 className="text-4xl font-black text-[var(--text-primary)]">{t('landing.courses.title')}</h2>
-                        <p className="text-[var(--text-secondary)]">{t('landing.courses.subtitle')}</p>
-                    </Reveal>
+                    <SectionHeading
+                        eyebrow={t('landing.sections.coursesEyebrow')}
+                        title={t('landing.courses.title')}
+                        subtitle={t('landing.courses.subtitle')}
+                        action={(
+                            <HoverSpring scale={1.04} y={-2} className="inline-block">
+                                <Link
+                                    to="/courses"
+                                    className="inline-flex items-center gap-2 py-3 px-7 rounded-full border border-[var(--border-secondary)] bg-[var(--bg-card-alpha)] backdrop-blur-sm hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-all duration-300 text-sm font-bold text-[var(--accent-primary)]"
+                                >
+                                    {t('landing.courses.viewAll')}
+                                    <IconArrow />
+                                </Link>
+                            </HoverSpring>
+                        )}
+                    />
 
                     {/* Loading State */}
                     {coursesLoading && (
-                        <div className="flex items-center justify-center py-20">
-                            <div className="flex flex-col items-center gap-4">
-                                <div className="w-12 h-12 border-4 border-[var(--accent-primary)]/30 border-t-[var(--accent-primary)] rounded-full animate-spin"></div>
-                                <p className="text-[var(--text-secondary)]">{t('landing.courses.loading')}</p>
-                            </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" aria-busy="true">
+                            {[0, 1, 2].map((i) => (
+                                <div key={i} className="rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] overflow-hidden">
+                                    <div className="h-44 bg-[var(--bg-tertiary)] animate-pulse" />
+                                    <div className="p-5 space-y-3">
+                                        <div className="h-4 w-3/4 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+                                        <div className="h-3 w-full rounded bg-[var(--bg-tertiary)] animate-pulse" />
+                                        <div className="h-3 w-2/3 rounded bg-[var(--bg-tertiary)] animate-pulse" />
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     )}
 
@@ -588,7 +568,7 @@ const LandingPage: React.FC = () => {
                     {coursesError && !coursesLoading && (
                         <div className="flex items-center justify-center py-20">
                             <div className="text-center space-y-4">
-                                <p className="text-red-400">{t('landing.courses.error')}</p>
+                                <p className="text-[var(--text-error)]">{t('landing.courses.error')}</p>
                                 <button
                                     onClick={() => window.location.reload()}
                                     className="py-2 px-4 rounded-xl bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] font-bold text-sm hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all"
@@ -601,8 +581,8 @@ const LandingPage: React.FC = () => {
 
                     {/* No Courses State */}
                     {!coursesLoading && !coursesError && courses.length === 0 && (
-                        <div className="flex items-center justify-center py-20">
-                            <p className="text-[var(--text-secondary)]">{t('landing.courses.noCourses')}</p>
+                        <div className="rounded-2xl border border-dashed border-[var(--border-secondary)] py-16 text-center text-[var(--text-secondary)]">
+                            {t('landing.courses.noCourses')}
                         </div>
                     )}
 
@@ -615,33 +595,18 @@ const LandingPage: React.FC = () => {
                             formatPrice={formatPrice}
                         />
                     )}
-
-                    {/* View All Button - Pill style */}
-                    <div className="mt-10 text-center">
-                        <HoverSpring scale={1.04} y={-2} className="inline-block">
-                            <Link
-                                to="/courses"
-                                className="py-3 px-8 rounded-full border border-[var(--border-secondary)] bg-[var(--bg-card-alpha)] backdrop-blur-sm hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-all duration-300 text-sm font-bold text-[var(--accent-primary)] inline-block"
-                            >
-                                {t('landing.courses.viewAll')}
-                            </Link>
-                        </HoverSpring>
-                    </div>
                 </div>
             </section>
 
             {/* Tools Showcase Section */}
-            <section className="py-10 bg-[var(--bg-primary)] border-t border-[var(--border-primary)] relative overflow-hidden">
+            <section className="py-20 bg-[var(--bg-primary)] border-t border-[var(--border-primary)] relative overflow-hidden">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--accent-primary)]/5 rounded-full blur-[160px] -z-10"></div>
                 <div className="container mx-auto px-6">
-                    <Reveal y={20} className="text-center mb-16 space-y-4">
-                        <h2 className="text-4xl font-black text-[var(--text-primary)]">
-                            {t('landing.toolsShowcase.title')}
-                        </h2>
-                        <p className="text-[var(--text-secondary)] max-w-2xl mx-auto font-medium">
-                            {t('landing.toolsShowcase.subtitle')}
-                        </p>
-                    </Reveal>
+                    <SectionHeading
+                        eyebrow={t('landing.sections.toolsEyebrow')}
+                        title={t('landing.toolsShowcase.title')}
+                        subtitle={t('landing.toolsShowcase.subtitle')}
+                    />
 
                     <Reveal staggerChildren={0.12} className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {/* Alpha CRM Card */}
@@ -702,18 +667,87 @@ const LandingPage: React.FC = () => {
                 </div>
             </section>
 
-            {/* Student Showcase Section */}
-            <section className="py-10 border-t border-[var(--border-primary)] relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] -z-10"></div>
-                <div className="container mx-auto px-6">
-                    <Reveal y={20} className="text-center mb-10 space-y-4">
-                        <h2 className="text-4xl font-black text-[var(--text-primary)]">{t('landing.showcase.title')}</h2>
-                        <p className="text-[var(--text-secondary)]">{t('landing.showcase.subtitle')}</p>
+            {/* Alpha Connect Section */}
+            <section className="py-20 border-t border-[var(--border-primary)]">
+                <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+                    <Reveal staggerChildren={0.12} className="space-y-6">
+                        <RevealItem y={20}>
+                            <span className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.24em] text-[var(--accent-primary)]">
+                                <span className="w-6 h-px bg-[var(--accent-primary)]" aria-hidden="true" />
+                                {t('landing.sections.connectEyebrow')}
+                            </span>
+                        </RevealItem>
+                        <RevealItem tag="h2" y={20} className="text-3xl md:text-5xl font-black tracking-tight text-[var(--text-primary)]">
+                            {t('landing.features.title')} <span className="text-[var(--accent-primary)]">{t('landing.features.highlight')}</span>
+                        </RevealItem>
+                        <RevealItem tag="p" y={20} className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed max-w-[62ch]">
+                            {t('landing.features.description')}
+                        </RevealItem>
+                        <RevealItem tag="ul" y={20} className="divide-y divide-[var(--border-primary)] border-y border-[var(--border-primary)]">
+                            {[
+                                t('landing.features.item1'),
+                                t('landing.features.item2'),
+                                t('landing.features.item3'),
+                                t('landing.features.item4')
+                            ].map((item) => (
+                                <li key={item} className="flex items-center gap-3 py-3.5 text-[var(--text-primary)] font-bold">
+                                    <span className="w-6 h-6 flex-shrink-0 rounded-full bg-[var(--accent-primary)]/15 flex items-center justify-center text-[var(--accent-primary)]">
+                                        <IconCheck />
+                                    </span>
+                                    {item}
+                                </li>
+                            ))}
+                        </RevealItem>
+                        <RevealItem y={20}>
+                            <HoverSpring scale={1.04} y={-2} className="inline-block">
+                                <button
+                                    onClick={() => navigateToProtectedPage('/workflow')}
+                                    className="inline-flex items-center gap-2 py-3.5 px-8 rounded-full bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-black text-sm tracking-wide uppercase shadow-[0_12px_32px_var(--accent-shadow)] hover:bg-[var(--accent-primary-hover)] transition-all duration-300 active:scale-[0.98]"
+                                >
+                                    {t('landing.features.cta')}
+                                    <IconArrow />
+                                </button>
+                            </HoverSpring>
+                        </RevealItem>
                     </Reveal>
 
+                    <Reveal y={30} className="relative">
+                        <ConnectBento />
+                        <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-[var(--accent-primary)] rounded-full blur-[80px] opacity-25 -z-10" aria-hidden="true" />
+                    </Reveal>
+                </div>
+            </section>
+
+            {/* Student Showcase Section */}
+            <section className="py-20 border-t border-[var(--border-primary)] relative overflow-hidden bg-[var(--bg-tertiary)]">
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--accent-secondary)]/10 rounded-full blur-[120px] -z-10"></div>
+                <div className="container mx-auto px-6">
+                    <SectionHeading
+                        eyebrow={t('landing.sections.showcaseEyebrow')}
+                        title={t('landing.showcase.title')}
+                        subtitle={t('landing.showcase.subtitle')}
+                        action={(
+                            <HoverSpring scale={1.05} y={-2} className="inline-block">
+                                <button
+                                    onClick={() => navigateToProtectedPage('/workflow')}
+                                    className="liquid-cta-hover inline-flex items-center gap-2 py-3 px-7 rounded-full border border-[var(--border-secondary)] hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-all duration-300 text-sm font-bold text-[var(--accent-primary)]"
+                                >
+                                    {t('landing.showcase.cta')}
+                                    <IconArrow />
+                                </button>
+                            </HoverSpring>
+                        )}
+                    />
+
                     {studentsLoading ? (
-                        <div className="flex justify-center py-16">
-                            <div className="w-10 h-10 border-3 border-[var(--accent-primary)]/30 border-t-[var(--accent-primary)] rounded-full animate-spin" />
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" aria-busy="true">
+                            {[0, 1, 2].map((i) => (
+                                <div key={i} className="h-[320px] rounded-3xl border border-[var(--border-primary)] bg-[var(--bg-card)] animate-pulse" />
+                            ))}
+                        </div>
+                    ) : featuredStudents.length === 0 ? (
+                        <div className="rounded-2xl border border-dashed border-[var(--border-secondary)] py-16 text-center text-[var(--text-secondary)]">
+                            {language === 'vi' ? 'Chưa có học viên tiêu biểu' : 'No featured students yet'}
                         </div>
                     ) : (
                         <Reveal staggerChildren={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -721,8 +755,8 @@ const LandingPage: React.FC = () => {
                                 <RevealItem key={idx}>
                                     <Link to={`/users/${student.id}`} className="student-card group">
                                         {/* Contact Button */}
-                                        <div 
-                                            className="contact-btn" 
+                                        <div
+                                            className="contact-btn"
                                             onClick={(e) => {
                                                 e.preventDefault();
                                                 e.stopPropagation();
@@ -754,7 +788,7 @@ const LandingPage: React.FC = () => {
                                                 <img src={student.backgroundImage || student.work} alt="Work" />
                                             ) : (
                                                 <div className="fallback-pic">
-                                                    <span>🎨</span>
+                                                    <IconSparkles className="h-10 w-10" />
                                                 </div>
                                             )}
                                         </div>
@@ -787,7 +821,7 @@ const LandingPage: React.FC = () => {
                                                     </div>
                                                 )}
                                             </div>
-                                            
+
                                             <div className="bottom-bottom">
                                                 <button className="view-profile-btn">
                                                     {t('landing.showcase.viewProfile')}
@@ -799,37 +833,39 @@ const LandingPage: React.FC = () => {
                             ))}
                         </Reveal>
                     )}
-
-                    <Reveal y={20} delay={0.1} className="mt-12 text-center">
-                        <HoverSpring scale={1.05} y={-2} className="inline-block">
-                            <button onClick={() => navigateToProtectedPage('/workflow')} className="liquid-cta-hover py-3 px-8 rounded-full border border-[var(--border-primary)] hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-all duration-300 text-sm font-bold text-[var(--accent-primary)]">
-                                {t('landing.showcase.cta')}
-                            </button>
-                        </HoverSpring>
-                    </Reveal>
                 </div>
             </section>
 
             {/* Strategic Partners Section */}
-            <section className="py-10 bg-[var(--bg-secondary)]/50 border-y border-[var(--border-primary)]">
+            <section className="py-20 bg-[var(--bg-primary)] border-t border-[var(--border-primary)]">
                 <div className="container mx-auto px-6">
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-                        <Reveal y={20} className="w-full md:w-1/3 space-y-4 text-center md:text-left">
-                            <h2 className="text-3xl font-black text-[var(--text-primary)]">{t('landing.partners.title')}</h2>
+                    <div className="flex flex-col md:flex-row items-start justify-between gap-10 md:gap-14">
+                        <Reveal y={20} className="w-full md:w-1/3 space-y-4">
+                            <span className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.24em] text-[var(--accent-primary)]">
+                                <span className="w-6 h-px bg-[var(--accent-primary)]" aria-hidden="true" />
+                                {t('landing.sections.partnersEyebrow')}
+                            </span>
+                            <h2 className="text-3xl font-black tracking-tight text-[var(--text-primary)]">{t('landing.partners.title')}</h2>
                             <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
                                 {t('landing.partners.subtitle')}
                             </p>
-                            <button onClick={() => navigateToProtectedPage('/workflow')} className="text-[var(--accent-primary)] text-sm font-bold inline-flex items-center gap-2 hover:underline">
-                                {t('landing.partners.join')} →
+                            <button
+                                onClick={() => navigateToProtectedPage('/workflow')}
+                                className="text-[var(--accent-primary)] text-sm font-bold inline-flex items-center gap-2 hover:underline"
+                            >
+                                {t('landing.partners.join')}
+                                <IconArrow />
                             </button>
                         </Reveal>
                         <div className="w-full md:w-2/3">
                             {partnersLoading ? (
-                                <div className="flex items-center justify-center py-12">
-                                    <div className="w-8 h-8 border-4 border-[var(--accent-primary)]/30 border-t-[var(--accent-primary)] rounded-full animate-spin"></div>
+                                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6" aria-busy="true">
+                                    {[0, 1, 2, 3, 4].map((i) => (
+                                        <div key={i} className="aspect-square rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-card)] animate-pulse" />
+                                    ))}
                                 </div>
                             ) : partners.length === 0 ? (
-                                <div className="text-center py-12 text-[var(--text-tertiary)] text-sm">
+                                <div className="rounded-2xl border border-dashed border-[var(--border-secondary)] py-16 text-center text-[var(--text-tertiary)] text-sm">
                                     {language === 'vi' ? 'Chưa có đối tác nào' : 'No partners yet'}
                                 </div>
                             ) : (
@@ -839,10 +875,19 @@ const LandingPage: React.FC = () => {
                                             <HoverSpring scale={1.05} y={-4}>
                                                 <Link
                                                     to={`/partners/${partner.slug}`}
-                                                    className="relative group cursor-pointer aspect-square rounded-2xl overflow-hidden border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-all duration-300 block"
+                                                    className="relative group cursor-pointer aspect-square rounded-2xl overflow-hidden border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-all duration-300 block bg-[var(--bg-card)]"
                                                 >
                                                     <div className="absolute inset-0">
-                                                        <img src={partner.backgroundImage || partner.logo || "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=400&fit=crop"} alt={partner.companyName} className="w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
+                                                        {(partner.backgroundImage || partner.logo?.startsWith('http')) ? (
+                                                            <img
+                                                                src={partner.backgroundImage || partner.logo}
+                                                                alt=""
+                                                                className="w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-300"
+                                                                loading="lazy"
+                                                            />
+                                                        ) : (
+                                                            <div className="w-full h-full bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/10" />
+                                                        )}
                                                         <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent"></div>
                                                     </div>
                                                     <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center z-10">
@@ -850,7 +895,9 @@ const LandingPage: React.FC = () => {
                                                             {partner.logo && partner.logo.startsWith('http') ? (
                                                                 <img src={partner.logo} alt={partner.companyName} className="w-full h-full object-contain p-1" />
                                                             ) : (
-                                                                <span className="text-2xl">{partner.logo || '🤝'}</span>
+                                                                <span className="text-sm font-black text-[var(--accent-primary)]">
+                                                                    {partner.companyName.charAt(0).toUpperCase()}
+                                                                </span>
                                                             )}
                                                         </div>
                                                         <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors line-clamp-2">{partner.companyName}</span>
@@ -866,66 +913,50 @@ const LandingPage: React.FC = () => {
                 </div>
             </section>
 
-            {/* Features Showcase */}
-            <section className="py-10">
-                <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <Reveal staggerChildren={0.12} className="space-y-6">
-                        <RevealItem tag="h2" y={20} className="text-4xl md:text-5xl font-black text-[var(--text-primary)]">
-                            {t('landing.features.title')} <span className="text-[var(--accent-primary)]">{t('landing.features.highlight')}</span>
-                        </RevealItem>
-                        <RevealItem tag="p" y={20} className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                            {t('landing.features.description')}
-                        </RevealItem>
-                        <RevealItem tag="ul" y={20} className="space-y-4">
-                            {[
-                                t('landing.features.item1'),
-                                t('landing.features.item2'),
-                                t('landing.features.item3'),
-                                t('landing.features.item4')
-                            ].map((item, i) => (
-                                <li key={i} className="flex items-center gap-3 text-[var(--text-primary)] font-bold">
-                                    <div className="w-6 h-6 rounded-full bg-[var(--accent-primary)]/20 flex items-center justify-center text-[var(--accent-primary)] text-xs">✓</div>
-                                    {item}
-                                </li>
-                            ))}
-                        </RevealItem>
-                        <RevealItem y={20}>
-                            <HoverSpring scale={1.05} y={-2} className="inline-block">
-                                <button onClick={() => navigateToProtectedPage('/workflow')} className="liquid-cta-hover py-4 px-10 glass-card rounded-2xl text-[var(--accent-primary)] font-black hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all duration-300">
-                                    {t('landing.features.cta')}
-                                </button>
-                            </HoverSpring>
-                        </RevealItem>
-                    </Reveal>
-                    <Reveal y={30} scale={0.95} className="relative">
-                        <div className="aspect-square glass-card rounded-[40px] flex items-center justify-center p-12 overflow-hidden shadow-2xl">
-                            <div className="grid grid-cols-2 gap-4 w-full">
-                                {[1, 2, 3, 4].map(i => (
-                                    <motion.div 
-                                        key={i} 
-                                        whileHover={{ scale: 1.05, rotate: i % 2 === 0 ? 2 : -2 }}
-                                        className={`h-40 rounded-3xl bg-[var(--bg-tertiary)]/30 border border-[var(--border-primary)] flex items-center justify-center text-4xl cursor-pointer hover:bg-[var(--accent-primary)]/10 transition-colors`}
-                                    >
-                                        {i === 1 ? '🎨' : i === 2 ? '📂' : i === 3 ? '⚙️' : '💻'}
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </div>
-                        <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[var(--accent-primary)] rounded-full blur-[60px] opacity-30"></div>
-                    </Reveal>
-                </div>
-            </section>
-
             {/* Footer */}
-            <footer className="py-10 border-t border-[var(--border-primary)] bg-[var(--bg-primary)] mt-auto">
-                <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div className="flex items-center gap-2">
-                        <img src="/alpha-logo-animated.svg" alt="Alpha Studio" className="h-8 w-8 rounded-lg object-contain" />
-                        <span className="text-sm font-bold text-[var(--text-primary)] tracking-widest">ALPHA STUDIO ACADEMY</span>
+            <footer className="pt-16 pb-10 border-t border-[var(--border-primary)] bg-[var(--bg-primary)] mt-auto">
+                <div className="container mx-auto px-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12">
+                        <div className="space-y-4 lg:pr-8">
+                            <div className="flex items-center gap-2">
+                                <img src="/alpha-logo-animated.svg" alt="Alpha Studio" className="h-8 w-8 rounded-lg object-contain" />
+                                <span className="text-sm font-bold text-[var(--text-primary)] tracking-widest">ALPHA STUDIO</span>
+                            </div>
+                            <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-[38ch]">
+                                {t('landing.footer.tagline')}
+                            </p>
+                        </div>
+
+                        {footerColumns.map((column) => (
+                            <nav key={column.title} aria-label={column.title} className="space-y-4">
+                                <h3 className="text-[10px] font-black uppercase tracking-[0.22em] text-[var(--text-tertiary)]">{column.title}</h3>
+                                <ul className="space-y-2.5">
+                                    {column.links.map((link) => (
+                                        <li key={link.to}>
+                                            <Link
+                                                to={link.to}
+                                                className="text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors"
+                                            >
+                                                {link.label}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </nav>
+                        ))}
                     </div>
-                    <p className="text-[10px] text-[var(--text-tertiary)] font-bold uppercase tracking-widest">
-                        © 2026 {t('landing.footer.copyright')}
-                    </p>
+
+                    <div className="pt-6 border-t border-[var(--border-primary)] flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p className="text-[10px] text-[var(--text-tertiary)] font-bold uppercase tracking-widest text-center md:text-left">
+                            © 2026 {t('landing.footer.copyright')}
+                        </p>
+                        <Link
+                            to="/event-creative-city"
+                            className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--accent-primary)] hover:underline"
+                        >
+                            {t('landing.footer.eventCity')}
+                        </Link>
+                    </div>
                 </div>
             </footer>
 

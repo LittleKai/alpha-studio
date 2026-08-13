@@ -25,6 +25,24 @@ export default {
       subtitle: "Hệ sinh thái học tập và làm việc AI toàn diện cho Designer sự kiện & Creative Staff. Tích hợp máy chủ GPU RTX 4090 hiệu suất cao.",
       exploreStudio: "KHÁM PHÁ STUDIO",
       gpuServer: "GPU SERVER",
+      videoAlt: "Hành trình sáng tạo sự kiện của Alpha Studio",
+      stats: {
+        courses: "Khóa học",
+        students: "Học viên",
+        partners: "Đối tác",
+        gpu: "Máy chủ GPU"
+      },
+      journeyLabel: "Đang chiếu",
+      journey: {
+        step1: "Cổng vào sáng tạo",
+        step2: "Bóc tách brief",
+        step3: "Định hình concept",
+        step4: "Dựng storyboard",
+        step5: "Kế hoạch sản xuất",
+        step6: "Visual & ánh sáng",
+        step7: "Showtime"
+      },
+      journeyNote: "Bảy chặng của một sự kiện, kể lại bằng chính hình ảnh do Alpha Studio dựng nên.",
       workflow: {
         workspace: "AI Core Engine",
         subworkspace: "Trung tâm AI cốt lõi",
@@ -66,6 +84,13 @@ export default {
       },
       scrollDown: "Cuộn để khám phá hệ sinh thái"
     },
+    sections: {
+      coursesEyebrow: "Lộ trình học",
+      toolsEyebrow: "Bộ công cụ",
+      connectEyebrow: "Nền tảng kết nối",
+      showcaseEyebrow: "Cộng đồng",
+      partnersEyebrow: "Mạng lưới"
+    },
     courses: {
       title: "Khóa học nổi bật",
       subtitle: "Lộ trình học chuyên sâu từ Concept đến Thực thi cho ngành Sự kiện.",
@@ -87,7 +112,13 @@ export default {
       item2: "Giao tiếp nhân viên và khách hàng",
       item3: "Đồng bộ máy chủ GPU hiệu suất cao",
       item4: "Thư viện prompt độc quyền",
-      cta: "MỞ ALPHA CONNECT"
+      cta: "MỞ ALPHA CONNECT",
+      bento: {
+        concept: "Concept",
+        storyboard: "Storyboard",
+        production: "Sản xuất",
+        showtime: "Showtime"
+      }
     },
     toolsShowcase: {
       title: "Hệ Sinh Thái Công Cụ AI Studio",
@@ -164,7 +195,12 @@ export default {
       backToList: "Quay lại danh sách"
     },
     footer: {
-      copyright: "NỀN TẢNG ĐÀO TẠO AI CHUYÊN NGHIỆP. TẤT CẢ QUYỀN ĐƯỢC BẢO LƯU."
+      copyright: "NỀN TẢNG ĐÀO TẠO AI CHUYÊN NGHIỆP. TẤT CẢ QUYỀN ĐƯỢC BẢO LƯU.",
+      tagline: "Học viện AI dành cho ngành sự kiện: khóa học thực chiến, công cụ sản xuất và mạng lưới nghề nghiệp trong cùng một nền tảng.",
+      exploreTitle: "Khám phá",
+      toolsTitle: "Công cụ",
+      companyTitle: "Alpha Studio",
+      eventCity: "Xem Event Creative City"
     }
   }
 };

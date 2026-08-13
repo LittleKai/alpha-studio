@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/ui/SEOHead';
 import EventCreativeCityVideoLayer from './EventCreativeCityVideoLayer';
+import { cdnImage } from '../services/cloudinaryAssets';
 import './EventCreativeCityPage.css';
 
 type CityScene = {
@@ -358,8 +359,12 @@ const FADE_MS = 380;
 /** Mọi concept đều có đúng 7 scene nên scene index được giữ nguyên khi đổi concept. */
 const SCENE_COUNT = concepts[DEFAULT_CONCEPT].scenes.length;
 
-const getSceneImage = (concept: ConceptId, theme: VisualThemeId, index: number) =>
-    `${concepts[concept].themes[theme].basePath}/${concepts[concept].scenes[index].file}`;
+/** Ảnh scene nằm trên Cloudinary; `basePath` chính là public_id prefix (bỏ dấu `/` đầu). */
+const getSceneImage = (concept: ConceptId, theme: VisualThemeId, index: number) => {
+    const prefix = concepts[concept].themes[theme].basePath.replace(/^\//, '');
+    const file = concepts[concept].scenes[index].file.replace(/\.png$/, '');
+    return cdnImage(`${prefix}/${file}`);
+};
 
 /** Chỉ hai look này đã có đủ bảy clip scrub; các lựa chọn còn lại tiếp tục dùng ảnh tĩnh. */
 const getVideoBasePath = (concept: ConceptId, theme: VisualThemeId) => {
