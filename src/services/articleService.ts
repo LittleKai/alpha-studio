@@ -1,3 +1,5 @@
+import { fetchWithRetry, parseErrorMessage } from './apiRetry';
+
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 const getAuthToken = (): string | null => {
@@ -56,22 +58,20 @@ export const getArticles = async (
     params.append('limit', String(limit));
     if (search) params.append('search', search);
 
-    const res = await fetch(`${API_URL}/articles?${params}`, {
+    const res = await fetchWithRetry(`${API_URL}/articles?${params}`, {
         headers: getHeaders(),
     });
-    const json = await res.json();
-    if (!res.ok) throw new Error(json.message || 'Failed to fetch articles');
-    return json;
+    if (!res.ok) throw new Error(await parseErrorMessage(res, 'Failed to fetch articles'));
+    return res.json();
 };
 
 // Public: Get single article by slug
 export const getArticleBySlug = async (slug: string) => {
-    const res = await fetch(`${API_URL}/articles/${slug}`, {
+    const res = await fetchWithRetry(`${API_URL}/articles/${slug}`, {
         headers: getHeaders(),
     });
-    const json = await res.json();
-    if (!res.ok) throw new Error(json.message || 'Article not found');
-    return json;
+    if (!res.ok) throw new Error(await parseErrorMessage(res, 'Article not found'));
+    return res.json();
 };
 
 // Admin: Get all articles (including drafts)

@@ -369,22 +369,23 @@ const LandingPage: React.FC = () => {
     const [studentsLoading, setStudentsLoading] = useState(true);
 
     // Fetch featured courses
-    useEffect(() => {
-        const loadCourses = async () => {
-            try {
-                setCoursesLoading(true);
-                setCoursesError(null);
-                const response = await getFeaturedCourses(6);
-                setCourses(response.data);
-            } catch (err) {
-                console.error('Failed to fetch courses:', err);
-                setCoursesError(err instanceof Error ? err.message : 'Failed to load courses');
-            } finally {
-                setCoursesLoading(false);
-            }
-        };
-        loadCourses();
+    const loadCourses = useCallback(async () => {
+        try {
+            setCoursesLoading(true);
+            setCoursesError(null);
+            const response = await getFeaturedCourses(6);
+            setCourses(response.data);
+        } catch (err) {
+            console.error('Failed to fetch courses:', err);
+            setCoursesError(err instanceof Error ? err.message : 'Failed to load courses');
+        } finally {
+            setCoursesLoading(false);
+        }
     }, []);
+
+    useEffect(() => {
+        loadCourses();
+    }, [loadCourses]);
 
     // Fetch featured partners
     useEffect(() => {
@@ -570,7 +571,7 @@ const LandingPage: React.FC = () => {
                             <div className="text-center space-y-4">
                                 <p className="text-[var(--text-error)]">{t('landing.courses.error')}</p>
                                 <button
-                                    onClick={() => window.location.reload()}
+                                    onClick={loadCourses}
                                     className="py-2 px-4 rounded-xl bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] font-bold text-sm hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all"
                                 >
                                     {t('common.retry')}

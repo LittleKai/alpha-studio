@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/ui/SEOHead';
 import EventCreativeCityVideoLayer from './EventCreativeCityVideoLayer';
-import { cdnImage } from '../services/cloudinaryAssets';
+import { cdnImage, videoBasePath, PREVIEW_QUALITY } from '../services/cloudinaryAssets';
 import './EventCreativeCityPage.css';
 
 type CityScene = {
@@ -359,17 +359,20 @@ const FADE_MS = 380;
 /** Mọi concept đều có đúng 7 scene nên scene index được giữ nguyên khi đổi concept. */
 const SCENE_COUNT = concepts[DEFAULT_CONCEPT].scenes.length;
 
-/** Ảnh scene nằm trên Cloudinary; `basePath` chính là public_id prefix (bỏ dấu `/` đầu). */
+/**
+ * Ảnh scene nằm trên Cloudinary; `basePath` chính là public_id prefix (bỏ dấu `/` đầu).
+ * Trang này là bản xem thử nên luôn dùng `PREVIEW_QUALITY`, không kéo bản master.
+ */
 const getSceneImage = (concept: ConceptId, theme: VisualThemeId, index: number) => {
     const prefix = concepts[concept].themes[theme].basePath.replace(/^\//, '');
     const file = concepts[concept].scenes[index].file.replace(/\.png$/, '');
-    return cdnImage(`${prefix}/${file}`);
+    return cdnImage(`${prefix}/${file}`, { quality: PREVIEW_QUALITY });
 };
 
 /** Chỉ hai look này đã có đủ bảy clip scrub; các lựa chọn còn lại tiếp tục dùng ảnh tĩnh. */
 const getVideoBasePath = (concept: ConceptId, theme: VisualThemeId) => {
-    if (concept === 'living-storyboard') return '/event-creative-city/vid/living-storyboard';
-    if (concept === 'event-creative-city' && theme === 'neon-night') return '/event-creative-city/vid/neon';
+    if (concept === 'living-storyboard') return videoBasePath('living-storyboard', PREVIEW_QUALITY);
+    if (concept === 'event-creative-city' && theme === 'neon-night') return videoBasePath('neon', PREVIEW_QUALITY);
     return null;
 };
 

@@ -1,3 +1,5 @@
+import { fetchWithRetry, parseErrorMessage } from './apiRetry';
+
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 // Types
@@ -169,15 +171,14 @@ export const getCourses = async (params?: CourseQueryParams): Promise<CourseList
 
     const url = `${API_URL}/courses${queryParams.toString() ? `?${queryParams.toString()}` : ''}`;
 
-    const response = await fetch(url, {
+    const response = await fetchWithRetry(url, {
         method: 'GET',
         headers: getHeaders(true), // Include auth to see all courses (admin)
         credentials: 'include',
     });
 
     if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Failed to fetch courses');
+        throw new Error(await parseErrorMessage(response, 'Failed to fetch courses'));
     }
 
     return response.json();
@@ -185,15 +186,14 @@ export const getCourses = async (params?: CourseQueryParams): Promise<CourseList
 
 // Get single course by ID or slug
 export const getCourseById = async (idOrSlug: string): Promise<Course> => {
-    const response = await fetch(`${API_URL}/courses/${idOrSlug}`, {
+    const response = await fetchWithRetry(`${API_URL}/courses/${idOrSlug}`, {
         method: 'GET',
         headers: getHeaders(true),
         credentials: 'include',
     });
 
     if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Failed to fetch course');
+        throw new Error(await parseErrorMessage(response, 'Failed to fetch course'));
     }
 
     const result = await response.json();
@@ -369,15 +369,14 @@ export interface EnrollmentProgress {
 
 // Get my enrolled courses
 export const getMyEnrolledCourses = async (): Promise<Enrollment[]> => {
-    const response = await fetch(`${API_URL}/enrollments/my-courses`, {
+    const response = await fetchWithRetry(`${API_URL}/enrollments/my-courses`, {
         method: 'GET',
         headers: getHeaders(true),
         credentials: 'include',
     });
 
     if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Failed to fetch enrolled courses');
+        throw new Error(await parseErrorMessage(response, 'Failed to fetch enrolled courses'));
     }
 
     const result = await response.json();
@@ -523,15 +522,14 @@ export const getCourseReviews = async (
 
     const url = `${API_URL}/reviews/course/${courseId}${queryParams.toString() ? `?${queryParams.toString()}` : ''}`;
 
-    const response = await fetch(url, {
+    const response = await fetchWithRetry(url, {
         method: 'GET',
         headers: getHeaders(),
         credentials: 'include',
     });
 
     if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Failed to fetch reviews');
+        throw new Error(await parseErrorMessage(response, 'Failed to fetch reviews'));
     }
 
     return response.json();

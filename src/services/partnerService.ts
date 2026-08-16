@@ -1,3 +1,5 @@
+import { fetchWithRetry, parseErrorMessage } from './apiRetry';
+
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 // Types
@@ -114,14 +116,13 @@ export const getPartners = async (params: PartnerQueryParams = {}): Promise<Part
     if (params.featured !== undefined) queryParams.append('featured', params.featured.toString());
     if (params.sort) queryParams.append('sort', params.sort);
 
-    const response = await fetch(`${API_URL}/partners?${queryParams.toString()}`, {
+    const response = await fetchWithRetry(`${API_URL}/partners?${queryParams.toString()}`, {
         method: 'GET',
         headers: getAuthHeaders()
     });
 
     if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Failed to fetch partners');
+        throw new Error(await parseErrorMessage(response, 'Failed to fetch partners'));
     }
 
     return response.json();
@@ -129,14 +130,13 @@ export const getPartners = async (params: PartnerQueryParams = {}): Promise<Part
 
 // Get single partner by ID or slug
 export const getPartnerById = async (idOrSlug: string): Promise<PartnerResponse> => {
-    const response = await fetch(`${API_URL}/partners/${idOrSlug}`, {
+    const response = await fetchWithRetry(`${API_URL}/partners/${idOrSlug}`, {
         method: 'GET',
         headers: getAuthHeaders()
     });
 
     if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Failed to fetch partner');
+        throw new Error(await parseErrorMessage(response, 'Failed to fetch partner'));
     }
 
     return response.json();

@@ -4,15 +4,19 @@ import { useTheme } from '../../theme/context';
 import { cdnImage } from '../../services/cloudinaryAssets';
 
 /**
- * Bento bốn ô cho section Alpha Connect, dùng chính khung hình Event Creative City
- * đã được nén sang WebP. Bộ ảnh đổi theo theme để khớp với video nền của hero.
+ * Bento bốn ô cho section Alpha Connect. Mỗi ô trỏ thẳng vào scene gốc của
+ * Event Creative City trên Cloudinary (thay vì một bản downsample riêng) nên tự
+ * hưởng bản master 1920×1080 theo `LANDING_QUALITY`. Bộ ảnh đổi theo theme
+ * để khớp với video nền của hero.
  */
 
+const LIGHT_SET = 'event-creative-city/concepts/living-storyboard';
+
 const TILES = [
-    { key: 'concept', slug: 'concept', span: 'sm:col-span-3' },
-    { key: 'storyboard', slug: 'storyboard', span: 'sm:col-span-2' },
-    { key: 'production', slug: 'production', span: 'sm:col-span-2' },
-    { key: 'showtime', slug: 'showtime', span: 'sm:col-span-3' },
+    { key: 'concept', span: 'sm:col-span-3', dark: 'event-creative-city/03-concept-district', light: `${LIGHT_SET}/02-moodboard-awakens` },
+    { key: 'storyboard', span: 'sm:col-span-2', dark: 'event-creative-city/04-storyboard-avenue', light: `${LIGHT_SET}/03-storyboard-rises` },
+    { key: 'production', span: 'sm:col-span-2', dark: 'event-creative-city/05-production-workshop', light: `${LIGHT_SET}/05-production-layers` },
+    { key: 'showtime', span: 'sm:col-span-3', dark: 'event-creative-city/07-showtime-plaza', light: `${LIGHT_SET}/07-story-becomes-show` },
 ] as const;
 
 const ConnectBento: React.FC = () => {
@@ -29,7 +33,7 @@ const ConnectBento: React.FC = () => {
                         className={`${tile.span} relative overflow-hidden rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-card)] group`}
                     >
                         <img
-                            src={cdnImage(`landing/connect/${theme}-${tile.slug}`)}
+                            src={cdnImage(tile[theme], { sizing: 'w_880' })}
                             alt={label}
                             loading="lazy"
                             decoding="async"

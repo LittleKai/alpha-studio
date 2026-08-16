@@ -1,4 +1,5 @@
 import type { FeaturedStudent } from '../types';
+import { fetchWithRetry } from './apiRetry';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
@@ -25,7 +26,8 @@ export interface AdminFeaturedStudent {
 
 // Public — for landing page
 export const getFeaturedStudents = async (): Promise<FeaturedStudent[]> => {
-    const res = await fetch(`${API_URL}/featured-students`);
+    const res = await fetchWithRetry(`${API_URL}/featured-students`);
+    if (!res.ok) return [];
     const data = await res.json();
     return data.success ? data.data : [];
 };
