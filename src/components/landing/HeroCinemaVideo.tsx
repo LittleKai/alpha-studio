@@ -1,5 +1,5 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
-import { cdnImage, videoBasePath } from '../../services/cloudinaryAssets';
+import { AssetQuality, cdnImage, videoBasePath } from '../../services/cloudinaryAssets';
 
 /**
  * Nền video hero: phát nối tiếp bảy clip của một bộ Event Creative City.
@@ -15,33 +15,26 @@ const CROSSFADE_MS = 900;
 /** Bắt đầu clip kế tiếp trước khi clip hiện tại kết thúc, tính bằng giây. */
 const HANDOFF_LEAD_S = 1;
 
-/**
- * Cùng bộ clip với scroll-scrub ở /event-creative-city nhưng khác chất lượng:
- * landing dùng mặc định `LANDING_QUALITY` (bản 1080p trên Cloudinary), còn trang
- * xem thử tự truyền `PREVIEW_QUALITY` để lấy file local. Ảnh `still` (fallback
- * reduced-motion) là scene mở đầu của mỗi look, cũng theo `LANDING_QUALITY`.
- */
-const VIDEO_SETS = {
-    dark: {
-        basePath: videoBasePath('neon'),
-        still: cdnImage('event-creative-city/01-event-gate', { sizing: 'w_1600' }),
-    },
-    light: {
-        basePath: videoBasePath('living-storyboard'),
-        still: cdnImage('event-creative-city/concepts/living-storyboard/01-creative-desk', { sizing: 'w_1600' }),
-    },
-} as const;
-
 interface HeroCinemaVideoProps {
     /** Đổi theme phải kèm `key={theme}` ở phía cha để reset chuỗi phát. */
     theme: 'light' | 'dark';
     /** Nhận index clip đang chiếu (0-6) để đồng bộ với rail hành trình. */
     onClipChange?: (index: number) => void;
     stillAlt: string;
+    quality?: AssetQuality;
 }
 
-const HeroCinemaVideo: React.FC<HeroCinemaVideoProps> = ({ theme, onClipChange, stillAlt }) => {
-    const set = VIDEO_SETS[theme];
+const HeroCinemaVideo: React.FC<HeroCinemaVideoProps> = ({ theme, onClipChange, stillAlt, quality }) => {
+    const set = {
+        dark: {
+            basePath: videoBasePath('neon', quality),
+            still: cdnImage('event-creative-city/01-event-gate', { sizing: 'w_1600', quality }),
+        },
+        light: {
+            basePath: videoBasePath('living-storyboard', quality),
+            still: cdnImage('event-creative-city/concepts/living-storyboard/01-creative-desk', { sizing: 'w_1600', quality }),
+        },
+    }[theme];
 
     const containerRef = useRef<HTMLDivElement>(null);
     const videoRefs = useRef<(HTMLVideoElement | null)[]>([null, null]);

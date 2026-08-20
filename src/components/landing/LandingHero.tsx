@@ -6,15 +6,18 @@ import HoverSpring from '../motion/HoverSpring';
 import TextReveal from '../motion/TextReveal';
 import HeroCinemaVideo from './HeroCinemaVideo';
 
+import type { AssetQuality } from '../../services/cloudinaryAssets';
+
 interface LandingHeroProps {
     stats: { courses: number; students: number; partners: number };
     onExploreStudio: () => void;
     onOpenGpuServer: () => void;
+    quality?: AssetQuality;
 }
 
 const JOURNEY_KEYS = ['step1', 'step2', 'step3', 'step4', 'step5', 'step6', 'step7'] as const;
 
-const LandingHero: React.FC<LandingHeroProps> = ({ stats, onExploreStudio, onOpenGpuServer }) => {
+const LandingHero: React.FC<LandingHeroProps> = ({ stats, onExploreStudio, onOpenGpuServer, quality }) => {
     const { t } = useTranslation();
     const { theme } = useTheme();
     const [activeClip, setActiveClip] = useState(0);
@@ -32,8 +35,9 @@ const LandingHero: React.FC<LandingHeroProps> = ({ stats, onExploreStudio, onOpe
         // 60px = chiều cao nav sticky, trừ đi để hero vừa đúng một màn hình
         <section className="relative w-full min-h-[calc(100dvh-60px)] flex items-center overflow-hidden border-b border-[var(--border-primary)] bg-[var(--bg-primary)]">
             <HeroCinemaVideo
-                key={theme}
+                key={`${theme}-${quality || 'default'}`}
                 theme={theme}
+                quality={quality}
                 onClipChange={handleClipChange}
                 stillAlt={t('landing.hero.videoAlt')}
             />

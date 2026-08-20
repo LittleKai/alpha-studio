@@ -106,6 +106,12 @@ export default {
       gcliBotModelLabel: "Model gcli cho AI Bot",
       gcliBotModelDesc: "Chọn model gcli khi OpenClaw tắt. Mặc định gemini-2.5-flash.",
       modelDefault: "mặc định",
+      landingQualityTitle: "Chất lượng Video & Media Landing Page",
+      landingQualityDesc: "Tùy chỉnh chất lượng video nền Hero Cinema và hình ảnh Event Creative City trên trang chủ.",
+      landingQualityHq: "Chất lượng cao (HQ - 1080p Cloudinary)",
+      landingQualityHqDesc: "Video 1080p CRF 23 và master stills sắc nét từ CDN Cloudinary.",
+      landingQualityStandard: "Chất lượng tiêu chuẩn (Standard / Low - 810p Tiết kiệm)",
+      landingQualityStandardDesc: "Video 810p CRF 31 nhẹ hơn 80%, nạp từ host local để tối ưu băng thông.",
       subtabs: {
         apiSettings: "Cài đặt API"
       }

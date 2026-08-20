@@ -15,6 +15,10 @@ import HoverSpring from '../components/motion/HoverSpring';
 import { ToolShowcaseCard } from '../components/studio/ToolShowcaseCard';
 import LandingHero from '../components/landing/LandingHero';
 import ConnectBento from '../components/landing/ConnectBento';
+import { fetchWithRetry } from '../services/apiRetry';
+import { AssetQuality, setLandingQuality } from '../services/cloudinaryAssets';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 // Category to style mapping (Neon Terminal / Restrained strategy)
 const categoryGradients: Record<string, string> = {
@@ -419,6 +423,27 @@ const LandingPage: React.FC = () => {
         loadStudents();
     }, []);
 
+    // Video / Asset Quality state
+    const [videoQuality, setVideoQuality] = useState<AssetQuality>('high');
+
+    // Fetch public system settings (video quality, etc.)
+    useEffect(() => {
+        const loadPublicSettings = async () => {
+            try {
+                const res = await fetchWithRetry(`${API_URL}/settings/public`);
+                const data = await res.json();
+                if (data.success && data.data?.landingVideoQuality) {
+                    const q: AssetQuality = data.data.landingVideoQuality === 'standard' ? 'standard' : 'high';
+                    setVideoQuality(q);
+                    setLandingQuality(q);
+                }
+            } catch (err) {
+                console.warn('Failed to load public settings, using default high quality:', err);
+            }
+        };
+        loadPublicSettings();
+    }, []);
+
     // Helper to get localized text
     const getLocalizedText = (text: { vi: string; en: string }) => {
         return language === 'vi' ? text.vi : text.en;
@@ -527,6 +552,7 @@ const LandingPage: React.FC = () => {
                 stats={{ courses: courses.length, students: featuredStudents.length, partners: partners.length }}
                 onExploreStudio={goToStudio}
                 onOpenGpuServer={goToGpuServer}
+                quality={videoQuality}
             />
 
             {/* Featured Courses Section */}
@@ -713,7 +739,7 @@ const LandingPage: React.FC = () => {
                     </Reveal>
 
                     <Reveal y={30} className="relative">
-                        <ConnectBento />
+                        <ConnectBento quality={videoQuality} />
                         <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-[var(--accent-primary)] rounded-full blur-[80px] opacity-25 -z-10" aria-hidden="true" />
                     </Reveal>
                 </div>

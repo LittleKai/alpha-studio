@@ -86,6 +86,7 @@ export interface StudioAdminSettings {
     gcliBotModel: string;
     geminiApiKey: string;
     videoApiKey: string;
+    landingVideoQuality?: 'high' | 'standard';
 }
 
 // API Functions

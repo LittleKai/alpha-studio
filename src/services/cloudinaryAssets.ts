@@ -15,7 +15,15 @@ export type AssetQuality = 'standard' | 'high';
  * | `high` | master 1920×1080 prefix `hq/`, `f_auto,q_auto:best` (~318KB) | Cloudinary `hq/…/vid/`, 1920×1080 CRF 23 (~10.5MB/clip) |
  */
 
-/** Landing page — trang chính, dùng bản chất lượng cao. */
+let dynamicLandingQuality: AssetQuality = 'high';
+
+export const setLandingQuality = (quality: AssetQuality) => {
+    dynamicLandingQuality = quality;
+};
+
+export const getLandingQuality = (): AssetQuality => dynamicLandingQuality;
+
+/** Landing page — chất lượng mặc định. */
 export const LANDING_QUALITY: AssetQuality = 'high';
 
 /** `/event-creative-city` là trang xem thử: bản nhẹ, không đốt bandwidth Cloudinary. */
@@ -56,7 +64,7 @@ interface CdnImageOptions {
  *                 Luôn truyền public_id của bản standard — hàm tự thêm prefix `hq/` khi cần.
  */
 export const cdnImage = (publicId: string, options: CdnImageOptions = {}): string => {
-    const { sizing, quality = LANDING_QUALITY } = options;
+    const { sizing, quality = dynamicLandingQuality } = options;
     const isHigh = quality === 'high';
     const qualityTransform = isHigh ? 'f_auto,q_auto:best' : 'f_auto,q_auto';
     const resolvedId = isHigh && hasHqMaster(publicId) ? `hq/${publicId}` : publicId;
@@ -73,7 +81,7 @@ export type VideoSetName = 'neon' | 'living-storyboard';
  * ⚠️ `high` phát video thẳng từ Cloudinary nên mỗi lượt xem hết vòng lặp kéo
  * ~82MB (neon) / ~65MB (living-storyboard) khỏi quota bandwidth.
  */
-export const videoBasePath = (set: VideoSetName, quality: AssetQuality = LANDING_QUALITY): string => (
+export const videoBasePath = (set: VideoSetName, quality: AssetQuality = dynamicLandingQuality): string => (
     quality === 'high'
         ? `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/hq/event-creative-city/vid/${set}`
         : `/event-creative-city/vid/${set}`

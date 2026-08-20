@@ -18,7 +18,8 @@ export default function StudioAdminTab() {
         useOpenClawForChat: true,
         gcliBotModel: 'gemini-2.5-flash',
         geminiApiKey: '',
-        videoApiKey: ''
+        videoApiKey: '',
+        landingVideoQuality: 'high'
     });
 
     useEffect(() => {
@@ -41,7 +42,8 @@ export default function StudioAdminTab() {
                     useOpenClawForChat: data.data.useOpenClawForChat ?? true,
                     gcliBotModel: data.data.gcliBotModel || 'gemini-2.5-flash',
                     geminiApiKey: data.data.geminiApiKey || '',
-                    videoApiKey: data.data.videoApiKey || ''
+                    videoApiKey: data.data.videoApiKey || '',
+                    landingVideoQuality: data.data.landingVideoQuality || 'high'
                 });
             }
         } catch (error) {
@@ -113,6 +115,45 @@ export default function StudioAdminTab() {
                                 </select>
                             </div>
                         )}
+                    </div>
+
+                    {/* Landing Page Video & Media Quality */}
+                    <div className="p-4 bg-[var(--bg-secondary)] rounded-lg border border-[var(--border-primary)]">
+                        <div className="mb-3">
+                            <span className="font-bold text-[var(--text-primary)]">{t('admin.studio.landingQualityTitle')}</span>
+                            <p className="text-sm text-[var(--text-secondary)]">{t('admin.studio.landingQualityDesc')}</p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+                            <label className={`flex items-start gap-3 p-3.5 rounded-lg border cursor-pointer transition-all ${settings.landingVideoQuality !== 'standard' ? 'border-[var(--accent-primary)] bg-[var(--accent-primary)]/5' : 'border-[var(--border-primary)] bg-[var(--bg-card)]'}`}>
+                                <input
+                                    type="radio"
+                                    name="landingVideoQuality"
+                                    value="high"
+                                    checked={settings.landingVideoQuality !== 'standard'}
+                                    onChange={() => setSettings({ ...settings, landingVideoQuality: 'high' })}
+                                    className="mt-1 w-4 h-4 accent-[var(--accent-primary)]"
+                                />
+                                <div>
+                                    <span className="font-bold text-sm text-[var(--text-primary)]">{t('admin.studio.landingQualityHq')}</span>
+                                    <p className="text-xs text-[var(--text-secondary)] mt-1">{t('admin.studio.landingQualityHqDesc')}</p>
+                                </div>
+                            </label>
+
+                            <label className={`flex items-start gap-3 p-3.5 rounded-lg border cursor-pointer transition-all ${settings.landingVideoQuality === 'standard' ? 'border-[var(--accent-primary)] bg-[var(--accent-primary)]/5' : 'border-[var(--border-primary)] bg-[var(--bg-card)]'}`}>
+                                <input
+                                    type="radio"
+                                    name="landingVideoQuality"
+                                    value="standard"
+                                    checked={settings.landingVideoQuality === 'standard'}
+                                    onChange={() => setSettings({ ...settings, landingVideoQuality: 'standard' })}
+                                    className="mt-1 w-4 h-4 accent-[var(--accent-primary)]"
+                                />
+                                <div>
+                                    <span className="font-bold text-sm text-[var(--text-primary)]">{t('admin.studio.landingQualityStandard')}</span>
+                                    <p className="text-xs text-[var(--text-secondary)] mt-1">{t('admin.studio.landingQualityStandardDesc')}</p>
+                                </div>
+                            </label>
+                        </div>
                     </div>
 
                     {/* Master toggle */}

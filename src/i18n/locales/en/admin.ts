@@ -96,6 +96,12 @@ export default {
       gcliBotModelLabel: "gcli model for AI Bot",
       gcliBotModelDesc: "Pick the gcli model used when OpenClaw is off. Default is gemini-2.5-flash.",
       modelDefault: "default",
+      landingQualityTitle: "Landing Page Video & Media Quality",
+      landingQualityDesc: "Configure the video background and Event Creative City media quality on the landing page.",
+      landingQualityHq: "High Quality (HQ - 1080p Cloudinary)",
+      landingQualityHqDesc: "Crisp 1080p CRF 23 videos and master stills streamed from Cloudinary CDN.",
+      landingQualityStandard: "Standard Quality (810p Bandwidth Saving)",
+      landingQualityStandardDesc: "810p CRF 31 videos (80% smaller), loaded from local host to save bandwidth.",
       subtabs: {
         apiSettings: "API Settings"
       }

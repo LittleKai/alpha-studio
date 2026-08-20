@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from '../../i18n/context';
 import { useTheme } from '../../theme/context';
-import { cdnImage } from '../../services/cloudinaryAssets';
+import { AssetQuality, cdnImage } from '../../services/cloudinaryAssets';
 
 /**
  * Bento bốn ô cho section Alpha Connect. Mỗi ô trỏ thẳng vào scene gốc của
@@ -19,7 +19,11 @@ const TILES = [
     { key: 'showtime', span: 'sm:col-span-3', dark: 'event-creative-city/07-showtime-plaza', light: `${LIGHT_SET}/07-story-becomes-show` },
 ] as const;
 
-const ConnectBento: React.FC = () => {
+interface ConnectBentoProps {
+    quality?: AssetQuality;
+}
+
+const ConnectBento: React.FC<ConnectBentoProps> = ({ quality }) => {
     const { t } = useTranslation();
     const { theme } = useTheme();
 
@@ -33,7 +37,7 @@ const ConnectBento: React.FC = () => {
                         className={`${tile.span} relative overflow-hidden rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-card)] group`}
                     >
                         <img
-                            src={cdnImage(tile[theme], { sizing: 'w_880' })}
+                            src={cdnImage(tile[theme], { sizing: 'w_880', quality })}
                             alt={label}
                             loading="lazy"
                             decoding="async"
