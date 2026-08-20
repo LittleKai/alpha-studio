@@ -38,15 +38,15 @@ const LandingHero: React.FC<LandingHeroProps> = ({ stats, onExploreStudio, onOpe
                 stillAlt={t('landing.hero.videoAlt')}
             />
 
-            {/* Lớp phủ đọc chữ — bám theo --bg-primary nên tự đảo màu giữa hai theme */}
+            {/* Lớp phủ đọc chữ — làm trong và mềm hơn để video nền sáng rõ, giữ độ tương phản cho text */}
             <div
                 className="absolute inset-0 z-[1] pointer-events-none"
                 style={{
-                    background: 'linear-gradient(105deg, var(--bg-primary) 0%, color-mix(in srgb, var(--bg-primary) 82%, transparent) 38%, color-mix(in srgb, var(--bg-primary) 24%, transparent) 72%, transparent 100%)',
+                    background: 'linear-gradient(105deg, color-mix(in srgb, var(--bg-primary) 65%, transparent) 0%, color-mix(in srgb, var(--bg-primary) 30%, transparent) 45%, transparent 75%)',
                 }}
             />
             <div
-                className="absolute inset-x-0 bottom-0 h-48 z-[1] pointer-events-none"
+                className="absolute inset-x-0 bottom-0 h-28 z-[1] pointer-events-none"
                 style={{ background: 'linear-gradient(to top, var(--bg-primary), transparent)' }}
             />
 
