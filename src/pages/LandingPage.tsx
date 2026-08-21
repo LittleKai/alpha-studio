@@ -12,7 +12,7 @@ import { getFeaturedStudents } from '../services/featuredStudentsService';
 import { motion } from 'framer-motion';
 import Reveal, { RevealItem } from '../components/motion/Reveal';
 import HoverSpring from '../components/motion/HoverSpring';
-import { ToolShowcaseCard } from '../components/studio/ToolShowcaseCard';
+import StudioToolTile, { STUDIO_TOOLS } from '../components/studio/StudioToolTile';
 import LandingHero from '../components/landing/LandingHero';
 import ConnectBento from '../components/landing/ConnectBento';
 import { fetchWithRetry } from '../services/apiRetry';
@@ -625,7 +625,7 @@ const LandingPage: React.FC = () => {
                 </div>
             </section>
 
-            {/* Tools Showcase Section */}
+            {/* Tools Showcase Section — cùng ngôn ngữ thiết kế với hub /studio */}
             <section className="py-20 bg-[var(--bg-primary)] border-t border-[var(--border-primary)] relative overflow-hidden">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--accent-primary)]/5 rounded-full blur-[160px] -z-10"></div>
                 <div className="container mx-auto px-6">
@@ -633,63 +633,53 @@ const LandingPage: React.FC = () => {
                         eyebrow={t('landing.sections.toolsEyebrow')}
                         title={t('landing.toolsShowcase.title')}
                         subtitle={t('landing.toolsShowcase.subtitle')}
+                        action={(
+                            <HoverSpring scale={1.05} y={-2} className="inline-block">
+                                <button
+                                    onClick={goToStudio}
+                                    className="liquid-cta-hover inline-flex items-center gap-2 py-3 px-7 rounded-full border border-[var(--border-secondary)] hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-all duration-300 text-sm font-bold text-[var(--accent-primary)]"
+                                >
+                                    {t('landing.toolsShowcase.explore')}
+                                    <IconArrow />
+                                </button>
+                            </HoverSpring>
+                        )}
                     />
 
-                    <Reveal staggerChildren={0.12} className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {/* Alpha CRM Card */}
-                        <RevealItem className="h-full">
-                            <ToolShowcaseCard
-                                cardClass="crm-card"
-                                onClick={() => navigate('/studio/crm/subscription')}
-                                logo={<img src="/crm-logo.png" alt="Alpha CRM" />}
-                                previewImage="/crm-preview.png"
-                                title={t('landing.toolsShowcase.crm.title')}
-                                desc={t('landing.toolsShowcase.crm.desc')}
-                                stats={[
-                                    { bigText: '100+', regularText: language === 'vi' ? 'Chiến dịch' : 'Campaigns' },
-                                    { bigText: '2 Tháng', regularText: language === 'vi' ? 'Dùng thử' : 'Trial' },
-                                    { bigText: 'Web/App', regularText: language === 'vi' ? 'Đa nền tảng' : 'Platform' }
-                                ]}
-                            />
-                        </RevealItem>
+                    <Reveal staggerChildren={0.12} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {STUDIO_TOOLS.map((tool) => (
+                            <RevealItem key={tool.key}>
+                                <StudioToolTile tool={tool} variant="compact" />
+                            </RevealItem>
+                        ))}
+                    </Reveal>
 
-                        {/* VocabFlip Card */}
-                        <RevealItem className="h-full">
-                            <ToolShowcaseCard
-                                cardClass="vocab-card"
-                                onClick={() => navigate('/studio/vocab')}
-                                logo={<img src="/vocab/icons/Icon-192.png" alt="VocabFlip" />}
-                                previewImage="https://res.cloudinary.com/dzchj4ysj/image/upload/v1783019393/landing/vocab-preview.png"
-                                title={t('landing.toolsShowcase.vocab.title')}
-                                desc={t('landing.toolsShowcase.vocab.desc')}
-                                stats={[
-                                    { bigText: 'Smart', regularText: language === 'vi' ? 'Học từ vựng' : 'Study' },
-                                    { bigText: 'Win/Apk', regularText: language === 'vi' ? 'Hỗ trợ' : 'Supports' },
-                                    { bigText: 'Shared', regularText: language === 'vi' ? 'Thư viện' : 'Library' }
-                                ]}
-                            />
-                        </RevealItem>
-
-                        {/* AI Skills Library Card */}
-                        <RevealItem className="h-full">
-                            <ToolShowcaseCard
-                                cardClass="skills-card"
-                                onClick={() => navigate('/studio/skills')}
-                                logo={
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="text-white">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                                    </svg>
-                                }
-                                previewImage="/skills-preview.png"
-                                title={t('landing.toolsShowcase.skills.title')}
-                                desc={t('landing.toolsShowcase.skills.desc')}
-                                stats={[
-                                    { bigText: '20+', regularText: language === 'vi' ? 'Thực chiến' : 'Skills' },
-                                    { bigText: 'Daily', regularText: language === 'vi' ? 'Cập nhật' : 'Updates' },
-                                    { bigText: 'AI-Gen', regularText: language === 'vi' ? 'Tài nguyên' : 'Resources' }
-                                ]}
-                            />
-                        </RevealItem>
+                    {/* Dải dẫn về hub /studio — nơi có đủ cả công cụ sắp ra mắt */}
+                    <Reveal y={24} className="mt-4">
+                        <button
+                            onClick={goToStudio}
+                            className="group w-full flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 text-left rounded-2xl border border-dashed border-[var(--border-secondary)] bg-[var(--bg-card)] px-6 py-5 transition-colors duration-300 hover:border-[var(--accent-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]"
+                        >
+                            <span className="inline-flex items-center justify-center w-11 h-11 flex-shrink-0 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] text-[var(--accent-primary)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h6v6H4zM14 6h6v6h-6zM4 16h6v4H4zM14 16h6v4h-6z" />
+                                </svg>
+                            </span>
+                            <span className="flex-1 min-w-0">
+                                <span className="block text-base font-black tracking-tight text-[var(--text-primary)]">
+                                    {t('landing.toolsShowcase.hubTitle')}
+                                </span>
+                                <span className="mt-1 block text-sm leading-relaxed text-[var(--text-secondary)]">
+                                    {t('landing.toolsShowcase.hubDesc')}
+                                </span>
+                            </span>
+                            <span className="inline-flex items-center gap-1.5 flex-shrink-0 text-xs font-black uppercase tracking-wider text-[var(--accent-primary)]">
+                                {t('landing.toolsShowcase.explore')}
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </span>
+                        </button>
                     </Reveal>
                 </div>
             </section>

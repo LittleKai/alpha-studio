@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import {
     VOCAB_FALLBACK_RELEASE,
     getLatestVocabRelease,
     type VocabReleaseInfo,
 } from '../services/vocabReleaseService';
+import StudioBackButton from '../components/studio/StudioBackButton';
 
 interface FeatureCardProps {
     title: string;
@@ -39,7 +39,6 @@ const vocabImages = [
 
 const VocabPage: React.FC = () => {
     const { t, language } = useTranslation();
-    const navigate = useNavigate();
     const [release, setRelease] = useState<VocabReleaseInfo>(VOCAB_FALLBACK_RELEASE);
     const [releaseLoading, setReleaseLoading] = useState(true);
     const [releaseError, setReleaseError] = useState(false);
@@ -152,15 +151,7 @@ const VocabPage: React.FC = () => {
                 }
             ` }} />
 
-            <button
-                onClick={() => navigate('/studio')}
-                className="fixed top-20 left-4 z-40 hidden md:inline-flex items-center gap-2 px-4 py-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-full shadow-lg text-sm font-semibold text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] hover:border-[var(--accent-primary)] hover:scale-105 transition-all"
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                {t('studio.hub.backToStudio')}
-            </button>
+            <StudioBackButton />
 
             <div className="mx-auto max-w-6xl space-y-10 px-4 py-10 sm:px-8 sm:py-14">
                 <section className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">

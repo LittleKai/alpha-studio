@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
+import StudioBackButton from '../components/studio/StudioBackButton';
 import { getSkills, type Skill } from '../services/skillService';
 
 
@@ -87,7 +87,6 @@ const parseTimeSavingMinutes = (str: string): number => {
 
 export default function SkillsPage() {
   const { t, language } = useTranslation();
-  const navigate = useNavigate();
   const PAGE_SIZE = 12;
 
   // Skills raw data
@@ -685,29 +684,25 @@ export default function SkillsPage() {
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pb-20">
       <SEOHead title={t('skills.title')} description={t('skills.subtitle')} path="/studio/skills" />
+      <StudioBackButton />
       <div className="max-w-7xl mx-auto px-6 pt-4 pb-12">
         {/* Header Navigation and Premium Badge Row */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
-          <button 
-            onClick={() => navigate('/studio')}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[#ff5a1f] text-[var(--text-secondary)] hover:text-[#ff5a1f] text-xs font-semibold transition-all cursor-pointer focus:outline-none shadow-sm shrink-0"
-          >
-            &larr; {t('skills.backToStudio')}
-          </button>
-          
+        <div className="flex items-center justify-center mb-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--accent-primary)]/10 border border-[var(--accent-primary)]/20 text-[var(--accent-primary)] text-xs md:text-sm font-semibold shadow-sm select-none">
             <svg className="w-3.5 h-3.5 md:w-4 md:h-4 text-[var(--accent-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 21l8.904-4.473L21 21l-1.813-5.096m-7.374-1.63L3 19l4.473-8.904L3 3l5.096 1.813M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l-.707.707" />
             </svg>
             {t('skills.badgeText')}
           </div>
-
-          {/* Balanced spacer for desktop centering */}
-          <div className="hidden sm:block w-[140px]"></div>
         </div>
 
         {/* Hero Banner Section */}
         <div className="text-center max-w-4xl mx-auto mb-10">
+          <img
+            src="/skills-logo.png"
+            alt="AI Skills Hub"
+            className="w-20 h-20 md:w-24 md:h-24 rounded-3xl shadow-xl mx-auto mb-5 object-contain"
+          />
           <h1 className="text-3xl md:text-5xl font-extrabold text-[var(--text-primary)] mb-4 tracking-tight flex items-center justify-center gap-3 flex-wrap">
             {t('skills.heroTitle')}
             <span className="px-2 py-0.5 text-xs font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 rounded uppercase tracking-wider select-none leading-normal">

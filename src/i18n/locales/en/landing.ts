@@ -124,6 +124,8 @@ export default {
       title: "AI Studio Tools Ecosystem",
       subtitle: "A professional suite of tools for learning, task management, and AI skills development.",
       explore: "Enter Studio",
+      hubTitle: "Alpha Studio Hub — every tool in one place",
+      hubDesc: "Four tools live today and three on the way: image & video generation, image editing, and interior design.",
       crm: {
         title: "Alpha CRM",
         desc: "Client, project, and automated billing management system, optimizing workflows for professional event freelancers."

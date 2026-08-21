@@ -18,6 +18,13 @@
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // dark: variant phải theo toggle theme của app (html[data-theme="dark"]),
+      // không theo OS preference — mặc định của CDN là 'media'.
+      tailwind.config = {
+        darkMode: ['class', '[data-theme="dark"]'],
+      };
+    </script>
 
     <!-- Google Fonts - Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

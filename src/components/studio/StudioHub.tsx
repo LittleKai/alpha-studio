@@ -1,10 +1,11 @@
 import type { ReactNode } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../../i18n/context';
 import { useTheme } from '../../theme/context';
 import Reveal, { RevealItem } from '../motion/Reveal';
 import TextReveal from '../motion/TextReveal';
 import { cdnImage } from '../../services/cloudinaryAssets';
+import StudioToolTile, { STUDIO_TOOLS, type StudioToolKey } from './StudioToolTile';
 
 /**
  * /studio hub — launcher cinematic đồng bộ ngôn ngữ thiết kế của landing page:
@@ -18,58 +19,7 @@ const HERO_SCENE = {
     light: 'event-creative-city/concepts/living-storyboard/01-creative-desk',
 } as const;
 
-type ActiveKey = 'skills' | 'crm' | 'vocab' | 'vietyaku';
 type UpcomingKey = 'generate' | 'edit' | 'interior';
-
-interface ActiveTool {
-    key: ActiveKey;
-    to: string;
-    span: string;
-    featured?: boolean;
-    logo: ReactNode;
-    previewImage: string;
-    /** Vị trí crop của ảnh preview (mặc định object-top) */
-    previewPosition?: string;
-}
-
-const ACTIVE_TOOLS: ActiveTool[] = [
-    {
-        key: 'skills',
-        to: '/studio/skills',
-        span: 'sm:col-span-3 sm:row-span-2',
-        featured: true,
-        logo: (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-5 h-5 text-[var(--accent-primary)]">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-            </svg>
-        ),
-        previewImage: '/skills-preview.png',
-    },
-    {
-        key: 'crm',
-        to: '/studio/crm/subscription',
-        span: 'sm:col-span-2',
-        logo: <img src="/crm-logo.png" alt="" className="w-5 h-5 object-contain" />,
-        previewImage: '/crm-preview.png',
-    },
-    {
-        key: 'vocab',
-        to: '/studio/vocab',
-        span: 'sm:col-span-2',
-        logo: <img src="/vocab/icons/Icon-192.png" alt="" className="w-5 h-5 object-contain rounded" />,
-        previewImage: '/images/vocab/vocab-preview.png',
-    },
-    {
-        key: 'vietyaku',
-        to: '/studio/vietyaku',
-        span: 'sm:col-span-5',
-        logo: <img src="/vietyaku-logo.png" alt="" className="w-5 h-5 object-contain rounded" />,
-        previewImage: '/images/vietyaku/vietyaku-preview.png',
-        // Ảnh 512×512 trên tile full-width: crop giữa để không chỉ thấy nền trắng
-        previewPosition: 'object-center',
-    },
-];
-
 const UPCOMING_TOOLS: { key: UpcomingKey; icon: ReactNode }[] = [
     {
         key: 'generate',
@@ -99,7 +49,7 @@ const UPCOMING_TOOLS: { key: UpcomingKey; icon: ReactNode }[] = [
 ];
 
 // Thứ tự hiển thị trong tool rail của hero
-const RAIL_ORDER: { key: ActiveKey | UpcomingKey; to?: string }[] = [
+const RAIL_ORDER: { key: StudioToolKey | UpcomingKey; to?: string }[] = [
     { key: 'skills', to: '/studio/skills' },
     { key: 'crm', to: '/studio/crm/subscription' },
     { key: 'vocab', to: '/studio/vocab' },
@@ -238,56 +188,10 @@ export default function StudioHub() {
             <section className="container mx-auto px-6 pt-14 pb-6 max-w-6xl">
                 <HubSectionHeading eyebrow={t('studio.hub.sections.activeEyebrow')} title={t('studio.hub.sections.activeTitle')} />
 
-                <Reveal staggerChildren={0.12} className="grid grid-cols-1 sm:grid-cols-5 gap-4 auto-rows-[230px] md:auto-rows-[250px]">
-                    {ACTIVE_TOOLS.map((tool) => (
+                <Reveal staggerChildren={0.12} className="grid grid-cols-1 sm:grid-cols-5 gap-4">
+                    {STUDIO_TOOLS.map((tool) => (
                         <RevealItem key={tool.key} className={tool.span}>
-                            <Link
-                                to={tool.to}
-                                className="group relative flex h-full w-full flex-col justify-end overflow-hidden rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-card)] transition-colors duration-300 hover:border-[var(--accent-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]"
-                            >
-                                <img
-                                    src={tool.previewImage}
-                                    alt=""
-                                    aria-hidden="true"
-                                    loading="lazy"
-                                    decoding="async"
-                                    className={`absolute inset-0 w-full h-full object-cover ${tool.previewPosition || 'object-top'} transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]`}
-                                />
-                                <div
-                                    className="absolute inset-0 pointer-events-none"
-                                    style={{ background: 'linear-gradient(to top, color-mix(in srgb, var(--bg-primary) 94%, transparent) 0%, color-mix(in srgb, var(--bg-primary) 62%, transparent) 42%, transparent 72%)' }}
-                                />
-
-                                {/* Chip logo + Beta */}
-                                <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-                                    <span className="inline-flex items-center justify-center w-10 h-10 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] backdrop-blur-md">
-                                        {tool.logo}
-                                    </span>
-                                    <span className="px-2 py-1 text-[9px] font-extrabold bg-[var(--bg-card)] backdrop-blur-md text-amber-500 border border-amber-500/30 rounded-md uppercase tracking-widest leading-none select-none">
-                                        Beta
-                                    </span>
-                                </div>
-
-                                <div className="relative p-5 md:p-6 space-y-2">
-                                    <h3 className={`font-black tracking-tight text-[var(--text-primary)] ${tool.featured ? 'text-2xl md:text-3xl' : 'text-xl'}`}>
-                                        {t(`studio.hub.cards.${tool.key}.title`)}
-                                    </h3>
-                                    <p className={`text-sm leading-relaxed text-[var(--text-secondary)] ${tool.featured ? 'max-w-[52ch]' : 'line-clamp-2'}`}>
-                                        {t(`studio.hub.cards.${tool.key}.desc`)}
-                                    </p>
-                                    <div className="flex items-center justify-between gap-4 pt-1.5">
-                                        <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
-                                            {t(`studio.hub.meta.${tool.key}`)}
-                                        </span>
-                                        <span className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-[var(--accent-primary)] whitespace-nowrap">
-                                            {t('studio.hub.open')}
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </div>
-                            </Link>
+                            <StudioToolTile tool={tool} />
                         </RevealItem>
                     ))}
                 </Reveal>

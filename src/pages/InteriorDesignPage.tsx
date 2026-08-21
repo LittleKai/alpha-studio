@@ -4,6 +4,7 @@ import { useAuth } from '../auth/context';
 import { useTranslation } from '../i18n/context';
 import { useConfirm } from '../components/ui/ConfirmDialog';
 import AgentTimeline from '../components/interior/AgentTimeline';
+import StudioBackButton from '../components/studio/StudioBackButton';
 import { uploadToB2 } from '../services/b2StorageService';
 import { commitInlineTemplate } from '../services/interiorTemplateService';
 import { runAgent, resumeAgent, listAgentRuns, getAgentRun, type AgentStep } from '../services/interiorAgentService';
@@ -1008,12 +1009,9 @@ const InteriorDesignPage: React.FC = () => {
     if (!isAuthenticated) {
         return (
             <div className="min-h-[calc(100vh-80px)] bg-[var(--bg-primary)] px-4 py-8">
-                <button
-                    onClick={() => navigate('/studio')}
-                    className="mb-6 inline-flex items-center gap-2 rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] hover:border-[var(--accent-primary)]"
-                >
-                    {t('studio.hub.backToStudio')}
-                </button>
+                <div className="mb-6">
+                    <StudioBackButton variant="inline" />
+                </div>
                 <div className="mx-auto max-w-md rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] p-6 text-center">
                     <h1 className="text-2xl font-bold text-[var(--text-primary)] inline-flex items-center justify-center gap-2 flex-wrap">
                         {t('studio.interior.loginTitle')}
@@ -1038,12 +1036,7 @@ const InteriorDesignPage: React.FC = () => {
             <div className="border-b border-[var(--border-primary)] bg-[var(--bg-card)] px-4 py-3">
                 <div className="mx-auto flex max-w-[1800px] flex-wrap items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
-                        <button
-                            onClick={() => navigate('/studio')}
-                            className="rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)] px-3 py-2 text-sm font-semibold text-[var(--text-primary)] hover:border-[var(--accent-primary)]"
-                        >
-                            {t('studio.hub.backToStudio')}
-                        </button>
+                        <StudioBackButton variant="inline" />
                         <div>
                             <div className="flex items-center gap-2">
                                 <h1 className="text-lg font-bold">{t('studio.interior.title')}</h1>

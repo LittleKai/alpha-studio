@@ -137,13 +137,35 @@ export default {
         upcomingTitle: "Coming to the Studio"
       },
       comingSoon: "Coming soon",
-      meta: {
-        skills: "3000+ skills · Open source · AI agents",
-        crm: "100+ campaigns · 2-month trial · Web & app",
-        vocab: "Flashcards · Web, Windows & Android · Shared library",
-        vietyaku: "Japanese & Chinese to Vietnamese · Offline · Windows"
+      features: {
+        skills: {
+          f1: "Search 3000+ skills by category, technology, or author",
+          f2: "Every skill has a detail page with use cases and a GitHub link",
+          f3: "Copy a skill straight into your own AI agent"
+        },
+        crm: {
+          f1: "Bulk messaging and automated customer care over Zalo",
+          f2: "AI drafts, optimizes scripts, and auto-replies on a monthly quota",
+          f3: "Windows & Android clients, 2-month trial for new accounts"
+        },
+        vocab: {
+          f1: "Build multilingual decks with spaced-repetition review",
+          f2: "Built-in dictionary for English, Vietnamese, Japanese, and Chinese",
+          f3: "Library syncs with your Studio account on Web, Windows, and Android"
+        },
+        vietyaku: {
+          f1: "Referenced & improved from QuickConverter (Tang Thu Vien)",
+          f2: "More algorithms & dictionary sets, with integrated Japanese",
+          f3: "Fully offline translation, portable Windows with auto-updates"
+        }
       },
       open: "Open",
+      meta: {
+        skills: "Web · No install needed",
+        crm: "Windows & Android · 2-month trial",
+        vocab: "Web, Windows & Android",
+        vietyaku: "Windows · Android (Coming Soon)"
+      },
       backToStudio: "Back to Studio",
       cards: {
         generate: {
@@ -166,7 +188,8 @@ export default {
             downloadPCTitle: "Windows Client",
             downloadPCDesc: "v{{version}} PC Setup",
             downloadAndroidTitle: "Android APK",
-            downloadAndroidDesc: "Pair QR Connector",
+            downloadAndroidDesc: "Demo (Not Officially Active)",
+            downloadAndroidNotice: "The Android APK is currently a demo preview and is not yet officially active.",
             downloadsHeading: "Download Client & Connectors:",
             
             statusTitle: "License Status",
@@ -201,7 +224,7 @@ export default {
             timelineStep1Title: "Get Alpha CRM License",
             timelineStep1Desc: "Activate via Credit Wallet or scan the bank transfer VietQR below.",
             timelineStep2Title: "Download Client & Connector",
-            timelineStep2Desc: "Download the Windows Client PC Setup and Android APK Connector from the top section.",
+            timelineStep2Desc: "Download the Windows Client PC Setup (official) and Android APK (currently a demo preview, not yet active) to install.",
             timelineStep3Title: "Launch & Pair Your Device",
             timelineStep3Desc: "Launch the PC app, sign in, and scan the Pair QR code from your Android device to connect.",
             timelineStep4Title: "Run CRM Automation Funnel",
@@ -353,30 +376,46 @@ export default {
         },
         vietyaku: {
           title: "VietYaku",
-          desc: "Fully offline Japanese/Chinese to Vietnamese translator, Windows build",
+          desc: "Referenced from QuickConverter (Tang Thu Vien), improved with more dictionaries, algorithms, and integrated Japanese",
           page: {
             tag: "Offline translation app",
-            title: "VietYaku for Windows",
-            subtitle: "Translate Japanese and Chinese novels and documents into Vietnamese the VietPhrase way — the dictionaries ship inside the app, so it works with no network at all. Includes a repair tool for corrupted Japanese dictionaries.",
+            title: "VietYaku for Windows & Android",
+            subtitle: "Translate Japanese and Chinese novels and documents into Vietnamese the VietPhrase way — referenced from Tang Thu Vien's QuickConverter and improved with expanded dictionary collections, flexible algorithms, and full offline Japanese translation. Includes a repair tool for corrupted Japanese dictionaries.",
             downloadTitle: "Download the latest build",
-            downloadDesc: "A ready-to-run ZIP, no installer. Unzip it and open VietYaku.exe.",
+            downloadDesc: "A ready-to-run ZIP for Windows (no installer required) and mobile Android APK build.",
             downloadWindows: "Download for Windows",
-            viewGithub: "View on GitHub",
+            downloadAndroid: "Download Android APK",
+            downloadAndroidDesc: "Android App (Coming Soon)",
+            downloadAndroidNotice: "The Android APK is currently under development and will be officially released soon.",
+            comingSoonBadge: "Coming Soon",
             releaseLoading: "Checking version...",
             releaseVersion: "Version {{version}}",
             releaseDate: "Updated {{date}}",
             releaseFallback: "Could not read the release metadata, falling back to the previous download link.",
-            updateNote: "Once installed, the app checks for new versions on its own and tells you when one is out — you do not need to come back here to update.",
+            updateNote: "Once installed on Windows, the app checks for new versions automatically and notifies you — no need to check back manually.",
+            screenshotsHeading: "Inside the app",
+            prevShot: "Previous screenshot",
+            nextShot: "Next screenshot",
+            shot1: "The Translate screen on launch — paste text into the Source pane and it translates",
+            shot2: "Japanese to Vietnamese, with every reading of each phrase in the right pane",
+            shot3: "Click a word to see its meaning across several dictionaries at once",
+            shot4: "Online lookup across Mazii, Google Translate, Jisho and Weblio side by side",
+            shot5: "Chinese mode, including the condensed single-meaning translation",
+            shot6: "Settings for the translation algorithm, clipboard reader and online sources",
             featuresHeading: "Highlights",
             featureOfflineTitle: "Offline translation",
             featureOfflineDesc: "Dictionaries ship with the app and translate instantly using greedy longest-match, without sending your text anywhere.",
+            featureOriginTitle: "QuickConverter Heritage & Improvements",
+            featureOriginDesc: "Referenced from Tang Thu Vien's QuickConverter, upgraded with multiple scan algorithms, expanded dictionary collections, and integrated Japanese support.",
             featureLookupTitle: "Multi-source lookup",
             featureLookupDesc: "Pull extra definitions from Mazii, Jisho, Weblio and Youdao when you are online, right in the meaning pane of the selected word.",
             featureRepairTitle: "Dictionary repair",
             featureRepairDesc: "Repairs Quick Translator's mojibake Japanese dictionaries and writes a new file, never overwriting the original.",
             requirementsHeading: "Requirements & notes",
+            requirementOrigin: "Referenced from QuickConverter (Tang Thu Vien), enhanced with richer dictionaries, versatile algorithms, and Japanese integration.",
             requirementOs: "Windows 10 or newer, 64-bit.",
-            requirementPortable: "Runs portable — your data stays in a userdata folder next to the .exe.",
+            requirementAndroid: "Android: Planned support for Android 8.0+ upon mobile release.",
+            requirementPortable: "Runs portable on Windows — your personal data stays in a userdata folder next to the .exe.",
             requirementSize: "The download is fairly large because the Japanese and Chinese dictionaries are bundled in."
           }
         },

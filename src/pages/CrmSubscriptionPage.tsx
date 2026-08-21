@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { useAuth } from '../auth/context';
 import {
@@ -16,6 +15,7 @@ import {
     CRM_MONTHLY_RENEWAL_PLAN,
     buildRenewalConfirmationDetails,
 } from './crmSubscriptionRenewal';
+import StudioBackButton from '../components/studio/StudioBackButton';
 
 const SparkleIcon = () => (
   <svg
@@ -56,7 +56,6 @@ interface CrmProductSelection {
 export default function CrmSubscriptionPage() {
     const { t } = useTranslation();
     const { user, refreshUser } = useAuth();
-    const navigate = useNavigate();
 
     // Data states
     const [sub, setSub] = useState<CrmSubscription | null>(null);
@@ -236,15 +235,7 @@ export default function CrmSubscriptionPage() {
 
     return (
         <div className="min-h-[calc(100vh-64px)] bg-[var(--bg-primary)] p-4 sm:p-8 pt-14 sm:pt-16 text-[var(--text-primary)] relative overflow-hidden">
-            <button
-                onClick={() => navigate('/studio')}
-                className="fixed top-20 left-4 z-40 hidden md:inline-flex items-center gap-2 px-4 py-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-full shadow-lg text-sm font-semibold text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] hover:border-[var(--accent-primary)] hover:scale-105 transition-all"
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                {t('studio.hub.backToStudio')}
-            </button>
+            <StudioBackButton />
             {/* Custom Embedded Premium Styles */}
             <style dangerouslySetInnerHTML={{ __html: `
                 .premium-title-gradient {
@@ -458,51 +449,62 @@ export default function CrmSubscriptionPage() {
                                         </button>
                                     </div>
                                 ) : (
-                                    <div className="grid grid-cols-2 gap-3.5">
-                                        {/* Windows Download Card */}
-                                        <a
-                                            href={release.windowsInstallerUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex items-center gap-3 p-3 bg-gradient-to-r from-sky-600 to-cyan-600 border border-sky-500/30 rounded-xl hover:border-cyan-400/50 hover:from-sky-500 hover:to-cyan-500 transition-all text-left spring-bounce shadow-md"
-                                        >
-                                            <div className="w-9 h-9 rounded-lg bg-white/10 text-cyan-100 flex items-center justify-center shrink-0">
-                                                <svg className="w-5.5 h-5.5" fill="currentColor" viewBox="0 0 24 24">
-                                                    <path d="M0 3.449L9.75 2.1v9.45H0V3.449zM0 12.45h9.75v9.45L0 20.551v-8.101zM11.25 1.9L24 0v11.55H11.25V1.9zM11.25 12.45H24v11.55l-12.75-1.9v-9.65z"/>
-                                                </svg>
-                                            </div>
-                                            <div className="space-y-0.5 select-none">
-                                                <span className="block font-bold text-xs text-white">
-                                                    {t('studio.hub.cards.crm.subscription.downloadPCTitle') || 'Windows Client'}
-                                                </span>
-                                                <span className="block text-[10px] text-white/90 monospaced-nums font-medium">
-                                                    {t('studio.hub.cards.crm.subscription.downloadPCDesc').replace('{{version}}', release.version)}
-                                                </span>
-                                            </div>
-                                        </a>
+                                    <>
+                                        <div className="grid grid-cols-2 gap-3.5">
+                                            {/* Windows Download Card */}
+                                            <a
+                                                href={release.windowsInstallerUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center gap-3 p-3 bg-gradient-to-r from-sky-600 to-cyan-600 border border-sky-500/30 rounded-xl hover:border-cyan-400/50 hover:from-sky-500 hover:to-cyan-500 transition-all text-left spring-bounce shadow-md"
+                                            >
+                                                <div className="w-9 h-9 rounded-lg bg-white/10 text-cyan-100 flex items-center justify-center shrink-0">
+                                                    <svg className="w-5.5 h-5.5" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M0 3.449L9.75 2.1v9.45H0V3.449zM0 12.45h9.75v9.45L0 20.551v-8.101zM11.25 1.9L24 0v11.55H11.25V1.9zM11.25 12.45H24v11.55l-12.75-1.9v-9.65z"/>
+                                                    </svg>
+                                                </div>
+                                                <div className="space-y-0.5 select-none">
+                                                    <span className="block font-bold text-xs text-white">
+                                                        {t('studio.hub.cards.crm.subscription.downloadPCTitle') || 'Windows Client'}
+                                                    </span>
+                                                    <span className="block text-[10px] text-white/90 monospaced-nums font-medium">
+                                                        {t('studio.hub.cards.crm.subscription.downloadPCDesc').replace('{{version}}', release.version)}
+                                                    </span>
+                                                </div>
+                                            </a>
 
-                                        {/* Android Download Card */}
-                                        <a
-                                            href={release.androidApkUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex items-center gap-3 p-3 bg-gradient-to-r from-sky-600 to-cyan-600 border border-sky-500/30 rounded-xl hover:border-cyan-400/50 hover:from-sky-500 hover:to-cyan-500 transition-all text-left spring-bounce shadow-md"
-                                        >
-                                            <div className="w-9 h-9 rounded-lg bg-white/10 text-cyan-100 flex items-center justify-center shrink-0">
-                                                <svg className="w-5.5 h-5.5" fill="currentColor" viewBox="0 0 24 24">
-                                                    <path d="M17.523 15.3l1.816 3.146a.5.5 0 01-.173.682.5.5 0 01-.682-.172L16.63 15.75c-1.42.617-2.992.95-4.63.95s-3.21-.333-4.63-.95L5.516 18.8a.5.5 0 01-.682.173.5.5 0 01-.173-.682l1.816-3.146C3.722 13.784 2 11.082 2 8h20c0 3.082-1.722 5.784-4.477 7.3zM7 6a1 1 0 100-2 1 1 0 000 2zm10 0a1 1 0 100-2 1 1 0 000 2z"/>
-                                                </svg>
-                                            </div>
-                                            <div className="space-y-0.5 select-none">
-                                                <span className="block font-bold text-xs text-white">
-                                                    {t('studio.hub.cards.crm.subscription.downloadAndroidTitle') || 'Android APK'}
-                                                </span>
-                                                <span className="block text-[10px] text-white/90 font-medium">
-                                                    {t('studio.hub.cards.crm.subscription.downloadAndroidDesc') || 'Pair QR Connector'}
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </div>
+                                            {/* Android Download Card */}
+                                            <a
+                                                href={release.androidApkUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center gap-3 p-3 bg-gradient-to-r from-sky-700/80 to-cyan-700/80 border border-sky-500/40 rounded-xl hover:border-cyan-400/50 hover:from-sky-600 hover:to-cyan-600 transition-all text-left spring-bounce shadow-md relative"
+                                            >
+                                                <div className="w-9 h-9 rounded-lg bg-white/10 text-cyan-100 flex items-center justify-center shrink-0">
+                                                    <svg className="w-5.5 h-5.5" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M17.523 15.3l1.816 3.146a.5.5 0 01-.173.682.5.5 0 01-.682-.172L16.63 15.75c-1.42.617-2.992.95-4.63.95s-3.21-.333-4.63-.95L5.516 18.8a.5.5 0 01-.682.173.5.5 0 01-.173-.682l1.816-3.146C3.722 13.784 2 11.082 2 8h20c0 3.082-1.722 5.784-4.477 7.3zM7 6a1 1 0 100-2 1 1 0 000 2zm10 0a1 1 0 100-2 1 1 0 000 2z"/>
+                                                    </svg>
+                                                </div>
+                                                <div className="space-y-0.5 select-none">
+                                                    <div className="flex items-center gap-1.5">
+                                                        <span className="block font-bold text-xs text-white">
+                                                            {t('studio.hub.cards.crm.subscription.downloadAndroidTitle') || 'Android APK'}
+                                                        </span>
+                                                        <span className="px-1.5 py-0.5 rounded text-[9px] font-extrabold bg-amber-400/25 text-amber-200 border border-amber-400/40 uppercase tracking-wide">
+                                                            DEMO
+                                                        </span>
+                                                    </div>
+                                                    <span className="block text-[10px] text-white/90 font-medium">
+                                                        {t('studio.hub.cards.crm.subscription.downloadAndroidDesc') || 'Bản Demo (Chưa hoạt động)'}
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <p className="text-[11px] text-amber-300/80 flex items-center gap-1.5 mt-2.5">
+                                            <span>⚠️</span>
+                                            <span>{t('studio.hub.cards.crm.subscription.downloadAndroidNotice') || 'Bản Android APK hiện chỉ đang thử nghiệm (demo), chưa hoạt động chính thức.'}</span>
+                                        </p>
+                                    </>
                                 )}
                             </div>
                         </div>

@@ -137,13 +137,35 @@ export default {
         upcomingTitle: "Sắp có mặt trong Studio"
       },
       comingSoon: "Sắp ra mắt",
-      meta: {
-        skills: "3000+ kỹ năng · Mã nguồn mở · AI Agent",
-        crm: "100+ chiến dịch · Dùng thử 2 tháng · Web & App",
-        vocab: "Flashcard · Web, Windows & Android · Thư viện chung",
-        vietyaku: "Nhật & Trung sang Việt · Ngoại tuyến · Windows"
+      features: {
+        skills: {
+          f1: "Tìm kiếm hơn 3000 kỹ năng theo danh mục, công nghệ hoặc tác giả",
+          f2: "Mỗi kỹ năng có trang chi tiết kèm tình huống ứng dụng và link GitHub",
+          f3: "Sao chép nội dung kỹ năng để gắn thẳng vào AI Agent của bạn"
+        },
+        crm: {
+          f1: "Gửi tin nhắn hàng loạt và chăm sóc khách hàng tự động qua Zalo",
+          f2: "AI soạn thảo, tối ưu kịch bản và phản hồi tự động theo quota hàng tháng",
+          f3: "Client Windows & Android, dùng thử 2 tháng cho tài khoản mới"
+        },
+        vocab: {
+          f1: "Tạo bộ thẻ đa ngôn ngữ, ôn tập theo lặp lại ngắt quãng",
+          f2: "Từ điển tích hợp cho tiếng Anh, Việt, Nhật và Trung",
+          f3: "Đồng bộ thư viện qua tài khoản Studio trên Web, Windows và Android"
+        },
+        vietyaku: {
+          f1: "Tham khảo & cải tiến từ QuickConverter (Tàng Thư Viện)",
+          f2: "Bổ sung nhiều thuật toán & bộ từ điển, tích hợp thêm tiếng Nhật",
+          f3: "Dịch ngoại tuyến hoàn toàn, bản Windows portable tự động cập nhật"
+        }
       },
       open: "Mở",
+      meta: {
+        skills: "Web · Không cần cài đặt",
+        crm: "Windows & Android · Dùng thử 2 tháng",
+        vocab: "Web, Windows & Android",
+        vietyaku: "Windows · Android (Sắp ra mắt)"
+      },
       backToStudio: "Quay lại Studio",
       cards: {
         generate: {
@@ -166,7 +188,8 @@ export default {
             downloadPCTitle: "Windows Client",
             downloadPCDesc: "v{{version}} PC Setup",
             downloadAndroidTitle: "Android APK",
-            downloadAndroidDesc: "Pair QR Connector",
+            downloadAndroidDesc: "Bản Demo (Chưa hoạt động)",
+            downloadAndroidNotice: "Bản Android APK hiện chỉ đang thử nghiệm (demo), chưa hoạt động chính thức.",
             downloadsHeading: "Tải bộ cài đặt Client & Connectors:",
             
             statusTitle: "Trạng thái giấy phép",
@@ -201,7 +224,7 @@ export default {
             timelineStep1Title: "Sở hữu Giấy phép Alpha CRM",
             timelineStep1Desc: "Kích hoạt thông qua Tín dụng ví (Credits) hoặc chuyển khoản VietQR ở dưới.",
             timelineStep2Title: "Tải Client & Pairing Connector",
-            timelineStep2Desc: "Tải bản cài đặt Windows Client và ứng dụng di động Android APK (nằm ngay ở phần đầu trang) để cài đặt.",
+            timelineStep2Desc: "Tải bản cài đặt Windows Client (chính thức) và ứng dụng di động Android APK (hiện đang thử nghiệm demo, chưa hoạt động chính thức) để cài đặt.",
             timelineStep3Title: "Khởi chạy & Kết nối pairing thiết bị",
             timelineStep3Desc: "Mở app PC Windows, đăng nhập và quét mã QR ghép nối từ thiết bị Android của bạn để tạo cầu nối gửi tin nhắn.",
             timelineStep4Title: "Vận hành phễu tự động hóa CRM",
@@ -353,30 +376,46 @@ export default {
         },
         vietyaku: {
           title: "VietYaku",
-          desc: "Dịch Nhật/Trung sang Việt hoàn toàn ngoại tuyến, có bản Windows",
+          desc: "Tham khảo từ QuickConverter (Tàng Thư Viện), cải tiến thuật toán, thêm nhiều bộ từ điển và tích hợp tiếng Nhật ngoại tuyến",
           page: {
             tag: "Ứng dụng dịch ngoại tuyến",
-            title: "VietYaku cho Windows",
-            subtitle: "Dịch truyện và tài liệu tiếng Nhật, tiếng Trung sang tiếng Việt theo kiểu VietPhrase — toàn bộ bộ từ điển nằm sẵn trong máy nên dịch được cả khi không có mạng. Kèm công cụ sửa bộ từ điển tiếng Nhật bị lỗi phông.",
+            title: "VietYaku cho Windows & Android",
+            subtitle: "Dịch truyện và tài liệu tiếng Nhật, tiếng Trung sang tiếng Việt theo kiểu VietPhrase — được tham khảo từ QuickConverter của Tàng Thư Viện và cải tiến với thêm nhiều bộ từ điển, thuật toán linh hoạt và tích hợp thêm tiếng Nhật ngoại tuyến hoàn toàn. Kèm công cụ sửa bộ từ điển tiếng Nhật bị lỗi phông.",
             downloadTitle: "Tải bản mới nhất",
-            downloadDesc: "Gói ZIP chạy ngay, không cần cài đặt. Giải nén rồi mở VietYaku.exe là dùng được.",
+            downloadDesc: "Gói ZIP chạy ngay cho Windows (không cần cài đặt) và phiên bản di động Android APK.",
             downloadWindows: "Tải cho Windows",
-            viewGithub: "Xem trên GitHub",
+            downloadAndroid: "Tải Android APK",
+            downloadAndroidDesc: "Bản Android (Sắp ra mắt)",
+            downloadAndroidNotice: "Bản cài đặt Android APK đang được hoàn thiện và sẽ sớm được phát hành chính thức.",
+            comingSoonBadge: "Sắp ra mắt",
             releaseLoading: "Đang kiểm tra phiên bản...",
             releaseVersion: "Phiên bản {{version}}",
             releaseDate: "Cập nhật {{date}}",
             releaseFallback: "Chưa đọc được thông tin phát hành, hệ thống đang dùng link tải dự phòng.",
-            updateNote: "Sau khi cài, ứng dụng tự kiểm tra và thông báo khi có bản mới — bạn không cần quay lại trang này để cập nhật.",
+            updateNote: "Sau khi cài đặt trên Windows, ứng dụng tự kiểm tra và thông báo khi có bản mới — bạn không cần quay lại trang này để cập nhật thủ công.",
+            screenshotsHeading: "Giao diện ứng dụng",
+            prevShot: "Ảnh trước",
+            nextShot: "Ảnh tiếp theo",
+            shot1: "Màn hình Dịch khi mới mở, dán văn bản vào ô Nguồn là dịch",
+            shot2: "Dịch Nhật sang Việt, cột phải hiện đủ các nghĩa của từng cụm",
+            shot3: "Nháy vào chữ để xem nghĩa từ nhiều bộ từ điển cùng lúc",
+            shot4: "Tra online song song Mazii, Google Dịch, Jisho và Weblio",
+            shot5: "Chế độ tiếng Trung, có cả bản dịch gọn một nghĩa",
+            shot6: "Cài đặt thuật toán dịch, clipboard reader và nguồn tra online",
             featuresHeading: "Điểm nổi bật",
             featureOfflineTitle: "Dịch ngoại tuyến",
             featureOfflineDesc: "Bộ từ điển đi kèm ứng dụng, dịch tức thì bằng thuật toán khớp cụm dài nhất mà không gửi dữ liệu đi đâu.",
+            featureOriginTitle: "Kế thừa & Cải tiến từ QuickConverter",
+            featureOriginDesc: "Tham khảo từ QuickConverter của Tàng Thư Viện, nâng cấp với nhiều thuật toán quét cụm từ linh hoạt, mở rộng thêm các bộ từ điển phong phú và tích hợp thêm tiếng Nhật.",
             featureLookupTitle: "Tra nghĩa nhiều nguồn",
             featureLookupDesc: "Tra thêm nghĩa từ Mazii, Jisho, Weblio và Youdao khi có mạng, ngay trong ô nghĩa của từ đang chọn.",
             featureRepairTitle: "Sửa từ điển lỗi phông",
             featureRepairDesc: "Công cụ sửa bộ từ điển tiếng Nhật bị hỏng của Quick Translator, xuất ra file mới mà không ghi đè bản gốc.",
             requirementsHeading: "Yêu cầu & lưu ý",
+            requirementOrigin: "Ứng dụng được tham khảo từ QuickConverter (Tàng Thư Viện) và cải tiến với thêm nhiều bộ từ điển, thuật toán và tích hợp thêm tiếng Nhật.",
             requirementOs: "Windows 10 trở lên, bản 64-bit.",
-            requirementPortable: "Chạy dạng portable — dữ liệu cá nhân lưu trong thư mục userdata cạnh file .exe.",
+            requirementAndroid: "Android: Dự kiến hỗ trợ Android 8.0 trở lên khi phát hành phiên bản di động.",
+            requirementPortable: "Chạy dạng portable trên Windows — dữ liệu cá nhân lưu trong thư mục userdata cạnh file .exe.",
             requirementSize: "Dung lượng tải khá lớn do bộ từ điển Nhật và Trung được đóng gói sẵn."
           }
         },

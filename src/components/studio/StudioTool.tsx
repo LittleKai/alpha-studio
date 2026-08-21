@@ -9,6 +9,7 @@ import { lazy, Suspense, useState } from 'react';
 import { useTranslation } from '../../i18n/context';
 import Login from '../ui/Login';
 import LoadingSpinner from '../ui/LoadingSpinner';
+import StudioBackButton from './StudioBackButton';
 import type { ImageConfig, VideoConfig } from './StudioFlowGen';
 
 const StudioFlowGen = lazy(() => import('./StudioFlowGen'));
@@ -49,15 +50,7 @@ export default function StudioTool({ onBack, mode }: StudioToolProps) {
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
-      <button
-        onClick={onBack}
-        className="fixed top-20 left-4 z-40 hidden md:inline-flex items-center gap-2 px-4 py-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-full shadow-lg text-sm font-semibold text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] hover:border-[var(--accent-primary)] hover:scale-105 transition-all"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-        </svg>
-        {t('studio.hub.backToStudio')}
-      </button>
+      <StudioBackButton onClick={onBack} />
 
       <main className="container mx-auto px-4 py-8 max-w-4xl">
         <header className="mb-8">

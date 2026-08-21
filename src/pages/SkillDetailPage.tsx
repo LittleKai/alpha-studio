@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
+import StudioBackButton from '../components/studio/StudioBackButton';
 import { getSkillBySlug, type SkillDetail, type Skill } from '../services/skillService';
 
 // Skill interface now imported from skillService
@@ -282,18 +283,8 @@ export default function SkillDetailPage() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Back navigation buttons */}
         <div className="flex flex-wrap items-center gap-3 mb-6">
-          <button 
-            onClick={() => navigate('/studio')}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[#ff5a1f] text-[var(--text-secondary)] hover:text-[#ff5a1f] text-xs font-semibold transition-all cursor-pointer focus:outline-none shadow-sm animate-fade-in"
-          >
-            &larr; {t('skills.backToStudio')}
-          </button>
-          <button 
-            onClick={() => navigate('/studio/skills')}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[#ff5a1f] text-[var(--text-secondary)] hover:text-[#ff5a1f] text-xs font-semibold transition-all cursor-pointer focus:outline-none shadow-sm animate-fade-in"
-          >
-            &larr; {t('skills.backToSkills')}
-          </button>
+          <StudioBackButton variant="inline" to="/studio" />
+          <StudioBackButton variant="inline" to="/studio/skills" label={t('skills.backToSkills')} />
         </div>
         
         {/* TOP HEADER SECTION (Matches screenshot layout) */}

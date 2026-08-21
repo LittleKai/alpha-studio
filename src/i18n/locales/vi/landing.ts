@@ -124,6 +124,8 @@ export default {
       title: "Hệ Sinh Thái Công Cụ AI Studio",
       subtitle: "Bộ công cụ chuyên nghiệp phục vụ học tập, quản lý công việc và phát triển kỹ năng AI.",
       explore: "Truy cập Studio",
+      hubTitle: "Alpha Studio Hub — toàn bộ công cụ trong một nơi",
+      hubDesc: "Bốn công cụ đang mở và ba công cụ sắp ra mắt: tạo ảnh & video, chỉnh sửa ảnh và thiết kế nội thất.",
       crm: {
         title: "Alpha CRM",
         desc: "Hệ thống quản lý khách hàng, dự án và thanh toán tự động, tối ưu hóa quy trình làm việc cho freelancer sự kiện chuyên nghiệp."
