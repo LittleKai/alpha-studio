@@ -116,8 +116,33 @@ export default {
       edit: "Edit"
     },
     hub: {
-      title: "AI Studio Toolkit",
-      subtitle: "Pick the tool you want to use",
+      hero: {
+        badge: "Alpha Studio Ecosystem · Beta",
+        title1: "AI Studio",
+        title2: "The creative toolkit",
+        subtitle: "Four tools are open to every account: the AI Skills Library, Alpha CRM for Zalo marketing, VocabFlip for vocabulary practice, and VietYaku for Japanese/Chinese to Vietnamese translation. Three more are being finished in the workshop.",
+        stats: {
+          live: "Tools live",
+          upcoming: "Coming soon",
+          skills: "AI skills",
+          beta: "Free during Beta"
+        },
+        railLabel: "All tools",
+        railNote: "Every tool is in Beta; features may change before the stable release."
+      },
+      sections: {
+        activeEyebrow: "Live now",
+        activeTitle: "Pick a tool to start",
+        upcomingEyebrow: "Roadmap",
+        upcomingTitle: "Coming to the Studio"
+      },
+      comingSoon: "Coming soon",
+      meta: {
+        skills: "3000+ skills · Open source · AI agents",
+        crm: "100+ campaigns · 2-month trial · Web & app",
+        vocab: "Flashcards · Web, Windows & Android · Shared library",
+        vietyaku: "Japanese & Chinese to Vietnamese · Offline · Windows"
+      },
       open: "Open",
       backToStudio: "Back to Studio",
       cards: {
@@ -151,7 +176,7 @@ export default {
             statusInactive: "Not Registered",
             statusExpiry: "Valid until: {{date}}",
             statusTrialExpiry: "Trial ends: {{date}}",
-            statusTrialDesc: "Each new account gets one trial only: 14 days and 100 AI requests.",
+            statusTrialDesc: "Each new account gets one trial only: 2 months (60 days) and 100 AI requests.",
             statusExpiredDesc: "Expired on {{date}}. Please renew to restore Zalo auto-messaging features.",
             statusInactiveDesc: "You do not have an active Alpha CRM license yet. Subscribe now to link your bot and start campaigns.",
             renewBtn: "Renew Monthly",
@@ -324,6 +349,35 @@ export default {
               libraryBullet2: "Instant cloud sync via your Alpha Studio account",
               libraryBullet3: "AI assistant for generating custom decks on demand",
             }
+          }
+        },
+        vietyaku: {
+          title: "VietYaku",
+          desc: "Fully offline Japanese/Chinese to Vietnamese translator, Windows build",
+          page: {
+            tag: "Offline translation app",
+            title: "VietYaku for Windows",
+            subtitle: "Translate Japanese and Chinese novels and documents into Vietnamese the VietPhrase way — the dictionaries ship inside the app, so it works with no network at all. Includes a repair tool for corrupted Japanese dictionaries.",
+            downloadTitle: "Download the latest build",
+            downloadDesc: "A ready-to-run ZIP, no installer. Unzip it and open VietYaku.exe.",
+            downloadWindows: "Download for Windows",
+            viewGithub: "View on GitHub",
+            releaseLoading: "Checking version...",
+            releaseVersion: "Version {{version}}",
+            releaseDate: "Updated {{date}}",
+            releaseFallback: "Could not read the release metadata, falling back to the previous download link.",
+            updateNote: "Once installed, the app checks for new versions on its own and tells you when one is out — you do not need to come back here to update.",
+            featuresHeading: "Highlights",
+            featureOfflineTitle: "Offline translation",
+            featureOfflineDesc: "Dictionaries ship with the app and translate instantly using greedy longest-match, without sending your text anywhere.",
+            featureLookupTitle: "Multi-source lookup",
+            featureLookupDesc: "Pull extra definitions from Mazii, Jisho, Weblio and Youdao when you are online, right in the meaning pane of the selected word.",
+            featureRepairTitle: "Dictionary repair",
+            featureRepairDesc: "Repairs Quick Translator's mojibake Japanese dictionaries and writes a new file, never overwriting the original.",
+            requirementsHeading: "Requirements & notes",
+            requirementOs: "Windows 10 or newer, 64-bit.",
+            requirementPortable: "Runs portable — your data stays in a userdata folder next to the .exe.",
+            requirementSize: "The download is fairly large because the Japanese and Chinese dictionaries are bundled in."
           }
         },
         interior: {

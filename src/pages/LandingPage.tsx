@@ -647,7 +647,7 @@ const LandingPage: React.FC = () => {
                                 desc={t('landing.toolsShowcase.crm.desc')}
                                 stats={[
                                     { bigText: '100+', regularText: language === 'vi' ? 'Chiến dịch' : 'Campaigns' },
-                                    { bigText: '14 Ngày', regularText: language === 'vi' ? 'Dùng thử' : 'Trial' },
+                                    { bigText: '2 Tháng', regularText: language === 'vi' ? 'Dùng thử' : 'Trial' },
                                     { bigText: 'Web/App', regularText: language === 'vi' ? 'Đa nền tảng' : 'Platform' }
                                 ]}
                             />

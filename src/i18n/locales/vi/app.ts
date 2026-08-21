@@ -116,8 +116,33 @@ export default {
       edit: "Chỉnh sửa"
     },
     hub: {
-      title: "Bộ công cụ AI Studio",
-      subtitle: "Chọn công cụ bạn muốn dùng",
+      hero: {
+        badge: "Hệ sinh thái Alpha Studio · Beta",
+        title1: "AI Studio",
+        title2: "Bộ công cụ sáng tạo",
+        subtitle: "Bốn công cụ đang mở cho mọi tài khoản: Thư viện Kỹ năng AI, Alpha CRM cho tiếp thị Zalo, VocabFlip học từ vựng và VietYaku dịch Nhật/Trung sang Việt. Ba công cụ nữa đang được hoàn thiện trong xưởng.",
+        stats: {
+          live: "Công cụ đang mở",
+          upcoming: "Sắp ra mắt",
+          skills: "Kỹ năng AI",
+          beta: "Miễn phí trong Beta"
+        },
+        railLabel: "Toàn bộ công cụ",
+        railNote: "Mọi công cụ đều trong giai đoạn Thử nghiệm (Beta), tính năng có thể thay đổi trước bản chính thức."
+      },
+      sections: {
+        activeEyebrow: "Đang hoạt động",
+        activeTitle: "Chọn công cụ để bắt đầu",
+        upcomingEyebrow: "Lộ trình",
+        upcomingTitle: "Sắp có mặt trong Studio"
+      },
+      comingSoon: "Sắp ra mắt",
+      meta: {
+        skills: "3000+ kỹ năng · Mã nguồn mở · AI Agent",
+        crm: "100+ chiến dịch · Dùng thử 2 tháng · Web & App",
+        vocab: "Flashcard · Web, Windows & Android · Thư viện chung",
+        vietyaku: "Nhật & Trung sang Việt · Ngoại tuyến · Windows"
+      },
       open: "Mở",
       backToStudio: "Quay lại Studio",
       cards: {
@@ -151,7 +176,7 @@ export default {
             statusInactive: "Chưa Đăng Ký",
             statusExpiry: "Hạn sử dụng đến: {{date}}",
             statusTrialExpiry: "Dùng thử đến: {{date}}",
-            statusTrialDesc: "Mỗi tài khoản mới chỉ được cấp 1 lần dùng thử: 14 ngày và 100 yêu cầu AI.",
+            statusTrialDesc: "Mỗi tài khoản mới chỉ được cấp 1 lần dùng thử: 2 tháng (60 ngày) và 100 yêu cầu AI.",
             statusExpiredDesc: "Đã kết thúc vào {{date}}. Hãy gia hạn để khôi phục các tác vụ tự động gửi tin nhắn.",
             statusInactiveDesc: "Bạn chưa có giấy phép Alpha CRM. Sở hữu giấy phép ngay để liên kết bot và bắt đầu chiến dịch.",
             renewBtn: "Gia hạn gói hàng tháng",
@@ -324,6 +349,35 @@ export default {
               libraryBullet2: "Đồng bộ đám mây tức thì qua tài khoản Alpha Studio",
               libraryBullet3: "Trợ lý AI hỗ trợ tự động tạo thẻ từ vựng theo yêu cầu",
             }
+          }
+        },
+        vietyaku: {
+          title: "VietYaku",
+          desc: "Dịch Nhật/Trung sang Việt hoàn toàn ngoại tuyến, có bản Windows",
+          page: {
+            tag: "Ứng dụng dịch ngoại tuyến",
+            title: "VietYaku cho Windows",
+            subtitle: "Dịch truyện và tài liệu tiếng Nhật, tiếng Trung sang tiếng Việt theo kiểu VietPhrase — toàn bộ bộ từ điển nằm sẵn trong máy nên dịch được cả khi không có mạng. Kèm công cụ sửa bộ từ điển tiếng Nhật bị lỗi phông.",
+            downloadTitle: "Tải bản mới nhất",
+            downloadDesc: "Gói ZIP chạy ngay, không cần cài đặt. Giải nén rồi mở VietYaku.exe là dùng được.",
+            downloadWindows: "Tải cho Windows",
+            viewGithub: "Xem trên GitHub",
+            releaseLoading: "Đang kiểm tra phiên bản...",
+            releaseVersion: "Phiên bản {{version}}",
+            releaseDate: "Cập nhật {{date}}",
+            releaseFallback: "Chưa đọc được thông tin phát hành, hệ thống đang dùng link tải dự phòng.",
+            updateNote: "Sau khi cài, ứng dụng tự kiểm tra và thông báo khi có bản mới — bạn không cần quay lại trang này để cập nhật.",
+            featuresHeading: "Điểm nổi bật",
+            featureOfflineTitle: "Dịch ngoại tuyến",
+            featureOfflineDesc: "Bộ từ điển đi kèm ứng dụng, dịch tức thì bằng thuật toán khớp cụm dài nhất mà không gửi dữ liệu đi đâu.",
+            featureLookupTitle: "Tra nghĩa nhiều nguồn",
+            featureLookupDesc: "Tra thêm nghĩa từ Mazii, Jisho, Weblio và Youdao khi có mạng, ngay trong ô nghĩa của từ đang chọn.",
+            featureRepairTitle: "Sửa từ điển lỗi phông",
+            featureRepairDesc: "Công cụ sửa bộ từ điển tiếng Nhật bị hỏng của Quick Translator, xuất ra file mới mà không ghi đè bản gốc.",
+            requirementsHeading: "Yêu cầu & lưu ý",
+            requirementOs: "Windows 10 trở lên, bản 64-bit.",
+            requirementPortable: "Chạy dạng portable — dữ liệu cá nhân lưu trong thư mục userdata cạnh file .exe.",
+            requirementSize: "Dung lượng tải khá lớn do bộ từ điển Nhật và Trung được đóng gói sẵn."
           }
         },
         interior: {

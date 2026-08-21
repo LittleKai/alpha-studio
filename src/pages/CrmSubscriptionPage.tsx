@@ -604,7 +604,7 @@ export default function CrmSubscriptionPage() {
                                             </p>
                                             {isTrial && (
                                                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                                                    {t('studio.hub.cards.crm.subscription.statusTrialDesc') || 'Mỗi tài khoản mới chỉ được cấp 1 lần dùng thử: 7 ngày và 50 yêu cầu AI.'}
+                                                    {t('studio.hub.cards.crm.subscription.statusTrialDesc') || 'Mỗi tài khoản mới chỉ được cấp 1 lần dùng thử: 2 tháng và 100 yêu cầu AI.'}
                                                 </p>
                                             )}
                                         </div>
@@ -675,7 +675,7 @@ export default function CrmSubscriptionPage() {
                                         </div>
                                          <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                                             {isTrial
-                                                ? (t('studio.hub.cards.crm.subscription.trialQuotaDesc') || 'Gói dùng thử có 50 yêu cầu AI, chỉ cấp một lần cho tài khoản mới.')
+                                                ? (t('studio.hub.cards.crm.subscription.trialQuotaDesc') || 'Gói dùng thử có 100 yêu cầu AI, chỉ cấp một lần cho tài khoản mới.')
                                                 : (t('studio.hub.cards.crm.subscription.quotaDesc') || 'Hạn ngạch AI hỗ trợ soạn thảo, tối ưu kịch bản và phản hồi tin nhắn tự động hàng tháng.')}
                                         </p>
                                     </div>

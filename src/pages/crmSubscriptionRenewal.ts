@@ -19,9 +19,9 @@ export interface RenewalConfirmationDetails {
 
 export const CRM_MONTHLY_RENEWAL_PLAN: CrmMonthlyRenewalPlan = {
     productId: 'crm_monthly',
-    priceCredits: 5250,
-    priceVnd: 500000,
-    includedAiLimit: 1000,
+    priceCredits: 2100,
+    priceVnd: 200000,
+    includedAiLimit: 100,
     durationLabel: '1 tháng',
 };
 
@@ -43,7 +43,7 @@ export function buildRenewalConfirmationDetails(
             },
             {
                 label: 'Chi phí',
-                value: `${CRM_MONTHLY_RENEWAL_PLAN.priceCredits} Credits hoặc 500.000đ`,
+                value: `${CRM_MONTHLY_RENEWAL_PLAN.priceCredits} Credits hoặc 200.000đ`,
             },
             {
                 label: 'Hạn mức AI mới',

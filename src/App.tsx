@@ -31,6 +31,7 @@ const NewsDetailPage = lazy(() => import('./pages/NewsDetailPage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 const WalletPage = lazy(() => import('./pages/WalletPage'));
 const VocabPage = lazy(() => import('./pages/VocabPage'));
+const VietYakuPage = lazy(() => import('./pages/VietYakuPage'));
 const InteriorDesignPage = lazy(() => import('./pages/InteriorDesignPage'));
 const CrmPage = lazy(() => import('./pages/CrmPage'));
 const CrmSubscriptionPage = lazy(() => import('./pages/CrmSubscriptionPage'));
@@ -244,6 +245,17 @@ const VocabPageWrapper: React.FC = () => {
     );
 };
 
+// VietYaku Page
+const VietYakuPageWrapper: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <VietYakuPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
 // Interior Design Page
 const InteriorDesignPageWrapper: React.FC = () => {
     return (
@@ -376,6 +388,7 @@ const App: React.FC = () => {
                         </ProtectedRoute>
                     }
                 />
+                <Route path="/studio/vietyaku" element={<VietYakuPageWrapper />} />
                 <Route path="/studio/skills" element={<SkillsPageWrapper />} />
                 <Route path="/studio/skills/:slug" element={<SkillDetailPageWrapper />} />
                 {/* Legacy /vocab → redirect to /studio/vocab */}
