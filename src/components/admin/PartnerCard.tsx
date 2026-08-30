@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { Partner } from '../../services/partnerService';
+import { localizedText } from '../../utils/localized';
 
 interface PartnerCardProps {
     partner: Partner;
@@ -19,7 +20,7 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
 }) => {
     const { t, language } = useTranslation();
 
-    const description = language === 'vi' ? partner.description?.vi : partner.description?.en;
+    const description = localizedText(partner.description, language);
 
     const getTypeLabel = useCallback((type: string) => {
         const labels: Record<string, string> = {

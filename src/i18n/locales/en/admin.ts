@@ -142,7 +142,7 @@ export default {
         archived: "Archived"
       },
       errors: {
-        titleRequired: "Title in both Vietnamese and English is required"
+        titleRequired: "Vietnamese title is required"
       }
     },
     courses: {
@@ -241,7 +241,7 @@ export default {
           assignment: "Assignment"
         },
         errors: {
-          titleRequired: "Title in both languages is required",
+          titleRequired: "Vietnamese title is required",
           categoryRequired: "Category is required"
         }
       },
@@ -406,7 +406,7 @@ export default {
         publish: "Publish",
         saving: "Saving...",
         errors: {
-          titleRequired: "Title in both languages is required"
+          titleRequired: "Vietnamese title is required"
         }
       },
       deleteConfirm: {

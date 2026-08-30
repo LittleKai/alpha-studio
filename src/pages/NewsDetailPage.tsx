@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { getArticleBySlug, type Article } from '../services/articleService';
 import SEOHead from '../components/ui/SEOHead';
+import { localizedText } from '../utils/localized';
 
 export default function NewsDetailPage() {
     const { slug } = useParams<{ slug: string }>();
@@ -54,16 +55,16 @@ export default function NewsDetailPage() {
     return (
         <div className="min-h-screen bg-[var(--bg-primary)]">
             <SEOHead
-                title={article.title[language] || article.title.vi}
-                description={article.excerpt?.[language] || article.excerpt?.vi || ''}
+                title={localizedText(article.title, language)}
+                description={localizedText(article.excerpt, language)}
                 ogImage={article.thumbnail}
                 ogType="article"
                 path={`/news/${slug}`}
                 jsonLd={{
                     '@context': 'https://schema.org',
                     '@type': 'Article',
-                    headline: article.title[language] || article.title.vi,
-                    description: article.excerpt?.[language] || article.excerpt?.vi || '',
+                    headline: localizedText(article.title, language),
+                    description: localizedText(article.excerpt, language),
                     image: article.thumbnail || 'https://giaiphapsangtao.com/alpha-logo-2.png',
                     url: `https://giaiphapsangtao.com/news/${slug}`,
                     author: { '@type': 'Organization', name: 'Alpha Studio' },
@@ -91,7 +92,7 @@ export default function NewsDetailPage() {
                     <div className="aspect-video rounded-2xl overflow-hidden mb-8">
                         <img
                             src={article.thumbnail}
-                            alt={article.title[language]}
+                            alt={localizedText(article.title, language)}
                             className="w-full h-full object-cover"
                         />
                     </div>
@@ -99,7 +100,7 @@ export default function NewsDetailPage() {
 
                 {/* Title & Meta */}
                 <h1 className="text-3xl md:text-4xl font-black text-[var(--text-primary)] mb-4">
-                    {article.title[language]}
+                    {localizedText(article.title, language)}
                 </h1>
 
                 <div className="flex items-center gap-4 text-sm text-[var(--text-tertiary)] mb-8 pb-8 border-b border-[var(--border-primary)]">
@@ -117,7 +118,7 @@ export default function NewsDetailPage() {
                 {/* Content */}
                 <div
                     className="tinymce-content max-w-none text-[var(--text-primary)] leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: article.content[language] || article.content[language === 'vi' ? 'en' : 'vi'] || '' }}
+                    dangerouslySetInnerHTML={{ __html: localizedText(article.content, language) }}
                 />
 
                 {/* Tags */}

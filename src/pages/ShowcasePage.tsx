@@ -20,6 +20,7 @@ import PartnersSection from '../components/showcase/PartnersSection';
 import ConnectSection from '../components/showcase/ConnectSection';
 import ThemeCustomizer from '../components/showcase/ThemeCustomizer';
 import '../components/showcase/showcase.css';
+import { localizedText } from '../utils/localized';
 
 const ShowcasePage: React.FC = () => {
   const { t, language } = useTranslation();
@@ -58,7 +59,7 @@ const ShowcasePage: React.FC = () => {
       .finally(() => setStudentsLoading(false));
   }, []);
 
-  const getLocalizedText = (text: { vi: string; en: string }) => (language === 'vi' ? text.vi : text.en);
+  const getLocalizedText = (text: { vi: string; en: string }) => localizedText(text, language);
   const formatPrice = (price: number) => (price === 0 ? t('landing.courses.free') : `${price.toLocaleString()} Credits`);
 
   const goNavigate = (path: string) => {

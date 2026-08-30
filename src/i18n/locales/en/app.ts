@@ -120,7 +120,7 @@ export default {
         badge: "Alpha Studio Ecosystem · Beta",
         title1: "AI Studio",
         title2: "The creative toolkit",
-        subtitle: "Four tools are open to every account: the AI Skills Library, Alpha CRM for Zalo marketing, VocabFlip for vocabulary practice, and VietYaku for Japanese/Chinese to Vietnamese translation. Three more are being finished in the workshop.",
+        subtitle: "Five tools are open to every account: the Event Knowledge Library, the AI Skills Library, Alpha CRM for Zalo marketing, VocabFlip for vocabulary practice, and VietYaku for Japanese/Chinese to Vietnamese translation. Three more are being finished in the workshop.",
         stats: {
           live: "Tools live",
           upcoming: "Coming soon",
@@ -138,6 +138,11 @@ export default {
       },
       comingSoon: "Coming soon",
       features: {
+        eventLibrary: {
+          f1: "Event case studies with real budget, reach and KPI figures",
+          f2: "Prompts, workflows, templates and playbooks ready for each event format",
+          f3: "Publish your own Workflow projects to the library — private or public"
+        },
         skills: {
           f1: "Search 3000+ skills by category, technology, or author",
           f2: "Every skill has a detail page with use cases and a GitHub link",
@@ -161,6 +166,7 @@ export default {
       },
       open: "Open",
       meta: {
+        eventLibrary: "Web · No install needed",
         skills: "Web · No install needed",
         crm: "Windows & Android · 2-month trial",
         vocab: "Web, Windows & Android",
@@ -168,6 +174,10 @@ export default {
       },
       backToStudio: "Back to Studio",
       cards: {
+        eventLibrary: {
+          title: "Event Knowledge Library",
+          desc: "Case studies, prompts, workflows, templates and playbooks for event & communication teams"
+        },
         generate: {
           title: "Generate Image & Video",
           desc: "Create images and videos with Google Nano Banana and Veo"
@@ -427,6 +437,262 @@ export default {
           title: "AI Skills Hub",
           desc: "Explore 3000+ open-source skills to supercharge your AI Agents"
         }
+      }
+    },
+    eventLibrary: {
+      title: "Event Knowledge Library",
+      heroTitle: "Knowledge & case study library for the event – communication industry",
+      subtitle: "Turn real case studies into usable assets: Prompts, Workflows, Templates and Skills. Learn to understand — apply to deliver — measure to optimise.",
+      badgeText: "Field-tested knowledge for event teams",
+      searchPlaceholder: "Search case studies, prompts, workflows, templates, skills...",
+      statsTotal: "items",
+      statsVerified: "verified",
+      statsIndustries: "industries",
+      statsCaseStudies: "case studies",
+      statsTemplates: "prompts & templates",
+      journey: {
+        title: "From case study to delivery",
+        subtitle: "How knowledge turns into real results",
+        steps: {
+          analyze: { title: "Analyse the case", desc: "Context, objectives, KPIs" },
+          pickSkill: { title: "Pick the right skill", desc: "Capabilities & best practice" },
+          usePrompt: { title: "Use a prompt", desc: "Ideas, copy, concepts" },
+          runWorkflow: { title: "Run the workflow", desc: "Plan and execute" },
+          export: { title: "Export output", desc: "Concept / Proposal / BOQ / Storyboard" }
+        }
+      },
+      allTypes: "All",
+      types: {
+        case_study: "Case Study",
+        prompt: "Prompt",
+        workflow: "Workflow",
+        skill: "Skill",
+        template: "Template",
+        report: "Report",
+        playbook: "Playbook"
+      },
+      filters: "Filters",
+      resetFilters: "Clear all",
+      source: "Content source",
+      scopes: {
+        all: "All sources",
+        platform: "By Alpha Studio",
+        community: "Community posts",
+        mine: "My content"
+      },
+      category: "Category",
+      categories: {
+        event: "Event",
+        activation: "Activation",
+        roadshow: "Roadshow",
+        booth_exhibition: "Booth / Exhibition",
+        stage_production: "Stage / Production",
+        digital_event: "Digital Event",
+        other: "Other"
+      },
+      industry: "Industry",
+      industries: {
+        fmcg: "FMCG",
+        technology: "Technology",
+        automotive: "Automotive",
+        retail_mall: "Retail / Mall",
+        beauty: "Beauty",
+        fnb: "F&B",
+        finance: "Finance",
+        healthcare: "Healthcare",
+        education: "Education",
+        other: "Other"
+      },
+      objective: "Campaign objective",
+      objectives: {
+        product_launch: "Product launch",
+        brand_awareness: "Brand awareness",
+        sales_activation: "Sales activation",
+        customer_loyalty: "Customer loyalty",
+        internal_corporate: "Internal / corporate"
+      },
+      budget: "Budget (VND)",
+      budgetTiers: {
+        under_200m: "Under 200M",
+        "200m_1b": "200M – 1B",
+        "1b_5b": "1B – 5B",
+        "5b_20b": "5B – 20B",
+        over_20b: "Over 20B"
+      },
+      kpi: "KPI / Results",
+      kpis: {
+        brand_recall: "Brand recall",
+        attendance_reach: "Attendance / Reach",
+        engagement: "Engagement",
+        leads_database: "Leads / Database",
+        sales_conversion: "Sales / Conversion"
+      },
+      verification: "Data verification",
+      verifications: {
+        verified: "Verified",
+        partner_sourced: "Partner-sourced",
+        unverified: "Unverified"
+      },
+      depth: "Analysis depth",
+      depths: {
+        basic: "Basic analysis",
+        deep: "In-depth analysis",
+        benchmark: "Benchmark & comparison",
+        forecast: "Trend forecast"
+      },
+      sortLabel: "Sort:",
+      sortRecent: "Newest",
+      sortPopular: "Popular",
+      sortUsed: "Most used",
+      sortAZ: "A-Z",
+      viewLabel: "View:",
+      showingStats: "Showing {start}-{end} of {total} items",
+      prevPage: "Previous",
+      nextPage: "Next",
+      noItemsFound: "No matching content yet",
+      noItemsHint: "Try removing some filters, or publish your own work from Workflow to the library.",
+      origins: {
+        platform: "Alpha Studio",
+        community: "Community",
+        private: "Private"
+      },
+      metrics: {
+        budget: "Budget",
+        team: "Team",
+        progress: "Progress",
+        tasks: "Tasks",
+        fileSize: "File size",
+        views: "views"
+      },
+      actions: {
+        viewDetail: "View detail",
+        download: "Download"
+      },
+      detail: {
+        backToLibrary: "Back to library",
+        notFound: "This item could not be found",
+        content: "Full content",
+        noContent: "Detailed content has not been added yet.",
+        attachments: "Attachments",
+        info: "Information",
+        classification: "Classification",
+        author: "Published by",
+        source: "Source",
+        manage: "Manage",
+        makePrivate: "Make private",
+        makePublic: "Make public",
+        delete: "Remove from library",
+        deleteTitle: "Delete item",
+        deleteConfirm: "Remove this item from the library? This cannot be undone.",
+        related: "Related content"
+      },
+      sectionKinds: {
+        richText: "Rich text",
+        keyValue: "Two-column table",
+        metrics: "Metric strip",
+        bulletGroups: "Bullet groups",
+        steps: "Steps",
+        quote: "Quote",
+        gallery: "Image gallery",
+        linkedItems: "Linked content"
+      },
+      editor: {
+        viewTitle: "Publish to library",
+        viewSubtitle: "Write and manage the content you publish to the Event Knowledge Library.",
+        createTitle: "New item",
+        editTitle: "Edit item",
+        subtitle: "Title and summary are bilingual; text inside body blocks is single-language.",
+        backToList: "Back to list",
+        edit: "Edit",
+        save: "Save",
+        empty: "You have not published anything yet",
+        emptyHint: "Write a case study, playbook, prompt or template, then make it public when it is ready to share.",
+        scopes: {
+          mine: "Mine",
+          all: "All content"
+        },
+        basics: "Basics",
+        taxonomy: "Classification",
+        media: "Cover, metrics & files",
+        body: "Body",
+        bodyHint: "Add blocks in the order they should appear",
+        freeContent: "Free-form content",
+        freeContentHint: "Optional — for content that fits none of the blocks above. This is the only bilingual part of the body.",
+        addSection: "Add a block",
+        sectionTitle: "Block heading (optional)",
+        moveUp: "Move up",
+        moveDown: "Move down",
+        removeSection: "Remove block",
+        removeRow: "Remove",
+        removeGroup: "Remove group",
+        addRow: "Add row",
+        rowLabel: "Label",
+        rowValue: "Value",
+        addMetric: "Add metric",
+        metricValue: "Value",
+        metricLabel: "Label",
+        metricNote: "Note (e.g. 112% of target)",
+        addGroup: "Add group",
+        groupTitle: "Group name",
+        bulletItem: "Bullet text",
+        addBullet: "Add bullet",
+        addStep: "Add step",
+        stepTitle: "Step name",
+        stepDesc: "Short description",
+        quoteText: "Quote text",
+        quoteBy: "Source / label (e.g. Emotional Value)",
+        addImages: "Add images",
+        linkHint: "Paste the slug of another library item, e.g. booth-design-prompt-abc123",
+        linkSlug: "slug",
+        linkLabel: "Display label",
+        addLink: "Add link",
+        ownership: "Content source",
+        ownerships: {
+          user: "Account content",
+          platform: "Alpha Studio content"
+        },
+        tags: "Tags",
+        tagsHint: "Comma separated",
+        cardMetrics: "Card metric strip",
+        cardMetricsHint: "Up to 4 numbers shown on the card in listings.",
+        pickCover: "Choose cover image",
+        removeCover: "Remove cover",
+        addFiles: "Add attachments",
+        uploading: "Uploading…",
+        uploadFailed: "Upload failed"
+      },
+      engagement: {
+        title: "Engagement",
+        rate: "Rate this item",
+        editReview: "Your review",
+        commentPlaceholder: "Your comment (optional)…",
+        pickStarsFirst: "Pick a star rating first",
+        submit: "Submit review",
+        saving: "Saving…",
+        saved: "Saved",
+        reviews: "Reviews ({count})",
+        loginRequired: "Sign in to like and rate",
+        failed: "Could not save, please retry"
+      },
+      publish: {
+        button: "Publish to library",
+        title: "Publish to the Event Library",
+        subtitle: "The item belongs to your account — private by default until you make it public.",
+        itemTitle: "Title",
+        itemSummary: "Short description",
+        itemType: "Content type",
+        visibility: "Visibility",
+        visibilities: {
+          private: "Private",
+          public: "Public",
+          privateHint: "Only you (and admins) can see this item in the library.",
+          publicHint: "Anyone browsing the library can see this item."
+        },
+        cancel: "Cancel",
+        submit: "Publish",
+        publishing: "Publishing...",
+        titleRequired: "Please enter a title",
+        failed: "Failed to publish to the library"
       }
     },
     skills: {

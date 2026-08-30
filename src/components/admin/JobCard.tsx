@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { Job } from '../../services/jobService';
+import { localizedText } from '../../utils/localized';
 
 interface JobCardProps {
     job: Job;
@@ -19,8 +20,8 @@ const JobCard: React.FC<JobCardProps> = ({
 }) => {
     const { t, language } = useTranslation();
 
-    const title = language === 'vi' ? job.title?.vi : job.title?.en;
-    const description = language === 'vi' ? job.description?.vi : job.description?.en;
+    const title = localizedText(job.title, language);
+    const description = localizedText(job.description, language);
 
     const getCategoryLabel = useCallback((category: string) => {
         const labels: Record<string, string> = {

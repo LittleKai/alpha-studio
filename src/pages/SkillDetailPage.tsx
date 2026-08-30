@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
 import StudioBackButton from '../components/studio/StudioBackButton';
-import { getSkillBySlug, type SkillDetail, type Skill } from '../services/skillService';
+import { getSkillBySlug, getSkills, type SkillDetail, type Skill } from '../services/skillService';
 
 // Skill interface now imported from skillService
 
@@ -135,9 +135,19 @@ export default function SkillDetailPage() {
   useEffect(() => {
     setLoading(true);
     getSkillBySlug(slug!)
-      .then(response => {
+      .then(async response => {
         setSkill(response.data);
-        setRelatedSkills(response.relatedSkills || []);
+        let rel = response.relatedSkills || [];
+        if (rel.length < 4 && response.data?.category) {
+          try {
+            const more = await getSkills({ category: response.data.category, limit: 8 });
+            const filtered = (more.data || []).filter(s => s.slug !== response.data.slug);
+            rel = [...rel, ...filtered.filter(f => !rel.some(r => r.slug === f.slug))].slice(0, 6);
+          } catch (e) {
+            console.error('Error loading fallback related skills:', e);
+          }
+        }
+        setRelatedSkills(rel);
         setLoading(false);
       })
       .catch(err => {
@@ -263,7 +273,7 @@ export default function SkillDetailPage() {
       <div className="min-h-screen flex flex-col items-center justify-center bg-[var(--bg-primary)] text-[var(--text-primary)]">
         <h2 className="text-2xl font-bold mb-4">{t('skills.noSkillsFound')}</h2>
         <button 
-          onClick={() => navigate('/studio/skills')} 
+          onClick={() => navigate('/studio/ai-skills')} 
           className="px-4 py-2 bg-[#ff5a1f] text-white font-semibold rounded-lg hover:bg-[#e04f1a] transition-all cursor-pointer"
         >
           {t('skills.backToList')}
@@ -279,28 +289,30 @@ export default function SkillDetailPage() {
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pb-20">
-      <SEOHead title={skill.name} description={headline} path={`/studio/skills/${skill.slug}`} />
+      <SEOHead title={skill.name} description={headline} path={`/studio/ai-skills/${skill.slug}`} />
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Back navigation buttons */}
         <div className="flex flex-wrap items-center gap-3 mb-6">
           <StudioBackButton variant="inline" to="/studio" />
-          <StudioBackButton variant="inline" to="/studio/skills" label={t('skills.backToSkills')} />
+          <StudioBackButton variant="inline" to="/studio/ai-skills" label={t('skills.backToSkills')} />
         </div>
         
         {/* TOP HEADER SECTION (Matches screenshot layout) */}
-        <div className="relative bg-[var(--bg-card)] p-6 rounded-xl border border-[var(--border-primary)] mb-6 overflow-hidden">
+        <div className="relative bg-[var(--bg-card)] p-6 md:p-8 rounded-2xl border border-[var(--border-primary)] mb-8 overflow-hidden shadow-sm">
           <div className="flex flex-col md:flex-row gap-6 items-start">
             {/* Orange-Tinted Skill Icon Box */}
-            <div className="w-16 h-16 shrink-0 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-3xl select-none">
+            <div className="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-3xl md:text-4xl select-none">
               {categoryIcon}
             </div>
 
             {/* Title, Badge, Subheading */}
-            <div className="flex-1 space-y-3 min-w-0">
+            <div className="flex-1 space-y-3.5 min-w-0">
               <div className="flex items-center gap-3 flex-wrap">
-                <h1 className="text-3xl font-extrabold text-[var(--text-primary)] tracking-tight">{skill.name}</h1>
+                <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-orange-500 via-amber-500 to-rose-500 dark:from-orange-400 dark:via-amber-300 dark:to-rose-400 bg-clip-text text-transparent">
+                  {skill.name}
+                </h1>
                 {skill.tier && (
-                  <span className={`text-[10px] font-bold tracking-wider px-2 py-0.5 rounded border flex items-center gap-1 shrink-0 ${getTierColor(skill.tier)}`}>
+                  <span className={`text-[10px] font-bold tracking-wider px-2.5 py-1 rounded-lg border flex items-center gap-1 shrink-0 ${getTierColor(skill.tier)}`}>
                     <span>{getTierEmoji(skill.tier)}</span>
                     <span>{t('skills.tiers.' + getTierKey(skill.tier)).toUpperCase()}</span>
                   </span>
@@ -311,21 +323,21 @@ export default function SkillDetailPage() {
                 @{skill.author} &gt;
               </div>
 
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-[75ch]">{headline}</p>
+              <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed max-w-[75ch]">{headline}</p>
 
               {/* GitHub Stars, Forks, Updates stats */}
-              <div className="flex flex-wrap items-center gap-4 text-xs text-[var(--text-tertiary)] pt-1 font-mono select-none">
-                <span className="flex items-center gap-1">
-                  <span className="text-yellow-500 text-sm">★</span> {metrics.stars}
+              <div className="flex flex-wrap items-center gap-4 text-xs md:text-sm text-[var(--text-tertiary)] pt-1 font-mono select-none">
+                <span className="flex items-center gap-1.5 font-semibold text-yellow-500">
+                  <span>★</span> {metrics.stars}
                 </span>
                 <span className="flex items-center gap-1">
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 10.742L12 12m0 0l3.316-1.258M12 12V21M12 12V3m0 0a3 3 0 100-6 3 3 0 000 6z" />
                   </svg>
                   {metrics.forks}
                 </span>
                 <span className="flex items-center gap-1">
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   0
@@ -334,28 +346,28 @@ export default function SkillDetailPage() {
               </div>
 
               {/* Specification Badges Row */}
-              <div className="flex flex-wrap gap-2 pt-2 text-[10px] font-bold tracking-wide select-none">
-                <span className="px-2.5 py-1 rounded bg-orange-500/10 border border-orange-500/20 text-orange-400">
+              <div className="flex flex-wrap gap-2 pt-2 text-xs font-bold tracking-wide select-none">
+                <span className="px-3 py-1 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400">
                   {t('skills.difficulties.' + getDifficultyKey(skill.difficulty))}
                 </span>
-                <span className="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                <span className="px-3 py-1 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400">
                   ⏱ {skill.install_type === 'Git Clone' ? t('skills.gitCloneTime') : t('skills.npmInstallTime')}
                 </span>
-                <span className="px-2.5 py-1 rounded bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)]">
+                <span className="px-3 py-1 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)]">
                   {t('skills.categories.' + getCategoryKey(skill.category))}
                 </span>
-                <span className="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-theme">
+                <span className="px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-theme">
                   ⏱ {t('skills.savesPerUse').replace('{time}', formatTimeSaving(skill.estimated_time_saving, language) || t('skills.timeRangeMedium'))}
                 </span>
               </div>
 
               {/* Works With row */}
               {skill.works_with && skill.works_with.length > 0 && (
-                <div className="flex items-center gap-2 pt-3 text-xs text-[var(--text-tertiary)]">
+                <div className="flex items-center gap-2 pt-3 text-xs md:text-sm text-[var(--text-tertiary)]">
                   <span className="font-semibold">{t('skills.worksWith')}:</span>
                   <div className="flex gap-1.5">
                     {skill.works_with.map(w => (
-                      <span key={w} className="px-2 py-0.5 rounded bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)] font-medium text-[10px]">
+                      <span key={w} className="px-2.5 py-0.5 rounded bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)] font-medium text-xs">
                         {w}
                       </span>
                     ))}
@@ -374,25 +386,28 @@ export default function SkillDetailPage() {
             
             {/* Quick Install terminal style card */}
             {skill.install_command && (
-              <div className="bg-[#0b1629] p-5 rounded-xl border border-[var(--border-primary)] space-y-3 shadow-xl">
+              <div className="bg-[#0b1629] p-5 rounded-2xl border border-[var(--border-primary)] space-y-3 shadow-xl">
                 <div className="space-y-2">
-                  <h3 className="text-sm font-bold text-[var(--text-primary)]">{t('skills.quickInstall')}</h3>
-                  <div className="bg-[#060c18] rounded-lg border border-[var(--border-primary)] overflow-hidden">
-                    <div className="flex items-center justify-between px-3 py-1.5 bg-[#03060c] border-b border-[var(--border-primary)]">
+                  <h3 className="text-sm font-bold text-emerald-500 dark:text-emerald-400 flex items-center gap-2">
+                    <span className="w-1.5 h-3.5 rounded-full bg-emerald-500" />
+                    {t('skills.quickInstall')}
+                  </h3>
+                  <div className="bg-[#060c18] rounded-xl border border-[var(--border-primary)] overflow-hidden">
+                    <div className="flex items-center justify-between px-3.5 py-2 bg-[#03060c] border-b border-[var(--border-primary)]">
                       <div className="flex items-center gap-1.5 select-none">
-                        <span className="w-2 h-2 rounded-full bg-red-500/80"></span>
-                        <span className="w-2 h-2 rounded-full bg-yellow-500/80"></span>
-                        <span className="w-2 h-2 rounded-full bg-green-500/80"></span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
                       </div>
-                      <span className="text-[9px] font-mono text-[var(--text-tertiary)]">{t('skills.terminal')}</span>
+                      <span className="text-[10px] font-mono text-[var(--text-tertiary)]">{t('skills.terminal')}</span>
                     </div>
-                    <div className="p-3 flex items-center justify-between gap-3 font-mono text-xs">
+                    <div className="p-3.5 flex items-center justify-between gap-3 font-mono text-sm">
                       <code className="text-emerald-400 select-all truncate block" title={skill.install_command}>
                         {skill.install_command}
                       </code>
                       <button 
                         onClick={() => handleCopyCommand(skill.install_command, setCopiedInstall)}
-                        className="shrink-0 p-1.5 bg-[var(--bg-secondary)] hover:bg-[var(--bg-primary)] hover:border-[var(--accent-primary)]/40 hover:shadow-[0_0_10px_rgba(97,232,255,0.05)] text-[var(--accent-primary)] hover:text-[#61e8ff] active:text-emerald-400 rounded border border-[var(--border-primary)] transition-all duration-200 cursor-pointer focus:outline-none flex items-center justify-center"
+                        className="shrink-0 p-2 bg-[var(--bg-secondary)] hover:bg-[var(--bg-primary)] hover:border-[var(--accent-primary)]/40 hover:shadow-[0_0_10px_rgba(97,232,255,0.05)] text-[var(--accent-primary)] hover:text-[#61e8ff] active:text-emerald-400 rounded-lg border border-[var(--border-primary)] transition-all duration-200 cursor-pointer focus:outline-none flex items-center justify-center"
                         title={t('skills.installCommand')}
                       >
                         {copiedInstall ? (
@@ -415,7 +430,7 @@ export default function SkillDetailPage() {
                     href={skill.source_repo_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full text-center py-2.5 bg-[var(--bg-secondary)] hover:bg-[var(--accent-primary)]/10 border border-[var(--border-primary)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] hover:text-[var(--accent-primary)] rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-[0_0_15px_rgba(97,232,255,0.08)] group/git"
+                    className="w-full text-center py-2.5 bg-[var(--bg-secondary)] hover:bg-[var(--accent-primary)]/10 border border-[var(--border-primary)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] hover:text-[var(--accent-primary)] rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-[0_0_15px_rgba(97,232,255,0.08)] group/git"
                   >
                     <svg className="w-4 h-4 transition-transform group-hover/git:scale-105" fill="currentColor" viewBox="0 0 24 24">
                       <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z" />
@@ -426,15 +441,16 @@ export default function SkillDetailPage() {
               </div>
             )}
             {/* Jump To vertical menu card */}
-            <div className="bg-[var(--bg-card)] p-4 rounded-xl border border-[var(--border-primary)] space-y-3 shadow-md select-none">
-              <h4 className="text-xs font-semibold text-[var(--text-tertiary)] uppercase tracking-wider px-3 pb-2 border-b border-[var(--border-primary)]/50">
+            <div className="bg-[var(--bg-card)] p-5 rounded-2xl border border-[var(--border-primary)] space-y-3 shadow-md select-none">
+              <h4 className="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider px-3 pb-2 border-b border-[var(--border-primary)]/50 flex items-center gap-2">
+                <span className="w-1.5 h-3.5 rounded-full bg-orange-500" />
                 {t('skills.jumpTo')}
               </h4>
               <nav className="flex flex-col gap-1.5 text-sm font-semibold">
                 <button
                   onClick={() => scrollToSection('overview')}
                   className={`mean-bird-button w-full text-left px-3 py-2.5 rounded-lg transition-all cursor-pointer ${
-                    activeSection === 'overview' ? 'active' : 'text-[var(--text-secondary)]'
+                    activeSection === 'overview' ? 'active text-orange-500 font-bold' : 'text-[var(--text-secondary)]'
                   }`}
                 >
                   <span>{t('skills.overview')}</span>
@@ -444,7 +460,7 @@ export default function SkillDetailPage() {
                 <button
                   onClick={() => scrollToSection('setup')}
                   className={`mean-bird-button w-full text-left px-3 py-2.5 rounded-lg transition-all cursor-pointer ${
-                    activeSection === 'setup' ? 'active' : 'text-[var(--text-secondary)]'
+                    activeSection === 'setup' ? 'active text-sky-500 font-bold' : 'text-[var(--text-secondary)]'
                   }`}
                 >
                   <span>{t('skills.setup')}</span>
@@ -454,7 +470,7 @@ export default function SkillDetailPage() {
                 <button
                   onClick={() => scrollToSection('usage')}
                   className={`mean-bird-button w-full text-left px-3 py-2.5 rounded-lg transition-all cursor-pointer ${
-                    activeSection === 'usage' ? 'active' : 'text-[var(--text-secondary)]'
+                    activeSection === 'usage' ? 'active text-emerald-500 font-bold' : 'text-[var(--text-secondary)]'
                   }`}
                 >
                   <span>{t('skills.usage')}</span>
@@ -464,7 +480,7 @@ export default function SkillDetailPage() {
                 <button
                   onClick={() => scrollToSection('tools')}
                   className={`mean-bird-button w-full text-left px-3 py-2.5 rounded-lg transition-all cursor-pointer ${
-                    activeSection === 'tools' ? 'active' : 'text-[var(--text-secondary)]'
+                    activeSection === 'tools' ? 'active text-violet-500 font-bold' : 'text-[var(--text-secondary)]'
                   }`}
                 >
                   <span>{t('skills.compatibleTools')}</span>
@@ -474,7 +490,7 @@ export default function SkillDetailPage() {
                 <button
                   onClick={() => scrollToSection('mcp')}
                   className={`mean-bird-button w-full text-left px-3 py-2.5 rounded-lg transition-all cursor-pointer ${
-                    activeSection === 'mcp' ? 'active' : 'text-[var(--text-secondary)]'
+                    activeSection === 'mcp' ? 'active text-cyan-500 font-bold' : 'text-[var(--text-secondary)]'
                   }`}
                 >
                   <span>{t('skills.mcpServers')}</span>
@@ -485,7 +501,7 @@ export default function SkillDetailPage() {
                   <button
                     onClick={() => scrollToSection('related')}
                     className={`mean-bird-button w-full text-left px-3 py-2.5 rounded-lg transition-all cursor-pointer ${
-                      activeSection === 'related' ? 'active' : 'text-[var(--text-secondary)]'
+                      activeSection === 'related' ? 'active text-amber-500 font-bold' : 'text-[var(--text-secondary)]'
                     }`}
                   >
                     <span>{t('skills.relatedSkills')}</span>
@@ -496,14 +512,14 @@ export default function SkillDetailPage() {
               </nav>
             </div>
             {/* Author Profile card */}
-            <div className="bg-[var(--bg-card)] p-4 rounded-xl border border-[var(--border-primary)] flex gap-4 items-center shadow-md">
+            <div className="bg-[var(--bg-card)] p-5 rounded-2xl border border-[var(--border-primary)] flex gap-4 items-center shadow-md">
               <div className="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-2xl select-none">
                 🔥
               </div>
               <div className="flex-1 min-w-0">
-                <h4 className="font-bold text-sm text-[var(--text-primary)] truncate">@{skill.author}</h4>
+                <h4 className="font-bold text-base text-[var(--text-primary)] truncate">@{skill.author}</h4>
                 <button 
-                  onClick={() => navigate(`/studio/skills?search=${encodeURIComponent(skill.author)}`)}
+                  onClick={() => navigate(`/studio/ai-skills?search=${encodeURIComponent(skill.author)}`)}
                   className="text-xs text-[#ff5a1f] hover:underline font-semibold cursor-pointer focus:outline-none"
                 >
                   {t('skills.viewAllSkills')}
@@ -512,28 +528,34 @@ export default function SkillDetailPage() {
             </div>
 
             {/* Need Help promo B2B card */}
-            <div className="bg-[var(--bg-card)] p-4 rounded-xl border border-orange-500/20 shadow-md space-y-3 relative overflow-hidden">
-              <h4 className="font-bold text-sm text-[var(--text-primary)]">{t('skills.needHelp')}</h4>
-              <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+            <div className="bg-[var(--bg-card)] p-5 rounded-2xl border border-orange-500/20 shadow-md space-y-3 relative overflow-hidden">
+              <h4 className="font-bold text-base text-amber-600 dark:text-amber-400 flex items-center gap-2">
+                <span className="w-1.5 h-4 rounded-full bg-amber-500" />
+                {t('skills.needHelp')}
+              </h4>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                 {t('skills.b2bPromoText')}
               </p>
               <a 
                 href="mailto:hi@giaiphapsangtao.com"
-                className="text-xs font-bold text-[#ff5a1f] hover:underline flex items-center gap-1 cursor-pointer"
+                className="text-sm font-bold text-[#ff5a1f] hover:underline flex items-center gap-1 cursor-pointer"
               >
                 {t('skills.talkToUs')} &rarr;
               </a>
             </div>
 
             {/* Using this skill promo card */}
-            <div className="bg-[var(--bg-card)] p-4 rounded-xl border border-[var(--border-primary)] shadow-md space-y-3">
-              <h4 className="font-bold text-sm text-[var(--text-primary)]">{t('skills.usingThisSkill')}</h4>
-              <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+            <div className="bg-[var(--bg-card)] p-5 rounded-2xl border border-[var(--border-primary)] shadow-md space-y-3">
+              <h4 className="font-bold text-base text-sky-600 dark:text-sky-400 flex items-center gap-2">
+                <span className="w-1.5 h-4 rounded-full bg-sky-500" />
+                {t('skills.usingThisSkill')}
+              </h4>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                 {t('skills.discoverStackText')}
               </p>
               <button 
                 onClick={() => navigate('/studio')}
-                className="text-xs font-bold text-[#ff5a1f] hover:underline flex items-center gap-1 cursor-pointer focus:outline-none"
+                className="text-sm font-bold text-[#ff5a1f] hover:underline flex items-center gap-1 cursor-pointer focus:outline-none"
               >
                 {t('skills.freeAiScan')} &rarr;
               </button>
@@ -546,13 +568,14 @@ export default function SkillDetailPage() {
             
             {/* Overview Section */}
             <section id="overview" className="scroll-mt-24 space-y-6">
-              <h2 className="text-2xl font-bold text-[var(--text-primary)] border-b border-[var(--border-primary)] pb-3">
+              <h2 className="text-2xl md:text-3xl font-extrabold flex items-center gap-3 text-orange-600 dark:text-orange-400 border-b border-[var(--border-primary)] pb-3">
+                <span className="w-2 h-6 rounded-full bg-orange-500" />
                 {t('skills.overview')}
               </h2>
               
               <div className="space-y-4">
-                <h3 className="text-lg font-bold text-[var(--text-primary)]">{t('skills.aboutThisSkill')}</h3>
-                <div className="tinymce-content max-w-[75ch] text-sm leading-relaxed text-[var(--text-secondary)] whitespace-pre-line">
+                <h3 className="text-lg md:text-xl font-bold text-orange-600 dark:text-orange-400">{t('skills.aboutThisSkill')}</h3>
+                <div className="tinymce-content max-w-[75ch] text-base leading-relaxed text-[var(--text-secondary)] whitespace-pre-line">
                   {overview}
                 </div>
               </div>
@@ -560,15 +583,15 @@ export default function SkillDetailPage() {
               {/* Use Cases 2x2 Grid block */}
               {useCases.length > 0 && (
                 <div className="space-y-4 pt-4">
-                  <h3 className="text-lg font-bold text-[var(--text-primary)]">{t('skills.useCases')}</h3>
+                  <h3 className="text-lg md:text-xl font-bold text-amber-600 dark:text-amber-400">{t('skills.useCases')}</h3>
                   <div className="grid gap-4 sm:grid-cols-2">
                     {useCases.map((uc, idx) => (
-                      <div key={idx} className="bg-[var(--bg-card)] p-4 rounded-xl border border-[var(--border-primary)] space-y-3">
-                        <div className="w-8 h-8 rounded-full bg-orange-500/10 flex items-center justify-center text-base select-none">
+                      <div key={idx} className="bg-[var(--bg-card)] p-5 rounded-2xl border border-[var(--border-primary)] space-y-3 shadow-sm">
+                        <div className="w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-lg select-none">
                           🎯
                         </div>
-                        <h4 className="font-bold text-sm text-[var(--text-primary)]">{uc.title}</h4>
-                        <p className="text-xs text-[var(--text-secondary)] leading-relaxed">{uc.text}</p>
+                        <h4 className="font-bold text-base text-[var(--text-primary)]">{uc.title}</h4>
+                        <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{uc.text}</p>
                       </div>
                     ))}
                   </div>
@@ -580,12 +603,12 @@ export default function SkillDetailPage() {
             <div className="space-y-6 border-b border-[var(--border-primary)] pb-8">
               {/* Best For */}
               <div className="space-y-3">
-                <h3 className="text-lg font-bold text-[var(--text-primary)]">{t('skills.bestFor')}</h3>
+                <h3 className="text-lg md:text-xl font-bold text-sky-600 dark:text-sky-400">{t('skills.bestFor')}</h3>
                 <div className="flex flex-wrap gap-2">
                   {getBestForTagsLocalized(skill.category, t).map(tag => (
                     <span 
                       key={tag} 
-                      className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-500/10 border border-blue-500/20 text-blue-400"
+                      className="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold bg-blue-500/10 border border-blue-500/20 text-blue-400"
                     >
                       {tag}
                     </span>
@@ -596,12 +619,12 @@ export default function SkillDetailPage() {
               {/* Tags */}
               {skill.tags && skill.tags.length > 0 && (
                 <div className="space-y-3">
-                  <h3 className="text-lg font-bold text-[var(--text-primary)]">{t('skills.tags')}</h3>
+                  <h3 className="text-lg md:text-xl font-bold text-teal-600 dark:text-teal-400">{t('skills.tags')}</h3>
                   <div className="flex flex-wrap gap-2">
                     {skill.tags.map(tag => (
                       <span 
                         key={tag} 
-                        className="px-2.5 py-1 rounded bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)] text-xs font-medium"
+                        className="px-3 py-1 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)] text-xs md:text-sm font-medium"
                       >
                         #{tag}
                       </span>
@@ -613,23 +636,24 @@ export default function SkillDetailPage() {
 
             {/* Setup & Installation Section */}
             <section id="setup" className="scroll-mt-24 space-y-6">
-              <h2 className="text-2xl font-bold text-[var(--text-primary)] border-b border-[var(--border-primary)] pb-3">
+              <h2 className="text-2xl md:text-3xl font-extrabold flex items-center gap-3 text-sky-600 dark:text-sky-400 border-b border-[var(--border-primary)] pb-3">
+                <span className="w-2 h-6 rounded-full bg-sky-500" />
                 {t('skills.setup')}
               </h2>
 
               {skill.install_command && (
                 <div className="space-y-4">
-                  <h3 className="text-lg font-bold text-[var(--text-primary)]">{t('skills.quickInstall')}</h3>
-                  <p className="text-sm text-[var(--text-secondary)]">{t('skills.setupInstructions')}</p>
+                  <h3 className="text-lg md:text-xl font-bold text-sky-600 dark:text-sky-400">{t('skills.quickInstall')}</h3>
+                  <p className="text-base text-[var(--text-secondary)]">{t('skills.setupInstructions')}</p>
                   
-                  <div className="bg-[#0b1629] rounded-lg border border-[var(--border-primary)] overflow-hidden">
-                    <div className="flex items-center justify-between px-4 py-2 bg-[#060c18] border-b border-[var(--border-primary)]">
+                  <div className="bg-[#0b1629] rounded-xl border border-[var(--border-primary)] overflow-hidden shadow-md">
+                    <div className="flex items-center justify-between px-4 py-2.5 bg-[#060c18] border-b border-[var(--border-primary)]">
                       <div className="flex items-center gap-1.5 select-none">
-                        <span className="w-2 h-2 rounded-full bg-red-500/80"></span>
-                        <span className="w-2 h-2 rounded-full bg-yellow-500/80"></span>
-                        <span className="w-2 h-2 rounded-full bg-green-500/80"></span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
                       </div>
-                      <span className="text-[9px] font-mono text-[var(--text-tertiary)]">{t('skills.terminal')}</span>
+                      <span className="text-[10px] font-mono text-[var(--text-tertiary)]">{t('skills.terminal')}</span>
                     </div>
                     <div className="p-4 flex items-center justify-between gap-3 font-mono text-sm">
                       <code className="text-emerald-400 select-all truncate block" title={skill.install_command}>
@@ -658,15 +682,15 @@ export default function SkillDetailPage() {
 
               {skill.source_repo_url && (
                 <div className="space-y-4">
-                  <h3 className="text-lg font-bold text-[var(--text-primary)]">{t('skills.altInstall')}</h3>
-                  <div className="bg-[#0b1629] rounded-lg border border-[var(--border-primary)] overflow-hidden">
-                    <div className="flex items-center justify-between px-4 py-2 bg-[#060c18] border-b border-[var(--border-primary)]">
+                  <h3 className="text-lg md:text-xl font-bold text-indigo-600 dark:text-indigo-400">{t('skills.altInstall')}</h3>
+                  <div className="bg-[#0b1629] rounded-xl border border-[var(--border-primary)] overflow-hidden shadow-md">
+                    <div className="flex items-center justify-between px-4 py-2.5 bg-[#060c18] border-b border-[var(--border-primary)]">
                       <div className="flex items-center gap-1.5 select-none">
-                        <span className="w-2 h-2 rounded-full bg-red-500/80"></span>
-                        <span className="w-2 h-2 rounded-full bg-yellow-500/80"></span>
-                        <span className="w-2 h-2 rounded-full bg-green-500/80"></span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
                       </div>
-                      <span className="text-[9px] font-mono text-[var(--text-tertiary)]">{t('skills.terminal')}</span>
+                      <span className="text-[10px] font-mono text-[var(--text-tertiary)]">{t('skills.terminal')}</span>
                     </div>
                     <div className="p-4 flex items-center justify-between gap-3 font-mono text-sm">
                       <code className="text-emerald-400 select-all truncate block">
@@ -695,14 +719,14 @@ export default function SkillDetailPage() {
 
               {/* Requirements list */}
               <div className="space-y-3 pt-2">
-                <h3 className="text-lg font-bold text-[var(--text-primary)]">{t('skills.requirements')}</h3>
-                <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
+                <h3 className="text-lg md:text-xl font-bold text-amber-600 dark:text-amber-400">{t('skills.requirements')}</h3>
+                <ul className="space-y-2.5 text-base text-[var(--text-secondary)]">
                   <li className="flex items-center gap-2">
-                    <span className="text-emerald-theme">✓</span> {t('skills.claudeCodeReq')}
+                    <span className="text-emerald-theme font-bold">✓</span> {t('skills.claudeCodeReq')}
                   </li>
                   {skill.works_with && skill.works_with.length > 0 && (
                     <li className="flex items-center gap-2">
-                      <span className="text-emerald-theme">✓</span> {t('skills.worksWith')}: {skill.works_with.join(', ')}
+                      <span className="text-emerald-theme font-bold">✓</span> {t('skills.worksWith')}: {skill.works_with.join(', ')}
                     </li>
                   )}
                 </ul>
@@ -710,61 +734,61 @@ export default function SkillDetailPage() {
 
               {/* Quick Start Guide */}
               <div className="space-y-4 pt-4 border-t border-[var(--border-primary)]/50">
-                <h3 className="text-lg font-bold text-[var(--text-primary)]">
+                <h3 className="text-lg md:text-xl font-bold text-emerald-600 dark:text-emerald-400">
                   {t('skills.quickStart')}
                 </h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
-                    <span className="w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 select-none">
+                    <span className="w-7 h-7 rounded-lg bg-orange-500 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 select-none shadow-sm">
                       1
                     </span>
                     <div>
-                      <h4 className="font-bold text-sm text-[var(--text-primary)]">
+                      <h4 className="font-bold text-base text-[var(--text-primary)]">
                         {t('skills.stepInstallTitle')}
                       </h4>
-                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed mt-0.5">
                         {t('skills.stepInstallDesc')}
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <span className="w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 select-none">
+                    <span className="w-7 h-7 rounded-lg bg-orange-500 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 select-none shadow-sm">
                       2
                     </span>
                     <div>
-                      <h4 className="font-bold text-sm text-[var(--text-primary)]">
+                      <h4 className="font-bold text-base text-[var(--text-primary)]">
                         {t('skills.stepOpenTitle')}
                       </h4>
-                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed mt-0.5">
                         {t('skills.stepOpenDesc')}
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <span className="w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 select-none">
+                    <span className="w-7 h-7 rounded-lg bg-orange-500 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 select-none shadow-sm">
                       3
                     </span>
                     <div>
-                      <h4 className="font-bold text-sm text-[var(--text-primary)]">
+                      <h4 className="font-bold text-base text-[var(--text-primary)]">
                         {t('skills.stepTryTitle')}
                       </h4>
-                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed mt-0.5">
                         {t('skills.stepTryDesc')}
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <span className="w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 select-none">
+                    <span className="w-7 h-7 rounded-lg bg-orange-500 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 select-none shadow-sm">
                       4
                     </span>
                     <div>
-                      <h4 className="font-bold text-sm text-[var(--text-primary)]">
+                      <h4 className="font-bold text-base text-[var(--text-primary)]">
                         {t('skills.stepCustomizeTitle')}
                       </h4>
-                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed mt-0.5">
                         {t('skills.stepCustomizeDesc')}
                       </p>
                     </div>
@@ -775,15 +799,16 @@ export default function SkillDetailPage() {
 
             {/* Usage Examples Section */}
             <section id="usage" className="scroll-mt-24 space-y-6">
-              <h2 className="text-2xl font-bold text-[var(--text-primary)] border-b border-[var(--border-primary)] pb-3">
+              <h2 className="text-2xl md:text-3xl font-extrabold flex items-center gap-3 text-emerald-600 dark:text-emerald-400 border-b border-[var(--border-primary)] pb-3">
+                <span className="w-2 h-6 rounded-full bg-emerald-500" />
                 {t('skills.usage')}
               </h2>
 
               <div className="space-y-4">
-                <h3 className="text-lg font-bold text-[var(--text-primary)]">{t('skills.promptTemplate')}</h3>
-                <div className="bg-[#0b1629] rounded-lg border border-[var(--border-primary)] overflow-hidden shadow-inner">
-                  <div className="flex items-center justify-between px-4 py-2 bg-[#060c18] border-b border-[var(--border-primary)]">
-                    <span className="text-[10px] font-mono text-[var(--text-tertiary)]">{t('skills.instructionScript')}</span>
+                <h3 className="text-lg md:text-xl font-bold text-emerald-600 dark:text-emerald-400">{t('skills.promptTemplate')}</h3>
+                <div className="bg-[#0b1629] rounded-2xl border border-[var(--border-primary)] overflow-hidden shadow-inner">
+                  <div className="flex items-center justify-between px-4 py-2.5 bg-[#060c18] border-b border-[var(--border-primary)]">
+                    <span className="text-xs font-mono text-[var(--text-tertiary)]">{t('skills.instructionScript')}</span>
                      <button 
                       onClick={() => handleCopyCommand(usage, setCopiedUsage)}
                       className="flex items-center gap-1.5 px-3 py-1.5 bg-[var(--bg-secondary)] hover:bg-[var(--bg-primary)] hover:border-[var(--accent-primary)]/40 hover:shadow-[0_0_10px_rgba(97,232,255,0.05)] text-[var(--accent-primary)] hover:text-[#61e8ff] active:text-emerald-400 rounded-lg border border-[var(--border-primary)] transition-all duration-200 cursor-pointer focus:outline-none"
@@ -791,23 +816,23 @@ export default function SkillDetailPage() {
                     >
                       {copiedUsage ? (
                         <>
-                          <svg className="w-3.5 h-3.5 text-emerald-400 animate-in fade-in zoom-in duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <svg className="w-4 h-4 text-emerald-400 animate-in fade-in zoom-in duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                             <polyline points="20 6 9 17 4 12"></polyline>
                           </svg>
-                          <span className="text-[10px] text-emerald-400 font-sans font-bold animate-in fade-in slide-in-from-right-1 duration-200">{t('skills.copied')}</span>
+                          <span className="text-xs text-emerald-400 font-sans font-bold animate-in fade-in slide-in-from-right-1 duration-200">{t('skills.copied')}</span>
                         </>
                       ) : (
                         <>
-                          <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                           </svg>
-                          <span className="text-[10px] text-[var(--text-secondary)] font-semibold transition-all group-hover:text-[var(--text-primary)]">{t('skills.copyPrompt')}</span>
+                          <span className="text-xs text-[var(--text-secondary)] font-semibold transition-all group-hover:text-[var(--text-primary)]">{t('skills.copyPrompt')}</span>
                         </>
                       )}
                     </button>
                   </div>
-                  <div className="p-4 font-mono text-xs overflow-x-auto text-emerald-400 max-h-96 custom-scrollbar">
+                  <div className="p-5 font-mono text-sm overflow-x-auto text-emerald-400 max-h-96 custom-scrollbar leading-relaxed">
                     <pre className="whitespace-pre-wrap">{usage}</pre>
                   </div>
                 </div>
@@ -816,27 +841,28 @@ export default function SkillDetailPage() {
 
             {/* Compatible Tools Section */}
             <section id="tools" className="scroll-mt-24 space-y-6">
-              <h2 className="text-2xl font-bold text-[var(--text-primary)] border-b border-[var(--border-primary)] pb-3">
+              <h2 className="text-2xl md:text-3xl font-extrabold flex items-center gap-3 text-violet-600 dark:text-violet-400 border-b border-[var(--border-primary)] pb-3">
+                <span className="w-2 h-6 rounded-full bg-violet-500" />
                 {t('skills.compatibleTools')}
               </h2>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+              <p className="text-base text-[var(--text-secondary)] leading-relaxed">
                 {t('skills.compatibilityDesc')}
               </p>
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="bg-[var(--bg-card)] p-4 rounded-xl border border-[var(--border-primary)] flex items-center gap-3">
-                  <span className="text-2xl select-none">🤖</span>
+                <div className="bg-[var(--bg-card)] p-5 rounded-2xl border border-[var(--border-primary)] flex items-center gap-4 shadow-sm">
+                  <span className="text-3xl select-none">🤖</span>
                   <div>
-                    <h4 className="font-bold text-sm text-[var(--text-primary)]">Claude Code</h4>
-                    <p className="text-xs text-[var(--text-tertiary)]">
+                    <h4 className="font-bold text-base text-[var(--text-primary)]">Claude Code</h4>
+                    <p className="text-sm text-[var(--text-tertiary)] mt-0.5">
                       {t('skills.envNative')}
                     </p>
                   </div>
                 </div>
-                <div className="bg-[var(--bg-card)] p-4 rounded-xl border border-[var(--border-primary)] flex items-center gap-3">
-                  <span className="text-2xl select-none">💻</span>
+                <div className="bg-[var(--bg-card)] p-5 rounded-2xl border border-[var(--border-primary)] flex items-center gap-4 shadow-sm">
+                  <span className="text-3xl select-none">💻</span>
                   <div>
-                    <h4 className="font-bold text-sm text-[var(--text-primary)]">Cursor & Windsurf</h4>
-                    <p className="text-xs text-[var(--text-tertiary)]">
+                    <h4 className="font-bold text-base text-[var(--text-primary)]">Cursor & Windsurf</h4>
+                    <p className="text-sm text-[var(--text-tertiary)] mt-0.5">
                       {t('skills.envEditor')}
                     </p>
                   </div>
@@ -846,17 +872,18 @@ export default function SkillDetailPage() {
 
             {/* MCP Servers Section */}
             <section id="mcp" className="scroll-mt-24 space-y-6">
-              <h2 className="text-2xl font-bold text-[var(--text-primary)] border-b border-[var(--border-primary)] pb-3">
+              <h2 className="text-2xl md:text-3xl font-extrabold flex items-center gap-3 text-cyan-600 dark:text-cyan-400 border-b border-[var(--border-primary)] pb-3">
+                <span className="w-2 h-6 rounded-full bg-cyan-500" />
                 {t('skills.mcpServers')}
               </h2>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+              <p className="text-base text-[var(--text-secondary)] leading-relaxed">
                 {t('skills.mcpDesc')}
               </p>
-              <div className="bg-[#0b1629] p-5 rounded-xl border border-[var(--border-primary)] font-mono text-xs text-emerald-400 space-y-2">
-                <p className="text-[var(--text-tertiary)]">
+              <div className="bg-[#0b1629] p-5 rounded-2xl border border-[var(--border-primary)] font-mono text-sm text-emerald-400 space-y-2.5 shadow-md">
+                <p className="text-xs text-[var(--text-tertiary)]">
                   {t('skills.mcpConfigRegister')}
                 </p>
-                <pre className="overflow-x-auto">
+                <pre className="overflow-x-auto leading-relaxed">
 {`{
   "mcpServers": {
     "${skill.name.toLowerCase()}": {
@@ -872,27 +899,47 @@ export default function SkillDetailPage() {
             {/* Related Skills Section */}
             {related.length > 0 && (
               <section id="related" className="scroll-mt-24 space-y-6">
-                <h2 className="text-2xl font-bold text-[var(--text-primary)] border-b border-[var(--border-primary)] pb-3">
+                <h2 className="text-2xl md:text-3xl font-extrabold flex items-center gap-3 text-amber-600 dark:text-amber-400 border-b border-[var(--border-primary)] pb-3">
+                  <span className="w-2 h-6 rounded-full bg-amber-500" />
                   {t('skills.relatedSkills')}
                 </h2>
-                <div className="grid gap-4 sm:grid-cols-3">
+                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                   {related.map(s => {
-                    const sHeadline = isVi ? s.headline_vi : s.headline;
+                    const sHeadline = isVi ? (s.headline_vi || s.short_description_vi) : (s.headline || s.short_description);
                     return (
                       <div
                         key={s.slug}
-                        onClick={() => window.open(`/studio/skills/${s.slug}`, '_blank')}
-                        className="group bg-[var(--bg-card)] p-4 rounded-xl border border-[var(--border-primary)] hover:border-[#ff5a1f] transition-all cursor-pointer hover:-translate-y-0.5"
+                        onClick={() => {
+                          navigate(`/studio/ai-skills/${s.slug}`);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className="group bg-[var(--bg-card)] p-5 rounded-2xl border border-[var(--border-primary)] hover:border-orange-500/60 transition-all duration-300 cursor-pointer hover:-translate-y-1 shadow-sm hover:shadow-[0_0_20px_rgba(255,90,31,0.1)] flex flex-col justify-between"
                       >
-                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] mb-2 inline-block">
-                          {t('skills.categories.' + getCategoryKey(s.category))}
-                        </span>
-                        <h4 className="font-bold text-sm text-[var(--text-primary)] group-hover:text-[#ff5a1f] transition-colors line-clamp-1">
-                          {s.name}
-                        </h4>
-                        {sHeadline && (
-                          <p className="text-xs text-[var(--text-tertiary)] line-clamp-2 leading-relaxed">{sHeadline}</p>
-                        )}
+                        <div>
+                          <div className="flex items-center justify-between gap-2 mb-3">
+                            <span className="text-[11px] font-bold px-2.5 py-0.5 rounded bg-orange-500/10 text-orange-500 border border-orange-500/20 uppercase tracking-wide">
+                              {t('skills.categories.' + getCategoryKey(s.category))}
+                            </span>
+                            {s.tier && (
+                              <span className={`text-[9px] font-bold tracking-wider px-2 py-0.5 rounded border flex items-center gap-1 shrink-0 ${getTierColor(s.tier)}`}>
+                                <span>{getTierEmoji(s.tier)}</span>
+                                <span>{t('skills.tiers.' + getTierKey(s.tier)).toUpperCase()}</span>
+                              </span>
+                            )}
+                          </div>
+                          <h4 className="font-bold text-base md:text-lg text-[var(--text-primary)] group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors line-clamp-1 mb-2">
+                            {s.name}
+                          </h4>
+                          {sHeadline && (
+                            <p className="text-sm text-[var(--text-secondary)] line-clamp-2 leading-relaxed mb-4">{sHeadline}</p>
+                          )}
+                        </div>
+                        <div className="pt-3 border-t border-[var(--border-primary)] flex items-center justify-between text-xs text-[var(--text-tertiary)]">
+                          <span className="font-medium text-orange-500">@{s.author}</span>
+                          <span className="font-semibold text-emerald-theme flex items-center gap-1">
+                            ⏱ {formatTimeSaving(s.estimated_time_saving, language) || t('skills.timeRangeMedium')}
+                          </span>
+                        </div>
                       </div>
                     );
                   })}

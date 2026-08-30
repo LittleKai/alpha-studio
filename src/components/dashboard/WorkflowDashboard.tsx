@@ -25,8 +25,112 @@ import LoadingSpinner from '../ui/LoadingSpinner';
 // StudentProfileModal and PartnerRegistrationModal not used - moved to separate view components
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
-import { JobsView, PartnersView, PromptsView, ResourcesView } from './views';
+import { JobsView, PartnersView, PromptsView, LibraryPublisherView } from './views';
 import ProfileEditModal from '../modals/ProfileEditModal';
+import PublishToLibraryModal, { type PublishSource } from '../modals/PublishToLibraryModal';
+import './WorkflowDashboard.css';
+
+type WorkflowIconName = 'back' | 'files' | 'projects' | 'jobs' | 'partners' | 'affiliate' | 'prompts' | 'library' | 'exit' | 'search' | 'user' | 'plus' | 'calendar' | 'creative' | 'operations' | 'arrowRight' | 'book' | 'archive';
+
+function WorkflowIcon({ name, className = 'w-5 h-5' }: { name: WorkflowIconName; className?: string }) {
+    let content: React.ReactNode;
+
+    switch (name) {
+        case 'back':
+            content = <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />;
+            break;
+        case 'files':
+            content = <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />;
+            break;
+        case 'projects':
+            content = <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />;
+            break;
+        case 'jobs':
+            content = <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />;
+            break;
+        case 'partners':
+            content = <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />;
+            break;
+        case 'affiliate':
+            content = <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />;
+            break;
+        case 'prompts':
+            content = <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />;
+            break;
+        case 'library':
+            content = <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />;
+            break;
+        case 'exit':
+            content = <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />;
+            break;
+        case 'search':
+            content = <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />;
+            break;
+        case 'user':
+            content = <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />;
+            break;
+        case 'plus':
+            content = <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />;
+            break;
+        case 'calendar':
+            content = <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />;
+            break;
+        case 'creative':
+            content = <path strokeLinecap="round" strokeLinejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />;
+            break;
+        case 'operations':
+            content = <><path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></>;
+            break;
+        case 'arrowRight':
+            content = <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />;
+            break;
+        case 'book':
+            content = <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />;
+            break;
+        case 'archive':
+            content = <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />;
+            break;
+    }
+
+    return <svg aria-hidden="true" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{content}</svg>;
+}
+
+function getDocTypeColor(type: string) {
+    const ext = type.toLowerCase();
+    if (ext === 'pdf') return 'bg-red-500/15 text-red-400 border-red-500/35';
+    if (['doc', 'docx', 'txt', 'rtf'].includes(ext)) return 'bg-blue-500/15 text-blue-400 border-blue-500/35';
+    if (['xls', 'xlsx', 'csv'].includes(ext)) return 'bg-emerald-500/15 text-emerald-400 border-emerald-500/35';
+    if (['ppt', 'pptx'].includes(ext)) return 'bg-orange-500/15 text-orange-400 border-orange-500/35';
+    if (['zip', 'rar', '7z', 'tar', 'gz'].includes(ext)) return 'bg-amber-500/15 text-amber-400 border-amber-500/35';
+    if (['jpg', 'jpeg', 'png', 'webp', 'svg', 'gif'].includes(ext)) return 'bg-purple-500/15 text-purple-400 border-purple-500/35';
+    if (['mp4', 'mov', 'avi', 'mkv'].includes(ext)) return 'bg-pink-500/15 text-pink-400 border-pink-500/35';
+    return 'bg-cyan-500/15 text-cyan-400 border-cyan-500/35';
+}
+
+function getDeptBadge(dept: DepartmentType) {
+    switch (dept) {
+        case 'event_planner':
+            return {
+                bg: 'bg-gradient-to-br from-amber-500 to-orange-600 text-white',
+                pill: 'bg-amber-500/15 text-amber-400 border-amber-500/35'
+            };
+        case 'creative':
+            return {
+                bg: 'bg-gradient-to-br from-purple-500 to-pink-600 text-white',
+                pill: 'bg-purple-500/15 text-purple-400 border-purple-500/35'
+            };
+        case 'operation':
+            return {
+                bg: 'bg-gradient-to-br from-emerald-500 to-teal-600 text-white',
+                pill: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/35'
+            };
+        default:
+            return {
+                bg: 'bg-gradient-to-br from-cyan-500 to-blue-600 text-white',
+                pill: 'bg-cyan-500/15 text-cyan-400 border-cyan-500/35'
+            };
+    }
+}
 
 interface WorkflowDashboardProps {
   onBack: () => void;
@@ -35,6 +139,8 @@ interface WorkflowDashboardProps {
 export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   const [projects, setProjects] = useState<Project[]>([]);
   const [documents, setDocuments] = useState<WorkflowDocument[]>([]);
+  // Nguồn đang được đăng lên Thư viện sự kiện (null = modal đóng)
+  const [publishSource, setPublishSource] = useState<PublishSource | null>(null);
   const [loading, setLoading] = useState(true);
 
   const { t } = useTranslation();
@@ -44,7 +150,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   const { id: projectIdParam } = useParams<{ id: string }>();
 
   // Navigation State
-  const [activeView, setActiveView] = useState<'documents' | 'projects' | 'jobs' | 'partners' | 'automation' | 'affiliate' | 'creative' | 'resources'>('documents');
+  const [activeView, setActiveView] = useState<'documents' | 'projects' | 'jobs' | 'partners' | 'automation' | 'affiliate' | 'creative' | 'library'>('documents');
   const [searchQuery, setSearchQuery] = useState('');
   // partnerFilter moved to PartnersView component
 
@@ -67,7 +173,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [memberProfileModal, setMemberProfileModal] = useState<{ member: TeamMember; profile: UserPublicProfile | null; loading: boolean } | null>(null);
   // showPartnerModal moved to PartnersView component
-  // showCreativeModal and showResourceModal moved to PromptsView and ResourcesView components
+  // showCreativeModal moved to PromptsView
   const [showProjectModal, setShowProjectModal] = useState(false);
 
   // New Project Data
@@ -138,7 +244,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
     ]
   });
 
-  // creativeAssets and resources state moved to PromptsView and ResourcesView components
+  // creativeAssets state moved to PromptsView
   // Partners state moved to PartnersView component with database integration
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -282,7 +388,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       }).catch(console.error);
   };
 
-  // handleCreateAsset and handleUploadResource moved to PromptsView and ResourcesView components
+  // handleCreateAsset moved to PromptsView
   // handleAddPartner moved to PartnersView component
 
   const toggleAutomation = (id: string) => { setAutomations(prev => prev.map(a => a.id === id ? { ...a, isActive: !a.isActive } : a)); };
@@ -759,49 +865,61 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       const projectDocs = documents.filter(d => d.projectId === selectedProject.id);
 
       return (
-          <div className="flex flex-col h-full animate-fade-in">
-              <div className="p-6 border-b border-[var(--border-primary)] bg-[var(--bg-card)] flex justify-between items-center sticky top-0 z-10">
-                  <div className="flex items-center gap-4">
+          <div className="workflow-project-shell animate-fade-in">
+              <div className="workflow-project-header">
+                  <div className="workflow-project-header-main">
                       <button
                           onClick={() => navigate('/workflow')}
-                          className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--accent-primary)]/10 hover:bg-[var(--accent-primary)]/20 text-[var(--accent-primary)] font-bold text-sm transition-all border border-[var(--accent-primary)]/30 hover:border-[var(--accent-primary)]/60 flex-shrink-0"
+                          className="workflow-button workflow-button-secondary workflow-back-button"
                       >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" /></svg>
+                          <WorkflowIcon name="back" className="w-4 h-4" />
                           {t('workflow.dashboard.project.backToProjects')}
                       </button>
                       {selectedProject.avatar ? (
-                          <img src={selectedProject.avatar} className="w-12 h-12 rounded-xl object-cover border border-[var(--border-primary)]" />
+                          <img src={selectedProject.avatar} alt="" className="workflow-project-header-avatar" />
                       ) : (
-                          <div className="w-12 h-12 rounded-xl bg-[var(--bg-secondary)] flex items-center justify-center text-2xl border border-[var(--border-primary)]">
-                              {selectedProject.department === 'event_planner' ? '📅' : selectedProject.department === 'creative' ? '🎨' : '⚙️'}
-                          </div>
+                          <span className="workflow-project-header-avatar workflow-project-header-avatar-fallback">
+                              <WorkflowIcon name={selectedProject.department === 'event_planner' ? 'calendar' : selectedProject.department === 'creative' ? 'creative' : 'operations'} />
+                          </span>
                       )}
-                      <div>
-                          <div className="flex items-center gap-2">
-                              <h1 className="text-2xl font-black text-[var(--text-primary)]">{selectedProject.name}</h1>
+                      <div className="workflow-project-header-copy">
+                          <div className="workflow-project-header-title">
+                              <h1>{selectedProject.name}</h1>
                               {isProjectManagerOrCreator() && selectedProject.status !== 'completed' && (
-                                  <button onClick={handleOpenEditProject} className="p-1 rounded-lg hover:bg-[var(--bg-secondary)] text-[var(--text-tertiary)] hover:text-[var(--accent-primary)] transition-colors" title={t('workflow.dashboard.project.edit')}>
+                                  <button onClick={handleOpenEditProject} className="workflow-icon-button" title={t('workflow.dashboard.project.edit')}>
                                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" /></svg>
                                   </button>
                               )}
                           </div>
-                          <div className="flex items-center gap-3 text-sm mt-1.5 flex-wrap">
-                              <span className="text-[var(--accent-primary)] font-semibold">{selectedProject.client}</span>
-                              <span className="text-[var(--text-tertiary)]">• {selectedProject.startDate} → {selectedProject.deadline}</span>
-                              <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${selectedProject.status === 'completed' ? 'bg-green-500/20 text-green-400' : 'bg-blue-500/20 text-blue-400'}`}>
-                                  {t(`workflow.status.${selectedProject.status}`).toUpperCase()}
+                          <div className="workflow-project-header-meta">
+                              <span>{selectedProject.client}</span>
+                              <span>{selectedProject.startDate} → {selectedProject.deadline}</span>
+                              <span className={`workflow-status workflow-status-${selectedProject.status}`}>
+                                  {t(`workflow.status.${selectedProject.status}`)}
                               </span>
                           </div>
                       </div>
                   </div>
-                  {isProjectCreator() && selectedProject.status !== 'completed' && (
-                      <button onClick={handlePackageProject} className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-lg font-bold shadow-lg hover:opacity-90">
-                          📦 {t('workflow.dashboard.project.package.btn')}
+                  <div className="workflow-project-header-actions">
+                  {isProjectMember() && (
+                      <button
+                          onClick={() => setPublishSource({ kind: 'project', id: selectedProject.id, name: selectedProject.name, summary: selectedProject.tagline || selectedProject.client })}
+                          className="workflow-button workflow-button-library"
+                      >
+                          <WorkflowIcon name="book" />
+                          {t('eventLibrary.publish.button')}
                       </button>
                   )}
+                  {isProjectCreator() && selectedProject.status !== 'completed' && (
+                      <button onClick={handlePackageProject} className="workflow-button workflow-button-secondary">
+                          <WorkflowIcon name="archive" />
+                          {t('workflow.dashboard.project.package.btn')}
+                      </button>
+                  )}
+                  </div>
               </div>
 
-              <div className="flex border-b border-[var(--border-primary)] px-6 bg-[var(--bg-secondary)] overflow-x-auto">
+              <div className="workflow-project-tabs" role="tablist">
                   {(isProjectMember()
                       ? ['overview', 'team', 'files', 'finance', 'chat', 'tasks']
                       : ['overview', 'team']
@@ -809,7 +927,9 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                       <button
                         key={tab}
                         onClick={() => setProjectTab(tab as any)}
-                        className={`py-3 px-6 font-bold text-sm border-b-2 transition-colors whitespace-nowrap ${projectTab === tab ? 'border-[var(--accent-primary)] text-[var(--accent-primary)]' : 'border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
+                        className={projectTab === tab ? 'is-active' : ''}
+                        role="tab"
+                        aria-selected={projectTab === tab}
                       >
                           {t(`workflow.dashboard.project.tabs.${tab}`)}
                       </button>
@@ -1012,83 +1132,74 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                               </label>
                           </div>
                           <div className="grid grid-cols-1 gap-2">
-                              {projectDocs.length > 0 ? projectDocs.map(doc => (
-                                  <div key={doc.id} className="p-3 bg-[var(--bg-card)] rounded-lg border border-[var(--border-primary)]">
-                                      <div className="flex items-start justify-between gap-3">
-                                          <div className="flex items-center gap-3 flex-1 min-w-0">
-                                              <div className="w-8 h-8 bg-[var(--bg-secondary)] flex items-center justify-center rounded text-xs font-bold flex-shrink-0">{doc.type}</div>
-                                              <div className="flex-1 min-w-0">
-                                                  <p className="font-medium text-sm truncate">{doc.name}</p>
-                                                  <p className="text-xs text-[var(--text-tertiary)]">{doc.uploader} • {doc.size} • {doc.uploadDate}</p>
-                                                  {/* Upload progress bar */}
-                                                  {uploadProgress[doc.id] !== undefined && (
-                                                      <div className="mt-1.5">
-                                                          <div className="flex justify-between text-[10px] text-[var(--text-tertiary)] mb-0.5">
-                                                              <span>Uploading to B2...</span>
-                                                              <span>{uploadProgress[doc.id]}%</span>
-                                                          </div>
-                                                          <div className="w-full h-1 bg-[var(--bg-secondary)] rounded-full overflow-hidden">
-                                                              <div className="h-full bg-[var(--accent-primary)] rounded-full transition-all" style={{ width: `${uploadProgress[doc.id]}%` }} />
-                                                          </div>
-                                                      </div>
-                                                  )}
-                                                  {/* Note field: editable by uploader, read-only for others */}
-                                                  {doc.createdBy === user?._id ? (
-                                                      <input
-                                                          key={doc.id + '-note'}
-                                                          className="mt-1 text-xs w-full bg-transparent border-b border-dashed border-[var(--border-primary)] focus:outline-none focus:border-[var(--accent-primary)] text-[var(--text-tertiary)] placeholder-[var(--text-tertiary)]/50 italic"
-                                                          placeholder={t('workflow.dashboard.project.filesPanel.notePlaceholder')}
-                                                          defaultValue={doc.note || ''}
-                                                          onBlur={e => { if (e.target.value !== (doc.note || '')) handleUpdateDocNote(doc.id, e.target.value); }}
-                                                          onKeyDown={e => { if (e.key === 'Enter') e.currentTarget.blur(); }}
-                                                      />
-                                                  ) : doc.note ? (
-                                                      <p className="mt-1 text-xs italic text-[var(--text-tertiary)]">📝 {doc.note}</p>
-                                                  ) : null}
-                                              </div>
-                                          </div>
-                                          <div className="flex gap-2 flex-shrink-0">
-                                              {doc.url ? (
-                                                  <a href={doc.url} download={doc.name} target="_blank" rel="noreferrer" className="text-xs bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/20 px-3 py-1 rounded flex items-center gap-1">
-                                                      ↓ {t('workflow.dashboard.project.teamPanel.download')}
-                                                  </a>
-                                              ) : (
-                                                  <span className="text-xs text-[var(--text-tertiary)] px-3 py-1">{doc.name.split('.').pop()?.toUpperCase()}</span>
-                                              )}
-                                              {canDeleteDoc(doc) && (
-                                                  <button onClick={() => handleDeleteDoc(doc)} className="text-xs bg-red-500/10 text-red-400 hover:bg-red-500/20 px-2 py-1 rounded" title={t('workflow.dashboard.docPanel.delete')}>✕</button>
-                                              )}
-                                          </div>
-                                      </div>
-                                  </div>
-                              )) : <p className="text-[var(--text-tertiary)] italic">{t('workflow.dashboard.project.filesPanel.noFiles')}</p>}
+                               {projectDocs.length > 0 ? projectDocs.map(doc => (
+                                   <div key={doc.id} className="p-4 bg-[var(--bg-card)] rounded-xl border border-[var(--border-primary)] shadow-sm hover:border-[var(--accent-primary)]/50 transition-colors">
+                                       <div className="flex items-start justify-between gap-3">
+                                           <div className="flex items-center gap-3.5 flex-1 min-w-0">
+                                               <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-xs font-black uppercase flex-shrink-0 border shadow-sm ${getDocTypeColor(doc.type)}`}>{doc.type}</div>
+                                               <div className="flex-1 min-w-0">
+                                                   <p className="font-bold text-base text-[var(--text-primary)] truncate">{doc.name}</p>
+                                                   <p className="text-xs font-medium text-[var(--text-tertiary)] mt-0.5">{doc.uploader} • {doc.size} • {doc.uploadDate}</p>
+                                                   {/* Upload progress bar */}
+                                                   {uploadProgress[doc.id] !== undefined && (
+                                                       <div className="mt-1.5">
+                                                           <div className="flex justify-between text-xs text-[var(--text-tertiary)] mb-0.5">
+                                                               <span>Uploading to B2...</span>
+                                                               <span className="font-bold text-[var(--accent-primary)]">{uploadProgress[doc.id]}%</span>
+                                                           </div>
+                                                           <div className="w-full h-1.5 bg-[var(--bg-secondary)] rounded-full overflow-hidden">
+                                                               <div className="h-full bg-gradient-to-r from-[var(--accent-primary)] to-emerald-400 rounded-full transition-all" style={{ width: `${uploadProgress[doc.id]}%` }} />
+                                                           </div>
+                                                       </div>
+                                                   )}
+                                                   {/* Note field: editable by uploader, read-only for others */}
+                                                   {doc.createdBy === user?._id ? (
+                                                       <input
+                                                           key={doc.id + '-note'}
+                                                           className="mt-1 text-xs w-full bg-transparent border-b border-dashed border-[var(--border-primary)] focus:outline-none focus:border-[var(--accent-primary)] text-[var(--text-tertiary)] placeholder-[var(--text-tertiary)]/50 italic"
+                                                           placeholder={t('workflow.dashboard.project.filesPanel.notePlaceholder')}
+                                                           defaultValue={doc.note || ''}
+                                                           onBlur={e => { if (e.target.value !== (doc.note || '')) handleUpdateDocNote(doc.id, e.target.value); }}
+                                                           onKeyDown={e => { if (e.key === 'Enter') e.currentTarget.blur(); }}
+                                                       />
+                                                   ) : doc.note ? (
+                                                       <p className="mt-1 text-xs italic text-[var(--text-tertiary)]">📝 {doc.note}</p>
+                                                   ) : null}
+                                               </div>
+                                           </div>
+                                           <div className="flex gap-2 flex-shrink-0 items-center">
+                                               {doc.url ? (
+                                                   <a href={doc.url} download={doc.name} target="_blank" rel="noreferrer" className="text-xs bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/25 px-3 py-1.5 rounded-lg font-bold flex items-center gap-1.5 transition-colors">
+                                                       ↓ {t('workflow.dashboard.project.teamPanel.download')}
+                                                   </a>
+                                               ) : (
+                                                   <span className="text-xs text-[var(--text-tertiary)] px-3 py-1 font-bold">{doc.name.split('.').pop()?.toUpperCase()}</span>
+                                               )}
+                                               {canDeleteDoc(doc) && (
+                                                   <button onClick={() => handleDeleteDoc(doc)} className="text-xs bg-rose-500/15 text-rose-400 border border-rose-500/30 hover:bg-rose-500/25 px-2.5 py-1.5 rounded-lg font-bold transition-colors" title={t('workflow.dashboard.docPanel.delete')}>✕</button>
+                                               )}
+                                           </div>
+                                       </div>
+                                   </div>
+                               )) : <p className="text-[var(--text-tertiary)] italic text-base">{t('workflow.dashboard.project.filesPanel.noFiles')}</p>}
                           </div>
                       </div>
                   )}
 
                   {projectTab === 'finance' && (
                       <div className="space-y-6">
-                          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                              <div className="bg-gradient-to-br from-green-900/50 to-green-800/20 border border-green-500/30 p-6 rounded-2xl">
-                                  <p className="text-sm text-green-300 font-bold uppercase">{t('workflow.dashboard.project.finance.budget')}</p>
-                                  <div className="flex items-center gap-2 mt-1">
-                                      <span className="text-2xl">🪙</span>
-                                      <p className="text-2xl font-black text-white">{selectedProject.budget.toLocaleString()}</p>
-                                  </div>
+                          <div className="workflow-finance-summary">
+                              <div className="workflow-finance-metric" data-tone="success">
+                                  <p>{t('workflow.dashboard.project.finance.budget')}</p>
+                                  <div><span>C</span><strong>{selectedProject.budget.toLocaleString()}</strong></div>
                               </div>
-                              <div className="bg-gradient-to-br from-red-900/50 to-red-800/20 border border-red-500/30 p-6 rounded-2xl">
-                                  <p className="text-sm text-red-300 font-bold uppercase">{t('workflow.dashboard.project.finance.expenses')}</p>
-                                  <div className="flex items-center gap-2 mt-1">
-                                      <span className="text-2xl">🪙</span>
-                                      <p className="text-2xl font-black text-white">{selectedProject.expenses.toLocaleString()}</p>
-                                  </div>
+                              <div className="workflow-finance-metric" data-tone="danger">
+                                  <p>{t('workflow.dashboard.project.finance.expenses')}</p>
+                                  <div><span>C</span><strong>{selectedProject.expenses.toLocaleString()}</strong></div>
                               </div>
-                              <div className="bg-gradient-to-br from-blue-900/50 to-blue-800/20 border border-blue-500/30 p-6 rounded-2xl">
-                                  <p className="text-sm text-blue-300 font-bold uppercase">{t('workflow.dashboard.project.finance.profit')}</p>
-                                  <div className="flex items-center gap-2 mt-1">
-                                      <span className="text-2xl">🪙</span>
-                                      <p className="text-2xl font-black text-white">{(selectedProject.budget - selectedProject.expenses).toLocaleString()}</p>
-                                  </div>
+                              <div className="workflow-finance-metric" data-tone="info">
+                                  <p>{t('workflow.dashboard.project.finance.profit')}</p>
+                                  <div><span>C</span><strong>{(selectedProject.budget - selectedProject.expenses).toLocaleString()}</strong></div>
                               </div>
                           </div>
                           <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6">
@@ -1182,7 +1293,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                               </div>
                                           </div>
                                           <div className="flex items-center gap-2">
-                                              <span className={`text-xs uppercase font-bold tracking-wider px-3 py-1 rounded-full ${task.status === 'todo' ? 'bg-gray-500/20 text-gray-400' : task.status === 'in_progress' ? 'bg-blue-500/20 text-blue-400' : 'bg-green-500/20 text-green-400'}`}>{t(`workflow.dashboard.project.tasks.status.${task.status}`)}</span>
+                                              <span className={`workflow-status ${task.status === 'todo' ? 'workflow-status-planning' : task.status === 'done' ? 'workflow-status-completed' : ''}`}>{t(`workflow.dashboard.project.tasks.status.${task.status}`)}</span>
                                               <button onClick={e => handleDeleteTask(task.id, e)} className="p-1.5 rounded-lg hover:bg-red-500/20 text-[var(--text-tertiary)] hover:text-red-400 transition-colors" title={t('common.delete')}>
                                                   <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
                                               </button>
@@ -1222,109 +1333,136 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       });
 
   const renderProjectList = () => (
-      <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
-          <div className="flex justify-between items-center mb-6">
-              <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] to-purple-500">{t('workflow.dashboard.project.hubTitle')}</h1>
+      <div className="workflow-content-scroll workflow-projects-page animate-fade-in">
+          <div className="workflow-page-heading">
+              <div>
+                  <h1>{t('workflow.dashboard.project.hubTitle')}</h1>
+                  <p>{t('workflow.subtitle')}</p>
+              </div>
               {canCreateProject && (
-                  <button onClick={() => setShowProjectModal(true)} className="bg-[var(--accent-primary)] text-black font-bold px-6 py-2.5 rounded-lg shadow-lg hover:opacity-90 transition-all">+ {t('workflow.dashboard.createProject')}</button>
+                  <button onClick={() => setShowProjectModal(true)} className="workflow-button workflow-button-primary">
+                      <WorkflowIcon name="plus" />
+                      {t('workflow.dashboard.createProject')}
+                  </button>
               )}
           </div>
 
-          {/* Department filter + Mine filter */}
-          <div className="flex gap-2 mb-6 flex-wrap">
-              {DEPT_OPTIONS.map(opt => (
-                  <button
-                      key={opt.value}
-                      onClick={() => setProjectDeptFilter(opt.value)}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                          projectDeptFilter === opt.value
-                              ? 'bg-[var(--accent-primary)] text-black shadow'
-                              : 'bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:bg-[var(--border-primary)]'
-                      }`}
-                  >
-                      <span>{opt.icon}</span><span>{opt.label}</span>
-                  </button>
-              ))}
+          <div className="workflow-project-toolbar">
+              <div className="workflow-filter-group" aria-label={t('workflow.dashboard.project.deptFilter')}>
+                  {DEPT_OPTIONS.map(opt => (
+                      <button
+                          key={opt.value}
+                          onClick={() => setProjectDeptFilter(opt.value)}
+                          className={`workflow-filter ${projectDeptFilter === opt.value ? 'is-active' : ''}`}
+                          aria-pressed={projectDeptFilter === opt.value}
+                      >
+                          <span className="text-base">{opt.icon}</span>
+                          <span>{opt.label}</span>
+                      </button>
+                  ))}
+              </div>
               <button
-                  onClick={() => setProjectMineFilter(v => !v)}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                      projectMineFilter
-                          ? 'bg-purple-500 text-white shadow'
-                          : 'bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:bg-[var(--border-primary)]'
-                  }`}
+                  onClick={() => setProjectMineFilter(value => !value)}
+                  className={`workflow-filter workflow-filter-mine ${projectMineFilter ? 'is-active' : ''}`}
+                  aria-pressed={projectMineFilter}
               >
-                  <span>👤</span><span>{t('workflow.dashboard.project.mineFilter')}</span>
+                  <span className="text-base">👤</span>
+                  <span>{t('workflow.dashboard.project.mineFilter')}</span>
               </button>
+              <span className="workflow-project-count">{filteredProjects.length} {t('workflow.dashboard.project.projectsShown')}</span>
           </div>
 
-          {filteredProjects.length === 0 && (
-              <div className="col-span-3 text-center py-20">
-                  <div className="text-6xl mb-4">💼</div>
-                  <p className="text-[var(--text-secondary)] text-lg mb-6">{t('workflow.dashboard.project.noProjects')}</p>
+          {filteredProjects.length === 0 ? (
+              <div className="workflow-empty-state">
+                  <span className="text-4xl">📁</span>
+                  <h2>{t('workflow.dashboard.project.noProjects')}</h2>
                   {canCreateProject && (
-                      <button onClick={() => setShowProjectModal(true)} className="bg-[var(--accent-primary)] text-black font-bold px-8 py-3 rounded-xl hover:opacity-90 transition-all">+ {t('workflow.dashboard.createProject')}</button>
+                      <button onClick={() => setShowProjectModal(true)} className="workflow-button workflow-button-primary">
+                          <span className="text-lg">＋</span>
+                          {t('workflow.dashboard.createProject')}
+                      </button>
                   )}
               </div>
+          ) : (
+              <div className="workflow-project-list">
+                  {filteredProjects.map(project => {
+                      const deptBadge = getDeptBadge(project.department);
+                      return (
+                      <div
+                          key={project.id}
+                          className={`workflow-project-row ${isUserMemberOf(project) ? 'is-member' : ''}`}
+                          role="button"
+                          tabIndex={0}
+                          onClick={() => navigate(`/workflow/projects/${project.id}`)}
+                          onKeyDown={event => {
+                              if (event.key === 'Enter' || event.key === ' ') {
+                                  event.preventDefault();
+                                  navigate(`/workflow/projects/${project.id}`);
+                              }
+                          }}
+                          aria-label={project.name}
+                      >
+                          <div className="workflow-project-identity">
+                              <span className={`workflow-project-avatar ${!project.avatar ? deptBadge.bg : ''}`}>
+                                  {project.avatar ? (
+                                      <img src={project.avatar} alt="" />
+                                  ) : (
+                                      <span className="text-2xl">{project.department === 'event_planner' ? '📅' : project.department === 'creative' ? '🎨' : '⚙️'}</span>
+                                  )}
+                              </span>
+                              <div className="workflow-project-copy">
+                                  <div className="workflow-project-title-line">
+                                      <h2>{project.name}</h2>
+                                      {isUserMemberOf(project) && (
+                                          <span className="workflow-member-badge"><span>👤</span>{t('workflow.dashboard.project.memberBadge')}</span>
+                                      )}
+                                  </div>
+                                  <p className="workflow-project-client">{project.client}</p>
+                                  {project.tagline && <p className="workflow-project-tagline line-clamp-2">{project.tagline}</p>}
+                              </div>
+                          </div>
+
+                          <div className="workflow-project-classification">
+                              <span className={`workflow-status workflow-status-${project.status}`}>
+                                  <span className="w-2 h-2 rounded-full inline-block mr-1.5 bg-current opacity-80 animate-pulse"></span>
+                                  {t(`workflow.status.${project.status}`)}
+                              </span>
+                              <span className="workflow-department">{t(`workflow.depts.${project.department}`)}</span>
+                          </div>
+
+                          <div className="workflow-project-progress">
+                              <div><span>{t('workflow.progress')}</span><strong>{project.progress}%</strong></div>
+                              <progress value={project.progress} max="100" aria-label={`${t('workflow.progress')} ${project.progress}%`} />
+                          </div>
+
+                          <div className="workflow-project-meta">
+                              <div className="workflow-team-stack" aria-label={`${project.team.length} ${t('workflow.teamMembers')}`}>
+                                  {project.team.slice(0, 3).map(member => member.avatar ? (
+                                      <img key={member.id} src={member.avatar} alt={member.name} />
+                                  ) : (
+                                      <span key={member.id}>{member.name.charAt(0).toUpperCase()}</span>
+                                  ))}
+                                  {project.team.length > 3 && <span>+{project.team.length - 3}</span>}
+                              </div>
+                              <span className="workflow-project-budget"><b>C</b>{project.budget.toLocaleString()}</span>
+                              <span className="workflow-project-deadline"><WorkflowIcon name="calendar" className="w-4 h-4" />{project.deadline}</span>
+                          </div>
+
+                          {user?.role === 'admin' && project.status === 'completed' && (
+                              <button
+                                  onClick={event => { event.stopPropagation(); handleDeleteProject(project.id); }}
+                                  onKeyDown={event => event.stopPropagation()}
+                                  className="workflow-project-delete"
+                                  title={t('workflow.dashboard.project.confirmDelete')}
+                              >
+                                  <WorkflowIcon name="archive" className="w-4 h-4" />
+                              </button>
+                          )}
+                          <WorkflowIcon name="arrowRight" className="workflow-project-arrow" />
+                      </div>
+                  );})}
+              </div>
           )}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map(project => (
-                  <div key={project.id} className={`relative bg-[var(--bg-card)] border rounded-2xl cursor-pointer transition-all hover:-translate-y-1 shadow-lg group ${isUserMemberOf(project) ? 'pt-8 px-6 pb-6 border-[var(--accent-primary)]/50 hover:border-[var(--accent-primary)] ring-1 ring-[var(--accent-primary)]/20' : 'p-6 border-[var(--border-primary)] hover:border-[var(--accent-primary)]'}`} onClick={() => navigate(`/workflow/projects/${project.id}`)}>
-                      {/* Member indicator badge */}
-                      {isUserMemberOf(project) && (
-                          <div className="absolute top-2.5 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[var(--accent-primary)]/20 text-[var(--accent-primary)] border border-[var(--accent-primary)]/30">
-                              ✓ {t('workflow.dashboard.project.memberBadge')}
-                          </div>
-                      )}
-                      {/* Admin delete button for completed projects */}
-                      {user?.role === 'admin' && project.status === 'completed' && (
-                          <button
-                              onClick={e => { e.stopPropagation(); handleDeleteProject(project.id); }}
-                              className="absolute top-3 right-3 p-1 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500/20 opacity-0 group-hover:opacity-100 transition-opacity z-10"
-                              title={t('workflow.dashboard.project.confirmDelete')}
-                          >
-                              <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
-                          </button>
-                      )}
-                      <div className="flex items-start gap-3 mb-3">
-                          <div className="w-14 h-14 rounded-xl bg-[var(--bg-secondary)] flex items-center justify-center text-2xl overflow-hidden flex-shrink-0 border border-[var(--border-primary)]">
-                              {project.avatar ? <img src={project.avatar} className="w-full h-full object-cover" /> : (project.department === 'event_planner' ? '📅' : project.department === 'creative' ? '🎨' : '⚙️')}
-                          </div>
-                          <div className="flex-1 min-w-0">
-                              <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors leading-tight">{project.name}</h3>
-                              <div className="flex items-center gap-1.5 flex-wrap mt-1.5">
-                                  <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase border ${
-                                      project.status === 'completed' ? 'bg-green-500/20 text-green-400 border-green-500/30' :
-                                      project.status === 'active' ? 'bg-blue-500/20 text-blue-400 border-blue-500/30' :
-                                      'bg-orange-500/20 text-orange-400 border-orange-500/30'
-                                  }`}>{t(`workflow.status.${project.status}`)}</span>
-                                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[var(--bg-secondary)] text-[var(--text-tertiary)] border border-[var(--border-primary)]">
-                                      {project.department === 'event_planner' ? '📅' : project.department === 'creative' ? '🎨' : '⚙️'} {t(`workflow.depts.${project.department}`)}
-                                  </span>
-                              </div>
-                          </div>
-                      </div>
-                      <div className="mb-3 space-y-0.5">
-                          <p className="text-sm font-semibold text-sky-400 truncate">{project.client}</p>
-                          {project.tagline && <p className="text-xs text-[var(--text-tertiary)] line-clamp-2 italic">{project.tagline}</p>}
-                      </div>
-                      <div className="space-y-2">
-                          <div className="flex justify-between text-sm font-medium"><span>{t('workflow.progress')}</span><span className="font-bold">{project.progress}%</span></div>
-                          <div className="w-full h-2 bg-[var(--bg-secondary)] rounded-full overflow-hidden"><div className="h-full bg-[var(--accent-primary)] rounded-full" style={{ width: `${project.progress}%` }}></div></div>
-                          <div className="flex justify-between items-center pt-2 border-t border-[var(--border-primary)]">
-                              <div className="flex -space-x-2">{project.team.slice(0,3).map(m => (<img key={m.id} src={m.avatar} className="w-7 h-7 rounded-full border-2 border-[var(--bg-card)]" />))}{project.team.length > 3 && <div className="w-7 h-7 rounded-full bg-[var(--bg-secondary)] flex items-center justify-center text-[9px] font-bold border-2 border-[var(--bg-card)]">+{project.team.length-3}</div>}</div>
-                              <div className="flex items-center gap-1.5">
-                                  <span className="flex items-center gap-1 text-xs font-bold text-yellow-400">
-                                      <span className="w-3.5 h-3.5 rounded-full bg-yellow-400 text-black flex items-center justify-center text-[8px] font-black flex-shrink-0">C</span>
-                                      {project.budget.toLocaleString()}
-                                  </span>
-                                  <span className="text-[var(--text-tertiary)] text-xs">•</span>
-                                  <span className="text-xs text-[var(--text-secondary)]">{project.deadline}</span>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              ))}
-          </div>
       </div>
   );
 
@@ -1333,18 +1471,23 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
     switch (activeView) {
       case 'projects': return renderProjectList();
-      case 'resources': return <ResourcesView searchQuery={searchQuery} />;
+      case 'library': return <LibraryPublisherView searchQuery={searchQuery} />;
       case 'creative': return <PromptsView searchQuery={searchQuery} />;
       case 'automation': return (
-        <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
-            <div className="flex justify-between items-center mb-8"><h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">{t('workflow.automation.title')}</h1><button className="bg-[var(--accent-primary)] text-black font-bold px-6 py-2.5 rounded-lg shadow-lg hover:opacity-90 transition-all flex items-center gap-2"><span>+</span> {t('workflow.automation.create')}</button></div>
+        <div className="workflow-content-scroll animate-fade-in">
+            <div className="workflow-page-heading"><h1>{t('workflow.automation.title')}</h1><button className="workflow-button workflow-button-primary"><WorkflowIcon name="plus" />{t('workflow.automation.create')}</button></div>
             <div className="grid grid-cols-1 gap-4">{automations.map(auto => (<div key={auto.id} className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 transition-all hover:border-[var(--accent-primary)]"><div className="flex items-center gap-4"><div className={`w-12 h-12 rounded-lg flex items-center justify-center text-2xl ${auto.isActive ? 'bg-green-500/10 text-green-500' : 'bg-gray-500/10 text-gray-500'}`}>{auto.action === 'send_email' ? '📧' : auto.action === 'send_telegram' ? '✈️' : '💬'}</div><div><h3 className="font-bold text-lg text-[var(--text-primary)]">{auto.name}</h3><p className="text-sm text-[var(--text-secondary)] flex items-center gap-2"><span className="font-mono bg-[var(--bg-secondary)] px-1.5 py-0.5 rounded text-xs">{t(`workflow.automation.triggers.${auto.trigger}`)}</span><span>➜</span><span className="font-mono bg-[var(--bg-secondary)] px-1.5 py-0.5 rounded text-xs">{auto.target}</span></p>{auto.lastRun && <p className="text-xs text-[var(--text-tertiary)] mt-1">{t('workflow.automation.lastRun')}: {auto.lastRun}</p>}</div></div><div className="flex items-center gap-4"><span className={`text-sm font-bold ${auto.isActive ? 'text-green-500' : 'text-gray-500'}`}>{auto.isActive ? t('workflow.automation.active') : t('workflow.automation.inactive')}</span><label className="relative inline-flex items-center cursor-pointer"><input type="checkbox" checked={auto.isActive} onChange={() => toggleAutomation(auto.id)} className="sr-only peer" /><div className="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div></label></div></div>))}</div>
         </div>
       );
       case 'affiliate': return (
-        <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
-            <div className="mb-8"><h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-400 mb-2">{t('workflow.affiliate.title')}</h1><p className="text-[var(--text-secondary)]">{t('workflow.affiliate.subtitle')}</p></div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-2xl"><p className="text-xs font-bold text-[var(--text-tertiary)] uppercase mb-2">{t('workflow.affiliate.totalEarned')}</p><p className="text-3xl font-black text-yellow-400">{affiliateData.totalEarned} <span className="text-sm text-[var(--text-secondary)]">{t('workflow.affiliate.coins')}</span></p></div><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-2xl"><p className="text-xs font-bold text-[var(--text-tertiary)] uppercase mb-2">{t('workflow.affiliate.pending')}</p><p className="text-3xl font-black text-blue-400">{affiliateData.pending} <span className="text-sm text-[var(--text-secondary)]">{t('workflow.affiliate.coins')}</span></p></div><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-2xl"><p className="text-xs font-bold text-[var(--text-tertiary)] uppercase mb-2">{t('workflow.affiliate.referrals')}</p><p className="text-3xl font-black text-green-400">{affiliateData.referrals}</p></div><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-2xl"><p className="text-xs font-bold text-[var(--text-tertiary)] uppercase mb-2">{t('workflow.affiliate.clicks')}</p><p className="text-3xl font-black text-purple-400">{affiliateData.clicks}</p></div></div>
+        <div className="workflow-content-scroll animate-fade-in">
+            <div className="workflow-page-heading"><div><h1>{t('workflow.affiliate.title')}</h1><p>{t('workflow.affiliate.subtitle')}</p></div></div>
+            <div className="workflow-affiliate-summary">
+                <div><span>{t('workflow.affiliate.totalEarned')}</span><strong>{affiliateData.totalEarned} <small>{t('workflow.affiliate.coins')}</small></strong></div>
+                <div><span>{t('workflow.affiliate.pending')}</span><strong>{affiliateData.pending} <small>{t('workflow.affiliate.coins')}</small></strong></div>
+                <div><span>{t('workflow.affiliate.referrals')}</span><strong>{affiliateData.referrals}</strong></div>
+                <div><span>{t('workflow.affiliate.clicks')}</span><strong>{affiliateData.clicks}</strong></div>
+            </div>
             <h3 className="text-xl font-bold text-[var(--text-primary)] mb-4">{t('workflow.affiliate.program')}</h3>
             <div className="space-y-4 mb-8">{affiliateData.links.map(link => (<div key={link.id} className="bg-[var(--bg-secondary)] border border-[var(--border-primary)] p-4 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4"><div className="flex-1"><h4 className="font-bold text-[var(--text-primary)]">{link.name}</h4><p className="text-xs text-[var(--accent-primary)] mt-1">{t('workflow.affiliate.commission')}: {link.commission}</p></div><div className="flex items-center gap-3 w-full md:w-auto"><code className="bg-black/30 px-3 py-2 rounded text-xs text-[var(--text-secondary)] flex-1 md:flex-none truncate max-w-[200px]">{link.url}</code><button onClick={() => copyToClipboard(link.url)} className="bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-black px-4 py-2 rounded-lg text-xs font-bold transition-colors">{t('workflow.affiliate.copyLink')}</button></div></div>))}</div>
         </div>
@@ -1352,86 +1495,102 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       case 'jobs': return <JobsView searchQuery={searchQuery} />;
       case 'partners': return <PartnersView searchQuery={searchQuery} />;
       default: return (
-        <div className="p-6 md:p-8 overflow-y-auto flex-1">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+        <div className="workflow-content-scroll workflow-documents-page">
+            <div className="workflow-page-heading">
                 <div>
-                    <h1 className="text-3xl font-bold">{t('workflow.sidebar.allDocuments')}</h1>
-                    <p className="text-[var(--text-secondary)] mt-1">{filteredDocs.length} {t('workflow.dashboard.documentsFound')}</p>
+                    <h1>{t('workflow.sidebar.allDocuments')}</h1>
+                    <p>{filteredDocs.length} {t('workflow.dashboard.documentsFound')}</p>
                 </div>
-                <label className="cursor-pointer py-2.5 px-5 bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] font-bold rounded-lg hover:bg-[var(--border-primary)] transition-colors flex items-center gap-2">
+                <label className="workflow-button workflow-button-primary cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
                     {t('workflow.dashboard.upload')}
-                    {user?.role !== 'admin' && <span className="text-[var(--text-tertiary)] text-xs font-normal">max 10MB</span>}
+                    {user?.role !== 'admin' && <span className="workflow-button-note">{t('workflow.dashboard.uploadLimit')}</span>}
                     <input type="file" className="hidden" onChange={handleFileUpload} />
                 </label>
             </div>
             {/* Filter bar */}
-            <div className="flex flex-wrap gap-3 mb-4">
-                <div className="flex gap-1 bg-[var(--bg-secondary)] p-1 rounded-lg border border-[var(--border-primary)]">
+            <div className="workflow-document-toolbar">
+                <div className="workflow-filter-group">
                     {(['all', 'personal', 'project'] as const).map(f => (
-                        <button key={f} onClick={() => setDocSourceFilter(f)} className={`px-3 py-1.5 rounded text-xs font-bold transition-colors ${docSourceFilter === f ? 'bg-[var(--accent-primary)] text-black' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}>
+                        <button key={f} onClick={() => setDocSourceFilter(f)} className={`workflow-filter ${docSourceFilter === f ? 'is-active' : ''}`} aria-pressed={docSourceFilter === f}>
                             {t(`workflow.dashboard.sourceFilter.${f}`)}
                         </button>
                     ))}
                 </div>
             </div>
-            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl overflow-hidden shadow-sm">
+            <div className="workflow-table-surface">
                 <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                         <thead>
-                            <tr className="bg-[var(--bg-secondary)] border-b border-[var(--border-primary)] text-xs uppercase tracking-wider text-[var(--text-secondary)]">
+                            <tr className="workflow-table-head">
                                 <th className="p-4 font-semibold cursor-pointer hover:text-[var(--text-primary)] select-none" onClick={() => toggleDocSort('name')}>
                                     <div className="flex items-center gap-1">{t('workflow.dashboard.table.name')}{docSortField === 'name' && <span className="text-[var(--accent-primary)]">{docSortDir === 'asc' ? ' ↑' : ' ↓'}</span>}</div>
                                 </th>
                                 <th className="p-4 font-semibold cursor-pointer hover:text-[var(--text-primary)] select-none hidden md:table-cell" onClick={() => toggleDocSort('project')}>
                                     <div className="flex items-center gap-1">{t('workflow.dashboard.table.project')}{docSortField === 'project' && <span className="text-[var(--accent-primary)]">{docSortDir === 'asc' ? ' ↑' : ' ↓'}</span>}</div>
                                 </th>
-                                <th className="p-4 font-semibold cursor-pointer hover:text-[var(--text-primary)] select-none hidden md:table-cell" onClick={() => toggleDocSort('date')}>
+                                <th className="p-4 font-bold text-sm cursor-pointer hover:text-[var(--text-primary)] select-none hidden md:table-cell" onClick={() => toggleDocSort('date')}>
                                     <div className="flex items-center gap-1">{t('workflow.dashboard.table.date')}{docSortField === 'date' && <span className="text-[var(--accent-primary)]">{docSortDir === 'asc' ? ' ↑' : ' ↓'}</span>}</div>
                                 </th>
-                                <th className="p-4 font-semibold text-right">{t('workflow.dashboard.table.action')}</th>
+                                <th className="p-4 font-bold text-sm text-right">{t('workflow.dashboard.table.action')}</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-[var(--border-primary)]">
                             {filteredDocs.length > 0 ? filteredDocs.map((doc) => {
                                 const linkedProject = doc.projectId ? projects.find(p => p.id === doc.projectId) : null;
+                                const deptInfo = linkedProject ? getDeptBadge(linkedProject.department) : null;
                                 return (
                                     <tr key={doc.id} className="hover:bg-[var(--bg-secondary)]/50 transition-colors group">
                                         <td className="p-4">
-                                            <div className="flex items-center gap-3">
-                                                <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0 ${linkedProject ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' : 'bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)]'}`}>{doc.type}</div>
-                                                <div>
-                                                    <p className="font-semibold text-base text-[var(--text-primary)]">{doc.name}</p>
-                                                    <p className="text-sm text-[var(--text-tertiary)] mt-0.5">{doc.size}</p>
+                                            <div className="flex items-center gap-3.5">
+                                                <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-xs font-black uppercase flex-shrink-0 border shadow-sm ${getDocTypeColor(doc.type)}`}>
+                                                    {doc.type}
+                                                </div>
+                                                <div className="min-w-0">
+                                                    <p className="font-bold text-base text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors truncate">{doc.name}</p>
+                                                    <p className="text-xs font-medium text-[var(--text-tertiary)] mt-0.5">{doc.size}</p>
                                                 </div>
                                             </div>
                                         </td>
                                         <td className="p-4 text-sm hidden md:table-cell">
                                             {linkedProject ? (
-                                                <div>
-                                                    <p className="text-[var(--text-primary)] font-medium">{linkedProject.name}</p>
-                                                    <p className="text-xs text-[var(--text-tertiary)] mt-0.5">{t(`workflow.depts.${linkedProject.department}`)}</p>
+                                                <div className="flex items-center gap-2">
+                                                    <span className={`w-2.5 h-2.5 rounded-full ${deptInfo?.bg || 'bg-cyan-500'}`}></span>
+                                                    <div>
+                                                        <p className="text-[var(--text-primary)] font-bold text-sm">{linkedProject.name}</p>
+                                                        <p className="text-xs font-semibold text-[var(--text-tertiary)] mt-0.5">{t(`workflow.depts.${linkedProject.department}`)}</p>
+                                                    </div>
                                                 </div>
                                             ) : (
-                                                <span className="text-[var(--text-tertiary)]">—</span>
+                                                <span className="text-[var(--text-tertiary)] font-medium">—</span>
                                             )}
                                         </td>
-                                        <td className="p-4 text-sm text-[var(--text-secondary)] hidden md:table-cell">{doc.uploadDate}</td>
+                                        <td className="p-4 text-sm font-medium text-[var(--text-secondary)] hidden md:table-cell">{doc.uploadDate}</td>
                                         <td className="p-4 text-right">
-                                            <div className="flex justify-end gap-1 items-center">
+                                            <div className="flex justify-end gap-1.5 items-center">
                                                 {/* Download — always shown, uses signed URL for B2 */}
                                                 {doc.url && (
                                                     <button
                                                         onClick={() => handleDownload(doc)}
-                                                        className="p-2 rounded-lg text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-colors"
+                                                        className="p-2.5 rounded-xl text-cyan-400 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/20 transition-all shadow-sm"
                                                         title={t('workflow.dashboard.project.teamPanel.download')}
                                                     >
                                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
                                                     </button>
                                                 )}
+                                                {/* Đăng lên Thư viện sự kiện — chỉ người upload và admin */}
+                                                {doc.url && (doc.createdBy === user?._id || user?.role === 'admin') && (
+                                                    <button
+                                                        onClick={() => setPublishSource({ kind: 'document', id: doc.id, name: doc.name, summary: doc.note })}
+                                                        className="p-2.5 rounded-xl text-purple-400 bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/20 transition-all shadow-sm"
+                                                        title={t('eventLibrary.publish.button')}
+                                                    >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" /></svg>
+                                                    </button>
+                                                )}
                                                 {/* Delete — only for personal (non-project) files */}
                                                 {!doc.projectId && (
-                                                    <button onClick={() => handleDeleteDoc(doc)} className="p-2 rounded-lg text-[var(--text-tertiary)] hover:text-red-400 hover:bg-red-500/20 transition-colors" title={t('workflow.dashboard.docPanel.delete')}>
+                                                    <button onClick={() => handleDeleteDoc(doc)} className="p-2.5 rounded-xl text-rose-400 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 transition-all shadow-sm" title={t('workflow.dashboard.docPanel.delete')}>
                                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
                                                     </button>
                                                 )}
@@ -1457,44 +1616,111 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
     </div>
   );
 
-  return (
-    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans flex">
-        {/* Sidebar */}
-        <div className="w-20 md:w-64 bg-[var(--bg-card)] border-r border-[var(--border-primary)] flex flex-col flex-shrink-0">
-            <div className="p-6 border-b border-[var(--border-primary)] flex items-center gap-3">
-                <button onClick={onBack} className="p-2 rounded-lg hover:bg-[var(--bg-secondary)] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" /></svg></button>
-                <span className="font-black text-lg hidden md:block tracking-tight text-white">ALPHA CONNECT</span>
-            </div>
-            <div className="flex-1 overflow-y-auto py-6 space-y-6 px-3">
-                <div><p className="px-4 text-[10px] font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">{t('workflow.sidebar.fileManagement')}</p>
-                    <div className="space-y-1">
-                        <button onClick={() => { navigate('/workflow'); setActiveView('documents'); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${activeView === 'documents' && !selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">📂</span><span className="hidden md:block text-sm">{t('workflow.sidebar.allDocuments')}</span></button>
-                        <button onClick={() => { navigate('/workflow'); setActiveView('projects'); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${activeView === 'projects' || !!selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">💼</span><span className="hidden md:block text-sm">{t('workflow.sidebar.account')}</span></button>
-                    </div>
-                </div>
-                <div><p className="px-4 text-[10px] font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">{t('workflow.sidebar.networkOpportunity')}</p>
-                    <div className="space-y-1">
-                        <button onClick={() => { setActiveView('jobs'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'jobs' ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">🚀</span><div className="hidden md:flex flex-col items-start"><span className="text-sm">{t('workflow.sidebar.jobMarket')}</span><span className="text-[10px] opacity-70">{t('workflow.sidebar.freelancer')}</span></div>{(activeView as string) !== 'jobs' && <span className="ml-auto bg-red-500 text-white text-[9px] px-1.5 py-0.5 rounded-full font-bold">New</span>}</button>
-                        <button onClick={() => { setActiveView('partners'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'partners' ? 'bg-[#1e293b] border border-[var(--border-primary)] shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">🤝</span><span className={`hidden md:block text-sm ${(activeView as string) === 'partners' ? 'text-[var(--accent-primary)] font-bold' : ''}`}>{t('workflow.sidebar.partners')}</span></button>
-                        <button onClick={() => { setActiveView('affiliate'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'affiliate' ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">💸</span><span className="hidden md:block text-sm">{t('workflow.sidebar.affiliate')}</span></button>
-                        <button onClick={() => navigate('/wallet')} className="w-full flex items-center gap-3 p-3 rounded-xl transition-all text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span className="hidden md:block text-sm">{t('workflow.sidebar.creditWallet')}</span><svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 ml-auto opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></button>
-                    </div>
-                </div>
-                <div><p className="px-4 text-[10px] font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">{t('workflow.sidebar.communityResources')}</p>
-                    <div className="space-y-1">
-                        <button onClick={() => { setActiveView('creative'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'creative' ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">🎨</span><span className="hidden md:block text-sm">{t('workflow.sidebar.sharePrompts')}</span></button>
-                        <button onClick={() => { setActiveView('resources'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'resources' ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">📦</span><span className="hidden md:block text-sm">{t('workflow.sidebar.resourceHub')}</span></button>
-                    </div>
-                </div>
-            </div>
-            <div className="p-4 border-t border-[var(--border-primary)]"><button onClick={onBack} className="flex items-center gap-3 p-2 w-full rounded-xl hover:bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg><span className="hidden md:block text-sm font-bold">{t('workflow.sidebar.exitStudio')}</span></button></div>
-        </div>
+  const currentViewLabel = selectedProject?.name || {
+      documents: t('workflow.sidebar.allDocuments'),
+      projects: t('workflow.sidebar.account'),
+      jobs: t('workflow.sidebar.jobMarket'),
+      partners: t('workflow.sidebar.partners'),
+      automation: t('workflow.automation.title'),
+      affiliate: t('workflow.sidebar.affiliate'),
+      creative: t('workflow.sidebar.sharePrompts'),
+      library: t('workflow.sidebar.libraryPublisher'),
+  }[activeView];
 
-        {/* Main Content */}
-        <div className="flex-1 flex flex-col h-screen overflow-hidden">
-            <header className="h-16 border-b border-[var(--border-primary)] bg-[var(--bg-card-alpha)] backdrop-blur-md flex items-center justify-between px-6 sticky top-0 z-20">
-                 <div className="flex items-center gap-4 flex-1"><div className="relative w-full max-w-md"><input type="text" placeholder={t('workflow.dashboard.search')} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full pl-10 pr-4 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm text-[var(--text-primary)] focus:ring-1 focus:ring-[var(--accent-primary)] placeholder-[var(--text-tertiary)]" /><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-tertiary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg></div></div>
-                 <div className="flex items-center gap-4"><div className="flex items-center gap-2"><LanguageSwitcher /><ThemeSwitcher /></div><div onClick={() => setShowProfileModal(true)} className="w-8 h-8 rounded-full bg-gradient-to-tr from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center text-[var(--text-on-accent)] font-bold text-sm cursor-pointer hover:scale-110 transition-transform overflow-hidden">{user?.avatar ? <img src={user.avatar} alt={userProfile.name} className="w-full h-full object-cover" /> : userProfile.name.charAt(0).toUpperCase()}</div></div>
+  return (
+    <div className="workflow-shell">
+        <aside className="workflow-sidebar">
+            <button onClick={onBack} className="workflow-brand group" aria-label={t('workflow.sidebar.exitStudio')}>
+                <img src="/alpha-logo-animated.svg" alt="Alpha Connect" className="w-10 h-10 rounded-xl object-contain group-hover:rotate-12 transition-transform shadow-md flex-shrink-0" />
+                <span className="workflow-brand-copy"><strong>Alpha Connect</strong><small>{t('workflow.title')}</small></span>
+            </button>
+
+            <nav className="workflow-nav-scroll" aria-label={t('workflow.title')}>
+                <section className="workflow-nav-section">
+                    <h2>{t('workflow.sidebar.fileManagement')}</h2>
+                    <div>
+                        <button onClick={() => { navigate('/workflow'); setActiveView('documents'); }} className={`workflow-nav-item ${activeView === 'documents' && !selectedProject ? 'is-active' : ''}`} title={t('workflow.sidebar.allDocuments')}>
+                            <span className="workflow-nav-icon-wrap bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-xl">
+                                📂
+                            </span>
+                            <span>{t('workflow.sidebar.allDocuments')}</span>
+                        </button>
+                        <button onClick={() => { navigate('/workflow'); setActiveView('projects'); }} className={`workflow-nav-item ${activeView === 'projects' || !!selectedProject ? 'is-active' : ''}`} title={t('workflow.sidebar.account')}>
+                            <span className="workflow-nav-icon-wrap bg-amber-500/15 text-amber-400 border border-amber-500/30 text-xl">
+                                💼
+                            </span>
+                            <span>{t('workflow.sidebar.account')}</span>
+                        </button>
+                    </div>
+                </section>
+
+                <section className="workflow-nav-section">
+                    <h2>{t('workflow.sidebar.networkOpportunity')}</h2>
+                    <div>
+                        <button onClick={() => { setActiveView('jobs'); setSelectedProject(null); }} className={`workflow-nav-item ${activeView === 'jobs' ? 'is-active' : ''}`} title={t('workflow.sidebar.jobMarket')}>
+                            <span className="workflow-nav-icon-wrap bg-sky-500/15 text-sky-400 border border-sky-500/30 text-xl">
+                                🚀
+                            </span>
+                            <span>{t('workflow.sidebar.jobMarket')}</span>
+                            {activeView !== 'jobs' && <b className="workflow-nav-badge">{t('workflow.sidebar.newBadge')}</b>}
+                        </button>
+                        <button onClick={() => { setActiveView('partners'); setSelectedProject(null); }} className={`workflow-nav-item ${activeView === 'partners' ? 'is-active' : ''}`} title={t('workflow.sidebar.partners')}>
+                            <span className="workflow-nav-icon-wrap bg-violet-500/15 text-violet-400 border border-violet-500/30 text-xl">
+                                🤝
+                            </span>
+                            <span>{t('workflow.sidebar.partners')}</span>
+                        </button>
+                        <button onClick={() => { setActiveView('affiliate'); setSelectedProject(null); }} className={`workflow-nav-item ${activeView === 'affiliate' ? 'is-active' : ''}`} title={t('workflow.sidebar.affiliate')}>
+                            <span className="workflow-nav-icon-wrap bg-rose-500/15 text-rose-400 border border-rose-500/30 text-xl">
+                                💸
+                            </span>
+                            <span>{t('workflow.sidebar.affiliate')}</span>
+                        </button>
+                    </div>
+                </section>
+
+                <section className="workflow-nav-section">
+                    <h2>{t('workflow.sidebar.communityResources')}</h2>
+                    <div>
+                        <button onClick={() => { setActiveView('creative'); setSelectedProject(null); }} className={`workflow-nav-item ${activeView === 'creative' ? 'is-active' : ''}`} title={t('workflow.sidebar.sharePrompts')}>
+                            <span className="workflow-nav-icon-wrap bg-fuchsia-500/15 text-fuchsia-400 border border-fuchsia-500/30 text-xl">
+                                🎨
+                            </span>
+                            <span>{t('workflow.sidebar.sharePrompts')}</span>
+                        </button>
+                        <button onClick={() => { setActiveView('library'); setSelectedProject(null); }} className={`workflow-nav-item ${activeView === 'library' ? 'is-active' : ''}`} title={t('workflow.sidebar.libraryPublisher')}>
+                            <span className="workflow-nav-icon-wrap bg-indigo-500/15 text-indigo-400 border border-indigo-500/30 text-xl">
+                                📦
+                            </span>
+                            <span>{t('workflow.sidebar.libraryPublisher')}</span>
+                        </button>
+                    </div>
+                </section>
+            </nav>
+
+            <div className="workflow-sidebar-footer">
+                <button onClick={onBack} className="workflow-nav-item">
+                    <span className="workflow-nav-icon-wrap bg-red-500/15 text-red-400 border border-red-500/30">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
+                    </span>
+                    <span>{t('workflow.sidebar.exitStudio')}</span>
+                </button>
+            </div>
+        </aside>
+
+        <div className="workflow-main">
+            <header className="workflow-topbar">
+                 <div className="workflow-context-title"><span>{t('workflow.title')}</span><strong>{currentViewLabel}</strong></div>
+                 <div className="workflow-search">
+                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                     <input type="search" placeholder={t('workflow.dashboard.search')} value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} />
+                 </div>
+                 <div className="workflow-topbar-actions">
+                     <div className="workflow-switchers"><LanguageSwitcher /><ThemeSwitcher /></div>
+                     <button onClick={() => setShowProfileModal(true)} className="workflow-profile-button" aria-label={userProfile.name}>
+                         {user?.avatar ? <img src={user.avatar} alt="" /> : userProfile.name.charAt(0).toUpperCase()}
+                     </button>
+                 </div>
             </header>
             {renderContent()}
         </div>
@@ -1507,99 +1733,115 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
         {/* PartnerRegistrationModal moved to PartnersView component */}
 
         {/* Member Profile Modal */}
-        {memberProfileModal && (() => {
+{memberProfileModal && (() => {
             const { member, profile, loading } = memberProfileModal;
             const avatarUrl = profile?.avatar || member.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random&size=128`;
             return (
-                <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setMemberProfileModal(null)}>
-                    <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-sm shadow-2xl overflow-hidden" onClick={e => e.stopPropagation()}>
+                <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setMemberProfileModal(null)}>
+                    <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-3xl w-full max-w-xl shadow-2xl overflow-hidden animate-fade-in" onClick={e => e.stopPropagation()}>
                         {/* Header band */}
-                        <div className="h-16 bg-gradient-to-r from-[var(--accent-primary)]/30 to-purple-500/20 relative" />
-                        <div className="px-6 pb-6 -mt-8">
+                        <div className="h-24 bg-gradient-to-r from-purple-500/30 via-[var(--accent-primary)]/30 to-blue-500/30 relative" />
+                        <div className="relative z-10 px-6 pb-6 -mt-12">
                             {/* Avatar */}
                             <img
                                 src={avatarUrl}
-                                className="w-16 h-16 rounded-full object-cover border-4 border-[var(--bg-card)] shadow-lg mb-3"
+                                className="w-24 h-24 rounded-full object-cover border-4 border-[var(--bg-card)] shadow-xl mb-4 relative z-20"
+                                alt={member.name}
                             />
-                            {/* Name + badges */}
-                            <div className="flex items-start justify-between gap-2 mb-1">
-                                <h3 className="text-xl font-black text-[var(--text-primary)] leading-tight">{member.name}</h3>
-                                <div className="flex items-center gap-1.5 flex-wrap justify-end flex-shrink-0">
-                                    {member.projectRole === 'creator' && <span className="text-[10px] bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded-full font-bold whitespace-nowrap">👑 Creator</span>}
-                                    {member.projectRole === 'manager' && <span className="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full font-bold whitespace-nowrap">⭐ Manager</span>}
-                                    {!member.projectRole && <span className="text-[10px] bg-[var(--bg-secondary)] text-[var(--text-tertiary)] px-2 py-0.5 rounded-full font-bold border border-[var(--border-primary)] whitespace-nowrap">👤 Member</span>}
-                                    {member.isExternal && <span className="text-[10px] bg-yellow-500/20 text-yellow-500 px-2 py-0.5 rounded-full font-bold whitespace-nowrap">🔗 External</span>}
-                                </div>
-                            </div>
 
                             {loading ? (
                                 <div className="flex items-center justify-center py-8">
-                                    <div className="w-6 h-6 border-2 border-[var(--accent-primary)]/30 border-t-[var(--accent-primary)] rounded-full animate-spin" />
+                                    <div className="w-8 h-8 border-3 border-[var(--accent-primary)]/30 border-t-[var(--accent-primary)] rounded-full animate-spin" />
                                 </div>
-                            ) : profile ? (
-                                <div className="space-y-3 mt-4">
-                                    {/* Basic info rows */}
-                                    <div className="space-y-2 text-sm">
-                                        <div className="flex items-center gap-2 text-[var(--text-secondary)]">
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 flex-shrink-0 text-[var(--accent-primary)]" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
-                                            <span className="truncate">{profile.email || <span className="text-[var(--text-tertiary)] italic">{t('workflow.dashboard.project.memberProfile.noInfo')}</span>}</span>
-                                        </div>
-                                        <div className="flex items-center gap-2 text-[var(--text-secondary)]">
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 flex-shrink-0 text-[var(--accent-primary)]" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-                                            <span>{profile.phone || <span className="text-[var(--text-tertiary)] italic">{t('workflow.dashboard.project.memberProfile.noInfo')}</span>}</span>
-                                        </div>
-                                        {profile.location && (
-                                            <div className="flex items-center gap-2 text-[var(--text-secondary)]">
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 flex-shrink-0 text-[var(--accent-primary)]" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/></svg>
-                                                <span>{profile.location}</span>
+                            ) : (
+                                <div className="space-y-4">
+                                    {/* Name & Contact Info Flex Row */}
+                                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                                        {/* Left Side: Name & Roles */}
+                                        <div className="flex-1 min-w-0 space-y-2">
+                                            <h3 className="text-2xl font-black text-[var(--text-primary)] leading-tight tracking-tight">{member.name}</h3>
+                                            <div className="flex items-center gap-1.5 flex-wrap">
+                                                {member.projectRole === 'creator' && <span className="text-xs bg-purple-500/20 text-purple-600 dark:text-purple-400 border border-purple-500/40 px-3 py-1 rounded-full font-bold whitespace-nowrap">👑 Creator</span>}
+                                                {member.projectRole === 'manager' && <span className="text-xs bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/40 px-3 py-1 rounded-full font-bold whitespace-nowrap">⭐ Manager</span>}
+                                                {!member.projectRole && <span className="text-xs bg-[var(--bg-secondary)] text-[var(--text-tertiary)] px-3 py-1 rounded-full font-bold border border-[var(--border-primary)] whitespace-nowrap">👤 Member</span>}
+                                                {member.isExternal && <span className="text-xs bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/40 px-3 py-1 rounded-full font-bold whitespace-nowrap">🔗 External</span>}
                                             </div>
-                                        )}
+                                        </div>
+
+                                        {/* Right Side: Narrow Contact info (Email, Phone, Location) */}
+                                        <div className="w-full sm:w-56 flex-shrink-0 space-y-1.5 pt-2 sm:pt-16">
+                                            <div className="flex items-center gap-2 px-2.5 py-1.5 bg-[var(--bg-secondary)] rounded-xl border border-[var(--border-primary)] shadow-xs">
+                                                <div className="w-6 h-6 rounded-lg bg-purple-500/15 text-purple-600 dark:text-purple-400 flex items-center justify-center flex-shrink-0">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                                                </div>
+                                                <p className="truncate font-bold text-xs text-[var(--text-primary)] flex-1">{profile?.email || <span className="text-[var(--text-tertiary)] italic font-normal">{t('workflow.dashboard.project.memberProfile.noInfo')}</span>}</p>
+                                            </div>
+
+                                            {profile?.phone && (
+                                                <div className="flex items-center gap-2 px-2.5 py-1.5 bg-[var(--bg-secondary)] rounded-xl border border-[var(--border-primary)] shadow-xs">
+                                                    <div className="w-6 h-6 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                                                    </div>
+                                                    <p className="font-bold text-xs text-[var(--text-primary)] flex-1">{profile.phone}</p>
+                                                </div>
+                                            )}
+
+                                            {profile?.location && (
+                                                <div className="flex items-center gap-2 px-2.5 py-1.5 bg-[var(--bg-secondary)] rounded-xl border border-[var(--border-primary)] shadow-xs">
+                                                    <div className="w-6 h-6 rounded-lg bg-rose-500/15 text-rose-600 dark:text-rose-400 flex items-center justify-center flex-shrink-0">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/></svg>
+                                                    </div>
+                                                    <p className="font-bold text-xs text-[var(--text-primary)] flex-1">{profile.location}</p>
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
 
-                                    {/* Bio */}
-                                    {profile.bio && (
-                                        <div className="border-t border-[var(--border-primary)] pt-3">
+                                    {/* Bio: Full Width */}
+                                    {profile?.bio && (
+                                        <div className="p-3 bg-[var(--bg-secondary)]/40 border border-[var(--border-primary)]/50 rounded-2xl">
                                             <p className="text-xs font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-1">{t('workflow.dashboard.project.memberProfile.bio')}</p>
-                                            <p className="text-sm text-[var(--text-secondary)] leading-relaxed line-clamp-3">{profile.bio}</p>
+                                            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{profile.bio}</p>
                                         </div>
                                     )}
 
                                     {/* Skills */}
-                                    {profile.skills && profile.skills.length > 0 && (
+                                    {profile?.skills && profile.skills.length > 0 && (
                                         <div className="border-t border-[var(--border-primary)] pt-3">
                                             <p className="text-xs font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">{t('workflow.dashboard.project.memberProfile.skills')}</p>
-                                            <div className="flex flex-wrap gap-1.5">
+                                            <div className="flex flex-wrap gap-2">
                                                 {profile.skills.map((s, i) => (
-                                                    <span key={i} className="text-xs bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] px-2 py-0.5 rounded-full border border-[var(--accent-primary)]/20">{s}</span>
+                                                    <span key={i} className="text-xs bg-[var(--accent-primary)]/15 text-[var(--accent-primary)] px-3 py-1 rounded-xl font-semibold border border-[var(--accent-primary)]/30">{s}</span>
                                                 ))}
                                             </div>
                                         </div>
                                     )}
 
                                     {/* Socials */}
-                                    {(profile.socials?.facebook || profile.socials?.linkedin || profile.socials?.github) && (
+                                    {(profile?.socials?.facebook || profile?.socials?.linkedin || profile?.socials?.github) && (
                                         <div className="border-t border-[var(--border-primary)] pt-3 flex items-center gap-3">
-                                            {profile.socials.facebook && <a href={profile.socials.facebook} target="_blank" rel="noopener noreferrer" className="text-[var(--text-tertiary)] hover:text-blue-400 transition-colors" title="Facebook"><svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>}
-                                            {profile.socials.linkedin && <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-[var(--text-tertiary)] hover:text-blue-500 transition-colors" title="LinkedIn"><svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>}
-                                            {profile.socials.github && <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors" title="GitHub"><svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>}
+                                            {profile.socials.facebook && <a href={profile.socials.facebook} target="_blank" rel="noopener noreferrer" className="p-2 rounded-xl bg-[#1877f2]/15 text-[#1877f2] border border-[#1877f2]/30 hover:bg-[#1877f2]/25 transition-colors" title="Facebook"><svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>}
+                                            {profile.socials.linkedin && <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-xl bg-[#0077b5]/15 text-[#0077b5] border border-[#0077b5]/30 hover:bg-[#0077b5]/25 transition-colors" title="LinkedIn"><svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>}
+                                            {profile.socials.github && <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="p-2 rounded-xl bg-[var(--bg-secondary)] text-[var(--text-primary)] border border-[var(--border-primary)] hover:bg-[var(--bg-tertiary)] transition-colors" title="GitHub"><svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>}
                                         </div>
                                     )}
                                 </div>
-                            ) : null}
+                            )}
 
                             {/* Actions */}
-                            <div className="flex gap-2 mt-5">
+                            <div className="flex gap-2.5 mt-6">
                                 <a
                                     href={`/users/${member.id}`}
                                     target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex-1 py-2 rounded-xl bg-[var(--accent-primary)]/10 hover:bg-[var(--accent-primary)]/20 text-[var(--accent-primary)] text-sm font-bold transition-colors text-center border border-[var(--accent-primary)]/30"
+                                    rel="noreferrer"
+                                    style={{ backgroundColor: '#0284c7', color: '#ffffff' }}
+                                    className="flex-1 py-3 rounded-2xl bg-[#0284c7] hover:bg-[#0369a1] text-white font-black text-sm text-center shadow-lg hover:scale-[1.01] transition-all flex items-center justify-center gap-1.5 border-none"
                                 >
-                                    {t('workflow.dashboard.project.memberProfile.viewProfile')} ↗
+                                    {t('workflow.dashboard.project.memberProfile.viewFull')} ↗
                                 </a>
                                 <button
                                     onClick={() => setMemberProfileModal(null)}
-                                    className="flex-1 py-2 rounded-xl bg-[var(--bg-secondary)] hover:bg-[var(--border-primary)] text-[var(--text-secondary)] text-sm font-bold transition-colors"
+                                    className="flex-1 py-3 rounded-2xl bg-[var(--bg-secondary)] hover:bg-[var(--border-primary)] text-[var(--text-primary)] font-bold text-sm transition-colors border border-[var(--border-primary)]"
                                 >
                                     {t('workflow.dashboard.project.memberProfile.close')}
                                 </button>
@@ -1698,7 +1940,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
             </div>
         )}
 
-        {/* Creative and Resource modals moved to PromptsView and ResourcesView components */}
+        {/* Creative modal moved to PromptsView */}
 
         {showTaskModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.tasks.modal.title')}</h2><div className="space-y-4"><input placeholder={t('workflow.dashboard.project.tasks.modal.titleLabel')} value={newTaskData.title} onChange={e => setNewTaskData({...newTaskData, title: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /><select value={newTaskData.assigneeId} onChange={e => setNewTaskData({...newTaskData, assigneeId: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="">{t('workflow.dashboard.project.tasks.modal.selectAssignee')}</option>{(selectedProject?.team || []).map(u => (<option key={u.id} value={u.id}>{u.name} {u.projectRole ? `(${u.projectRole})` : ''}</option>))}</select><input type="date" value={newTaskData.dueDate} onChange={e => setNewTaskData({...newTaskData, dueDate: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" />{selectedFileForTask && (<div className="text-sm bg-[var(--bg-secondary)] p-2 rounded">{t('workflow.dashboard.project.tasks.modal.attached')} {selectedFileForTask.name}</div>)}<div className="flex gap-2 justify-end mt-4"><button onClick={() => { setShowTaskModal(false); setSelectedFileForTask(null); }} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">{t('common.cancel')}</button><button onClick={handleCreateTask} className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.tasks.modal.submit')}</button></div></div></div></div>)}
 
@@ -1843,6 +2085,13 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                     <button type="submit" disabled={!docComment.trim()} className="bg-[var(--accent-primary)] text-black px-3 py-2 rounded-lg font-bold text-sm disabled:opacity-50">{t('workflow.dashboard.docPanel.send')}</button>
                 </form>
             </div>
+        )}
+
+        {publishSource && (
+            <PublishToLibraryModal
+                source={publishSource}
+                onClose={() => setPublishSource(null)}
+            />
         )}
     </div>
   );

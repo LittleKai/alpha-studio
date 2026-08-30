@@ -1,0 +1,394 @@
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useTranslation } from '../i18n/context';
+import SEOHead from '../components/ui/SEOHead';
+import StudioBackButton from '../components/studio/StudioBackButton';
+import { useConfirm } from '../components/ui/ConfirmDialog';
+import { useAuth } from '../auth/context';
+import { localized, EventLibraryGridCard } from '../components/library/EventLibraryCard';
+import SectionRenderer, { isSectionEmpty } from '../components/library/SectionRenderer';
+import { cdnFromUrl } from '../services/cloudinaryAssets';
+import LibraryEngagement from '../components/library/LibraryEngagement';
+import {
+    getLibraryItem, markLibraryItemUsed, updateLibraryItem, deleteLibraryItem,
+    type EventLibraryItem, type LibraryReview
+} from '../services/eventLibraryService';
+
+const ACCENT = '#7c5cff';
+
+/** Một dòng thuộc tính trong hộp thông tin bên phải. */
+function MetaRow({ label, value }: { label: string; value: string }) {
+    return (
+        <div className="flex items-start justify-between gap-4 py-2 border-b border-[var(--border-primary)] last:border-b-0">
+            <span className="text-sm text-[var(--text-tertiary)] shrink-0">{label}</span>
+            <span className="text-sm font-semibold text-right" style={{ color: ACCENT }}>{value}</span>
+        </div>
+    );
+}
+
+export default function EventLibraryItemPage() {
+    const { slug } = useParams<{ slug: string }>();
+    const navigate = useNavigate();
+    const { t, language } = useTranslation();
+    const { user } = useAuth();
+    const { confirm } = useConfirm();
+
+    const [item, setItem] = useState<EventLibraryItem | null>(null);
+    const [related, setRelated] = useState<EventLibraryItem[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [notFound, setNotFound] = useState(false);
+    const [busy, setBusy] = useState(false);
+    const [me, setMe] = useState({ liked: false, score: 0, comment: '' });
+    const [reviews, setReviews] = useState<LibraryReview[]>([]);
+
+    useEffect(() => {
+        if (!slug) return;
+        let cancelled = false;
+        setLoading(true);
+        setNotFound(false);
+        getLibraryItem(slug)
+            .then(res => {
+                if (cancelled) return;
+                setItem(res.item);
+                setRelated(res.related);
+                setMe(res.me);
+                setReviews(res.reviews);
+                // `ScrollToTop` trong App.tsx chạy ngay khi đổi route, lúc trang còn
+                // rỗng; chiều cao chỉ tăng sau khi dữ liệu về nên phải đưa lại về
+                // đầu — nếu không, bấm liên kết ở cuối bài sẽ rơi vào vùng trống.
+                window.scrollTo(0, 0);
+            })
+            .catch(() => { if (!cancelled) setNotFound(true); })
+            .finally(() => { if (!cancelled) setLoading(false); });
+        return () => { cancelled = true; };
+    }, [slug]);
+
+    const canManage = !!item && !!user
+        && (user.role === 'admin' || (!!item.owner && item.owner === user._id));
+
+    const handleToggleVisibility = async () => {
+        if (!item) return;
+        const next = item.visibility === 'public' ? 'private' : 'public';
+        setBusy(true);
+        try {
+            const updated = await updateLibraryItem(item._id, { visibility: next });
+            setItem(updated);
+        } catch (err) {
+            console.error('Toggle library visibility error:', err);
+        } finally {
+            setBusy(false);
+        }
+    };
+
+    const handleDelete = async () => {
+        if (!item) return;
+        const ok = await confirm({
+            title: t('eventLibrary.detail.deleteTitle'),
+            message: t('eventLibrary.detail.deleteConfirm'),
+            variant: 'danger'
+        });
+        if (!ok) return;
+        setBusy(true);
+        try {
+            await deleteLibraryItem(item._id);
+            navigate('/studio/event-library');
+        } catch (err) {
+            console.error('Delete library item error:', err);
+            setBusy(false);
+        }
+    };
+
+    if (loading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
+                <div
+                    className="w-12 h-12 border-4 rounded-full animate-spin"
+                    style={{ borderColor: `${ACCENT}33`, borderTopColor: ACCENT }}
+                />
+            </div>
+        );
+    }
+
+    if (notFound || !item) {
+        return (
+            <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
+                <StudioBackButton />
+                <div className="max-w-2xl mx-auto px-6 py-32 text-center">
+                    <h1 className="text-2xl font-bold mb-3">{t('eventLibrary.detail.notFound')}</h1>
+                    <Link
+                        to="/studio/event-library"
+                        style={{ backgroundColor: ACCENT }}
+                        className="inline-block px-4 py-2 rounded-lg text-sm font-semibold text-white hover:opacity-90 transition-all"
+                    >
+                        {t('eventLibrary.detail.backToLibrary')}
+                    </Link>
+                </div>
+            </div>
+        );
+    }
+
+    const title = localized(item.title, language);
+    const summary = localized(item.summary, language);
+    const content = localized(item.content, language);
+
+    return (
+        <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pb-20">
+            <SEOHead title={title} description={summary} path={`/studio/event-library/${item.slug}`} />
+            <StudioBackButton />
+
+            <div className="max-w-6xl mx-auto px-6 pt-4 pb-12">
+                <Link
+                    to="/studio/event-library"
+                    className="inline-flex items-center gap-1.5 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-6 transition-colors"
+                >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    {t('eventLibrary.detail.backToLibrary')}
+                </Link>
+
+                {item.coverImage && (
+                    <img
+                        src={cdnFromUrl(item.coverImage, 'w_1400')}
+                        alt=""
+                        className="w-full h-56 md:h-72 object-cover rounded-2xl border border-[var(--border-primary)] mb-6"
+                    />
+                )}
+
+                {item.gallery?.length > 0 && (
+                    <div className="grid grid-cols-4 sm:grid-cols-6 gap-2 mb-6">
+                        {item.gallery.map((url, idx) => (
+                            <img
+                                key={idx}
+                                src={cdnFromUrl(url, 'w_320')}
+                                alt=""
+                                loading="lazy"
+                                className="w-full h-16 sm:h-20 object-cover rounded-lg border border-[var(--border-primary)]"
+                            />
+                        ))}
+                    </div>
+                )}
+
+                <div className="flex flex-wrap items-center gap-2 mb-3">
+                    <span
+                        className="text-[10px] font-bold tracking-wider px-2 py-0.5 rounded border uppercase"
+                        style={{ backgroundColor: `${ACCENT}1a`, borderColor: `${ACCENT}40`, color: ACCENT }}
+                    >
+                        {t('eventLibrary.types.' + item.itemType)}
+                    </span>
+                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)]">
+                        {item.ownership === 'platform'
+                            ? t('eventLibrary.origins.platform')
+                            : item.visibility === 'private'
+                                ? t('eventLibrary.origins.private')
+                                : t('eventLibrary.origins.community')}
+                    </span>
+                </div>
+
+                <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight mb-3 bg-gradient-to-r from-violet-600 via-indigo-600 to-sky-600 dark:from-violet-400 dark:via-indigo-300 dark:to-sky-400 bg-clip-text text-transparent">
+                    {title}
+                </h1>
+                {summary && <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-8">{summary}</p>}
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div className="lg:col-span-2 min-w-0 space-y-8">
+                        {item.metrics.length > 0 && (
+                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                                {item.metrics.map((metric, idx) => (
+                                    <div
+                                        key={`${metric.label}-${idx}`}
+                                        className="border rounded-xl p-4 transition-all"
+                                        style={{ backgroundColor: `${ACCENT}12`, borderColor: `${ACCENT}33` }}
+                                    >
+                                        <div className="text-2xl font-extrabold truncate" style={{ color: ACCENT }}>{metric.value}</div>
+                                        <div className="text-xs text-[var(--text-tertiary)] font-medium truncate mt-0.5">
+                                            {t('eventLibrary.metrics.' + metric.label, metric.label)}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
+                        {(item.sections || []).filter(s => !isSectionEmpty(s)).map((section, idx) => (
+                            <SectionRenderer key={idx} section={section} index={idx} />
+                        ))}
+
+                        {content ? (
+                            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 shadow-sm">
+                                <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-violet-600 dark:text-violet-400">
+                                    <span className="w-1.5 h-5 rounded-full bg-violet-500" />
+                                    {t('eventLibrary.detail.content')}
+                                </h2>
+                                <div
+                                    className="tinymce-content text-[var(--text-primary)] leading-relaxed [&_h1]:text-violet-600 [&_h1]:dark:text-violet-400 [&_h2]:text-indigo-600 [&_h2]:dark:text-indigo-400 [&_h3]:text-sky-600 [&_h3]:dark:text-sky-400 [&_h4]:text-teal-600 [&_h4]:dark:text-teal-400"
+                                    dangerouslySetInnerHTML={{ __html: content }}
+                                />
+                            </div>
+                        ) : item.sections?.length ? null : (
+                            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 text-base text-[var(--text-secondary)]">
+                                {t('eventLibrary.detail.noContent')}
+                            </div>
+                        )}
+
+                        {item.attachments.length > 0 && (
+                            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 shadow-sm">
+                                <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-sky-600 dark:text-sky-400">
+                                    <span className="w-1.5 h-5 rounded-full bg-sky-500" />
+                                    {t('eventLibrary.detail.attachments')}
+                                </h2>
+                                <div className="space-y-2">
+                                    {item.attachments.map((attachment, idx) => (
+                                        <a
+                                            key={`${attachment.url}-${idx}`}
+                                            href={attachment.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={() => markLibraryItemUsed(item.slug)}
+                                            className="flex items-center justify-between gap-4 px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-colors"
+                                        >
+                                            <span className="text-sm font-medium text-[var(--text-primary)] truncate">
+                                                {attachment.name}
+                                            </span>
+                                            <span className="text-xs text-[var(--text-tertiary)] shrink-0">
+                                                {attachment.size || t('eventLibrary.actions.download')}
+                                            </span>
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    <aside className="lg:col-span-1 space-y-6">
+                        <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-5 shadow-sm">
+                            <h2 className="text-base font-bold mb-3 flex items-center gap-2 text-violet-600 dark:text-violet-400">
+                                <span className="w-1.5 h-4 rounded-full bg-violet-500" />
+                                {t('eventLibrary.detail.info')}
+                            </h2>
+                            <MetaRow
+                                label={t('eventLibrary.category')}
+                                value={t('eventLibrary.categories.' + item.category, item.category)}
+                            />
+                            <MetaRow
+                                label={t('eventLibrary.verification')}
+                                value={t('eventLibrary.verifications.' + item.verification, item.verification)}
+                            />
+                            <MetaRow
+                                label={t('eventLibrary.depth')}
+                                value={t('eventLibrary.depths.' + item.depth, item.depth)}
+                            />
+                            {item.budgetTier && (
+                                <MetaRow
+                                    label={t('eventLibrary.budget')}
+                                    value={t('eventLibrary.budgetTiers.' + item.budgetTier, item.budgetTier)}
+                                />
+                            )}
+                            {item.authorName && (
+                                <MetaRow label={t('eventLibrary.detail.author')} value={item.authorName} />
+                            )}
+                            {item.sourceName && (
+                                <MetaRow label={t('eventLibrary.detail.source')} value={item.sourceName} />
+                            )}
+                            <MetaRow label={t('eventLibrary.metrics.views')} value={String(item.stats.views)} />
+                        </div>
+
+                        {(item.industries.length > 0 || item.objectives.length > 0 || item.kpis.length > 0 || item.tags.length > 0) && (
+                            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-5 shadow-sm">
+                                <h2 className="text-base font-bold mb-3 flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+                                    <span className="w-1.5 h-4 rounded-full bg-emerald-500" />
+                                    {t('eventLibrary.detail.classification')}
+                                </h2>
+                                <div className="flex flex-wrap gap-1.5">
+                                    {item.industries.map(v => (
+                                        <span key={`i-${v}`} className="text-xs px-2 py-1 rounded border font-medium"
+                                            style={{ backgroundColor: `${ACCENT}12`, borderColor: `${ACCENT}33`, color: ACCENT }}>
+                                            {t('eventLibrary.industries.' + v, v)}
+                                        </span>
+                                    ))}
+                                    {item.objectives.map(v => (
+                                        <span key={`o-${v}`} className="text-xs px-2 py-1 rounded border font-medium"
+                                            style={{ backgroundColor: `${ACCENT}12`, borderColor: `${ACCENT}33`, color: ACCENT }}>
+                                            {t('eventLibrary.objectives.' + v, v)}
+                                        </span>
+                                    ))}
+                                    {item.kpis.map(v => (
+                                        <span key={`k-${v}`} className="text-xs px-2 py-1 rounded border font-medium"
+                                            style={{ backgroundColor: `${ACCENT}12`, borderColor: `${ACCENT}33`, color: ACCENT }}>
+                                            {t('eventLibrary.kpis.' + v, v)}
+                                        </span>
+                                    ))}
+                                    {item.tags.map(v => (
+                                        <span key={`t-${v}`} className="text-xs px-2 py-1 rounded border font-medium"
+                                            style={{ backgroundColor: `${ACCENT}12`, borderColor: `${ACCENT}33`, color: ACCENT }}>
+                                            #{v}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        <LibraryEngagement
+                            item={item}
+                            initialLiked={me.liked}
+                            initialScore={me.score}
+                            initialComment={me.comment}
+                            initialReviews={reviews}
+                        />
+
+                        {canManage && (
+                            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-5 space-y-2 shadow-sm">
+                                <h2 className="text-base font-bold mb-2 flex items-center gap-2 text-amber-600 dark:text-amber-400">
+                                    <span className="w-1.5 h-4 rounded-full bg-amber-500" />
+                                    {t('eventLibrary.detail.manage')}
+                                </h2>
+                                {item.ownership === 'user' && (
+                                    <button
+                                        onClick={handleToggleVisibility}
+                                        disabled={busy}
+                                        className="w-full px-3 py-2 rounded-lg text-sm font-semibold bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] hover:opacity-90 transition-all cursor-pointer disabled:opacity-50"
+                                    >
+                                        {item.visibility === 'public'
+                                            ? t('eventLibrary.detail.makePrivate')
+                                             : t('eventLibrary.detail.makePublic')}
+                                    </button>
+                                )}
+                                <button
+                                    onClick={handleDelete}
+                                    disabled={busy}
+                                    className="w-full px-3 py-2 rounded-lg text-sm font-semibold bg-red-500/10 border border-red-500/30 text-red-500 hover:bg-red-500/20 transition-all cursor-pointer disabled:opacity-50"
+                                >
+                                    {t('eventLibrary.detail.delete')}
+                                </button>
+                            </div>
+                        )}
+                    </aside>
+                </div>
+
+                {related.length > 0 && (
+                    <div className="mt-14">
+                        <h2 className="text-xl font-bold mb-5 flex items-center gap-2 text-violet-600 dark:text-violet-400">
+                            <span className="w-1.5 h-5 rounded-full bg-violet-500" />
+                            {t('eventLibrary.detail.related')}
+                        </h2>
+                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                            {related.map(rel => (
+                                <EventLibraryGridCard
+                                    key={rel._id}
+                                    item={rel}
+                                    accent={ACCENT}
+                                    onOpen={next => navigate(`/studio/event-library/${next.slug}`)}
+                                    onDownload={next => {
+                                        const attachment = next.attachments[0];
+                                        if (!attachment?.url) return;
+                                        markLibraryItemUsed(next.slug);
+                                        window.open(attachment.url, '_blank', 'noopener');
+                                    }}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}

@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { createJob, updateJob, Job, JobInput } from '../../services/jobService';
+import { fillLocalized } from '../../utils/localized';
 
 interface JobFormProps {
     job: Job | null;
@@ -56,7 +57,7 @@ const JobForm: React.FC<JobFormProps> = ({ job, onClose, onSuccess }) => {
     }, [skills]);
 
     const handleSubmit = useCallback(async (status: 'draft' | 'published') => {
-        if (!titleVi.trim() || !titleEn.trim()) {
+        if (!titleVi.trim()) {
             setError(t('admin.jobs.form.errors.titleRequired'));
             return;
         }
@@ -66,10 +67,10 @@ const JobForm: React.FC<JobFormProps> = ({ job, onClose, onSuccess }) => {
 
         try {
             const data: JobInput = {
-                title: { vi: titleVi.trim(), en: titleEn.trim() },
-                description: { vi: descriptionVi.trim(), en: descriptionEn.trim() },
-                requirements: { vi: requirementsVi.trim(), en: requirementsEn.trim() },
-                benefits: { vi: benefitsVi.trim(), en: benefitsEn.trim() },
+                title: fillLocalized(titleVi, titleEn),
+                description: fillLocalized(descriptionVi, descriptionEn),
+                requirements: fillLocalized(requirementsVi, requirementsEn),
+                benefits: fillLocalized(benefitsVi, benefitsEn),
                 location: location.trim(),
                 salary: {
                     min: salaryMin,

@@ -17,6 +17,7 @@ import LandingHero from '../components/landing/LandingHero';
 import ConnectBento from '../components/landing/ConnectBento';
 import { fetchWithRetry } from '../services/apiRetry';
 import { AssetQuality, setLandingQuality } from '../services/cloudinaryAssets';
+import { localizedText } from '../utils/localized';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
@@ -445,9 +446,7 @@ const LandingPage: React.FC = () => {
     }, []);
 
     // Helper to get localized text
-    const getLocalizedText = (text: { vi: string; en: string }) => {
-        return language === 'vi' ? text.vi : text.en;
-    };
+    const getLocalizedText = (text: { vi: string; en: string }) => localizedText(text, language);
 
     // Format price in credits
     const formatPrice = (price: number) => {
@@ -526,7 +525,7 @@ const LandingPage: React.FC = () => {
             links: [
                 { label: t('landing.toolsShowcase.crm.title'), to: '/studio/crm/subscription' },
                 { label: t('landing.toolsShowcase.vocab.title'), to: '/studio/vocab' },
-                { label: t('landing.toolsShowcase.skills.title'), to: '/studio/skills' },
+                { label: t('landing.toolsShowcase.skills.title'), to: '/studio/ai-skills' },
             ],
         },
         {
@@ -646,7 +645,7 @@ const LandingPage: React.FC = () => {
                         )}
                     />
 
-                    <Reveal staggerChildren={0.12} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <Reveal staggerChildren={0.12} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
                         {STUDIO_TOOLS.map((tool) => (
                             <RevealItem key={tool.key}>
                                 <StudioToolTile tool={tool} variant="compact" />

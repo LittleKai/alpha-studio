@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from '../../i18n/context';
 
 interface RatingStarsProps {
     rating: number;
@@ -19,6 +20,7 @@ const RatingStars: React.FC<RatingStarsProps> = ({
     onRate,
     showCount = true
 }) => {
+    const { t } = useTranslation();
     const [hoverRating, setHoverRating] = useState<number | null>(null);
 
     const sizeClasses = {
@@ -82,7 +84,7 @@ const RatingStars: React.FC<RatingStarsProps> = ({
             )}
             {interactive && userRating && (
                 <span className="text-xs text-yellow-400 ml-2">
-                    Your rating: {userRating}
+                    {t('common.rating.yours').replace('{score}', String(userRating))}
                 </span>
             )}
         </div>

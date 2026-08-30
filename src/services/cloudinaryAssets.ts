@@ -86,3 +86,24 @@ export const videoBasePath = (set: VideoSetName, quality: AssetQuality = dynamic
         ? `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/hq/event-creative-city/vid/${set}`
         : `/event-creative-city/vid/${set}`
 );
+
+/**
+ * Chèn transform vào một URL Cloudinary đã có sẵn (dạng `secure_url` lưu trong
+ * DB), thay vì dựng từ public_id như `cdnImage`.
+ *
+ * `f_auto,q_auto` để CDN tự trả WebP/AVIF theo trình duyệt — đây là mặc định
+ * cho MỌI ảnh do người dùng/seed tải lên, không phải tuỳ chọn. `sizing` (ví dụ
+ * `w_640`) cắt đúng bề rộng nơi hiển thị: ảnh gốc 1408px mà nhét vào card 400px
+ * là lãng phí băng thông của cả hai phía.
+ *
+ * URL không phải Cloudinary được trả nguyên vẹn — người đăng có thể dán link
+ * ngoài, và chèn transform vào đó sẽ làm hỏng ảnh.
+ */
+export const cdnFromUrl = (url: string, sizing?: string): string => {
+    if (!url || !url.includes('res.cloudinary.com') || !url.includes('/upload/')) return url;
+    // Đã có transform sẵn thì không chồng thêm
+    if (/\/upload\/[^/]*[fq]_auto/.test(url)) return url;
+
+    const transform = sizing ? `f_auto,q_auto,${sizing}` : 'f_auto,q_auto';
+    return url.replace('/upload/', `/upload/${transform}/`);
+};

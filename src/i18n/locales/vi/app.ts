@@ -120,7 +120,7 @@ export default {
         badge: "Hệ sinh thái Alpha Studio · Beta",
         title1: "AI Studio",
         title2: "Bộ công cụ sáng tạo",
-        subtitle: "Bốn công cụ đang mở cho mọi tài khoản: Thư viện Kỹ năng AI, Alpha CRM cho tiếp thị Zalo, VocabFlip học từ vựng và VietYaku dịch Nhật/Trung sang Việt. Ba công cụ nữa đang được hoàn thiện trong xưởng.",
+        subtitle: "Năm công cụ đang mở cho mọi tài khoản: Thư viện tri thức sự kiện, Thư viện Kỹ năng AI, Alpha CRM cho tiếp thị Zalo, VocabFlip học từ vựng và VietYaku dịch Nhật/Trung sang Việt. Ba công cụ nữa đang được hoàn thiện trong xưởng.",
         stats: {
           live: "Công cụ đang mở",
           upcoming: "Sắp ra mắt",
@@ -138,6 +138,11 @@ export default {
       },
       comingSoon: "Sắp ra mắt",
       features: {
+        eventLibrary: {
+          f1: "Case study sự kiện kèm số liệu ngân sách, reach và KPI thực tế",
+          f2: "Prompt, workflow, template và playbook dùng được ngay cho từng loại sự kiện",
+          f3: "Đăng dự án của bạn từ Workflow lên thư viện — riêng tư hoặc công khai"
+        },
         skills: {
           f1: "Tìm kiếm hơn 3000 kỹ năng theo danh mục, công nghệ hoặc tác giả",
           f2: "Mỗi kỹ năng có trang chi tiết kèm tình huống ứng dụng và link GitHub",
@@ -161,6 +166,7 @@ export default {
       },
       open: "Mở",
       meta: {
+        eventLibrary: "Web · Không cần cài đặt",
         skills: "Web · Không cần cài đặt",
         crm: "Windows & Android · Dùng thử 2 tháng",
         vocab: "Web, Windows & Android",
@@ -168,6 +174,10 @@ export default {
       },
       backToStudio: "Quay lại Studio",
       cards: {
+        eventLibrary: {
+          title: "Thư viện tri thức sự kiện",
+          desc: "Case study, prompt, workflow, template và playbook cho ngành sự kiện – truyền thông"
+        },
         generate: {
           title: "Tạo ảnh & video",
           desc: "Sinh ảnh và video bằng Google Nano Banana và Veo"
@@ -427,6 +437,262 @@ export default {
           title: "Thư viện Kỹ năng AI",
           desc: "Khám phá 3000+ kỹ năng mã nguồn mở giúp mở rộng năng lực AI Agent của bạn"
         }
+      }
+    },
+    eventLibrary: {
+      title: "Thư viện tri thức sự kiện",
+      heroTitle: "Thư viện tri thức & case study cho ngành sự kiện – truyền thông",
+      subtitle: "Biến case study thực tế thành ứng dụng: Prompt, Workflow, Template và Skill. Học để hiểu — Ứng để làm — Đo để tối ưu.",
+      badgeText: "Tri thức thực chiến cho ngành sự kiện",
+      searchPlaceholder: "Tìm kiếm case study, prompt, workflow, template, skill...",
+      statsTotal: "tài liệu",
+      statsVerified: "đã xác thực",
+      statsIndustries: "ngành hàng",
+      statsCaseStudies: "case study",
+      statsTemplates: "prompt & template",
+      journey: {
+        title: "Từ case study đến triển khai",
+        subtitle: "Quy trình biến tri thức thành kết quả thực tế",
+        steps: {
+          analyze: { title: "Phân tích case", desc: "Hiểu bối cảnh, mục tiêu, KPI" },
+          pickSkill: { title: "Chọn skill phù hợp", desc: "Năng lực & best practice" },
+          usePrompt: { title: "Dùng prompt", desc: "Sinh ý tưởng, nội dung, concept" },
+          runWorkflow: { title: "Chạy workflow", desc: "Lên kế hoạch & triển khai" },
+          export: { title: "Xuất output", desc: "Concept / Proposal / BOQ / Storyboard" }
+        }
+      },
+      allTypes: "Tất cả",
+      types: {
+        case_study: "Case Study",
+        prompt: "Prompt",
+        workflow: "Workflow",
+        skill: "Skill",
+        template: "Template",
+        report: "Report",
+        playbook: "Playbook"
+      },
+      filters: "Bộ lọc",
+      resetFilters: "Xóa tất cả",
+      source: "Nguồn nội dung",
+      scopes: {
+        all: "Tất cả nguồn",
+        platform: "Của Alpha Studio",
+        community: "Cộng đồng đăng",
+        mine: "Nội dung của tôi"
+      },
+      category: "Danh mục",
+      categories: {
+        event: "Sự kiện",
+        activation: "Activation",
+        roadshow: "Roadshow",
+        booth_exhibition: "Booth / Exhibition",
+        stage_production: "Stage / Production",
+        digital_event: "Digital Event",
+        other: "Khác"
+      },
+      industry: "Ngành hàng",
+      industries: {
+        fmcg: "FMCG",
+        technology: "Công nghệ",
+        automotive: "Ô tô",
+        retail_mall: "Bán lẻ / Mall",
+        beauty: "Làm đẹp",
+        fnb: "F&B",
+        finance: "Tài chính",
+        healthcare: "Y tế",
+        education: "Giáo dục",
+        other: "Khác"
+      },
+      objective: "Mục tiêu chiến dịch",
+      objectives: {
+        product_launch: "Ra mắt sản phẩm",
+        brand_awareness: "Tăng nhận diện",
+        sales_activation: "Kích hoạt bán hàng",
+        customer_loyalty: "Tri ân khách hàng",
+        internal_corporate: "Nội bộ doanh nghiệp"
+      },
+      budget: "Ngân sách (VND)",
+      budgetTiers: {
+        under_200m: "Dưới 200 triệu",
+        "200m_1b": "200 triệu – 1 tỷ",
+        "1b_5b": "1 – 5 tỷ",
+        "5b_20b": "5 – 20 tỷ",
+        over_20b: "Trên 20 tỷ"
+      },
+      kpi: "KPI / Kết quả",
+      kpis: {
+        brand_recall: "Nhận diện thương hiệu",
+        attendance_reach: "Lượt tham dự / Reach",
+        engagement: "Tương tác / Engagement",
+        leads_database: "Leads / Database",
+        sales_conversion: "Doanh số / Conversion"
+      },
+      verification: "Cấp xác thực dữ liệu",
+      verifications: {
+        verified: "Đã xác thực",
+        partner_sourced: "Có nguồn đối tác",
+        unverified: "Chưa xác thực"
+      },
+      depth: "Độ sâu phân tích",
+      depths: {
+        basic: "Phân tích cơ bản",
+        deep: "Phân tích chuyên sâu",
+        benchmark: "Benchmark & So sánh",
+        forecast: "Dự báo xu hướng"
+      },
+      sortLabel: "Sắp xếp:",
+      sortRecent: "Mới nhất",
+      sortPopular: "Phổ biến",
+      sortUsed: "Dùng nhiều",
+      sortAZ: "A-Z",
+      viewLabel: "Hiển thị:",
+      showingStats: "Hiển thị {start}-{end} trong {total} tài liệu",
+      prevPage: "Trước",
+      nextPage: "Sau",
+      noItemsFound: "Chưa có nội dung phù hợp",
+      noItemsHint: "Thử bỏ bớt bộ lọc, hoặc đăng nội dung của bạn từ Workflow lên thư viện.",
+      origins: {
+        platform: "Alpha Studio",
+        community: "Cộng đồng",
+        private: "Riêng tư"
+      },
+      metrics: {
+        budget: "Ngân sách",
+        team: "Thành viên",
+        progress: "Tiến độ",
+        tasks: "Đầu việc",
+        fileSize: "Dung lượng",
+        views: "lượt xem"
+      },
+      actions: {
+        viewDetail: "Xem chi tiết",
+        download: "Tải về"
+      },
+      detail: {
+        backToLibrary: "Quay lại thư viện",
+        notFound: "Không tìm thấy nội dung này",
+        content: "Nội dung chi tiết",
+        noContent: "Nội dung chi tiết chưa được bổ sung.",
+        attachments: "Tài liệu đính kèm",
+        info: "Thông tin",
+        classification: "Phân loại",
+        author: "Người đăng",
+        source: "Nguồn",
+        manage: "Quản lý",
+        makePrivate: "Chuyển về riêng tư",
+        makePublic: "Công khai nội dung",
+        delete: "Xóa khỏi thư viện",
+        deleteTitle: "Xóa nội dung",
+        deleteConfirm: "Xóa nội dung này khỏi thư viện? Hành động không thể hoàn tác.",
+        related: "Nội dung liên quan"
+      },
+      sectionKinds: {
+        richText: "Đoạn văn",
+        keyValue: "Bảng 2 cột",
+        metrics: "Dải số liệu",
+        bulletGroups: "Nhóm gạch đầu dòng",
+        steps: "Các bước",
+        quote: "Trích dẫn",
+        gallery: "Bộ ảnh",
+        linkedItems: "Liên kết nội dung"
+      },
+      editor: {
+        viewTitle: "Đăng lên thư viện",
+        viewSubtitle: "Soạn và quản lý nội dung bạn đăng lên Thư viện tri thức sự kiện.",
+        createTitle: "Soạn nội dung mới",
+        editTitle: "Sửa nội dung",
+        subtitle: "Tiêu đề và mô tả có song ngữ; chữ trong các khối thân bài dùng một ngôn ngữ.",
+        backToList: "Về danh sách",
+        edit: "Sửa",
+        save: "Lưu",
+        empty: "Bạn chưa đăng nội dung nào",
+        emptyHint: "Soạn case study, playbook, prompt hay template và chọn công khai khi sẵn sàng chia sẻ.",
+        scopes: {
+          mine: "Của tôi",
+          all: "Tất cả nội dung"
+        },
+        basics: "Thông tin cơ bản",
+        taxonomy: "Phân loại",
+        media: "Ảnh bìa, số liệu & tệp",
+        body: "Thân bài",
+        bodyHint: "Thêm khối theo thứ tự bạn muốn hiển thị",
+        freeContent: "Nội dung tự do",
+        freeContentHint: "Tuỳ chọn — dùng khi nội dung không hợp với khối nào ở trên. Đây là phần duy nhất trong thân bài có song ngữ.",
+        addSection: "Thêm khối",
+        sectionTitle: "Tiêu đề khối (tuỳ chọn)",
+        moveUp: "Lên trên",
+        moveDown: "Xuống dưới",
+        removeSection: "Xoá khối",
+        removeRow: "Xoá",
+        removeGroup: "Xoá nhóm",
+        addRow: "Thêm dòng",
+        rowLabel: "Nhãn",
+        rowValue: "Giá trị",
+        addMetric: "Thêm chỉ số",
+        metricValue: "Số liệu",
+        metricLabel: "Nhãn",
+        metricNote: "Ghi chú (vd: 112% mục tiêu)",
+        addGroup: "Thêm nhóm",
+        groupTitle: "Tên nhóm",
+        bulletItem: "Nội dung dòng",
+        addBullet: "Thêm dòng",
+        addStep: "Thêm bước",
+        stepTitle: "Tên bước",
+        stepDesc: "Mô tả ngắn",
+        quoteText: "Nội dung trích dẫn",
+        quoteBy: "Nguồn / nhãn (vd: Emotional Value)",
+        addImages: "Thêm ảnh",
+        linkHint: "Dán slug của mục khác trong thư viện, ví dụ: booth-design-prompt-abc123",
+        linkSlug: "slug",
+        linkLabel: "Nhãn hiển thị",
+        addLink: "Thêm liên kết",
+        ownership: "Nguồn nội dung",
+        ownerships: {
+          user: "Của tài khoản",
+          platform: "Của Alpha Studio"
+        },
+        tags: "Thẻ",
+        tagsHint: "Ngăn cách bằng dấu phẩy",
+        cardMetrics: "Dải số liệu trên card",
+        cardMetricsHint: "Tối đa 4 số hiển thị ở card ngoài danh sách.",
+        pickCover: "Chọn ảnh bìa",
+        removeCover: "Bỏ ảnh bìa",
+        addFiles: "Thêm tệp đính kèm",
+        uploading: "Đang tải lên…",
+        uploadFailed: "Tải lên thất bại"
+      },
+      engagement: {
+        title: "Tương tác",
+        rate: "Đánh giá nội dung này",
+        editReview: "Đánh giá của bạn",
+        commentPlaceholder: "Nhận xét của bạn (tuỳ chọn)…",
+        pickStarsFirst: "Chọn số sao trước",
+        submit: "Gửi đánh giá",
+        saving: "Đang gửi…",
+        saved: "Đã lưu",
+        reviews: "Nhận xét ({count})",
+        loginRequired: "Đăng nhập để thích và đánh giá",
+        failed: "Không ghi nhận được, thử lại"
+      },
+      publish: {
+        button: "Đăng lên thư viện",
+        title: "Đăng lên Thư viện sự kiện",
+        subtitle: "Nội dung sẽ thuộc về tài khoản của bạn — mặc định riêng tư cho tới khi bạn công khai.",
+        itemTitle: "Tiêu đề",
+        itemSummary: "Mô tả ngắn",
+        itemType: "Loại nội dung",
+        visibility: "Chế độ hiển thị",
+        visibilities: {
+          private: "Riêng tư",
+          public: "Công khai",
+          privateHint: "Chỉ bạn (và admin) nhìn thấy nội dung này trong thư viện.",
+          publicHint: "Mọi người truy cập thư viện đều xem được nội dung này."
+        },
+        cancel: "Hủy",
+        submit: "Đăng",
+        publishing: "Đang đăng...",
+        titleRequired: "Vui lòng nhập tiêu đề",
+        failed: "Đăng lên thư viện thất bại"
       }
     },
     skills: {

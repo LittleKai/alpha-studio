@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
 import { getCourses, Course, CourseQueryParams, PaginationInfo } from '../services/courseService';
+import { localizedText } from '../utils/localized';
 
 // Category options
 const categories = [
@@ -113,9 +114,7 @@ const CoursesPage: React.FC = () => {
     }, [fetchCourses]);
 
     // Helper to get localized text
-    const getLocalizedText = (text: { vi: string; en: string }) => {
-        return language === 'vi' ? text.vi : text.en;
-    };
+    const getLocalizedText = (text: { vi: string; en: string }) => localizedText(text, language);
 
     // Format price in credits
     const formatPrice = (price: number) => {

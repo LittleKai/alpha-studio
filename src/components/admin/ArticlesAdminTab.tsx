@@ -13,6 +13,7 @@ import {
     type Article,
     type ArticleFormData,
 } from '../../services/articleService';
+import { fillLocalized, localizedText } from '../../utils/localized';
 
 interface ArticlesAdminTabProps {
     category: 'about' | 'services' | 'news';
@@ -99,15 +100,17 @@ export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
         // Language fallback: if one side is empty, use the other
         const viContent = viRaw || enRaw;
         const enContent = enRaw || viRaw;
-        const finalForm = {
-            ...form,
-            content: { vi: viContent, en: enContent },
-        };
-
-        if (!finalForm.title.vi || !finalForm.title.en) {
+        if (!form.title.vi.trim()) {
             alert(t('admin.articles.errors.titleRequired'));
             return;
         }
+
+        const finalForm = {
+            ...form,
+            title: fillLocalized(form.title.vi, form.title.en),
+            excerpt: fillLocalized(form.excerpt.vi, form.excerpt.en),
+            content: { vi: viContent, en: enContent },
+        };
         try {
             setSaving(true);
             if (editingId) {
@@ -525,10 +528,10 @@ export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
                                         )}
                                         <div className="min-w-0">
                                             <h4 className="font-medium text-[var(--text-primary)] truncate">
-                                                {article.title[language]}
+                                                {localizedText(article.title, language)}
                                             </h4>
                                             <p className="text-sm text-[var(--text-secondary)] truncate">
-                                                {article.excerpt[language] || t('admin.articles.noExcerpt')}
+                                                {localizedText(article.excerpt, language) || t('admin.articles.noExcerpt')}
                                             </p>
                                             <div className="flex items-center gap-2 mt-1">
                                                 <span className={`px-2 py-0.5 rounded text-xs ${getStatusBadge(article.status)}`}>

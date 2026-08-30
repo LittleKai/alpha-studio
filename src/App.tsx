@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect } from 'react';
-import { Routes, Route, useNavigate, Navigate, useLocation } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate, useLocation, useParams } from 'react-router-dom';
 // Routing Components (keep these non-lazy as they're small and used everywhere)
 import { ProtectedRoute } from './components/routing';
 import { Layout } from './components/layout';
@@ -37,6 +37,8 @@ const CrmPage = lazy(() => import('./pages/CrmPage'));
 const CrmSubscriptionPage = lazy(() => import('./pages/CrmSubscriptionPage'));
 const SkillsPage = lazy(() => import('./pages/SkillsPage'));
 const SkillDetailPage = lazy(() => import('./pages/SkillDetailPage'));
+const EventLibraryPage = lazy(() => import('./pages/EventLibraryPage'));
+const EventLibraryItemPage = lazy(() => import('./pages/EventLibraryItemPage'));
 
 // Loading spinner component
 const LoadingSpinner: React.FC = () => (
@@ -309,6 +311,31 @@ const SkillDetailPageWrapper: React.FC = () => {
     );
 };
 
+const SkillLegacyRedirect: React.FC = () => {
+    const { slug } = useParams<{ slug: string }>();
+    return <Navigate to={slug ? `/studio/ai-skills/${slug}` : '/studio/ai-skills'} replace />;
+};
+
+const EventLibraryPageWrapper: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <EventLibraryPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
+const EventLibraryItemPageWrapper: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <EventLibraryItemPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
 // 404 Not Found Page
 const NotFoundPage: React.FC = () => {
     const navigate = useNavigate();
@@ -389,8 +416,16 @@ const App: React.FC = () => {
                     }
                 />
                 <Route path="/studio/vietyaku" element={<VietYakuPageWrapper />} />
-                <Route path="/studio/skills" element={<SkillsPageWrapper />} />
-                <Route path="/studio/skills/:slug" element={<SkillDetailPageWrapper />} />
+                <Route path="/studio/event-library" element={<EventLibraryPageWrapper />} />
+                <Route path="/studio/event-library/:slug" element={<EventLibraryItemPageWrapper />} />
+                
+                {/* AI Skills Routes */}
+                <Route path="/studio/ai-skills" element={<SkillsPageWrapper />} />
+                <Route path="/studio/ai-skills/:slug" element={<SkillDetailPageWrapper />} />
+                {/* Legacy /studio/skills routes redirect to /studio/ai-skills */}
+                <Route path="/studio/skills" element={<Navigate to="/studio/ai-skills" replace />} />
+                <Route path="/studio/skills/:slug" element={<SkillLegacyRedirect />} />
+
                 {/* Legacy /vocab → redirect to /studio/vocab */}
                 <Route path="/vocab" element={<Navigate to="/studio/vocab" replace />} />
 

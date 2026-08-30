@@ -12,6 +12,7 @@ import admin from './admin';
 export default {
   ...app,
   skills: (app as any).studio.skills,
+  eventLibrary: (app as any).studio.eventLibrary,
   ...auth,
   ...common,
   ...entities,

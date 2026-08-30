@@ -3,6 +3,7 @@ import { useTranslation } from '../../i18n/context';
 import { Prompt, PromptInput, createPrompt, updatePrompt, ExampleImage, PromptContent } from '../../services/promptService';
 import { TagsInput } from '../shared';
 import { uploadImage } from '../../services/cloudinaryService';
+import { fillLocalized } from '../../utils/localized';
 
 interface PromptFormModalProps {
     isOpen: boolean;
@@ -127,8 +128,8 @@ const PromptFormModal: React.FC<PromptFormModalProps> = ({
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (!formData.title.vi || !formData.title.en) {
-            setError(language === 'vi' ? 'Vui lòng nhập tiêu đề cả tiếng Việt và tiếng Anh' : 'Please enter title in both Vietnamese and English');
+        if (!formData.title.vi.trim()) {
+            setError(language === 'vi' ? 'Vui lòng nhập tiêu đề tiếng Việt' : 'Please enter the Vietnamese title');
             return;
         }
 
@@ -143,11 +144,16 @@ const PromptFormModal: React.FC<PromptFormModalProps> = ({
         setError(null);
 
         try {
+            const payload = {
+                ...formData,
+                title: fillLocalized(formData.title.vi, formData.title.en),
+                description: fillLocalized(formData.description?.vi || '', formData.description?.en || '')
+            };
             let response;
             if (editingPrompt) {
-                response = await updatePrompt(editingPrompt._id, formData);
+                response = await updatePrompt(editingPrompt._id, payload);
             } else {
-                response = await createPrompt(formData);
+                response = await createPrompt(payload);
             }
 
             onSuccess?.(response.data);
@@ -209,7 +215,7 @@ const PromptFormModal: React.FC<PromptFormModalProps> = ({
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-[var(--text-primary)] mb-1">
-                                {language === 'vi' ? 'Tiêu đề (Tiếng Anh)' : 'Title (English)'} *
+                                {language === 'vi' ? 'Tiêu đề (Tiếng Anh)' : 'Title (English)'}
                             </label>
                             <input
                                 type="text"
@@ -219,7 +225,6 @@ const PromptFormModal: React.FC<PromptFormModalProps> = ({
                                     title: { ...prev.title, en: e.target.value }
                                 }))}
                                 className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)]"
-                                required
                             />
                         </div>
                     </div>
@@ -472,7 +477,7 @@ const PromptFormModal: React.FC<PromptFormModalProps> = ({
                         <button
                             onClick={handleSubmit}
                             disabled={isSubmitting}
-                            className="px-6 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg hover:opacity-90 disabled:opacity-50 transition-all"
+                            className="px-6 py-2.5 bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold rounded-xl shadow-md disabled:opacity-50 transition-all cursor-pointer"
                         >
                             {isSubmitting
                                 ? (language === 'vi' ? 'Đang lưu...' : 'Saving...')

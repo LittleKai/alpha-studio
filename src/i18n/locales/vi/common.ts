@@ -1,5 +1,8 @@
 export default {
   common: {
+    rating: {
+      yours: "Bạn đã chấm {score}/5"
+    },
     confirm: {
       confirmBtn: "Xác nhận",
       cancelBtn: "Hủy",

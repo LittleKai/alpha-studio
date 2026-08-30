@@ -25,12 +25,13 @@ export default {
       networkOpportunity: "MẠNG LƯỚI & CƠ HỘI",
       jobMarket: "Sàn việc làm",
       freelancer: "Freelancer",
+      newBadge: "Mới",
       partners: "Đối tác liên kết",
       affiliate: "Liên Kết Giới Thiệu",
       creditWallet: "Ví Credit",
       communityResources: "CỘNG ĐỒNG & TÀI NGUYÊN",
       sharePrompts: "Chia sẻ Prompt",
-      resourceHub: "Kho Tài Nguyên",
+      libraryPublisher: "Đăng Lên Thư Viện",
       exitStudio: "Thoát Studio"
     },
     tab: {
@@ -63,6 +64,7 @@ export default {
     },
     dashboard: {
       upload: "Tải lên tài liệu",
+      uploadLimit: "tối đa 10MB",
       uploadSizeLimit: "File quá lớn. Người dùng thông thường chỉ được upload tối đa 10MB.",
       uploadFileLimit: "Bạn đã đạt giới hạn 20 file cá nhân.",
       uploadFailed: "Upload thất bại. Vui lòng thử lại.",
@@ -124,6 +126,7 @@ export default {
         deptFilter: "Lọc phòng ban",
         mineFilter: "Thành Viên",
         memberBadge: "Thành viên",
+        projectsShown: "dự án hiển thị",
         memberProfile: {
           email: "Email",
           phone: "Điện thoại",

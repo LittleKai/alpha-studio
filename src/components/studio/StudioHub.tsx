@@ -50,7 +50,8 @@ const UPCOMING_TOOLS: { key: UpcomingKey; icon: ReactNode }[] = [
 
 // Thứ tự hiển thị trong tool rail của hero
 const RAIL_ORDER: { key: StudioToolKey | UpcomingKey; to?: string }[] = [
-    { key: 'skills', to: '/studio/skills' },
+    { key: 'eventLibrary', to: '/studio/event-library' },
+    { key: 'skills', to: '/studio/ai-skills' },
     { key: 'crm', to: '/studio/crm/subscription' },
     { key: 'vocab', to: '/studio/vocab' },
     { key: 'vietyaku', to: '/studio/vietyaku' },
@@ -76,7 +77,7 @@ export default function StudioHub() {
     const navigate = useNavigate();
 
     const statItems = [
-        { value: '04', label: t('studio.hub.hero.stats.live') },
+        { value: '05', label: t('studio.hub.hero.stats.live') },
         { value: '03', label: t('studio.hub.hero.stats.upcoming') },
         { value: '3000+', label: t('studio.hub.hero.stats.skills') },
         { value: '100%', label: t('studio.hub.hero.stats.beta') },
@@ -144,7 +145,7 @@ export default function StudioHub() {
                                 <span className="text-[10px] font-black uppercase tracking-[0.22em] text-[var(--text-tertiary)]">
                                     {t('studio.hub.hero.railLabel')}
                                 </span>
-                                <span className="text-[10px] font-black tabular-nums text-[var(--accent-primary)]">07</span>
+                                <span className="text-[10px] font-black tabular-nums text-[var(--accent-primary)]">08</span>
                             </div>
                             <ul className="space-y-1">
                                 {RAIL_ORDER.map(({ key, to }) => {

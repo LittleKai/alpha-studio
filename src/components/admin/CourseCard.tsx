@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { Course } from '../../services/courseService';
+import { localizedText } from '../../utils/localized';
 
 interface CourseCardProps {
     course: Course;
@@ -25,8 +26,8 @@ const CourseCard: React.FC<CourseCardProps> = ({
 }) => {
     const { t, language } = useTranslation();
 
-    const title = language === 'vi' ? course.title.vi : course.title.en;
-    const description = language === 'vi' ? course.description.vi : course.description.en;
+    const title = localizedText(course.title, language);
+    const description = localizedText(course.description, language);
 
     const getCategoryLabel = useCallback((category: string) => {
         const labels: Record<string, string> = {

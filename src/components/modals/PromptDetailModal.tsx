@@ -297,11 +297,11 @@ const PromptDetailModal: React.FC<PromptDetailModalProps> = ({
                                             <button
                                                 onClick={handleCopyPrompt}
                                                 disabled={!isAuthenticated}
-                                                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-bold transition-all ${
+                                                className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-sm font-bold transition-all shadow-md ${
                                                     copied
-                                                        ? 'bg-green-500 text-white'
-                                                        : 'bg-[var(--accent-primary)] text-black hover:opacity-90'
-                                                } ${!isAuthenticated ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                                        ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                                                        : 'bg-[#0284c7] hover:bg-[#0369a1] text-white'
+                                                } ${!isAuthenticated ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:scale-[1.02]'}`}
                                             >
                                                 {copied ? (
                                                     <>

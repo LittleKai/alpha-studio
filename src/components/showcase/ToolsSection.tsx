@@ -21,7 +21,7 @@ const ToolsSection: React.FC<Props> = ({ onNavigate }) => {
       tags: ['Flashcards'],
     },
     {
-      id: 'skills', path: '/studio/skills', icon: '🧠', size: 'sm',
+      id: 'skills', path: '/studio/ai-skills', icon: '🧠', size: 'sm',
       art: 'linear-gradient(135deg, var(--sc-accent), var(--sc-accent-2))',
       tags: ['Prompts', 'Workflows'],
     },

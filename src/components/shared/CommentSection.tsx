@@ -14,7 +14,7 @@ import {
 } from '../../services/commentService';
 
 interface CommentSectionProps {
-    targetType: 'prompt' | 'resource';
+    targetType: 'prompt';
     targetId: string;
     commentsCount?: number;
 }

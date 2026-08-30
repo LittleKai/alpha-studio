@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
 import { getArticles, type Article } from '../services/articleService';
+import { localizedText } from '../utils/localized';
 
 export default function NewsPage() {
     const { t, language } = useTranslation();
@@ -68,18 +69,18 @@ export default function NewsPage() {
                                     <div className="aspect-video overflow-hidden">
                                         <img
                                             src={article.thumbnail}
-                                            alt={article.title[language]}
+                                            alt={localizedText(article.title, language)}
                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                         />
                                     </div>
                                 )}
                                 <div className="p-5">
                                     <h3 className="text-lg font-bold text-[var(--text-primary)] mb-2 line-clamp-2 group-hover:text-[var(--accent-primary)] transition-colors">
-                                        {article.title[language]}
+                                        {localizedText(article.title, language)}
                                     </h3>
-                                    {article.excerpt[language] && (
+                                    {localizedText(article.excerpt, language) && (
                                         <p className="text-sm text-[var(--text-secondary)] line-clamp-3 mb-3">
-                                            {article.excerpt[language]}
+                                            {localizedText(article.excerpt, language)}
                                         </p>
                                     )}
                                     <div className="flex items-center justify-between text-xs text-[var(--text-tertiary)]">

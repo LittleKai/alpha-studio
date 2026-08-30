@@ -9,7 +9,7 @@ export interface CommentAuthor {
 
 export interface Comment {
     _id: string;
-    targetType: 'prompt' | 'resource';
+    targetType: 'prompt';
     targetId: string;
     author: CommentAuthor;
     content: string;
@@ -59,7 +59,7 @@ const getAuthHeaders = (): HeadersInit => {
 
 // Get comments for a target
 export const getComments = async (
-    targetType: 'prompt' | 'resource',
+    targetType: 'prompt',
     targetId: string,
     params: CommentQueryParams = {}
 ): Promise<CommentListResponse> => {
@@ -113,7 +113,7 @@ export const getReplies = async (
 
 // Create a comment
 export const createComment = async (
-    targetType: 'prompt' | 'resource',
+    targetType: 'prompt',
     targetId: string,
     content: string,
     parentComment?: string

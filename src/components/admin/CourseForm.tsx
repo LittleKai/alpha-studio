@@ -178,7 +178,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
 
     const handleSubmit = useCallback(async (status: 'draft' | 'published') => {
         // Validation
-        if (!titleVi.trim() || !titleEn.trim()) {
+        if (!titleVi.trim()) {
             setError(t('admin.courses.form.errors.titleRequired'));
             return;
         }
@@ -193,7 +193,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
 
         try {
             const data: CourseInput = {
-                title: { vi: titleVi.trim(), en: titleEn.trim() },
+                title: withFallback(titleVi, titleEn),
                 description: withFallback(descriptionVi, descriptionEn),
                 category,
                 thumbnail,

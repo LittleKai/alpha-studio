@@ -20,6 +20,7 @@ import {
 } from '../services/courseService';
 import { isB2Url, getB2SignedUrl } from '../services/b2StorageService';
 import Login from '../components/ui/Login';
+import { localizedText } from '../utils/localized';
 
 // Declare YouTube Player types
 declare global {
@@ -132,10 +133,7 @@ const CoursePage: React.FC = () => {
     const [showReviewsDialog, setShowReviewsDialog] = useState(false);
 
     // Helpers
-    const getLocalizedText = (text: { vi: string; en: string } | undefined) => {
-        if (!text) return '';
-        return language === 'vi' ? text.vi : text.en;
-    };
+    const getLocalizedText = (text: { vi: string; en: string } | undefined) => localizedText(text, language);
 
     const formatPrice = (price: number) => {
         if (price === 0) return t('courseCatalog.free');

@@ -152,7 +152,7 @@ export default {
         archived: "Đã lưu trữ"
       },
       errors: {
-        titleRequired: "Cần tiêu đề cả tiếng Việt và tiếng Anh"
+        titleRequired: "Cần tiêu đề tiếng Việt"
       }
     },
     courses: {
@@ -251,7 +251,7 @@ export default {
           assignment: "Bài tập"
         },
         errors: {
-          titleRequired: "Cần tiêu đề bằng cả hai ngôn ngữ",
+          titleRequired: "Cần tiêu đề tiếng Việt",
           categoryRequired: "Cần chọn danh mục"
         }
       },
@@ -416,7 +416,7 @@ export default {
         publish: "Xuất bản",
         saving: "Đang lưu...",
         errors: {
-          titleRequired: "Cần tiêu đề bằng cả hai ngôn ngữ"
+          titleRequired: "Cần tiêu đề tiếng Việt"
         }
       },
       deleteConfirm: {

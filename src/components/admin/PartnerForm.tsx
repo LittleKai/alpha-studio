@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { createPartner, updatePartner, Partner, PartnerInput } from '../../services/partnerService';
 import { uploadToCloudinary } from '../../services/cloudinaryService';
+import { fillLocalized } from '../../utils/localized';
 
 interface PartnerFormProps {
     partner: Partner | null;
@@ -68,10 +69,7 @@ const PartnerForm: React.FC<PartnerFormProps> = ({ partner, onClose, onSuccess }
         try {
             const data: PartnerInput = {
                 companyName: companyName.trim(),
-                description: {
-                    vi: descriptionVi.trim(),
-                    en: descriptionEn.trim()
-                },
+                description: fillLocalized(descriptionVi, descriptionEn),
                 logo: logo.trim(),
                 website: website.trim(),
                 email: email.trim(),

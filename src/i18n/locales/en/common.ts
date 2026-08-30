@@ -1,5 +1,8 @@
 export default {
   common: {
+    rating: {
+      yours: "Your rating: {score}"
+    },
     confirm: {
       confirmBtn: "Confirm",
       cancelBtn: "Cancel",

@@ -1,8 +1,16 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
 import StudioBackButton from '../components/studio/StudioBackButton';
+import { FilterGroup, FilterCheckbox, FilterRadio, FilterCount } from '../components/library/FilterGroup';
+import LibraryToolbar from '../components/library/LibraryToolbar';
+import LibraryPagination from '../components/library/LibraryPagination';
+import MobileFilterDrawer from '../components/library/MobileFilterDrawer';
 import { getSkills, type Skill } from '../services/skillService';
+
+// Màu nhấn của thư viện Kỹ năng AI — truyền xuống các component lọc dùng chung
+const ACCENT = '#ff5a1f';
 
 
 const getCategoryKey = (cat: string): string => {
@@ -58,6 +66,33 @@ const getTierKey = (tier: string): string => {
   return 'bronze';
 };
 
+const getCategoryBadgeClass = (category: string): string => {
+  const key = getCategoryKey(category);
+  switch (key) {
+    case 'design': return 'bg-purple-500/10 text-purple-500 dark:text-purple-400 border-purple-500/25';
+    case 'development':
+    case 'devTools': return 'bg-sky-500/10 text-sky-500 dark:text-sky-400 border-sky-500/25';
+    case 'marketing':
+    case 'marketingContent': return 'bg-rose-500/10 text-rose-500 dark:text-rose-400 border-rose-500/25';
+    case 'seo':
+    case 'optimization': return 'bg-amber-500/10 text-amber-500 dark:text-amber-400 border-amber-500/25';
+    case 'productivity':
+    case 'crmPipeline':
+    case 'salesOutreach': return 'bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 border-emerald-500/25';
+    default: return 'bg-orange-500/10 text-orange-500 dark:text-orange-400 border-orange-500/25';
+  }
+};
+
+const getDifficultyBadgeClass = (diff: string): string => {
+  const key = getDifficultyKey(diff);
+  switch (key) {
+    case 'beginner': return 'bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 border-emerald-500/25';
+    case 'intermediate': return 'bg-amber-500/10 text-amber-500 dark:text-amber-400 border-amber-500/25';
+    case 'advanced': return 'bg-rose-500/10 text-rose-500 dark:text-rose-400 border-rose-500/25';
+    default: return 'bg-yellow-500/10 text-yellow-500 dark:text-yellow-400 border-yellow-500/25';
+  }
+};
+
 const formatTimeSaving = (timeStr: string, lang: string): string => {
   if (!timeStr) return '';
   const match = timeStr.match(/(\d+)/);
@@ -87,33 +122,35 @@ const parseTimeSavingMinutes = (str: string): number => {
 
 export default function SkillsPage() {
   const { t, language } = useTranslation();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
   const PAGE_SIZE = 12;
 
   // Skills raw data
   const [allSkills, setAllSkills] = useState<Skill[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // Initialize from searchParams
+  const initialPage = parseInt(searchParams.get('page') || '1', 10);
+  const initialSearch = searchParams.get('search') || '';
+  const initialCat = searchParams.get('category') ? searchParams.get('category')!.split(',') : [];
+  const initialTiers = searchParams.get('tier') ? searchParams.get('tier')!.split(',') : [];
+  const initialSort = (searchParams.get('sort') as any) || 'recommended';
+
   // Search & Filter State
-  const [searchQuery, setSearchQuery] = useState('');
-  const [debouncedSearch, setDebouncedSearch] = useState('');
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [searchQuery, setSearchQuery] = useState(initialSearch);
+  const [debouncedSearch, setDebouncedSearch] = useState(initialSearch);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(initialCat);
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>('all');
-  const [selectedTiers, setSelectedTiers] = useState<string[]>([]);
+  const [selectedTiers, setSelectedTiers] = useState<string[]>(initialTiers);
   const [selectedTimeSavings, setSelectedTimeSavings] = useState<string[]>([]);
   const [selectedInstallTypes, setSelectedInstallTypes] = useState<string[]>([]);
   
   // Sort, View & Pagination State
-  const [sortBy, setSortBy] = useState<'recommended' | 'popular' | 'timeSaved' | 'quickest' | 'recent' | 'az'>('recommended');
+  const [sortBy, setSortBy] = useState<'recommended' | 'popular' | 'timeSaved' | 'quickest' | 'recent' | 'az'>(initialSort);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(initialPage > 0 ? initialPage : 1);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
-
-  // Collapsible Filters State
-  const [collapseCategories, setCollapseCategories] = useState(false);
-  const [collapseDifficulty, setCollapseDifficulty] = useState(false);
-  const [collapseTiers, setCollapseTiers] = useState(false);
-  const [collapseTime, setCollapseTime] = useState(false);
-  const [collapseInstall, setCollapseInstall] = useState(false);
 
   // Debounce search input (400ms)
   const searchTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
@@ -124,6 +161,22 @@ export default function SkillsPage() {
     }, 400);
     return () => clearTimeout(searchTimerRef.current);
   }, [searchQuery]);
+
+  // Sync state to URL search parameters
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    const params = new URLSearchParams();
+    if (currentPage > 1) params.set('page', String(currentPage));
+    if (debouncedSearch) params.set('search', debouncedSearch);
+    if (selectedCategories.length > 0) params.set('category', selectedCategories.join(','));
+    if (selectedTiers.length > 0) params.set('tier', selectedTiers.join(','));
+    if (sortBy !== 'recommended') params.set('sort', sortBy);
+    setSearchParams(params, { replace: true });
+  }, [currentPage, debouncedSearch, selectedCategories, selectedTiers, sortBy, setSearchParams]);
 
   // Load all skills once on mount (with sessionStorage cache)
   useEffect(() => {
@@ -353,24 +406,6 @@ export default function SkillsPage() {
     return filteredAndSortedSkills.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
   }, [filteredAndSortedSkills, currentPage]);
 
-  const getPageNumbers = () => {
-    const pages: (number | string)[] = [];
-    if (totalPages <= 7) {
-      for (let i = 1; i <= totalPages; i++) {
-        pages.push(i);
-      }
-    } else {
-      if (currentPage <= 4) {
-        pages.push(1, 2, 3, 4, 5, '...', totalPages);
-      } else if (currentPage >= totalPages - 3) {
-        pages.push(1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
-      } else {
-        pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
-      }
-    }
-    return pages;
-  };
-
   const handleCategoryToggle = (cat: string) => {
     setSelectedCategories(prev => 
       prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]
@@ -459,232 +494,112 @@ export default function SkillsPage() {
     <div className="space-y-6">
       {/* Header and Reset filters */}
       <div className="flex items-center justify-between pb-2 border-b border-[var(--border-primary)]">
-        <h2 className="text-lg font-bold text-[var(--text-primary)]">
+        <h2 className="text-lg font-bold text-orange-600 dark:text-orange-400 flex items-center gap-2">
+          <span className="w-1.5 h-4 rounded-full bg-orange-500" />
           {t('skills.filters')}
         </h2>
-        
+
         {(selectedCategories.length > 0 || selectedDifficulty !== 'all' || selectedTiers.length > 0 || selectedTimeSavings.length > 0 || selectedInstallTypes.length > 0 || searchQuery !== '') && (
-          <button 
+          <button
             onClick={handleResetFilters}
-            className="text-xs text-[#ff5a1f] hover:underline font-semibold focus-visible:outline-none cursor-pointer"
+            style={{ color: ACCENT }}
+            className="text-xs hover:underline font-semibold focus-visible:outline-none cursor-pointer"
           >
             {t('skills.resetFilters')}
           </button>
         )}
       </div>
 
-      {/* Categories Collapsible filter */}
-      <div className="border-b border-[var(--border-primary)] pb-4">
-        <button 
-          onClick={() => setCollapseCategories(!collapseCategories)}
-          className="flex items-center justify-between w-full text-left mb-3 group focus:outline-none cursor-pointer"
-        >
-          <span className="font-semibold text-sm text-[var(--text-primary)]">{t('skills.category')}</span>
-          <svg 
-            className={`w-4 h-4 text-[var(--text-tertiary)] group-hover:text-[var(--text-primary)] transition-transform duration-200 ${collapseCategories ? 'transform rotate-180' : ''}`}
-            fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"
+      <FilterGroup title={t('skills.category')} maxHeight={240} accent="#ff5a1f">
+        {categories.map(cat => (
+          <FilterCheckbox
+            key={cat}
+            accent={ACCENT}
+            checked={selectedCategories.includes(cat)}
+            onChange={() => handleCategoryToggle(cat)}
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-        {!collapseCategories && (
-          <div className="max-h-60 overflow-y-auto pr-2 space-y-2 text-sm select-none custom-scrollbar">
-            {categories.map(cat => (
-              <label key={cat} className="flex items-center gap-3 cursor-pointer group">
-                <input 
-                  type="checkbox"
-                  checked={selectedCategories.includes(cat)}
-                  onChange={() => handleCategoryToggle(cat)}
-                  className="w-4 h-4 rounded border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[#ff5a1f] focus:ring-0 cursor-pointer"
-                />
-                <span className="text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
-                  {t('skills.categories.' + cat)} <span className="text-xs text-[var(--text-tertiary)]">({categoryCounts[cat] || 0})</span>
-                </span>
-              </label>
-            ))}
-          </div>
-        )}
-      </div>
+            {t('skills.categories.' + cat)} <FilterCount value={categoryCounts[cat] || 0} />
+          </FilterCheckbox>
+        ))}
+      </FilterGroup>
 
-      {/* Difficulty Level collapsible filter */}
-      <div className="border-b border-[var(--border-primary)] pb-4">
-        <button 
-          onClick={() => setCollapseDifficulty(!collapseDifficulty)}
-          className="flex items-center justify-between w-full text-left mb-3 group focus:outline-none cursor-pointer"
+      <FilterGroup title={t('skills.difficulty')} accent="#eab308">
+        <FilterRadio
+          name="difficulty"
+          accent={ACCENT}
+          checked={selectedDifficulty === 'all'}
+          onChange={() => { setSelectedDifficulty('all'); setCurrentPage(1); }}
         >
-          <span className="font-semibold text-sm text-[var(--text-primary)]">{t('skills.difficulty')}</span>
-          <svg 
-            className={`w-4 h-4 text-[var(--text-tertiary)] group-hover:text-[var(--text-primary)] transition-transform duration-200 ${collapseDifficulty ? 'transform rotate-180' : ''}`}
-            fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"
+          {t('skills.allLevels')}
+        </FilterRadio>
+        {difficulties.map(diff => (
+          <FilterRadio
+            key={diff}
+            name="difficulty"
+            accent={ACCENT}
+            checked={selectedDifficulty.toLowerCase() === diff.toLowerCase()}
+            onChange={() => { setSelectedDifficulty(diff); setCurrentPage(1); }}
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-        {!collapseDifficulty && (
-          <div className="space-y-2 text-sm select-none">
-            <label className="flex items-center gap-3 cursor-pointer group">
-              <input 
-                type="radio"
-                name="difficulty"
-                value="all"
-                checked={selectedDifficulty === 'all'}
-                onChange={() => { setSelectedDifficulty('all'); setCurrentPage(1); }}
-                className="w-4 h-4 border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[#ff5a1f] focus:ring-0 cursor-pointer"
-              />
-              <span className="text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
-                {t('skills.allLevels')}
-              </span>
-            </label>
-            {difficulties.map(diff => (
-              <label key={diff} className="flex items-center gap-3 cursor-pointer group">
-                <input 
-                  type="radio"
-                  name="difficulty"
-                  value={diff}
-                  checked={selectedDifficulty.toLowerCase() === diff.toLowerCase()}
-                  onChange={() => { setSelectedDifficulty(diff); setCurrentPage(1); }}
-                  className="w-4 h-4 border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[#ff5a1f] focus:ring-0 cursor-pointer"
-                />
-                <span className="text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
-                  {t('skills.difficulties.' + getDifficultyKey(diff))} <span className="text-xs text-[var(--text-tertiary)]">({difficultyCounts[diff] || 0})</span>
-                </span>
-              </label>
-            ))}
-          </div>
-        )}
-      </div>
+            {t('skills.difficulties.' + getDifficultyKey(diff))} <FilterCount value={difficultyCounts[diff] || 0} />
+          </FilterRadio>
+        ))}
+      </FilterGroup>
 
-      {/* Quality Tiers filter */}
-      <div className="border-b border-[var(--border-primary)] pb-4">
-        <button 
-          onClick={() => setCollapseTiers(!collapseTiers)}
-          className="flex items-center justify-between w-full text-left mb-3 group focus:outline-none cursor-pointer"
-        >
-          <span className="font-semibold text-sm text-[var(--text-primary)]">{t('skills.qualityTier')}</span>
-          <svg 
-            className={`w-4 h-4 text-[var(--text-tertiary)] group-hover:text-[var(--text-primary)] transition-transform duration-200 ${collapseTiers ? 'transform rotate-180' : ''}`}
-            fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"
+      <FilterGroup title={t('skills.qualityTier')} accent="#a855f7">
+        {tiers.map(tier => (
+          <FilterCheckbox
+            key={tier}
+            accent={ACCENT}
+            checked={selectedTiers.includes(tier)}
+            onChange={() => handleTierToggle(tier)}
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-        {!collapseTiers && (
-          <div className="space-y-2 text-sm select-none">
-            {tiers.map(tier => (
-              <label key={tier} className="flex items-center gap-3 cursor-pointer group">
-                <input 
-                  type="checkbox"
-                  checked={selectedTiers.includes(tier)}
-                  onChange={() => handleTierToggle(tier)}
-                  className="w-4 h-4 rounded border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[#ff5a1f] focus:ring-0 cursor-pointer"
-                />
-                <span className="transition-colors flex items-center gap-1.5 select-none">
-                  <span className={`text-[9px] font-bold tracking-wider px-2 py-0.5 rounded border shrink-0 flex items-center gap-1 ${getTierColor(tier)}`}>
-                    <span>{getTierEmoji(tier)}</span>
-                    <span>{t('skills.tiers.' + getTierKey(tier)).toUpperCase()}</span>
-                  </span>
-                  <span className="text-xs text-[var(--text-tertiary)]">({tierCounts[tier] || 0})</span>
-                </span>
-              </label>
-            ))}
-          </div>
-        )}
-      </div>
+            <span className="inline-flex items-center gap-1.5 align-middle">
+              <span className={`text-[9px] font-bold tracking-wider px-2 py-0.5 rounded border shrink-0 flex items-center gap-1 ${getTierColor(tier)}`}>
+                <span>{getTierEmoji(tier)}</span>
+                <span>{t('skills.tiers.' + getTierKey(tier)).toUpperCase()}</span>
+              </span>
+              <FilterCount value={tierCounts[tier] || 0} />
+            </span>
+          </FilterCheckbox>
+        ))}
+      </FilterGroup>
 
-      {/* Time savings filter */}
-      <div className="border-b border-[var(--border-primary)] pb-4">
-        <button 
-          onClick={() => setCollapseTime(!collapseTime)}
-          className="flex items-center justify-between w-full text-left mb-3 group focus:outline-none cursor-pointer"
-        >
-          <span className="font-semibold text-sm text-[var(--text-primary)]">{t('skills.timeSavings')}</span>
-          <svg 
-            className={`w-4 h-4 text-[var(--text-tertiary)] group-hover:text-[var(--text-primary)] transition-transform duration-200 ${collapseTime ? 'transform rotate-180' : ''}`}
-            fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"
+      <FilterGroup title={t('skills.timeSavings')} accent="#10b981">
+        {(['short', 'medium', 'long'] as const).map(range => (
+          <FilterCheckbox
+            key={range}
+            accent={ACCENT}
+            checked={selectedTimeSavings.includes(range)}
+            onChange={() => handleTimeToggle(range)}
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-        {!collapseTime && (
-          <div className="space-y-2 text-sm select-none">
-            <label className="flex items-center gap-3 cursor-pointer group">
-              <input 
-                type="checkbox"
-                checked={selectedTimeSavings.includes('short')}
-                onChange={() => handleTimeToggle('short')}
-                className="w-4 h-4 rounded border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[#ff5a1f] focus:ring-0 cursor-pointer"
-              />
-              <span className="text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
-                {t('skills.timeRangeShort')}
-              </span>
-            </label>
-            <label className="flex items-center gap-3 cursor-pointer group">
-              <input 
-                type="checkbox"
-                checked={selectedTimeSavings.includes('medium')}
-                onChange={() => handleTimeToggle('medium')}
-                className="w-4 h-4 rounded border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[#ff5a1f] focus:ring-0 cursor-pointer"
-              />
-              <span className="text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
-                {t('skills.timeRangeMedium')}
-              </span>
-            </label>
-            <label className="flex items-center gap-3 cursor-pointer group">
-              <input 
-                type="checkbox"
-                checked={selectedTimeSavings.includes('long')}
-                onChange={() => handleTimeToggle('long')}
-                className="w-4 h-4 rounded border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[#ff5a1f] focus:ring-0 cursor-pointer"
-              />
-              <span className="text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
-                {t('skills.timeRangeLong')}
-              </span>
-            </label>
-          </div>
-        )}
-      </div>
+            {range === 'short' && t('skills.timeRangeShort')}
+            {range === 'medium' && t('skills.timeRangeMedium')}
+            {range === 'long' && t('skills.timeRangeLong')}
+          </FilterCheckbox>
+        ))}
+      </FilterGroup>
 
-      {/* Install Type collapsible filter */}
       {installTypes.length > 0 && (
-        <div className="border-b border-[var(--border-primary)] pb-4">
-          <button 
-            onClick={() => setCollapseInstall(!collapseInstall)}
-            className="flex items-center justify-between w-full text-left mb-3 group focus:outline-none cursor-pointer"
-          >
-            <span className="font-semibold text-sm text-[var(--text-primary)]">{t('skills.installTypeTitle')}</span>
-            <svg 
-              className={`w-4 h-4 text-[var(--text-tertiary)] group-hover:text-[var(--text-primary)] transition-transform duration-200 ${collapseInstall ? 'transform rotate-180' : ''}`}
-              fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"
+        <FilterGroup title={t('skills.installTypeTitle')} accent="#06b6d4">
+          {installTypes.map(type => (
+            <FilterCheckbox
+              key={type}
+              accent={ACCENT}
+              checked={selectedInstallTypes.includes(type)}
+              onChange={() => handleInstallToggle(type)}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          {!collapseInstall && (
-            <div className="space-y-2 text-sm select-none">
-              {installTypes.map(type => (
-                <label key={type} className="flex items-center gap-3 cursor-pointer group">
-                  <input 
-                    type="checkbox"
-                    checked={selectedInstallTypes.includes(type)}
-                    onChange={() => handleInstallToggle(type)}
-                    className="w-4 h-4 rounded border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[#ff5a1f] focus:ring-0 cursor-pointer"
-                  />
-                  <span className="text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
-                    {t('skills.installTypes.' + getInstallTypeKey(type))} <span className="text-xs text-[var(--text-tertiary)]">({installCounts[type] || 0})</span>
-                  </span>
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
+              {t('skills.installTypes.' + getInstallTypeKey(type))} <FilterCount value={installCounts[type] || 0} />
+            </FilterCheckbox>
+          ))}
+        </FilterGroup>
       )}
     </div>
   );
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pb-20">
-      <SEOHead title={t('skills.title')} description={t('skills.subtitle')} path="/studio/skills" />
-      <StudioBackButton />
+      <SEOHead title={t('skills.title')} description={t('skills.subtitle')} path="/studio/ai-skills" />
+      <StudioBackButton to="/studio" />
       <div className="max-w-7xl mx-auto px-6 pt-4 pb-12">
         {/* Header Navigation and Premium Badge Row */}
         <div className="flex items-center justify-center mb-6">
@@ -703,7 +618,7 @@ export default function SkillsPage() {
             alt="AI Skills Hub"
             className="w-20 h-20 md:w-24 md:h-24 rounded-3xl shadow-xl mx-auto mb-5 object-contain"
           />
-          <h1 className="text-3xl md:text-5xl font-extrabold text-[var(--text-primary)] mb-4 tracking-tight flex items-center justify-center gap-3 flex-wrap">
+          <h1 className="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight flex items-center justify-center gap-3 flex-wrap bg-gradient-to-r from-orange-500 via-amber-500 to-rose-500 dark:from-orange-400 dark:via-amber-300 dark:to-rose-400 bg-clip-text text-transparent">
             {t('skills.heroTitle')}
             <span className="px-2 py-0.5 text-xs font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 rounded uppercase tracking-wider select-none leading-normal">
               Beta
@@ -715,7 +630,7 @@ export default function SkillsPage() {
           </p>
 
           {/* Search bar */}
-          <div className="relative max-w-xl mx-auto mb-6 shadow-[0_4px_25px_rgba(0,0,0,0.3)]">
+          <div className="relative max-w-xl mx-auto mb-6">
             <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-tertiary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
@@ -726,27 +641,27 @@ export default function SkillsPage() {
               onChange={e => {
                 setSearchQuery(e.target.value);
               }}
-              className="w-full pl-11 pr-4 py-3 text-sm bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-xl focus:border-[var(--accent-primary)] focus:outline-none transition-all text-[var(--text-primary)] placeholder:text-white/80"
+              className="w-full pl-11 pr-4 py-3.5 text-base bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-xl focus:border-orange-500 focus:outline-none transition-all text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] shadow-sm"
             />
           </div>
 
           {/* Quick Metrics stats */}
           <div className="flex flex-wrap justify-center gap-4 text-xs">
-            <div className="bg-[var(--bg-card)] px-3.5 py-1.5 rounded-lg border border-[var(--border-primary)]">
-              <span className="font-bold text-[var(--text-primary)] text-sm">{filterCounts.totalSkills}</span> <span className="text-[var(--text-secondary)]">{t('skills.statsSkills')}</span>
+            <div className="bg-[var(--bg-card)] px-4 py-2 rounded-xl border border-orange-500/25 bg-orange-500/5 shadow-sm">
+              <span className="font-bold text-orange-600 dark:text-orange-400 text-sm">{filterCounts.totalSkills}</span> <span className="text-[var(--text-secondary)]">{t('skills.statsSkills')}</span>
             </div>
-            <div className="bg-[var(--bg-card)] px-3.5 py-1.5 rounded-lg border border-[var(--border-primary)]">
-              <span className="font-bold text-[var(--text-primary)] text-sm">
+            <div className="bg-[var(--bg-card)] px-4 py-2 rounded-xl border border-amber-500/25 bg-amber-500/5 shadow-sm">
+              <span className="font-bold text-amber-600 dark:text-amber-400 text-sm">
                 {filterCounts.verifiedCount}
               </span> <span className="text-[var(--text-secondary)]">{t('skills.statsVerified')}</span>
             </div>
-            <div className="bg-[var(--bg-card)] px-3.5 py-1.5 rounded-lg border border-[var(--border-primary)] text-emerald-theme">
-              <svg className="w-3.5 h-3.5 inline mr-1 align-text-top" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <div className="bg-[var(--bg-card)] px-4 py-2 rounded-xl border border-emerald-500/25 bg-emerald-500/5 shadow-sm">
+              <svg className="w-3.5 h-3.5 inline mr-1 align-text-top text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span className="font-bold text-sm">
+              <span className="font-bold text-emerald-600 dark:text-emerald-400 text-sm">
                 {filterCounts.totalTimeSavedHours}+
-              </span> <span className="opacity-90">{t('skills.statsTimeSaved')}</span>
+              </span> <span className="text-[var(--text-secondary)]">{t('skills.statsTimeSaved')}</span>
             </div>
           </div>
         </div>
@@ -764,57 +679,23 @@ export default function SkillsPage() {
           {/* Right Main Grid Container */}
           <main className="lg:col-span-3 min-w-0">
             
-            {/* Sort options and View Toggles (Using crawl styling) */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-[var(--border-primary)]/50">
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-semibold text-[var(--text-secondary)]">{t('skills.sortLabel')}</span>
-                <div className="flex flex-wrap gap-1.5">
-                  {(['recommended', 'popular', 'timeSaved', 'quickest', 'recent', 'az'] as const).map(option => (
-                    <button
-                      key={option}
-                      onClick={() => setSortBy(option)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all focus:outline-none cursor-pointer ${
-                        sortBy === option 
-                          ? 'bg-[#ff5a1f] text-white' 
-                          : 'bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]/80 hover:text-[var(--text-primary)]'
-                      }`}
-                    >
-                      {option === 'recommended' && t('skills.sortRecommended')}
-                      {option === 'popular' && t('skills.sortPopular')}
-                      {option === 'timeSaved' && t('skills.sortTimeSaved')}
-                      {option === 'quickest' && t('skills.sortQuickest')}
-                      {option === 'recent' && t('skills.sortRecent')}
-                      {option === 'az' && t('skills.sortAZ')}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 justify-end">
-                <span className="text-sm font-semibold text-[var(--text-secondary)]">{t('skills.viewLabel')}</span>
-                <div className="flex gap-1 bg-[var(--bg-secondary)] p-1 rounded-lg border border-[var(--border-primary)]">
-                  <button 
-                    onClick={() => setViewMode('grid')}
-                    className={`p-1.5 rounded transition-all focus:outline-none cursor-pointer ${viewMode === 'grid' ? 'bg-[#ff5a1f] text-white' : 'text-[var(--text-tertiary)] hover:text-[var(--text-primary)]'}`}
-                    aria-label="Grid View"
-                  >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                    </svg>
-                  </button>
-                  <button 
-                    onClick={() => setViewMode('list')}
-                    className={`p-1.5 rounded transition-all focus:outline-none cursor-pointer ${viewMode === 'list' ? 'bg-[#ff5a1f] text-white' : 'text-[var(--text-tertiary)] hover:text-[var(--text-primary)]'}`}
-                    aria-label="List View"
-                  >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-
+            <LibraryToolbar
+              sortLabel={t('skills.sortLabel')}
+              sortOptions={[
+                { value: 'recommended', label: t('skills.sortRecommended') },
+                { value: 'popular', label: t('skills.sortPopular') },
+                { value: 'timeSaved', label: t('skills.sortTimeSaved') },
+                { value: 'quickest', label: t('skills.sortQuickest') },
+                { value: 'recent', label: t('skills.sortRecent') },
+                { value: 'az', label: t('skills.sortAZ') },
+              ]}
+              sort={sortBy}
+              onSortChange={(value) => setSortBy(value as typeof sortBy)}
+              viewLabel={t('skills.viewLabel')}
+              view={viewMode}
+              onViewChange={setViewMode}
+              accent={ACCENT}
+            />
             {/* Showing skills count indicator */}
             <div className="text-xs text-[var(--text-tertiary)] mb-4 font-mono">
               {t('skills.showingStats')
@@ -850,8 +731,8 @@ export default function SkillsPage() {
                       return (
                         <div
                           key={skill.slug}
-                          onClick={() => window.open(`/studio/skills/${skill.slug}`, '_blank')}
-                          className="group bg-gradient-to-br from-[var(--bg-card)] to-[rgba(7,17,31,0.6)] p-5 rounded-2xl border border-[var(--border-primary)] hover:border-[#ff5a1f] hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(255,90,31,0.08)] transition-all duration-300 flex flex-col h-full cursor-pointer relative overflow-hidden min-h-[200px]"
+                          onClick={() => navigate(`/studio/ai-skills/${skill.slug}`)}
+                          className="group bg-gradient-to-br from-[var(--bg-card)] to-[rgba(7,17,31,0.6)] p-5 rounded-2xl border border-[var(--border-primary)] hover:border-orange-500/60 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(255,90,31,0.1)] transition-all duration-300 flex flex-col h-full cursor-pointer relative overflow-hidden min-h-[200px]"
                           style={{
                             backgroundImage: 'radial-gradient(rgba(205, 235, 255, 0.04) 1.5px, transparent 1.5px)',
                             backgroundSize: '16px 16px'
@@ -860,10 +741,10 @@ export default function SkillsPage() {
                           {/* Card Top Title Row */}
                           <div className="flex justify-between items-start gap-3 mb-1">
                             <div className="min-w-0">
-                              <h3 className="text-base font-bold text-[var(--text-primary)] group-hover:text-[#ff5a1f] transition-colors truncate">
+                              <h3 className="text-lg md:text-xl font-bold text-[var(--text-primary)] group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors truncate">
                                 {skill.name}
                               </h3>
-                              <span className="text-[10px] text-[var(--text-tertiary)]">
+                              <span className="text-xs text-[var(--text-tertiary)] font-mono">
                                 @{skill.author}
                               </span>
                             </div>
@@ -877,18 +758,18 @@ export default function SkillsPage() {
 
                           {/* Category and Difficulty Tag Badges */}
                           <div className="flex flex-wrap gap-1.5 mt-2 mb-2">
-                            <span className="text-[9px] font-medium px-2 py-0.5 rounded bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)]">
+                            <span className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-lg border ${getCategoryBadgeClass(skill.category)}`}>
                               {t('skills.categories.' + getCategoryKey(skill.category))}
                             </span>
                             {skill.difficulty && (
-                              <span className="text-[9px] font-medium px-2 py-0.5 rounded bg-yellow-500/10 border border-yellow-500/20 text-yellow-500">
+                              <span className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-lg border ${getDifficultyBadgeClass(skill.difficulty)}`}>
                                 {t('skills.difficulties.' + getDifficultyKey(skill.difficulty))}
                               </span>
                             )}
                           </div>
 
                           {/* Description */}
-                          <p className="text-sm text-[var(--text-secondary)] line-clamp-3 mb-4 flex-1 leading-relaxed">
+                          <p className="text-[15px] text-[var(--text-secondary)] line-clamp-3 mb-4 flex-1 leading-relaxed">
                             {shortDesc}
                           </p>
 
@@ -897,7 +778,7 @@ export default function SkillsPage() {
                             {getStarCount(skill.source_repo_url, skill.github_stars) ? (
                               <div className="flex items-center gap-1 select-none">
                                 <span className="text-yellow-500 text-sm">★</span>
-                                <span className="font-medium text-[var(--text-secondary)]">
+                                <span className="font-semibold text-[var(--text-secondary)]">
                                   {getStarCount(skill.source_repo_url, skill.github_stars)}
                                 </span>
                               </div>
@@ -928,12 +809,12 @@ export default function SkillsPage() {
                       return (
                          <div
                           key={skill.slug}
-                          onClick={() => window.open(`/studio/skills/${skill.slug}`, '_blank')}
-                          className="group bg-gradient-to-br from-[var(--bg-card)] to-[rgba(7,17,31,0.6)] p-4 rounded-xl border border-[var(--border-primary)] hover:border-[#ff5a1f] hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(255,90,31,0.06)] transition-all duration-300 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 cursor-pointer"
+                          onClick={() => navigate(`/studio/ai-skills/${skill.slug}`)}
+                          className="group bg-[var(--bg-card)] p-5 rounded-2xl border border-[var(--border-primary)] hover:border-orange-500/60 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(255,90,31,0.08)] transition-all duration-300 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 cursor-pointer"
                         >
                           <div className="flex-1 space-y-2 min-w-0">
                             <div className="flex flex-wrap items-center gap-2">
-                              <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]">
+                              <span className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-lg border ${getCategoryBadgeClass(skill.category)}`}>
                                 {t('skills.categories.' + getCategoryKey(skill.category))}
                               </span>
                               {skill.tier && (
@@ -943,23 +824,23 @@ export default function SkillsPage() {
                                 </span>
                               )}
                               {skill.difficulty && (
-                                <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-[var(--bg-secondary)] text-[var(--text-secondary)] border border-[var(--border-primary)]">
+                                <span className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-lg border ${getDifficultyBadgeClass(skill.difficulty)}`}>
                                   {t('skills.difficulties.' + getDifficultyKey(skill.difficulty))}
                                 </span>
                               )}
                             </div>
 
-                            <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[#ff5a1f] transition-colors truncate">
-                              {skill.name} <span className="text-xs font-normal text-[var(--text-tertiary)]">@{skill.author}</span>
+                            <h3 className="text-xl font-bold text-[var(--text-primary)] group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors truncate">
+                              {skill.name} <span className="text-xs font-normal text-[var(--text-tertiary)] font-mono">@{skill.author}</span>
                             </h3>
 
                             {headline && (
-                              <h4 className="text-xs font-medium text-[var(--text-secondary)] line-clamp-1">
+                              <h4 className="text-sm font-medium text-[var(--text-secondary)] line-clamp-1">
                                 {headline}
                               </h4>
                             )}
 
-                            <p className="text-sm text-[var(--text-tertiary)] line-clamp-2 leading-relaxed">
+                            <p className="text-[15px] text-[var(--text-secondary)] line-clamp-2 leading-relaxed">
                               {shortDesc}
                             </p>
                           </div>
@@ -989,63 +870,17 @@ export default function SkillsPage() {
                   </div>
                 )}
 
-                {/* Pagination Controls */}
-                {totalPages > 1 && (
-                  <div className="flex items-center justify-center gap-2 mt-12 select-none">
-                    {/* Previous Button */}
-                    <button
-                      onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                      disabled={currentPage === 1}
-                      className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all border border-[var(--border-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)] ${
-                        currentPage === 1
-                          ? 'bg-[var(--bg-secondary)] text-[var(--text-tertiary)] opacity-50 cursor-not-allowed'
-                          : 'bg-[var(--bg-secondary)] text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]/85 hover:border-[#ff5a1f] cursor-pointer'
-                      }`}
-                    >
-                      {t('skills.prevPage')}
-                    </button>
-
-                    {/* Numeric Buttons */}
-                    {getPageNumbers().map((pageNum, idx) => {
-                      if (pageNum === '...') {
-                        return (
-                          <span
-                            key={`dots-${idx}`}
-                            className="text-[var(--text-tertiary)] px-2 text-sm font-semibold"
-                          >
-                            ...
-                          </span>
-                        );
-                      }
-                      return (
-                        <button
-                          key={`page-${pageNum}`}
-                          onClick={() => setCurrentPage(Number(pageNum))}
-                          className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all border focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)] cursor-pointer ${
-                            currentPage === pageNum
-                              ? 'bg-[#ff5a1f] border-[#ff5a1f] text-white hover:bg-[#e04f1a]'
-                              : 'bg-[var(--bg-secondary)] border-[var(--border-primary)] text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]/85 hover:border-[#ff5a1f]'
-                          }`}
-                        >
-                          {pageNum}
-                        </button>
-                      );
-                    })}
-
-                    {/* Next Button */}
-                    <button
-                      onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                      disabled={currentPage === totalPages}
-                      className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all border border-[var(--border-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)] ${
-                        currentPage === totalPages
-                          ? 'bg-[var(--bg-secondary)] text-[var(--text-tertiary)] opacity-50 cursor-not-allowed'
-                          : 'bg-[var(--bg-secondary)] text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]/85 hover:border-[#ff5a1f] cursor-pointer'
-                      }`}
-                    >
-                      {t('skills.nextPage')}
-                    </button>
-                  </div>
-                )}
+                <LibraryPagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onChange={(page) => {
+                    setCurrentPage(page);
+                    window.scrollTo({ top: 350, behavior: 'smooth' });
+                  }}
+                  prevLabel={t('skills.prevPage')}
+                  nextLabel={t('skills.nextPage')}
+                  accent={ACCENT}
+                />
               </div>
             )}
 
@@ -1053,36 +888,10 @@ export default function SkillsPage() {
         </div>
       </div>
 
-      {/* Mobile Floating Filter Button (FAB) */}
-      <button
-        onClick={() => setIsMobileFilterOpen(!isMobileFilterOpen)}
-        className="fixed bottom-24 right-6 z-40 lg:hidden w-14 h-14 bg-[#ff5a1f] text-white rounded-full shadow-xl flex items-center justify-center cursor-pointer transition-all hover:scale-105 hover:shadow-[0_0_15px_rgba(255,90,31,0.5)] focus:outline-none"
-        aria-label="Filter"
-      >
-        {isMobileFilterOpen ? (
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        ) : (
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-          </svg>
-        )}
-      </button>
-
-      {/* Mobile Filter Popup Drawer */}
-      {isMobileFilterOpen && (
-        <>
-          {/* Backdrop/Overlay to close by clicking outside */}
-          <div 
-            className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm lg:hidden"
-            onClick={() => setIsMobileFilterOpen(false)}
-          />
-          <div className="fixed bottom-40 right-6 z-40 w-80 sm:w-96 max-h-[60vh] bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl shadow-2xl p-6 overflow-y-auto lg:hidden flex flex-col custom-scrollbar animate-in slide-in-from-bottom-5 fade-in duration-200">
-            {filtersContent}
-          </div>
-        </>
-      )}
+      {/* Mobile filter FAB + drawer (shared with the event library page) */}
+      <MobileFilterDrawer open={isMobileFilterOpen} onToggle={setIsMobileFilterOpen} accent={ACCENT}>
+        {filtersContent}
+      </MobileFilterDrawer>
     </div>
   );
 }

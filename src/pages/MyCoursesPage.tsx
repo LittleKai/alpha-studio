@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { useAuth } from '../auth/context';
 import { getMyEnrolledCourses, Enrollment } from '../services/courseService';
+import { localizedText } from '../utils/localized';
 
 // Category color mapping
 const categoryColors: Record<string, string> = {
@@ -56,10 +57,7 @@ const MyCoursesPage: React.FC = () => {
     const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all');
 
     // Get localized text
-    const getLocalizedText = (text: { vi: string; en: string } | undefined) => {
-        if (!text) return '';
-        return language === 'vi' ? text.vi : text.en;
-    };
+    const getLocalizedText = (text: { vi: string; en: string } | undefined) => localizedText(text, language);
 
     // Fetch enrollments
     useEffect(() => {

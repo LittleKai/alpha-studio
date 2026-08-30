@@ -15,7 +15,7 @@ import { useTheme } from '../../theme/context';
  * Cả hai biến thể đều có chân tile: nền tảng/trạng thái bên trái, nút mở bên phải.
  */
 
-export type StudioToolKey = 'skills' | 'crm' | 'vocab' | 'vietyaku';
+export type StudioToolKey = 'eventLibrary' | 'skills' | 'crm' | 'vocab' | 'vietyaku';
 
 /** Bộ màu nhận diện riêng của từng tool — làm các tile phân biệt rõ nhau. */
 export interface ToolAccent {
@@ -47,10 +47,30 @@ export interface StudioTool {
 
 export const STUDIO_TOOLS: StudioTool[] = [
     {
-        key: 'skills',
-        to: '/studio/skills',
+        key: 'eventLibrary',
+        to: '/studio/event-library',
         span: 'sm:col-span-3',
         featured: true,
+        logo: (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8" className="w-full h-full">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 5.5A1.5 1.5 0 0 1 5.5 4H9a2 2 0 0 1 2 2v13a1.6 1.6 0 0 0-1.6-1.6H5.5A1.5 1.5 0 0 1 4 15.9V5.5Z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M20 5.5A1.5 1.5 0 0 0 18.5 4H15a2 2 0 0 0-2 2v13a1.6 1.6 0 0 1 1.6-1.6h3.9a1.5 1.5 0 0 0 1.5-1.5V5.5Z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="m17.6 8.2.55 1.35 1.35.55-1.35.55-.55 1.35-.55-1.35-1.35-.55 1.35-.55.55-1.35Z" />
+            </svg>
+        ),
+        accent: {
+            textLight: 'text-violet-700',
+            textDark: 'text-violet-400',
+            chip: 'bg-violet-500/10 border-violet-500/25',
+            hoverBorder: 'hover:border-violet-500/60',
+            glow: 'bg-violet-500',
+            rgb: '124 92 255',
+        },
+    },
+    {
+        key: 'skills',
+        to: '/studio/ai-skills',
+        span: 'sm:col-span-2',
         logo: <img src="/skills-logo.png" alt="" className="w-full h-full object-contain rounded-lg" />,
         accent: {
             textLight: 'text-cyan-700',
@@ -65,6 +85,7 @@ export const STUDIO_TOOLS: StudioTool[] = [
         key: 'crm',
         to: '/studio/crm/subscription',
         span: 'sm:col-span-2',
+        featured: true,
         logo: <img src="/crm-logo.png" alt="" className="w-full h-full object-contain" />,
         accent: {
             textLight: 'text-blue-700',
@@ -78,8 +99,7 @@ export const STUDIO_TOOLS: StudioTool[] = [
     {
         key: 'vocab',
         to: '/studio/vocab',
-        span: 'sm:col-span-2',
-        featured: true,
+        span: 'sm:col-span-3',
         logo: <img src="/vocab/icons/Icon-192.png" alt="" className="w-full h-full object-contain rounded" />,
         accent: {
             textLight: 'text-emerald-700',
@@ -93,7 +113,8 @@ export const STUDIO_TOOLS: StudioTool[] = [
     {
         key: 'vietyaku',
         to: '/studio/vietyaku',
-        span: 'sm:col-span-3',
+        span: 'sm:col-span-5',
+        featured: true,
         logo: <img src="/vietyaku-logo.png" alt="" className="w-full h-full object-contain rounded" />,
         accent: {
             textLight: 'text-rose-700',

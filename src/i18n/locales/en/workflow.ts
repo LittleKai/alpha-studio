@@ -25,12 +25,13 @@ export default {
       networkOpportunity: "NETWORK & OPPORTUNITIES",
       jobMarket: "Job Market",
       freelancer: "Freelancer",
+      newBadge: "New",
       partners: "Partners Network",
       affiliate: "Affiliate",
       creditWallet: "Credit Wallet",
       communityResources: "COMMUNITY & RESOURCES",
       sharePrompts: "Share Prompts",
-      resourceHub: "Resource Hub",
+      libraryPublisher: "Publish To Library",
       exitStudio: "Exit Studio"
     },
     tab: {
@@ -63,6 +64,7 @@ export default {
     },
     dashboard: {
       upload: "Upload Asset",
+      uploadLimit: "max 10MB",
       uploadSizeLimit: "File too large. Regular users can only upload up to 10MB.",
       uploadFileLimit: "Personal file limit reached (max 20 files).",
       uploadFailed: "Upload failed. Please try again.",
@@ -124,6 +126,7 @@ export default {
         deptFilter: "Filter by Dept",
         mineFilter: "My Projects",
         memberBadge: "Member",
+        projectsShown: "projects shown",
         memberProfile: {
           email: "Email",
           phone: "Phone",
