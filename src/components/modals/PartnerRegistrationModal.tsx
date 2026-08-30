@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from '../../i18n/context';
 import type { PartnerType } from '../../types';
 import { uploadToCloudinary } from '../../services/cloudinaryService';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface PartnerRegistrationModalProps {
   isOpen: boolean;
@@ -61,7 +62,7 @@ const PartnerRegistrationModal: React.FC<PartnerRegistrationModalProps> = ({
 
     setUploadingLogo(true);
     try {
-      const result = await uploadToCloudinary(file, 'partners/logos');
+      const result = await uploadToCloudinary(file, 'partners/logos', 'logo');
       if (result.success) {
         setFormData(prev => ({ ...prev, logo: result.url }));
       } else {
@@ -239,7 +240,7 @@ const PartnerRegistrationModal: React.FC<PartnerRegistrationModalProps> = ({
               {formData.logo && (
                 <div className="mt-2 relative inline-block">
                   <div className="w-16 h-16 rounded-lg overflow-hidden bg-[var(--bg-secondary)] border border-[var(--border-primary)]">
-                    <img src={formData.logo} alt="Logo preview" className="w-full h-full object-contain p-1" />
+                    <img src={cdnFromUrl(formData.logo, 'w_320')} alt="Logo preview" className="w-full h-full object-contain p-1" />
                   </div>
                   <button
                     type="button"

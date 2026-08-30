@@ -445,7 +445,12 @@ export const deleteOrphanedFile = async (key: string): Promise<void> => {
         headers: getHeaders(),
         body: JSON.stringify({ key }),
     });
-    if (!res.ok) throw new Error('Failed to delete file');
+    if (!res.ok) {
+        // 409 = backend chặn vì file vẫn đang được tham chiếu. Thông điệp của server
+        // nói rõ lý do, nuốt mất nó thì admin tưởng file đã xoá xong.
+        const message = await res.json().then(b => b?.message).catch(() => null);
+        throw new Error(message || 'Failed to delete file');
+    }
 };
 
 /**

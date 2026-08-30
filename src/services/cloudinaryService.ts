@@ -40,7 +40,7 @@ export interface UploadResult {
 export async function uploadToCloudinary(
   file: File,
   folder?: string,
-  uploadType?: ImageUploadType
+  uploadType: ImageUploadType = 'general'
 ): Promise<UploadResult> {
   if (!CLOUD_NAME) {
     return {
@@ -54,10 +54,8 @@ export async function uploadToCloudinary(
   }
 
   try {
-    // Compress image based on upload type
-    const processedFile = uploadType
-      ? await compressImage(file, uploadType)
-      : file;
+    // Resize + chuyển WebP theo loại upload trước khi gửi lên Cloudinary
+    const processedFile = await compressImage(file, uploadType);
 
     const formData = new FormData();
     formData.append('file', processedFile);
@@ -166,9 +164,10 @@ export type { ImageUploadType } from './imageCompression';
  * @returns Promise with url and publicId
  */
 export async function uploadImage(
-  file: File
+  file: File,
+  uploadType: ImageUploadType = 'content'
 ): Promise<{ url: string; publicId: string }> {
-  const result = await uploadToCloudinary(file, 'prompts');
+  const result = await uploadToCloudinary(file, 'prompts', uploadType);
   if (!result.success) {
     throw new Error(result.error || 'Failed to upload image');
   }

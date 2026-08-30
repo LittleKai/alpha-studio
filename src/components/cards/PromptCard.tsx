@@ -3,6 +3,7 @@ import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
 import { Prompt, togglePromptLike, togglePromptBookmark } from '../../services/promptService';
 import { LikeButton, BookmarkButton, RatingStars } from '../shared';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface PromptCardProps {
     prompt: Prompt;
@@ -108,7 +109,7 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, onClick, onUpdate }) =>
             {thumbnailImage ? (
                 <div className="relative h-40 overflow-hidden bg-[var(--bg-secondary)]">
                     <img
-                        src={thumbnailImage}
+                        src={cdnFromUrl(thumbnailImage, 'w_640')}
                         alt={getLocalizedText(prompt.title)}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
@@ -184,7 +185,7 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, onClick, onUpdate }) =>
                         <div className="flex items-center gap-2">
                             <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-500 flex items-center justify-center text-white text-[10px] font-bold">
                                 {prompt.author.avatar ? (
-                                    <img src={prompt.author.avatar} alt={prompt.author.name} className="w-full h-full rounded-full object-cover" />
+                                    <img src={cdnFromUrl(prompt.author.avatar, 'w_128')} alt={prompt.author.name} className="w-full h-full rounded-full object-cover" />
                                 ) : (
                                     prompt.author.name.charAt(0).toUpperCase()
                                 )}

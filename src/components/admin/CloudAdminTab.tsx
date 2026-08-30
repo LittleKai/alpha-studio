@@ -934,8 +934,8 @@ function StorageCleanupTab() {
             setFiles(prev => prev.filter(f => f.key !== key));
             setMeta(prev => prev ? { ...prev, orphaned: prev.orphaned - 1 } : null);
             setSelectedKeys(prev => { const s = new Set(prev); s.delete(key); return s; });
-        } catch {
-            alert('Xóa thất bại');
+        } catch (error) {
+            alert(error instanceof Error ? error.message : t('admin.storage.deleteFailed'));
         } finally {
             setDeletingKeys(prev => { const s = new Set(prev); s.delete(key); return s; });
         }
@@ -946,14 +946,22 @@ function StorageCleanupTab() {
         if (!await confirmDialog({ message: t('admin.storage.deleteBulkConfirm').replace('{count}', String(selectedKeys.size)), variant: 'danger' })) return;
         setBulkDeleting(true);
         const keys = Array.from(selectedKeys);
-        let deleted = 0;
+        // Backend có thể chặn từng file (409 — vẫn đang được tham chiếu). Chỉ gỡ khỏi
+        // danh sách những file xoá được thật, nếu không admin tưởng đã xoá hết.
+        const removed = new Set<string>();
         for (const key of keys) {
-            try { await deleteOrphanedFile(key); deleted++; } catch { /* continue */ }
+            try { await deleteOrphanedFile(key); removed.add(key); } catch { /* file bị chặn — giữ lại trong danh sách */ }
         }
-        setFiles(prev => prev.filter(f => !selectedKeys.has(f.key)));
-        setMeta(prev => prev ? { ...prev, orphaned: prev.orphaned - deleted } : null);
+        setFiles(prev => prev.filter(f => !removed.has(f.key)));
+        setMeta(prev => prev ? { ...prev, orphaned: prev.orphaned - removed.size } : null);
         setSelectedKeys(new Set());
         setBulkDeleting(false);
+        const skipped = keys.length - removed.size;
+        if (skipped > 0) {
+            alert(t('admin.storage.bulkResult')
+                .replace('{deleted}', String(removed.size))
+                .replace('{skipped}', String(skipped)));
+        }
     };
 
     const toggleSelect = (key: string) => {

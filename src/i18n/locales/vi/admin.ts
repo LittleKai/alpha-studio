@@ -443,6 +443,8 @@ export default {
     storage: {
       deleteFileConfirm: "Xóa file này vĩnh viễn?",
       deleteBulkConfirm: "Xóa {count} file đã chọn vĩnh viễn?",
+      deleteFailed: "Xóa thất bại",
+      bulkResult: "Đã xóa {deleted} file. {skipped} file bị bỏ qua vì đang được tham chiếu — tải lại danh sách để xem.",
     },
     webhooks: {
       reprocessConfirm: "Xử lý lại webhook này?",

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface ImageLightboxProps {
     images: { url: string; caption?: string; type?: string }[];
@@ -97,7 +98,7 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
 
                 {/* Image */}
                 <img
-                    src={currentImage.url}
+                    src={cdnFromUrl(currentImage.url, 'w_1400')}
                     alt={currentImage.caption || `Image ${currentIndex + 1}`}
                     className="max-w-full max-h-[80vh] object-contain rounded-lg"
                 />
@@ -141,7 +142,7 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
                             }`}
                         >
                             <img
-                                src={img.url}
+                                src={cdnFromUrl(img.url, 'w_128')}
                                 alt={`Thumbnail ${index + 1}`}
                                 className="w-full h-full object-cover"
                             />

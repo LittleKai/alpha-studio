@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Reveal, { RevealItem } from '../motion/Reveal';
 import { useTranslation } from '../../i18n/context';
 import type { FeaturedStudent } from '../../types';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface Props {
   students: FeaturedStudent[];
@@ -50,7 +51,7 @@ const StudentsSection: React.FC<Props> = ({ students, loading, onNavigate }) => 
 
                   <div className="profile-pic">
                     {(student.backgroundImage || student.work) ? (
-                      <img src={student.backgroundImage || student.work} alt="Work" />
+                      <img src={cdnFromUrl(student.backgroundImage || student.work, 'w_640')} alt="Work" />
                     ) : (
                       <div className="fallback-pic"><span>🎨</span></div>
                     )}
@@ -58,7 +59,7 @@ const StudentsSection: React.FC<Props> = ({ students, loading, onNavigate }) => 
 
                   <div className="student-avatar-pic">
                     {student.image ? (
-                      <img src={student.image} alt={student.name} />
+                      <img src={cdnFromUrl(student.image, 'w_256')} alt={student.name} />
                     ) : (
                       <div className="avatar-fallback"><span>{student.name.charAt(0).toUpperCase()}</span></div>
                     )}

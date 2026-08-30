@@ -24,6 +24,19 @@ export interface PromptContent {
     content: string;
 }
 
+/**
+ * Tệp đính kèm trên Backblaze B2 (workflow .json, tài liệu, bộ tham số…).
+ * Khác `ExampleImage` — ảnh nhỏ trên Cloudinary.
+ * Chỉ admin/mod gắn được; backend bỏ trường này với vai trò khác.
+ */
+export interface PromptAttachment {
+    name: string;
+    url: string;
+    fileKey?: string;
+    size?: string;
+    mime?: string;
+}
+
 export interface Rating {
     average: number;
     count: number;
@@ -40,6 +53,7 @@ export interface Prompt {
     category: 'image-generation' | 'text-generation' | 'code' | 'workflow' | 'other';
     platform: 'midjourney' | 'stable-diffusion' | 'dalle' | 'comfyui' | 'chatgpt' | 'claude' | 'other';
     exampleImages: ExampleImage[];
+    attachments?: PromptAttachment[];
     tags: string[];
     author: PromptAuthor;
     likesCount: number;
@@ -68,6 +82,7 @@ export interface PromptInput {
     category?: string;
     platform?: string;
     exampleImages?: ExampleImage[];
+    attachments?: PromptAttachment[];
     tags?: string[];
 }
 

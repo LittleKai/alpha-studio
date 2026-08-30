@@ -8,6 +8,7 @@ import LanguageSwitcher from '../ui/LanguageSwitcher';
 import Login from '../ui/Login';
 import FloatingChat from '../chat/FloatingChat';
 import Liquid2D from '../ui/Liquid2D';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 const SparkleIcon = () => (
   <svg
@@ -159,7 +160,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                                 <div className="relative group">
                                     <button className="flex items-center gap-2 py-1.5 md:px-2 lg:px-2.5 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-colors">
                                         {user?.avatar ? (
-                                            <img src={user.avatar} alt={user.name} className="w-8 h-8 rounded-full object-cover" />
+                                            <img src={cdnFromUrl(user.avatar, 'w_128')} alt={user.name} className="w-8 h-8 rounded-full object-cover" />
                                         ) : (
                                             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-600 flex items-center justify-center text-white text-sm font-bold">
                                                 {user?.name?.charAt(0).toUpperCase() || 'U'}
@@ -174,7 +175,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                                         <div className="user-info-header">
                                             <div className="flex items-center gap-3">
                                                 {user?.avatar ? (
-                                                    <img src={user.avatar} alt={user.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-[var(--accent-primary)]/20" />
+                                                    <img src={cdnFromUrl(user.avatar, 'w_128')} alt={user.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-[var(--accent-primary)]/20" />
                                                 ) : (
                                                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-600 flex items-center justify-center text-white text-sm font-bold ring-2 ring-[var(--accent-primary)]/20">
                                                         {user?.name?.charAt(0).toUpperCase() || 'U'}
@@ -376,7 +377,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                                     <div className="bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-2xl p-4 mb-3 shadow-sm">
                                         <div className="flex items-center gap-3">
                                             {user?.avatar ? (
-                                                <img src={user.avatar} alt={user.name} className="w-11 h-11 rounded-full object-cover ring-2 ring-[var(--accent-primary)]/20" />
+                                                <img src={cdnFromUrl(user.avatar, 'w_128')} alt={user.name} className="w-11 h-11 rounded-full object-cover ring-2 ring-[var(--accent-primary)]/20" />
                                             ) : (
                                                 <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-600 flex items-center justify-center text-white text-sm font-bold ring-2 ring-[var(--accent-primary)]/20">
                                                     {user?.name?.charAt(0).toUpperCase() || 'U'}

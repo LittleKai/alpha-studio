@@ -14,6 +14,7 @@ import {
     type ArticleFormData,
 } from '../../services/articleService';
 import { fillLocalized, localizedText } from '../../utils/localized';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface ArticlesAdminTabProps {
     category: 'about' | 'services' | 'news';
@@ -185,7 +186,7 @@ export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
         return new Promise(async (resolve, reject) => {
             try {
                 const file = blobInfo.blob();
-                const result = await uploadToCloudinary(file, 'articles');
+                const result = await uploadToCloudinary(file, 'articles', 'content');
                 if (result.success) {
                     resolve(result.url);
                 } else {
@@ -365,7 +366,7 @@ export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
                                             if (!file) return;
                                             try {
                                                 setUploadingThumbnail(true);
-                                                const result = await uploadToCloudinary(file, 'articles');
+                                                const result = await uploadToCloudinary(file, 'articles', 'cover');
                                                 if (result.success) {
                                                     setForm((prev) => ({ ...prev, thumbnail: result.url }));
                                                 }
@@ -382,7 +383,7 @@ export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
                         </div>
                         {form.thumbnail && (
                             <div className="relative w-20 h-20 rounded-lg overflow-hidden border border-[var(--border-primary)] flex-shrink-0">
-                                <img src={form.thumbnail} alt="" className="w-full h-full object-cover" />
+                                <img src={cdnFromUrl(form.thumbnail, 'w_320')} alt="" className="w-full h-full object-cover" />
                                 <button
                                     onClick={() => setForm({ ...form, thumbnail: '' })}
                                     className="absolute top-0.5 right-0.5 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center text-xs hover:bg-red-600"
@@ -521,7 +522,7 @@ export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
                                     <div className="flex items-start gap-4 flex-1 min-w-0">
                                         {article.thumbnail && (
                                             <img
-                                                src={article.thumbnail}
+                                                src={cdnFromUrl(article.thumbnail, 'w_320')}
                                                 alt=""
                                                 className="w-16 h-16 rounded-lg object-cover flex-shrink-0"
                                             />

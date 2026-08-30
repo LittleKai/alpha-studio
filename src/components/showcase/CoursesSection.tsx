@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Reveal from '../motion/Reveal';
 import { useTranslation } from '../../i18n/context';
 import type { Course } from '../../services/courseService';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface Props {
   courses: Course[];
@@ -52,7 +53,7 @@ const CoursesSection: React.FC<Props> = ({ courses, loading, getLocalizedText, f
               <Reveal y={24} className="sc-course-feature">
                 <Link to={`/courses/${feature.slug}`} className="sc-feature-card">
                   <div className="sc-feature-media">
-                    <img src={feature.thumbnail} alt={getLocalizedText(feature.title)} loading="lazy" />
+                    <img src={cdnFromUrl(feature.thumbnail, 'w_640')} alt={getLocalizedText(feature.title)} loading="lazy" />
                     <div className="sc-feature-scrim" />
                     <span className="sc-cat-chip">{categoryIcons[feature.category] || '🎓'} {t(levelKeys[feature.level])}</span>
                   </div>
@@ -84,7 +85,7 @@ const CoursesSection: React.FC<Props> = ({ courses, loading, getLocalizedText, f
                   >
                     <Link to={`/courses/${c.slug}`} className="sc-rail-card">
                       <div className="sc-rail-thumb">
-                        <img src={c.thumbnail} alt={getLocalizedText(c.title)} loading="lazy" />
+                        <img src={cdnFromUrl(c.thumbnail, 'w_640')} alt={getLocalizedText(c.title)} loading="lazy" />
                         <span className="sc-rail-cat">{categoryIcons[c.category] || '🎓'}</span>
                       </div>
                       <div className="sc-rail-body">

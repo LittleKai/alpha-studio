@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from '../../i18n/context';
 import type { Partner } from '../../services/partnerService';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface PartnerProfileViewerProps {
   partner: Partner;
@@ -19,7 +20,7 @@ const PartnerProfileViewer: React.FC<PartnerProfileViewerProps> = ({ partner, on
         {/* Banner */}
         <div className="relative h-64 md:h-96 w-full overflow-hidden">
             <img
-                src={partner.backgroundImage || "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&h=900&fit=crop"}
+                src={cdnFromUrl(partner.backgroundImage || "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&h=900&fit=crop", 'w_1400')}
                 alt="Cover"
                 className="w-full h-full object-cover"
             />
@@ -44,7 +45,7 @@ const PartnerProfileViewer: React.FC<PartnerProfileViewerProps> = ({ partner, on
                 <div className="flex flex-col md:flex-row gap-6 items-end">
                     <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-[var(--bg-card)] border-4 border-[var(--bg-primary)] flex items-center justify-center text-6xl shadow-2xl overflow-hidden">
                         {partner.logo?.startsWith('http') ? (
-                            <img src={partner.logo} alt={partner.companyName} className="w-full h-full object-cover" />
+                            <img src={cdnFromUrl(partner.logo, 'w_320')} alt={partner.companyName} className="w-full h-full object-cover" />
                         ) : (
                             <span>{partner.logo || '🏢'}</span>
                         )}
@@ -95,7 +96,7 @@ const PartnerProfileViewer: React.FC<PartnerProfileViewerProps> = ({ partner, on
                                     <div key={idx} className="rounded-xl overflow-hidden border border-[var(--border-primary)]">
                                         {project.image && (
                                             <div className="aspect-video">
-                                                <img src={project.image} alt={`Project ${idx + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                                                <img src={cdnFromUrl(project.image, 'w_640')} alt={`Project ${idx + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                                             </div>
                                         )}
                                         {(project.description?.vi || project.description?.en) && (

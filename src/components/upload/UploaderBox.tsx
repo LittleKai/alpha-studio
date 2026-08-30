@@ -97,7 +97,7 @@ const UploaderBox: React.FC<UploaderBoxProps> = ({
       const blob = await response.blob();
       const file = new File([blob], 'image.png', { type: blob.type });
 
-      const result = await uploadToCloudinary(file);
+      const result = await uploadToCloudinary(file, undefined, 'general');
 
       if (result.success) {
         setHostedUrl(result.url);

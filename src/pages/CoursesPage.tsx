@@ -4,6 +4,7 @@ import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
 import { getCourses, Course, CourseQueryParams, PaginationInfo } from '../services/courseService';
 import { localizedText } from '../utils/localized';
+import { cdnFromUrl } from '../services/cloudinaryAssets';
 
 // Category options
 const categories = [
@@ -272,7 +273,7 @@ const CoursesPage: React.FC = () => {
                                     {course.thumbnail ? (
                                         <div className="relative h-48 overflow-hidden">
                                             <img
-                                                src={course.thumbnail}
+                                                src={cdnFromUrl(course.thumbnail, 'w_640')}
                                                 alt={getLocalizedText(course.title)}
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                             />
@@ -319,7 +320,7 @@ const CoursesPage: React.FC = () => {
                                         {course.instructor?.name && (
                                             <div className="flex items-center gap-2 mt-4">
                                                 {course.instructor.avatar ? (
-                                                    <img src={course.instructor.avatar} alt={course.instructor.name} className="w-6 h-6 rounded-full object-cover" />
+                                                    <img src={cdnFromUrl(course.instructor.avatar, 'w_128')} alt={course.instructor.name} className="w-6 h-6 rounded-full object-cover" />
                                                 ) : (
                                                     <div className="w-6 h-6 rounded-full bg-[var(--accent-primary)]/20 flex items-center justify-center text-[var(--accent-primary)] text-xs font-bold">
                                                         {course.instructor.name.charAt(0)}

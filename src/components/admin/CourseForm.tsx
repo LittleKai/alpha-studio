@@ -18,6 +18,7 @@ interface InstructorFormState {
 }
 import ModuleEditor from './ModuleEditor';
 import { uploadToCloudinary } from '../../services/cloudinaryService';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface CourseFormProps {
     course: Course | null;
@@ -90,7 +91,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
 
         setUploadingThumbnail(true);
         try {
-            const result = await uploadToCloudinary(file, 'courses/thumbnails');
+            const result = await uploadToCloudinary(file, 'courses/thumbnails', 'cover');
             if (result.success) {
                 setThumbnail(result.url);
             } else {
@@ -120,7 +121,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
         if (!file) return;
         setUploadingAvatarIdx(idx);
         try {
-            const result = await uploadToCloudinary(file, 'courses/instructors');
+            const result = await uploadToCloudinary(file, 'courses/instructors', 'avatar');
             if (result.success) {
                 setInstructors(prev => prev.map((ins, i) => i === idx ? { ...ins, avatar: result.url } : ins));
             } else {
@@ -482,7 +483,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
                                     </div>
                                     {thumbnail && (
                                         <div className="mt-3 relative w-40 h-24 rounded-lg overflow-hidden bg-[var(--bg-secondary)]">
-                                            <img src={thumbnail} alt="Thumbnail" className="w-full h-full object-cover" />
+                                            <img src={cdnFromUrl(thumbnail, 'w_320')} alt="Thumbnail" className="w-full h-full object-cover" />
                                             <button
                                                 type="button"
                                                 onClick={() => setThumbnail('')}
@@ -592,7 +593,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
                                                         </div>
                                                         {ins.avatar && (
                                                             <div className="mt-2 relative w-12 h-12 rounded-full overflow-hidden bg-[var(--bg-secondary)]">
-                                                                <img src={ins.avatar} alt="Avatar" className="w-full h-full object-cover" />
+                                                                <img src={cdnFromUrl(ins.avatar, 'w_128')} alt="Avatar" className="w-full h-full object-cover" />
                                                                 <button
                                                                     type="button"
                                                                     onClick={() => handleUpdateInstructor(idx, 'avatar', '')}

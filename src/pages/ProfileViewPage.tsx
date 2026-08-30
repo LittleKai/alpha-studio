@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { useAuth } from '../auth/context';
+import { cdnFromUrl } from '../services/cloudinaryAssets';
 
 // ─── helpers ─────────────────────────────────────────────────────────────────
 
@@ -120,7 +121,7 @@ const ProfileViewPage: React.FC = () => {
             <div className="relative h-56 md:h-72 overflow-hidden flex-shrink-0">
                 {user.backgroundImage ? (
                     <img
-                        src={user.backgroundImage}
+                        src={cdnFromUrl(user.backgroundImage, 'w_1400')}
                         alt="cover"
                         className="w-full h-full object-cover"
                     />
@@ -159,7 +160,7 @@ const ProfileViewPage: React.FC = () => {
                         <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 shadow-lg flex flex-col items-center text-center">
                             <div className="w-32 h-32 rounded-full border-4 border-[var(--bg-primary)] shadow-xl overflow-hidden mb-4 bg-[var(--bg-secondary)]">
                                 {user.avatar ? (
-                                    <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+                                    <img src={cdnFromUrl(user.avatar, 'w_256')} alt={user.name} className="w-full h-full object-cover" />
                                 ) : (
                                     <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-[var(--accent-primary)]">
                                         {user.name.charAt(0).toUpperCase()}
@@ -285,7 +286,7 @@ const ProfileViewPage: React.FC = () => {
                                             {work.image && (
                                                 <div className="relative aspect-video overflow-hidden">
                                                     <img
-                                                        src={work.image}
+                                                        src={cdnFromUrl(work.image, 'w_320')}
                                                         alt={work.title}
                                                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                                     />

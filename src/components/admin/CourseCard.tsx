@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { Course } from '../../services/courseService';
 import { localizedText } from '../../utils/localized';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface CourseCardProps {
     course: Course;
@@ -71,7 +72,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
             <div className="relative aspect-video bg-[var(--bg-secondary)]">
                 {course.thumbnail ? (
                     <img
-                        src={course.thumbnail}
+                        src={cdnFromUrl(course.thumbnail, 'w_640')}
                         alt={title}
                         className="w-full h-full object-cover"
                     />

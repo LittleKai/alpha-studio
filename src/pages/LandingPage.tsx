@@ -16,7 +16,7 @@ import StudioToolTile, { STUDIO_TOOLS } from '../components/studio/StudioToolTil
 import LandingHero from '../components/landing/LandingHero';
 import ConnectBento from '../components/landing/ConnectBento';
 import { fetchWithRetry } from '../services/apiRetry';
-import { AssetQuality, setLandingQuality } from '../services/cloudinaryAssets';
+import { AssetQuality, cdnFromUrl, setLandingQuality } from '../services/cloudinaryAssets';
 import { localizedText } from '../utils/localized';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
@@ -243,7 +243,7 @@ const CoursesSliderSection: React.FC<CoursesSliderProps> = ({
                                         <div className="relative h-44 overflow-hidden">
                                             {course.thumbnail ? (
                                                 <img
-                                                    src={course.thumbnail}
+                                                    src={cdnFromUrl(course.thumbnail, 'w_640')}
                                                     alt={getLocalizedText(course.title)}
                                                     className="w-full h-full object-cover"
                                                     draggable={false}
@@ -801,7 +801,7 @@ const LandingPage: React.FC = () => {
                                         {/* Profile Pic: Student work image (Main background) */}
                                         <div className="profile-pic">
                                             {(student.backgroundImage || student.work) ? (
-                                                <img src={student.backgroundImage || student.work} alt="Work" />
+                                                <img src={cdnFromUrl(student.backgroundImage || student.work, "w_640")} alt="Work" />
                                             ) : (
                                                 <div className="fallback-pic">
                                                     <IconSparkles className="h-10 w-10" />
@@ -812,7 +812,7 @@ const LandingPage: React.FC = () => {
                                         {/* Student Avatar: Circular avatar overlay, only visible when hovered */}
                                         <div className="student-avatar-pic">
                                             {student.image ? (
-                                                <img src={student.image} alt={student.name} />
+                                                <img src={cdnFromUrl(student.image, 'w_256')} alt={student.name} />
                                             ) : (
                                                 <div className="avatar-fallback">
                                                     <span>{student.name.charAt(0).toUpperCase()}</span>
@@ -896,7 +896,7 @@ const LandingPage: React.FC = () => {
                                                     <div className="absolute inset-0">
                                                         {(partner.backgroundImage || partner.logo?.startsWith('http')) ? (
                                                             <img
-                                                                src={partner.backgroundImage || partner.logo}
+                                                                src={cdnFromUrl(partner.backgroundImage || partner.logo, "w_640")}
                                                                 alt=""
                                                                 className="w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-300"
                                                                 loading="lazy"
@@ -909,7 +909,7 @@ const LandingPage: React.FC = () => {
                                                     <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center z-10">
                                                         <div className="w-12 h-12 rounded-xl bg-[var(--bg-tertiary)]/50 backdrop-blur-md flex items-center justify-center mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300 overflow-hidden">
                                                             {partner.logo && partner.logo.startsWith('http') ? (
-                                                                <img src={partner.logo} alt={partner.companyName} className="w-full h-full object-contain p-1" />
+                                                                <img src={cdnFromUrl(partner.logo, 'w_320')} alt={partner.companyName} className="w-full h-full object-contain p-1" />
                                                             ) : (
                                                                 <span className="text-sm font-black text-[var(--accent-primary)]">
                                                                     {partner.companyName.charAt(0).toUpperCase()}

@@ -581,7 +581,7 @@ export default function CrmSubscriptionPage() {
                                     {/* Card 1: Subscription Status */}
                             <div className="glass-card rounded-2xl p-6 flex flex-col justify-between overflow-hidden relative">
                                 <div className="space-y-4">
-                                    <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--text-tertiary)]">
+                                    <h3 className="text-xs font-bold uppercase tracking-widest text-emerald-400">
                                         {t('studio.hub.cards.crm.subscription.statusTitle') || 'Trạng thái giấy phép'}
                                     </h3>
 
@@ -664,7 +664,7 @@ export default function CrmSubscriptionPage() {
                             {/* Card 2: AI Quota tracker */}
                             <div className="glass-card rounded-2xl p-6 flex flex-col justify-between overflow-hidden">
                                 <div className="space-y-5">
-                                    <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--text-tertiary)]">
+                                    <h3 className="text-xs font-bold uppercase tracking-widest text-cyan-400">
                                         {t('studio.hub.cards.crm.subscription.quotaTitle') || 'AI Quota / Chu kỳ'}
                                     </h3>
 
@@ -705,7 +705,7 @@ export default function CrmSubscriptionPage() {
                             {/* Card 3: Extra AI top-up Remaining */}
                             <div className="glass-card rounded-2xl p-6 flex flex-col justify-between overflow-hidden relative">
                                 <div className="space-y-4">
-                                    <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--text-tertiary)]">
+                                    <h3 className="text-xs font-bold uppercase tracking-widest text-amber-400">
                                         {t('studio.hub.cards.crm.subscription.extraTitle') || 'AI Quota Mua Thêm'}
                                     </h3>
 
@@ -738,7 +738,7 @@ export default function CrmSubscriptionPage() {
                         {/* Pairing Timeline Quickstart Guide */}
                         <div className="glass-card rounded-2xl p-6 shadow-md space-y-5">
                             <div className="space-y-1">
-                                <h3 className="text-xl font-bold tracking-tight">
+                                <h3 className="text-xl font-bold tracking-tight bg-gradient-to-r from-sky-400 to-cyan-400 bg-clip-text text-transparent">
                                     {t('studio.hub.cards.crm.subscription.timelineTitle') || 'Quy trình ghép nối & vận hành bot'}
                                 </h3>
                                 <p className="text-sm text-[var(--text-secondary)]">
@@ -800,7 +800,7 @@ export default function CrmSubscriptionPage() {
                         {/* Extra AI top-up catalog */}
                         <div id="pricing-plans" className="space-y-6 pt-2 scroll-mt-20">
                             <div className="space-y-1">
-                                <h3 className="text-2xl font-black text-[var(--text-primary)] tracking-tight">
+                                <h3 className="text-2xl font-black tracking-tight bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 bg-clip-text text-transparent">
                                     {t('studio.hub.cards.crm.subscription.addonTitle') || 'Mua thêm hạn mức AI'}
                                 </h3>
                                 <p className="text-sm text-[var(--text-secondary)]">
@@ -818,7 +818,7 @@ export default function CrmSubscriptionPage() {
                                             </svg>
                                         </div>
                                         <div className="space-y-1">
-                                            <h4 className="text-xl font-black text-[var(--text-primary)]">{t('studio.hub.cards.crm.subscription.addonPack100Name')}</h4>
+                                            <h4 className="text-xl font-black text-blue-400">{t('studio.hub.cards.crm.subscription.addonPack100Name')}</h4>
                                             <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                                                 {t('studio.hub.cards.crm.subscription.addonPack100Desc') || 'Thêm +100 yêu cầu AI thành công sử dụng vĩnh viễn trong phễu bot.'}
                                             </p>
@@ -859,7 +859,7 @@ export default function CrmSubscriptionPage() {
                                             </svg>
                                         </div>
                                         <div className="space-y-1">
-                                            <h4 className="text-xl font-black text-[var(--text-primary)]">{t('studio.hub.cards.crm.subscription.addonPack500Name')}</h4>
+                                            <h4 className="text-xl font-black text-purple-400">{t('studio.hub.cards.crm.subscription.addonPack500Name')}</h4>
                                             <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                                                 {t('studio.hub.cards.crm.subscription.addonPack500Desc') || 'Thêm +500 yêu cầu AI thành công. Lựa chọn kinh tế nhất cho doanh nghiệp.'}
                                             </p>
@@ -899,7 +899,7 @@ export default function CrmSubscriptionPage() {
                                             </svg>
                                         </div>
                                         <div className="space-y-1">
-                                            <h4 className="text-xl font-black text-[var(--text-primary)]">{t('studio.hub.cards.crm.subscription.addonPack1000Name')}</h4>
+                                            <h4 className="text-xl font-black text-amber-400">{t('studio.hub.cards.crm.subscription.addonPack1000Name')}</h4>
                                             <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                                                 {t('studio.hub.cards.crm.subscription.addonPack1000Desc') || 'Thêm +1000 yêu cầu AI thành công. Tối ưu chi phí tiết kiệm đến 30%.'}
                                             </p>
@@ -930,7 +930,7 @@ export default function CrmSubscriptionPage() {
 
                         {/* User Billing History Table */}
                         <div className="glass-card rounded-2xl p-6 shadow-md space-y-4 billing-history-container">
-                            <h3 className="text-xl font-bold tracking-tight">
+                            <h3 className="text-xl font-bold tracking-tight bg-gradient-to-r from-cyan-400 to-sky-400 bg-clip-text text-transparent">
                                 {t('studio.hub.cards.crm.subscription.historyTitle') || 'Lịch sử giao dịch CRM'}
                             </h3>
 

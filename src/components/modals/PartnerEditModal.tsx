@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from '../../i18n/context';
 import type { Partner, PartnerInput } from '../../services/partnerService';
-import { uploadToCloudinary } from '../../services/cloudinaryService';
+import { uploadToCloudinary, type ImageUploadType } from '../../services/cloudinaryService';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface PartnerEditModalProps {
     isOpen: boolean;
@@ -53,14 +54,15 @@ const PartnerEditModal: React.FC<PartnerEditModalProps> = ({
         field: string,
         folder: string,
         setUploading: (v: boolean | number | null) => void,
-        onSuccess: (url: string) => void
+        onSuccess: (url: string) => void,
+        uploadType: ImageUploadType = 'general'
     ) => {
         const file = e.target.files?.[0];
         if (!file) return;
 
         setUploading(true as any);
         try {
-            const result = await uploadToCloudinary(file, folder);
+            const result = await uploadToCloudinary(file, folder, uploadType);
             if (result.success) {
                 onSuccess(result.url);
             } else {
@@ -77,14 +79,14 @@ const PartnerEditModal: React.FC<PartnerEditModalProps> = ({
     const handleLogoUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
         handleImageUpload(e, 'logo', 'partners/logos', (v) => setUploadingLogo(v as boolean), (url) => {
             setFormData(prev => ({ ...prev, logo: url }));
-        });
+        }, 'logo');
     }, [handleImageUpload]);
 
     // Background image upload handler
     const handleBgUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
         handleImageUpload(e, 'backgroundImage', 'partners/backgrounds', (v) => setUploadingBg(v as boolean), (url) => {
             setFormData(prev => ({ ...prev, backgroundImage: url }));
-        });
+        }, 'cover');
     }, [handleImageUpload]);
 
     // Key project image upload handler
@@ -94,7 +96,7 @@ const PartnerEditModal: React.FC<PartnerEditModalProps> = ({
 
         setUploadingProjectImage(index);
         try {
-            const result = await uploadToCloudinary(file, 'partners/projects');
+            const result = await uploadToCloudinary(file, 'partners/projects', 'featured_work');
             if (result.success) {
                 setFormData(prev => {
                     const updated = [...prev.keyProjects];
@@ -344,7 +346,7 @@ const PartnerEditModal: React.FC<PartnerEditModalProps> = ({
                             {formData.logo && (
                                 <div className="mt-2 relative inline-block">
                                     <div className="w-16 h-16 rounded-lg overflow-hidden bg-[var(--bg-secondary)] border border-[var(--border-primary)]">
-                                        <img src={formData.logo} alt="Logo preview" className="w-full h-full object-contain p-1" />
+                                        <img src={cdnFromUrl(formData.logo, 'w_320')} alt="Logo preview" className="w-full h-full object-contain p-1" />
                                     </div>
                                     <button
                                         type="button"
@@ -469,7 +471,7 @@ const PartnerEditModal: React.FC<PartnerEditModalProps> = ({
                             {formData.backgroundImage && (
                                 <div className="mt-2 relative inline-block">
                                     <div className="w-32 h-20 rounded-lg overflow-hidden bg-[var(--bg-secondary)] border border-[var(--border-primary)]">
-                                        <img src={formData.backgroundImage} alt="Background preview" className="w-full h-full object-cover" />
+                                        <img src={cdnFromUrl(formData.backgroundImage, 'w_640')} alt="Background preview" className="w-full h-full object-cover" />
                                     </div>
                                     <button
                                         type="button"
@@ -503,7 +505,7 @@ const PartnerEditModal: React.FC<PartnerEditModalProps> = ({
                                                 {project.image ? (
                                                     <div className="relative">
                                                         <div className="w-20 h-20 rounded-lg overflow-hidden border border-[var(--border-primary)]">
-                                                            <img src={project.image} alt="" className="w-full h-full object-cover" />
+                                                            <img src={cdnFromUrl(project.image, 'w_320')} alt="" className="w-full h-full object-cover" />
                                                         </div>
                                                         <button
                                                             type="button"

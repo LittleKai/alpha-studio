@@ -10,6 +10,7 @@ import {
     ratePrompt
 } from '../../services/promptService';
 import { LikeButton, BookmarkButton, RatingStars, CommentSection, ImageLightbox } from '../shared';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface PromptDetailModalProps {
     isOpen: boolean;
@@ -227,7 +228,7 @@ const PromptDetailModal: React.FC<PromptDetailModalProps> = ({
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-500 flex items-center justify-center text-white font-bold">
                                         {prompt.author.avatar ? (
-                                            <img src={prompt.author.avatar} alt={prompt.author.name} className="w-full h-full rounded-full object-cover" />
+                                            <img src={cdnFromUrl(prompt.author.avatar, 'w_128')} alt={prompt.author.name} className="w-full h-full rounded-full object-cover" />
                                         ) : (
                                             prompt.author.name.charAt(0).toUpperCase()
                                         )}
@@ -372,6 +373,36 @@ const PromptDetailModal: React.FC<PromptDetailModalProps> = ({
                                         </div>
                                     )}
 
+                                    {/* Tệp đính kèm (B2) — admin/mod gắn khi soạn prompt */}
+                                    {prompt.attachments && prompt.attachments.length > 0 && (
+                                        <div className="mb-6">
+                                            <h3 className="font-bold text-[var(--text-primary)] mb-3">
+                                                {language === 'vi' ? 'Tệp đính kèm' : 'Attachments'}
+                                            </h3>
+                                            <div className="space-y-2">
+                                                {prompt.attachments.map((att, index) => (
+                                                    <a
+                                                        key={`${att.url}-${index}`}
+                                                        href={att.url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="flex items-center gap-3 px-4 py-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-colors"
+                                                    >
+                                                        <svg className="w-4 h-4 shrink-0 text-[var(--text-tertiary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                                        </svg>
+                                                        <span className="flex-1 min-w-0 truncate text-sm font-medium text-[var(--text-primary)]">
+                                                            {att.name}
+                                                        </span>
+                                                        <span className="text-xs text-[var(--text-tertiary)] shrink-0">
+                                                            {att.size || (language === 'vi' ? 'Tải về' : 'Download')}
+                                                        </span>
+                                                    </a>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
                                     {/* Example Images */}
                                     {prompt.exampleImages && prompt.exampleImages.length > 0 && (
                                         <div className="mb-6">
@@ -389,7 +420,7 @@ const PromptDetailModal: React.FC<PromptDetailModalProps> = ({
                                                         }}
                                                     >
                                                         <img
-                                                            src={img.url}
+                                                            src={cdnFromUrl(img.url, 'w_480')}
                                                             alt={img.caption || `Example ${index + 1}`}
                                                             className="w-full h-40 object-cover rounded-lg transition-transform group-hover:scale-[1.02]"
                                                         />

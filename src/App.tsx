@@ -66,7 +66,7 @@ const StudioGeneratePage: React.FC = () => {
     return (
         <Layout>
             <Suspense fallback={<LoadingSpinner />}>
-                <StudioTool mode="generate" onBack={() => navigate('/studio')} />
+                <StudioTool mode="generate" onBack={() => navigate('/studio#studio-tools')} />
             </Suspense>
         </Layout>
     );
@@ -77,7 +77,7 @@ const StudioEditPage: React.FC = () => {
     return (
         <Layout>
             <Suspense fallback={<LoadingSpinner />}>
-                <StudioTool mode="edit" onBack={() => navigate('/studio')} />
+                <StudioTool mode="edit" onBack={() => navigate('/studio#studio-tools')} />
             </Suspense>
         </Layout>
     );

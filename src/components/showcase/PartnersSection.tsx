@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from '../../i18n/context';
 import type { Partner } from '../../services/partnerService';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface Props {
   partners: Partner[];
@@ -37,7 +38,7 @@ const PartnersSection: React.FC<Props> = ({ partners, loading, onNavigate }) => 
             {loop.map((p, i) => (
               <Link key={`${p.slug}-${i}`} to={`/partners/${p.slug}`} className="sc-logo" aria-hidden={i >= partners.length}>
                 {p.logo && p.logo.startsWith('http') ? (
-                  <img src={p.logo} alt={p.companyName} loading="lazy" />
+                  <img src={cdnFromUrl(p.logo, 'w_320')} alt={p.companyName} loading="lazy" />
                 ) : (
                   <span className="sc-logo-emoji">{p.logo || '🤝'}</span>
                 )}

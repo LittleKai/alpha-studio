@@ -6,6 +6,7 @@ import {
     likeLibraryItem, rateLibraryItem,
     type EventLibraryItem, type LibraryReview
 } from '../../services/eventLibraryService';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 const ACCENT = '#7c5cff';
 
@@ -23,7 +24,7 @@ function ReviewRow({ review, language }: { review: LibraryReview; language: stri
         <div className="py-3 border-b border-[var(--border-primary)] last:border-b-0">
             <div className="flex items-center gap-2 mb-1.5">
                 {review.author.avatar
-                    ? <img src={review.author.avatar} alt="" className="w-6 h-6 rounded-full object-cover shrink-0" />
+                    ? <img src={cdnFromUrl(review.author.avatar, 'w_128')} alt="" className="w-6 h-6 rounded-full object-cover shrink-0" />
                     : (
                         <span
                             className="w-6 h-6 rounded-full shrink-0 flex items-center justify-center text-[10px] font-bold text-white"

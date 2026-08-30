@@ -1,11 +1,12 @@
-import type { ReactNode } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, type ReactNode } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../../i18n/context';
 import { useTheme } from '../../theme/context';
 import Reveal, { RevealItem } from '../motion/Reveal';
 import TextReveal from '../motion/TextReveal';
 import { cdnImage } from '../../services/cloudinaryAssets';
 import StudioToolTile, { STUDIO_TOOLS, type StudioToolKey } from './StudioToolTile';
+import { STUDIO_TOOLS_ANCHOR } from './StudioBackButton';
 
 /**
  * /studio hub — launcher cinematic đồng bộ ngôn ngữ thiết kế của landing page:
@@ -67,7 +68,7 @@ const HubSectionHeading = ({ eyebrow, title }: { eyebrow: string; title: string 
             <span className="w-6 h-px bg-[var(--accent-primary)]" aria-hidden="true" />
             {eyebrow}
         </span>
-        <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[var(--text-primary)]">{title}</h2>
+        <h2 className="text-3xl md:text-4xl font-black tracking-tight bg-gradient-to-r from-[var(--text-primary)] via-[var(--accent-primary)] to-[var(--accent-secondary)] bg-clip-text text-transparent">{title}</h2>
     </Reveal>
 );
 
@@ -75,6 +76,17 @@ export default function StudioHub() {
     const { t } = useTranslation();
     const { theme } = useTheme();
     const navigate = useNavigate();
+    const { hash } = useLocation();
+
+    // Quay lại từ trang con công cụ (#studio-tools) → cuộn thẳng tới bento
+    // công cụ. Hoãn một frame vì <ScrollToTop> của App reset scroll khi đổi route.
+    useEffect(() => {
+        if (hash !== `#${STUDIO_TOOLS_ANCHOR}`) return;
+        const id = requestAnimationFrame(() => {
+            document.getElementById(STUDIO_TOOLS_ANCHOR)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        return () => cancelAnimationFrame(id);
+    }, [hash]);
 
     const statItems = [
         { value: '05', label: t('studio.hub.hero.stats.live') },
@@ -186,7 +198,8 @@ export default function StudioHub() {
             </section>
 
             {/* ─── Công cụ đang mở — bento ────────────────────────────── */}
-            <section className="container mx-auto px-6 pt-14 pb-6 max-w-6xl">
+            {/* id = neo cho nút "Về Studio" của mọi trang con công cụ */}
+            <section id={STUDIO_TOOLS_ANCHOR} className="container mx-auto px-6 pt-14 pb-6 max-w-6xl scroll-mt-24">
                 <HubSectionHeading eyebrow={t('studio.hub.sections.activeEyebrow')} title={t('studio.hub.sections.activeTitle')} />
 
                 <Reveal staggerChildren={0.12} className="grid grid-cols-1 sm:grid-cols-5 gap-4">

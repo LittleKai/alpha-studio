@@ -25,6 +25,7 @@ import {
 } from '../../services/studioService';
 import type { StudioProgress } from '../../services/studioService';
 import { uploadToB2 } from '../../services/b2StorageService';
+import { compressImage } from '../../services/imageCompression';
 import ErrorMessage from '../ui/ErrorMessage';
 import ImagePreviewModal from '../modals/ImagePreviewModal';
 import StudioHistoryDrawer from './StudioHistoryDrawer';
@@ -295,7 +296,10 @@ export default function StudioFlowGen({
           // before B2 upload, so flow-agent → WAB → Flow paste preserves
           // a unique, plausible-looking name (matches real user uploads
           // and lets the Frames dialog picker match by filename).
-          const original = refImages[i].file;
+          // Resize xuống 1920px trước khi lên B2. KHÔNG chuyển WebP ở đây: ảnh
+          // này còn được flow-agent paste tiếp vào Google Flow, và tên file phải
+          // giữ dáng "ảnh máy chụp" để Frames dialog khớp được — .webp phá cả hai.
+          const original = await compressImage(refImages[i].file, 'reference', { keepFormat: true });
           const renamed = new File(
             [original],
             randomImageFilename(original.name),
@@ -536,7 +540,7 @@ export default function StudioFlowGen({
     return (
       <div className="flex flex-col gap-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold text-[var(--text-primary)]">{t('studio.result')}</h2>
+          <h2 className="text-xl font-black bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] bg-clip-text text-transparent">{t('studio.result')}</h2>
           <button
             onClick={handleReset}
             className="px-4 py-2 text-sm font-semibold text-[var(--accent-primary)] bg-[rgba(249,115,22,0.1)] hover:bg-[rgba(249,115,22,0.2)] border border-[var(--accent-primary)] rounded-lg transition-colors"
@@ -974,26 +978,38 @@ function FlowResultItem({ genId, item, isVideo, state, onSave, onPreview }: Flow
   const qualityOptions = isVideo ? VIDEO_QUALITY_OPTIONS : IMAGE_QUALITY_OPTIONS;
 
   return (
-    <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl overflow-hidden shadow-lg">
-      <div className="aspect-square bg-black flex items-center justify-center">
+    <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl overflow-hidden shadow-xl group hover:border-[var(--accent-primary)]/50 transition-all duration-300">
+      <div className="aspect-square bg-slate-950 flex items-center justify-center relative">
+        {/* Media Type Badge Overlay */}
+        <div className="absolute top-3 left-3 z-10">
+          <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider backdrop-blur-md border shadow-sm ${
+            isVideo
+              ? 'bg-violet-500/20 text-violet-300 border-violet-500/40'
+              : 'bg-amber-500/20 text-amber-300 border-amber-500/40'
+          }`}>
+            <span className={`w-1.5 h-1.5 rounded-full ${isVideo ? 'bg-violet-400' : 'bg-amber-400'}`} />
+            {isVideo ? 'Video' : 'Image'}
+          </span>
+        </div>
+
         {isVideo ? (
           <video src={src} controls className="w-full h-full object-contain" />
         ) : (
           <img
             src={src}
             alt="Result"
-            className="w-full h-full object-contain cursor-pointer"
+            className="w-full h-full object-contain cursor-pointer group-hover:scale-[1.02] transition-transform duration-300"
             onClick={() => onPreview(src)}
           />
         )}
       </div>
 
-      <div className="p-3 flex gap-2">
+      <div className="p-3 flex gap-2 bg-[var(--bg-card)] border-t border-[var(--border-primary)]">
         <div className="flex-1 relative flex">
           <button
             onClick={handleDefaultDownload}
             disabled={downloading}
-            className="flex-1 py-2 text-xs font-semibold rounded-l-lg border border-[var(--border-primary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] disabled:opacity-50 disabled:cursor-wait flex items-center justify-center gap-1"
+            className="flex-1 py-2 text-xs font-bold rounded-l-xl border border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[var(--text-primary)] hover:border-cyan-500/50 hover:bg-cyan-500/10 disabled:opacity-50 disabled:cursor-wait flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
           >
             {downloading ? (
               <>
@@ -1001,7 +1017,12 @@ function FlowResultItem({ genId, item, isVideo, state, onSave, onPreview }: Flow
                 <span>{t('studio.downloadHQ.processing')}</span>
               </>
             ) : (
-              t('studio.download')
+              <>
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-cyan-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+                <span>{t('studio.download')}</span>
+              </>
             )}
           </button>
           <button
@@ -1009,7 +1030,7 @@ function FlowResultItem({ genId, item, isVideo, state, onSave, onPreview }: Flow
             disabled={downloading}
             title={t('studio.downloadHQ.menuLabel')}
             aria-label={t('studio.downloadHQ.menuLabel')}
-            className="px-2 py-2 text-xs rounded-r-lg border border-l-0 border-[var(--border-primary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] disabled:opacity-50 disabled:cursor-wait"
+            className="px-2.5 py-2 text-xs rounded-r-xl border border-l-0 border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:bg-cyan-500/10 hover:border-cyan-500/50 disabled:opacity-50 disabled:cursor-wait transition-colors cursor-pointer"
           >
             <svg className="w-3 h-3" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clipRule="evenodd" />
@@ -1017,18 +1038,14 @@ function FlowResultItem({ genId, item, isVideo, state, onSave, onPreview }: Flow
           </button>
           {menuOpen && (
             <div
-              // Open upward (bottom-full mb-1): the parent card uses
-              // overflow-hidden, so a downward (top-full mt-1) menu would
-              // be clipped to invisible. Anchored to the bottom of the
-              // download buttons, the menu floats over the image area.
-              className="absolute z-20 left-0 right-0 bottom-full mb-1 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg shadow-xl overflow-hidden"
+              className="absolute z-20 left-0 right-0 bottom-full mb-1 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl shadow-2xl overflow-hidden divide-y divide-[var(--border-primary)]"
               onMouseLeave={() => setMenuOpen(false)}
             >
               {qualityOptions.map(({ q, labelKey, cost }) => (
                 <button
                   key={q}
                   onClick={() => handleQualityDownload(q, cost)}
-                  className="block w-full text-left px-3 py-2 text-xs text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]"
+                  className="block w-full text-left px-3.5 py-2.5 text-xs font-semibold text-[var(--text-primary)] hover:bg-[var(--accent-primary)]/10 hover:text-[var(--accent-primary)] transition-colors cursor-pointer"
                 >
                   {t(labelKey)}
                 </button>
@@ -1039,12 +1056,12 @@ function FlowResultItem({ genId, item, isVideo, state, onSave, onPreview }: Flow
         <button
           onClick={onSave}
           disabled={state === 'saving' || state === 'saved' || item.saved}
-          className={`flex-1 py-2 text-xs font-semibold rounded-lg transition-colors ${
+          className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer ${
             state === 'saved' || item.saved
-              ? 'bg-green-500/20 border border-green-500/40 text-green-400'
+              ? 'bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 shadow-sm'
               : state === 'failed'
-                ? 'bg-red-500/10 border border-red-500/40 text-red-400'
-                : 'bg-[var(--accent-primary)] text-black hover:opacity-90'
+                ? 'bg-red-500/15 border border-red-500/40 text-red-400'
+                : 'bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-black hover:opacity-95 shadow-md'
           }`}
         >
           {state === 'saving' ? t('studio.save.saving')

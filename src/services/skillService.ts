@@ -143,3 +143,50 @@ export async function getSkillsStats(): Promise<SkillsStatsResponse> {
   }
   return res.json();
 }
+
+// ─── Admin API ──────────────────────────────────────────────────────
+// Slug là khoá công khai của skill nên backend không cho sửa — payload chỉ
+// mang các field nội dung, gửi partial được.
+
+export type SkillUpdateInput = Partial<Omit<SkillDetail, '_id' | 'slug'>>;
+
+/**
+ * Update a skill (admin only)
+ */
+export async function updateSkill(
+  slug: string,
+  payload: SkillUpdateInput,
+  token: string
+): Promise<{ success: boolean; message: string; data: SkillDetail }> {
+  const res = await fetch(`${API_URL}/skills/${encodeURIComponent(slug)}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(payload),
+  });
+  const json = await res.json().catch(() => ({ message: `HTTP ${res.status}` }));
+  if (!res.ok) {
+    throw new Error(json.message || `Failed to update skill: ${res.status}`);
+  }
+  return json;
+}
+
+/**
+ * Delete a skill (admin only)
+ */
+export async function deleteSkill(
+  slug: string,
+  token: string
+): Promise<{ success: boolean; message: string }> {
+  const res = await fetch(`${API_URL}/skills/${encodeURIComponent(slug)}`, {
+    method: 'DELETE',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  const json = await res.json().catch(() => ({ message: `HTTP ${res.status}` }));
+  if (!res.ok) {
+    throw new Error(json.message || `Failed to delete skill: ${res.status}`);
+  }
+  return json;
+}

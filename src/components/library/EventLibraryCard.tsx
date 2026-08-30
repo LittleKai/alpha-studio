@@ -65,6 +65,22 @@ function OriginBadge({ item, onImage = false }: { item: EventLibraryItem; onImag
     );
 }
 
+/**
+ * Nhãn cấp quyền — chỉ hiện với mục `pro`. Nội dung chi tiết của mục này đã bị
+ * backend cắt với người chưa đủ credit tích luỹ, nhãn ở đây báo trước điều đó.
+ */
+function AccessBadge({ item, onImage = false }: { item: EventLibraryItem; onImage?: boolean }) {
+    const { t } = useTranslation();
+    if (item.accessLevel !== 'pro') return null;
+    return (
+        <span className={`text-[9px] font-bold tracking-wider px-2 py-0.5 rounded border uppercase ${onImage
+            ? `${ON_IMAGE_BASE} text-amber-300`
+            : 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30'}`}>
+            {t('eventLibrary.accessLevels.pro')}
+        </span>
+    );
+}
+
 function TypeBadge({ itemType, onImage = false }: { itemType: string; onImage?: boolean }) {
     const { t } = useTranslation();
     const style = onImage
@@ -132,6 +148,7 @@ export function EventLibraryGridCard({ item, accent, onOpen, onDownload }: CardP
                 )}
                 <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
                     <TypeBadge itemType={item.itemType} onImage />
+                    <AccessBadge item={item} onImage />
                 </div>
                 <div className="absolute bottom-3 left-3">
                     <OriginBadge item={item} onImage />
@@ -215,6 +232,7 @@ export function EventLibraryListRow({ item, accent, onOpen, onDownload }: CardPr
             <div className="flex-1 space-y-2 min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
                     <TypeBadge itemType={item.itemType} />
+                    <AccessBadge item={item} />
                     <OriginBadge item={item} />
                     {item.category && (
                         <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-[var(--bg-secondary)] text-[var(--text-secondary)] border border-[var(--border-primary)]">

@@ -11,6 +11,7 @@ interface FeatureCardProps {
     title: string;
     description: string;
     tone: string;
+    titleColor?: string;
     icon: React.ReactNode;
 }
 
@@ -20,12 +21,12 @@ const formatReleaseDate = (value: string, locale: string): string => {
     return date.toLocaleDateString(locale);
 };
 
-const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, tone, icon }) => (
-    <div className="glass-card rounded-2xl p-5">
-        <div className={`mb-4 flex h-11 w-11 items-center justify-center rounded-xl ${tone}`}>
+const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, tone, titleColor, icon }) => (
+    <div className="glass-card rounded-2xl p-5 group hover:-translate-y-1 transition-all duration-300">
+        <div className={`mb-4 flex h-11 w-11 items-center justify-center rounded-xl transition-transform group-hover:scale-110 ${tone}`}>
             {icon}
         </div>
-        <h3 className="text-base font-black text-[var(--text-primary)]">{title}</h3>
+        <h3 className={`text-base font-black ${titleColor || 'text-[var(--text-primary)]'}`}>{title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">{description}</p>
     </div>
 );
@@ -290,7 +291,7 @@ const VocabPage: React.FC = () => {
                             <p className="text-xs font-black uppercase tracking-wider text-[var(--text-tertiary)]">
                                 {t('studio.hub.cards.vocab.page.releaseHeading')}
                             </p>
-                            <h2 className="text-2xl sm:text-3xl font-black text-[var(--text-primary)] tracking-tight">
+                            <h2 className="text-2xl sm:text-3xl font-black bg-gradient-to-r from-emerald-400 via-sky-400 to-[var(--accent-primary)] bg-clip-text text-transparent tracking-tight">
                                 {releaseLoading ? t('studio.hub.cards.vocab.page.releaseLoading') : releaseMeta}
                             </h2>
                             {releaseError && (
@@ -333,18 +334,21 @@ const VocabPage: React.FC = () => {
                         title={t('studio.hub.cards.vocab.page.featureDecksTitle')}
                         description={t('studio.hub.cards.vocab.page.featureDecksDesc')}
                         tone="bg-emerald-500/10 text-emerald-400"
+                        titleColor="text-emerald-500 dark:text-emerald-400"
                         icon={<svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M8 9h8M8 13h5" /></svg>}
                     />
                     <FeatureCard
                         title={t('studio.hub.cards.vocab.page.featureSyncTitle')}
                         description={t('studio.hub.cards.vocab.page.featureSyncDesc')}
                         tone="bg-sky-500/10 text-sky-400"
+                        titleColor="text-sky-500 dark:text-sky-400"
                         icon={<svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 9.4A5 5 0 0 0 7.7 7.6L6 9.3M7.5 14.6a5 5 0 0 0 8.8 1.8L18 14.7" /><path strokeLinecap="round" strokeLinejoin="round" d="M6 5v4h4m8 10v-4h-4" /></svg>}
                     />
                     <FeatureCard
                         title={t('studio.hub.cards.vocab.page.featureDictionaryTitle')}
                         description={t('studio.hub.cards.vocab.page.featureDictionaryDesc')}
                         tone="bg-amber-500/10 text-amber-400"
+                        titleColor="text-amber-500 dark:text-amber-400"
                         icon={<svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M5 5.5A2.5 2.5 0 0 1 7.5 3H20v16H7.5A2.5 2.5 0 0 0 5 21.5v-16Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M9 7h7M9 11h5" /></svg>}
                     />
                 </section>
@@ -371,7 +375,7 @@ const VocabPage: React.FC = () => {
                             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-bold text-emerald-400">
                                 {t('studio.hub.cards.vocab.page.featureDecksTitle') || 'Học thông minh'}
                             </div>
-                            <h2 className="text-2xl sm:text-3xl font-black text-[var(--text-primary)] tracking-tight">
+                            <h2 className="text-2xl sm:text-3xl font-black bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent tracking-tight">
                                 {t('studio.hub.cards.vocab.page.panels.studyTitle')}
                             </h2>
                             <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
@@ -408,7 +412,7 @@ const VocabPage: React.FC = () => {
                             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-xs font-bold text-sky-400">
                                 {t('studio.hub.cards.vocab.page.featureSyncTitle') || 'Đồng bộ & Chia sẻ'}
                             </div>
-                            <h2 className="text-2xl sm:text-3xl font-black text-[var(--text-primary)] tracking-tight">
+                            <h2 className="text-2xl sm:text-3xl font-black bg-gradient-to-r from-sky-400 to-indigo-400 bg-clip-text text-transparent tracking-tight">
                                 {t('studio.hub.cards.vocab.page.panels.libraryTitle')}
                             </h2>
                             <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
@@ -545,7 +549,7 @@ const VocabPage: React.FC = () => {
                         </div>
 
                         <div className="space-y-2">
-                            <h2 className="text-xl sm:text-2xl font-black text-[var(--text-primary)] tracking-tight">
+                            <h2 className="text-xl sm:text-2xl font-black bg-gradient-to-r from-violet-400 to-sky-400 bg-clip-text text-transparent tracking-tight">
                                 {t('studio.hub.cards.vocab.page.comparisonTitle')}
                             </h2>
                             <p className="text-xs sm:text-sm text-[var(--text-secondary)]">

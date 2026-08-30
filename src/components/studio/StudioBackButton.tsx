@@ -6,9 +6,21 @@ export interface StudioBackButtonProps {
     to?: string;
     label?: string;
     className?: string;
-    variant?: 'floating' | 'inline';
+    /**
+     * `floating` — pill nổi tự định vị (fixed) ở góc trên trái.
+     * `cluster`  — cùng kiểu pill nhưng không tự định vị, để xếp cạnh nhau
+     *              trong một khối fixed chung (xem StudioBackNav).
+     * `inline`   — nút chữ nhật nằm trong luồng nội dung.
+     */
+    variant?: 'floating' | 'inline' | 'cluster';
     onClick?: () => void;
 }
+
+/** Neo tới khối "Chọn công cụ để bắt đầu" trên /studio */
+export const STUDIO_TOOLS_ANCHOR = 'studio-tools';
+
+// Kiểu pill dùng chung cho `floating` và `cluster`
+const PILL_STYLES = 'inline-flex items-center gap-2 px-3.5 py-1.5 md:px-4 md:py-2 bg-[var(--bg-card)]/95 backdrop-blur-md border border-[var(--border-primary)] rounded-full shadow-lg text-xs md:text-sm font-semibold text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)] hover:scale-105 active:scale-95 transition-all cursor-pointer select-none';
 
 /**
  * Standardized Back button across all Studio tool pages (/studio/*).
@@ -29,14 +41,17 @@ export const StudioBackButton: React.FC<StudioBackButtonProps> = ({
     const handleClick = () => {
         if (onClick) {
             onClick();
-        } else {
-            navigate(to);
+            return;
         }
+        // Về hub thì dừng ngay ở khối "Chọn công cụ để bắt đầu" thay vì đầu trang
+        navigate(to === '/studio' ? `/studio#${STUDIO_TOOLS_ANCHOR}` : to);
     };
 
     const baseStyles = variant === 'floating'
-        ? 'fixed top-20 left-4 z-40 inline-flex items-center gap-2 px-3.5 py-1.5 md:px-4 md:py-2 bg-[var(--bg-card)]/95 backdrop-blur-md border border-[var(--border-primary)] rounded-full shadow-lg text-xs md:text-sm font-semibold text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)] hover:scale-105 active:scale-95 transition-all cursor-pointer select-none'
-        : 'inline-flex items-center gap-2 px-3.5 py-1.5 md:px-4 md:py-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl shadow-sm text-xs md:text-sm font-semibold text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)] transition-all cursor-pointer select-none';
+        ? `fixed top-20 left-4 z-40 ${PILL_STYLES}`
+        : variant === 'cluster'
+            ? PILL_STYLES
+            : 'inline-flex items-center gap-2 px-3.5 py-1.5 md:px-4 md:py-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl shadow-sm text-xs md:text-sm font-semibold text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)] transition-all cursor-pointer select-none';
 
     return (
         <button

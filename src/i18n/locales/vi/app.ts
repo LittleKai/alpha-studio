@@ -395,8 +395,9 @@ export default {
             downloadDesc: "Gói ZIP chạy ngay cho Windows (không cần cài đặt) và phiên bản di động Android APK.",
             downloadWindows: "Tải cho Windows",
             downloadAndroid: "Tải Android APK",
-            downloadAndroidDesc: "Bản Android (Sắp ra mắt)",
-            downloadAndroidNotice: "Bản cài đặt Android APK đang được hoàn thiện và sẽ sớm được phát hành chính thức.",
+            downloadAndroidDesc: "Bản Android (Thử nghiệm)",
+            downloadAndroidNotice: "Bản Android vẫn đang trong quá trình hoàn thiện, một số tính năng chưa đầy đủ và có thể chưa ổn định. Nếu cần dùng đầy đủ tính năng, bạn nên tải bản Windows.",
+            betaBadge: "Thử nghiệm",
             comingSoonBadge: "Sắp ra mắt",
             releaseLoading: "Đang kiểm tra phiên bản...",
             releaseVersion: "Phiên bản {{version}}",
@@ -568,6 +569,16 @@ export default {
         viewDetail: "Xem chi tiết",
         download: "Tải về"
       },
+      accessLevels: {
+        public: "Miễn phí",
+        pro: "Pro"
+      },
+      locked: {
+        title: "Nội dung dành cho tài khoản Pro",
+        desc: "Mục này chỉ mở cho tài khoản đã từng tích luỹ từ {credits} credit trở lên — tính cả credit bạn nạp lẫn credit được cấp.",
+        progress: "Bạn đã tích luỹ {current}/{credits} credit.",
+        topUp: "Nạp credit"
+      },
       detail: {
         backToLibrary: "Quay lại thư viện",
         notFound: "Không tìm thấy nội dung này",
@@ -611,6 +622,9 @@ export default {
           mine: "Của tôi",
           all: "Tất cả nội dung"
         },
+        accessLevel: "Quyền xem nội dung",
+        accessLevelPublicHint: "Ai xem được mục này cũng đọc được toàn bộ thân bài và tệp đính kèm.",
+        accessLevelProHint: "Chỉ tài khoản đã từng tích luỹ từ {credits} credit trở lên mới mở được thân bài và tệp đính kèm. Ảnh bìa, tiêu đề và tóm tắt vẫn hiện với mọi người.",
         basics: "Thông tin cơ bản",
         taxonomy: "Phân loại",
         media: "Ảnh bìa, số liệu & tệp",
@@ -711,6 +725,12 @@ export default {
       backToList: "Quay lại danh sách",
       backToStudio: "Quay lại Studio",
       backToSkills: "Quay lại thư viện kỹ năng",
+      admin: {
+        title: "Quản trị",
+        edit: "Sửa skill",
+        delete: "Xoá skill",
+        deleteFailed: "Không xoá được skill"
+      },
       overview: "Tổng quan",
       setup: "Cài đặt & Cấu hình",
       usage: "Ví dụ sử dụng",

@@ -3,6 +3,7 @@ import { useTranslation } from '../../i18n/context';
 import { createPartner, updatePartner, Partner, PartnerInput } from '../../services/partnerService';
 import { uploadToCloudinary } from '../../services/cloudinaryService';
 import { fillLocalized } from '../../utils/localized';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface PartnerFormProps {
     partner: Partner | null;
@@ -44,7 +45,7 @@ const PartnerForm: React.FC<PartnerFormProps> = ({ partner, onClose, onSuccess }
 
         setUploadingLogo(true);
         try {
-            const result = await uploadToCloudinary(file, 'partners/logos');
+            const result = await uploadToCloudinary(file, 'partners/logos', 'logo');
             if (result.success) {
                 setLogo(result.url);
             } else {
@@ -249,7 +250,7 @@ const PartnerForm: React.FC<PartnerFormProps> = ({ partner, onClose, onSuccess }
                         {logo && (
                             <div className="mt-3 relative inline-block">
                                 <div className="w-20 h-20 rounded-xl overflow-hidden bg-[var(--bg-secondary)] border border-[var(--border-primary)]">
-                                    <img src={logo} alt="Logo" className="w-full h-full object-contain p-2" />
+                                    <img src={cdnFromUrl(logo, 'w_320')} alt="Logo" className="w-full h-full object-contain p-2" />
                                 </div>
                                 <button
                                     type="button"

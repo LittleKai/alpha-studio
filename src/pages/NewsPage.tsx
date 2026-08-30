@@ -4,6 +4,7 @@ import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
 import { getArticles, type Article } from '../services/articleService';
 import { localizedText } from '../utils/localized';
+import { cdnFromUrl } from '../services/cloudinaryAssets';
 
 export default function NewsPage() {
     const { t, language } = useTranslation();
@@ -68,7 +69,7 @@ export default function NewsPage() {
                                 {article.thumbnail && (
                                     <div className="aspect-video overflow-hidden">
                                         <img
-                                            src={article.thumbnail}
+                                            src={cdnFromUrl(article.thumbnail, 'w_640')}
                                             alt={localizedText(article.title, language)}
                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                         />

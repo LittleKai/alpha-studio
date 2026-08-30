@@ -1,9 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../../i18n/context';
-import { Prompt, PromptInput, createPrompt, updatePrompt, ExampleImage, PromptContent } from '../../services/promptService';
+import { Prompt, PromptInput, createPrompt, updatePrompt, ExampleImage, PromptAttachment, PromptContent } from '../../services/promptService';
 import { TagsInput } from '../shared';
 import { uploadImage } from '../../services/cloudinaryService';
+import { uploadToB2 } from '../../services/b2StorageService';
+import { compressImage } from '../../services/imageCompression';
+import { useAuth } from '../../auth/context';
 import { fillLocalized } from '../../utils/localized';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
+
+// Tệp đính kèm prompt nằm chung folder B2 với ảnh minh hoạ của prompt
+const B2_FOLDER = 'prompts';
+
+/** Đổi số byte thành chuỗi hiển thị — model lưu `size` dạng chuỗi. */
+function formatSize(bytes: number): string {
+    if (bytes >= 1024 * 1024) return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+    if (bytes >= 1024) return `${Math.round(bytes / 1024)} KB`;
+    return `${bytes} B`;
+}
 
 interface PromptFormModalProps {
     isOpen: boolean;
@@ -19,6 +33,10 @@ const PromptFormModal: React.FC<PromptFormModalProps> = ({
     onSuccess
 }) => {
     const { language } = useTranslation();
+    const { user, token } = useAuth();
+    // Prompt là nội dung ai đăng cũng được, nên quyền đổ file lên B2 chỉ mở cho
+    // admin/mod — backend chặn lại lần nữa trong routes/prompts.js.
+    const canAttach = user?.role === 'admin' || user?.role === 'mod';
 
     const [formData, setFormData] = useState<PromptInput>({
         title: { vi: '', en: '' },
@@ -28,12 +46,15 @@ const PromptFormModal: React.FC<PromptFormModalProps> = ({
         category: 'other',
         platform: 'other',
         tags: [],
-        exampleImages: []
+        exampleImages: [],
+        attachments: []
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [uploadingImage, setUploadingImage] = useState(false);
+    const [uploadingFile, setUploadingFile] = useState(false);
+    const [uploadProgress, setUploadProgress] = useState(0);
 
     const categories = [
         { value: 'image-generation', label: language === 'vi' ? 'Tạo hình ảnh' : 'Image Generation' },
@@ -74,7 +95,8 @@ const PromptFormModal: React.FC<PromptFormModalProps> = ({
                 category: editingPrompt.category,
                 platform: editingPrompt.platform,
                 tags: editingPrompt.tags,
-                exampleImages: editingPrompt.exampleImages
+                exampleImages: editingPrompt.exampleImages,
+                attachments: editingPrompt.attachments || []
             });
         } else {
             setFormData({
@@ -85,7 +107,8 @@ const PromptFormModal: React.FC<PromptFormModalProps> = ({
                 category: 'other',
                 platform: 'other',
                 tags: [],
-                exampleImages: []
+                exampleImages: [],
+                attachments: []
             });
         }
         setError(null);
@@ -97,7 +120,7 @@ const PromptFormModal: React.FC<PromptFormModalProps> = ({
         setUploadingImage(true);
         try {
             const file = e.target.files[0];
-            const result = await uploadImage(file);
+            const result = await uploadImage(file, 'featured_work');
 
             const newImage: ExampleImage = {
                 type,
@@ -122,6 +145,47 @@ const PromptFormModal: React.FC<PromptFormModalProps> = ({
         setFormData(prev => ({
             ...prev,
             exampleImages: prev.exampleImages?.filter((_, i) => i !== index) || []
+        }));
+    };
+
+    const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const files = Array.from(e.target.files || []);
+        if (!files.length || !token) return;
+
+        setUploadingFile(true);
+        setUploadProgress(0);
+        try {
+            for (const picked of files) {
+                // Tài liệu giữ nguyên; ảnh resize + chuyển WebP trước khi lên B2
+                const file = await compressImage(picked, 'attachment');
+                const result = await uploadToB2(file, B2_FOLDER, token, setUploadProgress);
+                const attachment: PromptAttachment = {
+                    name: file.name,
+                    url: result.url,
+                    fileKey: result.key,
+                    size: formatSize(file.size),
+                    mime: file.type
+                };
+                setFormData(prev => ({
+                    ...prev,
+                    attachments: [...(prev.attachments || []), attachment]
+                }));
+            }
+        } catch (err) {
+            console.error('Failed to upload attachment:', err);
+            setError(language === 'vi' ? 'Không thể tải tệp lên' : 'Failed to upload file');
+        } finally {
+            setUploadingFile(false);
+            setUploadProgress(0);
+            // Cho phép chọn lại đúng tệp vừa xoá
+            e.target.value = '';
+        }
+    };
+
+    const removeAttachment = (index: number) => {
+        setFormData(prev => ({
+            ...prev,
+            attachments: prev.attachments?.filter((_, i) => i !== index) || []
         }));
     };
 
@@ -413,7 +477,7 @@ const PromptFormModal: React.FC<PromptFormModalProps> = ({
                             {formData.exampleImages?.map((img, index) => (
                                 <div key={index} className="relative group">
                                     <img
-                                        src={img.url}
+                                        src={cdnFromUrl(img.url, 'w_320')}
                                         alt={`Example ${index + 1}`}
                                         className="w-24 h-24 object-cover rounded-lg"
                                     />
@@ -457,6 +521,63 @@ const PromptFormModal: React.FC<PromptFormModalProps> = ({
                             </label>
                         </div>
                     </div>
+
+                    {/* Tệp đính kèm B2 — chỉ admin/mod */}
+                    {canAttach && (
+                        <div>
+                            <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                {language === 'vi' ? 'Tệp đính kèm' : 'Attachments'}
+                                <span className="ml-2 text-xs font-normal text-[var(--text-tertiary)]">
+                                    {language === 'vi'
+                                        ? 'Chỉ quản trị viên và điều hành viên'
+                                        : 'Admins and moderators only'}
+                                </span>
+                            </label>
+
+                            {formData.attachments && formData.attachments.length > 0 && (
+                                <div className="space-y-2 mb-3">
+                                    {formData.attachments.map((att, index) => (
+                                        <div
+                                            key={`${att.url}-${index}`}
+                                            className="flex items-center gap-3 px-3 py-2 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)]"
+                                        >
+                                            <svg className="w-4 h-4 shrink-0 text-[var(--text-tertiary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                            </svg>
+                                            <span className="flex-1 min-w-0 truncate text-sm text-[var(--text-primary)]">
+                                                {att.name}
+                                            </span>
+                                            {att.size && (
+                                                <span className="text-xs text-[var(--text-tertiary)] shrink-0">{att.size}</span>
+                                            )}
+                                            <button
+                                                type="button"
+                                                onClick={() => removeAttachment(index)}
+                                                className="p-1 text-red-400 hover:text-red-500 transition-colors shrink-0"
+                                            >
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+
+                            <label className="inline-block cursor-pointer px-3 py-2 bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] rounded-lg text-sm font-medium hover:bg-[var(--accent-primary)]/20 transition-colors">
+                                {uploadingFile
+                                    ? `${language === 'vi' ? 'Đang tải' : 'Uploading'} ${uploadProgress}%`
+                                    : (language === 'vi' ? '+ Thêm tệp' : '+ Add file')}
+                                <input
+                                    type="file"
+                                    multiple
+                                    onChange={handleFileUpload}
+                                    className="hidden"
+                                    disabled={uploadingFile}
+                                />
+                            </label>
+                        </div>
+                    )}
                 </form>
 
                 {/* Footer */}

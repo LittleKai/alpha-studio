@@ -4,13 +4,16 @@ import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
 import { uploadImage } from '../../services/cloudinaryService';
 import { uploadToB2 } from '../../services/b2StorageService';
+import { compressImage } from '../../services/imageCompression';
 import SectionEditor from './SectionEditor';
 import { cdnFromUrl } from '../../services/cloudinaryAssets';
 import {
     createLibraryItem, updateLibraryItem, emptySection,
     ITEM_TYPES, CATEGORIES, INDUSTRIES, OBJECTIVES, KPIS,
-    BUDGET_TIERS, VERIFICATIONS, DEPTHS, SECTION_KINDS,
-    type EventLibraryItem, type ItemType, type LibrarySection, type SectionKind
+    BUDGET_TIERS, VERIFICATIONS, DEPTHS, SECTION_KINDS, ACCESS_LEVELS,
+    PRO_MIN_LIFETIME_CREDITS,
+    type AccessLevel, type EventLibraryItem, type ItemType,
+    type LibrarySection, type SectionKind
 } from '../../services/eventLibraryService';
 
 const ACCENT = '#7c5cff';
@@ -25,6 +28,7 @@ interface FormState {
     itemType: ItemType;
     visibility: 'public' | 'private';
     ownership: 'platform' | 'user';
+    accessLevel: AccessLevel;
     verification: string;
     title: { vi: string; en: string };
     summary: { vi: string; en: string };
@@ -47,6 +51,7 @@ function toFormState(item?: EventLibraryItem | null): FormState {
         itemType: item?.itemType || 'case_study',
         visibility: item?.visibility || 'private',
         ownership: item?.ownership || 'user',
+        accessLevel: item?.accessLevel || 'public',
         verification: item?.verification || 'unverified',
         title: { vi: item?.title.vi || '', en: item?.title.en || '' },
         summary: { vi: item?.summary.vi || '', en: item?.summary.en || '' },
@@ -122,7 +127,7 @@ export default function LibraryItemForm({
     const handleCover = async (file: File) => {
         setUploading('cover');
         try {
-            const { url } = await uploadImage(file);
+            const { url } = await uploadImage(file, 'cover');
             set({ coverImage: url });
         } catch (err) {
             setError(err instanceof Error ? err.message : t('eventLibrary.editor.uploadFailed'));
@@ -136,7 +141,9 @@ export default function LibraryItemForm({
         if (!token) return;
         setUploading('files');
         try {
-            const uploaded = await Promise.all(files.map(async file => {
+            const uploaded = await Promise.all(files.map(async picked => {
+                // Tệp tài liệu giữ nguyên; ảnh được resize + chuyển WebP trước khi lên B2
+                const file = await compressImage(picked, 'attachment');
                 const result = await uploadToB2(file, B2_FOLDER, token);
                 return {
                     name: file.name,
@@ -184,7 +191,7 @@ export default function LibraryItemForm({
                 metrics: form.metrics.filter(m => m.value.trim()),
                 attachments: form.attachments,
                 sections: form.sections,
-                ...(isAdmin && { ownership: form.ownership })
+                ...(isAdmin && { ownership: form.ownership, accessLevel: form.accessLevel })
             } as Partial<EventLibraryItem>;
 
             const saved = item
@@ -287,6 +294,29 @@ export default function LibraryItemForm({
                         </div>
                     )}
                 </div>
+
+                {isAdmin && (
+                    <div>
+                        <label className={labelClass}>{t('eventLibrary.editor.accessLevel')}</label>
+                        <div className="flex gap-1.5">
+                            {ACCESS_LEVELS.map(value => (
+                                <button
+                                    key={value}
+                                    onClick={() => set({ accessLevel: value })}
+                                    style={chipStyle(form.accessLevel === value)}
+                                    className={chip(form.accessLevel === value)}
+                                >
+                                    {t('eventLibrary.accessLevels.' + value)}
+                                </button>
+                            ))}
+                        </div>
+                        <p className="text-[11px] text-[var(--text-tertiary)] mt-1.5">
+                            {form.accessLevel === 'pro'
+                                ? t('eventLibrary.editor.accessLevelProHint').replace('{credits}', String(PRO_MIN_LIFETIME_CREDITS))
+                                : t('eventLibrary.editor.accessLevelPublicHint')}
+                        </p>
+                    </div>
+                )}
             </section>
 
             {/* ─── Phân loại ─── */}
@@ -506,7 +536,7 @@ export default function LibraryItemForm({
                         images_upload_handler: async (blobInfo: { blob: () => Blob; filename: () => string }) => {
                             const blob = blobInfo.blob();
                             const file = new File([blob], blobInfo.filename() || 'image.png', { type: blob.type });
-                            const { url } = await uploadImage(file);
+                            const { url } = await uploadImage(file, 'content');
                             return url;
                         }
                     }}

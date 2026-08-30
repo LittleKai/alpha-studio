@@ -130,21 +130,25 @@ export default function SkillsPage() {
   const [allSkills, setAllSkills] = useState<Skill[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Initialize from searchParams
+  // Initialize from searchParams — mọi bộ lọc đều nằm trong URL nên trạng thái
+  // đang xem luôn chia sẻ / tải lại / bấm Back được
   const initialPage = parseInt(searchParams.get('page') || '1', 10);
   const initialSearch = searchParams.get('search') || '';
   const initialCat = searchParams.get('category') ? searchParams.get('category')!.split(',') : [];
   const initialTiers = searchParams.get('tier') ? searchParams.get('tier')!.split(',') : [];
+  const initialDifficulty = searchParams.get('difficulty') || 'all';
+  const initialTimeSavings = searchParams.get('timeSaving') ? searchParams.get('timeSaving')!.split(',') : [];
+  const initialInstallTypes = searchParams.get('install_type') ? searchParams.get('install_type')!.split(',') : [];
   const initialSort = (searchParams.get('sort') as any) || 'recommended';
 
   // Search & Filter State
   const [searchQuery, setSearchQuery] = useState(initialSearch);
   const [debouncedSearch, setDebouncedSearch] = useState(initialSearch);
   const [selectedCategories, setSelectedCategories] = useState<string[]>(initialCat);
-  const [selectedDifficulty, setSelectedDifficulty] = useState<string>('all');
+  const [selectedDifficulty, setSelectedDifficulty] = useState<string>(initialDifficulty);
   const [selectedTiers, setSelectedTiers] = useState<string[]>(initialTiers);
-  const [selectedTimeSavings, setSelectedTimeSavings] = useState<string[]>([]);
-  const [selectedInstallTypes, setSelectedInstallTypes] = useState<string[]>([]);
+  const [selectedTimeSavings, setSelectedTimeSavings] = useState<string[]>(initialTimeSavings);
+  const [selectedInstallTypes, setSelectedInstallTypes] = useState<string[]>(initialInstallTypes);
   
   // Sort, View & Pagination State
   const [sortBy, setSortBy] = useState<'recommended' | 'popular' | 'timeSaved' | 'quickest' | 'recent' | 'az'>(initialSort);
@@ -154,16 +158,25 @@ export default function SkillsPage() {
 
   // Debounce search input (400ms)
   const searchTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+  // Chỉ về trang 1 khi từ khoá thật sự đổi — nếu không, mở URL có sẵn ?page=3
+  // (hoặc bấm Back về trang 3) sẽ bị kéo về trang 1 sau 400ms.
+  const lastAppliedSearchRef = useRef(initialSearch);
   useEffect(() => {
     searchTimerRef.current = setTimeout(() => {
+      if (lastAppliedSearchRef.current === searchQuery) return;
+      lastAppliedSearchRef.current = searchQuery;
       setDebouncedSearch(searchQuery);
       setCurrentPage(1);
     }, 400);
     return () => clearTimeout(searchTimerRef.current);
   }, [searchQuery]);
 
-  // Sync state to URL search parameters
+  // Sync state to URL search parameters — mỗi lần đổi bộ lọc/sắp xếp là một
+  // entry lịch sử riêng để nút Back của trình duyệt trả về đúng trạng thái
+  // trước đó. Riêng ô tìm kiếm chỉ ghi đè (replace) để gõ phím không đẻ ra
+  // hàng chục entry.
   const isFirstRender = useRef(true);
+  const prevSearchRef = useRef(initialSearch);
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
@@ -174,9 +187,48 @@ export default function SkillsPage() {
     if (debouncedSearch) params.set('search', debouncedSearch);
     if (selectedCategories.length > 0) params.set('category', selectedCategories.join(','));
     if (selectedTiers.length > 0) params.set('tier', selectedTiers.join(','));
+    if (selectedDifficulty !== 'all') params.set('difficulty', selectedDifficulty);
+    if (selectedTimeSavings.length > 0) params.set('timeSaving', selectedTimeSavings.join(','));
+    if (selectedInstallTypes.length > 0) params.set('install_type', selectedInstallTypes.join(','));
     if (sortBy !== 'recommended') params.set('sort', sortBy);
-    setSearchParams(params, { replace: true });
-  }, [currentPage, debouncedSearch, selectedCategories, selectedTiers, sortBy, setSearchParams]);
+
+    // URL đã đúng (thường là do vừa bấm Back/Forward) thì không điều hướng nữa
+    const nextQs = params.toString();
+    if (nextQs === window.location.search.replace(/^\?/, '')) return;
+
+    const searchChanged = prevSearchRef.current !== debouncedSearch;
+    prevSearchRef.current = debouncedSearch;
+    setSearchParams(params, { replace: searchChanged });
+  }, [
+    currentPage, debouncedSearch, selectedCategories, selectedTiers,
+    selectedDifficulty, selectedTimeSavings, selectedInstallTypes, sortBy,
+    setSearchParams
+  ]);
+
+  // URL → state: bấm Back/Forward chỉ đổi query string, không remount trang nên
+  // phải đọc lại bộ lọc từ URL. Chỉ set khi lệch để không tạo vòng lặp với
+  // effect state → URL ở trên.
+  useEffect(() => {
+    const urlSearch = searchParams.get('search') || '';
+    const urlCat = searchParams.get('category') || '';
+    const urlTier = searchParams.get('tier') || '';
+    const urlDifficulty = searchParams.get('difficulty') || 'all';
+    const urlTimeSaving = searchParams.get('timeSaving') || '';
+    const urlInstallType = searchParams.get('install_type') || '';
+    const urlSort = searchParams.get('sort') || 'recommended';
+    const urlPage = parseInt(searchParams.get('page') || '1', 10) || 1;
+
+    lastAppliedSearchRef.current = urlSearch;
+    setSearchQuery(prev => (prev === urlSearch ? prev : urlSearch));
+    setDebouncedSearch(prev => (prev === urlSearch ? prev : urlSearch));
+    setSelectedCategories(prev => (prev.join(',') === urlCat ? prev : urlCat ? urlCat.split(',') : []));
+    setSelectedTiers(prev => (prev.join(',') === urlTier ? prev : urlTier ? urlTier.split(',') : []));
+    setSelectedDifficulty(prev => (prev === urlDifficulty ? prev : urlDifficulty));
+    setSelectedTimeSavings(prev => (prev.join(',') === urlTimeSaving ? prev : urlTimeSaving ? urlTimeSaving.split(',') : []));
+    setSelectedInstallTypes(prev => (prev.join(',') === urlInstallType ? prev : urlInstallType ? urlInstallType.split(',') : []));
+    setSortBy(prev => (prev === urlSort ? prev : (urlSort as typeof prev)));
+    setCurrentPage(prev => (prev === urlPage ? prev : urlPage));
+  }, [searchParams]);
 
   // Load all skills once on mount (with sessionStorage cache)
   useEffect(() => {

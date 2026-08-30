@@ -36,6 +36,17 @@ export const VERIFICATIONS = ['verified', 'partner_sourced', 'unverified'] as co
 
 export const DEPTHS = ['basic', 'deep', 'benchmark', 'forecast'] as const;
 
+/**
+ * Cấp quyền đọc thân bài. `pro` = chỉ tài khoản đã tích luỹ đủ credit mới mở
+ * được nội dung chi tiết và tệp đính kèm; card vẫn hiện cho mọi người.
+ * Chỉ admin đặt được — backend bỏ qua trường này nếu người gửi không phải admin.
+ */
+export const ACCESS_LEVELS = ['public', 'pro'] as const;
+export type AccessLevel = typeof ACCESS_LEVELS[number];
+
+/** Ngưỡng credit tích luỹ để mở mục `pro` — khớp `PRO_MIN_LIFETIME_CREDITS` ở backend. */
+export const PRO_MIN_LIFETIME_CREDITS = 200;
+
 export const INDUSTRIES = [
     'fmcg', 'technology', 'automotive', 'retail_mall',
     'beauty', 'fnb', 'finance', 'healthcare', 'education', 'other'
@@ -125,6 +136,9 @@ export interface EventLibraryItem {
     budgetTier: string;
     verification: string;
     depth: string;
+    accessLevel: AccessLevel;
+    /** Backend đặt cờ này khi đã cắt `content`/`sections`/`attachments` của mục `pro`. */
+    locked?: boolean;
     tags: string[];
     metrics: LibraryMetric[];
     attachments: LibraryAttachment[];
@@ -247,12 +261,21 @@ export async function getLibraryStats(): Promise<LibraryStats> {
     return data.data;
 }
 
+/** Kết quả kiểm tra cổng `pro` cho chính người đang xem. */
+export interface LibraryAccess {
+    level: AccessLevel;
+    unlocked: boolean;
+    requiredCredits: number;
+    lifetimeCredits: number;
+}
+
 export async function getLibraryItem(slug: string): Promise<{
     item: EventLibraryItem;
     related: EventLibraryItem[];
     /** Trạng thái thích/chấm điểm của chính người đang xem */
     reviews: LibraryReview[];
     me: { liked: boolean; score: number; comment: string };
+    access: LibraryAccess;
 }> {
     const res = await fetch(`${API_URL}/event-library/${encodeURIComponent(slug)}`, {
         headers: getAuthHeaders()
@@ -262,7 +285,13 @@ export async function getLibraryItem(slug: string): Promise<{
         item: data.data,
         related: data.related || [],
         reviews: data.reviews || [],
-        me: data.me || { liked: false, score: 0, comment: '' }
+        me: data.me || { liked: false, score: 0, comment: '' },
+        access: data.access || {
+            level: 'public',
+            unlocked: true,
+            requiredCredits: PRO_MIN_LIFETIME_CREDITS,
+            lifetimeCredits: 0
+        }
     };
 }
 

@@ -5,6 +5,7 @@ import { useAuth } from '../auth/context';
 import { uploadToCloudinary } from '../services/cloudinaryService';
 import { uploadToB2 } from '../services/b2StorageService';
 import ChangePasswordModal from '../components/modals/ChangePasswordModal';
+import { cdnFromUrl } from '../services/cloudinaryAssets';
 
 interface FeaturedWork {
     image: string;
@@ -224,7 +225,7 @@ const ProfilePage: React.FC = () => {
 
         setUploadingBackground(true);
         try {
-            const result = await uploadToCloudinary(file, 'backgrounds', 'general');
+            const result = await uploadToCloudinary(file, 'backgrounds', 'cover');
             if (result.success) {
                 setFormData(prev => ({ ...prev, backgroundImage: result.url }));
             }
@@ -398,7 +399,7 @@ const ProfilePage: React.FC = () => {
                             <div className="w-32 h-32 rounded-full overflow-hidden bg-gray-700 border-4 border-purple-500/30">
                                 {formData.avatar ? (
                                     <img
-                                        src={formData.avatar}
+                                        src={cdnFromUrl(formData.avatar, 'w_256')}
                                         alt="Avatar"
                                         className="w-full h-full object-cover"
                                     />
@@ -467,7 +468,7 @@ const ProfilePage: React.FC = () => {
                         {formData.backgroundImage ? (
                             <div className="relative aspect-[3/1] rounded-xl overflow-hidden">
                                 <img
-                                    src={formData.backgroundImage}
+                                    src={cdnFromUrl(formData.backgroundImage, 'w_1400')}
                                     alt="Background"
                                     className="w-full h-full object-cover"
                                 />
@@ -799,7 +800,7 @@ const ProfilePage: React.FC = () => {
                                     {newWork.image ? (
                                         <div className="relative aspect-video rounded-lg overflow-hidden">
                                             <img
-                                                src={newWork.image}
+                                                src={cdnFromUrl(newWork.image, 'w_320')}
                                                 alt="Work preview"
                                                 className="w-full h-full object-cover"
                                             />
@@ -890,7 +891,7 @@ const ProfilePage: React.FC = () => {
                             <div key={index} className="group relative bg-gray-700/30 rounded-xl overflow-hidden border border-gray-600">
                                 <div className="aspect-video">
                                     <img
-                                        src={work.image}
+                                        src={cdnFromUrl(work.image, 'w_320')}
                                         alt={work.title}
                                         className="w-full h-full object-cover"
                                     />

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from '../../i18n/context';
 import type { FeaturedStudent } from '../../types';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface StudentProfileModalProps {
   student: FeaturedStudent | null;
@@ -43,7 +44,7 @@ const StudentProfileModal: React.FC<StudentProfileModalProps> = ({ student, onCl
         <div className="relative h-48 bg-gradient-to-br from-[var(--accent-primary)] to-orange-600">
           {student.work && (
             <img
-              src={student.work}
+              src={cdnFromUrl(student.work, 'w_640')}
               alt="Cover"
               className="w-full h-full object-cover opacity-50"
             />
@@ -65,7 +66,7 @@ const StudentProfileModal: React.FC<StudentProfileModalProps> = ({ student, onCl
           <div className="absolute -top-16 left-6">
             <div className="w-32 h-32 rounded-full border-4 border-[var(--bg-primary)] overflow-hidden bg-[var(--bg-secondary)]">
               <img
-                src={student.image}
+                src={cdnFromUrl(student.image, 'w_256')}
                 alt={student.name}
                 className="w-full h-full object-cover"
               />
@@ -123,7 +124,7 @@ const StudentProfileModal: React.FC<StudentProfileModalProps> = ({ student, onCl
                       className="aspect-square rounded-lg overflow-hidden bg-[var(--bg-secondary)]"
                     >
                       <img
-                        src={img}
+                        src={cdnFromUrl(img, 'w_320')}
                         alt={`Work ${index + 1}`}
                         className="w-full h-full object-cover hover:scale-110 transition-transform"
                       />

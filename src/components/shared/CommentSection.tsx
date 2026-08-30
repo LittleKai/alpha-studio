@@ -12,6 +12,7 @@ import {
     flagComment,
     Comment
 } from '../../services/commentService';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface CommentSectionProps {
     targetType: 'prompt';
@@ -273,7 +274,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({
                 <div className="flex gap-3">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                         {comment.author.avatar ? (
-                            <img src={comment.author.avatar} alt={comment.author.name} className="w-full h-full rounded-full object-cover" />
+                            <img src={cdnFromUrl(comment.author.avatar, 'w_128')} alt={comment.author.name} className="w-full h-full rounded-full object-cover" />
                         ) : (
                             comment.author.name.charAt(0).toUpperCase()
                         )}

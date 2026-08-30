@@ -82,7 +82,7 @@ export default function SectionEditor({ section, index, total, onChange, onRemov
                             images_upload_handler: async (blobInfo: { blob: () => Blob; filename: () => string }) => {
                                 const blob = blobInfo.blob();
                                 const file = new File([blob], blobInfo.filename() || 'image.png', { type: blob.type });
-                                const { url } = await uploadImage(file);
+                                const { url } = await uploadImage(file, 'content');
                                 return url;
                             }
                         }}
@@ -274,7 +274,7 @@ export default function SectionEditor({ section, index, total, onChange, onRemov
                                 onChange={async e => {
                                     const files = Array.from(e.target.files || []);
                                     e.target.value = '';
-                                    const uploaded = await Promise.all(files.map(f => uploadImage(f).then(r => r.url).catch(() => '')));
+                                    const uploaded = await Promise.all(files.map(f => uploadImage(f, 'content').then(r => r.url).catch(() => '')));
                                     set({ images: [...images, ...uploaded.filter(Boolean)] });
                                 }}
                             />

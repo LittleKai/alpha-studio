@@ -6,6 +6,7 @@ import { useConfirm } from '../components/ui/ConfirmDialog';
 import AgentTimeline from '../components/interior/AgentTimeline';
 import StudioBackButton from '../components/studio/StudioBackButton';
 import { uploadToB2 } from '../services/b2StorageService';
+import { compressImage } from '../services/imageCompression';
 import { commitInlineTemplate } from '../services/interiorTemplateService';
 import { runAgent, resumeAgent, listAgentRuns, getAgentRun, type AgentStep } from '../services/interiorAgentService';
 import { generateObjFromCabinetModel, triggerDownload, downloadRemoteImage, createAiImagePackage, downloadDataUrl } from '../utils/cabinetExport';
@@ -491,8 +492,10 @@ const InteriorDesignPage: React.FC = () => {
         try {
             const newUrls: string[] = [];
             for (let i = 0; i < refFiles.length; i++) {
+                // Ảnh tham chiếu chỉ để Gemini đọc — 1920px + WebP là quá đủ,
+                // B2 không transform được nên phải nén ngay ở client.
                 const uploaded = await uploadToB2(
-                    refFiles[i],
+                    await compressImage(refFiles[i], 'reference'),
                     'interior-refs',
                     token,
                     (pct) => setUploadProgress(Math.round(((i + pct / 100) / refFiles.length) * 100))
@@ -1039,7 +1042,7 @@ const InteriorDesignPage: React.FC = () => {
                         <StudioBackButton variant="inline" />
                         <div>
                             <div className="flex items-center gap-2">
-                                <h1 className="text-lg font-bold">{t('studio.interior.title')}</h1>
+                                <h1 className="text-lg font-black bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-primary)] bg-clip-text text-transparent">{t('studio.interior.title')}</h1>
                                 <span className="px-1.5 py-0.5 text-[9px] font-extrabold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 rounded uppercase tracking-widest leading-none select-none">
                                     Beta
                                 </span>
@@ -1048,15 +1051,16 @@ const InteriorDesignPage: React.FC = () => {
                         </div>
                     </div>
                     <div className="flex items-center gap-2 text-sm">
-                        <span className="rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)] px-3 py-2 text-[var(--text-secondary)]">
+                        <span className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-2 text-emerald-400 font-bold text-xs flex items-center gap-1.5 shadow-sm">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                             {t('studio.interior.balance')}: {user?.role === 'admin' || user?.role === 'mod' ? t('studio.interior.unlimited') : user?.balance ?? 0}
                         </span>
                         <button
                             onClick={handleCreateProject}
                             disabled={busy}
-                            className="rounded-lg bg-[var(--accent-primary)] px-4 py-2 font-bold text-[var(--text-on-accent)] hover:opacity-90 disabled:opacity-50"
+                            className="rounded-xl bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] px-4 py-2 font-bold text-black hover:opacity-95 shadow-md shadow-[var(--accent-primary)]/20 transition-all hover:scale-[1.02] disabled:opacity-50 cursor-pointer text-xs sm:text-sm"
                         >
-                            {t('studio.interior.newProject')}
+                            + {t('studio.interior.newProject')}
                         </button>
                     </div>
                 </div>
@@ -1085,7 +1089,7 @@ const InteriorDesignPage: React.FC = () => {
             <div className={`mx-auto grid max-w-[1800px] grid-cols-1 gap-4 p-4 ${sidebarCollapsed ? 'lg:grid-cols-[minmax(0,1fr)_380px]' : 'lg:grid-cols-[300px_minmax(0,1fr)_380px]'}`}>
                 <aside className={`${mobileTab === 'projects' ? 'block' : 'hidden'} ${sidebarCollapsed ? 'lg:hidden' : 'lg:block'} rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)]`}>
                     <div className="flex items-center justify-between border-b border-[var(--border-primary)] p-4">
-                        <h2 className="font-bold">{t('studio.interior.projects')}</h2>
+                        <h2 className="font-black bg-gradient-to-r from-sky-400 to-indigo-400 bg-clip-text text-transparent">{t('studio.interior.projects')}</h2>
                         <div className="flex items-center gap-2">
                             <span className="text-xs text-[var(--text-tertiary)]">{projects.length}</span>
                             <button
@@ -1253,7 +1257,7 @@ const InteriorDesignPage: React.FC = () => {
 
                 <aside className={`${mobileTab === 'chat' ? 'block' : 'hidden'} lg:block rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)]`}>
                     <div className="border-b border-[var(--border-primary)] p-4">
-                        <h2 className="font-bold">{t('studio.interior.chat')}</h2>
+                        <h2 className="font-black bg-gradient-to-r from-amber-400 to-rose-400 bg-clip-text text-transparent">{t('studio.interior.chat')}</h2>
                         <p className="mt-1 text-xs text-[var(--text-tertiary)]">
                             {useAgentMode
                                 ? t('studio.interior.agent.creditNote')
@@ -1521,7 +1525,7 @@ const InteriorDesignPage: React.FC = () => {
                         <button
                             type="submit"
                             disabled={!canUseAi || !message.trim() || !hasCredit || !!pendingProposal}
-                            className="mt-3 w-full rounded-lg bg-[var(--accent-primary)] px-4 py-3 text-sm font-bold text-[var(--text-on-accent)] hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                            className="mt-3 w-full rounded-xl bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] px-4 py-3 text-sm font-bold text-black hover:opacity-95 shadow-md shadow-[var(--accent-primary)]/20 transition-all hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100 cursor-pointer"
                         >
                             {busy
                                 ? t('studio.interior.sending')
@@ -1530,32 +1534,39 @@ const InteriorDesignPage: React.FC = () => {
                     </form>
 
                     <div className="border-t border-[var(--border-primary)] p-4">
-                        <h3 className="mb-3 text-sm font-bold">{t('studio.interior.versions')}</h3>
+                        <h3 className="mb-3 text-sm font-bold flex items-center justify-between text-[var(--text-primary)]">
+                            <span className="bg-gradient-to-r from-violet-400 to-sky-400 bg-clip-text text-transparent font-black">{t('studio.interior.versions')}</span>
+                            <span className="text-xs text-[var(--text-tertiary)] font-normal">{project?.versions.length || 0}</span>
+                        </h3>
                         <div className="max-h-52 space-y-2 overflow-y-auto">
                             {project?.versions.slice().reverse().map((version) => (
-                                <div key={version._id} className="rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)] p-3">
+                                <div key={version._id} className="rounded-xl border border-[var(--border-primary)] bg-[var(--bg-secondary)] p-3 hover:border-violet-500/30 transition-colors">
                                     <div className="flex items-center justify-between gap-2">
                                         <button
                                             onClick={() => {
                                                 setPreviewVersionIndex(version.index);
                                                 setMobileTab('preview');
                                             }}
-                                            className="text-left text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent-primary)]"
+                                            className="text-left text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent-primary)] flex items-center gap-2"
                                         >
-                                            V{version.index}
-                                            {version.index === project.currentVersionIndex ? ` · ${t('studio.interior.current')}` : ''}
+                                            <span className="px-2 py-0.5 text-[10px] font-black rounded-md bg-violet-500/15 text-violet-400 border border-violet-500/30">
+                                                V{version.index}
+                                            </span>
+                                            {version.index === project.currentVersionIndex ? (
+                                                <span className="text-xs font-bold text-emerald-400">· {t('studio.interior.current')}</span>
+                                            ) : null}
                                         </button>
                                         {version.index !== project.currentVersionIndex && (
                                             <button
                                                 onClick={() => handleRollback(version)}
                                                 disabled={busy}
-                                                className="text-xs font-semibold text-[var(--accent-primary)] disabled:opacity-50"
+                                                className="text-xs font-semibold text-[var(--accent-primary)] hover:underline disabled:opacity-50 cursor-pointer"
                                             >
                                                 {t('studio.interior.rollback')}
                                             </button>
                                         )}
                                     </div>
-                                    <div className="mt-1 text-xs text-[var(--text-tertiary)]">{formatDateTime(version.createdAt)}</div>
+                                    <div className="mt-1 text-[11px] text-[var(--text-tertiary)]">{formatDateTime(version.createdAt)}</div>
                                 </div>
                             ))}
                         </div>
@@ -1568,7 +1579,7 @@ const InteriorDesignPage: React.FC = () => {
                     <div className="flex max-h-[90vh] w-full max-w-2xl flex-col rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] shadow-lg">
                         <div className="flex items-center justify-between gap-2 border-b border-[var(--border-primary)] px-5 py-4">
                             <div>
-                                <h3 className="text-lg font-bold text-[var(--text-primary)]">{t('studio.interior.proposal.title')}</h3>
+                                <h3 className="text-lg font-black bg-gradient-to-r from-amber-400 to-rose-400 bg-clip-text text-transparent">{t('studio.interior.proposal.title')}</h3>
                                 <p className="text-xs text-[var(--text-tertiary)]">
                                     {pendingProposal.aiModel}
                                     {pendingProposal.totalTokens != null
@@ -1697,7 +1708,7 @@ const InteriorDesignPage: React.FC = () => {
                     >
                         <div className="flex items-center justify-between border-b border-[var(--border-primary)] px-5 py-4">
                             <div>
-                                <h3 className="text-lg font-bold text-[var(--text-primary)]">{t('studio.interior.export.title')}</h3>
+                                <h3 className="text-lg font-black bg-gradient-to-r from-sky-400 to-indigo-400 bg-clip-text text-transparent">{t('studio.interior.export.title')}</h3>
                                 <p className="text-xs text-[var(--text-tertiary)]">{project.name}</p>
                             </div>
                             <button

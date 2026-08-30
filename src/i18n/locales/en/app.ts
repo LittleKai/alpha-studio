@@ -395,8 +395,9 @@ export default {
             downloadDesc: "A ready-to-run ZIP for Windows (no installer required) and mobile Android APK build.",
             downloadWindows: "Download for Windows",
             downloadAndroid: "Download Android APK",
-            downloadAndroidDesc: "Android App (Coming Soon)",
-            downloadAndroidNotice: "The Android APK is currently under development and will be officially released soon.",
+            downloadAndroidDesc: "Android App (Beta)",
+            downloadAndroidNotice: "The Android build is still being finished — some features are incomplete and it may be unstable. For the full feature set, download the Windows version instead.",
+            betaBadge: "Beta",
             comingSoonBadge: "Coming Soon",
             releaseLoading: "Checking version...",
             releaseVersion: "Version {{version}}",
@@ -568,6 +569,16 @@ export default {
         viewDetail: "View detail",
         download: "Download"
       },
+      accessLevels: {
+        public: "Free",
+        pro: "Pro"
+      },
+      locked: {
+        title: "Pro members only",
+        desc: "This item opens for accounts that have accumulated at least {credits} credits — both credits you topped up and credits granted to you count.",
+        progress: "You have accumulated {current}/{credits} credits.",
+        topUp: "Top up credits"
+      },
       detail: {
         backToLibrary: "Back to library",
         notFound: "This item could not be found",
@@ -611,6 +622,9 @@ export default {
           mine: "Mine",
           all: "All content"
         },
+        accessLevel: "Content access",
+        accessLevelPublicHint: "Anyone who can see this item reads the full body and attachments.",
+        accessLevelProHint: "Only accounts that have accumulated at least {credits} credits can open the body and attachments. Cover, title and summary stay visible to everyone.",
         basics: "Basics",
         taxonomy: "Classification",
         media: "Cover, metrics & files",
@@ -711,6 +725,12 @@ export default {
       backToList: "Back to list",
       backToStudio: "Back to Studio",
       backToSkills: "Back to Skills Hub",
+      admin: {
+        title: "Admin",
+        edit: "Edit skill",
+        delete: "Delete skill",
+        deleteFailed: "Could not delete the skill"
+      },
       overview: "Overview",
       setup: "Setup & Config",
       usage: "Usage Examples",

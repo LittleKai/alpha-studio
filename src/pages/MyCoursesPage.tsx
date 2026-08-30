@@ -4,6 +4,7 @@ import { useTranslation } from '../i18n/context';
 import { useAuth } from '../auth/context';
 import { getMyEnrolledCourses, Enrollment } from '../services/courseService';
 import { localizedText } from '../utils/localized';
+import { cdnFromUrl } from '../services/cloudinaryAssets';
 
 // Category color mapping
 const categoryColors: Record<string, string> = {
@@ -239,7 +240,7 @@ const MyCoursesPage: React.FC = () => {
                                     <div className="relative aspect-video">
                                         {course.thumbnail ? (
                                             <img
-                                                src={course.thumbnail}
+                                                src={cdnFromUrl(course.thumbnail, 'w_640')}
                                                 alt={getLocalizedText(course.title)}
                                                 className="w-full h-full object-cover"
                                             />

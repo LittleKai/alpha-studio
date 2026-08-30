@@ -1,54 +1,128 @@
 // Image Compression Service
-// Compresses images based on upload type before sending to Cloudinary
+// Resize + nén ảnh theo loại upload trước khi gửi lên Cloudinary hoặc B2.
+//
+// Mặc định xuất WebP: nhỏ hơn JPEG ~25-35% ở cùng chất lượng cảm nhận và vẫn
+// giữ alpha nên thay được cả PNG. Trình duyệt không encode được WebP
+// (Safari < 14) sẽ rơi về `format` của preset.
 
-export type ImageUploadType = 'avatar' | 'featured_work' | 'logo' | 'attachment' | 'general';
+export type ImageUploadType =
+  | 'avatar'
+  | 'logo'
+  | 'cover'
+  | 'content'
+  | 'featured_work'
+  | 'reference'
+  | 'attachment'
+  | 'general';
 
 export interface CompressionOptions {
   maxWidth: number;
   maxHeight: number;
   maxSizeKB: number;
   quality: number;
+  /** Định dạng dự phòng khi trình duyệt không encode được WebP. */
   format: 'image/jpeg' | 'image/png' | 'image/webp';
 }
 
 // Compression presets for different upload types
 const COMPRESSION_PRESETS: Record<ImageUploadType, CompressionOptions> = {
+  // Avatar user/instructor — hiển thị tối đa ~96px, 400px là dư gấp đôi cho màn retina
   avatar: {
     maxWidth: 400,
     maxHeight: 400,
-    maxSizeKB: 150,
+    maxSizeKB: 120,
+    quality: 0.85,
+    format: 'image/jpeg',
+  },
+  // Logo partner — cần alpha, WebP giữ được; fallback PNG
+  logo: {
+    maxWidth: 600,
+    maxHeight: 600,
+    maxSizeKB: 200,
+    quality: 0.9,
+    format: 'image/png',
+  },
+  // Ảnh bìa bài viết / thumbnail khoá học / cover thư viện — hiển thị tối đa w_1400
+  cover: {
+    maxWidth: 1600,
+    maxHeight: 1600,
+    maxSizeKB: 350,
+    quality: 0.85,
+    format: 'image/jpeg',
+  },
+  // Ảnh chèn trong bài (TinyMCE, gallery section) — hiển thị tối đa w_480..w_880
+  content: {
+    maxWidth: 1280,
+    maxHeight: 1280,
+    maxSizeKB: 250,
     quality: 0.85,
     format: 'image/jpeg',
   },
   featured_work: {
     maxWidth: 1200,
-    maxHeight: 800,
-    maxSizeKB: 500,
+    maxHeight: 1200,
+    maxSizeKB: 300,
+    quality: 0.88,
+    format: 'image/jpeg',
+  },
+  // Ảnh tham chiếu gửi cho AI (Gemini/Flow) — giữ chi tiết, chỉ chặn kích thước vô lý
+  reference: {
+    maxWidth: 1920,
+    maxHeight: 1920,
+    maxSizeKB: 900,
     quality: 0.9,
     format: 'image/jpeg',
   },
-  logo: {
-    maxWidth: 600,
-    maxHeight: 600,
-    maxSizeKB: 300,
-    quality: 0.92,
-    format: 'image/png',
-  },
   attachment: {
     maxWidth: 1920,
-    maxHeight: 1080,
-    maxSizeKB: 800,
+    maxHeight: 1920,
+    maxSizeKB: 600,
     quality: 0.88,
     format: 'image/jpeg',
   },
   general: {
     maxWidth: 1920,
     maxHeight: 1920,
-    maxSizeKB: 1024,
-    quality: 0.9,
+    maxSizeKB: 700,
+    quality: 0.88,
     format: 'image/jpeg',
   },
 };
+
+/** Trình duyệt encode được WebP qua canvas hay không (dò một lần rồi nhớ). */
+let webpEncodeSupport: boolean | null = null;
+
+export function canEncodeWebp(): boolean {
+  if (webpEncodeSupport !== null) return webpEncodeSupport;
+  try {
+    const canvas = document.createElement('canvas');
+    canvas.width = 1;
+    canvas.height = 1;
+    webpEncodeSupport = canvas.toDataURL('image/webp').startsWith('data:image/webp');
+  } catch {
+    webpEncodeSupport = false;
+  }
+  return webpEncodeSupport;
+}
+
+export interface CompressImageOptions {
+  /**
+   * Giữ nguyên định dạng gốc thay vì chuyển WebP — chỉ resize + nén lại.
+   * Dùng cho ảnh sẽ đi tiếp vào một hệ thống bên thứ ba mà ta không kiểm soát
+   * được khả năng đọc WebP (ví dụ ảnh tham chiếu paste vào Google Flow).
+   */
+  keepFormat?: boolean;
+}
+
+/** Định dạng đích: WebP nếu encode được, không thì fallback của preset. */
+function resolveOutputFormat(
+  options: CompressionOptions,
+  sourceType?: string,
+  keepFormat?: boolean
+): string {
+  if (keepFormat && sourceType) return sourceType;
+  return canEncodeWebp() ? 'image/webp' : options.format;
+}
 
 /**
  * Load an image file into an HTMLImageElement
@@ -125,20 +199,23 @@ function canvasToBlob(
  */
 async function compressWithTargetSize(
   canvas: HTMLCanvasElement,
-  options: CompressionOptions
+  options: CompressionOptions,
+  format: string,
+  allowFormatSwitch: boolean
 ): Promise<Blob> {
   const maxSizeBytes = options.maxSizeKB * 1024;
   let quality = options.quality;
-  let blob = await canvasToBlob(canvas, options.format, quality);
+  let blob = await canvasToBlob(canvas, format, quality);
 
   // Progressively reduce quality until size target is met
   while (blob.size > maxSizeBytes && quality > 0.1) {
     quality -= 0.05;
-    blob = await canvasToBlob(canvas, options.format, quality);
+    blob = await canvasToBlob(canvas, format, quality);
   }
 
-  // If still too large and format is PNG, try converting to JPEG
-  if (blob.size > maxSizeBytes && options.format === 'image/png') {
+  // PNG bỏ qua tham số quality nên vòng lặp trên không giảm được gì —
+  // chuyển sang JPEG. Chỉ xảy ra khi trình duyệt không encode được WebP.
+  if (allowFormatSwitch && blob.size > maxSizeBytes && format === 'image/png') {
     quality = options.quality;
     blob = await canvasToBlob(canvas, 'image/jpeg', quality);
 
@@ -151,6 +228,12 @@ async function compressWithTargetSize(
   return blob;
 }
 
+function extensionForType(mime: string): string {
+  if (mime === 'image/png') return '.png';
+  if (mime === 'image/webp') return '.webp';
+  return '.jpg';
+}
+
 /**
  * Compress an image file based on upload type
  * @param file - Original image file
@@ -159,7 +242,8 @@ async function compressWithTargetSize(
  */
 export async function compressImage(
   file: File,
-  uploadType: ImageUploadType = 'general'
+  uploadType: ImageUploadType = 'general',
+  compressOptions: CompressImageOptions = {}
 ): Promise<File> {
   // Skip compression for non-image files
   if (!file.type.startsWith('image/')) {
@@ -177,23 +261,18 @@ export async function compressImage(
   }
 
   const options = COMPRESSION_PRESETS[uploadType];
-
-  // Check if compression is needed
-  const fileSizeKB = file.size / 1024;
-  if (fileSizeKB <= options.maxSizeKB) {
-    // Still resize if dimensions exceed limits
-    try {
-      const img = await loadImage(file);
-      if (img.width <= options.maxWidth && img.height <= options.maxHeight) {
-        return file; // No compression needed
-      }
-    } catch {
-      return file;
-    }
-  }
+  const targetFormat = resolveOutputFormat(options, file.type, compressOptions.keepFormat);
 
   try {
     const img = await loadImage(file);
+    const withinDimensions = img.width <= options.maxWidth && img.height <= options.maxHeight;
+    const withinSize = file.size / 1024 <= options.maxSizeKB;
+
+    // Đã đúng định dạng đích, đủ nhỏ và đúng kích thước → không re-encode
+    // (encode lại một ảnh lossy đã tối ưu chỉ làm mất thêm chất lượng).
+    if (file.type === targetFormat && withinDimensions && withinSize) {
+      return file;
+    }
 
     // Calculate new dimensions
     const { width, height } = calculateDimensions(
@@ -220,13 +299,16 @@ export async function compressImage(
     ctx.drawImage(img, 0, 0, width, height);
 
     // Compress with target size
-    const blob = await compressWithTargetSize(canvas, options);
+    const blob = await compressWithTargetSize(canvas, options, targetFormat, !compressOptions.keepFormat);
+
+    // Không có lợi gì khi bản nén lại to hơn bản gốc (ảnh nhỏ, phẳng, đã tối ưu)
+    if (blob.size >= file.size && withinDimensions) {
+      return file;
+    }
 
     // Generate new filename with correct extension
-    const extension = blob.type === 'image/png' ? '.png' :
-                      blob.type === 'image/webp' ? '.webp' : '.jpg';
     const baseName = file.name.replace(/\.[^/.]+$/, '');
-    const newFileName = `${baseName}_compressed${extension}`;
+    const newFileName = `${baseName}${extensionForType(blob.type)}`;
 
     return new File([blob], newFileName, { type: blob.type });
   } catch (error) {
@@ -260,7 +342,7 @@ export function needsCompression(file: File, uploadType: ImageUploadType): boole
   }
 
   const options = COMPRESSION_PRESETS[uploadType];
-  const fileSizeKB = file.size / 1024;
+  if (file.type !== resolveOutputFormat(options)) return true;
 
-  return fileSizeKB > options.maxSizeKB;
+  return file.size / 1024 > options.maxSizeKB;
 }

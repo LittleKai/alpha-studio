@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
-import StudioBackButton from '../components/studio/StudioBackButton';
+import StudioBackNav from '../components/studio/StudioBackNav';
 import { useConfirm } from '../components/ui/ConfirmDialog';
 import { useAuth } from '../auth/context';
 import { localized, EventLibraryGridCard } from '../components/library/EventLibraryCard';
@@ -11,7 +11,8 @@ import { cdnFromUrl } from '../services/cloudinaryAssets';
 import LibraryEngagement from '../components/library/LibraryEngagement';
 import {
     getLibraryItem, markLibraryItemUsed, updateLibraryItem, deleteLibraryItem,
-    type EventLibraryItem, type LibraryReview
+    PRO_MIN_LIFETIME_CREDITS,
+    type EventLibraryItem, type LibraryAccess, type LibraryReview
 } from '../services/eventLibraryService';
 
 const ACCENT = '#7c5cff';
@@ -22,6 +23,50 @@ function MetaRow({ label, value }: { label: string; value: string }) {
         <div className="flex items-start justify-between gap-4 py-2 border-b border-[var(--border-primary)] last:border-b-0">
             <span className="text-sm text-[var(--text-tertiary)] shrink-0">{label}</span>
             <span className="text-sm font-semibold text-right" style={{ color: ACCENT }}>{value}</span>
+        </div>
+    );
+}
+
+/**
+ * Thay chỗ của thân bài khi mục ở cấp `pro` mà người xem chưa đủ credit tích
+ * luỹ. Backend đã cắt nội dung trước khi trả về — panel này chỉ giải thích lý
+ * do và chỉ đường nạp credit.
+ */
+function ProLockPanel({ access }: { access: LibraryAccess }) {
+    const { t } = useTranslation();
+    const required = access.requiredCredits || PRO_MIN_LIFETIME_CREDITS;
+
+    return (
+        <div
+            className="rounded-2xl border p-8 text-center"
+            style={{ backgroundColor: `${ACCENT}0d`, borderColor: `${ACCENT}40` }}
+        >
+            <div
+                className="w-14 h-14 mx-auto mb-4 rounded-2xl flex items-center justify-center"
+                style={{ backgroundColor: `${ACCENT}1f` }}
+            >
+                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke={ACCENT} strokeWidth="1.8">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+            </div>
+            <h2 className="text-xl font-bold mb-2 text-[var(--text-primary)]">
+                {t('eventLibrary.locked.title')}
+            </h2>
+            <p className="text-[15px] text-[var(--text-secondary)] leading-relaxed max-w-md mx-auto">
+                {t('eventLibrary.locked.desc').replace('{credits}', String(required))}
+            </p>
+            <p className="text-sm text-[var(--text-tertiary)] mt-3">
+                {t('eventLibrary.locked.progress')
+                    .replace('{current}', String(access.lifetimeCredits))
+                    .replace('{credits}', String(required))}
+            </p>
+            <Link
+                to="/wallet"
+                style={{ backgroundColor: ACCENT }}
+                className="inline-block mt-5 px-5 py-2.5 rounded-lg text-sm font-semibold text-white hover:opacity-90 transition-all"
+            >
+                {t('eventLibrary.locked.topUp')}
+            </Link>
         </div>
     );
 }
@@ -40,6 +85,10 @@ export default function EventLibraryItemPage() {
     const [busy, setBusy] = useState(false);
     const [me, setMe] = useState({ liked: false, score: 0, comment: '' });
     const [reviews, setReviews] = useState<LibraryReview[]>([]);
+    const [access, setAccess] = useState<LibraryAccess>({
+        level: 'public', unlocked: true,
+        requiredCredits: PRO_MIN_LIFETIME_CREDITS, lifetimeCredits: 0
+    });
 
     useEffect(() => {
         if (!slug) return;
@@ -53,6 +102,7 @@ export default function EventLibraryItemPage() {
                 setRelated(res.related);
                 setMe(res.me);
                 setReviews(res.reviews);
+                setAccess(res.access);
                 // `ScrollToTop` trong App.tsx chạy ngay khi đổi route, lúc trang còn
                 // rỗng; chiều cao chỉ tăng sau khi dữ liệu về nên phải đưa lại về
                 // đầu — nếu không, bấm liên kết ở cuối bài sẽ rơi vào vùng trống.
@@ -112,7 +162,7 @@ export default function EventLibraryItemPage() {
     if (notFound || !item) {
         return (
             <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
-                <StudioBackButton />
+                <StudioBackNav to="/studio/event-library" label={t('eventLibrary.detail.backToLibrary')} />
                 <div className="max-w-2xl mx-auto px-6 py-32 text-center">
                     <h1 className="text-2xl font-bold mb-3">{t('eventLibrary.detail.notFound')}</h1>
                     <Link
@@ -130,23 +180,15 @@ export default function EventLibraryItemPage() {
     const title = localized(item.title, language);
     const summary = localized(item.summary, language);
     const content = localized(item.content, language);
+    const locked = !access.unlocked;
 
     return (
         <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pb-20">
             <SEOHead title={title} description={summary} path={`/studio/event-library/${item.slug}`} />
-            <StudioBackButton />
+            <StudioBackNav to="/studio/event-library" label={t('eventLibrary.detail.backToLibrary')} />
 
-            <div className="max-w-6xl mx-auto px-6 pt-4 pb-12">
-                <Link
-                    to="/studio/event-library"
-                    className="inline-flex items-center gap-1.5 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-6 transition-colors"
-                >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                    </svg>
-                    {t('eventLibrary.detail.backToLibrary')}
-                </Link>
-
+            {/* pt-16: chừa chỗ cho cụm nút quay lại nổi ở góc trên trái */}
+            <div className="max-w-6xl mx-auto px-6 pt-16 pb-12">
                 {item.coverImage && (
                     <img
                         src={cdnFromUrl(item.coverImage, 'w_1400')}
@@ -176,6 +218,11 @@ export default function EventLibraryItemPage() {
                     >
                         {t('eventLibrary.types.' + item.itemType)}
                     </span>
+                    {item.accessLevel === 'pro' && (
+                        <span className="text-[10px] font-bold tracking-wider px-2 py-0.5 rounded border uppercase bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30">
+                            {t('eventLibrary.accessLevels.pro')}
+                        </span>
+                    )}
                     <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)]">
                         {item.ownership === 'platform'
                             ? t('eventLibrary.origins.platform')
@@ -209,53 +256,59 @@ export default function EventLibraryItemPage() {
                             </div>
                         )}
 
-                        {(item.sections || []).filter(s => !isSectionEmpty(s)).map((section, idx) => (
-                            <SectionRenderer key={idx} section={section} index={idx} />
-                        ))}
+                        {locked ? (
+                            <ProLockPanel access={access} />
+                        ) : (
+                            <>
+                            {(item.sections || []).filter(s => !isSectionEmpty(s)).map((section, idx) => (
+                                <SectionRenderer key={idx} section={section} index={idx} />
+                            ))}
 
-                        {content ? (
-                            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 shadow-sm">
-                                <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-violet-600 dark:text-violet-400">
-                                    <span className="w-1.5 h-5 rounded-full bg-violet-500" />
-                                    {t('eventLibrary.detail.content')}
-                                </h2>
-                                <div
-                                    className="tinymce-content text-[var(--text-primary)] leading-relaxed [&_h1]:text-violet-600 [&_h1]:dark:text-violet-400 [&_h2]:text-indigo-600 [&_h2]:dark:text-indigo-400 [&_h3]:text-sky-600 [&_h3]:dark:text-sky-400 [&_h4]:text-teal-600 [&_h4]:dark:text-teal-400"
-                                    dangerouslySetInnerHTML={{ __html: content }}
-                                />
-                            </div>
-                        ) : item.sections?.length ? null : (
-                            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 text-base text-[var(--text-secondary)]">
-                                {t('eventLibrary.detail.noContent')}
-                            </div>
-                        )}
-
-                        {item.attachments.length > 0 && (
-                            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 shadow-sm">
-                                <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-sky-600 dark:text-sky-400">
-                                    <span className="w-1.5 h-5 rounded-full bg-sky-500" />
-                                    {t('eventLibrary.detail.attachments')}
-                                </h2>
-                                <div className="space-y-2">
-                                    {item.attachments.map((attachment, idx) => (
-                                        <a
-                                            key={`${attachment.url}-${idx}`}
-                                            href={attachment.url}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            onClick={() => markLibraryItemUsed(item.slug)}
-                                            className="flex items-center justify-between gap-4 px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-colors"
-                                        >
-                                            <span className="text-sm font-medium text-[var(--text-primary)] truncate">
-                                                {attachment.name}
-                                            </span>
-                                            <span className="text-xs text-[var(--text-tertiary)] shrink-0">
-                                                {attachment.size || t('eventLibrary.actions.download')}
-                                            </span>
-                                        </a>
-                                    ))}
+                            {content ? (
+                                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 shadow-sm">
+                                    <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-violet-600 dark:text-violet-400">
+                                        <span className="w-1.5 h-5 rounded-full bg-violet-500" />
+                                        {t('eventLibrary.detail.content')}
+                                    </h2>
+                                    <div
+                                        className="tinymce-content text-[var(--text-primary)] leading-relaxed [&_h1]:text-violet-600 [&_h1]:dark:text-violet-400 [&_h2]:text-indigo-600 [&_h2]:dark:text-indigo-400 [&_h3]:text-sky-600 [&_h3]:dark:text-sky-400 [&_h4]:text-teal-600 [&_h4]:dark:text-teal-400"
+                                        dangerouslySetInnerHTML={{ __html: content }}
+                                    />
                                 </div>
-                            </div>
+                            ) : item.sections?.length ? null : (
+                                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 text-base text-[var(--text-secondary)]">
+                                    {t('eventLibrary.detail.noContent')}
+                                </div>
+                            )}
+
+                            {item.attachments.length > 0 && (
+                                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 shadow-sm">
+                                    <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-sky-600 dark:text-sky-400">
+                                        <span className="w-1.5 h-5 rounded-full bg-sky-500" />
+                                        {t('eventLibrary.detail.attachments')}
+                                    </h2>
+                                    <div className="space-y-2">
+                                        {item.attachments.map((attachment, idx) => (
+                                            <a
+                                                key={`${attachment.url}-${idx}`}
+                                                href={attachment.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                onClick={() => markLibraryItemUsed(item.slug)}
+                                                className="flex items-center justify-between gap-4 px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-colors"
+                                            >
+                                                <span className="text-sm font-medium text-[var(--text-primary)] truncate">
+                                                    {attachment.name}
+                                                </span>
+                                                <span className="text-xs text-[var(--text-tertiary)] shrink-0">
+                                                    {attachment.size || t('eventLibrary.actions.download')}
+                                                </span>
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                            </>
                         )}
                     </div>
 

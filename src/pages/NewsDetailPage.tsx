@@ -4,6 +4,7 @@ import { useTranslation } from '../i18n/context';
 import { getArticleBySlug, type Article } from '../services/articleService';
 import SEOHead from '../components/ui/SEOHead';
 import { localizedText } from '../utils/localized';
+import { cdnFromUrl } from '../services/cloudinaryAssets';
 
 export default function NewsDetailPage() {
     const { slug } = useParams<{ slug: string }>();
@@ -91,7 +92,7 @@ export default function NewsDetailPage() {
                 {article.thumbnail && (
                     <div className="aspect-video rounded-2xl overflow-hidden mb-8">
                         <img
-                            src={article.thumbnail}
+                            src={cdnFromUrl(article.thumbnail, 'w_1400')}
                             alt={localizedText(article.title, language)}
                             className="w-full h-full object-cover"
                         />

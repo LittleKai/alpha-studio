@@ -433,6 +433,8 @@ export default {
     storage: {
       deleteFileConfirm: "Delete this file permanently?",
       deleteBulkConfirm: "Delete {count} selected files permanently?",
+      deleteFailed: "Delete failed",
+      bulkResult: "Deleted {deleted} files. {skipped} skipped because they are still referenced — reload the list to see them.",
     },
     webhooks: {
       reprocessConfirm: "Reprocess this webhook?",

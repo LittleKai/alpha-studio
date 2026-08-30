@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
 import { useConfirm } from '../ui/ConfirmDialog';
@@ -21,14 +21,16 @@ import {
 import { Editor } from '@tinymce/tinymce-react';
 import { uploadToCloudinary } from '../../services/cloudinaryService';
 import { uploadToB2, isB2Url, getB2SignedUrl } from '../../services/b2StorageService';
+import { compressImage } from '../../services/imageCompression';
 import LoadingSpinner from '../ui/LoadingSpinner';
 // StudentProfileModal and PartnerRegistrationModal not used - moved to separate view components
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
-import { JobsView, PartnersView, PromptsView, LibraryPublisherView } from './views';
+import { JobsView, PartnersView, PromptsView, LibraryPublisherView, SkillsView } from './views';
 import ProfileEditModal from '../modals/ProfileEditModal';
 import PublishToLibraryModal, { type PublishSource } from '../modals/PublishToLibraryModal';
 import './WorkflowDashboard.css';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 type WorkflowIconName = 'back' | 'files' | 'projects' | 'jobs' | 'partners' | 'affiliate' | 'prompts' | 'library' | 'exit' | 'search' | 'user' | 'plus' | 'calendar' | 'creative' | 'operations' | 'arrowRight' | 'book' | 'archive';
 
@@ -150,8 +152,27 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   const { id: projectIdParam } = useParams<{ id: string }>();
 
   // Navigation State
-  const [activeView, setActiveView] = useState<'documents' | 'projects' | 'jobs' | 'partners' | 'automation' | 'affiliate' | 'creative' | 'library'>('documents');
+  const [searchParams, setSearchParams] = useSearchParams();
+  // Deep link: /workflow?view=skills&edit=<slug> — nút Sửa trên trang chi tiết
+  // skill mở tab mới vào đúng view này với form đã nạp sẵn.
+  const [activeView, setActiveView] = useState<'documents' | 'projects' | 'jobs' | 'partners' | 'automation' | 'affiliate' | 'creative' | 'library' | 'skills'>(
+    searchParams.get('view') === 'skills' ? 'skills' : 'documents'
+  );
+  const [initialEditSkillSlug, setInitialEditSkillSlug] = useState<string | null>(
+    searchParams.get('view') === 'skills' ? searchParams.get('edit') : null
+  );
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Bỏ ?edit=<slug> sau khi form đã mở để F5 không mở lại modal
+  const clearSkillEditParam = React.useCallback(() => {
+    setInitialEditSkillSlug(null);
+    setSearchParams(prev => {
+      const next = new URLSearchParams(prev);
+      next.delete('edit');
+      return next;
+    }, { replace: true });
+  }, [setSearchParams]);
+
   // partnerFilter moved to PartnersView component
 
   // Collaboration State
@@ -249,8 +270,10 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.[0]) return;
-    const file = e.target.files[0];
+    const picked = e.target.files[0];
     e.target.value = '';
+    // Tài liệu giữ nguyên; ảnh thì resize + WebP trước khi lên B2 (B2 không transform được)
+    const file = await compressImage(picked, 'attachment');
 
     // Non-admin users: file size limit (10 MB) and personal file count limit (20)
     if (user?.role !== 'admin') {
@@ -876,7 +899,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                           {t('workflow.dashboard.project.backToProjects')}
                       </button>
                       {selectedProject.avatar ? (
-                          <img src={selectedProject.avatar} alt="" className="workflow-project-header-avatar" />
+                          <img src={cdnFromUrl(selectedProject.avatar, 'w_128')} alt="" className="workflow-project-header-avatar" />
                       ) : (
                           <span className="workflow-project-header-avatar workflow-project-header-avatar-fallback">
                               <WorkflowIcon name={selectedProject.department === 'event_planner' ? 'calendar' : selectedProject.department === 'creative' ? 'creative' : 'operations'} />
@@ -1010,7 +1033,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                   return (
                                       <div key={member.id} className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-5 rounded-xl flex items-start gap-4">
                                           <img
-                                              src={member.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random`}
+                                              src={cdnFromUrl(member.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random`, 'w_128')}
                                               className="w-14 h-14 rounded-full object-cover flex-shrink-0 border-2 border-[var(--border-primary)]"
                                           />
                                           <div className="flex-1 min-w-0">
@@ -1107,7 +1130,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                         .map(u => (
                                         <div key={u.id} onClick={() => handleAddMemberToProject(u)} className="flex justify-between items-center p-2 hover:bg-[var(--bg-secondary)] rounded cursor-pointer border border-transparent hover:border-[var(--border-primary)]">
                                             <div className="flex items-center gap-2">
-                                                <img src={u.avatar} className="w-8 h-8 rounded-full object-cover" />
+                                                <img src={cdnFromUrl(u.avatar, 'w_128')} className="w-8 h-8 rounded-full object-cover" />
                                                 <div>
                                                     <p className="text-sm font-medium">{u.name}</p>
                                                     <p className="text-xs text-[var(--text-tertiary)]">{u.role}</p>
@@ -1405,7 +1428,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                           <div className="workflow-project-identity">
                               <span className={`workflow-project-avatar ${!project.avatar ? deptBadge.bg : ''}`}>
                                   {project.avatar ? (
-                                      <img src={project.avatar} alt="" />
+                                      <img src={cdnFromUrl(project.avatar, 'w_128')} alt="" />
                                   ) : (
                                       <span className="text-2xl">{project.department === 'event_planner' ? '📅' : project.department === 'creative' ? '🎨' : '⚙️'}</span>
                                   )}
@@ -1438,7 +1461,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                           <div className="workflow-project-meta">
                               <div className="workflow-team-stack" aria-label={`${project.team.length} ${t('workflow.teamMembers')}`}>
                                   {project.team.slice(0, 3).map(member => member.avatar ? (
-                                      <img key={member.id} src={member.avatar} alt={member.name} />
+                                      <img key={member.id} src={cdnFromUrl(member.avatar, 'w_128')} alt={member.name} />
                                   ) : (
                                       <span key={member.id}>{member.name.charAt(0).toUpperCase()}</span>
                                   ))}
@@ -1494,6 +1517,13 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       );
       case 'jobs': return <JobsView searchQuery={searchQuery} />;
       case 'partners': return <PartnersView searchQuery={searchQuery} />;
+      case 'skills': return (
+        <SkillsView
+          searchQuery={searchQuery}
+          initialEditSlug={initialEditSkillSlug}
+          onInitialEditConsumed={clearSkillEditParam}
+        />
+      );
       default: return (
         <div className="workflow-content-scroll workflow-documents-page">
             <div className="workflow-page-heading">
@@ -1625,6 +1655,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       affiliate: t('workflow.sidebar.affiliate'),
       creative: t('workflow.sidebar.sharePrompts'),
       library: t('workflow.sidebar.libraryPublisher'),
+      skills: t('workflow.sidebar.skillsLibrary'),
   }[activeView];
 
   return (
@@ -1694,6 +1725,14 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                             </span>
                             <span>{t('workflow.sidebar.libraryPublisher')}</span>
                         </button>
+                        {user?.role === 'admin' && (
+                            <button onClick={() => { setActiveView('skills'); setSelectedProject(null); }} className={`workflow-nav-item ${activeView === 'skills' ? 'is-active' : ''}`} title={t('workflow.sidebar.skillsLibrary')}>
+                                <span className="workflow-nav-icon-wrap bg-orange-500/15 text-orange-400 border border-orange-500/30 text-xl">
+                                    🧠
+                                </span>
+                                <span>{t('workflow.sidebar.skillsLibrary')}</span>
+                            </button>
+                        )}
                     </div>
                 </section>
             </nav>
@@ -1718,7 +1757,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                  <div className="workflow-topbar-actions">
                      <div className="workflow-switchers"><LanguageSwitcher /><ThemeSwitcher /></div>
                      <button onClick={() => setShowProfileModal(true)} className="workflow-profile-button" aria-label={userProfile.name}>
-                         {user?.avatar ? <img src={user.avatar} alt="" /> : userProfile.name.charAt(0).toUpperCase()}
+                         {user?.avatar ? <img src={cdnFromUrl(user.avatar, 'w_128')} alt="" /> : userProfile.name.charAt(0).toUpperCase()}
                      </button>
                  </div>
             </header>
@@ -1744,7 +1783,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                         <div className="relative z-10 px-6 pb-6 -mt-12">
                             {/* Avatar */}
                             <img
-                                src={avatarUrl}
+                                src={cdnFromUrl(avatarUrl, 'w_256')}
                                 className="w-24 h-24 rounded-full object-cover border-4 border-[var(--bg-card)] shadow-xl mb-4 relative z-20"
                                 alt={member.name}
                             />
@@ -1952,7 +1991,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                     <div className="space-y-4">
                         <div className="flex items-center gap-4">
                             <div className="w-16 h-16 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] flex items-center justify-center overflow-hidden flex-shrink-0">
-                                {editProjectData.avatar ? <img src={editProjectData.avatar} className="w-full h-full object-cover" /> : <span className="text-2xl">📁</span>}
+                                {editProjectData.avatar ? <img src={cdnFromUrl(editProjectData.avatar, 'w_128')} className="w-full h-full object-cover" /> : <span className="text-2xl">📁</span>}
                             </div>
                             <label className="flex-1 cursor-pointer">
                                 <span className="text-xs text-[var(--text-secondary)] block mb-1">{t('workflow.dashboard.project.editAvatar')}</span>
@@ -2016,14 +2055,21 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                     images_upload_handler: async (blobInfo: any) => {
                                         const token = localStorage.getItem('alpha_studio_token');
                                         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+                                        // B2 không có tầng transform như Cloudinary — phải resize +
+                                        // chuyển WebP ngay ở client, nếu không ảnh gốc vào thẳng bucket.
+                                        const raw = blobInfo.blob();
+                                        const file = await compressImage(
+                                            new File([raw], blobInfo.filename() || 'image.png', { type: raw.type || 'image/png' }),
+                                            'content'
+                                        );
                                         const res = await fetch(`${apiUrl}/upload/presign`, {
                                             method: 'POST',
                                             headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-                                            body: JSON.stringify({ filename: blobInfo.filename() || 'image.png', contentType: blobInfo.blob().type || 'image/png', folder: 'project-descriptions' }),
+                                            body: JSON.stringify({ filename: file.name, contentType: file.type || 'image/png', folder: 'project-descriptions' }),
                                         });
                                         if (!res.ok) throw new Error('Upload failed');
                                         const { data } = await res.json();
-                                        await fetch(data.presignedUrl, { method: 'PUT', body: blobInfo.blob(), headers: { 'Content-Type': blobInfo.blob().type } });
+                                        await fetch(data.presignedUrl, { method: 'PUT', body: file, headers: { 'Content-Type': file.type } });
                                         return data.publicUrl;
                                     },
                                 }}

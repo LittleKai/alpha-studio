@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface ProfileEditModalProps {
     isOpen: boolean;
@@ -159,7 +160,7 @@ const ProfileEditModal: React.FC<ProfileEditModalProps> = ({ isOpen, onClose }) 
                 <div className="h-32 relative">
                     {user?.backgroundImage ? (
                         <img
-                            src={user.backgroundImage}
+                            src={cdnFromUrl(user.backgroundImage, 'w_640')}
                             alt="Background"
                             className="w-full h-full object-cover"
                         />
@@ -188,7 +189,7 @@ const ProfileEditModal: React.FC<ProfileEditModalProps> = ({ isOpen, onClose }) 
                             <div className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-[var(--bg-card)] shadow-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex-shrink-0 relative z-20">
                                 {user?.avatar ? (
                                     <img
-                                        src={user.avatar}
+                                        src={cdnFromUrl(user.avatar, 'w_256')}
                                         alt={user.name}
                                         className="w-full h-full object-cover"
                                     />
@@ -290,7 +291,7 @@ const ProfileEditModal: React.FC<ProfileEditModalProps> = ({ isOpen, onClose }) 
                                 {extendedUser.featuredWorks.slice(0, 3).map((work, index) => (
                                     <div key={index} className="relative aspect-video rounded-xl overflow-hidden group border border-[var(--border-primary)]">
                                         <img
-                                            src={work.image}
+                                            src={cdnFromUrl(work.image, 'w_320')}
                                             alt={work.title}
                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                                         />

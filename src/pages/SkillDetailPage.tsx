@@ -2,8 +2,10 @@ import { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
-import StudioBackButton from '../components/studio/StudioBackButton';
-import { getSkillBySlug, getSkills, type SkillDetail, type Skill } from '../services/skillService';
+import StudioBackNav from '../components/studio/StudioBackNav';
+import DeleteConfirmModal from '../components/ui/DeleteConfirmModal';
+import { useAuth } from '../auth/context';
+import { getSkillBySlug, getSkills, deleteSkill, type SkillDetail, type Skill } from '../services/skillService';
 
 // Skill interface now imported from skillService
 
@@ -131,6 +133,11 @@ export default function SkillDetailPage() {
   const [copiedUsage, setCopiedUsage] = useState(false);
   const [copiedAlternative, setCopiedAlternative] = useState(false);
   const [activeSection, setActiveSection] = useState('overview');
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
+
+  const { user, token } = useAuth();
+  const isAdmin = user?.role === 'admin';
 
   useEffect(() => {
     setLoading(true);
@@ -185,6 +192,26 @@ export default function SkillDetailPage() {
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       setActiveSection(id);
+    }
+  };
+
+  // Sửa skill dùng chung bộ đăng ở /workflow — mở tab mới, form nạp sẵn skill này
+  const handleEdit = () => {
+    if (!skill) return;
+    window.open(`/workflow?view=skills&edit=${encodeURIComponent(skill.slug)}`, '_blank', 'noopener');
+  };
+
+  const handleDelete = async () => {
+    if (!skill || !token) return;
+    try {
+      await deleteSkill(skill.slug, token);
+      // Danh sách công khai đọc từ sessionStorage — xoá để không hiện skill đã xoá
+      sessionStorage.removeItem('alpha_skills_cache_v3');
+      sessionStorage.removeItem('alpha_skills_cache_ts_v3');
+      navigate('/studio/ai-skills');
+    } catch (err) {
+      setDeleteError(err instanceof Error ? err.message : t('skills.admin.deleteFailed'));
+      setShowDeleteModal(false);
     }
   };
 
@@ -290,13 +317,11 @@ export default function SkillDetailPage() {
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pb-20">
       <SEOHead title={skill.name} description={headline} path={`/studio/ai-skills/${skill.slug}`} />
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        {/* Back navigation buttons */}
-        <div className="flex flex-wrap items-center gap-3 mb-6">
-          <StudioBackButton variant="inline" to="/studio" />
-          <StudioBackButton variant="inline" to="/studio/ai-skills" label={t('skills.backToSkills')} />
-        </div>
-        
+      {/* pt-16: chừa chỗ cho cụm nút quay lại nổi ở góc trên trái */}
+      <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">
+        {/* Back navigation — cụm nút nổi dùng chung cho mọi trang con công cụ */}
+        <StudioBackNav to="/studio/ai-skills" label={t('skills.backToSkills')} />
+
         {/* TOP HEADER SECTION (Matches screenshot layout) */}
         <div className="relative bg-[var(--bg-card)] p-6 md:p-8 rounded-2xl border border-[var(--border-primary)] mb-8 overflow-hidden shadow-sm">
           <div className="flex flex-col md:flex-row gap-6 items-start">
@@ -384,6 +409,37 @@ export default function SkillDetailPage() {
           {/* Left Column: Sidebar Cards (terminal install, navigation menu, author info) */}
           <div className="lg:col-span-1 lg:sticky lg:top-24 space-y-6 self-start">
             
+              {/* Admin: sửa / xoá skill — form nằm trong bộ đăng ở /workflow */}
+            {isAdmin && (
+              <div className="bg-[var(--bg-card)] p-5 rounded-2xl border border-orange-500/25 shadow-md space-y-2.5">
+                <h4 className="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider flex items-center gap-2">
+                  <span className="w-1.5 h-3.5 rounded-full bg-orange-500" />
+                  {t('skills.admin.title')}
+                </h4>
+                <button
+                  onClick={handleEdit}
+                  className="w-full py-2.5 bg-[var(--bg-secondary)] hover:bg-[var(--accent-primary)]/10 border border-[var(--border-primary)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] hover:text-[var(--accent-primary)] rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                  </svg>
+                  {t('skills.admin.edit')}
+                </button>
+                <button
+                  onClick={() => setShowDeleteModal(true)}
+                  className="w-full py-2.5 bg-[var(--bg-secondary)] hover:bg-red-500/10 border border-[var(--border-primary)] hover:border-red-500/50 text-[var(--text-secondary)] hover:text-red-400 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                  {t('skills.admin.delete')}
+                </button>
+                {deleteError && (
+                  <p className="text-xs text-red-400">{deleteError}</p>
+                )}
+              </div>
+            )}
+
             {/* Quick Install terminal style card */}
             {skill.install_command && (
               <div className="bg-[#0b1629] p-5 rounded-2xl border border-[var(--border-primary)] space-y-3 shadow-xl">
@@ -952,6 +1008,14 @@ export default function SkillDetailPage() {
         </div>
 
       </div>
+
+      {showDeleteModal && (
+        <DeleteConfirmModal
+          itemName={skill.name}
+          onConfirm={handleDelete}
+          onCancel={() => setShowDeleteModal(false)}
+        />
+      )}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { Partner } from '../../services/partnerService';
 import { localizedText } from '../../utils/localized';
+import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface PartnerCardProps {
     partner: Partner;
@@ -53,7 +54,7 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
             <div className="relative aspect-video bg-[var(--bg-secondary)]">
                 {partner.logo ? (
                     <img
-                        src={partner.logo}
+                        src={cdnFromUrl(partner.logo, 'w_320')}
                         alt={partner.companyName}
                         className="w-full h-full object-contain p-4"
                     />
