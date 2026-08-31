@@ -55,6 +55,13 @@ export default {
       update: "Cập nhật",
       saving: "Đang lưu...",
       sectionsTitle: "Nội dung chi tiết",
+      groups: {
+        basics: "Thông tin cơ bản",
+        intro: "Tiêu đề & mô tả ngắn",
+        classification: "Phân loại",
+        install: "Cài đặt & nguồn",
+        tags: "Thẻ & tương thích"
+      },
       fields: {
         none: "(không)",
         name: "Tên skill",

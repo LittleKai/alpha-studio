@@ -590,6 +590,7 @@ export default {
         author: "Published by",
         source: "Source",
         manage: "Manage",
+        edit: "Edit item",
         makePrivate: "Make private",
         makePublic: "Make public",
         delete: "Remove from library",

@@ -6,6 +6,7 @@ import StudioBackNav from '../components/studio/StudioBackNav';
 import { useConfirm } from '../components/ui/ConfirmDialog';
 import { useAuth } from '../auth/context';
 import { localized, EventLibraryGridCard } from '../components/library/EventLibraryCard';
+import ImageLightbox from '../components/library/ImageLightbox';
 import SectionRenderer, { isSectionEmpty } from '../components/library/SectionRenderer';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
 import LibraryEngagement from '../components/library/LibraryEngagement';
@@ -84,6 +85,7 @@ export default function EventLibraryItemPage() {
     const [notFound, setNotFound] = useState(false);
     const [busy, setBusy] = useState(false);
     const [me, setMe] = useState({ liked: false, score: 0, comment: '' });
+    const [preview, setPreview] = useState<string | null>(null);
     const [reviews, setReviews] = useState<LibraryReview[]>([]);
     const [access, setAccess] = useState<LibraryAccess>({
         level: 'public', unlocked: true,
@@ -115,6 +117,24 @@ export default function EventLibraryItemPage() {
 
     const canManage = !!item && !!user
         && (user.role === 'admin' || (!!item.owner && item.owner === user._id));
+
+    /**
+     * Bấm vào ảnh bất kỳ trong phần nội dung thì mở xem phóng to. Bắt theo kiểu
+     * uỷ quyền vì ảnh trong thân bài nằm trong chuỗi HTML của TinyMCE, không gắn
+     * được onClick cho từng thẻ.
+     */
+    const openPreview = (e: React.MouseEvent) => {
+        const target = e.target as HTMLElement;
+        if (target.tagName !== 'IMG') return;
+        const src = (target as HTMLImageElement).currentSrc || (target as HTMLImageElement).src;
+        if (src) setPreview(src);
+    };
+
+    // Sửa nội dung dùng lại bộ đăng ở /workflow — mở tab mới, form nạp sẵn mục này.
+    const handleEdit = () => {
+        if (!item) return;
+        window.open(`/workflow?view=library&edit=${encodeURIComponent(item.slug)}`, '_blank', 'noopener');
+    };
 
     const handleToggleVisibility = async () => {
         if (!item) return;
@@ -191,21 +211,22 @@ export default function EventLibraryItemPage() {
             <div className="max-w-6xl mx-auto px-6 pt-16 pb-12">
                 {item.coverImage && (
                     <img
+                        onClick={openPreview}
                         src={cdnFromUrl(item.coverImage, 'w_1400')}
                         alt=""
-                        className="w-full h-56 md:h-72 object-cover rounded-2xl border border-[var(--border-primary)] mb-6"
+                        className="w-full h-56 md:h-72 object-cover rounded-2xl border border-[var(--border-primary)] mb-6 cursor-zoom-in"
                     />
                 )}
 
                 {item.gallery?.length > 0 && (
-                    <div className="grid grid-cols-4 sm:grid-cols-6 gap-2 mb-6">
+                    <div className="grid grid-cols-4 sm:grid-cols-6 gap-2 mb-6" onClick={openPreview}>
                         {item.gallery.map((url, idx) => (
                             <img
                                 key={idx}
                                 src={cdnFromUrl(url, 'w_320')}
                                 alt=""
                                 loading="lazy"
-                                className="w-full h-16 sm:h-20 object-cover rounded-lg border border-[var(--border-primary)]"
+                                className="w-full h-16 sm:h-20 object-cover rounded-lg border border-[var(--border-primary)] cursor-zoom-in"
                             />
                         ))}
                     </div>
@@ -238,7 +259,7 @@ export default function EventLibraryItemPage() {
                 {summary && <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-8">{summary}</p>}
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div className="lg:col-span-2 min-w-0 space-y-8">
+                    <div className="lg:col-span-2 min-w-0 space-y-8 [&_img]:cursor-zoom-in" onClick={openPreview}>
                         {item.metrics.length > 0 && (
                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                                 {item.metrics.map((metric, idx) => (
@@ -394,6 +415,13 @@ export default function EventLibraryItemPage() {
                                     <span className="w-1.5 h-4 rounded-full bg-amber-500" />
                                     {t('eventLibrary.detail.manage')}
                                 </h2>
+                                <button
+                                    onClick={handleEdit}
+                                    style={{ backgroundColor: ACCENT }}
+                                    className="w-full px-3 py-2 rounded-lg text-sm font-semibold text-white hover:opacity-90 transition-all cursor-pointer"
+                                >
+                                    {t('eventLibrary.detail.edit')}
+                                </button>
                                 {item.ownership === 'user' && (
                                     <button
                                         onClick={handleToggleVisibility}
@@ -442,6 +470,8 @@ export default function EventLibraryItemPage() {
                     </div>
                 )}
             </div>
+
+            {preview && <ImageLightbox src={preview} onClose={() => setPreview(null)} />}
         </div>
     );
 }

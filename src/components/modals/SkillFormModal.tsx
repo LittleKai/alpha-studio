@@ -63,6 +63,50 @@ const INPUT_CLASS = 'w-full p-3 bg-[var(--bg-secondary)] border border-[var(--bo
 const TEXTAREA_CLASS = `${INPUT_CLASS} resize-none`;
 const LABEL_CLASS = 'block text-sm font-medium text-[var(--text-primary)] mb-1';
 
+// Màu nhấn của thư viện skill — trùng với SkillsPage / SkillDetailPage
+const ACCENT = '#ff5a1f';
+
+// Mỗi nhóm trường một tông riêng để form dài không thành một mảng xám
+const TONES = {
+    basics: ACCENT,
+    intro: '#0ea5e9',
+    classification: '#10b981',
+    install: '#f59e0b',
+    tags: '#f43f5e',
+    sections: '#8b5cf6'
+};
+
+/** Tiêu đề nhóm trường: vạch màu + chữ cùng tông. */
+const FormGroup: React.FC<{ tone: string; title: string; className?: string; children: React.ReactNode }> = ({ tone, title, className = '', children }) => (
+    <section className={`space-y-4 ${className}`.trim()}>
+        <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider" style={{ color: tone }}>
+            <span className="w-1.5 h-4 rounded-full" style={{ backgroundColor: tone }} />
+            {title}
+        </h3>
+        {children}
+    </section>
+);
+
+const TIER_BADGES: Record<string, { cls: string; emoji: string }> = {
+    gold: { cls: 'tier-badge-gold', emoji: '🏆' },
+    silver: { cls: 'tier-badge-silver', emoji: '🥈' },
+    bronze: { cls: 'tier-badge-bronze', emoji: '🥉' }
+};
+
+const DIFFICULTY_TONES: Record<string, string> = {
+    Beginner: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/30',
+    Intermediate: 'bg-amber-500/10 text-amber-500 border-amber-500/30',
+    Advanced: 'bg-rose-500/10 text-rose-500 border-rose-500/30'
+};
+
+/** Nhãn trường kèm huy hiệu xem trước giá trị đang chọn. */
+const LabelWithBadge: React.FC<{ label: string; badge?: React.ReactNode }> = ({ label, badge }) => (
+    <label className="flex items-center gap-2 text-sm font-medium text-[var(--text-primary)] mb-1">
+        {label}
+        {badge}
+    </label>
+);
+
 const SkillFormModal: React.FC<SkillFormModalProps> = ({ isOpen, onClose, editingSkill, onSuccess }) => {
     const { t } = useTranslation();
     const { token } = useAuth();
@@ -147,12 +191,28 @@ const SkillFormModal: React.FC<SkillFormModalProps> = ({ isOpen, onClose, editin
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
             <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col">
                 {/* Header */}
-                <div className="p-4 border-b border-[var(--border-primary)] flex items-center justify-between">
-                    <div className="min-w-0">
-                        <h2 className="text-xl font-bold text-[var(--text-primary)] truncate">
-                            {t('workflow.skillsAdmin.editTitle')}
-                        </h2>
-                        <p className="text-xs font-mono text-[var(--text-tertiary)] truncate">/{editingSkill.slug}</p>
+                <div
+                    className="p-4 border-b border-[var(--border-primary)] flex items-center justify-between gap-3"
+                    style={{ background: `linear-gradient(135deg, ${ACCENT}1f, transparent 65%)` }}
+                >
+                    <div className="flex items-center gap-3 min-w-0">
+                        <div
+                            className="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0"
+                            style={{ backgroundColor: `${ACCENT}26`, border: `1px solid ${ACCENT}59` }}
+                        >
+                            🧠
+                        </div>
+                        <div className="min-w-0">
+                            <h2 className="text-xl font-bold truncate" style={{ color: ACCENT }}>
+                                {t('workflow.skillsAdmin.editTitle')}
+                            </h2>
+                            <p
+                                className="text-xs font-mono truncate px-1.5 py-0.5 rounded inline-block"
+                                style={{ backgroundColor: `${ACCENT}14`, color: ACCENT }}
+                            >
+                                /{editingSkill.slug}
+                            </p>
+                        </div>
                     </div>
                     <button
                         onClick={onClose}
@@ -173,147 +233,164 @@ const SkillFormModal: React.FC<SkillFormModalProps> = ({ isOpen, onClose, editin
                         </div>
                     )}
 
-                    {/* Tên & tác giả */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.name')} *</label>
-                            <input
-                                type="text"
-                                value={formData.name}
-                                onChange={e => setField('name', e.target.value)}
-                                className={INPUT_CLASS}
-                                required
-                            />
+                    <FormGroup tone={TONES.basics} title={t('workflow.skillsAdmin.groups.basics')}>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.name')} <span className="text-red-500">*</span></label>
+                                <input
+                                    type="text"
+                                    value={formData.name}
+                                    onChange={e => setField('name', e.target.value)}
+                                    className={INPUT_CLASS}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.author')}</label>
+                                <input
+                                    type="text"
+                                    value={formData.author}
+                                    onChange={e => setField('author', e.target.value)}
+                                    className={INPUT_CLASS}
+                                />
+                            </div>
                         </div>
-                        <div>
-                            <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.author')}</label>
-                            <input
-                                type="text"
-                                value={formData.author}
-                                onChange={e => setField('author', e.target.value)}
-                                className={INPUT_CLASS}
-                            />
-                        </div>
-                    </div>
+                    </FormGroup>
 
-                    {/* Headline vi / en */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.headlineVi')}</label>
-                            <textarea
-                                value={formData.headline_vi}
-                                onChange={e => setField('headline_vi', e.target.value)}
-                                className={TEXTAREA_CLASS}
-                                rows={2}
-                            />
+                    <FormGroup tone={TONES.intro} title={t('workflow.skillsAdmin.groups.intro')}>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.headlineVi')}</label>
+                                <textarea
+                                    value={formData.headline_vi}
+                                    onChange={e => setField('headline_vi', e.target.value)}
+                                    className={TEXTAREA_CLASS}
+                                    rows={2}
+                                />
+                            </div>
+                            <div>
+                                <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.headlineEn')}</label>
+                                <textarea
+                                    value={formData.headline}
+                                    onChange={e => setField('headline', e.target.value)}
+                                    className={TEXTAREA_CLASS}
+                                    rows={2}
+                                />
+                            </div>
                         </div>
-                        <div>
-                            <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.headlineEn')}</label>
-                            <textarea
-                                value={formData.headline}
-                                onChange={e => setField('headline', e.target.value)}
-                                className={TEXTAREA_CLASS}
-                                rows={2}
-                            />
-                        </div>
-                    </div>
 
-                    {/* Mô tả ngắn vi / en */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.shortDescVi')}</label>
-                            <textarea
-                                value={formData.short_description_vi}
-                                onChange={e => setField('short_description_vi', e.target.value)}
-                                className={TEXTAREA_CLASS}
-                                rows={3}
-                            />
+                        {/* Mô tả ngắn vi / en */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.shortDescVi')}</label>
+                                <textarea
+                                    value={formData.short_description_vi}
+                                    onChange={e => setField('short_description_vi', e.target.value)}
+                                    className={TEXTAREA_CLASS}
+                                    rows={3}
+                                />
+                            </div>
+                            <div>
+                                <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.shortDescEn')}</label>
+                                <textarea
+                                    value={formData.short_description}
+                                    onChange={e => setField('short_description', e.target.value)}
+                                    className={TEXTAREA_CLASS}
+                                    rows={3}
+                                />
+                            </div>
                         </div>
-                        <div>
-                            <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.shortDescEn')}</label>
-                            <textarea
-                                value={formData.short_description}
-                                onChange={e => setField('short_description', e.target.value)}
-                                className={TEXTAREA_CLASS}
-                                rows={3}
-                            />
-                        </div>
-                    </div>
+                    </FormGroup>
 
-                    {/* Phân loại */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.category')} *</label>
-                            <input
-                                type="text"
-                                value={formData.category}
-                                onChange={e => setField('category', e.target.value)}
-                                className={INPUT_CLASS}
-                                required
-                            />
+                    <FormGroup tone={TONES.classification} title={t('workflow.skillsAdmin.groups.classification')}>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.category')} <span className="text-red-500">*</span></label>
+                                <input
+                                    type="text"
+                                    value={formData.category}
+                                    onChange={e => setField('category', e.target.value)}
+                                    className={INPUT_CLASS}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.installType')}</label>
+                                <input
+                                    type="text"
+                                    value={formData.install_type}
+                                    onChange={e => setField('install_type', e.target.value)}
+                                    className={INPUT_CLASS}
+                                    placeholder="Git Clone / npm / pip / MCP"
+                                />
+                            </div>
+                            <div>
+                                <LabelWithBadge
+                                    label={t('workflow.skillsAdmin.fields.tier')}
+                                    badge={TIER_BADGES[formData.tier.toLowerCase()] && (
+                                        <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border flex items-center gap-1 ${TIER_BADGES[formData.tier.toLowerCase()].cls}`}>
+                                            <span>{TIER_BADGES[formData.tier.toLowerCase()].emoji}</span>
+                                            <span>{formData.tier}</span>
+                                        </span>
+                                    )}
+                                />
+                                <select
+                                    value={formData.tier}
+                                    onChange={e => setField('tier', e.target.value)}
+                                    className={INPUT_CLASS}
+                                >
+                                    {TIERS.map(tier => (
+                                        <option key={tier || 'none'} value={tier}>
+                                            {tier || t('workflow.skillsAdmin.fields.none')}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div>
+                                <LabelWithBadge
+                                    label={t('workflow.skillsAdmin.fields.difficulty')}
+                                    badge={formData.difficulty && (
+                                        <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${DIFFICULTY_TONES[formData.difficulty] || ''}`}>
+                                            {formData.difficulty}
+                                        </span>
+                                    )}
+                                />
+                                <select
+                                    value={formData.difficulty}
+                                    onChange={e => setField('difficulty', e.target.value)}
+                                    className={INPUT_CLASS}
+                                >
+                                    {DIFFICULTIES.map(diff => (
+                                        <option key={diff || 'none'} value={diff}>
+                                            {diff || t('workflow.skillsAdmin.fields.none')}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div>
+                                <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.timeSaving')}</label>
+                                <input
+                                    type="text"
+                                    value={formData.estimated_time_saving}
+                                    onChange={e => setField('estimated_time_saving', e.target.value)}
+                                    className={INPUT_CLASS}
+                                    placeholder="2 hours / 30 minutes"
+                                />
+                            </div>
+                            <div>
+                                <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.githubStars')}</label>
+                                <input
+                                    type="number"
+                                    min={0}
+                                    value={formData.github_stars}
+                                    onChange={e => setField('github_stars', Number(e.target.value))}
+                                    className={INPUT_CLASS}
+                                />
+                            </div>
                         </div>
-                        <div>
-                            <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.installType')}</label>
-                            <input
-                                type="text"
-                                value={formData.install_type}
-                                onChange={e => setField('install_type', e.target.value)}
-                                className={INPUT_CLASS}
-                                placeholder="Git Clone / npm / pip / MCP"
-                            />
-                        </div>
-                        <div>
-                            <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.tier')}</label>
-                            <select
-                                value={formData.tier}
-                                onChange={e => setField('tier', e.target.value)}
-                                className={INPUT_CLASS}
-                            >
-                                {TIERS.map(tier => (
-                                    <option key={tier || 'none'} value={tier}>
-                                        {tier || t('workflow.skillsAdmin.fields.none')}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <div>
-                            <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.difficulty')}</label>
-                            <select
-                                value={formData.difficulty}
-                                onChange={e => setField('difficulty', e.target.value)}
-                                className={INPUT_CLASS}
-                            >
-                                {DIFFICULTIES.map(diff => (
-                                    <option key={diff || 'none'} value={diff}>
-                                        {diff || t('workflow.skillsAdmin.fields.none')}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <div>
-                            <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.timeSaving')}</label>
-                            <input
-                                type="text"
-                                value={formData.estimated_time_saving}
-                                onChange={e => setField('estimated_time_saving', e.target.value)}
-                                className={INPUT_CLASS}
-                                placeholder="2 hours / 30 minutes"
-                            />
-                        </div>
-                        <div>
-                            <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.githubStars')}</label>
-                            <input
-                                type="number"
-                                min={0}
-                                value={formData.github_stars}
-                                onChange={e => setField('github_stars', Number(e.target.value))}
-                                className={INPUT_CLASS}
-                            />
-                        </div>
-                    </div>
+                    </FormGroup>
 
-                    {/* Cài đặt & nguồn */}
-                    <div className="space-y-4">
+                    <FormGroup tone={TONES.install} title={t('workflow.skillsAdmin.groups.install')}>
                         <div>
                             <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.installCommand')}</label>
                             <input
@@ -352,36 +429,37 @@ const SkillFormModal: React.FC<SkillFormModalProps> = ({ isOpen, onClose, editin
                                 className={INPUT_CLASS}
                             />
                         </div>
-                    </div>
+                    </FormGroup>
 
-                    {/* Tags & tương thích */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.worksWith')}</label>
-                            <TagsInput
-                                tags={formData.works_with}
-                                onChange={tags => setField('works_with', tags)}
-                                placeholder={t('workflow.skillsAdmin.fields.worksWithPlaceholder')}
-                                maxTags={12}
-                            />
+                    <FormGroup tone={TONES.tags} title={t('workflow.skillsAdmin.groups.tags')}>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.worksWith')}</label>
+                                <TagsInput
+                                    tags={formData.works_with}
+                                    onChange={tags => setField('works_with', tags)}
+                                    placeholder={t('workflow.skillsAdmin.fields.worksWithPlaceholder')}
+                                    maxTags={12}
+                                />
+                            </div>
+                            <div>
+                                <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.tags')}</label>
+                                <TagsInput
+                                    tags={formData.tags}
+                                    onChange={tags => setField('tags', tags)}
+                                    placeholder={t('workflow.skillsAdmin.fields.tagsPlaceholder')}
+                                    maxTags={15}
+                                />
+                            </div>
                         </div>
-                        <div>
-                            <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.tags')}</label>
-                            <TagsInput
-                                tags={formData.tags}
-                                onChange={tags => setField('tags', tags)}
-                                placeholder={t('workflow.skillsAdmin.fields.tagsPlaceholder')}
-                                maxTags={15}
-                            />
-                        </div>
-                    </div>
+                    </FormGroup>
 
                     {/* Nội dung chi tiết */}
-                    <div className="space-y-4 pt-2 border-t border-[var(--border-primary)]">
-                        <h3 className="text-sm font-bold text-[var(--accent-primary)] uppercase tracking-wider pt-4">
-                            {t('workflow.skillsAdmin.sectionsTitle')}
-                        </h3>
-
+                    <FormGroup
+                        tone={TONES.sections}
+                        title={t('workflow.skillsAdmin.sectionsTitle')}
+                        className="pt-6 border-t border-[var(--border-primary)]"
+                    >
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label className={LABEL_CLASS}>{t('workflow.skillsAdmin.fields.overviewVi')}</label>
@@ -465,7 +543,7 @@ const SkillFormModal: React.FC<SkillFormModalProps> = ({ isOpen, onClose, editin
                                 />
                             </div>
                         </div>
-                    </div>
+                    </FormGroup>
                 </form>
 
                 {/* Footer */}
@@ -480,7 +558,8 @@ const SkillFormModal: React.FC<SkillFormModalProps> = ({ isOpen, onClose, editin
                     <button
                         onClick={handleSubmit}
                         disabled={isSubmitting}
-                        className="px-6 py-2.5 bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold rounded-xl shadow-md disabled:opacity-50 transition-all cursor-pointer"
+                        style={{ backgroundColor: ACCENT }}
+                        className="px-6 py-2.5 text-white font-bold rounded-xl shadow-md hover:opacity-90 disabled:opacity-50 transition-all cursor-pointer"
                     >
                         {isSubmitting ? t('workflow.skillsAdmin.saving') : t('workflow.skillsAdmin.update')}
                     </button>

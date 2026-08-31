@@ -590,6 +590,7 @@ export default {
         author: "Người đăng",
         source: "Nguồn",
         manage: "Quản lý",
+        edit: "Sửa nội dung",
         makePrivate: "Chuyển về riêng tư",
         makePublic: "Công khai nội dung",
         delete: "Xóa khỏi thư viện",

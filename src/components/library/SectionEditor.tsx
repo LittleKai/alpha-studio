@@ -1,5 +1,7 @@
 import { Editor } from '@tinymce/tinymce-react';
 import { useTranslation } from '../../i18n/context';
+import { useTheme } from '../../theme/context';
+import { libraryEditorInit } from './libraryEditorInit';
 import { uploadImage } from '../../services/cloudinaryService';
 import type { LibrarySection } from '../../services/eventLibraryService';
 import { cdnFromUrl } from '../../services/cloudinaryAssets';
@@ -7,7 +9,7 @@ import { cdnFromUrl } from '../../services/cloudinaryAssets';
 const ACCENT = '#7c5cff';
 
 const inputClass =
-    'w-full px-3 py-2 text-sm rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] focus:outline-none';
+    'w-full px-3 py-2 text-[15px] rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] focus:outline-none';
 
 /** Nút nhỏ xoá một dòng/ô bên trong khối. */
 function RemoveRowButton({ onClick, label }: { onClick: () => void; label: string }) {
@@ -28,7 +30,7 @@ function AddRowButton({ onClick, label }: { onClick: () => void; label: string }
         <button
             onClick={onClick}
             style={{ color: ACCENT }}
-            className="text-xs font-semibold hover:underline cursor-pointer focus:outline-none"
+            className="text-sm font-semibold hover:underline cursor-pointer focus:outline-none"
         >
             + {label}
         </button>
@@ -53,6 +55,7 @@ interface Props {
  */
 export default function SectionEditor({ section, index, total, onChange, onRemove, onMove }: Props) {
     const { t } = useTranslation();
+    const { theme } = useTheme();
     const set = (patch: Partial<LibrarySection>) => onChange({ ...section, ...patch });
 
     // Cập nhật phần tử thứ `i` của một mảng con trong khối
@@ -64,28 +67,13 @@ export default function SectionEditor({ section, index, total, onChange, onRemov
             case 'richText':
                 return (
                     <Editor
+                        // Đổi theme phải dựng lại editor: TinyMCE không đổi skin sau khi khởi tạo
+                        key={theme}
                         tinymceScriptSrc="/tinymce/tinymce.min.js"
                         value={section.html || ''}
                         onEditorChange={(content: string) => set({ html: content })}
                         licenseKey="gpl"
-                        init={{
-                            height: 260,
-                            menubar: false,
-                            plugins: ['lists', 'link', 'autolink', 'image', 'table'],
-                            toolbar: 'bold italic underline | bullist numlist | table | link image | removeformat',
-                            skin: 'oxide-dark',
-                            content_css: 'dark',
-                            branding: false,
-                            statusbar: false,
-                            content_style: 'body { font-family: sans-serif; font-size: 14px; }',
-                            // Ảnh chèn trong bài đi Cloudinary như mọi ảnh nhỏ khác
-                            images_upload_handler: async (blobInfo: { blob: () => Blob; filename: () => string }) => {
-                                const blob = blobInfo.blob();
-                                const file = new File([blob], blobInfo.filename() || 'image.png', { type: blob.type });
-                                const { url } = await uploadImage(file, 'content');
-                                return url;
-                            }
-                        }}
+                        init={libraryEditorInit(theme)}
                     />
                 );
 
@@ -200,7 +188,7 @@ export default function SectionEditor({ section, index, total, onChange, onRemov
                         {steps.map((step, i) => (
                             <div key={i} className="flex gap-2 items-center">
                                 <span
-                                    className="w-7 h-7 shrink-0 rounded-lg flex items-center justify-center text-xs font-bold text-white"
+                                    className="w-7 h-7 shrink-0 rounded-lg flex items-center justify-center text-sm font-bold text-white"
                                     style={{ backgroundColor: ACCENT }}
                                 >
                                     {i + 1}
@@ -255,7 +243,7 @@ export default function SectionEditor({ section, index, total, onChange, onRemov
                                         <img src={cdnFromUrl(url, 'w_240')} alt="" className="w-full h-20 object-cover rounded-lg border border-[var(--border-primary)]" />
                                         <button
                                             onClick={() => set({ images: images.filter((_, idx) => idx !== i) })}
-                                            className="absolute top-1 right-1 w-6 h-6 rounded-full bg-black/70 text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                                            className="absolute top-1 right-1 w-6 h-6 rounded-full bg-black/70 text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
                                             aria-label={t('eventLibrary.editor.removeRow')}
                                         >
                                             ×
@@ -264,7 +252,7 @@ export default function SectionEditor({ section, index, total, onChange, onRemov
                                 ))}
                             </div>
                         )}
-                        <label className="inline-block text-xs font-semibold cursor-pointer hover:underline" style={{ color: ACCENT }}>
+                        <label className="inline-block text-sm font-semibold cursor-pointer hover:underline" style={{ color: ACCENT }}>
                             + {t('eventLibrary.editor.addImages')}
                             <input
                                 type="file"
@@ -287,14 +275,14 @@ export default function SectionEditor({ section, index, total, onChange, onRemov
                 const links = section.links || [];
                 return (
                     <div className="space-y-2">
-                        <p className="text-[11px] text-[var(--text-tertiary)]">{t('eventLibrary.editor.linkHint')}</p>
+                        <p className="text-xs text-[var(--text-tertiary)]">{t('eventLibrary.editor.linkHint')}</p>
                         {links.map((link, i) => (
                             <div key={i} className="flex gap-2 items-center">
                                 <input
                                     value={link.slug}
                                     onChange={e => set({ links: patchAt(links, i, { slug: e.target.value }) })}
                                     placeholder={t('eventLibrary.editor.linkSlug')}
-                                    className={`${inputClass} flex-1 font-mono text-xs`}
+                                    className={`${inputClass} flex-1 font-mono`}
                                 />
                                 <input
                                     value={link.label}
@@ -316,7 +304,13 @@ export default function SectionEditor({ section, index, total, onChange, onRemov
         <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-card)] p-4 space-y-3">
             <div className="flex items-center gap-2">
                 <span
-                    className="text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded shrink-0"
+                    className="w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold shrink-0"
+                    style={{ backgroundColor: ACCENT, color: '#fff' }}
+                >
+                    {index + 1}
+                </span>
+                <span
+                    className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded shrink-0"
                     style={{ backgroundColor: `${ACCENT}1a`, color: ACCENT }}
                 >
                     {t('eventLibrary.sectionKinds.' + section.kind)}

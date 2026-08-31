@@ -15,6 +15,16 @@ interface SkillsViewProps {
 
 const PAGE_SIZE = 24;
 
+// Màu nhấn của thư viện skill — trùng SkillsPage / SkillDetailPage / SkillFormModal
+const ACCENT = '#ff5a1f';
+
+// Dùng lại class huy hiệu cấp độ của trang công khai (định nghĩa trong index.css)
+const TIER_BADGES: Record<string, string> = {
+    gold: 'tier-badge-gold',
+    silver: 'tier-badge-silver',
+    bronze: 'tier-badge-bronze'
+};
+
 const SkillsView: React.FC<SkillsViewProps> = ({ searchQuery, initialEditSlug, onInitialEditConsumed }) => {
     const { t, language } = useTranslation();
     const { user, token } = useAuth();
@@ -207,7 +217,7 @@ const SkillsView: React.FC<SkillsViewProps> = ({ searchQuery, initialEditSlug, o
                                             <p className="text-xs font-mono text-[var(--text-tertiary)] truncate">/{skill.slug}</p>
                                         </div>
                                         {skill.tier && (
-                                            <span className="shrink-0 text-[10px] font-bold px-2 py-1 rounded border border-[var(--border-primary)] text-[var(--text-secondary)]">
+                                            <span className={`shrink-0 text-[10px] font-bold px-2 py-1 rounded border flex items-center gap-1 ${TIER_BADGES[skill.tier.toLowerCase()] || 'border-[var(--border-primary)] text-[var(--text-secondary)]'}`}>
                                                 {skill.tier}
                                             </span>
                                         )}
@@ -218,7 +228,10 @@ const SkillsView: React.FC<SkillsViewProps> = ({ searchQuery, initialEditSlug, o
                                     </p>
 
                                     <div className="flex flex-wrap items-center gap-2 text-[11px] text-[var(--text-tertiary)]">
-                                        <span className="px-2 py-0.5 rounded bg-[var(--bg-secondary)] border border-[var(--border-primary)]">
+                                        <span
+                                            className="px-2 py-0.5 rounded border font-semibold"
+                                            style={{ backgroundColor: `${ACCENT}14`, borderColor: `${ACCENT}40`, color: ACCENT }}
+                                        >
                                             {skill.category}
                                         </span>
                                         {skill.author && <span>@{skill.author}</span>}
@@ -228,7 +241,8 @@ const SkillsView: React.FC<SkillsViewProps> = ({ searchQuery, initialEditSlug, o
                                         <button
                                             onClick={() => openEditor(skill.slug)}
                                             disabled={loadingSlug === skill.slug}
-                                            className="flex-1 px-3 py-2 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-sm font-semibold text-[var(--text-primary)] hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)] disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+                                            style={{ backgroundColor: ACCENT }}
+                                            className="flex-1 px-3 py-2 rounded-lg text-sm font-semibold text-white hover:opacity-90 disabled:opacity-50 transition-all flex items-center justify-center gap-2 cursor-pointer"
                                         >
                                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />

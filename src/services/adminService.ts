@@ -26,8 +26,24 @@ export interface AdminUser {
     avatar: string | null;
     balance: number;
     isActive: boolean;
+    lastActiveAt?: string | null;
+    lastLogin?: string | null;
     createdAt: string;
     updatedAt: string;
+}
+
+export interface UserStats {
+    total: number;
+    student: number;
+    partner: number;
+    mod: number;
+    admin: number;
+    active: number;
+    deactivated: number;
+}
+
+export interface GetUsersResponse extends PaginatedResponse<AdminUser> {
+    stats?: UserStats;
 }
 
 export interface AdminTransaction {
@@ -91,21 +107,44 @@ export interface StudioAdminSettings {
 
 // API Functions
 
+export interface GetUsersOptions {
+    page?: number;
+    limit?: number;
+    search?: string;
+    role?: string;
+    isActive?: string;
+    sortBy?: string;
+    sortOrder?: 'asc' | 'desc';
+}
+
 /**
- * Get all users with pagination and search
+ * Get all users with pagination, search, filters, sorting, and stats
  */
 export const getUsers = async (
-    page: number = 1,
+    optionsOrPage: GetUsersOptions | number = 1,
     limit: number = 20,
     search: string = '',
     role?: string
-): Promise<PaginatedResponse<AdminUser>> => {
-    const params = new URLSearchParams({
-        page: page.toString(),
-        limit: limit.toString(),
-    });
-    if (search) params.append('search', search);
-    if (role) params.append('role', role);
+): Promise<GetUsersResponse> => {
+    let params: URLSearchParams;
+
+    if (typeof optionsOrPage === 'object') {
+        params = new URLSearchParams();
+        if (optionsOrPage.page) params.append('page', optionsOrPage.page.toString());
+        if (optionsOrPage.limit) params.append('limit', optionsOrPage.limit.toString());
+        if (optionsOrPage.search) params.append('search', optionsOrPage.search);
+        if (optionsOrPage.role) params.append('role', optionsOrPage.role);
+        if (optionsOrPage.isActive) params.append('isActive', optionsOrPage.isActive);
+        if (optionsOrPage.sortBy) params.append('sortBy', optionsOrPage.sortBy);
+        if (optionsOrPage.sortOrder) params.append('sortOrder', optionsOrPage.sortOrder);
+    } else {
+        params = new URLSearchParams({
+            page: optionsOrPage.toString(),
+            limit: limit.toString(),
+        });
+        if (search) params.append('search', search);
+        if (role) params.append('role', role);
+    }
 
     const response = await fetch(`${API_URL}/admin/users?${params}`, {
         headers: getHeaders(),

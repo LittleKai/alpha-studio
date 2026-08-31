@@ -10,6 +10,7 @@ import FeaturedStudentsAdminTab from '../components/admin/FeaturedStudentsAdminT
 import StudioAdminTab from '../components/admin/StudioAdminTab';
 import InteriorTemplatesAdminTab from '../components/admin/InteriorTemplatesAdminTab';
 import CrmAdminTab from '../components/admin/CrmAdminTab';
+import { cdnFromUrl } from '../services/cloudinaryAssets';
 import {
     getUsers,
     getUserDetails,
@@ -24,6 +25,7 @@ import {
     formatCurrency,
     formatDate,
     type AdminUser,
+    type UserStats,
     type AdminTransaction,
     type WebhookLog,
 } from '../services/adminService';
@@ -221,12 +223,23 @@ export default function AdminPage() {
 // Users Tab Component
 function UsersTab() {
     const { user: currentUser } = useAuth();
-    const { t } = useTranslation();
+    const { t, language } = useTranslation();
     const { confirm: confirmDialog } = useConfirm();
     const isSuperAdmin = currentUser?.role === 'admin' && currentUser?.email === 'aduc5525@gmail.com';
+
     const [users, setUsers] = useState<AdminUser[]>([]);
+    const [overviewStats, setOverviewStats] = useState<UserStats | null>(null);
+    const [totalMatching, setTotalMatching] = useState<number>(0);
     const [loading, setLoading] = useState(true);
+
+    // Filters & Sorting state
     const [search, setSearch] = useState('');
+    const [roleFilter, setRoleFilter] = useState('');
+    const [statusFilter, setStatusFilter] = useState('');
+    const [sortBy, setSortBy] = useState('createdAt');
+    const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
+
+    // Selected user details state
     const [selectedUser, setSelectedUser] = useState<AdminUser | null>(null);
     const [userStats, setUserStats] = useState<any>(null);
     const [userTransactions, setUserTransactions] = useState<AdminTransaction[]>([]);
@@ -238,14 +251,28 @@ function UsersTab() {
     const loadUsers = useCallback(async () => {
         try {
             setLoading(true);
-            const response = await getUsers(1, 50, search);
+            const response = await getUsers({
+                page: 1,
+                limit: 100,
+                search: search.trim() || undefined,
+                role: roleFilter || undefined,
+                isActive: statusFilter || undefined,
+                sortBy,
+                sortOrder,
+            });
             setUsers(response.data);
+            if (response.stats) {
+                setOverviewStats(response.stats);
+            }
+            if (response.pagination) {
+                setTotalMatching(response.pagination.total);
+            }
         } catch (error) {
             console.error('Failed to load users:', error);
         } finally {
             setLoading(false);
         }
-    }, [search]);
+    }, [search, roleFilter, statusFilter, sortBy, sortOrder]);
 
     useEffect(() => {
         const debounce = setTimeout(loadUsers, 300);
@@ -270,7 +297,7 @@ function UsersTab() {
         if (!selectedUser || !topupAmount) return;
         const credits = parseInt(topupAmount);
         if (isNaN(credits) || credits <= 0) {
-            alert('Số credits không hợp lệ');
+            alert(t('admin.users.topupInvalidCredits'));
             return;
         }
 
@@ -304,176 +331,486 @@ function UsersTab() {
         }
     };
 
-    return (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* User List */}
-            <div className="lg:col-span-1 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-4">
-                <input
-                    type="text"
-                    placeholder="Tìm user (tên, email)..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] mb-4"
-                />
+    const handleClearFilters = () => {
+        setSearch('');
+        setRoleFilter('');
+        setStatusFilter('');
+        setSortBy('createdAt');
+        setSortOrder('desc');
+    };
 
-                {loading ? (
-                    <p className="text-center text-[var(--text-secondary)]">Loading...</p>
-                ) : (
-                    <div className="space-y-2 max-h-[600px] overflow-y-auto">
-                        {users.map((u) => (
-                            <div
-                                key={u._id}
-                                onClick={() => handleSelectUser(u)}
-                                className={`p-3 rounded-lg cursor-pointer transition-colors ${
-                                    selectedUser?._id === u._id
-                                        ? 'bg-[var(--accent-primary)]/10 border border-[var(--accent-primary)]'
-                                        : 'bg-[var(--bg-secondary)] hover:bg-[var(--border-primary)]'
-                                }`}
-                            >
-                                <p className="font-medium text-[var(--text-primary)]">{u.name}</p>
-                                <p className="text-xs text-[var(--text-secondary)]">{u.email}</p>
-                                <div className="flex items-center justify-between mt-1">
-                                    <span className={`text-xs px-2 py-0.5 rounded ${
-                                        u.role === 'admin' ? 'bg-red-500/10 text-red-500' :
-                                        u.role === 'partner' ? 'bg-blue-500/10 text-blue-500' :
-                                        'bg-gray-500/10 text-gray-500'
-                                    }`}>
-                                        {u.role}
-                                    </span>
-                                    <span className="text-xs text-yellow-500 font-medium">{u.balance} credits</span>
-                                </div>
-                            </div>
-                        ))}
+    const hasActiveFilters = Boolean(search || roleFilter || statusFilter || sortBy !== 'createdAt');
+
+    const formatLastActive = (dateString?: string | null) => {
+        if (!dateString) {
+            return {
+                text: t('admin.users.neverActive'),
+                isOnline: false,
+                isRecent: false,
+                dotClass: 'bg-gray-400'
+            };
+        }
+        const date = new Date(dateString);
+        if (isNaN(date.getTime())) {
+            return {
+                text: t('admin.users.neverActive'),
+                isOnline: false,
+                isRecent: false,
+                dotClass: 'bg-gray-400'
+            };
+        }
+        const diffMs = Date.now() - date.getTime();
+        const diffMin = Math.floor(diffMs / 60000);
+        const diffHours = Math.floor(diffMin / 60);
+        const diffDays = Math.floor(diffHours / 24);
+
+        if (diffMin < 5) {
+            return {
+                text: language === 'vi' ? 'Vừa xong' : 'Just now',
+                isOnline: true,
+                isRecent: true,
+                dotClass: 'bg-emerald-500 animate-pulse'
+            };
+        }
+        if (diffMin < 60) {
+            return {
+                text: language === 'vi' ? `${diffMin} phút trước` : `${diffMin}m ago`,
+                isOnline: true,
+                isRecent: true,
+                dotClass: 'bg-emerald-500'
+            };
+        }
+        if (diffHours < 24) {
+            return {
+                text: language === 'vi' ? `${diffHours} giờ trước` : `${diffHours}h ago`,
+                isOnline: false,
+                isRecent: true,
+                dotClass: 'bg-amber-500'
+            };
+        }
+        if (diffDays === 1) {
+            return {
+                text: language === 'vi' ? 'Hôm qua' : 'Yesterday',
+                isOnline: false,
+                isRecent: false,
+                dotClass: 'bg-gray-400'
+            };
+        }
+        if (diffDays < 7) {
+            return {
+                text: language === 'vi' ? `${diffDays} ngày trước` : `${diffDays}d ago`,
+                isOnline: false,
+                isRecent: false,
+                dotClass: 'bg-gray-400'
+            };
+        }
+        return {
+            text: formatDate(dateString),
+            isOnline: false,
+            isRecent: false,
+            dotClass: 'bg-gray-400'
+        };
+    };
+
+    return (
+        <div className="space-y-6">
+            {/* User Statistics Overview Cards */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-4 flex flex-col justify-between">
+                    <div>
+                        <p className="text-xs text-[var(--text-tertiary)] uppercase font-semibold tracking-wider">
+                            {t('admin.users.totalUsers')}
+                        </p>
+                        <p className="text-2xl font-bold text-[var(--text-primary)] mt-1">
+                            {overviewStats?.total ?? users.length}
+                        </p>
                     </div>
-                )}
+                    <div className="flex items-center gap-2 mt-2 pt-2 border-t border-[var(--border-primary)] text-xs">
+                        <span className="inline-flex items-center gap-1 text-emerald-500 font-medium">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            {overviewStats?.active ?? users.filter(u => u.isActive !== false).length} {t('admin.users.statusActive')}
+                        </span>
+                        {Boolean(overviewStats?.deactivated) && (
+                            <span className="text-[var(--text-tertiary)]">
+                                • {overviewStats?.deactivated} {t('admin.users.statusDeactivated')}
+                            </span>
+                        )}
+                    </div>
+                </div>
+
+                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-4 flex flex-col justify-between">
+                    <div>
+                        <p className="text-xs text-[var(--text-tertiary)] uppercase font-semibold tracking-wider">
+                            {t('admin.users.students')}
+                        </p>
+                        <p className="text-2xl font-bold text-blue-500 mt-1">
+                            {overviewStats?.student ?? users.filter(u => u.role === 'student').length}
+                        </p>
+                    </div>
+                    <p className="text-xs text-[var(--text-tertiary)] mt-2 pt-2 border-t border-[var(--border-primary)]">
+                        Vai trò thành viên học tập
+                    </p>
+                </div>
+
+                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-4 flex flex-col justify-between">
+                    <div>
+                        <p className="text-xs text-[var(--text-tertiary)] uppercase font-semibold tracking-wider">
+                            {t('admin.users.partners')}
+                        </p>
+                        <p className="text-2xl font-bold text-amber-500 mt-1">
+                            {overviewStats?.partner ?? users.filter(u => u.role === 'partner').length}
+                        </p>
+                    </div>
+                    <p className="text-xs text-[var(--text-tertiary)] mt-2 pt-2 border-t border-[var(--border-primary)]">
+                        Đối tác doanh nghiệp & Agency
+                    </p>
+                </div>
+
+                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-4 flex flex-col justify-between">
+                    <div>
+                        <p className="text-xs text-[var(--text-tertiary)] uppercase font-semibold tracking-wider">
+                            {t('admin.users.admins')} & {t('admin.users.mods')}
+                        </p>
+                        <p className="text-2xl font-bold text-rose-500 mt-1">
+                            {overviewStats ? (overviewStats.admin + overviewStats.mod) : users.filter(u => u.role === 'admin' || u.role === 'mod').length}
+                        </p>
+                    </div>
+                    <p className="text-xs text-[var(--text-tertiary)] mt-2 pt-2 border-t border-[var(--border-primary)]">
+                        {overviewStats?.admin ?? 0} Admin • {overviewStats?.mod ?? 0} Mod
+                    </p>
+                </div>
             </div>
 
-            {/* User Details */}
-            <div className="lg:col-span-2 space-y-4">
-                {selectedUser ? (
-                    <>
-                        {/* User Info Card */}
-                        <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6">
-                            <div className="flex items-start justify-between mb-4">
-                                <div>
-                                    <h3 className="text-xl font-bold text-[var(--text-primary)]">{selectedUser.name}</h3>
-                                    <p className="text-sm text-[var(--text-secondary)]">{selectedUser.email}</p>
-                                </div>
-                                <span className={`px-3 py-1 rounded-lg text-sm font-medium ${
-                                    selectedUser.role === 'admin' ? 'bg-red-500/10 text-red-500' :
-                                    selectedUser.role === 'partner' ? 'bg-blue-500/10 text-blue-500' :
-                                    'bg-gray-500/10 text-gray-500'
-                                }`}>
-                                    {selectedUser.role}
-                                </span>
-                            </div>
-
-                            {userStats && (
-                                <div className="grid grid-cols-3 gap-4 mb-4">
-                                    <div className="bg-[var(--bg-secondary)] p-3 rounded-lg">
-                                        <p className="text-xs text-[var(--text-tertiary)]">Balance</p>
-                                        <p className="text-lg font-bold text-yellow-500">{selectedUser.balance}</p>
-                                    </div>
-                                    <div className="bg-[var(--bg-secondary)] p-3 rounded-lg">
-                                        <p className="text-xs text-[var(--text-tertiary)]">Total Top-up</p>
-                                        <p className="text-lg font-bold text-green-500">{userStats.totalTopup}</p>
-                                    </div>
-                                    <div className="bg-[var(--bg-secondary)] p-3 rounded-lg">
-                                        <p className="text-xs text-[var(--text-tertiary)]">Total Spent</p>
-                                        <p className="text-lg font-bold text-red-500">{userStats.totalSpent}</p>
-                                    </div>
-                                </div>
-                            )}
-
-                            {/* Manual Top-up */}
-                            <div className="border-t border-[var(--border-primary)] pt-4">
-                                <h4 className="font-medium text-[var(--text-primary)] mb-3">Top-up thủ công</h4>
-                                <div className="flex gap-2">
-                                    <input
-                                        type="number"
-                                        placeholder="Số credits"
-                                        value={topupAmount}
-                                        onChange={(e) => setTopupAmount(e.target.value)}
-                                        className="flex-1 px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)]"
-                                    />
-                                    <input
-                                        type="text"
-                                        placeholder="Ghi chú (lý do)"
-                                        value={topupNote}
-                                        onChange={(e) => setTopupNote(e.target.value)}
-                                        className="flex-1 px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)]"
-                                    />
-                                    <button
-                                        onClick={handleTopup}
-                                        disabled={topupLoading || !topupAmount}
-                                        className="px-4 py-2 bg-[var(--accent-primary)] text-black font-medium rounded-lg hover:opacity-90 disabled:opacity-50"
-                                    >
-                                        {topupLoading ? '...' : 'Top-up'}
-                                    </button>
-                                </div>
-                            </div>
-
-                            {/* Reset Password - only for super admin */}
-                            {isSuperAdmin && (
-                            <div className="border-t border-[var(--border-primary)] pt-4">
-                                <div className="flex items-center justify-between">
-                                    <div>
-                                        <h4 className="font-medium text-[var(--text-primary)]">{t('admin.resetPassword.title')}</h4>
-                                        <p className="text-xs text-[var(--text-tertiary)]">{t('admin.resetPassword.description')}</p>
-                                    </div>
-                                    <button
-                                        onClick={handleResetPassword}
-                                        disabled={resetPwLoading}
-                                        className="px-4 py-2 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 disabled:opacity-50"
-                                    >
-                                        {resetPwLoading ? '...' : t('admin.resetPassword.button')}
-                                    </button>
-                                </div>
-                            </div>
+            {/* Main Content Grid: Filter + List & User Details */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {/* User List & Filter Panel */}
+                <div className="lg:col-span-1 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-4 flex flex-col">
+                    {/* Search & Filter Header */}
+                    <div className="space-y-3 mb-4">
+                        <div className="relative">
+                            <input
+                                type="text"
+                                placeholder={t('admin.users.searchPlaceholder')}
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                                className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-sm focus:outline-none focus:border-[var(--accent-primary)]"
+                            />
+                            {search && (
+                                <button
+                                    onClick={() => setSearch('')}
+                                    className="absolute right-2.5 top-2.5 text-xs text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"
+                                >
+                                    ✕
+                                </button>
                             )}
                         </div>
 
-                        {/* User Transactions */}
-                        <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-4">
-                            <h4 className="font-medium text-[var(--text-primary)] mb-3">Lịch sử giao dịch</h4>
-                            <div className="space-y-2 max-h-[400px] overflow-y-auto">
-                                {userTransactions.length === 0 ? (
-                                    <p className="text-center text-[var(--text-secondary)] py-4">Chưa có giao dịch</p>
-                                ) : (
-                                    userTransactions.map((tx) => (
-                                        <div key={tx._id} className="flex items-center justify-between p-3 bg-[var(--bg-secondary)] rounded-lg">
-                                            <div>
-                                                <p className="text-sm font-medium text-[var(--text-primary)]">{tx.description}</p>
-                                                <p className="text-xs text-[var(--text-tertiary)]">
-                                                    {formatDate(tx.createdAt)} • {tx.transactionCode}
-                                                </p>
-                                                {tx.processedBy && (
-                                                    <p className="text-xs text-blue-400">By: {tx.processedBy.name}</p>
-                                                )}
-                                            </div>
-                                            <div className="text-right">
-                                                <p className={`font-bold ${tx.credits >= 0 ? 'text-green-500' : 'text-red-500'}`}>
-                                                    {tx.credits >= 0 ? '+' : ''}{tx.credits}
-                                                </p>
-                                                <span className={`text-xs px-2 py-0.5 rounded ${
-                                                    tx.status === 'completed' ? 'bg-green-500/10 text-green-500' :
-                                                    tx.status === 'pending' ? 'bg-yellow-500/10 text-yellow-500' :
-                                                    'bg-red-500/10 text-red-500'
-                                                }`}>
-                                                    {tx.status}
-                                                </span>
+                        {/* Filter Dropdowns Grid */}
+                        <div className="grid grid-cols-2 gap-2">
+                            {/* Role Filter */}
+                            <select
+                                value={roleFilter}
+                                onChange={(e) => setRoleFilter(e.target.value)}
+                                className="px-2.5 py-1.5 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-xs focus:outline-none focus:border-[var(--accent-primary)]"
+                            >
+                                <option value="">{t('admin.users.allRoles')}</option>
+                                <option value="student">{t('admin.users.students')}</option>
+                                <option value="partner">{t('admin.users.partners')}</option>
+                                <option value="mod">{t('admin.users.mods')}</option>
+                                <option value="admin">{t('admin.users.admins')}</option>
+                            </select>
+
+                            {/* Status Filter */}
+                            <select
+                                value={statusFilter}
+                                onChange={(e) => setStatusFilter(e.target.value)}
+                                className="px-2.5 py-1.5 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-xs focus:outline-none focus:border-[var(--accent-primary)]"
+                            >
+                                <option value="">{t('admin.users.allStatuses')}</option>
+                                <option value="true">{t('admin.users.statusActive')}</option>
+                                <option value="false">{t('admin.users.statusDeactivated')}</option>
+                            </select>
+                        </div>
+
+                        {/* Sorting Dropdown */}
+                        <div className="flex items-center justify-between gap-2">
+                            <span className="text-xs text-[var(--text-tertiary)] shrink-0">{t('admin.users.sortBy')}:</span>
+                            <select
+                                value={sortBy}
+                                onChange={(e) => setSortBy(e.target.value)}
+                                className="flex-1 px-2.5 py-1.5 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-xs focus:outline-none focus:border-[var(--accent-primary)]"
+                            >
+                                <option value="createdAt">{t('admin.users.sortNewest')}</option>
+                                <option value="lastActiveAt">{t('admin.users.sortLastActive')}</option>
+                                <option value="balance">{t('admin.users.sortBalanceHigh')}</option>
+                                <option value="name">{t('admin.users.sortNameAZ')}</option>
+                            </select>
+                            {hasActiveFilters && (
+                                <button
+                                    onClick={handleClearFilters}
+                                    className="px-2 py-1 text-xs text-rose-500 hover:bg-rose-500/10 rounded transition-colors shrink-0"
+                                    title={t('admin.users.clearFilters')}
+                                >
+                                    {t('admin.users.clearFilters')}
+                                </button>
+                            )}
+                        </div>
+
+                        {/* Result Counter Strip */}
+                        <div className="flex items-center justify-between text-xs text-[var(--text-tertiary)] pt-1 border-t border-[var(--border-primary)]">
+                            <span>
+                                {t('admin.users.filterResults')
+                                    .replace('{count}', users.length.toString())
+                                    .replace('{total}', (totalMatching || overviewStats?.total || users.length).toString())}
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Users Scroll List */}
+                    {loading ? (
+                        <p className="text-center text-[var(--text-secondary)] py-8">{t('admin.articles.loading')}</p>
+                    ) : users.length === 0 ? (
+                        <p className="text-center text-[var(--text-tertiary)] py-8">{t('admin.users.noUsers')}</p>
+                    ) : (
+                        <div className="space-y-2.5 max-h-[620px] overflow-y-auto pr-1">
+                            {users.map((u) => {
+                                const activeInfo = formatLastActive(u.lastActiveAt || u.lastLogin);
+                                const isSelected = selectedUser?._id === u._id;
+                                return (
+                                    <div
+                                        key={u._id}
+                                        onClick={() => handleSelectUser(u)}
+                                        className={`p-3 rounded-xl cursor-pointer transition-all border ${
+                                            isSelected
+                                                ? 'bg-[var(--accent-primary)]/10 border-[var(--accent-primary)] shadow-sm'
+                                                : 'bg-[var(--bg-secondary)] border-transparent hover:border-[var(--border-primary)] hover:bg-[var(--bg-secondary)]/80'
+                                        }`}
+                                    >
+                                        <div className="flex items-start gap-3">
+                                            {/* Avatar with cdnFromUrl or letter */}
+                                            {u.avatar ? (
+                                                <img
+                                                    src={cdnFromUrl(u.avatar, 'w_128')}
+                                                    alt={u.name}
+                                                    className="w-10 h-10 rounded-full object-cover border border-[var(--border-primary)] shrink-0"
+                                                />
+                                            ) : (
+                                                <div className="w-10 h-10 rounded-full bg-[var(--accent-primary)]/15 text-[var(--accent-primary)] flex items-center justify-center font-bold text-sm shrink-0 border border-[var(--accent-primary)]/20">
+                                                    {(u.name || 'U').charAt(0).toUpperCase()}
+                                                </div>
+                                            )}
+
+                                            {/* Info */}
+                                            <div className="flex-1 min-w-0">
+                                                <div className="flex items-center justify-between gap-1">
+                                                    <p className="font-semibold text-sm text-[var(--text-primary)] truncate">
+                                                        {u.name} {u._id === currentUser?._id && <span className="text-xs text-[var(--text-tertiary)] font-normal">(Bạn)</span>}
+                                                    </p>
+                                                    <span className={`text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded ${
+                                                        u.role === 'admin' ? 'bg-red-500/10 text-red-500' :
+                                                        u.role === 'mod' ? 'bg-purple-500/10 text-purple-500' :
+                                                        u.role === 'partner' ? 'bg-blue-500/10 text-blue-500' :
+                                                        'bg-gray-500/10 text-gray-400'
+                                                    }`}>
+                                                        {u.role}
+                                                    </span>
+                                                </div>
+
+                                                <p className="text-xs text-[var(--text-secondary)] truncate">{u.email}</p>
+
+                                                {/* Meta: Last Active & Balance */}
+                                                <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-[var(--border-primary)]/50 text-xs">
+                                                    <div className="flex items-center gap-1.5 text-[var(--text-tertiary)]" title={u.lastActiveAt ? formatDate(u.lastActiveAt) : (u.lastLogin ? formatDate(u.lastLogin) : '')}>
+                                                        <span className={`w-2 h-2 rounded-full shrink-0 ${activeInfo.dotClass}`}></span>
+                                                        <span className="truncate text-[11px]">
+                                                            {activeInfo.text}
+                                                        </span>
+                                                    </div>
+                                                    <span className="text-xs text-yellow-500 font-semibold shrink-0">
+                                                        {u.balance} cr
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
-                                    ))
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    )}
+                </div>
+
+                {/* User Details & Management Panel */}
+                <div className="lg:col-span-2 space-y-4">
+                    {selectedUser ? (
+                        <>
+                            {/* User Info Card */}
+                            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6">
+                                <div className="flex items-start justify-between mb-4">
+                                    <div className="flex items-center gap-4">
+                                        {selectedUser.avatar ? (
+                                            <img
+                                                src={cdnFromUrl(selectedUser.avatar, 'w_256')}
+                                                alt={selectedUser.name}
+                                                className="w-14 h-14 rounded-full object-cover border-2 border-[var(--border-primary)]"
+                                            />
+                                        ) : (
+                                            <div className="w-14 h-14 rounded-full bg-[var(--accent-primary)]/15 text-[var(--accent-primary)] flex items-center justify-center font-bold text-xl border-2 border-[var(--accent-primary)]/30">
+                                                {(selectedUser.name || 'U').charAt(0).toUpperCase()}
+                                            </div>
+                                        )}
+                                        <div>
+                                            <h3 className="text-xl font-bold text-[var(--text-primary)]">{selectedUser.name}</h3>
+                                            <p className="text-sm text-[var(--text-secondary)]">{selectedUser.email}</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <span className={`px-3 py-1 rounded-lg text-sm font-medium ${
+                                            selectedUser.role === 'admin' ? 'bg-red-500/10 text-red-500' :
+                                            selectedUser.role === 'mod' ? 'bg-purple-500/10 text-purple-500' :
+                                            selectedUser.role === 'partner' ? 'bg-blue-500/10 text-blue-500' :
+                                            'bg-gray-500/10 text-gray-400'
+                                        }`}>
+                                            {selectedUser.role}
+                                        </span>
+                                        {selectedUser.isActive === false && (
+                                            <span className="px-2 py-1 rounded-lg text-xs font-medium bg-red-500/15 text-red-400">
+                                                {t('admin.users.statusDeactivated')}
+                                            </span>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* Timestamps Bar: Last Active, Last Login, Joined Date */}
+                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-3 bg-[var(--bg-secondary)] rounded-lg mb-4 text-xs">
+                                    <div>
+                                        <span className="text-[var(--text-tertiary)] block">{t('admin.users.lastActive')}</span>
+                                        <span className="font-medium text-[var(--text-primary)] mt-0.5 flex items-center gap-1.5">
+                                            <span className={`w-2 h-2 rounded-full shrink-0 ${formatLastActive(selectedUser.lastActiveAt || selectedUser.lastLogin).dotClass}`}></span>
+                                            {selectedUser.lastActiveAt ? formatDate(selectedUser.lastActiveAt) : (selectedUser.lastLogin ? formatDate(selectedUser.lastLogin) : t('admin.users.neverActive'))}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span className="text-[var(--text-tertiary)] block">{t('admin.users.lastLogin')}</span>
+                                        <span className="font-medium text-[var(--text-primary)] mt-0.5 block">
+                                            {selectedUser.lastLogin ? formatDate(selectedUser.lastLogin) : t('admin.users.neverLoggedIn')}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span className="text-[var(--text-tertiary)] block">{t('admin.users.joinedAt')}</span>
+                                        <span className="font-medium text-[var(--text-primary)] mt-0.5 block">
+                                            {formatDate(selectedUser.createdAt)}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {/* Credit Stats */}
+                                {userStats && (
+                                    <div className="grid grid-cols-3 gap-4 mb-4">
+                                        <div className="bg-[var(--bg-secondary)] p-3 rounded-lg">
+                                            <p className="text-xs text-[var(--text-tertiary)]">{t('admin.users.balance')}</p>
+                                            <p className="text-lg font-bold text-yellow-500">{selectedUser.balance} credits</p>
+                                        </div>
+                                        <div className="bg-[var(--bg-secondary)] p-3 rounded-lg">
+                                            <p className="text-xs text-[var(--text-tertiary)]">{t('admin.users.totalTopup')}</p>
+                                            <p className="text-lg font-bold text-green-500">+{userStats.totalTopup}</p>
+                                        </div>
+                                        <div className="bg-[var(--bg-secondary)] p-3 rounded-lg">
+                                            <p className="text-xs text-[var(--text-tertiary)]">{t('admin.users.totalSpent')}</p>
+                                            <p className="text-lg font-bold text-red-500">-{userStats.totalSpent}</p>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* Manual Top-up */}
+                                <div className="border-t border-[var(--border-primary)] pt-4">
+                                    <h4 className="font-medium text-[var(--text-primary)] mb-3">{t('admin.users.manualTopup')}</h4>
+                                    <div className="flex gap-2">
+                                        <input
+                                            type="number"
+                                            placeholder={t('admin.users.topupCreditsPlaceholder')}
+                                            value={topupAmount}
+                                            onChange={(e) => setTopupAmount(e.target.value)}
+                                            className="flex-1 px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-sm"
+                                        />
+                                        <input
+                                            type="text"
+                                            placeholder={t('admin.users.topupNotePlaceholder')}
+                                            value={topupNote}
+                                            onChange={(e) => setTopupNote(e.target.value)}
+                                            className="flex-1 px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-sm"
+                                        />
+                                        <button
+                                            onClick={handleTopup}
+                                            disabled={topupLoading || !topupAmount}
+                                            className="px-4 py-2 bg-[var(--accent-primary)] text-black font-medium rounded-lg hover:opacity-90 disabled:opacity-50 text-sm"
+                                        >
+                                            {topupLoading ? '...' : t('admin.users.topupBtn')}
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* Reset Password - only for super admin */}
+                                {isSuperAdmin && (
+                                <div className="border-t border-[var(--border-primary)] pt-4 mt-4">
+                                    <div className="flex items-center justify-between">
+                                        <div>
+                                            <h4 className="font-medium text-[var(--text-primary)]">{t('admin.resetPassword.title')}</h4>
+                                            <p className="text-xs text-[var(--text-tertiary)]">{t('admin.resetPassword.description')}</p>
+                                        </div>
+                                        <button
+                                            onClick={handleResetPassword}
+                                            disabled={resetPwLoading}
+                                            className="px-4 py-2 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 disabled:opacity-50 text-sm"
+                                        >
+                                            {resetPwLoading ? '...' : t('admin.resetPassword.button')}
+                                        </button>
+                                    </div>
+                                </div>
                                 )}
                             </div>
+
+                            {/* User Transactions */}
+                            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-4">
+                                <h4 className="font-medium text-[var(--text-primary)] mb-3">{t('admin.users.userTransactions')}</h4>
+                                <div className="space-y-2 max-h-[400px] overflow-y-auto">
+                                    {userTransactions.length === 0 ? (
+                                        <p className="text-center text-[var(--text-secondary)] py-4">{t('admin.users.noTransactions')}</p>
+                                    ) : (
+                                        userTransactions.map((tx) => (
+                                            <div key={tx._id} className="flex items-center justify-between p-3 bg-[var(--bg-secondary)] rounded-lg">
+                                                <div>
+                                                    <p className="text-sm font-medium text-[var(--text-primary)]">{tx.description}</p>
+                                                    <p className="text-xs text-[var(--text-tertiary)]">
+                                                        {formatDate(tx.createdAt)} • {tx.transactionCode}
+                                                    </p>
+                                                    {tx.processedBy && (
+                                                        <p className="text-xs text-blue-400">By: {tx.processedBy.name}</p>
+                                                    )}
+                                                </div>
+                                                <div className="text-right">
+                                                    <p className={`font-bold ${tx.credits >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                                                        {tx.credits >= 0 ? '+' : ''}{tx.credits}
+                                                    </p>
+                                                    <span className={`text-xs px-2 py-0.5 rounded ${
+                                                        tx.status === 'completed' ? 'bg-green-500/10 text-green-500' :
+                                                        tx.status === 'pending' ? 'bg-yellow-500/10 text-yellow-500' :
+                                                        'bg-red-500/10 text-red-500'
+                                                    }`}>
+                                                        {tx.status}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        ))
+                                    )}
+                                </div>
+                            </div>
+                        </>
+                    ) : (
+                        <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-8 text-center">
+                            <p className="text-[var(--text-secondary)]">{t('admin.users.selectUserHint')}</p>
                         </div>
-                    </>
-                ) : (
-                    <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-8 text-center">
-                        <p className="text-[var(--text-secondary)]">Chọn một user để xem chi tiết</p>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
         </div>
     );

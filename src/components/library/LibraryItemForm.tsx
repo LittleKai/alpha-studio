@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
+import { useTheme } from '../../theme/context';
+import { libraryEditorInit } from './libraryEditorInit';
 import { uploadImage } from '../../services/cloudinaryService';
 import { uploadToB2 } from '../../services/b2StorageService';
 import { compressImage } from '../../services/imageCompression';
@@ -20,8 +22,29 @@ const ACCENT = '#7c5cff';
 const B2_FOLDER = 'event-library';
 
 const inputClass =
-    'w-full px-3 py-2 text-sm rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] focus:outline-none';
-const labelClass = 'block text-xs font-semibold text-[var(--text-secondary)] mb-1.5';
+    'w-full px-3 py-2 text-[15px] rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] focus:outline-none';
+const labelClass = 'block text-sm font-semibold text-[var(--text-secondary)] mb-1.5';
+
+// Mỗi khối của form một tông riêng, để form dài không thành một mảng xám
+const SECTION_TONES = {
+    basics: ACCENT,
+    taxonomy: '#10b981',
+    media: '#f59e0b',
+    body: '#0ea5e9',
+    freeContent: '#f43f5e'
+};
+
+// Vài chip mang màu riêng để form khớp đúng màu hiển thị ngoài card / trang chi tiết
+const PUBLIC_TONE = '#10b981';
+const PRO_TONE = '#f59e0b';
+
+/** Tiêu đề khối: vạch màu + chữ cùng tông. */
+const SectionHeading = ({ tone, children }: { tone: string; children: ReactNode }) => (
+    <h2 className="flex items-center gap-2 text-[15px] font-bold uppercase tracking-wider" style={{ color: tone }}>
+        <span className="w-1.5 h-4 rounded-full shrink-0" style={{ backgroundColor: tone }} />
+        {children}
+    </h2>
+);
 
 /** Trạng thái form — phẳng, khớp gần đúng shape gửi lên API. */
 interface FormState {
@@ -85,6 +108,7 @@ export default function LibraryItemForm({
 }) {
     const { t } = useTranslation();
     const { user, token } = useAuth();
+    const { theme } = useTheme();
     const isAdmin = user?.role === 'admin';
 
     const [form, setForm] = useState<FormState>(() => toFormState(item));
@@ -97,12 +121,12 @@ export default function LibraryItemForm({
     const set = (patch: Partial<FormState>) => setForm(prev => ({ ...prev, ...patch }));
 
     const chip = (active: boolean) =>
-        `px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer focus:outline-none border ${
+        `px-3 py-1.5 rounded-lg text-sm font-semibold transition-all cursor-pointer focus:outline-none border ${
             active
                 ? 'text-white border-transparent'
                 : 'bg-[var(--bg-secondary)] border-[var(--border-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
         }`;
-    const chipStyle = (active: boolean) => (active ? { backgroundColor: ACCENT } : undefined);
+    const chipStyle = (active: boolean, tone: string = ACCENT) => (active ? { backgroundColor: tone } : undefined);
 
     const chipRow = (
         values: readonly string[],
@@ -210,14 +234,14 @@ export default function LibraryItemForm({
             {/* ─── Thông tin cơ bản ─── */}
             <section className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-5 space-y-4">
                 <div className="flex items-center justify-between gap-3">
-                    <h2 className="text-sm font-bold text-[var(--text-primary)]">{t('eventLibrary.editor.basics')}</h2>
+                    <SectionHeading tone={SECTION_TONES.basics}>{t('eventLibrary.editor.basics')}</SectionHeading>
                     <div className="flex gap-1 bg-[var(--bg-secondary)] p-1 rounded-lg border border-[var(--border-primary)]">
                         {(['vi', 'en'] as const).map(code => (
                             <button
                                 key={code}
                                 onClick={() => setLang(code)}
                                 style={lang === code ? { backgroundColor: ACCENT, color: '#fff' } : undefined}
-                                className={`px-2.5 py-1 rounded text-[11px] font-bold uppercase cursor-pointer ${lang === code ? '' : 'text-[var(--text-tertiary)]'}`}
+                                className={`px-2.5 py-1 rounded text-xs font-bold uppercase cursor-pointer ${lang === code ? '' : 'text-[var(--text-tertiary)]'}`}
                             >
                                 {code}
                             </button>
@@ -268,7 +292,7 @@ export default function LibraryItemForm({
                                 <button
                                     key={value}
                                     onClick={() => set({ visibility: value })}
-                                    style={chipStyle(form.visibility === value)}
+                                    style={chipStyle(form.visibility === value, value === 'public' ? PUBLIC_TONE : ACCENT)}
                                     className={chip(form.visibility === value)}
                                 >
                                     {t('eventLibrary.publish.visibilities.' + value)}
@@ -303,14 +327,14 @@ export default function LibraryItemForm({
                                 <button
                                     key={value}
                                     onClick={() => set({ accessLevel: value })}
-                                    style={chipStyle(form.accessLevel === value)}
+                                    style={chipStyle(form.accessLevel === value, value === 'pro' ? PRO_TONE : ACCENT)}
                                     className={chip(form.accessLevel === value)}
                                 >
                                     {t('eventLibrary.accessLevels.' + value)}
                                 </button>
                             ))}
                         </div>
-                        <p className="text-[11px] text-[var(--text-tertiary)] mt-1.5">
+                        <p className="text-xs text-[var(--text-tertiary)] mt-1.5">
                             {form.accessLevel === 'pro'
                                 ? t('eventLibrary.editor.accessLevelProHint').replace('{credits}', String(PRO_MIN_LIFETIME_CREDITS))
                                 : t('eventLibrary.editor.accessLevelPublicHint')}
@@ -321,7 +345,7 @@ export default function LibraryItemForm({
 
             {/* ─── Phân loại ─── */}
             <section className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-5 space-y-4">
-                <h2 className="text-sm font-bold text-[var(--text-primary)]">{t('eventLibrary.editor.taxonomy')}</h2>
+                <SectionHeading tone={SECTION_TONES.taxonomy}>{t('eventLibrary.editor.taxonomy')}</SectionHeading>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div>
@@ -381,14 +405,14 @@ export default function LibraryItemForm({
 
             {/* ─── Ảnh bìa, dải số liệu, file đính kèm ─── */}
             <section className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-5 space-y-4">
-                <h2 className="text-sm font-bold text-[var(--text-primary)]">{t('eventLibrary.editor.media')}</h2>
+                <SectionHeading tone={SECTION_TONES.media}>{t('eventLibrary.editor.media')}</SectionHeading>
 
                 <div className="flex items-start gap-4">
                     {form.coverImage
                         ? <img src={cdnFromUrl(form.coverImage, 'w_320')} alt="" className="w-40 h-24 object-cover rounded-lg border border-[var(--border-primary)]" />
                         : <div className="w-40 h-24 rounded-lg border border-dashed border-[var(--border-primary)]" />}
                     <div className="space-y-2">
-                        <label className="inline-block px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] cursor-pointer">
+                        <label className="inline-block px-3 py-1.5 rounded-lg text-sm font-semibold bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] cursor-pointer">
                             {uploading === 'cover' ? t('eventLibrary.editor.uploading') : t('eventLibrary.editor.pickCover')}
                             <input
                                 type="file"
@@ -398,7 +422,7 @@ export default function LibraryItemForm({
                             />
                         </label>
                         {form.coverImage && (
-                            <button onClick={() => set({ coverImage: '' })} className="block text-xs text-red-500 hover:underline cursor-pointer">
+                            <button onClick={() => set({ coverImage: '' })} className="block text-sm text-red-500 hover:underline cursor-pointer">
                                 {t('eventLibrary.editor.removeCover')}
                             </button>
                         )}
@@ -434,12 +458,12 @@ export default function LibraryItemForm({
                         <button
                             onClick={() => set({ metrics: [...form.metrics, { label: '', value: '' }] })}
                             style={{ color: ACCENT }}
-                            className="text-xs font-semibold hover:underline cursor-pointer"
+                            className="text-sm font-semibold hover:underline cursor-pointer"
                         >
                             + {t('eventLibrary.editor.addMetric')}
                         </button>
                     </div>
-                    <p className="text-[11px] text-[var(--text-tertiary)] mt-1.5">{t('eventLibrary.editor.cardMetricsHint')}</p>
+                    <p className="text-xs text-[var(--text-tertiary)] mt-1.5">{t('eventLibrary.editor.cardMetricsHint')}</p>
                 </div>
 
                 <div>
@@ -447,8 +471,8 @@ export default function LibraryItemForm({
                     <div className="space-y-2">
                         {form.attachments.map((att, i) => (
                             <div key={i} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)]">
-                                <span className="flex-1 text-sm text-[var(--text-primary)] truncate">{att.name}</span>
-                                <span className="text-xs text-[var(--text-tertiary)] shrink-0">{att.size}</span>
+                                <span className="flex-1 text-[15px] text-[var(--text-primary)] truncate">{att.name}</span>
+                                <span className="text-sm text-[var(--text-tertiary)] shrink-0">{att.size}</span>
                                 <button
                                     onClick={() => set({ attachments: form.attachments.filter((_, idx) => idx !== i) })}
                                     className="w-7 h-7 rounded-lg text-[var(--text-tertiary)] hover:text-red-500 cursor-pointer shrink-0"
@@ -458,7 +482,7 @@ export default function LibraryItemForm({
                                 </button>
                             </div>
                         ))}
-                        <label className="inline-block px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] cursor-pointer">
+                        <label className="inline-block px-3 py-1.5 rounded-lg text-sm font-semibold bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] cursor-pointer">
                             {uploading === 'files' ? t('eventLibrary.editor.uploading') : `+ ${t('eventLibrary.editor.addFiles')}`}
                             <input
                                 type="file"
@@ -474,8 +498,8 @@ export default function LibraryItemForm({
             {/* ─── Thân bài: khối ─── */}
             <section className="space-y-3">
                 <div className="flex items-center justify-between gap-3">
-                    <h2 className="text-sm font-bold text-[var(--text-primary)]">{t('eventLibrary.editor.body')}</h2>
-                    <span className="text-[11px] text-[var(--text-tertiary)]">{t('eventLibrary.editor.bodyHint')}</span>
+                    <SectionHeading tone={SECTION_TONES.body}>{t('eventLibrary.editor.body')}</SectionHeading>
+                    <span className="text-xs text-[var(--text-tertiary)]">{t('eventLibrary.editor.bodyHint')}</span>
                 </div>
 
                 {form.sections.map((section, i) => (
@@ -503,7 +527,7 @@ export default function LibraryItemForm({
                             <button
                                 key={kind}
                                 onClick={() => set({ sections: [...form.sections, emptySection(kind as SectionKind)] })}
-                                className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] cursor-pointer"
+                                className="px-3 py-1.5 rounded-lg text-sm font-semibold bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] cursor-pointer"
                             >
                                 + {t('eventLibrary.sectionKinds.' + kind)}
                             </button>
@@ -514,43 +538,29 @@ export default function LibraryItemForm({
 
             {/* ─── Nội dung tự do song ngữ (tuỳ chọn) ─── */}
             <section className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-5 space-y-2">
-                <h2 className="text-sm font-bold text-[var(--text-primary)]">
+                <SectionHeading tone={SECTION_TONES.freeContent}>
                     {t('eventLibrary.editor.freeContent')} ({lang.toUpperCase()})
-                </h2>
-                <p className="text-[11px] text-[var(--text-tertiary)]">{t('eventLibrary.editor.freeContentHint')}</p>
+                </SectionHeading>
+                <p className="text-xs text-[var(--text-tertiary)]">{t('eventLibrary.editor.freeContentHint')}</p>
                 <Editor
+                    // Đổi theme phải dựng lại editor: TinyMCE không đổi skin sau khi khởi tạo
+                    key={theme}
                     tinymceScriptSrc="/tinymce/tinymce.min.js"
                     value={form.content[lang]}
                     onEditorChange={(html: string) => set({ content: { ...form.content, [lang]: html } })}
                     licenseKey="gpl"
-                    init={{
-                        height: 240,
-                        menubar: false,
-                        plugins: ['lists', 'link', 'autolink', 'image', 'table'],
-                        toolbar: 'bold italic underline | bullist numlist | table | link image | removeformat',
-                        skin: 'oxide-dark',
-                        content_css: 'dark',
-                        branding: false,
-                        statusbar: false,
-                        content_style: 'body { font-family: sans-serif; font-size: 14px; }',
-                        images_upload_handler: async (blobInfo: { blob: () => Blob; filename: () => string }) => {
-                            const blob = blobInfo.blob();
-                            const file = new File([blob], blobInfo.filename() || 'image.png', { type: blob.type });
-                            const { url } = await uploadImage(file, 'content');
-                            return url;
-                        }
-                    }}
+                    init={libraryEditorInit(theme, 240)}
                 />
             </section>
 
             {error && (
-                <div className="px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/30 text-xs text-red-500">{error}</div>
+                <div className="px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/30 text-sm text-red-500">{error}</div>
             )}
 
             <div className="flex items-center justify-end gap-2 sticky bottom-0 py-3 bg-[var(--bg-primary)]">
                 <button
                     onClick={onCancel}
-                    className="px-4 py-2 rounded-lg text-sm font-semibold bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] cursor-pointer"
+                    className="px-4 py-2 rounded-lg text-[15px] font-semibold bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] cursor-pointer"
                 >
                     {t('eventLibrary.publish.cancel')}
                 </button>
@@ -558,7 +568,7 @@ export default function LibraryItemForm({
                     onClick={handleSave}
                     disabled={saving || !!uploading}
                     style={{ backgroundColor: ACCENT }}
-                    className="px-5 py-2 rounded-lg text-sm font-semibold text-white hover:opacity-90 transition-all cursor-pointer disabled:opacity-50"
+                    className="px-5 py-2 rounded-lg text-[15px] font-semibold text-white hover:opacity-90 transition-all cursor-pointer disabled:opacity-50"
                 >
                     {saving ? t('eventLibrary.publish.publishing') : t('eventLibrary.editor.save')}
                 </button>

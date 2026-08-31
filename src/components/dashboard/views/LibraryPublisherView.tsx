@@ -13,6 +13,13 @@ import {
 const ACCENT = '#7c5cff';
 const PAGE_SIZE = 20;
 
+interface LibraryPublisherViewProps {
+    searchQuery: string;
+    /** Slug mở sẵn form sửa — đến từ deep link /workflow?view=library&edit=<slug> */
+    initialEditSlug?: string | null;
+    onInitialEditConsumed?: () => void;
+}
+
 /**
  * Bộ công cụ đăng nội dung lên Thư viện tri thức sự kiện — thay chỗ "Kho tài
  * nguyên" cũ trong sidebar `/workflow`.
@@ -20,7 +27,7 @@ const PAGE_SIZE = 20;
  * Hai chế độ trong cùng một view: danh sách nội dung của tài khoản (admin xem
  * được tất cả) và form soạn thảo đầy đủ.
  */
-export default function LibraryPublisherView({ searchQuery }: { searchQuery: string }) {
+export default function LibraryPublisherView({ searchQuery, initialEditSlug, onInitialEditConsumed }: LibraryPublisherViewProps) {
     const { t, language } = useTranslation();
     const { user } = useAuth();
     const { confirm } = useConfirm();
@@ -55,17 +62,24 @@ export default function LibraryPublisherView({ searchQuery }: { searchQuery: str
     useEffect(() => { load(); }, [load]);
 
     // Danh sách không trả `sections`/`content` — phải nạp bản đầy đủ trước khi sửa
-    const openEditor = async (item: EventLibraryItem) => {
-        setBusySlug(item.slug);
+    const openEditor = useCallback(async (slug: string) => {
+        setBusySlug(slug);
         try {
-            const { item: full } = await getLibraryItem(item.slug);
+            const { item: full } = await getLibraryItem(slug);
             setEditing(full);
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Failed to load');
         } finally {
             setBusySlug('');
         }
-    };
+    }, []);
+
+    // Deep link từ nút Sửa trên trang chi tiết mục thư viện
+    useEffect(() => {
+        if (!initialEditSlug) return;
+        openEditor(initialEditSlug);
+        onInitialEditConsumed?.();
+    }, [initialEditSlug, onInitialEditConsumed, openEditor]);
 
     const handleDelete = async (item: EventLibraryItem) => {
         const ok = await confirm({
@@ -93,12 +107,23 @@ export default function LibraryPublisherView({ searchQuery }: { searchQuery: str
     if (editing !== null) {
         return (
             <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in space-y-5">
-                <div className="flex items-center justify-between gap-3">
-                    <div>
-                        <h1 className="text-2xl font-bold text-[var(--text-primary)]">
-                            {editing ? t('eventLibrary.editor.editTitle') : t('eventLibrary.editor.createTitle')}
-                        </h1>
-                        <p className="text-sm text-[var(--text-tertiary)] mt-0.5">{t('eventLibrary.editor.subtitle')}</p>
+                <div
+                    className="flex items-center justify-between gap-3 rounded-2xl p-4"
+                    style={{ background: `linear-gradient(135deg, ${ACCENT}1f, transparent 65%)` }}
+                >
+                    <div className="flex items-center gap-3 min-w-0">
+                        <div
+                            className="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0"
+                            style={{ backgroundColor: `${ACCENT}26`, border: `1px solid ${ACCENT}59` }}
+                        >
+                            📚
+                        </div>
+                        <div className="min-w-0">
+                            <h1 className="text-2xl font-bold truncate" style={{ color: ACCENT }}>
+                                {editing ? t('eventLibrary.editor.editTitle') : t('eventLibrary.editor.createTitle')}
+                            </h1>
+                            <p className="text-sm text-[var(--text-tertiary)] mt-0.5">{t('eventLibrary.editor.subtitle')}</p>
+                        </div>
                     </div>
                     <button
                         onClick={() => setEditing(null)}
@@ -224,7 +249,7 @@ export default function LibraryPublisherView({ searchQuery }: { searchQuery: str
                                     </button>
                                 )}
                                 <button
-                                    onClick={() => openEditor(item)}
+                                    onClick={() => openEditor(item.slug)}
                                     disabled={busySlug === item.slug}
                                     style={{ backgroundColor: ACCENT }}
                                     className="px-3 py-1.5 rounded-lg text-xs font-semibold text-white hover:opacity-90 cursor-pointer disabled:opacity-50"

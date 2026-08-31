@@ -153,19 +153,20 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
   // Navigation State
   const [searchParams, setSearchParams] = useSearchParams();
-  // Deep link: /workflow?view=skills&edit=<slug> — nút Sửa trên trang chi tiết
-  // skill mở tab mới vào đúng view này với form đã nạp sẵn.
+  // Deep link: /workflow?view=<skills|library>&edit=<slug> — nút Sửa trên trang
+  // chi tiết công khai mở tab mới vào đúng view này với form đã nạp sẵn.
+  const deepLinkView = searchParams.get('view');
   const [activeView, setActiveView] = useState<'documents' | 'projects' | 'jobs' | 'partners' | 'automation' | 'affiliate' | 'creative' | 'library' | 'skills'>(
-    searchParams.get('view') === 'skills' ? 'skills' : 'documents'
+    deepLinkView === 'skills' || deepLinkView === 'library' ? deepLinkView : 'documents'
   );
-  const [initialEditSkillSlug, setInitialEditSkillSlug] = useState<string | null>(
-    searchParams.get('view') === 'skills' ? searchParams.get('edit') : null
+  const [initialEditSlug, setInitialEditSlug] = useState<string | null>(
+    deepLinkView === 'skills' || deepLinkView === 'library' ? searchParams.get('edit') : null
   );
   const [searchQuery, setSearchQuery] = useState('');
 
   // Bỏ ?edit=<slug> sau khi form đã mở để F5 không mở lại modal
-  const clearSkillEditParam = React.useCallback(() => {
-    setInitialEditSkillSlug(null);
+  const clearEditParam = React.useCallback(() => {
+    setInitialEditSlug(null);
     setSearchParams(prev => {
       const next = new URLSearchParams(prev);
       next.delete('edit');
@@ -1494,7 +1495,13 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
     switch (activeView) {
       case 'projects': return renderProjectList();
-      case 'library': return <LibraryPublisherView searchQuery={searchQuery} />;
+      case 'library': return (
+        <LibraryPublisherView
+          searchQuery={searchQuery}
+          initialEditSlug={initialEditSlug}
+          onInitialEditConsumed={clearEditParam}
+        />
+      );
       case 'creative': return <PromptsView searchQuery={searchQuery} />;
       case 'automation': return (
         <div className="workflow-content-scroll animate-fade-in">
@@ -1520,8 +1527,8 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       case 'skills': return (
         <SkillsView
           searchQuery={searchQuery}
-          initialEditSlug={initialEditSkillSlug}
-          onInitialEditConsumed={clearSkillEditParam}
+          initialEditSlug={initialEditSlug}
+          onInitialEditConsumed={clearEditParam}
         />
       );
       default: return (

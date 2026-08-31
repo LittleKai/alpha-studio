@@ -55,6 +55,13 @@ export default {
       update: "Update",
       saving: "Saving...",
       sectionsTitle: "Detail sections",
+      groups: {
+        basics: "Basics",
+        intro: "Headline & summary",
+        classification: "Classification",
+        install: "Install & source",
+        tags: "Tags & compatibility"
+      },
       fields: {
         none: "(none)",
         name: "Skill name",
