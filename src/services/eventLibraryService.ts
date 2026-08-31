@@ -30,7 +30,7 @@ export const KPIS = [
     'leads_database', 'sales_conversion'
 ] as const;
 
-export const BUDGET_TIERS = ['under_200m', '200m_1b', '1b_5b', '5b_20b', 'over_20b'] as const;
+export const BUDGET_TIERS = ['under_50m', '50m_200m', '200m_500m', '500m_2b', 'over_2b'] as const;
 
 export const VERIFICATIONS = ['verified', 'partner_sourced', 'unverified'] as const;
 

@@ -6,7 +6,7 @@ import RichHtml from './RichHtml';
 /**
  * Bảng màu xoay vòng cho các section, giúp các khối tiêu đề phân biệt rõ ràng và trực quan.
  */
-const SECTION_PALETTES = [
+export const SECTION_PALETTES = [
     {
         name: 'violet',
         accent: '#8b5cf6',
@@ -172,7 +172,9 @@ export default function SectionRenderer({ section, index }: { section: LibrarySe
                         {(section.rows || []).map((row, i) => (
                             <div
                                 key={i}
-                                className="grid grid-cols-1 sm:grid-cols-3 gap-2 py-2.5 px-3 -mx-2 rounded-lg transition-colors"
+                                // Không dùng margin âm: dòng rộng hơn khung cha thì nền sọc
+                                // tràn ra ngoài panel và tạo thanh cuộn ngang bên trong thẻ
+                                className="grid grid-cols-1 sm:grid-cols-3 gap-2 py-2.5 px-3 rounded-lg transition-colors"
                                 style={i % 2 === 1 ? { backgroundColor: `${palette.accent}0d` } : undefined}
                             >
                                 <span className={`text-[15px] font-semibold ${palette.title}`}>{row.label}</span>

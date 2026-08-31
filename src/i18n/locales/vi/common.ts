@@ -23,6 +23,10 @@ export default {
       title: "Xác nhận xóa",
       message: "Nhập lại tên để xác nhận xóa vĩnh viễn:",
       placeholder: "Nhập tên...",
+      codeMessage: "Hành động này không thể hoàn tác.",
+      codeHint: "Nhập 3 ký tự bên dưới để xác nhận xóa:",
+      codePlaceholder: "3 ký tự",
+      deleting: "Đang xóa…",
       confirmBtn: "Xóa vĩnh viễn",
       cancelBtn: "Hủy"
     },

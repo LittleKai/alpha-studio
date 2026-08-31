@@ -3,12 +3,12 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
 import StudioBackNav from '../components/studio/StudioBackNav';
-import { useConfirm } from '../components/ui/ConfirmDialog';
+import DeleteConfirmModal from '../components/ui/DeleteConfirmModal';
 import { useAuth } from '../auth/context';
 import { localized, EventLibraryGridCard } from '../components/library/EventLibraryCard';
 import ImageLightbox from '../components/library/ImageLightbox';
 import RichHtml from '../components/library/RichHtml';
-import SectionRenderer, { isSectionEmpty } from '../components/library/SectionRenderer';
+import SectionRenderer, { isSectionEmpty, SECTION_PALETTES } from '../components/library/SectionRenderer';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
 import LibraryEngagement from '../components/library/LibraryEngagement';
 import {
@@ -19,13 +19,35 @@ import {
 
 const ACCENT = '#7c5cff';
 
+// Tông cho từng dòng/nhóm ở cột phải — trước đây mọi giá trị đều một màu tím
+const TONES = {
+    violet: '#8b5cf6',
+    sky: '#0ea5e9',
+    emerald: '#10b981',
+    amber: '#f59e0b',
+    rose: '#f43f5e',
+    cyan: '#06b6d4'
+};
+
 /** Một dòng thuộc tính trong hộp thông tin bên phải. */
-function MetaRow({ label, value }: { label: string; value: string }) {
+function MetaRow({ label, value, tone = ACCENT }: { label: string; value: string; tone?: string }) {
     return (
         <div className="flex items-start justify-between gap-4 py-2 border-b border-[var(--border-primary)] last:border-b-0">
             <span className="text-sm text-[var(--text-tertiary)] shrink-0">{label}</span>
-            <span className="text-sm font-semibold text-right" style={{ color: ACCENT }}>{value}</span>
+            <span className="text-sm font-semibold text-right" style={{ color: tone }}>{value}</span>
         </div>
+    );
+}
+
+/** Thẻ phân loại — mỗi nhóm (ngành / mục tiêu / KPI / tag) một tông riêng. */
+function Chip({ tone, children }: { tone: string; children: React.ReactNode }) {
+    return (
+        <span
+            className="text-xs px-2 py-1 rounded border font-medium"
+            style={{ backgroundColor: `${tone}12`, borderColor: `${tone}33`, color: tone }}
+        >
+            {children}
+        </span>
     );
 }
 
@@ -78,7 +100,6 @@ export default function EventLibraryItemPage() {
     const navigate = useNavigate();
     const { t, language } = useTranslation();
     const { user } = useAuth();
-    const { confirm } = useConfirm();
 
     const [item, setItem] = useState<EventLibraryItem | null>(null);
     const [related, setRelated] = useState<EventLibraryItem[]>([]);
@@ -87,6 +108,9 @@ export default function EventLibraryItemPage() {
     const [busy, setBusy] = useState(false);
     const [me, setMe] = useState({ liked: false, score: 0, comment: '' });
     const [preview, setPreview] = useState<string | null>(null);
+    const [activeSection, setActiveSection] = useState('');
+    const [showDelete, setShowDelete] = useState(false);
+    const [deleting, setDeleting] = useState(false);
     const [reviews, setReviews] = useState<LibraryReview[]>([]);
     const [access, setAccess] = useState<LibraryAccess>({
         level: 'public', unlocked: true,
@@ -118,6 +142,27 @@ export default function EventLibraryItemPage() {
 
     const canManage = !!item && !!user
         && (user.role === 'admin' || (!!item.owner && item.owner === user._id));
+
+    // Tô sáng mục đang đọc trong mục lục — cùng cách làm với trang chi tiết skill
+    useEffect(() => {
+        const onScroll = () => {
+            // Đo theo khung nhìn, không dùng offsetTop: khối nằm trong nhiều lớp
+            // bọc nên offsetTop không phải toạ độ so với trang
+            let current = '';
+            document.querySelectorAll<HTMLElement>('[data-toc-anchor]').forEach(el => {
+                if (el.getBoundingClientRect().top <= 200) current = el.id;
+            });
+            setActiveSection(current);
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+        return () => window.removeEventListener('scroll', onScroll);
+    }, [item]);
+
+    const scrollToSection = (id: string) => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setActiveSection(id);
+    };
 
     /**
      * Bấm vào ảnh bất kỳ trong phần nội dung thì mở xem phóng to. Bắt theo kiểu
@@ -151,21 +196,17 @@ export default function EventLibraryItemPage() {
         }
     };
 
-    const handleDelete = async () => {
+    const confirmDelete = async () => {
         if (!item) return;
-        const ok = await confirm({
-            title: t('eventLibrary.detail.deleteTitle'),
-            message: t('eventLibrary.detail.deleteConfirm'),
-            variant: 'danger'
-        });
-        if (!ok) return;
-        setBusy(true);
+        setDeleting(true);
         try {
             await deleteLibraryItem(item._id);
             navigate('/studio/event-library');
         } catch (err) {
             console.error('Delete library item error:', err);
-            setBusy(false);
+            setShowDelete(false);
+        } finally {
+            setDeleting(false);
         }
     };
 
@@ -202,6 +243,21 @@ export default function EventLibraryItemPage() {
     const summary = localized(item.summary, language);
     const content = localized(item.content, language);
     const locked = !access.unlocked;
+
+    // Khối rỗng bị ẩn khi render nên phải lọc trước, để mục lục khớp đúng thứ tự
+    // đánh số và màu của khối trên trang
+    const visibleSections = locked ? [] : (item.sections || []).filter(s => !isSectionEmpty(s));
+    const tocEntries = [
+        ...visibleSections.map((section, idx) => ({
+            id: `sec-${idx}`,
+            label: section.title || t('eventLibrary.sectionKinds.' + section.kind, section.kind),
+            color: SECTION_PALETTES[idx % SECTION_PALETTES.length].accent
+        })),
+        ...(!locked && content ? [{ id: 'free-content', label: t('eventLibrary.detail.content'), color: TONES.violet }] : []),
+        ...(!locked && item.attachments.length > 0
+            ? [{ id: 'attachments', label: t('eventLibrary.detail.attachments'), color: TONES.sky }]
+            : [])
+    ];
 
     return (
         <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pb-20">
@@ -259,152 +315,111 @@ export default function EventLibraryItemPage() {
                 </h1>
                 {summary && <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-8">{summary}</p>}
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div className="lg:col-span-2 min-w-0 space-y-8 [&_img]:cursor-zoom-in" onClick={openPreview}>
-                        {item.metrics.length > 0 && (
-                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                                {item.metrics.map((metric, idx) => (
-                                    <div
-                                        key={`${metric.label}-${idx}`}
-                                        className="border rounded-xl p-4 transition-all"
-                                        style={{ backgroundColor: `${ACCENT}12`, borderColor: `${ACCENT}33` }}
-                                    >
-                                        <div className="text-2xl font-extrabold truncate" style={{ color: ACCENT }}>{metric.value}</div>
-                                        <div className="text-xs text-[var(--text-tertiary)] font-medium truncate mt-0.5">
-                                            {t('eventLibrary.metrics.' + metric.label, metric.label)}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+                {/* Thông tin + Phân loại: hàng ngang dưới mô tả, không còn nằm ở cột bên */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 items-start">
+                    <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-5 shadow-sm">
+                        <h2 className="text-base font-bold mb-3 flex items-center gap-2 text-violet-600 dark:text-violet-400">
+                            <span className="w-1.5 h-4 rounded-full bg-violet-500" />
+                            {t('eventLibrary.detail.info')}
+                        </h2>
+                        <MetaRow
+                            label={t('eventLibrary.category')}
+                            value={t('eventLibrary.categories.' + item.category, item.category)}
+                            tone={TONES.violet}
+                        />
+                        <MetaRow
+                            label={t('eventLibrary.depth')}
+                            value={t('eventLibrary.depths.' + item.depth, item.depth)}
+                            tone={TONES.sky}
+                        />
+                        {item.budgetTier && (
+                            <MetaRow
+                                label={t('eventLibrary.budget')}
+                                value={t('eventLibrary.budgetTiers.' + item.budgetTier, item.budgetTier)}
+                                tone={TONES.amber}
+                            />
                         )}
-
-                        {locked ? (
-                            <ProLockPanel access={access} />
-                        ) : (
-                            <>
-                            {(item.sections || []).filter(s => !isSectionEmpty(s)).map((section, idx) => (
-                                <SectionRenderer key={idx} section={section} index={idx} />
-                            ))}
-
-                            {content ? (
-                                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 shadow-sm">
-                                    <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-violet-600 dark:text-violet-400">
-                                        <span className="w-1.5 h-5 rounded-full bg-violet-500" />
-                                        {t('eventLibrary.detail.content')}
-                                    </h2>
-                                    <RichHtml
-                                        html={content}
-                                        className="text-[var(--text-primary)] leading-relaxed [&_h1]:text-violet-600 [&_h1]:dark:text-violet-400 [&_h2]:text-indigo-600 [&_h2]:dark:text-indigo-400 [&_h3]:text-sky-600 [&_h3]:dark:text-sky-400 [&_h4]:text-teal-600 [&_h4]:dark:text-teal-400"
-                                    />
-                                </div>
-                            ) : item.sections?.length ? null : (
-                                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 text-base text-[var(--text-secondary)]">
-                                    {t('eventLibrary.detail.noContent')}
-                                </div>
-                            )}
-
-                            {item.attachments.length > 0 && (
-                                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 shadow-sm">
-                                    <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-sky-600 dark:text-sky-400">
-                                        <span className="w-1.5 h-5 rounded-full bg-sky-500" />
-                                        {t('eventLibrary.detail.attachments')}
-                                    </h2>
-                                    <div className="space-y-2">
-                                        {item.attachments.map((attachment, idx) => (
-                                            <a
-                                                key={`${attachment.url}-${idx}`}
-                                                href={attachment.url}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                onClick={() => markLibraryItemUsed(item.slug)}
-                                                className="flex items-center justify-between gap-4 px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-colors"
-                                            >
-                                                <span className="text-sm font-medium text-[var(--text-primary)] truncate">
-                                                    {attachment.name}
-                                                </span>
-                                                <span className="text-xs text-[var(--text-tertiary)] shrink-0">
-                                                    {attachment.size || t('eventLibrary.actions.download')}
-                                                </span>
-                                            </a>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                            </>
+                        {item.authorName && (
+                            <MetaRow
+                                label={t('eventLibrary.detail.author')}
+                                value={item.authorName}
+                                tone={TONES.emerald}
+                            />
                         )}
+                        {item.sourceName && (
+                            <MetaRow
+                                label={t('eventLibrary.detail.source')}
+                                value={item.sourceName}
+                                tone={TONES.cyan}
+                            />
+                        )}
+                        <MetaRow
+                            label={t('eventLibrary.metrics.views')}
+                            value={String(item.stats.views)}
+                            tone={TONES.rose}
+                        />
                     </div>
 
-                    <aside className="lg:col-span-1 space-y-6">
+                    {(item.industries.length > 0 || item.objectives.length > 0 || item.kpis.length > 0 || item.tags.length > 0) && (
                         <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-5 shadow-sm">
-                            <h2 className="text-base font-bold mb-3 flex items-center gap-2 text-violet-600 dark:text-violet-400">
-                                <span className="w-1.5 h-4 rounded-full bg-violet-500" />
-                                {t('eventLibrary.detail.info')}
+                            <h2 className="text-base font-bold mb-3 flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+                                <span className="w-1.5 h-4 rounded-full bg-emerald-500" />
+                                {t('eventLibrary.detail.classification')}
                             </h2>
-                            <MetaRow
-                                label={t('eventLibrary.category')}
-                                value={t('eventLibrary.categories.' + item.category, item.category)}
-                            />
-                            <MetaRow
-                                label={t('eventLibrary.verification')}
-                                value={t('eventLibrary.verifications.' + item.verification, item.verification)}
-                            />
-                            <MetaRow
-                                label={t('eventLibrary.depth')}
-                                value={t('eventLibrary.depths.' + item.depth, item.depth)}
-                            />
-                            {item.budgetTier && (
-                                <MetaRow
-                                    label={t('eventLibrary.budget')}
-                                    value={t('eventLibrary.budgetTiers.' + item.budgetTier, item.budgetTier)}
-                                />
-                            )}
-                            {item.authorName && (
-                                <MetaRow label={t('eventLibrary.detail.author')} value={item.authorName} />
-                            )}
-                            {item.sourceName && (
-                                <MetaRow label={t('eventLibrary.detail.source')} value={item.sourceName} />
-                            )}
-                            <MetaRow label={t('eventLibrary.metrics.views')} value={String(item.stats.views)} />
+                            <div className="flex flex-wrap gap-1.5">
+                                {item.industries.map(v => (
+                                    <Chip key={`i-${v}`} tone={TONES.sky}>{t('eventLibrary.industries.' + v, v)}</Chip>
+                                ))}
+                                {item.objectives.map(v => (
+                                    <Chip key={`o-${v}`} tone={TONES.emerald}>{t('eventLibrary.objectives.' + v, v)}</Chip>
+                                ))}
+                                {item.kpis.map(v => (
+                                    <Chip key={`k-${v}`} tone={TONES.amber}>{t('eventLibrary.kpis.' + v, v)}</Chip>
+                                ))}
+                                {item.tags.map(v => (
+                                    <Chip key={`t-${v}`} tone={TONES.rose}>#{v}</Chip>
+                                ))}
+                            </div>
                         </div>
+                    )}
+                </div>
 
-                        {(item.industries.length > 0 || item.objectives.length > 0 || item.kpis.length > 0 || item.tags.length > 0) && (
-                            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-5 shadow-sm">
-                                <h2 className="text-base font-bold mb-3 flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
-                                    <span className="w-1.5 h-4 rounded-full bg-emerald-500" />
-                                    {t('eventLibrary.detail.classification')}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    {/* Sidebar dính theo khi cuộn — cột này cao hơn màn hình nên tự cuộn
+                        bên trong, nếu không phần dưới sẽ không bao giờ với tới được */}
+                    <aside className="lg:col-span-1 space-y-6 lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:overscroll-contain lg:pr-1 library-sidebar">
+                        {/* Mục lục — cùng kiểu "Jump To" của /studio/ai-skills */}
+                        {tocEntries.length > 0 && (
+                            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-5 shadow-sm select-none">
+                                <h2 className="text-xs font-bold uppercase tracking-wider px-3 pb-2 mb-2 border-b border-[var(--border-primary)]/50 flex items-center gap-2 text-violet-600 dark:text-violet-400">
+                                    <span className="w-1.5 h-3.5 rounded-full bg-violet-500" />
+                                    {t('eventLibrary.detail.toc')}
                                 </h2>
-                                <div className="flex flex-wrap gap-1.5">
-                                    {item.industries.map(v => (
-                                        <span key={`i-${v}`} className="text-xs px-2 py-1 rounded border font-medium"
-                                            style={{ backgroundColor: `${ACCENT}12`, borderColor: `${ACCENT}33`, color: ACCENT }}>
-                                            {t('eventLibrary.industries.' + v, v)}
-                                        </span>
+                                <nav className="flex flex-col gap-1 text-sm font-semibold">
+                                    {tocEntries.map(entry => (
+                                        <button
+                                            key={entry.id}
+                                            onClick={() => scrollToSection(entry.id)}
+                                            className="w-full text-left px-3 py-2 rounded-lg transition-all cursor-pointer hover:bg-[var(--bg-secondary)]"
+                                            style={activeSection === entry.id
+                                                ? { color: entry.color, backgroundColor: `${entry.color}14` }
+                                                : { color: 'var(--text-secondary)' }}
+                                        >
+                                            <span className="flex items-center gap-2">
+                                                <span
+                                                    className="w-1.5 h-1.5 rounded-full shrink-0"
+                                                    style={{ backgroundColor: entry.color }}
+                                                />
+                                                <span className="truncate">{entry.label}</span>
+                                            </span>
+                                        </button>
                                     ))}
-                                    {item.objectives.map(v => (
-                                        <span key={`o-${v}`} className="text-xs px-2 py-1 rounded border font-medium"
-                                            style={{ backgroundColor: `${ACCENT}12`, borderColor: `${ACCENT}33`, color: ACCENT }}>
-                                            {t('eventLibrary.objectives.' + v, v)}
-                                        </span>
-                                    ))}
-                                    {item.kpis.map(v => (
-                                        <span key={`k-${v}`} className="text-xs px-2 py-1 rounded border font-medium"
-                                            style={{ backgroundColor: `${ACCENT}12`, borderColor: `${ACCENT}33`, color: ACCENT }}>
-                                            {t('eventLibrary.kpis.' + v, v)}
-                                        </span>
-                                    ))}
-                                    {item.tags.map(v => (
-                                        <span key={`t-${v}`} className="text-xs px-2 py-1 rounded border font-medium"
-                                            style={{ backgroundColor: `${ACCENT}12`, borderColor: `${ACCENT}33`, color: ACCENT }}>
-                                            #{v}
-                                        </span>
-                                    ))}
-                                </div>
+                                </nav>
                             </div>
                         )}
 
                         <LibraryEngagement
                             item={item}
-                            initialLiked={me.liked}
                             initialScore={me.score}
                             initialComment={me.comment}
                             initialReviews={reviews}
@@ -435,8 +450,8 @@ export default function EventLibraryItemPage() {
                                     </button>
                                 )}
                                 <button
-                                    onClick={handleDelete}
-                                    disabled={busy}
+                                    onClick={() => setShowDelete(true)}
+                                    disabled={busy || deleting}
                                     className="w-full px-3 py-2 rounded-lg text-sm font-semibold bg-red-500/10 border border-red-500/30 text-red-500 hover:bg-red-500/20 transition-all cursor-pointer disabled:opacity-50"
                                 >
                                     {t('eventLibrary.detail.delete')}
@@ -444,6 +459,83 @@ export default function EventLibraryItemPage() {
                             </div>
                         )}
                     </aside>
+
+                    <div className="lg:col-span-2 min-w-0 space-y-8 [&_img]:cursor-zoom-in" onClick={openPreview}>
+                        {item.metrics.length > 0 && (
+                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                                {item.metrics.map((metric, idx) => (
+                                    <div
+                                        key={`${metric.label}-${idx}`}
+                                        className="border rounded-xl p-4 transition-all"
+                                        style={{ backgroundColor: `${ACCENT}12`, borderColor: `${ACCENT}33` }}
+                                    >
+                                        <div className="text-2xl font-extrabold truncate" style={{ color: ACCENT }}>{metric.value}</div>
+                                        <div className="text-xs text-[var(--text-tertiary)] font-medium truncate mt-0.5">
+                                            {t('eventLibrary.metrics.' + metric.label, metric.label)}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
+                        {locked ? (
+                            <ProLockPanel access={access} />
+                        ) : (
+                            <>
+                            {visibleSections.map((section, idx) => (
+                                <div key={idx} id={`sec-${idx}`} data-toc-anchor className="scroll-mt-24">
+                                    <SectionRenderer section={section} index={idx} />
+                                </div>
+                            ))}
+
+                            {content ? (
+                                <div id="free-content" data-toc-anchor className="scroll-mt-24 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 shadow-sm">
+                                    <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-violet-600 dark:text-violet-400">
+                                        <span className="w-1.5 h-5 rounded-full bg-violet-500" />
+                                        {t('eventLibrary.detail.content')}
+                                    </h2>
+                                    <RichHtml
+                                        html={content}
+                                        className="text-[var(--text-primary)] leading-relaxed [&_h1]:text-violet-600 [&_h1]:dark:text-violet-400 [&_h2]:text-indigo-600 [&_h2]:dark:text-indigo-400 [&_h3]:text-sky-600 [&_h3]:dark:text-sky-400 [&_h4]:text-teal-600 [&_h4]:dark:text-teal-400"
+                                    />
+                                </div>
+                            ) : item.sections?.length ? null : (
+                                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 text-base text-[var(--text-secondary)]">
+                                    {t('eventLibrary.detail.noContent')}
+                                </div>
+                            )}
+
+                            {item.attachments.length > 0 && (
+                                <div id="attachments" data-toc-anchor className="scroll-mt-24 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 shadow-sm">
+                                    <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-sky-600 dark:text-sky-400">
+                                        <span className="w-1.5 h-5 rounded-full bg-sky-500" />
+                                        {t('eventLibrary.detail.attachments')}
+                                    </h2>
+                                    <div className="space-y-2">
+                                        {item.attachments.map((attachment, idx) => (
+                                            <a
+                                                key={`${attachment.url}-${idx}`}
+                                                href={attachment.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                onClick={() => markLibraryItemUsed(item.slug)}
+                                                className="flex items-center justify-between gap-4 px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-colors"
+                                            >
+                                                <span className="text-sm font-medium text-[var(--text-primary)] truncate">
+                                                    {attachment.name}
+                                                </span>
+                                                <span className="text-xs text-[var(--text-tertiary)] shrink-0">
+                                                    {attachment.size || t('eventLibrary.actions.download')}
+                                                </span>
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                            </>
+                        )}
+                    </div>
+
                 </div>
 
                 {related.length > 0 && (
@@ -473,6 +565,16 @@ export default function EventLibraryItemPage() {
             </div>
 
             {preview && <ImageLightbox src={preview} onClose={() => setPreview(null)} />}
+
+            {showDelete && (
+                <DeleteConfirmModal
+                    mode="code"
+                    deleting={deleting}
+                    itemName={localized(item.title, language)}
+                    onConfirm={confirmDelete}
+                    onCancel={() => setShowDelete(false)}
+                />
+            )}
         </div>
     );
 }

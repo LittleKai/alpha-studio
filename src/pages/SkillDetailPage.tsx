@@ -134,6 +134,7 @@ export default function SkillDetailPage() {
   const [copiedAlternative, setCopiedAlternative] = useState(false);
   const [activeSection, setActiveSection] = useState('overview');
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState<string | null>(null);
 
   const { user, token } = useAuth();
@@ -203,6 +204,7 @@ export default function SkillDetailPage() {
 
   const handleDelete = async () => {
     if (!skill || !token) return;
+    setDeleting(true);
     try {
       await deleteSkill(skill.slug, token);
       // Danh sách công khai đọc từ sessionStorage — xoá để không hiện skill đã xoá
@@ -212,6 +214,8 @@ export default function SkillDetailPage() {
     } catch (err) {
       setDeleteError(err instanceof Error ? err.message : t('skills.admin.deleteFailed'));
       setShowDeleteModal(false);
+    } finally {
+      setDeleting(false);
     }
   };
 
@@ -1011,6 +1015,8 @@ export default function SkillDetailPage() {
 
       {showDeleteModal && (
         <DeleteConfirmModal
+          mode="code"
+          deleting={deleting}
           itemName={skill.name}
           onConfirm={handleDelete}
           onCancel={() => setShowDeleteModal(false)}

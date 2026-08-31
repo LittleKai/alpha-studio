@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
-import { LikeButton, RatingStars } from '../shared';
+import { RatingStars } from '../shared';
 import {
-    likeLibraryItem, rateLibraryItem,
+    rateLibraryItem,
     type EventLibraryItem, type LibraryReview
 } from '../../services/eventLibraryService';
 import { cdnFromUrl } from '../../services/cloudinaryAssets';
@@ -57,13 +57,11 @@ function ReviewRow({ review, language }: { review: LibraryReview; language: stri
  */
 export default function LibraryEngagement({
     item,
-    initialLiked,
     initialScore,
     initialComment,
     initialReviews,
 }: {
     item: EventLibraryItem;
-    initialLiked: boolean;
     initialScore: number;
     initialComment: string;
     initialReviews: LibraryReview[];
@@ -71,8 +69,6 @@ export default function LibraryEngagement({
     const { t, language } = useTranslation();
     const { user, isAuthenticated } = useAuth();
 
-    const [liked, setLiked] = useState(initialLiked);
-    const [likesCount, setLikesCount] = useState(item.likesCount || 0);
     const [rating, setRating] = useState(item.rating || { average: 0, count: 0 });
     const [myScore, setMyScore] = useState(initialScore);
     const [draft, setDraft] = useState(initialComment);
@@ -80,21 +76,6 @@ export default function LibraryEngagement({
     const [saving, setSaving] = useState(false);
     const [saved, setSaved] = useState(false);
     const [error, setError] = useState('');
-
-    const handleLike = async () => {
-        if (!isAuthenticated) {
-            setError(t('eventLibrary.engagement.loginRequired'));
-            return;
-        }
-        setError('');
-        try {
-            const res = await likeLibraryItem(item.slug);
-            setLiked(res.liked);
-            setLikesCount(res.likesCount);
-        } catch (err) {
-            setError(err instanceof Error ? err.message : t('eventLibrary.engagement.failed'));
-        }
-    };
 
     const submit = async (score: number, comment: string) => {
         if (!isAuthenticated) {
@@ -137,14 +118,6 @@ export default function LibraryEngagement({
                 <span className="w-1.5 h-4 rounded-full bg-pink-500" />
                 {t('eventLibrary.engagement.title')}
             </h2>
-
-            <div className="flex items-center justify-between gap-3">
-                <LikeButton isLiked={liked} likesCount={likesCount} onToggle={handleLike} size="sm" />
-                <span className="text-xs text-[var(--text-tertiary)]">
-                    {item.stats.views} {t('eventLibrary.metrics.views')}
-                </span>
-            </div>
-
             {/* Chấm điểm và nhận xét là một hành động, không tách rời */}
             <div className="space-y-2 pt-3 border-t border-[var(--border-primary)]">
                 <p className="text-xs font-semibold text-[var(--text-secondary)]">

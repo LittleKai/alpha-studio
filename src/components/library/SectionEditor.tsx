@@ -5,6 +5,7 @@ import { libraryEditorInit } from './libraryEditorInit';
 import { uploadImage } from '../../services/cloudinaryService';
 import type { LibrarySection } from '../../services/eventLibraryService';
 import { cdnFromUrl } from '../../services/cloudinaryAssets';
+import { SECTION_PALETTES } from './SectionRenderer';
 
 const ACCENT = '#7c5cff';
 
@@ -44,6 +45,8 @@ interface Props {
     onChange: (next: LibrarySection) => void;
     onRemove: () => void;
     onMove: (direction: -1 | 1) => void;
+    /** Chỉ xem — form cha đã khoá input bằng `fieldset[disabled]`, riêng TinyMCE nằm trong iframe nên phải khoá bằng prop này. */
+    readOnly?: boolean;
 }
 
 /**
@@ -53,7 +56,7 @@ interface Props {
  * Mọi thao tác đều tạo object mới rồi gọi `onChange` — state thật nằm ở
  * `LibraryItemForm`, khối này không giữ state riêng.
  */
-export default function SectionEditor({ section, index, total, onChange, onRemove, onMove }: Props) {
+export default function SectionEditor({ section, index, total, onChange, onRemove, onMove, readOnly = false }: Props) {
     const { t } = useTranslation();
     const { theme } = useTheme();
     const set = (patch: Partial<LibrarySection>) => onChange({ ...section, ...patch });
@@ -73,7 +76,11 @@ export default function SectionEditor({ section, index, total, onChange, onRemov
                         value={section.html || ''}
                         onEditorChange={(content: string) => set({ html: content })}
                         licenseKey="gpl"
-                        init={libraryEditorInit(theme)}
+                        disabled={readOnly}
+                        init={libraryEditorInit(theme, 260, {
+                            promptBox: t('eventLibrary.editor.promptBox'),
+                            promptBoxPlaceholder: t('eventLibrary.editor.promptBoxPlaceholder')
+                        })}
                     />
                 );
 
@@ -300,18 +307,25 @@ export default function SectionEditor({ section, index, total, onChange, onRemov
         }
     };
 
+    // Cùng bảng màu với trang chi tiết, xoay theo vị trí khối — soạn xong nhìn
+    // ra ngay khối này sẽ mang màu gì
+    const palette = SECTION_PALETTES[index % SECTION_PALETTES.length];
+
     return (
-        <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-card)] p-4 space-y-3">
+        <div
+            className="rounded-2xl border bg-[var(--bg-card)] p-4 space-y-3"
+            style={{ borderColor: `${palette.accent}40` }}
+        >
             <div className="flex items-center gap-2">
                 <span
                     className="w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold shrink-0"
-                    style={{ backgroundColor: ACCENT, color: '#fff' }}
+                    style={{ backgroundColor: palette.accent, color: '#fff' }}
                 >
                     {index + 1}
                 </span>
                 <span
                     className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded shrink-0"
-                    style={{ backgroundColor: `${ACCENT}1a`, color: ACCENT }}
+                    style={{ backgroundColor: `${palette.accent}1a`, color: palette.accent }}
                 >
                     {t('eventLibrary.sectionKinds.' + section.kind)}
                 </span>
@@ -320,6 +334,7 @@ export default function SectionEditor({ section, index, total, onChange, onRemov
                     onChange={e => set({ title: e.target.value })}
                     placeholder={t('eventLibrary.editor.sectionTitle')}
                     className={`${inputClass} flex-1 font-semibold`}
+                    style={{ color: palette.accent, borderColor: `${palette.accent}40` }}
                 />
                 <button
                     onClick={() => onMove(-1)}

@@ -48,7 +48,7 @@ export default {
     },
     loading: {
       default: "AI is thinking...",
-      wait: "Connecting to GPU cloud...",
+      wait: "Please wait a moment...",
       step1: "Processing Step 1: Drafting...",
       step2: "Processing Step 2: Finalizing..."
     },
@@ -514,11 +514,11 @@ export default {
       },
       budget: "Budget (VND)",
       budgetTiers: {
-        under_200m: "Under 200M",
-        "200m_1b": "200M – 1B",
-        "1b_5b": "1B – 5B",
-        "5b_20b": "5B – 20B",
-        over_20b: "Over 20B"
+        under_50m: "Under 50M",
+        "50m_200m": "50M – 200M",
+        "200m_500m": "200M – 500M",
+        "500m_2b": "500M – 2B",
+        over_2b: "Over 2B"
       },
       kpi: "KPI / Results",
       kpis: {
@@ -590,6 +590,7 @@ export default {
         author: "Published by",
         source: "Source",
         manage: "Manage",
+        toc: "Contents",
         edit: "Edit item",
         copyPrompt: "Copy",
         copied: "Copied",
@@ -618,6 +619,17 @@ export default {
         subtitle: "Title and summary are bilingual; text inside body blocks is single-language.",
         backToList: "Back to list",
         edit: "Edit",
+        promptBox: "Prompt box (frame with a Copy button)",
+        promptBoxPlaceholder: "Paste the prompt here…",
+        example: {
+          badge: "Example",
+          lockedBadge: "Cannot publish",
+          viewOnly: "view only",
+          cardHint: "An Alpha Studio sample — open it to see how the eight body blocks work. It cannot be edited, published or deleted.",
+          viewerTitle: "Viewing the example",
+          viewerSubtitle: "An Alpha Studio sample — see how each block is filled in, then write your own entry.",
+          readOnlyNotice: "This is a read-only example. Every field is locked: it cannot be edited, saved, published or deleted. Hit “Back to list”, then “Create new entry” to build one of your own."
+        },
         save: "Save",
         empty: "You have not published anything yet",
         emptyHint: "Write a case study, playbook, prompt or template, then make it public when it is ready to share.",

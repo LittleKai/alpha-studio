@@ -43,6 +43,7 @@ const SkillsView: React.FC<SkillsViewProps> = ({ searchQuery, initialEditSlug, o
     const [editingSkill, setEditingSkill] = useState<SkillDetail | null>(null);
     const [loadingSlug, setLoadingSlug] = useState<string | null>(null);
     const [deleteTarget, setDeleteTarget] = useState<Skill | null>(null);
+    const [deleting, setDeleting] = useState(false);
 
     const fetchSkills = useCallback(async () => {
         setIsLoading(true);
@@ -116,6 +117,7 @@ const SkillsView: React.FC<SkillsViewProps> = ({ searchQuery, initialEditSlug, o
 
     const confirmDelete = async () => {
         if (!deleteTarget || !token) return;
+        setDeleting(true);
         try {
             await deleteSkill(deleteTarget.slug, token);
             setSkills(prev => prev.filter(s => s.slug !== deleteTarget.slug));
@@ -125,6 +127,8 @@ const SkillsView: React.FC<SkillsViewProps> = ({ searchQuery, initialEditSlug, o
         } catch (err) {
             setError(err instanceof Error ? err.message : t('workflow.skillsAdmin.errors.deleteFailed'));
             setDeleteTarget(null);
+        } finally {
+            setDeleting(false);
         }
     };
 
@@ -290,6 +294,8 @@ const SkillsView: React.FC<SkillsViewProps> = ({ searchQuery, initialEditSlug, o
 
             {deleteTarget && (
                 <DeleteConfirmModal
+                    mode="code"
+                    deleting={deleting}
                     itemName={deleteTarget.name}
                     onConfirm={confirmDelete}
                     onCancel={() => setDeleteTarget(null)}

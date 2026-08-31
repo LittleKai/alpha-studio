@@ -101,8 +101,9 @@ function MetricRow({ metrics }: { metrics: EventLibraryItem['metrics'] }) {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 py-3 border-t border-[var(--border-primary)]">
             {metrics.slice(0, 4).map((metric, idx) => (
                 <div key={`${metric.label}-${idx}`} className="min-w-0">
-                    <div className="text-base font-bold text-violet-600 dark:text-violet-400 truncate">{metric.value}</div>
-                    <div className="text-[11px] text-[var(--text-tertiary)] truncate">
+                    {/* Số liệu có thể là cụm chữ ("3 concept") — cắt cụt sẽ mất nghĩa, cho xuống dòng */}
+                    <div className="text-base font-bold text-violet-600 dark:text-violet-400 leading-snug break-words">{metric.value}</div>
+                    <div className="text-[11px] text-[var(--text-tertiary)] leading-snug break-words">
                         {t('eventLibrary.metrics.' + metric.label, metric.label)}
                     </div>
                 </div>

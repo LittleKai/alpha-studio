@@ -960,7 +960,7 @@ export default function CrmSubscriptionPage() {
                                                 <tr key={o._id} className="billing-history-row hover:bg-white/[0.02] transition-colors">
                                                     <td className="p-3.5 font-mono text-xs billing-history-code text-cyan-400">{o.transactionCode}</td>
                                                     <td className="p-3.5 font-semibold text-[var(--text-primary)]">{o.description}</td>
-                                                    <td className="p-3.5 text-slate-400">
+                                                    <td className="p-3.5 text-[var(--text-secondary)]">
                                                         {o.paymentMethod === 'credit' || o.paymentMethod === 'credits' ? 'Credits Wallet' : 'Bank Transfer'}
                                                     </td>
                                                     <td className="p-3.5 text-right font-black text-[var(--text-primary)]">
@@ -968,10 +968,10 @@ export default function CrmSubscriptionPage() {
                                                     </td>
                                                     <td className="p-3.5 text-center">
                                                         <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider ${
-                                                            (o.status === 'completed' || o.status === 'paid') ? 'bg-green-500/10 text-green-400 border border-green-500/20' :
-                                                            o.status === 'pending' ? 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20' :
-                                                            o.status === 'failed' ? 'bg-red-500/10 text-red-400 border border-red-500/20' :
-                                                            'bg-gray-500/10 text-gray-400 border border-gray-500/20'
+                                                            (o.status === 'completed' || o.status === 'paid') ? 'bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20' :
+                                                            o.status === 'pending' ? 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border border-yellow-500/20' :
+                                                            o.status === 'failed' ? 'bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20' :
+                                                            'bg-gray-500/10 text-gray-600 dark:text-gray-400 border border-gray-500/20'
                                                         }`}>
                                                             {o.status === 'pending' && <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse"></span>}
                                                             {(o.status === 'completed' || o.status === 'paid') 
@@ -982,7 +982,7 @@ export default function CrmSubscriptionPage() {
                                                             }
                                                         </span>
                                                     </td>
-                                                    <td className="p-3.5 text-slate-400">
+                                                    <td className="p-3.5 text-[var(--text-secondary)]">
                                                         {new Date(o.createdAt).toLocaleString('vi-VN')}
                                                     </td>
                                                 </tr>

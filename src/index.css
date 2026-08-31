@@ -1126,3 +1126,12 @@ html[data-theme="dark"] .text-emerald-theme {
   border-color: rgba(16, 185, 129, 0.4);
   background: rgba(16, 185, 129, 0.12);
 }
+
+/* Thanh cuộn mảnh cho sidebar dính của trang chi tiết thư viện sự kiện */
+.library-sidebar { scrollbar-width: thin; scrollbar-color: var(--border-primary) transparent; }
+.library-sidebar::-webkit-scrollbar { width: 6px; }
+.library-sidebar::-webkit-scrollbar-track { background: transparent; }
+.library-sidebar::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+  border-radius: 3px;
+}

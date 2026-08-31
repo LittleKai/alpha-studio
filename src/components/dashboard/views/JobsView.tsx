@@ -133,33 +133,33 @@ const JobsView: React.FC<JobsViewProps> = ({ searchQuery }) => {
 
     const getCategoryColor = (category: string): string => {
         const colors: Record<string, string> = {
-            engineering: 'bg-blue-500/20 text-blue-400',
-            design: 'bg-purple-500/20 text-purple-400',
-            marketing: 'bg-pink-500/20 text-pink-400',
-            operations: 'bg-orange-500/20 text-orange-400',
-            hr: 'bg-green-500/20 text-green-400',
-            finance: 'bg-yellow-500/20 text-yellow-400',
-            other: 'bg-gray-500/20 text-gray-400',
+            engineering: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20',
+            design: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20',
+            marketing: 'bg-pink-500/10 text-pink-600 dark:text-pink-400 border border-pink-500/20',
+            operations: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/20',
+            hr: 'bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20',
+            finance: 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border border-yellow-500/20',
+            other: 'bg-gray-500/10 text-gray-600 dark:text-gray-400 border border-gray-500/20',
         };
         return colors[category] || colors.other;
     };
 
     const getJobTypeColor = (jobType: string): string => {
         const colors: Record<string, string> = {
-            'full-time': 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
-            'part-time': 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
-            contract: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
-            internship: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
-            remote: 'bg-violet-500/10 text-violet-400 border-violet-500/20',
+            'full-time': 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20',
+            'part-time': 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20',
+            contract: 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20',
+            internship: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20',
+            remote: 'bg-violet-500/10 text-violet-600 dark:text-violet-400 border border-violet-500/20',
         };
-        return colors[jobType] || 'bg-gray-500/10 text-gray-400 border-gray-500/20';
+        return colors[jobType] || 'bg-gray-500/10 text-gray-600 dark:text-gray-400 border border-gray-500/20';
     };
 
     const getStatusBadge = (status: string): { color: string; label: string } => {
         const badges: Record<string, { color: string; label: string }> = {
-            draft: { color: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20', label: 'Draft' },
-            published: { color: 'bg-green-500/10 text-green-400 border-green-500/20', label: 'Published' },
-            closed: { color: 'bg-red-500/10 text-red-400 border-red-500/20', label: 'Closed' },
+            draft: { color: 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border border-yellow-500/20', label: 'Draft' },
+            published: { color: 'bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20', label: 'Published' },
+            closed: { color: 'bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20', label: 'Closed' },
         };
         return badges[status] || badges.draft;
     };
@@ -198,14 +198,14 @@ const JobsView: React.FC<JobsViewProps> = ({ searchQuery }) => {
 
     const getExperienceColor = (level: string): string => {
         const colors: Record<string, string> = {
-            fresher: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-            junior: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
-            mid: 'bg-green-500/10 text-green-400 border-green-500/20',
-            senior: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
-            lead: 'bg-orange-500/10 text-orange-400 border-orange-500/20',
-            manager: 'bg-red-500/10 text-red-400 border-red-500/20',
+            fresher: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20',
+            junior: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20',
+            mid: 'bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20',
+            senior: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20',
+            lead: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/20',
+            manager: 'bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20',
         };
-        return colors[level] || 'bg-gray-500/10 text-gray-400 border-gray-500/20';
+        return colors[level] || 'bg-gray-500/10 text-gray-600 dark:text-gray-400 border border-gray-500/20';
     };
 
     return (
@@ -400,7 +400,7 @@ const JobsView: React.FC<JobsViewProps> = ({ searchQuery }) => {
                                                 ) : (
                                                     <button
                                                         onClick={() => handleCloseJob(job._id)}
-                                                        className="flex-1 py-2.5 rounded-xl font-bold text-sm transition-all bg-gray-500/20 text-gray-400 hover:bg-gray-500/30"
+                                                        className="flex-1 py-2.5 rounded-xl font-bold text-sm transition-all bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] hover:bg-[var(--border-primary)]/40 hover:text-amber-500"
                                                     >
                                                         {language === 'vi' ? 'Đóng' : 'Close'}
                                                     </button>

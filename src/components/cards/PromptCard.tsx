@@ -23,24 +23,24 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, onClick, onUpdate }) =>
 
     const getCategoryColor = (category: string): string => {
         const colors: Record<string, string> = {
-            'image-generation': 'bg-purple-500/20 text-purple-400 border-purple-500/30',
-            'text-generation': 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-            'code': 'bg-green-500/20 text-green-400 border-green-500/30',
-            'workflow': 'bg-orange-500/20 text-orange-400 border-orange-500/30',
-            'other': 'bg-gray-500/20 text-gray-400 border-gray-500/30'
+            'image-generation': 'bg-purple-500/10 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 border-purple-500/30',
+            'text-generation': 'bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 border-blue-500/30',
+            'code': 'bg-green-500/10 dark:bg-green-500/20 text-green-600 dark:text-green-400 border-green-500/30',
+            'workflow': 'bg-orange-500/10 dark:bg-orange-500/20 text-orange-600 dark:text-orange-400 border-orange-500/30',
+            'other': 'bg-gray-500/10 dark:bg-gray-500/20 text-gray-600 dark:text-gray-400 border-gray-500/30'
         };
         return colors[category] || colors.other;
     };
 
     const getPlatformColor = (platform: string): string => {
         const colors: Record<string, string> = {
-            'midjourney': 'bg-indigo-500/10 text-indigo-400',
-            'stable-diffusion': 'bg-pink-500/10 text-pink-400',
-            'dalle': 'bg-cyan-500/10 text-cyan-400',
-            'comfyui': 'bg-amber-500/10 text-amber-400',
-            'chatgpt': 'bg-emerald-500/10 text-emerald-400',
-            'claude': 'bg-orange-500/10 text-orange-400',
-            'other': 'bg-gray-500/10 text-gray-400'
+            'midjourney': 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400',
+            'stable-diffusion': 'bg-pink-500/10 text-pink-600 dark:text-pink-400',
+            'dalle': 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400',
+            'comfyui': 'bg-amber-500/10 text-amber-600 dark:text-amber-400',
+            'chatgpt': 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
+            'claude': 'bg-orange-500/10 text-orange-600 dark:text-orange-400',
+            'other': 'bg-gray-500/10 text-gray-600 dark:text-gray-400'
         };
         return colors[platform] || colors.other;
     };

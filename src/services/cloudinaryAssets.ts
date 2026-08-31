@@ -2,7 +2,9 @@
 // nằm trong `public/`. Cloud name là giá trị công khai (đã xuất hiện trong bundle),
 // không phải secret.
 
-const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || 'dzchj4ysj';
+// Asset tĩnh tham chiếu bằng `public_id` nên phải đọc từ đúng tài khoản chứa chúng —
+// luôn là tài khoản đầu tiên, kể cả khi upload đã xoay vòng nhiều tài khoản.
+import { PRIMARY_CLOUD_NAME as CLOUD_NAME } from './cloudinaryAccounts';
 
 export type AssetQuality = 'standard' | 'high';
 

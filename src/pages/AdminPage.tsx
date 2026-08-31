@@ -607,10 +607,10 @@ function UsersTab() {
                                                         {u.name} {u._id === currentUser?._id && <span className="text-xs text-[var(--text-tertiary)] font-normal">(Bạn)</span>}
                                                     </p>
                                                     <span className={`text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded ${
-                                                        u.role === 'admin' ? 'bg-red-500/10 text-red-500' :
-                                                        u.role === 'mod' ? 'bg-purple-500/10 text-purple-500' :
-                                                        u.role === 'partner' ? 'bg-blue-500/10 text-blue-500' :
-                                                        'bg-gray-500/10 text-gray-400'
+                                                        u.role === 'admin' ? 'bg-red-500/10 text-red-600 dark:text-red-400' :
+                                                        u.role === 'mod' ? 'bg-purple-500/10 text-purple-600 dark:text-purple-400' :
+                                                        u.role === 'partner' ? 'bg-blue-500/10 text-blue-600 dark:text-blue-400' :
+                                                        'bg-gray-500/10 text-gray-600 dark:text-gray-400'
                                                     }`}>
                                                         {u.role}
                                                     </span>
@@ -665,10 +665,10 @@ function UsersTab() {
                                     </div>
                                     <div className="flex items-center gap-2">
                                         <span className={`px-3 py-1 rounded-lg text-sm font-medium ${
-                                            selectedUser.role === 'admin' ? 'bg-red-500/10 text-red-500' :
-                                            selectedUser.role === 'mod' ? 'bg-purple-500/10 text-purple-500' :
-                                            selectedUser.role === 'partner' ? 'bg-blue-500/10 text-blue-500' :
-                                            'bg-gray-500/10 text-gray-400'
+                                            selectedUser.role === 'admin' ? 'bg-red-500/10 text-red-600 dark:text-red-400' :
+                                            selectedUser.role === 'mod' ? 'bg-purple-500/10 text-purple-600 dark:text-purple-400' :
+                                            selectedUser.role === 'partner' ? 'bg-blue-500/10 text-blue-600 dark:text-blue-400' :
+                                            'bg-gray-500/10 text-gray-600 dark:text-gray-400'
                                         }`}>
                                             {selectedUser.role}
                                         </span>

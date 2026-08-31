@@ -100,11 +100,18 @@ export default function LibraryItemForm({
     item,
     onSaved,
     onCancel,
+    readOnly = false,
 }: {
     /** Bỏ trống = tạo mới */
     item?: EventLibraryItem | null;
     onSaved: (saved: EventLibraryItem) => void;
     onCancel: () => void;
+    /**
+     * Chỉ xem — dùng cho mục mẫu ghim đầu danh sách. `fieldset[disabled]` khoá
+     * mọi input/select/button bên trong; TinyMCE nằm trong iframe nên phải khoá
+     * riêng bằng prop `disabled`. Nút Lưu bị ẩn hẳn.
+     */
+    readOnly?: boolean;
 }) {
     const { t } = useTranslation();
     const { user, token } = useAuth();
@@ -231,6 +238,7 @@ export default function LibraryItemForm({
 
     return (
         <div className="space-y-5">
+            <fieldset disabled={readOnly} className="space-y-5 m-0 p-0 border-0 min-w-0">
             {/* ─── Thông tin cơ bản ─── */}
             <section className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-5 space-y-4">
                 <div className="flex items-center justify-between gap-3">
@@ -510,6 +518,7 @@ export default function LibraryItemForm({
                         total={form.sections.length}
                         onChange={next => set({ sections: form.sections.map((s, idx) => idx === i ? next : s) })}
                         onRemove={() => set({ sections: form.sections.filter((_, idx) => idx !== i) })}
+                        readOnly={readOnly}
                         onMove={dir => {
                             const target = i + dir;
                             if (target < 0 || target >= form.sections.length) return;
@@ -549,9 +558,14 @@ export default function LibraryItemForm({
                     value={form.content[lang]}
                     onEditorChange={(html: string) => set({ content: { ...form.content, [lang]: html } })}
                     licenseKey="gpl"
-                    init={libraryEditorInit(theme, 240)}
+                    disabled={readOnly}
+                    init={libraryEditorInit(theme, 240, {
+                        promptBox: t('eventLibrary.editor.promptBox'),
+                        promptBoxPlaceholder: t('eventLibrary.editor.promptBoxPlaceholder')
+                    })}
                 />
             </section>
+            </fieldset>
 
             {error && (
                 <div className="px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/30 text-sm text-red-500">{error}</div>
@@ -562,16 +576,18 @@ export default function LibraryItemForm({
                     onClick={onCancel}
                     className="px-4 py-2 rounded-lg text-[15px] font-semibold bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] cursor-pointer"
                 >
-                    {t('eventLibrary.publish.cancel')}
+                    {readOnly ? t('eventLibrary.editor.backToList') : t('eventLibrary.publish.cancel')}
                 </button>
-                <button
-                    onClick={handleSave}
-                    disabled={saving || !!uploading}
-                    style={{ backgroundColor: ACCENT }}
-                    className="px-5 py-2 rounded-lg text-[15px] font-semibold text-white hover:opacity-90 transition-all cursor-pointer disabled:opacity-50"
-                >
-                    {saving ? t('eventLibrary.publish.publishing') : t('eventLibrary.editor.save')}
-                </button>
+                {!readOnly && (
+                    <button
+                        onClick={handleSave}
+                        disabled={saving || !!uploading}
+                        style={{ backgroundColor: ACCENT }}
+                        className="px-5 py-2 rounded-lg text-[15px] font-semibold text-white hover:opacity-90 transition-all cursor-pointer disabled:opacity-50"
+                    >
+                        {saving ? t('eventLibrary.publish.publishing') : t('eventLibrary.editor.save')}
+                    </button>
+                )}
             </div>
         </div>
     );

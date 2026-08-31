@@ -48,7 +48,7 @@ export default {
     },
     loading: {
       default: "AI đang xử lý...",
-      wait: "Đang kết nối GPU cloud...",
+      wait: "Vui lòng đợi trong giây lát...",
       step1: "Xử lý Bước 1: Tạo bản nháp...",
       step2: "Xử lý Bước 2: Hoàn thiện..."
     },
@@ -514,11 +514,11 @@ export default {
       },
       budget: "Ngân sách (VND)",
       budgetTiers: {
-        under_200m: "Dưới 200 triệu",
-        "200m_1b": "200 triệu – 1 tỷ",
-        "1b_5b": "1 – 5 tỷ",
-        "5b_20b": "5 – 20 tỷ",
-        over_20b: "Trên 20 tỷ"
+        under_50m: "Dưới 50 triệu",
+        "50m_200m": "50 – 200 triệu",
+        "200m_500m": "200 – 500 triệu",
+        "500m_2b": "500 triệu – 2 tỷ",
+        over_2b: "Trên 2 tỷ"
       },
       kpi: "KPI / Kết quả",
       kpis: {
@@ -590,6 +590,7 @@ export default {
         author: "Người đăng",
         source: "Nguồn",
         manage: "Quản lý",
+        toc: "Mục lục",
         edit: "Sửa nội dung",
         copyPrompt: "Sao chép",
         copied: "Đã chép",
@@ -618,6 +619,17 @@ export default {
         subtitle: "Tiêu đề và mô tả có song ngữ; chữ trong các khối thân bài dùng một ngôn ngữ.",
         backToList: "Về danh sách",
         edit: "Sửa",
+        promptBox: "Ô prompt (khung có nút Sao chép)",
+        promptBoxPlaceholder: "Dán nội dung prompt vào đây…",
+        example: {
+          badge: "Ví dụ mẫu",
+          lockedBadge: "Không đăng được",
+          viewOnly: "chỉ xem",
+          cardHint: "Mục mẫu của Alpha Studio — mở ra để xem 8 khối thân bài hoạt động thế nào. Không sửa, không công khai và không xoá được.",
+          viewerTitle: "Xem mục mẫu",
+          viewerSubtitle: "Mục mẫu của Alpha Studio — xem cách điền từng khối rồi tự soạn mục của bạn.",
+          readOnlyNotice: "Đây là mục ví dụ, chỉ để xem. Mọi ô đã bị khoá: không sửa, không lưu, không công khai và không xoá được. Bấm “Về danh sách” rồi “Soạn nội dung mới” để tự làm một mục như thế này."
+        },
         save: "Lưu",
         empty: "Bạn chưa đăng nội dung nào",
         emptyHint: "Soạn case study, playbook, prompt hay template và chọn công khai khi sẵn sàng chia sẻ.",

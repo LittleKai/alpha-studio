@@ -146,12 +146,12 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
 
     const getPartnerTypeColor = (type: string): string => {
         const colors: Record<string, string> = {
-            technology: 'bg-blue-500/20 text-blue-400',
-            education: 'bg-green-500/20 text-green-400',
-            enterprise: 'bg-purple-500/20 text-purple-400',
-            startup: 'bg-orange-500/20 text-orange-400',
-            government: 'bg-red-500/20 text-red-400',
-            other: 'bg-gray-500/20 text-gray-400',
+            technology: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20',
+            education: 'bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20',
+            enterprise: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20',
+            startup: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/20',
+            government: 'bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20',
+            other: 'bg-gray-500/10 text-gray-600 dark:text-gray-400 border border-gray-500/20',
         };
         return colors[type] || colors.other;
     };
@@ -174,9 +174,9 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
 
     const getStatusBadge = (status: string): { color: string; label: string } => {
         const badges: Record<string, { color: string; label: string }> = {
-            draft: { color: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20', label: 'Draft' },
-            published: { color: 'bg-green-500/10 text-green-400 border-green-500/20', label: 'Published' },
-            archived: { color: 'bg-gray-500/10 text-gray-400 border-gray-500/20', label: 'Archived' },
+            draft: { color: 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border border-yellow-500/20', label: 'Draft' },
+            published: { color: 'bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20', label: 'Published' },
+            archived: { color: 'bg-gray-500/10 text-gray-600 dark:text-gray-400 border border-gray-500/20', label: 'Archived' },
         };
         return badges[status] || badges.draft;
     };
@@ -412,7 +412,7 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
                                             ) : (
                                                 <button
                                                     onClick={() => handleUnpublishPartner(partner._id)}
-                                                    className="flex-1 py-2.5 rounded-xl font-bold text-sm transition-all bg-gray-500/20 text-gray-400 hover:bg-gray-500/30"
+                                                    className="flex-1 py-2.5 rounded-xl font-bold text-sm transition-all bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] hover:bg-[var(--border-primary)]/40 hover:text-amber-500"
                                                 >
                                                     {language === 'vi' ? 'Ẩn' : 'Unpublish'}
                                                 </button>

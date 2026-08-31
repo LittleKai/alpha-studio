@@ -191,14 +191,14 @@ const UserProfilePage: React.FC = () => {
                                     {profile.socials?.linkedin && (
                                         <a href={profile.socials.linkedin} target="_blank" rel="noreferrer"
                                             className="flex items-center gap-3 py-2 px-3 bg-[var(--bg-secondary)] rounded-xl hover:border-[var(--accent-primary)] border border-transparent transition-colors text-sm text-[var(--text-primary)]">
-                                            <span className="w-7 h-7 flex items-center justify-center rounded-lg bg-blue-500/20 text-blue-300 font-bold text-xs flex-shrink-0">in</span>
+                                            <span className="w-7 h-7 flex items-center justify-center rounded-lg bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-300 font-bold text-xs flex-shrink-0">in</span>
                                             <span className="truncate">LinkedIn</span>
                                         </a>
                                     )}
                                     {profile.socials?.github && (
                                         <a href={profile.socials.github} target="_blank" rel="noreferrer"
                                             className="flex items-center gap-3 py-2 px-3 bg-[var(--bg-secondary)] rounded-xl hover:border-[var(--accent-primary)] border border-transparent transition-colors text-sm text-[var(--text-primary)]">
-                                            <span className="w-7 h-7 flex items-center justify-center rounded-lg bg-gray-600/30 text-gray-300 font-bold text-xs flex-shrink-0">GH</span>
+                                            <span className="w-7 h-7 flex items-center justify-center rounded-lg bg-gray-500/10 dark:bg-gray-600/30 text-gray-700 dark:text-gray-300 font-bold text-xs flex-shrink-0">GH</span>
                                             <span className="truncate">GitHub</span>
                                         </a>
                                     )}

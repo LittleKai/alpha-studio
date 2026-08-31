@@ -1,23 +1,55 @@
 import React, { useState } from 'react';
 import { useTranslation } from '../../i18n/context';
 
+/** Bảng chữ không có ký tự dễ đọc nhầm (0/O, 1/I/L). */
+const CODE_ALPHABET = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+
+const randomCode = () =>
+    Array.from({ length: 3 }, () => CODE_ALPHABET[Math.floor(Math.random() * CODE_ALPHABET.length)]).join('');
+
 interface DeleteConfirmModalProps {
     itemName: string;
     onConfirm: () => void;
     onCancel: () => void;
+    /**
+     * Cách xác nhận: `name` (mặc định) gõ lại đúng tên mục; `code` gõ lại 3 ký tự
+     * ngẫu nhiên sinh ngay lúc mở hộp thoại.
+     */
+    mode?: 'name' | 'code';
+    /** Đang gọi API xoá — khoá cả hai nút và chặn đóng hộp thoại giữa chừng. */
+    deleting?: boolean;
 }
 
-const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({ itemName, onConfirm, onCancel }) => {
+const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
+    itemName,
+    onConfirm,
+    onCancel,
+    mode = 'name',
+    deleting = false
+}) => {
     const { t } = useTranslation();
     const [input, setInput] = useState('');
+    // Sinh một lần cho mỗi lần mở hộp thoại — không đổi khi người dùng gõ
+    const [code] = useState(randomCode);
+
+    const expected = mode === 'code' ? code : itemName;
+    const matched = mode === 'code'
+        ? input.trim().toUpperCase() === expected
+        : input === expected;
+    const canConfirm = matched && !deleting;
 
     const handleConfirm = () => {
-        if (input !== itemName) return;
+        if (!canConfirm) return;
         onConfirm();
     };
 
+    const handleCancel = () => {
+        if (deleting) return;
+        onCancel();
+    };
+
     return (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onClick={onCancel}>
+        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onClick={handleCancel}>
             <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-sm p-6 shadow-2xl" onClick={e => e.stopPropagation()}>
                 <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0">
@@ -27,32 +59,49 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({ itemName, onCon
                     </div>
                     <div>
                         <h3 className="font-bold text-[var(--text-primary)]">{t('common.deleteConfirm.title')}</h3>
-                        <p className="text-xs text-[var(--text-tertiary)] mt-0.5">{t('common.deleteConfirm.message')}</p>
+                        <p className="text-xs text-[var(--text-tertiary)] mt-0.5">
+                            {mode === 'code' ? t('common.deleteConfirm.codeMessage') : t('common.deleteConfirm.message')}
+                        </p>
                     </div>
                 </div>
                 <div className="bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg px-3 py-2 mb-4">
                     <p className="text-sm font-mono text-[var(--text-primary)] break-all">{itemName}</p>
                 </div>
+
+                {mode === 'code' && (
+                    <>
+                        <p className="text-xs text-[var(--text-secondary)] mb-2">{t('common.deleteConfirm.codeHint')}</p>
+                        <div className="bg-red-500/10 border border-red-500/30 rounded-lg py-2.5 mb-3">
+                            <p className="text-2xl font-mono font-bold text-center tracking-[0.4em] text-red-400 select-none">{code}</p>
+                        </div>
+                    </>
+                )}
+
                 <input
                     type="text"
-                    placeholder={t('common.deleteConfirm.placeholder')}
+                    placeholder={mode === 'code' ? t('common.deleteConfirm.codePlaceholder') : t('common.deleteConfirm.placeholder')}
                     value={input}
-                    onChange={e => setInput(e.target.value)}
+                    onChange={e => setInput(mode === 'code' ? e.target.value.toUpperCase() : e.target.value)}
                     onKeyDown={e => e.key === 'Enter' && handleConfirm()}
+                    maxLength={mode === 'code' ? 3 : undefined}
+                    disabled={deleting}
                     autoFocus
-                    className="w-full px-3 py-2.5 mb-4 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-red-400 transition-colors"
+                    className={`w-full px-3 py-2.5 mb-4 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-red-400 transition-colors disabled:opacity-50 ${
+                        mode === 'code' ? 'text-center font-mono text-lg tracking-[0.4em] uppercase' : ''
+                    }`}
                 />
                 <div className="flex gap-2">
                     <button
                         onClick={handleConfirm}
-                        disabled={input !== itemName}
+                        disabled={!canConfirm}
                         className="flex-1 py-2.5 rounded-xl bg-red-500 text-white font-bold text-sm transition-all disabled:opacity-30 disabled:cursor-not-allowed hover:bg-red-600"
                     >
-                        {t('common.deleteConfirm.confirmBtn')}
+                        {deleting ? t('common.deleteConfirm.deleting') : t('common.deleteConfirm.confirmBtn')}
                     </button>
                     <button
-                        onClick={onCancel}
-                        className="flex-1 py-2.5 rounded-xl bg-[var(--bg-secondary)] text-[var(--text-secondary)] font-bold text-sm hover:bg-[var(--border-primary)] transition-colors"
+                        onClick={handleCancel}
+                        disabled={deleting}
+                        className="flex-1 py-2.5 rounded-xl bg-[var(--bg-secondary)] text-[var(--text-secondary)] font-bold text-sm hover:bg-[var(--border-primary)] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
                     >
                         {t('common.deleteConfirm.cancelBtn')}
                     </button>

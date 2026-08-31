@@ -1,10 +1,9 @@
 // Cloudinary Upload Service
-// Requires VITE_CLOUDINARY_CLOUD_NAME and VITE_CLOUDINARY_UPLOAD_PRESET in .env.local
+// Tài khoản đọc từ `cloudinaryAccounts.ts` — một hoặc nhiều, xoay vòng để chia tải.
+// Env: VITE_CLOUDINARY_CLOUD_NAMES + VITE_CLOUDINARY_UPLOAD_PRESETS (hoặc cặp số ít cũ).
 
 import { compressImage, type ImageUploadType } from './imageCompression';
-
-const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
-const UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET || 'alpha_studio';
+import { CLOUDINARY_ACCOUNTS, accountsToTry } from './cloudinaryAccounts';
 
 export interface CloudinaryResponse {
   secure_url: string;
@@ -42,7 +41,7 @@ export async function uploadToCloudinary(
   folder?: string,
   uploadType: ImageUploadType = 'general'
 ): Promise<UploadResult> {
-  if (!CLOUD_NAME) {
+  if (!CLOUDINARY_ACCOUNTS.length) {
     return {
       success: false,
       url: '',
@@ -57,40 +56,51 @@ export async function uploadToCloudinary(
     // Resize + chuyển WebP theo loại upload trước khi gửi lên Cloudinary
     const processedFile = await compressImage(file, uploadType);
 
-    const formData = new FormData();
-    formData.append('file', processedFile);
-    formData.append('upload_preset', UPLOAD_PRESET);
-    if (folder) {
-      formData.append('folder', folder);
-    }
-
-    const response = await fetch(
-      `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
-      {
-        method: 'POST',
-        body: formData,
+    // Tài khoản bốc ngẫu nhiên trước; hỏng (hết hạn mức, lỗi mạng) thì thử tài khoản kế
+    let lastError = 'Unknown error occurred';
+    for (const account of accountsToTry()) {
+      const formData = new FormData();
+      formData.append('file', processedFile);
+      formData.append('upload_preset', account.uploadPreset);
+      if (folder) {
+        formData.append('folder', folder);
       }
-    );
 
-    const data: CloudinaryResponse = await response.json();
+      try {
+        const response = await fetch(
+          `https://api.cloudinary.com/v1_1/${account.cloudName}/image/upload`,
+          {
+            method: 'POST',
+            body: formData,
+          }
+        );
 
-    if (data.error) {
-      return {
-        success: false,
-        url: '',
-        publicId: '',
-        width: 0,
-        height: 0,
-        error: data.error.message,
-      };
+        const data: CloudinaryResponse = await response.json();
+
+        if (data.error) {
+          lastError = data.error.message;
+          continue;
+        }
+
+        return {
+          success: true,
+          url: data.secure_url,
+          publicId: data.public_id,
+          width: data.width,
+          height: data.height,
+        };
+      } catch (err) {
+        lastError = err instanceof Error ? err.message : lastError;
+      }
     }
 
     return {
-      success: true,
-      url: data.secure_url,
-      publicId: data.public_id,
-      width: data.width,
-      height: data.height,
+      success: false,
+      url: '',
+      publicId: '',
+      width: 0,
+      height: 0,
+      error: lastError,
     };
   } catch (error) {
     console.error('Cloudinary upload error:', error);
@@ -184,14 +194,16 @@ export async function uploadFile(
   file: File,
   onProgress?: (progress: number) => void
 ): Promise<{ url: string; publicId: string }> {
-  if (!CLOUD_NAME) {
+  // Upload có thanh tiến độ nên dùng XHR — chỉ bốc một tài khoản, không thử vòng
+  const account = accountsToTry()[0];
+  if (!account) {
     throw new Error('Cloudinary cloud name not configured');
   }
 
   try {
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('upload_preset', UPLOAD_PRESET);
+    formData.append('upload_preset', account.uploadPreset);
     formData.append('folder', 'resources');
 
     // Use XMLHttpRequest for progress tracking
@@ -226,7 +238,7 @@ export async function uploadFile(
       });
 
       // Use auto resource type to handle any file type
-      xhr.open('POST', `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`);
+      xhr.open('POST', `https://api.cloudinary.com/v1_1/${account.cloudName}/auto/upload`);
       xhr.send(formData);
     });
   } catch (error) {

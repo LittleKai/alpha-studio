@@ -50,13 +50,13 @@ const JobCard: React.FC<JobCardProps> = ({
     const getStatusColor = useCallback((status: string) => {
         switch (status) {
             case 'published':
-                return 'bg-green-500/20 text-green-400 border-green-500/30';
+                return 'bg-green-500/10 dark:bg-green-500/20 text-green-600 dark:text-green-400 border-green-500/30';
             case 'draft':
-                return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
+                return 'bg-yellow-500/10 dark:bg-yellow-500/20 text-yellow-600 dark:text-yellow-400 border-yellow-500/30';
             case 'closed':
-                return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+                return 'bg-gray-500/10 dark:bg-gray-500/20 text-gray-600 dark:text-gray-400 border-gray-500/30';
             default:
-                return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+                return 'bg-gray-500/10 dark:bg-gray-500/20 text-gray-600 dark:text-gray-400 border-gray-500/30';
         }
     }, []);
 

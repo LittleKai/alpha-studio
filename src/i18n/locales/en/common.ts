@@ -23,6 +23,10 @@ export default {
       title: "Confirm Deletion",
       message: "Type the name to confirm permanent deletion:",
       placeholder: "Enter name...",
+      codeMessage: "This action cannot be undone.",
+      codeHint: "Type the three characters below to confirm deletion:",
+      codePlaceholder: "3 characters",
+      deleting: "Deleting…",
       confirmBtn: "Delete permanently",
       cancelBtn: "Cancel"
     },

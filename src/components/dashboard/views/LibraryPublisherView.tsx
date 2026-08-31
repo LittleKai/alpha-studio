@@ -1,8 +1,9 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useTranslation } from '../../../i18n/context';
 import { useAuth } from '../../../auth/context';
-import { useConfirm } from '../../ui/ConfirmDialog';
+import DeleteConfirmModal from '../../ui/DeleteConfirmModal';
 import LibraryItemForm from '../../library/LibraryItemForm';
+import { buildExampleItem, EXAMPLE_ITEM_ID } from '../../library/exampleLibraryItem';
 import { localized } from '../../library/EventLibraryCard';
 import { cdnFromUrl } from '../../../services/cloudinaryAssets';
 import {
@@ -30,7 +31,6 @@ interface LibraryPublisherViewProps {
 export default function LibraryPublisherView({ searchQuery, initialEditSlug, onInitialEditConsumed }: LibraryPublisherViewProps) {
     const { t, language } = useTranslation();
     const { user } = useAuth();
-    const { confirm } = useConfirm();
     const isAdmin = user?.role === 'admin';
 
     const [items, setItems] = useState<EventLibraryItem[]>([]);
@@ -40,6 +40,13 @@ export default function LibraryPublisherView({ searchQuery, initialEditSlug, onI
     const [editing, setEditing] = useState<EventLibraryItem | null | undefined>(null);
     const [scope, setScope] = useState<'mine' | 'all'>('mine');
     const [busySlug, setBusySlug] = useState('');
+    const [deleteTarget, setDeleteTarget] = useState<EventLibraryItem | null>(null);
+    const [deleting, setDeleting] = useState(false);
+
+    // Mục mẫu chỉ sống ở frontend — không có bản ghi nào trên server nên nó
+    // không thể công khai, không thể lưu và không thể xoá.
+    const exampleItem = useMemo(() => buildExampleItem(language), [language]);
+    const viewingExample = editing?._id === EXAMPLE_ITEM_ID;
 
     const load = useCallback(async () => {
         setLoading(true);
@@ -81,15 +88,19 @@ export default function LibraryPublisherView({ searchQuery, initialEditSlug, onI
         onInitialEditConsumed?.();
     }, [initialEditSlug, onInitialEditConsumed, openEditor]);
 
-    const handleDelete = async (item: EventLibraryItem) => {
-        const ok = await confirm({
-            title: t('eventLibrary.detail.deleteTitle'),
-            message: t('eventLibrary.detail.deleteConfirm'),
-            variant: 'danger'
-        });
-        if (!ok) return;
-        await deleteLibraryItem(item._id);
-        load();
+    const confirmDelete = async () => {
+        if (!deleteTarget) return;
+        setDeleting(true);
+        try {
+            await deleteLibraryItem(deleteTarget._id);
+            setDeleteTarget(null);
+            load();
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'Failed to delete');
+            setDeleteTarget(null);
+        } finally {
+            setDeleting(false);
+        }
     };
 
     const handleToggleVisibility = async (item: EventLibraryItem) => {
@@ -120,9 +131,13 @@ export default function LibraryPublisherView({ searchQuery, initialEditSlug, onI
                         </div>
                         <div className="min-w-0">
                             <h1 className="text-2xl font-bold truncate" style={{ color: ACCENT }}>
-                                {editing ? t('eventLibrary.editor.editTitle') : t('eventLibrary.editor.createTitle')}
+                                {viewingExample
+                                    ? t('eventLibrary.editor.example.viewerTitle')
+                                    : editing ? t('eventLibrary.editor.editTitle') : t('eventLibrary.editor.createTitle')}
                             </h1>
-                            <p className="text-sm text-[var(--text-tertiary)] mt-0.5">{t('eventLibrary.editor.subtitle')}</p>
+                            <p className="text-sm text-[var(--text-tertiary)] mt-0.5">
+                                {viewingExample ? t('eventLibrary.editor.example.viewerSubtitle') : t('eventLibrary.editor.subtitle')}
+                            </p>
                         </div>
                     </div>
                     <button
@@ -133,8 +148,15 @@ export default function LibraryPublisherView({ searchQuery, initialEditSlug, onI
                     </button>
                 </div>
 
+                {viewingExample && (
+                    <div className="px-4 py-3 rounded-xl border border-dashed text-sm" style={{ borderColor: `${ACCENT}80`, backgroundColor: `${ACCENT}0f`, color: 'var(--text-secondary)' }}>
+                        {t('eventLibrary.editor.example.readOnlyNotice')}
+                    </div>
+                )}
+
                 <LibraryItemForm
                     item={editing}
+                    readOnly={viewingExample}
                     onCancel={() => setEditing(null)}
                     onSaved={() => { setEditing(null); load(); }}
                 />
@@ -178,6 +200,38 @@ export default function LibraryPublisherView({ searchQuery, initialEditSlug, onI
             {error && (
                 <div className="px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/30 text-xs text-red-500">{error}</div>
             )}
+
+            {/* Mục mẫu — luôn ghim đầu danh sách, chỉ mở ra xem được */}
+            <div
+                className="flex flex-col md:flex-row md:items-center gap-4 p-4 rounded-xl border border-dashed"
+                style={{ borderColor: `${ACCENT}80`, background: `linear-gradient(135deg, ${ACCENT}14, transparent 70%)` }}
+            >
+                <img src={cdnFromUrl(exampleItem.coverImage, 'w_320')} alt="" className="w-full md:w-28 h-20 object-cover rounded-lg shrink-0" />
+
+                <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-1.5 mb-1">
+                        <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded text-white" style={{ backgroundColor: ACCENT }}>
+                            📌 {t('eventLibrary.editor.example.badge')}
+                        </span>
+                        <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded" style={{ backgroundColor: `${ACCENT}1a`, color: ACCENT }}>
+                            {t('eventLibrary.types.' + exampleItem.itemType)}
+                        </span>
+                        <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border bg-[var(--bg-secondary)] text-[var(--text-tertiary)] border-[var(--border-primary)]">
+                            🔒 {t('eventLibrary.editor.example.lockedBadge')}
+                        </span>
+                    </div>
+                    <h3 className="font-bold text-[var(--text-primary)] truncate">{localized(exampleItem.title, language)}</h3>
+                    <p className="text-xs text-[var(--text-tertiary)]">{t('eventLibrary.editor.example.cardHint')}</p>
+                </div>
+
+                <button
+                    onClick={() => setEditing(exampleItem)}
+                    style={{ backgroundColor: ACCENT }}
+                    className="px-3 py-1.5 rounded-lg text-xs font-semibold text-white hover:opacity-90 cursor-pointer shrink-0"
+                >
+                    {t('eventLibrary.editor.edit')} · {t('eventLibrary.editor.example.viewOnly')}
+                </button>
+            </div>
 
             {loading ? (
                 <div className="flex items-center justify-center py-24">
@@ -257,8 +311,9 @@ export default function LibraryPublisherView({ searchQuery, initialEditSlug, onI
                                     {t('eventLibrary.editor.edit')}
                                 </button>
                                 <button
-                                    onClick={() => handleDelete(item)}
-                                    className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-red-500/10 border border-red-500/30 text-red-500 hover:bg-red-500/20 cursor-pointer"
+                                    onClick={() => setDeleteTarget(item)}
+                                    disabled={deleting}
+                                    className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-red-500/10 border border-red-500/30 text-red-500 hover:bg-red-500/20 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     {t('eventLibrary.detail.delete')}
                                 </button>
@@ -266,6 +321,16 @@ export default function LibraryPublisherView({ searchQuery, initialEditSlug, onI
                         </div>
                     ))}
                 </div>
+            )}
+
+            {deleteTarget && (
+                <DeleteConfirmModal
+                    mode="code"
+                    deleting={deleting}
+                    itemName={localized(deleteTarget.title, language)}
+                    onConfirm={confirmDelete}
+                    onCancel={() => setDeleteTarget(null)}
+                />
             )}
         </div>
     );
