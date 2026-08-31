@@ -591,6 +591,8 @@ export default {
         source: "Nguồn",
         manage: "Quản lý",
         edit: "Sửa nội dung",
+        copyPrompt: "Sao chép",
+        copied: "Đã chép",
         makePrivate: "Chuyển về riêng tư",
         makePublic: "Công khai nội dung",
         delete: "Xóa khỏi thư viện",

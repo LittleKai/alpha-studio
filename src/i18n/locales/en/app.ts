@@ -591,6 +591,8 @@ export default {
         source: "Source",
         manage: "Manage",
         edit: "Edit item",
+        copyPrompt: "Copy",
+        copied: "Copied",
         makePrivate: "Make private",
         makePublic: "Make public",
         delete: "Remove from library",

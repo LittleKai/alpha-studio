@@ -7,6 +7,7 @@ import { useConfirm } from '../components/ui/ConfirmDialog';
 import { useAuth } from '../auth/context';
 import { localized, EventLibraryGridCard } from '../components/library/EventLibraryCard';
 import ImageLightbox from '../components/library/ImageLightbox';
+import RichHtml from '../components/library/RichHtml';
 import SectionRenderer, { isSectionEmpty } from '../components/library/SectionRenderer';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
 import LibraryEngagement from '../components/library/LibraryEngagement';
@@ -291,9 +292,9 @@ export default function EventLibraryItemPage() {
                                         <span className="w-1.5 h-5 rounded-full bg-violet-500" />
                                         {t('eventLibrary.detail.content')}
                                     </h2>
-                                    <div
-                                        className="tinymce-content text-[var(--text-primary)] leading-relaxed [&_h1]:text-violet-600 [&_h1]:dark:text-violet-400 [&_h2]:text-indigo-600 [&_h2]:dark:text-indigo-400 [&_h3]:text-sky-600 [&_h3]:dark:text-sky-400 [&_h4]:text-teal-600 [&_h4]:dark:text-teal-400"
-                                        dangerouslySetInnerHTML={{ __html: content }}
+                                    <RichHtml
+                                        html={content}
+                                        className="text-[var(--text-primary)] leading-relaxed [&_h1]:text-violet-600 [&_h1]:dark:text-violet-400 [&_h2]:text-indigo-600 [&_h2]:dark:text-indigo-400 [&_h3]:text-sky-600 [&_h3]:dark:text-sky-400 [&_h4]:text-teal-600 [&_h4]:dark:text-teal-400"
                                     />
                                 </div>
                             ) : item.sections?.length ? null : (
