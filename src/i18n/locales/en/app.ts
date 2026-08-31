@@ -120,7 +120,7 @@ export default {
         badge: "Alpha Studio Ecosystem · Beta",
         title1: "AI Studio",
         title2: "The creative toolkit",
-        subtitle: "Five tools are open to every account: the Event Knowledge Library, the AI Skills Library, Alpha CRM for Zalo marketing, VocabFlip for vocabulary practice, and VietYaku for Japanese/Chinese to Vietnamese translation. Three more are being finished in the workshop.",
+        subtitle: "Five tools are open to every account: the Event Knowledge Library, the AI Skills Library, Alpha CRM for Zalo marketing, VocabFlip for vocabulary practice, and VietYaku — converter software supporting Japanese and Chinese translation. Three more are being finished in the workshop.",
         stats: {
           live: "Tools live",
           upcoming: "Coming soon",
@@ -159,9 +159,9 @@ export default {
           f3: "Library syncs with your Studio account on Web, Windows, and Android"
         },
         vietyaku: {
-          f1: "Referenced & improved from QuickConverter (Tang Thu Vien)",
-          f2: "More algorithms & dictionary sets, with integrated Japanese",
-          f3: "Fully offline translation, portable Windows with auto-updates"
+          f1: "Converter software supporting offline Japanese and Chinese translation",
+          f2: "Referenced & enhanced from QuickConverter with expanded dictionaries and algorithms",
+          f3: "Fully offline translation, portable Windows build with auto-updates"
         }
       },
       open: "Open",
@@ -386,11 +386,11 @@ export default {
         },
         vietyaku: {
           title: "VietYaku",
-          desc: "Referenced from QuickConverter (Tang Thu Vien), improved with more dictionaries, algorithms, and integrated Japanese",
+          desc: "Converter software supporting Japanese and Chinese translation",
           page: {
-            tag: "Offline translation app",
+            tag: "Translation Converter Software",
             title: "VietYaku for Windows & Android",
-            subtitle: "Translate Japanese and Chinese novels and documents into Vietnamese the VietPhrase way — referenced from Tang Thu Vien's QuickConverter and improved with expanded dictionary collections, flexible algorithms, and full offline Japanese translation. Includes a repair tool for corrupted Japanese dictionaries.",
+            subtitle: "Converter software supporting Japanese and Chinese translation to Vietnamese the VietPhrase way — referenced from Tang Thu Vien's QuickConverter and improved with expanded dictionary collections, flexible algorithms, and full offline Japanese translation. Includes a repair tool for corrupted Japanese dictionaries.",
             downloadTitle: "Download the latest build",
             downloadDesc: "A ready-to-run ZIP for Windows (no installer required) and mobile Android APK build.",
             downloadWindows: "Download for Windows",
@@ -417,13 +417,13 @@ export default {
             featureOfflineTitle: "Offline translation",
             featureOfflineDesc: "Dictionaries ship with the app and translate instantly using greedy longest-match, without sending your text anywhere.",
             featureOriginTitle: "QuickConverter Heritage & Improvements",
-            featureOriginDesc: "Referenced from Tang Thu Vien's QuickConverter, upgraded with multiple scan algorithms, expanded dictionary collections, and integrated Japanese support.",
+            featureOriginDesc: "Converter software referenced from Tang Thu Vien's QuickConverter, upgraded with multiple scan algorithms, expanded dictionary collections, and integrated Japanese support.",
             featureLookupTitle: "Multi-source lookup",
             featureLookupDesc: "Pull extra definitions from Mazii, Jisho, Weblio and Youdao when you are online, right in the meaning pane of the selected word.",
             featureRepairTitle: "Dictionary repair",
             featureRepairDesc: "Repairs Quick Translator's mojibake Japanese dictionaries and writes a new file, never overwriting the original.",
             requirementsHeading: "Requirements & notes",
-            requirementOrigin: "Referenced from QuickConverter (Tang Thu Vien), enhanced with richer dictionaries, versatile algorithms, and Japanese integration.",
+            requirementOrigin: "Converter software referenced from QuickConverter (Tang Thu Vien), enhanced with richer dictionaries, versatile algorithms, and Japanese integration.",
             requirementOs: "Windows 10 or newer, 64-bit.",
             requirementAndroid: "Android: Planned support for Android 8.0+ upon mobile release.",
             requirementPortable: "Runs portable on Windows — your personal data stays in a userdata folder next to the .exe.",

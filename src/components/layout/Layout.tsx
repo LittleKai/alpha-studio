@@ -91,7 +91,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
         return () => document.removeEventListener('openLoginModal', openLogin);
     }, []);
 
-    const isStudioPage = location.pathname === '/studio';
+    const isStudioPage = location.pathname.startsWith('/studio');
     // const isServerPage = location.pathname === '/server';
     const isWorkflowPage = location.pathname.startsWith('/workflow');
     const isAboutPage = location.pathname.startsWith('/about');
@@ -140,9 +140,11 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                         <Link to="/services" className={`whitespace-nowrap transition-colors ${isServicesPage ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
                             {t('landing.nav.services')}
                         </Link>
-                        <button onClick={() => navigateToProtectedPage('/workflow')} className={`whitespace-nowrap border md:px-2.5 md:py-0.5 lg:px-3 lg:py-1 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-[var(--accent-shadow)] ${isWorkflowPage ? 'bg-[var(--accent-primary)]/18 text-[var(--accent-primary)] border-[var(--accent-primary)] shadow-[var(--accent-shadow)]' : 'text-[var(--accent-primary)] border-[var(--accent-primary)]/35 hover:bg-[var(--accent-primary)]/14 hover:border-[var(--accent-primary)]'}`}>
-                            {t('landing.nav.connect')}
-                        </button>
+                        {!isStudioPage && (
+                            <Link to="/studio" className="whitespace-nowrap border px-2 py-0.5 lg:px-2.5 lg:py-0.5 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-[var(--accent-shadow)] text-[var(--accent-primary)] border-[var(--accent-primary)]/35 hover:bg-[var(--accent-primary)]/14 hover:border-[var(--accent-primary)]">
+                                {t('landing.nav.enterStudio')}
+                            </Link>
+                        )}
                     </div>
 
                     <div className="flex items-center gap-3 md:gap-2 lg:gap-3 xl:gap-4">
@@ -152,10 +154,13 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                         {/* Desktop Account */}
                         {isAuthenticated ? (
                             <div className="hidden md:flex items-center gap-2 lg:gap-3">
-                                {!isStudioPage && (
-                                    <Link to="/studio" className="hidden lg:block lg:py-1 lg:px-2.5 xl:py-1.5 xl:px-4 bg-[var(--accent-primary)] text-[var(--text-on-accent)] lg:text-xs xl:text-sm font-bold rounded-xl shadow-[var(--accent-shadow)] hover:scale-105 transition-all whitespace-nowrap">
-                                        {t('landing.nav.enterStudio')}
-                                    </Link>
+                                {!isWorkflowPage && (
+                                    <button
+                                        onClick={() => navigateToProtectedPage('/workflow')}
+                                        className="hidden md:block whitespace-nowrap border px-2 py-0.5 lg:px-2.5 lg:py-0.5 rounded-lg text-[12px] xl:text-[13px] 2xl:text-[14px] font-extrabold uppercase md:tracking-normal lg:tracking-wide xl:tracking-wider 2xl:tracking-widest text-[var(--accent-primary)] border-[var(--accent-primary)]/35 hover:bg-[var(--accent-primary)]/14 hover:border-[var(--accent-primary)] hover:scale-105 hover:shadow-[var(--accent-shadow)] transition-all duration-200"
+                                    >
+                                        {t('landing.nav.connect')}
+                                    </button>
                                 )}
                                 <div className="relative group">
                                     <button className="flex items-center gap-2 py-1.5 md:px-2 lg:px-2.5 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-colors">
@@ -238,9 +243,19 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                                 </div>
                             </div>
                         ) : (
-                            <button onClick={() => setShowLoginDialog(true)} className="hidden md:block md:py-1.5 md:px-3 lg:py-2 lg:px-5 bg-[var(--accent-primary)] text-[var(--text-on-accent)] md:text-xs lg:text-sm font-bold rounded-xl shadow-[var(--accent-shadow)] hover:scale-105 transition-all whitespace-nowrap">
-                                {t('login.button') || 'Sign In'}
-                            </button>
+                            <div className="hidden md:flex items-center gap-2 lg:gap-3">
+                                {!isWorkflowPage && (
+                                    <button
+                                        onClick={() => navigateToProtectedPage('/workflow')}
+                                        className="hidden md:block whitespace-nowrap border px-2 py-0.5 lg:px-2.5 lg:py-0.5 rounded-lg text-[12px] xl:text-[13px] 2xl:text-[14px] font-extrabold uppercase md:tracking-normal lg:tracking-wide xl:tracking-wider 2xl:tracking-widest text-[var(--accent-primary)] border-[var(--accent-primary)]/35 hover:bg-[var(--accent-primary)]/14 hover:border-[var(--accent-primary)] hover:scale-105 hover:shadow-[var(--accent-shadow)] transition-all duration-200"
+                                    >
+                                        {t('landing.nav.connect')}
+                                    </button>
+                                )}
+                                <button onClick={() => setShowLoginDialog(true)} className="md:py-1 md:px-2.5 lg:py-1.5 lg:px-4 bg-[var(--accent-primary)] text-[var(--text-on-accent)] md:text-xs lg:text-sm font-bold rounded-xl shadow-[var(--accent-shadow)] hover:scale-105 transition-all whitespace-nowrap">
+                                    {t('login.button') || 'Sign In'}
+                                </button>
+                            </div>
                         )}
 
                         {/* Mobile Hamburger */}
@@ -350,23 +365,22 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                                     <SparkleIcon />
                                 </Link>
 
-                                <button 
-                                    onClick={() => { navigateToProtectedPage('/workflow'); closeMobile(); }} 
-                                    className={`mean-bird-button relative flex items-center justify-between px-4 py-3 rounded-xl text-[14.5px] font-semibold transition-all duration-200 ${
-                                        isWorkflowPage 
-                                            ? 'active' 
-                                            : 'text-[var(--accent-color)] border border-[var(--accent-primary)]/20'
-                                    }`}
-                                >
-                                    <div className="dots_border"></div>
-                                    <span className="relative z-10 flex items-center gap-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                                        </svg>
-                                        <span>{t('landing.nav.connect')}</span>
-                                    </span>
-                                    <SparkleIcon />
-                                </button>
+                                {!isStudioPage && (
+                                    <Link 
+                                        onClick={closeMobile} 
+                                        to="/studio" 
+                                        className="mean-bird-button relative flex items-center justify-between px-4 py-3 rounded-xl text-[14.5px] font-semibold transition-all duration-200 text-[var(--text-primary)]"
+                                    >
+                                        <div className="dots_border"></div>
+                                        <span className="relative z-10 flex items-center gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                            </svg>
+                                            <span>{t('landing.nav.enterStudio')}</span>
+                                        </span>
+                                        <SparkleIcon />
+                                    </Link>
+                                )}
                             </div>
                         </div>
 
@@ -393,16 +407,17 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                                         </div>
                                     </div>
 
-                                    <Link 
-                                        onClick={closeMobile} 
-                                        to="/studio" 
-                                        className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[14.5px] font-semibold text-[var(--accent-primary)] bg-[var(--accent-primary)]/8 hover:bg-[var(--accent-primary)]/15 transition-all duration-200 hover:translate-x-1"
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                        </svg>
-                                        <span>{t('landing.nav.enterStudio')}</span>
-                                    </Link>
+                                    {!isWorkflowPage && (
+                                        <button 
+                                            onClick={() => { navigateToProtectedPage('/workflow'); closeMobile(); }} 
+                                            className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[14.5px] font-semibold text-[var(--accent-primary)] bg-[var(--accent-primary)]/8 hover:bg-[var(--accent-primary)]/15 transition-all duration-200 hover:translate-x-1 w-full text-left"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4.5 w-4.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                            </svg>
+                                            <span>{t('landing.nav.connect')}</span>
+                                        </button>
+                                    )}
 
                                     <Link 
                                         onClick={closeMobile} 

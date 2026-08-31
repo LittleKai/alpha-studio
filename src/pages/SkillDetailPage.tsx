@@ -4,6 +4,7 @@ import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
 import StudioBackNav from '../components/studio/StudioBackNav';
 import DeleteConfirmModal from '../components/ui/DeleteConfirmModal';
+import SparkleIcon from '../components/ui/SparkleIcon';
 import { useAuth } from '../auth/context';
 import { getSkillBySlug, getSkills, deleteSkill, type SkillDetail, type Skill } from '../services/skillService';
 
@@ -93,34 +94,6 @@ const getBestForTagsLocalized = (category: string, t: any): string[] => {
   return getBestForTags(category);
 };
 
-const SparkleIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    className="sparkle"
-  >
-    <path
-      className="path"
-      strokeLinejoin="round"
-      strokeLinecap="round"
-      d="M14.187 8.096L15 5.25L15.813 8.096C16.0231 8.83114 16.4171 9.50062 16.9577 10.0413C17.4984 10.5819 18.1679 10.9759 18.903 11.186L21.75 12L18.904 12.813C18.1689 13.0231 17.4994 13.4171 16.9587 13.9577C16.4181 14.4984 16.0241 15.1679 15.814 15.903L15 18.75L14.187 15.904C13.9769 15.1689 13.5829 14.4994 13.0423 13.9587C12.5016 13.4181 11.8321 13.0241 11.097 12.814L8.25 12L11.096 11.187C11.8311 10.9769 12.5006 10.5829 13.0413 10.0423C13.5819 9.50162 13.9759 8.83214 14.186 8.097L14.187 8.096Z"
-    ></path>
-    <path
-      className="path"
-      strokeLinejoin="round"
-      strokeLinecap="round"
-      d="M6 14.25L5.741 15.285C5.59267 15.8785 5.28579 16.4206 4.85319 16.8532C4.42059 17.2858 3.87853 17.5927 3.285 17.741L2.25 18L3.285 18.259C3.87853 18.4073 4.42059 18.7142 4.85319 19.1468C5.28579 19.5794 5.59267 20.1215 5.741 20.715L6 21.75L6.259 20.715C6.40725 20.1216 6.71398 19.5796 7.14639 19.147C7.5788 18.7144 8.12065 18.4075 8.714 18.259L9.75 18L8.714 17.741C8.12065 17.5925 7.5788 17.2856 7.14639 16.853C6.71398 16.4204 6.40725 15.8784 6.259 15.285L6 14.25Z"
-    ></path>
-    <path
-      className="path"
-      strokeLinejoin="round"
-      strokeLinecap="round"
-      d="M6.5 4L6.303 4.5915C6.24777 4.75718 6.15472 4.90774 6.03123 5.03123C5.90774 5.15472 5.75718 5.24777 5.5915 5.303L5 5.5L5.5915 5.697C5.75718 5.75223 5.90774 5.84528 6.03123 5.96877C6.15472 6.09226 6.24777 6.24282 6.303 6.4085L6.5 7L6.697 6.4085C6.75223 6.24282 6.84528 6.09226 6.96877 5.96877C7.09226 5.84528 7.24282 5.75223 7.4085 5.697L8 5.5L7.4085 5.303C7.24282 5.24777 7.09226 5.15472 6.96877 5.03123C6.84528 4.90774 6.75223 4.75718 6.697 4.5915L6.5 4Z"
-    ></path>
-  </svg>
-);
-
 export default function SkillDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
@@ -165,27 +138,20 @@ export default function SkillDetailPage() {
       });
   }, [slug]);
 
-  // Scroll section tracking listener
+  // Tô sáng mục đang đọc trong mục lục — cùng cách làm với trang chi tiết thư viện
+  // sự kiện: đo theo khung nhìn, không dùng offsetTop (khối nằm trong nhiều lớp bọc
+  // nên offsetTop không phải toạ độ so với trang)
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['overview', 'setup', 'usage', 'related'];
-      const scrollPosition = window.scrollY + 250;
-
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
+    const onScroll = () => {
+      let current = '';
+      document.querySelectorAll<HTMLElement>('[data-toc-anchor]').forEach(el => {
+        if (el.getBoundingClientRect().top <= 200) current = el.id;
+      });
+      if (current) setActiveSection(current);
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
   }, [loading]);
 
   const scrollToSection = (id: string) => {
@@ -376,16 +342,16 @@ export default function SkillDetailPage() {
 
               {/* Specification Badges Row */}
               <div className="flex flex-wrap gap-2 pt-2 text-xs font-bold tracking-wide select-none">
-                <span className="px-3 py-1 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400">
+                <span className="px-3 py-1 rounded-lg bg-orange-500/15 dark:bg-orange-500/25 border border-orange-500/30 dark:border-orange-400/50 text-orange-700 dark:text-orange-200 shadow-sm">
                   {t('skills.difficulties.' + getDifficultyKey(skill.difficulty))}
                 </span>
-                <span className="px-3 py-1 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                <span className="px-3 py-1 rounded-lg bg-blue-500/15 dark:bg-blue-500/25 border border-blue-500/30 dark:border-blue-400/50 text-blue-700 dark:text-blue-200 shadow-sm">
                   ⏱ {skill.install_type === 'Git Clone' ? t('skills.gitCloneTime') : t('skills.npmInstallTime')}
                 </span>
-                <span className="px-3 py-1 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)]">
+                <span className="px-3 py-1 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] shadow-sm">
                   {t('skills.categories.' + getCategoryKey(skill.category))}
                 </span>
-                <span className="px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-theme">
+                <span className="px-3 py-1 rounded-lg bg-emerald-500/15 dark:bg-emerald-500/25 border border-emerald-500/30 dark:border-emerald-400/50 text-emerald-700 dark:text-emerald-200 shadow-sm">
                   ⏱ {t('skills.savesPerUse').replace('{time}', formatTimeSaving(skill.estimated_time_saving, language) || t('skills.timeRangeMedium'))}
                 </span>
               </div>
@@ -410,40 +376,11 @@ export default function SkillDetailPage() {
         {/* SPLIT COLUMNS SECTION */}
         <div className="grid gap-8 lg:grid-cols-3">
           
-          {/* Left Column: Sidebar Cards (terminal install, navigation menu, author info) */}
-          <div className="lg:col-span-1 lg:sticky lg:top-24 space-y-6 self-start">
+          {/* Left Column: Sidebar Cards (terminal install, navigation menu, author info,
+              cuối cùng là khối quản trị). Cột này cao hơn màn hình nên tự cuộn bên
+              trong, nếu không phần dưới sẽ không bao giờ với tới được */}
+          <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:overscroll-contain lg:pr-1 detail-sidebar">
             
-              {/* Admin: sửa / xoá skill — form nằm trong bộ đăng ở /workflow */}
-            {isAdmin && (
-              <div className="bg-[var(--bg-card)] p-5 rounded-2xl border border-orange-500/25 shadow-md space-y-2.5">
-                <h4 className="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider flex items-center gap-2">
-                  <span className="w-1.5 h-3.5 rounded-full bg-orange-500" />
-                  {t('skills.admin.title')}
-                </h4>
-                <button
-                  onClick={handleEdit}
-                  className="w-full py-2.5 bg-[var(--bg-secondary)] hover:bg-[var(--accent-primary)]/10 border border-[var(--border-primary)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] hover:text-[var(--accent-primary)] rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                  </svg>
-                  {t('skills.admin.edit')}
-                </button>
-                <button
-                  onClick={() => setShowDeleteModal(true)}
-                  className="w-full py-2.5 bg-[var(--bg-secondary)] hover:bg-red-500/10 border border-[var(--border-primary)] hover:border-red-500/50 text-[var(--text-secondary)] hover:text-red-400 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                  </svg>
-                  {t('skills.admin.delete')}
-                </button>
-                {deleteError && (
-                  <p className="text-xs text-red-400">{deleteError}</p>
-                )}
-              </div>
-            )}
-
             {/* Quick Install terminal style card */}
             {skill.install_command && (
               <div className="bg-[#0b1629] p-5 rounded-2xl border border-[var(--border-primary)] space-y-3 shadow-xl">
@@ -621,13 +558,45 @@ export default function SkillDetailPage() {
               </button>
             </div>
 
+            {/* Admin: sửa / xoá skill — form nằm trong bộ đăng ở /workflow.
+                Luôn nằm cuối sidebar, giống trang chi tiết thư viện sự kiện */}
+            {isAdmin && (
+              <div className="bg-[var(--bg-card)] p-5 rounded-2xl border border-orange-500/25 shadow-md space-y-2.5">
+                <h4 className="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider flex items-center gap-2">
+                  <span className="w-1.5 h-3.5 rounded-full bg-orange-500" />
+                  {t('skills.admin.title')}
+                </h4>
+                <button
+                  onClick={handleEdit}
+                  className="w-full py-2.5 bg-[var(--bg-secondary)] hover:bg-[var(--accent-primary)]/10 border border-[var(--border-primary)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] hover:text-[var(--accent-primary)] rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                  </svg>
+                  {t('skills.admin.edit')}
+                </button>
+                <button
+                  onClick={() => setShowDeleteModal(true)}
+                  className="w-full py-2.5 bg-[var(--bg-secondary)] hover:bg-red-500/10 border border-[var(--border-primary)] hover:border-red-500/50 text-[var(--text-secondary)] hover:text-red-400 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                  {t('skills.admin.delete')}
+                </button>
+                {deleteError && (
+                  <p className="text-xs text-red-400">{deleteError}</p>
+                )}
+              </div>
+            )}
+
           </div>
 
           {/* Right Column: Main Documentation scrollable text panels */}
           <div className="lg:col-span-2 space-y-12">
             
             {/* Overview Section */}
-            <section id="overview" className="scroll-mt-24 space-y-6">
+            <section id="overview" data-toc-anchor className="scroll-mt-24 space-y-6">
               <h2 className="text-2xl md:text-3xl font-extrabold flex items-center gap-3 text-orange-600 dark:text-orange-400 border-b border-[var(--border-primary)] pb-3">
                 <span className="w-2 h-6 rounded-full bg-orange-500" />
                 {t('skills.overview')}
@@ -668,7 +637,7 @@ export default function SkillDetailPage() {
                   {getBestForTagsLocalized(skill.category, t).map(tag => (
                     <span 
                       key={tag} 
-                      className="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold bg-blue-500/10 border border-blue-500/20 text-blue-400"
+                      className="px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-bold bg-sky-500/15 dark:bg-sky-500/25 border border-sky-500/30 dark:border-sky-400/50 text-sky-700 dark:text-sky-200 shadow-sm"
                     >
                       {tag}
                     </span>
@@ -684,7 +653,7 @@ export default function SkillDetailPage() {
                     {skill.tags.map(tag => (
                       <span 
                         key={tag} 
-                        className="px-3 py-1 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)] text-xs md:text-sm font-medium"
+                        className="px-3 py-1 rounded-lg bg-teal-500/15 dark:bg-teal-500/25 border border-teal-500/30 dark:border-teal-400/50 text-teal-700 dark:text-teal-200 text-xs md:text-sm font-semibold shadow-sm"
                       >
                         #{tag}
                       </span>
@@ -695,7 +664,7 @@ export default function SkillDetailPage() {
             </div>
 
             {/* Setup & Installation Section */}
-            <section id="setup" className="scroll-mt-24 space-y-6">
+            <section id="setup" data-toc-anchor className="scroll-mt-24 space-y-6">
               <h2 className="text-2xl md:text-3xl font-extrabold flex items-center gap-3 text-sky-600 dark:text-sky-400 border-b border-[var(--border-primary)] pb-3">
                 <span className="w-2 h-6 rounded-full bg-sky-500" />
                 {t('skills.setup')}
@@ -858,7 +827,7 @@ export default function SkillDetailPage() {
             </section>
 
             {/* Usage Examples Section */}
-            <section id="usage" className="scroll-mt-24 space-y-6">
+            <section id="usage" data-toc-anchor className="scroll-mt-24 space-y-6">
               <h2 className="text-2xl md:text-3xl font-extrabold flex items-center gap-3 text-emerald-600 dark:text-emerald-400 border-b border-[var(--border-primary)] pb-3">
                 <span className="w-2 h-6 rounded-full bg-emerald-500" />
                 {t('skills.usage')}
@@ -900,7 +869,7 @@ export default function SkillDetailPage() {
             </section>
 
             {/* Compatible Tools Section */}
-            <section id="tools" className="scroll-mt-24 space-y-6">
+            <section id="tools" data-toc-anchor className="scroll-mt-24 space-y-6">
               <h2 className="text-2xl md:text-3xl font-extrabold flex items-center gap-3 text-violet-600 dark:text-violet-400 border-b border-[var(--border-primary)] pb-3">
                 <span className="w-2 h-6 rounded-full bg-violet-500" />
                 {t('skills.compatibleTools')}
@@ -931,7 +900,7 @@ export default function SkillDetailPage() {
             </section>
 
             {/* MCP Servers Section */}
-            <section id="mcp" className="scroll-mt-24 space-y-6">
+            <section id="mcp" data-toc-anchor className="scroll-mt-24 space-y-6">
               <h2 className="text-2xl md:text-3xl font-extrabold flex items-center gap-3 text-cyan-600 dark:text-cyan-400 border-b border-[var(--border-primary)] pb-3">
                 <span className="w-2 h-6 rounded-full bg-cyan-500" />
                 {t('skills.mcpServers')}
@@ -958,7 +927,7 @@ export default function SkillDetailPage() {
 
             {/* Related Skills Section */}
             {related.length > 0 && (
-              <section id="related" className="scroll-mt-24 space-y-6">
+              <section id="related" data-toc-anchor className="scroll-mt-24 space-y-6">
                 <h2 className="text-2xl md:text-3xl font-extrabold flex items-center gap-3 text-amber-600 dark:text-amber-400 border-b border-[var(--border-primary)] pb-3">
                   <span className="w-2 h-6 rounded-full bg-amber-500" />
                   {t('skills.relatedSkills')}

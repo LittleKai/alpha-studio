@@ -962,7 +962,9 @@ html[data-theme="light"] .user-dropdown-card .list.logout-list .element:hover sv
 }
 
 .mean-bird-button.active::before {
-  background-color: rgba(255, 90, 31, 0.08); /* bg-orange-500/10 */
+  /* Nền mờ theo màu nhấn của chính nút — mục lục thư viện sự kiện đặt
+     --accent-tint riêng cho từng khối nội dung */
+  background-color: var(--accent-tint, rgba(255, 90, 31, 0.08));
 }
 
 .mean-bird-button:hover:not(.active)::before {
@@ -1080,15 +1082,17 @@ html[data-theme="dark"] .text-emerald-theme {
    tràn ngang và không có khung. */
 .rich-html-pre {
   position: relative;
-  margin: 1rem 0;
+  margin: 1.25rem 0;
 }
 .rich-html-pre pre {
   margin: 0;
   /* chừa chỗ trên cho nút Sao chép */
   padding: 2.75rem 1.1rem 1.1rem;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
-  border-radius: 0.75rem;
+  /* Nền/viền tự tương phản trong cả nền sáng lẫn nền tối */
+  background: rgba(124, 92, 255, 0.08);
+  border: 1px solid rgba(124, 92, 255, 0.3);
+  border-left: 4px solid #7c5cff;
+  border-radius: 0.85rem;
   color: var(--text-primary);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.9rem;
@@ -1096,6 +1100,12 @@ html[data-theme="dark"] .text-emerald-theme {
   /* Câu dài phải xuống dòng thay vì đẩy cả trang trượt ngang */
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+}
+html[data-theme="dark"] .rich-html-pre pre {
+  background: rgba(124, 92, 255, 0.14);
+  border-color: rgba(167, 139, 250, 0.45);
+  border-left: 4px solid #a78bfa;
+  color: #f1f5f9;
 }
 .rich-html-pre pre code {
   font: inherit;
@@ -1105,33 +1115,58 @@ html[data-theme="dark"] .text-emerald-theme {
 }
 .rich-html-copy {
   position: absolute;
-  top: 0.55rem;
-  right: 0.55rem;
-  padding: 0.3rem 0.7rem;
+  top: 0.65rem;
+  right: 0.65rem;
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 0.5rem;
-  border: 1px solid var(--border-primary);
-  background: var(--bg-card);
-  color: var(--text-secondary);
-  font-size: 0.75rem;
-  font-weight: 600;
+  border: 1px solid rgba(124, 92, 255, 0.35);
+  background: rgba(124, 92, 255, 0.14);
+  color: #6d28d9;
   cursor: pointer;
-  transition: all 0.15s ease;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+html[data-theme="dark"] .rich-html-copy {
+  background: rgba(124, 92, 255, 0.25);
+  border-color: rgba(167, 139, 250, 0.55);
+  color: #e0e7ff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 .rich-html-copy:hover {
-  color: var(--text-primary);
-  border-color: var(--accent-primary);
+  background: #7c5cff;
+  border-color: #7c5cff;
+  color: #ffffff;
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(124, 92, 255, 0.35);
+}
+html[data-theme="dark"] .rich-html-copy:hover {
+  background: #8b5cf6;
+  border-color: #a78bfa;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.45);
 }
 .rich-html-copy.is-copied {
-  color: #10b981;
-  border-color: rgba(16, 185, 129, 0.4);
-  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  border-color: rgba(16, 185, 129, 0.5);
+  background: rgba(16, 185, 129, 0.2);
+}
+html[data-theme="dark"] .rich-html-copy.is-copied {
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.65);
+  background: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 12px rgba(52, 211, 153, 0.3);
 }
 
-/* Thanh cuộn mảnh cho sidebar dính của trang chi tiết thư viện sự kiện */
-.library-sidebar { scrollbar-width: thin; scrollbar-color: var(--border-primary) transparent; }
-.library-sidebar::-webkit-scrollbar { width: 6px; }
-.library-sidebar::-webkit-scrollbar-track { background: transparent; }
-.library-sidebar::-webkit-scrollbar-thumb {
+/* Thanh cuộn mảnh cho sidebar dính của trang chi tiết (skill / thư viện sự kiện) */
+.detail-sidebar { scrollbar-width: thin; scrollbar-color: var(--border-primary) transparent; }
+.detail-sidebar::-webkit-scrollbar { width: 6px; }
+.detail-sidebar::-webkit-scrollbar-track { background: transparent; }
+.detail-sidebar::-webkit-scrollbar-thumb {
   background: var(--border-primary);
   border-radius: 3px;
 }

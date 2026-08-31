@@ -125,7 +125,7 @@ export default {
       subtitle: "Bộ công cụ chuyên nghiệp phục vụ học tập, quản lý công việc và phát triển kỹ năng AI.",
       explore: "Truy cập Studio",
       hubTitle: "Alpha Studio Hub — toàn bộ công cụ trong một nơi",
-      hubDesc: "Bốn công cụ đang mở và ba công cụ sắp ra mắt: tạo ảnh & video, chỉnh sửa ảnh và thiết kế nội thất.",
+      hubDesc: "Năm công cụ đang mở và ba công cụ sắp ra mắt: tạo ảnh & video, chỉnh sửa ảnh và thiết kế nội thất.",
       crm: {
         title: "Alpha CRM",
         desc: "Hệ thống quản lý khách hàng, dự án và thanh toán tự động, tối ưu hóa quy trình làm việc cho freelancer sự kiện chuyên nghiệp."
@@ -137,6 +137,10 @@ export default {
       skills: {
         title: "Thư viện kỹ năng AI",
         desc: "Kho tài liệu tổng hợp prompt, quy trình làm việc (workflow) mẫu và hướng dẫn ứng dụng các mô hình AI tạo sinh vào thực tế."
+      },
+      vietyaku: {
+        title: "VietYaku",
+        desc: "Phần mềm converter hỗ trợ dịch thuật tiếng Nhật và tiếng Trung ngoại tuyến, kế thừa và nâng cấp từ QuickConverter."
       }
     },
     course: {

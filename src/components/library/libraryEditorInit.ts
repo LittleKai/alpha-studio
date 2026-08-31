@@ -31,12 +31,18 @@ export function libraryEditorInit(theme: 'light' | 'dark', minHeight = 260, labe
         // Ảnh co về đúng bề ngang ô soạn (chừa mép), không tràn và không kéo giãn.
         // `pre` được vẽ giống khung prompt ngoài trang chi tiết để soạn thấy đúng kết quả.
         content_style: [
-            'body { font-family: sans-serif; font-size: 15px; }',
+            // Chuỗi dài không ngắt được (URL, token) phải xuống dòng, nếu không
+            // iframe soạn thảo trượt ngang và tràn khỏi panel
+            'body { font-family: sans-serif; font-size: 15px; overflow-wrap: break-word; }',
             'img { max-width: 96%; height: auto; display: block; margin: 12px auto; border-radius: 8px; }',
             'table { max-width: 100%; }',
-            'pre { padding: 12px 14px; border: 1px solid rgba(127,127,127,.35); border-radius: 10px;',
+            `pre { margin: 12px 0; padding: 12px 14px; background: ${theme === 'dark' ? 'rgba(255,255,255,.05)' : 'rgba(124,92,255,.07)'};`,
+            '  border: 1px solid rgba(124,92,255,.3); border-left: 3px solid #7c5cff; border-radius: 10px;',
             '  font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; line-height: 1.6;',
-            '  white-space: pre-wrap; overflow-wrap: anywhere; }'
+            '  white-space: pre-wrap; overflow-wrap: anywhere; }',
+            // `content_css` của TinyMCE tô nền riêng cho `code` — để nguyên thì mỗi
+            // dòng prompt bị bôi một vệt xám thay vì cả khối là một ô
+            'pre code { display: block; font: inherit; background: none; padding: 0; white-space: inherit; }'
         ].join(' '),
 
         /**

@@ -120,7 +120,7 @@ export default {
         badge: "Hệ sinh thái Alpha Studio · Beta",
         title1: "AI Studio",
         title2: "Bộ công cụ sáng tạo",
-        subtitle: "Năm công cụ đang mở cho mọi tài khoản: Thư viện tri thức sự kiện, Thư viện Kỹ năng AI, Alpha CRM cho tiếp thị Zalo, VocabFlip học từ vựng và VietYaku dịch Nhật/Trung sang Việt. Ba công cụ nữa đang được hoàn thiện trong xưởng.",
+        subtitle: "Năm công cụ đang mở cho mọi tài khoản: Thư viện tri thức sự kiện, Thư viện Kỹ năng AI, Alpha CRM cho tiếp thị Zalo, VocabFlip học từ vựng và VietYaku - phần mềm converter hỗ trợ dịch thuật tiếng Nhật & Trung. Ba công cụ nữa đang được hoàn thiện trong xưởng.",
         stats: {
           live: "Công cụ đang mở",
           upcoming: "Sắp ra mắt",
@@ -159,8 +159,8 @@ export default {
           f3: "Đồng bộ thư viện qua tài khoản Studio trên Web, Windows và Android"
         },
         vietyaku: {
-          f1: "Tham khảo & cải tiến từ QuickConverter (Tàng Thư Viện)",
-          f2: "Bổ sung nhiều thuật toán & bộ từ điển, tích hợp thêm tiếng Nhật",
+          f1: "Phần mềm converter hỗ trợ dịch thuật tiếng Nhật và tiếng Trung ngoại tuyến",
+          f2: "Kế thừa & cải tiến từ QuickConverter, mở rộng thuật toán và bộ từ điển",
           f3: "Dịch ngoại tuyến hoàn toàn, bản Windows portable tự động cập nhật"
         }
       },
@@ -386,11 +386,11 @@ export default {
         },
         vietyaku: {
           title: "VietYaku",
-          desc: "Tham khảo từ QuickConverter (Tàng Thư Viện), cải tiến thuật toán, thêm nhiều bộ từ điển và tích hợp tiếng Nhật ngoại tuyến",
+          desc: "Phần mềm converter hỗ trợ dịch thuật tiếng Nhật và tiếng Trung",
           page: {
-            tag: "Ứng dụng dịch ngoại tuyến",
+            tag: "Phần mềm converter dịch thuật",
             title: "VietYaku cho Windows & Android",
-            subtitle: "Dịch truyện và tài liệu tiếng Nhật, tiếng Trung sang tiếng Việt theo kiểu VietPhrase — được tham khảo từ QuickConverter của Tàng Thư Viện và cải tiến với thêm nhiều bộ từ điển, thuật toán linh hoạt và tích hợp thêm tiếng Nhật ngoại tuyến hoàn toàn. Kèm công cụ sửa bộ từ điển tiếng Nhật bị lỗi phông.",
+            subtitle: "Phần mềm converter hỗ trợ dịch thuật tiếng Nhật và tiếng Trung theo phong cách VietPhrase — kế thừa từ QuickConverter (Tàng Thư Viện), cải tiến thuật toán linh hoạt, bổ sung nhiều bộ từ điển phong phú và tích hợp dịch ngoại tuyến hoàn toàn. Kèm công cụ sửa bộ từ điển tiếng Nhật bị lỗi phông.",
             downloadTitle: "Tải bản mới nhất",
             downloadDesc: "Gói ZIP chạy ngay cho Windows (không cần cài đặt) và phiên bản di động Android APK.",
             downloadWindows: "Tải cho Windows",
@@ -417,13 +417,13 @@ export default {
             featureOfflineTitle: "Dịch ngoại tuyến",
             featureOfflineDesc: "Bộ từ điển đi kèm ứng dụng, dịch tức thì bằng thuật toán khớp cụm dài nhất mà không gửi dữ liệu đi đâu.",
             featureOriginTitle: "Kế thừa & Cải tiến từ QuickConverter",
-            featureOriginDesc: "Tham khảo từ QuickConverter của Tàng Thư Viện, nâng cấp với nhiều thuật toán quét cụm từ linh hoạt, mở rộng thêm các bộ từ điển phong phú và tích hợp thêm tiếng Nhật.",
+            featureOriginDesc: "Phần mềm converter tham khảo từ QuickConverter của Tàng Thư Viện, nâng cấp với nhiều thuật toán quét cụm từ linh hoạt, mở rộng thêm các bộ từ điển phong phú và tích hợp thêm tiếng Nhật.",
             featureLookupTitle: "Tra nghĩa nhiều nguồn",
             featureLookupDesc: "Tra thêm nghĩa từ Mazii, Jisho, Weblio và Youdao khi có mạng, ngay trong ô nghĩa của từ đang chọn.",
             featureRepairTitle: "Sửa từ điển lỗi phông",
             featureRepairDesc: "Công cụ sửa bộ từ điển tiếng Nhật bị hỏng của Quick Translator, xuất ra file mới mà không ghi đè bản gốc.",
             requirementsHeading: "Yêu cầu & lưu ý",
-            requirementOrigin: "Ứng dụng được tham khảo từ QuickConverter (Tàng Thư Viện) và cải tiến với thêm nhiều bộ từ điển, thuật toán và tích hợp thêm tiếng Nhật.",
+            requirementOrigin: "Phần mềm converter được tham khảo từ QuickConverter (Tàng Thư Viện) và cải tiến với thêm nhiều bộ từ điển, thuật toán và tích hợp thêm tiếng Nhật.",
             requirementOs: "Windows 10 trở lên, bản 64-bit.",
             requirementAndroid: "Android: Dự kiến hỗ trợ Android 8.0 trở lên khi phát hành phiên bản di động.",
             requirementPortable: "Chạy dạng portable trên Windows — dữ liệu cá nhân lưu trong thư mục userdata cạnh file .exe.",

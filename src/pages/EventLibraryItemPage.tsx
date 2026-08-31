@@ -4,6 +4,7 @@ import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
 import StudioBackNav from '../components/studio/StudioBackNav';
 import DeleteConfirmModal from '../components/ui/DeleteConfirmModal';
+import SparkleIcon from '../components/ui/SparkleIcon';
 import { useAuth } from '../auth/context';
 import { localized, EventLibraryGridCard } from '../components/library/EventLibraryCard';
 import ImageLightbox from '../components/library/ImageLightbox';
@@ -19,33 +20,64 @@ import {
 
 const ACCENT = '#7c5cff';
 
-// Tông cho từng dòng/nhóm ở cột phải — trước đây mọi giá trị đều một màu tím
+// Tông màu có độ tương phản cao, rõ ràng trong cả nền sáng lẫn nền tối
 const TONES = {
-    violet: '#8b5cf6',
-    sky: '#0ea5e9',
-    emerald: '#10b981',
-    amber: '#f59e0b',
-    rose: '#f43f5e',
-    cyan: '#06b6d4'
+    violet: {
+        bg: 'bg-violet-500/15 dark:bg-violet-500/25',
+        border: 'border-violet-500/30 dark:border-violet-400/50',
+        text: 'text-violet-700 dark:text-violet-200',
+        hex: '#8b5cf6'
+    },
+    sky: {
+        bg: 'bg-sky-500/15 dark:bg-sky-500/25',
+        border: 'border-sky-500/30 dark:border-sky-400/50',
+        text: 'text-sky-700 dark:text-sky-200',
+        hex: '#0ea5e9'
+    },
+    emerald: {
+        bg: 'bg-emerald-500/15 dark:bg-emerald-500/25',
+        border: 'border-emerald-500/30 dark:border-emerald-400/50',
+        text: 'text-emerald-700 dark:text-emerald-200',
+        hex: '#10b981'
+    },
+    amber: {
+        bg: 'bg-amber-500/15 dark:bg-amber-500/25',
+        border: 'border-amber-500/30 dark:border-amber-400/50',
+        text: 'text-amber-800 dark:text-amber-200',
+        hex: '#f59e0b'
+    },
+    rose: {
+        bg: 'bg-rose-500/15 dark:bg-rose-500/25',
+        border: 'border-rose-500/30 dark:border-rose-400/50',
+        text: 'text-rose-700 dark:text-rose-200',
+        hex: '#f43f5e'
+    },
+    cyan: {
+        bg: 'bg-cyan-500/15 dark:bg-cyan-500/25',
+        border: 'border-cyan-500/30 dark:border-cyan-400/50',
+        text: 'text-cyan-700 dark:text-cyan-200',
+        hex: '#06b6d4'
+    }
 };
 
+type ToneKey = keyof typeof TONES;
+
 /** Một dòng thuộc tính trong hộp thông tin bên phải. */
-function MetaRow({ label, value, tone = ACCENT }: { label: string; value: string; tone?: string }) {
+function MetaRow({ label, value, tone = 'violet' }: { label: string; value: string; tone?: ToneKey }) {
+    const toneConfig = TONES[tone] || TONES.violet;
     return (
         <div className="flex items-start justify-between gap-4 py-2 border-b border-[var(--border-primary)] last:border-b-0">
-            <span className="text-sm text-[var(--text-tertiary)] shrink-0">{label}</span>
-            <span className="text-sm font-semibold text-right" style={{ color: tone }}>{value}</span>
+            <span className="text-sm text-[var(--text-secondary)] shrink-0">{label}</span>
+            <span className={`text-sm font-bold text-right ${toneConfig.text}`}>{value}</span>
         </div>
     );
 }
 
-/** Thẻ phân loại — mỗi nhóm (ngành / mục tiêu / KPI / tag) một tông riêng. */
-function Chip({ tone, children }: { tone: string; children: React.ReactNode }) {
+/** Thẻ phân loại — mỗi nhóm (ngành / mục tiêu / KPI / tag) một tông riêng với độ tương phản cao. */
+function Chip({ tone = 'violet', children }: { tone?: ToneKey; children: React.ReactNode }) {
+    const toneConfig = TONES[tone] || TONES.violet;
     return (
-        <span
-            className="text-xs px-2 py-1 rounded border font-medium"
-            style={{ backgroundColor: `${tone}12`, borderColor: `${tone}33`, color: tone }}
-        >
+        <span className={`text-xs px-2.5 py-1 rounded-lg border font-semibold shadow-sm transition-all duration-200 ${toneConfig.bg} ${toneConfig.border} ${toneConfig.text}`}>
             {children}
         </span>
     );
@@ -61,15 +93,9 @@ function ProLockPanel({ access }: { access: LibraryAccess }) {
     const required = access.requiredCredits || PRO_MIN_LIFETIME_CREDITS;
 
     return (
-        <div
-            className="rounded-2xl border p-8 text-center"
-            style={{ backgroundColor: `${ACCENT}0d`, borderColor: `${ACCENT}40` }}
-        >
-            <div
-                className="w-14 h-14 mx-auto mb-4 rounded-2xl flex items-center justify-center"
-                style={{ backgroundColor: `${ACCENT}1f` }}
-            >
-                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke={ACCENT} strokeWidth="1.8">
+        <div className="rounded-2xl border p-8 text-center bg-violet-500/10 dark:bg-violet-500/15 border-violet-500/30 dark:border-violet-400/40 shadow-sm">
+            <div className="w-14 h-14 mx-auto mb-4 rounded-2xl flex items-center justify-center bg-violet-500/20 dark:bg-violet-500/30">
+                <svg className="w-7 h-7 text-violet-600 dark:text-violet-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
             </div>
@@ -86,8 +112,7 @@ function ProLockPanel({ access }: { access: LibraryAccess }) {
             </p>
             <Link
                 to="/wallet"
-                style={{ backgroundColor: ACCENT }}
-                className="inline-block mt-5 px-5 py-2.5 rounded-lg text-sm font-semibold text-white hover:opacity-90 transition-all"
+                className="inline-block mt-5 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-violet-600 hover:bg-violet-500 dark:bg-violet-500 dark:hover:bg-violet-400 shadow-md transition-all"
             >
                 {t('eventLibrary.locked.topUp')}
             </Link>
@@ -325,38 +350,38 @@ export default function EventLibraryItemPage() {
                         <MetaRow
                             label={t('eventLibrary.category')}
                             value={t('eventLibrary.categories.' + item.category, item.category)}
-                            tone={TONES.violet}
+                            tone="violet"
                         />
                         <MetaRow
                             label={t('eventLibrary.depth')}
                             value={t('eventLibrary.depths.' + item.depth, item.depth)}
-                            tone={TONES.sky}
+                            tone="sky"
                         />
                         {item.budgetTier && (
                             <MetaRow
                                 label={t('eventLibrary.budget')}
                                 value={t('eventLibrary.budgetTiers.' + item.budgetTier, item.budgetTier)}
-                                tone={TONES.amber}
+                                tone="amber"
                             />
                         )}
                         {item.authorName && (
                             <MetaRow
                                 label={t('eventLibrary.detail.author')}
                                 value={item.authorName}
-                                tone={TONES.emerald}
+                                tone="emerald"
                             />
                         )}
                         {item.sourceName && (
                             <MetaRow
                                 label={t('eventLibrary.detail.source')}
                                 value={item.sourceName}
-                                tone={TONES.cyan}
+                                tone="cyan"
                             />
                         )}
                         <MetaRow
                             label={t('eventLibrary.metrics.views')}
                             value={String(item.stats.views)}
-                            tone={TONES.rose}
+                            tone="rose"
                         />
                     </div>
 
@@ -368,16 +393,16 @@ export default function EventLibraryItemPage() {
                             </h2>
                             <div className="flex flex-wrap gap-1.5">
                                 {item.industries.map(v => (
-                                    <Chip key={`i-${v}`} tone={TONES.sky}>{t('eventLibrary.industries.' + v, v)}</Chip>
+                                    <Chip key={`i-${v}`} tone="sky">{t('eventLibrary.industries.' + v, v)}</Chip>
                                 ))}
                                 {item.objectives.map(v => (
-                                    <Chip key={`o-${v}`} tone={TONES.emerald}>{t('eventLibrary.objectives.' + v, v)}</Chip>
+                                    <Chip key={`o-${v}`} tone="emerald">{t('eventLibrary.objectives.' + v, v)}</Chip>
                                 ))}
                                 {item.kpis.map(v => (
-                                    <Chip key={`k-${v}`} tone={TONES.amber}>{t('eventLibrary.kpis.' + v, v)}</Chip>
+                                    <Chip key={`k-${v}`} tone="amber">{t('eventLibrary.kpis.' + v, v)}</Chip>
                                 ))}
                                 {item.tags.map(v => (
-                                    <Chip key={`t-${v}`} tone={TONES.rose}>#{v}</Chip>
+                                    <Chip key={`t-${v}`} tone="rose">#{v}</Chip>
                                 ))}
                             </div>
                         </div>
@@ -387,31 +412,32 @@ export default function EventLibraryItemPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Sidebar dính theo khi cuộn — cột này cao hơn màn hình nên tự cuộn
                         bên trong, nếu không phần dưới sẽ không bao giờ với tới được */}
-                    <aside className="lg:col-span-1 space-y-6 lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:overscroll-contain lg:pr-1 library-sidebar">
-                        {/* Mục lục — cùng kiểu "Jump To" của /studio/ai-skills */}
+                    <aside className="lg:col-span-1 space-y-6 lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:overscroll-contain lg:pr-1 detail-sidebar">
+                        {/* Mục lục — cùng kiểu "Jump To" của /studio/ai-skills. Nút dùng
+                            chung hiệu ứng `mean-bird-button`; --accent-color/--accent-tint
+                            đặt riêng từng dòng để giữ màu của khối nội dung tương ứng */}
                         {tocEntries.length > 0 && (
-                            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-5 shadow-sm select-none">
-                                <h2 className="text-xs font-bold uppercase tracking-wider px-3 pb-2 mb-2 border-b border-[var(--border-primary)]/50 flex items-center gap-2 text-violet-600 dark:text-violet-400">
+                            <div className="bg-[var(--bg-card)] p-5 rounded-2xl border border-[var(--border-primary)] space-y-3 shadow-md select-none">
+                                <h2 className="text-xs font-bold uppercase tracking-wider px-3 pb-2 border-b border-[var(--border-primary)]/50 flex items-center gap-2 text-violet-600 dark:text-violet-400">
                                     <span className="w-1.5 h-3.5 rounded-full bg-violet-500" />
                                     {t('eventLibrary.detail.toc')}
                                 </h2>
-                                <nav className="flex flex-col gap-1 text-sm font-semibold">
+                                <nav className="flex flex-col gap-1.5 text-sm font-semibold">
                                     {tocEntries.map(entry => (
                                         <button
                                             key={entry.id}
                                             onClick={() => scrollToSection(entry.id)}
-                                            className="w-full text-left px-3 py-2 rounded-lg transition-all cursor-pointer hover:bg-[var(--bg-secondary)]"
-                                            style={activeSection === entry.id
-                                                ? { color: entry.color, backgroundColor: `${entry.color}14` }
-                                                : { color: 'var(--text-secondary)' }}
+                                            style={{
+                                                '--accent-color': entry.color,
+                                                '--accent-tint': `${entry.color}14`
+                                            } as React.CSSProperties}
+                                            className={`mean-bird-button w-full text-left px-3 py-2.5 rounded-lg transition-all cursor-pointer ${
+                                                activeSection === entry.id ? 'active font-bold' : 'text-[var(--text-secondary)]'
+                                            }`}
                                         >
-                                            <span className="flex items-center gap-2">
-                                                <span
-                                                    className="w-1.5 h-1.5 rounded-full shrink-0"
-                                                    style={{ backgroundColor: entry.color }}
-                                                />
-                                                <span className="truncate">{entry.label}</span>
-                                            </span>
+                                            <span className="truncate min-w-0">{entry.label}</span>
+                                            <div className="dots_border"></div>
+                                            <SparkleIcon />
                                         </button>
                                     ))}
                                 </nav>
@@ -425,35 +451,50 @@ export default function EventLibraryItemPage() {
                             initialReviews={reviews}
                         />
 
+                        {/* Quản trị — luôn là khối cuối sidebar, cùng kiểu với khối
+                            quản trị của trang chi tiết skill */}
                         {canManage && (
-                            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-5 space-y-2 shadow-sm">
-                                <h2 className="text-base font-bold mb-2 flex items-center gap-2 text-amber-600 dark:text-amber-400">
-                                    <span className="w-1.5 h-4 rounded-full bg-amber-500" />
+                            <div className="bg-[var(--bg-card)] p-5 rounded-2xl border border-amber-500/25 shadow-md space-y-2.5">
+                                <h2 className="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider flex items-center gap-2">
+                                    <span className="w-1.5 h-3.5 rounded-full bg-amber-500" />
                                     {t('eventLibrary.detail.manage')}
                                 </h2>
                                 <button
                                     onClick={handleEdit}
-                                    style={{ backgroundColor: ACCENT }}
-                                    className="w-full px-3 py-2 rounded-lg text-sm font-semibold text-white hover:opacity-90 transition-all cursor-pointer"
+                                    className="w-full py-2.5 bg-[var(--bg-secondary)] hover:bg-[var(--accent-primary)]/10 border border-[var(--border-primary)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] hover:text-[var(--accent-primary)] rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
                                 >
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                    </svg>
                                     {t('eventLibrary.detail.edit')}
                                 </button>
                                 {item.ownership === 'user' && (
                                     <button
                                         onClick={handleToggleVisibility}
                                         disabled={busy}
-                                        className="w-full px-3 py-2 rounded-lg text-sm font-semibold bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] hover:opacity-90 transition-all cursor-pointer disabled:opacity-50"
+                                        className="w-full py-2.5 bg-[var(--bg-secondary)] hover:bg-[var(--accent-primary)]/10 border border-[var(--border-primary)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] hover:text-[var(--accent-primary)] rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                                     >
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                            {item.visibility === 'public'
+                                                ? <path strokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                                                : <>
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                </>}
+                                        </svg>
                                         {item.visibility === 'public'
                                             ? t('eventLibrary.detail.makePrivate')
-                                             : t('eventLibrary.detail.makePublic')}
+                                            : t('eventLibrary.detail.makePublic')}
                                     </button>
                                 )}
                                 <button
                                     onClick={() => setShowDelete(true)}
                                     disabled={busy || deleting}
-                                    className="w-full px-3 py-2 rounded-lg text-sm font-semibold bg-red-500/10 border border-red-500/30 text-red-500 hover:bg-red-500/20 transition-all cursor-pointer disabled:opacity-50"
+                                    className="w-full py-2.5 bg-[var(--bg-secondary)] hover:bg-red-500/10 border border-[var(--border-primary)] hover:border-red-500/50 text-[var(--text-secondary)] hover:text-red-400 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                                 >
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
                                     {t('eventLibrary.detail.delete')}
                                 </button>
                             </div>
