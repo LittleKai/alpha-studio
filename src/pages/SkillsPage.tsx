@@ -458,6 +458,12 @@ export default function SkillsPage() {
     return filteredAndSortedSkills.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
   }, [filteredAndSortedSkills, currentPage]);
 
+  // Dùng chung cho dải phân trang trên và dưới lưới
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 350, behavior: 'smooth' });
+  };
+
   const handleCategoryToggle = (cat: string) => {
     setSelectedCategories(prev => 
       prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]
@@ -772,7 +778,16 @@ export default function SkillsPage() {
               </div>
             ) : (
               <div>
-                
+                <LibraryPagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onChange={goToPage}
+                  prevLabel={t('skills.prevPage')}
+                  nextLabel={t('skills.nextPage')}
+                  accent={ACCENT}
+                  className="mb-6"
+                />
+
                 {/* Grid View Content (with grid pattern overlays) */}
                 {viewMode === 'grid' ? (
                   <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -925,10 +940,7 @@ export default function SkillsPage() {
                 <LibraryPagination
                   currentPage={currentPage}
                   totalPages={totalPages}
-                  onChange={(page) => {
-                    setCurrentPage(page);
-                    window.scrollTo({ top: 350, behavior: 'smooth' });
-                  }}
+                  onChange={goToPage}
                   prevLabel={t('skills.prevPage')}
                   nextLabel={t('skills.nextPage')}
                   accent={ACCENT}

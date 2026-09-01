@@ -25,6 +25,7 @@ export default function LibraryPagination({
     prevLabel,
     nextLabel,
     accent,
+    className = 'mt-12',
 }: {
     currentPage: number;
     totalPages: number;
@@ -32,6 +33,8 @@ export default function LibraryPagination({
     prevLabel: string;
     nextLabel: string;
     accent: string;
+    /** Khoảng cách của dải phân trang — bản trên lưới dùng `mb-6`, bản dưới giữ `mt-12`. */
+    className?: string;
 }) {
     if (totalPages <= 1) return null;
 
@@ -43,7 +46,7 @@ export default function LibraryPagination({
         }`;
 
     return (
-        <div className="flex items-center justify-center gap-2 mt-12 select-none">
+        <div className={`flex flex-wrap items-center justify-center gap-2 select-none ${className}`}>
             <button
                 onClick={() => onChange(Math.max(currentPage - 1, 1))}
                 disabled={currentPage === 1}

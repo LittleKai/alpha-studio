@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
 import StudioBackButton from '../components/studio/StudioBackButton';
@@ -89,6 +89,7 @@ export default function EventLibraryPage() {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const { isAuthenticated } = useAuth();
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const [items, setItems] = useState<EventLibraryItem[]>([]);
     const [counts, setCounts] = useState<LibraryFilterCounts>(EMPTY_COUNTS);
@@ -96,31 +97,110 @@ export default function EventLibraryPage() {
     const [total, setTotal] = useState(0);
     const [loading, setLoading] = useState(true);
 
-    const [searchQuery, setSearchQuery] = useState('');
-    const [debouncedSearch, setDebouncedSearch] = useState('');
-    const [itemType, setItemType] = useState('');
-    const [scope, setScope] = useState<Scope>('all');
-    const [categories, setCategories] = useState<string[]>([]);
-    const [industries, setIndustries] = useState<string[]>([]);
-    const [objectives, setObjectives] = useState<string[]>([]);
-    const [budgetTiers, setBudgetTiers] = useState<string[]>([]);
-    const [kpis, setKpis] = useState<string[]>([]);
-    const [verifications, setVerifications] = useState<string[]>([]);
-    const [depths, setDepths] = useState<string[]>([]);
+    // Khởi tạo từ URL — mọi bộ lọc đều nằm trong query string nên trạng thái
+    // đang xem luôn chia sẻ / tải lại / bấm Back được (giống trang Kỹ năng AI)
+    const initialPage = parseInt(searchParams.get('page') || '1', 10);
+    const initialSearch = searchParams.get('search') || '';
+    const initialList = (key: string) => {
+        const value = searchParams.get(key);
+        return value ? value.split(',') : [];
+    };
 
-    const [sort, setSort] = useState('recent');
+    const [searchQuery, setSearchQuery] = useState(initialSearch);
+    const [debouncedSearch, setDebouncedSearch] = useState(initialSearch);
+    const [itemType, setItemType] = useState(searchParams.get('type') || '');
+    const [scope, setScope] = useState<Scope>((searchParams.get('scope') as Scope) || 'all');
+    const [categories, setCategories] = useState<string[]>(initialList('category'));
+    const [industries, setIndustries] = useState<string[]>(initialList('industry'));
+    const [objectives, setObjectives] = useState<string[]>(initialList('objective'));
+    const [budgetTiers, setBudgetTiers] = useState<string[]>(initialList('budgetTier'));
+    const [kpis, setKpis] = useState<string[]>(initialList('kpi'));
+    const [verifications, setVerifications] = useState<string[]>(initialList('verification'));
+    const [depths, setDepths] = useState<string[]>(initialList('depth'));
+
+    const [sort, setSort] = useState(searchParams.get('sort') || 'recent');
     const [view, setView] = useState<'grid' | 'list'>('grid');
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(initialPage > 0 ? initialPage : 1);
     const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
     const searchTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+    // Chỉ về trang 1 khi từ khoá thật sự đổi — nếu không, mở URL có sẵn ?page=3
+    // (hoặc bấm Back về trang 3) sẽ bị kéo về trang 1 sau 400ms.
+    const lastAppliedSearchRef = useRef(initialSearch);
     useEffect(() => {
         searchTimerRef.current = setTimeout(() => {
+            if (lastAppliedSearchRef.current === searchQuery) return;
+            lastAppliedSearchRef.current = searchQuery;
             setDebouncedSearch(searchQuery);
             setPage(1);
         }, 400);
         return () => clearTimeout(searchTimerRef.current);
     }, [searchQuery]);
+
+    // State → URL. Mỗi lần đổi bộ lọc/trang là một entry lịch sử riêng để nút
+    // Back trả về đúng trạng thái trước đó; riêng ô tìm kiếm chỉ ghi đè
+    // (replace) để gõ phím không đẻ ra hàng chục entry.
+    const isFirstRender = useRef(true);
+    const prevSearchRef = useRef(initialSearch);
+    useEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
+        const params = new URLSearchParams();
+        if (page > 1) params.set('page', String(page));
+        if (debouncedSearch) params.set('search', debouncedSearch);
+        if (itemType) params.set('type', itemType);
+        if (scope !== 'all') params.set('scope', scope);
+        if (sort !== 'recent') params.set('sort', sort);
+        if (categories.length > 0) params.set('category', categories.join(','));
+        if (industries.length > 0) params.set('industry', industries.join(','));
+        if (objectives.length > 0) params.set('objective', objectives.join(','));
+        if (budgetTiers.length > 0) params.set('budgetTier', budgetTiers.join(','));
+        if (kpis.length > 0) params.set('kpi', kpis.join(','));
+        if (verifications.length > 0) params.set('verification', verifications.join(','));
+        if (depths.length > 0) params.set('depth', depths.join(','));
+
+        // URL đã đúng (thường là do vừa bấm Back/Forward) thì không điều hướng nữa
+        const nextQs = params.toString();
+        if (nextQs === window.location.search.replace(/^\?/, '')) return;
+
+        const searchChanged = prevSearchRef.current !== debouncedSearch;
+        prevSearchRef.current = debouncedSearch;
+        setSearchParams(params, { replace: searchChanged });
+    }, [
+        page, debouncedSearch, itemType, scope, sort, categories, industries,
+        objectives, budgetTiers, kpis, verifications, depths, setSearchParams
+    ]);
+
+    // URL → state: bấm Back/Forward chỉ đổi query string, không remount trang
+    // nên phải đọc lại bộ lọc từ URL. Chỉ set khi lệch để không tạo vòng lặp.
+    useEffect(() => {
+        const urlSearch = searchParams.get('search') || '';
+        const urlType = searchParams.get('type') || '';
+        const urlScope = (searchParams.get('scope') as Scope) || 'all';
+        const urlSort = searchParams.get('sort') || 'recent';
+        const urlPage = parseInt(searchParams.get('page') || '1', 10) || 1;
+        const syncList = (key: string, setter: (updater: (prev: string[]) => string[]) => void) => {
+            const raw = searchParams.get(key) || '';
+            setter(prev => (prev.join(',') === raw ? prev : raw ? raw.split(',') : []));
+        };
+
+        lastAppliedSearchRef.current = urlSearch;
+        setSearchQuery(prev => (prev === urlSearch ? prev : urlSearch));
+        setDebouncedSearch(prev => (prev === urlSearch ? prev : urlSearch));
+        setItemType(prev => (prev === urlType ? prev : urlType));
+        setScope(prev => (prev === urlScope ? prev : urlScope));
+        setSort(prev => (prev === urlSort ? prev : urlSort));
+        setPage(prev => (prev === urlPage ? prev : urlPage));
+        syncList('category', setCategories);
+        syncList('industry', setIndustries);
+        syncList('objective', setObjectives);
+        syncList('budgetTier', setBudgetTiers);
+        syncList('kpi', setKpis);
+        syncList('verification', setVerifications);
+        syncList('depth', setDepths);
+    }, [searchParams]);
 
     // Mỗi lần đổi bộ lọc đều gọi lại API — danh sách lọc theo quyền xem của
     // từng tài khoản nên không cache được ở client như trang Kỹ năng AI.
@@ -255,6 +335,12 @@ export default function EventLibraryPage() {
 
     const totalPages = Math.ceil(total / PAGE_SIZE);
 
+    // Dùng chung cho dải phân trang trên và dưới lưới
+    const goToPage = (next: number) => {
+        setPage(next);
+        window.scrollTo({ top: 350, behavior: 'smooth' });
+    };
+
     return (
         <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pb-20">
             <SEOHead
@@ -381,6 +467,18 @@ export default function EventLibraryPage() {
                                 .replace('{total}', String(total))}
                         </div>
 
+                        {!loading && items.length > 0 && (
+                            <LibraryPagination
+                                currentPage={page}
+                                totalPages={totalPages}
+                                onChange={goToPage}
+                                prevLabel={t('eventLibrary.prevPage')}
+                                nextLabel={t('eventLibrary.nextPage')}
+                                accent={ACCENT}
+                                className="mb-6"
+                            />
+                        )}
+
                         {loading ? (
                             <div className="flex items-center justify-center py-24">
                                 <div
@@ -436,7 +534,7 @@ export default function EventLibraryPage() {
                         <LibraryPagination
                             currentPage={page}
                             totalPages={totalPages}
-                            onChange={setPage}
+                            onChange={goToPage}
                             prevLabel={t('eventLibrary.prevPage')}
                             nextLabel={t('eventLibrary.nextPage')}
                             accent={ACCENT}
