@@ -16,6 +16,7 @@ export default {
       webhooks: "Webhook Logs",
       community: "Community",
       studio: "Studio Settings",
+      toolDownloads: "Tool Downloads",
       interiorTemplates: "AI Cabinet Templates",
       crm: "CRM Ops"
     },
@@ -149,6 +150,38 @@ export default {
       subtabs: {
         apiSettings: "API Settings"
       }
+    },
+    toolDownloads: {
+      title: "Tool Download Statistics",
+      subtitle: "Track downloads for VietYaku, VocabFlip, and desktop/mobile client applications on the web",
+      refresh: "Refresh",
+      totalAll: "Total Downloads",
+      totalAllDesc: "Across all Studio tools",
+      windowsTotal: "Windows Downloads",
+      windowsTotalDesc: "Windows Installer (.ZIP / .EXE)",
+      androidTotal: "Android Downloads",
+      androidTotalDesc: "Android Package (.APK)",
+      topTool: "Top Downloaded",
+      downloadsCount: "downloads",
+      toolsBreakdown: "Detailed Breakdown by Tool",
+      noData: "No download data yet",
+      lastDownloaded: "Last Downloaded",
+      neverDownloaded: "No downloads yet",
+      viewToolPage: "View Tool Page",
+      editCounts: "Edit Counts",
+      editTitle: "Calibrate Download Counts",
+      editDesc: "Adjust actual download counts or sync with legacy offline stats.",
+      resetBtn: "Reset to 0",
+      resetConfirmTitle: "Reset Download Count?",
+      resetConfirmMessage: "Are you sure you want to reset download counts for {{tool}} to 0? This cannot be undone.",
+      saveError: "Failed to update download counts",
+      recentActivity: "Recent Download Activity",
+      recentCount: "recent downloads",
+      noRecentActivity: "No download activity recorded yet.",
+      tool: "Tool",
+      platform: "Platform",
+      version: "Version",
+      time: "Time"
     },
     articles: {
       title: "Title",

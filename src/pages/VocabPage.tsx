@@ -5,6 +5,7 @@ import {
     getLatestVocabRelease,
     type VocabReleaseInfo,
 } from '../services/vocabReleaseService';
+import { trackToolDownload } from '../services/toolDownloadService';
 import StudioBackButton from '../components/studio/StudioBackButton';
 
 interface FeatureCardProps {
@@ -201,6 +202,7 @@ const VocabPage: React.FC = () => {
                                 <>
                                     <a
                                         href={release.windowsInstallerUrl}
+                                        onClick={() => trackToolDownload('vocabflip', 'windows', release.version)}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] px-5 py-3 text-sm font-black text-[var(--text-primary)] transition-all hover:-translate-y-0.5 hover:border-sky-500 hover:text-sky-500"
@@ -212,6 +214,7 @@ const VocabPage: React.FC = () => {
                                     </a>
                                     <a
                                         href={release.androidApkUrl}
+                                        onClick={() => trackToolDownload('vocabflip', 'android', release.version)}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] px-5 py-3 text-sm font-black text-[var(--text-primary)] transition-all hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-400"

@@ -8,6 +8,7 @@ import ArticlesAdminTab from '../components/admin/ArticlesAdminTab';
 import CloudAdminTab from '../components/admin/CloudAdminTab';
 import FeaturedStudentsAdminTab from '../components/admin/FeaturedStudentsAdminTab';
 import StudioAdminTab from '../components/admin/StudioAdminTab';
+import ToolDownloadsAdminTab from '../components/admin/ToolDownloadsAdminTab';
 import InteriorTemplatesAdminTab from '../components/admin/InteriorTemplatesAdminTab';
 import CrmAdminTab from '../components/admin/CrmAdminTab';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
@@ -34,7 +35,7 @@ type TopTabType = 'articles' | 'community' | 'transactions' | 'cloud' | 'studio'
 type ArticlesSubTabType = 'about' | 'news' | 'services';
 type CommunitySubTabType = 'featuredStudents';
 type SubTabType = 'users' | 'transactionsList' | 'webhooks';
-type StudioSubTabType = 'api-settings' | 'interior-templates' | 'crm';
+type StudioSubTabType = 'api-settings' | 'tool-downloads' | 'interior-templates' | 'crm';
 
 export default function AdminPage() {
     const navigate = useNavigate();
@@ -93,6 +94,7 @@ export default function AdminPage() {
 
     const studioSubTabs = [
         { id: 'api-settings' as StudioSubTabType, label: t('admin.studio.subtabs.apiSettings') || 'Cài đặt API' },
+        { id: 'tool-downloads' as StudioSubTabType, label: t('admin.tabs.toolDownloads') || 'Lượt Tải Tool' },
         { id: 'interior-templates' as StudioSubTabType, label: t('admin.tabs.interiorTemplates') || 'Mẫu Tủ AI' },
         { id: 'crm' as StudioSubTabType, label: t('admin.tabs.crm') || 'CRM Ops' },
     ];
@@ -166,6 +168,7 @@ export default function AdminPage() {
                                 ))}
                             </div>
                             {activeStudioSubTab === 'api-settings' && <StudioAdminTab />}
+                            {activeStudioSubTab === 'tool-downloads' && <ToolDownloadsAdminTab />}
                             {activeStudioSubTab === 'interior-templates' && <InteriorTemplatesAdminTab />}
                             {activeStudioSubTab === 'crm' && <CrmAdminTab />}
                         </div>

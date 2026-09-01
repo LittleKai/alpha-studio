@@ -16,6 +16,7 @@ export default {
       webhooks: "Webhook Logs",
       community: "Cộng đồng",
       studio: "Cài đặt Studio",
+      toolDownloads: "Lượt Tải Tool",
       interiorTemplates: "Mẫu Tủ AI",
       crm: "CRM Ops"
     },
@@ -159,6 +160,38 @@ export default {
       subtabs: {
         apiSettings: "Cài đặt API"
       }
+    },
+    toolDownloads: {
+      title: "Thống Kê Lượt Tải Công Cụ",
+      subtitle: "Theo dõi số lượng tải xuống phần mềm VietYaku, VocabFlip và các công cụ desktop/mobile trên web",
+      refresh: "Làm mới",
+      totalAll: "Tổng lượt tải",
+      totalAllDesc: "Toàn bộ công cụ trên Studio",
+      windowsTotal: "Lượt tải Windows",
+      windowsTotalDesc: "Bản cài đặt Windows (.ZIP / .EXE)",
+      androidTotal: "Lượt tải Android",
+      androidTotalDesc: "Gói ứng dụng Android (.APK)",
+      topTool: "Tải nhiều nhất",
+      downloadsCount: "lượt tải",
+      toolsBreakdown: "Chi tiết theo từng công cụ",
+      noData: "Chưa có dữ liệu lượt tải",
+      lastDownloaded: "Tải gần nhất",
+      neverDownloaded: "Chưa có lượt tải",
+      viewToolPage: "Trang tải công cụ",
+      editCounts: "Chỉnh sửa",
+      editTitle: "Hiệu chỉnh lượt tải",
+      editDesc: "Điều chỉnh số liệu thống kê lượt tải thực tế hoặc đồng bộ từ số liệu cũ.",
+      resetBtn: "Đặt lại về 0",
+      resetConfirmTitle: "Đặt lại số lượt tải?",
+      resetConfirmMessage: "Bạn có chắc chắn muốn đặt lại lượt tải của {{tool}} về 0? Hành động này không thể hoàn tác.",
+      saveError: "Không thể lưu lượt tải",
+      recentActivity: "Hoạt Động Tải Gần Đây",
+      recentCount: "lượt tải gần nhất",
+      noRecentActivity: "Chưa có hoạt động tải nào được ghi nhận.",
+      tool: "Công cụ",
+      platform: "Nền tảng",
+      version: "Phiên bản",
+      time: "Thời gian"
     },
     articles: {
       title: "Tiêu đề",
