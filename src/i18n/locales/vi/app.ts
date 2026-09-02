@@ -151,7 +151,7 @@ export default {
         crm: {
           f1: "Gửi tin nhắn hàng loạt và chăm sóc khách hàng tự động qua Zalo",
           f2: "AI soạn thảo, tối ưu kịch bản và phản hồi tự động theo quota hàng tháng",
-          f3: "Client Windows & Android, dùng thử 2 tháng cho tài khoản mới"
+          f3: "Client Windows & Android, dùng thử 1 tháng cho tài khoản mới"
         },
         vocab: {
           f1: "Tạo bộ thẻ đa ngôn ngữ, ôn tập theo lặp lại ngắt quãng",
@@ -168,7 +168,7 @@ export default {
       meta: {
         eventLibrary: "Web · Không cần cài đặt",
         skills: "Web · Không cần cài đặt",
-        crm: "Windows & Android · Dùng thử 2 tháng",
+        crm: "Windows & Android · Dùng thử 1 tháng",
         vocab: "Web, Windows & Android",
         vietyaku: "Windows · Android (Sắp ra mắt)"
       },
@@ -209,7 +209,7 @@ export default {
             statusInactive: "Chưa Đăng Ký",
             statusExpiry: "Hạn sử dụng đến: {{date}}",
             statusTrialExpiry: "Dùng thử đến: {{date}}",
-            statusTrialDesc: "Mỗi tài khoản mới chỉ được cấp 1 lần dùng thử: 2 tháng (60 ngày) và 100 yêu cầu AI.",
+            statusTrialDesc: "Mỗi tài khoản mới chỉ được cấp 1 lần dùng thử: 1 tháng (30 ngày) và 100 yêu cầu AI.",
             statusExpiredDesc: "Đã kết thúc vào {{date}}. Hãy gia hạn để khôi phục các tác vụ tự động gửi tin nhắn.",
             statusInactiveDesc: "Bạn chưa có giấy phép Alpha CRM. Sở hữu giấy phép ngay để liên kết bot và bắt đầu chiến dịch.",
             renewBtn: "Gia hạn gói hàng tháng",
@@ -289,9 +289,9 @@ export default {
             renewDetail1Label: "Gói gia hạn",
             renewDetail1Value: "Alpha CRM 1 tháng",
             renewDetail2Label: "Chi phí",
-            renewDetail2Value: "5250 Credits hoặc 500.000đ",
+            renewDetail2Value: "1050 Credits hoặc 100.000đ",
             renewDetail3Label: "Hạn mức AI mới",
-            renewDetail3Value: "1000 yêu cầu AI / chu kỳ",
+            renewDetail3Value: "100 yêu cầu AI / chu kỳ",
             renewDetail4Label: "Hiệu lực",
             renewDetail4Value: "Gia hạn thêm 1 tháng và đặt lại quota gói chính",
             renewBalanceOk: "Số dư hiện tại: {{balance}} Credits. Bạn có thể thanh toán bằng Credits ngay.",

@@ -151,7 +151,7 @@ export default {
         crm: {
           f1: "Bulk messaging and automated customer care over Zalo",
           f2: "AI drafts, optimizes scripts, and auto-replies on a monthly quota",
-          f3: "Windows & Android clients, 2-month trial for new accounts"
+          f3: "Windows & Android clients, 1-month trial for new accounts"
         },
         vocab: {
           f1: "Build multilingual decks with spaced-repetition review",
@@ -168,7 +168,7 @@ export default {
       meta: {
         eventLibrary: "Web · No install needed",
         skills: "Web · No install needed",
-        crm: "Windows & Android · 2-month trial",
+        crm: "Windows & Android · 1-month trial",
         vocab: "Web, Windows & Android",
         vietyaku: "Windows · Android (Coming Soon)"
       },
@@ -209,7 +209,7 @@ export default {
             statusInactive: "Not Registered",
             statusExpiry: "Valid until: {{date}}",
             statusTrialExpiry: "Trial ends: {{date}}",
-            statusTrialDesc: "Each new account gets one trial only: 2 months (60 days) and 100 AI requests.",
+            statusTrialDesc: "Each new account gets one trial only: 1 month (30 days) and 100 AI requests.",
             statusExpiredDesc: "Expired on {{date}}. Please renew to restore Zalo auto-messaging features.",
             statusInactiveDesc: "You do not have an active Alpha CRM license yet. Subscribe now to link your bot and start campaigns.",
             renewBtn: "Renew Monthly",
@@ -289,9 +289,9 @@ export default {
             renewDetail1Label: "Renewal plan",
             renewDetail1Value: "Alpha CRM 1 month",
             renewDetail2Label: "Cost",
-            renewDetail2Value: "5250 Credits or 500,000 VND",
+            renewDetail2Value: "1050 Credits or 100,000 VND",
             renewDetail3Label: "New AI quota",
-            renewDetail3Value: "1000 AI requests / cycle",
+            renewDetail3Value: "100 AI requests / cycle",
             renewDetail4Label: "Effect",
             renewDetail4Value: "Extends the plan by 1 month and resets the main plan quota",
             renewBalanceOk: "Current balance: {{balance}} Credits. You can pay with Credits now.",

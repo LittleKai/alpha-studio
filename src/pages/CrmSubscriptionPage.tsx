@@ -606,7 +606,7 @@ export default function CrmSubscriptionPage() {
                                             </p>
                                             {isTrial && (
                                                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                                                    {t('studio.hub.cards.crm.subscription.statusTrialDesc') || 'Mỗi tài khoản mới chỉ được cấp 1 lần dùng thử: 2 tháng và 100 yêu cầu AI.'}
+                                                    {t('studio.hub.cards.crm.subscription.statusTrialDesc') || 'Mỗi tài khoản mới chỉ được cấp 1 lần dùng thử: 1 tháng và 100 yêu cầu AI.'}
                                                 </p>
                                             )}
                                         </div>
