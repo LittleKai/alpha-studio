@@ -18,7 +18,88 @@ export default {
       studio: "Cài đặt Studio",
       toolDownloads: "Lượt Tải Tool",
       interiorTemplates: "Mẫu Tủ AI",
-      crm: "CRM Ops"
+      crm: "CRM Ops",
+      analytics: "Phân Tích",
+      traffic: "Truy Cập Web"
+    },
+    analytics: {
+      title: "Theo Dõi Truy Cập Web",
+      subtitle: "Lưu lượng, nguồn truy cập và mức độ hoạt động của website",
+      loading: "Đang tải dữ liệu...",
+      loadError: "Không tải được dữ liệu phân tích",
+      retry: "Thử lại",
+      refresh: "Làm mới",
+      rangeDays: "{{days}} ngày",
+      empty: "Chưa có dữ liệu trong khoảng thời gian này",
+      emptyReferrers: "Chưa có nguồn giới thiệu nào",
+      bySessions: "Theo phiên truy cập",
+      byPageviews: "Theo lượt xem trang",
+      weekdayShort: "T2,T3,T4,T5,T6,T7,CN",
+      kpi: {
+        visitors: "Người truy cập",
+        pageviews: "Lượt xem trang",
+        sessions: "Phiên truy cập",
+        newVisitors: "Người mới",
+        returning: "quay lại",
+        paidSessions: "Phiên từ quảng cáo",
+        paidSessionsHint: "Google Ads & quảng cáo trả phí",
+        pagesPerSession: "Trang / phiên",
+        pagesPerSessionHint: "Độ sâu duyệt web trung bình",
+        bounceRate: "Tỷ lệ thoát",
+        bounceRateHint: "Phiên chỉ xem đúng 1 trang",
+        loggedInViews: "Lượt xem đã đăng nhập",
+        loggedInViewsHint: "Của thành viên có tài khoản",
+        vsPrevious: "so với kỳ trước"
+      },
+      trend: {
+        title: "Xu hướng truy cập",
+        hint: "Lượt xem, người truy cập và phiên theo từng ngày"
+      },
+      channelsTitle: "Kênh truy cập",
+      channelsHint: "Khách đến website qua đâu",
+      channels: {
+        direct: "Trực tiếp",
+        organicSearch: "Tìm kiếm tự nhiên",
+        paidSearch: "Quảng cáo tìm kiếm",
+        paidSocial: "Quảng cáo hiển thị",
+        social: "Mạng xã hội",
+        referral: "Trang giới thiệu",
+        email: "Email",
+        campaign: "Chiến dịch khác"
+      },
+      referrersTitle: "Trang giới thiệu",
+      referrersHint: "Tên miền dẫn khách sang website",
+      campaigns: {
+        title: "Chiến dịch quảng cáo (UTM & Google Ads)",
+        hint: "Gắn utm_source / utm_medium / utm_campaign vào link quảng cáo để đo hiệu quả từng chiến dịch",
+        empty: "Chưa ghi nhận lượt truy cập nào từ chiến dịch có gắn UTM hoặc gclid",
+        campaign: "Chiến dịch",
+        source: "Nguồn",
+        medium: "Hình thức",
+        paidClicks: "Click trả phí"
+      },
+      topPagesTitle: "Trang xem nhiều nhất",
+      topPagesHint: "Nội dung giữ chân khách tốt nhất",
+      entryPagesTitle: "Trang vào đầu tiên",
+      entryPagesHint: "Nơi khách bắt đầu phiên truy cập",
+      devicesTitle: "Thiết bị",
+      devices: {
+        desktop: "Máy tính",
+        mobile: "Điện thoại",
+        tablet: "Máy tính bảng"
+      },
+      browsersTitle: "Trình duyệt",
+      osTitle: "Hệ điều hành",
+      hourlyTitle: "Truy cập theo giờ",
+      hourlyHint: "Giờ Việt Nam — chọn khung giờ chạy quảng cáo",
+      weekdayTitle: "Truy cập theo ngày trong tuần",
+      weekdayHint: "Ngày nào website đông khách nhất",
+      realtime: {
+        title: "Đang xem ngay bây giờ",
+        hint: "Người truy cập trong 5 phút gần nhất, tự cập nhật mỗi 30 giây",
+        online: "đang online",
+        empty: "Hiện chưa có ai đang truy cập"
+      }
     },
     users: {
       title: "Quản lý Người Dùng",

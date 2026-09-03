@@ -1,8 +1,10 @@
-import React, { Suspense, lazy, useEffect } from 'react';
+import React, { Suspense, lazy, useEffect, useRef } from 'react';
 import { Routes, Route, useNavigate, Navigate, useLocation, useParams } from 'react-router-dom';
 // Routing Components (keep these non-lazy as they're small and used everywhere)
 import { ProtectedRoute } from './components/routing';
 import { Layout } from './components/layout';
+import { useAuth } from './auth/context';
+import { trackPageView } from './services/analyticsService';
 
 // Lazy load pages for better performance
 const LandingPage = lazy(() => import('./pages/LandingPage'));
@@ -366,10 +368,30 @@ const ScrollToTop: React.FC = () => {
     return null;
 };
 
+/**
+ * Sends one pageview beacon per route change (admin traffic dashboard).
+ * Waits for auth to resolve so logged-in views are attributed, and de-dupes by
+ * path so logging in mid-page does not count the page twice.
+ */
+const PageViewTracker: React.FC = () => {
+    const { pathname } = useLocation();
+    const { user, isLoading } = useAuth();
+    const lastTracked = useRef<string | null>(null);
+
+    useEffect(() => {
+        if (isLoading || lastTracked.current === pathname) return;
+        lastTracked.current = pathname;
+        trackPageView(pathname, user?._id);
+    }, [pathname, isLoading, user?._id]);
+
+    return null;
+};
+
 const App: React.FC = () => {
     return (
         <Suspense fallback={<LoadingSpinner />}>
             <ScrollToTop />
+            <PageViewTracker />
             <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<Layout><Suspense fallback={<LoadingSpinner />}><LandingPage /></Suspense></Layout>} />

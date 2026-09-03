@@ -11,6 +11,7 @@ import StudioAdminTab from '../components/admin/StudioAdminTab';
 import ToolDownloadsAdminTab from '../components/admin/ToolDownloadsAdminTab';
 import InteriorTemplatesAdminTab from '../components/admin/InteriorTemplatesAdminTab';
 import CrmAdminTab from '../components/admin/CrmAdminTab';
+import AnalyticsAdminTab from '../components/admin/AnalyticsAdminTab';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
 import {
     getUsers,
@@ -31,11 +32,12 @@ import {
     type WebhookLog,
 } from '../services/adminService';
 
-type TopTabType = 'articles' | 'community' | 'transactions' | 'cloud' | 'studio';
+type TopTabType = 'articles' | 'community' | 'transactions' | 'cloud' | 'studio' | 'analytics';
 type ArticlesSubTabType = 'about' | 'news' | 'services';
 type CommunitySubTabType = 'featuredStudents';
 type SubTabType = 'users' | 'transactionsList' | 'webhooks';
-type StudioSubTabType = 'api-settings' | 'tool-downloads' | 'interior-templates' | 'crm';
+type StudioSubTabType = 'api-settings' | 'interior-templates';
+type AnalyticsSubTabType = 'traffic' | 'tool-downloads' | 'crm';
 
 export default function AdminPage() {
     const navigate = useNavigate();
@@ -46,6 +48,7 @@ export default function AdminPage() {
     const [activeSubTab, setActiveSubTab] = useState<SubTabType>('users');
     const [activeCommunitySubTab, setActiveCommunitySubTab] = useState<CommunitySubTabType>('featuredStudents');
     const [activeStudioSubTab, setActiveStudioSubTab] = useState<StudioSubTabType>('api-settings');
+    const [activeAnalyticsSubTab, setActiveAnalyticsSubTab] = useState<AnalyticsSubTabType>('traffic');
 
     // Check admin/mod access
     useEffect(() => {
@@ -73,6 +76,7 @@ export default function AdminPage() {
             { id: 'transactions' as TopTabType, label: t('admin.tabs.transactions') },
             { id: 'cloud' as TopTabType, label: t('admin.tabs.cloud') },
             { id: 'studio' as TopTabType, label: t('admin.tabs.studio') || 'Cài đặt Studio' },
+            { id: 'analytics' as TopTabType, label: t('admin.tabs.analytics') || 'Phân Tích' },
         ] : []),
     ];
 
@@ -94,9 +98,13 @@ export default function AdminPage() {
 
     const studioSubTabs = [
         { id: 'api-settings' as StudioSubTabType, label: t('admin.studio.subtabs.apiSettings') || 'Cài đặt API' },
-        { id: 'tool-downloads' as StudioSubTabType, label: t('admin.tabs.toolDownloads') || 'Lượt Tải Tool' },
         { id: 'interior-templates' as StudioSubTabType, label: t('admin.tabs.interiorTemplates') || 'Mẫu Tủ AI' },
-        { id: 'crm' as StudioSubTabType, label: t('admin.tabs.crm') || 'CRM Ops' },
+    ];
+
+    const analyticsSubTabs = [
+        { id: 'traffic' as AnalyticsSubTabType, label: t('admin.tabs.traffic') || 'Truy Cập Web' },
+        { id: 'tool-downloads' as AnalyticsSubTabType, label: t('admin.tabs.toolDownloads') || 'Lượt Tải Tool' },
+        { id: 'crm' as AnalyticsSubTabType, label: t('admin.tabs.crm') || 'CRM Ops' },
     ];
 
     return (
@@ -168,9 +176,29 @@ export default function AdminPage() {
                                 ))}
                             </div>
                             {activeStudioSubTab === 'api-settings' && <StudioAdminTab />}
-                            {activeStudioSubTab === 'tool-downloads' && <ToolDownloadsAdminTab />}
                             {activeStudioSubTab === 'interior-templates' && <InteriorTemplatesAdminTab />}
-                            {activeStudioSubTab === 'crm' && <CrmAdminTab />}
+                        </div>
+                    )}
+                    {activeTopTab === 'analytics' && (
+                        <div>
+                            <div className="flex gap-2 mb-6">
+                                {analyticsSubTabs.map((tab) => (
+                                    <button
+                                        key={tab.id}
+                                        onClick={() => setActiveAnalyticsSubTab(tab.id)}
+                                        className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
+                                            activeAnalyticsSubTab === tab.id
+                                                ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]'
+                                                : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+                                        }`}
+                                    >
+                                        {tab.label}
+                                    </button>
+                                ))}
+                            </div>
+                            {activeAnalyticsSubTab === 'traffic' && <AnalyticsAdminTab />}
+                            {activeAnalyticsSubTab === 'tool-downloads' && <ToolDownloadsAdminTab />}
+                            {activeAnalyticsSubTab === 'crm' && <CrmAdminTab />}
                         </div>
                     )}
                     {activeTopTab === 'community' && (

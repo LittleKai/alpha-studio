@@ -18,7 +18,88 @@ export default {
       studio: "Studio Settings",
       toolDownloads: "Tool Downloads",
       interiorTemplates: "AI Cabinet Templates",
-      crm: "CRM Ops"
+      crm: "CRM Ops",
+      analytics: "Analytics",
+      traffic: "Web Traffic"
+    },
+    analytics: {
+      title: "Web Traffic Analytics",
+      subtitle: "Traffic, acquisition channels and overall site activity",
+      loading: "Loading data...",
+      loadError: "Could not load analytics data",
+      retry: "Retry",
+      refresh: "Refresh",
+      rangeDays: "{{days}} days",
+      empty: "No data for this period yet",
+      emptyReferrers: "No referrers yet",
+      bySessions: "By sessions",
+      byPageviews: "By pageviews",
+      weekdayShort: "Mon,Tue,Wed,Thu,Fri,Sat,Sun",
+      kpi: {
+        visitors: "Visitors",
+        pageviews: "Pageviews",
+        sessions: "Sessions",
+        newVisitors: "New visitors",
+        returning: "returning",
+        paidSessions: "Paid sessions",
+        paidSessionsHint: "Google Ads & paid campaigns",
+        pagesPerSession: "Pages / session",
+        pagesPerSessionHint: "Average browsing depth",
+        bounceRate: "Bounce rate",
+        bounceRateHint: "Sessions with a single pageview",
+        loggedInViews: "Logged-in views",
+        loggedInViewsHint: "From registered members",
+        vsPrevious: "vs previous period"
+      },
+      trend: {
+        title: "Traffic trend",
+        hint: "Pageviews, visitors and sessions per day"
+      },
+      channelsTitle: "Acquisition channels",
+      channelsHint: "How visitors reach the website",
+      channels: {
+        direct: "Direct",
+        organicSearch: "Organic search",
+        paidSearch: "Paid search",
+        paidSocial: "Display ads",
+        social: "Social",
+        referral: "Referral",
+        email: "Email",
+        campaign: "Other campaigns"
+      },
+      referrersTitle: "Referring sites",
+      referrersHint: "Domains sending traffic our way",
+      campaigns: {
+        title: "Ad campaigns (UTM & Google Ads)",
+        hint: "Tag ad links with utm_source / utm_medium / utm_campaign to measure each campaign",
+        empty: "No visits from UTM-tagged or gclid links recorded yet",
+        campaign: "Campaign",
+        source: "Source",
+        medium: "Medium",
+        paidClicks: "Paid clicks"
+      },
+      topPagesTitle: "Most viewed pages",
+      topPagesHint: "Content that holds attention best",
+      entryPagesTitle: "Landing pages",
+      entryPagesHint: "Where sessions begin",
+      devicesTitle: "Devices",
+      devices: {
+        desktop: "Desktop",
+        mobile: "Mobile",
+        tablet: "Tablet"
+      },
+      browsersTitle: "Browsers",
+      osTitle: "Operating systems",
+      hourlyTitle: "Traffic by hour",
+      hourlyHint: "Vietnam time - pick your ad scheduling window",
+      weekdayTitle: "Traffic by weekday",
+      weekdayHint: "Which days draw the most visitors",
+      realtime: {
+        title: "Viewing right now",
+        hint: "Visitors in the last 5 minutes, refreshed every 30 seconds",
+        online: "online",
+        empty: "Nobody is browsing at the moment"
+      }
     },
     users: {
       title: "User Management",
