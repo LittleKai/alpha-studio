@@ -31,6 +31,7 @@ const AboutDetailPage = lazy(() => import('./pages/AboutDetailPage'));
 const NewsPage = lazy(() => import('./pages/NewsPage'));
 const NewsDetailPage = lazy(() => import('./pages/NewsDetailPage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const ServicesDetailPage = lazy(() => import('./pages/ServicesDetailPage'));
 const WalletPage = lazy(() => import('./pages/WalletPage'));
 const VocabPage = lazy(() => import('./pages/VocabPage'));
 const VietYakuPage = lazy(() => import('./pages/VietYakuPage'));
@@ -227,6 +228,17 @@ const ServicesPageWrapper: React.FC = () => {
     );
 };
 
+// Services Detail Page with layout
+const ServicesDetailPageWrapper: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <ServicesDetailPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
 // Wallet Page
 const WalletPageWrapper: React.FC = () => {
     return (
@@ -406,6 +418,7 @@ const App: React.FC = () => {
                 <Route path="/news" element={<NewsPageWrapper />} />
                 <Route path="/news/:slug" element={<NewsDetailPageWrapper />} />
                 <Route path="/services" element={<ServicesPageWrapper />} />
+                <Route path="/services/:slug" element={<ServicesDetailPageWrapper />} />
 
                 {/* Studio hub + tool sub-routes — public, auth enforced per-use inside each tool */}
                 <Route path="/studio" element={<StudioHubPage />} />

@@ -12,7 +12,4 @@ export default defineConfig({
         port: 3000,
         host: '0.0.0.0',
     },
-    define: {
-        'process.env.API_KEY': JSON.stringify(process.env.GEMINI_API_KEY),
-    },
 });

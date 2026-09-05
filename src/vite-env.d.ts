@@ -3,7 +3,6 @@
 interface ImportMetaEnv {
   readonly VITE_API_URL: string;
   readonly VITE_CDN_BASE_URL?: string;
-  readonly VITE_GEMINI_API_KEY?: string;
   /** Một tài khoản Cloudinary (cách cũ) — vẫn dùng được, được ghép vào đầu danh sách xoay vòng */
   readonly VITE_CLOUDINARY_CLOUD_NAME?: string;
   readonly VITE_CLOUDINARY_UPLOAD_PRESET?: string;
