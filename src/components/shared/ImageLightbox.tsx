@@ -145,6 +145,8 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
                                 src={cdnFromUrl(img.url, 'w_128')}
                                 alt={`Thumbnail ${index + 1}`}
                                 className="w-full h-full object-cover"
+                                loading="lazy"
+                                decoding="async"
                             />
                         </button>
                     ))}

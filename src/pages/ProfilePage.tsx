@@ -894,6 +894,8 @@ const ProfilePage: React.FC = () => {
                                         src={cdnFromUrl(work.image, 'w_320')}
                                         alt={work.title}
                                         className="w-full h-full object-cover"
+                                        loading="lazy"
+                                        decoding="async"
                                     />
                                 </div>
                                 <div className="p-3">

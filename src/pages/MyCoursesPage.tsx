@@ -243,6 +243,8 @@ const MyCoursesPage: React.FC = () => {
                                                 src={cdnFromUrl(course.thumbnail, 'w_640')}
                                                 alt={getLocalizedText(course.title)}
                                                 className="w-full h-full object-cover"
+                                                loading="lazy"
+                                                decoding="async"
                                             />
                                         ) : (
                                             <div className={`w-full h-full bg-gradient-to-br ${gradient} flex items-center justify-center`}>

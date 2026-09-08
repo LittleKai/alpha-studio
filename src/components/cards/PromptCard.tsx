@@ -112,6 +112,8 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, onClick, onUpdate }) =>
                         src={cdnFromUrl(thumbnailImage, 'w_640')}
                         alt={getLocalizedText(prompt.title)}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                        decoding="async"
                     />
                     {prompt.isFeatured && (
                         <div className="absolute top-2 left-2 px-2 py-0.5 bg-yellow-500 text-black text-[10px] font-bold rounded">
@@ -185,7 +187,7 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, onClick, onUpdate }) =>
                         <div className="flex items-center gap-2">
                             <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-500 flex items-center justify-center text-white text-[10px] font-bold">
                                 {prompt.author.avatar ? (
-                                    <img src={cdnFromUrl(prompt.author.avatar, 'w_128')} alt={prompt.author.name} className="w-full h-full rounded-full object-cover" />
+                                    <img src={cdnFromUrl(prompt.author.avatar, 'w_128')} alt={prompt.author.name} className="w-full h-full rounded-full object-cover" loading="lazy" decoding="async" />
                                 ) : (
                                     prompt.author.name.charAt(0).toUpperCase()
                                 )}

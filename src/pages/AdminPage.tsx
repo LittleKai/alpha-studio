@@ -624,6 +624,8 @@ function UsersTab() {
                                                     src={cdnFromUrl(u.avatar, 'w_128')}
                                                     alt={u.name}
                                                     className="w-10 h-10 rounded-full object-cover border border-[var(--border-primary)] shrink-0"
+                                                    loading="lazy"
+                                                    decoding="async"
                                                 />
                                             ) : (
                                                 <div className="w-10 h-10 rounded-full bg-[var(--accent-primary)]/15 text-[var(--accent-primary)] flex items-center justify-center font-bold text-sm shrink-0 border border-[var(--accent-primary)]/20">

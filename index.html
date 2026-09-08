@@ -16,15 +16,14 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://alpha-studio-backend.fly.dev" />
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      // dark: variant phải theo toggle theme của app (html[data-theme="dark"]),
-      // không theo OS preference — mặc định của CDN là 'media'.
-      tailwind.config = {
-        darkMode: ['class', '[data-theme="dark"]'],
-      };
-    </script>
+    <!-- Tailwind build sẵn lúc compile qua PostCSS (tailwind.config.js +
+         postcss.config.js), nạp từ src/tailwind.css trong main.tsx.
+         Trước đây chỗ này nạp Tailwind Play CDN bằng thẻ script (cdn tailwindcss
+         com) — nó chạy JIT ngay trong trình duyệt kèm MutationObserver theo dõi DOM
+         và sinh lại stylesheet khi DOM đổi (đo trên production: thẻ <style> nó
+         tiêm phình từ 30.589 lên 40.437 ký tự trong lúc app render). Cấu hình
+         `darkMode` vốn khai báo inline ngay dưới thẻ script đó nay nằm trong
+         tailwind.config.js. KHÔNG nạp lại CDN. -->
 
     <!-- Google Fonts - Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

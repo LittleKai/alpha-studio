@@ -1,0 +1,7 @@
+/* Nguồn Tailwind build-time, thay cho <script src="cdn.tailwindcss.com"> vốn
+   biên dịch JIT ngay trong trình duyệt kèm MutationObserver theo dõi DOM.
+   Nạp qua main.tsx để Vite chèn thẻ CSS vào <head> SAU khối <style> tuỳ chỉnh
+   của index.html — đúng thứ tự mà CDN vẫn tạo ra, nên tầng cascade không đổi. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

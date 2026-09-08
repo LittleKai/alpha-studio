@@ -247,6 +247,8 @@ const CoursesSliderSection: React.FC<CoursesSliderProps> = ({
                                                     alt={getLocalizedText(course.title)}
                                                     className="w-full h-full object-cover"
                                                     draggable={false}
+                                                    loading="lazy"
+                                                    decoding="async"
                                                 />
                                             ) : (
                                                 <div className={`w-full h-full ${categoryGradients[course.category] || 'bg-slate-900'} flex items-center justify-center`}>
@@ -801,7 +803,7 @@ const LandingPage: React.FC = () => {
                                         {/* Profile Pic: Student work image (Main background) */}
                                         <div className="profile-pic">
                                             {(student.backgroundImage || student.work) ? (
-                                                <img src={cdnFromUrl(student.backgroundImage || student.work, "w_640")} alt="Work" />
+                                                <img src={cdnFromUrl(student.backgroundImage || student.work, "w_640")} alt="Work" loading="lazy" decoding="async" />
                                             ) : (
                                                 <div className="fallback-pic">
                                                     <IconSparkles className="h-10 w-10" />
@@ -812,7 +814,7 @@ const LandingPage: React.FC = () => {
                                         {/* Student Avatar: Circular avatar overlay, only visible when hovered */}
                                         <div className="student-avatar-pic">
                                             {student.image ? (
-                                                <img src={cdnFromUrl(student.image, 'w_256')} alt={student.name} />
+                                                <img src={cdnFromUrl(student.image, 'w_256')} alt={student.name} loading="lazy" decoding="async" />
                                             ) : (
                                                 <div className="avatar-fallback">
                                                     <span>{student.name.charAt(0).toUpperCase()}</span>
@@ -909,7 +911,7 @@ const LandingPage: React.FC = () => {
                                                     <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center z-10">
                                                         <div className="w-12 h-12 rounded-xl bg-[var(--bg-tertiary)]/50 backdrop-blur-md flex items-center justify-center mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300 overflow-hidden">
                                                             {partner.logo && partner.logo.startsWith('http') ? (
-                                                                <img src={cdnFromUrl(partner.logo, 'w_320')} alt={partner.companyName} className="w-full h-full object-contain p-1" />
+                                                                <img src={cdnFromUrl(partner.logo, 'w_320')} alt={partner.companyName} className="w-full h-full object-contain p-1" loading="lazy" decoding="async" />
                                                             ) : (
                                                                 <span className="text-sm font-black text-[var(--accent-primary)]">
                                                                     {partner.companyName.charAt(0).toUpperCase()}

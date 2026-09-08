@@ -57,6 +57,8 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
                         src={cdnFromUrl(partner.logo, 'w_320')}
                         alt={partner.companyName}
                         className="w-full h-full object-contain p-4"
+                        loading="lazy"
+                        decoding="async"
                     />
                 ) : (
                     <div className="w-full h-full flex items-center justify-center">

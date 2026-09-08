@@ -1287,7 +1287,7 @@ const CoursePage: React.FC = () => {
                                             <div key={review._id} className="glass-card rounded-xl p-6">
                                                 <div className="flex items-start gap-4">
                                                     {review.user?.avatar ? (
-                                                        <img src={cdnFromUrl(review.user.avatar, 'w_128')} alt={review.user.name} className="w-12 h-12 rounded-full object-cover" />
+                                                        <img src={cdnFromUrl(review.user.avatar, 'w_128')} alt={review.user.name} className="w-12 h-12 rounded-full object-cover" loading="lazy" decoding="async" />
                                                     ) : (
                                                         <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-600 flex items-center justify-center text-white font-bold">
                                                             {review.user?.name?.charAt(0) ?? '?'}
@@ -1350,6 +1350,8 @@ const CoursePage: React.FC = () => {
                                 src={cdnFromUrl(course.thumbnail, 'w_640')}
                                 alt={getLocalizedText(course.title)}
                                 className="w-full aspect-video rounded-lg object-cover mb-4 shadow-lg"
+                                loading="lazy"
+                                decoding="async"
                             />
                         ) : (
                             <div className={`w-full aspect-video rounded-lg bg-gradient-to-br ${gradientColor} mb-4 flex items-center justify-center text-4xl shadow-lg`}>
@@ -1460,7 +1462,7 @@ const CoursePage: React.FC = () => {
                                     {instructorsToShow.map((ins, idx) => (
                                         <div key={idx} className="flex items-center gap-4">
                                             {ins.avatar ? (
-                                                <img src={cdnFromUrl(ins.avatar, 'w_128')} alt={ins.name} className="w-14 h-14 rounded-full object-cover flex-shrink-0" />
+                                                <img src={cdnFromUrl(ins.avatar, 'w_128')} alt={ins.name} className="w-14 h-14 rounded-full object-cover flex-shrink-0" loading="lazy" decoding="async" />
                                             ) : (
                                                 <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-600 flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
                                                     {ins.name.charAt(0)}
@@ -1531,7 +1533,7 @@ const CoursePage: React.FC = () => {
                                         <div key={review._id} className="p-4 bg-[var(--bg-secondary)] rounded-xl">
                                             <div className="flex items-start gap-3">
                                                 {review.user.avatar ? (
-                                                    <img src={cdnFromUrl(review.user.avatar, 'w_128')} alt={review.user.name} className="w-10 h-10 rounded-full object-cover" />
+                                                    <img src={cdnFromUrl(review.user.avatar, 'w_128')} alt={review.user.name} className="w-10 h-10 rounded-full object-cover" loading="lazy" decoding="async" />
                                                 ) : (
                                                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-600 flex items-center justify-center text-white font-bold text-sm">
                                                         {review.user.name.charAt(0)}

@@ -1773,7 +1773,7 @@ const InteriorDesignPage: React.FC = () => {
                                     <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
                                         {exportImages.map((img, idx) => (
                                             <div key={`${img.url}-${idx}`} className="relative overflow-hidden rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)]">
-                                                <img src={img.url} alt={`v${img.version}-${idx}`} className="h-24 w-full object-cover" />
+                                                <img src={img.url} alt={`v${img.version}-${idx}`} className="h-24 w-full object-cover" loading="lazy" decoding="async" />
                                                 <span className="absolute left-1 top-1 rounded bg-black/60 px-1.5 py-0.5 text-[10px] text-white">V{img.version}</span>
                                                 <button
                                                     type="button"

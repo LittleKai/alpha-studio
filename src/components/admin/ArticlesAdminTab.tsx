@@ -525,6 +525,8 @@ export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
                                                 src={cdnFromUrl(article.thumbnail, 'w_320')}
                                                 alt=""
                                                 className="w-16 h-16 rounded-lg object-cover flex-shrink-0"
+                                                loading="lazy"
+                                                decoding="async"
                                             />
                                         )}
                                         <div className="min-w-0">

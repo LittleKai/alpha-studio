@@ -282,7 +282,7 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
                                     {/* Background Image */}
                                     {partner.backgroundImage && (
                                         <div className="h-32 w-full overflow-hidden relative">
-                                            <img src={cdnFromUrl(partner.backgroundImage, 'w_640')} alt="" className="w-full h-full object-cover" />
+                                            <img src={cdnFromUrl(partner.backgroundImage, 'w_640')} alt="" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                                             <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] to-transparent"></div>
                                         </div>
                                     )}
@@ -291,7 +291,7 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
                                     <div className="flex justify-between items-start mb-4">
                                         <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[var(--bg-secondary)] to-[var(--bg-primary)] flex items-center justify-center text-4xl shadow-inner border border-[var(--border-primary)] overflow-hidden">
                                             {partner.logo && partner.logo.startsWith('http') ? (
-                                                <img src={cdnFromUrl(partner.logo, 'w_320')} alt={partner.companyName} className="w-full h-full object-cover" />
+                                                <img src={cdnFromUrl(partner.logo, 'w_320')} alt={partner.companyName} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                                             ) : (
                                                 <span>{getPartnerLogo(partner)}</span>
                                             )}

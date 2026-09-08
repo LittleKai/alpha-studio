@@ -96,7 +96,7 @@ const PartnerProfileViewer: React.FC<PartnerProfileViewerProps> = ({ partner, on
                                     <div key={idx} className="rounded-xl overflow-hidden border border-[var(--border-primary)]">
                                         {project.image && (
                                             <div className="aspect-video">
-                                                <img src={cdnFromUrl(project.image, 'w_640')} alt={`Project ${idx + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                                                <img src={cdnFromUrl(project.image, 'w_640')} alt={`Project ${idx + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
                                             </div>
                                         )}
                                         {(project.description?.vi || project.description?.en) && (

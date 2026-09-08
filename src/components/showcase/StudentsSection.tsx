@@ -51,7 +51,7 @@ const StudentsSection: React.FC<Props> = ({ students, loading, onNavigate }) => 
 
                   <div className="profile-pic">
                     {(student.backgroundImage || student.work) ? (
-                      <img src={cdnFromUrl(student.backgroundImage || student.work, 'w_640')} alt="Work" />
+                      <img src={cdnFromUrl(student.backgroundImage || student.work, 'w_640')} alt="Work" loading="lazy" decoding="async" />
                     ) : (
                       <div className="fallback-pic"><span>🎨</span></div>
                     )}
@@ -59,7 +59,7 @@ const StudentsSection: React.FC<Props> = ({ students, loading, onNavigate }) => 
 
                   <div className="student-avatar-pic">
                     {student.image ? (
-                      <img src={cdnFromUrl(student.image, 'w_256')} alt={student.name} />
+                      <img src={cdnFromUrl(student.image, 'w_256')} alt={student.name} loading="lazy" decoding="async" />
                     ) : (
                       <div className="avatar-fallback"><span>{student.name.charAt(0).toUpperCase()}</span></div>
                     )}

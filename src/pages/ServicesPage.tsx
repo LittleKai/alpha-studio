@@ -72,6 +72,8 @@ export default function ServicesPage() {
                                             src={cdnFromUrl(article.thumbnail, 'w_640')}
                                             alt={localizedText(article.title, language)}
                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                            loading="lazy"
+                                            decoding="async"
                                         />
                                     </div>
                                 )}

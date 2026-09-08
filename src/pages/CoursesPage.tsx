@@ -276,6 +276,8 @@ const CoursesPage: React.FC = () => {
                                                 src={cdnFromUrl(course.thumbnail, 'w_640')}
                                                 alt={getLocalizedText(course.title)}
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                                loading="lazy"
+                                                decoding="async"
                                             />
                                             <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] to-transparent opacity-60"></div>
                                             {/* Level Badge */}
@@ -320,7 +322,7 @@ const CoursesPage: React.FC = () => {
                                         {course.instructor?.name && (
                                             <div className="flex items-center gap-2 mt-4">
                                                 {course.instructor.avatar ? (
-                                                    <img src={cdnFromUrl(course.instructor.avatar, 'w_128')} alt={course.instructor.name} className="w-6 h-6 rounded-full object-cover" />
+                                                    <img src={cdnFromUrl(course.instructor.avatar, 'w_128')} alt={course.instructor.name} className="w-6 h-6 rounded-full object-cover" loading="lazy" decoding="async" />
                                                 ) : (
                                                     <div className="w-6 h-6 rounded-full bg-[var(--accent-primary)]/20 flex items-center justify-center text-[var(--accent-primary)] text-xs font-bold">
                                                         {course.instructor.name.charAt(0)}

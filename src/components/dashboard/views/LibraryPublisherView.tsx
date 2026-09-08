@@ -206,7 +206,7 @@ export default function LibraryPublisherView({ searchQuery, initialEditSlug, onI
                 className="flex flex-col md:flex-row md:items-center gap-4 p-4 rounded-xl border border-dashed"
                 style={{ borderColor: `${ACCENT}80`, background: `linear-gradient(135deg, ${ACCENT}14, transparent 70%)` }}
             >
-                <img src={cdnFromUrl(exampleItem.coverImage, 'w_320')} alt="" className="w-full md:w-28 h-20 object-cover rounded-lg shrink-0" />
+                <img src={cdnFromUrl(exampleItem.coverImage, 'w_320')} alt="" className="w-full md:w-28 h-20 object-cover rounded-lg shrink-0" loading="lazy" decoding="async" />
 
                 <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-1.5 mb-1">
@@ -257,7 +257,7 @@ export default function LibraryPublisherView({ searchQuery, initialEditSlug, onI
                             className="flex flex-col md:flex-row md:items-center gap-4 p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)]"
                         >
                             {item.coverImage
-                                ? <img src={cdnFromUrl(item.coverImage, 'w_320')} alt="" className="w-full md:w-28 h-20 object-cover rounded-lg shrink-0" />
+                                ? <img src={cdnFromUrl(item.coverImage, 'w_320')} alt="" className="w-full md:w-28 h-20 object-cover rounded-lg shrink-0" loading="lazy" decoding="async" />
                                 : <div className="w-full md:w-28 h-20 rounded-lg shrink-0" style={{ background: `linear-gradient(135deg, ${ACCENT}33, transparent 70%)` }} />}
 
                             <div className="flex-1 min-w-0">

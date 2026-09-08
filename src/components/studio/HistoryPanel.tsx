@@ -57,7 +57,7 @@ const HistoryItem: React.FC<{
       {item.secondaryImageUrl && item.imageUrl ? (
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <img src={item.secondaryImageUrl} className="rounded-md aspect-square object-contain bg-[var(--bg-primary)]" alt="Line Art Result" />
+            <img src={item.secondaryImageUrl} className="rounded-md aspect-square object-contain bg-[var(--bg-primary)]" alt="Line Art Result" loading="lazy" decoding="async" />
             <div className="text-xs text-center text-[var(--text-secondary)] mb-1">{t('history.lineArt')}</div>
             <div className="grid grid-cols-2 gap-1.5 text-xs">
               <ActionButton onClick={() => onUseImage(item.secondaryImageUrl!)} isPrimary>
@@ -76,7 +76,7 @@ const HistoryItem: React.FC<{
             </div>
           </div>
           <div className="flex flex-col gap-2">
-            <img src={item.imageUrl} className="rounded-md aspect-square object-contain bg-[var(--bg-primary)]" alt="Final Result" />
+            <img src={item.imageUrl} className="rounded-md aspect-square object-contain bg-[var(--bg-primary)]" alt="Final Result" loading="lazy" decoding="async" />
             <div className="text-xs text-center text-[var(--text-secondary)] mb-1">{t('history.finalResult')}</div>
             <div className="grid grid-cols-2 gap-1.5 text-xs">
               <ActionButton onClick={() => onUseImage(item.imageUrl!)} isPrimary>
@@ -97,7 +97,7 @@ const HistoryItem: React.FC<{
         </div>
       ) : item.imageUrl && (
         <div className="flex flex-col gap-3">
-          <img src={item.imageUrl} className="rounded-md w-full object-contain bg-[var(--bg-primary)]" alt="Generated Result" />
+          <img src={item.imageUrl} className="rounded-md w-full object-contain bg-[var(--bg-primary)]" alt="Generated Result" loading="lazy" decoding="async" />
           <div className="grid grid-cols-2 gap-2 text-sm">
             <ActionButton onClick={() => onDownload(item.imageUrl!, 'single-result')}>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">

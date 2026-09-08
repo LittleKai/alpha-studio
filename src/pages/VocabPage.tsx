@@ -370,7 +370,7 @@ const VocabPage: React.FC = () => {
                                     <span className="w-2 h-2 rounded-full bg-yellow-500/80 inline-block"></span>
                                     <span className="w-2 h-2 rounded-full bg-green-500/80 inline-block"></span>
                                 </div>
-                                <img src="/images/vocab/vocab-preview-1.png" alt="Study Feature" className="w-full h-full object-cover" />
+                                <img src="/images/vocab/vocab-preview-1.png" alt="Study Feature" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                             </div>
                         </div>
 
@@ -451,7 +451,7 @@ const VocabPage: React.FC = () => {
                                     <span className="w-2 h-2 rounded-full bg-yellow-500/80 inline-block"></span>
                                     <span className="w-2 h-2 rounded-full bg-green-500/80 inline-block"></span>
                                 </div>
-                                <img src="/images/vocab/vocab-preview.png" alt="Library Sync Feature" className="w-full h-full object-cover" />
+                                <img src="/images/vocab/vocab-preview.png" alt="Library Sync Feature" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                             </div>
                         </div>
                     </div>
@@ -496,6 +496,8 @@ const VocabPage: React.FC = () => {
                                 src={vocabImages[activeImageIndex]}
                                 alt={`VocabFlip Preview ${activeImageIndex + 1}`}
                                 className="max-w-full max-h-[60vh] object-contain rounded-lg shadow-lg"
+                                loading="lazy"
+                                decoding="async"
                             />
 
                             {/* Next button */}
@@ -521,7 +523,7 @@ const VocabPage: React.FC = () => {
                                             : 'border-white/10 opacity-60 hover:opacity-100 hover:scale-102'
                                     }`}
                                 >
-                                    <img src={imgUrl} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-cover" />
+                                    <img src={imgUrl} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                                 </button>
                             ))}
                         </div>

@@ -1036,6 +1036,8 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                           <img
                                               src={cdnFromUrl(member.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random`, 'w_128')}
                                               className="w-14 h-14 rounded-full object-cover flex-shrink-0 border-2 border-[var(--border-primary)]"
+                                              loading="lazy"
+                                              decoding="async"
                                           />
                                           <div className="flex-1 min-w-0">
                                               <div className="flex items-center gap-2 flex-wrap">
@@ -1131,7 +1133,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                         .map(u => (
                                         <div key={u.id} onClick={() => handleAddMemberToProject(u)} className="flex justify-between items-center p-2 hover:bg-[var(--bg-secondary)] rounded cursor-pointer border border-transparent hover:border-[var(--border-primary)]">
                                             <div className="flex items-center gap-2">
-                                                <img src={cdnFromUrl(u.avatar, 'w_128')} className="w-8 h-8 rounded-full object-cover" />
+                                                <img src={cdnFromUrl(u.avatar, 'w_128')} className="w-8 h-8 rounded-full object-cover" loading="lazy" decoding="async" />
                                                 <div>
                                                     <p className="text-sm font-medium">{u.name}</p>
                                                     <p className="text-xs text-[var(--text-tertiary)]">{u.role}</p>
@@ -1462,7 +1464,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                           <div className="workflow-project-meta">
                               <div className="workflow-team-stack" aria-label={`${project.team.length} ${t('workflow.teamMembers')}`}>
                                   {project.team.slice(0, 3).map(member => member.avatar ? (
-                                      <img key={member.id} src={cdnFromUrl(member.avatar, 'w_128')} alt={member.name} />
+                                      <img key={member.id} src={cdnFromUrl(member.avatar, 'w_128')} alt={member.name} loading="lazy" decoding="async" />
                                   ) : (
                                       <span key={member.id}>{member.name.charAt(0).toUpperCase()}</span>
                                   ))}

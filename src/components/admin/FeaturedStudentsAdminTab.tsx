@@ -209,7 +209,7 @@ const FeaturedStudentsAdminTab: React.FC = () => {
                             >
                                 <div className="w-9 h-9 rounded-full overflow-hidden bg-[var(--bg-secondary)] flex-shrink-0">
                                     {u.avatar ? (
-                                        <img src={cdnFromUrl(u.avatar, 'w_128')} alt={u.name} className="w-full h-full object-cover" />
+                                        <img src={cdnFromUrl(u.avatar, 'w_128')} alt={u.name} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                                     ) : (
                                         <div className="w-full h-full flex items-center justify-center text-sm font-bold text-[var(--accent-primary)]">
                                             {u.name.charAt(0).toUpperCase()}
@@ -270,7 +270,7 @@ const FeaturedStudentsAdminTab: React.FC = () => {
                             {/* avatar */}
                             <div className="w-10 h-10 rounded-full overflow-hidden bg-[var(--bg-secondary)] flex-shrink-0">
                                 {s.avatar ? (
-                                    <img src={cdnFromUrl(s.avatar, 'w_128')} alt={s.name} className="w-full h-full object-cover" />
+                                    <img src={cdnFromUrl(s.avatar, 'w_128')} alt={s.name} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                                 ) : (
                                     <div className="w-full h-full flex items-center justify-center text-sm font-bold text-[var(--accent-primary)]">
                                         {s.name.charAt(0).toUpperCase()}
