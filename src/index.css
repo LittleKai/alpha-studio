@@ -1010,8 +1010,24 @@ html[data-theme="light"] .user-dropdown-card .list.logout-list .element:hover sv
 
   mask: linear-gradient(transparent 0%, white 120%);
   -webkit-mask: linear-gradient(transparent 0%, white 120%);
-  animation: rotate-mean-bird 2.5s linear infinite;
   z-index: 1;
+}
+
+/* Chỉ quay khi nút thật sự hiện ra.
+   `.dots_border` có `opacity: var(--active)`, mà `--active` mặc định là 0 — nên
+   ở trạng thái thường vòng sáng này TRONG SUỐT HOÀN TOÀN. Trước đây animation
+   vẫn chạy vô hạn trên nó: đo trên production, trang chi tiết thư viện sự kiện
+   có 22 nút mục lục → `document.getAnimations()` trả về đúng 22 animation
+   `rotate-mean-bird` đang `running` trong khi cả 22 nút đều có `--active: 0`.
+   Tốn kém vì phần tử này có `mask`, còn `.dots_border` cha dùng
+   `mask-composite: exclude`: mỗi frame trình duyệt phải raster lại vùng mask.
+   Firefox/Gecko không có fast path cho việc đó như Chrome, nên cùng trang chỉ
+   Firefox mới giật rõ. Danh sách trạng thái dưới đây khớp đúng các selector đã
+   đặt `--active: 1` ở trên — sửa một bên thì phải sửa bên kia. */
+.mean-bird-button:is(:hover, :focus-visible) .dots_border::before,
+.group:hover .mean-bird-button .dots_border::before,
+.mean-bird-button.active .dots_border::before {
+  animation: rotate-mean-bird 2.5s linear infinite;
 }
 
 

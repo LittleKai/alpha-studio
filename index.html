@@ -40,7 +40,7 @@
         --dialog-surface: rgba(17, 34, 58, 0.96);
         --glass-highlight: rgba(255, 255, 255, 0.2);
         --glass-edge: rgba(255, 255, 255, 0.1);
-        --glass-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+        --glass-shadow: 0 12px 32px rgba(0, 0, 0, 0.34);
         --liquid-accent-bg: linear-gradient(135deg, rgba(97, 232, 255, 0.46), rgba(139, 125, 255, 0.34));
         --liquid-blue-bg: linear-gradient(135deg, rgba(59, 130, 246, 0.34), rgba(97, 232, 255, 0.22));
         --liquid-green-bg: linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(20, 184, 166, 0.2));
@@ -78,7 +78,7 @@
         --dialog-surface: #ffffff;
         --glass-highlight: rgba(255, 255, 255, 0.9);
         --glass-edge: rgba(255, 255, 255, 0.58);
-        --glass-shadow: 0 24px 70px rgba(29, 78, 116, 0.16);
+        --glass-shadow: 0 12px 32px rgba(29, 78, 116, 0.16);
         --liquid-accent-bg: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
         --liquid-blue-bg: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
         --liquid-green-bg: linear-gradient(135deg, #059669 0%, #047857 100%);
@@ -211,29 +211,23 @@
         border: 1px solid var(--border-primary);
       }
 
-      /* Glass Card Effect */
+      /* Glass Card Effect
+         Bán kính blur thống nhất 12px cho MỌI mặt kính (trước: .glass-card 26px,
+         khối card tự động phía dưới 24px, riêng thanh sticky đã hạ 12px). Chi phí
+         backdrop-filter tăng theo bán kính và Gecko không có fast path ở
+         compositor như Blink — đo trên production, trang chi tiết thư viện sự kiện
+         có 32 card dính rule blur(24px) trên một trang cao 12.610px, đó là lý do
+         chỉ Firefox giật. Để 12px vẫn còn cảm giác kính mờ; giữ nguyên saturate()
+         để màu phía sau không bị nhạt đi.
+         Đổi số ở đây thì đổi luôn ở khối selector card bên dưới, nếu không hai
+         loại mặt kính sẽ mờ lệch nhau. */
       .glass-card {
         background: var(--bg-card-alpha);
-        backdrop-filter: blur(26px) saturate(165%);
-        -webkit-backdrop-filter: blur(26px) saturate(165%);
+        backdrop-filter: blur(12px) saturate(165%);
+        -webkit-backdrop-filter: blur(12px) saturate(165%);
         border: 1px solid var(--border-primary);
         box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight), inset 0 -1px 0 rgba(255, 255, 255, 0.04);
         position: relative;
-      }
-
-      /* Thanh sticky/fixed là phần tử backdrop-filter đắt nhất trên trang: nó
-         đứng yên trong khi nội dung phía sau cuộn, nên backdrop đổi MỖI frame và
-         browser không cache được — khác hẳn card cuộn cùng nội dung sau nó.
-         Firefox/Gecko không có fast path ở compositor cho trường hợp này nên
-         giật rõ hơn Chrome. Chi phí blur tăng theo bán kính, hạ 26px → 12px lấy
-         lại phần lớn hiệu năng mà vẫn còn cảm giác kính mờ; giữ saturate(165%)
-         để màu phía sau thanh nav không bị nhạt đi.
-         Áp cho cả 6 header dạng `sticky top-0 ... glass-card` (Layout, CoursePage,
-         MyCoursesPage, CourseForm, CourseManagement) để chúng không lệch nhau. */
-      .glass-card[class*="sticky"],
-      .glass-card[class*="fixed"] {
-        backdrop-filter: blur(12px) saturate(165%);
-        -webkit-backdrop-filter: blur(12px) saturate(165%);
       }
 
       .glass-card::before {
@@ -250,8 +244,8 @@
       :is(article, aside, div, form, header, nav, section)[class*="bg-[var(--bg-secondary)]"][class*="border"][class*="rounded"]:not(.glass-card),
       :is(article, aside, div, form, section)[class*="bg-[var(--bg-primary)]"][class*="rounded"][class*="shadow"]:not(.glass-card) {
         background: var(--bg-card-alpha) !important;
-        backdrop-filter: blur(24px) saturate(160%);
-        -webkit-backdrop-filter: blur(24px) saturate(160%);
+        backdrop-filter: blur(12px) saturate(160%);
+        -webkit-backdrop-filter: blur(12px) saturate(160%);
         border-color: var(--border-primary) !important;
         box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight), inset 0 -1px 0 rgba(255, 255, 255, 0.04);
       }
