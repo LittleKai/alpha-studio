@@ -142,16 +142,27 @@ export default function SkillDetailPage() {
   // sự kiện: đo theo khung nhìn, không dùng offsetTop (khối nằm trong nhiều lớp bọc
   // nên offsetTop không phải toạ độ so với trang)
   useEffect(() => {
-    const onScroll = () => {
+    // Gom về mỗi frame một lần: getBoundingClientRect() ép browser flush layout
+    // đồng bộ, chạy thẳng trong scroll event thì mỗi tick cuộn là một lần
+    // reflow. Cùng cách gom bằng rAF như EventCreativeCityPage.
+    let frame: number | null = null;
+    const measure = () => {
+      frame = null;
       let current = '';
       document.querySelectorAll<HTMLElement>('[data-toc-anchor]').forEach(el => {
         if (el.getBoundingClientRect().top <= 200) current = el.id;
       });
       if (current) setActiveSection(current);
     };
+    const onScroll = () => {
+      if (frame === null) frame = window.requestAnimationFrame(measure);
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
+    measure();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (frame !== null) window.cancelAnimationFrame(frame);
+    };
   }, [loading]);
 
   const scrollToSection = (id: string) => {

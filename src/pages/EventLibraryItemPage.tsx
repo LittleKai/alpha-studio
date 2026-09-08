@@ -170,7 +170,12 @@ export default function EventLibraryItemPage() {
 
     // Tô sáng mục đang đọc trong mục lục — cùng cách làm với trang chi tiết skill
     useEffect(() => {
-        const onScroll = () => {
+        // Gom về mỗi frame một lần: getBoundingClientRect() ép browser flush
+        // layout đồng bộ, chạy thẳng trong scroll event thì mỗi tick cuộn là một
+        // lần reflow. Cùng cách gom bằng rAF như EventCreativeCityPage.
+        let frame: number | null = null;
+        const measure = () => {
+            frame = null;
             // Đo theo khung nhìn, không dùng offsetTop: khối nằm trong nhiều lớp
             // bọc nên offsetTop không phải toạ độ so với trang
             let current = '';
@@ -179,9 +184,15 @@ export default function EventLibraryItemPage() {
             });
             setActiveSection(current);
         };
+        const onScroll = () => {
+            if (frame === null) frame = window.requestAnimationFrame(measure);
+        };
         window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-        return () => window.removeEventListener('scroll', onScroll);
+        measure();
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+            if (frame !== null) window.cancelAnimationFrame(frame);
+        };
     }, [item]);
 
     const scrollToSection = (id: string) => {

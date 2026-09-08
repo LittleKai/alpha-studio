@@ -222,6 +222,21 @@
         position: relative;
       }
 
+      /* Thanh sticky/fixed là phần tử backdrop-filter đắt nhất trên trang: nó
+         đứng yên trong khi nội dung phía sau cuộn, nên backdrop đổi MỖI frame và
+         browser không cache được — khác hẳn card cuộn cùng nội dung sau nó.
+         Firefox/Gecko không có fast path ở compositor cho trường hợp này nên
+         giật rõ hơn Chrome. Chi phí blur tăng theo bán kính, hạ 26px → 12px lấy
+         lại phần lớn hiệu năng mà vẫn còn cảm giác kính mờ; giữ saturate(165%)
+         để màu phía sau thanh nav không bị nhạt đi.
+         Áp cho cả 6 header dạng `sticky top-0 ... glass-card` (Layout, CoursePage,
+         MyCoursesPage, CourseForm, CourseManagement) để chúng không lệch nhau. */
+      .glass-card[class*="sticky"],
+      .glass-card[class*="fixed"] {
+        backdrop-filter: blur(12px) saturate(165%);
+        -webkit-backdrop-filter: blur(12px) saturate(165%);
+      }
+
       .glass-card::before {
         content: '';
         position: absolute;
@@ -263,10 +278,19 @@
       :is(button, a, label)[class*="bg-[var(--bg-secondary)]"],
       :is(button, a, label)[class*="bg-[var(--bg-tertiary)]"],
       :is(button, a, label)[class*="bg-gradient"] {
-        backdrop-filter: blur(18px) saturate(155%);
-        -webkit-backdrop-filter: blur(18px) saturate(155%);
         border: 1px solid var(--border-primary);
         box-shadow: 0 14px 34px rgba(0, 0, 0, 0.14), inset 0 1px 0 var(--glass-highlight);
+      }
+
+      /* backdrop-filter CHỈ cho nút có nền trong suốt. Các nút màu đặc
+         (bg-blue-500, bg-gradient…) che kín backdrop nên blur phía sau chúng
+         không tạo hiệu ứng nhìn thấy được, nhưng vẫn buộc trình duyệt chụp lại
+         và blur backdrop mỗi frame khi cuộn — Firefox không có fast path cho
+         việc này nên giật rõ hơn Chrome. Một trang skill có ~25 nút loại đó. */
+      :is(button, a, label)[class*="bg-[var(--bg-secondary)]"],
+      :is(button, a, label)[class*="bg-[var(--bg-tertiary)]"] {
+        backdrop-filter: blur(18px) saturate(155%);
+        -webkit-backdrop-filter: blur(18px) saturate(155%);
       }
 
       :is(button, a, label)[class*="bg-[var(--accent-primary)]"],
