@@ -11,6 +11,7 @@ import {
 } from '../../services/promptService';
 import { LikeButton, BookmarkButton, RatingStars, CommentSection, ImageLightbox } from '../shared';
 import { cdnFromUrl } from '../../services/cloudinaryAssets';
+import { getPlatformLabel } from '../../utils/formatters';
 
 interface PromptDetailModalProps {
     isOpen: boolean;
@@ -155,19 +156,6 @@ const PromptDetailModal: React.FC<PromptDetailModalProps> = ({
         if (!obj) return '';
         if (language === 'vi') return obj.vi || obj.en || '';
         return obj.en || obj.vi || '';
-    };
-
-    const getPlatformLabel = (platform: string): string => {
-        const labels: Record<string, string> = {
-            'midjourney': 'Midjourney',
-            'stable-diffusion': 'Stable Diffusion',
-            'dalle': 'DALL-E',
-            'comfyui': 'ComfyUI',
-            'chatgpt': 'ChatGPT',
-            'claude': 'Claude',
-            'other': 'Other'
-        };
-        return labels[platform] || platform;
     };
 
     if (!isOpen) return null;

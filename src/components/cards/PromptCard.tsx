@@ -4,6 +4,7 @@ import { useAuth } from '../../auth/context';
 import { Prompt, togglePromptLike, togglePromptBookmark } from '../../services/promptService';
 import { LikeButton, BookmarkButton, RatingStars } from '../shared';
 import { cdnFromUrl } from '../../services/cloudinaryAssets';
+import { getPlatformLabel } from '../../utils/formatters';
 
 interface PromptCardProps {
     prompt: Prompt;
@@ -43,19 +44,6 @@ const PromptCard: React.FC<PromptCardProps> = ({ prompt, onClick, onUpdate }) =>
             'other': 'bg-gray-500/10 text-gray-600 dark:text-gray-400'
         };
         return colors[platform] || colors.other;
-    };
-
-    const getPlatformLabel = (platform: string): string => {
-        const labels: Record<string, string> = {
-            'midjourney': 'Midjourney',
-            'stable-diffusion': 'Stable Diffusion',
-            'dalle': 'DALL-E',
-            'comfyui': 'ComfyUI',
-            'chatgpt': 'ChatGPT',
-            'claude': 'Claude',
-            'other': 'Other'
-        };
-        return labels[platform] || platform;
     };
 
     const formatTimeAgo = (dateString: string): string => {

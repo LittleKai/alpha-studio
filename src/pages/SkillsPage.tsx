@@ -8,6 +8,7 @@ import LibraryToolbar from '../components/library/LibraryToolbar';
 import LibraryPagination from '../components/library/LibraryPagination';
 import MobileFilterDrawer from '../components/library/MobileFilterDrawer';
 import { getSkills, type Skill } from '../services/skillService';
+import { formatTimeSaving } from '../utils/formatters';
 
 // Màu nhấn của thư viện Kỹ năng AI — truyền xuống các component lọc dùng chung
 const ACCENT = '#ff5a1f';
@@ -91,21 +92,6 @@ const getDifficultyBadgeClass = (diff: string): string => {
     case 'advanced': return 'bg-rose-500/10 text-rose-500 dark:text-rose-400 border-rose-500/25';
     default: return 'bg-yellow-500/10 text-yellow-500 dark:text-yellow-400 border-yellow-500/25';
   }
-};
-
-const formatTimeSaving = (timeStr: string, lang: string): string => {
-  if (!timeStr) return '';
-  const match = timeStr.match(/(\d+)/);
-  if (!match) return timeStr;
-  const num = match[1];
-  const lower = timeStr.toLowerCase();
-  if (lower.includes('hour') || lower.includes('hr')) {
-    return lang === 'vi' ? `${num} giờ` : `${num} ${parseInt(num, 10) > 1 ? 'hours' : 'hour'}`;
-  }
-  if (lower.includes('min')) {
-    return lang === 'vi' ? `${num} phút` : `${num} mins`;
-  }
-  return timeStr;
 };
 
 

@@ -7,6 +7,7 @@ import DeleteConfirmModal from '../components/ui/DeleteConfirmModal';
 import SparkleIcon from '../components/ui/SparkleIcon';
 import { useAuth } from '../auth/context';
 import { getSkillBySlug, getSkills, deleteSkill, type SkillDetail, type Skill } from '../services/skillService';
+import { formatTimeSaving } from '../utils/formatters';
 
 // Skill interface now imported from skillService
 
@@ -70,21 +71,6 @@ const getBestForTags = (category: string): string[] => {
     return split.map(s => s.trim());
   }
   return [category];
-};
-
-const formatTimeSaving = (timeStr: string, lang: string): string => {
-  if (!timeStr) return '';
-  const match = timeStr.match(/(\d+)/);
-  if (!match) return timeStr;
-  const num = match[1];
-  const lower = timeStr.toLowerCase();
-  if (lower.includes('hour') || lower.includes('hr')) {
-    return lang === 'vi' ? `${num} giờ` : `${num} ${parseInt(num, 10) > 1 ? 'hours' : 'hour'}`;
-  }
-  if (lower.includes('min')) {
-    return lang === 'vi' ? `${num} phút` : `${num} mins`;
-  }
-  return timeStr;
 };
 
 const getBestForTagsLocalized = (category: string, t: any): string[] => {
