@@ -525,7 +525,7 @@ const LandingPage: React.FC = () => {
         {
             title: t('landing.footer.toolsTitle'),
             links: [
-                { label: t('landing.toolsShowcase.crm.title'), to: '/studio/crm/subscription' },
+                { label: t('landing.toolsShowcase.crm.title'), to: '/studio/crm' },
                 { label: t('landing.toolsShowcase.vocab.title'), to: '/studio/vocab' },
                 { label: t('landing.toolsShowcase.skills.title'), to: '/studio/ai-skills' },
             ],

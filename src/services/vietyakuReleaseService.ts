@@ -1,6 +1,6 @@
 // Only used for the offline fallback below — the live URL always comes from the
-// API. Must match CDN_BASE_URL on the backend (`cdn.giaiphapsangtao.com` is dead).
-const VIETYAKU_RELEASE_BASE_URL = 'https://f004.backblazeb2.com/file/alpha-studio/vietyaku-app';
+// API. Must match CDN_BASE_URL on the backend.
+const VIETYAKU_RELEASE_BASE_URL = 'https://download.giaiphapsangtao.com/file/alpha-studio/vietyaku-app';
 const VIETYAKU_FALLBACK_VERSION = '1.1.0';
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 

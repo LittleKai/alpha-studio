@@ -28,7 +28,7 @@ const TOOL_LOGOS: Record<string, { logo: string; to: string; color: string; bg: 
     },
     crm: {
         logo: '/crm-logo.png',
-        to: '/studio/crm/subscription',
+        to: '/studio/crm',
         color: 'text-blue-500 dark:text-blue-400',
         bg: 'bg-blue-500/10',
         border: 'border-blue-500/30',

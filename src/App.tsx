@@ -426,22 +426,8 @@ const App: React.FC = () => {
                 <Route path="/studio/edit" element={<StudioEditPage />} />
                 <Route path="/studio/interior-design" element={<InteriorDesignPageWrapper />} />
                 <Route path="/studio/interior-design/:projectId" element={<InteriorDesignPageWrapper />} />
-                <Route
-                    path="/studio/vocab"
-                    element={
-                        <ProtectedRoute>
-                            <VocabPageWrapper />
-                        </ProtectedRoute>
-                    }
-                />
-                <Route
-                    path="/studio/crm"
-                    element={
-                        <ProtectedRoute>
-                            <CrmPageWrapper />
-                        </ProtectedRoute>
-                    }
-                />
+                <Route path="/studio/vocab" element={<VocabPageWrapper />} />
+                <Route path="/studio/crm" element={<CrmPageWrapper />} />
                 <Route
                     path="/studio/crm/subscription"
                     element={

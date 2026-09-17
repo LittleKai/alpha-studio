@@ -83,7 +83,7 @@ export const STUDIO_TOOLS: StudioTool[] = [
     },
     {
         key: 'crm',
-        to: '/studio/crm/subscription',
+        to: '/studio/crm',
         span: 'sm:col-span-2',
         featured: true,
         logo: <img src="/crm-logo.png" alt="" className="w-full h-full object-contain" />,

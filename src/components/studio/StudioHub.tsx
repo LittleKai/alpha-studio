@@ -53,7 +53,7 @@ const UPCOMING_TOOLS: { key: UpcomingKey; icon: ReactNode }[] = [
 const RAIL_ORDER: { key: StudioToolKey | UpcomingKey; to?: string }[] = [
     { key: 'eventLibrary', to: '/studio/event-library' },
     { key: 'skills', to: '/studio/ai-skills' },
-    { key: 'crm', to: '/studio/crm/subscription' },
+    { key: 'crm', to: '/studio/crm' },
     { key: 'vocab', to: '/studio/vocab' },
     { key: 'vietyaku', to: '/studio/vietyaku' },
     { key: 'generate' },
