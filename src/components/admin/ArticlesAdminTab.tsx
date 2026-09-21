@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { useTranslation } from '../../i18n/context';
+import { useAuth } from '../../auth/context';
 import { useConfirm } from '../ui/ConfirmDialog';
+import { uploadToB2 } from '../../services/b2StorageService';
 import { Editor } from '@tinymce/tinymce-react';
 import { uploadToCloudinary } from '../../services/cloudinaryService';
 import {
@@ -35,10 +37,15 @@ const emptyForm: ArticleFormData = {
     isFeatured: false,
     serviceCategory: null,
     sections: [],
+    attachments: [],
 };
+
+// Tệp tham khảo của bài dịch vụ đi B2 (Cloudinary chỉ nhận ảnh)
+const B2_FOLDER = 'services';
 
 export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
     const { t, language } = useTranslation();
+    const { token } = useAuth();
     const { confirm: confirmDialog } = useConfirm();
     const [articles, setArticles] = useState<Article[]>([]);
     const [loading, setLoading] = useState(true);
@@ -58,6 +65,8 @@ export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
     const isServices = category === 'services';
     const [serviceCategories, setServiceCategories] = useState<ServiceCategory[]>([]);
     const sections = form.sections || [];
+    const attachments = form.attachments || [];
+    const [uploadingFiles, setUploadingFiles] = useState(false);
 
     useEffect(() => {
         if (!isServices) return;
@@ -108,6 +117,7 @@ export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
             isFeatured: article.isFeatured,
             serviceCategory: article.serviceCategory?._id || null,
             sections: article.sections || [],
+            attachments: article.attachments || [],
         });
         setTagInput('');
         setContentLang('vi');
@@ -472,6 +482,75 @@ export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
                                 ))}
                             </div>
                         </div>
+                    </div>
+                )}
+
+                {/* Tệp tham khảo tải về — tài liệu đi B2, KHÔNG nhận ảnh (ảnh đi
+                    Cloudinary trong khối gallery, đã nén sẵn theo preset) */}
+                {isServices && (
+                    <div className="space-y-2">
+                        <div className="flex items-center justify-between gap-3">
+                            <label className="block text-sm text-[var(--text-secondary)]">{t('admin.articles.attachments')}</label>
+                            <span className="text-xs text-[var(--text-tertiary)]">{t('admin.articles.attachmentsHint')}</span>
+                        </div>
+
+                        {attachments.map((file, i) => (
+                            <div
+                                key={`${file.url}-${i}`}
+                                className="flex items-center justify-between gap-3 px-3 py-2 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)]"
+                            >
+                                <span className="text-sm text-[var(--text-primary)] truncate">{file.name}</span>
+                                <div className="flex items-center gap-3 shrink-0">
+                                    <span className="text-xs text-[var(--text-tertiary)]">{file.size}</span>
+                                    <button
+                                        onClick={() => setForm({ ...form, attachments: attachments.filter((_, idx) => idx !== i) })}
+                                        className="text-xs font-bold text-red-500 hover:text-red-400 cursor-pointer"
+                                    >
+                                        {t('admin.articles.deleteBtn')}
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+
+                        <label className="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold bg-[var(--bg-secondary)] border border-dashed border-[var(--border-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] cursor-pointer">
+                            <input
+                                type="file"
+                                multiple
+                                className="hidden"
+                                disabled={uploadingFiles}
+                                onChange={async (e) => {
+                                    const picked = Array.from(e.target.files || []);
+                                    e.target.value = '';
+                                    if (!picked.length || !token) return;
+                                    // Ảnh phải đi Cloudinary qua compressImage — chặn ở đây để
+                                    // không có đường upload ảnh nguyên gốc lên B2
+                                    const images = picked.filter(f => f.type.startsWith('image/'));
+                                    if (images.length) {
+                                        alert(t('admin.articles.attachmentsNoImages'));
+                                        return;
+                                    }
+                                    setUploadingFiles(true);
+                                    try {
+                                        const uploaded = await Promise.all(picked.map(async file => {
+                                            const res = await uploadToB2(file, B2_FOLDER, token);
+                                            return {
+                                                name: file.name,
+                                                url: res.url,
+                                                fileKey: res.key,
+                                                size: `${(file.size / (1024 * 1024)).toFixed(1)} MB`,
+                                                mime: file.type
+                                            };
+                                        }));
+                                        setForm(prev => ({ ...prev, attachments: [...(prev.attachments || []), ...uploaded] }));
+                                    } catch (err) {
+                                        alert(err instanceof Error ? err.message : 'Upload failed');
+                                    } finally {
+                                        setUploadingFiles(false);
+                                    }
+                                }}
+                            />
+                            {uploadingFiles ? t('admin.articles.uploading') : `+ ${t('admin.articles.attachments')}`}
+                        </label>
                     </div>
                 )}
 

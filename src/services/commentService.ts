@@ -1,5 +1,8 @@
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
+/** Loại đối tượng bình luận — khớp TARGET_TYPES ở server/routes/comments.js */
+export type CommentTarget = 'prompt' | 'article';
+
 // Types
 export interface CommentAuthor {
     _id: string;
@@ -9,7 +12,7 @@ export interface CommentAuthor {
 
 export interface Comment {
     _id: string;
-    targetType: 'prompt';
+    targetType: CommentTarget;
     targetId: string;
     author: CommentAuthor;
     content: string;
@@ -59,7 +62,7 @@ const getAuthHeaders = (): HeadersInit => {
 
 // Get comments for a target
 export const getComments = async (
-    targetType: 'prompt',
+    targetType: CommentTarget,
     targetId: string,
     params: CommentQueryParams = {}
 ): Promise<CommentListResponse> => {
@@ -113,7 +116,7 @@ export const getReplies = async (
 
 // Create a comment
 export const createComment = async (
-    targetType: 'prompt',
+    targetType: CommentTarget,
     targetId: string,
     content: string,
     parentComment?: string

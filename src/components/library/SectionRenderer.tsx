@@ -269,15 +269,18 @@ export default function SectionRenderer({ section, index }: { section: LibrarySe
                 );
 
             case 'gallery':
+                // Ô theo tỉ lệ thay vì chiều cao cố định: bộ ảnh dài (14 góc
+                // nội thất) vẫn nhìn được mà không phải mở từng tấm.
                 return (
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                         {(section.images || []).map((url, i) => (
                             <img
                                 key={i}
-                                src={cdnFromUrl(url, 'w_480')}
+                                src={cdnFromUrl(url, 'w_640')}
                                 alt=""
                                 loading="lazy"
-                                className="w-full h-28 object-cover rounded-lg border border-[var(--border-primary)]"
+                                decoding="async"
+                                className="w-full aspect-[4/3] object-cover rounded-lg border border-[var(--border-primary)] transition-transform hover:scale-[1.02]"
                             />
                         ))}
                     </div>

@@ -26,6 +26,15 @@ const getHeaders = (): HeadersInit => {
     return headers;
 };
 
+/** Tệp tham khảo tải về của bài dịch vụ (.skp, .html…) — lưu trên B2. */
+export interface ArticleAttachment {
+    name: string;
+    url: string;
+    fileKey?: string;
+    size?: string;
+    mime?: string;
+}
+
 export interface Article {
     _id: string;
     title: { vi: string; en: string };
@@ -42,6 +51,7 @@ export interface Article {
     // Chỉ có ở bài category 'services'
     serviceCategory: ServiceCategory | null;
     sections: LibrarySection[];
+    attachments: ArticleAttachment[];
     createdAt: string;
     updatedAt: string;
 }
@@ -57,6 +67,7 @@ export interface ArticleFormData {
     isFeatured: boolean;
     serviceCategory?: string | null;
     sections?: LibrarySection[];
+    attachments?: ArticleAttachment[];
 }
 
 // Public: Get published articles by category

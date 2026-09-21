@@ -332,6 +332,11 @@ export default {
       sections: "Khối nội dung",
       sectionsHint: "Các khối hiện phía trên phần nội dung chính của bài.",
       addSection: "Thêm khối",
+      attachments: "Tệp tham khảo",
+      attachmentsHint: "Tài liệu tải về (.skp, .html, .pdf…). Ảnh không nhận ở đây.",
+      attachmentsNoImages: "Ảnh phải thêm bằng khối Thư viện ảnh để được nén và chuyển WebP, không tải lên ở mục tệp tham khảo.",
+      deleteBtn: "Xóa",
+      uploading: "Đang tải lên...",
       status: {
         draft: "Bản nháp",
         published: "Đã xuất bản",

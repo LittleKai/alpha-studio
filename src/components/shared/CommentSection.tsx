@@ -10,12 +10,13 @@ import {
     deleteComment,
     toggleCommentLike,
     flagComment,
-    Comment
+    Comment,
+    type CommentTarget
 } from '../../services/commentService';
 import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
 interface CommentSectionProps {
-    targetType: 'prompt';
+    targetType: CommentTarget;
     targetId: string;
     commentsCount?: number;
 }

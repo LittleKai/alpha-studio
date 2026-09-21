@@ -206,7 +206,20 @@ export default {
       categoryEmpty: "Phân mục này chưa có bài viết",
       readMore: "Xem chi tiết",
       notFound: "Không tìm thấy dịch vụ",
-      backToList: "Quay lại danh sách"
+      backToList: "Quay lại danh sách",
+      toc: "Mục lục",
+      content: "Nội dung",
+      downloads: "Tệp tham khảo",
+      downloadsHint: "Ảnh không nằm ở đây — xem trực tiếp trong bài.",
+      download: "Tải về",
+      comments: "Bình luận",
+      gallerySection: "Thư viện ảnh",
+      projects: "dự án",
+      exploreCategory: "Xem dịch vụ",
+      featured: "Nổi bật",
+      categoryCount: "phân mục",
+      imageCount: "ảnh",
+      openImage: "Nhấn vào ảnh để xem lớn"
     },
     footer: {
       copyright: "NỀN TẢNG ĐÀO TẠO AI CHUYÊN NGHIỆP. TẤT CẢ QUYỀN ĐƯỢC BẢO LƯU.",

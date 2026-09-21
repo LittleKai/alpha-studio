@@ -322,6 +322,11 @@ export default {
       sections: "Content blocks",
       sectionsHint: "Blocks render above the main article content.",
       addSection: "Add block",
+      attachments: "Reference files",
+      attachmentsHint: "Downloadable documents (.skp, .html, .pdf…). Images are not accepted here.",
+      attachmentsNoImages: "Add images through the Gallery block so they get compressed to WebP — not as reference files.",
+      deleteBtn: "Delete",
+      uploading: "Uploading...",
       status: {
         draft: "Draft",
         published: "Published",

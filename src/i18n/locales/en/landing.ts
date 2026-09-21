@@ -206,7 +206,20 @@ export default {
       categoryEmpty: "No articles in this category yet",
       readMore: "View details",
       notFound: "Service not found",
-      backToList: "Back to list"
+      backToList: "Back to list",
+      toc: "Contents",
+      content: "Content",
+      downloads: "Reference files",
+      downloadsHint: "Images are not here — view them inline in the article.",
+      download: "Download",
+      comments: "Comments",
+      gallerySection: "Gallery",
+      projects: "projects",
+      exploreCategory: "View services",
+      featured: "Featured",
+      categoryCount: "categories",
+      imageCount: "images",
+      openImage: "Click an image to enlarge"
     },
     footer: {
       copyright: "PROFESSIONAL AI TRAINING PLATFORM. ALL RIGHTS RESERVED.",
