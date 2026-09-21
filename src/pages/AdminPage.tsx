@@ -5,6 +5,7 @@ import { useTranslation } from '../i18n/context';
 import { useConfirm } from '../components/ui/ConfirmDialog';
 import { Layout } from '../components/layout';
 import ArticlesAdminTab from '../components/admin/ArticlesAdminTab';
+import ServiceCategoriesAdminTab from '../components/admin/ServiceCategoriesAdminTab';
 import CloudAdminTab from '../components/admin/CloudAdminTab';
 import FeaturedStudentsAdminTab from '../components/admin/FeaturedStudentsAdminTab';
 import StudioAdminTab from '../components/admin/StudioAdminTab';
@@ -33,7 +34,7 @@ import {
 } from '../services/adminService';
 
 type TopTabType = 'articles' | 'community' | 'transactions' | 'cloud' | 'studio' | 'analytics';
-type ArticlesSubTabType = 'about' | 'news' | 'services';
+type ArticlesSubTabType = 'about' | 'news' | 'services' | 'service-categories';
 type CommunitySubTabType = 'featuredStudents';
 type SubTabType = 'users' | 'transactionsList' | 'webhooks';
 type StudioSubTabType = 'api-settings' | 'interior-templates';
@@ -84,6 +85,7 @@ export default function AdminPage() {
         { id: 'about' as ArticlesSubTabType, label: t('admin.tabs.about') || 'Giới Thiệu' },
         { id: 'news' as ArticlesSubTabType, label: t('admin.tabs.news') || 'Tin Tức' },
         { id: 'services' as ArticlesSubTabType, label: t('admin.tabs.services') || 'Dịch Vụ' },
+        { id: 'service-categories' as ArticlesSubTabType, label: t('admin.tabs.serviceCategories') || 'Phân mục dịch vụ' },
     ];
 
     const communitySubTabs = [
@@ -155,6 +157,7 @@ export default function AdminPage() {
                             {activeArticlesSubTab === 'about' && <ArticlesAdminTab category="about" />}
                             {activeArticlesSubTab === 'news' && <ArticlesAdminTab category="news" />}
                             {activeArticlesSubTab === 'services' && <ArticlesAdminTab category="services" />}
+                            {activeArticlesSubTab === 'service-categories' && <ServiceCategoriesAdminTab />}
                         </div>
                     )}
                     {activeTopTab === 'cloud' && <CloudAdminTab />}

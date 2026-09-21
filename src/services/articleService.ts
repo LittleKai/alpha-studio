@@ -1,4 +1,13 @@
 import { fetchWithRetry, parseErrorMessage } from './apiRetry';
+import type { LibrarySection } from './eventLibraryService';
+import type { ServiceCategory } from './serviceCategoryService';
+
+/**
+ * Kind khối cho phép trong bài dịch vụ — khớp `SERVICE_SECTION_KINDS` ở backend
+ * (server/utils/contentSections.js). Bài dịch vụ chỉ cần vài khối giới thiệu,
+ * không dùng đủ 8 kind như thư viện sự kiện.
+ */
+export const SERVICE_SECTION_KINDS = ['richText', 'bulletGroups', 'steps', 'gallery'] as const;
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
@@ -30,6 +39,9 @@ export interface Article {
     order: number;
     isFeatured: boolean;
     tags: string[];
+    // Chỉ có ở bài category 'services'
+    serviceCategory: ServiceCategory | null;
+    sections: LibrarySection[];
     createdAt: string;
     updatedAt: string;
 }
@@ -43,6 +55,8 @@ export interface ArticleFormData {
     tags: string[];
     order: number;
     isFeatured: boolean;
+    serviceCategory?: string | null;
+    sections?: LibrarySection[];
 }
 
 // Public: Get published articles by category
@@ -50,10 +64,12 @@ export const getArticles = async (
     category?: string,
     page = 1,
     limit = 20,
-    search?: string
+    search?: string,
+    serviceCategory?: string
 ) => {
     const params = new URLSearchParams();
     if (category) params.append('category', category);
+    if (serviceCategory) params.append('serviceCategory', serviceCategory);
     params.append('page', String(page));
     params.append('limit', String(limit));
     if (search) params.append('search', search);

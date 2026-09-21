@@ -86,6 +86,7 @@ export default {
     },
     sections: {
       coursesEyebrow: "Lộ trình học",
+      solutionsEyebrow: "Sản phẩm & dịch vụ",
       toolsEyebrow: "Bộ công cụ",
       connectEyebrow: "Nền tảng kết nối",
       showcaseEyebrow: "Cộng đồng",
@@ -192,10 +193,17 @@ export default {
       notFound: "Không tìm thấy tin tức",
       backToList: "Quay lại danh sách"
     },
+    solutions: {
+      title: "Sản phẩm & dịch vụ",
+      subtitle: "Các giải pháp thiết kế và tự động hóa Alpha Studio đang cung cấp cho ngành sự kiện.",
+      viewAll: "Xem tất cả dịch vụ"
+    },
     services: {
       heroTitle: "Dịch Vụ & Sản Phẩm",
       heroDescription: "Khám phá các dịch vụ và sản phẩm AI tiên tiến của Alpha Studio, được thiết kế cho ngành sự kiện và sáng tạo.",
       noArticles: "Chưa có dịch vụ nào",
+      allCategories: "Tất cả",
+      categoryEmpty: "Phân mục này chưa có bài viết",
       readMore: "Xem chi tiết",
       notFound: "Không tìm thấy dịch vụ",
       backToList: "Quay lại danh sách"

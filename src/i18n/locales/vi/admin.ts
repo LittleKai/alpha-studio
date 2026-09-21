@@ -9,6 +9,7 @@ export default {
       about: "Giới Thiệu",
       news: "Tin Tức",
       services: "Dịch Vụ",
+      serviceCategories: "Phân Mục Dịch Vụ",
       transactions: "Quản Lý Giao Dịch",
       cloud: "Cloud Desktop",
       users: "Quản lý User",
@@ -274,6 +275,28 @@ export default {
       version: "Phiên bản",
       time: "Thời gian"
     },
+    serviceCategories: {
+      title: "Tên phân mục",
+      titlePlaceholder: "VD: Thiết kế sự kiện",
+      description: "Mô tả ngắn",
+      cover: "Ảnh bìa",
+      icon: "Icon (emoji)",
+      accent: "Màu nhấn",
+      order: "Thứ tự",
+      statusLabel: "Trạng thái",
+      status: {
+        published: "Hiển thị",
+        hidden: "Ẩn"
+      },
+      create: "Thêm phân mục",
+      edit: "Sửa phân mục",
+      hint: "Phân mục hiện trên trang chủ và trang /services. Xoá phân mục không xoá bài viết.",
+      empty: "Chưa có phân mục nào",
+      deleteConfirm: "Xoá phân mục này? Các bài viết thuộc phân mục sẽ được gỡ liên kết.",
+      errors: {
+        titleRequired: "Cần nhập tên tiếng Việt"
+      }
+    },
     articles: {
       title: "Tiêu đề",
       excerpt: "Tóm tắt",
@@ -304,6 +327,11 @@ export default {
       noExcerpt: "Chưa có tóm tắt",
       createFirst: "Tạo bài viết đầu tiên",
       deleteConfirm: "Bạn có chắc muốn xóa bài viết này?",
+      serviceCategory: "Phân mục dịch vụ",
+      serviceCategoryNone: "Không thuộc phân mục nào",
+      sections: "Khối nội dung",
+      sectionsHint: "Các khối hiện phía trên phần nội dung chính của bài.",
+      addSection: "Thêm khối",
       status: {
         draft: "Bản nháp",
         published: "Đã xuất bản",

@@ -9,6 +9,7 @@ export default {
       about: "About",
       news: "News",
       services: "Services",
+      serviceCategories: "Service Categories",
       transactions: "Transaction Management",
       cloud: "Cloud Desktop",
       users: "User Management",
@@ -264,6 +265,28 @@ export default {
       version: "Version",
       time: "Time"
     },
+    serviceCategories: {
+      title: "Category name",
+      titlePlaceholder: "e.g. Event design",
+      description: "Short description",
+      cover: "Cover image",
+      icon: "Icon (emoji)",
+      accent: "Accent color",
+      order: "Order",
+      statusLabel: "Status",
+      status: {
+        published: "Published",
+        hidden: "Hidden"
+      },
+      create: "Add category",
+      edit: "Edit category",
+      hint: "Categories appear on the landing page and /services. Deleting one does not delete its articles.",
+      empty: "No categories yet",
+      deleteConfirm: "Delete this category? Its articles will be unlinked.",
+      errors: {
+        titleRequired: "Vietnamese name is required"
+      }
+    },
     articles: {
       title: "Title",
       excerpt: "Excerpt",
@@ -294,6 +317,11 @@ export default {
       noExcerpt: "No excerpt",
       createFirst: "Create Your First Article",
       deleteConfirm: "Are you sure you want to delete this article?",
+      serviceCategory: "Service category",
+      serviceCategoryNone: "No category",
+      sections: "Content blocks",
+      sectionsHint: "Blocks render above the main article content.",
+      addSection: "Add block",
       status: {
         draft: "Draft",
         published: "Published",

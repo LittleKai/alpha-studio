@@ -21,6 +21,7 @@ Khong doc toan bo `src/`, `dist/`, `node_modules/`, file da duoc summary tom tat
 - Dung CSS custom properties; khong hardcode mau. Khong dung `window.confirm()`.
 - Moi `VITE_*` la public. Secret va Gemini call phai nam o backend.
 - Upload/render anh phai theo `ASSETS_AND_UPLOADS.md`.
+- Khong bao gio upload anh nguyen goc. Moi anh phai resize theo preset va chuyen WebP truoc khi len Cloudinary/B2 - ke ca khi upload bang script/seed, khong chi tu UI.
 - Sua logic thuan trong `src/services/` hoac `src/utils/` phai co test.
 - Chi cap nhat summary nhu trang thai hien tai, khong ghi lich su session.
 

@@ -14,6 +14,8 @@ import Reveal, { RevealItem } from '../components/motion/Reveal';
 import HoverSpring from '../components/motion/HoverSpring';
 import StudioToolTile, { STUDIO_TOOLS } from '../components/studio/StudioToolTile';
 import LandingHero from '../components/landing/LandingHero';
+import SectionHeading from '../components/landing/SectionHeading';
+import ServiceCategoriesSection from '../components/landing/ServiceCategoriesSection';
 import ConnectBento from '../components/landing/ConnectBento';
 import { fetchWithRetry } from '../services/apiRetry';
 import { AssetQuality, cdnFromUrl, setLandingQuality } from '../services/cloudinaryAssets';
@@ -85,28 +87,6 @@ const IconCheck: React.FC<IconProps> = ({ className = 'h-3 w-3' }) => (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="m5 13 4 4L19 7" />
     </svg>
-);
-
-// ─── Section heading (eyebrow + title + optional action) ─────────────
-interface SectionHeadingProps {
-    eyebrow: string;
-    title: string;
-    subtitle?: string;
-    action?: React.ReactNode;
-}
-
-const SectionHeading: React.FC<SectionHeadingProps> = ({ eyebrow, title, subtitle, action }) => (
-    <Reveal y={20} className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-        <div className="space-y-3 max-w-[62ch]">
-            <span className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.24em] text-[var(--accent-primary)]">
-                <span className="w-6 h-px bg-[var(--accent-primary)]" aria-hidden="true" />
-                {eyebrow}
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[var(--text-primary)]">{title}</h2>
-            {subtitle && <p className="text-[var(--text-secondary)] leading-relaxed">{subtitle}</p>}
-        </div>
-        {action && <div className="flex-shrink-0">{action}</div>}
-    </Reveal>
 );
 
 // ─── Courses Slider Section (Split Layout) ───────────────────────────
@@ -625,6 +605,9 @@ const LandingPage: React.FC = () => {
                     )}
                 </div>
             </section>
+
+            {/* Sản phẩm & dịch vụ — phân mục do admin quản lý, ẩn khi rỗng */}
+            <ServiceCategoriesSection />
 
             {/* Tools Showcase Section — cùng ngôn ngữ thiết kế với hub /studio */}
             <section className="py-20 bg-[var(--bg-primary)] border-t border-[var(--border-primary)] relative overflow-hidden">

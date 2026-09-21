@@ -1,21 +1,35 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
 import { getArticles, type Article } from '../services/articleService';
+import { getServiceCategories, type ServiceCategory } from '../services/serviceCategoryService';
 import { localizedText } from '../utils/localized';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
 
 export default function ServicesPage() {
     const { t, language } = useTranslation();
+    const [searchParams, setSearchParams] = useSearchParams();
     const [articles, setArticles] = useState<Article[]>([]);
+    const [categories, setCategories] = useState<ServiceCategory[]>([]);
     const [loading, setLoading] = useState(true);
 
+    const catSlug = searchParams.get('cat') || '';
+    const activeCategory = categories.find(c => c.slug === catSlug) || null;
+
     useEffect(() => {
+        getServiceCategories()
+            .then(setCategories)
+            .catch(err => console.error('Failed to load service categories:', err));
+    }, []);
+
+    // Lọc theo id ở backend; chờ có `categories` mới gọi để dịch slug → id.
+    useEffect(() => {
+        if (catSlug && !activeCategory) return;
         const load = async () => {
             try {
                 setLoading(true);
-                const res = await getArticles('services', 1, 50);
+                const res = await getArticles('services', 1, 50, undefined, activeCategory?._id);
                 setArticles(res.data);
             } catch (error) {
                 console.error('Failed to load services articles:', error);
@@ -24,7 +38,11 @@ export default function ServicesPage() {
             }
         };
         load();
-    }, []);
+    }, [catSlug, activeCategory]);
+
+    const selectCategory = (slug: string) => {
+        setSearchParams(slug ? { cat: slug } : {}, { replace: true });
+    };
 
     return (
         <div className="min-h-screen bg-[var(--bg-primary)]">
@@ -48,6 +66,42 @@ export default function ServicesPage() {
                 </div>
             </section>
 
+            {/* Chips phân mục */}
+            {categories.length > 0 && (
+                <section className="max-w-7xl mx-auto px-6 pb-8">
+                    <div className="flex flex-wrap gap-2 justify-center">
+                        <button
+                            onClick={() => selectCategory('')}
+                            aria-pressed={!catSlug}
+                            className={`px-4 py-2 rounded-full text-sm font-bold border transition-all ${!catSlug
+                                ? 'bg-[var(--accent-primary)] text-[var(--text-on-accent)] border-[var(--accent-primary)]'
+                                : 'bg-[var(--bg-card)] text-[var(--text-secondary)] border-[var(--border-primary)] hover:border-[var(--accent-primary)]'}`}
+                        >
+                            {t('landing.services.allCategories')}
+                        </button>
+                        {categories.map(cat => (
+                            <button
+                                key={cat._id}
+                                onClick={() => selectCategory(cat.slug)}
+                                aria-pressed={catSlug === cat.slug}
+                                className={`px-4 py-2 rounded-full text-sm font-bold border transition-all ${catSlug === cat.slug
+                                    ? 'bg-[var(--accent-primary)] text-[var(--text-on-accent)] border-[var(--accent-primary)]'
+                                    : 'bg-[var(--bg-card)] text-[var(--text-secondary)] border-[var(--border-primary)] hover:border-[var(--accent-primary)]'}`}
+                            >
+                                {cat.icon && <span className="mr-1.5" aria-hidden="true">{cat.icon}</span>}
+                                {localizedText(cat.title, language)}
+                            </button>
+                        ))}
+                    </div>
+
+                    {activeCategory && localizedText(activeCategory.description, language) && (
+                        <p className="mt-6 text-center text-[var(--text-secondary)] max-w-2xl mx-auto">
+                            {localizedText(activeCategory.description, language)}
+                        </p>
+                    )}
+                </section>
+            )}
+
             {/* Articles Grid */}
             <section className="max-w-7xl mx-auto px-6 pb-20">
                 {loading ? (
@@ -56,7 +110,9 @@ export default function ServicesPage() {
                     </div>
                 ) : articles.length === 0 ? (
                     <div className="text-center py-20">
-                        <p className="text-[var(--text-secondary)]">{t('landing.services.noArticles')}</p>
+                        <p className="text-[var(--text-secondary)]">
+                            {activeCategory ? t('landing.services.categoryEmpty') : t('landing.services.noArticles')}
+                        </p>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

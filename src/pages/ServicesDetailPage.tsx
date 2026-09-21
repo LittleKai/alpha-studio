@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { getArticleBySlug, type Article } from '../services/articleService';
 import SEOHead from '../components/ui/SEOHead';
 import { localizedText } from '../utils/localized';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
+import SectionRenderer, { isSectionEmpty } from '../components/library/SectionRenderer';
 
 export default function ServicesDetailPage() {
     const { slug } = useParams<{ slug: string }>();
@@ -52,6 +53,8 @@ export default function ServicesDetailPage() {
             </div>
         );
     }
+
+    const visibleSections = (article.sections || []).filter(s => !isSectionEmpty(s));
 
     return (
         <div className="min-h-screen bg-[var(--bg-primary)]">
@@ -114,7 +117,27 @@ export default function ServicesDetailPage() {
                         </span>
                     )}
                     <span>{new Date(article.createdAt).toLocaleDateString(language === 'vi' ? 'vi-VN' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                    {article.serviceCategory && (
+                        <Link
+                            to={`/services?cat=${article.serviceCategory.slug}`}
+                            className="px-3 py-1 rounded-full border border-[var(--border-primary)] bg-[var(--bg-secondary)] hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)] transition-colors"
+                        >
+                            {article.serviceCategory.icon && (
+                                <span className="mr-1.5" aria-hidden="true">{article.serviceCategory.icon}</span>
+                            )}
+                            {localizedText(article.serviceCategory.title, language)}
+                        </Link>
+                    )}
                 </div>
+
+                {/* Khối thân bài có cấu trúc (bài dịch vụ) */}
+                {visibleSections.length > 0 && (
+                    <div className="space-y-6 mb-8">
+                        {visibleSections.map((section, idx) => (
+                            <SectionRenderer key={idx} section={section} index={idx} />
+                        ))}
+                    </div>
+                )}
 
                 {/* Content */}
                 <div

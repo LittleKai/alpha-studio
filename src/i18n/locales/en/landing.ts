@@ -86,6 +86,7 @@ export default {
     },
     sections: {
       coursesEyebrow: "Learning paths",
+      solutionsEyebrow: "Products & services",
       toolsEyebrow: "Toolset",
       connectEyebrow: "Connected platform",
       showcaseEyebrow: "Community",
@@ -192,10 +193,17 @@ export default {
       notFound: "News not found",
       backToList: "Back to list"
     },
+    solutions: {
+      title: "Products & services",
+      subtitle: "Design and automation solutions Alpha Studio delivers for the event industry.",
+      viewAll: "View all services"
+    },
     services: {
       heroTitle: "Services & Products",
       heroDescription: "Discover Alpha Studio's advanced AI services and products, designed for the event and creative industry.",
       noArticles: "No services yet",
+      allCategories: "All",
+      categoryEmpty: "No articles in this category yet",
       readMore: "View details",
       notFound: "Service not found",
       backToList: "Back to list"

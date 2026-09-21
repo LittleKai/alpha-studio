@@ -13,6 +13,10 @@ import {
     type Article,
     type ArticleFormData,
 } from '../../services/articleService';
+import { SERVICE_SECTION_KINDS } from '../../services/articleService';
+import { getServiceCategories, type ServiceCategory } from '../../services/serviceCategoryService';
+import { emptySection, type SectionKind } from '../../services/eventLibraryService';
+import SectionEditor from '../library/SectionEditor';
 import { fillLocalized, localizedText } from '../../utils/localized';
 import { cdnFromUrl } from '../../services/cloudinaryAssets';
 
@@ -29,6 +33,8 @@ const emptyForm: ArticleFormData = {
     tags: [],
     order: 0,
     isFeatured: false,
+    serviceCategory: null,
+    sections: [],
 };
 
 export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
@@ -47,6 +53,18 @@ export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
     const [tagInput, setTagInput] = useState('');
     const [contentLang, setContentLang] = useState<'vi' | 'en'>('vi');
     const [uploadingThumbnail, setUploadingThumbnail] = useState(false);
+
+    // Bài dịch vụ có thêm phân mục + thân bài dạng khối
+    const isServices = category === 'services';
+    const [serviceCategories, setServiceCategories] = useState<ServiceCategory[]>([]);
+    const sections = form.sections || [];
+
+    useEffect(() => {
+        if (!isServices) return;
+        getServiceCategories()
+            .then(setServiceCategories)
+            .catch(err => console.error('Failed to load service categories:', err));
+    }, [isServices]);
 
     // Editor refs
     const editorViRef = useRef<any>(null);
@@ -88,6 +106,8 @@ export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
             tags: article.tags,
             order: article.order,
             isFeatured: article.isFeatured,
+            serviceCategory: article.serviceCategory?._id || null,
+            sections: article.sections || [],
         });
         setTagInput('');
         setContentLang('vi');
@@ -394,6 +414,66 @@ export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
                         )}
                     </div>
                 </div>
+
+                {/* Phân mục dịch vụ */}
+                {isServices && (
+                    <div>
+                        <label className="block text-sm text-[var(--text-secondary)] mb-1">{t('admin.articles.serviceCategory')}</label>
+                        <select
+                            value={form.serviceCategory || ''}
+                            onChange={(e) => setForm({ ...form, serviceCategory: e.target.value || null })}
+                            className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)]"
+                        >
+                            <option value="">{t('admin.articles.serviceCategoryNone')}</option>
+                            {serviceCategories.map(cat => (
+                                <option key={cat._id} value={cat._id}>{localizedText(cat.title, language)}</option>
+                            ))}
+                        </select>
+                    </div>
+                )}
+
+                {/* Thân bài dạng khối — chỉ 4 kind giới thiệu cho bài dịch vụ */}
+                {isServices && (
+                    <div className="space-y-3">
+                        <div className="flex items-center justify-between gap-3">
+                            <label className="block text-sm text-[var(--text-secondary)]">{t('admin.articles.sections')}</label>
+                            <span className="text-xs text-[var(--text-tertiary)]">{t('admin.articles.sectionsHint')}</span>
+                        </div>
+
+                        {sections.map((section, i) => (
+                            <SectionEditor
+                                key={i}
+                                section={section}
+                                index={i}
+                                total={sections.length}
+                                onChange={next => setForm({ ...form, sections: sections.map((s, idx) => idx === i ? next : s) })}
+                                onRemove={() => setForm({ ...form, sections: sections.filter((_, idx) => idx !== i) })}
+                                onMove={dir => {
+                                    const target = i + dir;
+                                    if (target < 0 || target >= sections.length) return;
+                                    const next = [...sections];
+                                    [next[i], next[target]] = [next[target], next[i]];
+                                    setForm({ ...form, sections: next });
+                                }}
+                            />
+                        ))}
+
+                        <div className="rounded-2xl border border-dashed border-[var(--border-primary)] p-4">
+                            <p className="text-sm text-[var(--text-secondary)] mb-2">{t('admin.articles.addSection')}</p>
+                            <div className="flex flex-wrap gap-1.5">
+                                {SERVICE_SECTION_KINDS.map(kind => (
+                                    <button
+                                        key={kind}
+                                        onClick={() => setForm({ ...form, sections: [...sections, emptySection(kind as SectionKind)] })}
+                                        className="px-3 py-1.5 rounded-lg text-sm font-semibold bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] cursor-pointer"
+                                    >
+                                        + {t('eventLibrary.sectionKinds.' + kind)}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                )}
 
                 {/* Shared fields */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
