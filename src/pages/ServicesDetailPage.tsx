@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
-import { getArticleBySlug, type Article } from '../services/articleService';
+import { getArticleBySlug, trackArticleDownload, type Article } from '../services/articleService';
 import SEOHead from '../components/ui/SEOHead';
 import { localizedText } from '../utils/localized';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
@@ -328,10 +328,17 @@ export default function ServicesDetailPage() {
                             data-toc-anchor
                             className="scroll-mt-24 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 shadow-sm"
                         >
-                            <h2 className="text-xl font-bold mb-1 flex items-center gap-2 text-sky-600 dark:text-sky-400">
-                                <span className="w-1.5 h-5 rounded-full bg-sky-500" />
-                                {t('landing.services.downloads')}
-                            </h2>
+                            <div className="flex items-center justify-between mb-1">
+                                <h2 className="text-xl font-bold flex items-center gap-2 text-sky-600 dark:text-sky-400">
+                                    <span className="w-1.5 h-5 rounded-full bg-sky-500" />
+                                    {t('landing.services.downloads')}
+                                </h2>
+                                {(article.downloadCount ?? 0) > 0 && (
+                                    <span className="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-sky-500/10 border border-sky-500/30 text-sky-600 dark:text-sky-400 tabular-nums">
+                                        {article.downloadCount.toLocaleString()} {t('landing.services.downloadCount')}
+                                    </span>
+                                )}
+                            </div>
                             <p className="text-xs text-[var(--text-tertiary)] mb-4 pl-3.5">
                                 {t('landing.services.downloadsHint')}
                             </p>
@@ -342,6 +349,7 @@ export default function ServicesDetailPage() {
                                         href={file.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        onClick={() => trackArticleDownload(article._id)}
                                         className="flex items-center justify-between gap-4 px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-sky-500/60 hover:bg-sky-500/5 transition-colors group"
                                     >
                                         <span className="flex items-center gap-3 min-w-0">

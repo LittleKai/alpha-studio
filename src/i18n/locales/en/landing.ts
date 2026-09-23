@@ -219,7 +219,10 @@ export default {
       featured: "Featured",
       categoryCount: "categories",
       imageCount: "images",
-      openImage: "Click an image to enlarge"
+      downloadCount: "downloads",
+      openImage: "Click an image to enlarge",
+      categoryTag: "Service Category",
+      clearFilter: "View all categories"
     },
     footer: {
       copyright: "PROFESSIONAL AI TRAINING PLATFORM. ALL RIGHTS RESERVED.",

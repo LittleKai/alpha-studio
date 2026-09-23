@@ -219,7 +219,10 @@ export default {
       featured: "Nổi bật",
       categoryCount: "phân mục",
       imageCount: "ảnh",
-      openImage: "Nhấn vào ảnh để xem lớn"
+      downloadCount: "lượt tải",
+      openImage: "Nhấn vào ảnh để xem lớn",
+      categoryTag: "Phân mục dịch vụ",
+      clearFilter: "Xem tất cả phân mục"
     },
     footer: {
       copyright: "NỀN TẢNG ĐÀO TẠO AI CHUYÊN NGHIỆP. TẤT CẢ QUYỀN ĐƯỢC BẢO LƯU.",

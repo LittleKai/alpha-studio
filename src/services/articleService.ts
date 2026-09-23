@@ -52,6 +52,7 @@ export interface Article {
     serviceCategory: ServiceCategory | null;
     sections: LibrarySection[];
     attachments: ArticleAttachment[];
+    downloadCount: number;
     createdAt: string;
     updatedAt: string;
 }
@@ -179,4 +180,19 @@ export const unpublishArticle = async (id: string) => {
     const json = await res.json();
     if (!res.ok) throw new Error(json.message || 'Failed to unpublish article');
     return json;
+};
+
+/**
+ * Public fire-and-forget: track a file download on a service article.
+ */
+export const trackArticleDownload = async (articleId: string): Promise<void> => {
+    try {
+        await fetch(`${API_URL}/articles/${articleId}/track-download`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            keepalive: true,
+        });
+    } catch {
+        // fire-and-forget
+    }
 };
