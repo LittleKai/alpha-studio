@@ -51,7 +51,20 @@ export const trackToolDownload = async (
     version?: string
 ): Promise<void> => {
     try {
-        await fetch(`${API_URL}/tools/${encodeURIComponent(toolId)}/download`, {
+        const url = new URL(`${API_URL}/tools/${encodeURIComponent(toolId)}/download`);
+        url.searchParams.set('platform', platform);
+        if (version) url.searchParams.set('version', version);
+
+        // Beacon avoids a JSON CORS preflight being cancelled during navigation.
+        if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
+            try {
+                if (navigator.sendBeacon(url.toString())) return;
+            } catch {
+                // Fall back to fetch if the browser rejects the beacon.
+            }
+        }
+
+        await fetch(url.toString(), {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ platform, version }),

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useTranslation } from '../i18n/context';
 import { useAuth } from '../auth/context';
+import { trackToolDownload } from '../services/toolDownloadService';
 import {
     getCrmSubscription,
     createCrmCheckout,
@@ -454,6 +455,7 @@ export default function CrmSubscriptionPage() {
                                             {/* Windows Download Card */}
                                             <a
                                                 href={release.windowsInstallerUrl}
+                                                onClick={() => trackToolDownload('crm', 'windows', release.version)}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="flex items-center gap-3 p-3 bg-gradient-to-r from-sky-600 to-cyan-600 border border-sky-500/30 rounded-xl hover:border-cyan-400/50 hover:from-sky-500 hover:to-cyan-500 transition-all text-left spring-bounce shadow-md"
@@ -476,6 +478,7 @@ export default function CrmSubscriptionPage() {
                                             {/* Android Download Card */}
                                             <a
                                                 href={release.androidApkUrl}
+                                                onClick={() => trackToolDownload('crm', 'android', release.version)}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="flex items-center gap-3 p-3 bg-gradient-to-r from-sky-700/80 to-cyan-700/80 border border-sky-500/40 rounded-xl hover:border-cyan-400/50 hover:from-sky-600 hover:to-cyan-600 transition-all text-left spring-bounce shadow-md relative"
