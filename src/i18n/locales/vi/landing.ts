@@ -221,6 +221,8 @@ export default {
       imageCount: "ảnh",
       downloadCount: "lượt tải",
       openImage: "Nhấn vào ảnh để xem lớn",
+      previousImage: "Ảnh trước",
+      nextImage: "Ảnh tiếp theo",
       categoryTag: "Phân mục dịch vụ",
       clearFilter: "Xem tất cả phân mục"
     },

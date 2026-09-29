@@ -221,6 +221,8 @@ export default {
       imageCount: "images",
       downloadCount: "downloads",
       openImage: "Click an image to enlarge",
+      previousImage: "Previous image",
+      nextImage: "Next image",
       categoryTag: "Service Category",
       clearFilter: "View all categories"
     },

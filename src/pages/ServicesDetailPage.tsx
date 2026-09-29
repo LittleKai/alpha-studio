@@ -23,7 +23,7 @@ export default function ServicesDetailPage() {
     const { t, language } = useTranslation();
     const [article, setArticle] = useState<Article | null>(null);
     const [loading, setLoading] = useState(true);
-    const [preview, setPreview] = useState<string | null>(null);
+    const [preview, setPreview] = useState<{ images: string[]; index: number } | null>(null);
     const [activeSection, setActiveSection] = useState('');
 
     useEffect(() => {
@@ -82,7 +82,16 @@ export default function ServicesDetailPage() {
         if (target.tagName !== 'IMG') return;
         const img = target as HTMLImageElement;
         const src = img.currentSrc || img.src;
-        if (src) setPreview(src);
+        if (!src) return;
+
+        const images = Array.from(e.currentTarget.querySelectorAll('img'))
+            .map(image => image.currentSrc || image.src)
+            .filter(Boolean);
+        const index = images.indexOf(src);
+        setPreview({
+            images: images.length > 0 ? images : [src],
+            index: index >= 0 ? index : 0
+        });
     };
 
     const visibleSections = useMemo(
@@ -380,7 +389,14 @@ export default function ServicesDetailPage() {
                 </div>
             </div>
 
-            {preview && <ImageLightbox src={preview} onClose={() => setPreview(null)} />}
+            {preview && (
+                <ImageLightbox
+                    src={preview.images[preview.index]}
+                    images={preview.images}
+                    initialIndex={preview.index}
+                    onClose={() => setPreview(null)}
+                />
+            )}
         </div>
     );
 }
