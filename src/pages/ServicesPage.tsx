@@ -368,11 +368,6 @@ export default function ServicesPage() {
                                                     {files} {t('landing.services.downloads').toLowerCase()}
                                                 </span>
                                             )}
-                                            {(article.downloadCount ?? 0) > 0 && (
-                                                <span className="px-2 py-0.5 rounded-md bg-sky-500/10 border border-sky-500/30 text-sky-600 dark:text-sky-400 font-semibold tabular-nums">
-                                                    ↓ {article.downloadCount.toLocaleString()}
-                                                </span>
-                                            )}
                                         </div>
 
                                         <div className="flex items-center justify-between text-xs text-[var(--text-tertiary)] pt-1 border-t border-[var(--border-primary)]/60">

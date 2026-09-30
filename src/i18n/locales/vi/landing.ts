@@ -219,7 +219,6 @@ export default {
       featured: "Nổi bật",
       categoryCount: "phân mục",
       imageCount: "ảnh",
-      downloadCount: "lượt tải",
       openImage: "Nhấn vào ảnh để xem lớn",
       previousImage: "Ảnh trước",
       nextImage: "Ảnh tiếp theo",
