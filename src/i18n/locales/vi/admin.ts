@@ -273,7 +273,11 @@ export default {
       tool: "Công cụ",
       platform: "Nền tảng",
       version: "Phiên bản",
-      time: "Thời gian"
+      time: "Thời gian",
+      serviceDownloads: "Lượt tải file bài viết Dịch vụ",
+      noServiceDownloads: "Chưa có lượt tải file dịch vụ nào.",
+      article: "Bài viết",
+      status: "Trạng thái"
     },
     serviceCategories: {
       title: "Tên phân mục",

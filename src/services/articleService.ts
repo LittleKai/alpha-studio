@@ -205,3 +205,11 @@ export const trackArticleDownload = async (articleId: string): Promise<void> => 
         // fire-and-forget
     }
 };
+
+/**
+ * URL tải tệp đính kèm kèm Content-Disposition: attachment,
+ * đảm bảo browser tải về máy thay vì mở tab mới (kể cả file .html, .pdf, .txt...).
+ */
+export const getArticleAttachmentDownloadUrl = (articleId: string, index: number): string => {
+    return `${API_URL}/articles/${encodeURIComponent(articleId)}/attachments/${index}/download`;
+};

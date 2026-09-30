@@ -36,10 +36,19 @@ export interface ToolDownloadSummary {
     topTool: { toolId: string; toolName: string; count: number } | null;
 }
 
+export interface ServiceArticleDownload {
+    _id: string;
+    title: { vi: string; en?: string };
+    slug: string;
+    status: 'draft' | 'published' | 'archived';
+    downloadCount: number;
+}
+
 export interface ToolDownloadStatsResponse {
     summary: ToolDownloadSummary;
     tools: ToolDownloadInfo[];
     recentActivities: ToolDownloadActivity[];
+    serviceDownloads?: { total: number; articles: ServiceArticleDownload[] };
 }
 
 /**

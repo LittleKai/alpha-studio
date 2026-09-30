@@ -263,7 +263,11 @@ export default {
       tool: "Tool",
       platform: "Platform",
       version: "Version",
-      time: "Time"
+      time: "Time",
+      serviceDownloads: "Service Article File Downloads",
+      noServiceDownloads: "No service file downloads yet.",
+      article: "Article",
+      status: "Status"
     },
     serviceCategories: {
       title: "Category name",

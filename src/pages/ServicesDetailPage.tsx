@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
-import { getArticleBySlug, trackArticleDownload, type Article } from '../services/articleService';
+import { getArticleBySlug, getArticleAttachmentDownloadUrl, type Article } from '../services/articleService';
 import SEOHead from '../components/ui/SEOHead';
 import { localizedText } from '../utils/localized';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
@@ -355,11 +355,11 @@ export default function ServicesDetailPage() {
                                 {attachments.map((file, idx) => (
                                     <a
                                         key={`${file.url}-${idx}`}
-                                        href={file.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        onClick={() => trackArticleDownload(article._id)}
-                                        className="flex items-center justify-between gap-4 px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-sky-500/60 hover:bg-sky-500/5 transition-colors group"
+                                        href={getArticleAttachmentDownloadUrl(article._id, idx)}
+                                        download={file.name || 'download'}
+                                        // ponytail: GET download endpoint counts server-side; only bump local display here.
+                                        onClick={() => setArticle(prev => prev ? { ...prev, downloadCount: (prev.downloadCount ?? 0) + 1 } : null)}
+                                        className="flex items-center justify-between gap-4 px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-sky-500/60 hover:bg-sky-500/5 transition-colors group cursor-pointer"
                                     >
                                         <span className="flex items-center gap-3 min-w-0">
                                             <svg className="w-5 h-5 shrink-0 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>

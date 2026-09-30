@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from '../../i18n/context';
+import { localizedText } from '../../utils/localized';
 import { useConfirm } from '../ui/ConfirmDialog';
 import {
     getToolDownloadStats,
@@ -9,6 +11,7 @@ import {
     type ToolDownloadSummary,
     type ToolDownloadActivity,
     type ToolDownloadPlatformStats,
+    type ToolDownloadStatsResponse,
 } from '../../services/toolDownloadService';
 
 const TOOL_LOGOS: Record<string, { logo: string; to: string; color: string; bg: string; border: string }> = {
@@ -43,6 +46,7 @@ export default function ToolDownloadsAdminTab() {
     const [summary, setSummary] = useState<ToolDownloadSummary | null>(null);
     const [tools, setTools] = useState<ToolDownloadInfo[]>([]);
     const [activities, setActivities] = useState<ToolDownloadActivity[]>([]);
+    const [serviceDownloads, setServiceDownloads] = useState<ToolDownloadStatsResponse['serviceDownloads']>();
     const [editingTool, setEditingTool] = useState<ToolDownloadInfo | null>(null);
     const [editForm, setEditForm] = useState<{
         totalDownloads: number;
@@ -68,6 +72,7 @@ export default function ToolDownloadsAdminTab() {
             setSummary(data.summary);
             setTools(data.tools);
             setActivities(data.recentActivities || []);
+            setServiceDownloads(data.serviceDownloads);
         } catch (error) {
             console.error('Failed to load tool download stats:', error);
         } finally {
@@ -402,6 +407,51 @@ export default function ToolDownloadsAdminTab() {
                                 </div>
                             );
                         })}
+                    </div>
+                )}
+            </div>
+
+            {/* Service article attachment downloads (/services) */}
+            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-5 sm:p-6 shadow-sm">
+                <div className="flex items-center justify-between mb-4">
+                    <h4 className="text-base font-bold text-[var(--text-primary)]">
+                        {t('admin.toolDownloads.serviceDownloads')}
+                    </h4>
+                    <span className="text-xs text-[var(--text-tertiary)]">
+                        {(serviceDownloads?.total ?? 0).toLocaleString()} {t('admin.toolDownloads.downloadsCount')}
+                    </span>
+                </div>
+
+                {!serviceDownloads?.articles.length ? (
+                    <p className="text-center text-xs text-[var(--text-tertiary)] py-8">
+                        {t('admin.toolDownloads.noServiceDownloads')}
+                    </p>
+                ) : (
+                    <div className="overflow-x-auto">
+                        <table className="w-full text-left text-xs border-collapse">
+                            <thead>
+                                <tr className="border-b border-[var(--border-primary)] text-[var(--text-tertiary)] uppercase text-[10px] tracking-wider">
+                                    <th className="py-2.5 px-3">{t('admin.toolDownloads.article')}</th>
+                                    <th className="py-2.5 px-3">{t('admin.toolDownloads.status')}</th>
+                                    <th className="py-2.5 px-3 text-right">{t('admin.toolDownloads.downloadsCount')}</th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-[var(--border-primary)]/50 text-[var(--text-primary)]">
+                                {serviceDownloads.articles.map(article => (
+                                    <tr key={article._id} className="hover:bg-[var(--bg-secondary)]/40 transition-colors">
+                                        <td className="py-2.5 px-3 font-bold">
+                                            {article.status === 'published' ? (
+                                                <Link to={`/services/${article.slug}`} className="hover:text-[var(--accent-primary)] hover:underline">
+                                                    {localizedText(article.title, language)}
+                                                </Link>
+                                            ) : localizedText(article.title, language)}
+                                        </td>
+                                        <td className="py-2.5 px-3 text-[var(--text-secondary)]">{t(`admin.articles.status.${article.status}`)}</td>
+                                        <td className="py-2.5 px-3 text-right font-mono">{article.downloadCount.toLocaleString()}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
                 )}
             </div>
