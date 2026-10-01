@@ -220,6 +220,7 @@ export default {
       categoryCount: "phân mục",
       imageCount: "ảnh",
       openImage: "Nhấn vào ảnh để xem lớn",
+      loadingImage: "Đang tải ảnh",
       previousImage: "Ảnh trước",
       nextImage: "Ảnh tiếp theo",
       categoryTag: "Phân mục dịch vụ",

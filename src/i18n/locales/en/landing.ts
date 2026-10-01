@@ -220,6 +220,7 @@ export default {
       categoryCount: "categories",
       imageCount: "images",
       openImage: "Click an image to enlarge",
+      loadingImage: "Loading image",
       previousImage: "Previous image",
       nextImage: "Next image",
       categoryTag: "Service Category",

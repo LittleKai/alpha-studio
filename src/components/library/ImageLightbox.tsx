@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from '../../i18n/context';
 
 interface ImageLightboxProps {
@@ -10,12 +10,18 @@ interface ImageLightboxProps {
 
 export default function ImageLightbox({ src, images, initialIndex = 0, onClose }: ImageLightboxProps) {
     const { t } = useTranslation();
-    const imageList = images?.length ? images : [src];
+    const imageList = useMemo(() => (images?.length ? images : [src]), [images, src]);
     const [currentIndex, setCurrentIndex] = useState(() => Math.min(initialIndex, imageList.length - 1));
+    const currentSrc = imageList[currentIndex] || src;
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         setCurrentIndex(Math.min(initialIndex, imageList.length - 1));
     }, [initialIndex, imageList.length, src]);
+
+    useEffect(() => {
+        setIsLoading(true);
+    }, [currentSrc]);
 
     useEffect(() => {
         const onKey = (e: KeyboardEvent) => {
@@ -36,7 +42,19 @@ export default function ImageLightbox({ src, images, initialIndex = 0, onClose }
         };
     }, [imageList.length, onClose]);
 
-    const currentSrc = imageList[currentIndex] || src;
+    // Tải trước ảnh kế bên để thao tác next/previous không phải chờ một request
+    // mới bắt đầu sau khi người dùng đã bấm nút.
+    useEffect(() => {
+        const adjacentIndexes = [currentIndex - 1, currentIndex + 1].filter(
+            index => index >= 0 && index < imageList.length
+        );
+        adjacentIndexes.forEach(index => {
+            const image = new Image();
+            image.decoding = 'async';
+            image.src = fullSize(imageList[index]);
+        });
+    }, [currentIndex, imageList]);
+
     const canNavigate = imageList.length > 1;
 
     return (
@@ -60,11 +78,26 @@ export default function ImageLightbox({ src, images, initialIndex = 0, onClose }
                 </button>
             )}
 
-            <img
-                src={fullSize(currentSrc)}
-                alt=""
-                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
-            />
+            <div
+                className="relative flex min-h-[180px] min-w-[180px] max-w-full max-h-full items-center justify-center"
+                aria-busy={isLoading}
+            >
+                {isLoading && (
+                    <div className="absolute inset-0 z-10 flex items-center justify-center" role="status">
+                        <span className="h-10 w-10 animate-spin rounded-full border-4 border-white/30 border-t-white" />
+                        <span className="sr-only">{t('landing.services.loadingImage')}</span>
+                    </div>
+                )}
+                <img
+                    src={fullSize(currentSrc)}
+                    alt=""
+                    loading="eager"
+                    decoding="async"
+                    onLoad={() => setIsLoading(false)}
+                    onError={() => setIsLoading(false)}
+                    className={`max-w-full max-h-full object-contain rounded-lg shadow-2xl transition-opacity duration-150 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+                />
+            </div>
 
             {canNavigate && (
                 <button

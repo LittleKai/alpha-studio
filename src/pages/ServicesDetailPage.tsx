@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { getArticleBySlug, getArticleAttachmentDownloadUrl, type Article } from '../services/articleService';
@@ -17,6 +17,13 @@ const FIXED_COLORS = {
     comments: '#10b981'
 };
 
+function extractImageSources(html: string): string[] {
+    return Array.from(
+        html.matchAll(/<img\b[^>]*\bsrc\s*=\s*(['"])(.*?)\1[^>]*>/gi),
+        match => match[2]
+    ).filter(Boolean);
+}
+
 export default function ServicesDetailPage() {
     const { slug } = useParams<{ slug: string }>();
     const navigate = useNavigate();
@@ -25,6 +32,7 @@ export default function ServicesDetailPage() {
     const [loading, setLoading] = useState(true);
     const [preview, setPreview] = useState<{ images: string[]; index: number } | null>(null);
     const [activeSection, setActiveSection] = useState('');
+    const contentRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const load = async () => {
@@ -72,10 +80,33 @@ export default function ServicesDetailPage() {
         setActiveSection(id);
     };
 
+    const visibleSections = useMemo(
+        () => (article?.sections || []).filter(s => !isSectionEmpty(s)),
+        [article]
+    );
+
+    const body = article ? localizedText(article.content, language) : '';
+    const attachments = article?.attachments || [];
+
+    // Render order is section-by-section, then TinyMCE content. Keeping this
+    // order in the lightbox makes next/previous cover the entire article.
+    const previewImages = useMemo(
+        () => visibleSections.flatMap(section => {
+            if (section.kind === 'gallery') {
+                return (section.images || []).map(url => cdnFromUrl(url, 'w_640'));
+            }
+            if (section.kind === 'richText') {
+                return extractImageSources(section.html || '');
+            }
+            return [];
+        }).concat(extractImageSources(body)),
+        [visibleSections, body]
+    );
+
     /**
-     * Bấm vào ảnh bất kỳ trong thân bài thì mở xem phóng to. Bắt theo kiểu uỷ
-     * quyền vì ảnh nằm trong khối gallery lẫn trong chuỗi HTML của TinyMCE,
-     * không gắn được onClick cho từng thẻ.
+     * Mở ảnh từ bất kỳ section nào với danh sách điều hướng của toàn bộ bài.
+     * Danh sách canonical giữ đúng thứ tự render; ref DOM chỉ dùng để xác định
+     * vị trí ảnh mà người dùng vừa bấm.
      */
     const openPreview = (e: React.MouseEvent) => {
         const target = e.target as HTMLElement;
@@ -84,23 +115,21 @@ export default function ServicesDetailPage() {
         const src = img.currentSrc || img.src;
         if (!src) return;
 
-        const images = Array.from(e.currentTarget.querySelectorAll('img'))
+        const renderedImages = Array.from(contentRef.current?.querySelectorAll('img') || [])
+            .filter(image => Boolean(image.currentSrc || image.src));
+        const renderedSources = renderedImages
             .map(image => image.currentSrc || image.src)
             .filter(Boolean);
-        const index = images.indexOf(src);
+        const indexInDocument = renderedImages.indexOf(img);
+        const images = previewImages.length > 0 ? previewImages : renderedSources;
+        const index = indexInDocument >= 0 && indexInDocument < images.length
+            ? indexInDocument
+            : images.indexOf(src);
         setPreview({
             images: images.length > 0 ? images : [src],
             index: index >= 0 ? index : 0
         });
     };
-
-    const visibleSections = useMemo(
-        () => (article?.sections || []).filter(s => !isSectionEmpty(s)),
-        [article]
-    );
-
-    const body = article ? localizedText(article.content, language) : '';
-    const attachments = article?.attachments || [];
 
     const tocEntries = useMemo(() => [
         ...visibleSections.map((section, idx) => ({
@@ -299,7 +328,11 @@ export default function ServicesDetailPage() {
                     )}
                 </aside>
 
-                <div className="lg:col-span-2 min-w-0 space-y-8 [&_img]:cursor-zoom-in" onClick={openPreview}>
+                <div
+                    ref={contentRef}
+                    className="lg:col-span-2 min-w-0 space-y-8 [&_img]:cursor-zoom-in"
+                    onClick={openPreview}
+                >
                     {imageCount > 0 && (
                         <p className="text-xs text-[var(--text-tertiary)] italic">
                             {t('landing.services.openImage')}
