@@ -232,6 +232,12 @@ export default {
       exploreTitle: "Explore",
       toolsTitle: "Tools",
       companyTitle: "Alpha Studio",
+      contactTitle: "Contact",
+      contactNameLabel: "Name",
+      contactName: "Nguyễn Anh Đức",
+      contactPhone: "Phone",
+      contactZalo: "Zalo",
+      contactEmail: "Email",
       eventCity: "See Event Creative City"
     }
   }

@@ -232,6 +232,12 @@ export default {
       exploreTitle: "Khám phá",
       toolsTitle: "Công cụ",
       companyTitle: "Alpha Studio",
+      contactTitle: "Liên hệ",
+      contactNameLabel: "Tên",
+      contactName: "Nguyễn Anh Đức",
+      contactPhone: "Điện thoại",
+      contactZalo: "Zalo",
+      contactEmail: "Email",
       eventCity: "Xem Event Creative City"
     }
   }

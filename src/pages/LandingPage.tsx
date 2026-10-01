@@ -915,9 +915,9 @@ const LandingPage: React.FC = () => {
             </section>
 
             {/* Footer */}
-            <footer className="pt-16 pb-10 border-t border-[var(--border-primary)] bg-[var(--bg-primary)] mt-auto">
+            <footer id="contact" className="pt-16 pb-10 border-t border-[var(--border-primary)] bg-[var(--bg-primary)] mt-auto">
                 <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12">
                         <div className="space-y-4 lg:pr-8">
                             <div className="flex items-center gap-2">
                                 <img src="/alpha-logo-animated.svg" alt="Alpha Studio" className="h-8 w-8 rounded-lg object-contain" />
@@ -945,6 +945,37 @@ const LandingPage: React.FC = () => {
                                 </ul>
                             </nav>
                         ))}
+
+                        <address aria-label={t('landing.footer.contactTitle')} className="not-italic space-y-4">
+                            <h3 className="text-[10px] font-black uppercase tracking-[0.22em] text-[var(--text-tertiary)]">
+                                {t('landing.footer.contactTitle')}
+                            </h3>
+                            <div className="space-y-2.5 text-sm text-[var(--text-secondary)]">
+                                <p className="font-bold text-[var(--text-primary)]">
+                                    {t('landing.footer.contactNameLabel')}: {t('landing.footer.contactName')}
+                                </p>
+                                <a
+                                    href="tel:+84933805525"
+                                    className="block hover:text-[var(--accent-primary)] transition-colors"
+                                >
+                                    {t('landing.footer.contactPhone')}: 0933805525
+                                </a>
+                                <a
+                                    href="https://zalo.me/0933805525"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="block hover:text-[var(--accent-primary)] transition-colors"
+                                >
+                                    {t('landing.footer.contactZalo')}: 0933805525
+                                </a>
+                                <a
+                                    href="mailto:aduc5525@gmail.com"
+                                    className="block break-words hover:text-[var(--accent-primary)] transition-colors"
+                                >
+                                    {t('landing.footer.contactEmail')}: aduc5525@gmail.com
+                                </a>
+                            </div>
+                        </address>
                     </div>
 
                     <div className="pt-6 border-t border-[var(--border-primary)] flex flex-col md:flex-row justify-between items-center gap-4">
