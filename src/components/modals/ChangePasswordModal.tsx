@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from '../../i18n/context';
+import { useAuth } from '../../auth/context';
 
 interface ChangePasswordModalProps {
   onClose: () => void;
@@ -21,6 +22,7 @@ const EyeOffIcon = () => (
 
 const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({ onClose }) => {
   const { t } = useTranslation();
+  const { logout } = useAuth();
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
   const [passwordData, setPasswordData] = useState({
@@ -78,7 +80,10 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({ onClose }) =>
 
       if (result.success) {
         setSuccess(t('profile.password.success'));
-        setTimeout(() => onClose(), 2000);
+        setTimeout(() => {
+          onClose();
+          void logout();
+        }, 2000);
       } else {
         setError(result.message || t('profile.password.error'));
       }
@@ -87,7 +92,7 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({ onClose }) =>
     } finally {
       setLoading(false);
     }
-  }, [passwordData, API_URL, t, onClose]);
+  }, [passwordData, API_URL, t, onClose, logout]);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -206,7 +211,7 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({ onClose }) =>
           </button>
           <button
             onClick={handleSubmit}
-            disabled={loading}
+            disabled={loading || Boolean(success)}
             className="flex-1 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
           >
             {loading ? (

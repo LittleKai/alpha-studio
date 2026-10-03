@@ -132,7 +132,7 @@ export default {
       confirm: "Xác nhận mật khẩu mới",
       submit: "Đổi mật khẩu",
       changing: "Đang đổi...",
-      success: "Đổi mật khẩu thành công!",
+      success: "Đổi mật khẩu thành công! Vui lòng đăng nhập lại.",
       error: "Đổi mật khẩu thất bại",
       fillAll: "Vui lòng điền đầy đủ thông tin",
       passwordMinLength: "Mật khẩu phải có ít nhất 6 ký tự",

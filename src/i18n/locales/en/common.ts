@@ -132,7 +132,7 @@ export default {
       confirm: "Confirm New Password",
       submit: "Change Password",
       changing: "Changing...",
-      success: "Password changed successfully!",
+      success: "Password changed successfully! Please sign in again.",
       error: "Failed to change password",
       fillAll: "Please fill in all fields",
       passwordMinLength: "Password must be at least 6 characters",
