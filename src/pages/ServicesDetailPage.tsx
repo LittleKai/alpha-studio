@@ -384,18 +384,17 @@ export default function ServicesDetailPage() {
                                     <a
                                         key={`${file.url}-${idx}`}
                                         href={getArticleAttachmentDownloadUrl(article._id, idx)}
-                                        download={file.name || 'download'}
                                         className="flex items-center justify-between gap-4 px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-sky-500/60 hover:bg-sky-500/5 transition-colors group cursor-pointer"
                                     >
                                         <span className="flex items-center gap-3 min-w-0">
-                                            <svg className="w-5 h-5 shrink-0 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                            <svg className="w-5 h-5 shrink-0 text-sky-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
                                             </svg>
-                                            <span className="text-sm font-semibold text-[var(--text-primary)] truncate">
+                                            <span className="text-sm font-semibold text-[var(--text-primary)] group-hover:text-white truncate">
                                                 {file.name || t('landing.services.download')}
                                             </span>
                                         </span>
-                                        <span className="text-xs text-[var(--text-tertiary)] shrink-0 group-hover:text-sky-500">
+                                        <span className="text-xs text-[var(--text-tertiary)] group-hover:text-white shrink-0">
                                             {file.size || t('landing.services.download')}
                                         </span>
                                     </a>
