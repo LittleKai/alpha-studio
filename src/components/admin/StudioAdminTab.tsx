@@ -16,7 +16,7 @@ export default function StudioAdminTab() {
         useApiForVideo: false,
         useApiForEdit: false,
         useOpenClawForChat: true,
-        gcliBotModel: 'gemini-2.5-flash',
+        gcliBotModel: 'gemini-3.1-flash-lite',
         geminiApiKey: '',
         videoApiKey: '',
         landingVideoQuality: 'high'
@@ -40,7 +40,7 @@ export default function StudioAdminTab() {
                     useApiForVideo: data.data.useApiForVideo || false,
                     useApiForEdit: data.data.useApiForEdit || false,
                     useOpenClawForChat: data.data.useOpenClawForChat ?? true,
-                    gcliBotModel: data.data.gcliBotModel || 'gemini-2.5-flash',
+                    gcliBotModel: data.data.gcliBotModel || 'gemini-3.1-flash-lite',
                     geminiApiKey: data.data.geminiApiKey || '',
                     videoApiKey: data.data.videoApiKey || '',
                     landingVideoQuality: data.data.landingVideoQuality || 'high'
@@ -111,7 +111,9 @@ export default function StudioAdminTab() {
                                     onChange={(e) => setSettings({ ...settings, gcliBotModel: e.target.value })}
                                     className="px-3 py-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)]"
                                 >
-                                    <option value="gemini-2.5-flash">gemini-2.5-flash ({t('admin.studio.modelDefault')})</option>
+                                    <option value="gemini-3.1-flash-lite">gemini-3.1-flash-lite (Gemini 3.1 Flash Lite - {t('admin.studio.modelDefault')})</option>
+                                    <option value="gemini-3.8-flash">gemini-3.8-flash (Gemini 3.8 Flash Low)</option>
+                                    <option value="gemini-2.5-flash">gemini-2.5-flash (Legacy / Sắp dừng)</option>
                                 </select>
                             </div>
                         )}
