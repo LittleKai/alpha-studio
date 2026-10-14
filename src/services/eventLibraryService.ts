@@ -76,15 +76,24 @@ export type SectionKind = typeof SECTION_KINDS[number];
 export interface LibrarySection {
     kind: SectionKind;
     title: string;
+    titleEn?: string;
     html?: string;
+    htmlEn?: string;
     rows?: { label: string; value: string }[];
+    rowsEn?: { label: string; value: string }[];
     metrics?: { label: string; value: string; note: string }[];
+    metricsEn?: { label: string; value: string; note: string }[];
     groups?: { title: string; items: string[] }[];
+    groupsEn?: { title: string; items: string[] }[];
     steps?: { title: string; desc: string }[];
+    stepsEn?: { title: string; desc: string }[];
     quote?: string;
     quoteBy?: string;
+    quoteEn?: string;
+    quoteByEn?: string;
     images?: string[];
     links?: { slug: string; label: string }[];
+    linksEn?: { slug: string; label: string }[];
 }
 
 /** Khối rỗng đúng hình dạng cho từng `kind` — dùng khi thêm khối mới. */

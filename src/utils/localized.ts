@@ -18,3 +18,22 @@ export function fillLocalized(vi: string, en: string): { vi: string; en: string 
     const e = en.trim();
     return { vi: v || e, en: e || v };
 }
+
+import type { LibrarySection } from '../services/eventLibraryService';
+
+/** Trả section theo ngôn ngữ, giữ fallback tiếng Việt cho dữ liệu cũ. */
+export function localizedSection(section: LibrarySection, language: string): LibrarySection {
+    if (language !== 'en') return section;
+    return {
+        ...section,
+        title: section.titleEn || section.title,
+        html: section.htmlEn || section.html,
+        rows: section.rowsEn?.length ? section.rowsEn : section.rows,
+        metrics: section.metricsEn?.length ? section.metricsEn : section.metrics,
+        groups: section.groupsEn?.length ? section.groupsEn : section.groups,
+        steps: section.stepsEn?.length ? section.stepsEn : section.steps,
+        quote: section.quoteEn || section.quote,
+        quoteBy: section.quoteByEn || section.quoteBy,
+        links: section.linksEn?.length ? section.linksEn : section.links
+    };
+}

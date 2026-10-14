@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { getArticleBySlug, getArticleAttachmentDownloadUrl, type Article } from '../services/articleService';
 import SEOHead from '../components/ui/SEOHead';
-import { localizedText } from '../utils/localized';
+import { localizedSection, localizedText } from '../utils/localized';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
 import SectionRenderer, { isSectionEmpty, SECTION_PALETTES } from '../components/library/SectionRenderer';
 import ImageLightbox from '../components/library/ImageLightbox';
@@ -81,8 +81,8 @@ export default function ServicesDetailPage() {
     };
 
     const visibleSections = useMemo(
-        () => (article?.sections || []).filter(s => !isSectionEmpty(s)),
-        [article]
+        () => (article?.sections || []).filter(s => !isSectionEmpty(s, language)),
+        [article, language]
     );
 
     const body = article ? localizedText(article.content, language) : '';
@@ -95,12 +95,13 @@ export default function ServicesDetailPage() {
             if (section.kind === 'gallery') {
                 return (section.images || []).map(url => cdnFromUrl(url, 'w_640'));
             }
-            if (section.kind === 'richText') {
-                return extractImageSources(section.html || '');
+            const localized = localizedSection(section, language);
+            if (localized.kind === 'richText') {
+                return extractImageSources(localized.html || '');
             }
             return [];
         }).concat(extractImageSources(body)),
-        [visibleSections, body]
+        [visibleSections, body, language]
     );
 
     /**
@@ -134,7 +135,7 @@ export default function ServicesDetailPage() {
     const tocEntries = useMemo(() => [
         ...visibleSections.map((section, idx) => ({
             id: `sec-${idx}`,
-            label: section.title || t('landing.services.content'),
+            label: localizedSection(section, language).title || t('landing.services.content'),
             color: SECTION_PALETTES[idx % SECTION_PALETTES.length].accent
         })),
         ...(body ? [{ id: 'article-content', label: t('landing.services.content'), color: FIXED_COLORS.content }] : []),
@@ -142,7 +143,7 @@ export default function ServicesDetailPage() {
             ? [{ id: 'downloads', label: t('landing.services.downloads'), color: FIXED_COLORS.downloads }]
             : []),
         ...(article ? [{ id: 'comments', label: t('landing.services.comments'), color: FIXED_COLORS.comments }] : [])
-    ], [visibleSections, body, attachments.length, article, t]);
+    ], [visibleSections, body, attachments.length, article, language, t]);
 
     // Tổng số ảnh trong bài, hiện ở dải thông tin đầu trang
     const imageCount = useMemo(
@@ -346,7 +347,7 @@ export default function ServicesDetailPage() {
                             data-toc-anchor
                             className="scroll-mt-24 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 shadow-sm"
                         >
-                            <SectionRenderer section={section} index={idx} />
+                            <SectionRenderer section={section} index={idx} language={language} />
                         </div>
                     ))}
 

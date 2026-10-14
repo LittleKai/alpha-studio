@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import type { LibrarySection } from '../../services/eventLibraryService';
 import { cdnFromUrl } from '../../services/cloudinaryAssets';
 import RichHtml from './RichHtml';
+import { localizedSection } from '../../utils/localized';
 
 /**
  * Bảng màu xoay vòng cho các section, giúp các khối tiêu đề phân biệt rõ ràng và trực quan.
@@ -127,7 +128,8 @@ const GROUP_TONES = [
  * Khối rỗng (người đăng thêm rồi bỏ trống) không được render thành thẻ trơ chỉ
  * có tiêu đề — bỏ qua hẳn.
  */
-export function isSectionEmpty(section: LibrarySection): boolean {
+export function isSectionEmpty(section: LibrarySection, language = 'vi'): boolean {
+    section = localizedSection(section, language);
     switch (section.kind) {
         case 'richText': return !section.html?.trim();
         case 'keyValue': return !section.rows?.some(r => r.label.trim() || r.value.trim());
@@ -144,7 +146,8 @@ export function isSectionEmpty(section: LibrarySection): boolean {
  * Render một khối thân bài trên trang chi tiết. Đối xứng với `SectionEditor` —
  * thêm `kind` mới phải sửa cả hai file.
  */
-export default function SectionRenderer({ section, index }: { section: LibrarySection; index: number }) {
+export default function SectionRenderer({ section, index, language = 'vi' }: { section: LibrarySection; index: number; language?: string }) {
+    section = localizedSection(section, language);
     const palette = SECTION_PALETTES[index % SECTION_PALETTES.length];
 
     const heading = section.title && (
@@ -303,7 +306,7 @@ export default function SectionRenderer({ section, index }: { section: LibrarySe
         }
     };
 
-    if (isSectionEmpty(section)) return null;
+    if (isSectionEmpty(section, language)) return null;
 
     const content = body();
     if (!content) return null;

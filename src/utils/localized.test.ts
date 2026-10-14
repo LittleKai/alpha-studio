@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
-import { localizedText, fillLocalized } from './localized';
+﻿import { describe, it, expect } from 'vitest';
+import { localizedText, fillLocalized, localizedSection } from './localized';
 
 // Quy tắc nghiệp vụ (CLAUDE.md): nội dung do người dùng/admin đăng CHỈ bắt buộc
 // tiếng Việt. Thiếu bản EN thì phải hiện bản VI, tuyệt đối không hiện ô trống.
@@ -56,5 +56,20 @@ describe('fillLocalized', () => {
 
     it('cả hai trống thì trả về hai chuỗi rỗng, không ném lỗi', () => {
         expect(fillLocalized('', '')).toEqual({ vi: '', en: '' });
+    });
+});
+
+describe('localizedSection', () => {
+    it('uses English section fields and falls back to Vietnamese when absent', () => {
+        const section = {
+            kind: 'steps' as const,
+            title: 'Quy trình',
+            titleEn: 'Workflow',
+            steps: [{ title: 'Đọc hồ sơ', desc: 'Đối chiếu bản vẽ.' }],
+            stepsEn: [{ title: 'Read the documents', desc: 'Cross-check the drawings.' }]
+        };
+        expect(localizedSection(section, 'en').title).toBe('Workflow');
+        expect(localizedSection(section, 'en').steps?.[0].title).toBe('Read the documents');
+        expect(localizedSection({ ...section, stepsEn: [] }, 'en').steps?.[0].title).toBe('Đọc hồ sơ');
     });
 });
