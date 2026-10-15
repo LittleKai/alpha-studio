@@ -5,6 +5,7 @@ import { getArticleBySlug, getArticleAttachmentDownloadUrl, type Article } from 
 import SEOHead from '../components/ui/SEOHead';
 import { localizedSection, localizedText } from '../utils/localized';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
+import { formatArticleDate } from '../utils/articleDate';
 import SectionRenderer, { isSectionEmpty, SECTION_PALETTES } from '../components/library/SectionRenderer';
 import ImageLightbox from '../components/library/ImageLightbox';
 import SparkleIcon from '../components/ui/SparkleIcon';
@@ -177,6 +178,7 @@ export default function ServicesDetailPage() {
 
     const title = localizedText(article.title, language);
     const excerpt = localizedText(article.excerpt, language);
+    const formattedDate = formatArticleDate(article.createdAt, language);
 
     return (
         <div className="min-h-screen bg-[var(--bg-primary)] pb-20">
@@ -211,7 +213,12 @@ export default function ServicesDetailPage() {
                             alt=""
                             className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/85 to-[var(--bg-primary)]/60" />
+                        <div
+                            className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-[var(--bg-primary)]"
+                            style={{
+                                background: 'linear-gradient(180deg, color-mix(in srgb, var(--bg-primary) 78%, transparent) 0%, color-mix(in srgb, var(--bg-primary) 68%, transparent) 52%, var(--bg-primary) 100%)'
+                            }}
+                        />
                     </div>
                 )}
                 <div className="relative max-w-7xl mx-auto px-6 pt-8 pb-10">
@@ -227,7 +234,12 @@ export default function ServicesDetailPage() {
                         {t('landing.services.backToList')}
                     </button>
 
-                    <div className="max-w-3xl space-y-4">
+                    <div
+                        className="max-w-3xl space-y-4 rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-primary)]/90 p-6 md:p-8 backdrop-blur-md"
+                        style={{
+                            backgroundColor: 'color-mix(in srgb, var(--bg-primary) 88%, transparent)'
+                        }}
+                    >
                         {article.serviceCategory && (
                             <Link
                                 to={`/services?cat=${article.serviceCategory.slug}`}
@@ -240,7 +252,7 @@ export default function ServicesDetailPage() {
                             </Link>
                         )}
 
-                        <h1 className="text-3xl md:text-5xl font-black leading-tight text-[var(--text-primary)]">
+                        <h1 className="text-3xl md:text-5xl font-black leading-tight text-[var(--text-primary)] [text-wrap:balance]">
                             {title}
                         </h1>
 
@@ -259,12 +271,7 @@ export default function ServicesDetailPage() {
                                     {article.author.name}
                                 </span>
                             )}
-                            <span>
-                                {new Date(article.createdAt).toLocaleDateString(
-                                    language === 'vi' ? 'vi-VN' : 'en-US',
-                                    { year: 'numeric', month: 'long', day: 'numeric' }
-                                )}
-                            </span>
+                            {formattedDate && <span>{formattedDate}</span>}
                             {imageCount > 0 && (
                                 <span>{imageCount} {t('landing.services.imageCount')}</span>
                             )}
