@@ -4,9 +4,19 @@ const VIETYAKU_RELEASE_BASE_URL = 'https://download.giaiphapsangtao.com/file/alp
 const VIETYAKU_FALLBACK_VERSION = '1.1.0';
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
-// Not surfaced on the web page on purpose — the GitHub release is the channel the
-// desktop app's own updater reads. Kept only as the fallback for `releaseUrl`.
+// The release page stays private to the desktop updater; the APK asset URL is a
+// fallback when B2 metadata has not copied the Android asset yet.
 const VIETYAKU_GITHUB_URL = 'https://github.com/LittleKai/VietYaku/releases';
+
+export const deriveVietYakuAndroidApkUrl = (releaseUrl?: string): string | undefined => {
+    const match = String(releaseUrl || '').match(
+        /^https:\/\/github\.com\/LittleKai\/VietYaku\/releases\/tag\/([^/?#]+)$/,
+    );
+    if (!match) return undefined;
+
+    const tag = match[1];
+    return `${VIETYAKU_GITHUB_URL}/download/${tag}/VietYaku-android-${tag}.apk`;
+};
 
 export interface VietYakuReleaseInfo {
     version: string;
@@ -44,7 +54,8 @@ export const getLatestVietYakuRelease = async (): Promise<VietYakuReleaseInfo> =
         version: release.version || VIETYAKU_FALLBACK_RELEASE.version,
         windowsZipUrl: release.windowsZipUrl,
         windowsSize: release.windowsSize,
-        androidApkUrl: release.androidApkUrl,
+        androidApkUrl: release.androidApkUrl
+            || deriveVietYakuAndroidApkUrl(release.releaseUrl),
         androidSize: release.androidSize,
         releaseNotes: release.releaseNotes,
         releaseUrl: release.releaseUrl || VIETYAKU_GITHUB_URL,

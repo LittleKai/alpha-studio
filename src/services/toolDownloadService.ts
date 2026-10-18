@@ -90,6 +90,7 @@ export const trackToolDownload = async (
 export const getToolDownloadStats = async (): Promise<ToolDownloadStatsResponse> => {
     const res = await fetch(`${API_URL}/admin/tool-downloads`, {
         headers: getAuthHeaders(),
+        cache: 'no-store',
     });
     if (!res.ok) {
         throw new Error('Failed to fetch tool download stats');

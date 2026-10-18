@@ -82,6 +82,15 @@ export default function ToolDownloadsAdminTab() {
 
     useEffect(() => {
         loadData();
+        const refreshWhenVisible = () => {
+            if (document.visibilityState === 'visible') loadData();
+        };
+        document.addEventListener('visibilitychange', refreshWhenVisible);
+        window.addEventListener('focus', refreshWhenVisible);
+        return () => {
+            document.removeEventListener('visibilitychange', refreshWhenVisible);
+            window.removeEventListener('focus', refreshWhenVisible);
+        };
     }, [loadData]);
 
     const handleOpenEdit = (tool: ToolDownloadInfo) => {
