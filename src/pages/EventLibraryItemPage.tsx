@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
+import { buildBreadcrumbJsonLd } from '../utils/seoMeta';
 import StudioBackNav from '../components/studio/StudioBackNav';
 import DeleteConfirmModal from '../components/ui/DeleteConfirmModal';
 import SparkleIcon from '../components/ui/SparkleIcon';
@@ -172,7 +173,7 @@ export default function EventLibraryItemPage() {
     useEffect(() => {
         // Gom về mỗi frame một lần: getBoundingClientRect() ép browser flush
         // layout đồng bộ, chạy thẳng trong scroll event thì mỗi tick cuộn là một
-        // lần reflow. Cùng cách gom bằng rAF như EventCreativeCityPage.
+        // lần reflow. Cùng cách gom bằng rAF như trang chi tiết kỹ năng.
         let frame: number | null = null;
         const measure = () => {
             frame = null;
@@ -297,7 +298,15 @@ export default function EventLibraryItemPage() {
 
     return (
         <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pb-20">
-            <SEOHead title={title} description={summary} path={`/studio/event-library/${item.slug}`} />
+            <SEOHead
+                title={title}
+                description={summary}
+                path={`/studio/event-library/${item.slug}`}
+                jsonLd={[
+                    { '@context': 'https://schema.org', '@type': 'CreativeWork', name: title, description: summary, url: `https://giaiphapsangtao.com/studio/event-library/${item.slug}`, ...(item.createdAt ? { dateCreated: item.createdAt } : {}), ...(item.updatedAt ? { dateModified: item.updatedAt } : {}) },
+                    buildBreadcrumbJsonLd([{ name: t('common.home'), path: '/' }, { name: t('eventLibrary.title'), path: '/studio/event-library' }, { name: title, path: `/studio/event-library/${item.slug}` }]),
+                ]}
+            />
             <StudioBackNav to="/studio/event-library" label={t('eventLibrary.detail.backToLibrary')} />
 
             {/* pt-16: chừa chỗ cho cụm nút quay lại nổi ở góc trên trái */}
@@ -306,7 +315,7 @@ export default function EventLibraryItemPage() {
                     <img
                         onClick={openPreview}
                         src={cdnFromUrl(item.coverImage, 'w_1400')}
-                        alt=""
+                        alt={title}
                         className="w-full h-56 md:h-72 object-cover rounded-2xl border border-[var(--border-primary)] mb-6 cursor-zoom-in"
                     />
                 )}
@@ -317,7 +326,7 @@ export default function EventLibraryItemPage() {
                             <img
                                 key={idx}
                                 src={cdnFromUrl(url, 'w_320')}
-                                alt=""
+                                alt={`${title} ${idx + 1}`}
                                 loading="lazy"
                                 className="w-full h-16 sm:h-20 object-cover rounded-lg border border-[var(--border-primary)] cursor-zoom-in"
                             />

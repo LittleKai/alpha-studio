@@ -1,5 +1,6 @@
 export default {
   common: {
+    home: "Trang chủ",
     rating: {
       yours: "Bạn đã chấm {score}/5"
     },

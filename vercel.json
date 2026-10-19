@@ -1,8 +1,13 @@
 {
+  "version": 2,
   "buildCommand": "npm run build:seo",
-  "rewrites": [
-    { "source": "/sitemap.xml", "destination": "https://alpha-studio-backend.fly.dev/sitemap.xml" },
-    { "source": "/robots.txt", "destination": "/robots.txt" },
-    { "source": "/(.*)", "destination": "/" }
+  "routes": [
+    { "src": "^/event-creative-city/?$", "status": 410 },
+    { "src": "^/co-loa-living-spiral(?:/.*)?$", "status": 410 },
+    { "src": "^/studio/interior-design(?:/.*)?$", "status": 410 },
+    { "src": "^/sitemap\\.xml$", "dest": "https://alpha-studio-backend.fly.dev/sitemap.xml" },
+    { "src": "^/robots\\.txt$", "dest": "/robots.txt" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/" }
   ]
 }

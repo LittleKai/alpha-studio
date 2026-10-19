@@ -120,7 +120,7 @@ export default {
         badge: "Hệ sinh thái Alpha Studio · Beta",
         title1: "AI Studio",
         title2: "Bộ công cụ sáng tạo",
-        subtitle: "Năm công cụ đang mở cho mọi tài khoản: Thư viện tri thức sự kiện, Thư viện Kỹ năng AI, Alpha CRM cho tiếp thị Zalo, VocabFlip học từ vựng và VietYaku - phần mềm converter hỗ trợ dịch thuật tiếng Nhật & Trung. Ba công cụ nữa đang được hoàn thiện trong xưởng.",
+        subtitle: "Năm công cụ đang mở cho mọi tài khoản: Thư viện tri thức sự kiện, Thư viện Kỹ năng AI, Alpha CRM cho tiếp thị Zalo, VocabFlip học từ vựng và VietYaku - phần mềm converter hỗ trợ dịch thuật tiếng Nhật & Trung. Hai công cụ nữa đang được hoàn thiện trong xưởng.",
         stats: {
           live: "Công cụ đang mở",
           upcoming: "Sắp ra mắt",
@@ -496,10 +496,6 @@ export default {
             requirementPortable: "Chạy dạng portable trên Windows — dữ liệu cá nhân lưu trong thư mục userdata cạnh file .exe.",
             requirementSize: "Dung lượng tải khá lớn do bộ từ điển Nhật và Trung được đóng gói sẵn."
           }
-        },
-        interior: {
-          title: "Thiết kế nội thất",
-          desc: "Công cụ vẽ tủ & nội thất tương tác"
         },
         skills: {
           title: "Thư viện Kỹ năng AI",

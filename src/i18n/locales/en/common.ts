@@ -1,5 +1,6 @@
 export default {
   common: {
+    home: "Home",
     rating: {
       yours: "Your rating: {score}"
     },

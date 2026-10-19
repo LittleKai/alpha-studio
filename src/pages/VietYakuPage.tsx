@@ -7,6 +7,8 @@ import {
 } from '../services/vietyakuReleaseService';
 import { trackToolDownload } from '../services/toolDownloadService';
 import StudioBackButton from '../components/studio/StudioBackButton';
+import SEOHead from '../components/ui/SEOHead';
+import { buildBreadcrumbJsonLd } from '../utils/seoMeta';
 
 const formatReleaseDate = (value: string, locale: string): string => {
     const date = new Date(value);
@@ -82,6 +84,15 @@ const VietYakuPage: React.FC = () => {
 
     return (
         <div className="min-h-[calc(100vh-80px)] bg-[var(--bg-primary)] text-[var(--text-primary)] relative overflow-hidden">
+            <SEOHead
+                title="VietYaku"
+                description={t('studio.hub.cards.vietyaku.desc')}
+                path="/studio/vietyaku"
+                jsonLd={[
+                    { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'VietYaku', applicationCategory: 'EducationalApplication', operatingSystem: 'Windows, Android', url: 'https://giaiphapsangtao.com/studio/vietyaku' },
+                    buildBreadcrumbJsonLd([{ name: t('common.home'), path: '/' }, { name: 'Studio', path: '/studio' }, { name: 'VietYaku', path: '/studio/vietyaku' }]),
+                ]}
+            />
             {/* Custom Embedded Vibrant Styles */}
             <style dangerouslySetInnerHTML={{ __html: `
                 .vietyaku-title-gradient {

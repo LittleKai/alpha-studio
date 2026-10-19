@@ -10,6 +10,12 @@ import SectionRenderer, { isSectionEmpty, SECTION_PALETTES } from '../components
 import ImageLightbox from '../components/library/ImageLightbox';
 import SparkleIcon from '../components/ui/SparkleIcon';
 import { CommentSection } from '../components/shared';
+import { buildBreadcrumbJsonLd } from '../utils/seoMeta';
+
+const validIsoDate = (value?: string) => {
+    const date = value ? new Date(value) : null;
+    return date && !Number.isNaN(date.getTime()) ? date.toISOString() : undefined;
+};
 
 /** Màu cho các mục cố định của mục lục (không thuộc bảng xoay vòng của section). */
 const FIXED_COLORS = {
@@ -188,7 +194,7 @@ export default function ServicesDetailPage() {
                 ogImage={article.thumbnail}
                 ogType="article"
                 path={`/services/${slug}`}
-                jsonLd={{
+                jsonLd={[{
                     '@context': 'https://schema.org',
                     '@type': 'Article',
                     headline: title,
@@ -200,8 +206,10 @@ export default function ServicesDetailPage() {
                         '@type': 'Organization',
                         name: 'Alpha Studio',
                         logo: { '@type': 'ImageObject', url: 'https://giaiphapsangtao.com/alpha-logo-2.png' }
-                    }
-                }}
+                    },
+                    ...(validIsoDate(article.createdAt) ? { datePublished: validIsoDate(article.createdAt), dateModified: validIsoDate(article.updatedAt || article.createdAt) } : {}),
+                    mainEntityOfPage: `https://giaiphapsangtao.com/services/${slug}`,
+                }, buildBreadcrumbJsonLd([{ name: t('common.home'), path: '/' }, { name: t('landing.nav.services'), path: '/services' }, { name: title, path: `/services/${slug}` }])]}
             />
 
             {/* Ảnh bìa tràn viền, tiêu đề chồng lên — thay cho khối ảnh 16:9 cũ */}
@@ -210,7 +218,7 @@ export default function ServicesDetailPage() {
                     <div className="absolute inset-0 overflow-hidden">
                         <img
                             src={cdnFromUrl(article.thumbnail, 'w_1600')}
-                            alt=""
+                            alt={title}
                             className="w-full h-full object-cover"
                         />
                         <div

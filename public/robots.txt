@@ -1,14 +1,21 @@
 User-agent: *
 
-# Allow crawling of public content
 Allow: /
 Allow: /courses
 Allow: /about
 Allow: /services
+Allow: /news
+Allow: /studio$
+Allow: /studio/ai-skills
+Allow: /studio/event-library
+Allow: /studio/vietyaku
+Allow: /studio/crm$
+Allow: /studio/vocab
 
-# Block crawl budget waste on private and dashboard paths
-Disallow: /studio
-Disallow: /studio/
+Disallow: /studio/generate
+Disallow: /studio/edit
+Disallow: /studio/skills
+Disallow: /studio/crm/subscription
 Disallow: /workflow
 Disallow: /workflow/
 Disallow: /server
@@ -21,16 +28,11 @@ Disallow: /my-courses
 Disallow: /my-courses/
 Disallow: /profile
 Disallow: /profile/
-
-# Block crawl budget waste on compiled standalone apps & assets (require auth)
 Disallow: /vocab
 Disallow: /vocab/
-Disallow: /interior-design
-Disallow: /interior-design/
 Disallow: /crm
 Disallow: /crm/
 Disallow: /tinymce/
 Disallow: /vendor/
 
-# Sitemap location
 Sitemap: https://giaiphapsangtao.com/sitemap.xml

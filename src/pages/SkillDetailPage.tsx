@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
+import { buildBreadcrumbJsonLd } from '../utils/seoMeta';
 import StudioBackNav from '../components/studio/StudioBackNav';
 import DeleteConfirmModal from '../components/ui/DeleteConfirmModal';
 import SparkleIcon from '../components/ui/SparkleIcon';
@@ -130,7 +131,7 @@ export default function SkillDetailPage() {
   useEffect(() => {
     // Gom về mỗi frame một lần: getBoundingClientRect() ép browser flush layout
     // đồng bộ, chạy thẳng trong scroll event thì mỗi tick cuộn là một lần
-    // reflow. Cùng cách gom bằng rAF như EventCreativeCityPage.
+    // reflow. Cùng cách gom bằng rAF như trang thư viện sự kiện.
     let frame: number | null = null;
     const measure = () => {
       frame = null;
@@ -283,7 +284,15 @@ export default function SkillDetailPage() {
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pb-20">
-      <SEOHead title={skill.name} description={headline} path={`/studio/ai-skills/${skill.slug}`} />
+      <SEOHead
+        title={skill.name}
+        description={headline}
+        path={`/studio/ai-skills/${skill.slug}`}
+        jsonLd={[
+          { '@context': 'https://schema.org', '@type': 'TechArticle', headline: skill.name, description: headline, url: `https://giaiphapsangtao.com/studio/ai-skills/${skill.slug}` },
+          buildBreadcrumbJsonLd([{ name: t('common.home'), path: '/' }, { name: t('skills.title'), path: '/studio/ai-skills' }, { name: skill.name, path: `/studio/ai-skills/${skill.slug}` }]),
+        ]}
+      />
       {/* pt-16: chừa chỗ cho cụm nút quay lại nổi ở góc trên trái */}
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">
         {/* Back navigation — cụm nút nổi dùng chung cho mọi trang con công cụ */}

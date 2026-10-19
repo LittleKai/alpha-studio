@@ -5,11 +5,10 @@ import { ProtectedRoute } from './components/routing';
 import { Layout } from './components/layout';
 import { useAuth } from './auth/context';
 import { trackPageView } from './services/analyticsService';
+import SEOHead from './components/ui/SEOHead';
 
 // Lazy load pages for better performance
 const LandingPage = lazy(() => import('./pages/LandingPage'));
-const EventCreativeCityPage = lazy(() => import('./pages/EventCreativeCityPage'));
-const CoLoaSpiralPage = lazy(() => import('./pages/CoLoaSpiralPage'));
 const CoursePage = lazy(() => import('./pages/CoursePage'));
 const CoursesPage = lazy(() => import('./pages/CoursesPage'));
 const StudentPage = lazy(() => import('./pages/StudentPage'));
@@ -35,7 +34,6 @@ const ServicesDetailPage = lazy(() => import('./pages/ServicesDetailPage'));
 const WalletPage = lazy(() => import('./pages/WalletPage'));
 const VocabPage = lazy(() => import('./pages/VocabPage'));
 const VietYakuPage = lazy(() => import('./pages/VietYakuPage'));
-const InteriorDesignPage = lazy(() => import('./pages/InteriorDesignPage'));
 const CrmPage = lazy(() => import('./pages/CrmPage'));
 const CrmSubscriptionPage = lazy(() => import('./pages/CrmSubscriptionPage'));
 const SkillsPage = lazy(() => import('./pages/SkillsPage'));
@@ -272,17 +270,6 @@ const VietYakuPageWrapper: React.FC = () => {
     );
 };
 
-// Interior Design Page
-const InteriorDesignPageWrapper: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <InteriorDesignPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
 // CRM Page
 const CrmPageWrapper: React.FC = () => {
     return (
@@ -355,6 +342,7 @@ const NotFoundPage: React.FC = () => {
     const navigate = useNavigate();
     return (
         <Layout>
+            <SEOHead title="404 Not Found" description="Page not found" path="/404" noindex />
             <div className="min-h-[calc(100vh-80px)] flex items-center justify-center">
                 <div className="text-center space-y-4">
                     <h1 className="text-6xl font-black text-[var(--accent-primary)]">404</h1>
@@ -407,8 +395,6 @@ const App: React.FC = () => {
             <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<Layout><Suspense fallback={<LoadingSpinner />}><LandingPage /></Suspense></Layout>} />
-                <Route path="/event-creative-city" element={<EventCreativeCityPage />} />
-                <Route path="/co-loa-living-spiral" element={<CoLoaSpiralPage />} />
                 <Route path="/courses" element={<CoursesCatalogPage />} />
                 <Route path="/courses/:slug" element={<CourseDetailPage />} />
                 <Route path="/students/:id" element={<StudentDetailPage />} />
@@ -424,8 +410,6 @@ const App: React.FC = () => {
                 <Route path="/studio" element={<StudioHubPage />} />
                 <Route path="/studio/generate" element={<StudioGeneratePage />} />
                 <Route path="/studio/edit" element={<StudioEditPage />} />
-                <Route path="/studio/interior-design" element={<InteriorDesignPageWrapper />} />
-                <Route path="/studio/interior-design/:projectId" element={<InteriorDesignPageWrapper />} />
                 <Route path="/studio/vocab" element={<VocabPageWrapper />} />
                 <Route path="/studio/crm" element={<CrmPageWrapper />} />
                 <Route

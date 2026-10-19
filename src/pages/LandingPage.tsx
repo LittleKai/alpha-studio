@@ -982,12 +982,6 @@ const LandingPage: React.FC = () => {
                         <p className="text-[10px] text-[var(--text-tertiary)] font-bold uppercase tracking-widest text-center md:text-left">
                             © 2026 {t('landing.footer.copyright')}
                         </p>
-                        <Link
-                            to="/event-creative-city"
-                            className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--accent-primary)] hover:underline"
-                        >
-                            {t('landing.footer.eventCity')}
-                        </Link>
                     </div>
                 </div>
             </footer>

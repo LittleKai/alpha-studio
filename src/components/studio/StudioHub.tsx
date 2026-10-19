@@ -7,6 +7,8 @@ import TextReveal from '../motion/TextReveal';
 import { cdnImage } from '../../services/cloudinaryAssets';
 import StudioToolTile, { STUDIO_TOOLS, type StudioToolKey } from './StudioToolTile';
 import { STUDIO_TOOLS_ANCHOR } from './StudioBackButton';
+import SEOHead from '../ui/SEOHead';
+import { buildBreadcrumbJsonLd } from '../../utils/seoMeta';
 
 /**
  * /studio hub — launcher cinematic đồng bộ ngôn ngữ thiết kế của landing page:
@@ -20,7 +22,7 @@ const HERO_SCENE = {
     light: 'event-creative-city/concepts/living-storyboard/01-creative-desk',
 } as const;
 
-type UpcomingKey = 'generate' | 'edit' | 'interior';
+type UpcomingKey = 'generate' | 'edit';
 const UPCOMING_TOOLS: { key: UpcomingKey; icon: ReactNode }[] = [
     {
         key: 'generate',
@@ -38,15 +40,6 @@ const UPCOMING_TOOLS: { key: UpcomingKey; icon: ReactNode }[] = [
             </svg>
         ),
     },
-    {
-        key: 'interior',
-        icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 20V8l8-4 8 4v12M8 20V10h8v10" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M10 14h4M10 17h4M8 10h8" />
-            </svg>
-        ),
-    },
 ];
 
 // Thứ tự hiển thị trong tool rail của hero
@@ -58,7 +51,6 @@ const RAIL_ORDER: { key: StudioToolKey | UpcomingKey; to?: string }[] = [
     { key: 'vietyaku', to: '/studio/vietyaku' },
     { key: 'generate' },
     { key: 'edit' },
-    { key: 'interior' },
 ];
 
 // Heading section: eyebrow + title, cùng hệ với SectionHeading của landing
@@ -90,13 +82,22 @@ export default function StudioHub() {
 
     const statItems = [
         { value: '05', label: t('studio.hub.hero.stats.live') },
-        { value: '03', label: t('studio.hub.hero.stats.upcoming') },
+        { value: '02', label: t('studio.hub.hero.stats.upcoming') },
         { value: '3000+', label: t('studio.hub.hero.stats.skills') },
         { value: '100%', label: t('studio.hub.hero.stats.beta') },
     ];
 
     return (
         <div className="min-h-[calc(100vh-80px)] bg-[var(--bg-primary)] text-[var(--text-primary)]">
+            <SEOHead
+                title={t('studio.hub.hero.title1')}
+                description={t('studio.hub.hero.subtitle')}
+                path="/studio"
+                jsonLd={[
+                    { '@context': 'https://schema.org', '@type': 'CollectionPage', name: t('studio.hub.hero.title1'), url: 'https://giaiphapsangtao.com/studio' },
+                    buildBreadcrumbJsonLd([{ name: t('common.home'), path: '/' }, { name: 'Studio', path: '/studio' }]),
+                ]}
+            />
             {/* ─── Hero ───────────────────────────────────────────────── */}
             <section className="relative overflow-hidden border-b border-[var(--border-primary)]">
                 <img
@@ -157,7 +158,7 @@ export default function StudioHub() {
                                 <span className="text-[10px] font-black uppercase tracking-[0.22em] text-[var(--text-tertiary)]">
                                     {t('studio.hub.hero.railLabel')}
                                 </span>
-                                <span className="text-[10px] font-black tabular-nums text-[var(--accent-primary)]">08</span>
+                                <span className="text-[10px] font-black tabular-nums text-[var(--accent-primary)]">07</span>
                             </div>
                             <ul className="space-y-1">
                                 {RAIL_ORDER.map(({ key, to }) => {

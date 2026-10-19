@@ -7,6 +7,8 @@ import {
 } from '../services/vocabReleaseService';
 import { trackToolDownload } from '../services/toolDownloadService';
 import StudioBackButton from '../components/studio/StudioBackButton';
+import SEOHead from '../components/ui/SEOHead';
+import { buildBreadcrumbJsonLd } from '../utils/seoMeta';
 
 const formatReleaseDate = (value: string, locale: string): string => {
     const date = new Date(value);
@@ -102,6 +104,15 @@ const VocabPage: React.FC = () => {
 
     return (
         <div className="min-h-[calc(100vh-80px)] bg-[var(--bg-primary)] text-[var(--text-primary)] relative overflow-hidden">
+            <SEOHead
+                title="VocabFlip"
+                description={t('studio.hub.cards.vocab.desc')}
+                path="/studio/vocab"
+                jsonLd={[
+                    { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'VocabFlip', applicationCategory: 'EducationalApplication', operatingSystem: 'Web, Windows, Android', url: 'https://giaiphapsangtao.com/studio/vocab' },
+                    buildBreadcrumbJsonLd([{ name: t('common.home'), path: '/' }, { name: 'Studio', path: '/studio' }, { name: 'VocabFlip', path: '/studio/vocab' }]),
+                ]}
+            />
             {/* Custom Embedded Vibrant Styles */}
             <style dangerouslySetInnerHTML={{ __html: `
                 .vocab-title-gradient {

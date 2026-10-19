@@ -10,7 +10,6 @@ import CloudAdminTab from '../components/admin/CloudAdminTab';
 import FeaturedStudentsAdminTab from '../components/admin/FeaturedStudentsAdminTab';
 import StudioAdminTab from '../components/admin/StudioAdminTab';
 import ToolDownloadsAdminTab from '../components/admin/ToolDownloadsAdminTab';
-import InteriorTemplatesAdminTab from '../components/admin/InteriorTemplatesAdminTab';
 import CrmAdminTab from '../components/admin/CrmAdminTab';
 import AnalyticsAdminTab from '../components/admin/AnalyticsAdminTab';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
@@ -37,7 +36,7 @@ type TopTabType = 'articles' | 'community' | 'transactions' | 'cloud' | 'studio'
 type ArticlesSubTabType = 'about' | 'news' | 'services' | 'service-categories';
 type CommunitySubTabType = 'featuredStudents';
 type SubTabType = 'users' | 'transactionsList' | 'webhooks';
-type StudioSubTabType = 'api-settings' | 'interior-templates';
+type StudioSubTabType = 'api-settings';
 type AnalyticsSubTabType = 'traffic' | 'tool-downloads' | 'crm';
 
 export default function AdminPage() {
@@ -100,7 +99,6 @@ export default function AdminPage() {
 
     const studioSubTabs = [
         { id: 'api-settings' as StudioSubTabType, label: t('admin.studio.subtabs.apiSettings') || 'Cài đặt API' },
-        { id: 'interior-templates' as StudioSubTabType, label: t('admin.tabs.interiorTemplates') || 'Mẫu Tủ AI' },
     ];
 
     const analyticsSubTabs = [
@@ -179,7 +177,6 @@ export default function AdminPage() {
                                 ))}
                             </div>
                             {activeStudioSubTab === 'api-settings' && <StudioAdminTab />}
-                            {activeStudioSubTab === 'interior-templates' && <InteriorTemplatesAdminTab />}
                         </div>
                     )}
                     {activeTopTab === 'analytics' && (

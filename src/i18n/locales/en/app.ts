@@ -120,7 +120,7 @@ export default {
         badge: "Alpha Studio Ecosystem · Beta",
         title1: "AI Studio",
         title2: "The creative toolkit",
-        subtitle: "Five tools are open to every account: the Event Knowledge Library, the AI Skills Library, Alpha CRM for Zalo marketing, VocabFlip for vocabulary practice, and VietYaku — converter software supporting Japanese and Chinese translation. Three more are being finished in the workshop.",
+        subtitle: "Five tools are open to every account: the Event Knowledge Library, the AI Skills Library, Alpha CRM for Zalo marketing, VocabFlip for vocabulary practice, and VietYaku — converter software supporting Japanese and Chinese translation. Two more are being finished in the workshop.",
         stats: {
           live: "Tools live",
           upcoming: "Coming soon",
@@ -496,10 +496,6 @@ export default {
             requirementPortable: "Runs portable on Windows — your personal data stays in a userdata folder next to the .exe.",
             requirementSize: "The download is fairly large because the Japanese and Chinese dictionaries are bundled in."
           }
-        },
-        interior: {
-          title: "Interior Design",
-          desc: "Interactive cabinet & interior layout tool"
         },
         skills: {
           title: "AI Skills Hub",

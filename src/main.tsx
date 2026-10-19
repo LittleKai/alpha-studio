@@ -14,6 +14,9 @@ import './index.css';
 // dòng import này là đổi tầng cascade của toàn bộ app.
 import './tailwind.css';
 
+// React 19 hoists new metadata but does not replace tags saved by prerender.
+document.head.querySelectorAll('title, meta[name="description"], meta[name="robots"], meta[property^="og:"], meta[name^="twitter:"], link[rel="canonical"]').forEach(tag => tag.remove());
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <HelmetProvider>

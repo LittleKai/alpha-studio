@@ -28,9 +28,6 @@ export const getLandingQuality = (): AssetQuality => dynamicLandingQuality;
 /** Landing page — chất lượng mặc định. */
 export const LANDING_QUALITY: AssetQuality = 'high';
 
-/** `/event-creative-city` là trang xem thử: bản nhẹ, không đốt bandwidth Cloudinary. */
-export const PREVIEW_QUALITY: AssetQuality = 'standard';
-
 /**
  * Danh sách chính xác các public_id đang có bản `hq/` 1920×1080 trên Cloudinary —
  * đúng 10 scene mà landing page chạm tới (hero still + 4 ô bento mỗi theme).

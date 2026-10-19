@@ -7,6 +7,8 @@ import {
 } from '../services/crmService';
 import { trackToolDownload } from '../services/toolDownloadService';
 import StudioBackButton from '../components/studio/StudioBackButton';
+import SEOHead from '../components/ui/SEOHead';
+import { buildBreadcrumbJsonLd } from '../utils/seoMeta';
 
 const CRM_FALLBACK_RELEASE: CrmReleaseInfo = {
     version: '1.0.0',
@@ -106,6 +108,15 @@ const CrmPage: React.FC = () => {
 
     return (
         <div className="min-h-[calc(100vh-80px)] bg-[var(--bg-primary)] text-[var(--text-primary)] relative overflow-hidden">
+            <SEOHead
+                title="Alpha CRM"
+                description={t('studio.hub.cards.crm.desc')}
+                path="/studio/crm"
+                jsonLd={[
+                    { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Alpha CRM', applicationCategory: 'BusinessApplication', operatingSystem: 'Windows, Android', url: 'https://giaiphapsangtao.com/studio/crm' },
+                    buildBreadcrumbJsonLd([{ name: t('common.home'), path: '/' }, { name: 'Studio', path: '/studio' }, { name: 'Alpha CRM', path: '/studio/crm' }]),
+                ]}
+            />
             {/* Custom Embedded Vibrant Styles */}
             <style dangerouslySetInnerHTML={{ __html: `
                 .crm-title-gradient {

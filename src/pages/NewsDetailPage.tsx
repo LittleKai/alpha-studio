@@ -5,6 +5,12 @@ import { getArticleBySlug, type Article } from '../services/articleService';
 import SEOHead from '../components/ui/SEOHead';
 import { localizedText } from '../utils/localized';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
+import { buildBreadcrumbJsonLd } from '../utils/seoMeta';
+
+const validIsoDate = (value?: string) => {
+    const date = value ? new Date(value) : null;
+    return date && !Number.isNaN(date.getTime()) ? date.toISOString() : undefined;
+};
 
 export default function NewsDetailPage() {
     const { slug } = useParams<{ slug: string }>();
@@ -61,7 +67,7 @@ export default function NewsDetailPage() {
                 ogImage={article.thumbnail}
                 ogType="article"
                 path={`/news/${slug}`}
-                jsonLd={{
+                jsonLd={[{
                     '@context': 'https://schema.org',
                     '@type': 'Article',
                     headline: localizedText(article.title, language),
@@ -73,8 +79,10 @@ export default function NewsDetailPage() {
                         '@type': 'Organization',
                         name: 'Alpha Studio',
                         logo: { '@type': 'ImageObject', url: 'https://giaiphapsangtao.com/alpha-logo-2.png' }
-                    }
-                }}
+                    },
+                    ...(validIsoDate(article.createdAt) ? { datePublished: validIsoDate(article.createdAt), dateModified: validIsoDate(article.updatedAt || article.createdAt) } : {}),
+                    mainEntityOfPage: `https://giaiphapsangtao.com/news/${slug}`,
+                }, buildBreadcrumbJsonLd([{ name: t('common.home'), path: '/' }, { name: t('landing.nav.news'), path: '/news' }, { name: localizedText(article.title, language), path: `/news/${slug}` }])]}
             />
             <article className="max-w-4xl mx-auto px-6 py-12">
                 {/* Back button */}

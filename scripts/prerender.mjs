@@ -25,10 +25,11 @@ const PREVIEW_PORT = 4173;
 async function getDynamicRoutes() {
     const routes = [];
     try {
-        const [coursesRes, aboutRes, servicesRes] = await Promise.all([
+        const [coursesRes, aboutRes, servicesRes, newsRes] = await Promise.all([
             fetch(`${BACKEND}/courses?status=published&limit=200&sort=-createdAt`),
             fetch(`${BACKEND}/articles?category=about&limit=100`),
-            fetch(`${BACKEND}/articles?category=services&limit=100`)
+            fetch(`${BACKEND}/articles?category=services&limit=100`),
+            fetch(`${BACKEND}/articles?category=news&limit=100`)
         ]);
 
         if (coursesRes.ok) {
@@ -42,6 +43,19 @@ async function getDynamicRoutes() {
         if (servicesRes.ok) {
             const data = await servicesRes.json();
             (data.data || []).forEach(a => a.slug && routes.push(`/services/${a.slug}`));
+        }
+        if (newsRes.ok) {
+            const data = await newsRes.json();
+            (data.data || []).forEach(a => a.slug && routes.push(`/news/${a.slug}`));
+        }
+
+        for (let page = 1; page <= 100; page += 1) {
+            const response = await fetch(`${BACKEND}/event-library?page=${page}&limit=60`);
+            if (!response.ok) break;
+            const data = await response.json();
+            const items = data.data?.items || data.data || [];
+            items.forEach(item => item.slug && routes.push(`/studio/event-library/${item.slug}`));
+            if (items.length < 60 || page >= (data.pagination?.pages || page)) break;
         }
 
         console.log(`[prerender] Fetched ${routes.length} dynamic routes from backend`);
@@ -57,7 +71,47 @@ function saveHtml(html, route) {
     const normalized = route === '/' ? '/index.html' : `${route}/index.html`;
     const filePath = path.join(DIST, normalized);
     fs.mkdirSync(path.dirname(filePath), { recursive: true });
-    fs.writeFileSync(filePath, html, 'utf-8');
+    fs.writeFileSync(filePath, dedupeSeoHead(html), 'utf-8');
+}
+
+export function dedupeSeoHead(html) {
+    const headEnd = html.indexOf('</head>');
+    if (headEnd < 0) return html;
+    const head = html.slice(0, headEnd);
+    const tail = html.slice(headEnd);
+    const selectors = [
+        { regex: /<title>[\s\S]*?<\/title>/gi, key: () => 'title' },
+        { regex: /<meta\s+[^>]*name="description"[^>]*>/gi, key: () => 'description' },
+        { regex: /<meta\s+[^>]*property="(og:[^"]+)"[^>]*>/gi, key: (match) => match[1] },
+        { regex: /<meta\s+[^>]*name="(twitter:[^"]+)"[^>]*>/gi, key: (match) => match[1] },
+        { regex: /<meta\s+[^>]*name="robots"[^>]*>/gi, key: () => 'robots' },
+        { regex: /<link\s+[^>]*rel="canonical"[^>]*>/gi, key: () => 'canonical' },
+    ];
+    let normalizedHead = head;
+    for (const { regex, key } of selectors) {
+        const matches = [...normalizedHead.matchAll(regex)];
+        const grouped = new Map();
+        matches.forEach((match) => {
+            const group = key(match);
+            const list = grouped.get(group) || [];
+            list.push(match);
+            grouped.set(group, list);
+        });
+        const remove = [];
+        for (const [group, groupMatches] of grouped) {
+            if (groupMatches.length <= 1) continue;
+            let keepIndex = groupMatches.length - 1;
+            if (group === 'title') {
+                const dynamicIndex = groupMatches.findIndex((match) => !match[0].includes('Alpha Studio — AI Academy &amp; Training Hub'));
+                if (dynamicIndex >= 0) keepIndex = dynamicIndex;
+            }
+            remove.push(...groupMatches.filter((_, index) => index !== keepIndex));
+        }
+        for (const match of remove.sort((a, b) => b.index - a.index)) {
+            normalizedHead = normalizedHead.slice(0, match.index) + normalizedHead.slice(match.index + match[0].length);
+        }
+    }
+    return normalizedHead + tail;
 }
 
 // ─── Main ────────────────────────────────────────────────────────────────────
@@ -69,7 +123,7 @@ async function main() {
     }
 
     // 1. Collect routes
-    const staticRoutes = ['/', '/courses', '/about', '/services', '/studio/skills'];
+    const staticRoutes = ['/', '/courses', '/about', '/services', '/news', '/studio', '/studio/ai-skills', '/studio/event-library', '/studio/vietyaku', '/studio/crm', '/studio/vocab'];
     const dynamicRoutes = await getDynamicRoutes();
     
     // Add local skills database slugs to dynamic routes
@@ -85,7 +139,7 @@ async function main() {
             }
             selectedSkills.forEach(s => {
                 if (s.slug) {
-                    dynamicRoutes.push(`/studio/skills/${s.slug}`);
+                    dynamicRoutes.push(`/studio/ai-skills/${s.slug}`);
                 }
             });
             console.log(`[prerender] Added ${selectedSkills.length} dynamic skill routes from skills.json`);
@@ -93,9 +147,6 @@ async function main() {
     } catch (err) {
         console.warn(`[prerender] Could not load local skills database: ${err.message}`);
     }
-
-    // Explicitly add literal '/studio/skills/slug' which is used by the test script
-    dynamicRoutes.push('/studio/skills/slug');
 
     const allRoutes = [...staticRoutes, ...dynamicRoutes];
     console.log(`[prerender] ${allRoutes.length} routes to prerender`);
@@ -115,7 +166,7 @@ async function main() {
     if (process.env.VERCEL || process.env.CI) {
         const chromium = await import('@sparticuz/chromium');
         browser = await puppeteerCore.launch({
-            args: chromium.default.args,
+            args: [...chromium.default.args, '--disable-web-security'],
             defaultViewport: chromium.default.defaultViewport,
             executablePath: await chromium.default.executablePath(),
             headless: chromium.default.headless,
@@ -123,7 +174,7 @@ async function main() {
     } else {
         browser = await puppeteer.launch({
             headless: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+            args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-web-security']
         });
     }
 
@@ -171,7 +222,9 @@ async function main() {
     if (failed > 0) process.exit(1);
 }
 
-main().catch(err => {
-    console.error('[prerender] Fatal:', err);
-    process.exit(1);
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url))) {
+    main().catch(err => {
+        console.error('[prerender] Fatal:', err);
+        process.exit(1);
+    });
+}
