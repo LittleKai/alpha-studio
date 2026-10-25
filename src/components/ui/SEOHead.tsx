@@ -25,7 +25,7 @@ export default function SEOHead({ title, description, ogImage, ogType = 'website
   return (
     <Helmet>
       <title>{meta.fullTitle}</title>
-      <meta name="description" content={description} />
+      <meta name="description" content={meta.description} />
       <meta name="robots" content={meta.robots} />
       <link rel="canonical" href={meta.url} />
       <meta property="og:title" content={meta.fullTitle} />

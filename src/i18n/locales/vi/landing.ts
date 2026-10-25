@@ -19,10 +19,10 @@ export default {
       learnMore: "Giáo trình"
     },
     hero: {
-      badge: "Nền tảng đào tạo AI sự kiện #1",
-      title1: "KHAI PHÁ",
-      title2: "SỨC MẠNH AI",
-      subtitle: "Hệ sinh thái học tập và làm việc AI toàn diện cho Designer sự kiện & Creative Staff. Tích hợp máy chủ GPU RTX 4090 hiệu suất cao.",
+      badge: "Alpha Studio · Thiết kế & dựng hình 3D",
+      title1: "THIẾT KẾ 3D",
+      title2: "TỪ Ý TƯỞNG",
+      subtitle: "Dựng không gian sự kiện từ ảnh tham chiếu, render SketchUp, thiết kế nội thất và dựng kiến trúc từ CAD. Khám phá quy trình và kết quả qua các dự án của Alpha Studio.",
       exploreStudio: "KHÁM PHÁ STUDIO",
       gpuServer: "GPU SERVER",
       videoAlt: "Hành trình sáng tạo sự kiện của Alpha Studio",
@@ -199,8 +199,11 @@ export default {
       viewAll: "Xem tất cả dịch vụ"
     },
     services: {
-      heroTitle: "Dịch Vụ & Sản Phẩm",
-      heroDescription: "Khám phá các dịch vụ và sản phẩm AI tiên tiến của Alpha Studio, được thiết kế cho ngành sự kiện và sáng tạo.",
+      heroTitle: "Dịch vụ thiết kế & dựng hình 3D",
+      heroDescription: "Dựng 3D sự kiện từ ảnh tham chiếu, chuyển SketchUp thành ảnh thực tế, thiết kế nội thất và dựng nhà phố từ CAD. Xem ảnh đầu vào, quy trình và kết quả bàn giao trong từng dự án.",
+      viewProjects: "XEM DỰ ÁN THIẾT KẾ",
+      sendBrief: "Gửi brief thiết kế qua Zalo",
+      projectContact: "Bạn có dự án tương tự? Gửi ảnh tham chiếu hoặc bản vẽ và yêu cầu bàn giao để trao đổi phương án thiết kế.",
       noArticles: "Chưa có dịch vụ nào",
       allCategories: "Tất cả",
       categoryEmpty: "Phân mục này chưa có bài viết",
@@ -221,6 +224,8 @@ export default {
       imageCount: "ảnh",
       openImage: "Nhấn vào ảnh để xem lớn",
       loadingImage: "Đang tải ảnh",
+      zoomIn: "Phóng lớn ảnh",
+      zoomOut: "Thu ảnh vừa màn hình",
       previousImage: "Ảnh trước",
       nextImage: "Ảnh tiếp theo",
       categoryTag: "Phân mục dịch vụ",

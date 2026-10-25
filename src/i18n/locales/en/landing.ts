@@ -19,10 +19,10 @@ export default {
       learnMore: "Syllabus"
     },
     hero: {
-      badge: "#1 AI Event Training Platform",
-      title1: "UNLEASH",
-      title2: "AI POWER",
-      subtitle: "Comprehensive AI learning and working ecosystem for Event Designers & Creative Staff. Integrated with high-performance RTX 4090 GPU servers.",
+      badge: "Alpha Studio · 3D Design & Modelling",
+      title1: "3D DESIGN",
+      title2: "FROM YOUR IDEAS",
+      subtitle: "Event spaces from reference images, SketchUp rendering, furniture design and CAD architectural modelling. Explore Alpha Studio projects, processes and deliverables.",
       exploreStudio: "EXPLORE STUDIO",
       gpuServer: "GPU SERVER",
       videoAlt: "Alpha Studio's event creative journey",
@@ -199,8 +199,11 @@ export default {
       viewAll: "View all services"
     },
     services: {
-      heroTitle: "Services & Products",
-      heroDescription: "Discover Alpha Studio's advanced AI services and products, designed for the event and creative industry.",
+      heroTitle: "3D design & modelling services",
+      heroDescription: "Event 3D from reference images, photoreal SketchUp rendering, furniture design and CAD architectural modelling. Explore the inputs, process and deliverables for each project.",
+      viewProjects: "EXPLORE DESIGN PROJECTS",
+      sendBrief: "Send your design brief via Zalo",
+      projectContact: "Have a similar project? Share reference images or drawings and your required deliverables to discuss a design approach.",
       noArticles: "No services yet",
       allCategories: "All",
       categoryEmpty: "No articles in this category yet",
@@ -221,6 +224,8 @@ export default {
       imageCount: "images",
       openImage: "Click an image to enlarge",
       loadingImage: "Loading image",
+      zoomIn: "Zoom in",
+      zoomOut: "Fit image to screen",
       previousImage: "Previous image",
       nextImage: "Next image",
       categoryTag: "Service Category",

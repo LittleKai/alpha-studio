@@ -2,6 +2,15 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { dedupeSeoHead } from './prerender.mjs';
+import * as prerender from './prerender.mjs';
+
+test('discovers every canonical sitemap route, including skills beyond the first 30', () => {
+    assert.equal(typeof prerender.getSitemapRoutes, 'function');
+    const xml = '<urlset><url><loc>https://giaiphapsangtao.com/</loc></url><url><loc>https://giaiphapsangtao.com/studio/ai-skills/optimization</loc></url></urlset>';
+    assert.deepEqual(prerender.getSitemapRoutes(xml), ['/', '/studio/ai-skills/optimization']);
+    assert.throws(() => prerender.getSitemapRoutes('<html>Unavailable</html>'));
+    assert.throws(() => prerender.getSitemapRoutes('<loc>https://other.example/skills</loc>'));
+});
 
 test('dedupeSeoHead keeps the rendered Helmet tags and removes static duplicates', () => {
     const html = '<head><title>Alpha Studio — AI Academy &amp; Training Hub</title><title>Rendered</title><meta name="description" content="fallback"><meta name="description" content="rendered"><meta property="og:title" content="fallback title"><meta property="og:title" content="rendered title"><meta property="og:description" content="rendered description"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="rendered twitter title"><link rel="canonical" href="https://example.test/"><link rel="canonical" href="https://example.test/page"></head>';

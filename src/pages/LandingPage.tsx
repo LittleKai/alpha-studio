@@ -462,8 +462,8 @@ const LandingPage: React.FC = () => {
     const goToGpuServer = useCallback(() => navigateToProtectedPage('/server'), [navigateToProtectedPage]);
 
     const desc = language === 'vi'
-        ? 'Học AI thực chiến cùng Alpha Studio. Khóa học AI sáng tạo, công cụ AI Studio chuyên nghiệp, và cộng đồng freelancer hàng đầu Việt Nam.'
-        : 'Master AI with Alpha Studio. Creative AI courses, professional AI Studio tools, and Vietnam\'s top freelancer community.';
+        ? 'Thiết kế 3D sự kiện, render SketchUp, nội thất và dựng kiến trúc từ CAD. Xem dự án thực tế của Alpha Studio và gửi brief thiết kế.'
+        : 'Event 3D design, SketchUp rendering, furniture design and CAD architectural modelling. Explore Alpha Studio projects and send your design brief.';
 
     const landingJsonLd = {
         '@context': 'https://schema.org',
@@ -523,7 +523,7 @@ const LandingPage: React.FC = () => {
     return (
         <>
             <SEOHead
-                title="Alpha Studio — AI Academy & Training Hub"
+                title={language === 'vi' ? 'Thiết kế 3D sự kiện, nội thất & kiến trúc | Alpha Studio' : 'Event, Interior & Architectural 3D Design | Alpha Studio'}
                 description={desc}
                 path="/"
                 jsonLd={landingJsonLd}
@@ -531,10 +531,11 @@ const LandingPage: React.FC = () => {
 
             <LandingHero
                 stats={{ courses: courses.length, students: featuredStudents.length, partners: partners.length }}
-                onExploreStudio={goToStudio}
                 onOpenGpuServer={goToGpuServer}
                 quality={videoQuality}
             />
+
+            <ServiceCategoriesSection />
 
             {/* Featured Courses Section */}
             <section className="py-20 border-t border-[var(--border-primary)] relative overflow-hidden bg-[var(--bg-tertiary)]">
@@ -605,9 +606,6 @@ const LandingPage: React.FC = () => {
                     )}
                 </div>
             </section>
-
-            {/* Sản phẩm & dịch vụ — phân mục do admin quản lý, ẩn khi rỗng */}
-            <ServiceCategoriesSection />
 
             {/* Tools Showcase Section — cùng ngôn ngữ thiết kế với hub /studio */}
             <section className="py-20 bg-[var(--bg-primary)] border-t border-[var(--border-primary)] relative overflow-hidden">

@@ -278,7 +278,8 @@ export default function SkillDetailPage() {
   }
 
   const isVi = language === 'vi';
-  const headline = isVi ? skill.headline_vi : skill.headline;
+  const headline = (isVi ? (skill.headline_vi || skill.short_description_vi) : skill.headline)
+    || skill.headline || skill.short_description || skill.name;
   const overview = isVi ? skill.sections.overview_vi : skill.sections.overview;
   const usage = isVi ? skill.sections.usage_vi : skill.sections.usage;
 

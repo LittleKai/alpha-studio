@@ -1,6 +1,16 @@
 export const SITE_URL = 'https://giaiphapsangtao.com';
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/alpha-logo-2.png`;
 
+export function buildSeoDescription(excerpt: string, html: string, fallback: string): string {
+  const text = (excerpt.trim() || html)
+    .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&(nbsp|amp|lt|gt|quot|apos|#39);/gi, (_, entity: string) => ({ nbsp: ' ', amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", '#39': "'" }[entity.toLowerCase()] || ' '))
+    .replace(/\s+/g, ' ').trim();
+  if (!text) return fallback;
+  return text.length <= 170 ? text : `${text.slice(0, 167).replace(/\s+\S*$/, '').trimEnd()}…`;
+}
+
 export type SeoLocale = 'vi' | 'en';
 
 export interface SeoMetaInput {
@@ -36,7 +46,7 @@ export function buildSeoMeta(input: SeoMetaInput): SeoMetaOutput {
   const jsonLd = input.jsonLd ? (Array.isArray(input.jsonLd) ? input.jsonLd : [input.jsonLd]) : [];
   return {
     fullTitle,
-    description: input.description,
+    description: input.description.trim() || input.title,
     url: `${SITE_URL}${path}`,
     image: input.ogImage || DEFAULT_OG_IMAGE,
     ogType: input.ogType || 'website',

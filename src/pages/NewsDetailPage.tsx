@@ -5,7 +5,7 @@ import { getArticleBySlug, type Article } from '../services/articleService';
 import SEOHead from '../components/ui/SEOHead';
 import { localizedText } from '../utils/localized';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
-import { buildBreadcrumbJsonLd } from '../utils/seoMeta';
+import { buildBreadcrumbJsonLd, buildSeoDescription } from '../utils/seoMeta';
 
 const validIsoDate = (value?: string) => {
     const date = value ? new Date(value) : null;
@@ -59,11 +59,12 @@ export default function NewsDetailPage() {
         );
     }
 
+    const description = buildSeoDescription(localizedText(article.excerpt, language), localizedText(article.content, language), localizedText(article.title, language));
     return (
         <div className="min-h-screen bg-[var(--bg-primary)]">
             <SEOHead
                 title={localizedText(article.title, language)}
-                description={localizedText(article.excerpt, language)}
+                description={description}
                 ogImage={article.thumbnail}
                 ogType="article"
                 path={`/news/${slug}`}
@@ -71,7 +72,7 @@ export default function NewsDetailPage() {
                     '@context': 'https://schema.org',
                     '@type': 'Article',
                     headline: localizedText(article.title, language),
-                    description: localizedText(article.excerpt, language),
+                    description,
                     image: article.thumbnail || 'https://giaiphapsangtao.com/alpha-logo-2.png',
                     url: `https://giaiphapsangtao.com/news/${slug}`,
                     author: { '@type': 'Organization', name: 'Alpha Studio' },

@@ -1,6 +1,8 @@
 {
   "version": 2,
   "buildCommand": "npm run build:seo",
+  "outputDirectory": "dist",
+  "proxy": { "entrypoint": "middleware.js" },
   "routes": [
     { "src": "^/event-creative-city/?$", "status": 410 },
     { "src": "^/co-loa-living-spiral(?:/.*)?$", "status": 410 },

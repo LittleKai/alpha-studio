@@ -1,5 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import { buildBreadcrumbJsonLd, buildSeoMeta, SITE_URL } from './seoMeta';
+import * as seo from './seoMeta';
+
+it('derives a readable description from article content without scripts or markup', () => {
+  expect(seo).toHaveProperty('buildSeoDescription');
+  const describe = (seo as any).buildSeoDescription;
+  expect(describe('', '<p>Thiết kế &amp; dựng 3D.</p><script>ignore()</script>', 'Fallback')).toBe('Thiết kế & dựng 3D.');
+  expect(describe('  Mô tả riêng.  ', '<p>Body</p>', 'Fallback')).toBe('Mô tả riêng.');
+  expect(describe('', '<p>&nbsp;</p>', 'Fallback')).toBe('Fallback');
+  expect(describe('', '<p>' + 'Thiết kế '.repeat(80) + '</p>', 'Fallback').length).toBeLessThanOrEqual(170);
+});
 
 describe('buildSeoMeta', () => {
   it('normalizes canonical URL, appends brand suffix, and defaults to index, follow', () => {
@@ -22,6 +32,10 @@ describe('buildSeoMeta', () => {
       noindex: true,
     });
     expect(meta.robots).toBe('noindex, nofollow');
+  });
+
+  it('keeps metadata nonempty when imported content has no description', () => {
+    expect(buildSeoMeta({ title: 'Coach Freem', description: '   ' }).description).toBe('Coach Freem');
   });
 
   it('normalizes single or array jsonLd into array of JSON strings', () => {

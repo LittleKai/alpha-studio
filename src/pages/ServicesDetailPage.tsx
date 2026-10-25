@@ -430,6 +430,10 @@ export default function ServicesDetailPage() {
                 </div>
             </div>
 
+            <aside className="max-w-4xl mx-auto px-6 py-8 text-[var(--text-primary)]">
+                <p className="mb-4">{t('landing.services.projectContact')}</p>
+                <a href="https://zalo.me/0933805525" className="inline-flex px-5 py-3 rounded-xl font-bold bg-[var(--accent-primary)] text-[var(--text-on-accent)]">{t('landing.services.sendBrief')}</a>
+            </aside>
             {preview && (
                 <ImageLightbox
                     src={preview.images[preview.index]}

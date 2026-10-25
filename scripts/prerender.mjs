@@ -18,51 +18,26 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 const BACKEND = process.env.VITE_API_URL || 'https://alpha-studio-backend.fly.dev/api';
-const PREVIEW_PORT = 4173;
+const PREVIEW_PORT = 4174;
 
 // ─── Fetch dynamic routes from backend ──────────────────────────────────────
 
 async function getDynamicRoutes() {
-    const routes = [];
-    try {
-        const [coursesRes, aboutRes, servicesRes, newsRes] = await Promise.all([
-            fetch(`${BACKEND}/courses?status=published&limit=200&sort=-createdAt`),
-            fetch(`${BACKEND}/articles?category=about&limit=100`),
-            fetch(`${BACKEND}/articles?category=services&limit=100`),
-            fetch(`${BACKEND}/articles?category=news&limit=100`)
-        ]);
+    // ponytail: HTML snapshots need a rebuild after publishing; use SSR/ISR if content must update without deployment.
+    const response = await fetch(new URL('/sitemap.xml', BACKEND), { signal: AbortSignal.timeout(60000), headers: { 'Cache-Control': 'no-cache' } });
+    if (!response.ok) throw new Error(`Sitemap discovery failed: HTTP ${response.status}`);
+    return getSitemapRoutes(await response.text());
+}
 
-        if (coursesRes.ok) {
-            const data = await coursesRes.json();
-            (data.data || []).forEach(c => c.slug && routes.push(`/courses/${c.slug}`));
-        }
-        if (aboutRes.ok) {
-            const data = await aboutRes.json();
-            (data.data || []).forEach(a => a.slug && routes.push(`/about/${a.slug}`));
-        }
-        if (servicesRes.ok) {
-            const data = await servicesRes.json();
-            (data.data || []).forEach(a => a.slug && routes.push(`/services/${a.slug}`));
-        }
-        if (newsRes.ok) {
-            const data = await newsRes.json();
-            (data.data || []).forEach(a => a.slug && routes.push(`/news/${a.slug}`));
-        }
-
-        for (let page = 1; page <= 100; page += 1) {
-            const response = await fetch(`${BACKEND}/event-library?page=${page}&limit=60`);
-            if (!response.ok) break;
-            const data = await response.json();
-            const items = data.data?.items || data.data || [];
-            items.forEach(item => item.slug && routes.push(`/studio/event-library/${item.slug}`));
-            if (items.length < 60 || page >= (data.pagination?.pages || page)) break;
-        }
-
-        console.log(`[prerender] Fetched ${routes.length} dynamic routes from backend`);
-    } catch (err) {
-        console.warn(`[prerender] Could not fetch dynamic routes: ${err.message}`);
-    }
-    return routes;
+export function getSitemapRoutes(xml) {
+    const routes = [...xml.matchAll(/<loc>\s*([^<]+)\s*<\/loc>/g)].map(([, value]) => {
+        const url = new URL(value.trim());
+        const decoded = decodeURIComponent(url.pathname);
+        if (url.origin !== 'https://giaiphapsangtao.com' || url.search || url.hash || decoded.includes('\\') || decoded.split('/').some(part => part === '..' || part === '.')) throw new Error(`Invalid sitemap URL: ${value}`);
+        return url.pathname.replace(/\/+$/, '') || '/';
+    });
+    if (!routes.length) throw new Error('Sitemap has no canonical routes');
+    return [...new Set(routes)];
 }
 
 // ─── Save rendered HTML ──────────────────────────────────────────────────────
@@ -101,10 +76,7 @@ export function dedupeSeoHead(html) {
         for (const [group, groupMatches] of grouped) {
             if (groupMatches.length <= 1) continue;
             let keepIndex = groupMatches.length - 1;
-            if (group === 'title') {
-                const dynamicIndex = groupMatches.findIndex((match) => !match[0].includes('Alpha Studio — AI Academy &amp; Training Hub'));
-                if (dynamicIndex >= 0) keepIndex = dynamicIndex;
-            }
+
             remove.push(...groupMatches.filter((_, index) => index !== keepIndex));
         }
         for (const match of remove.sort((a, b) => b.index - a.index)) {
@@ -123,32 +95,10 @@ async function main() {
     }
 
     // 1. Collect routes
-    const staticRoutes = ['/', '/courses', '/about', '/services', '/news', '/studio', '/studio/ai-skills', '/studio/event-library', '/studio/vietyaku', '/studio/crm', '/studio/vocab'];
+    const staticRoutes = ['/404'];
     const dynamicRoutes = await getDynamicRoutes();
     
-    // Add local skills database slugs to dynamic routes
-    try {
-        const skillsPath = path.join(ROOT, 'public', 'data', 'skills.json');
-        if (fs.existsSync(skillsPath)) {
-            const skills = JSON.parse(fs.readFileSync(skillsPath, 'utf-8'));
-            // Prerender first 30 dynamic skill routes + firecrawl
-            const selectedSkills = skills.slice(0, 30);
-            if (!selectedSkills.some(s => s.slug === 'firecrawl')) {
-                const firecrawlSkill = skills.find(s => s.slug === 'firecrawl');
-                if (firecrawlSkill) selectedSkills.push(firecrawlSkill);
-            }
-            selectedSkills.forEach(s => {
-                if (s.slug) {
-                    dynamicRoutes.push(`/studio/ai-skills/${s.slug}`);
-                }
-            });
-            console.log(`[prerender] Added ${selectedSkills.length} dynamic skill routes from skills.json`);
-        }
-    } catch (err) {
-        console.warn(`[prerender] Could not load local skills database: ${err.message}`);
-    }
-
-    const allRoutes = [...staticRoutes, ...dynamicRoutes];
+    const allRoutes = [...new Set([...staticRoutes, ...dynamicRoutes])];
     console.log(`[prerender] ${allRoutes.length} routes to prerender`);
 
     // 2. Start Vite preview server
@@ -166,7 +116,7 @@ async function main() {
     if (process.env.VERCEL || process.env.CI) {
         const chromium = await import('@sparticuz/chromium');
         browser = await puppeteerCore.launch({
-            args: [...chromium.default.args, '--disable-web-security'],
+            args: chromium.default.args,
             defaultViewport: chromium.default.defaultViewport,
             executablePath: await chromium.default.executablePath(),
             headless: chromium.default.headless,
@@ -174,49 +124,61 @@ async function main() {
     } else {
         browser = await puppeteer.launch({
             headless: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-web-security']
+            args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
         });
     }
 
     let success = 0;
     let failed = 0;
 
-    for (const route of allRoutes) {
-        try {
+    let cursor = 0;
+    const apiResponses = new Map();
+    try {
+        await Promise.all(Array.from({ length: 4 }, async () => {
             const page = await browser.newPage();
-
-            // Block fonts/images/media to speed up rendering
             await page.setRequestInterception(true);
-            page.on('request', req => {
-                if (['font', 'image', 'media'].includes(req.resourceType())) {
-                    req.abort();
-                } else {
-                    req.continue();
+            page.on('request', async req => {
+                if (['font', 'image', 'media'].includes(req.resourceType()) || !['GET', 'HEAD', 'OPTIONS'].includes(req.method())) req.abort();
+                else if (req.method() === 'OPTIONS' && req.url().startsWith(`${BACKEND}/`)) await req.respond({ status: 204, headers: { 'access-control-allow-origin': '*', 'access-control-allow-methods': 'GET, HEAD, OPTIONS', 'access-control-allow-headers': 'content-type, authorization' } });
+                else if (req.method() === 'GET' && req.url().startsWith(`${BACKEND}/`)) {
+                    // Fetch public build data once, including StrictMode's duplicate requests.
+                    try {
+                        if (!apiResponses.has(req.url())) apiResponses.set(req.url(), fetch(req.url(), { signal: AbortSignal.timeout(20000) }).then(async response => {
+                            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                            return { status: response.status, contentType: response.headers.get('content-type') || 'application/json', body: Buffer.from(await response.arrayBuffer()), headers: { 'access-control-allow-origin': '*' } };
+                        }));
+                        await req.respond(await apiResponses.get(req.url()));
+                    } catch (error) {
+                        apiResponses.delete(req.url());
+                        console.error(`[prerender] API ${new URL(req.url()).pathname}: ${error.message}`);
+                        await req.respond({ status: 502, body: '{}', headers: { 'access-control-allow-origin': '*' } });
+                    }
                 }
+                else req.continue();
             });
-
-            await page.goto(`http://localhost:${PREVIEW_PORT}${route}`, {
-                waitUntil: 'networkidle0',
-                timeout: 30000
-            });
-
-            // Extra wait for React async renders
-            await new Promise(r => setTimeout(r, 300));
-
-            const html = await page.content();
-            saveHtml(html, route);
+            while (cursor < allRoutes.length) {
+                const route = allRoutes[cursor++];
+                try {
+                    const isSkill = route.startsWith('/studio/ai-skills/');
+                    await page.goto(`http://localhost:${PREVIEW_PORT}${route}`, { waitUntil: isSkill ? 'domcontentloaded' : 'networkidle0', timeout: 30000 });
+                    await page.waitForFunction(expected => {
+                        const canonical = document.querySelector('link[rel="canonical"]');
+                        return canonical && new URL(canonical.href).pathname.replace(/\/+$/, '') === expected.replace(/\/+$/, '') && document.querySelector('h1')?.textContent?.trim();
+                    }, { timeout: 30000, polling: 100 }, route);
+                    saveHtml(await page.content(), route);
+                    success++;
+                    if (success % 100 === 0 || !isSkill) console.log(`[prerender] ✓ ${route} (${success}/${allRoutes.length})`);
+                } catch (err) {
+                    console.warn(`[prerender] ✗ ${route} — ${err.message}`);
+                    failed++;
+                }
+            }
             await page.close();
-
-            console.log(`[prerender] ✓ ${route}`);
-            success++;
-        } catch (err) {
-            console.warn(`[prerender] ✗ ${route} — ${err.message}`);
-            failed++;
-        }
+        }));
+    } finally {
+        await browser.close();
+        server.httpServer.close();
     }
-
-    await browser.close();
-    server.httpServer.close();
 
     console.log(`\n[prerender] Done — ${success} succeeded, ${failed} failed`);
     if (failed > 0) process.exit(1);

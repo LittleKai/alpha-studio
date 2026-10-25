@@ -144,10 +144,10 @@ export default function ServicesPage() {
     return (
         <div className="min-h-screen bg-[var(--bg-primary)]">
             <SEOHead
-                title={language === 'vi' ? 'Dịch Vụ & Sản Phẩm — Alpha Studio' : 'Services & Products — Alpha Studio'}
+                title={language === 'vi' ? 'Thiết kế 3D sự kiện, render SketchUp & kiến trúc | Alpha Studio' : 'Event 3D Design, SketchUp Rendering & Architecture | Alpha Studio'}
                 description={language === 'vi'
-                    ? 'Khám phá các dịch vụ và sản phẩm AI từ Alpha Studio — giải pháp AI sáng tạo cho doanh nghiệp và cá nhân.'
-                    : 'Explore AI services and products from Alpha Studio — creative AI solutions for businesses and individuals.'}
+                    ? 'Dựng 3D sự kiện từ ảnh, render SketchUp, thiết kế nội thất và dựng nhà phố từ CAD. Xem dự án, ảnh đầu vào và kết quả bàn giao của Alpha Studio.'
+                    : 'Event 3D from reference images, SketchUp rendering, furniture design and CAD architectural modelling. See Alpha Studio projects and deliverables.'}
                 path="/services"
             />
 
@@ -175,6 +175,9 @@ export default function ServicesPage() {
                     <p className="mt-4 max-w-2xl text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
                         {t('landing.services.heroDescription')}
                     </p>
+                    <a href="https://zalo.me/0933805525" className="inline-flex mt-5 px-5 py-3 rounded-xl font-bold bg-[var(--accent-primary)] text-[var(--text-on-accent)]">
+                        {t('landing.services.sendBrief')}
+                    </a>
 
                     <div className="mt-8 flex flex-wrap gap-3 text-sm">
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)] shadow-sm backdrop-blur-sm">

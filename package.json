@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:seo": "npm run build && node scripts/prerender.mjs",
+    "build:seo": "npm run build && node scripts/prerender.mjs && node scripts/seo-smoke.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",

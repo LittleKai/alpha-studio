@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from '../../i18n/context';
 import { useTheme } from '../../theme/context';
 import Reveal, { RevealItem } from '../motion/Reveal';
@@ -10,14 +11,13 @@ import type { AssetQuality } from '../../services/cloudinaryAssets';
 
 interface LandingHeroProps {
     stats: { courses: number; students: number; partners: number };
-    onExploreStudio: () => void;
     onOpenGpuServer: () => void;
     quality?: AssetQuality;
 }
 
 const JOURNEY_KEYS = ['step1', 'step2', 'step3', 'step4', 'step5', 'step6', 'step7'] as const;
 
-const LandingHero: React.FC<LandingHeroProps> = ({ stats, onExploreStudio, onOpenGpuServer, quality }) => {
+const LandingHero: React.FC<LandingHeroProps> = ({ stats, onOpenGpuServer, quality }) => {
     const { t } = useTranslation();
     const { theme } = useTheme();
     const [activeClip, setActiveClip] = useState(0);
@@ -80,12 +80,12 @@ const LandingHero: React.FC<LandingHeroProps> = ({ stats, onExploreStudio, onOpe
 
                     <RevealItem y={15} className="flex flex-wrap gap-4 pt-1">
                         <HoverSpring scale={1.03} y={-2} className="inline-block">
-                            <button
-                                onClick={onExploreStudio}
+                            <Link
+                                to="/services"
                                 className="py-3.5 px-8 font-black text-xs md:text-sm rounded-full bg-[var(--accent-primary)] text-[var(--text-on-accent)] tracking-wider uppercase transition-all duration-300 cursor-pointer shadow-[0_12px_32px_var(--accent-shadow)] hover:bg-[var(--accent-primary-hover)] active:scale-[0.98]"
                             >
-                                {t('landing.hero.exploreStudio')}
-                            </button>
+                                {t('landing.services.viewProjects')}
+                            </Link>
                         </HoverSpring>
                         <HoverSpring scale={1.03} y={-2} className="inline-block">
                             <button
