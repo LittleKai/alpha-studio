@@ -175,6 +175,9 @@ export default function ServicesPage() {
                     <p className="mt-4 max-w-2xl text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
                         {t('landing.services.heroDescription')}
                     </p>
+                    <p className="mt-4 max-w-2xl text-sm text-[var(--text-secondary)] leading-relaxed">
+                        {t('landing.services.projectContact')}
+                    </p>
                     <a href="https://zalo.me/0933805525" className="inline-flex mt-5 px-5 py-3 rounded-xl font-bold bg-[var(--accent-primary)] text-[var(--text-on-accent)]">
                         {t('landing.services.sendBrief')}
                     </a>

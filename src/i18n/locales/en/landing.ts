@@ -203,7 +203,7 @@ export default {
       heroDescription: "Event 3D from reference images, photoreal SketchUp rendering, furniture design and CAD architectural modelling. Explore the inputs, process and deliverables for each project.",
       viewProjects: "EXPLORE DESIGN PROJECTS",
       sendBrief: "Send your design brief via Zalo",
-      projectContact: "Have a similar project? Share reference images or drawings and your required deliverables to discuss a design approach.",
+      projectContact: "Share reference images or CAD/PDF files, known dimensions, required deliverables and your target date. Alpha Studio will discuss the scope, quotation and schedule for your project brief.",
       noArticles: "No services yet",
       allCategories: "All",
       categoryEmpty: "No articles in this category yet",

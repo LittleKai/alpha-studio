@@ -203,7 +203,7 @@ export default {
       heroDescription: "Dựng 3D sự kiện từ ảnh tham chiếu, chuyển SketchUp thành ảnh thực tế, thiết kế nội thất và dựng nhà phố từ CAD. Xem ảnh đầu vào, quy trình và kết quả bàn giao trong từng dự án.",
       viewProjects: "XEM DỰ ÁN THIẾT KẾ",
       sendBrief: "Gửi brief thiết kế qua Zalo",
-      projectContact: "Bạn có dự án tương tự? Gửi ảnh tham chiếu hoặc bản vẽ và yêu cầu bàn giao để trao đổi phương án thiết kế.",
+      projectContact: "Gửi ảnh tham chiếu hoặc CAD/PDF, kích thước đã biết, đầu ra cần nhận và thời hạn mong muốn. Alpha Studio sẽ trao đổi phạm vi, báo giá và tiến độ theo brief của từng dự án.",
       noArticles: "Chưa có dịch vụ nào",
       allCategories: "Tất cả",
       categoryEmpty: "Phân mục này chưa có bài viết",
