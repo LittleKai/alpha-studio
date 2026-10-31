@@ -43,6 +43,11 @@
    measurePts:[],
    creaseEnabled:false,
    allToolsVisible:false,
+   blenderUI:true,
+   tShelfHidden:false,
+   openMenuKey:null,
+   collapsedBlocks:new Set(),
+   allBlocksCollapsed:false,
    wind:{speed:15,cd:1.4,baseDepth:1.2,selfKgPerM2:38}
   };
   S.stageAssets16=A;
@@ -59,8 +64,9 @@
     document.body.classList.remove('lift-dock-open');
     const lf=$('stageLift124');if(lf)lf.hidden=true;
    }
-   if(except!=='m131' && document.body.classList.contains('m131-open')){
-    document.body.classList.remove('m131-open');
+   if(except!=='m131' && (document.body.classList.contains('m131-open')||document.body.classList.contains('m131-edit-open'))){
+    S.manual131?.close?.();
+    document.body.classList.remove('m131-open','m131-edit-open');
     const mp=$('m131Panel');if(mp)mp.hidden=true;
    }
    if(except!=='l132' && document.body.classList.contains('l132-open')){
@@ -386,6 +392,7 @@
      const shift=[-(min[0]+max[0])*.5,(b.min?.[1]||0)-min[1],1.2-(min[2]+max[2])*.5];
      for(const m of parsed.meshes){
       transformMesh(m,M.translate(shift));
+      if(m._gltfAnim?.sceneAnim)m._gltfAnim.sceneAnim.modelShift=shift.slice();
       m.name='CC0 '+r.title+' / '+m.name;
       engine.stage.push(m);
      }
@@ -432,6 +439,7 @@
 
   function renderOverlay(){
    requestAnimationFrame(renderOverlay);
+   drawAxisGizmo16();
    if(!g)return;
    const w=overlay.clientWidth,h=overlay.clientHeight;
    if(w<2||h<2)return;
@@ -526,6 +534,8 @@
       toast('Đã chọn điểm 1. Click điểm thứ 2 trên sân khấu để đo.');
      }
      paint();
+     e.stopImmediatePropagation();
+     e.preventDefault();
     }
    }
   },true);
@@ -659,10 +669,10 @@
      </div>
      <button data-act16="close" class="btn small" title="Quay lại Inspector">← Đóng</button>
     </div>
-    <div class="v16-tabs">
-     <button data-tab16="catalog" class="${A.tab==='catalog'?'active':''}">Đạo cụ 3D</button>
-     <button data-tab16="search" class="${A.tab==='search'?'active':''}">Tìm Asset CC0</button>
-     <button data-tab16="tools" class="${A.tab==='tools'?'active':''}">Đo 3D & Gió</button>
+    <div class="v16-tabs" role="tablist" aria-label="Phân nhóm Thư viện Đạo cụ">
+     <button role="tab" aria-selected="${A.tab==='catalog'}" data-tab16="catalog" class="${A.tab==='catalog'?'active':''}">Đạo cụ 3D</button>
+     <button role="tab" aria-selected="${A.tab==='search'}" data-tab16="search" class="${A.tab==='search'?'active':''}">Tìm Asset CC0</button>
+     <button role="tab" aria-selected="${A.tab==='tools'}" data-tab16="tools" class="${A.tab==='tools'?'active':''}">Đo 3D & Gió</button>
     </div>
     <div class="v16-content">${bodyHtml}</div>
    `;
@@ -807,6 +817,546 @@
   if(S.mount136?.open){const baseMtOpen=S.mount136.open;S.mount136.open=function(...a){if(A.isOpen)close();return baseMtOpen.apply(this,a);};}
   if(S.laserShow?.open){const baseLsOpen=S.laserShow.open;S.laserShow.open=function(...a){if(A.isOpen)close();return baseLsOpen.apply(this,a);};}
 
+  // Blender 5.1.2 Workspace Architecture:
+  // - Right Sidebar Split: Top Outliner (.left-panel) + Bottom Properties (.right-panel + vertical #v16PropRail)
+  // - Floating Left Viewport Tool Shelf (#v16TShelf, toggle via 'T')
+  // - Floating Right 3D Axis Gizmo & Camera Pills (#v16ViewportNav)
+  // - Compact Viewport Header Dropdown Menus (#v16HeaderMenus + #v16MenuPopover)
+  // - Collapsible Accordions for Outliner & Properties sections
+  const PROP_TABS16=[
+   {key:'inspector',icon:'🎛',label:'Inspector (Thông số đối tượng & Sân khấu)'},
+   {key:'v16Asset',icon:'📦',label:'Đạo cụ 3D · Tìm CC0 · Đo 3D & Gió TCVN'},
+   {key:'pro127',icon:'💡',label:'Fixture Desk DMX / OFL 16-bit'},
+   {key:'matrix143',icon:'🎆',label:'LED Matrix Contour · 35 FX'},
+   {key:'fx141',icon:'⚡',label:'Đa đèn FX Timecode (Par / Line / Laser Bar)'},
+   {key:'laser135',icon:'🔦',label:'Laser Show ILDA (.ild)'},
+   {key:'mount136',icon:'🧲',label:'Stage Mount (Gắn đèn 6 mặt khối)'},
+   {key:'stageLift124',icon:'🏗',label:'Bàn nâng chữ X (Stage & Scissor Lift)'},
+   {key:'m131',icon:'🕺',label:'Ghi tay Biên đạo 3D (Manual Choreo Take)'},
+   {key:'l132',icon:'⏺',label:'Ghi tay Ánh sáng (Manual Light Take)'}
+  ];
+
+  const TSHELF_TOOLS16=[
+   {key:'select',icon:'↖',title:'Chọn & Xoay khung nhìn 3D (Select / Orbit)'},
+   {key:'move',icon:'✥',title:'Di chuyển đối tượng / cụm (Move)'},
+   {key:'rotate',icon:'↻',title:'Xoay đối tượng / cụm (Rotate)'},
+   {key:'quad',icon:'⬚',title:'Vẽ màn LED 4 góc trên model (+ 4 góc)'},
+   {key:'measure',icon:'📏',title:'Thước đo khoảng cách 2 điểm 3D'},
+   {key:'crease',icon:'◫',title:'Bật/tắt viền kỹ thuật Crease 28° (Wireframe)'},
+   {key:'asset',icon:'📦',title:'Thêm Đạo cụ Sân khấu 3D & Tìm CC0'},
+   {key:'lift',icon:'🏗',title:'Khoanh vùng Bàn nâng chữ X (Stage Lift)'},
+   {key:'fixture',icon:'💡',title:'Bàn điều khiển Đèn DMX / Nhận diện đèn'},
+   {key:'matrix',icon:'🎆',title:'Quét viền LED Matrix 35 FX'},
+   {key:'laser',icon:'🔦',title:'Thiết kế & Đặt tia Laser ILDA'}
+  ];
+
+  function activeDockKey16(){
+   const cl=document.body.classList;
+   if(A.isOpen || cl.contains('v16-asset-open'))return 'v16Asset';
+   if(cl.contains('matrix143-open'))return 'matrix143';
+   if(cl.contains('fx141-open'))return 'fx141';
+   if(cl.contains('laser135-open'))return 'laser135';
+   if(cl.contains('mount136-open'))return 'mount136';
+   if(cl.contains('lift-dock-open'))return 'stageLift124';
+   if(cl.contains('m131-edit-open')||cl.contains('m131-open'))return 'm131';
+   if(cl.contains('pro127-dock-open')){
+    const l132=$('l132Panel');
+    if(l132 && !l132.hidden && A._lastDock==='l132')return 'l132';
+    return 'pro127';
+   }
+   return 'inspector';
+  }
+
+  function openDockByKey16(key){
+   if(state.presenting){toast('Thoát chế độ Trình diễn để mở bảng công cụ.');return;}
+   const cur=activeDockKey16();
+   if(key==='inspector' || (cur===key && key!=='inspector')){
+    closeAllDocks16('inspector');
+    A._lastDock='inspector';
+    syncBlenderState16();
+    return;
+   }
+   A._lastDock=key;
+   closeAllDocks16(key==='l132'?'pro127':key);
+   if(key==='v16Asset')open('catalog');
+   else if(key==='pro127'){
+    const btn=document.querySelector('#pro127bar [data-pro127="fixture"]');
+    if(btn)btn.click();else S.openProLights126?.();
+   }else if(key==='matrix143'){
+    if(S.matrix143?.open)S.matrix143.open();else $('matrix143OpenBtn')?.click();
+   }else if(key==='fx141'){
+    if(S.fx141?.open)S.fx141.open();else $('fx141OpenBtn')?.click();
+   }else if(key==='laser135'){
+    if(S.laserShow?.open)S.laserShow.open();else $('laser135TopBtn')?.click();
+   }else if(key==='mount136'){
+    if(S.mount136?.open)S.mount136.open();else $('mount136TopBtn')?.click();
+   }else if(key==='stageLift124'){
+    if(S.stageLift?.open)S.stageLift.open();else $('v124LiftBtn')?.click();
+   }else if(key==='m131'){
+    if(S.manual131?.open)S.manual131.open();else document.querySelector('.m131-launch')?.click();
+   }else if(key==='l132'){
+    if(S.lightTake132?.launch)S.lightTake132.launch();else $('l132Launch')?.click();
+   }
+   syncBlenderState16();
+  }
+  S.openDockByKey16=openDockByKey16;
+
+  function triggerTShelfTool16(key){
+   if(key==='select'){
+    A.measureMode=false;A.placeMode=false;
+    document.querySelector('#dirToolbar [data-tool-mode="navigate"]')?.click();
+    paint();
+   }else if(key==='move'){
+    document.querySelector('#dirToolbar [data-tool-mode="move"]')?.click();
+   }else if(key==='rotate'){
+    document.querySelector('#dirToolbar [data-tool-mode="rotate"]')?.click();
+   }else if(key==='quad'){
+    $('drawQuad')?.click();
+   }else if(key==='measure'){
+    A.measureMode=!A.measureMode;
+    if(A.measureMode){A.placeMode=false;toast('Thước đo 3D: Click 2 điểm bất kỳ trên sân khấu 3D để đo khoảng cách.');}
+    paint();
+   }else if(key==='crease'){
+    A.creaseEnabled=!A.creaseEnabled;
+    paint();
+   }else if(key==='asset'){
+    openDockByKey16('v16Asset');
+   }else if(key==='lift'){
+    openDockByKey16('stageLift124');
+   }else if(key==='fixture'){
+    openDockByKey16('pro127');
+   }else if(key==='matrix'){
+    openDockByKey16('matrix143');
+   }else if(key==='laser'){
+    openDockByKey16('laser135');
+   }
+   syncBlenderState16();
+  }
+
+  function buildMenuItems16(menuKey){
+   if(menuKey==='view')return [
+    {label:'⌖ Toàn cảnh sân khấu (Frame All)',kbd:'F',run:()=>$('overviewBtn')?.click()},
+    {label:'🎥 Góc nhìn Chính diện (Front)',kbd:'1',run:()=>document.querySelector('#cameraBar [data-camera="front"]')?.click()},
+    {label:'🎥 Góc nhìn Phối cảnh 3/4 (ISO)',kbd:'3',run:()=>document.querySelector('#cameraBar [data-camera="iso"]')?.click()},
+    {label:'🎥 Góc nhìn Cạnh bên (Side)',kbd:'7',run:()=>document.querySelector('#cameraBar [data-camera="side"]')?.click()},
+    {label:'🎥 Góc nhìn Từ trên xuống (Top)',kbd:'9',run:()=>document.querySelector('#cameraBar [data-camera="top"]')?.click()},
+    {sep:true},
+    {label:'🔒 Khóa / Mở khóa góc Camera',kbd:'',run:()=>$('lockCameraBtn')?.click()},
+    {label:'◫ Viền kỹ thuật Crease 28° (Wireframe)',kbd:'',run:()=>{A.creaseEnabled=!A.creaseEnabled;paint();syncBlenderState16();}},
+    {label:'🛠 Ẩn / Hiện kệ công cụ trái (T-Shelf)',kbd:'T',run:()=>toggleTShelf16()},
+    {label:'📋 Ẩn / Hiện cột phải (Outliner & Properties)',kbd:'N',run:()=>$('focusBtn')?.click()},
+    {label:'☰ Bật / Tắt thanh công cụ ngang đầy đủ',kbd:'',run:()=>$('v16AllToolsBtn')?.click()}
+   ];
+   if(menuKey==='add')return [
+    {label:'📥 Nhập mô hình sân khấu (.GLB / .DAE / .OBJ)',kbd:'',run:()=>$('importModel')?.click()},
+    {label:'🏛 Nạp sân khấu mẫu (Demo Stage)',kbd:'',run:()=>$('demoBtn')?.click()},
+    {label:'🎬 Thêm Video / Ảnh vào Thư viện Media',kbd:'',run:()=>$('addMedia')?.click()},
+    {sep:true},
+    ...Object.entries(CATALOG).map(([k,v])=>({label:`📦 + ${v.name}`,kbd:v.label,run:()=>addCatalogItem(k)})),
+    {sep:true},
+    {label:'🌐 Tìm Asset 3D & Texture CC0 (Poly Haven / Wikimedia)',kbd:'CC0',run:()=>open('search')},
+    {label:'🕺 Thêm Nhân vật 3D (Cast Performers)',kbd:'',run:()=>$('v07Cast')?.click()}
+   ];
+   if(menuKey==='stage')return [
+    {label:'⚡ Tự động nhận diện các màn hình LED',kbd:'',run:()=>$('autoDetect')?.click()},
+    {label:'⬚ Vẽ màn LED 4 góc trên model',kbd:'',run:()=>$('drawQuad')?.click()},
+    {label:'🔧 Sửa mapping 3D bám mặt trước',kbd:'',run:()=>$('repairMapping')?.click()},
+    {label:'📐 Hệ quy chiếu mét thật (Spatial V0.4)',kbd:'',run:()=>$('spatialMapBtn')?.click()},
+    {sep:true},
+    {label:'🖥 Quản lý danh sách màn LED',kbd:'',run:()=>$('ledManagerBtn')?.click()},
+    {label:'🎨 Pixel Studio (Đóng gói Atlas 4K)',kbd:'',run:()=>$('atlasBtn')?.click()},
+    {label:'🏗 Bàn nâng chữ X (Stage & Scissor Lift)',kbd:'',run:()=>openDockByKey16('stageLift124')},
+    {label:'📏 Thước đo khoảng cách 2 điểm 3D',kbd:'',run:()=>triggerTShelfTool16('measure')},
+    {label:'🌬 Tính tải gió & Đối trọng TCVN 2737:2023',kbd:'',run:()=>open('tools')}
+   ];
+   if(menuKey==='lighting')return [
+    {label:'💡 Bàn điều khiển Đèn DMX / OFL (Fixture Desk)',kbd:'',run:()=>openDockByKey16('pro127')},
+    {label:'🎆 Hệ thống LED Matrix 35 FX (Quét viền 3D)',kbd:'',run:()=>openDockByKey16('matrix143')},
+    {label:'✏ Vẽ viền LED Matrix trực tiếp trên 3D',kbd:'',run:()=>$('matrix148DrawBtn')?.click()},
+    {label:'⚡ Đa đèn FX Timecode (Par / Line / Laser Bar)',kbd:'',run:()=>openDockByKey16('fx141')},
+    {label:'🔦 Thiết kế & Phát tia Laser ILDA (.ild)',kbd:'',run:()=>openDockByKey16('laser135')},
+    {label:'🧲 Gắn đèn theo 6 mặt khối (Stage Mount)',kbd:'',run:()=>openDockByKey16('mount136')},
+    {sep:true},
+    {label:'🎵 Phân tích nhạc & Tự lập kịch bản đèn (FX9)',kbd:'',run:()=>$('lxToolbar')?.click()},
+    {label:'⏺ Ghi tay thao tác ánh sáng (Light Take)',kbd:'',run:()=>openDockByKey16('l132')}
+   ];
+   if(menuKey==='show')return [
+    {label:'🎞 Mở / Đóng SHOW Timeline (Sequencer đa làn)',kbd:'',run:()=>$('v07Timeline')?.click()},
+    {label:'⏱ Bàn điều khiển Show Timecode SMPTE',kbd:'',run:()=>$('tc134EditBtn')?.click()},
+    {label:'📋 Quản lý tiết mục (Show Rundown V10)',kbd:'',run:()=>$('rundownToggle10')?.click()},
+    {label:'🕺 Biên đạo 3D khớp xương IK (12 động tác)',kbd:'',run:()=>$('choreoToggle11')?.click()},
+    {label:'🕺 Ghi tay chuyển động nhân vật (Manual Take)',kbd:'',run:()=>openDockByKey16('m131')},
+    {sep:true},
+    {label:'🎛 Bàn trộn LIVE VJ & Audio Mixer',kbd:'',run:()=>$('vjToggle')?.click()},
+    {label:'▶ Bắt đầu Trình diễn toàn màn hình',kbd:'',run:()=>$('presentBtn')?.click()}
+   ];
+   return [];
+  }
+
+  function closeHeaderMenu16(){
+   A.openMenuKey=null;
+   const pop=$('v16MenuPopover');
+   if(pop)pop.hidden=true;
+   document.querySelectorAll('#v16HeaderMenus button[data-v16menu]').forEach(b=>b.classList.remove('active'));
+  }
+
+  function openHeaderMenu16(menuKey,anchorBtn){
+   const pop=$('v16MenuPopover');
+   if(!pop||!anchorBtn)return;
+   if(A.openMenuKey===menuKey && !pop.hidden){closeHeaderMenu16();return;}
+   A.openMenuKey=menuKey;
+   document.querySelectorAll('#v16HeaderMenus button[data-v16menu]').forEach(b=>b.classList.toggle('active',b.dataset.v16menu===menuKey));
+   const items=buildMenuItems16(menuKey);
+   pop.innerHTML=items.map((it,idx)=>it.sep?'<div class="v16-menu-sep"></div>':`<button type="button" class="v16-menu-item" data-v16mitem="${idx}"><span>${esc16(it.label)}</span>${it.kbd?`<kbd>${esc16(it.kbd)}</kbd>`:''}</button>`).join('');
+   pop._items=items;
+   pop.hidden=false;
+   const rect=anchorBtn.getBoundingClientRect();
+   const left=Math.min(window.innerWidth-270,Math.max(8,rect.left));
+   pop.style.left=left+'px';
+   pop.style.top=(rect.bottom+4)+'px';
+  }
+
+  function toggleTShelf16(force){
+   A.tShelfHidden=force!==undefined?!force:!A.tShelfHidden;
+   document.body.classList.toggle('v16-hide-tshelf',A.tShelfHidden);
+   syncBlenderState16();
+  }
+
+  // Interactive 3D Axis Gizmo (X Red, Y Green, Z Blue) synced with engine.camera
+  let lastGizmoYaw=NaN, lastGizmoPitch=NaN;
+  function drawAxisGizmo16(){
+   const cvs=$('v16AxisGizmo');
+   if(!cvs||!engine?.camera)return;
+   const yaw=engine.camera.yaw||0, pitch=engine.camera.pitch||0;
+   if(Math.abs(yaw-lastGizmoYaw)<0.004 && Math.abs(pitch-lastGizmoPitch)<0.004)return;
+   lastGizmoYaw=yaw; lastGizmoPitch=pitch;
+   const ctx=cvs.getContext('2d');
+   if(!ctx)return;
+   const w=cvs.width, h=cvs.height, cx=w*.5, cy=h*.5, r=21;
+   ctx.clearRect(0,0,w,h);
+   ctx.fillStyle='rgba(13, 21, 34, 0.68)';
+   ctx.beginPath();ctx.arc(cx,cy,27,0,Math.PI*2);ctx.fill();
+   ctx.strokeStyle='rgba(180, 210, 240, 0.16)';
+   ctx.lineWidth=1;ctx.stroke();
+
+   const cyaw=Math.cos(-yaw), syaw=Math.sin(-yaw), cp=Math.cos(pitch), sp=Math.sin(pitch);
+   function rot([x,y,z]){
+    const x1=x*cyaw+z*syaw, z1=-x*syaw+z*cyaw;
+    const y2=y*cp-z1*sp, z2=y*sp+z1*cp;
+    return {x:cx+x1*r, y:cy-y2*r, z:z2};
+   }
+   const axes=[
+    {label:'X',dir:[1,0,0],col:'#ff5370',cam:'side'},
+    {label:'Y',dir:[0,1,0],col:'#4ade80',cam:'top'},
+    {label:'Z',dir:[0,0,1],col:'#38bdf8',cam:'front'},
+    {label:'',dir:[-1,0,0],col:'rgba(255,83,112,0.38)',cam:'side'},
+    {label:'',dir:[0,-1,0],col:'rgba(74,222,128,0.38)',cam:'top'},
+    {label:'',dir:[0,0,-1],col:'rgba(56,189,248,0.38)',cam:'front'}
+   ].map(a=>({...a,p:rot(a.dir)})).sort((a,b)=>a.p.z-b.p.z);
+   cvs._hitAxes=axes;
+
+   for(const a of axes){
+    if(a.label){
+     ctx.strokeStyle=a.col;
+     ctx.lineWidth=1.8;
+     ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(a.p.x,a.p.y);ctx.stroke();
+    }
+    const rad=a.label?6.2:4.0;
+    ctx.fillStyle=a.col;
+    ctx.beginPath();ctx.arc(a.p.x,a.p.y,rad,0,Math.PI*2);ctx.fill();
+    if(a.label){
+     ctx.fillStyle='#06101c';
+     ctx.font='bold 8px Plus Jakarta Sans, Segoe UI, sans-serif';
+     ctx.textAlign='center';ctx.textBaseline='middle';
+     ctx.fillText(a.label,a.p.x,a.p.y+.5);
+    }
+   }
+  }
+
+  function decorateInspectorAccordions16(){
+   const ic=$('inspectorContent');
+   if(!ic)return;
+   // Guard #3: never mutate DOM classes or attributes while user is dragging a range input
+   if(document.activeElement?.type==='range')return;
+   const blocks=[...ic.querySelectorAll('.inspector-block, .spatial-workflow, .binding-panel')];
+   blocks.forEach((blk,idx)=>{
+    const hdr=blk.querySelector(':scope > .block-title, :scope > h3, :scope > .section-kicker, :scope > strong');
+    if(!hdr)return;
+    hdr.classList.add('v16-acc-header');
+    const key=(hdr.textContent||'').trim().slice(0,48)||('blk_'+idx);
+    blk.dataset.v16AccKey=key;
+    const isCollapsed=A.allBlocksCollapsed ? !A.collapsedBlocks.has('__open_'+key) : A.collapsedBlocks.has(key);
+    blk.classList.toggle('v16-collapsed',isCollapsed);
+   });
+  }
+
+  function syncBlenderState16(){
+   document.body.classList.toggle('v16-blender-ui',!!A.blenderUI);
+   document.body.classList.toggle('v16-hide-tshelf',!!A.tShelfHidden);
+   const activeDock=activeDockKey16();
+   document.querySelectorAll('#v16PropRail button[data-prop16]').forEach(b=>{
+    b.classList.toggle('active',b.dataset.prop16===activeDock);
+   });
+   const toolMode=window.director?.mode||'navigate';
+   document.querySelectorAll('#v16TShelf button[data-tshelf16]').forEach(b=>{
+    const k=b.dataset.tshelf16;
+    const on=(k==='select'&&toolMode==='navigate'&&!A.measureMode&&!A.placeMode)||
+     (k==='move'&&toolMode==='move')||
+     (k==='rotate'&&toolMode==='rotate')||
+     (k==='quad'&&!!state.quad)||
+     (k==='measure'&&!!A.measureMode)||
+     (k==='crease'&&!!A.creaseEnabled)||
+     (k==='asset'&&activeDock==='v16Asset')||
+     (k==='lift'&&activeDock==='stageLift124')||
+     (k==='fixture'&&activeDock==='pro127')||
+     (k==='matrix'&&activeDock==='matrix143')||
+     (k==='laser'&&activeDock==='laser135');
+    b.classList.toggle('active',on);
+   });
+   const crBtn=$('v16QuickCreaseBtn');if(crBtn)crBtn.classList.toggle('active',!!A.creaseEnabled);
+   const msBtn=$('v16QuickMeasureBtn');if(msBtn)msBtn.classList.toggle('active',!!A.measureMode);
+   const lkBtn=$('v16NavLockBtn');if(lkBtn)lkBtn.classList.toggle('active',!!engine?.camera?.locked);
+   decorateInspectorAccordions16();
+  }
+
+  function installBlenderUI16(){
+   document.body.classList.add('v16-blender-ui');
+
+   // 1. Outliner compact header & collapsible sections in .left-panel (grid-area: outliner)
+   const lp=document.querySelector('.left-panel');
+   if(lp && !$('v16OutlinerBar')){
+    const ob=document.createElement('div');
+    ob.id='v16OutlinerBar';
+    ob.className='v16-outliner-bar';
+    ob.innerHTML=`
+     <span class="v16-outliner-title">▾ Outliner · Scene Collection</span>
+     <div class="v16-outliner-actions">
+      <button type="button" data-outliner16="import" title="Mở / Thu gọn mục Nhập sân khấu 3D">+ Nhập 3D</button>
+      <button type="button" data-outliner16="media" title="Mở / Thu gọn Thư viện Video LED">+ Media</button>
+     </div>
+    `;
+    lp.prepend(ob);
+    const impSec=lp.querySelector('.import-section');
+    const medSec=lp.querySelector('.media-section');
+    const objSec=lp.querySelector('.object-section');
+    if(impSec){
+     impSec.classList.add('v16-collapsed');
+     const k=impSec.querySelector('.section-kicker');
+     if(k){k.classList.add('v16-acc-header');k.title='Click để đóng / mở mục Nhập mô hình 3D';k.onclick=()=>impSec.classList.toggle('v16-collapsed');}
+    }
+    if(medSec){
+     medSec.classList.add('v16-collapsed');
+     const h=medSec.querySelector('.section-heading');
+     if(h){h.classList.add('v16-acc-header');h.title='Click để đóng / mở Thư viện Video';h.onclick=e=>{if(e.target.closest('button'))return;medSec.classList.toggle('v16-collapsed');};}
+    }
+    if(objSec){
+     const h=objSec.querySelector('.section-heading');
+     if(h){h.classList.add('v16-acc-header');h.title='Click để đóng / mở Cây cấu trúc sân khấu';h.onclick=e=>{if(e.target.closest('button'))return;objSec.classList.toggle('v16-collapsed');};}
+    }
+    ob.addEventListener('click',e=>{
+     const b=e.target.closest('button[data-outliner16]');
+     if(!b)return;
+     if(b.dataset.outliner16==='import'&&impSec){impSec.classList.toggle('v16-collapsed');b.classList.toggle('active',!impSec.classList.contains('v16-collapsed'));}
+     if(b.dataset.outliner16==='media'&&medSec){medSec.classList.toggle('v16-collapsed');b.classList.toggle('active',!medSec.classList.contains('v16-collapsed'));}
+    });
+   }
+
+   // 2. Vertical Properties Icon Rail (#v16PropRail) & Horizontal Splitter in .workspace
+   const ws=document.querySelector('.workspace');
+   if(ws && !$('v16PropRail')){
+    const rail=document.createElement('nav');
+    rail.id='v16PropRail';
+    rail.className='v16-prop-rail';
+    rail.setAttribute('aria-label','Properties Editor Tabs');
+    rail.innerHTML=PROP_TABS16.map(t=>`<button type="button" data-prop16="${t.key}" title="${esc16(t.label)}"><span>${t.icon}</span></button>`).join('');
+    rail.addEventListener('click',e=>{
+     const b=e.target.closest('button[data-prop16]');
+     if(b)openDockByKey16(b.dataset.prop16);
+    });
+    ws.appendChild(rail);
+   }
+
+   // 3. Properties Header Collapse-All Toggle & Delegated Accordion Click in .right-panel
+   const rp=document.querySelector('.right-panel');
+   if(rp && !$('v16CollapseAllBtn')){
+    const ih=rp.querySelector('.inspector-head');
+    if(ih){
+     const row=document.createElement('div');
+     row.className='v16-prop-headbar';
+     row.innerHTML=`
+      <span class="v16-prop-crumb">Properties ▸ Inspector</span>
+      <button type="button" id="v16CollapseAllBtn" class="btn small" title="Thu gọn / Mở rộng toàn bộ các mục thông số">▾ Thu gọn mục</button>
+     `;
+     ih.prepend(row);
+     $('v16CollapseAllBtn')?.addEventListener('click',()=>{
+      A.allBlocksCollapsed=!A.allBlocksCollapsed;
+      A.collapsedBlocks.clear();
+      const btn=$('v16CollapseAllBtn');
+      if(btn)btn.textContent=A.allBlocksCollapsed?'▸ Mở rộng mục':'▾ Thu gọn mục';
+      decorateInspectorAccordions16();
+     });
+    }
+    rp.addEventListener('click',e=>{
+     if(e.target.closest('button,input,select,a,label'))return;
+     const hdr=e.target.closest('.v16-acc-header, .inspector-block > .block-title, .inspector-block > h3, .v16-section > h4, #fx141Panel section > h4');
+     if(!hdr)return;
+     const blk=hdr.closest('.inspector-block, .spatial-workflow, .binding-panel, .v16-section, section');
+     if(!blk)return;
+     const collapsed=blk.classList.toggle('v16-collapsed');
+     const key=blk.dataset.v16AccKey||(hdr.textContent||'').trim().slice(0,48);
+     if(key){
+      if(A.allBlocksCollapsed){
+       if(!collapsed)A.collapsedBlocks.add('__open_'+key);
+       else A.collapsedBlocks.delete('__open_'+key);
+      }else{
+       if(collapsed)A.collapsedBlocks.add(key);
+       else A.collapsedBlocks.delete(key);
+      }
+     }
+    });
+   }
+
+   // 4. Viewport Header Dropdown Menus (#v16HeaderMenus) & Quick Overlay Pills in .view-toolbar
+   const vt=document.querySelector('.view-toolbar');
+   if(vt && !$('v16HeaderMenus')){
+    const menus=document.createElement('div');
+    menus.id='v16HeaderMenus';
+    menus.className='v16-header-menus';
+    menus.innerHTML=`
+     <button type="button" data-v16menu="view">View ▾</button>
+     <button type="button" data-v16menu="add">Add / Đạo cụ ▾</button>
+     <button type="button" data-v16menu="stage">Stage &amp; LED ▾</button>
+     <button type="button" data-v16menu="lighting">Lighting &amp; FX ▾</button>
+     <button type="button" data-v16menu="show">Show &amp; Timecode ▾</button>
+    `;
+    const tabs=vt.querySelector('.view-tabs');
+    if(tabs)tabs.after(menus);else vt.prepend(menus);
+    menus.addEventListener('click',e=>{
+     const b=e.target.closest('button[data-v16menu]');
+     if(!b)return;
+     e.stopPropagation();
+     openHeaderMenu16(b.dataset.v16menu,b);
+    });
+
+    const va=vt.querySelector('.view-actions');
+    if(va && !$('v16QuickCreaseBtn')){
+     const cr=document.createElement('button');
+     cr.id='v16QuickCreaseBtn';
+     cr.type='button';
+     cr.className='icon-btn';
+     cr.title='Bật / tắt viền kỹ thuật Crease 28° (Wireframe)';
+     cr.textContent='◫';
+     cr.onclick=()=>triggerTShelfTool16('crease');
+     const ms=document.createElement('button');
+     ms.id='v16QuickMeasureBtn';
+     ms.type='button';
+     ms.className='icon-btn';
+     ms.title='Thước đo khoảng cách 2 điểm 3D';
+     ms.textContent='📏';
+     ms.onclick=()=>triggerTShelfTool16('measure');
+     va.prepend(cr,ms);
+    }
+   }
+
+   if(!$('v16MenuPopover')){
+    const pop=document.createElement('div');
+    pop.id='v16MenuPopover';
+    pop.className='v16-menu-popover';
+    pop.hidden=true;
+    document.body.appendChild(pop);
+    pop.addEventListener('click',e=>{
+     const btn=e.target.closest('button[data-v16mitem]');
+     if(!btn)return;
+     const item=pop._items?.[+btn.dataset.v16mitem];
+     closeHeaderMenu16();
+     item?.run?.();
+     syncBlenderState16();
+    });
+    document.addEventListener('click',e=>{
+     if(!pop.hidden && !e.target.closest('#v16MenuPopover, #v16HeaderMenus'))closeHeaderMenu16();
+    });
+   }
+
+   // 5. Floating Left Tool Shelf (#v16TShelf) & Right 3D Axis Gizmo (#v16ViewportNav) inside #viewport
+   const vp=$('viewport');
+   if(vp && !$('v16TShelf')){
+    const shelf=document.createElement('aside');
+    shelf.id='v16TShelf';
+    shelf.className='v16-tshelf';
+    shelf.setAttribute('aria-label','3D Viewport Tool Shelf');
+    shelf.innerHTML=TSHELF_TOOLS16.map(t=>`<button type="button" data-tshelf16="${t.key}" title="${esc16(t.title)}">${t.icon}</button>`).join('');
+    shelf.addEventListener('click',e=>{
+     const b=e.target.closest('button[data-tshelf16]');
+     if(b)triggerTShelfTool16(b.dataset.tshelf16);
+    });
+    vp.appendChild(shelf);
+   }
+
+   if(vp && !$('v16ViewportNav')){
+    const nav=document.createElement('div');
+    nav.id='v16ViewportNav';
+    nav.className='v16-viewport-nav';
+    nav.innerHTML=`
+     <canvas id="v16AxisGizmo" width="60" height="60" title="Click X / Y / Z để chuyển góc nhìn Side / Top / Front"></canvas>
+     <div class="v16-nav-pills">
+      <button type="button" data-v16nav="frame" title="Toàn cảnh sân khấu (Phím F)">⌖</button>
+      <button type="button" data-v16nav="cam" title="Đổi góc Camera: Front / 3/4 / Side / Top">🎥</button>
+      <button type="button" id="v16NavLockBtn" data-v16nav="lock" title="Khóa / Mở khóa góc Camera">🔒</button>
+      <button type="button" data-v16nav="focus" title="Ẩn / Hiện cột phải Outliner & Properties (Phím N)">⛶</button>
+     </div>
+    `;
+    vp.appendChild(nav);
+    const gizmo=$('v16AxisGizmo');
+    gizmo?.addEventListener('click',e=>{
+     const r=gizmo.getBoundingClientRect();
+     const x=(e.clientX-r.left)*(gizmo.width/Math.max(1,r.width));
+     const y=(e.clientY-r.top)*(gizmo.height/Math.max(1,r.height));
+     const hits=(gizmo._hitAxes||[]).filter(a=>a.label);
+     let best=null, bestDist=14;
+     for(const a of hits){
+      const d=Math.hypot(x-a.p.x,y-a.p.y);
+      if(d<bestDist){bestDist=d;best=a;}
+     }
+     const camKey=best?best.cam:'iso';
+     document.querySelector(`#cameraBar [data-camera="${camKey}"]`)?.click();
+     lastGizmoYaw=NaN;drawAxisGizmo16();
+    });
+    const camOrder=['front','iso','side','top'];
+    let camIdx=1;
+    nav.addEventListener('click',e=>{
+     const b=e.target.closest('button[data-v16nav]');
+     if(!b)return;
+     const act=b.dataset.v16nav;
+     if(act==='frame')$('overviewBtn')?.click();
+     else if(act==='cam'){
+      camIdx=(camIdx+1)%camOrder.length;
+      document.querySelector(`#cameraBar [data-camera="${camOrder[camIdx]}"]`)?.click();
+     }else if(act==='lock'){
+      $('lockCameraBtn')?.click();
+      syncBlenderState16();
+     }else if(act==='focus'){
+      $('focusBtn')?.click();
+     }
+    });
+   }
+
+   // Keyboard shortcuts: 'T' toggles left Tool Shelf, 'N' toggles right Outliner/Properties, 'Escape' closes menu popover
+   if(!A._keysBound){
+    A._keysBound=true;
+    window.addEventListener('keydown',e=>{
+     if(e.key==='Escape' && A.openMenuKey){closeHeaderMenu16();return;}
+     if(e.ctrlKey||e.metaKey||e.altKey||state.presenting||document.body.classList.contains('client-review-mode'))return;
+     if(e.target instanceof Element && e.target.closest('input,select,textarea,[contenteditable],dialog[open]'))return;
+     if(e.key==='t'||e.key==='T'){e.preventDefault();toggleTShelf16();}
+     else if(e.key==='n'||e.key==='N'){e.preventDefault();$('focusBtn')?.click();}
+    });
+    const bodyObs=new MutationObserver(()=>syncBlenderState16());
+    bodyObs.observe(document.body,{attributes:true,attributeFilter:['class','data-step']});
+   }
+   drawAxisGizmo16();
+   syncBlenderState16();
+  }
+
   function syncWorkspaceStepUI(){
    const st=state.step||'stage';
    if(document.body.dataset.step!==st)document.body.dataset.step=st;
@@ -824,8 +1374,8 @@
     const t=document.createElement('button');
     t.id='v16AllToolsBtn';
     t.className='btn small';
-    t.textContent='⊞ Tất cả công cụ';
-    t.title='Hiện/ẩn toàn bộ thanh công cụ nâng cao trên mọi bước';
+    t.textContent='☰ Thanh đầy đủ';
+    t.title='Hiện / ẩn toàn bộ các thanh công cụ ngang cổ điển trên mọi bước';
     t.onclick=()=>{
      A.allToolsVisible=!A.allToolsVisible;
      document.body.classList.toggle('v16-all-tools',A.allToolsVisible);
@@ -833,6 +1383,7 @@
     };
     wf.insertBefore(t,$('exportBtn')||null);
    }
+   installBlenderUI16();
   }
 
   document.querySelectorAll('.workflow .step').forEach(btn=>{
@@ -840,13 +1391,14 @@
     setTimeout(()=>{
      document.body.dataset.step=state.step||'stage';
      if(A.isOpen && state.step!=='stage')close();
+     syncBlenderState16();
     },0);
    });
   });
 
   const prevRenderUI=renderUI;
   renderUI=function(...args){const r=prevRenderUI(...args);requestAnimationFrame(syncWorkspaceStepUI);return r;};
-  setTimeout(syncWorkspaceStepUI,250);
+  setTimeout(syncWorkspaceStepUI,150);
  } catch(err) {
   console.error('V16 Asset Library init error:', err);
  }
