@@ -20,46 +20,7 @@
  });
  Object.assign(castNames,{fandancer:'Vũ công quạt / lụa'});
 
- const baseBuildHuman=buildHuman;
- buildHuman=function(d,lite=false,pose=0){
-  if(d.type!=='fandancer') return baseBuildHuman(d,lite,pose);
-  const nodes=baseBuildHuman({...d,type:'dancer',color:d.color||'#6e3455'},lite,pose);
-  const warm=[.97,.55,.26,1],mag=[.92,.28,.55,1],gold=[.93,.75,.34,1];
-  for(const n of nodes.filter(n=>n.name==='left'||n.name==='right')){
-   const s=n.name==='left'?-1:1;
-   const hand=s<0?[-.57,1.56,.08]:[.48,1.73,.12];
-   const fanParts=[];
-   fanParts.push(glow8(rod('Fan handle',M.add(hand,[0,-.05,0]),M.add(hand,[0,.14,.02]),.011,.008,gold,8),'#ffd37a',1.1));
-   for(let i=0;i<7;i++){
-    const ang=(-.85+i*.28)*(s<0?-1:1);
-    const tip=M.add(hand,[Math.sin(ang)*.42*s,.10+Math.cos(i*.45)*.03,.18+Math.cos(ang)*.18]);
-    fanParts.push(rod('Fan rib',M.add(hand,[0,.06,.02]),tip,.005,.004,[.95,.85,.45,1],5));
-   }
-   const leaf=boxMesh('Fan leaf',M.add(hand,[s*.18,.20,.18]),[.34,.22,.02],n.name==='left'?warm:mag);
-   leaf.material.emissive=(n.name==='left'?warm:mag).slice(0,3).map(v=>v*.25);
-   fanParts.push(leaf);
-   n.meshes.push(...mergeCast(fanParts,'Fan prop'));
-  }
-  return nodes;
- };
-
- const baseCastMatrix=castMatrix;
- castMatrix=function(d,node,t){
-  let mat=baseCastMatrix(d,node,t);
-  const local=t||0,phase=local*2*Math.PI*(seq.bpm||120)/60+(d.phase||0),pivot=node.pivot||[0,0,0];
-  const apply=(axis,ang)=>{mat=M.mm(mat,M.mm(M.translate(pivot),M.mm(M.rotate(axis,ang),M.translate(M.mul(pivot,-1)))));};
-  if(['dancer','leddancer','laserdancer','fandancer'].includes(d.type)){
-   if(node.name==='body') apply([0,0,1],Math.sin(phase*.5)*.06);
-   if(node.name==='head') apply([0,1,0],Math.sin(phase*.42)*.12);
-   if(node.name==='left'||node.name==='right'){
-    const dir=node.name==='left'?-1:1,amp=d.type==='fandancer'?.85:.48;
-    apply([0,0,1],dir*(.15+Math.sin(phase*.8+(dir<0?0:Math.PI))*amp)*.25);
-    apply([1,0,0],Math.cos(phase*.9+(dir<0?0:1.4))*0.22);
-   }
-  }
-  if(d.type==='singer'&&node.name==='body') apply([0,1,0],Math.sin(phase*.35)*.08);
-  return mat;
- };
+ // V16.0: fandancer wrist-anchored 9-rib fans & full-body IK handled natively in buildArtHuman11 / pose11
 
  const baseRebuildActCache=rebuildActCache;
  rebuildActCache=function(){
@@ -115,15 +76,10 @@
       lines.push([[Math.cos(ang)*r,.9+age*1.1,.15+Math.sin(ang)*r],[Math.cos(ang+.12)*(r+.2),1.05+age*1.05,.15+Math.sin(ang+.12)*(r+.2)]]);
      }
      lineGeometry8(c.lines,lines,.016);
+     c.lines.actorMatrix=root; engine.draw(c.lines,0);
     } else {
-     const count=a.people.length||6;
-     for(let i=0;i<84;i++){
-      const k=i%count,band=Math.floor(i/count),x=(k-(count-1)/2)*.95,swirl=phase*.26+band*.12+k*.34,h=1.3+Math.sin(swirl)*.44,span=a.type==='ribbon'?1.05:.78;
-      lines.push([[x+Math.cos(swirl)*span,h,.18+band*.01],[x+Math.cos(swirl-.18)*(span*.82),1.22+Math.sin(swirl-.32)*.38,.26+band*.01]]);
-     }
-     lineGeometry8(c.lines,lines,a.type==='ribbon'?.014:.018);
+     baseDrawAct8(a,t);
     }
-    c.lines.actorMatrix=root; engine.draw(c.lines,0);
    }
    for(const part of c.parts||[]){
     let local=M.identity();
@@ -233,43 +189,7 @@
    return nodes;
  };
 
- const oldCastMatrix=castMatrix;
- castMatrix=function(d,node,t){
-   let mat=oldCastMatrix(d,node,t);
-   const rp=typeof routePose11==='function' ? routePose11(d,t) : null;
-   const act=rp?.action || (d.type.includes('drum')?'drum':'dance');
-   const local=(rp?.local??t), seg=rp?.segmentU??0, speed=rp?.speed??0, energy=(rp?.energy??0.65), phase=local*2*Math.PI*(seq.bpm||120)/60 + (d.phase||0);
-   const pivot=node.pivot||[0,0,0];
-   const ap=(axis,ang)=>{ mat=M.mm(mat,M.mm(M.translate(pivot),M.mm(M.rotate(axis,ang),M.translate(M.mul(pivot,-1))))); };
-   const sw=Math.min(1.3,0.25+speed*.75)+energy*.25;
-   if(['dancer','leddancer','laserdancer','fandancer'].includes(d.type)){
-     if(node.name==='body'){
-       ap([0,0,1], Math.sin(phase*.52)*0.055*sw);
-       ap([1,0,0], Math.sin(phase*.26+seg*Math.PI)*0.04);
-     }
-     if(node.name==='head') ap([0,1,0], Math.sin(phase*.38)*0.14*energy);
-     if(node.name==='left' || node.name==='right'){
-       const s=node.name==='left'?-1:1;
-       let z=0,x=0;
-       if(act==='walk'){ z=s*(0.22+0.18*Math.sin(phase+ (s<0?0:Math.PI)))*sw; x=0.20*Math.cos(phase+(s<0?0:Math.PI))*sw; }
-       else if(act==='reach'){ z=s*0.42*energy; x=-0.10+0.14*Math.sin(phase*.6+s); }
-       else if(act==='fan'){ z=s*(0.55+0.18*Math.sin(phase*1.1))*energy; x=0.28*Math.cos(phase*.55+(s<0?0:Math.PI)); }
-       else if(act==='spin'){ z=s*(0.24+0.34*Math.sin(phase*1.4))*energy; x=0.18*Math.cos(phase*1.4); }
-       else if(act==='wave'){ z=s*(0.34+0.22*Math.sin(phase*1.8+(s<0?0:Math.PI)))*energy; x=0.12+0.08*Math.cos(phase*1.3); }
-       else if(act==='kneel'){ z=s*0.16; x=-0.50; }
-       else if(act==='finale'){ z=s*(0.68+0.10*Math.sin(phase*1.2))*energy; x=0.12; }
-       else { z=s*(0.14+0.20*Math.sin(phase*.82+(s<0?0:Math.PI)))*energy; x=0.10*Math.cos(phase*.54); }
-       ap([0,0,1], z);
-       ap([1,0,0], x);
-     }
-     if(node.name==='instrument' && d.type==='fandancer') ap([0,1,0],Math.sin(phase*.5)*0.2);
-   }
-   if(['singer','guitarist'].includes(d.type)){
-     if(node.name==='body') ap([0,0,1],Math.sin(phase*.33)*0.03);
-     if(node.name==='head') ap([0,1,0],Math.sin(phase*.28)*0.06);
-   }
-   return mat;
- };
+ // V16.0: V12.2 post-IK Euler overrides integrated into pose11 IK
 
  const oldFormation11=formation11;
  formation11=function(kind,{record=true,span=5,depth=2}={}){
@@ -347,8 +267,7 @@
        const skin=[...hexrgb(d.skin||'#c49674'),1], cloth=[...hexrgb(d.color||'#6b4c88'),1];
        const neckFill=rod('Neck filler',[0,1.42,0],[0,1.54,0],.068,.078,skin,10);
        const collar=torso([[1.34,.20,.15],[1.41,.23,.18],[1.48,.17,.14]], [cloth[0]*.8,cloth[1]*.8,cloth[2]*.8,1], 14);
-       body.meshes.push(neckFill, collar, ...head.meshes);
-       head.meshes=[];
+       body.meshes.push(neckFill, collar);
      }
      const left=nodes.find(n=>n.name==='left'), right=nodes.find(n=>n.name==='right');
      if(body && left && right){
@@ -361,41 +280,7 @@
    return nodes.filter(n=>n.meshes?.length);
  };
 
- const oldCastMatrix123=castMatrix;
- castMatrix=function(d,node,t){
-   let mat=oldCastMatrix123(d,node,t);
-   if(!isStagePerformer123(d.type)) return mat;
-   const rp=typeof routePose11==='function'?routePose11(d,t):null;
-   const phase=((rp?.local??t)*2*Math.PI*(seq.bpm||120)/60)+(d.phase||0);
-   const action=rp?.action||'dance', energy=(rp?.energy??0.7), speed=Math.min(1.2,rp?.speed??0.5), blend=rp?.segmentU??0;
-   const pivot=node.pivot||[0,0,0];
-   const ap=(axis,ang)=>{mat=M.mm(mat,M.mm(M.translate(pivot),M.mm(M.rotate(axis,ang),M.translate(M.mul(pivot,-1)))));};
-   const walkAmp=.12+.12*speed, armAmp=.18+.26*energy;
-   if(node.name==='body'){
-     let rz=0, rx=0;
-     if(action==='walk'){ rz=Math.sin(phase*.9)*0.035; rx=Math.cos(phase*.45)*0.012; }
-     else if(action==='fan' || action==='wave'){ rz=Math.sin(phase*.55)*0.022; rx=0.02; }
-     else if(action==='spin'){ rz=Math.sin(phase*1.15)*0.025; }
-     else if(action==='kneel'){ rx=-0.12*(blend<.5?blend*2:1); }
-     else if(action==='reach'){ rx=0.04; rz=Math.sin(phase*.55)*0.014; }
-     else if(action==='finale'){ rz=Math.sin(phase*.38)*0.018; }
-     ap([0,0,1],rz); ap([1,0,0],rx);
-   }
-   if(node.name==='left' || node.name==='right'){
-     const s=node.name==='left'?-1:1;
-     let rz=s*0.06, rx=0;
-     if(action==='walk'){ rz=s*(0.08 + Math.sin(phase + (s<0?0:Math.PI))*walkAmp); rx=Math.cos(phase + (s<0?0:Math.PI))*0.08; }
-     else if(action==='reach'){ rz=s*0.34; rx=-0.08 + 0.04*Math.sin(phase*.6); }
-     else if(action==='fan'){ rz=s*(0.42 + 0.10*Math.sin(phase*.95 + (s<0?0:Math.PI))); rx=0.12*Math.cos(phase*.75); }
-     else if(action==='wave'){ rz=s*(0.22 + 0.18*Math.sin(phase*1.65 + (s<0?0:Math.PI))); rx=0.14*Math.sin(phase*1.15); }
-     else if(action==='spin'){ rz=s*(0.18 + 0.22*Math.sin(phase*1.35 + (s<0?0:Math.PI))); rx=0.07*Math.cos(phase*1.35); }
-     else if(action==='kneel'){ rz=s*0.08; rx=-0.18; }
-     else if(action==='finale'){ rz=s*(0.58 + 0.04*Math.sin(phase*.8 + (s<0?0:Math.PI))); rx=0.06; }
-     else { rz=s*(0.10 + 0.10*Math.sin(phase*.8 + (s<0?0:Math.PI))*energy); rx=0.04*Math.cos(phase*.7); }
-     ap([0,0,1],rz); ap([1,0,0],rx);
-   }
-   return mat;
- };
+ // V16.0: V12.3 post-IK Euler overrides integrated into pose11 IK
 
  function autoBlock123(actId){
    const a=director.acts.find(x=>x.id===actId); if(!a) return;

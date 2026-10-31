@@ -242,14 +242,14 @@
     if (liveData != null) {
       requireObject(liveData, 'Dữ liệu show');
       if (liveData.audio != null) assetBytes += asset(liveData.audio, 'Nhạc');
-      for (const key of ['config','pixelOptions','show','director','lighting9','stage10','choreography11','stageLift124','pro127','vj130','manual131','lightTake132','tc134','laser135','mount136','fx141','matrix143']) {
+      for (const key of ['config','pixelOptions','show','director','lighting9','stage10','choreography11','stageLift124','pro127','vj130','manual131','lightTake132','tc134','laser135','mount136','fx141','matrix143','stageAssets16']) {
         if (liveData[key] != null) requireObject(liveData[key], 'Show / ' + key);
       }
       if (liveData.cues != null) array(liveData.cues, 'VJ cues', 100).forEach(c => requireObject(c, 'VJ cue'));
       const knownArrays = [[liveData.show,'tracks',24],[liveData.show,'clips',500],[liveData.show,'markers',200],[liveData.show,'people',96],
         [liveData.director,'cameras',24],[liveData.director,'acts',24],[liveData.director,'surfaceUV',300],
         [liveData.stage10,'scenes',80],[liveData.stageLift124,'items',12],[liveData.fx141,'fixtures',64],[liveData.fx141,'cues',500],
-        [liveData.laser135,'fixtures',64],[liveData.laser135,'ildaMeta',32],[liveData.laser135,'ildaShows',32],[liveData.mount136,'manualTrussLayers',100],[liveData.matrix143,'paths',256],[liveData.matrix143,'cues',500]];
+        [liveData.laser135,'fixtures',64],[liveData.laser135,'ildaMeta',32],[liveData.laser135,'ildaShows',32],[liveData.mount136,'manualTrussLayers',100],[liveData.matrix143,'paths',256],[liveData.matrix143,'cues',500],[liveData.stageAssets16,'items',64]];
       for (const [parent, key, limit] of knownArrays) if (parent?.[key] != null) array(parent[key], key, limit).forEach(row => requireObject(row, key));
       if (liveData.laser135?.ildaShows != null) {
         let totalIldaPts = 0;

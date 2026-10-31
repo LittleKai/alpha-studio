@@ -552,3 +552,140 @@ body.client-review-mode #viewport {
   border-color: #0284c7;
 }
 
+/* ==========================================================================
+   V16.0 PRECISION STUDIO UI REDESIGN — Clean, Contextual, Non-Overlapping
+   ========================================================================== */
+#app {
+  grid-template-rows: 52px 40px minmax(0, 1fr) 110px;
+}
+.topbar {
+  padding: 0 14px;
+  gap: 10px;
+}
+.header-actions {
+  gap: 5px;
+}
+.header-actions .btn,
+.workflow-right .btn,
+.navigation-strip .btn,
+#dirToolbar button,
+#pro127bar button {
+  border-radius: 6px !important;
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  padding: 5px 9px !important;
+  min-height: 27px !important;
+  line-height: 1.2 !important;
+  border: 1px solid var(--border-primary) !important;
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  box-shadow: none !important;
+}
+.header-actions .btn:hover,
+.workflow-right .btn:hover,
+.navigation-strip .btn:hover,
+#dirToolbar button:hover,
+#pro127bar button:hover {
+  border-color: var(--accent-primary) !important;
+  background: rgba(97, 232, 255, 0.12) !important;
+}
+.header-actions .btn.primary,
+.workflow-right .btn.primary,
+.workflow-right .btn.active,
+.navigation-strip .btn.active,
+#dirToolbar button.active,
+#pro127bar button.active,
+#v16AssetBtn.active,
+#v16AllToolsBtn.active {
+  background: var(--accent-primary) !important;
+  border-color: var(--accent-primary) !important;
+  color: #07111f !important;
+  font-weight: 700 !important;
+}
+[data-theme="light"] .header-actions .btn.primary,
+[data-theme="light"] .workflow-right .btn.primary,
+[data-theme="light"] .workflow-right .btn.active,
+[data-theme="light"] .navigation-strip .btn.active,
+[data-theme="light"] #dirToolbar button.active,
+[data-theme="light"] #pro127bar button.active,
+[data-theme="light"] #v16AssetBtn.active,
+[data-theme="light"] #v16AllToolsBtn.active {
+  background: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+/* Compact, unified tool ribbons above the 3D viewport */
+#dirToolbar,
+#pro127bar {
+  min-height: 34px !important;
+  padding: 3px 10px !important;
+  gap: 5px !important;
+  background: var(--bg-secondary) !important;
+  border-bottom: 1px solid var(--border-primary) !important;
+}
+.view-toolbar,
+.navigation-strip {
+  min-height: 34px !important;
+  padding: 3px 10px !important;
+  gap: 6px !important;
+  background: var(--bg-secondary) !important;
+  border-bottom: 1px solid var(--border-primary) !important;
+}
+
+/* Step-aware contextual decluttering (override anytime via "⊞ Tất cả công cụ" -> body.v16-all-tools) */
+body[data-step="stage"]:not(.v16-all-tools) #pro127bar [data-pro127="fx"],
+body[data-step="stage"]:not(.v16-all-tools) #pro127bar [data-pro127="vj"],
+body[data-step="stage"]:not(.v16-all-tools) #pro127bar #v130Toolbar,
+body[data-step="stage"]:not(.v16-all-tools) #pro127bar #l132Launch,
+body[data-step="stage"]:not(.v16-all-tools) #pro127bar #laser135TopBtn,
+body[data-step="stage"]:not(.v16-all-tools) #pro127bar #fx141OpenBtn,
+body[data-step="stage"]:not(.v16-all-tools) #dirToolbar #lxToolbar,
+body[data-step="stage"]:not(.v16-all-tools) #dirToolbar .m131-launch,
+body[data-step="stage"]:not(.v16-all-tools) .workflow-right #ledManagerBtn,
+body[data-step="stage"]:not(.v16-all-tools) .workflow-right #atlasBtn,
+body[data-step="stage"]:not(.v16-all-tools) .workflow-right #vjToggle {
+  display: none !important;
+}
+body[data-step="mapping"]:not(.v16-all-tools) #dirToolbar,
+body[data-step="mapping"]:not(.v16-all-tools) #pro127bar [data-pro127="fixture"],
+body[data-step="mapping"]:not(.v16-all-tools) #pro127bar [data-pro127="fx"],
+body[data-step="mapping"]:not(.v16-all-tools) #pro127bar #l132Launch,
+body[data-step="mapping"]:not(.v16-all-tools) #pro127bar #laser135TopBtn,
+body[data-step="mapping"]:not(.v16-all-tools) #pro127bar #mount136TopBtn,
+body[data-step="mapping"]:not(.v16-all-tools) #pro127bar #fx141OpenBtn,
+body[data-step="mapping"]:not(.v16-all-tools) .workflow-right #v07Cast {
+  display: none !important;
+}
+body[data-step="lighting"]:not(.v16-all-tools) .workflow-right #ledManagerBtn,
+body[data-step="lighting"]:not(.v16-all-tools) .workflow-right #atlasBtn {
+  display: none !important;
+}
+
+/* Clean layout for left-panel & right-panel sections */
+.workspace {
+  grid-template-columns: 244px minmax(0, 1fr) 316px;
+}
+.media-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.media-section > .btn.small {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  margin-top: 2px;
+}
+.inspector-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+.divider {
+  display: none;
+}
+
+
