@@ -60,6 +60,16 @@
   };
   S.stageAssets16=A;
 
+  // CRITICAL GUARD: Never call classList.add() or classList.remove() unconditionally on observed elements!
+  // Per WHATWG DOM spec, DOMTokenList.add/remove ALWAYS run attribute update steps and fire MutationObserver
+  // even when the token is already present/absent, which causes an infinite microtask loop on document.body!
+  function setClass16(el,cls,on){
+   if(!el||!el.classList)return;
+   const has=el.classList.contains(cls);
+   if(on && !has)el.classList.add(cls);
+   else if(!on && has)el.classList.remove(cls);
+  }
+
   // Centralized dock coordinator to prevent overlapping right-panel tools (Bug #6 guard)
   function closeAllDocks16(except=''){
    if(except!=='v16Asset' && A.isOpen)close();
@@ -67,22 +77,25 @@
    if(except!=='matrix143')S.matrix143?.close?.();
    if(except!=='mount136')S.mount136?.close?.();
    if(except!=='laser135')S.laserShow?.close?.();
-   if(except!=='pro127')$('pro127close')?.click();
+   if(except!=='pro127' && document.body.classList.contains('pro127-dock-open'))$('pro127close')?.click();
    if(except!=='stageLift124' && document.body.classList.contains('lift-dock-open')){
-    document.body.classList.remove('lift-dock-open');
+    S.stageLift?.close?.();
+    setClass16(document.body,'lift-dock-open',false);
     const lf=$('stageLift124');if(lf)lf.hidden=true;
    }
    if(except!=='m131' && (document.body.classList.contains('m131-open')||document.body.classList.contains('m131-edit-open'))){
     S.manual131?.close?.();
-    document.body.classList.remove('m131-open','m131-edit-open');
+    setClass16(document.body,'m131-open',false);
+    setClass16(document.body,'m131-edit-open',false);
     const mp=$('m131Panel');if(mp)mp.hidden=true;
    }
    if(except!=='l132' && document.body.classList.contains('l132-open')){
-    document.body.classList.remove('l132-open');
+    setClass16(document.body,'l132-open',false);
     const lp=$('l132Panel');if(lp)lp.hidden=true;
    }
    if(except!=='v130' && document.body.classList.contains('v130-edit-open')){
-    document.body.classList.remove('v130-edit-open');
+    S.vj130?.open?.(null);
+    setClass16(document.body,'v130-edit-open',false);
     const vp=$('v130Panel');if(vp)vp.hidden=true;
    }
   }
@@ -445,6 +458,7 @@
    return a&&Number.isFinite(a.x+a.y+a.z)&&a.z>=-1.05&&a.z<=1.05?a:null;
   }
 
+  let overlayDirty16=false;
   function renderOverlay(){
    requestAnimationFrame(renderOverlay);
    drawAxisGizmo16();
@@ -452,9 +466,10 @@
    const w=overlay.clientWidth,h=overlay.clientHeight;
    if(w<2||h<2)return;
    if(!A.measureMode && !A.measurePts.length && !A.creaseEnabled){
-    if(overlay.width>0){g.clearRect(0,0,overlay.width,overlay.height);}
+    if(overlayDirty16 && overlay.width>0){g.setTransform(1,0,0,1,0,0);g.clearRect(0,0,overlay.width,overlay.height);overlayDirty16=false;}
     return;
    }
+   overlayDirty16=true;
    const scale=Math.min(1.5,window.devicePixelRatio||1),cw=Math.ceil(w*scale),ch=Math.ceil(h*scale);
    if(overlay.width!==cw||overlay.height!==ch){overlay.width=cw;overlay.height=ch;}
    g.setTransform(scale,0,0,scale,0,0);
@@ -873,9 +888,9 @@
   }
 
   function paint(){
-   document.body.classList.toggle('v16-asset-open',A.isOpen);
+   setClass16(document.body,'v16-asset-open',!!A.isOpen);
    const topBtn=$('v16AssetBtn');
-   if(topBtn)topBtn.classList.toggle('active',A.isOpen);
+   if(topBtn)setClass16(topBtn,'active',!!A.isOpen);
    if(!A.isOpen){panel.hidden=true;return;}
    panel.hidden=false;
    const it=currentItem();
@@ -1008,7 +1023,7 @@
     <div class="v16-head">
      <div>
       <strong>❖ ĐẠO CỤ 3D · TÌM CC0 · ĐO & TẢI GIÓ</strong>
-      <small>Thư viện Sân khấu V16.0 · Poly Haven & Wikimedia · TCVN 2737</small>
+      <small>Thư viện Sân khấu V1.1 · Poly Haven & Wikimedia · TCVN 2737</small>
      </div>
      <button data-act16="close" class="btn small" title="Quay lại Inspector">← Đóng</button>
     </div>
@@ -1600,7 +1615,7 @@
 
   function toggleTShelf16(force){
    A.tShelfHidden=force!==undefined?!force:!A.tShelfHidden;
-   document.body.classList.toggle('v16-hide-tshelf',A.tShelfHidden);
+   setClass16(document.body,'v16-hide-tshelf',!!A.tShelfHidden);
    syncBlenderState16();
   }
 
@@ -1664,11 +1679,11 @@
    blocks.forEach((blk,idx)=>{
     const hdr=blk.querySelector(':scope > .block-title, :scope > h3, :scope > .section-kicker, :scope > strong');
     if(!hdr)return;
-    hdr.classList.add('v16-acc-header');
+    setClass16(hdr,'v16-acc-header',true);
     const key=(hdr.textContent||'').trim().slice(0,48)||('blk_'+idx);
-    blk.dataset.v16AccKey=key;
+    if(blk.dataset.v16AccKey!==key)blk.dataset.v16AccKey=key;
     const isCollapsed=A.allBlocksCollapsed ? !A.collapsedBlocks.has('__open_'+key) : A.collapsedBlocks.has(key);
-    blk.classList.toggle('v16-collapsed',isCollapsed);
+    setClass16(blk,'v16-collapsed',isCollapsed);
    });
    // Inject 3D visual preview thumbnails into Director "Tiết mục 3D" (acts) cards if open
    ic.querySelectorAll('.dir-act-grid button[data-add-act8]').forEach(btn=>{
@@ -1685,38 +1700,52 @@
    });
   }
 
+  let _syncingState16=false;
   function syncBlenderState16(withAccordions){
-   document.body.classList.add('v16-compact-ui');
-   document.body.classList.toggle('v16-blender-ui',!!A.blenderUI);
-   document.body.classList.toggle('v16-hide-tshelf',!!A.tShelfHidden);
-   const activeDock=activeDockKey16();
-   document.querySelectorAll('#v16PropRail button[data-prop16]').forEach(b=>{
-    b.classList.toggle('active',b.dataset.prop16===activeDock);
-   });
-   const toolMode=window.director?.mode||'navigate';
-   document.querySelectorAll('#v16TShelf button[data-tshelf16]').forEach(b=>{
-    const k=b.dataset.tshelf16;
-    const on=(k==='select'&&toolMode==='navigate'&&!A.measureMode&&!A.placeMode)||
-     (k==='move'&&toolMode==='move')||
-     (k==='rotate'&&toolMode==='rotate')||
-     (k==='quad'&&!!state.quad)||
-     (k==='measure'&&!!A.measureMode)||
-     (k==='crease'&&!!A.creaseEnabled)||
-     (k==='asset'&&activeDock==='v16Asset')||
-     (k==='lift'&&activeDock==='stageLift124')||
-     (k==='fixture'&&activeDock==='pro127')||
-     (k==='matrix'&&activeDock==='matrix143')||
-     (k==='laser'&&activeDock==='laser135');
-    b.classList.toggle('active',on);
-   });
-   const crBtn=$('v16QuickCreaseBtn');if(crBtn)crBtn.classList.toggle('active',!!A.creaseEnabled);
-   const msBtn=$('v16QuickMeasureBtn');if(msBtn)msBtn.classList.toggle('active',!!A.measureMode);
-   const lkBtn=$('v16NavLockBtn');if(lkBtn)lkBtn.classList.toggle('active',!!engine?.camera?.locked);
-   if(withAccordions)decorateInspectorAccordions16();
+   if(_syncingState16)return;
+   _syncingState16=true;
+   try{
+    setClass16(document.body,'v16-compact-ui',true);
+    setClass16(document.body,'v16-blender-ui',!!A.blenderUI);
+    setClass16(document.body,'v16-hide-tshelf',!!A.tShelfHidden);
+    const activeDock=activeDockKey16();
+    document.querySelectorAll('#v16PropRail button[data-prop16]').forEach(b=>{
+     setClass16(b,'active',b.dataset.prop16===activeDock);
+    });
+    const toolMode=window.director?.mode||'navigate';
+    document.querySelectorAll('#v16TShelf button[data-tshelf16]').forEach(b=>{
+     const k=b.dataset.tshelf16;
+     const on=(k==='select'&&toolMode==='navigate'&&!A.measureMode&&!A.placeMode)||
+      (k==='move'&&toolMode==='move')||
+      (k==='rotate'&&toolMode==='rotate')||
+      (k==='quad'&&!!state.quad)||
+      (k==='measure'&&!!A.measureMode)||
+      (k==='crease'&&!!A.creaseEnabled)||
+      (k==='asset'&&activeDock==='v16Asset')||
+      (k==='lift'&&activeDock==='stageLift124')||
+      (k==='fixture'&&activeDock==='pro127')||
+      (k==='matrix'&&activeDock==='matrix143')||
+      (k==='laser'&&activeDock==='laser135');
+     setClass16(b,'active',on);
+    });
+    const crBtn=$('v16QuickCreaseBtn');if(crBtn)setClass16(crBtn,'active',!!A.creaseEnabled);
+    const msBtn=$('v16QuickMeasureBtn');if(msBtn)setClass16(msBtn,'active',!!A.measureMode);
+    const lkBtn=$('v16NavLockBtn');if(lkBtn)setClass16(lkBtn,'active',!!engine?.camera?.locked);
+    if(withAccordions)decorateInspectorAccordions16();
+   }finally{
+    _syncingState16=false;
+   }
   }
 
   function installBlenderUI16(){
-   document.body.classList.add('v16-compact-ui','v16-blender-ui');
+   setClass16(document.body,'v16-compact-ui',true);
+   setClass16(document.body,'v16-blender-ui',!!A.blenderUI);
+   if(A._chromeInstalled16 && $('v16PropRail') && $('v16TShelf')){
+    drawAxisGizmo16();
+    syncBlenderState16(false);
+    return;
+   }
+   A._chromeInstalled16=true;
 
    // 1. Left Column: Stage Tree & Media header + collapsible sections in .left-panel
    const lp=document.querySelector('.left-panel');
@@ -1946,7 +1975,10 @@
      if(e.key==='t'||e.key==='T'){e.preventDefault();toggleTShelf16();}
      else if(e.key==='n'||e.key==='N'){e.preventDefault();$('focusBtn')?.click();}
     });
-    const bodyObs=new MutationObserver(()=>syncBlenderState16(false));
+    const bodyObs=new MutationObserver(()=>{
+     if(_syncingState16)return;
+     syncBlenderState16(false);
+    });
     bodyObs.observe(document.body,{attributes:true,attributeFilter:['class']});
    }
    drawAxisGizmo16();
@@ -1991,8 +2023,8 @@
     t.title='Hiện / ẩn toàn bộ các thanh công cụ ngang cổ điển trên mọi bước';
     t.onclick=()=>{
      A.allToolsVisible=!A.allToolsVisible;
-     document.body.classList.toggle('v16-all-tools',A.allToolsVisible);
-     t.classList.toggle('active',A.allToolsVisible);
+     setClass16(document.body,'v16-all-tools',!!A.allToolsVisible);
+     setClass16(t,'active',!!A.allToolsVisible);
     };
     wf.insertBefore(t,$('exportBtn')||null);
    }
@@ -2020,6 +2052,12 @@
    return r;
   };
   syncWorkspaceStepUI();
+  S.version='1.1.0';
+  document.title='ALPHA Creative LED Studio V1.1 | Sân khấu 3D · 35 FX · Đạo cụ & Biên đạo';
+  const brandSmall=document.querySelector('.brand small');
+  if(brandSmall)brandSmall.textContent='V1.1 / SÂN KHẤU 3D · 35 FX · DMX & ILDA';
+  const buildSpan=document.querySelector('.bottom-status > span:last-child');
+  if(buildSpan)buildSpan.textContent='ALPHA / LOCAL BUILD 1.1';
  } catch(err) {
   console.error('V16 Asset Library init error:', err);
  }

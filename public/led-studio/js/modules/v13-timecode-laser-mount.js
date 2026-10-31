@@ -364,7 +364,7 @@ L.importIldaFile=importIldaFile;
 ildaInput.addEventListener('change',async e=>{const f=e.target.files?.[0];e.target.value='';if(!f)return;try{await importIldaFile(f);}catch(err){toast('Lỗi đọc tệp .ild: '+(err?.message||err));}});
 const drawCan=document.createElement('canvas');drawCan.id='laser135Overlay';drawCan.setAttribute('aria-label','Laser preview trên sân khấu 3D');
 id('viewport')?.appendChild(drawCan);
-const ctx=drawCan.getContext('2d',{alpha:true,desynchronized:true});
+const ctx=drawCan.getContext('2d',{alpha:true});
 const panel=document.createElement('aside');panel.id='laser135Panel';panel.hidden=true;panel.setAttribute('aria-label','LASER SHOW / Điều khiển và timecode');document.body.appendChild(panel);
 const selected=()=>L.fixtures.find(x=>x.id===L.selected)||L.fixtures[0]||null;
 const uid135=()=>`LASER_${Math.random().toString(36).slice(2,8)}`;
@@ -653,8 +653,9 @@ function drawGeometricPath138(pattern, sources, status, power){
 }
 let cachedRect=null,ratio=1;
 function sizeOverlay(){const w=drawCan.clientWidth,h=drawCan.clientHeight;if(w<=0||h<=0)return false;const cap=L.settings.quality==='ultra'?1.7:L.settings.quality==='high'?1.35:1;ratio=Math.min(window.devicePixelRatio||1,cap);const cw=Math.round(w*ratio),ch=Math.round(h*ratio);if(drawCan.width!==cw||drawCan.height!==ch){drawCan.width=cw;drawCan.height=ch;}ctx.setTransform(ratio,0,0,ratio,0,0);return true;}
-function drawLaserFrame(now,{clean=false}={}){if(!ctx||!sizeOverlay())return;const w=drawCan.clientWidth,h=drawCan.clientHeight;ctx.clearRect(0,0,w,h);
- if(!L.active||!L.fixtures.length||engine.view!=='stage'||!engine.vp)return;
+function drawLaserFrame(now,{clean=false}={}){if(!ctx)return;
+ if(!L.active||!L.fixtures.length||engine.view!=='stage'||!engine.vp){if(L._overlayDirty&&drawCan.width>0){ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,drawCan.width,drawCan.height);L._overlayDirty=false;}return;}
+ if(!sizeOverlay())return;L._overlayDirty=true;const w=drawCan.clientWidth,h=drawCan.clientHeight;ctx.clearRect(0,0,w,h);
  const status=showStatus(state.time);if(!status)return;
  const pat=patternFor(status.preset,status.local,status.duration),cue=status.cue;
  const fade=cue?Math.min(1,(status.local+.001)/Math.max(.03,status.fade),(cue.duration-status.local)/Math.max(.03,status.fade)):1;

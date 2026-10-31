@@ -565,12 +565,12 @@
     restoreBackup, downloadBackup, downloadRescue, open: openRecovery, setAutoBackup,
     get status() { return { operation: R.operation, auto: R.auto, backup: R.backup ? { ...R.backup } : null,
       message: R.message, error: R.error, lastSave: R.lastSave, hasRescue: !!R.rescueText }; } };
-  S.version = '15.1.0';
-  document.title = 'ALPHA Creative LED Studio V15.1 | LED DÀY · SÁNG RÕ · 35 FX';
+  S.version = '1.1.0';
+  document.title = 'ALPHA Creative LED Studio V1.1 | Sân khấu 3D · 35 FX · Đạo cụ & Biên đạo';
   const brand = document.querySelector('.brand small');
-  if (brand) brand.textContent = 'V15.1 / LED DÀY · SÁNG RÕ · 35 FX';
+  if (brand) brand.textContent = 'V1.1 / SÂN KHẤU 3D · 35 FX · DMX & ILDA';
   const footer = document.querySelector('.bottom-status > span:last-child');
-  if (footer) footer.textContent = 'ALPHA / LOCAL BUILD 15.1';
+  if (footer) footer.textContent = 'ALPHA / LOCAL BUILD 1.1';
   setInterval(() => { if (R.auto) backup({ automatic: true }).catch(() => {}); }, 30000);
   refreshBackup(); paintStatus();
 })();

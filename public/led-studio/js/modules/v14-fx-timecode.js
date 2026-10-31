@@ -120,7 +120,7 @@
  engine.render=function(...args){if(engine.view==='stage')ensureModels();return priorRender(...args);};
  // Additive Canvas2D world-projected pixel visuals; no shader edits to LED mapping.
  const overlay=document.createElement('canvas');overlay.id='fx141Overlay';overlay.setAttribute('aria-label','PAR LED, LINE BAR and LASER BAR visual preview');
- $('viewport').appendChild(overlay);const g=overlay.getContext('2d',{alpha:true,desynchronized:true});
+ $('viewport').appendChild(overlay);const g=overlay.getContext('2d',{alpha:true});
  function rgb(c){const s=String(c||'#ffffff').replace('#','');return /^[\da-f]{6}$/i.test(s)?[0,2,4].map(i=>parseInt(s.slice(i,i+2),16)):[255,255,255];}
  function rgba(c,a){const v=rgb(c);return 'rgba('+v.join(',')+','+clamp141(a,0,1).toFixed(3)+')';}
  function colorMix(a,b,u){const aa=rgb(a),bb=rgb(b);return '#'+aa.map((v,i)=>Math.round(v+(bb[i]-v)*clamp141(u,0,1)).toString(16).padStart(2,'0')).join('');}
@@ -216,7 +216,7 @@
    for(const [axis,vec,col] of [[0,[.75,0,0],'#ff7777'],[1,[0,.75,0],'#65e49a'],[2,[0,0,.75],'#75b9ff']]){const end=project(f.pos.map((v,i)=>v+vec[i]));if(!end)continue;g.strokeStyle=col;g.fillStyle=col;g.beginPath();g.moveTo(p.x,p.y);g.lineTo(end.x,end.y);g.stroke();g.beginPath();g.arc(end.x,end.y,6,0,Math.PI*2);g.fill();g.fillText('XYZ'[axis],end.x+8,end.y+3);}
  }
  function renderFrame(now=performance.now(),{clean=false}={}){
-   if(!g)return;const w=overlay.clientWidth,h=overlay.clientHeight;if(w<2||h<2)return;
+   if(!g)return;if(!F.fixtures.length&&(!F.isOpen||!F.dragMode)){if(F._overlayDirty&&overlay.width>0){g.setTransform(1,0,0,1,0,0);g.clearRect(0,0,overlay.width,overlay.height);F._overlayDirty=false;}return overlay;}const w=overlay.clientWidth,h=overlay.clientHeight;if(w<2||h<2)return;F._overlayDirty=true;
    const scale=Math.min(1.5,window.devicePixelRatio||1),cw=Math.ceil(w*scale),ch=Math.ceil(h*scale);
    if(overlay.width!==cw||overlay.height!==ch){overlay.width=cw;overlay.height=ch;}
    g.setTransform(scale,0,0,scale,0,0);g.clearRect(0,0,w,h);

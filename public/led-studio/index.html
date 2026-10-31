@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>ALPHA Creative LED Studio V15.1 | Bright LED Matrix · Direct Thickness Control · 35 Effects</title>
+  <title>ALPHA Creative LED Studio V1.1 | Sân khấu 3D · 35 FX · Đạo cụ &amp; Biên đạo</title>
   <link rel="stylesheet" href="css/01-base.css">
   <link rel="stylesheet" href="css/02-workspace-addons.css">
   <link rel="stylesheet" href="css/03-fixture-timecode.css">
@@ -13,7 +13,7 @@
 <body class="v16-compact-ui v16-blender-ui v121-compact">
 <div id="app">
 <header class="topbar">
- <div class="brand"><div class="brandmark"><svg viewBox="0 0 32 32"><path d="M4 24 15 6l11 18H4Zm6-5h11M16 10v14" fill="none" stroke="currentColor" stroke-width="2"/></svg></div><div><strong>ALPHA <span>LED STUDIO</span></strong><small>CREATIVE MAPPING WORKSPACE <b>V13.9 PRO LASER</b></small></div></div>
+ <div class="brand"><div class="brandmark"><svg viewBox="0 0 32 32"><path d="M4 24 15 6l11 18H4Zm6-5h11M16 10v14" fill="none" stroke="currentColor" stroke-width="2"/></svg></div><div><strong>ALPHA <span>LED STUDIO</span></strong><small>V1.1 / SÂN KHẤU 3D · 35 FX · DMX &amp; ILDA</small></div></div>
  <div class="project-name"><i></i><span id="projectName">Untitled stage</span><span class="local-badge">LOCAL / OFFLINE</span></div>
  <div class="header-actions"><button class="icon-btn" id="themeToggleBtn" title="Chuyển giao diện Sáng / Tối" aria-label="Toggle theme">&#9788;</button><button class="icon-btn" id="undoBtn" title="Undo - Ctrl+Z">&#8630;</button><button class="icon-btn" id="redoBtn" title="Redo - Ctrl+Shift+Z">&#8631;</button><button class="btn quiet" id="helpBtn">Hướng dẫn</button><button class="btn" id="loadProject">Mở dự án</button><button class="btn" id="saveProject">Lưu dự án</button><button class="btn primary" id="presentBtn">&#9655; Trình diễn</button></div>
 </header>
@@ -39,10 +39,10 @@
 <footer class="timeline-panel"><div id="liveDock" class="live-dock hidden"></div>
  <div class="transport"><div class="transport-left"><button id="restartBtn" class="icon-btn" title="Về đầu">&#9198;</button><button id="playBtn" class="play-btn" title="Play / pause - Space">&#10074;&#10074;</button><span id="timeLabel" class="timecode">00:00.00</span><span class="transport-separator">/</span><label class="duration-label"><input id="duration" type="number" min="1" max="600" value="12"> s</label><button id="loopBtn" class="btn small active">&#8635; Loop</button></div><div class="transport-right"><span class="sync-badge"><i></i> SHARED TIMELINE</span><label class="small-check"><input id="orbitShow" type="checkbox"> Camera orbit</label><label class="quality-label">Preview <select id="previewQuality" aria-label="Preview quality"><option value="auto">Auto / 55 FPS</option><option value="1">Chu&#7849;n</option><option value="0.65">Nh&#7865;</option><option value="0.45">Si&#234;u nh&#7865;</option><option value="1.25">N&#233;t</option></select></label></div></div>
  <div class="track-area"><div class="track-label"><span>MASTER</span><b id="masterLabel">3840 x 1280</b></div><div class="track-main"><div id="ruler" class="ruler"></div><div id="trackClips" class="track-clips"></div><input type="range" id="seek" min="0" max="1200" value="0" step="1" aria-label="Timeline scrubber"><div id="playhead" class="playhead"><span></span></div></div></div>
- <div class="bottom-status"><span id="statusText">Ready</span><span>Space: play &nbsp; F: frame &nbsp; 1 / 2 / 3: workspace &nbsp; Ctrl+S: save</span><span>ALPHA / LOCAL BUILD 1.0</span></div>
+ <div class="bottom-status"><span id="statusText">Ready</span><span>Space: play &nbsp; F: frame &nbsp; 1 / 2 / 3: workspace &nbsp; Ctrl+S: save</span><span>ALPHA / LOCAL BUILD 1.1</span></div>
 </footer>
 </div>
-<div id="presentHUD" class="present-hud hidden"><div><b>ALPHA</b><span>STAGE PREVIEW / V10</span></div><button class="btn" id="exitPresent">V&#7873; ch&#7881;nh s&#7917;a <kbd>Esc</kbd></button></div>
+<div id="presentHUD" class="present-hud hidden"><div><b>ALPHA</b><span>STAGE PREVIEW / V1.1</span></div><button class="btn" id="exitPresent">V&#7873; ch&#7881;nh s&#7917;a <kbd>Esc</kbd></button></div>
 <div id="presentControls" class="present-controls hidden" aria-label="Presentation controls">
  <div class="show-row"><button id="showVJ" class="btn small live-toggle">LIVE VJ</button><button id="showAudio" class="btn small">Audio</button><button id="showRestart" class="btn small" title="V&#7873; &#273;&#7847;u">&#9198;</button><button id="showPlay" class="btn primary">Ph&#225;t</button><span class="timecode" id="showTime">00:00.00</span><span class="show-divider"></span><button id="showOverview" class="btn small">To&#224;n c&#7843;nh</button><button data-show-camera="front" class="btn small">Front</button><button data-show-camera="iso" class="btn small">3/4</button><button id="showLock" class="btn small" aria-pressed="false">Kh&#243;a g&#243;c</button><button id="showOrbit" class="btn small" aria-pressed="false">T&#7921; xoay: T&#7855;t</button><button class="btn small" id="showExit">V&#7873; ch&#7881;nh s&#7917;a</button></div>
  <div class="show-scrub"><span>VIDEO</span><input type="range" id="showSeek" min="0" max="1200" step="1" value="0" aria-label="Presentation timeline"><span id="showDuration">12 s</span></div>
