@@ -126,7 +126,7 @@ export default {
       subtitle: "A professional suite of tools for learning, task management, and AI skills development.",
       explore: "Enter Studio",
       hubTitle: "Alpha Studio Hub — every tool in one place",
-      hubDesc: "Five tools live today and two on the way: image & video generation and image editing.",
+      hubDesc: "Six tools live today and two on the way: image & video generation and image editing.",
       crm: {
         title: "Alpha CRM",
         desc: "Client, project, and automated billing management system, optimizing workflows for professional event freelancers."

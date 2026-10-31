@@ -1,0 +1,312 @@
+/* V14.3 contour workspace: scoped, responsive, independent of legacy panels. */
+#matrix143OpenBtn{order:-1;flex:0 0 auto;border-color:#51d3bf;background:#164c4b;color:#b7fff0;font-weight:700;letter-spacing:.025em}
+#matrix143Overlay{position:absolute;inset:0;width:100%;height:100%;z-index:34;pointer-events:none;touch-action:none}
+body.matrix143-open .right-panel{position:relative;overflow:hidden}
+body.matrix143-open .right-panel>:not(#matrix143Panel){display:none!important}
+#matrix143Panel[hidden]{display:none!important}
+#matrix143Panel{position:absolute;inset:0;display:flex;flex-direction:column;min-height:0;background:#0c1e2a;color:#d4e9f1;z-index:60;font:12px/1.45 'Segoe UI',Arial,sans-serif;overflow:hidden}
+#matrix143Panel *{box-sizing:border-box}
+#matrix143Panel button{min-width:0;min-height:32px;border:1px solid #355769;background:#193646;color:#dceff6;border-radius:6px;padding:7px 8px;font:600 10.5px/1.3 'Segoe UI',Arial,sans-serif;cursor:pointer;white-space:normal;overflow-wrap:anywhere}
+#matrix143Panel button:hover{border-color:#6cdac9;background:#25505e}
+#matrix143Panel button.primary{background:#126e6a;border-color:#3fc5b6;color:#fff}
+#matrix143Panel button.active{border-color:#75f0cd;background:#20554f;color:#d8fff5}
+#matrix143Panel button.danger{background:#4b2b35;border-color:#8d5362}
+.mx143-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px;background:#13313b;border-bottom:1px solid #365462;flex:0 0 auto}
+.mx143-head strong{display:block;font-size:12px;color:#a1f2dc;letter-spacing:.06em}
+.mx143-head small{display:block;font-size:10px;color:#88b4c2;margin-top:3px}
+.mx143-head button{flex:0 0 32px}
+.mx143-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:8px;background:#10232e;flex:0 0 auto}
+.mx143-content{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin}
+#matrix143Panel section{padding:11px 10px;border-bottom:1px solid #304955;display:grid;gap:9px}
+#matrix143Panel h4{font-size:10px;letter-spacing:.045em;color:#9de5d8;margin:0}
+#matrix143Panel p{font-size:10.5px;line-height:1.6;margin:0;color:#a9c7d2;overflow-wrap:anywhere}
+#matrix143Panel label{display:flex;flex-direction:column;gap:5px;font-size:10.5px;color:#c0dce5;min-width:0}
+#matrix143Panel input:not([type=checkbox]),#matrix143Panel select{width:100%;min-width:0;height:31px;border:1px solid #3d5c6c;border-radius:5px;background:#061722;color:#ebf8ff;padding:4px 6px;font-size:11px}
+#matrix143Panel input[type=color]{padding:3px;height:33px}
+#matrix143Panel .mx143-check,.mx143-cue-form .mx143-check{display:flex;flex-direction:row;align-items:center;gap:7px;line-height:1.4}
+#matrix143Panel input[type=checkbox]{flex:0 0 auto;width:15px;height:15px;margin:0;accent-color:#66dabc}
+.mx143-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;align-items:end}
+.mx143-grid.thirds{grid-template-columns:repeat(3,minmax(0,1fr))}
+#matrix143Panel .mx143-note{border:1px solid #31545d;background:#102e38;border-radius:6px;padding:8px;color:#a0d1d7;font-size:10px}
+.mx143-candidates{display:grid;gap:8px;max-height:200px;overflow:auto;background:#0b2630;padding:8px;border-radius:6px}
+.mx143-candidates span{min-width:0;overflow-wrap:anywhere}
+#matrix143Panel small{display:block;color:#91b0bf;font-size:9.5px;line-height:1.5}
+.mx143-paths{display:grid;gap:5px;max-height:210px;overflow:auto}
+#matrix143Panel .mx143-paths button{display:flex;gap:7px;align-items:center;text-align:left}
+.mx143-paths i{width:10px;height:26px;border-radius:4px;flex:0 0 auto;box-shadow:0 0 9px #55ced247}
+.mx143-paths span{flex:1;min-width:0}
+.mx143-paths b{color:#8de9bf;flex:0 0 auto}
+.mx143-section-title{display:flex;align-items:center;gap:6px;justify-content:space-between}
+#matrix143Panel .mx143-section-title button{font-size:9px;padding:5px;min-height:26px;max-width:110px}
+.mx143-presets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+#matrix143Panel .mx143-presets button{display:flex;align-items:center;gap:7px;text-align:left;min-height:42px}
+#matrix143Panel .mx143-presets small{flex:0 0 18px;white-space:nowrap;font-size:10px;color:#71cbbd;font-variant-numeric:tabular-nums}
+.mx143-cue{display:grid;grid-template-columns:minmax(0,1fr) repeat(3,28px);gap:4px;align-items:center;border-bottom:1px solid #284351;padding:7px 0}
+#matrix143Panel .mx143-cue>button{min-width:28px;padding:5px 1px;white-space:nowrap}
+#matrix143Panel .mx143-cue>button:first-child{text-align:left;white-space:normal;padding:6px;border-color:transparent;background:transparent}
+#matrix143Panel .mx143-cue strong{display:block;font-size:10px;overflow-wrap:anywhere}
+.mx143-cue small{overflow-wrap:anywhere}
+.mx143-footer{display:grid;grid-template-columns:1fr 1.2fr;gap:6px;padding:8px;border-top:1px solid #355565;flex:0 0 auto}
+#matrix143Panel .mx143-mode{background:#304136;border:1px solid #72815c}
+.mx143-cue-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.mx143-cue-form label{display:flex;flex-direction:column;gap:5px;min-width:0;font-size:11px;color:#bedce6}
+.mx143-cue-form input,.mx143-cue-form select{width:100%;min-width:0}
+.mx143-cue-form input[type=checkbox]{width:16px}
+.mx143-cue-form input[type=color]{height:32px}
+.mx143-cue-form .wide{grid-column:1/-1}
+#mxCueError{color:#ffb9ad;min-height:1.5em}
+body.present-mode #matrix143Overlay{display:none!important}
+@media(max-width:980px){body.matrix143-open .right-panel{display:block!important;position:fixed!important;top:126px!important;bottom:90px!important;right:0!important;left:auto!important;width:min(358px,calc(100vw - 26px))!important;height:auto!important;z-index:94!important;grid-column:auto!important;box-shadow:-12px 0 40px #000a!important;overflow:hidden!important}}
+@media(max-width:540px){.mx143-cue-form{gap:8px}.mx143-head{padding:8px}.mx143-grid{gap:6px}}
+
+/* Legacy drawer top applies at every width. Keep the desktop grid anchored,
+   and show the Matrix editor through viewport changes without reopening it. */
+@media(min-width:981px){body.matrix143-open:not(.focus-workspace) .right-panel{position:relative!important;top:auto!important;bottom:auto!important;left:auto!important;right:auto!important;width:auto!important;height:auto!important;padding:0!important;box-shadow:none!important}}
+body.matrix143-open.focus-workspace .right-panel{display:block!important;position:fixed!important;top:126px!important;bottom:90px!important;right:0!important;left:auto!important;width:min(358px,calc(100vw - 26px))!important;height:auto!important;z-index:94!important;box-shadow:-12px 0 40px #000a!important;overflow:hidden!important}
+
+/* V14.4 precise scan controls and individually inspectable candidates. */
+#matrix143Panel button:disabled,#matrix143Panel select:disabled{opacity:.45;cursor:default}
+#matrix143Panel .mx144-details{border:1px solid #365460;border-radius:6px;padding:8px;background:#0e2631;min-width:0}
+#matrix143Panel .mx144-details>summary{cursor:pointer;color:#b4dcd8;font-size:10.5px;font-weight:600;line-height:1.6}
+#matrix143Panel .mx144-details[open]>:not(summary){margin-top:10px}
+#matrix143Panel .mx144-details .mx143-grid{align-items:start}
+#matrix143Panel .mx144-selection{color:#b7efdc;font-weight:600}
+#matrix143Panel .mx143-candidates{padding:4px;gap:4px;max-height:270px}
+#matrix143Panel .mx144-candidate{display:grid;grid-template-columns:16px minmax(0,1fr) 46px;align-items:center;gap:6px;padding:8px 5px;border:1px solid transparent;border-radius:5px;min-width:0}
+#matrix143Panel .mx144-candidate.focused{border-color:#eac57e;background:#433c26}
+#matrix143Panel .mx144-candidate.existing{background:#16332f}
+#matrix143Panel .mx144-candidate strong{display:block;font-size:10px;font-weight:600;overflow-wrap:anywhere;line-height:1.5}
+#matrix143Panel .mx144-candidate button{font-size:9px;padding:5px 3px;line-height:1.3}
+#matrix143Panel .mx144-pages{display:flex;align-items:center;justify-content:center;gap:12px;font-size:10px;color:#b5d5dd}
+#matrix143Panel .mx144-pages button{min-width:34px;min-height:27px}
+#matrix143Panel .mx144-scan-issue{display:flex;align-items:center;gap:7px;justify-content:space-between;padding-bottom:7px;border-bottom:1px solid #29434c;font-size:10px;overflow-wrap:anywhere}
+#matrix143Panel .mx144-scan-issue span{min-width:0}
+#matrix143Panel .mx144-scan-issue button{flex:0 0 70px;font-size:9px}
+#matrix143Panel .mx144-warnings{max-height:180px;overflow:auto;display:grid;gap:8px;padding:8px;background:#302c21;border-radius:5px}
+#matrix143Panel .mx144-warnings p{color:#e2cda3;font-size:9.5px}
+
+/* V14.7: one whole-model action and compact, independently selectable blocks. */
+#matrix143Panel #mx147ScanAllBlocks{width:100%;min-height:45px;font-size:12px;line-height:1.4;border:1px solid #71e4c5;background:#176b60;box-shadow:inset 0 1px #8bf7d133;padding:10px}
+#matrix143Panel #mx147ScanAllBlocks:hover:not(:disabled){background:#238577}
+#matrix143Panel .mx147-scan-all{background:linear-gradient(180deg,#123139,#0e2530)}
+#mx147ScanProgress{display:block;width:100%;height:9px;appearance:none;border:0;border-radius:6px;overflow:hidden;background:#253e49;accent-color:#71e4c5}
+#mx147ScanProgress::-webkit-progress-bar{background:#253e49;border-radius:6px}
+#mx147ScanProgress::-webkit-progress-value{background:#71e4c5;border-radius:6px}
+#mx147ScanProgress::-moz-progress-bar{background:#71e4c5;border-radius:6px}
+#matrix143Panel .mx147-single-object>label,#matrix143Panel .mx147-single-object>.mx143-grid{margin-top:9px}
+#matrix143Panel .mx147-results{background:#0c2530}
+.mx147-blocks{display:grid;gap:7px;min-width:0}
+#matrix143Panel .mx147-block{border:1px solid #3a5260;border-radius:7px;min-width:0;background:#102c38;overflow:hidden}
+#matrix143Panel .mx147-block.checked{border-color:#499784;background:#123832}
+#matrix143Panel .mx147-block.mixed{border-color:#c2ae71}
+.mx147-block-head{display:grid;grid-template-columns:minmax(0,1fr) 72px;align-items:center;gap:6px;padding:8px}
+#matrix143Panel .mx147-block-head>label{display:flex;flex-direction:row;align-items:center;gap:8px;cursor:pointer;min-width:0}
+.mx147-block-head label>span{min-width:0;flex:1}
+.mx147-block-head strong{display:block;color:#d5eeea;font-size:10.5px;line-height:1.45;font-weight:650;overflow-wrap:anywhere}
+#matrix143Panel .mx147-block-head small{color:#a0c9c6;font-size:9px}
+#matrix143Panel .mx147-block-head button{font-size:9px;padding:6px 4px;min-height:31px}
+.mx147-block-paths{padding:4px;border-top:1px solid #395964;background:#0b2330}
+#matrix143Panel .mx147-block-paths .mx144-candidate{padding:7px 4px}
+#matrix143Panel .mx147-limit{padding:8px;border:1px solid #967456;border-radius:5px;background:#392d23;color:#ffe0ad;font-size:10px}
+#matrix143Panel .mx147-results>[data-mxaction=commit]{min-height:38px;font-size:11px}
+
+/* V14.8: drawing is always reachable; scan suggestions stay quiet by default. */
+#matrix148DrawBtn{order:-2;flex:0 0 auto;border:1px solid #e8c481;background:#534225;color:#ffedc7;font-weight:700}
+#matrix148DrawBtn:hover{background:#705732;border-color:#ffe0a5}
+#matrix143Panel .mx148-draw-toolbar{flex:0 0 auto;background:#203c3e;border-bottom:1px solid #759c8c;gap:6px;padding:9px 10px;z-index:2}
+#matrix143Panel .mx148-draw-toolbar.active{background:#393b2c;border-color:#ab9a64}
+#matrix143Panel .mx148-draw-toolbar h4{color:#ffe0a1;font-size:10px;letter-spacing:.015em}
+#matrix143Panel .mx148-draw-toolbar p{line-height:1.4;font-size:10px;color:#e0dfc8}
+#matrix143Panel #mx148DrawContour{min-height:43px;background:#69532b;border-color:#e8c481;color:#fff0d3;font-size:13px;font-weight:750}
+#matrix143Panel #mx148DrawContour:hover:not(:disabled){background:#806733}
+#matrix143Panel .mx148-draw-toolbar .mx143-grid{gap:6px;align-items:stretch}
+#matrix143Panel .mx148-draw-toolbar #mx148DrawContour,#matrix143Panel .mx148-draw-toolbar #mx147ScanAllBlocks{height:100%;min-height:47px;padding:8px 6px;font-size:11px}
+#matrix143Panel .mx148-draw-toolbar button{font-size:10px;min-height:32px;padding:6px 5px}
+#matrix143Panel .mx147-blocks{max-height:340px;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;padding-right:3px}
+#matrix143Panel #mx148GuideStatus{border-left:2px solid #8dc7b7;padding:5px 7px;background:#102f39;color:#b4ddd2}
+#matrix143Panel .mx148-drawing-help{background:#162b32;gap:14px}
+@media(max-height:680px){#matrix143Panel .mx148-draw-toolbar{padding:7px;gap:4px}#matrix143Panel .mx148-draw-toolbar p{font-size:9px}#matrix143Panel .mx148-draw-toolbar button{min-height:28px;font-size:9px}}
+
+/* V14.9: browse a small number of blocks before extracting any edges. */
+.mx149-hierarchy{display:grid;gap:9px;min-width:0}
+#matrix143Panel #mx149HierarchySummary{font-size:10px;color:#a0d9cb;line-height:1.5}
+.mx149-breadcrumb{display:flex;flex-wrap:wrap;gap:4px;align-items:center;min-width:0}
+#matrix143Panel .mx149-breadcrumb button{font-size:9px;min-height:25px;padding:4px 6px;max-width:100%;overflow-wrap:anywhere}
+.mx149-breadcrumb>span{color:#6ca99b}
+.mx149-current{display:grid;gap:5px;padding:9px;background:#173d40;border:1px solid #447b73;border-radius:7px;min-width:0}
+.mx149-current>strong{color:#d1fff0;font-size:12px;overflow-wrap:anywhere}
+#matrix143Panel .mx149-current button{font-size:9px;min-height:28px}
+#matrix143Panel .mx149-hint{padding:8px;border-left:2px solid #d3bc77;background:#33392b;color:#e2ddbd}
+.mx149-nodes{display:grid;gap:7px;max-height:330px;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;min-width:0}
+.mx149-node{border:1px solid #3c6267;border-radius:7px;padding:9px;background:#102f39;display:grid;gap:7px;min-width:0}
+.mx149-node strong{display:block;color:#d6eee8;font-size:11px;overflow-wrap:anywhere}
+#matrix143Panel .mx149-node button{font-size:10px;min-height:31px}
+#matrix143Panel .mx149-node button[data-mx149-open]{background:#1b554f;border-color:#5b9f88}
+#matrix143Panel #mx149ScanEdges{min-height:42px;font-size:12px}
+/* V15.0 direct scan: keep the scan and commit actions visible. */
+#matrix143Panel .mx150-quick-toolbar{display:grid;gap:8px}
+#matrix143Panel #mx150QuickScan{width:100%;padding:12px 8px;font-size:13px}
+#matrix143Panel .mx150-counts{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:11px 0;flex-wrap:wrap}
+#matrix143Panel .mx150-counts strong{font-size:13px;color:#64f0cd}
+#matrix143Panel .mx150-counts span,#matrix143Panel .mx150-muted{font-size:10px;color:#9bb2bf;line-height:1.6}
+#matrix143Panel .mx150-legend{display:flex;align-items:center;gap:6px;font-size:10px;color:#b7ccd3;flex-wrap:wrap}
+#matrix143Panel .mx150-legend i{display:inline-block;width:18px;height:2px;background:#79bfc7}
+#matrix143Panel .mx150-legend i.chosen{height:3px;background:#55f0c5;margin-left:5px}
+#matrix143Panel .mx150-picked{border-left:3px solid #55f0c5;background:#133a40;padding:9px;overflow-wrap:anywhere;color:#e2f1f3}
+#matrix143Panel .mx150-picked small{display:block;padding-top:4px;color:#9acac5;font-size:10px}
+#matrix143Panel #mx150Commit{min-height:42px;font-size:12px}
+#matrix143Panel .mx150-scan .mx143-check{padding:7px 0}
+
+/* V14.6: shared path and Master dimmers inside effects / timecode only. */
+#matrix143Panel .mx144-brightness{flex:0 0 auto;display:grid;gap:5px;padding:8px 10px 7px;background:#10323a;border-top:1px solid #2e5861;border-bottom:1px solid #41646a}
+.mx144-brightness-title,.mx144-brightness-label{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.mx144-brightness-title strong{font-size:9px;letter-spacing:.05em;color:#a3eddd}
+.mx144-brightness-title span{font-size:9px;color:#9abac0}
+#matrix143Panel .mx144-brightness-label label{font-size:10px;font-weight:600}
+.mx144-brightness-label output{color:#b9ffe7;font-size:11px;font-variant-numeric:tabular-nums;font-weight:700}
+.mx144-brightness-row{display:grid;grid-template-columns:minmax(70px,1fr) 72px;gap:9px;align-items:center}
+#matrix143Panel .mx144-brightness input[type=range]{height:22px;padding:0;border:0;border-radius:0;background:transparent;accent-color:#72e2c5;cursor:pointer;touch-action:none}
+#matrix143Panel .mx144-brightness input:disabled{opacity:.42;cursor:default}
+.mx144-percent{position:relative;display:flex;align-items:center}
+#matrix143Panel .mx144-percent input{height:27px;padding:3px 17px 3px 5px;font-size:10.5px;font-variant-numeric:tabular-nums}
+.mx144-percent span{position:absolute;right:6px;color:#a1c9ce;font-size:10px;pointer-events:none}
+#matrix143Panel .mx144-percent input::-webkit-inner-spin-button,#matrix143Panel .mx144-percent input::-webkit-outer-spin-button{appearance:none;margin:0}
+#matrix143Panel .mx144-percent input[type=number]{appearance:textfield;-moz-appearance:textfield}
+#matrix143Panel .mx144-percent input[aria-invalid=true]{border-color:#eea79b}
+.mx144-brightness-scope{display:grid;grid-template-columns:86px minmax(0,1fr);gap:6px;align-items:center;margin-top:2px}
+#matrix143Panel .mx144-brightness-scope label{font-size:9.5px}
+#matrix143Panel .mx144-brightness-scope select{height:27px;font-size:10px;text-overflow:ellipsis}
+#matrix143Panel .mx144-brightness-status{min-height:15px;font-size:9px;line-height:1.4;color:#9bc7cd;font-variant-numeric:tabular-nums}
+#matrix143Panel .mx144-brightness.is-blackout{border-bottom-color:#c49e60}
+#matrix143Panel .mx144-brightness.is-blackout .mx144-brightness-label output{color:#ffdb96}
+#matrix143Panel .mx144-brightness input:focus-visible,#matrix143Panel .mx144-brightness select:focus-visible{outline:2px solid #a3f4db;outline-offset:2px}
+@media(max-height:650px){#matrix143Panel .mx144-brightness{gap:3px;padding-top:5px;padding-bottom:5px}.mx144-brightness-title{display:none}}
+
+
+#matrix143Panel .mx144-brightness[hidden]{display:none!important}
+
+/* Brightness belongs to effects and the cue timeline, never the viewport. */
+.mx146-level{display:grid;gap:5px;min-width:0;color:#d5ecee;font:11px/1.4 'Segoe UI',Arial,sans-serif}
+.mx146-level>label,.mx146-cue-brightness>label{display:flex!important;flex-direction:row!important;justify-content:space-between;align-items:center;gap:8px;color:#c6ede3;font-size:11px}
+.mx146-level output,.mx146-cue-brightness output{font-weight:700;color:#f2dca2;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mx146-level-row{display:grid;grid-template-columns:minmax(60px,1fr) 60px 12px;align-items:center;gap:7px;min-width:0}
+.mx146-level-row>span{font-size:10px;color:#9ab7c2}
+.mx146-level small,.mx146-cue-brightness small{color:#91b5be;font-size:9.5px}
+#matrix143Panel .mx146-level-row input[type=number],#sequenceDock .mx146-level-row input[type=number],.mx146-cue-brightness input[type=number]{width:60px;height:31px;margin:0;padding:4px 5px;text-align:right;border:1px solid #526d78;background:#081b26;color:#f1fbff;border-radius:5px;font-size:11px;font-variant-numeric:tabular-nums}
+#matrix143Panel .mx146-level,#matrix143Panel .mx146-object{background:#0f2933}
+#matrix143Panel #mx146EffectBrightness{padding:9px;border:1px solid #3d6c69;border-radius:6px}
+.mx146-cue-brightness{display:grid;gap:5px;padding:10px;background:#112d37;border:1px solid #3e676e;border-radius:7px}
+#mx146TimelineBrightness{flex:none;display:grid;grid-template-columns:minmax(120px,1fr) minmax(200px,360px) auto auto;align-items:center;gap:12px;padding:6px 10px;border-top:1px solid #3d6465;background:#112c34;color:#d4edec;min-width:0}
+#mx146TimelineBrightness[hidden]{display:none!important}
+.mx146-timeline-label{min-width:0;display:grid;gap:1px;font:10px/1.3 'Segoe UI',Arial,sans-serif}
+.mx146-timeline-label strong{color:#8fe0cc;font-size:9px;letter-spacing:.04em}
+#mx146TimelineCueName{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px;color:#c6dfe3}
+#mx146TimelineBrightness .mx146-level{gap:0}
+#mx146TimelineBrightness .mx146-level>label{font-size:9px;line-height:1.1}
+#mx146TimelineBrightness .btn{font-size:10px;padding:5px 8px;white-space:nowrap}
+#matrix143Panel .mx144-brightness{margin-top:8px;border-top:1px solid #35585f;flex:none}
+/* Explicit tracks remain usable alongside legacy theme range rules. */
+#matrix143Panel .mx146-level-row input[type=range],#sequenceDock .mx146-level-row input[type=range],.mx146-cue-brightness input[type=range],#matrix143Panel .mx144-brightness input[type=range]{display:block;width:100%;min-width:0;height:31px;margin:0;padding:0;border:0;border-radius:0;appearance:none;-webkit-appearance:none;background:transparent;cursor:ew-resize;touch-action:none;--mx146-track:#243e49;--mx146-accent:#f1d086}
+.mx146-level-row input[type=range]::-webkit-slider-runnable-track,#matrix143Panel .mx144-brightness input[type=range]::-webkit-slider-runnable-track{height:7px;border:1px solid #8daab0;border-radius:8px;background:linear-gradient(to right,var(--mx146-accent) 0%,var(--mx146-accent) var(--mx146-fill,var(--mx145-fill,100%)),var(--mx146-track) var(--mx146-fill,var(--mx145-fill,100%)),var(--mx146-track) 100%)}
+.mx146-level-row input[type=range]::-webkit-slider-thumb,#matrix143Panel .mx144-brightness input[type=range]::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:22px;height:22px;margin-top:-8px;border:3px solid #f4d28a;border-radius:50%;background:#fffaf0;box-shadow:0 0 0 2px #15343d;cursor:ew-resize}
+.mx146-level-row input[type=range]::-moz-range-track,#matrix143Panel .mx144-brightness input[type=range]::-moz-range-track{height:7px;border:1px solid #8daab0;border-radius:8px;background:linear-gradient(to right,#f1d086 0%,#f1d086 var(--mx146-fill,var(--mx145-fill,100%)),#243e49 var(--mx146-fill,var(--mx145-fill,100%)),#243e49 100%)}
+.mx146-level-row input[type=range]::-moz-range-thumb,#matrix143Panel .mx144-brightness input[type=range]::-moz-range-thumb{width:18px;height:18px;border:3px solid #f4d28a;border-radius:50%;background:#fffaf0}
+.mx146-level-row input:disabled{opacity:.4;cursor:default!important}
+.mx146-level-row input:focus-visible,.mx146-cue-brightness input:focus-visible{outline:2px solid #a0ead7;outline-offset:2px}
+.mx146-level-row input[aria-invalid=true]{border-color:#ffab97!important}
+@media(max-width:700px){#mx146TimelineBrightness{grid-template-columns:minmax(72px,1fr) minmax(180px,1.4fr) auto;gap:6px;padding:5px 7px}#mx146TimelineEffects{display:none}#mx146TimelineBrightness .btn{font-size:9px;padding:4px}.mx146-level-row{grid-template-columns:minmax(45px,1fr) 53px 10px;gap:4px}#sequenceDock .mx146-level-row input[type=number]{width:53px}}
+
+/* Keep the useful width controls above long lists of created paths. */
+#matrix143Panel{overflow-x:hidden;overflow-y:auto;scrollbar-width:thin;overscroll-behavior:contain}
+/* The timeline can leave less height than the fixed header and drawing tools.
+   Keep a usable content viewport; in short panels the outer panel also scrolls. */
+#matrix143Panel .mx143-content{min-height:140px}
+#matrix143Panel #mx151AppearanceHost{display:contents}
+#matrix143Panel .mx151-appearance{display:grid;gap:8px;margin:0;padding:12px;background:#102f37;border-bottom:1px solid #377a78}
+.mx151-heading{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.mx151-heading strong{font-size:11px;letter-spacing:.06em;color:#a3f4df}
+.mx151-heading output{font-size:14px;font-weight:700;color:#ffe1a1;font-variant-numeric:tabular-nums}
+#matrix143Panel .mx151-scope{display:flex;flex-direction:row;align-items:center;gap:10px;font-size:10px;white-space:nowrap}
+#matrix143Panel .mx151-scope select{flex:1;min-width:0;width:auto;margin:0}
+.mx151-width-row{display:grid;grid-template-columns:minmax(55px,1fr) 64px 20px;align-items:center;gap:7px}
+#matrix143Panel .mx151-width-row input[type=number]{height:34px;width:64px;margin:0;padding:5px;text-align:right;font-size:12px;font-variant-numeric:tabular-nums}
+.mx151-width-row>span{font-size:10px;color:#bad8dc}
+#matrix143Panel .mx151-width-row input[type=range]{display:block;appearance:none;-webkit-appearance:none;width:100%;min-width:0;height:34px;padding:0;margin:0;border:0;border-radius:0;background:transparent;cursor:ew-resize;touch-action:none}
+.mx151-width-row input[type=range]::-webkit-slider-runnable-track{height:8px;border:1px solid #8dbfc0;border-radius:8px;background:linear-gradient(to right,#6ff1c7 0%,#6ff1c7 var(--mx151-fill,12%),#23454e var(--mx151-fill,12%),#23454e 100%)}
+.mx151-width-row input[type=range]::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:24px;height:24px;margin-top:-9px;border:3px solid #79eac9;border-radius:50%;background:#f0fff9;box-shadow:0 0 0 2px #133a40}
+.mx151-width-row input[type=range]::-moz-range-track{height:8px;border:1px solid #8dbfc0;border-radius:8px;background:#23454e}
+.mx151-width-row input[type=range]::-moz-range-thumb{width:18px;height:18px;border:3px solid #79eac9;border-radius:50%;background:#f0fff9}
+#matrix143Panel #mx151ClearProfile{background:#235750;border:1px solid #60bd9e;color:#dcfff3;font-weight:700}
+#matrix143Panel .mx151-appearance .mx143-grid{margin:0}
+#matrix143Panel .mx151-appearance p{margin:0;color:#b7d9da;font-size:10px;overflow-wrap:anywhere}
+#matrix143Panel .mx151-appearance small{color:#9abdc4;font-size:10px}
+.mx151-appearance input:focus-visible,.mx151-appearance select:focus-visible,.mx151-appearance button:focus-visible{outline:2px solid #b1f5df;outline-offset:2px}
+.mx151-appearance input:disabled{opacity:.4;cursor:default}
+.mx151-appearance input[aria-invalid=true]{outline:2px solid #ffab97}
+
+/* Neon Terminal Studio surface alignment */
+#matrix143Panel, .mx143-head, .mx143-tabs {
+  border-color: var(--border-primary);
+  box-shadow: none;
+}
+[data-theme="light"] #matrix143Panel,
+[data-theme="light"] .mx143-head,
+[data-theme="light"] .mx143-tabs {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-primary) !important;
+}
+[data-theme="light"] #matrix143Panel * {
+  color: var(--text-primary);
+}
+[data-theme="light"] #matrix143OpenBtn,
+[data-theme="light"] #matrix143Panel button,
+[data-theme="light"] #matrix143Panel input:not([type=checkbox]):not([type=range]),
+[data-theme="light"] #matrix143Panel select,
+[data-theme="light"] #matrix143Panel .mx143-note,
+[data-theme="light"] .mx143-candidates,
+[data-theme="light"] #matrix143Panel .mx143-mode,
+[data-theme="light"] #matrix143Panel .mx144-details,
+[data-theme="light"] #matrix143Panel .mx144-candidate.focused,
+[data-theme="light"] #matrix143Panel .mx144-candidate.existing,
+[data-theme="light"] #matrix143Panel .mx144-warnings,
+[data-theme="light"] #matrix143Panel #mx147ScanAllBlocks,
+[data-theme="light"] #matrix143Panel .mx147-scan-all,
+[data-theme="light"] #matrix143Panel .mx147-results,
+[data-theme="light"] #matrix143Panel .mx147-block,
+[data-theme="light"] .mx147-block-paths,
+[data-theme="light"] #matrix143Panel .mx147-limit,
+[data-theme="light"] #matrix148DrawBtn,
+[data-theme="light"] #matrix143Panel .mx148-draw-toolbar,
+[data-theme="light"] #matrix143Panel #mx148DrawContour,
+[data-theme="light"] #matrix143Panel #mx148GuideStatus,
+[data-theme="light"] #matrix143Panel .mx148-drawing-help,
+[data-theme="light"] .mx149-current,
+[data-theme="light"] #matrix143Panel .mx149-hint,
+[data-theme="light"] .mx149-node,
+[data-theme="light"] #matrix143Panel .mx149-node button[data-mx149-open],
+[data-theme="light"] #matrix143Panel .mx150-picked,
+[data-theme="light"] #matrix143Panel .mx144-brightness,
+[data-theme="light"] #matrix143Panel .mx146-level,
+[data-theme="light"] #matrix143Panel .mx146-object,
+[data-theme="light"] .mx146-cue-brightness,
+[data-theme="light"] #mx146TimelineBrightness,
+[data-theme="light"] #matrix143Panel .mx151-appearance,
+[data-theme="light"] #matrix143Panel #mx151ClearProfile {
+  background: rgba(255, 255, 255, 0.90) !important;
+  border-color: var(--border-secondary) !important;
+  color: var(--text-primary) !important;
+}
+[data-theme="light"] #matrix143Panel button.active,
+[data-theme="light"] #matrix143Panel button.primary,
+[data-theme="light"] #matrix143Panel .mx147-block.checked,
+[data-theme="light"] #matrix143Panel .mx148-draw-toolbar.active {
+  background: #e0f2fe !important;
+  border-color: #0284c7 !important;
+  color: #0f172a !important;
+}
+[data-theme="light"] #matrix143Panel small,
+[data-theme="light"] #matrix143Panel p {
+  color: var(--text-secondary) !important;
+}
+

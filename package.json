@@ -4,7 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "sync:led-studio": "node -e \"import('node:fs').then(fs => { if (fs.existsSync('../tools/led-stage-studio/scripts/sync-to-public.mjs')) return import('../tools/led-stage-studio/scripts/sync-to-public.mjs'); })\"",
+    "predev": "npm run sync:led-studio",
     "dev": "vite",
+    "prebuild": "npm run sync:led-studio",
     "build": "tsc -b && vite build",
     "build:seo": "npm run build && node scripts/prerender.mjs && node scripts/seo-smoke.mjs",
     "preview": "vite preview",

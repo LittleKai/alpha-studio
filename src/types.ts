@@ -128,15 +128,6 @@ export interface WorkflowDocument {
   note?: string;
 }
 
-export interface ServerApp {
-  id: string;
-  name: string;
-  icon: string;
-  status: 'online' | 'busy' | 'offline';
-  description: string;
-  costPerHour: number;
-}
-
 export interface Job {
   id: string;
   title: string;
@@ -160,44 +151,6 @@ export interface Transaction {
 
 export type PartnerType = 'agency' | 'supplier';
 
-export interface PartnerCompany {
-  id: string;
-  name: string;
-  type: PartnerType;
-  logo: string;
-  description: string;
-  location: string;
-  contact: {
-    phone: string;
-    email: string;
-    website: string;
-  };
-  specialties: string[];
-  isVerified: boolean;
-  coverImage?: string;
-  projects?: string[];
-}
-
-export interface UserProfile {
-  name: string;
-  role: string;
-  email: string;
-  phone: string;
-  bio: string;
-  skills: string[];
-  portfolioUrl?: string;
-  avatar?: string;
-  birthDate?: string;
-  showBirthDate?: boolean;
-  location?: string;
-  socials?: {
-    facebook?: string;
-    linkedin?: string;
-    github?: string;
-    custom?: { label: string; url: string }[];
-  };
-}
-
 export interface FeaturedStudent {
   id: string;
   name: string;
@@ -214,16 +167,6 @@ export interface FeaturedStudent {
     linkedin?: string;
     custom?: { label: string; url: string }[];
   }
-}
-
-export interface AutomationRule {
-  id: string;
-  name: string;
-  trigger: 'file_upload' | 'status_approved' | 'status_rejected';
-  action: 'send_email' | 'send_telegram' | 'send_whatsapp';
-  target: string;
-  isActive: boolean;
-  lastRun?: string;
 }
 
 export interface AffiliateStats {
@@ -370,30 +313,6 @@ export interface CommentData {
   replies?: CommentData[];
   createdAt: string;
   updatedAt: string;
-}
-
-// Legacy types for backwards compatibility
-export interface CreativeAsset {
-  id: string;
-  title: string;
-  type: 'prompt' | 'workflow' | 'dataset';
-  content: string;
-  tags: string[];
-  author: string;
-  likes: number;
-  downloads: number;
-}
-
-export interface SharedResource {
-  id: string;
-  title: string;
-  type: 'project_file' | 'design_asset' | 'industry_data' | 'template';
-  format: string;
-  size: string;
-  author: string;
-  downloads: number;
-  uploadDate: string;
-  description: string;
 }
 
 export interface CourseData {

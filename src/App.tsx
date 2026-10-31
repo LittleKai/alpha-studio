@@ -40,6 +40,7 @@ const SkillsPage = lazy(() => import('./pages/SkillsPage'));
 const SkillDetailPage = lazy(() => import('./pages/SkillDetailPage'));
 const EventLibraryPage = lazy(() => import('./pages/EventLibraryPage'));
 const EventLibraryItemPage = lazy(() => import('./pages/EventLibraryItemPage'));
+const LedStudioPage = lazy(() => import('./pages/LedStudioPage'));
 
 // Loading spinner component
 const LoadingSpinner: React.FC = () => (
@@ -337,6 +338,16 @@ const EventLibraryItemPageWrapper: React.FC = () => {
     );
 };
 
+const LedStudioPageWrapper: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <LedStudioPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
 // 404 Not Found Page
 const NotFoundPage: React.FC = () => {
     const navigate = useNavigate();
@@ -423,6 +434,7 @@ const App: React.FC = () => {
                 <Route path="/studio/vietyaku" element={<VietYakuPageWrapper />} />
                 <Route path="/studio/event-library" element={<EventLibraryPageWrapper />} />
                 <Route path="/studio/event-library/:slug" element={<EventLibraryItemPageWrapper />} />
+                <Route path="/studio/led-studio" element={<LedStudioPageWrapper />} />
                 
                 {/* AI Skills Routes */}
                 <Route path="/studio/ai-skills" element={<SkillsPageWrapper />} />

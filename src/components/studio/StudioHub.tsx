@@ -49,6 +49,7 @@ const RAIL_ORDER: { key: StudioToolKey | UpcomingKey; to?: string }[] = [
     { key: 'crm', to: '/studio/crm' },
     { key: 'vocab', to: '/studio/vocab' },
     { key: 'vietyaku', to: '/studio/vietyaku' },
+    { key: 'ledStudio', to: '/studio/led-studio' },
     { key: 'generate' },
     { key: 'edit' },
 ];
@@ -81,7 +82,7 @@ export default function StudioHub() {
     }, [hash]);
 
     const statItems = [
-        { value: '05', label: t('studio.hub.hero.stats.live') },
+        { value: '06', label: t('studio.hub.hero.stats.live') },
         { value: '02', label: t('studio.hub.hero.stats.upcoming') },
         { value: '3000+', label: t('studio.hub.hero.stats.skills') },
         { value: '100%', label: t('studio.hub.hero.stats.beta') },
@@ -158,7 +159,7 @@ export default function StudioHub() {
                                 <span className="text-[10px] font-black uppercase tracking-[0.22em] text-[var(--text-tertiary)]">
                                     {t('studio.hub.hero.railLabel')}
                                 </span>
-                                <span className="text-[10px] font-black tabular-nums text-[var(--accent-primary)]">07</span>
+                                <span className="text-[10px] font-black tabular-nums text-[var(--accent-primary)]">08</span>
                             </div>
                             <ul className="space-y-1">
                                 {RAIL_ORDER.map(({ key, to }) => {

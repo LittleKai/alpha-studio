@@ -124,13 +124,6 @@ export default {
       approved: "Approved",
       rejected: "Rejected"
     },
-    login: {
-      title: "Staff Access",
-      email: "Staff ID / Email",
-      password: "Security Key",
-      btn: "Access Connect Hub",
-      hint: "Use any credentials to enter"
-    },
     dashboard: {
       upload: "Upload Asset",
       uploadLimit: "max 10MB",
@@ -409,6 +402,7 @@ export default {
         success: "Registration sent! We will contact you soon."
       },
       types: {
+        all: "All",
         technology: "Technology",
         education: "Education",
         enterprise: "Enterprise",
@@ -438,24 +432,6 @@ export default {
       contact: "Contact Info",
       gallery: "Featured Work",
       hire: "Hire Talent"
-    },
-    automation: {
-      title: "Automation",
-      create: "New Workflow",
-      active: "On",
-      inactive: "Off",
-      triggers: {
-        file_upload: "On File Upload",
-        status_approved: "On Approved",
-        status_rejected: "On Rejected"
-      },
-      actions: {
-        send_email: "Send Email",
-        send_telegram: "Send Telegram",
-        send_whatsapp: "Send WhatsApp"
-      },
-      targetPlaceholder: "Enter Email or Group ID...",
-      lastRun: "Last Run"
     },
     affiliate: {
       title: "Affiliate Program",
@@ -569,102 +545,6 @@ export default {
       myPrompts: "My Prompts",
       bookmarked: "Bookmarked"
     },
-    resources: {
-      title: "Resource Hub",
-      subtitle: "Share & download templates, datasets, and assets",
-      upload: "Share Resource",
-      noResources: "No resources found",
-      search: "Search resources...",
-      filters: {
-        all: "All",
-        type: "Type",
-        sortBy: "Sort by"
-      },
-      types: {
-        "template": "Template",
-        "dataset": "Dataset",
-        "design-asset": "Design Asset",
-        "project-file": "Project File",
-        "3d-model": "3D Model",
-        "font": "Font",
-        "other": "Other"
-      },
-      sort: {
-        latest: "Latest",
-        popular: "Most Popular",
-        "top-rated": "Top Rated",
-        "most-downloaded": "Most Downloaded"
-      },
-      form: {
-        createTitle: "Share New Resource",
-        editTitle: "Edit Resource",
-        titleEn: "Title (English)",
-        titleVi: "Title (Vietnamese)",
-        descEn: "Description (English)",
-        descVi: "Description (Vietnamese)",
-        resourceType: "Resource Type",
-        file: "File",
-        fileUpload: "Upload File",
-        fileDrop: "Drop file here or click to upload",
-        maxSize: "Max file size: 50MB",
-        thumbnail: "Thumbnail",
-        previewImages: "Preview Images",
-        tags: "Tags",
-        tagsPlaceholder: "Add tags...",
-        compatibleSoftware: "Compatible Software",
-        compatiblePlaceholder: "e.g. Photoshop, Blender, After Effects",
-        submit: "Share Resource",
-        update: "Update Resource",
-        cancel: "Cancel",
-        uploading: "Uploading..."
-      },
-      detail: {
-        by: "by",
-        download: "Download",
-        downloads: "Downloads",
-        views: "Views",
-        rating: "Rating",
-        rateThis: "Rate this resource",
-        comments: "Comments",
-        noComments: "No comments yet",
-        fileInfo: "File Info",
-        format: "Format",
-        size: "Size",
-        compatibleWith: "Compatible with",
-        previewImages: "Preview Images",
-        relatedResources: "Related Resources"
-      },
-      actions: {
-        like: "Like",
-        bookmark: "Bookmark",
-        download: "Download",
-        share: "Share",
-        report: "Report",
-        edit: "Edit",
-        delete: "Delete",
-        hide: "Hide",
-        unhide: "Unhide",
-        feature: "Feature",
-        unfeature: "Unfeature"
-      },
-      success: {
-        created: "Resource shared successfully!",
-        updated: "Resource updated successfully!",
-        deleted: "Resource deleted successfully!",
-        downloaded: "Download started!"
-      },
-      error: {
-        loadFailed: "Failed to load resources",
-        createFailed: "Failed to create resource",
-        updateFailed: "Failed to update resource",
-        deleteFailed: "Failed to delete resource",
-        fileTooLarge: "File is too large. Maximum size is 50MB.",
-        uploadFailed: "Failed to upload file"
-      },
-      featured: "Featured",
-      myResources: "My Resources",
-      bookmarked: "Bookmarked"
-    },
     comments: {
       title: "Comments",
       placeholder: "Write a comment...",
@@ -680,22 +560,6 @@ export default {
       showReplies: "Show replies",
       hideReplies: "Hide replies",
       deleteConfirm: "Are you sure you want to delete this comment?"
-    },
-    creative: {
-      title: "Creative Assets",
-      subtitle: "Share Prompts & Workflows. Earn 100 Coins per contribution!",
-      create: "Contribute",
-      prompts: "Sample Prompts",
-      workflows: "Workflows",
-      form: {
-        title: "New Asset",
-        assetTitle: "Title",
-        type: "Type",
-        content: "Content (Prompt or JSON)",
-        tags: "Tags",
-        submit: "Submit & Earn 100 Coins"
-      },
-      success: "Submitted! You earned 100 Coins."
     },
     collaboration: {
       title: "Project Chat",

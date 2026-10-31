@@ -124,13 +124,6 @@ export default {
       approved: "Đã duyệt",
       rejected: "Từ chối"
     },
-    login: {
-      title: "Truy cập nhân viên",
-      email: "ID nhân viên / Email",
-      password: "Mã bảo mật",
-      btn: "Truy cập Connect Hub",
-      hint: "Dùng bất kỳ thông tin nào để vào"
-    },
     dashboard: {
       upload: "Tải lên tài liệu",
       uploadLimit: "tối đa 10MB",
@@ -260,7 +253,7 @@ export default {
         modal: {
           client: "Khách hàng",
           budget: "Ngân sách (Coins)",
-          deadline: "Hạn chật (tùy chọn)",
+          deadline: "Hạn chót (tùy chọn)",
         },
         noProjects: "Chưa có dự án nào. Hãy tạo dự án đầu tiên!",
         chat: {
@@ -409,6 +402,7 @@ export default {
         success: "Đăng ký đã gửi! Chúng tôi sẽ liên hệ sớm."
       },
       types: {
+        all: "Tất cả",
         technology: "Công nghệ",
         education: "Giáo dục",
         enterprise: "Doanh nghiệp",
@@ -438,24 +432,6 @@ export default {
       contact: "Thông tin liên hệ",
       gallery: "Tác phẩm tiêu biểu",
       hire: "Tuyển dụng"
-    },
-    automation: {
-      title: "Tự động hóa",
-      create: "Workflow mới",
-      active: "Bật",
-      inactive: "Tắt",
-      triggers: {
-        file_upload: "Khi tải file lên",
-        status_approved: "Khi được duyệt",
-        status_rejected: "Khi bị từ chối"
-      },
-      actions: {
-        send_email: "Gửi Email",
-        send_telegram: "Gửi Telegram",
-        send_whatsapp: "Gửi WhatsApp"
-      },
-      targetPlaceholder: "Nhập Email hoặc ID nhóm...",
-      lastRun: "Chạy lần cuối"
     },
     affiliate: {
       title: "Chương trình Affiliate",
@@ -569,102 +545,6 @@ export default {
       myPrompts: "Prompt của tôi",
       bookmarked: "Đã lưu"
     },
-    resources: {
-      title: "Kho Tài Nguyên",
-      subtitle: "Chia sẻ & tải template, dataset và tài sản",
-      upload: "Chia sẻ Tài nguyên",
-      noResources: "Không tìm thấy tài nguyên",
-      search: "Tìm kiếm tài nguyên...",
-      filters: {
-        all: "Tất cả",
-        type: "Loại",
-        sortBy: "Sắp xếp theo"
-      },
-      types: {
-        "template": "Template",
-        "dataset": "Dataset",
-        "design-asset": "Tài sản thiết kế",
-        "project-file": "File dự án",
-        "3d-model": "Mô hình 3D",
-        "font": "Font chữ",
-        "other": "Khác"
-      },
-      sort: {
-        latest: "Mới nhất",
-        popular: "Phổ biến nhất",
-        "top-rated": "Đánh giá cao",
-        "most-downloaded": "Tải nhiều nhất"
-      },
-      form: {
-        createTitle: "Chia sẻ Tài nguyên mới",
-        editTitle: "Chỉnh sửa Tài nguyên",
-        titleEn: "Tiêu đề (Tiếng Anh)",
-        titleVi: "Tiêu đề (Tiếng Việt)",
-        descEn: "Mô tả (Tiếng Anh)",
-        descVi: "Mô tả (Tiếng Việt)",
-        resourceType: "Loại tài nguyên",
-        file: "File",
-        fileUpload: "Tải lên File",
-        fileDrop: "Kéo thả file vào đây hoặc nhấp để tải lên",
-        maxSize: "Kích thước tối đa: 50MB",
-        thumbnail: "Ảnh đại diện",
-        previewImages: "Ảnh xem trước",
-        tags: "Tags",
-        tagsPlaceholder: "Thêm tags...",
-        compatibleSoftware: "Phần mềm tương thích",
-        compatiblePlaceholder: "VD: Photoshop, Blender, After Effects",
-        submit: "Chia sẻ Tài nguyên",
-        update: "Cập nhật Tài nguyên",
-        cancel: "Hủy",
-        uploading: "Đang tải lên..."
-      },
-      detail: {
-        by: "bởi",
-        download: "Tải về",
-        downloads: "Lượt tải",
-        views: "Lượt xem",
-        rating: "Đánh giá",
-        rateThis: "Đánh giá tài nguyên này",
-        comments: "Bình luận",
-        noComments: "Chưa có bình luận",
-        fileInfo: "Thông tin File",
-        format: "Định dạng",
-        size: "Kích thước",
-        compatibleWith: "Tương thích với",
-        previewImages: "Ảnh xem trước",
-        relatedResources: "Tài nguyên liên quan"
-      },
-      actions: {
-        like: "Thích",
-        bookmark: "Lưu",
-        download: "Tải về",
-        share: "Chia sẻ",
-        report: "Báo cáo",
-        edit: "Chỉnh sửa",
-        delete: "Xóa",
-        hide: "Ẩn",
-        unhide: "Hiện",
-        feature: "Đánh dấu nổi bật",
-        unfeature: "Bỏ nổi bật"
-      },
-      success: {
-        created: "Chia sẻ tài nguyên thành công!",
-        updated: "Cập nhật tài nguyên thành công!",
-        deleted: "Xóa tài nguyên thành công!",
-        downloaded: "Bắt đầu tải về!"
-      },
-      error: {
-        loadFailed: "Không thể tải tài nguyên",
-        createFailed: "Không thể tạo tài nguyên",
-        updateFailed: "Không thể cập nhật tài nguyên",
-        deleteFailed: "Không thể xóa tài nguyên",
-        fileTooLarge: "File quá lớn. Kích thước tối đa là 50MB.",
-        uploadFailed: "Không thể tải lên file"
-      },
-      featured: "Nổi bật",
-      myResources: "Tài nguyên của tôi",
-      bookmarked: "Đã lưu"
-    },
     comments: {
       title: "Bình luận",
       placeholder: "Viết bình luận...",
@@ -680,22 +560,6 @@ export default {
       showReplies: "Hiện trả lời",
       hideReplies: "Ẩn trả lời",
       deleteConfirm: "Bạn có chắc chắn muốn xóa bình luận này?"
-    },
-    creative: {
-      title: "Tài sản sáng tạo",
-      subtitle: "Chia sẻ Prompt & Workflow. Nhận 100 Coin mỗi đóng góp!",
-      create: "Đóng góp",
-      prompts: "Prompt mẫu",
-      workflows: "Workflow",
-      form: {
-        title: "Tài sản mới",
-        assetTitle: "Tiêu đề",
-        type: "Loại",
-        content: "Nội dung (Prompt hoặc JSON)",
-        tags: "Tags",
-        submit: "Gửi & Nhận 100 Coin"
-      },
-      success: "Đã gửi! Bạn nhận được 100 Coin."
     },
     collaboration: {
       title: "Chat dự án",

@@ -110,6 +110,8 @@ export default function LibraryPublisherView({ searchQuery, initialEditSlug, onI
                 visibility: item.visibility === 'public' ? 'private' : 'public'
             });
             setItems(prev => prev.map(i => (i._id === updated._id ? { ...i, visibility: updated.visibility } : i)));
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'Failed to update');
         } finally {
             setBusySlug('');
         }

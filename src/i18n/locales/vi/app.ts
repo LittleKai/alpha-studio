@@ -115,12 +115,18 @@ export default {
       video: "Video",
       edit: "Chỉnh sửa"
     },
+    ledStudio: {
+      seoTitle: "LED Stage Studio 3D — Thiết kế sân khấu, Mapping LED & Timecode Show",
+      seoDesc: "Ứng dụng WebGL2 thiết kế sân khấu sự kiện 3D, mapping màn hình LED, lập trình 35 hiệu ứng LED Matrix, điều khiển đèn DMX512 OFL và Laser ILDA.",
+      breadcrumb: "LED Stage Studio 3D",
+      badge: "ALPHA CREATIVE LED STUDIO V16"
+    },
     hub: {
       hero: {
         badge: "Hệ sinh thái Alpha Studio · Beta",
         title1: "AI Studio",
         title2: "Bộ công cụ sáng tạo",
-        subtitle: "Năm công cụ đang mở cho mọi tài khoản: Thư viện tri thức sự kiện, Thư viện Kỹ năng AI, Alpha CRM cho tiếp thị Zalo, VocabFlip học từ vựng và VietYaku - phần mềm converter hỗ trợ dịch thuật tiếng Nhật & Trung. Hai công cụ nữa đang được hoàn thiện trong xưởng.",
+        subtitle: "Sáu công cụ đang mở cho mọi tài khoản: Thư viện tri thức sự kiện, Thư viện Kỹ năng AI, Alpha CRM cho tiếp thị Zalo, VocabFlip học từ vựng, VietYaku hỗ trợ dịch thuật Nhật – Trung và LED Stage Studio 3D. Hai công cụ nữa đang được hoàn thiện trong xưởng.",
         stats: {
           live: "Công cụ đang mở",
           upcoming: "Sắp ra mắt",
@@ -162,6 +168,11 @@ export default {
           f1: "Phần mềm converter hỗ trợ dịch thuật tiếng Nhật và tiếng Trung ngoại tuyến",
           f2: "Kế thừa & cải tiến từ QuickConverter, mở rộng thuật toán và bộ từ điển",
           f3: "Dịch ngoại tuyến hoàn toàn, bản Windows portable tự động cập nhật"
+        },
+        ledStudio: {
+          f1: "Nhập sân khấu 3D (GLB/glTF Meshopt, DAE, OBJ) & tự động nhận diện màn hình LED theo hệ mét",
+          f2: "35 hiệu ứng LED Matrix 3D, bàn điều khiển đèn DMX512 (OFL) & Laser Show chuẩn ILDA (.ild)",
+          f3: "Đồng bộ Timecode SMPTE/MTC, xuất Pixel Map PNG/CSV, video WebM & chia sẻ link duyệt 3D"
         }
       },
       open: "Mở",
@@ -170,13 +181,18 @@ export default {
         skills: "Web · Không cần cài đặt",
         crm: "Windows & Android · Dùng thử 1 tháng",
         vocab: "Web, Windows & Android",
-        vietyaku: "Windows · Android (Sắp ra mắt)"
+        vietyaku: "Windows · Android (Sắp ra mắt)",
+        ledStudio: "WebGL2 3D · Chạy trực tiếp trên trình duyệt & Offline"
       },
       backToStudio: "Quay lại Studio",
       cards: {
         eventLibrary: {
           title: "Thư viện tri thức sự kiện",
           desc: "Case study, prompt, workflow, template và playbook cho ngành sự kiện – truyền thông"
+        },
+        ledStudio: {
+          title: "LED Stage Studio 3D",
+          desc: "Thiết kế sân khấu 3D, mapping màn hình LED, lập trình 35 hiệu ứng LED Matrix, đèn DMX512 & Laser ILDA theo Timecode"
         },
         generate: {
           title: "Tạo ảnh & video",

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ALPHA Creative LED Studio V15.1 | Bright LED Matrix · Direct Thickness Control · 35 Effects</title>
+  <link rel="stylesheet" href="css/01-base.css">
+  <link rel="stylesheet" href="css/02-workspace-addons.css">
+  <link rel="stylesheet" href="css/03-fixture-timecode.css">
+  <link rel="stylesheet" href="css/04-show-fx.css">
+  <link rel="stylesheet" href="css/05-led-matrix.css">
+</head>
+<body>
+<div id="app">
+<header class="topbar">
+ <div class="brand"><div class="brandmark"><svg viewBox="0 0 32 32"><path d="M4 24 15 6l11 18H4Zm6-5h11M16 10v14" fill="none" stroke="currentColor" stroke-width="2"/></svg></div><div><strong>ALPHA <span>LED STUDIO</span></strong><small>CREATIVE MAPPING WORKSPACE <b>V13.9 PRO LASER</b></small></div></div>
+ <div class="project-name"><i></i><span id="projectName">Untitled stage</span><span class="local-badge">LOCAL / OFFLINE</span></div>
+ <div class="header-actions"><button class="icon-btn" id="themeToggleBtn" title="Chuyển giao diện Sáng / Tối" aria-label="Toggle theme">&#9788;</button><button class="icon-btn" id="undoBtn" title="Undo - Ctrl+Z">&#8630;</button><button class="icon-btn" id="redoBtn" title="Redo - Ctrl+Shift+Z">&#8631;</button><button class="btn quiet" id="helpBtn">Hướng dẫn</button><button class="btn" id="loadProject">Mở dự án</button><button class="btn" id="saveProject">Lưu dự án</button><button class="btn primary" id="presentBtn">&#9655; Trình diễn</button></div>
+</header>
+<nav class="workflow"><div class="steps"><button class="step active" data-step="stage"><span>01</span><b>SÂN KHẤU 3D</b><small>Import &amp; select</small></button><span class="step-divider">/</span><button class="step" data-step="mapping"><span>02</span><b>LED &amp; VIDEO</b><small>Map your canvas</small></button><span class="step-divider">/</span><button class="step" data-step="lighting"><span>03</span><b>ÁNH SÁNG &amp; SHOW</b><small>Set the mood</small></button></div><div class="workflow-right"><button id="ledManagerBtn" class="btn small">Qu&#7843;n l&#253; LED</button><button id="atlasBtn" class="btn small">Pixel Studio</button><button id="vjToggle" class="btn small live-toggle">&#9654; LIVE VJ</button><span class="status-dot"></span><span id="engineState">3D engine ready</span><button id="exportBtn" class="btn small">Xuất &#8599;</button></div></nav>
+<div class="workspace">
+<aside class="left-panel">
+ <section class="import-section"><div class="section-kicker">PROJECT ASSETS <span id="meshCount">0 objects</span></div><button id="importModel" class="drop-card"><svg viewBox="0 0 40 40"><path d="m20 5 14 8v15l-14 8-14-8V13l14-8Zm0 15 14-7M20 20 6 13m14 7v16M6 13l14 7 14-7" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><strong>Nhập sân khấu 3D</strong><span>GLB / glTF / DAE / OBJ</span><small>Kéo file vào cửa sổ để bắt đầu</small></button><div class="mini-actions"><button id="demoBtn">Sân khấu mẫu</button><button id="importFolder">Thư mục</button><button id="skpHelp">Từ SketchUp &#8599;</button></div></section>
+ <section class="object-section"><div class="section-heading"><h3 id="leftTitle">Cấu trúc sân khấu</h3><span class="counter" id="leftCount">0</span></div><input id="objectSearch" class="search" placeholder="Tìm object / LED..." aria-label="Search objects"><div class="left-tools"><button id="autoDetect" class="btn small">Nhận diện LED</button><button id="drawQuad" class="btn small" title="Click 4 goc tren model">+ 4 góc</button></div><button id="repairMapping" class="btn full-btn repair-mapping">S&#7917;a mapping 3D</button><div id="objectList" class="item-list"></div></section>
+ <section class="media-section"><div class="section-heading"><h3>Thư viện video</h3><button class="text-btn" id="addMedia">+ Thêm</button></div><div id="mediaList" class="media-list"></div><button id="sampleVideo" class="sample-btn">&#9654; Thử với video mapped mẫu</button><p class="micro-note">File ở trên máy bạn. Không upload lên server.</p></section>
+ <div class="sidebar-foot"><span>WEBGL 2</span><span id="gpuInfo">GPU PREVIEW</span></div>
+</aside>
+<main class="main-panel">
+ <div class="view-toolbar"><div class="view-tabs"><button data-view="stage" class="active">&#9671; Sân khấu 3D</button><button data-view="map">&#9638; Pixel Map</button><button data-view="solo">&#9633; LED đang chọn</button></div><div class="view-actions"><button id="testPattern" class="icon-btn" title="Bat / tat test pattern">&#9638;</button><button id="guidesBtn" class="icon-btn active" title="Hien / an nhan LED">&#9634;</button><button id="fitBtn" class="icon-btn" title="Frame stage - F">&#8982;</button></div></div>
+<div class="navigation-strip"><button class="btn small" id="overviewBtn" title="F">&#8982; To&#224;n c&#7843;nh</button><div class="camera-bar" id="cameraBar"><button data-camera="front">Front</button><button data-camera="iso" class="active">3/4</button><button data-camera="side">Side</button><button data-camera="top">Top</button></div><span class="nav-spacer"></span><button class="btn small" id="lockCameraBtn" aria-pressed="false">Kh&#243;a g&#243;c</button><button class="btn small" id="focusBtn" aria-pressed="false">M&#7903; r&#7897;ng</button><button class="btn small drawer-toggle" id="assetDrawer">D&#7919; li&#7879;u</button><button class="btn small drawer-toggle" id="inspectorDrawer">Th&#244;ng s&#7889;</button></div>
+ <div class="viewport" id="viewport"><canvas id="glcanvas" aria-label="3D stage viewport"></canvas><canvas id="mapOverlay"></canvas><div id="hudLabels"></div><div class="view-meta"><span class="live-pill"><i></i> LIVE PREVIEW</span><span id="modelLabel">ALPHA / Demo stage</span></div><div id="quadHint" class="quad-hint hidden"></div><div class="viewport-foot"><div id="interactionHint">Kéo: xoay &nbsp; / &nbsp; Chuột phải: di chuyển &nbsp; / &nbsp; Cuộn: zoom</div><span id="fps">-- fps</span></div><div id="emptyHint" class="empty-hint hidden"></div></div>
+ <div class="selection-strip"><span id="selectionStatus">Chọn một bề mặt trên model để tạo LED.</span><button class="text-btn" id="screenshotBtn">Chụp phối cảnh &#8599;</button></div>
+</main>
+<aside class="right-panel">
+ <div class="inspector-head"><span class="section-kicker" id="inspectorKicker">STAGE INSPECTOR</span><h2 id="inspectorTitle">Chuẩn bị sân khấu</h2><p id="inspectorSubtitle">Không gian 3D thật. Media trên máy bạn.</p></div>
+ <div id="inspectorContent"></div>
+</aside>
+</div>
+<footer class="timeline-panel"><div id="liveDock" class="live-dock hidden"></div>
+ <div class="transport"><div class="transport-left"><button id="restartBtn" class="icon-btn" title="Về đầu">&#9198;</button><button id="playBtn" class="play-btn" title="Play / pause - Space">&#10074;&#10074;</button><span id="timeLabel" class="timecode">00:00.00</span><span class="transport-separator">/</span><label class="duration-label"><input id="duration" type="number" min="1" max="600" value="12"> s</label><button id="loopBtn" class="btn small active">&#8635; Loop</button></div><div class="transport-right"><span class="sync-badge"><i></i> SHARED TIMELINE</span><label class="small-check"><input id="orbitShow" type="checkbox"> Camera orbit</label><label class="quality-label">Preview <select id="previewQuality" aria-label="Preview quality"><option value="auto">Auto / 55 FPS</option><option value="1">Chu&#7849;n</option><option value="0.65">Nh&#7865;</option><option value="0.45">Si&#234;u nh&#7865;</option><option value="1.25">N&#233;t</option></select></label></div></div>
+ <div class="track-area"><div class="track-label"><span>MASTER</span><b id="masterLabel">3840 x 1280</b></div><div class="track-main"><div id="ruler" class="ruler"></div><div id="trackClips" class="track-clips"></div><input type="range" id="seek" min="0" max="1200" value="0" step="1" aria-label="Timeline scrubber"><div id="playhead" class="playhead"><span></span></div></div></div>
+ <div class="bottom-status"><span id="statusText">Ready</span><span>Space: play &nbsp; F: frame &nbsp; 1 / 2 / 3: workspace &nbsp; Ctrl+S: save</span><span>ALPHA / LOCAL BUILD 1.0</span></div>
+</footer>
+</div>
+<div id="presentHUD" class="present-hud hidden"><div><b>ALPHA</b><span>STAGE PREVIEW / V10</span></div><button class="btn" id="exitPresent">V&#7873; ch&#7881;nh s&#7917;a <kbd>Esc</kbd></button></div>
+<div id="presentControls" class="present-controls hidden" aria-label="Presentation controls">
+ <div class="show-row"><button id="showVJ" class="btn small live-toggle">LIVE VJ</button><button id="showAudio" class="btn small">Audio</button><button id="showRestart" class="btn small" title="V&#7873; &#273;&#7847;u">&#9198;</button><button id="showPlay" class="btn primary">Ph&#225;t</button><span class="timecode" id="showTime">00:00.00</span><span class="show-divider"></span><button id="showOverview" class="btn small">To&#224;n c&#7843;nh</button><button data-show-camera="front" class="btn small">Front</button><button data-show-camera="iso" class="btn small">3/4</button><button id="showLock" class="btn small" aria-pressed="false">Kh&#243;a g&#243;c</button><button id="showOrbit" class="btn small" aria-pressed="false">T&#7921; xoay: T&#7855;t</button><button class="btn small" id="showExit">V&#7873; ch&#7881;nh s&#7917;a</button></div>
+ <div class="show-scrub"><span>VIDEO</span><input type="range" id="showSeek" min="0" max="1200" step="1" value="0" aria-label="Presentation timeline"><span id="showDuration">12 s</span></div>
+</div>
+<div id="toast" role="status"></div><div id="busy" class="busy hidden"><div class="spinner"></div><strong id="busyText">Đang xử lý...</strong></div>
+<div id="dropOverlay" class="drop-overlay hidden"><div><span>&#8595;</span><h2>Thả model hoặc video vào đây</h2><p>GLB / glTF / DAE / OBJ / MP4 / WebM / PNG / JPG</p></div></div>
+<dialog id="modal"><div class="modal-head"><h2 id="modalTitle"></h2><button class="icon-btn" id="closeModal">&#215;</button></div><div id="modalBody"></div><div id="modalActions"></div></dialog>
+<div id="exportMenu" class="export-menu hidden"><div class="section-kicker">DELIVERABLES</div><button id="exportShot">Phối cảnh 3D <span>PNG / 1920 x 1080</span></button><button id="exportMapPNG">Pixel Map có nhãn <span>PNG / đúng kích thước</span></button><button id="exportJSON">Cấu hình mapping <span>JSON</span></button><button id="exportCSV">Bảng thông số LED <span>CSV</span></button><button id="recordBtn">Ghi video preview <span>WebM / realtime + audio</span></button></div>
+<input id="modelInput" type="file" multiple accept=".glb,.gltf,.dae,.obj,.bin,.png,.jpg,.jpeg,.webp,.skp" hidden><input id="folderInput" type="file" webkitdirectory multiple hidden><input id="mediaInput" type="file" multiple accept="video/*,image/png,image/jpeg,image/webp" hidden><input id="projectInput" type="file" accept=".ledstudio,.json" hidden>
+<input id="musicInput" type="file" accept="audio/*,.mp3,.wav,.ogg,.m4a,.flac" hidden><input id="atlasMediaInput" type="file" accept="video/*,image/*" hidden>
+
+  <!-- Core Data & Engine -->
+  <script src="js/data/demo-video.js"></script>
+  <script src="js/data/meshopt-decoder.js"></script>
+  <script src="js/data/ofl-fixtures.js"></script>
+  <script src="js/core/01-math-webgl.js"></script>
+  <script src="js/core/02-mapping-spatial.js"></script>
+  <script src="js/core/03-live-atlas-audio.js"></script>
+  <script src="js/core/04-sequencer-director.js"></script>
+  <script src="js/core/05-lighting-desk.js"></script>
+  <script src="js/core/06-rundown-choreo-boot.js"></script>
+  <script src="js/modules/v12-stage-choreo.js"></script>
+  <script src="js/modules/v12-fixture-desk.js"></script>
+  <script src="js/modules/v13-manual-takes.js"></script>
+  <script src="js/modules/v13-timecode-laser-mount.js"></script>
+  <script src="js/modules/v14-fx-timecode.js"></script>
+  <script src="js/modules/matrix/matrix143-geometry.js"></script>
+  <script src="js/modules/matrix/matrix149-hierarchy.js"></script>
+  <script src="js/modules/matrix/matrix150-quick.js"></script>
+  <script src="js/modules/matrix/matrix143-effects.js"></script>
+  <script src="js/modules/matrix/matrix143.js"></script>
+  <script src="js/modules/matrix/matrix144-brightness.js"></script>
+  <script src="js/modules/matrix/matrix146-controls.js"></script>
+  <script src="js/modules/matrix/matrix151-controls.js"></script>
+  <script src="js/modules/matrix/matrix143-render.js"></script>
+  <script src="js/modules/export142.js"></script>
+  <script src="js/modules/recovery142.js"></script>
+  <script src="js/modules/v16-cloud-bridge.js"></script>
+</body>
+</html>

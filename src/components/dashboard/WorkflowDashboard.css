@@ -288,13 +288,6 @@ html[data-theme="light"] .workflow-shell {
   box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
 }
 
-.workflow-nav-external {
-  width: 16px;
-  height: 16px;
-  margin-left: auto;
-  opacity: 0.7;
-}
-
 .workflow-sidebar-footer {
   padding: 14px;
   border-top: 1px solid var(--workflow-border);
@@ -770,23 +763,10 @@ html[data-theme="light"] .workflow-shell {
   border-color: rgba(16, 185, 129, 0.35);
 }
 
-.workflow-status-planning,
-.workflow-status-pending {
+.workflow-status-planning {
   color: #f59e0b;
   background: rgba(245, 158, 11, 0.15);
   border-color: rgba(245, 158, 11, 0.35);
-}
-
-.workflow-status-review {
-  color: #a855f7;
-  background: rgba(168, 85, 247, 0.15);
-  border-color: rgba(168, 85, 247, 0.35);
-}
-
-.workflow-status-rejected {
-  color: #ef4444;
-  background: rgba(239, 68, 68, 0.15);
-  border-color: rgba(239, 68, 68, 0.35);
 }
 
 .workflow-department {
@@ -957,17 +937,6 @@ html[data-theme="light"] .workflow-shell {
   font-size: 17px;
   font-weight: 750;
   line-height: 1.5;
-}
-
-.workflow-empty-icon {
-  width: 58px;
-  height: 58px;
-  display: grid;
-  place-items: center;
-  border-radius: 16px;
-  background: var(--workflow-control);
-  color: var(--accent-primary);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 .workflow-document-toolbar {
@@ -1213,10 +1182,6 @@ html[data-theme="light"] .workflow-shell {
   font-weight: 600;
 }
 
-.workflow-library-action {
-  color: var(--workflow-library) !important;
-}
-
 @media (max-width: 1280px) {
   .workflow-project-row {
     grid-template-columns: minmax(240px, 1.5fr) 120px minmax(135px, 0.7fr);
@@ -1243,8 +1208,7 @@ html[data-theme="light"] .workflow-shell {
   .workflow-brand-copy,
   .workflow-nav-section h2,
   .workflow-nav-item > span,
-  .workflow-nav-badge,
-  .workflow-nav-external {
+  .workflow-nav-badge {
     display: none;
   }
 
@@ -1335,8 +1299,7 @@ html[data-theme="light"] .workflow-shell {
     gap: 10px;
   }
 
-  .workflow-context-title,
-  .workflow-switchers {
+  .workflow-context-title {
     display: none;
   }
 

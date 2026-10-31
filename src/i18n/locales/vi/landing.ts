@@ -126,7 +126,7 @@ export default {
       subtitle: "Bộ công cụ chuyên nghiệp phục vụ học tập, quản lý công việc và phát triển kỹ năng AI.",
       explore: "Truy cập Studio",
       hubTitle: "Alpha Studio Hub — toàn bộ công cụ trong một nơi",
-      hubDesc: "Năm công cụ đang mở và hai công cụ sắp ra mắt: tạo ảnh & video và chỉnh sửa ảnh.",
+      hubDesc: "Sáu công cụ đang mở và hai công cụ sắp ra mắt: tạo ảnh & video và chỉnh sửa ảnh.",
       crm: {
         title: "Alpha CRM",
         desc: "Hệ thống quản lý khách hàng, dự án và thanh toán tự động, tối ưu hóa quy trình làm việc cho freelancer sự kiện chuyên nghiệp."

@@ -213,7 +213,7 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
                             : 'bg-[var(--bg-card)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
                     }`}
                 >
-                    {t('partner.all') || 'Tất cả'}
+                    {t('workflow.partners.types.all')}
                 </button>
                 <button
                     onClick={() => setPartnerTypeFilter('technology')}
@@ -223,7 +223,7 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
                             : 'bg-[var(--bg-card)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
                     }`}
                 >
-                    {t('partner.technology') || 'Công nghệ'}
+                    {t('workflow.partners.types.technology')}
                 </button>
                 <button
                     onClick={() => setPartnerTypeFilter('education')}
@@ -233,7 +233,7 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
                             : 'bg-[var(--bg-card)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
                     }`}
                 >
-                    {t('partner.education') || 'Giáo dục'}
+                    {t('workflow.partners.types.education')}
                 </button>
                 <button
                     onClick={() => setPartnerTypeFilter('enterprise')}
@@ -243,7 +243,7 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
                             : 'bg-[var(--bg-card)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
                     }`}
                 >
-                    {t('partner.enterprise') || 'Doanh nghiệp'}
+                    {t('workflow.partners.types.enterprise')}
                 </button>
             </div>
 

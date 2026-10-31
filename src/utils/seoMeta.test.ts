@@ -60,3 +60,11 @@ describe('buildSeoMeta', () => {
     expect(JSON.parse(meta.jsonLdScripts[0]).headline).toBe(headline);
   });
 });
+
+import { STUDIO_TOOLS } from '../components/studio/StudioToolTile';
+
+it('registers ledStudio tool in STUDIO_TOOLS pointing to /studio/led-studio', () => {
+  const tool = STUDIO_TOOLS.find(t => t.key === ('ledStudio' as any));
+  expect(tool).toBeDefined();
+  expect(tool?.to).toBe('/studio/led-studio');
+});

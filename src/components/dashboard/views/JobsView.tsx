@@ -185,13 +185,13 @@ const JobsView: React.FC<JobsViewProps> = ({ searchQuery }) => {
     };
 
     const getExperienceLabel = (level: string): string => {
-        const labels: Record<string, { vi: string; en: string; zh: string }> = {
-            fresher: { vi: 'Fresher', en: 'Fresher', zh: 'Fresher' },
-            junior: { vi: 'Junior', en: 'Junior', zh: 'Junior' },
-            mid: { vi: 'Mid-level', en: 'Mid-level', zh: 'Mid-level' },
-            senior: { vi: 'Senior', en: 'Senior', zh: 'Senior' },
-            lead: { vi: 'Lead', en: 'Lead', zh: 'Lead' },
-            manager: { vi: 'Manager', en: 'Manager', zh: 'Manager' },
+        const labels: Record<string, { vi: string; en: string }> = {
+            fresher: { vi: 'Fresher', en: 'Fresher' },
+            junior: { vi: 'Junior', en: 'Junior' },
+            mid: { vi: 'Mid-level', en: 'Mid-level' },
+            senior: { vi: 'Senior', en: 'Senior' },
+            lead: { vi: 'Lead', en: 'Lead' },
+            manager: { vi: 'Manager', en: 'Manager' },
         };
         return labels[level]?.[language] ?? level;
     };
@@ -416,9 +416,12 @@ const JobsView: React.FC<JobsViewProps> = ({ searchQuery }) => {
                                                 </button>
                                             </div>
                                         ) : (
-                                            <button className="w-full py-2.5 rounded-xl font-bold text-sm transition-all shadow-lg bg-[var(--text-primary)] text-[var(--bg-primary)] hover:opacity-90">
+                                            <a
+                                                href={`mailto:${job.createdBy?.email || 'contact@giaiphapsangtao.com'}?subject=${encodeURIComponent(`[Apply] ${getLocalizedText(job.title)}`)}`}
+                                                className="block text-center w-full py-2.5 rounded-xl font-bold text-sm transition-all shadow-lg bg-[var(--text-primary)] text-[var(--bg-primary)] hover:opacity-90"
+                                            >
                                                 {t('workflow.jobs.apply') || 'Ứng tuyển ngay'}
-                                            </button>
+                                            </a>
                                         )}
                                     </div>
                                 </div>

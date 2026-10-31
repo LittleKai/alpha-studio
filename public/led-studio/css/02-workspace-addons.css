@@ -1,0 +1,556 @@
+/* The rundown is an editing duplicate of choreography scenes, not a second performance. */
+body.v121-compact.choreo-open .scene-row10{display:none!important}
+/* Keep video texture viewport visible even when choreography is playing. */
+body.v121-compact #glcanvas{visibility:visible!important}
+
+#stageLift124{position:fixed;top:76px;right:18px;width:310px;max-height:calc(100vh - 98px);overflow-y:auto;border:1px solid #416777;border-radius:14px;background:#101c2aee;z-index:70;box-shadow:0 16px 65px #000a;color:#e5f4ff;font:12px system-ui,Arial,sans-serif;backdrop-filter:blur(16px)}
+#stageLift124[hidden]{display:none!important}#stageLift124 .lift-h{padding:12px 14px;background:#193347;border-bottom:1px solid #315265;display:flex;align-items:center;gap:8px;justify-content:space-between}
+#stageLift124 .lift-h b{font-size:14px;letter-spacing:.3px}#stageLift124 .lift-h small{font-size:9px;color:#9fbbc8;display:block;margin-top:3px}#stageLift124 .lift-b{padding:12px;display:grid;gap:10px}
+#stageLift124 button{background:#1f394a;border:1px solid #547183;border-radius:7px;color:#e4f4fe;cursor:pointer;padding:7px 9px;font:inherit}
+#stageLift124 button:hover,#stageLift124 button.on{background:#25566b;border-color:#65cbdc}#stageLift124 button.primary{background:#17647b;border-color:#5dd9e5;font-weight:700}
+#stageLift124 button:disabled{opacity:.42;cursor:not-allowed}
+#stageLift124 .lift-actions{display:flex;gap:5px;flex-wrap:wrap}#stageLift124 label{display:grid;gap:3px;color:#a6bed0;font-size:10px;font-weight:600}
+#stageLift124 .lift-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}#stageLift124 input,#stageLift124 select{width:100%;height:30px;border:1px solid #415c6c;border-radius:6px;background:#091523;color:#f3fbff;padding:4px 6px;font:12px system-ui}
+#stageLift124 input[type=checkbox]{height:16px;width:16px}#stageLift124 .lift-row-check{display:flex;align-items:center;gap:7px;color:#cfe9f4;font-size:11px}
+#stageLift124 .lift-info{color:#9cc1cc;font-size:10px;line-height:1.55;border:1px solid #315061;border-radius:8px;padding:9px;background:#132f3c}#stageLift124 .lift-track{height:10px;border-radius:10px;background:#0e2c38;position:relative;overflow:hidden}
+#stageLift124 .lift-bar{position:absolute;height:100%;background:linear-gradient(90deg,#295e75,#52d9f4,#a9e8fa,#29657a)}
+#stageLift124 .lift-list{display:grid;gap:6px}#stageLift124 .lift-list button{display:block;width:100%;text-align:left;font-size:11px}#stageLift124 .lift-list button.active{border-color:#58e9ff;background:#235e6e}
+#stageLift124 .lift-divider{height:1px;background:#2b4656;margin:0 -2px}#stageLift124 .lift-foot{color:#8da5b5;font-size:9px;line-height:1.5}
+#v124LiftBtn{background:#19475c!important;border-color:#49c4d5!important;color:#dbfbff!important;font-weight:700}
+.v124-lift-clip{background:linear-gradient(90deg,#185461,#27829a)!important;border-color:#60d6e9!important}
+#liftMini124{position:absolute;bottom:51px;left:50%;transform:translateX(-50%);padding:7px 12px;border-radius:8px;background:#102f42ed;color:#b3faff;font:12px system-ui;border:1px solid #398fa3;pointer-events:none;z-index:19}
+#liftMini124[hidden]{display:none!important}
+@media(max-width:1100px){#stageLift124{width:270px;top:63px;right:6px}}
+
+/* Dock inside inspector; never obscure canvas or hide transport controls. */
+body.lift-dock-open .workspace{grid-template-columns:220px minmax(0,1fr) minmax(300px,340px);min-width:0}
+body.lift-dock-open .right-panel{padding:0;min-width:0;overflow:hidden;display:flex;flex-direction:column;position:relative}
+body.lift-dock-open .right-panel > :not(#stageLift124){display:none!important}
+#stageLift124{position:relative!important;top:auto!important;right:auto!important;left:auto!important;bottom:auto!important;width:100%!important;max-width:none!important;max-height:none!important;min-width:0;height:100%;border:0;border-radius:0;box-shadow:none;backdrop-filter:none;flex:1;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;z-index:1}
+#stageLift124 .lift-h{position:sticky;top:0;z-index:3;background:#173344}
+#stageLift124 .lift-h button{flex:none}
+#stageLift124 .lift-b{padding-bottom:24px;min-width:0}
+#stageLift124 .lift-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#stageLift124 .lift-grid input{max-width:100%;min-width:0}
+#stageLift124 .lift-actions button{white-space:normal;min-height:31px}
+#stageLift124 .lift-info{overflow-wrap:anywhere}
+body.lift-dock-open.focus-workspace .workspace{grid-template-columns:minmax(0,1fr) minmax(290px,340px)!important}
+body.lift-dock-open.focus-workspace .right-panel{display:flex!important;position:relative!important;top:auto!important;bottom:auto!important;right:auto!important;width:auto!important;z-index:1!important}
+body.lift-dock-open.focus-workspace .left-panel{display:none!important}
+body.lift-dock-open.drawer-right .right-panel{position:relative!important;top:auto!important;bottom:auto!important;right:auto!important;width:auto!important;z-index:1!important}
+body.lift-dock-open .main-panel{min-width:0}
+body.lift-dock-open .viewport{min-width:0}
+body.lift-dock-open #dirToolbar,body.lift-dock-open .dir-toolbar{min-width:0;overflow-x:auto;white-space:nowrap;scrollbar-width:thin}
+body.lift-dock-open .navigation-strip,body.lift-dock-open .view-toolbar{min-width:0;overflow-x:auto;scrollbar-width:thin;gap:7px}
+body.lift-dock-open .transport-right,body.lift-dock-open .header-actions{overflow-x:auto;min-width:0;scrollbar-width:thin}
+body.lift-dock-open .header-actions button,body.lift-dock-open .navigation-strip button{flex-shrink:0}
+.lift-cue-actions125{position:sticky;bottom:0;z-index:5;background:#153344;border:1px solid #396477;border-radius:8px;padding:8px 7px;box-shadow:0 -8px 24px #071520aa}
+#v125LiftNav{flex:none;color:#c5faff;background:#184657;border:1px solid #3f8697;z-index:2}
+#stageLift124 .lift-cta{background:#206579;border-color:#70d7ea;color:#ecffff;font-weight:700}
+#stageLift124 .lift-status{font-size:10px;color:#93cfc6;line-height:1.55}
+#stageLift124 .lift-preview-mini{font-size:10px;color:#b5d7e2;display:flex;justify-content:space-between;gap:6px}
+#stageLift124 .lift-icon{color:#6de9ff;font-size:16px}
+.v125-lift-clip{border:1px solid #7eebf3!important;background:linear-gradient(100deg,#215468,#307c8e)!important;color:#e7ffff!important}
+.v125-lift-clip::before{content:'╳';position:absolute;left:10px;color:#aaf4fa;font-size:14px;top:1px}
+.v125-lift-clip{padding-left:28px!important}
+#liftMini124{max-width:min(90%,440px);text-align:center}
+@media(max-width:1300px){body.lift-dock-open .workspace{grid-template-columns:190px minmax(0,1fr) 315px}}
+@media(max-width:1120px){body.lift-dock-open .workspace{grid-template-columns:minmax(0,1fr) minmax(285px,318px)}body.lift-dock-open .left-panel{display:none}}
+@media(max-width:880px){
+ body.lift-dock-open{--seq-height:115px}
+ body.lift-dock-open.seq-open #app{grid-template-rows:48px 36px minmax(0,1fr) calc(var(--seq-height) + 52px)!important}
+ body.lift-dock-open #app{min-width:0}
+ body.lift-dock-open .workspace,body.lift-dock-open.focus-workspace .workspace{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:minmax(0,1fr) 155px!important}
+ body.lift-dock-open .main-panel{grid-column:1;grid-row:1;min-height:0}
+ body.lift-dock-open .right-panel{grid-column:1;grid-row:2;min-height:0;border-left:0;border-top:1px solid #4d7a88}
+ body.lift-dock-open .header-actions,.lift-dock-open .workflow-right{min-width:0;overflow-x:auto}
+ body.lift-dock-open .topbar{gap:8px;overflow:hidden;padding:0 8px}
+ body.lift-dock-open .project-name{display:none}
+ body.lift-dock-open .workflow{overflow:hidden}
+ body.lift-dock-open .steps{flex:none}
+ body.lift-dock-open #stageLift124 .lift-b{grid-template-columns:minmax(0,1fr)}
+}
+
+/* V13.0 stable: completely scoped controls; V12.8 editor grid is untouched. */
+#v130Panel{box-sizing:border-box;display:flex;flex-direction:column;min-width:0;min-height:0;width:100%;height:100%;color:#d9e4f2;background:#111a27;font:11px/1.45 'Segoe UI',system-ui,sans-serif;overflow:hidden;border-left:1px solid #36526a}
+#v130Panel[hidden]{display:none!important}
+#v130Panel *{box-sizing:border-box}
+#v130Panel button,#v130Panel select,#v130Panel input{font:inherit}
+#v130Panel button{cursor:pointer}
+#v130Panel .vj130-head{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:13px;background:#152538;border-bottom:1px solid #2a4057}
+#v130Panel .vj130-head strong{color:#d9f7fa;font-size:12px;letter-spacing:.05em}
+#v130Panel .vj130-sub{color:#7ebac1;font-size:9px;letter-spacing:.07em}
+#v130Panel .vj130-head button,#v130Panel .vj130-btn{border:1px solid #3a536b;border-radius:6px;padding:7px;background:#1a2c40;color:#e0f3fc;min-height:30px}
+#v130Panel .vj130-head button{min-width:29px}
+#v130Panel .vj130-tabs{flex:0 0 auto;display:flex;gap:6px;padding:9px 12px;border-bottom:1px solid #263d55}
+#v130Panel .vj130-tabs button{flex:1;color:#a7becd;background:#1b293c;border:1px solid #3b5167;padding:8px 4px;border-radius:5px}
+#v130Panel .vj130-tabs button.active,#v130Panel .vj130-btn.active{color:#eaffff;background:#23676c;border-color:#58c6c7}
+#v130Panel .vj130-scroll{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding:12px;scrollbar-width:thin}
+#v130Panel .vj130-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:8px 0}
+#v130Panel .vj130-row>*{flex:1;min-width:0}
+#v130Panel .vj130-title{font-size:10px;letter-spacing:.08em;color:#76cad1;font-weight:800;margin:13px 0 7px}
+#v130Panel .vj130-slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+#v130Panel .vj130-slots button{min-width:0;min-height:52px;background:#1b2e41;border:1px solid #405875;border-radius:7px;padding:7px;color:#cee3ec;text-align:left}
+#v130Panel .vj130-slots button.active{border-color:#63e0cb;background:#1b5050}
+#v130Panel .vj130-slots b{display:block;font-size:11px}
+#v130Panel .vj130-slots small{display:block;font-size:9px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;margin-top:4px;color:#9db9c4}
+#v130Panel .vj130-pads{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+#v130Panel .vj130-pads button{padding:8px 7px;min-height:50px;min-width:0;background:#1a2c3e;color:#d9eff9;border:1px solid #34556a;border-radius:6px;text-align:left}
+#v130Panel .vj130-pads button.active{background:#25646a;border-color:#6be3da}
+#v130Panel .vj130-pads b{display:block;font-size:10px}
+#v130Panel .vj130-pads small{display:block;font-size:9px;color:#87a9bb;margin-top:3px}
+#v130Panel .vj130-range{display:grid;grid-template-columns:90px 1fr;align-items:center;gap:10px;margin:10px 0}
+#v130Panel input[type=range]{width:100%;accent-color:#71d8d2}
+#v130Panel input[type=number],#v130Panel select{min-width:0;width:100%;color:#e4f5ff;background:#172739;border:1px solid #38536a;border-radius:5px;padding:6px 7px}
+#v130Panel .vj130-colors{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+#v130Panel .vj130-colors button{height:29px;border:2px solid #4e6076;border-radius:5px;min-width:0}
+#v130Panel .vj130-colors button.active{border-color:white;box-shadow:0 0 0 1px #58d8d5}
+#v130Panel .vj130-footer{padding:8px 12px;background:#0e1b2b;border-top:1px solid #294358;font-size:9px;color:#7fc5c9;flex:0 0 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#v130Panel .vj130-box{background:#192b3f;border:1px solid #354b65;border-radius:7px;padding:10px;margin:8px 0}
+#v130Panel .vj130-box b{font-size:11px}
+#v130Panel .vj130-fader{width:100%;margin-top:9px;display:block}
+#v130Panel .vj130-fader output{float:right;font-variant-numeric:tabular-nums}
+#v130Panel .vj130-warning{color:#b4b8bd;font-size:10px;line-height:1.5;margin-top:12px}
+#v130Toolbar{display:inline-flex;align-items:center;flex-shrink:0;gap:5px;margin-left:5px}
+#v130Toolbar button{background:#163b46;color:#c9f5f3;border:1px solid #377986;padding:5px 10px;border-radius:5px;white-space:nowrap;cursor:pointer}
+#v130Toolbar button.active{background:#27675e}
+#v130PresentButtons{display:inline-flex;align-items:center;gap:6px;flex-shrink:0}
+#v130PresentButtons button{padding:7px 10px;min-height:29px;background:#194453;color:#c7f8ef;border:1px solid #4a8d95;border-radius:5px;white-space:nowrap;cursor:pointer}
+#v130PresentButtons button.active{background:#287974}
+body.v130-edit-open .right-panel{padding:0!important;overflow:hidden!important}
+body.v130-edit-open .right-panel > :not(#v130Panel){display:none!important}
+body.v130-edit-open .right-panel > #v130Panel{display:flex!important}
+/* Right-hand presentation strip: viewport and panel are separate, not overlapping. */
+body.present-mode.v130-present-open #v130Panel{position:fixed;top:62px;right:0;bottom:104px;width:340px;height:auto!important;z-index:35;border-left:1px solid #476b76;box-shadow:-12px 0 28px #0006}
+body.present-mode.v130-present-open #viewport{inset:0 340px 104px 0!important;width:calc(100vw - 340px)!important;max-width:calc(100vw - 340px)!important;height:auto!important}
+body.present-mode.v130-present-open #presentHUD{right:360px!important}
+body.present-mode #presentControls .show-row{justify-content:flex-start!important;overflow-x:auto!important;overflow-y:hidden;scrollbar-width:thin;padding:2px 6px}
+body.present-mode #presentControls .show-row>*{flex-shrink:0!important}
+body.present-mode.v130-present-open #presentControls{z-index:43}
+@media(max-width:980px){body.v130-edit-open .right-panel{display:block!important;position:fixed;right:0;top:var(--drawer-top,146px);bottom:124px;width:min(350px,calc(100vw - 24px));z-index:45;box-shadow:-10px 0 35px #000a;background:#101a28}}
+@media(max-width:680px){body.present-mode.v130-present-open #v130Panel{top:auto;right:0;left:0;width:100%;height:min(39vh,300px)!important;bottom:104px;z-index:35;border-top:1px solid #477686}body.present-mode.v130-present-open #viewport{inset:0 0 calc(104px + min(39vh,300px)) 0!important;width:100vw!important;max-width:100vw!important}body.present-mode.v130-present-open #presentHUD{right:15px!important;top:10px}#v130Panel .vj130-pads{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Isolated V13.1 direct control panel; core V12.8/V13.0 grid remains unchanged when closed. */
+#m131Panel{display:flex;flex-direction:column;min-height:0;min-width:0;width:100%;height:100%;box-sizing:border-box;background:#111b29;color:#dfecf4;font:11px/1.45 'Segoe UI',system-ui,sans-serif;overflow:hidden;border-left:1px solid #335268}
+#m131Panel[hidden]{display:none!important}
+#m131Panel *,#m131Panel *:before,#m131Panel *:after{box-sizing:border-box}
+#m131Panel button,#m131Panel input,#m131Panel select{font:inherit}
+#m131Panel .m131-header{display:flex;align-items:center;justify-content:space-between;padding:13px;background:linear-gradient(95deg,#152f3a,#182238);border-bottom:1px solid #355265;gap:12px;flex:none}
+#m131Panel .m131-header b{letter-spacing:.08em;color:#7be4cc;font-size:11px}
+#m131Panel .m131-header small{display:block;color:#8ba6b6;font-size:9px;margin-top:4px}
+#m131Panel .m131-header button{width:30px;height:30px;font-size:20px;background:#23374b;color:#d6ebf1;border:1px solid #3a5264;border-radius:5px}
+#m131Panel .m131-scroll{flex:1;min-height:0;overflow:auto;padding:12px;scrollbar-width:thin}
+#m131Panel .m131-section{padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #294259}
+#m131Panel .m131-section h3{color:#91e2cd;font-size:10px;letter-spacing:.07em;margin:0 0 9px}
+#m131Panel .m131-section h4{font-size:10px;color:#b9d1d9;margin:10px 0 6px}
+#m131Panel label{display:block;color:#a6bbcc;font-size:10px;margin:7px 0;min-width:0}
+#m131Panel input:not([type=range]),#m131Panel select{color:#e6f4ff;display:block;background:#14283c;border:1px solid #426179;border-radius:5px;padding:7px;width:100%;min-width:0;outline-offset:2px}
+#m131Panel input[type=range]{display:block;width:100%;accent-color:#74e4ca}
+#m131Panel label small{font-size:9px;color:#bde9dd}
+#m131Panel button{color:#e4f6ff;background:#1d3347;border:1px solid #446077;border-radius:6px;padding:8px 7px;cursor:pointer;min-width:0;touch-action:manipulation}
+#m131Panel button:hover:not(:disabled){border-color:#65cdb7;background:#225066}
+#m131Panel button:disabled{opacity:.37;cursor:not-allowed}
+#m131Panel .m131-minor{width:100%;color:#aaddda}
+#m131Panel .m131-row{display:flex;align-items:center;gap:7px}
+#m131Panel .m131-actions{margin:8px 0}
+#m131Panel .m131-actions>*{flex:1}
+#m131Panel .m131-clockbox{background:#152839;padding:10px;border-radius:7px;border:1px solid #29516a}
+#m131Panel .m131-clock{padding:12px 6px 7px;text-align:center;font-family:ui-monospace,Consolas,monospace;font-variant-numeric:tabular-nums}
+#m131Panel .m131-clock b{display:block;font-size:24px;font-weight:650;color:#e2faff;letter-spacing:.05em}
+#m131Panel .m131-clock span{font-size:9px;letter-spacing:.18em;color:#76d8bb}
+#m131Panel .m131-clockmeta{display:flex;justify-content:space-between;gap:5px;color:#97b1c2;font:9px ui-monospace,Consolas,monospace}
+#m131Panel .m131-clockmeta b{display:block;color:#e0ebf6;margin-top:4px}
+#m131Panel .m131-meter{height:5px;background:#263c50;border-radius:20px;overflow:hidden;margin-top:12px}
+#m131Panel .m131-meter>div{height:100%;width:0;background:#5ae0b4;transition:width .12s linear}
+#m131Panel .m131-elapsed{margin-top:9px;display:flex;justify-content:space-between;color:#a6c5d0;font:10px ui-monospace,Consolas,monospace}
+#m131Panel .m131-green{background:#13685b;border-color:#39a28a;font-weight:bold}
+#m131Panel .m131-green.recording{background:#b94342;border-color:#f08178}
+#m131Panel .m131-red{background:#6f333e;border-color:#a35463;font-weight:bold}
+#m131Panel .m131-help{font-size:10px;line-height:1.55;color:#a3baca;margin-bottom:7px}
+#m131Panel .m131-dpad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;max-width:240px;margin:7px auto}
+#m131Panel .m131-dpad button{height:39px;font-size:16px;font-weight:700;touch-action:none}
+#m131Panel [data-m131-jog].held{background:#277d68;border-color:#74f0c2}
+#m131Panel .m131-coords{text-align:center;color:#91d5e1;font-family:ui-monospace,monospace;font-size:10px;margin:6px}
+#m131Panel .m131-posegrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+#m131Panel .m131-posegrid button{font-weight:700;font-size:9px;min-height:36px;padding:6px 2px}
+#m131Panel .m131-posegrid button.selected{background:#26635a;border-color:#70e4b7}
+#m131Panel .m131-markers{display:flex;flex-direction:column;gap:5px;max-height:140px;overflow:auto}
+#m131Panel .m131-markers button,#m131Panel .m131-saved button{text-align:left;display:flex;justify-content:space-between;gap:7px;background:#152b3e;width:100%}
+#m131Panel .m131-markers b{font-family:ui-monospace,monospace;color:#92ebd6;font-size:9px}
+#m131Panel .m131-markers span{flex:1;color:#a8c3ce;font-size:9px;text-align:right}
+#m131Panel .m131-saved{display:flex;flex-direction:column;gap:5px}
+#m131Panel .m131-saved button{flex-direction:column}
+#m131Panel .m131-saved strong{font-size:10px;color:#e1f5f4}
+#m131Panel .m131-saved small{font-size:9px;color:#8fb6c6}
+#m131Panel .m131-savebtn{background:#16725e;border:1px solid #5dd7af;width:100%;font-weight:700;letter-spacing:.03em}
+#m131Panel .m131-save p,#m131Panel .m131-muted{color:#93aaba;font-size:10px;line-height:1.5}
+#m131Panel footer{flex:none;padding:9px 12px;color:#a8d6d1;font-size:10px;background:#102738;border-top:1px solid #284c59;max-height:56px;overflow:hidden}
+.m131-launch{background:#13584d!important;border-color:#2da88c!important;color:#d4fff6!important}
+.m131-launch.active{background:#227867!important}
+body.m131-edit-open .right-panel{padding:0!important;overflow:hidden!important}
+body.m131-edit-open .right-panel>:not(#m131Panel){display:none!important}
+body.m131-edit-open .right-panel>#m131Panel{display:flex!important}
+body.present-mode.m131-present-open #m131Panel{position:fixed;right:0;top:62px;bottom:104px;height:auto!important;width:340px;z-index:35;box-shadow:-12px 0 24px #0008}
+body.present-mode.m131-present-open #viewport{inset:0 340px 104px 0!important;width:calc(100vw - 340px)!important;max-width:calc(100vw - 340px)!important;height:auto!important}
+body.present-mode.m131-present-open #presentHUD{right:360px!important}
+body.present-mode.m131-present-open #presentControls{z-index:43}
+@media(max-width:980px){body.m131-edit-open .right-panel{display:block!important;position:fixed;right:0;top:var(--drawer-top,146px);bottom:124px;width:min(340px,calc(100vw - 24px));z-index:45;box-shadow:-8px 0 30px #0008}}
+@media(max-width:680px){body.present-mode.m131-present-open #m131Panel{top:auto;left:0;right:0;bottom:104px;width:100%;height:min(45vh,360px)!important}body.present-mode.m131-present-open #viewport{inset:0 0 calc(104px + min(45vh,360px)) 0!important;width:100vw!important;max-width:100vw!important}body.present-mode.m131-present-open #presentHUD{right:16px!important}}
+/* Keep manual recording controls visible in Focus / Mở rộng without overlaying the stage. */
+body.focus-workspace.m131-edit-open .right-panel{display:flex!important;position:fixed!important;right:0!important;top:115px!important;bottom:114px!important;width:min(340px,40vw)!important;z-index:43!important;background:#111b29!important}
+body.focus-workspace.m131-edit-open .main-panel{margin-right:min(340px,40vw)!important;min-width:0!important}
+
+/* ALPHA V13.3 - input-safe, non-overlapping editing workspace.
+   No WebGL/shader/scene/mapping changes. */
+body.ui133-installed #app {min-width:0!important;max-width:100%;overflow-x:hidden}
+body.ui133-installed:not(.present-mode) #app {pointer-events:auto!important}
+body.ui133-installed:not(.present-mode) #viewport {
+  position:relative!important;inset:auto!important;right:auto!important;bottom:auto!important;
+  width:100%!important;max-width:100%!important;height:auto!important;
+  z-index:auto!important;pointer-events:auto!important;
+}
+body.ui133-installed:not(.present-mode) #presentControls,
+body.ui133-installed:not(.present-mode) #presentHUD {display:none!important;pointer-events:none!important}
+body.ui133-installed:not(.present-mode) .workflow {position:relative;z-index:7;pointer-events:auto}
+body.ui133-installed .workflow-right,
+body.ui133-installed .dir-toolbar,
+body.ui133-installed .navigation-strip,
+body.ui133-installed #pro127bar {min-width:0;scrollbar-width:thin;overscroll-behavior-x:contain;overflow-x:auto}
+body.ui133-installed .dir-toolbar>button,
+body.ui133-installed #pro127bar>button,
+body.ui133-installed .workflow-right>button {flex-shrink:0;white-space:nowrap}
+body.ui133-installed #pro127bar {scrollbar-color:#52798d #152331;scrollbar-width:thin}
+body.ui133-installed #pro127bar button {min-height:30px;padding:5px 9px}
+body.ui133-installed #ui133Reset {color:#d3f7e8;border-color:#529b83;background:#164338}
+body.ui133-installed #ui133Reset:hover{background:#226a5a}
+/* Panels must use their own scroll area, never cover unrelated buttons. */
+body.ui133-installed .right-panel {min-width:0;min-height:0}
+body.ui133-installed #pro127dock {min-width:0;min-height:0;overflow:hidden}
+body.ui133-installed #pro127dock .pro127-content {flex:1 1 0;min-height:0;overflow-y:auto!important;overflow-x:hidden;padding-bottom:28px;align-content:start}
+body.ui133-installed #pro127dock .pro127-section {min-width:0}
+body.ui133-installed #pro127dock .pro127-actions {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+body.ui133-installed #pro127dock .pro127-actions>*{min-width:0;min-height:37px;width:100%;white-space:normal!important;overflow-wrap:anywhere;line-height:1.35;text-align:center}
+body.ui133-installed #pro127dock .pro127-grid,
+body.ui133-installed #pro127dock .pro127-presets,
+body.ui133-installed #pro127dock .pro128-lookgrid {grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+body.ui133-installed #pro127dock .pro128-lookgrid button {min-height:46px;white-space:normal;text-align:left;line-height:1.35;padding:8px}
+body.ui133-installed #pro127dock button {max-width:100%;white-space:normal;overflow-wrap:anywhere}
+body.ui133-installed #pro127dock input,
+body.ui133-installed #pro127dock select {min-width:0}
+body.ui133-installed #pro127dock .pro127-light-row {grid-template-columns:minmax(0,1fr) minmax(80px,110px) minmax(44px,auto);gap:5px}
+body.ui133-installed #v130Panel .vj130-scroll {min-height:0;overflow-y:auto!important;overflow-x:hidden;padding:10px 11px 30px}
+body.ui133-installed #v130Panel .vj130-pads{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+body.ui133-installed #v130Panel .vj130-pads button {min-height:62px;white-space:normal;overflow-wrap:anywhere}
+body.ui133-installed #v130Panel .vj130-row {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+body.ui133-installed #v130Panel .vj130-row>*{min-width:0;white-space:normal;overflow-wrap:anywhere}
+body.ui133-installed #v130Panel .vj130-range{grid-template-columns:minmax(100px,40%) minmax(0,1fr)}
+body.ui133-installed #m131Panel .m131-scroll{min-height:0;overflow:auto;padding-bottom:26px}
+body.ui133-installed #m131Panel .m131-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+body.ui133-installed #m131Panel .m131-posegrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+/* V13.2 light recorder: always available under Fixtures, but compact until requested. */
+body.ui133-installed:not(.ui133-take-fixture) #pro127dock #l132Panel {display:none!important}
+body.ui133-installed #pro127dock #l132Panel {flex:0 0 auto;max-height:min(46vh,390px);overflow-y:auto;min-width:0}
+body.ui133-installed.ui133-take-fixture:not(.ui133-take-expanded) #pro127dock #l132Panel {
+  display:block!important;flex:0 0 auto!important;max-height:none!important;height:auto!important;
+  padding:7px 10px!important;overflow:visible!important;
+}
+body.ui133-installed.ui133-take-fixture:not(.ui133-take-expanded) #l132Panel>:not(.l132-top){display:none!important}
+body.ui133-installed #l132Panel .l132-top{display:flex;gap:7px;align-items:center;min-width:0;flex-wrap:wrap}
+body.ui133-installed #l132Panel .l132-top b{flex:1;min-width:130px}
+body.ui133-installed #ui133TakeExpand{
+  flex:0 0 auto;color:#d5f6f1;background:#21475a;border:1px solid #5d94a3;
+  padding:4px 9px;border-radius:5px;min-height:28px;cursor:pointer;font-size:10px
+}
+body.ui133-installed #l132Panel .l132-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+body.ui133-installed #l132Panel .l132-buttons button{min-width:0;white-space:normal;overflow-wrap:anywhere;min-height:36px}
+body.ui133-installed #l132Panel .l132-grid {grid-template-columns:minmax(0,1fr) 90px}
+/* Presentation takes priority; controls and open dock remain clickable. */
+body.ui133-installed.present-mode #presentHUD{z-index:49!important;pointer-events:auto!important}
+body.ui133-installed.present-mode #presentControls{z-index:55!important;pointer-events:auto!important}
+body.ui133-installed.present-mode #presentControls .show-row{overflow-x:auto!important;scrollbar-width:thin;justify-content:flex-start!important}
+body.ui133-installed.present-mode #presentControls .show-row>*{flex:0 0 auto!important}
+body.ui133-installed.present-mode.v130-present-open #v130Panel,
+body.ui133-installed.present-mode.m131-present-open #m131Panel {z-index:50!important;overflow:hidden;pointer-events:auto!important}
+/* Responsive: create actual space for inspectors, not floating overlays. */
+@media (min-width:821px) and (max-width:1130px){
+ body.ui133-installed:not(.present-mode).v130-edit-open .workspace,
+ body.ui133-installed:not(.present-mode).m131-edit-open .workspace{grid-template-columns:minmax(0,1fr) 338px!important}
+ body.ui133-installed:not(.present-mode).v130-edit-open .left-panel,
+ body.ui133-installed:not(.present-mode).m131-edit-open .left-panel {display:none!important}
+ body.ui133-installed:not(.present-mode).v130-edit-open .main-panel,
+ body.ui133-installed:not(.present-mode).m131-edit-open .main-panel {grid-column:1;min-width:0}
+ body.ui133-installed:not(.present-mode).v130-edit-open .right-panel,
+ body.ui133-installed:not(.present-mode).m131-edit-open .right-panel {
+   display:flex!important;grid-column:2;position:relative!important;inset:auto!important;
+   right:auto!important;top:auto!important;bottom:auto!important;
+   width:auto!important;max-width:none!important;height:auto!important;z-index:2!important;
+   padding:0!important;box-shadow:none!important;min-width:0;
+ }
+}
+@media (max-width:820px){
+ body.ui133-installed:not(.present-mode).pro127-dock-open .workspace,
+ body.ui133-installed:not(.present-mode).v130-edit-open .workspace,
+ body.ui133-installed:not(.present-mode).m131-edit-open .workspace {
+   display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+   grid-template-rows:minmax(210px,1fr) minmax(148px,24vh)!important;min-height:0;
+ }
+ body.ui133-installed:not(.present-mode).pro127-dock-open .left-panel,
+ body.ui133-installed:not(.present-mode).v130-edit-open .left-panel,
+ body.ui133-installed:not(.present-mode).m131-edit-open .left-panel{display:none!important}
+ body.ui133-installed:not(.present-mode).pro127-dock-open .main-panel,
+ body.ui133-installed:not(.present-mode).v130-edit-open .main-panel,
+ body.ui133-installed:not(.present-mode).m131-edit-open .main-panel{grid-column:1!important;grid-row:1!important;min-height:0!important;min-width:0!important}
+ body.ui133-installed:not(.present-mode).pro127-dock-open .right-panel,
+ body.ui133-installed:not(.present-mode).v130-edit-open .right-panel,
+ body.ui133-installed:not(.present-mode).m131-edit-open .right-panel{
+   display:flex!important;grid-column:1!important;grid-row:2!important;position:relative!important;
+   inset:auto!important;right:auto!important;left:auto!important;top:auto!important;bottom:auto!important;
+   width:100%!important;max-width:100%!important;height:100%!important;min-height:0!important;
+   margin:0!important;z-index:2!important;padding:0!important;box-shadow:none!important;border-top:1px solid #456577;
+ }
+ body.ui133-installed:not(.present-mode).pro127-dock-open .right-panel #pro127dock,
+ body.ui133-installed:not(.present-mode).v130-edit-open .right-panel #v130Panel,
+ body.ui133-installed:not(.present-mode).m131-edit-open .right-panel #m131Panel {width:100%!important;height:100%!important;min-height:0}
+ body.ui133-installed .dir-toolbar,#pro127bar{scrollbar-width:thin}
+ body.ui133-installed .main-panel{grid-template-rows:34px 30px 31px 30px minmax(0,1fr) 24px!important}
+ body.ui133-installed #v130Panel .vj130-pads{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:520px){
+ body.ui133-installed .workflow-right{gap:4px}
+ body.ui133-installed #pro127dock .pro127-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+ body.ui133-installed .present-controls{padding:8px 10px}
+ body.ui133-installed #v130Panel .vj130-pads{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* V13.5 LASER SHOW -- isolated from core GL/LED mapping styles. */
+#laser135Overlay{position:absolute;inset:0;display:block;width:100%;height:100%;z-index:10;pointer-events:none;touch-action:none;opacity:1}
+#laser135Overlay.laser135-pick{pointer-events:auto;cursor:crosshair}
+#laser135Overlay.laser135-dragging{cursor:grabbing}
+#laser135Panel,#laser135Panel *{box-sizing:border-box}
+#laser135Panel{position:fixed;z-index:72;display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden;background:#0c1725;border:1px solid #38617b;box-shadow:-9px 0 32px #020812bb;color:#e4eff7;font:12px/1.45 Inter,'Segoe UI',Arial,sans-serif;border-radius:9px}
+#laser135Panel[hidden]{display:none!important}
+#laser135Panel button{border:1px solid #38566a;border-radius:6px;background:#172b3c;color:#d5eaf7;padding:7px 9px;cursor:pointer;font:600 11px/1.2 Inter,'Segoe UI',sans-serif;white-space:normal;min-height:30px;transition:background .12s,border .12s}
+#laser135Panel button:hover{background:#24445c;border-color:#56abc2}
+#laser135Panel button:focus-visible,#laser135Panel input:focus-visible,#laser135Panel select:focus-visible{outline:2px solid #75deed;outline-offset:1px}
+#laser135Panel button.primary{color:#04202c;background:#73e6e9;border-color:#85f4ee}
+#laser135Panel button.primary:hover{background:#affcfa}
+#laser135Panel button.selected{background:#164c60;border-color:#69e4e7;color:#cffffd}
+#laser135Panel button.danger{border-color:#904759;color:#ffa6b8}
+#laser135Panel button:disabled{opacity:.4;cursor:not-allowed}
+.laser135-header{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:12px;background:linear-gradient(120deg,#103847,#131e39);border-bottom:1px solid #366073}
+.laser135-brand{min-width:0;flex:1}.laser135-brand strong{display:block;font-size:13px;letter-spacing:.8px}.laser135-brand small{display:block;color:#84baca;margin-top:3px;font-size:9px;letter-spacing:.7px}
+#laser135Panel .laser135-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;flex:0 0 auto;padding:8px;background:#111e2c;border-bottom:1px solid #283e52}
+#laser135Panel .laser135-tabs button{min-width:0;font-size:10px;padding:6px 2px}
+#laser135Panel .laser135-content{flex:1 1 auto;overflow:auto;min-height:0;padding:11px 12px 24px;scrollbar-width:thin;scrollbar-color:#36576c #101b2b}
+#laser135Panel section{padding:0 0 12px;margin:0 0 14px;border-bottom:1px solid #2c4153}
+#laser135Panel section:last-child{border-bottom:0}
+#laser135Panel h4{margin:4px 0 9px;font-size:10px;letter-spacing:1.1px;color:#9ccfe1}
+#laser135Panel p{margin:7px 0;font-size:10px;line-height:1.5;color:#9ab4c5}
+#laser135Panel .laser135-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+#laser135Panel .laser135-actions{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0}
+#laser135Panel .laser135-actions>*{flex:1 1 80px}
+#laser135Panel label{display:flex;flex-direction:column;gap:4px;font-size:10px;color:#a9c4d3;min-width:0}
+#laser135Panel label.inline{flex-direction:row;gap:7px;align-items:center}
+#laser135Panel input:not([type=checkbox]),#laser135Panel select{background:#0d1a29;border:1px solid #3b5569;border-radius:5px;color:#eff9fd;min-width:0;min-height:29px;width:100%;padding:4px 6px;font:11px Inter,'Segoe UI',sans-serif}
+#laser135Panel input[type=range]{accent-color:#69dfe7;padding:0;min-height:17px;border:0;background:none}
+#laser135Panel input[type=color]{height:32px;padding:2px;cursor:pointer}
+#laser135Panel .laser135-presets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+#laser135Panel .laser135-presets button{display:flex;align-items:center;justify-content:center;min-width:0;min-height:42px;background:linear-gradient(150deg,#1a2d48,#0e2631);text-align:center}
+#laser135Panel .laser135-presets button.selected{border-color:#60e4f1;background:linear-gradient(145deg,#17586b,#162e5f)}
+#laser135Panel .laser135-lights{max-height:170px;overflow:auto;display:grid;gap:5px}
+#laser135Panel .laser135-lightrow{display:flex;align-items:center;gap:6px;background:#112337;padding:5px;border:1px solid #2c4b60;border-radius:6px}
+#laser135Panel .laser135-lightrow button:first-child{flex:1;text-align:left}
+#laser135Panel .laser135-current{background:#142536;border:1px solid #315368;border-radius:6px;padding:9px;color:#cfe9f1;font-size:11px;margin:7px 0}
+#laser135Panel .laser135-small{font-size:9px;color:#8db0c2}
+#laser135Panel .laser135-cue{display:grid;grid-template-columns:1fr auto;align-items:center;gap:6px;padding:7px;border-bottom:1px solid #293f4e}
+#laser135Panel .laser135-cue small{display:block;color:#86abba}
+#laser135Panel .laser135-time{font:700 21px/1.2 ui-monospace,Consolas,monospace;letter-spacing:1px;color:#91f6ef}
+#laser135Panel .laser135-quickbar{display:flex;gap:6px;padding:8px;border-top:1px solid #32596e;flex:0 0 auto;background:#0e2636}
+#laser135Panel .laser135-quickbar button{flex:1;min-width:0}
+#laser135Launcher{position:relative!important;isolation:isolate;overflow:hidden!important;border-color:#49b8cc!important;background:rgba(14,25,35,.86)!important;min-width:116px;min-height:35px;color:#dcfdff!important;padding:5px 10px!important}
+#laser135Launcher canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+#laser135Launcher span{position:relative;z-index:1;font-weight:800;letter-spacing:.6px;text-shadow:0 0 8px #081b29}
+#laser135Launcher.active{box-shadow:0 0 14px #08cce65e}
+#laser135TopBtn{border-color:#49b1c9!important;background:#102b3c!important;color:#d9fafe!important;flex:0 0 auto}
+body.present-mode.laser135-open #laser135Panel{z-index:74;top:8px;right:8px;width:332px;bottom:108px;max-height:calc(100vh - 116px)}
+body.present-mode.laser135-open #viewport{inset:0 348px 104px 0!important;width:calc(100vw - 348px)!important;max-width:calc(100vw - 348px)!important;height:auto!important}
+body.present-mode.laser135-open #presentHUD{right:359px!important}
+body.present-mode.laser135-open:has(#tc134Panel:not([hidden])) #laser135Panel{bottom:413px;max-height:calc(100vh - 421px)}
+body.present-mode.laser135-open:has(#tc134Panel:not([hidden])) #viewport{bottom:410px!important}
+body.laser135-open #laser135Panel{pointer-events:auto!important}
+@media(max-width:930px){body.present-mode.laser135-open #laser135Panel{width:270px}body.present-mode.laser135-open #viewport{inset:0 286px 104px 0!important;width:calc(100vw - 286px)!important;max-width:calc(100vw - 286px)!important}body.present-mode.laser135-open #presentHUD{right:295px!important}}
+@media(max-width:630px){body.present-mode.laser135-open #laser135Panel{inset:auto 5px 106px 5px;width:auto;height:min(45vh,340px);max-height:45vh}body.present-mode.laser135-open #viewport{inset:0 0 calc(min(45vh, 340px) + 112px) 0!important;width:100vw!important;max-width:100vw!important}body.present-mode.laser135-open #presentHUD{right:12px!important}body.present-mode.laser135-open:has(#tc134Panel:not([hidden])) #laser135Panel{display:none!important}}
+@media(prefers-reduced-motion:reduce){#laser135Launcher{transition:none!important}#laser135Panel button{transition:none!important}}
+
+/* V13.6: viewport ROI overlay and bounded stage mount dock. */
+#mount136Overlay{position:absolute;inset:0;width:100%;height:100%;z-index:19;pointer-events:none;touch-action:none}
+#mount136Overlay.active{pointer-events:auto;cursor:crosshair}
+#mount136TopBtn{border-color:#438f87!important;color:#b5fce5!important;background:#14342f!important;flex-shrink:0}
+#mount136Panel{position:absolute;inset:0;display:flex;flex-direction:column;z-index:42;min-width:0;min-height:0;box-sizing:border-box;overflow:hidden;background:#101e29;border-left:1px solid #3c6772;color:#dceef6;font:11px/1.5 'Segoe UI',Arial,sans-serif}
+#mount136Panel[hidden]{display:none!important}
+#mount136Panel *{box-sizing:border-box}
+#mount136Panel .mount136-head{padding:12px 10px;display:flex;gap:8px;align-items:flex-start;justify-content:space-between;flex-shrink:0;background:#162938;border-bottom:1px solid #395a68}
+#mount136Panel .mount136-head strong{font-size:11px;display:block;color:#adf1e3}
+#mount136Panel .mount136-head small{display:block;color:#83a6b6;margin-top:2px}
+#mount136Panel button{border:1px solid #3e6470;background:#1b3443;color:#dbedf7;border-radius:6px;padding:7px 8px;cursor:pointer;font:600 11px/1.25 'Segoe UI',Arial,sans-serif;min-height:30px;white-space:normal}
+#mount136Panel button:hover,#mount136Panel button.sel{background:#235c5d;border-color:#59d9bd;color:#fff}
+#mount136Panel button.primary{background:#14695d;border-color:#46c7b3;color:white}
+#mount136Panel .mount136-content{overflow:auto;min-height:0;flex:1;scrollbar-width:thin;overscroll-behavior:contain}
+#mount136Panel section{padding:11px 10px;border-bottom:1px solid #304551;display:grid;gap:8px}
+#mount136Panel h4{font:700 10px/1.4 'Segoe UI',Arial,sans-serif;color:#a2f0df;margin:0;letter-spacing:.05em}
+#mount136Panel label{display:flex;flex-direction:column;gap:3px;color:#b3ccd7;min-width:0}
+#mount136Panel input[type=number],#mount136Panel select{width:100%;min-width:0;height:30px;border:1px solid #405b67;border-radius:5px;background:#0a1c29;color:white;padding:4px 6px;font:11px 'Segoe UI',Arial,sans-serif}
+#mount136Panel .mount136-check{flex-direction:row;align-items:center;gap:7px}
+#mount136Panel .mount136-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+#mount136Panel .mount136-face{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+#mount136Panel .mount136-coords{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+#mount136Panel .mount136-truss{display:grid;gap:4px;max-height:156px;overflow:auto}
+#mount136Panel .mount136-truss button{text-align:left;display:flex;justify-content:space-between;gap:5px;align-items:center}
+#mount136Panel .mount136-truss small{font-size:9px;color:#82b3c6}
+#mount136Panel .mount136-muted,#mount136Panel .mount136-note{font-size:10px;color:#85a5b4}
+#mount136Panel .mount136-current{background:#182c39;border:1px solid #385968;padding:7px;border-radius:6px}
+#mount136Panel .mount136-footer{padding:9px;display:grid;grid-template-columns:1fr 1fr;gap:7px;flex-shrink:0;border-top:1px solid #385866;background:#132737}
+@media(max-width:1020px){#mount136Panel .mount136-truss button{flex-wrap:wrap}}
+
+@media(max-width:980px){
+ body.mount136-open.drawer-right .right-panel{
+  display:block!important;position:fixed!important;top:126px!important;bottom:92px!important;right:0!important;left:auto!important;
+  width:min(342px,calc(100vw - 32px))!important;height:auto!important;z-index:80!important;grid-column:auto!important;
+  padding:0!important;background:#101e29!important;box-shadow:-8px 2px 35px #000b!important;overflow:hidden!important;
+ }
+ body.mount136-open.drawer-right #mount136Panel{position:absolute;inset:0;max-width:none}
+}
+@media(min-width:981px){
+ body.mount136-open .right-panel{position:relative!important}
+}
+
+#laser135Panel .laser135-presets button{display:grid!important;grid-template-columns:28px minmax(0,1fr)!important;gap:7px!important;text-align:left!important;justify-content:stretch!important;align-items:center!important;min-height:48px!important;padding:6px 7px!important}
+#laser135Panel .laser138-glyph{width:27px;height:28px;display:grid;place-items:center;border-radius:6px;color:#8af7ff;background:linear-gradient(145deg,#103f53,#192447);font-size:22px;line-height:1;font-family:'Segoe UI Symbol',sans-serif;text-shadow:0 0 7px #23daff}
+#laser135Panel .laser138-preset-name{font-size:10px;line-height:1.25;min-width:0;overflow-wrap:anywhere;color:#d8f0fa}
+#laser135Panel .laser135-presets button.selected .laser138-glyph{color:#fff;background:linear-gradient(145deg,#2f7082,#484198);text-shadow:0 0 10px #8af8ff}
+#laser135Panel .laser135-actions>button{min-width:0!important;white-space:normal!important;overflow-wrap:anywhere!important}
+#mount136Panel .mount136-truss button{min-width:0}
+#mount136Panel .mount136-truss small{white-space:normal;text-align:right}
+@media(max-width:700px){#laser135Panel .laser135-presets{grid-template-columns:minmax(0,1fr)!important}}
+
+#mount136Overlay.active{cursor:crosshair;z-index:27}
+#mount136Panel .mount139-sliders{display:grid;gap:9px;padding:8px;background:#0e2430;border:1px solid #326272;border-radius:7px}
+#mount136Panel .mount139-axis{display:grid;grid-template-columns:40px minmax(0,1fr) 50px;align-items:center;gap:8px;font-size:10px}
+#mount136Panel .mount139-axis input{width:100%;accent-color:#57d9d3;min-width:0;padding:0}
+#mount136Panel .mount139-axis output{text-align:right;font:600 10px Consolas,monospace;color:#e0f5ff}
+#mount136Panel .mount139-nudges{display:grid;gap:7px}
+#mount136Panel .mount139-nudges>label{display:grid;grid-template-columns:1fr 100px;align-items:center}
+#mount136Panel .mount139-nudge-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+#mount136Panel .mount139-anchor{padding:8px;background:#1c3030;border:1px solid #527e65;border-radius:6px;color:#d8f4e4;line-height:1.5;overflow-wrap:anywhere}
+#mount136Panel button:disabled{opacity:.36}
+#mount136Panel .mount136-footer{position:sticky;bottom:0;z-index:3}
+@media(max-width:980px){#mount136Panel .mount139-nudge-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Layer grouping does not hide the imported structural GLB; these classes style only the editor inspector. */
+#mount136Panel .mount140-layerlist{max-height:240px;overflow:auto;display:flex;flex-direction:column;gap:5px}
+#mount136Panel .mount140-layer-row{display:grid;grid-template-columns:minmax(0,1fr) 36px;gap:5px;border:1px solid #294552;padding:3px;border-radius:7px;min-width:0}
+#mount136Panel .mount140-layer-row.selected{background:#164437;border-color:#65dbb2}
+#mount136Panel .mount140-layer-row>button:first-child{display:flex;flex-direction:column;align-items:start;text-align:left;min-width:0;overflow-wrap:anywhere}
+#mount136Panel .mount140-layer-row .mount140-attach{color:#bafbe4;background:#134a45;border-color:#438c7c;font-size:16px;min-height:38px}
+#mount136Panel .mount140-object-results{max-height:170px;overflow:auto;display:grid;gap:4px}
+#mount136Panel .mount140-object-results button{text-align:left;min-width:0;overflow-wrap:anywhere;white-space:normal}
+#mount136Panel .mount140-object-results small{color:#91afbd;font-size:10px}
+#mount136Panel .mount140-layer-row small{text-align:left;display:block;white-space:normal;color:#8fbdc4}
+#mount136Panel input#mount140MeshSearch{width:100%}
+@media (min-width:721px) and (max-width:980px){
+ body.mount136-open .workspace{display:grid!important;grid-template-columns:minmax(0,1fr) min(342px,38vw)!important;min-height:0!important}
+ body.mount136-open .main-panel{grid-column:1!important;width:auto!important;max-width:none!important;min-width:0!important}
+ body.mount136-open.drawer-right .right-panel{display:block!important;position:relative!important;grid-column:2!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;height:auto!important;width:auto!important;max-width:none!important;z-index:4!important;box-shadow:none!important;border-left:1px solid #365668!important}
+ body.mount136-open.drawer-right #mount136Panel{inset:0!important;position:absolute!important}
+}
+@media (max-width:720px){
+ body.mount136-open .workspace{display:flex!important;flex-direction:column!important;min-height:0!important}
+ body.mount136-open .main-panel{flex:0 0 62%!important;width:100%!important;min-height:155px!important;overflow:hidden!important}
+ body.mount136-open.drawer-right .right-panel{display:block!important;position:relative!important;flex:1 1 0!important;top:auto!important;right:auto!important;left:auto!important;bottom:auto!important;width:100%!important;height:auto!important;z-index:3!important;min-height:110px!important;overflow:hidden!important;border-top:1px solid #40667a!important;box-shadow:none!important}
+ body.mount136-open.drawer-right #mount136Panel{position:absolute!important;inset:0!important;min-width:0!important;width:100%!important}
+}
+
+/* Neon Terminal Studio surface alignment */
+#stageLift124, #v130Panel, #m131Panel, #laser135Panel, #mount136Panel {
+  border-color: var(--border-primary);
+  box-shadow: none;
+}
+[data-theme="light"] #stageLift124,
+[data-theme="light"] #v130Panel,
+[data-theme="light"] #m131Panel,
+[data-theme="light"] #laser135Panel,
+[data-theme="light"] #mount136Panel {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-primary) !important;
+}
+[data-theme="light"] #stageLift124 *,
+[data-theme="light"] #v130Panel *,
+[data-theme="light"] #m131Panel *,
+[data-theme="light"] #laser135Panel *,
+[data-theme="light"] #mount136Panel * {
+  color: var(--text-primary);
+}
+[data-theme="light"] #stageLift124 button,
+[data-theme="light"] #stageLift124 input:not([type=range]),
+[data-theme="light"] #stageLift124 select,
+[data-theme="light"] #stageLift124 .lift-h,
+[data-theme="light"] #stageLift124 .lift-info,
+[data-theme="light"] #v124LiftBtn,
+[data-theme="light"] #v125LiftNav,
+[data-theme="light"] #v130Panel button,
+[data-theme="light"] #v130Panel input:not([type=range]),
+[data-theme="light"] #v130Panel select,
+[data-theme="light"] #v130Panel .vj130-head,
+[data-theme="light"] #v130Panel .vj130-box,
+[data-theme="light"] #v130Panel .vj130-footer,
+[data-theme="light"] #v130Toolbar button,
+[data-theme="light"] #m131Panel button,
+[data-theme="light"] #m131Panel input:not([type=range]),
+[data-theme="light"] #m131Panel select,
+[data-theme="light"] #m131Panel .m131-header,
+[data-theme="light"] #m131Panel .m131-clockbox,
+[data-theme="light"] #m131Panel footer,
+[data-theme="light"] .m131-launch,
+[data-theme="light"] #laser135Panel button,
+[data-theme="light"] #laser135Panel input:not([type=range]),
+[data-theme="light"] #laser135Panel select,
+[data-theme="light"] .laser135-header,
+[data-theme="light"] #laser135Panel .laser135-tabs,
+[data-theme="light"] #laser135Panel .laser135-lightrow,
+[data-theme="light"] #laser135Panel .laser135-current,
+[data-theme="light"] #laser135Panel .laser135-quickbar,
+[data-theme="light"] #laser135Panel .laser138-glyph,
+[data-theme="light"] #laser135TopBtn,
+[data-theme="light"] #mount136TopBtn,
+[data-theme="light"] #mount136Panel button,
+[data-theme="light"] #mount136Panel input:not([type=range]),
+[data-theme="light"] #mount136Panel select,
+[data-theme="light"] #mount136Panel .mount136-head,
+[data-theme="light"] #mount136Panel .mount136-current,
+[data-theme="light"] #mount136Panel .mount136-footer,
+[data-theme="light"] #mount136Panel .mount139-sliders,
+[data-theme="light"] #mount136Panel .mount139-anchor {
+  background: rgba(255, 255, 255, 0.90) !important;
+  border-color: var(--border-secondary) !important;
+  color: var(--text-primary) !important;
+}
+[data-theme="light"] #stageLift124 button.active,
+[data-theme="light"] #stageLift124 button.on,
+[data-theme="light"] #v130Panel button.active,
+[data-theme="light"] #m131Panel button.selected,
+[data-theme="light"] #laser135Panel button.selected,
+[data-theme="light"] #mount136Panel button.sel,
+[data-theme="light"] #mount136Panel .mount140-layer-row.selected {
+  background: #e0f2fe !important;
+  border-color: #0284c7 !important;
+  color: #0f172a !important;
+}
+[data-theme="light"] #stageLift124 small,
+[data-theme="light"] #v130Panel small,
+[data-theme="light"] #m131Panel small,
+[data-theme="light"] #laser135Panel small,
+[data-theme="light"] #mount136Panel small {
+  color: var(--text-secondary) !important;
+}
+

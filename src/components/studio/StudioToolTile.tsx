@@ -15,7 +15,7 @@ import { useTheme } from '../../theme/context';
  * Cả hai biến thể đều có chân tile: nền tảng/trạng thái bên trái, nút mở bên phải.
  */
 
-export type StudioToolKey = 'eventLibrary' | 'skills' | 'crm' | 'vocab' | 'vietyaku';
+export type StudioToolKey = 'eventLibrary' | 'skills' | 'crm' | 'vocab' | 'vietyaku' | 'ledStudio';
 
 /** Bộ màu nhận diện riêng của từng tool — làm các tile phân biệt rõ nhau. */
 export interface ToolAccent {
@@ -113,7 +113,7 @@ export const STUDIO_TOOLS: StudioTool[] = [
     {
         key: 'vietyaku',
         to: '/studio/vietyaku',
-        span: 'sm:col-span-5',
+        span: 'sm:col-span-2',
         featured: true,
         logo: <img src="/vietyaku-logo.png" alt="" className="w-full h-full object-contain rounded" />,
         accent: {
@@ -123,6 +123,26 @@ export const STUDIO_TOOLS: StudioTool[] = [
             hoverBorder: 'hover:border-rose-500/60',
             glow: 'bg-rose-500',
             rgb: '244 63 94',
+        },
+    },
+    {
+        key: 'ledStudio',
+        to: '/studio/led-studio',
+        span: 'sm:col-span-3',
+        featured: true,
+        logo: (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8" className="w-full h-full">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5v10.5H3.75V5.25Z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 19.5h7.5M12 15.75v3.75M7.5 9.75l3 2.25-3 2.25m4.5 0h4.5" />
+            </svg>
+        ),
+        accent: {
+            textLight: 'text-sky-700',
+            textDark: 'text-cyan-300',
+            chip: 'bg-cyan-500/10 border-cyan-500/25',
+            hoverBorder: 'hover:border-cyan-400/60',
+            glow: 'bg-cyan-400',
+            rgb: '97 232 255',
         },
     },
 ];

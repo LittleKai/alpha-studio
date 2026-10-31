@@ -86,13 +86,19 @@ export default function WalletView() {
           if (countdownRef.current) {
             clearInterval(countdownRef.current);
           }
-          handleCancelPayment();
           return 0;
         }
         return prev - 1;
       });
     }, 1000);
   }, []);
+
+  // Cancel payment when countdown reaches 0 outside the state updater
+  useEffect(() => {
+    if (qrModalOpen && countdown === 0) {
+      void handleCancelPayment();
+    }
+  }, [qrModalOpen, countdown]);
 
   // Format countdown display
   const formatCountdown = (seconds: number) => {

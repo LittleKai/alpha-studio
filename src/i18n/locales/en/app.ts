@@ -115,12 +115,18 @@ export default {
       video: "Video",
       edit: "Edit"
     },
+    ledStudio: {
+      seoTitle: "LED Stage Studio 3D — Stage Design, LED Mapping & Timecode Show",
+      seoDesc: "WebGL2 3D event stage designer, LED pixel mapper, 35 LED Matrix effects, OFL DMX512 lighting desk, and ILDA laser timecode show studio.",
+      breadcrumb: "LED Stage Studio 3D",
+      badge: "ALPHA CREATIVE LED STUDIO V16"
+    },
     hub: {
       hero: {
         badge: "Alpha Studio Ecosystem · Beta",
         title1: "AI Studio",
         title2: "The creative toolkit",
-        subtitle: "Five tools are open to every account: the Event Knowledge Library, the AI Skills Library, Alpha CRM for Zalo marketing, VocabFlip for vocabulary practice, and VietYaku — converter software supporting Japanese and Chinese translation. Two more are being finished in the workshop.",
+        subtitle: "Six tools are open to every account: the Event Knowledge Library, the AI Skills Library, Alpha CRM for Zalo marketing, VocabFlip for vocabulary practice, VietYaku for Japanese and Chinese translation, and LED Stage Studio 3D. Two more are being finished in the workshop.",
         stats: {
           live: "Tools live",
           upcoming: "Coming soon",
@@ -162,6 +168,11 @@ export default {
           f1: "Converter software supporting offline Japanese and Chinese translation",
           f2: "Referenced & enhanced from QuickConverter with expanded dictionaries and algorithms",
           f3: "Fully offline translation, portable Windows build with auto-updates"
+        },
+        ledStudio: {
+          f1: "Import 3D stages (Meshopt GLB/glTF, DAE, OBJ) with metric LED screen detection",
+          f2: "35 3D LED Matrix effects, Open Fixture Library DMX512 lighting desk & ILDA (.ild) laser scanner",
+          f3: "SMPTE/MTC Timecode sync, Pixel Map PNG/CSV & WebM export, plus read-only 3D client review links"
         }
       },
       open: "Open",
@@ -170,13 +181,18 @@ export default {
         skills: "Web · No install needed",
         crm: "Windows & Android · 1-month trial",
         vocab: "Web, Windows & Android",
-        vietyaku: "Windows · Android (Coming Soon)"
+        vietyaku: "Windows · Android (Coming Soon)",
+        ledStudio: "WebGL2 3D · Instant Browser & Offline Mode"
       },
       backToStudio: "Back to Studio",
       cards: {
         eventLibrary: {
           title: "Event Knowledge Library",
           desc: "Case studies, prompts, workflows, templates and playbooks for event & communication teams"
+        },
+        ledStudio: {
+          title: "LED Stage Studio 3D",
+          desc: "3D event stage design, LED screen mapping, 35 LED Matrix effects, DMX512 lighting & ILDA laser timecode show programming"
         },
         generate: {
           title: "Generate Image & Video",
