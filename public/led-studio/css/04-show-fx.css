@@ -588,4 +588,239 @@ body.client-review-mode #v16AllToolsBtn {
   color: #0f172a !important;
 }
 
+/* V16 3D Visual Previews for Stage Props, Cast Performers & 3D Acts */
+#v16AssetPanel .v16-catthumb {
+  width: 100%;
+  height: 76px;
+  border-radius: 5px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 35%, rgba(56, 189, 248, 0.16), rgba(7, 13, 24, 0.94));
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#v16AssetPanel .v16-catthumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+#v16AssetPanel .v16-live-preview {
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr);
+  gap: 10px;
+  padding: 8px;
+  border-radius: 7px;
+  background: rgba(8, 15, 28, 0.85);
+  border: 1px solid var(--border-primary);
+  align-items: center;
+}
+#v16AssetPanel .v16-live-preview canvas {
+  width: 128px;
+  height: 96px;
+  border-radius: 6px;
+  background: #070d18;
+  border: 1px solid rgba(97, 232, 255, 0.25);
+  cursor: grab;
+}
+#v16AssetPanel .v16-live-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+#v16AssetPanel .v16-live-meta strong {
+  font-size: 11.5px;
+  color: var(--accent-primary);
+}
+#v16AssetPanel .v16-live-meta small {
+  font-size: 10px;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+.v16-menu-item .v16-menu-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.v16-menu-thumb {
+  width: 26px;
+  height: 22px;
+  border-radius: 4px;
+  object-fit: cover;
+  background: #070d18;
+  border: 1px solid rgba(97, 232, 255, 0.28);
+  flex: none;
+}
+
+/* Cast Library 3D Interactive Stage & Visual Performer Cards */
+.v16-cast-stage {
+  display: grid;
+  grid-template-columns: 270px minmax(0, 1fr);
+  gap: 14px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, rgba(10, 20, 35, 0.94), rgba(6, 12, 22, 0.96));
+  border: 1px solid rgba(97, 232, 255, 0.28);
+  align-items: center;
+}
+.v16-cast-canvas-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+#v16CastLiveCanvas {
+  width: 260px;
+  height: 196px;
+  border-radius: 8px;
+  background: #060c16;
+  border: 1px solid rgba(97, 232, 255, 0.32);
+  cursor: grab;
+}
+.v16-cast-canvas-hint {
+  font-size: 9.5px;
+  color: var(--text-muted);
+}
+.v16-cast-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.v16-cast-controls h4 {
+  margin: 0;
+  font-size: 14px;
+  color: var(--accent-primary);
+}
+.v16-cast-controls p {
+  margin: 0;
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+.v16-cast-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.v16-cast-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+.v16-cast-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2px;
+}
+.cast-add.v16-cast-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.cast-card.v16-cast-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 5px;
+  padding: 7px;
+  border-radius: 8px;
+  border: 1px solid var(--border-primary);
+  background: rgba(12, 21, 36, 0.85);
+  text-align: left;
+  transition: border-color 0.14s ease, transform 0.14s ease;
+}
+.cast-card.v16-cast-card:hover,
+.cast-card.v16-cast-card.active {
+  border-color: var(--accent-primary);
+  background: rgba(97, 232, 255, 0.11);
+  transform: translateY(-1px);
+}
+.v16-cast-thumb {
+  width: 100%;
+  height: 92px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #070e1a;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  position: relative;
+}
+.v16-cast-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.v16-cast-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+.v16-cast-card-foot small {
+  font-size: 9.5px;
+  color: var(--accent-primary);
+  font-weight: 700;
+}
+.dir-act-grid button .v16-act-thumb {
+  width: 100%;
+  height: 68px;
+  border-radius: 5px;
+  object-fit: contain;
+  background: #070e1a;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  margin-bottom: 4px;
+  display: block;
+}
+@media (max-width: 860px) {
+  .v16-cast-stage {
+    grid-template-columns: 1fr;
+  }
+  .cast-add.v16-cast-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================================================================
+   V16.2 ALPHA COMPACT STUDIO — POST-CASCADE VIEWPORT LOCK
+   Overrides 02-workspace-addons.css (#viewport { height:auto!important })
+   and 03-fixture-timecode.css (.main-panel { display:grid!important })
+   so the 3D Stage Viewport ALWAYS fills remaining space and never collapses.
+   ========================================================================= */
+body:not(.present-mode) .main-panel,
+body.ui133-installed:not(.present-mode) .main-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  grid-template-rows: none !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+body:not(.present-mode) .main-panel > :not(#viewport) {
+  flex: 0 0 auto !important;
+}
+
+body:not(.present-mode) #viewport,
+body.ui133-installed:not(.present-mode) #viewport,
+body:not(.present-mode) .main-panel > #viewport {
+  flex: 1 1 0% !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 220px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+
+
 

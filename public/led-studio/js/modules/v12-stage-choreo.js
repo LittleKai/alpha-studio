@@ -141,7 +141,7 @@
  }
  const oldRenderUI=renderUI;
  renderUI=function(){const r=oldRenderUI();setTimeout(inject12Toolbar,0);return r;};
- setTimeout(()=>{inject12Toolbar(); document.body.classList.add('v121-compact');},600);
+ inject12Toolbar(); document.body.classList.add('v121-compact');
  if(window.STUDIO) window.STUDIO.version='1.2.1';
 })();
 
@@ -238,7 +238,7 @@
  }
  const oldRenderUI=renderUI;
  renderUI=function(){ const r=oldRenderUI(); setTimeout(inject122,0); return r; };
- setTimeout(inject122,700);
+ inject122();
  if(window.STUDIO) window.STUDIO.version='1.2.2';
 })();
 
@@ -307,7 +307,7 @@
  }
  const oldRender123=renderUI;
  renderUI=function(){const r=oldRender123();setTimeout(inject123,0);return r;};
- setTimeout(inject123,600);
+ inject123();
  if(window.STUDIO) window.STUDIO.version='1.2.3';
 })();
 
