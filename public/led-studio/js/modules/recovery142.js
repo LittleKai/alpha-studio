@@ -565,25 +565,29 @@
     restoreBackup, downloadBackup, downloadRescue, open: openRecovery, setAutoBackup,
     get status() { return { operation: R.operation, auto: R.auto, backup: R.backup ? { ...R.backup } : null,
       message: R.message, error: R.error, lastSave: R.lastSave, hasRescue: !!R.rescueText }; } };
-  S.version = '1.1.0';
-  document.title = 'ALPHA Creative LED Studio V1.1 | Sân khấu 3D · 35 FX · Đạo cụ & Biên đạo';
+  const rawVer = String(window.APP_VERSION || '1.2').trim().replace(/^[vV]/, '');
+  const shortVer = 'V' + rawVer;
+  const semver = rawVer.split('.').length === 2 ? rawVer + '.0' : rawVer;
+  S.version = semver;
+  document.title = `ALPHA Creative LED Studio ${shortVer} | Sân khấu 3D · 35 FX · Đạo cụ & Biên đạo`;
   const brand = document.querySelector('.brand small');
-  if (brand) brand.textContent = 'V1.1 / SÂN KHẤU 3D · 35 FX · DMX & ILDA';
+  if (brand) brand.textContent = `${shortVer} / SÂN KHẤU 3D · 35 FX · DMX & ILDA`;
   const footer = document.querySelector('.bottom-status > span:last-child');
-  if (footer) footer.textContent = 'ALPHA / LOCAL BUILD 1.1';
+  if (footer) footer.textContent = `ALPHA / LOCAL BUILD ${rawVer}`;
+  const presentSpan = document.querySelector('#presentHUD span');
+  if (presentSpan) presentSpan.textContent = `STAGE PREVIEW / ${shortVer}`;
   function openVersionDialog() {
     if (typeof window.dialog !== 'function') return;
     const isEn = (S.cloud16?.state?.locale || document.documentElement.dataset.locale) === 'en';
     const L = (vi, en) => (isEn ? en : vi);
     const st = S.stats?.() || {};
-    const ver = esc(S.version || '1.1.0');
-    const body = `<div class="snapshot-info"><div><b>V1.1 (${ver})</b><span>${L('PHIÊN BẢN', 'VERSION')}</span></div><div><b>LOCAL / OFFLINE</b><span>WebGL2 #version 300 es</span></div><div><b>${Number(st.screens || 0)} LED · ${Number(st.lights || 0)} DMX</b><span>${Number(st.meshes || 0)} meshes</span></div></div>` +
+    const body = `<div class="snapshot-info"><div><b>${esc(shortVer)} (${esc(semver)})</b><span>${L('PHIÊN BẢN', 'VERSION')}</span></div><div><b>LOCAL / OFFLINE</b><span>WebGL2 #version 300 es</span></div><div><b>${Number(st.screens || 0)} LED · ${Number(st.lights || 0)} DMX</b><span>${Number(st.meshes || 0)} meshes</span></div></div>` +
       `<h3>${L('Hệ thống & Tính năng tích hợp', 'Integrated Modules & Capabilities')}</h3>` +
       `<p>• <b>3D Stage &amp; Spatial Mapping:</b> GLB (Meshopt), glTF, DAE, OBJ · ${L('Hệ quy chiếu mét thật, tự nhận diện LED &amp; Pixel Studio Atlas 4K', 'Metric spatial workflow, auto LED detection &amp; 4K Atlas')}</p>` +
       `<p>• <b>LED Matrix Contour (35 FX):</b> ${L('Quét viền 3D tự động, phân cấp khối, 35 hiệu ứng dải LED có chiều sâu', '3D contour scanning, hierarchy &amp; 35 depth-aware LED strip effects')}</p>` +
       `<p>• <b>DMX512, Laser ILDA &amp; Timecode:</b> ${L('12 cấu hình đèn OFL 16-bit, chuẩn Laser .ild Format 0..5, bàn điều khiển FX &amp; Show Timecode', '12 OFL 16-bit fixtures, ILDA .ild Format 0..5 laser &amp; Show Timecode')}</p>` +
       `<p>• <b>Choreography &amp; Stage Mechanics:</b> ${L('Biên đạo nhân vật 3D IK 12 động tác, bàn nâng Stage Lift &amp; Scissor Lift, đo 3D &amp; tải gió TCVN', '12-move IK 3D choreography, Stage/Scissor Lifts, 3D measure &amp; TCVN wind load')}</p>`;
-    window.dialog(L('Thông tin phiên bản — ALPHA LED Studio V1.1', 'Version Info — ALPHA LED Studio V1.1'), body, [{ label: L('Đóng', 'Close'), primary: true }]);
+    window.dialog(L(`Thông tin phiên bản — ALPHA LED Studio ${shortVer}`, `Version Info — ALPHA LED Studio ${shortVer}`), body, [{ label: L('Đóng', 'Close'), primary: true }]);
   }
   S.openVersionDialog = openVersionDialog;
   const brandBox = document.querySelector('.brand');
@@ -591,7 +595,7 @@
     brandBox.style.cursor = 'pointer';
     brandBox.setAttribute('role', 'button');
     brandBox.tabIndex = 0;
-    brandBox.title = 'Xem thông tin phiên bản / Version info (V1.1)';
+    brandBox.title = `Xem thông tin phiên bản / Version info (${shortVer})`;
     brandBox.onclick = openVersionDialog;
     brandBox.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openVersionDialog(); } };
   }

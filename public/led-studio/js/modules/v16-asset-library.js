@@ -2970,12 +2970,13 @@
    return r;
   };
   syncWorkspaceStepUI();
-  S.version='1.1.0';
-  document.title='ALPHA Creative LED Studio V1.1 | Sân khấu 3D · 35 FX · Đạo cụ & Biên đạo';
+  const vRaw16=String(window.APP_VERSION||'1.2').trim().replace(/^[vV]/,'');
+  S.version=vRaw16.split('.').length===2?vRaw16+'.0':vRaw16;
+  document.title=`ALPHA Creative LED Studio V${vRaw16} | Sân khấu 3D · 35 FX · Đạo cụ & Biên đạo`;
   const brandSmall=document.querySelector('.brand small');
-  if(brandSmall)brandSmall.textContent='V1.1 / SÂN KHẤU 3D · 35 FX · DMX & ILDA';
+  if(brandSmall)brandSmall.textContent=`V${vRaw16} / SÂN KHẤU 3D · 35 FX · DMX & ILDA`;
   const buildSpan=document.querySelector('.bottom-status > span:last-child');
-  if(buildSpan)buildSpan.textContent='ALPHA / LOCAL BUILD 1.1';
+  if(buildSpan)buildSpan.textContent=`ALPHA / LOCAL BUILD ${vRaw16}`;
  } catch(err) {
   console.error('V16 Asset Library init error:', err);
  }
