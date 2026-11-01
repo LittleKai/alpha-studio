@@ -633,6 +633,21 @@ activateSpatialLayout=function(){engine.activeAtlasId=null;return PRO_UI_BASE.ac
 assignMaster=function(a,options){engine.activeAtlasId=null;live.transition=null;live.queue=null;return PRO_UI_BASE.assignMaster(a,options);};
 const proMapData=mappingData;
 mappingData=function(){const d=proMapData();d.liveVersion='0.5.0';d.outputAtlases=engine.outputAtlases||[];d.activeAtlasId=engine.activeAtlasId||null;d.screens.forEach((s,i)=>{s.cluster=engine.surfaces[i].cluster||'Main';s.atlasId=engine.surfaces[i].atlasId||null;});return d;};
+/* Eco idle: when nothing on stage can change (paused, no input, camera and time still),
+   redraw the 3D view ~10x/s instead of every frame. Any input wakes it instantly.
+   Modules with wall-clock previews register a predicate via STUDIO.keepRendering(fn). */
+const idleRender={lastInput:0,held:false,lastDraw:0,lastKey:'',wakers:[],eco:false};
+function keepRendering(fn){if(typeof fn==='function')idleRender.wakers.push(fn);}
+{const wake=e=>{idleRender.lastInput=performance.now();if(e.type==='pointerdown')idleRender.held=true;else if(e.type==='pointerup'||e.type==='pointercancel')idleRender.held=false;};
+ for(const type of ['pointerdown','pointermove','pointerup','pointercancel','wheel','keydown','input','touchstart'])window.addEventListener(type,wake,{capture:true,passive:true});
+ window.addEventListener('blur',()=>{idleRender.held=false;});}
+function sceneIdle(now){
+ const c=engine.camera,key=state.time+'|'+c.yaw+'|'+c.pitch+'|'+c.distance+'|'+c.target+'|'+c.fov+'|'+engine.view;
+ const changed=key!==idleRender.lastKey;idleRender.lastKey=key;
+ if(changed||state.playing||state.recording||state.atlasRecording||live.open||idleRender.held||now-idleRender.lastInput<2500)return false;
+ for(const fn of idleRender.wakers){try{if(fn())return false;}catch(e){}}
+ return true;
+}
 loop=function(now){
  const realDt=Math.max(0,(now-state.lastFrame)/1000);state.lastFrame=now;const dt=Math.min(realDt,1);
  if(document.hidden){requestAnimationFrame(loop);return;}
@@ -643,10 +658,12 @@ loop=function(now){
   if(now-stableUI.lastSync>100)syncVideos();
   if(now-live.lastAudioSync>65){sampleAudioMeter();routeAudio();live.lastAudioSync=now;}
   if(state.atlasRecording&&now-state.atlasRecording.lastFrame>=1000/state.atlasRecording.fps){state.atlasRecording.renderer.render(state.time,{restore:false});state.atlasRecording.lastFrame=now;}
-  engine.render(state.time);
+  const idle=sceneIdle(now);
+  if(!idle||now-idleRender.lastDraw>=100){engine.render(state.time);idleRender.lastDraw=now;}
   if(now-perfState.lastOverlay>33){renderOverlays();perfState.lastOverlay=now;}
   if(now-stableUI.lastTransport>70){updateStableControls();updateCuePads();stableUI.lastTransport=now;}
-  reportPerformance(now,realDt);
+  if(!idle)reportPerformance(now,realDt);else if(!idleRender.eco)setText('fps','ECO / '+Math.round((engine.previewScale||1)*100)+'%');
+  idleRender.eco=idle;
   if(now-perfState.lastLabels>1000){setText('engineState',state.recording?'REC / WebM'+(state.recordAudio?' + AUDIO':''):engine.surfaces.length+' LED / '+engine.lights.filter(l=>l.enabled).length+' lights');perfState.lastLabels=now;}
  }catch(e){if(!stableUI.loopErrors.includes(e.message)){stableUI.loopErrors.push(e.message);console.error(e);toast('Preview: '+e.message,8000);}state.playing=false;syncMusic();updateStableControls();}
  requestAnimationFrame(loop);
@@ -675,7 +692,7 @@ function initLiveEvents(){
  const help=$('helpBtn').onclick;$('helpBtn').onclick=()=>{help();$('modalBody').insertAdjacentHTML('afterbegin','<h3>0.5 / LIVE CREATIVE</h3><p><b>LED</b>: ch\u1ecdn nhi\u1ec1u, x\u00f3a an to\u00e0n, gom c\u1ee5m. <b>Pixel Studio</b>: t\u00ednh cabinet, xu\u1ea5t atlas PNG/JSON, n\u1ea1p clip \u0111\u00fang c\u1ee5m. <b>LIVE VJ</b>: 8 look pads, QWER/ASDG; Shift+click ghi look; click ph\u1ea3i \u0111\u1ed5i t\u00ean. Crossfade/Wipe/Dip/Cut, X blackout, C flash, V strobe c\u1ea7n b\u1eadt cho ph\u00e9p. Audio nghe ti\u1ebfng video ho\u1eb7c nh\u1ea1c ri\u00eang; WebM thu \u0111\u01b0\u1ee3c audio.</p><p>FPS th\u1ef1c ph\u1ee5 thu\u1ed9c GPU/model; Auto m\u1ee5c ti\u00eau 55 FPS, kh\u00f4ng n\u1ed9i suy clip 25/30fps.</p>');};
  renderLiveDock();
 }
-const liveAPI={live,toggleLive,launchCue,captureCue,advanceLive,panicLive,deleteMapIds,openLEDManager,openPixelStudio,planAtlas,validateAtlas,nativeEstimate,assignAtlasClip,exportAtlasPNG,exportAtlasJSON,
+const liveAPI={live,toggleLive,keepRendering,launchCue,captureCue,advanceLive,panicLive,deleteMapIds,openLEDManager,openPixelStudio,planAtlas,validateAtlas,nativeEstimate,assignAtlasClip,exportAtlasPNG,exportAtlasJSON,
  openPerformance,performanceDiagnostics,enableAudio,openAudioPanel,addMusicFile,removeMusic,syncVideos,setPlaying,recordPreview,beginLiveRecording,
  renderUI,loadProject,importModel,demo,assignMaster,mappingData,togglePresentation,activateSpatialLayout,snapshot,restore,
  createAtlasRenderer,exportAtlasVisualPNG,beginAtlasRecording,getPerformance:performanceDiagnostics,activeVideos,packLiveExtras};

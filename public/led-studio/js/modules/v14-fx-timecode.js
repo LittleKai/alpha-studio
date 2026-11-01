@@ -26,7 +26,7 @@
  const F={fixtures:[],selected:null,kind:'par',isOpen:false,tab:'fixtures',place:false,dragMode:false,drag:null,
    live:null,allowStrobe:false,defaultDuration:6,speed:1,groupSize:4,target:'all',lastPaint:0,lastRaf:0,attachLayer:'',
    models:new Map(),modelKey:'',showPanel:false,freeze:false,lastSceneKey:''};
- S.fx141=F;
+ S.fx141=F;S.keepRendering?.(()=>!!F.live&&(performance.now()-F.live.started)/1000<F.live.duration);
  // One undo entry per user action, including array creation and pointer drags.
  let historyDepth=0;
  function transaction(fn){if(historyDepth)return fn();checkpoint();const savedCheckpoint=checkpoint;historyDepth++;checkpoint=()=>{};try{return fn();}finally{checkpoint=savedCheckpoint;historyDepth--;}}
