@@ -228,11 +228,6 @@
        const accent=d.type==='laserdancer'?[.95,.30,.58,1]:d.type==='leddancer'?[.25,.88,.98,1]:d.type==='fandancer'?[.96,.72,.34,1]:[.85,.58,.92,1];
        const sash=glow8(rod('Sash',[0,.96,.12],[0,1.34,.11],.012,.010,accent,7),'#ffffff',0.45);
        body.meshes.push(sash);
-       if(d.type==='dancer' || d.type==='fandancer'){
-         const skirt=torso([[.73,.12,.11],[.69,.20,.18],[.60,.28,.25],[.46,.34,.30]], [accent[0]*.55,accent[1]*.45,accent[2]*.55,1], lite?8:16);
-         transformMesh(skirt,M.translate([0,0,0]));
-         body.meshes.push(skirt);
-       }
      }
    }
    return nodes;

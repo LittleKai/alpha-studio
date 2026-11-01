@@ -709,6 +709,18 @@ body.v16-blender-ui .topbar {
   padding: 0 12px;
   gap: 10px;
 }
+body.v16-compact-ui .brand,
+body.v16-blender-ui .brand {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+body.v16-compact-ui .header-actions,
+body.v16-blender-ui .header-actions {
+  min-width: 0;
+  flex: 0 1 auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
 body.v16-compact-ui .brandmark,
 body.v16-blender-ui .brandmark {
   width: 24px;
@@ -811,10 +823,15 @@ body.v16-blender-ui:not(.focus-workspace):not(.present-mode):not(.client-review-
 body.v16-compact-ui:not(.focus-workspace):not(.present-mode):not(.client-review-mode) #v16PropRail,
 body.v16-blender-ui:not(.focus-workspace):not(.present-mode):not(.client-review-mode) #v16PropRail {
   grid-area: proprail !important;
+  display: flex !important;
 }
 body.v16-compact-ui:not(.focus-workspace):not(.present-mode):not(.client-review-mode) .right-panel,
 body.v16-blender-ui:not(.focus-workspace):not(.present-mode):not(.client-review-mode) .right-panel {
   grid-area: properties !important;
+  display: block !important;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
   padding: 10px 11px;
 }
 
@@ -858,16 +875,27 @@ body.v16-compact-ui .left-panel .object-section,
 body.v16-blender-ui .left-panel .object-section {
   order: 1;
   padding: 8px 10px;
-  flex: 1 1 auto;
+  flex: 1 0 auto;
+  min-height: auto;
+  overflow: hidden;
+  position: relative;
+}
+body.v16-compact-ui .left-panel .object-section.v16-collapsed,
+body.v16-blender-ui .left-panel .object-section.v16-collapsed {
+  flex: 0 0 auto;
 }
 body.v16-compact-ui .left-panel .object-section > .item-list,
 body.v16-blender-ui .left-panel .object-section > .item-list {
-  max-height: none;
+  min-height: 96px;
+  max-height: clamp(120px, 32vh, 260px);
+  overflow-y: auto;
   flex: 1 1 auto;
 }
 body.v16-compact-ui .left-panel .import-section,
 body.v16-blender-ui .left-panel .import-section {
   order: 2;
+  flex: 0 0 auto;
+  position: relative;
   padding: 7px 10px;
   border-top: 1px solid var(--border-primary);
   border-bottom: 0;
@@ -875,11 +903,15 @@ body.v16-blender-ui .left-panel .import-section {
 body.v16-compact-ui .left-panel .media-section,
 body.v16-blender-ui .left-panel .media-section {
   order: 3;
+  flex: 0 0 auto;
+  position: relative;
   padding: 7px 10px;
 }
 body.v16-compact-ui .left-panel .sidebar-foot,
 body.v16-blender-ui .left-panel .sidebar-foot {
   order: 4;
+  flex: 0 0 auto;
+  position: relative;
   padding: 6px 10px;
 }
 body.v16-compact-ui .left-panel .object-row,
@@ -1239,16 +1271,16 @@ body.focus-workspace #v16PropRail {
   box-shadow: 0 0 10px rgba(217, 119, 6, 0.45) !important;
 }
 
-@media (max-width: 980px) {
-  body.v16-compact-ui .workspace,
-  body.v16-blender-ui .workspace {
-    grid-template-columns: minmax(0, 1fr) !important;
-    grid-template-rows: minmax(0, 1fr) !important;
-    grid-template-areas: "viewport" !important;
+@media (max-width: 1220px) {
+  body.v16-compact-ui:not(.focus-workspace):not(.present-mode):not(.client-review-mode) .workspace,
+  body.v16-blender-ui:not(.focus-workspace):not(.present-mode):not(.client-review-mode) .workspace {
+    grid-template-columns: 192px minmax(0, 1fr) 32px minmax(236px, 272px) !important;
   }
-  body.v16-compact-ui #v16PropRail,
-  body.v16-blender-ui #v16PropRail {
-    display: none !important;
+}
+@media (max-width: 980px) {
+  body.v16-compact-ui:not(.focus-workspace):not(.present-mode):not(.client-review-mode) .workspace,
+  body.v16-blender-ui:not(.focus-workspace):not(.present-mode):not(.client-review-mode) .workspace {
+    grid-template-columns: 172px minmax(0, 1fr) 30px minmax(212px, 246px) !important;
   }
 }
 /* Boot splash: covers the half-built UI while classic scripts parse; removed by index.html after the first frame. */

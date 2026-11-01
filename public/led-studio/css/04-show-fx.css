@@ -668,19 +668,28 @@ body.client-review-mode #v16AllToolsBtn {
   align-items: center;
 }
 .v16-cast-canvas-wrap {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
 }
-#v16CastLiveCanvas {
-  width: 260px;
-  height: 196px;
+#v16CastLiveCanvas,
+.v16-cast-preview-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
   border-radius: 8px;
   background: #060c16;
   border: 1px solid rgba(97, 232, 255, 0.32);
+}
+#v16CastLiveCanvas {
   cursor: grab;
+}
+#v16CastLiveCanvas[hidden],
+.v16-cast-preview-img[hidden],
+.v16-cast-canvas-hint[hidden] {
+  display: none;
 }
 .v16-cast-canvas-hint {
   font-size: 9.5px;
@@ -843,6 +852,62 @@ body.client-review-mode #v16AllToolsBtn {
   }
   .v16-example-bar {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Cast dialog: scrolling library on the left, preview + "Thêm" sidebar pinned on the right */
+.v16-cast-wide {
+  width: min(1560px, 97vw) !important;
+  max-width: 97vw !important;
+}
+.v16-cast-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 14px;
+  align-items: start;
+}
+.v16-cast-layout .v16-cast-stage {
+  position: sticky;
+  top: 0;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  margin-bottom: 0;
+  max-height: calc(90vh - 150px);
+  overflow: auto;
+}
+.v16-cast-layout .v16-cast-form {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.v16-cast-layout .v16-cast-form label:first-child {
+  grid-column: 1 / -1;
+}
+.v16-cast-layout .v16-cast-form[hidden],
+.v16-cast-layout .v16-cast-cta .btn[hidden] {
+  display: none;
+}
+.v16-cast-layout .v16-cast-cta .btn {
+  flex: 1 1 100%;
+}
+.v16-cast-layout .dir-act-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.v16-cast-layout .dir-act-grid button .v16-act-thumb {
+  height: 96px;
+}
+.v16-cast-layout .v16-example-chip.active,
+.v16-cast-layout .dir-act-grid button.active {
+  border-color: var(--accent-primary);
+  background: rgba(97, 232, 255, 0.11);
+}
+@media (max-width: 1100px) {
+  .v16-cast-layout {
+    grid-template-columns: 1fr;
+  }
+  .v16-cast-layout .v16-cast-stage {
+    position: static;
+    max-height: none;
   }
 }
 

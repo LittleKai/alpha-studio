@@ -65,6 +65,9 @@
    castPreviewColor:'#6e3455',
    castPreviewHeight:1.75,
    castPreviewYaw:0.35,
+   castPreviewKind:'role', // cast dialog sidebar shows a 'role' (castPreviewType), 'act' (castPreviewAct) or 'qex' (castPreviewQex)
+   castPreviewAct:'',
+   castPreviewQex:'',
    wind:{speed:15,cd:1.4,baseDepth:1.2,selfKgPerM2:38}
   };
   S.stageAssets16=A;
@@ -1077,7 +1080,8 @@
    let triIdx=0;
    for(const {mesh,matrix} of list){
     const p=mesh.p, nArr=mesh.n, col=mesh.material?.color||[0.62,0.72,0.84], em=mesh.material?.emissive||[0,0,0];
-    const isDoubleSided=/Fan silk|MC Cue Card|Violin Strings/i.test(mesh.name||'');
+    // node11/mergeCast renames meshes ("V11 / left"), so thin sheets flag material.doubleSided instead of relying on the name
+    const isDoubleSided=!!mesh.material?.doubleSided||/Fan silk|MC Cue Card|Violin Strings/i.test(mesh.name||'');
     for(let i=0;i+8<p.length;i+=9){
      if(triStride>1 && (triIdx++%triStride)!==0)continue;
      let x0=p[i],y0=p[i+1],z0=p[i+2], x1=p[i+3],y1=p[i+4],z1=p[i+5], x2=p[i+6],y2=p[i+7],z2=p[i+8];
@@ -1204,6 +1208,8 @@
     ctx.fillStyle=opts.accent||'#61e8ff';
     ctx.fillText(opts.badge,padX+5*uiScale,padY+11.5*uiScale);
    }
+   // Live canvases and queued thumbnails skip the synchronous PNG encode (~100ms+ per call on the main thread)
+   if(opts.noURL)return cvs;
    try{
     const url=cvs.toDataURL('image/png');
     if(url && url.startsWith('data:image/'))return url;
@@ -1211,20 +1217,116 @@
    return svgFallbackPreviewURL16(opts.title,opts.subtitle,opts.accent);
   }
 
+  // Thumbnails render one per task and encode via async toBlob, so opening a gallery never blocks on
+  // dozens of software renders. Until ready the <img> shows a key-unique SVG placeholder, swapped in place.
+  // Finished stills are WebP (a fraction of PNG size) and persist in IndexedDB, so later sessions skip
+  // rendering entirely. Disk entries are keyed by a fingerprint of the code/data the renders depend on;
+  // bump THUMB_CACHE_VERSION16 when geometry the fingerprint cannot see changes (the wrapped buildHuman
+  // layers in core 04/06 and modules/v12, mesh helpers like rod/torso, node11 merging).
+  const THUMB_CACHE_VERSION16=2;
+  const THUMB_DB16='ledstudio-thumbs16';
+  const thumbJobs16=new Map();
+  let thumbTimer16=0, thumbDisk16=null, thumbDiskReady16=false;
+  function fingerprint16(){
+   const src=[THUMB_CACHE_VERSION16,[...document.scripts].map(s=>s.getAttribute('src')).join(','),
+    typeof buildArtHuman11==='function'?String(buildArtHuman11):'',String(S.buildHuman),String(S.castMatrix),
+    renderMeshes3DToCanvas16,buildAssetMeshes,getCachedPerformerNodes16,getCrowdEntries16,buildPerformerPreviewEntries16,
+    getPerformerFixedBounds16,getPerformerPreviewURL16,actMembers16,getActBounds16,getActPreviewURL16,
+    buildQuickExampleEntries16,getQuickExamplePreviewURL16,getAssetPreviewURL16,
+    JSON.stringify([PERFORMER_META16,S.ACT_TYPES,S.castNames,QUICK_EXAMPLES16,CATALOG])].join('\n');
+   let h=0x811c9dc5;
+   for(let i=0;i<src.length;i++){h^=src.charCodeAt(i);h=Math.imul(h,0x01000193);}
+   return (h>>>0).toString(36);
+  }
+  // Resolves to {db,prefix} (or null without IndexedDB) after loading this fingerprint's stills into
+  // A.previewCache and deleting stale ones.
+  function openThumbDisk16(){
+   if(thumbDisk16)return thumbDisk16;
+   return thumbDisk16=new Promise(resolve=>{
+    let req;
+    try{req=indexedDB.open(THUMB_DB16,1);}catch(_){resolve(null);return;}
+    req.onupgradeneeded=()=>req.result.createObjectStore('thumbs');
+    req.onerror=()=>resolve(null);
+    req.onsuccess=()=>{
+     const db=req.result, prefix=fingerprint16()+'|';
+     const tx=db.transaction('thumbs','readwrite');
+     tx.objectStore('thumbs').openCursor().onsuccess=e=>{
+      const cur=e.target.result;
+      if(!cur)return;
+      const k=String(cur.key);
+      if(k.startsWith(prefix)){
+       if(!A.previewCache.has(k.slice(prefix.length)))A.previewCache.set(k.slice(prefix.length),URL.createObjectURL(cur.value));
+      }else cur.delete();
+      cur.continue();
+     };
+     tx.oncomplete=tx.onerror=tx.onabort=()=>resolve({db,prefix});
+    };
+   });
+  }
+  function saveThumbDisk16(key,blob){
+   openThumbDisk16().then(d=>{
+    if(!d)return;
+    try{d.db.transaction('thumbs','readwrite').objectStore('thumbs').put(blob,d.prefix+key);}catch(err){console.warn('[v16] thumbnail cache',err);}
+   });
+  }
+  function queueThumb16(key,title,subtitle,accent,draw){
+   if(A.previewCache.has(key))return A.previewCache.get(key);
+   let job=thumbJobs16.get(key);
+   if(!job){
+    const placeholder=svgFallbackPreviewURL16(title,subtitle,accent).replace('%3C%2Fsvg%3E',encodeURIComponent(`<!--${key}--></svg>`));
+    job={placeholder,draw};
+    thumbJobs16.set(key,job);
+   }
+   if(!thumbTimer16)thumbTimer16=setTimeout(pumpThumbs16,0);
+   return job.placeholder;
+  }
+  function pumpThumbs16(){
+   thumbTimer16=0;
+   if(!thumbDiskReady16){
+    thumbTimer16=-1; // waiting for the disk cache; queueThumb16 must not start a second pump
+    openThumbDisk16().then(()=>{thumbDiskReady16=true;thumbTimer16=0;pumpThumbs16();});
+    return;
+   }
+   const finish=(key,job,url)=>{
+    thumbJobs16.delete(key);
+    A.previewCache.set(key,url);
+    for(const img of document.querySelectorAll('img'))if(img.getAttribute('src')===job.placeholder)img.src=url;
+   };
+   // Stills already loaded from disk need no render
+   for(const [key,job] of thumbJobs16)if(!job.started&&A.previewCache.has(key))finish(key,job,A.previewCache.get(key));
+   const pending=[...thumbJobs16].filter(([,j])=>!j.started);
+   const next=pending.find(([,j])=>j.urgent)||pending[0];
+   if(!next)return;
+   const [key,job]=next;
+   job.started=true; // stays in the map until finished so a re-render meanwhile reuses the same placeholder
+   let out=null;
+   try{out=job.draw();}catch(err){console.warn('[v16] thumbnail',key,err);}
+   if(typeof out==='string')finish(key,job,out);
+   else if(out?.toBlob)out.toBlob(b=>{
+    if(!b){finish(key,job,job.placeholder);return;}
+    finish(key,job,URL.createObjectURL(b));
+    saveThumbDisk16(key,b);
+   },'image/webp',0.82);
+   else finish(key,job,job.placeholder);
+   if([...thumbJobs16.values()].some(j=>!j.started))thumbTimer16=setTimeout(pumpThumbs16,16);
+  }
+  // Render this still next (e.g. the one just selected in a sidebar) instead of waiting behind the grid
+  function prioritizeThumb16(src){
+   for(const j of thumbJobs16.values())if(j.placeholder===src)j.urgent=true;
+  }
+
   function getAssetPreviewURL16(kind){
-   const cacheKey='asset:'+kind;
-   if(A.previewCache.has(cacheKey))return A.previewCache.get(cacheKey);
    const spec=CATALOG[kind];
    if(!spec)return '';
-   const meshes=buildAssetMeshes({id:'prev_'+kind,kind,name:spec.name,pos:[0,0,0],yaw:0,scale:1,color:spec.color});
-   const cvs=document.createElement('canvas');
-   cvs.width=320;cvs.height=208;
-   const url=renderMeshes3DToCanvas16(cvs,meshes,{
-    yaw:0.52,pitch:0.22,zoom:1.92,
-    title:spec.name,subtitle:spec.label,accent:spec.color,badge:spec.cat
+   return queueThumb16('asset:'+kind,spec.name,spec.label,spec.color,()=>{
+    const meshes=buildAssetMeshes({id:'prev_'+kind,kind,name:spec.name,pos:[0,0,0],yaw:0,scale:1,color:spec.color});
+    const cvs=document.createElement('canvas');
+    cvs.width=320;cvs.height=208;
+    return renderMeshes3DToCanvas16(cvs,meshes,{
+     yaw:0.52,pitch:0.22,zoom:1.92,noURL:true,
+     title:spec.name,subtitle:spec.label,accent:spec.color,badge:spec.cat
+    });
    });
-   A.previewCache.set(cacheKey,url);
-   return url;
   }
 
   function getCachedPerformerNodes16(type,col){
@@ -1240,7 +1342,23 @@
     if(S.choreo11 && prevQ)S.choreo11.quality=prevQ;
    }
    A.castNodeCache16.set(key,nodes);
+   // Costume colour picker creates one key per colour while dragging; keep the cache bounded (oldest first)
+   if(A.castNodeCache16.size>48)A.castNodeCache16.delete(A.castNodeCache16.keys().next().value);
    return nodes;
+  }
+
+  // Mirrors rebuildCast() (core 04) for a default audience entry: 24 lite figures, 12 columns, 0.65 m
+  // spacing, cycling colours/skins. Static on stage, so the entries are built once.
+  let crowdEntries16=null;
+  function getCrowdEntries16(){
+   if(crowdEntries16)return crowdEntries16;
+   const cols=12, sp=.65, entries=[];
+   for(let i=0;i<24;i++){
+    const q={id:'__prev_aud',type:'audience',name:'Khán giả',pos:[0,0,0],yaw:0,height:1.75,color:['#34475c','#6d4c66','#3f6062','#67676e'][i%4],skin:['#b77f5e','#d4a585','#a27153'][i%3],animate:false,count:24,columns:cols,spacing:sp};
+    const matrix=[1,0,0,0, 0,1,0,0, 0,0,1,0, ((i%cols)-(cols-1)/2)*sp,0,Math.floor(i/cols)*sp*.95,1];
+    for(const node of S.buildHuman(q,true,i))for(const mesh of node.meshes||[])entries.push({mesh,matrix});
+   }
+   return crowdEntries16=entries;
   }
 
   function buildPerformerPreviewEntries16(type,opts={}){
@@ -1250,29 +1368,19 @@
    const h=clamp16(opts.height||1.75,1.2,2.4);
    const t=opts.time??0.65;
    const entries=[];
-   if(type==='audience'){
-    const cols=['#34475c','#6d4c66','#3f6062'];
-    for(let i=0;i<3;i++){
-     const d={id:'__prev_aud_'+i,type:'audience',name:'Khán giả',pos:[(i-1)*0.58,0,(i===1?-0.18:0.12)],yaw:0,height:1.72,color:cols[i%3],skin:'#c49474',animate:false};
-     const nodes=getCachedPerformerNodes16('audience_'+i,cols[i%3]).length?getCachedPerformerNodes16('audience_'+i,cols[i%3]):S.buildHuman(d,true,i);
-     for(const node of nodes){
-      const mat=S.castMatrix(d,node,t);
-      for(const mesh of node.meshes||[])entries.push({mesh,matrix:mat});
-     }
-    }
-    return entries;
-   }
+   if(type==='audience')return getCrowdEntries16();
+   const pos=opts.pos||[0,0,0];
    const d={
-    id:'__prev_cast_'+type+'_'+actKey,
+    id:'__prev_cast_'+type+'_'+actKey+'_'+pos[0],
     type,
     name:(S.castNames&&S.castNames[type])||type,
-    pos:[0,0,0],
+    pos,
     yaw:0,
     height:h,
     color:col,
     skin:'#c49474',
     animate:true,
-    phase:0.35,
+    phase:opts.phase??0.35,
     previewForceAnim16:true,
     previewAction16:actKey,
     previewEnergy16:0.82
@@ -1287,7 +1395,7 @@
 
   function getPerformerFixedBounds16(type,height=1.75){
    const s=clamp16(height,1.2,2.4)/1.75;
-   if(type==='audience')return {min:[-1.05,0,-0.55],max:[1.05,1.82,0.55]};
+   if(type==='audience')return {min:[-3.95,0,-0.3],max:[3.95,1.85,0.95]}; // 12 x 2 crowd block
    if(type==='drummer'||type==='keyboardist'||type==='dj')return {min:[-0.68*s,0,-0.55*s],max:[0.68*s,1.82*s,0.72*s]};
    if(type==='fandancer')return {min:[-0.72*s,0,-0.45*s],max:[0.72*s,1.88*s,0.55*s]};
    return {min:[-0.58*s,0,-0.45*s],max:[0.58*s,1.84*s,0.58*s]};
@@ -1297,28 +1405,111 @@
    const meta=PERFORMER_META16[type]||PERFORMER_META16.singer;
    const actKey=(action&&action!=='auto')?action:meta.action;
    const cacheKey='cast:'+type+':'+actKey;
-   if(A.previewCache.has(cacheKey))return A.previewCache.get(cacheKey);
-   const entries=buildPerformerPreviewEntries16(type,{action:actKey,time:0.65});
-   const cvs=document.createElement('canvas');
-   cvs.width=320;cvs.height=240;
-   const url=renderMeshes3DToCanvas16(cvs,entries,{
-    yaw:type==='drummer'||type==='keyboardist'||type==='dj'?0.38:0.28,
-    pitch:0.16,
-    zoom:1.78,
-    fixedBounds:getPerformerFixedBounds16(type,1.75),
-    title:(S.castNames&&S.castNames[type])||type,
-    subtitle:meta.tag,
-    accent:meta.color,
-    badge:meta.tag
+   const title=(S.castNames&&S.castNames[type])||type;
+   return queueThumb16(cacheKey,title,meta.tag,meta.color,()=>{
+    const entries=buildPerformerPreviewEntries16(type,{action:actKey,time:0.65});
+    const cvs=document.createElement('canvas');
+    cvs.width=480;cvs.height=360;
+    return renderMeshes3DToCanvas16(cvs,entries,{
+     yaw:type==='drummer'||type==='keyboardist'||type==='dj'?0.38:0.28,
+     pitch:0.16,
+     zoom:1.78,
+     noURL:true,
+     maxTris:200000,
+     fixedBounds:getPerformerFixedBounds16(type,1.75),
+     title,
+     subtitle:meta.tag,
+     accent:meta.color,
+     badge:meta.tag
+    });
    });
-   A.previewCache.set(cacheKey,url);
-   return url;
+  }
+
+  function actPreviewAction16(actId){
+   return actId==='fan_dance'?'fan':actId==='ribbon'?'wave':actId==='laser'?'spin':actId==='water_drums'?'drum':actId==='keymoment'?'finale':'dance';
+  }
+
+  // Mirrors addAct8 (core 04 + v12 roles): same members, roles, colours and 1.6 m spacing as on stage.
+  function actMembers16(actId){
+   const spec=S.ACT_TYPES?.[actId];
+   if(!spec?.count)return [];
+   const roles=Array.isArray(spec.roles)?spec.roles:null;
+   return Array.from({length:spec.count},(_,i)=>{
+    const role=roles?roles[i%roles.length]:spec.kind;
+    return {
+     role,
+     color:roles?(PERFORMER_META16[role]?.color||'#38bdf8'):['#275a86','#74355e'][i%2],
+     action:roles?'auto':actPreviewAction16(actId), // mixed bands keep each role's own default action
+     pos:[(i-(spec.count-1)/2)*1.6,0,0],
+     phase:i*.65
+    };
+   }).filter(m=>S.castNames?.[m.role]);
+  }
+
+  function buildActPreviewEntries16(actId,time=0.65){
+   const members=actMembers16(actId);
+   // Key-moment acts have no performers: show the role the act is themed around
+   if(!members.length)return buildPerformerPreviewEntries16(ACT_PREVIEW_MAP16[actId]||'dancer',{action:actPreviewAction16(actId),time});
+   const entries=[];
+   for(const m of members)entries.push(...buildPerformerPreviewEntries16(m.role,{action:m.action,color:m.color,time,pos:m.pos,phase:m.phase}));
+   return entries;
+  }
+
+  function getActBounds16(actId){
+   const n=actMembers16(actId).length;
+   if(!n)return getPerformerFixedBounds16(ACT_PREVIEW_MAP16[actId]||'dancer');
+   const half=(n-1)*0.8+0.75;
+   return {min:[-half,0,-0.6],max:[half,1.9,0.75]};
   }
 
   function getActPreviewURL16(actId){
-   const role=ACT_PREVIEW_MAP16[actId]||'dancer';
-   const actAction=actId==='fan_dance'?'fan':actId==='ribbon'?'wave':actId==='laser'?'spin':actId==='water_drums'?'drum':actId==='keymoment'?'finale':actId==='opening_gala'?'reach':'dance';
-   return getPerformerPreviewURL16(role,actAction);
+   const spec=S.ACT_TYPES?.[actId];
+   if(!spec)return '';
+   return queueThumb16('act:'+actId,spec.name,spec.tag,'#61e8ff',()=>{
+    const cvs=document.createElement('canvas');
+    cvs.width=480;cvs.height=300;
+    return renderMeshes3DToCanvas16(cvs,buildActPreviewEntries16(actId),{
+     yaw:0.3,pitch:0.2,zoom:1.55,noURL:true,maxTris:200000,
+     fixedBounds:getActBounds16(actId),
+     title:spec.name,subtitle:spec.tag,accent:'#61e8ff',badge:spec.tag
+    });
+   });
+  }
+
+  function offsetEntries16(entries,[x,y,z]){
+   return entries.map(({mesh,matrix})=>{
+    const m=matrix?[...matrix]:[1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1];
+    m[12]+=x;m[13]+=y;m[14]+=z;
+    return {mesh,matrix:m};
+   });
+  }
+
+  // Mirrors applyQuickCastExample16: the act at [0,0,0.35], extra cast and props at their preset positions
+  function buildQuickExampleEntries16(ex){
+   const entries=[];
+   if(ex.act&&S.ACT_TYPES?.[ex.act])entries.push(...offsetEntries16(buildActPreviewEntries16(ex.act),[0,0,0.35]));
+   for(const c of ex.cast||[]){
+    if(c.type==='audience')entries.push(...offsetEntries16(getCrowdEntries16(),c.pos));
+    else entries.push(...buildPerformerPreviewEntries16(c.type,{pos:c.pos}));
+   }
+   for(const pr of ex.props||[]){
+    const spec=CATALOG[pr.kind];
+    if(spec)entries.push(...buildAssetMeshes({id:'prev_qex_'+pr.kind,kind:pr.kind,name:spec.name,pos:pr.pos,yaw:0,scale:1,color:spec.color}));
+   }
+   return entries;
+  }
+
+  function getQuickExamplePreviewURL16(id){
+   const ex=QUICK_EXAMPLES16.find(x=>x.id===id);
+   if(!ex)return '';
+   return queueThumb16('qex:'+id,ex.label,ex.sub,'#61e8ff',()=>{
+    const cvs=document.createElement('canvas');
+    cvs.width=480;cvs.height=320;
+    return renderMeshes3DToCanvas16(cvs,buildQuickExampleEntries16(ex),{
+     yaw:0.32,pitch:0.55,zoom:1.45,noURL:true,maxTris:250000, // higher angle so front rows/props don't hide the act
+     title:ex.label,subtitle:ex.sub,accent:'#61e8ff',badge:'MẪU DÀN DỰNG'
+    });
+   });
   }
 
   let propAnimFrame16=0;
@@ -1334,6 +1525,7 @@
     yaw:A.propPreviewYaw,
     pitch:0.24,
     zoom:1.92,
+    noURL:true,
     title:spec.name,
     subtitle:spec.label,
     accent:col,
@@ -1351,7 +1543,8 @@
     if(!dragging)return;
     A.propPreviewYaw+=(e.clientX-lastX)*0.018;
     lastX=e.clientX;
-    updatePropLivePreview16();
+    // pointermove fires faster than the display; render at most once per frame
+    if(!propAnimFrame16)propAnimFrame16=requestAnimationFrame(()=>{propAnimFrame16=0;updatePropLivePreview16();});
    });
    const stop=()=>{dragging=false;};
    cvs.addEventListener('pointerup',stop);
@@ -1827,66 +2020,124 @@
 
   // ============================================================================
   // INTERACTIVE 3D CAST PERFORMER & STAGE ACT LIBRARY (openCastLibrary16)
-  // Shows live rotating 3D character preview + pose/costume controls + 3D thumbnails
+  // Card grid (examples / roles / acts) + pinned sidebar with a still preview, pose/costume form and "+ Thêm"
   // ============================================================================
-  let castLiveRAF16=0;
-  let castModalBound16=false;
-  function stopCastLiveLoop16(){
-   if(castLiveRAF16){cancelAnimationFrame(castLiveRAF16);castLiveRAF16=0;}
-   if(castModalBound16){$('modal')?.removeEventListener('close',stopCastLiveLoop16);castModalBound16=false;}
+  // Right sidebar previews the selected card; nothing reaches the stage until its "+ Thêm" button is pressed.
+  // A single performer is a live, draggable 3D render; groups (acts, quick examples, the 24-person crowd)
+  // are too heavy for the software rasterizer, so they show their queueThumb16 still instead.
+  function castSelection16(){
+   if(A.castPreviewKind==='act'&&S.ACT_TYPES?.[A.castPreviewAct])return {kind:'act',id:A.castPreviewAct};
+   if(A.castPreviewKind==='qex'&&QUICK_EXAMPLES16.some(x=>x.id===A.castPreviewQex))return {kind:'qex',id:A.castPreviewQex};
+   return {kind:'role',id:A.castPreviewType};
+  }
+  const castIsLive16=sel=>sel.kind==='role'&&sel.id!=='audience';
+
+  function castPreviewSrc16(){
+   const sel=castSelection16();
+   if(sel.kind==='act')return getActPreviewURL16(sel.id);
+   if(sel.kind==='qex')return getQuickExamplePreviewURL16(sel.id);
+   return getPerformerPreviewURL16(sel.id);
   }
 
+  let castLiveRAF16=0, castLiveLast16=0;
+  function stopCastLiveLoop16(){
+   if(castLiveRAF16){cancelAnimationFrame(castLiveRAF16);castLiveRAF16=0;}
+  }
   function renderCastLiveFrame16(nowMs=0){
-   const cvs=$('v16CastLiveCanvas');
-   const modal=$('modal');
-   if(!cvs || !modal || !modal.open){stopCastLiveLoop16();return;}
-   const type=(S.castNames&&S.castNames[A.castPreviewType])?A.castPreviewType:'fandancer';
-   const meta=PERFORMER_META16[type]||PERFORMER_META16.singer;
-   const tSec=(nowMs||performance.now())*0.001;
-   if(!cvs._dragging16)A.castPreviewYaw=0.28+Math.sin(tSec*0.72)*0.44;
-   const h=A.castPreviewHeight||1.75;
-   const entries=buildPerformerPreviewEntries16(type,{
-    action:A.castPreviewAction,
-    color:A.castPreviewColor||meta.color,
-    height:h,
-    time:tSec
-   });
-   renderMeshes3DToCanvas16(cvs,entries,{
-    yaw:A.castPreviewYaw,
-    pitch:0.16,
-    zoom:1.74,
-    fixedBounds:getPerformerFixedBounds16(type,h),
-    title:(S.castNames&&S.castNames[type])||type,
-    subtitle:meta.tag,
-    accent:A.castPreviewColor||meta.color,
-    badge:meta.tag
-   });
+   const cvs=$('v16CastLiveCanvas'), modal=$('modal'), sel=castSelection16();
+   if(!cvs||!modal?.open||!castIsLive16(sel)){castLiveRAF16=0;return;}
+   const now=nowMs||performance.now();
+   // ~25-30 ms per frame in the software rasterizer: animate at ~20 fps so the dialog stays responsive
+   if(!castLiveRAF16||now-castLiveLast16>=48){
+    castLiveLast16=now;
+    const type=sel.id, meta=PERFORMER_META16[type]||PERFORMER_META16.singer, tSec=now*0.001, h=A.castPreviewHeight||1.75;
+    if(!cvs._dragging16)A.castPreviewYaw=0.28+Math.sin(tSec*0.72)*0.44;
+    renderMeshes3DToCanvas16(cvs,buildPerformerPreviewEntries16(type,{action:A.castPreviewAction,color:A.castPreviewColor||meta.color,height:h,time:tSec}),{
+     yaw:A.castPreviewYaw,pitch:0.16,zoom:1.74,noURL:true,
+     fixedBounds:getPerformerFixedBounds16(type,h),
+     title:S.castNames?.[type]||type,subtitle:meta.tag,accent:A.castPreviewColor||meta.color,badge:meta.tag
+    });
+   }
    castLiveRAF16=requestAnimationFrame(renderCastLiveFrame16);
   }
 
-  function selectCastPreviewRole16(type){
-   if(!S.castNames||!S.castNames[type])return;
-   const meta=PERFORMER_META16[type]||PERFORMER_META16.singer;
-   A.castPreviewType=type;
-   A.castPreviewColor=meta.color;
-   const titleEl=$('v16CastStageTitle'), descEl=$('v16CastStageDesc'), colInp=$('v16CastColorInp'), addBtn=$('v16CastAddBtn');
-   if(titleEl)titleEl.textContent=`${S.castNames[type]} (${meta.tag})`;
-   if(descEl)descEl.textContent=meta.desc;
-   if(colInp)colInp.value=meta.color;
-   if(addBtn)addBtn.textContent=`+ Thêm "${S.castNames[type]}" vào sân khấu`;
-   document.querySelectorAll('.v16-cast-card[data-add-person]').forEach(c=>{
-    c.classList.toggle('active',c.dataset.addPerson===type);
+  function syncCastSidebar16(){
+   const sel=castSelection16();
+   const set=(id,fn)=>{const el=$(id);if(el)fn(el);};
+   let eyebrow,title,desc,addLabel;
+   if(sel.kind==='act'){
+    const spec=S.ACT_TYPES[sel.id];
+    const members=actMembers16(sel.id);
+    const counts={};
+    for(const m of members)counts[m.role]=(counts[m.role]||0)+1;
+    const roster=Object.entries(counts).map(([r,n])=>(n>1?n+'× ':'')+(S.castNames?.[r]||r)).join(' · ');
+    eyebrow='XEM TRƯỚC ĐỘI HÌNH TIẾT MỤC 3D';
+    title=`${spec.name} (${spec.tag})`;
+    desc=members.length?`${members.length} người: ${roster}. Thêm cả đội hình vào sân khấu như một tiết mục.`:'Khoảnh khắc sân khấu (không kèm người biểu diễn).';
+    addLabel=`+ Thêm đội hình "${spec.name}" vào sân khấu`;
+   }else if(sel.kind==='qex'){
+    const ex=QUICK_EXAMPLES16.find(x=>x.id===sel.id);
+    const parts=[];
+    if(ex.act&&S.ACT_TYPES?.[ex.act])parts.push(`Đội hình ${S.ACT_TYPES[ex.act].name} (${actMembers16(ex.act).length} người)`);
+    for(const c of ex.cast||[])parts.push(S.castNames?.[c.type]||c.type);
+    for(const pr of ex.props||[])parts.push(CATALOG[pr.kind]?.name||pr.kind);
+    const tally={};
+    for(const p of parts)tally[p]=(tally[p]||0)+1;
+    eyebrow='XEM TRƯỚC MẪU DÀN DỰNG SÂN KHẤU';
+    title=ex.label;
+    desc=`${ex.desc} Gồm: ${Object.entries(tally).map(([p,n])=>(n>1?n+'× ':'')+p).join(' · ')}.`;
+    addLabel='+ Áp dụng mẫu này vào sân khấu';
+   }else{
+    const meta=PERFORMER_META16[sel.id]||PERFORMER_META16.singer;
+    const name=S.castNames?.[sel.id]||sel.id;
+    eyebrow='XEM TRƯỚC MÔ HÌNH NHÂN VẬT 3D & ĐẠO CỤ CẦM TAY';
+    title=`${name} (${meta.tag})`;
+    desc=meta.desc;
+    addLabel=`+ Thêm "${name}" vào sân khấu`;
+    set('v16CastColorInp',el=>{el.value=A.castPreviewColor;});
+   }
+   const live=castIsLive16(sel);
+   set('v16CastLiveCanvas',el=>{el.hidden=!live;});
+   set('v16CastHint',el=>{el.hidden=!live;});
+   set('v16CastPreviewImg',el=>{el.hidden=live;if(live)return;const src=castPreviewSrc16();prioritizeThumb16(src);el.src=src;el.alt=title;});
+   if(live){if(!castLiveRAF16)renderCastLiveFrame16(performance.now());}else stopCastLiveLoop16();
+   set('v16CastStageEyebrow',el=>{el.textContent=eyebrow;});
+   set('v16CastStageTitle',el=>{el.textContent=title;});
+   set('v16CastStageDesc',el=>{el.textContent=desc;});
+   set('v16CastAddBtn',el=>{el.textContent=addLabel;});
+   // crowd uses its own colour palette & static pose; acts/examples have no per-person form
+   set('v16CastForm',el=>{el.hidden=sel.kind!=='role'||sel.id==='audience';});
+   set('v16CastPlaceNewBtn',el=>{el.hidden=sel.kind!=='role';});
+   const key=sel.kind+':'+sel.id;
+   document.querySelectorAll('#modalBody [data-cast-pick16]').forEach(c=>{
+    const on=c.dataset.castPick16===key;
+    c.classList.toggle('active',on);
+    c.setAttribute('aria-pressed',on?'true':'false');
    });
-   if(!castLiveRAF16)renderCastLiveFrame16(performance.now());
+  }
+
+  function selectCastItem16(kind,id){
+   if(kind==='act'){
+    if(!S.ACT_TYPES?.[id])return;
+    A.castPreviewAct=id;
+   }else if(kind==='qex'){
+    if(!QUICK_EXAMPLES16.some(x=>x.id===id))return;
+    A.castPreviewQex=id;
+   }else{
+    if(!S.castNames?.[id])return;
+    kind='role';
+    A.castPreviewType=id;
+    A.castPreviewColor=(PERFORMER_META16[id]||PERFORMER_META16.singer).color;
+   }
+   A.castPreviewKind=kind;
+   syncCastSidebar16();
   }
 
   function openCastLibrary16(){
    stopCastLiveLoop16();
    const roles=Object.entries(S.castNames||{});
    if(!S.castNames?.[A.castPreviewType])A.castPreviewType=roles[0]?.[0]||'singer';
-   const curMeta=PERFORMER_META16[A.castPreviewType]||PERFORMER_META16.singer;
-   A.castPreviewColor=curMeta.color;
-   const curName=(S.castNames&&S.castNames[A.castPreviewType])||'Người 3D';
+   A.castPreviewColor=(PERFORMER_META16[A.castPreviewType]||PERFORMER_META16.singer).color;
    const poseOpts=[
     ['auto','Động tác mặc định theo vai'],
     ['fan','Múa quạt / lụa 9 nan (Fan)'],
@@ -1902,80 +2153,84 @@
    const actEntries=Object.entries(S.ACT_TYPES||{});
 
    dialog('CAST / Thư viện Người 3D & Tiết mục Sân khấu',`
-    <div class="v16-cast-stage">
-     <div class="v16-cast-canvas-wrap">
-      <canvas id="v16CastLiveCanvas" width="520" height="392" title="Kéo chuột trái/phải để xoay xem nhân vật 3D 360°"></canvas>
-      <span class="v16-cast-canvas-hint">🔄 Kéo trên khung 3D để xoay 360° · Tự động diễn thử khớp IK</span>
-     </div>
-     <div class="v16-cast-controls">
-      <span class="eyebrow">XEM TRƯỚC MÔ HÌNH NHÂN VẬT 3D & ĐẠO CỤ CẦM TAY</span>
-      <h4 id="v16CastStageTitle">${esc16(curName)} (${esc16(curMeta.tag)})</h4>
-      <p id="v16CastStageDesc">${esc16(curMeta.desc)}</p>
-      <div class="v16-cast-form">
-       <label>Động tác xem trước 3D
-        <select id="v16CastPoseSel">
-         ${poseOpts.map(([k,lbl])=>`<option value="${k}" ${A.castPreviewAction===k?'selected':''}>${esc16(lbl)}</option>`).join('')}
-        </select>
-       </label>
-       <label>Màu trang phục
-        <input id="v16CastColorInp" type="color" value="${esc16(A.castPreviewColor)}">
-       </label>
-       <label>Chiều cao (m)
-        <input id="v16CastHeightInp" type="number" min="1.3" max="2.2" step="0.05" value="${A.castPreviewHeight}">
-       </label>
+    <div class="v16-cast-layout">
+     <div class="v16-cast-library">
+      <div class="v16-example-section">
+       <span class="v16-example-title">✨ Mẫu Dàn dựng Sân khấu &amp; Tiết mục Nhanh</span>
+       <div class="v16-example-bar">
+        ${QUICK_EXAMPLES16.map(ex=>`
+         <button type="button" class="v16-example-chip" data-cast-pick16="qex:${esc16(ex.id)}" aria-pressed="false" title="${esc16(ex.desc)}">
+          <b>${esc16(ex.label)}</b>
+          <small>${esc16(ex.sub)}</small>
+         </button>`).join('')}
+       </div>
       </div>
-      <div class="v16-cast-cta">
-       <button type="button" class="btn primary" id="v16CastAddBtn">+ Thêm "${esc16(curName)}" vào sân khấu</button>
-       <button type="button" class="btn" id="v16CastPlaceNewBtn">⌖ Thêm &amp; Click đặt lên sàn 3D</button>
+      <div class="cast-add v16-cast-grid">
+       ${roles.map(([id,name])=>{
+        const m=PERFORMER_META16[id]||{tag:'STAGE CAST 3D',color:'#38bdf8'};
+        return `<button type="button" class="cast-card v16-cast-card" data-cast-pick16="role:${esc16(id)}" aria-pressed="false">
+         <div class="v16-cast-thumb"><img src="${getPerformerPreviewURL16(id)}" alt="${esc16(name)}"></div>
+         <span>${esc16(m.tag)}</span>
+         <div class="v16-cast-card-foot"><b>${esc16(name)}</b></div>
+        </button>`;
+       }).join('')}
       </div>
-     </div>
-    </div>
-    <div class="v16-example-section">
-     <span class="v16-example-title">✨ Mẫu Dàn dựng Sân khấu &amp; Tiết mục Nhanh (1-Click Examples)</span>
-     <div class="v16-example-bar">
-      ${QUICK_EXAMPLES16.map(ex=>`
-       <button type="button" class="v16-example-chip" data-cast-qex16="${esc16(ex.id)}" title="${esc16(ex.desc)}">
-        <b>${esc16(ex.label)}</b>
-        <small>${esc16(ex.sub)}</small>
-       </button>`).join('')}
-     </div>
-    </div>
-    <div class="cast-add v16-cast-grid">
-     ${roles.map(([id,name])=>{
-      const m=PERFORMER_META16[id]||{tag:'STAGE CAST 3D',color:'#38bdf8'};
-      const thumb=getPerformerPreviewURL16(id);
-      return `<button type="button" class="cast-card v16-cast-card ${id===A.castPreviewType?'active':''}" data-add-person="${esc16(id)}">
-       <div class="v16-cast-thumb"><img src="${thumb}" alt="${esc16(name)}"></div>
-       <span>${esc16(m.tag)}</span>
-       <div class="v16-cast-card-foot"><b>${esc16(name)}</b><small>+ Thêm</small></div>
-      </button>`;
-     }).join('')}
-    </div>
-    ${actEntries.length?`
-     <details open style="margin-bottom:10px">
-      <summary style="cursor:pointer;font-size:11px;font-weight:700;color:var(--accent-primary);margin-bottom:6px">▸ Thêm nhanh Cụm Tiết mục 3D theo đội hình (${actEntries.length} đội hình mẫu)</summary>
-      <div class="dir-act-grid" style="margin-top:6px">
-       ${actEntries.map(([id,s])=>`
-        <button type="button" data-cast-act16="${esc16(id)}">
-         <img class="v16-act-thumb" src="${getActPreviewURL16(id)}" alt="${esc16(s.name)}">
-         <small>${esc16(s.tag)}</small>
-         <strong>${esc16(s.name)}</strong>
-         <span>+ THÊM ĐỘI HÌNH 3D</span>
-        </button>`).join('')}
+      ${actEntries.length?`
+       <details open style="margin-bottom:10px">
+        <summary style="cursor:pointer;font-size:11px;font-weight:700;color:var(--accent-primary);margin-bottom:6px">▸ Cụm Tiết mục 3D theo đội hình (${actEntries.length} đội hình mẫu)</summary>
+        <div class="dir-act-grid" style="margin-top:6px">
+         ${actEntries.map(([id,s])=>`
+          <button type="button" data-cast-pick16="act:${esc16(id)}" aria-pressed="false">
+           <img class="v16-act-thumb" src="${getActPreviewURL16(id)}" alt="${esc16(s.name)}">
+           <small>${esc16(s.tag)}</small>
+           <strong>${esc16(s.name)}</strong>
+           <span>XEM TRƯỚC ĐỘI HÌNH</span>
+          </button>`).join('')}
+        </div>
+       </details>`:''}
+      <div class="seq-tools" style="margin-bottom:10px">
+       <label><input id="castAnimate" type="checkbox" ${S.seq?.animate?'checked':''}>Chuyển động theo beat</label>
+       <button class="btn" id="frameCast">Toàn cảnh + người</button>
+       <button class="btn" id="exportCast">Xuất GLB tư thế hiện tại</button>
       </div>
-     </details>`:''}
-    <div class="seq-tools" style="margin-bottom:10px">
-     <label><input id="castAnimate" type="checkbox" ${S.seq?.animate?'checked':''}>Chuyển động theo beat</label>
-     <button class="btn" id="frameCast">Toàn cảnh + người</button>
-     <button class="btn" id="exportCast">Xuất GLB tư thế hiện tại</button>
+      <div id="castRows"></div>
+      <p class="hint-text">Bấm vào mẫu, nhân vật hoặc đội hình để xem trước ở khung bên phải; chỉ nút "+ Thêm" trong khung đó mới đưa lên sân khấu.</p>
+     </div>
+     <aside class="v16-cast-stage" aria-label="Xem trước và thêm vào sân khấu">
+      <div class="v16-cast-canvas-wrap">
+       <canvas id="v16CastLiveCanvas" width="520" height="390" title="Kéo chuột trái/phải để xoay xem nhân vật 3D 360°"></canvas>
+       <img id="v16CastPreviewImg" class="v16-cast-preview-img" alt="" hidden>
+       <span class="v16-cast-canvas-hint" id="v16CastHint">🔄 Kéo trên khung 3D để xoay 360°</span>
+      </div>
+      <div class="v16-cast-controls">
+       <span class="eyebrow" id="v16CastStageEyebrow"></span>
+       <h4 id="v16CastStageTitle"></h4>
+       <p id="v16CastStageDesc"></p>
+       <div class="v16-cast-form" id="v16CastForm">
+        <label>Động tác
+         <select id="v16CastPoseSel">
+          ${poseOpts.map(([k,lbl])=>`<option value="${k}" ${A.castPreviewAction===k?'selected':''}>${esc16(lbl)}</option>`).join('')}
+         </select>
+        </label>
+        <label>Màu trang phục
+         <input id="v16CastColorInp" type="color" value="${esc16(A.castPreviewColor)}">
+        </label>
+        <label>Chiều cao (m)
+         <input id="v16CastHeightInp" type="number" min="1.3" max="2.2" step="0.05" value="${A.castPreviewHeight}">
+        </label>
+       </div>
+       <div class="v16-cast-cta">
+        <button type="button" class="btn primary" id="v16CastAddBtn"></button>
+        <button type="button" class="btn" id="v16CastPlaceNewBtn">⌖ Thêm &amp; Click đặt lên sàn 3D</button>
+       </div>
+      </div>
+     </aside>
     </div>
-    <div id="castRows"></div>
-    <p class="hint-text">Di chuột qua từng thẻ để xem trước nhân vật 3D ở khung trên; bấm vào thẻ hoặc nút "+ Thêm" để đưa nhân vật lên sân khấu.</p>
-   `,[{label:'Đóng',action:()=>stopCastLiveLoop16()}]);
+   `,[{label:'Đóng'}]);
 
-   $('modal')?.classList.add('pro-wide');
-   castModalBound16=true;
-   $('modal')?.addEventListener('close',stopCastLiveLoop16,{once:true});
+   const modal=$('modal');
+   modal?.classList.add('pro-wide','v16-cast-wide');
+   modal?.addEventListener('close',()=>modal.classList.remove('v16-cast-wide'),{once:true});
 
    const cvs=$('v16CastLiveCanvas');
    if(cvs){
@@ -1991,6 +2246,7 @@
     cvs.addEventListener('pointercancel',endDrag);
    }
 
+   // The live loop reads these each frame
    $('v16CastPoseSel')?.addEventListener('change',e=>{A.castPreviewAction=e.target.value;});
    $('v16CastColorInp')?.addEventListener('input',e=>{if(/^#[0-9a-f]{6}$/i.test(e.target.value))A.castPreviewColor=e.target.value;});
    $('v16CastHeightInp')?.addEventListener('change',e=>{A.castPreviewHeight=clamp16(+e.target.value||1.75,1.2,2.4);});
@@ -2008,7 +2264,6 @@
     S.renderCastManager?.();
     if(placeOnFloor && p && S.sq){
      S.sq.placePerson=p.id;
-     stopCastLiveLoop16();
      $('modal')?.close();
      engine.view='stage';
      state.pickTask=null;
@@ -2018,45 +2273,35 @@
     return p;
    }
 
-   $('v16CastAddBtn')?.addEventListener('click',()=>addConfiguredPerson16(A.castPreviewType,false));
+   $('v16CastAddBtn')?.addEventListener('click',()=>{
+    const sel=castSelection16();
+    if(sel.kind==='role'){addConfiguredPerson16(sel.id,false);return;}
+    if(sel.kind==='qex'){applyQuickCastExample16(sel.id);S.renderCastManager?.();return;}
+    const a=S.addAct8?.(sel.id);
+    if(a){
+     S.renderCastManager?.();
+     toast('Đã thêm đội hình 3D: '+a.name);
+    }
+   });
    $('v16CastPlaceNewBtn')?.addEventListener('click',()=>addConfiguredPerson16(A.castPreviewType,true));
 
-   document.querySelectorAll('.v16-cast-card[data-add-person]').forEach(btn=>{
-    const role=btn.dataset.addPerson;
-    btn.addEventListener('pointerenter',()=>selectCastPreviewRole16(role));
-    btn.addEventListener('focus',()=>selectCastPreviewRole16(role));
+   document.querySelectorAll('#modalBody [data-cast-pick16]').forEach(btn=>{
     btn.onclick=()=>{
-     selectCastPreviewRole16(role);
-     addConfiguredPerson16(role,false);
-    };
-   });
-
-   document.querySelectorAll('[data-cast-act16]').forEach(btn=>{
-    btn.onclick=()=>{
-     const actId=btn.dataset.castAct16;
-     const a=S.addAct8?.(actId);
-     if(a){
-      S.renderCastManager?.();
-      toast('Đã thêm đội hình 3D: '+a.name);
-     }
-    };
-   });
-
-   document.querySelectorAll('[data-cast-qex16]').forEach(btn=>{
-    btn.onclick=()=>{
-     applyQuickCastExample16(btn.dataset.castQex16);
+     const [kind,id]=btn.dataset.castPick16.split(':');
+     selectCastItem16(kind,id);
     };
    });
 
    if($('castAnimate'))$('castAnimate').onchange=e=>{if(S.seq)S.seq.animate=e.target.checked;};
-   if($('frameCast'))$('frameCast').onclick=()=>{stopCastLiveLoop16();S.frameCast?.();$('modal')?.close();};
+   if($('frameCast'))$('frameCast').onclick=()=>{S.frameCast?.();$('modal')?.close();};
    if($('exportCast'))$('exportCast').onclick=()=>S.exportCastGLB?.();
    S.renderCastManager?.();
-   renderCastLiveFrame16(performance.now());
+   syncCastSidebar16();
   }
 
   S.openCastLibrary16=openCastLibrary16;
   S.openCastLibrary=openCastLibrary16;
+  setTimeout(openThumbDisk16,0); // load persisted stills before any gallery opens
   const castBtnTop=$('v07Cast');
   if(castBtnTop)castBtnTop.onclick=openCastLibrary16;
 
@@ -2443,8 +2688,8 @@
     ob.addEventListener('click',e=>{
      const b=e.target.closest('button[data-outliner16]');
      if(!b)return;
-     if(b.dataset.outliner16==='import'&&impSec){impSec.classList.toggle('v16-collapsed');b.classList.toggle('active',!impSec.classList.contains('v16-collapsed'));}
-     if(b.dataset.outliner16==='media'&&medSec){medSec.classList.toggle('v16-collapsed');b.classList.toggle('active',!medSec.classList.contains('v16-collapsed'));}
+     if(b.dataset.outliner16==='import'&&impSec){const open=!impSec.classList.toggle('v16-collapsed');b.classList.toggle('active',open);if(open)impSec.scrollIntoView?.({block:'nearest'});}
+     if(b.dataset.outliner16==='media'&&medSec){const open=!medSec.classList.toggle('v16-collapsed');b.classList.toggle('active',open);if(open)medSec.scrollIntoView?.({block:'nearest'});}
     });
    }
 
