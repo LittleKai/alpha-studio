@@ -4,10 +4,10 @@ import { readFileSync } from 'node:fs';
 import { dedupeSeoHead } from './prerender.mjs';
 import * as prerender from './prerender.mjs';
 
-test('discovers every canonical sitemap route, including skills beyond the first 30', () => {
+test('discovers canonical sitemap routes and skips individual skill detail pages', () => {
     assert.equal(typeof prerender.getSitemapRoutes, 'function');
-    const xml = '<urlset><url><loc>https://giaiphapsangtao.com/</loc></url><url><loc>https://giaiphapsangtao.com/studio/ai-skills/optimization</loc></url></urlset>';
-    assert.deepEqual(prerender.getSitemapRoutes(xml), ['/', '/studio/ai-skills/optimization']);
+    const xml = '<urlset><url><loc>https://giaiphapsangtao.com/</loc></url><url><loc>https://giaiphapsangtao.com/studio/ai-skills</loc></url><url><loc>https://giaiphapsangtao.com/studio/ai-skills/optimization</loc></url></urlset>';
+    assert.deepEqual(prerender.getSitemapRoutes(xml), ['/', '/studio/ai-skills']);
     assert.throws(() => prerender.getSitemapRoutes('<html>Unavailable</html>'));
     assert.throws(() => prerender.getSitemapRoutes('<loc>https://other.example/skills</loc>'));
 });

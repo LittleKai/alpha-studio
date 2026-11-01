@@ -35,7 +35,7 @@ export function getSitemapRoutes(xml) {
         const decoded = decodeURIComponent(url.pathname);
         if (url.origin !== 'https://giaiphapsangtao.com' || url.search || url.hash || decoded.includes('\\') || decoded.split('/').some(part => part === '..' || part === '.')) throw new Error(`Invalid sitemap URL: ${value}`);
         return url.pathname.replace(/\/+$/, '') || '/';
-    });
+    }).filter(route => !route.startsWith('/studio/ai-skills/'));
     if (!routes.length) throw new Error('Sitemap has no canonical routes');
     return [...new Set(routes)];
 }
