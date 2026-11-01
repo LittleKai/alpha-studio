@@ -1,6 +1,17 @@
 export default {
   common: {
     home: "Home",
+    loading: "Loading...",
+    authRequired: {
+      title: "Sign in required",
+      message: "Please sign in to access this page.",
+      signIn: "Sign in"
+    },
+    notFound: {
+      title: "Page not found",
+      message: "The page you are looking for does not exist or has moved.",
+      goHome: "Back to home"
+    },
     rating: {
       yours: "Your rating: {score}"
     },

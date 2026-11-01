@@ -1,11 +1,13 @@
 import React, { Suspense, lazy, useEffect, useRef } from 'react';
-import { Routes, Route, useNavigate, Navigate, useLocation, useParams } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate, useLocation, useParams, Outlet, Link } from 'react-router-dom';
 // Routing Components (keep these non-lazy as they're small and used everywhere)
 import { ProtectedRoute } from './components/routing';
 import { Layout } from './components/layout';
 import { useAuth } from './auth/context';
 import { trackPageView } from './services/analyticsService';
 import SEOHead from './components/ui/SEOHead';
+import PageLoader from './components/ui/PageLoader';
+import { useTranslation } from './i18n/context';
 
 // Lazy load pages for better performance
 const LandingPage = lazy(() => import('./pages/LandingPage'));
@@ -42,275 +44,52 @@ const EventLibraryPage = lazy(() => import('./pages/EventLibraryPage'));
 const EventLibraryItemPage = lazy(() => import('./pages/EventLibraryItemPage'));
 const LedStudioPage = lazy(() => import('./pages/LedStudioPage'));
 
-// Loading spinner component
-const LoadingSpinner: React.FC = () => (
-    <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
-        <div className="flex flex-col items-center gap-4">
-            <div className="w-12 h-12 border-4 border-[var(--accent-primary)]/30 border-t-[var(--accent-primary)] rounded-full animate-spin"></div>
-            <p className="text-[var(--text-secondary)]">Loading...</p>
-        </div>
-    </div>
+/**
+ * Layout routes keep the header, animated background and chat widget mounted
+ * across navigations; only the page area suspends while its chunk loads.
+ */
+const MainLayout: React.FC = () => (
+    <Layout>
+        <Suspense fallback={<PageLoader />}>
+            <Outlet />
+        </Suspense>
+    </Layout>
 );
 
-// Wrapper components that add navigation handlers and Layout
-const StudioHubPage: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <StudioHub />
-            </Suspense>
-        </Layout>
-    );
-};
+const BareLayout: React.FC = () => (
+    <Layout showNav={false}>
+        <Suspense fallback={<PageLoader fullScreen />}>
+            <Outlet />
+        </Suspense>
+    </Layout>
+);
+
+/** Pages that render their own chrome (no shared Layout). */
+const Standalone: React.FC = () => (
+    <Suspense fallback={<PageLoader fullScreen />}>
+        <Outlet />
+    </Suspense>
+);
 
 const StudioGeneratePage: React.FC = () => {
     const navigate = useNavigate();
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <StudioTool mode="generate" onBack={() => navigate('/studio#studio-tools')} />
-            </Suspense>
-        </Layout>
-    );
+    return <StudioTool mode="generate" onBack={() => navigate('/studio#studio-tools')} />;
 };
 
 const StudioEditPage: React.FC = () => {
     const navigate = useNavigate();
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <StudioTool mode="edit" onBack={() => navigate('/studio#studio-tools')} />
-            </Suspense>
-        </Layout>
-    );
+    return <StudioTool mode="edit" onBack={() => navigate('/studio#studio-tools')} />;
 };
 
 const WorkflowPage: React.FC = () => {
     const navigate = useNavigate();
     // WorkflowDashboard has its own sidebar, no Layout needed
-    return (
-        <Suspense fallback={<LoadingSpinner />}>
-            <WorkflowDashboard onBack={() => navigate('/')} />
-        </Suspense>
-    );
+    return <WorkflowDashboard onBack={() => navigate('/')} />;
 };
 
-const ServerPage: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <AIServerConnect />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// Courses catalog page with layout
-const CoursesCatalogPage: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <CoursesPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// Course detail page with layout
-const CourseDetailPage: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <CoursePage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// Student detail page with layout
-const StudentDetailPage: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <StudentPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// Partner detail page with layout
-const PartnerDetailPage: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <PartnerPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// Admin Course Management Page
 const AdminCoursesPage: React.FC = () => {
     const navigate = useNavigate();
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <CourseManagement onBack={() => navigate('/')} />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// My Courses Page
-const MyCoursesDetailPage: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <MyCoursesPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// About Page with layout
-const AboutPageWrapper: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <AboutPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// About Detail Page with layout
-const AboutDetailPageWrapper: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <AboutDetailPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// News Page with layout
-const NewsPageWrapper: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <NewsPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// News Detail Page with layout
-const NewsDetailPageWrapper: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <NewsDetailPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// Services Page with layout
-const ServicesPageWrapper: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <ServicesPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// Services Detail Page with layout
-const ServicesDetailPageWrapper: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <ServicesDetailPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// Wallet Page
-const WalletPageWrapper: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <WalletPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// Vocab Page
-const VocabPageWrapper: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <VocabPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// VietYaku Page
-const VietYakuPageWrapper: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <VietYakuPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// CRM Page
-const CrmPageWrapper: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <CrmPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// CRM Subscription Page
-const CrmSubscriptionPageWrapper: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <CrmSubscriptionPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-const SkillsPageWrapper: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <SkillsPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-const SkillDetailPageWrapper: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <SkillDetailPage />
-            </Suspense>
-        </Layout>
-    );
+    return <CourseManagement onBack={() => navigate('/')} />;
 };
 
 const SkillLegacyRedirect: React.FC = () => {
@@ -318,56 +97,25 @@ const SkillLegacyRedirect: React.FC = () => {
     return <Navigate to={slug ? `/studio/ai-skills/${slug}` : '/studio/ai-skills'} replace />;
 };
 
-const EventLibraryPageWrapper: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <EventLibraryPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-const EventLibraryItemPageWrapper: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <EventLibraryItemPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-const LedStudioPageWrapper: React.FC = () => {
-    return (
-        <Layout showNav={false}>
-            <Suspense fallback={<LoadingSpinner />}>
-                <LedStudioPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// 404 Not Found Page
 const NotFoundPage: React.FC = () => {
-    const navigate = useNavigate();
+    const { t } = useTranslation();
     return (
-        <Layout>
+        <>
             <SEOHead title="404 Not Found" description="Page not found" path="/404" noindex />
-            <div className="min-h-[calc(100vh-80px)] flex items-center justify-center">
+            <div className="min-h-[calc(100vh-80px)] flex items-center justify-center px-4">
                 <div className="text-center space-y-4">
                     <h1 className="text-6xl font-black text-[var(--accent-primary)]">404</h1>
-                    <h2 className="text-2xl font-bold text-[var(--text-primary)]">Page Not Found</h2>
-                    <p className="text-[var(--text-secondary)]">The page you are looking for does not exist.</p>
-                    <button
-                        onClick={() => navigate('/')}
-                        className="py-2.5 px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold rounded-xl hover:scale-105 transition-all"
+                    <h2 className="text-2xl font-bold text-[var(--text-primary)]">{t('common.notFound.title')}</h2>
+                    <p className="text-[var(--text-secondary)]">{t('common.notFound.message')}</p>
+                    <Link
+                        to="/"
+                        className="inline-block py-2.5 px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold rounded-xl hover:scale-105 transition-all"
                     >
-                        Go to Home
-                    </button>
+                        {t('common.notFound.goHome')}
+                    </Link>
                 </div>
             </div>
-        </Layout>
+        </>
     );
 };
 
@@ -400,150 +148,66 @@ const PageViewTracker: React.FC = () => {
 
 const App: React.FC = () => {
     return (
-        <Suspense fallback={<LoadingSpinner />}>
+        <Suspense fallback={<PageLoader fullScreen />}>
             <ScrollToTop />
             <PageViewTracker />
             <Routes>
-                {/* Public Routes */}
-                <Route path="/" element={<Layout><Suspense fallback={<LoadingSpinner />}><LandingPage /></Suspense></Layout>} />
-                <Route path="/courses" element={<CoursesCatalogPage />} />
-                <Route path="/courses/:slug" element={<CourseDetailPage />} />
-                <Route path="/students/:id" element={<StudentDetailPage />} />
-                <Route path="/partners/:id" element={<PartnerDetailPage />} />
-                <Route path="/about" element={<AboutPageWrapper />} />
-                <Route path="/about/:slug" element={<AboutDetailPageWrapper />} />
-                <Route path="/news" element={<NewsPageWrapper />} />
-                <Route path="/news/:slug" element={<NewsDetailPageWrapper />} />
-                <Route path="/services" element={<ServicesPageWrapper />} />
-                <Route path="/services/:slug" element={<ServicesDetailPageWrapper />} />
+                <Route element={<MainLayout />}>
+                    {/* Public Routes */}
+                    <Route path="/" element={<LandingPage />} />
+                    <Route path="/courses" element={<CoursesPage />} />
+                    <Route path="/courses/:slug" element={<CoursePage />} />
+                    <Route path="/students/:id" element={<StudentPage />} />
+                    <Route path="/partners/:id" element={<PartnerPage />} />
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/about/:slug" element={<AboutDetailPage />} />
+                    <Route path="/news" element={<NewsPage />} />
+                    <Route path="/news/:slug" element={<NewsDetailPage />} />
+                    <Route path="/services" element={<ServicesPage />} />
+                    <Route path="/services/:slug" element={<ServicesDetailPage />} />
 
-                {/* Studio hub + tool sub-routes — public, auth enforced per-use inside each tool */}
-                <Route path="/studio" element={<StudioHubPage />} />
-                <Route path="/studio/generate" element={<StudioGeneratePage />} />
-                <Route path="/studio/edit" element={<StudioEditPage />} />
-                <Route path="/studio/vocab" element={<VocabPageWrapper />} />
-                <Route path="/studio/crm" element={<CrmPageWrapper />} />
-                <Route
-                    path="/studio/crm/subscription"
-                    element={
-                        <ProtectedRoute>
-                            <CrmSubscriptionPageWrapper />
-                        </ProtectedRoute>
-                    }
-                />
-                <Route path="/studio/vietyaku" element={<VietYakuPageWrapper />} />
-                <Route path="/studio/event-library" element={<EventLibraryPageWrapper />} />
-                <Route path="/studio/event-library/:slug" element={<EventLibraryItemPageWrapper />} />
-                <Route path="/studio/led-studio" element={<LedStudioPageWrapper />} />
-                
-                {/* AI Skills Routes */}
-                <Route path="/studio/ai-skills" element={<SkillsPageWrapper />} />
-                <Route path="/studio/ai-skills/:slug" element={<SkillDetailPageWrapper />} />
-                {/* Legacy /studio/skills routes redirect to /studio/ai-skills */}
+                    {/* Studio hub + tool sub-routes — public, auth enforced per-use inside each tool */}
+                    <Route path="/studio" element={<StudioHub />} />
+                    <Route path="/studio/generate" element={<StudioGeneratePage />} />
+                    <Route path="/studio/edit" element={<StudioEditPage />} />
+                    <Route path="/studio/vocab" element={<VocabPage />} />
+                    <Route path="/studio/crm" element={<CrmPage />} />
+                    <Route path="/studio/crm/subscription" element={<ProtectedRoute><CrmSubscriptionPage /></ProtectedRoute>} />
+                    <Route path="/studio/vietyaku" element={<VietYakuPage />} />
+                    <Route path="/studio/event-library" element={<EventLibraryPage />} />
+                    <Route path="/studio/event-library/:slug" element={<EventLibraryItemPage />} />
+
+                    {/* AI Skills Routes */}
+                    <Route path="/studio/ai-skills" element={<SkillsPage />} />
+                    <Route path="/studio/ai-skills/:slug" element={<SkillDetailPage />} />
+
+                    {/* Protected Routes (require login) */}
+                    <Route path="/server" element={<ProtectedRoute><AIServerConnect /></ProtectedRoute>} />
+                    <Route path="/my-courses" element={<ProtectedRoute><MyCoursesPage /></ProtectedRoute>} />
+                    <Route path="/wallet" element={<ProtectedRoute><WalletPage /></ProtectedRoute>} />
+                    <Route path="/admin/courses" element={<ProtectedRoute><AdminCoursesPage /></ProtectedRoute>} />
+
+                    {/* 404 - Catch all */}
+                    <Route path="*" element={<NotFoundPage />} />
+                </Route>
+
+                <Route element={<BareLayout />}>
+                    <Route path="/studio/led-studio" element={<LedStudioPage />} />
+                </Route>
+
+                <Route element={<Standalone />}>
+                    <Route path="/workflow" element={<ProtectedRoute><WorkflowPage /></ProtectedRoute>} />
+                    <Route path="/workflow/projects/:id" element={<ProtectedRoute><WorkflowPage /></ProtectedRoute>} />
+                    <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+                    <Route path="/profile/view" element={<ProtectedRoute><ProfileViewPage /></ProtectedRoute>} />
+                    <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
+                    <Route path="/users/:id" element={<UserProfilePage />} />
+                </Route>
+
+                {/* Legacy redirects */}
                 <Route path="/studio/skills" element={<Navigate to="/studio/ai-skills" replace />} />
                 <Route path="/studio/skills/:slug" element={<SkillLegacyRedirect />} />
-
-                {/* Legacy /vocab → redirect to /studio/vocab */}
                 <Route path="/vocab" element={<Navigate to="/studio/vocab" replace />} />
-
-                {/* Protected Routes (require login) */}
-                <Route
-                    path="/workflow"
-                    element={
-                        <ProtectedRoute>
-                            <WorkflowPage />
-                        </ProtectedRoute>
-                    }
-                />
-                <Route
-                    path="/workflow/projects/:id"
-                    element={
-                        <ProtectedRoute>
-                            <WorkflowPage />
-                        </ProtectedRoute>
-                    }
-                />
-                <Route
-                    path="/server"
-                    element={
-                        <ProtectedRoute>
-                            <ServerPage />
-                        </ProtectedRoute>
-                    }
-                />
-
-                {/* Profile Pages */}
-                <Route
-                    path="/profile"
-                    element={
-                        <ProtectedRoute>
-                            <Suspense fallback={<LoadingSpinner />}>
-                                <ProfilePage />
-                            </Suspense>
-                        </ProtectedRoute>
-                    }
-                />
-                <Route
-                    path="/profile/view"
-                    element={
-                        <ProtectedRoute>
-                            <Suspense fallback={<LoadingSpinner />}>
-                                <ProfileViewPage />
-                            </Suspense>
-                        </ProtectedRoute>
-                    }
-                />
-
-                {/* My Courses Page */}
-                <Route
-                    path="/my-courses"
-                    element={
-                        <ProtectedRoute>
-                            <MyCoursesDetailPage />
-                        </ProtectedRoute>
-                    }
-                />
-
-                {/* Wallet Page */}
-                <Route
-                    path="/wallet"
-                    element={
-                        <ProtectedRoute>
-                            <WalletPageWrapper />
-                        </ProtectedRoute>
-                    }
-                />
-
-                {/* Admin Routes */}
-                <Route
-                    path="/admin/courses"
-                    element={
-                        <ProtectedRoute>
-                            <AdminCoursesPage />
-                        </ProtectedRoute>
-                    }
-                />
-
-                <Route
-                    path="/admin"
-                    element={
-                        <ProtectedRoute>
-                            <Suspense fallback={<LoadingSpinner />}>
-                                <AdminPage />
-                            </Suspense>
-                        </ProtectedRoute>
-                    }
-                />
-
-                {/* Public user profile */}
-                <Route path="/users/:id" element={
-                    <Suspense fallback={<LoadingSpinner />}>
-                        <UserProfilePage />
-                    </Suspense>
-                } />
-
-                {/* 404 - Catch all */}
-                <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </Suspense>
     );

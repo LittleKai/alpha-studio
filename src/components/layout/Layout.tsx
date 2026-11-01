@@ -1,14 +1,35 @@
-import React, { useState } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
 import { useTheme } from '../../theme/context';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
-import Login from '../ui/Login';
-import FloatingChat from '../chat/FloatingChat';
 import Liquid2D from '../ui/Liquid2D';
 import { cdnFromUrl } from '../../services/cloudinaryAssets';
+
+// Not needed for first paint: load on demand / when the browser is idle.
+const Login = lazy(() => import('../ui/Login'));
+const FloatingChat = lazy(() => import('../chat/FloatingChat'));
+
+// Module-level constants keep the array identity stable, so the background
+// animation is not torn down and restarted on every Layout render.
+const BG_COLORS_DARK = ['#0B2545', '#0077B6', '#00B4D8'];
+const BG_COLORS_LIGHT = ['#005F73', '#0A9396', '#94D2BD'];
+
+/** Becomes true once the main thread is idle (or after a short timeout). */
+const useIdle = (timeout = 2000): boolean => {
+    const [idle, setIdle] = useState(false);
+    useEffect(() => {
+        if ('requestIdleCallback' in window) {
+            const id = window.requestIdleCallback(() => setIdle(true), { timeout });
+            return () => window.cancelIdleCallback(id);
+        }
+        const id = setTimeout(() => setIdle(true), timeout);
+        return () => clearTimeout(id);
+    }, [timeout]);
+    return idle;
+};
 
 const SparkleIcon = () => (
   <svg
@@ -48,9 +69,8 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
     const { isAuthenticated, user, logout } = useAuth();
     const { theme } = useTheme();
 
-    const bgColors = theme === 'dark' 
-        ? ["#0B2545", "#0077B6", "#00B4D8"]
-        : ["#005F73", "#0A9396", "#94D2BD"];
+    const bgColors = theme === 'dark' ? BG_COLORS_DARK : BG_COLORS_LIGHT;
+    const idle = useIdle();
     const navigate = useNavigate();
     const location = useLocation();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -85,11 +105,31 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
     };
 
     // Event listener for opening login from other components
-    React.useEffect(() => {
+    useEffect(() => {
         const openLogin = () => setShowLoginDialog(true);
         document.addEventListener('openLoginModal', openLogin);
         return () => document.removeEventListener('openLoginModal', openLogin);
     }, []);
+
+    // Layout stays mounted across routes, so close the drawer on navigation.
+    useEffect(() => {
+        setMobileMenuOpen(false);
+    }, [location.pathname]);
+
+    // While the drawer is open: lock page scroll and close on Escape.
+    useEffect(() => {
+        if (!mobileMenuOpen) return;
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setMobileMenuOpen(false);
+        };
+        document.addEventListener('keydown', onKey);
+        return () => {
+            document.body.style.overflow = previousOverflow;
+            document.removeEventListener('keydown', onKey);
+        };
+    }, [mobileMenuOpen]);
 
     const isStudioPage = location.pathname.startsWith('/studio');
     // const isServerPage = location.pathname === '/server';
@@ -261,6 +301,8 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                         {/* Mobile Hamburger */}
                         <button
                             onClick={() => setMobileMenuOpen(true)}
+                            aria-label="Menu"
+                            aria-expanded={mobileMenuOpen}
                             className="md:hidden p-2 rounded-lg hover:bg-[var(--bg-secondary)] transition-colors"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[var(--text-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -273,7 +315,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
 
             {/* Mobile Menu Overlay */}
             {mobileMenuOpen && (
-                <div className="fixed inset-0 z-[100] md:hidden">
+                <div className="fixed inset-0 z-[100] md:hidden" role="dialog" aria-modal="true" aria-label="Menu">
                     <div className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-fade-in-backdrop" onClick={closeMobile} />
                     <div className="absolute right-0 top-0 h-full w-80 bg-[var(--bg-primary)] border-l border-[var(--border-primary)] shadow-[0_0_50px_rgba(0,0,0,0.3)] overflow-y-auto flex flex-col justify-between animate-slide-in-right z-50">
                         <div className="flex-1 flex flex-col">
@@ -511,10 +553,16 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
 
             {/* Login Dialog */}
             {showLoginDialog && (
-                <Login onLoginSuccess={handleLoginSuccess} onClose={handleCloseLogin} />
+                <Suspense fallback={null}>
+                    <Login onLoginSuccess={handleLoginSuccess} onClose={handleCloseLogin} />
+                </Suspense>
             )}
 
-            <FloatingChat />
+            {idle && (
+                <Suspense fallback={null}>
+                    <FloatingChat />
+                </Suspense>
+            )}
             </div>
         </div>
     );
