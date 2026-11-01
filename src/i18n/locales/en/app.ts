@@ -123,26 +123,61 @@ export default {
     },
     hub: {
       hero: {
-        badge: "Alpha Studio Ecosystem · Beta",
+        badge: "Alpha Studio Ecosystem · Public preview",
         title1: "AI Studio",
         title2: "The creative toolkit",
-        subtitle: "Six tools are open to every account: the Event Knowledge Library, the AI Skills Library, Alpha CRM for Zalo marketing, VocabFlip for vocabulary practice, VietYaku for Japanese and Chinese translation, and LED Stage Studio 3D. Two more are being finished in the workshop.",
+        subtitle: "Six specialized tools open to every account: Event Knowledge Library, AI Skills Library, LED Stage Studio 3D, Alpha CRM for Zalo marketing, VocabFlip for vocabulary practice, and VietYaku for Japanese and Chinese translation.",
         stats: {
           live: "Tools live",
           upcoming: "Coming soon",
           skills: "AI skills",
-          beta: "Free during Beta"
+          effects: "3D stage effects",
+          beta: "Free access"
         },
-        railLabel: "All tools",
-        railNote: "Every tool is in Beta; features may change before the stable release."
+        railLabel: "Tool directory",
+        railNote: "Jump directly to a tool above or compare their capabilities in the grid below."
       },
       sections: {
-        activeEyebrow: "Live now",
+        activeEyebrow: "06 tools ready",
         activeTitle: "Pick a tool to start",
         upcomingEyebrow: "Roadmap",
         upcomingTitle: "Coming to the Studio"
       },
       comingSoon: "Coming soon",
+      badges: {
+        eventLibrary: "Case Studies & Prompts",
+        skills: "3000+ Agent Skills",
+        ledStudio: "WebGL2 3D & DMX",
+        crm: "Zalo Marketing AI",
+        vocab: "FSRS Flashcards",
+        vietyaku: "JP – ZH Converter"
+      },
+      highlights: {
+        eventLibrary: {
+          value: "Real KPI & ROI",
+          label: "Actual budget, reach, and run-of-show data from shipped events"
+        },
+        skills: {
+          value: "3,000+ Skills",
+          label: "One-click install for Claude Code, Cursor, and Antigravity agents"
+        },
+        ledStudio: {
+          value: "35 FX / DMX & ILDA",
+          label: "60fps WebGL2 3D stage, Moving Head lighting desk, and Laser Timecode"
+        },
+        crm: {
+          value: "100 AI Quota",
+          label: "Included with 30-day trial for automated Zalo customer funnels"
+        },
+        vocab: {
+          value: "4 Languages / FSRS",
+          label: "EN, VI, JP, and ZH decks synced across Web, Windows, and Android"
+        },
+        vietyaku: {
+          value: "100% Offline",
+          label: "14 built-in JP and ZH dictionaries in a portable Windows app"
+        }
+      },
       features: {
         eventLibrary: {
           f1: "Event case studies with real budget, reach and KPI figures",

@@ -628,7 +628,7 @@ const LandingPage: React.FC = () => {
                         )}
                     />
 
-                    <Reveal staggerChildren={0.12} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                    <Reveal staggerChildren={0.12} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {STUDIO_TOOLS.map((tool) => (
                             <RevealItem key={tool.key}>
                                 <StudioToolTile tool={tool} variant="compact" />

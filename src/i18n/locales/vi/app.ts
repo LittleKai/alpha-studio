@@ -123,26 +123,61 @@ export default {
     },
     hub: {
       hero: {
-        badge: "Hệ sinh thái Alpha Studio · Beta",
+        badge: "Hệ sinh thái Alpha Studio · Bản thử nghiệm",
         title1: "AI Studio",
         title2: "Bộ công cụ sáng tạo",
-        subtitle: "Sáu công cụ đang mở cho mọi tài khoản: Thư viện tri thức sự kiện, Thư viện Kỹ năng AI, Alpha CRM cho tiếp thị Zalo, VocabFlip học từ vựng, VietYaku hỗ trợ dịch thuật Nhật – Trung và LED Stage Studio 3D. Hai công cụ nữa đang được hoàn thiện trong xưởng.",
+        subtitle: "Sáu công cụ chuyên biệt mở sẵn cho mọi tài khoản: Thư viện tri thức sự kiện, Thư viện Kỹ năng AI, LED Stage Studio 3D, Alpha CRM cho tiếp thị Zalo, VocabFlip học từ vựng và VietYaku hỗ trợ dịch thuật Nhật – Trung.",
         stats: {
           live: "Công cụ đang mở",
           upcoming: "Sắp ra mắt",
           skills: "Kỹ năng AI",
-          beta: "Miễn phí trong Beta"
+          effects: "Hiệu ứng sân khấu 3D",
+          beta: "Mở miễn phí"
         },
-        railLabel: "Toàn bộ công cụ",
-        railNote: "Mọi công cụ đều trong giai đoạn Thử nghiệm (Beta), tính năng có thể thay đổi trước bản chính thức."
+        railLabel: "Danh mục công cụ",
+        railNote: "Chọn nhanh một công cụ bên trên hoặc khám phá chi tiết từng tính năng ở lưới bên dưới."
       },
       sections: {
-        activeEyebrow: "Đang hoạt động",
+        activeEyebrow: "06 công cụ sẵn sàng",
         activeTitle: "Chọn công cụ để bắt đầu",
         upcomingEyebrow: "Lộ trình",
         upcomingTitle: "Sắp có mặt trong Studio"
       },
       comingSoon: "Sắp ra mắt",
+      badges: {
+        eventLibrary: "Case Study & Prompt",
+        skills: "3000+ Kỹ năng Agent",
+        ledStudio: "WebGL2 3D & DMX",
+        crm: "Zalo Marketing AI",
+        vocab: "Flashcard FSRS",
+        vietyaku: "Dịch Nhật – Trung"
+      },
+      highlights: {
+        eventLibrary: {
+          value: "KPI & ROI thực tế",
+          label: "Ngân sách, reach và kịch bản từ dự án sự kiện đã triển khai"
+        },
+        skills: {
+          value: "3.000+ Skills",
+          label: "Gắn trực tiếp 1 chạm vào Claude Code, Cursor và Antigravity"
+        },
+        ledStudio: {
+          value: "35 FX / DMX & ILDA",
+          label: "Sân khấu 3D WebGL2 60fps, bàn đèn Moving Head và Laser Timecode"
+        },
+        crm: {
+          value: "100 AI Quota",
+          label: "Tặng kèm 30 ngày dùng thử phễu chăm sóc khách hàng Zalo tự động"
+        },
+        vocab: {
+          value: "4 Ngôn ngữ / FSRS",
+          label: "Anh, Việt, Nhật, Trung đồng bộ xuyên suốt Web, Windows và Android"
+        },
+        vietyaku: {
+          value: "100% Offline",
+          label: "Tích hợp 14 bộ từ điển Nhật – Trung, bản Windows Portable chạy ngay"
+        }
+      },
       features: {
         eventLibrary: {
           f1: "Case study sự kiện kèm số liệu ngân sách, reach và KPI thực tế",

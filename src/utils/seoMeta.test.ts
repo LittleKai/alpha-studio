@@ -63,8 +63,7 @@ describe('buildSeoMeta', () => {
 
 import { STUDIO_TOOLS } from '../components/studio/StudioToolTile';
 
-it('registers ledStudio tool in STUDIO_TOOLS pointing to /studio/led-studio', () => {
-  const tool = STUDIO_TOOLS.find(t => t.key === ('ledStudio' as any));
-  expect(tool).toBeDefined();
-  expect(tool?.to).toBe('/studio/led-studio');
+it('registers ledStudio tool at 3rd position in STUDIO_TOOLS pointing to /studio/led-studio', () => {
+  expect(STUDIO_TOOLS[2]?.key).toBe('ledStudio');
+  expect(STUDIO_TOOLS[2]?.to).toBe('/studio/led-studio');
 });
