@@ -17,7 +17,9 @@ const M = {
   inverse(a){let o=M.identity(),m=a.slice();for(let i=0;i<4;i++){let p=i;for(let r=i+1;r<4;r++)if(Math.abs(m[i*4+r])>Math.abs(m[i*4+p]))p=r;if(Math.abs(m[i*4+p])<1e-12)return M.identity();for(let c=0;c<4;c++){[m[c*4+i],m[c*4+p]]=[m[c*4+p],m[c*4+i]];[o[c*4+i],o[c*4+p]]=[o[c*4+p],o[c*4+i]]}let d=m[i*4+i];for(let c=0;c<4;c++){m[c*4+i]/=d;o[c*4+i]/=d}for(let r=0;r<4;r++)if(r!==i){let d=m[i*4+r];for(let c=0;c<4;c++){m[c*4+r]-=d*m[c*4+i];o[c*4+r]-=d*o[c*4+i]}}}return o},
   bbox(p){let min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity];for(let i=0;i<p.length;i+=3)for(let k=0;k<3;k++){min[k]=Math.min(min[k],p[i+k]);max[k]=Math.max(max[k],p[i+k])}return{min,max,size:M.sub(max,min),center:M.mul(M.add(min,max),.5)}},
   rayBox(o,d,b){let lo=0,hi=Infinity;for(let i=0;i<3;i++){if(Math.abs(d[i])<1e-10){if(o[i]<b.min[i]||o[i]>b.max[i])return false;continue}let a=(b.min[i]-o[i])/d[i],c=(b.max[i]-o[i])/d[i];if(a>c)[a,c]=[c,a];lo=Math.max(lo,a);hi=Math.min(hi,c);if(hi<lo)return false}return true},
-  rayTri(o,d,a,b,c){let e1=M.sub(b,a),e2=M.sub(c,a),p=M.cross(d,e2),det=M.dot(e1,p);if(Math.abs(det)<1e-9)return null;let t=M.sub(o,a),u=M.dot(t,p)/det;if(u<0||u>1)return null;let q=M.cross(t,e1),v=M.dot(d,q)/det;if(v<0||u+v>1)return null;let dist=M.dot(e2,q)/det;return dist>1e-5?dist:null}
+  rayTri(o,d,a,b,c){let e1=M.sub(b,a),e2=M.sub(c,a),p=M.cross(d,e2),det=M.dot(e1,p);if(Math.abs(det)<1e-9)return null;let t=M.sub(o,a),u=M.dot(t,p)/det;if(u<0||u>1)return null;let q=M.cross(t,e1),v=M.dot(d,q)/det;if(v<0||u+v>1)return null;let dist=M.dot(e2,q)/det;return dist>1e-5?dist:null},
+  frustumPlanes(m){if(!m||m.length<16)return null;const out=new Float32Array(24),signs=[[1,0],[-1,0],[1,1],[-1,1],[1,2],[-1,2]];for(let i=0;i<6;i++){const s=signs[i][0],r=signs[i][1],nx=m[3]+s*m[r],ny=m[7]+s*m[4+r],nz=m[11]+s*m[8+r],nw=m[15]+s*m[12+r],inv=1/(Math.hypot(nx,ny,nz)||1),o=i*4;out[o]=nx*inv;out[o+1]=ny*inv;out[o+2]=nz*inv;out[o+3]=nw*inv}return out},
+  frustumBox(planes,b){if(!planes||!b||!b.min||!b.max)return true;const min=b.min,max=b.max;for(let o=0;o<24;o+=4){const nx=planes[o],ny=planes[o+1],nz=planes[o+2],px=nx>=0?max[0]:min[0],py=ny>=0?max[1]:min[1],pz=nz>=0?max[2]:min[2];if(nx*px+ny*py+nz*pz+planes[o+3]<-1e-4)return false}return true}
 };
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
 const uid=(p='id')=>p+'_'+Math.random().toString(36).slice(2,10);
@@ -25,6 +27,266 @@ const hexrgb=h=>{h=h.replace('#','');return[0,2,4].map(i=>parseInt(h.slice(i,i+2
 // Flat per-triangle normals. Scalar math on purpose: runs over every vertex of imported stages.
 function computeNormals(p){let n=new Float32Array(p.length);for(let i=0;i+8<p.length;i+=9){const ax=p[i],ay=p[i+1],az=p[i+2],ux=p[i+3]-ax,uy=p[i+4]-ay,uz=p[i+5]-az,vx=p[i+6]-ax,vy=p[i+7]-ay,vz=p[i+8]-az;let x=uy*vz-uz*vy,y=uz*vx-ux*vz,z=ux*vy-uy*vx;const len=Math.sqrt(x*x+y*y+z*z);if(len>1e-12){x/=len;y/=len;z/=len}else{x=0;y=1;z=0}for(let k=i;k<i+9;k+=3){n[k]=x;n[k+1]=y;n[k+2]=z}}return n}
 function makeMesh(name,p,uv=null,n=null,material={}){p=new Float32Array(p);return{id:uid('mesh'),name,p,n:n?new Float32Array(n):computeNormals(p),uv:uv?new Float32Array(uv):new Float32Array(p.length/3*2),material:{color:[.2,.23,.29,1],...material},bounds:M.bbox(p)}}
+const meshBVHCache=new WeakMap();
+function buildMeshBVH(p,maxLeafTris=6,maxDepth=40){
+  const triCount=(p?.length/9)|0;
+  if(triCount<=0)return{buffer:new ArrayBuffer(0),f32:new Float32Array(0),u32:new Uint32Array(0),u16:new Uint16Array(0),indices:new Uint16Array(0),triCount:0,nodeCount:0,refitCount:0};
+  const indices=triCount>65535?new Uint32Array(triCount):new Uint16Array(triCount);
+  const centroids=new Float32Array(triCount*3),triBounds=new Float32Array(triCount*6);
+  for(let t=0;t<triCount;t++){
+    indices[t]=t;
+    const b=t*9,c3=t*3,b6=t*6,ax=p[b],ay=p[b+1],az=p[b+2],bx=p[b+3],by=p[b+4],bz=p[b+5],cx=p[b+6],cy=p[b+7],cz=p[b+8];
+    centroids[c3]=(ax+bx+cx)/3;centroids[c3+1]=(ay+by+cy)/3;centroids[c3+2]=(az+bz+cz)/3;
+    triBounds[b6]=Math.min(ax,bx,cx)-1e-5;triBounds[b6+1]=Math.min(ay,by,cy)-1e-5;triBounds[b6+2]=Math.min(az,bz,cz)-1e-5;
+    triBounds[b6+3]=Math.max(ax,bx,cx)+1e-5;triBounds[b6+4]=Math.max(ay,by,cy)+1e-5;triBounds[b6+5]=Math.max(az,bz,cz)+1e-5;
+  }
+  const maxNodes=Math.max(1,2*triCount),buffer=new ArrayBuffer(maxNodes*32),f32=new Float32Array(buffer),u32=new Uint32Array(buffer),u16=new Uint16Array(buffer);
+  const binCounts=new Uint32Array(8),binBounds=new Float32Array(48),rightMin=new Float32Array(24),rightMax=new Float32Array(24);
+  let nodeCount=0;
+  function buildNode(offset,count,depth){
+    const nodeIndex=nodeCount++,n32=nodeIndex*8,n16=nodeIndex*16;
+    let minX=Infinity,minY=Infinity,minZ=Infinity,maxX=-Infinity,maxY=-Infinity,maxZ=-Infinity;
+    let cMinX=Infinity,cMinY=Infinity,cMinZ=Infinity,cMaxX=-Infinity,cMaxY=-Infinity,cMaxZ=-Infinity;
+    const end=offset+count;
+    for(let i=offset;i<end;i++){
+      const t=indices[i],b6=t*6,c3=t*3;
+      if(triBounds[b6]<minX)minX=triBounds[b6];if(triBounds[b6+1]<minY)minY=triBounds[b6+1];if(triBounds[b6+2]<minZ)minZ=triBounds[b6+2];
+      if(triBounds[b6+3]>maxX)maxX=triBounds[b6+3];if(triBounds[b6+4]>maxY)maxY=triBounds[b6+4];if(triBounds[b6+5]>maxZ)maxZ=triBounds[b6+5];
+      const cx=centroids[c3],cy=centroids[c3+1],cz=centroids[c3+2];
+      if(cx<cMinX)cMinX=cx;if(cy<cMinY)cMinY=cy;if(cz<cMinZ)cMinZ=cz;
+      if(cx>cMaxX)cMaxX=cx;if(cy>cMaxY)cMaxY=cy;if(cz>cMaxZ)cMaxZ=cz;
+    }
+    f32[n32]=minX;f32[n32+1]=minY;f32[n32+2]=minZ;f32[n32+3]=maxX;f32[n32+4]=maxY;f32[n32+5]=maxZ;
+    if(count<=maxLeafTris||depth>=maxDepth){
+      u32[n32+6]=offset;u16[n16+14]=count;u16[n16+15]=0xFFFF;return nodeIndex;
+    }
+    const cExt=[cMaxX-cMinX,cMaxY-cMinY,cMaxZ-cMinZ],cMin=[cMinX,cMinY,cMinZ];
+    let bestAxis=-1,bestPos=0,bestCost=Infinity;
+    for(let axis=0;axis<3;axis++){
+      const ext=cExt[axis];if(ext<=1e-7)continue;
+      const invScale=8/ext,base=cMin[axis];
+      for(let b=0;b<8;b++){binCounts[b]=0;const o=b*6;binBounds[o]=binBounds[o+1]=binBounds[o+2]=Infinity;binBounds[o+3]=binBounds[o+4]=binBounds[o+5]=-Infinity}
+      for(let i=offset;i<end;i++){
+        const t=indices[i],b6=t*6,bin=Math.min(7,Math.max(0,((centroids[t*3+axis]-base)*invScale)|0)),o=bin*6;
+        binCounts[bin]++;
+        if(triBounds[b6]<binBounds[o])binBounds[o]=triBounds[b6];if(triBounds[b6+1]<binBounds[o+1])binBounds[o+1]=triBounds[b6+1];if(triBounds[b6+2]<binBounds[o+2])binBounds[o+2]=triBounds[b6+2];
+        if(triBounds[b6+3]>binBounds[o+3])binBounds[o+3]=triBounds[b6+3];if(triBounds[b6+4]>binBounds[o+4])binBounds[o+4]=triBounds[b6+4];if(triBounds[b6+5]>binBounds[o+5])binBounds[o+5]=triBounds[b6+5];
+      }
+      let rMinX=Infinity,rMinY=Infinity,rMinZ=Infinity,rMaxX=-Infinity,rMaxY=-Infinity,rMaxZ=-Infinity;
+      for(let b=7;b>=1;b--){
+        const o=b*6,ro=b*3;
+        if(binCounts[b]>0){
+          if(binBounds[o]<rMinX)rMinX=binBounds[o];if(binBounds[o+1]<rMinY)rMinY=binBounds[o+1];if(binBounds[o+2]<rMinZ)rMinZ=binBounds[o+2];
+          if(binBounds[o+3]>rMaxX)rMaxX=binBounds[o+3];if(binBounds[o+4]>rMaxY)rMaxY=binBounds[o+4];if(binBounds[o+5]>rMaxZ)rMaxZ=binBounds[o+5];
+        }
+        rightMin[ro]=rMinX;rightMin[ro+1]=rMinY;rightMin[ro+2]=rMinZ;rightMax[ro]=rMaxX;rightMax[ro+1]=rMaxY;rightMax[ro+2]=rMaxZ;
+      }
+      let lMinX=Infinity,lMinY=Infinity,lMinZ=Infinity,lMaxX=-Infinity,lMaxY=-Infinity,lMaxZ=-Infinity,lCount=0;
+      for(let b=0;b<7;b++){
+        const o=b*6;
+        if(binCounts[b]>0){
+          lCount+=binCounts[b];
+          if(binBounds[o]<lMinX)lMinX=binBounds[o];if(binBounds[o+1]<lMinY)lMinY=binBounds[o+1];if(binBounds[o+2]<lMinZ)lMinZ=binBounds[o+2];
+          if(binBounds[o+3]>lMaxX)lMaxX=binBounds[o+3];if(binBounds[o+4]>lMaxY)lMaxY=binBounds[o+4];if(binBounds[o+5]>lMaxZ)lMaxZ=binBounds[o+5];
+        }
+        const rCount=count-lCount;if(lCount===0||rCount===0)continue;
+        const ro=(b+1)*3,lx=lMaxX-lMinX,ly=lMaxY-lMinY,lz=lMaxZ-lMinZ,rx=rightMax[ro]-rightMin[ro],ry=rightMax[ro+1]-rightMin[ro+1],rz=rightMax[ro+2]-rightMin[ro+2];
+        const cost=lCount*(lx*ly+ly*lz+lz*lx)+rCount*(rx*ry+ry*rz+rz*rx);
+        if(cost<bestCost){bestCost=cost;bestAxis=axis;bestPos=base+(b+1)*(ext/8)}
+      }
+    }
+    if(bestAxis===-1){
+      bestAxis=cExt[1]>cExt[0]?(cExt[2]>cExt[1]?2:1):(cExt[2]>cExt[0]?2:0);
+      bestPos=cMin[bestAxis]+cExt[bestAxis]*0.5;
+    }
+    let l=offset,r=end-1;
+    while(l<=r){
+      if(centroids[indices[l]*3+bestAxis]<bestPos)l++;
+      else{const tmp=indices[l];indices[l]=indices[r];indices[r]=tmp;r--}
+    }
+    let leftCount=l-offset;
+    if(leftCount===0||leftCount===count)leftCount=count>>1;
+    buildNode(offset,leftCount,depth+1);
+    const rightChild=buildNode(offset+leftCount,count-leftCount,depth+1);
+    u32[n32+6]=rightChild;u16[n16+14]=bestAxis;u16[n16+15]=0;
+    return nodeIndex;
+  }
+  buildNode(0,triCount,0);
+  const usedBytes=nodeCount*32,compact=buffer.byteLength===usedBytes?buffer:buffer.slice(0,usedBytes);
+  return{buffer:compact,f32:new Float32Array(compact),u32:new Uint32Array(compact),u16:new Uint16Array(compact),indices,triCount,nodeCount,refitCount:0};
+}
+function refitMeshBVH(bvh,p){
+  if(!bvh||!bvh.nodeCount)return bvh;
+  const {f32,u32,u16,indices,nodeCount}=bvh;
+  for(let node=nodeCount-1;node>=0;node--){
+    const n32=node*8,n16=node*16;
+    if(u16[n16+15]===0xFFFF){
+      const off=u32[n32+6],cnt=u16[n16+14];
+      let minX=Infinity,minY=Infinity,minZ=Infinity,maxX=-Infinity,maxY=-Infinity,maxZ=-Infinity;
+      for(let i=off,end=off+cnt;i<end;i++){
+        const b=indices[i]*9,ax=p[b],ay=p[b+1],az=p[b+2],bx=p[b+3],by=p[b+4],bz=p[b+5],cx=p[b+6],cy=p[b+7],cz=p[b+8];
+        const lx=ax<bx?(ax<cx?ax:cx):(bx<cx?bx:cx),ly=ay<by?(ay<cy?ay:cy):(by<cy?by:cy),lz=az<bz?(az<cz?az:cz):(bz<cz?bz:cz);
+        const hx=ax>bx?(ax>cx?ax:cx):(bx>cx?bx:cx),hy=ay>by?(ay>cy?ay:cy):(by>cy?by:cy),hz=az>bz?(az>cz?az:cz):(bz>cz?bz:cz);
+        if(lx<minX)minX=lx;if(ly<minY)minY=ly;if(lz<minZ)minZ=lz;
+        if(hx>maxX)maxX=hx;if(hy>maxY)maxY=hy;if(hz>maxZ)maxZ=hz;
+      }
+      f32[n32]=minX-1e-5;f32[n32+1]=minY-1e-5;f32[n32+2]=minZ-1e-5;
+      f32[n32+3]=maxX+1e-5;f32[n32+4]=maxY+1e-5;f32[n32+5]=maxZ+1e-5;
+    }else{
+      const l32=(node+1)*8,r32=u32[n32+6]*8;
+      f32[n32]=f32[l32]<f32[r32]?f32[l32]:f32[r32];
+      f32[n32+1]=f32[l32+1]<f32[r32+1]?f32[l32+1]:f32[r32+1];
+      f32[n32+2]=f32[l32+2]<f32[r32+2]?f32[l32+2]:f32[r32+2];
+      f32[n32+3]=f32[l32+3]>f32[r32+3]?f32[l32+3]:f32[r32+3];
+      f32[n32+4]=f32[l32+4]>f32[r32+4]?f32[l32+4]:f32[r32+4];
+      f32[n32+5]=f32[l32+5]>f32[r32+5]?f32[l32+5]:f32[r32+5];
+    }
+  }
+  bvh.refitCount=(bvh.refitCount||0)+1;
+  return bvh;
+}
+function ensureMeshBVH(mesh){
+  if(!mesh||!mesh.p||mesh.p.length<9)return null;
+  const triCount=(mesh.p.length/9)|0;
+  let cached=meshBVHCache.get(mesh);
+  if(cached){
+    if(cached.p===mesh.p&&cached.bounds===mesh.bounds)return cached.bvh;
+    if(cached.bvh&&cached.bvh.triCount===triCount){
+      refitMeshBVH(cached.bvh,mesh.p);
+      cached.p=mesh.p;cached.bounds=mesh.bounds;
+      return cached.bvh;
+    }
+  }
+  const bvh=buildMeshBVH(mesh.p);
+  meshBVHCache.set(mesh,{p:mesh.p,bounds:mesh.bounds,bvh});
+  return bvh;
+}
+const _bvhStack=new Int32Array(128);
+function raycastMeshBVH(mesh,origin,dir,maxDistance=Infinity,filter=null){
+  if(!mesh||!mesh.p||mesh.p.length<9||!mesh.bounds||!M.rayBox(origin,dir,mesh.bounds))return null;
+  const bvh=ensureMeshBVH(mesh);if(!bvh||!bvh.nodeCount)return null;
+  const {f32,u32,u16,indices}=bvh,p=mesh.p;
+  const ox=origin[0],oy=origin[1],oz=origin[2],dx=dir[0],dy=dir[1],dz=dir[2];
+  let bestDist=maxDistance,bestTri=-1,bestNormal=null,sp=0;
+  _bvhStack[sp++]=0;
+  while(sp>0){
+    const node=_bvhStack[--sp],n32=node*8,n16=node*16;
+    let lo=0,hi=bestDist;
+    for(let k=0;k<3;k++){
+      const o=origin[k],d=dir[k],bmin=f32[n32+k],bmax=f32[n32+3+k];
+      if(Math.abs(d)<1e-10){if(o<bmin||o>bmax){lo=1;hi=0;break}continue}
+      let t0=(bmin-o)/d,t1=(bmax-o)/d;if(t0>t1){const tmp=t0;t0=t1;t1=tmp}
+      if(t0>lo)lo=t0;if(t1<hi)hi=t1;if(hi<lo)break;
+    }
+    if(hi<lo)continue;
+    if(u16[n16+15]===0xFFFF){
+      const off=u32[n32+6],end=off+u16[n16+14];
+      for(let i=off;i<end;i++){
+        const triIdx=indices[i],b=triIdx*9;
+        const ax=p[b],ay=p[b+1],az=p[b+2],bx=p[b+3],by=p[b+4],bz=p[b+5],cx=p[b+6],cy=p[b+7],cz=p[b+8];
+        const e1x=bx-ax,e1y=by-ay,e1z=bz-az,e2x=cx-ax,e2y=cy-ay,e2z=cz-az;
+        const px=dy*e2z-dz*e2y,py=dz*e2x-dx*e2z,pz=dx*e2y-dy*e2x;
+        const det=e1x*px+e1y*py+e1z*pz;if(Math.abs(det)<1e-9)continue;
+        const invDet=1/det,tx=ox-ax,ty=oy-ay,tz=oz-az;
+        const u=(tx*px+ty*py+tz*pz)*invDet;if(u<0||u>1)continue;
+        const qx=ty*e1z-tz*e1y,qy=tz*e1x-tx*e1z,qz=tx*e1y-ty*e1x;
+        const v=(dx*qx+dy*qy+dz*qz)*invDet;if(v<0||u+v>1)continue;
+        const dist=(e2x*qx+e2y*qy+e2z*qz)*invDet;
+        if(dist<=1e-5||dist>maxDistance)continue;
+        const better=dist<bestDist-1e-7||(Math.abs(dist-bestDist)<=1e-7&&(bestTri<0||triIdx<bestTri));
+        if(!better)continue;
+        let nx=e1y*e2z-e1z*e2y,ny=e1z*e2x-e1x*e2z,nz=e1x*e2y-e1y*e2x;
+        const nlen=Math.hypot(nx,ny,nz);
+        const norm=nlen>1e-12?[nx/nlen,ny/nlen,nz/nlen]:[0,1,0];
+        if(filter&&!filter(triIdx,[ax,ay,az],[bx,by,bz],[cx,cy,cz],dist,norm))continue;
+        bestDist=dist;bestTri=triIdx;bestNormal=norm;
+      }
+    }else{
+      const axis=u16[n16+14],left=node+1,right=u32[n32+6];
+      if(dir[axis]>=0){_bvhStack[sp++]=right;_bvhStack[sp++]=left}
+      else{_bvhStack[sp++]=left;_bvhStack[sp++]=right}
+    }
+  }
+  if(bestTri<0)return null;
+  return{triangle:bestTri,distance:bestDist,point:[ox+dx*bestDist,oy+dy*bestDist,oz+dz*bestDist],normal:bestNormal};
+}
+function buildSceneBVH(items){
+  const valid=[];
+  for(let i=0;i<items.length;i++){
+    const it=items[i],b=it?.bounds||it?.mesh?.bounds;
+    if(!it||it.mesh?.hidden||!b||!b.min||!b.max)continue;
+    valid.push(it);
+  }
+  const count=valid.length;
+  if(!count)return{items:valid,f32:new Float32Array(0),u32:new Uint32Array(0),u16:new Uint16Array(0),indices:new Uint32Array(0),nodeCount:0};
+  const indices=new Uint32Array(count),centroids=new Float32Array(count*3),bounds=new Float32Array(count*6);
+  for(let i=0;i<count;i++){
+    indices[i]=i;const b=valid[i].bounds||valid[i].mesh.bounds,i3=i*3,i6=i*6;
+    centroids[i3]=(b.min[0]+b.max[0])*0.5;centroids[i3+1]=(b.min[1]+b.max[1])*0.5;centroids[i3+2]=(b.min[2]+b.max[2])*0.5;
+    bounds[i6]=b.min[0]-1e-5;bounds[i6+1]=b.min[1]-1e-5;bounds[i6+2]=b.min[2]-1e-5;
+    bounds[i6+3]=b.max[0]+1e-5;bounds[i6+4]=b.max[1]+1e-5;bounds[i6+5]=b.max[2]+1e-5;
+  }
+  const buf=new ArrayBuffer(Math.max(1,2*count)*32),f32=new Float32Array(buf),u32=new Uint32Array(buf),u16=new Uint16Array(buf);
+  let nodeCount=0;
+  function build(offset,cnt,depth){
+    const node=nodeCount++,n32=node*8,n16=node*16,end=offset+cnt;
+    let minX=Infinity,minY=Infinity,minZ=Infinity,maxX=-Infinity,maxY=-Infinity,maxZ=-Infinity;
+    let cMinX=Infinity,cMinY=Infinity,cMinZ=Infinity,cMaxX=-Infinity,cMaxY=-Infinity,cMaxZ=-Infinity;
+    for(let i=offset;i<end;i++){
+      const idx=indices[i],i6=idx*6,i3=idx*3;
+      if(bounds[i6]<minX)minX=bounds[i6];if(bounds[i6+1]<minY)minY=bounds[i6+1];if(bounds[i6+2]<minZ)minZ=bounds[i6+2];
+      if(bounds[i6+3]>maxX)maxX=bounds[i6+3];if(bounds[i6+4]>maxY)maxY=bounds[i6+4];if(bounds[i6+5]>maxZ)maxZ=bounds[i6+5];
+      if(centroids[i3]<cMinX)cMinX=centroids[i3];if(centroids[i3+1]<cMinY)cMinY=centroids[i3+1];if(centroids[i3+2]<cMinZ)cMinZ=centroids[i3+2];
+      if(centroids[i3]>cMaxX)cMaxX=centroids[i3];if(centroids[i3+1]>cMaxY)cMaxY=centroids[i3+1];if(centroids[i3+2]>cMaxZ)cMaxZ=centroids[i3+2];
+    }
+    f32[n32]=minX;f32[n32+1]=minY;f32[n32+2]=minZ;f32[n32+3]=maxX;f32[n32+4]=maxY;f32[n32+5]=maxZ;
+    if(cnt<=2||depth>=32){u32[n32+6]=offset;u16[n16+14]=cnt;u16[n16+15]=0xFFFF;return node}
+    const ex=cMaxX-cMinX,ey=cMaxY-cMinY,ez=cMaxZ-cMinZ,axis=ey>ex?(ez>ey?2:1):(ez>ex?2:0),mid=([cMinX,cMinY,cMinZ][axis]+[cMaxX,cMaxY,cMaxZ][axis])*0.5;
+    let l=offset,r=end-1;
+    while(l<=r){if(centroids[indices[l]*3+axis]<mid)l++;else{const t=indices[l];indices[l]=indices[r];indices[r]=t;r--}}
+    let leftCnt=l-offset;if(leftCnt===0||leftCnt===cnt)leftCnt=cnt>>1;
+    build(offset,leftCnt,depth+1);
+    const right=build(offset+leftCnt,cnt-leftCnt,depth+1);
+    u32[n32+6]=right;u16[n16+14]=axis;u16[n16+15]=0;
+    return node;
+  }
+  build(0,count,0);
+  return{items:valid,f32,u32,u16,indices,nodeCount};
+}
+const _tlasStack=new Int32Array(64);
+function raycastSceneBVH(tlas,origin,dir,maxDistance=Infinity){
+  if(!tlas||!tlas.nodeCount)return null;
+  const {items,f32,u32,u16,indices}=tlas;
+  let nearest=null,bestDist=maxDistance,sp=0;
+  _tlasStack[sp++]=0;
+  while(sp>0){
+    const node=_tlasStack[--sp],n32=node*8,n16=node*16;
+    let lo=0,hi=bestDist+1e-4;
+    for(let k=0;k<3;k++){
+      const o=origin[k],d=dir[k],bmin=f32[n32+k],bmax=f32[n32+3+k];
+      if(Math.abs(d)<1e-10){if(o<bmin||o>bmax){lo=1;hi=0;break}continue}
+      let t0=(bmin-o)/d,t1=(bmax-o)/d;if(t0>t1){const tmp=t0;t0=t1;t1=tmp}
+      if(t0>lo)lo=t0;if(t1<hi)hi=t1;if(hi<lo)break;
+    }
+    if(hi<lo)continue;
+    if(u16[n16+15]===0xFFFF){
+      const off=u32[n32+6],end=off+u16[n16+14];
+      for(let i=off;i<end;i++){
+        const item=items[indices[i]],m=item.mesh;
+        const limit=nearest?nearest.distance+(item.surface?1e-4:0):maxDistance;
+        const hit=raycastMeshBVH(m,origin,dir,limit);
+        if(hit&&(!nearest||hit.distance<nearest.distance-(nearest.surface&&!item.surface?1e-4:1e-6)||(item.surface&&Math.abs(hit.distance-nearest.distance)<1e-4))){
+          nearest={...item,...hit};bestDist=nearest.distance;
+        }
+      }
+    }else{
+      const axis=u16[n16+14],left=node+1,right=u32[n32+6];
+      if(dir[axis]>=0){_tlasStack[sp++]=right;_tlasStack[sp++]=left}
+      else{_tlasStack[sp++]=left;_tlasStack[sp++]=right}
+    }
+  }
+  return nearest;
+}
 function transformMesh(mesh,mat){const p=mesh.p=new Float32Array(mesh.p),m=mat;for(let i=0;i+2<p.length;i+=3){const x=p[i],y=p[i+1],z=p[i+2],w=(m[3]*x+m[7]*y+m[11]*z+m[15])||1;p[i]=(m[0]*x+m[4]*y+m[8]*z+m[12])/w;p[i+1]=(m[1]*x+m[5]*y+m[9]*z+m[13])/w;p[i+2]=(m[2]*x+m[6]*y+m[10]*z+m[14])/w}mesh.n=computeNormals(p);mesh.bounds=M.bbox(p);return mesh}
 function quadMesh(name,corners,material={}){let idx=[0,1,2,0,2,3],uv=[[0,0],[1,0],[1,1],[0,1]];return makeMesh(name,idx.flatMap(i=>corners[i]),idx.flatMap(i=>uv[i]),null,material)}
 function boxMesh(name,center,size,color=[.1,.13,.19,1]){let p=[],uv=[],v=[[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]].map(q=>q.map((a,i)=>center[i]+a*size[i]/2));for(let f of [[4,5,6,7],[1,0,3,2],[0,4,7,3],[5,1,2,6],[7,6,2,3],[0,1,5,4]]){for(let k of[0,1,2,0,2,3]){p.push(...v[f[k]]);uv.push(...[[0,1],[1,1],[1,0],[0,0]][k])}}return makeMesh(name,p,uv,null,{color})}
@@ -59,8 +321,9 @@ function sampleGltfChannel(s,t){
   const res=new Array(comp);for(let k=0;k<comp;k++)res[k]=a[k]+(b[k]-a[k])*u;return res;
 }
 function updateGltfSceneAnim(sa,time){
-  if(!sa||sa.lastTime===time)return false;
-  sa.lastTime=time;
+  const clipIdx=sa?.activeClip||0,spd=sa?.speed??1;
+  if(!sa||(sa.lastTime===time&&sa._lastClip===clipIdx&&sa._lastSpeed===spd&&!sa.dirty))return false;
+  sa.lastTime=time;sa._lastClip=clipIdx;sa._lastSpeed=spd;sa.dirty=false;
   for(const nd of sa.nodes){nd.t=nd.baseT.slice();nd.r=nd.baseR.slice();nd.s=nd.baseS.slice();nd.weights=nd.baseWeights.slice()}
   if(sa.clips.length){
     const clip=sa.clips[sa.activeClip||0]||sa.clips[0],dur=clip.duration||0,ct=dur>1e-5?((time*(sa.speed||1))%dur+dur)%dur:0;
@@ -327,7 +590,7 @@ class StageEngine{
  loc(n){return this.locations[n]??(this.locations[n]=this.gl.getUniformLocation(this.program,n))}
  uniform(n,v,type){let gl=this.gl,l=this.loc(n);if(l===null)return;if(type==='i')gl.uniform1i(l,v);else if(type==='m')gl.uniformMatrix4fv(l,false,v);else if(typeof v==='number')gl.uniform1f(l,v);else if(type==='3a')gl.uniform3fv(l,v);else if(type==='1a')gl.uniform1fv(l,v);else if(v.length===4)gl.uniform4fv(l,v);else if(v.length===3)gl.uniform3fv(l,v);else if(v.length===2)gl.uniform2fv(l,v)}
  gpu(mesh){let gl=this.gl,b=this.buffers.get(mesh.id);if(!b){b={vao:gl.createVertexArray(),buffers:[]};this.buffers.set(mesh.id,b);gl.bindVertexArray(b.vao);let usage=mesh._gltfAnim?gl.DYNAMIC_DRAW:gl.STATIC_DRAW;for(let[n,arr,dim]of[['aPosition',mesh.p,3],['aNormal',mesh.n,3],['aUV',mesh.uv,2],['aMapUV',mesh.mapUV||mesh.uv,2]]){let buf=gl.createBuffer();b.buffers.push(buf);gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,arr,(n==='aPosition'||n==='aNormal')?usage:gl.STATIC_DRAW);let l=gl.getAttribLocation(this.program,n);if(l>=0){gl.enableVertexAttribArray(l);gl.vertexAttribPointer(l,dim,gl.FLOAT,false,0,0)}}b.count=mesh.p.length/3}else gl.bindVertexArray(b.vao);return b}
- updateAnimatedMeshes(time=0){let seen=new Set();for(let m of this.stage){const ga=m._gltfAnim;if(!ga||m.hidden)continue;const sa=ga.sceneAnim;if(!seen.has(sa)){seen.add(sa);sa.coordMatrix=(this.coordinates?.matrix&&!this.coordinates.identity)?this.coordinates.matrix:null;updateGltfSceneAnim(sa,time)}deformGltfMesh(m,this.gl,this.buffers.get(m.id))}}
+ updateAnimatedMeshes(time=0){let updated=new Map(),cm=(this.coordinates?.matrix&&!this.coordinates.identity)?this.coordinates.matrix:null;for(let m of this.stage){const ga=m._gltfAnim;if(!ga||m.hidden)continue;const sa=ga.sceneAnim;let animChanged=updated.get(sa);if(animChanged===undefined){if(sa.coordMatrix!==cm){sa.coordMatrix=cm;sa.dirty=true}animChanged=updateGltfSceneAnim(sa,time);updated.set(sa,animChanged)}const sh=sa.modelShift||[0,0,0],shKey=sh[0]+','+sh[1]+','+sh[2];if(animChanged||m.morphWeightsDirty||ga._lastDeformTime!==sa.lastTime||ga._lastShiftKey!==shKey||ga._lastCoordMat!==cm||ga._lastOutP!==m.p){deformGltfMesh(m,this.gl,this.buffers.get(m.id));ga._lastDeformTime=sa.lastTime;ga._lastShiftKey=shKey;ga._lastCoordMat=cm;ga._lastOutP=m.p;m.morphWeightsDirty=false}}}
  releaseMesh(mesh){let b=this.buffers.get(mesh.id);if(b){for(let x of b.buffers)this.gl.deleteBuffer(x);this.gl.deleteVertexArray(b.vao);this.buffers.delete(mesh.id)}}
  texture(source){let gl=this.gl;if(!source)return this.white;let t=this.texCache.get(source);if(!t){t={tex:gl.createTexture(),frame:-1};this.texCache.set(source,t);gl.bindTexture(gl.TEXTURE_2D,t.tex);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE)}let dynamic=source instanceof HTMLVideoElement;if(t.frame===-1||(dynamic&&t.frame!==this.frame&&source.readyState>=2)){try{gl.bindTexture(gl.TEXTURE_2D,t.tex);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,false);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,source);t.frame=this.frame}catch(e){return this.white}}return t.tex}
  draw(mesh,mode=0,surface=null,opacity=1){let gl=this.gl,b=this.gpu(mesh),mat=mesh.material||{},source=mat.image||null;this.uniform('uActor',mesh.actorMatrix?1:0,'i');if(mesh.actorMatrix)this.uniform('uActorMatrix',mesh.actorMatrix,'m');this.uniform('uMode',mode,'i');this.uniform('uStageMap',mode===1&&surface?.mappingSpace==='stage'&&!this.globalTest&&surface.source!=='test'?1:0,'i');this.uniform('uSurfaceOffset',mode===1&&this.view==='stage'?(surface?.liftMm||0)/1000:0);this.uniform('uSurfaceNormal',surface?.bindingNormal||[0,0,1]);this.uniform('uUseSurfaceNormal',surface?.mappingMode==='face'?1:0,'i');this.uniform('uColor',mat.color||[.5,.5,.5,1]);this.uniform('uEmissive',mat.emissive||[0,0,0]);this.uniform('uOpacity',opacity);this.uniform('uFloor',mesh.isFloor&&this.settings.grid?1:0,'i');this.uniform('uCutoff',mat.alphaCutoff||0);this.uniform('uSelected',0,'i');
@@ -337,7 +600,7 @@ class StageEngine{
  lightUniforms(time){let pos=[],dir=[],colors=[],cones=[];for(let i=0;i<16;i++){let l=this.lights[i],p=l?.pos||[0,20,0],target=l?.target?.slice()||[0,0,0];if(l?.sweep){let phase=time*(l.speed||.5)+(l.phase||0);target[0]+=Math.sin(phase)*this.size.width*.25;target[2]+=Math.cos(phase*.7)*this.size.depth*.25}let direction=M.norm(M.sub(target,p));pos.push(...p);dir.push(...direction);let mult=1;if(l&&l.enabled){let fx=l.fx||'steady',depth=l.fxDepth??.55,spd=l.fxSpeed??2.2;if(fx==='pulse'){mult=(1-depth)+(0.5+0.5*Math.sin(time*spd+(l.phase||0)))*depth*2}else if(fx==='strobe'){mult=(Math.sin(time*spd*Math.PI*2+(l.phase||0))>0?1:Math.max(.02,1-depth))}else if(fx==='build'){let cyc=((time%(state.duration||12))/Math.max(.001,(state.duration||12)));mult=1+cyc*Math.max(.05,depth*2)}mult*=l.boost??1}colors.push(...(l&&l.enabled?hexrgb(l.color).map(v=>v*l.power*mult):[0,0,0]));cones.push(Math.cos((l?.angle||20)*Math.PI/180));if(l){l._direction=direction;l._target=target;l._mult=mult}}this.uniform('uLightPos[0]',pos,'3a');this.uniform('uLightDir[0]',dir,'3a');this.uniform('uLightColor[0]',colors,'3a');this.uniform('uLightCone[0]',cones,'1a')}
  makeBeam(light){let p=light.pos,d=light._direction||[0,-1,0],length=Math.min(this.size.width*1.1,Math.hypot(...M.sub(light._target||light.target,p))+3),radius=Math.tan(light.angle*Math.PI/180)*length*.55;let right=M.norm(M.cross(d,Math.abs(d[1])>.95?[1,0,0]:[0,1,0])),up=M.cross(right,d),pos=[],uv=[];for(let i=0;i<32;i++){let a=i/32*Math.PI*2,b=(i+1)/32*Math.PI*2;let r1=M.add(M.mul(right,Math.cos(a)),M.mul(up,Math.sin(a))),r2=M.add(M.mul(right,Math.cos(b)),M.mul(up,Math.sin(b))),end=M.add(p,M.mul(d,length));let pts=[M.add(p,M.mul(r1,.07)),M.add(end,M.mul(r1,radius)),M.add(end,M.mul(r2,radius)),M.add(p,M.mul(r1,.07)),M.add(end,M.mul(r2,radius)),M.add(p,M.mul(r2,.07))];pos.push(...pts.flat());uv.push(0,0,0,1,1,1,0,0,1,1,1,0)}let mesh=makeMesh('beam',pos,uv,null,{color:[...hexrgb(light.color),1]});return mesh}
  render(time=0,{width=null,height=null}={}){let gl=this.gl;this.frame++;let w=width||Math.round(this.canvas.clientWidth*Math.min(devicePixelRatio,1.25)*(this.previewScale||1)),h=height||Math.round(this.canvas.clientHeight*Math.min(devicePixelRatio,1.25)*(this.previewScale||1));w=Math.max(1,w);h=Math.max(1,h);if(this.canvas.width!==w||this.canvas.height!==h){this.canvas.width=w;this.canvas.height=h}gl.viewport(0,0,w,h);gl.clearColor(.085,.10,.135,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.useProgram(this.program);gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LEQUAL);gl.depthMask(true);gl.disable(gl.BLEND);gl.disable(gl.CULL_FACE);this.uniform('uTime',time);this.uniform('uAmbient',this.settings.ambient);this.uniform('uExposure',this.settings.exposure);this.uniform('uHaze',this.settings.haze);this.uniform('uAccent',hexrgb(this.accent));this.uniform('uMaster',[this.master.width,this.master.height]);this.lightUniforms(time);
-  if(this.view==='stage'){this.updateAnimatedMeshes(time);let c=this.camera;this.eye=M.add(c.target,[Math.sin(c.yaw)*Math.cos(c.pitch)*c.distance,Math.sin(c.pitch)*c.distance,Math.cos(c.yaw)*Math.cos(c.pitch)*c.distance]);let near=Math.max(.001,c.distance/2500),far=Math.max(500,c.distance*10);this.vp=M.mm(M.perspective(clamp(c.fov||45,20,80)*Math.PI/180,w/h,near,far),M.lookAt(this.eye,c.target));this.uniform('uVP',this.vp,'m');this.uniform('uEye',this.eye);this.draw(this.floor);for(let mesh of this.stageDrawMeshes())if(!mesh.hidden)this.draw(mesh);for(let mesh of this.fixtureMeshes)this.draw(mesh);if(this.drawCast)this.drawCast(time);gl.enable(gl.POLYGON_OFFSET_FILL);gl.polygonOffset(-2,-2);for(let s of this.surfaces)if(s.enabled!==false)this.draw(s.mesh,1,s);gl.disable(gl.POLYGON_OFFSET_FILL);
+  if(this.view==='stage'){this.updateAnimatedMeshes(time);let c=this.camera;this.eye=M.add(c.target,[Math.sin(c.yaw)*Math.cos(c.pitch)*c.distance,Math.sin(c.pitch)*c.distance,Math.cos(c.yaw)*Math.cos(c.pitch)*c.distance]);let near=Math.max(.001,c.distance/2500),far=Math.max(500,c.distance*10);this.vp=M.mm(M.perspective(clamp(c.fov||45,20,80)*Math.PI/180,w/h,near,far),M.lookAt(this.eye,c.target));const planes=M.frustumPlanes(this.vp);this.uniform('uVP',this.vp,'m');this.uniform('uEye',this.eye);this.draw(this.floor);for(let mesh of this.stageDrawMeshes())if(!mesh.hidden&&(!planes||mesh.actorMatrix||M.frustumBox(planes,mesh.bounds)))this.draw(mesh);for(let mesh of this.fixtureMeshes)if(!planes||M.frustumBox(planes,mesh.bounds))this.draw(mesh);if(this.drawCast)this.drawCast(time);gl.enable(gl.POLYGON_OFFSET_FILL);gl.polygonOffset(-2,-2);for(let s of this.surfaces)if(s.enabled!==false&&(!planes||M.frustumBox(planes,s.mesh?.bounds)))this.draw(s.mesh,1,s);gl.disable(gl.POLYGON_OFFSET_FILL);
    if(this.settings.beam>0){gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE);gl.depthMask(false);for(let l of this.lights){if(!l.enabled||l.power<=0)continue;let mesh=this.makeBeam(l);this.draw(mesh,2,null,Math.min(.35,this.settings.beam*.20*Math.max(0,l.power/4.5)*(l._mult??1)));}gl.depthMask(true);gl.disable(gl.BLEND)}
   }else{let selected=this.surfaces.find(s=>s.id===this.selected),solo=this.view==='solo'&&selected,ww=solo?selected.w:this.master.width,hh=solo?selected.h:this.master.height,scale=Math.min(w/ww,h/hh)*(this.mapExact?1:.86),visibleW=w/scale,visibleH=h/scale;this.mapTransform={left:(w-ww*scale)/2,top:(h-hh*scale)/2,scale,ww,hh};this.vp=M.ortho(-(visibleW-ww)/2,ww+(visibleW-ww)/2,hh+(visibleH-hh)/2,-(visibleH-hh)/2,-10,10);this.uniform('uVP',this.vp,'m');this.uniform('uEye',[0,0,10]);for(let s of(solo?[selected]:this.mapSurfaces())){if(s.enabled===false)continue;let mesh=this.flatSurfaceMesh(s,!!solo);this.draw(mesh,1,s)}}return this.canvas
  }
@@ -345,7 +608,7 @@ class StageEngine{
  fit(){this.camera.distance=Math.max(this.size.width,this.size.height*1.7,this.size.depth)*1.15;this.camera.yaw=.13;this.camera.pitch=.23}
  cameraPreset(name){this.fit();if(name==='front'){this.camera.yaw=0;this.camera.pitch=.035}else if(name==='top'){this.camera.yaw=0;this.camera.pitch=Math.PI/2-.001}else if(name==='side'){this.camera.yaw=Math.PI/3;this.camera.pitch=.23}else if(name==='iso'){this.camera.yaw=.5;this.camera.pitch=.35}}
  rebuildFixtures(){for(let m of this.fixtureMeshes)this.releaseMesh(m);this.fixtureMeshes=[];let scale=this.size.width/18;for(let l of this.lights){let p=l.pos;this.fixtureMeshes.push(boxMesh('Moving head base',M.add(p,[0,.15*scale,0]),[.5*scale,.18*scale,.36*scale],[.12,.14,.18,1]));this.fixtureMeshes.push(boxMesh('Moving head',p,[.3*scale,.32*scale,.3*scale],[.2,.21,.25,1]))}}
- pick(x,y,includeLED=true){if(!this.vp)return null;let rect=this.canvas.getBoundingClientRect(),nx=(x-rect.left)/rect.width*2-1,ny=1-(y-rect.top)/rect.height*2,inv=M.inverse(this.vp),o=M.point(inv,[nx,ny,-1]),end=M.point(inv,[nx,ny,1]),d=M.norm(M.sub(end,o)),nearest=null;let arr=[...this.stage.map(m=>({mesh:m}))];if(includeLED)arr.push(...this.surfaces.map(s=>({mesh:s.mesh,surface:s})));for(let item of arr){let m=item.mesh;if(m.hidden||!M.rayBox(o,d,m.bounds))continue;for(let i=0;i<m.p.length;i+=9){let a=Array.from(m.p.slice(i,i+3)),b=Array.from(m.p.slice(i+3,i+6)),c=Array.from(m.p.slice(i+6,i+9)),dist=M.rayTri(o,d,a,b,c);if(dist!==null&&(!nearest||dist<nearest.distance-1e-6||(item.surface&&Math.abs(dist-nearest.distance)<1e-4))){let normal=M.norm(M.cross(M.sub(b,a),M.sub(c,a)));if(M.dot(normal,d)>0)normal=M.mul(normal,-1);nearest={...item,triangle:i/9,distance:dist,point:M.add(o,M.mul(d,dist)),normal}}}}return nearest}
+ pick(x,y,includeLED=true){if(!this.vp)return null;let rect=this.canvas.getBoundingClientRect(),nx=(x-rect.left)/rect.width*2-1,ny=1-(y-rect.top)/rect.height*2,inv=M.inverse(this.vp),o=M.point(inv,[nx,ny,-1]),end=M.point(inv,[nx,ny,1]),d=M.norm(M.sub(end,o)),nearest=null;let arr=[...this.stage.map(m=>({mesh:m}))];if(includeLED)arr.push(...this.surfaces.map(s=>({mesh:s.mesh,surface:s})));if(arr.length>8){nearest=raycastSceneBVH(buildSceneBVH(arr),o,d);if(nearest&&M.dot(nearest.normal,d)>0)nearest.normal=M.mul(nearest.normal,-1);return nearest}for(let item of arr){let m=item.mesh;if(m.hidden)continue;const limit=nearest?nearest.distance+(item.surface?1e-4:0):Infinity,hit=raycastMeshBVH(m,o,d,limit);if(hit&&(!nearest||hit.distance<nearest.distance-(nearest.surface&&!item.surface?1e-4:1e-6)||(item.surface&&Math.abs(hit.distance-nearest.distance)<1e-4))){let normal=hit.normal;if(M.dot(normal,d)>0)normal=M.mul(normal,-1);nearest={...item,...hit,normal}}}return nearest}
  project(p){if(!this.vp)return null;let q=M.point(this.vp,p);return{x:(q[0]*.5+.5)*this.canvas.clientWidth,y:(.5-q[1]*.5)*this.canvas.clientHeight,z:q[2]}}
  bindOrbit(){let down=null,touch2=null;this.canvas.addEventListener('contextmenu',e=>e.preventDefault());this.canvas.addEventListener('pointerdown',e=>{if(this.view!=='stage'||touch2)return;down={x:e.clientX,y:e.clientY,ox:e.clientX,oy:e.clientY,button:e.button,shift:e.shiftKey};this.canvas.setPointerCapture(e.pointerId)});this.canvas.addEventListener('pointermove',e=>{if(!down||touch2||this.view!=='stage'||this.cameraLocked)return;let dx=e.clientX-down.x,dy=e.clientY-down.y;if(Math.hypot(e.clientX-down.ox,e.clientY-down.oy)<4)return;this._fitOnResize=false;if(state.orbit){state.orbit=false;updateStableControls();}let c=this.camera;if(down.button===2||down.shift){let right=[Math.cos(c.yaw),0,-Math.sin(c.yaw)];c.target=M.add(c.target,M.mul(right,-dx*c.distance*.0015));c.target[1]+=dy*c.distance*.0015}else{c.yaw-=dx*.006;c.pitch=clamp(c.pitch+dy*.006,-.15,Math.PI/2-.005)}down.x=e.clientX;down.y=e.clientY;this.onCameraChange()});this.canvas.addEventListener('pointerup',e=>{if(down&&!touch2&&Math.hypot(e.clientX-down.ox,e.clientY-down.oy)<5&&e.button===0)this.onClick?.(e);down=null});this.canvas.addEventListener('pointercancel',()=>down=null);this.canvas.addEventListener('lostpointercapture',()=>down=null);window.addEventListener('blur',()=>{down=null;touch2=null});this.canvas.addEventListener('touchstart',e=>{if(this.view!=='stage'||this.cameraLocked)return;if(e.touches.length===2){down=null;let a=e.touches[0],b=e.touches[1];touch2={mx:(a.clientX+b.clientX)*.5,my:(a.clientY+b.clientY)*.5,dist:Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY)||1}}},{passive:true});this.canvas.addEventListener('touchmove',e=>{if(!touch2||e.touches.length!==2||this.view!=='stage'||this.cameraLocked)return;e.preventDefault();let a=e.touches[0],b=e.touches[1],mx=(a.clientX+b.clientX)*.5,my=(a.clientY+b.clientY)*.5,dist=Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY)||1,dx=mx-touch2.mx,dy=my-touch2.my,ratio=touch2.dist/dist;this._fitOnResize=false;if(state.orbit){state.orbit=false;updateStableControls();}let c=this.camera,right=[Math.cos(c.yaw),0,-Math.sin(c.yaw)];c.target=M.add(c.target,M.mul(right,-dx*c.distance*.0015));c.target[1]+=dy*c.distance*.0015;c.distance=clamp(c.distance*ratio,.1,20000);touch2={mx,my,dist};this.onCameraChange()},{passive:false});this.canvas.addEventListener('touchend',e=>{if(e.touches.length<2){down=null;touch2=null;}},{passive:true});this.canvas.addEventListener('touchcancel',()=>{down=null;touch2=null;},{passive:true});this.canvas.addEventListener('wheel',e=>{if(this.view!=='stage')return;e.preventDefault();if(this.cameraLocked)return;this._fitOnResize=false;if(state.orbit){state.orbit=false;updateStableControls();}this.camera.distance=clamp(this.camera.distance*Math.exp(e.deltaY*.001),.1,20000);this.onCameraChange()},{passive:false})}
  dispose(){for(let[id,b]of this.buffers){for(let buf of b.buffers)this.gl.deleteBuffer(buf);this.gl.deleteVertexArray(b.vao)}for(let t of this.texCache.values())this.gl.deleteTexture(t.tex);this.buffers.clear();this.texCache.clear()}

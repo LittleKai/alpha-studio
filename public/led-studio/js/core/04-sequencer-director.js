@@ -64,7 +64,7 @@ function castMatrix(d,node,t){const scale=d.height/1.75,p=t*2*Math.PI*seq.bpm/60
  const root=M.mm(M.translate([d.pos[0]+(animated?Math.sin(p*.5)*.024:0),d.pos[1],d.pos[2]]),M.mm(M.rotate([0,1,0],d.yaw*Math.PI/180),M.trs([0,0,0],[0,0,0,1],[scale,scale,scale])));return M.mm(root,M.mm(M.translate(node.pivot),M.mm(M.rotate(axis,angle),M.translate(M.mul(node.pivot,-1)))));}
 function rebuildCast(){for(const a of castCache.values())for(const n of a)for(const m of n.meshes)engine.releaseMesh(m);castCache.clear();for(const d of seq.people){if(d.type==='audience'){const parts=[],count=clamp(d.count||24,1,96),cols=Math.min(d.columns||12,count);for(let i=0;i<count;i++){const q={...d,color:['#34475c','#6d4c66','#3f6062','#67676e'][i%4],skin:['#b77f5e','#d4a585','#a27153'][i%3]};for(const node of buildHuman(q,true,i))for(const m of node.meshes){transformMesh(m,M.translate([((i%cols)-(cols-1)/2)*(d.spacing||.65),0,Math.floor(i/cols)*(d.spacing||.65)*.95]));parts.push(m);}}castCache.set(d.id,[{name:'crowd',pivot:[0,0,0],meshes:mergeCast(parts,'Grouped audience')}]);}else castCache.set(d.id,buildHuman(d));}}
 StageEngine.prototype.drawCast=function(t){if(this!==engine)return;for(const d of seq.people){if(d.hidden)continue;for(const node of castCache.get(d.id)||[]){const mat=castMatrix(d,node,t);for(const m of node.meshes){m.actorMatrix=mat;this.draw(m,0);}}}};
-function deckY(x,z){const b=engine.stageBounds,o=[x,b.max[1]+1,z],d=[0,-1,0];let best=Infinity,y=b.min[1];for(const m of engine.stage){if(m.hidden||!M.rayBox(o,d,m.bounds))continue;for(let i=0;i<m.p.length;i+=9){const a=Array.from(m.p.slice(i,i+3)),bb=Array.from(m.p.slice(i+3,i+6)),c=Array.from(m.p.slice(i+6,i+9)),normal=M.norm(M.cross(M.sub(bb,a),M.sub(c,a)));if(Math.abs(normal[1])<.9)continue;const t=M.rayTri(o,d,a,bb,c),yy=t===null?-Infinity:o[1]-t;if(t!==null&&t<best&&yy<=b.min[1]+engine.size.height*.32){best=t;y=yy;}}}return y;}
+function deckY(x,z){const b=engine.stageBounds,o=[x,b.max[1]+1,z],d=[0,-1,0],maxDeckY=b.min[1]+engine.size.height*.32,filter=(_t,_a,_b,_c,dist,normal)=>Math.abs(normal[1])>=.9&&(o[1]-dist)<=maxDeckY;let best=Infinity,y=b.min[1];for(const m of engine.stage){if(m.hidden)continue;const hit=raycastMeshBVH(m,o,d,best,filter);if(hit&&hit.distance<best){best=hit.distance;y=o[1]-hit.distance;}}return y;}
 function addPerson(type,opt={}){if(!castNames[type]||seq.people.length>=16)return;checkpoint();const b=engine.stageBounds,i=seq.people.length,x=b.center[0]+((i%4)-1.5)*1.3,z=b.center[2]+Math.min(1,engine.size.depth*.12);const d={id:uid('person'),type,name:castNames[type]+' '+(i+1),pos:[x,deckY(x,z),z],yaw:0,height:1.75,color:['#33677f','#803f65','#c59042','#345852'][i%4],skin:'#c49474',animate:true,phase:i*.8,count:24,columns:12,spacing:.65,...opt};if(type==='audience'&&!opt.pos){d.pos=[b.center[0],b.min[1],b.max[2]+2];d.yaw=180;d.animate=false;}seq.people.push(d);rebuildCast();renderCastManager();return d;}
 function frameCast(){const pts=[];for(const m of engine.stage)pts.push(m.bounds.min,m.bounds.max);for(const p of seq.people){if(p.hidden)continue;const w=p.type==='audience'?(p.columns||12)*(p.spacing||.65):1;pts.push([p.pos[0]-w/2,p.pos[1],p.pos[2]-1],[p.pos[0]+w/2,p.pos[1]+p.height,p.pos[2]+Math.ceil((p.count||1)/(p.columns||12))]);}const b=M.bbox(pts.flat());engine.camera.target=b.center;engine.camera.distance=Math.max(b.size[0]*1.2,b.size[1]*1.7,b.size[2]*1.5);engine.camera.pitch=.25;engine.camera.yaw=.10;engine._fitOnResize=false;}
 function exportCastGLB(){const meshes=[],materials=[],accessors=[],views=[],nodes=[],chunks=[];let offset=0;function append(a,type,size){const view=views.length;views.push({buffer:0,byteOffset:offset,byteLength:a.byteLength});chunks.push(new Uint8Array(a.buffer,a.byteOffset,a.byteLength));offset+=a.byteLength;const acc={bufferView:view,componentType:5126,count:a.length/size,type};if(type==='VEC3'){const b=M.bbox(a);acc.min=b.min;acc.max=b.max;}accessors.push(acc);return accessors.length-1;}
@@ -98,7 +98,111 @@ function openCastLibrary(){if(window.STUDIO?.openCastLibrary16)return window.STU
 function detectStageLights(){const a=[];for(const mesh of engine.stage){const s=(mesh.name+' '+(mesh.path||'')).toLowerCase();if(!/(^|[\s_\-\/])(fixture|light|beam|spot|moving|wash|par|blinder|den|lens)([\s_\-\/\d]|$)/.test(s)||/truss|support|bracket/.test(mesh.name.toLowerCase()))continue;const lens=/lens|glass|aperture/.test(s),body=/body|base|yoke|housing/.test(s);let face;try{const hit=frontHit(mesh);face=hit?faceMesh(hit):mesh;}catch(e){face=mesh;}a.push({mesh,point:[...face.bounds.center],score:lens?95:body?45:65,existing:engine.lights.some(l=>l.sourceKey===mesh.sourceKey),group:mesh.name.toLowerCase().replace(/lens|glass|body|base|yoke|housing/g,'part')});}return a.sort((a,b)=>b.score-a.score).filter(c=>!(c.score<60&&a.some(o=>o.score>=90&&(o.group===c.group||Math.hypot(...M.sub(o.point,c.point))<.4))));}
 function addDetectedLights(items){checkpoint();let count=0;for(const c of items){if(engine.lights.length>=16)break;if(engine.lights.some(l=>l.sourceKey===c.mesh.sourceKey))continue;const b=engine.stageBounds,target=[b.center[0],deckY(b.center[0],b.center[2]),b.center[2]+engine.size.depth*.12],pos=[...c.point];if(Math.hypot(...M.sub(pos,target))<.05)target[2]+=.5;engine.lights.push({id:uid('light'),name:c.mesh.name,pos,target,color:'#87dfff',power:4.5,angle:13,enabled:true,sweep:false,speed:.35,phase:count*.3,fx:'steady',boost:1,fxDepth:.55,fxSpeed:2,origin:'model',sourceKey:c.mesh.sourceKey,sourceMeshName:c.mesh.name,sourcePoint:M.point(engine.coordinates.inverse,pos),fixtureSize:[.3,.38,.3],aperture:.025});count++;}engine.rebuildFixtures();engine.settings.beam=Math.max(.5,engine.settings.beam);state.selectedLight=engine.lights.at(-1)?.id;state.step='lighting';invalidateSeq();renderUI();toast('Đã thêm '+count+' nguồn sáng. Duyệt điểm chiếu trước khi chạy show.');return count;}
 function openLightDetection(){const rows=detectStageLights();dialog('Nhận diện đèn trên sân khấu',`<div class="pro-banner"><div><span class="eyebrow">FIXTURE / LENS DETECTION</span><h3>Tìm đèn. Giữ đúng vị trí.</h3><p>Dựa vào tên mesh/group và mắt kính. Không phải AI nhận diện mọi model. Không xóa đèn đã gắn.</p></div><b>${engine.lights.length}/16</b></div><div class="pro-table-wrap"><table class="pro-table"><thead><tr><th></th><th>Object</th><th>X / Y / Z (m)</th><th>Cơ sở</th></tr></thead><tbody>${rows.map((c,i)=>`<tr><td><input type="checkbox" data-detect-light="${i}" ${c.existing?'disabled':'checked'}></td><td>${esc(c.mesh.name)}</td><td>${c.point.map(v=>v.toFixed(2)).join(' / ')}</td><td>${c.existing?'Đã gắn':c.score>=90?'Lens / mắt kính':'Cần kiểm tra'}</td></tr>`).join('')||'<tr><td colspan="4">Chưa có tên để nhận diện. Dùng Chọn đèn trên model.</td></tr>'}</tbody></table></div><p class="hint-text">Tối đa 16 nguồn sáng preview. Sau khi thêm: Chọn điểm chiếu để hiệu chỉnh.</p>`,[{label:'Đóng'},{label:'Chọn trực tiếp',action:()=>startSpatialPick('light-existing')},{label:'Thêm đèn đã chọn',primary:true,action:()=>addDetectedLights([...document.querySelectorAll('[data-detect-light]:checked')].map(e=>rows[+e.dataset.detectLight]))}]);$('modal').classList.add('pro-wide');}
-function analyzeTempo(samples,sr){const hz=100,step=Math.max(1,Math.round(sr/hz)),n=Math.min(Math.floor(samples.length/step),30000),energy=new Float32Array(n),onset=new Float32Array(n);let prev=0,total=0;for(let i=0;i<n;i++){let sum=0;for(let k=0;k<step;k++){const x=samples[i*step+k]||0;sum+=x*x;}const e=Math.sqrt(sum/step);energy[i]=e;onset[i]=Math.max(0,e-prev);total+=onset[i]*onset[i];prev=e;}let best={bpm:120,score:0};for(let bpm=70;bpm<=180;bpm++){const lag=Math.round(hz*60/bpm);let dot=0;for(let i=lag;i<n;i++)dot+=onset[i]*onset[i-lag];const score=total?dot/total:0;if(score>best.score)best={bpm,score};}let strength=-1,offset=0;const beat=hz*60/best.bpm;for(let k=0;k<beat;k++){let sum=0;for(let j=k;j<n;j+=beat)sum+=onset[Math.round(j)]||0;if(sum>strength){strength=sum;offset=k/hz;}}const waveform=Array.from({length:512},(_,i)=>{let max=0;for(let j=Math.floor(i*n/512);j<Math.floor((i+1)*n/512);j++)max=Math.max(max,energy[j]);return max;});return {...best,offset,duration:samples.length/sr,waveform};}
+function getPeaksAtThreshold(data,threshold,sampleRate){
+ const peaks=[],minStep=Math.max(1,Math.floor(sampleRate*0.25)),len=data.length;
+ for(let i=1;i<len-1;i++){
+  if(data[i]>threshold&&data[i]>=data[i-1]&&data[i]>=data[i+1]){peaks.push(i);i+=minStep-1;}
+ }
+ return peaks;
+}
+function countIntervalsBetweenNearbyPeaks(peaks,counts=new Map()){
+ for(let i=0,len=peaks.length;i<len;i++){
+  const p0=peaks[i],limit=Math.min(len,i+10);
+  for(let j=i+1;j<limit;j++){
+   const interval=peaks[j]-p0;
+   if(interval>0)counts.set(interval,(counts.get(interval)||0)+1);
+  }
+ }
+ return counts;
+}
+function groupNeighborsByTempo(intervalCounts,sampleRate,minBPM=70,maxBPM=180){
+ const buckets=[];
+ for(const [interval,count] of intervalCounts.entries()){
+  if(interval<=0)continue;
+  let theoreticalTempo=60/(interval/sampleRate);
+  while(theoreticalTempo<minBPM)theoreticalTempo*=2;
+  while(theoreticalTempo>maxBPM)theoreticalTempo/=2;
+  let found=false;
+  for(let i=0;i<buckets.length;i++){
+   const b=buckets[i],diff=Math.abs(b.tempo-theoreticalTempo);
+   if(diff<0.5){
+    b.score+=count*(1-diff*2);
+    b.rawCount+=count;
+    found=true;
+   }
+  }
+  if(!found)buckets.push({tempo:theoreticalTempo,score:count,rawCount:count});
+ }
+ buckets.sort((a,b)=>b.score-a.score);
+ return buckets;
+}
+function analyzeTempo(samples,sr,opts={}){
+ const minBPM=clamp(+opts.minBPM||70,40,220),maxBPM=clamp(+opts.maxBPM||180,minBPM+1,240);
+ if(!samples||!samples.length||!Number.isFinite(sr)||sr<=0)return{bpm:120,score:0,offset:0,duration:0,waveform:new Array(512).fill(0),candidates:[]};
+ const targetHz=200,step=Math.max(1,Math.round(sr/targetHz)),effHz=sr/step,n=Math.min(Math.floor(samples.length/step),Math.ceil(effHz*300));
+ if(n<=4)return{bpm:120,score:0,offset:0,duration:samples.length/sr,waveform:new Array(512).fill(0),candidates:[]};
+ const energy=new Float32Array(n),onset=new Float32Array(n);
+ let prev=0,total=0,maxOnset=0;
+ for(let i=0;i<n;i++){
+  let sum=0;const base=i*step;
+  for(let k=0;k<step;k++){const x=samples[base+k]||0;sum+=x*x;}
+  const e=Math.sqrt(sum/step),d=Math.max(0,e-prev);
+  energy[i]=e;onset[i]=d;total+=d*d;if(d>maxOnset)maxOnset=d;prev=e;
+ }
+ if(total<=1e-12)return{bpm:120,score:0,offset:0,duration:samples.length/sr,waveform:new Array(512).fill(0),candidates:[]};
+ const normOnset=new Float32Array(n),invMax=maxOnset>1e-9?1/maxOnset:0;
+ for(let i=0;i<n;i++)normOnset[i]=onset[i]*invMax;
+ const intervalCounts=new Map();
+ for(const th of [0.75,0.55,0.40,0.28,0.18]){
+  const peaks=getPeaksAtThreshold(normOnset,th,effHz);
+  if(peaks.length>=2)countIntervalsBetweenNearbyPeaks(peaks,intervalCounts);
+ }
+ const peakBuckets=groupNeighborsByTempo(intervalCounts,effHz,minBPM,maxBPM),maxBucketScore=peakBuckets[0]?.score||0;
+ const candidateSet=new Set();
+ for(let bpm=minBPM;bpm<=maxBPM;bpm+=0.5)candidateSet.add(Math.round(bpm*10)/10);
+ for(let i=0;i<Math.min(8,peakBuckets.length);i++)candidateSet.add(clamp(Math.round(peakBuckets[i].tempo*10)/10,minBPM,maxBPM));
+ let best={bpm:120,score:0,combined:-1};
+ const scoredCandidates=[];
+ for(const bpm of candidateSet){
+  const lag=(effHz*60)/bpm,li=Math.floor(lag),frac=lag-li,w0=1-frac,w1=frac;
+  let dot1=0;
+  for(let i=li+1;i<n;i++)dot1+=onset[i]*(w0*onset[i-li]+w1*onset[i-li-1]);
+  const ac1=total>0?dot1/total:0;
+  const lag2=lag*2,li2=Math.floor(lag2),frac2=lag2-li2;
+  let dot2=0;
+  if(li2+1<n){for(let i=li2+1;i<n;i++)dot2+=onset[i]*((1-frac2)*onset[i-li2]+frac2*onset[i-li2-1]);}
+  const ac2=total>0?dot2/total:0;
+  let peakSupport=0;
+  if(maxBucketScore>0){
+   for(let i=0;i<Math.min(12,peakBuckets.length);i++){
+    const diff=Math.abs(peakBuckets[i].tempo-bpm);
+    if(diff<0.8)peakSupport=Math.max(peakSupport,(peakBuckets[i].score/maxBucketScore)*(1-diff/0.8));
+   }
+  }
+  const prior=bpm>=95&&bpm<=145?1.04:1.0;
+  const combined=(ac1*0.68+ac2*0.14+peakSupport*0.18)*prior;
+  const displayScore=clamp(ac1*0.75+peakSupport*0.25,0,1);
+  scoredCandidates.push({bpm,score:displayScore,combined});
+  if(combined>best.combined)best={bpm,score:displayScore,combined};
+ }
+ scoredCandidates.sort((a,b)=>b.combined-a.combined);
+ const snappedBPM=Math.abs(best.bpm-Math.round(best.bpm))<=0.3?Math.round(best.bpm):Math.round(best.bpm*10)/10;
+ best.bpm=clamp(snappedBPM||120,minBPM,maxBPM);
+ best.score=clamp(Number.isFinite(best.score)?best.score:0,0,1);
+ let strength=-1,offset=0;
+ const beat=(effHz*60)/best.bpm,maxPhase=Math.max(1,Math.ceil(beat));
+ for(let k=0;k<maxPhase;k++){
+  let sum=0;
+  for(let j=k;j<n;j+=beat){
+   const idx=Math.floor(j),f=j-idx;
+   sum+=(1-f)*(onset[idx]||0)+f*(onset[idx+1]||0);
+  }
+  if(sum>strength){strength=sum;offset=k/effHz;}
+ }
+ offset=clamp(offset,0,Math.max(0,60/best.bpm-1e-4));
+ const waveform=Array.from({length:512},(_,i)=>{let max=0;for(let j=Math.floor(i*n/512);j<Math.floor((i+1)*n/512);j++)if(energy[j]>max)max=energy[j];return max;});
+ return{bpm:best.bpm,score:best.score,offset,duration:samples.length/sr,waveform,candidates:scoredCandidates.slice(0,5).map(c=>({bpm:c.bpm,score:c.score}))};
+}
 async function analyzeMusic(){const a=live.audioTrack||state.media.find(a=>a.type==='video');if(!a){toast('Thêm nhạc hoặc video có tiếng trước.');openAudioPanel();return;}if(a.file.size>60*1024*1024){toast('Dùng file nhạc dưới 60 MB.');return;}busy(true,'Đang đọc waveform / ước lượng BPM...');try{const ctx=ensureAudioContext(),b=await ctx.decodeAudioData(await a.file.arrayBuffer()),d=analyzeTempo(b.getChannelData(0),b.sampleRate);sq.waveform=d.waveform;sq.waveDuration=d.duration;sq.beatEstimate=d;busy(false);dialog('BPM / beat analysis',`<div class="pro-banner"><div><span class="eyebrow">ONSET AUTOCORRELATION / ESTIMATE</span><h3>${d.bpm} BPM</h3><p>${esc(a.name)} / ${d.duration.toFixed(1)} s</p></div><b>${d.score.toFixed(2)}<small>SCORE</small></b></div><p>Ước lượng có thể nhầm nửa/gấp đôi nhịp. Nghe lại và chỉnh BPM/TAP trước khi chốt.</p><div class="v07-form"><label>BPM<input id="estimatedBPM" type="number" value="${d.bpm}"></label><label>Beat offset (s)<input id="estimatedOffset" type="number" value="${d.offset}" step=".01"></label></div>`,[{label:'Chỉ hiện waveform',action:renderSequence},{label:'Áp dụng',primary:true,action:()=>{checkpoint();seq.bpm=clamp(+$('estimatedBPM').value||120,40,240);seq.offset=clamp(+$('estimatedOffset').value||0,0,state.duration);live.bpm=seq.bpm;renderSequence();}}]);}catch(e){busy(false);toast('Không đọc được audio. Dùng MP3/WAV riêng hoặc TAP BPM. '+e.message,8000);}}
 function drawWave(c,width){c.width=Math.min(6000,Math.max(1,width));c.height=34;const g=c.getContext('2d'),a=sq.waveform;if(!a)return;const max=Math.max(.01,...a);g.strokeStyle='#8ce3c9';g.beginPath();for(let i=0;i<a.length;i++){const x=(live.audioOffset+i/a.length*sq.waveDuration)*seq.pps/width*c.width,y=a[i]/max*14;g.moveTo(x,17-y);g.lineTo(x,17+y);}g.stroke();}
 function demoMusicFile(seconds=12,bpm=120){const sr=22050,n=seconds*sr,b=new ArrayBuffer(44+n*2),v=new DataView(b),s=(o,t)=>[...t].forEach((c,i)=>v.setUint8(o+i,c.charCodeAt(0)));s(0,'RIFF');v.setUint32(4,36+n*2,true);s(8,'WAVE');s(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,sr,true);v.setUint32(28,sr*2,true);v.setUint16(32,2,true);v.setUint16(34,16,true);s(36,'data');v.setUint32(40,n*2,true);const beat=60/bpm;for(let i=0;i<n;i++){const t=i/sr,p=t%beat,kick=Math.sin(2*Math.PI*(50*p+1.5*(1-Math.exp(-p/.05))))*Math.exp(-p*25)*.5,pad=(Math.sin(t*2*Math.PI*220)+Math.sin(t*2*Math.PI*277.18)+Math.sin(t*2*Math.PI*329.63))*.028,hat=Math.sin(t*2*Math.PI*5700)*Math.exp(-(t%(beat/2))*90)*.045,fade=Math.min(1,t*4,(seconds-t)*4);v.setInt16(44+i*2,clamp((kick+pad+hat)*fade,-1,1)*26000,true);}return new File([b],'ALPHA_Original_Demo_120BPM.wav',{type:'audio/wav'});}
@@ -264,9 +368,7 @@ function selectObject8(kind,id){director.selection={kind,id};director.panel='obj
  if(kind==='mesh'){const m=engine.stage.find(m=>m.sourceKey===id||m.id===id);state.selectedMesh=m?.id||null;engine.selected=engine.surfaces.find(s=>dirSourceMesh(s)===m)?.id||null;}
  if(kind==='light'||kind==='target'){state.selectedLight=id;state.step='lighting';}
  renderUI();return director.selection;}
-function rayMesh8(ray,m,mat=null){const inv=mat?M.inverse(mat):null,o=inv?M.point(inv,ray.o):ray.o,d=inv?M.norm(M.vector(inv,ray.d)):ray.d;if(!M.rayBox(o,d,m.bounds))return null;let nearest=Infinity,point=null;
- for(let i=0;i<m.p.length;i+=9){const p=m.p,t=M.rayTri(o,d,[p[i],p[i+1],p[i+2]],[p[i+3],p[i+4],p[i+5]],[p[i+6],p[i+7],p[i+8]]);if(t!==null&&t<nearest){nearest=t;point=M.add(o,M.mul(d,t));}}
- if(!point)return null;const world=mat?M.point(mat,point):point;return {distance:Math.hypot(...M.sub(world,ray.o)),point:world};}
+function rayMesh8(ray,m,mat=null){const inv=mat?M.inverse(mat):null,o=inv?M.point(inv,ray.o):ray.o,d=inv?M.norm(M.vector(inv,ray.d)):ray.d;const hit=raycastMeshBVH(m,o,d);if(!hit)return null;const world=mat?M.point(mat,hit.point):hit.point;return {distance:Math.hypot(...M.sub(world,ray.o)),point:world};}
 function pickDirector8(x,y){const ray=dirRay(x,y),stage=engine.pick(x,y,false);let found=stage?{kind:'mesh',id:stage.mesh.sourceKey,distance:stage.distance,point:stage.point}:null;
  for(const p of seq.people){if(p.hidden||!actPersonVisible8(p,state.time)||!M.rayBox(ray.o,ray.d,personBounds8(p)))continue;
   for(const node of castCache.get(p.id)||[])for(const m of node.meshes){const hit=rayMesh8(ray,m,castMatrix(p,node,state.time));if(hit&&(!found||hit.distance<found.distance))found={...hit,kind:p.actId?'act':'person',id:p.actId||p.id};}}

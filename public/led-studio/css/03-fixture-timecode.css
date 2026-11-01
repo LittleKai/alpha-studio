@@ -186,12 +186,8 @@ body.pro127-dock-open.seq-open{--seq-height:clamp(120px,18vh,180px)}
   color: var(--text-primary) !important;
   border-color: var(--border-primary) !important;
 }
-[data-theme="light"] #pro127bar *,
-[data-theme="light"] #pro127dock *,
-[data-theme="light"] #l132Panel *,
-[data-theme="light"] #tc134Panel *,
-[data-theme="light"] .tc134-settings-card * {
-  color: var(--text-primary);
+[data-theme="light"] :where(#pro127bar, #pro127dock, #l132Panel, #tc134Panel, .tc134-settings-card) :not(button *) {
+  color: var(--text-primary) !important;
 }
 [data-theme="light"] #pro126bar button,
 [data-theme="light"] .pro126-panel input,
@@ -230,16 +226,41 @@ body.pro127-dock-open.seq-open{--seq-height:clamp(120px,18vh,180px)}
 [data-theme="light"] .tc134-cue-item,
 [data-theme="light"] .tc134-bottom,
 [data-theme="light"] .tc134-settings-info {
-  background: rgba(255, 255, 255, 0.90) !important;
+  background: #ffffff !important;
   border-color: var(--border-secondary) !important;
   color: var(--text-primary) !important;
 }
+[data-theme="light"] #pro127dock button:hover:not(:disabled),
+[data-theme="light"] #tc134Panel button:hover:not(:disabled),
+[data-theme="light"] #tc134Settings button:hover:not(:disabled) {
+  background: #e0f2fe !important;
+  border-color: #0284c7 !important;
+  color: #0c4a6e !important;
+}
 [data-theme="light"] #pro127bar button.selected,
 [data-theme="light"] #pro127dock button.active,
+[data-theme="light"] #pro127dock button.primary,
 [data-theme="light"] #tc134Panel button.active {
   background: #e0f2fe !important;
   border-color: #0284c7 !important;
-  color: #0f172a !important;
+  color: #0c4a6e !important;
+  font-weight: 700 !important;
+}
+[data-theme="light"] .tc134-scroll {
+  background: #e2e8f0 !important;
+}
+[data-theme="light"] .tc134-row {
+  border-bottom-color: #cbd5e1 !important;
+  background-image: none !important;
+}
+[data-theme="light"] .tc134-row:nth-child(even) {
+  background-color: #f8fafc !important;
+}
+[data-theme="light"] .tc134-clip,
+[data-theme="light"] .tc134-clip * {
+  color: #ffffff !important;
+  background-color: #0369a1 !important;
+  border-color: #0284c7 !important;
 }
 [data-theme="light"] #pro127dock small,
 [data-theme="light"] #pro127dock p,

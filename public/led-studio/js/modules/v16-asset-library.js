@@ -68,7 +68,7 @@
    castPreviewKind:'role', // cast dialog sidebar shows a 'role' (castPreviewType), 'act' (castPreviewAct) or 'qex' (castPreviewQex)
    castPreviewAct:'',
    castPreviewQex:'',
-   wind:{speed:15,cd:1.4,baseDepth:1.2,selfKgPerM2:38}
+   wind:{speed:15,cd:1.4,baseDepth:1.2,selfKgPerM2:38,mu:0.4}
   };
   S.stageAssets16=A;
 
@@ -294,42 +294,68 @@
    toast('Đã xóa '+removed.name+'.');
   }
 
-  // Track 1B: 28° Crease Edge computation (ported from 5.Design_mcp viewer_template.html)
+  // Track 1B: 28° Crease Edge computation (scale-invariant & back-face-safe, ported from 5.Design_mcp glb_viewer_runtime.js)
   function computeCreaseEdges(mesh,creaseDeg=28){
    const cached=creaseCache.get(mesh);
-   if(cached && cached.p===mesh.p && cached.deg===creaseDeg)return cached.segments;
+   if(cached && cached.p===mesh.p && cached.bounds===mesh.bounds && cached.deg===creaseDeg)return cached.segments;
    const p=mesh.p, triCount=(p.length/9)|0;
    if(triCount>25000)return [];
-   const cosThresh=Math.cos(creaseDeg*Math.PI/180), eps=1000;
-   const vKey=(x,y,z)=>Math.round(x*eps)+','+Math.round(y*eps)+','+Math.round(z*eps);
+   const cosThresh=Math.cos(creaseDeg*Math.PI/180);
+   const b=mesh.bounds||M.bbox(p);
+   const diag=Math.hypot((b.max?.[0]??0)-(b.min?.[0]??0),(b.max?.[1]??0)-(b.min?.[1]??0),(b.max?.[2]??0)-(b.min?.[2]??0));
+   const invScale=1e5/Math.max(diag,1e-6);
+   const vKey=(x,y,z)=>Math.round(x*invScale)+','+Math.round(y*invScale)+','+Math.round(z*invScale);
    const edgeMap=new Map();
    for(let t=0;t<triCount;t++){
     const o=t*9;
     const v=[[p[o],p[o+1],p[o+2]],[p[o+3],p[o+4],p[o+5]],[p[o+6],p[o+7],p[o+8]]];
-    const fn=M.norm(M.cross(M.sub(v[1],v[0]),M.sub(v[2],v[0])));
+    const cr=M.cross(M.sub(v[1],v[0]),M.sub(v[2],v[0]));
+    const nl=Math.hypot(cr[0],cr[1],cr[2]);
+    if(nl<=1e-10)continue;
+    const fn=[cr[0]/nl,cr[1]/nl,cr[2]/nl];
     const keys=[vKey(...v[0]),vKey(...v[1]),vKey(...v[2])];
-    for(const [a,b] of [[0,1],[1,2],[2,0]]){
-     const ka=keys[a],kb=keys[b];
+    for(const [a,bIdx] of [[0,1],[1,2],[2,0]]){
+     const ka=keys[a],kb=keys[bIdx];
      if(ka===kb)continue;
      const ek=ka<kb?ka+'|'+kb:kb+'|'+ka;
      let entry=edgeMap.get(ek);
-     if(!entry){entry={a:v[a],b:v[b],normals:[fn]};edgeMap.set(ek,entry);}
-     else if(entry.normals.length<2)entry.normals.push(fn);
+     if(!entry){entry={a:v[a],b:v[bIdx],normals:[fn]};edgeMap.set(ek,entry);}
+     else if(entry.normals.length<6)entry.normals.push(fn);
     }
    }
    const segments=[];
    for(const e of edgeMap.values()){
-    if(e.normals.length===1 || M.dot(e.normals[0],e.normals[1])<cosThresh){
+    if(e.normals.length===1){
      segments.push([e.a,e.b]);
+    }else if(e.normals.length<=6){
+     const hasTwin=e.normals.some((u,i)=>e.normals.some((v,j)=>i!==j && M.dot(u,v)<=-0.9985));
+     const sides=[];
+     for(let fn of e.normals){
+      if(hasTwin && sides.length && M.dot(sides[0],fn)<0)fn=[-fn[0],-fn[1],-fn[2]];
+      if(!sides.some(u=>Math.abs(M.dot(u,fn))>=0.9985))sides.push(fn);
+     }
+     if(e.normals.length===2 && hasTwin && sides.length===1){
+      segments.push([e.a,e.b]);
+     }else if(sides.length>=2 && sides.length<=4){
+      let isCrease=false;
+      for(let i=0;i<sides.length && !isCrease;i++){
+       for(let j=i+1;j<sides.length;j++){
+        const dot=M.dot(sides[i],sides[j]);
+        if(dot<=cosThresh && dot>-0.9985){isCrease=true;break;}
+       }
+      }
+      if(isCrease)segments.push([e.a,e.b]);
+     }
     }
    }
-   creaseCache.set(mesh,{p:mesh.p,deg:creaseDeg,segments});
+   creaseCache.set(mesh,{p:mesh.p,bounds:mesh.bounds,deg:creaseDeg,segments});
    return segments;
   }
 
-  // Track 4: Wind Load & Overturning Safety Factor (TCVN 2737:2023, ported from 5.Design_mcp stage_frame.py)
-  function computeWindSafety(){
-   const V=clamp16(A.wind.speed,0,60), cd=clamp16(A.wind.cd,.4,2.2), baseDepth=clamp16(A.wind.baseDepth,.3,8), selfKg=clamp16(A.wind.selfKgPerM2,10,150);
+  // Track 4: Wind Load, Overturning & Sliding Safety Factor (TCVN 2737:2023, ported from 5.Design_mcp stage_frame.py)
+  function computeWindSafety(overrides=null){
+   const wCfg=overrides?{...A.wind,...overrides}:A.wind;
+   const V=clamp16(wCfg.speed,0,60), cd=clamp16(wCfg.cd,.4,2.2), baseDepth=clamp16(wCfg.baseDepth,.3,8), selfKg=clamp16(wCfg.selfKgPerM2,10,150), mu=clamp16(wCfg.mu??0.4,0.1,1.2);
    const q=0.613*V*V; // Dynamic wind pressure N/m²
    const surfaces=engine.surfaces.filter(s=>s.enabled!==false);
    let totalArea=0, totalForce=0, overturnMoment=0, selfMassKg=0;
@@ -352,14 +378,20 @@
     totalArea=area; totalForce=force; overturnMoment=moment; selfMassKg=mass;
     rows.push({name:'Màn LED tiêu chuẩn 12×4m (giả định)',w:12,h:4,area,centerY,force,moment});
    }
-   const g=9.81, leverArm=baseDepth*.5;
+   const g=9.81, leverArm=baseDepth*.5, targetSF=1.50;
    const selfRestoreMoment=selfMassKg*g*leverArm;
-   const targetSF=1.50;
    const requiredRestoreMoment=overturnMoment*targetSF;
    const deficitMoment=Math.max(0,requiredRestoreMoment-selfRestoreMoment);
-   const ballastKg=leverArm>0?Math.ceil(deficitMoment/(g*leverArm)):0;
-   const currentSF=overturnMoment>0?(selfRestoreMoment/overturnMoment):99.9;
-   return {V,cd,baseDepth,selfKg,q,totalArea,totalForce,overturnMoment,selfMassKg,selfRestoreMoment,currentSF,ballastKg,rows};
+   const overturnBallastKg=leverArm>0?Math.ceil(deficitMoment/(g*leverArm)):0;
+   const overturnSF=overturnMoment>0?(selfRestoreMoment/overturnMoment):99.9;
+   const frictionForce=mu*selfMassKg*g;
+   const requiredFrictionForce=totalForce*targetSF;
+   const deficitForce=Math.max(0,requiredFrictionForce-frictionForce);
+   const slidingBallastKg=mu>0?Math.ceil(deficitForce/(mu*g)):0;
+   const slidingSF=totalForce>0?(frictionForce/totalForce):99.9;
+   const ballastKg=Math.max(overturnBallastKg,slidingBallastKg);
+   const currentSF=Math.min(overturnSF,slidingSF);
+   return {V,cd,baseDepth,selfKg,mu,q,totalArea,totalForce,overturnMoment,selfMassKg,selfRestoreMoment,overturnSF,slidingSF,currentSF,overturnBallastKg,slidingBallastKg,ballastKg,rows};
   }
 
   // Track 5: Keyless CC0 Online Asset Search (Poly Haven + Wikimedia Commons + Google Drive Design_MCP GLB Pack)
@@ -1809,18 +1841,19 @@
       <div class="v16-note">${measureInfo}</div>
      </section>
      <section class="v16-section">
-      <h4>TẢI TRỌNG GIÓ & ĐỐI TRỌNG CHỐNG LẬT (TCVN 2737:2023)</h4>
+      <h4>TẢI TRỌNG GIÓ, CHỐNG LẬT & CHỐNG TRƯỢT (TCVN 2737:2023)</h4>
       <div class="v16-grid">
        <label>Vận tốc gió V (m/s)<input data-w16="speed" type="number" min="0" max="50" step="1" value="${wReport.V}"></label>
        <label>Hệ số cản Cd<input data-w16="cd" type="number" min="0.5" max="2.0" step="0.05" value="${wReport.cd}"></label>
        <label>Sâu chân đế B (m)<input data-w16="baseDepth" type="number" min="0.4" max="6" step="0.1" value="${wReport.baseDepth}"></label>
        <label>Tự trọng (kg/m²)<input data-w16="selfKgPerM2" type="number" min="15" max="120" step="1" value="${wReport.selfKg}"></label>
+       <label>Hệ số ma sát μ<input data-w16="mu" type="number" min="0.1" max="1.2" step="0.05" value="${wReport.mu}"></label>
       </div>
       <div class="v16-windbox ${sfOk?'ok':'warn'}">
        <div>Tổng diện tích LED đón gió: <b>${wReport.totalArea.toFixed(1)} m²</b> · Áp lực q: <b>${wReport.q.toFixed(0)} N/m²</b></div>
        <div>Lực đẩy ngang F: <b>${(wReport.totalForce/1000).toFixed(2)} kN</b> · Mô-men lật: <b>${(wReport.overturnMoment/1000).toFixed(2)} kN·m</b></div>
-       <div>Hệ số an toàn chống lật (SF): <b>${wReport.currentSF.toFixed(2)}</b> (Chuẩn ≥ 1.50)</div>
-       <div class="v16-ballast">Đối trọng (Ballast) cần dằn thêm: <b>${wReport.ballastKg.toLocaleString('en-US')} kg</b></div>
+       <div>SF tổng hợp: <b>${wReport.currentSF.toFixed(2)}</b> (Lật: <b>${wReport.overturnSF.toFixed(2)}</b> · Trượt: <b>${wReport.slidingSF.toFixed(2)}</b> · Chuẩn ≥ 1.50)</div>
+       <div class="v16-ballast">Đối trọng (Ballast) cần dằn thêm: <b>${wReport.ballastKg.toLocaleString('en-US')} kg</b> (Lật: ${wReport.overturnBallastKg.toLocaleString('en-US')} kg · Trượt: ${wReport.slidingBallastKg.toLocaleString('en-US')} kg)</div>
       </div>
      </section>
     `;

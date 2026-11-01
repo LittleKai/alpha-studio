@@ -276,9 +276,8 @@ body.present-mode #viewport > canvas#fx141Overlay#fx141Overlay#fx141Overlay{disp
   color: var(--text-primary) !important;
   border-color: var(--border-primary) !important;
 }
-[data-theme="light"] #fx141Panel *,
-[data-theme="light"] #recovery142Dialog * {
-  color: var(--text-primary);
+[data-theme="light"] :where(#fx141Panel, #recovery142Dialog) :not(button *) {
+  color: var(--text-primary) !important;
 }
 [data-theme="light"] #show137EditorButton,
 [data-theme="light"] #fx141OpenBtn,
@@ -294,22 +293,52 @@ body.present-mode #viewport > canvas#fx141Overlay#fx141Overlay#fx141Overlay{disp
 [data-theme="light"] #recovery142OpenBtn,
 [data-theme="light"] .recovery142-card,
 [data-theme="light"] #recovery142Status {
-  background: rgba(255, 255, 255, 0.90) !important;
+  background: #ffffff !important;
   border-color: var(--border-secondary) !important;
   color: var(--text-primary) !important;
 }
+[data-theme="light"] #fx141Panel button:hover:not(:disabled) {
+  background: #e0f2fe !important;
+  border-color: #0284c7 !important;
+  color: #0c4a6e !important;
+}
 [data-theme="light"] #fx141Panel button.sel,
 [data-theme="light"] #fx141Panel button.active,
+[data-theme="light"] #fx141Panel button.primary,
 [data-theme="light"] #show137EditorButton.active {
   background: #e0f2fe !important;
   border-color: #0284c7 !important;
-  color: #0f172a !important;
+  color: #0c4a6e !important;
+  font-weight: 700 !important;
 }
 [data-theme="light"] #fx141Panel small,
 [data-theme="light"] #recovery142Dialog small,
 [data-theme="light"] .recovery142-intro,
 [data-theme="light"] .recovery142-note {
   color: var(--text-secondary) !important;
+}
+[data-theme="light"] #v16AssetPanel .v16-live-preview,
+[data-theme="light"] .v16-cast-stage,
+[data-theme="light"] .cast-card.v16-cast-card,
+[data-theme="light"] .v16-example-section,
+[data-theme="light"] .v16-example-chip {
+  background: #ffffff !important;
+  border-color: var(--border-secondary) !important;
+  color: var(--text-primary) !important;
+}
+[data-theme="light"] .v16-example-chip b {
+  color: var(--text-primary) !important;
+}
+[data-theme="light"] .v16-example-chip small {
+  color: var(--text-secondary) !important;
+}
+[data-theme="light"] .cast-card.v16-cast-card:hover,
+[data-theme="light"] .cast-card.v16-cast-card.active,
+[data-theme="light"] .v16-example-chip:hover,
+[data-theme="light"] .v16-cast-layout .v16-example-chip.active,
+[data-theme="light"] .v16-cast-layout .dir-act-grid button.active {
+  background: #e0f2fe !important;
+  border-color: #0284c7 !important;
 }
 
 /* V16.0 Docked Stage Asset Library, CC0 Search, 3D Measure & Wind Safety Panel */

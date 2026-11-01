@@ -64,7 +64,7 @@ StageEngine.prototype.stageDrawMeshes=function(){
  this._ownedBatches=[];this._stageBatches=[];this._batchSourceIds=new Set(this.stage.map(m=>m.id));
  const groups=new Map(),imageIds=new Map();let imageNumber=0;
  for(const m of this.stage){
-  if(m.hidden)continue;const mat=m.material||{};
+  if(m.hidden)continue;if(m._gltfAnim||m.actorMatrix){this._stageBatches.push(m);continue;}const mat=m.material||{};
   if(mat.image&&!imageIds.has(mat.image))imageIds.set(mat.image,++imageNumber);
   const key=JSON.stringify([mat.color||null,mat.emissive||null,mat.alphaCutoff||0,imageIds.get(mat.image)||0]);
   if(!groups.has(key))groups.set(key,[]);groups.get(key).push(m);

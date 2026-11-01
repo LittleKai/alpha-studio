@@ -49,14 +49,7 @@ function meshPlaneGroups(mesh) {
  ledPlaneCache.set(mesh,{positions:mesh.p,groups:result});return result;
 }
 function nearestOnMesh(mesh,origin,dir,maxDistance=Infinity) {
- if(!M.rayBox(origin,dir,mesh.bounds))return null;
- let best=null,p=mesh.p;
- for(let i=0;i<p.length;i+=9){
-  const a=Array.from(p.slice(i,i+3)),b=Array.from(p.slice(i+3,i+6)),c=Array.from(p.slice(i+6,i+9));
-  const d=M.rayTri(origin,dir,a,b,c);
-  if(d!==null&&d>=0&&d<=maxDistance&&(!best||d<best.distance))best={triangle:i/9,distance:d,point:M.add(origin,M.mul(dir,d)),normal:M.norm(M.cross(M.sub(b,a),M.sub(c,a)))};
- }
- return best;
+ return raycastMeshBVH(mesh,origin,dir,maxDistance);
 }
 function frontHit(mesh) {
  if(!mesh?.p?.length)return null;

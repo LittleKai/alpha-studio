@@ -484,18 +484,15 @@ body.laser135-open #laser135Panel{pointer-events:auto!important}
   color: var(--text-primary) !important;
   border-color: var(--border-primary) !important;
 }
-[data-theme="light"] #stageLift124 *,
-[data-theme="light"] #v130Panel *,
-[data-theme="light"] #m131Panel *,
-[data-theme="light"] #laser135Panel *,
-[data-theme="light"] #mount136Panel * {
-  color: var(--text-primary);
+[data-theme="light"] :where(#stageLift124, #v130Panel, #m131Panel, #laser135Panel, #mount136Panel) :not(button *) {
+  color: var(--text-primary) !important;
 }
 [data-theme="light"] #stageLift124 button,
 [data-theme="light"] #stageLift124 input:not([type=range]),
 [data-theme="light"] #stageLift124 select,
 [data-theme="light"] #stageLift124 .lift-h,
 [data-theme="light"] #stageLift124 .lift-info,
+[data-theme="light"] .lift-cue-actions125,
 [data-theme="light"] #v124LiftBtn,
 [data-theme="light"] #v125LiftNav,
 [data-theme="light"] #v130Panel button,
@@ -531,20 +528,33 @@ body.laser135-open #laser135Panel{pointer-events:auto!important}
 [data-theme="light"] #mount136Panel .mount136-footer,
 [data-theme="light"] #mount136Panel .mount139-sliders,
 [data-theme="light"] #mount136Panel .mount139-anchor {
-  background: rgba(255, 255, 255, 0.90) !important;
+  background: #ffffff !important;
   border-color: var(--border-secondary) !important;
   color: var(--text-primary) !important;
 }
+[data-theme="light"] #stageLift124 button:hover:not(:disabled),
+[data-theme="light"] #v130Panel button:hover:not(:disabled),
+[data-theme="light"] #m131Panel button:hover:not(:disabled),
+[data-theme="light"] #laser135Panel button:hover:not(:disabled),
+[data-theme="light"] #mount136Panel button:hover:not(:disabled) {
+  background: #e0f2fe !important;
+  border-color: #0284c7 !important;
+  color: #0c4a6e !important;
+}
 [data-theme="light"] #stageLift124 button.active,
 [data-theme="light"] #stageLift124 button.on,
+[data-theme="light"] #stageLift124 button.primary,
 [data-theme="light"] #v130Panel button.active,
 [data-theme="light"] #m131Panel button.selected,
 [data-theme="light"] #laser135Panel button.selected,
+[data-theme="light"] #laser135Panel button.primary,
 [data-theme="light"] #mount136Panel button.sel,
+[data-theme="light"] #mount136Panel button.primary,
 [data-theme="light"] #mount136Panel .mount140-layer-row.selected {
   background: #e0f2fe !important;
   border-color: #0284c7 !important;
-  color: #0f172a !important;
+  color: #0c4a6e !important;
+  font-weight: 700 !important;
 }
 [data-theme="light"] #stageLift124 small,
 [data-theme="light"] #v130Panel small,
