@@ -1136,7 +1136,6 @@
     const msg = event.data;
     if (!msg || typeof msg !== 'object' || msg.type !== 'ALPHA_STUDIO_SYNC') return false;
 
-    if (msg.theme) applyTheme(msg.theme);
     if (msg.locale || msg.lang) {
       applyLocale((msg.locale || msg.lang) === 'en' ? 'en' : 'vi');
     }

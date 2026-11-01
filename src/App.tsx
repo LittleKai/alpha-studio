@@ -340,7 +340,7 @@ const EventLibraryItemPageWrapper: React.FC = () => {
 
 const LedStudioPageWrapper: React.FC = () => {
     return (
-        <Layout>
+        <Layout showNav={false}>
             <Suspense fallback={<LoadingSpinner />}>
                 <LedStudioPage />
             </Suspense>

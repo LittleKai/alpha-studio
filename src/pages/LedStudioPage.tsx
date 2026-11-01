@@ -2,15 +2,12 @@ import { useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useAuth } from '../auth/context';
 import { useTranslation } from '../i18n/context';
-import { useTheme } from '../theme/context';
 import SEOHead from '../components/ui/SEOHead';
-import StudioBackButton from '../components/studio/StudioBackButton';
 import { LED_STUDIO_API_BASE } from '../services/ledStudioService';
 import { buildBreadcrumbJsonLd } from '../utils/seoMeta';
 
 export default function LedStudioPage() {
   const { t, language } = useTranslation();
-  const { theme } = useTheme();
   const { user, token } = useAuth();
   const [searchParams] = useSearchParams();
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
@@ -22,7 +19,6 @@ export default function LedStudioPage() {
     win.postMessage(
       {
         type: 'ALPHA_STUDIO_SYNC',
-        theme,
         locale: language,
         token: token || null,
         user: user ? { id: user._id, name: user.name, role: user.role } : null,
@@ -35,7 +31,7 @@ export default function LedStudioPage() {
 
   useEffect(() => {
     syncWithIframe();
-  }, [theme, language, token, user, shareToken]);
+  }, [language, token, user, shareToken]);
 
   const iframeParams = new URLSearchParams();
   if (shareToken) iframeParams.set('share', shareToken);
@@ -44,7 +40,7 @@ export default function LedStudioPage() {
   const iframeSrc = `/led-studio/index.html${iframeQuery ? `?${iframeQuery}` : ''}`;
 
   return (
-    <div className="flex flex-col h-[calc(100dvh-72px)] bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden">
+    <div className="flex flex-col h-[100dvh] bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden">
       <SEOHead
         title={t('studio.ledStudio.seoTitle')}
         description={t('studio.ledStudio.seoDesc')}
@@ -57,17 +53,6 @@ export default function LedStudioPage() {
           ])
         ]}
       />
-      <div className="flex items-center justify-between px-4 py-2 border-b border-[var(--border-primary)] bg-[var(--bg-secondary)]">
-        <div className="flex items-center gap-3">
-          <StudioBackButton variant="inline" />
-          <span className="text-xs font-bold uppercase tracking-wider text-[var(--accent-primary)]">
-            {t('studio.ledStudio.badge')}
-          </span>
-        </div>
-        <span className="text-xs text-[var(--text-secondary)] font-mono">
-          WebGL2 · Meshopt · ILDA · OFL DMX512
-        </span>
-      </div>
       <iframe
         ref={iframeRef}
         src={iframeSrc}

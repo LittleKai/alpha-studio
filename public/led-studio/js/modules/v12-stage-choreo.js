@@ -16,9 +16,19 @@
  Object.assign(ACT_TYPES,{
   fan_dance:{name:'Múa quạt',kind:'fandancer',count:6,radius:3.4,tag:'FAN DANCE / FLOW'},
   keymoment:{name:'Key moment sân khấu',kind:null,count:0,radius:3.1,tag:'KEY MOMENT / LIFT'},
-  ribbon:{name:'Múa lụa',kind:'fandancer',count:4,radius:3.2,tag:'RIBBON / SWIRL'}
+  ribbon:{name:'Múa lụa',kind:'fandancer',count:4,radius:3.2,tag:'RIBBON / SWIRL'},
+  live_band:{name:'Ban nhạc Live Concert',kind:'singer',roles:['guitarist','violinist','singer','saxophonist','drummer'],count:5,radius:3.6,tag:'LIVE BAND / 5 NGƯỜI'},
+  dj_festival:{name:'DJ EDM Festival Drop',kind:'leddancer',roles:['laserdancer','leddancer','dj','leddancer','laserdancer'],count:5,radius:3.5,tag:'DJ DROP / LED CREW'},
+  opening_gala:{name:'Khai mạc Gala & MC',kind:'dancer',roles:['fandancer','dancer','mc','dancer','fandancer'],count:5,radius:3.2,tag:'GALA / MC & DANCERS'}
  });
- Object.assign(castNames,{fandancer:'Vũ công quạt / lụa'});
+ Object.assign(castNames,{
+  fandancer:'Vũ công quạt / lụa',
+  dj:'DJ / Producer',
+  violinist:'Nghệ sĩ Violin',
+  saxophonist:'Nghệ sĩ Saxophone',
+  mc:'MC / Diễn giả',
+  rapper:'Rapper / Hype'
+ });
 
  // V16.0: fandancer wrist-anchored 9-rib fans & full-body IK handled natively in buildArtHuman11 / pose11
 
@@ -27,7 +37,7 @@
   baseRebuildActCache();
   for(const a of director.acts){
    const c=actCache.get(a.id); if(!c) continue;
-   if(a.type==='fan_dance' || a.type==='ribbon'){
+   if(a.type==='fan_dance' || a.type==='ribbon' || a.type==='opening_gala'){
     c.parts=c.parts||[];
     if(!c.lines){ c.lines=makeLines8(84,a.type==='ribbon'?[1,.5,.92,1]:[1,.72,.38,1]); c.meshes.push(c.lines); }
     if(!c.parts.some(p=>p.role==='liftMain')){
@@ -35,6 +45,19 @@
      lift.material.emissive=[.05,.08,.12];
      c.parts.push({role:'liftMain',mesh:lift});
      c.meshes.push(lift);
+    }
+   }
+   if(a.type==='live_band' || a.type==='dj_festival'){
+    c.parts=c.parts||[];
+    if(!c.parts.some(p=>p.role==='bandRiser')){
+     const riser=boxMesh('Act Stage Riser',[0,.14,-.15],[3.2,.20,1.6],[.12,.16,.22,1]);
+     riser.material.emissive=a.type==='dj_festival'?[.06,.16,.26]:[.08,.10,.16];
+     c.parts.push({role:'bandRiser',mesh:riser});
+     c.meshes.push(riser);
+    }
+    if(a.type==='dj_festival' && !c.lines){
+     c.lines=makeLines8(48,[.22,.88,1,1]);
+     c.meshes.push(c.lines);
     }
    }
    if(a.type==='keymoment'){
@@ -65,14 +88,15 @@
  const baseDrawAct8=drawAct8;
  drawAct8=function(a,t){
   const c=actCache.get(a.id);
-  if(a.type==='fan_dance' || a.type==='ribbon' || a.type==='keymoment'){
+  if(a.type==='fan_dance' || a.type==='ribbon' || a.type==='keymoment' || a.type==='live_band' || a.type==='dj_festival' || a.type==='opening_gala'){
    const st=actState8(a,t); if(!st.visible || !c) return;
    const root=rootActMatrix8(a),time=st.t,phase=time*2*Math.PI*(seq.bpm||120)/60;
    if(c.lines){
     const lines=[];
-    if(a.type==='keymoment'){
-     for(let i=0;i<56;i++){
-      const age=(time*.22+i*.02)%1,ang=i/56*Math.PI*2+phase*.15,r=.35+age*1.25;
+    if(a.type==='keymoment' || a.type==='dj_festival'){
+     const nL=a.type==='dj_festival'?48:56;
+     for(let i=0;i<nL;i++){
+      const age=(time*.22+i*.02)%1,ang=i/nL*Math.PI*2+phase*.15,r=.35+age*1.25;
       lines.push([[Math.cos(ang)*r,.9+age*1.1,.15+Math.sin(ang)*r],[Math.cos(ang+.12)*(r+.2),1.05+age*1.05,.15+Math.sin(ang+.12)*(r+.2)]]);
      }
      lineGeometry8(c.lines,lines,.016);
@@ -97,7 +121,7 @@
  async function createChoreoDemo12(){
   setPlaying(false); demo(); seq.people=[]; director.acts=[]; seq.clips=[]; seq.tracks=[]; stage10.scenes=[]; choreo11.routes=[]; state.duration=48;
   const z=.35,y=deckY(0,z),acts=[];
-  const program=[['fan_dance',0,14,'01 / Mua quat - Mo man'],['led_dance',14,10,'02 / Mua LED - Chuyen canh'],['water_drums',24,8,'03 / Trong nuoc - Crescendo'],['keymoment',32,8,'04 / Key moment - Ban nang'],['laser',40,8,'05 / Laser finale']];
+  const program=[['fan_dance',0,14,'01 / Múa quạt - Mở màn'],['led_dance',14,10,'02 / Múa LED - Chuyển cảnh'],['water_drums',24,8,'03 / Trống nước - Crescendo'],['keymoment',32,8,'04 / Key moment - Bàn nâng'],['laser',40,8,'05 / Laser finale']];
   for(const [type,start,duration,name] of program){
    const a=addAct8(type,{name,pos:[0,y,z]}),c=addActClip8(a.id,{name,start,duration,cycle10:8,loop:true,fade:0});
    acts.push({a,c});
@@ -128,14 +152,14 @@
  function inject12Toolbar(){
   const bar=document.querySelector('.dir-toolbar')||document.querySelector('.topbar')||document.querySelector('.toolbar');
   if(bar && !$('v12Overlay')){
-   const b=document.createElement('button'); b.className='btn small'; b.id='v12Overlay'; b.textContent='Timeline: Gon';
-   b.onclick=()=>{stage12.overlayMode=stage12.overlayMode==='compact'?'full':'compact'; document.body.classList.toggle('v121-compact',stage12.overlayMode==='compact'); b.textContent='Timeline: '+(stage12.overlayMode==='compact'?'Gon':'Day du'); renderSequence();};
+   const b=document.createElement('button'); b.className='btn small'; b.id='v12Overlay'; b.textContent='Timeline: Gọn';
+   b.onclick=()=>{stage12.overlayMode=stage12.overlayMode==='compact'?'full':'compact'; document.body.classList.toggle('v121-compact',stage12.overlayMode==='compact'); b.textContent='Timeline: '+(stage12.overlayMode==='compact'?'Gọn':'Đầy đủ'); renderSequence();};
    bar.appendChild(b);
   }
   const media=document.querySelector('.media-section');
   if(media && !$('v12Demo')){
    const b=document.createElement('button'); b.className='btn small'; b.id='v12Demo'; b.textContent='Demo V12';
-   b.onclick=()=>dialog('Mo demo V12?','<p>Demo uu tien bien dao, them mua quat, key moment ban nang va tranh chong screen / 3D.</p>',[{label:'Huy'},{label:'Mo demo',primary:true,action:()=>createChoreoDemo12().catch(e=>toast(e.message))}]);
+   b.onclick=()=>dialog('Mở demo V12?','<p>Demo ưu tiên biên đạo, thêm múa quạt, key moment bàn nâng và tránh chồng screen / 3D.</p>',[{label:'Hủy'},{label:'Mở demo',primary:true,action:()=>createChoreoDemo12().catch(e=>toast(e.message))}]);
    media.appendChild(b);
   }
  }
@@ -167,7 +191,32 @@
  }
 
  const oldAddAct8 = addAct8;
- addAct8=function(type,opts={}){ const a=oldAddAct8(type,opts); if(a) ensureLift12(a); return a; };
+ const ROLE_COLORS12={
+  singer:'#33677f',guitarist:'#803f65',keyboardist:'#345852',drummer:'#c59042',dancer:'#8a4267',
+  audience:'#34475c',leddancer:'#1c4d66',waterdrummer:'#2e6278',laserdancer:'#2c5d48',fandancer:'#6e3455',
+  dj:'#0e7490',violinist:'#9f1239',saxophonist:'#b45309',mc:'#1d4ed8',rapper:'#7e22ce'
+ };
+ addAct8=function(type,opts={}){
+  const a=oldAddAct8(type,opts);
+  if(a){
+   ensureLift12(a);
+   const spec=ACT_TYPES[type];
+   if(Array.isArray(spec?.roles) && Array.isArray(a.people)){
+    a.people.forEach((pid,idx)=>{
+     const role=spec.roles[idx%spec.roles.length];
+     const p=seq.people.find(x=>x.id===pid);
+     if(p && role && castNames[role]){
+      p.type=role;
+      p.name=(castNames[role]||role)+' '+(idx+1);
+      p.color=ROLE_COLORS12[role]||p.color;
+     }
+    });
+    rebuildCast();
+    rebuildActCache();
+   }
+  }
+  return a;
+ };
  director.acts.forEach(ensureLift12);
 
  const oldBuildHuman=buildHuman;
@@ -207,7 +256,7 @@
        else if(kind==='kneel_rise') r.keys=[stamp(p,0,x,-depth*.25,'walk','smooth','path',.65),stamp(p,.35,x*.9,0,'kneel','hold','front',.45),stamp(p,.58,x*.9,0,'kneel','hold','front',.45),stamp(p,.82,x*.95,depth*.22,'reach','curve','front',.82),stamp(p,1,x,depth*.10,'finale','smooth','front',1)];
        r.enabled=true;
      });
-     choreo11.key=route11()?.keys[0]?.id; dirty11(); renderUI(); toast('Da tao bien dao nang cao.'); return;
+     choreo11.key=route11()?.keys[0]?.id; dirty11(); renderUI(); toast('Đã tạo biên đạo nâng cao.'); return;
    }
    return oldFormation11(kind,{record,span,depth});
  };
@@ -247,13 +296,13 @@
  const perf123={version:'V12.3 / Performer Fix'};
  window.STUDIO.perf123=perf123;
 
- function isStagePerformer123(t){return ['dancer','leddancer','laserdancer','fandancer','singer','guitarist','waterdrummer'].includes(t);}
+ function isStagePerformer123(t){return ['dancer','leddancer','laserdancer','fandancer','singer','guitarist','waterdrummer','dj','violinist','saxophonist','mc','rapper'].includes(t);}
  function typeToAction123(a){
    if(!a) return 'fan_wave';
-   if(a.type==='fan_dance' || a.type==='ribbon') return 'fan_open';
+   if(a.type==='fan_dance' || a.type==='ribbon' || a.type==='opening_gala') return 'fan_open';
    if(a.type==='water_drums') return 'kneel_rise';
-   if(a.type==='laser') return 'cross_flow';
-   if(a.type==='keymoment' || a.type==='reveal' || a.type==='launch') return 'hero_arc';
+   if(a.type==='laser' || a.type==='dj_festival') return 'cross_flow';
+   if(a.type==='keymoment' || a.type==='reveal' || a.type==='launch' || a.type==='live_band') return 'hero_arc';
    return 'fan_wave';
  }
 
@@ -263,18 +312,110 @@
    if(isStagePerformer123(d.type)){
      const head=nodes.find(n=>n.name==='head');
      const body=nodes.find(n=>n.name==='body');
+     const left=nodes.find(n=>n.name==='left');
+     const right=nodes.find(n=>n.name==='right');
+     let inst=nodes.find(n=>n.name==='instrument');
+     const ensureInst=()=>{
+       if(!inst){inst={name:'instrument',pivot:[0,1,0],meshes:[],kind11:'instrument'};nodes.push(inst);}
+       return inst;
+     };
      if(head&&body){
        const skin=[...hexrgb(d.skin||'#c49674'),1], cloth=[...hexrgb(d.color||'#6b4c88'),1];
        const neckFill=rod('Neck filler',[0,1.42,0],[0,1.54,0],.068,.078,skin,10);
        const collar=torso([[1.34,.20,.15],[1.41,.23,.18],[1.48,.17,.14]], [cloth[0]*.8,cloth[1]*.8,cloth[2]*.8,1], 14);
        body.meshes.push(neckFill, collar);
      }
-     const left=nodes.find(n=>n.name==='left'), right=nodes.find(n=>n.name==='right');
      if(body && left && right){
        const fillCol=[...hexrgb(d.color||'#6b4c88'),1];
        body.meshes.push(rod('Shoulder L',[-.10,1.33,.02],[-.18,1.26,.03],.052,.046,fillCol,9));
        body.meshes.push(rod('Shoulder R',[ .10,1.33,.02],[ .18,1.26,.03],.052,.046,fillCol,9));
        body.meshes.push(rod('Waist fill',[0,.98,.02],[0,1.12,.03],.12,.11,fillCol,10));
+     }
+     const steel=[.72,.78,.86,1], dark=[.12,.15,.20,1], brass=[.94,.76,.26,1], wood=[.54,.24,.14,1];
+     if(d.type==='dj'){
+       if(head){
+         head.meshes.push(
+           rod('DJ Headband',[-.105,1.69,0],[.105,1.69,0],.014,.014,[.16,.20,.26,1],8),
+           glow8(ellipsoid('DJ Earcup L',[-.108,1.60,.01],[.028,.042,.036],[.22,.88,.98,1],10,8),'#38bdf8',.9),
+           glow8(ellipsoid('DJ Earcup R',[ .108,1.60,.01],[.028,.042,.036],[.22,.88,.98,1],10,8),'#38bdf8',.9)
+         );
+       }
+       if(body){
+         body.meshes.push(
+           glow8(rod('DJ Chest EQ L',[-.11,1.08,.13],[-.11,1.34,.12],.009,.009,[.22,.92,.98,1],6),'#38bdf8',.85),
+           glow8(rod('DJ Chest EQ R',[ .11,1.08,.13],[ .11,1.34,.12],.009,.009,[.96,.36,.78,1],6),'#f472b6',.85)
+         );
+       }
+       const djInst=ensureInst();
+       djInst.meshes.push(
+         boxMesh('DJ Console Table',[0,.92,.44],[1.06,.07,.44],[.15,.19,.26,1]),
+         glow8(boxMesh('DJ LED Front',[0,.52,.64],[1.02,.76,.03],[.14,.78,.96,1]),'#38bdf8',.65),
+         glow8(ellipsoid('Turntable Platter L',[-.26,.97,.44],[.15,.016,.15],[.22,.90,.98,1],14,6),'#38bdf8',.75),
+         glow8(ellipsoid('Turntable Platter R',[ .26,.97,.44],[.15,.016,.15],[.96,.38,.78,1],14,6),'#f472b6',.75),
+         boxMesh('DJ Mixer Center',[0,.97,.44],[.20,.03,.26],dark),
+         rod('DJ Stand Leg L',[-.44,0,.44],[-.44,.90,.44],.024,.024,steel,8),
+         rod('DJ Stand Leg R',[ .44,0,.44],[ .44,.90,.44],.024,.024,steel,8)
+       );
+     }else if(d.type==='violinist'){
+       if(left){
+         const la=left.anchor11||[-.25,.80,.06];
+         left.meshes.push(
+           ellipsoid('Violin Body',[la[0]+.08,la[1]+.10,la[2]+.16],[.095,.032,.16],wood,14,10),
+           rod('Violin Neck',[la[0]+.08,la[1]+.11,la[2]+.28],[la[0]+.08,la[1]+.14,la[2]+.48],.016,.013,dark,8),
+           rod('Violin Strings',[la[0]+.08,la[1]+.13,la[2]+.10],[la[0]+.08,la[1]+.15,la[2]+.46],.006,.006,[.92,.94,.98,1],6)
+         );
+       }
+       if(right){
+         const ra=right.anchor11||[.25,.80,.06];
+         right.meshes.push(
+           rod('Violin Bow',[ra[0]-.02,ra[1]+.02,ra[2]+.04],[ra[0]-.28,ra[1]+.18,ra[2]+.42],.007,.005,brass,7)
+         );
+       }
+     }else if(d.type==='saxophonist'){
+       if(right){
+         const ra=right.anchor11||[.25,.80,.06];
+         right.meshes.push(
+           rod('Saxophone Neck',[ra[0]-.12,ra[1]+.36,ra[2]+.12],[ra[0]-.06,ra[1]+.24,ra[2]+.24],.014,.018,brass,8),
+           rod('Saxophone Body',[ra[0]-.06,ra[1]+.24,ra[2]+.24],[ra[0]-.04,ra[1]-.12,ra[2]+.30],.022,.038,brass,10),
+           rod('Saxophone Bell',[ra[0]-.04,ra[1]-.12,ra[2]+.30],[ra[0]-.02,ra[1]+.02,ra[2]+.42],.038,.075,brass,12),
+           ellipsoid('Saxophone Bell Rim',[ra[0]-.02,ra[1]+.03,ra[2]+.43],[.078,.078,.024],brass,12,8)
+         );
+       }
+     }else if(d.type==='mc'){
+       if(right){
+         const ra=right.anchor11||[.25,.80,.06];
+         right.meshes.push(
+           rod('MC Wireless Mic',[ra[0]-.02,ra[1]+.01,ra[2]+.06],[ra[0]-.05,ra[1]+.14,ra[2]+.18],.014,.018,dark,8),
+           glow8(ellipsoid('MC Mic Grille',[ra[0]-.06,ra[1]+.16,ra[2]+.20],[.024,.024,.028],[.38,.82,.98,1],10,8),'#38bdf8',.6)
+         );
+       }
+       if(left){
+         const la=left.anchor11||[-.25,.80,.06];
+         left.meshes.push(
+           boxMesh('MC Cue Card',[la[0]+.06,la[1]+.06,la[2]+.14],[.16,.11,.012],[.92,.95,.99,1]),
+           glow8(boxMesh('MC Card Badge',[la[0]+.06,la[1]+.06,la[2]+.148],[.12,.04,.006],[.22,.64,.96,1]),'#38bdf8',.45)
+         );
+       }
+     }else if(d.type==='rapper'){
+       if(head){
+         head.meshes.push(
+           ellipsoid('Snapback Crown',[0,1.69,-.01],[.102,.055,.108],[.15,.17,.22,1],12,8),
+           boxMesh('Snapback Visor',[0,1.67,.09],[.15,.012,.09],brass)
+         );
+       }
+       if(body){
+         body.meshes.push(
+           glow8(rod('Gold Chain L',[-.065,1.42,.10],[0,1.18,.135],.010,.010,brass,7),'#facc15',.5),
+           glow8(rod('Gold Chain R',[ .065,1.42,.10],[0,1.18,.135],.010,.010,brass,7),'#facc15',.5)
+         );
+       }
+       if(right){
+         const ra=right.anchor11||[.25,.80,.06];
+         right.meshes.push(
+           rod('Gold Mic Handle',[ra[0]-.02,ra[1]+.02,ra[2]+.06],[ra[0]-.05,ra[1]+.15,ra[2]+.18],.015,.019,brass,8),
+           glow8(ellipsoid('Gold Mic Capsule',[ra[0]-.06,ra[1]+.17,ra[2]+.20],[.026,.026,.030],brass,10,8),'#facc15',.65)
+         );
+       }
      }
    }
    return nodes.filter(n=>n.meshes?.length);
@@ -295,7 +436,7 @@
    setPlaying(false); demo(); seq.people=[]; director.acts=[]; seq.clips=[]; seq.tracks=[]; stage10.scenes=[]; choreo11.routes=[]; state.duration=50;
    const z=.35,y=deckY(0,z); const plan=[['fan_dance',0,12],['led_dance',12,10],['water_drums',22,8],['keymoment',30,10],['laser',40,10]];
    for(const [type,start,duration] of plan){ const a=addAct8(type,{pos:[0,y,z]}); const c=addActClip8(a.id,{start,duration,cycle10:8,loop:true,fade:0,name:(a.name||type)}); stage10.scenes.push({id:uid('scene'),name:a.name,start,duration,actId:a.id,clipIds:[c.id],color:'#7ba3c8'}); autoBlock123(a.id); }
-   rebuildCast(); rebuildActCache(); renderUI(); toast('Da tao show V12.3 voi bien dao va ban nang.');
+   rebuildCast(); rebuildActCache(); renderUI(); toast('Đã tạo show V12.3 với biên đạo và bàn nâng.');
  }
  window.STUDIO.createShow123=createShow123;
 
