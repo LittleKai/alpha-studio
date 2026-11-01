@@ -1,6 +1,17 @@
 export default {
   common: {
     home: "Trang chủ",
+    loading: "Đang tải...",
+    authRequired: {
+      title: "Cần đăng nhập",
+      message: "Vui lòng đăng nhập để truy cập trang này.",
+      signIn: "Đăng nhập"
+    },
+    notFound: {
+      title: "Không tìm thấy trang",
+      message: "Trang bạn tìm không tồn tại hoặc đã được chuyển đi.",
+      goHome: "Về trang chủ"
+    },
     rating: {
       yours: "Bạn đã chấm {score}/5"
     },

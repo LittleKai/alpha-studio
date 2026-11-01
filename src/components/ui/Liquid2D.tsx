@@ -59,53 +59,86 @@ export const Liquid2D: React.FC<Liquid2DProps> = ({
         blobsRef.current = blobs;
     };
 
+    // Join so a new array with the same colors does not restart the animation.
+    const colorKey = colors.join(',');
+
     useEffect(() => {
         const canvas = canvasRef.current;
         const container = containerRef.current;
         if (!canvas || !container) return;
 
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
+        const context = canvas.getContext('2d');
+        if (!context) return;
+        const ctx: CanvasRenderingContext2D = context;
+
+        const colorList = colorKey.split(',');
+        const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+        // The canvas is blurred by 80px, so a low-resolution backing store looks
+        // identical while cutting per-frame fill work by an order of magnitude.
+        const RENDER_SCALE = 0.35;
+        // Physics is tuned per 60fps tick; drawing is capped at ~30fps.
+        const TICK_MS = 1000 / 60;
+        const FRAME_MS = 1000 / 30;
+        const size = { width: 0, height: 0, left: 0, top: 0 };
+        let lastFrame = 0;
+
+        const stop = () => {
+            if (animationFrameRef.current) {
+                cancelAnimationFrame(animationFrameRef.current);
+                animationFrameRef.current = null;
+            }
+        };
+        const start = () => {
+            if (reduceMotion) {
+                draw();
+                return;
+            }
+            if (!animationFrameRef.current && isVisibleRef.current && !document.hidden) {
+                lastFrame = 0;
+                animationFrameRef.current = requestAnimationFrame(loop);
+            }
+        };
 
         // Observe visibility to save CPU cycles
         const intersectionObserver = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     isVisibleRef.current = entry.isIntersecting;
-                    if (entry.isIntersecting) {
-                        if (!animationFrameRef.current) {
-                            render();
-                        }
-                    } else {
-                        if (animationFrameRef.current) {
-                            cancelAnimationFrame(animationFrameRef.current);
-                            animationFrameRef.current = null;
-                        }
-                    }
+                    if (entry.isIntersecting) start();
+                    else stop();
                 });
             },
             { threshold: 0.01 }
         );
         intersectionObserver.observe(container);
 
+        const handleVisibility = () => (document.hidden ? stop() : start());
+        document.addEventListener('visibilitychange', handleVisibility);
+
         const resizeCanvas = () => {
             const rect = container.getBoundingClientRect();
-            const dpr = Math.min(window.devicePixelRatio || 1, 2);
-            canvas.width = rect.width * dpr;
-            canvas.height = rect.height * dpr;
-            ctx.scale(dpr, dpr);
+            size.width = rect.width;
+            size.height = rect.height;
+            size.left = rect.left;
+            size.top = rect.top;
+            const scale = Math.min(window.devicePixelRatio || 1, 2) * RENDER_SCALE;
+            canvas.width = Math.max(1, Math.round(rect.width * scale));
+            canvas.height = Math.max(1, Math.round(rect.height * scale));
+            ctx.setTransform(scale, 0, 0, scale, 0, 0);
             canvas.style.width = `${rect.width}px`;
             canvas.style.height = `${rect.height}px`;
 
             if (blobsRef.current.length === 0) {
-                initBlobs(rect.width, rect.height, colors);
+                initBlobs(rect.width, rect.height, colorList);
             } else {
-                blobsRef.current.forEach(blob => {
+                blobsRef.current.forEach((blob, i) => {
+                    blob.color = colorList[i % colorList.length];
                     blob.x = Math.min(blob.x, rect.width);
                     blob.y = Math.min(blob.y, rect.height);
                     blob.targetRadius = Math.min(rect.width, rect.height) * (0.25 + Math.random() * 0.15);
                 });
             }
+            if (reduceMotion) draw();
         };
 
         const resizeObserver = new ResizeObserver(() => {
@@ -115,17 +148,15 @@ export const Liquid2D: React.FC<Liquid2DProps> = ({
         resizeCanvas();
 
         const handleMouseMove = (e: MouseEvent) => {
-            const rect = container.getBoundingClientRect();
-            mouseRef.current.targetX = e.clientX - rect.left;
-            mouseRef.current.targetY = e.clientY - rect.top;
+            mouseRef.current.targetX = e.clientX - size.left;
+            mouseRef.current.targetY = e.clientY - size.top;
             mouseRef.current.active = true;
         };
 
         const handleTouchMove = (e: TouchEvent) => {
             if (e.touches.length > 0) {
-                const rect = container.getBoundingClientRect();
-                mouseRef.current.targetX = e.touches[0].clientX - rect.left;
-                mouseRef.current.targetY = e.touches[0].clientY - rect.top;
+                mouseRef.current.targetX = e.touches[0].clientX - size.left;
+                mouseRef.current.targetY = e.touches[0].clientY - size.top;
                 mouseRef.current.active = true;
             }
         };
@@ -134,25 +165,15 @@ export const Liquid2D: React.FC<Liquid2DProps> = ({
             mouseRef.current.active = false;
         };
 
-        window.addEventListener('mousemove', handleMouseMove, { passive: true });
-        window.addEventListener('touchmove', handleTouchMove, { passive: true });
-        container.addEventListener('mouseleave', handleMouseLeave, { passive: true });
-        window.addEventListener('touchend', handleMouseLeave, { passive: true });
+        if (!reduceMotion) {
+            window.addEventListener('mousemove', handleMouseMove, { passive: true });
+            window.addEventListener('touchmove', handleTouchMove, { passive: true });
+            container.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+            window.addEventListener('touchend', handleMouseLeave, { passive: true });
+        }
 
-        const render = () => {
-            if (!isVisibleRef.current) return;
-
-            const rect = container.getBoundingClientRect();
-            const width = rect.width;
-            const height = rect.height;
-
-            if (width === 0 || height === 0) {
-                animationFrameRef.current = requestAnimationFrame(render);
-                return;
-            }
-
-            ctx.clearRect(0, 0, width, height);
-
+        function step() {
+            const { width, height } = size;
             const mouse = mouseRef.current;
             if (mouse.active) {
                 if (mouse.x === -1000) {
@@ -167,8 +188,7 @@ export const Liquid2D: React.FC<Liquid2DProps> = ({
                 mouse.y = -1000;
             }
 
-            const blobs = blobsRef.current;
-            blobs.forEach((blob) => {
+            blobsRef.current.forEach((blob) => {
                 // Natural slow movement
                 blob.x += blob.vx;
                 blob.y += blob.vy;
@@ -187,9 +207,8 @@ export const Liquid2D: React.FC<Liquid2DProps> = ({
                     if (dist < cursorSize && dist > 1) {
                         // Push force proportional to distance
                         const force = (1 - dist / cursorSize) * mouseForce * 0.03;
-                        const angle = Math.atan2(dy, dx);
-                        blob.vx += Math.cos(angle) * force;
-                        blob.vy += Math.sin(angle) * force;
+                        blob.vx += (dx / dist) * force;
+                        blob.vy += (dy / dist) * force;
                     }
                 }
 
@@ -227,39 +246,49 @@ export const Liquid2D: React.FC<Liquid2DProps> = ({
                     blob.y = height + margin - blob.radius;
                     blob.vy = -Math.abs(blob.vy) * 0.7;
                 }
+            });
+        }
 
-                // Draw radial gradient
-                const grad = ctx.createRadialGradient(
-                    blob.x, blob.y, 0,
-                    blob.x, blob.y, blob.radius
-                );
-                
+        function draw() {
+            const { width, height } = size;
+            if (width === 0 || height === 0) return;
+            ctx.clearRect(0, 0, width, height);
+            blobsRef.current.forEach((blob) => {
+                const grad = ctx.createRadialGradient(blob.x, blob.y, 0, blob.x, blob.y, blob.radius);
                 grad.addColorStop(0, blob.color);
                 grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-
                 ctx.fillStyle = grad;
                 ctx.beginPath();
                 ctx.arc(blob.x, blob.y, blob.radius, 0, Math.PI * 2);
                 ctx.fill();
             });
+        }
 
-            animationFrameRef.current = requestAnimationFrame(render);
-        };
+        function loop(now: number) {
+            animationFrameRef.current = requestAnimationFrame(loop);
+            if (!lastFrame) lastFrame = now - FRAME_MS;
+            const elapsed = now - lastFrame;
+            if (elapsed < FRAME_MS - 1) return;
+            lastFrame = now;
+            // Keep motion speed independent of the frame cap; clamp after long pauses.
+            const ticks = Math.min(4, Math.max(1, Math.round(elapsed / TICK_MS)));
+            for (let i = 0; i < ticks; i++) step();
+            draw();
+        }
 
-        render();
+        start();
 
         return () => {
-            if (animationFrameRef.current) {
-                cancelAnimationFrame(animationFrameRef.current);
-            }
+            stop();
             resizeObserver.disconnect();
             intersectionObserver.disconnect();
+            document.removeEventListener('visibilitychange', handleVisibility);
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('touchmove', handleTouchMove);
             container.removeEventListener('mouseleave', handleMouseLeave);
             window.removeEventListener('touchend', handleMouseLeave);
         };
-    }, [colors, mouseForce, cursorSize, speed]);
+    }, [colorKey, mouseForce, cursorSize, speed]);
 
     const defaultStyle: React.CSSProperties = {
         position: 'absolute',
