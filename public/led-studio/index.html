@@ -4,13 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>ALPHA Creative LED Studio V1.1 | Sân khấu 3D · 35 FX · Đạo cụ &amp; Biên đạo</title>
-  <link rel="stylesheet" href="css/01-base.css">
-  <link rel="stylesheet" href="css/02-workspace-addons.css">
-  <link rel="stylesheet" href="css/03-fixture-timecode.css">
-  <link rel="stylesheet" href="css/04-show-fx.css">
-  <link rel="stylesheet" href="css/05-led-matrix.css">
+  <script>try{if(localStorage.getItem('ledstudio-theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}</script>
+  <link rel="stylesheet" href="css/01-base.css?v=76d276dd85">
+  <link rel="stylesheet" href="css/02-workspace-addons.css?v=bf3f2ad065">
+  <link rel="stylesheet" href="css/03-fixture-timecode.css?v=840f35f10d">
+  <link rel="stylesheet" href="css/04-show-fx.css?v=1c4dbc4e21">
+  <link rel="stylesheet" href="css/05-led-matrix.css?v=088114ab1a">
+  <link rel="stylesheet" href="css/06-mobile-lite.css?v=296c785193">
 </head>
 <body class="v16-compact-ui v16-blender-ui v121-compact">
+<div id="bootSplash" class="boot-splash" role="status" aria-live="polite"><div class="boot-card"><div class="brandmark"><svg viewBox="0 0 32 32"><path d="M4 24 15 6l11 18H4Zm6-5h11M16 10v14" fill="none" stroke="currentColor" stroke-width="2"/></svg></div><strong>ALPHA <span>LED STUDIO</span></strong><div class="boot-bar"><i></i></div><small>Đang khởi động sân khấu 3D… / Loading 3D stage…</small></div></div>
 <div id="app">
 <header class="topbar">
  <div class="brand"><div class="brandmark"><svg viewBox="0 0 32 32"><path d="M4 24 15 6l11 18H4Zm6-5h11M16 10v14" fill="none" stroke="currentColor" stroke-width="2"/></svg></div><div><strong>ALPHA <span>LED STUDIO</span></strong><small>V1.1 / SÂN KHẤU 3D · 35 FX · DMX &amp; ILDA</small></div></div>
@@ -55,32 +58,34 @@
 <input id="musicInput" type="file" accept="audio/*,.mp3,.wav,.ogg,.m4a,.flac" hidden><input id="atlasMediaInput" type="file" accept="video/*,image/*" hidden>
 
   <!-- Core Data & Engine -->
-  <script src="js/data/demo-video.js"></script>
-  <script src="js/data/meshopt-decoder.js"></script>
-  <script src="js/data/ofl-fixtures.js"></script>
-  <script src="js/core/01-math-webgl.js"></script>
-  <script src="js/core/02-mapping-spatial.js"></script>
-  <script src="js/core/03-live-atlas-audio.js"></script>
-  <script src="js/core/04-sequencer-director.js"></script>
-  <script src="js/core/05-lighting-desk.js"></script>
-  <script src="js/core/06-rundown-choreo-boot.js"></script>
-  <script src="js/modules/v12-stage-choreo.js"></script>
-  <script src="js/modules/v12-fixture-desk.js"></script>
-  <script src="js/modules/v13-manual-takes.js"></script>
-  <script src="js/modules/v13-timecode-laser-mount.js"></script>
-  <script src="js/modules/v14-fx-timecode.js"></script>
-  <script src="js/modules/matrix/matrix143-geometry.js"></script>
-  <script src="js/modules/matrix/matrix149-hierarchy.js"></script>
-  <script src="js/modules/matrix/matrix150-quick.js"></script>
-  <script src="js/modules/matrix/matrix143-effects.js"></script>
-  <script src="js/modules/matrix/matrix143.js"></script>
-  <script src="js/modules/matrix/matrix144-brightness.js"></script>
-  <script src="js/modules/matrix/matrix146-controls.js"></script>
-  <script src="js/modules/matrix/matrix151-controls.js"></script>
-  <script src="js/modules/matrix/matrix143-render.js"></script>
-  <script src="js/modules/v16-asset-library.js"></script>
-  <script src="js/modules/export142.js"></script>
-  <script src="js/modules/recovery142.js"></script>
-  <script src="js/modules/v16-cloud-bridge.js"></script>
+  <script src="js/data/meshopt-decoder.js?v=2d182f0f8f"></script>
+  <script src="js/data/ofl-fixtures.js?v=9c47e16a39"></script>
+  <script src="js/core/01-math-webgl.js?v=890bb5a4be"></script>
+  <script src="js/core/02-mapping-spatial.js?v=619cb01034"></script>
+  <script src="js/core/03-live-atlas-audio.js?v=7cf07da389"></script>
+  <script src="js/core/04-sequencer-director.js?v=65b7fa905c"></script>
+  <script src="js/core/05-lighting-desk.js?v=f27502131c"></script>
+  <script src="js/core/06-rundown-choreo-boot.js?v=406d5e1676"></script>
+  <script src="js/modules/v12-stage-choreo.js?v=90e0801116"></script>
+  <script src="js/modules/v12-fixture-desk.js?v=fbe7662ac4"></script>
+  <script src="js/modules/v13-manual-takes.js?v=8c2fc15565"></script>
+  <script src="js/modules/v13-timecode-laser-mount.js?v=cc6d82d481"></script>
+  <script src="js/modules/v14-fx-timecode.js?v=4ee64fb5ae"></script>
+  <script src="js/modules/matrix/matrix143-geometry.js?v=9def6fb3ee"></script>
+  <script src="js/modules/matrix/matrix149-hierarchy.js?v=8412540c79"></script>
+  <script src="js/modules/matrix/matrix150-quick.js?v=a14175e46c"></script>
+  <script src="js/modules/matrix/matrix143-effects.js?v=1568ef2a94"></script>
+  <script src="js/modules/matrix/matrix143.js?v=5f8358649e"></script>
+  <script src="js/modules/matrix/matrix144-brightness.js?v=a75d475f3d"></script>
+  <script src="js/modules/matrix/matrix146-controls.js?v=bcefacea05"></script>
+  <script src="js/modules/matrix/matrix151-controls.js?v=41a2bfbc88"></script>
+  <script src="js/modules/matrix/matrix143-render.js?v=2354eb2d03"></script>
+  <script src="js/modules/v16-asset-library.js?v=33691b8161"></script>
+  <script src="js/modules/export142.js?v=f8953d7591"></script>
+  <script src="js/modules/recovery142.js?v=87937a2791"></script>
+  <script src="js/modules/v16-cloud-bridge.js?v=073e9073af"></script>
+  <script src="js/modules/v17-mobile-lite.js?v=9a97a3c9dc"></script>
+  <!-- All modules have run: reveal the app after its first painted frame. -->
+  <script>requestAnimationFrame(()=>{const s=document.getElementById('bootSplash');if(!s)return;s.classList.add('done');setTimeout(()=>s.remove(),350)});</script>
 </body>
 </html>

@@ -53,7 +53,7 @@
     user: null,
     token: null,
     locale: detectInitialLocale(),
-    theme: 'dark',
+    theme: document.documentElement.dataset.theme === 'light' ? 'light' : 'dark',
     apiBaseUrl: normalizeApiBaseUrl(
       initialQueryParams.get('apiBase') || window.__ALPHA_STUDIO_API_URL__ || '/api/led-studio'
     ),
@@ -266,6 +266,11 @@
     const next = theme === 'light' ? 'light' : 'dark';
     state.theme = next;
     document.documentElement.dataset.theme = next;
+    try {
+      window.localStorage?.setItem('ledstudio-theme', next);
+    } catch {
+      // ignore storage errors
+    }
   }
 
   const AUTHORING_SELECTORS = [

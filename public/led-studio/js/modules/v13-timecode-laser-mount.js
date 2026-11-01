@@ -343,7 +343,7 @@ Object.assign(PRESETS,EXTRA_PRESETS);
 const DEFAULT_SETTINGS={quality:'high',lineWidth:1.05,glow:1.05,haze:.70,maxBeams:88,fpsCap:60,audioReactive:true,strobeEnabled:false};
 const L={fixtures:[],selected:null,preset:'blueFan',active:true,previewPlaying:false,previewStart:0,previewAt:0,tab:'fixture',open:false,placing:false,moveMode:false,drag:null,settings:{...DEFAULT_SETTINGS},liveTime:0,flashAt:0,buttonState:'idle',buttonStart:0,buttonHover:false,recording:null,lastFrame:0,lastUI:0,lastTiny:0,seqLast:null,showTime:0,forceLive:false};
 L.ILDA_DEFAULT_PALETTE=ILDA_DEFAULT_PALETTE;L.parseILDA=parseILDA;L.LaserScanner=LaserScanner;L.ildaShows=[];L.activeIldaId=null;L.scanner=null;L.lastScannerTick=0;
-S.laser135=L;
+S.laser135=L;S.keepRendering?.(()=>L.previewPlaying);
 const ildaInput=document.createElement('input');ildaInput.type='file';ildaInput.id='laser135IldaInput';ildaInput.accept='.ild,.ilda';ildaInput.hidden=true;document.body.appendChild(ildaInput);
 async function importIldaFile(file){
  if(!file)return null;
