@@ -108,7 +108,7 @@ StageEngine.prototype.draw=function(mesh,mode=0,s=null,o=1){if(this===engine&&mo
 const oldUniforms=StageEngine.prototype.lightUniforms;
 StageEngine.prototype.lightUniforms=function(t){let r=oldUniforms.call(this,t);if(this===engine){P.liveSnapshots=this.lights.map(l=>({id:l.id,name:l.name,pos:[...l.pos],target:[...(l._target||l.target)],color:l.color,enabled:l.enabled,power:(l.power||0)*(l._mult??1)}));}return r;};
 function insertOverlay(){let d=id('aimOverlay127');if(!d){d=document.createElementNS('http://www.w3.org/2000/svg','svg');d.id='aimOverlay127';d.setAttribute('aria-hidden','true');id('viewport')?.appendChild(d);}return d;}
-function overlayTick(t){requestAnimationFrame(overlayTick);if(!P.open||!P.viewDirection||engine?.view!=='stage'||state.presenting){const d=id('aimOverlay127');if(d)d.replaceChildren();return;}if(t-P.lastOverlay<60)return;P.lastOverlay=t;const svg=insertOverlay(),rect=id('viewport')?.getBoundingClientRect();if(!rect?.width||!rect.height)return;svg.setAttribute('viewBox',`0 0 ${rect.width} ${rect.height}`);
+function overlayTick(t){requestAnimationFrame(overlayTick);if(!P.open||!P.viewDirection||engine?.view!=='stage'||state.presenting){const d=id('aimOverlay127');if(d&&d.childElementCount)d.replaceChildren();return;}if(t-P.lastOverlay<60)return;P.lastOverlay=t;const svg=insertOverlay(),rect=id('viewport')?.getBoundingClientRect();if(!rect?.width||!rect.height)return;svg.setAttribute('viewBox',`0 0 ${rect.width} ${rect.height}`);
  const shots=P.liveSnapshots;const chosen=P.tab==='fixture'?current()?.id:null;let xml='';for(let i=0;i<shots.length;i++){const l=shots[i];if(!l.enabled||l.power<=0)continue;if(chosen&&l.id!==chosen)continue;const a=engine.project(l.pos),b=engine.project(l.target);if(!a||!b||!isFinite(a.x+b.x+a.y+b.y)||a.z>1)continue;let col=String(l.color||'#a1e8ff');if(!/^#[0-9a-f]{6}$/i.test(col))col='#a1e8ff';const x=a.x,y=a.y,xx=b.x,yy=b.y;xml+=`<circle cx="${x}" cy="${y}" r="${chosen?7:4}" fill="none" stroke="${col}" stroke-width="${chosen?2:1}"/><path d="M${x} ${y}L${xx} ${yy}" stroke="${col}" stroke-width="${chosen?2:1}" stroke-dasharray="7 4" opacity="${chosen?.88:.42}"/><circle cx="${xx}" cy="${yy}" r="${chosen?4:2}" fill="${col}"/>${chosen?`<text class="aim-label" x="${x+10}" y="${y-11}">${safe(l.name).slice(0,20)}</text>`:""}`;}
  svg.innerHTML=xml;}
 const packBase=packLiveExtras;
@@ -372,7 +372,7 @@ id('glcanvas')?.addEventListener('pointerup',e=>{if(FV128.pick){e.preventDefault
 let lastHandles128=0;
 function tickHandles128(now){requestAnimationFrame(tickHandles128);if(now-lastHandles128<65)return;lastHandles128=now;
  const svg=buildHandles128();if(!svg)return;
- const show=P.open&&P.tab==='fixture'&&engine?.view==='stage'&&!state.presenting&&!!selected128();svg.style.display=show?'':'none';if(!show)return;
+ const show=P.open&&P.tab==='fixture'&&engine?.view==='stage'&&!state.presenting&&!!selected128(),want=show?'':'none';if(svg.style.display!==want)svg.style.display=want;if(!show)return;
  const l=selected128(),box=id('viewport').getBoundingClientRect();if(!box.width||!box.height)return;
  const point=engine.project(l.pos),aim=engine.project(l._target||l.target);if(!point||!aim||!Number.isFinite(point.x+point.y+aim.x+aim.y))return;
  svg.setAttribute('viewBox',`0 0 ${box.width} ${box.height}`);

@@ -68,8 +68,10 @@
     const split = item.data.indexOf(',');
     if (split < 0 || split > 300 || !/^data:[^,]*;base64$/i.test(item.data.slice(0, split))) fail(label + ': tài nguyên phải được nhúng đầy đủ dạng data URL base64.');
     const data = item.data.slice(split + 1);
-    if (data.length % 4 || !/^[A-Za-z0-9+/]*={0,2}$/.test(data)) fail(label + ': dữ liệu base64 bị hỏng.');
-    const bytes = data.length / 4 * 3 - (data.endsWith('==') ? 2 : data.endsWith('=') ? 1 : 0);
+    const padding = data.endsWith('==') ? 2 : data.endsWith('=') ? 1 : 0;
+    const validB64 = data.length % 4 === 0 && !/[^A-Za-z0-9+/]/.test(data.slice(0, data.length - padding));
+    if (!validB64) fail(label + ': dữ liệu base64 bị hỏng.');
+    const bytes = data.length / 4 * 3 - padding;
     if (bytes > MAX_ASSETS) fail(label + ': tệp quá lớn.');
     return bytes;
   }
@@ -313,12 +315,12 @@
   async function parseFile(file) {
     if (!file || typeof file.text !== 'function') fail('Hãy chọn tệp .ledstudio.');
     if (file.size > MAX_PACKAGE) fail('Gói dự án vượt 450 MB; hãy dùng bản có media nhẹ hơn.');
-    const text = await file.text();
-    if (textSize(text) > MAX_PACKAGE) fail('Gói dự án vượt 450 MB.');
+    const text = await file.text(), size = textSize(text);
+    if (size > MAX_PACKAGE) fail('Gói dự án vượt 450 MB.');
     let data;
     try { data = JSON.parse(text); } catch (_) { fail('Tệp .ledstudio không phải JSON hợp lệ hoặc đã bị cắt ngắn.'); }
     const summary = validate(data);
-    return { data, text, summary, file: { name: file.name || 'project.ledstudio', size: textSize(text), text: async () => text } };
+    return { data, text, summary, file: { name: file.name || 'project.ledstudio', size, text: async () => text } };
   }
   async function packCurrent() {
     const build = S.buildProjectData142 || (typeof buildProjectData142 === 'function' ? buildProjectData142 : null);
@@ -349,7 +351,12 @@
   }
   function releaseOrphans(assets) {
     for (const a of assets) if (!state.media.includes(a)) {
-      a.element?.pause?.(); if (a.element) a.element.src = ''; if (a.url) URL.revokeObjectURL(a.url);
+      const texture = engine.texCache.get(a.element);
+      if (texture) {
+        if (texture.callback != null) a.element.cancelVideoFrameCallback?.(texture.callback);
+        engine.gl.deleteTexture(texture.tex); engine.texCache.delete(a.element);
+      }
+      a.element?.pause?.(); if (a.element) { a.element.src = ''; a.element.remove?.(); } if (a.url) URL.revokeObjectURL(a.url);
     }
   }
   const previousLoad = loadProject;

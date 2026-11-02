@@ -28,9 +28,10 @@ StageEngine.prototype.texture=function(source){
  let t=this.texCache.get(source);
  const video=source instanceof HTMLVideoElement;
  if(!t){
-  t={tex:gl.createTexture(),uploaded:false,lastTime:-1,version:0,uploadedVersion:-1,width:0,height:0};
+  t={tex:gl.createTexture(),uploaded:false,lastTime:-1,version:0,uploadedVersion:-1,width:0,height:0,lastUploadAt:0};
   this.texCache.set(source,t);gl.bindTexture(gl.TEXTURE_2D,t.tex);
   for(const [p,v]of [[gl.TEXTURE_MIN_FILTER,gl.LINEAR],[gl.TEXTURE_MAG_FILTER,gl.LINEAR],[gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE],[gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE]])gl.texParameteri(gl.TEXTURE_2D,p,v);
+  if(video&&typeof attachVideoElement==='function')attachVideoElement(source);
   if(video&&source.requestVideoFrameCallback){
    const tick=()=>{if(this.texCache.get(source)!==t)return;t.version++;t.callback=source.requestVideoFrameCallback(tick);};
    t.callback=source.requestVideoFrameCallback(tick);t.useCallback=true;
@@ -38,14 +39,15 @@ StageEngine.prototype.texture=function(source){
   }
  }
  if(video&&source.readyState<2)return t.uploaded?t.tex:this.white;
- const changed=!t.uploaded||(video&&(t.useCallback?t.version!==t.uploadedVersion:Math.abs(source.currentTime-t.lastTime)>.0001));
+ const now=performance.now(),minGap=video&&source._heavyVideo&&state.playing&&(this.previewScale<1||perfState.fps>0&&perfState.fps<48)?26:0;
+ const changed=!t.uploaded||(video&&now-t.lastUploadAt>=minGap&&(t.useCallback?t.version!==t.uploadedVersion||Math.abs(source.currentTime-t.lastTime)>.045:Math.abs(source.currentTime-t.lastTime)>.0001));
  if(changed){
   try{
    const w=video?source.videoWidth:source.naturalWidth||source.width,h=video?source.videoHeight:source.naturalHeight||source.height;
    gl.bindTexture(gl.TEXTURE_2D,t.tex);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,false);
    if(t.uploaded&&t.width===w&&t.height===h)gl.texSubImage2D(gl.TEXTURE_2D,0,0,0,gl.RGBA,gl.UNSIGNED_BYTE,source);
    else gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,source);
-   t.uploaded=true;t.width=w;t.height=h;t.lastTime=video?source.currentTime:0;t.uploadedVersion=t.version;
+   t.uploaded=true;t.width=w;t.height=h;t.lastTime=video?source.currentTime:0;t.uploadedVersion=t.version;t.lastUploadAt=now;
    if(video)perfState.uploadedFrames++;
   }catch(e){return this.white;}
  }
@@ -240,7 +242,7 @@ async function assignAtlasClip(page,file){
  if(!targets.length)throw Error('C\u1ee5m n\u00e0y kh\u00f4ng c\u00f2n LED. H\u00e3y t\u00ednh l\u1ea1i.');
  // The same asset/decoder is shared by all surfaces in this atlas.
  const a=await addMediaFile(file,{silent:true}),ratioError=Math.abs(a.width/a.height-page.width/page.height)/(page.width/page.height);
- if(ratioError>.005){a.element.pause?.();engine.media.delete(a.id);state.media=state.media.filter(x=>x.id!==a.id);URL.revokeObjectURL(a.url);throw Error('Clip sai t\u1ef7 l\u1ec7. C\u1ee5m c\u1ea7n '+page.width+' x '+page.height+' px; clip l\u00e0 '+a.width+' x '+a.height+'. Mapping c\u0169 ch\u01b0a \u0111\u1ed5i.');}
+ if(ratioError>.005){a.element.pause?.();a.element.src='';a.element.remove?.();engine.media.delete(a.id);state.media=state.media.filter(x=>x.id!==a.id);URL.revokeObjectURL(a.url);throw Error('Clip sai t\u1ef7 l\u1ec7. C\u1ee5m c\u1ea7n '+page.width+' x '+page.height+' px; clip l\u00e0 '+a.width+' x '+a.height+'. Mapping c\u0169 ch\u01b0a \u0111\u1ed5i.');}
  checkpoint();live.transition=null;live.queue=null;
  for(const {s,r}of targets){
   s.nativeResolution={width:r.w,height:r.h,confirmed:!!r.confirmed};s.atlasId=page.id;s.cluster=r.cluster||'Main';s.mappingSpace='local';s.source=a.id;
