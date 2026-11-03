@@ -74,7 +74,7 @@ try{
   const name=$('projectName')?.textContent||'';
   const btn=(id,vi,en,cls='')=>`<button type="button" data-click="${id}" class="${cls}">${L(vi,en)}</button>`;
   return `<p class="ml17-project">${safe(name)}</p>
-  <div class="ml17-grid two">${btn('loadProject','Mở file dự án','Open project file')}${btn('saveProject','Lưu file dự án','Save project file')}${btn('cloud16OpenBtn','Mở Cloud','Open Cloud')}${btn('cloud16SaveBtn','Lưu Cloud','Save Cloud')}${btn('cloud16ShareBtn','Link duyệt 3D','3D review link')}${btn('demoBtn','Sân khấu mẫu','Demo stage')}${btn('undoBtn','Hoàn tác','Undo')}${btn('redoBtn','Làm lại','Redo')}${btn('themeToggleBtn','Sáng / Tối','Light / Dark')}${btn('langToggleBtn16','English','Tiếng Việt')}</div>
+  <div class="ml17-grid two">${btn('loadProject','Mở file dự án','Open project file')}${btn('saveProject','Lưu file dự án','Save project file')}${btn('cloud16OpenBtn','Mở Drive','Open Drive')}${btn('cloud16SaveBtn','Lưu Drive','Save to Drive')}${btn('cloud16ShareBtn','Link duyệt 3D','3D review link')}${btn('demoBtn','Sân khấu mẫu','Demo stage')}${btn('undoBtn','Hoàn tác','Undo')}${btn('redoBtn','Làm lại','Redo')}${btn('themeToggleBtn','Sáng / Tối','Light / Dark')}${btn('langToggleBtn16','English','Tiếng Việt')}</div>
   <div class="ml17-desk"><p>${L('Cần tạo LED, đặt đèn, biên đạo, LED Matrix hoặc xuất file kỹ thuật? Mở dự án trên máy tính.','Need to create LEDs, place lights, choreograph, edit LED Matrix or export technical files? Open the project on a computer.')}</p><button type="button" id="ml17CopyLink">${L('Sao chép link để mở trên máy tính','Copy link to open on a computer')}</button></div>`;
  }
  const RENDER={view:renderView,led:renderLED,lights:renderLights,project:renderProject};

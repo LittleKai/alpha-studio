@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>ALPHA Creative LED Studio V1.1 | Sân khấu 3D · 35 FX · Đạo cụ &amp; Biên đạo</title>
   <script>try{if(localStorage.getItem('ledstudio-theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}</script>
+  <!-- Bản deploy trên web: mở thẳng file tĩnh thì quay về trang React để qua cổng đăng nhập (link ?share= vẫn công khai). file:// / server cục bộ không bị ảnh hưởng. -->
+  <script>if(window.top===window.self&&location.pathname.indexOf('/led-studio/')===0&&!new URLSearchParams(location.search).get('share'))location.replace('/studio/led-studio')</script>
   <link rel="stylesheet" href="css/01-base.css?v=267642b7f8">
   <link rel="stylesheet" href="css/02-workspace-addons.css?v=afd8113adf">
   <link rel="stylesheet" href="css/03-fixture-timecode.css?v=06e18141ca">
@@ -84,9 +86,9 @@
   <script src="js/modules/v16-asset-library.js?v=40fcce14f1"></script>
   <script src="js/modules/export142.js?v=4b44191007"></script>
   <script src="js/modules/recovery142.js?v=1997e35e78"></script>
-  <script src="js/modules/v16-cloud-bridge.js?v=625d658852"></script>
+  <script src="js/modules/v16-cloud-bridge.js?v=761f073ffb"></script>
   <script src="js/modules/atlas-export.js?v=d480f11f2c"></script>
-  <script src="js/modules/v17-mobile-lite.js?v=6e40c55ef3"></script>
+  <script src="js/modules/v17-mobile-lite.js?v=179877d62b"></script>
   <!-- All modules have run: reveal the app after its first painted frame. -->
   <script>requestAnimationFrame(()=>{const s=document.getElementById('bootSplash');if(!s)return;s.classList.add('done');setTimeout(()=>s.remove(),350)});</script>
 </body>

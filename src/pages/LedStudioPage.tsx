@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useAuth } from '../auth/context';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
+import { ProtectedRoute } from '../components/routing';
 import { LED_STUDIO_API_BASE } from '../services/ledStudioService';
 import { buildBreadcrumbJsonLd } from '../utils/seoMeta';
 
@@ -23,7 +24,9 @@ export default function LedStudioPage() {
         token: token || null,
         user: user ? { id: user._id, name: user.name, role: user.role } : null,
         shareToken: shareToken || null,
-        apiBaseUrl: LED_STUDIO_API_BASE
+        apiBaseUrl: LED_STUDIO_API_BASE,
+        // Public OAuth client ID: the tool saves personal projects to the user's Google Drive.
+        googleClientId: import.meta.env.VITE_GOOGLE_CLIENT_ID || null
       },
       window.location.origin
     );
@@ -38,6 +41,16 @@ export default function LedStudioPage() {
   if (LED_STUDIO_API_BASE) iframeParams.set('apiBase', LED_STUDIO_API_BASE);
   const iframeQuery = iframeParams.toString();
   const iframeSrc = `/led-studio/index.html${iframeQuery ? `?${iframeQuery}` : ''}`;
+  const frame = (
+    <iframe
+      ref={iframeRef}
+      src={iframeSrc}
+      title="ALPHA Creative LED Stage Studio"
+      onLoad={syncWithIframe}
+      className="w-full flex-1 border-0 bg-[#07111f]"
+      allow="autoplay; fullscreen; clipboard-read; clipboard-write"
+    />
+  );
 
   return (
     <div className="flex flex-col h-[100dvh] bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden">
@@ -53,14 +66,8 @@ export default function LedStudioPage() {
           ])
         ]}
       />
-      <iframe
-        ref={iframeRef}
-        src={iframeSrc}
-        title="ALPHA Creative LED Stage Studio"
-        onLoad={syncWithIframe}
-        className="w-full flex-1 border-0 bg-[#07111f]"
-        allow="autoplay; fullscreen; clipboard-read; clipboard-write"
-      />
+      {/* Studio requires login; client-review share links (?share=) stay public read-only. */}
+      {shareToken ? frame : <ProtectedRoute>{frame}</ProtectedRoute>}
     </div>
   );
 }

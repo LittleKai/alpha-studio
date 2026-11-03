@@ -61,6 +61,13 @@
     shareToken: null,
     lastSavedProjectId: null,
     currentProjectTitle: null,
+    googleClientId: null,
+    driveToken: null,
+    driveTokenExpiresAt: 0,
+    driveFileId: null,
+    driveModelName: null,
+    driveStage: null,
+    shareStage: null,
     cachedPresets: [],
     reviewGuardsBound: false,
     reviewSharedTitle: null,
@@ -77,8 +84,8 @@
     ['#saveProject', 'Lưu dự án', 'Save Project'],
     ['#presentBtn', '▷ Trình diễn', '▷ Present'],
     ['#recovery142OpenBtn', 'Dự phòng', 'Recovery'],
-    ['#cloud16SaveBtn', '☁ Lưu Cloud', '☁ Save Cloud'],
-    ['#cloud16OpenBtn', '📂 Mở Cloud', '📂 Open Cloud'],
+    ['#cloud16SaveBtn', '☁ Lưu Drive', '☁ Save to Drive'],
+    ['#cloud16OpenBtn', '📂 Mở Drive', '📂 Open Drive'],
     ['#cloud16PresetsBtn', '📦 Kho Preset', '📦 Presets'],
     ['#cloud16ShareBtn', '🔗 Link duyệt 3D', '🔗 3D Review Link'],
     ['.workflow [data-step="stage"] b', 'SÂN KHẤU 3D', '3D STAGE'],
@@ -627,68 +634,190 @@
     return payload;
   }
 
-  async function cloudSaveProject(customTitle = null) {
+  function projectTitleOf(payload, customTitle = null) {
+    return String(
+      customTitle ||
+      state.currentProjectTitle ||
+      payload?.projectName ||
+      // #projectName và model.name là tên file model: bỏ đuôi như saveProject.
+      String(document.getElementById('projectName')?.textContent || payload?.model?.name || '').replace(/\.[a-z0-9]+$/i, '') ||
+      'Untitled Stage'
+    ).trim();
+  }
+
+  function stageSummaryOf(payload) {
+    return {
+      widthM: Number(window.engine?.size?.width || payload?.model?.width || 18),
+      depthM: Number(window.engine?.size?.depth || payload?.model?.depth || 10),
+      heightM: Number(window.engine?.size?.height || payload?.model?.height || 8),
+      ledCount: Number(window.engine?.surfaces?.length ?? payload?.screens?.length ?? 0),
+      lightCount: Number(window.engine?.lights?.length ?? payload?.lights?.length ?? 0),
+      cueCount: Number(window.seq?.clips?.length ?? payload?.live?.show?.clips?.length ?? 0)
+    };
+  }
+
+  // engine.setModel gán mảng stage mới mỗi lần nạp model (mở file, demo, import):
+  // file Drive / bản chụp share chỉ gắn với đúng sân khấu đang mở lúc lưu.
+  const currentStage = () => window.engine?.stage ?? null;
+
+  function setBusy16(on, msg) {
+    if (typeof window.busy === 'function') window.busy(on, msg);
+  }
+
+  // Google Drive cá nhân là nơi lưu dự án. Scope drive.file: app chỉ thấy file do chính nó tạo.
+  const DRIVE_SCOPE = 'https://www.googleapis.com/auth/drive.file';
+  const DRIVE_FILES = 'https://www.googleapis.com/drive/v3/files';
+  const DRIVE_UPLOAD = 'https://www.googleapis.com/upload/drive/v3/files';
+  let gisLoading = null;
+
+  // Chỉ nạp Google Identity khi người dùng bấm nút Drive, không gọi Google lúc khởi động.
+  function loadGoogleIdentity() {
+    if (window.google?.accounts?.oauth2) return Promise.resolve();
+    gisLoading = gisLoading || new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = 'https://accounts.google.com/gsi/client';
+      s.async = true;
+      s.onload = () => resolve();
+      s.onerror = () => {
+        gisLoading = null;
+        reject(new Error(t16('Không tải được Google Sign-In. Kiểm tra kết nối mạng.', 'Could not load Google Sign-In. Check your connection.')));
+      };
+      document.head.appendChild(s);
+    });
+    return gisLoading;
+  }
+
+  async function driveToken() {
+    if (state.driveToken && Date.now() < state.driveTokenExpiresAt - 60000) return state.driveToken;
+    if (!state.googleClientId) {
+      throw new Error(t16('Google Drive chưa được cấu hình (thiếu Google Client ID).', 'Google Drive is not configured (missing Google Client ID).'));
+    }
+    await loadGoogleIdentity();
+    return new Promise((resolve, reject) => {
+      const client = window.google.accounts.oauth2.initTokenClient({
+        client_id: state.googleClientId,
+        scope: DRIVE_SCOPE,
+        callback: (resp) => {
+          if (!resp || resp.error || !resp.access_token) {
+            reject(new Error(resp?.error_description || resp?.error || 'Google authorization failed'));
+            return;
+          }
+          state.driveToken = resp.access_token;
+          state.driveTokenExpiresAt = Date.now() + Number(resp.expires_in || 3600) * 1000;
+          resolve(resp.access_token);
+        },
+        error_callback: (err) => reject(new Error(
+          err?.type === 'popup_failed_to_open'
+            ? t16('Trình duyệt đã chặn cửa sổ Google. Hãy bấm lại nút Drive.', 'The browser blocked the Google window. Click the Drive button again.')
+            : t16('Đã huỷ đăng nhập Google.', 'Google sign-in was cancelled.')
+        ))
+      });
+      client.requestAccessToken({ prompt: '' });
+    });
+  }
+
+  async function driveFetch(url, opts = {}) {
+    const token = await driveToken();
+    const res = await fetch(url, { ...opts, headers: { ...(opts.headers || {}), Authorization: `Bearer ${token}` } });
+    if (res.status === 401) state.driveToken = null;
+    if (!res.ok) {
+      const json = await res.json().catch(() => null);
+      const err = new Error(json?.error?.message || `Google Drive HTTP ${res.status}`);
+      err.status = res.status;
+      throw err;
+    }
+    return res;
+  }
+
+  async function driveSaveProject(customTitle = null) {
     if (state.clientReviewMode) return null;
     try {
+      // Xin quyền trước khi đóng gói: popup Google phải mở ngay trong cú bấm của người dùng.
+      await driveToken();
+      setBusy16(true, t16('Đang đóng gói và tải lên Google Drive...', 'Packing and uploading to Google Drive...'));
       const payload = await serializeCurrentStage();
-      const title = String(
-        customTitle ||
-        state.currentProjectTitle ||
-        payload?.projectName ||
-        document.getElementById('projectName')?.textContent ||
-        payload?.model?.name ||
-        'Untitled Stage'
-      ).trim();
-
-      const isUpdate = Boolean(state.lastSavedProjectId);
-      const endpoint = isUpdate
-        ? apiUrl(`/projects/${encodeURIComponent(state.lastSavedProjectId)}`)
-        : apiUrl('/projects');
-      const method = isUpdate ? 'PUT' : 'POST';
-
-      const res = await fetch(endpoint, {
-        method,
-        headers: authHeaders({ 'Content-Type': 'application/json' }),
-        credentials: 'include',
-        body: JSON.stringify({
-          ...(isUpdate ? { projectId: state.lastSavedProjectId } : {}),
-          title,
-          stageSummary: {
-            widthM: Number(window.engine?.size?.width || payload?.model?.width || 18),
-            depthM: Number(window.engine?.size?.depth || payload?.model?.depth || 10),
-            heightM: Number(window.engine?.size?.height || payload?.model?.height || 8),
-            ledCount: Number(window.engine?.surfaces?.length ?? payload?.screens?.length ?? 0),
-            lightCount: Number(window.engine?.lights?.length ?? payload?.lights?.length ?? 0),
-            cueCount: Number(window.seq?.clips?.length ?? payload?.live?.show?.clips?.length ?? 0)
-          },
-          projectJson: payload
-        })
-      });
-      const json = await res.json();
-      if (!res.ok || !json.success || !json.data?.project?._id) {
-        throw new Error(json?.message || 'Cloud save failed');
-      }
-      state.lastSavedProjectId = json.data.project._id;
-      state.currentProjectTitle = json.data.project.title || title;
-      if (typeof window.toast === 'function') {
-        window.toast(
-          isUpdate
-            ? t16('Đã cập nhật dự án trên Alpha Studio Cloud.', 'Updated project on Alpha Studio Cloud.')
-            : t16('Đã lưu dự án lên Alpha Studio Cloud.', 'Saved project to Alpha Studio Cloud.')
-        );
-      }
-      return json.data;
+      const title = projectTitleOf(payload, customTitle);
+      const summary = stageSummaryOf(payload);
+      // Đổi sang sân khấu (model) khác thì tạo file mới, không ghi đè file Drive của dự án trước.
+      const isUpdate = Boolean(state.driveFileId) && state.driveModelName === payload.model.name && state.driveStage === currentStage();
+      const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+      const init = await driveFetch(
+        isUpdate
+          ? `${DRIVE_UPLOAD}/${encodeURIComponent(state.driveFileId)}?uploadType=resumable`
+          : `${DRIVE_UPLOAD}?uploadType=resumable`,
+        {
+          method: isUpdate ? 'PATCH' : 'POST',
+          headers: { 'Content-Type': 'application/json; charset=UTF-8', 'X-Upload-Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: `${title}.ledstudio`,
+            ...(isUpdate ? {} : { mimeType: 'application/json' }),
+            appProperties: { alphaLedStudio: '1', ledCount: String(summary.ledCount), lightCount: String(summary.lightCount) }
+          })
+        }
+      );
+      const sessionUrl = init.headers.get('Location');
+      if (!sessionUrl) throw new Error(t16('Google Drive không trả về phiên tải lên.', 'Google Drive did not return an upload session.'));
+      const up = await fetch(sessionUrl, { method: 'PUT', body: blob });
+      if (!up.ok) throw new Error(`Google Drive upload HTTP ${up.status}`);
+      const file = await up.json();
+      state.driveFileId = file.id;
+      state.driveModelName = payload.model.name;
+      state.driveStage = currentStage();
+      state.currentProjectTitle = title;
+      window.toast?.(
+        isUpdate
+          ? t16(`Đã cập nhật "${title}" trên Google Drive.`, `Updated "${title}" on Google Drive.`)
+          : t16(`Đã lưu "${title}" lên Google Drive.`, `Saved "${title}" to Google Drive.`)
+      );
+      return file;
     } catch (err) {
-      if (typeof window.toast === 'function') {
-        window.toast(
-          t16('Không lưu được lên Cloud: ', 'Could not save to Cloud: ') +
-          (err?.message || t16('Vui lòng kiểm tra đăng nhập hoặc lưu .ledstudio tại máy.', 'Please sign in or save .ledstudio locally.'))
-        );
-      }
+      if (err?.status === 404) state.driveFileId = null; // file đã bị xoá trên Drive: lần lưu sau tạo file mới
+      window.toast?.(t16('Không lưu được lên Google Drive: ', 'Could not save to Google Drive: ') + (err?.message || err));
       return null;
+    } finally {
+      setBusy16(false);
     }
   }
 
+  async function listDriveProjects() {
+    const params = new URLSearchParams({
+      q: "appProperties has { key='alphaLedStudio' and value='1' } and trashed=false",
+      orderBy: 'modifiedTime desc',
+      pageSize: '50',
+      fields: 'files(id,name,modifiedTime,size,appProperties)'
+    });
+    const res = await driveFetch(`${DRIVE_FILES}?${params}`);
+    const json = await res.json();
+    return Array.isArray(json.files) ? json.files : [];
+  }
+
+  async function loadDriveProject(fileId, fileName = 'drive.ledstudio') {
+    if (state.clientReviewMode || !fileId) return false;
+    try {
+      setBusy16(true, t16('Đang tải dự án từ Google Drive...', 'Downloading project from Google Drive...'));
+      const res = await driveFetch(`${DRIVE_FILES}/${encodeURIComponent(fileId)}?alt=media`);
+      const payload = await res.json();
+      const applyFn = STUDIO.applyProjectData142 || window.applyProjectData142;
+      if (typeof applyFn !== 'function') {
+        throw new Error(t16('Bộ nạp dự án V15.1 chưa sẵn sàng.', 'V15.1 project loader is not ready.'));
+      }
+      await applyFn(payload, fileName);
+      state.driveFileId = fileId;
+      state.driveModelName = payload?.model?.name || null;
+      state.driveStage = currentStage();
+      state.currentProjectTitle = String(fileName).replace(/\.ledstudio$/i, '');
+      state.lastSavedProjectId = null; // bản chụp link duyệt thuộc dự án trước
+      window.toast?.(t16(`Đã mở từ Google Drive: ${state.currentProjectTitle}`, `Opened from Google Drive: ${state.currentProjectTitle}`));
+      return true;
+    } catch (err) {
+      window.toast?.(t16('Lỗi mở dự án Google Drive: ', 'Failed to open Google Drive project: ') + (err?.message || err));
+      return false;
+    } finally {
+      setBusy16(false);
+    }
+  }
+
+  // Dự án cũ đã lưu trên máy chủ Alpha Studio trước khi chuyển sang Drive (chỉ để mở lại).
   async function listCloudProjects() {
     if (state.clientReviewMode) return [];
     const res = await fetch(apiUrl('/projects'), {
@@ -727,7 +856,9 @@
         throw new Error(t16('Bộ nạp dự án V15.1 chưa sẵn sàng.', 'V15.1 project loader is not ready.'));
       }
       await applyFn(projectPayload, `${json.data?.project?.title || 'cloud'}.ledstudio`);
-      state.lastSavedProjectId = json.data?.project?._id || projectId;
+      // Bản lưu cũ chỉ để mở: link duyệt sau đó tạo bản chụp mới, không ghi đè bản cũ.
+      state.lastSavedProjectId = null;
+      state.driveFileId = null; // lần “Lưu Drive” sau tạo file mới cho dự án cũ này
       state.currentProjectTitle = json.data?.project?.title || null;
       if (typeof window.toast === 'function') {
         window.toast(
@@ -746,48 +877,106 @@
   async function openCloudProjectsModal() {
     if (state.clientReviewMode) return;
     try {
-      const projects = await listCloudProjects();
-      if (typeof window.dialog === 'function') {
-        const html = projects.length
-          ? projects.map((p) =>
-              `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;gap:10px">` +
-              `<div><strong>${esc16(p.title)}</strong><br><small>${Number(p.stageSummary?.ledCount || 0)} LED · ${Number(p.stageSummary?.lightCount || 0)} ${t16('Đèn', 'Lights')}</small></div>` +
-              `<button type="button" class="btn small primary" data-cloud16-load="${esc16(p._id)}">${t16('Mở dự án', 'Open')}</button>` +
-              `</div>`
-            ).join('')
-          : `<div class="info-box">${t16('Bạn chưa có dự án nào lưu trên Cloud.', 'You have no saved Cloud projects yet.')}</div>`;
-        window.dialog(
-          t16('Dự án Alpha Studio Cloud của tôi', 'My Alpha Studio Cloud Projects'),
-          html,
-          [{ label: t16('Đóng', 'Close') }]
-        );
-        document.querySelectorAll?.('[data-cloud16-load]')?.forEach((btn) => {
-          btn.onclick = async () => {
-            const id = btn.getAttribute('data-cloud16-load');
-            const modal = document.getElementById('modal');
-            if (modal && typeof modal.close === 'function') modal.close();
-            await loadCloudProject(id);
-          };
-        });
-      }
+      // Drive lỗi (chưa cấu hình / từ chối quyền) vẫn phải mở được bản lưu cũ trên Alpha.
+      let driveErr = null;
+      const files = await listDriveProjects().catch((err) => { driveErr = err; return []; });
+      const legacy = state.token ? await listCloudProjects().catch(() => []) : [];
+      if (driveErr && !legacy.length) throw driveErr;
+      if (typeof window.dialog !== 'function') return;
+      const row = (name, sub, attr, id) =>
+        `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;gap:10px">` +
+        `<div><strong>${esc16(name)}</strong><br><small>${esc16(sub)}</small></div>` +
+        `<button type="button" class="btn small primary" ${attr}="${esc16(id)}">${t16('Mở dự án', 'Open')}</button>` +
+        `</div>`;
+      const lightsLabel = t16('Đèn', 'Lights');
+      const driveHtml = files.length
+        ? files.map((f) => row(
+            f.name,
+            `${Number(f.appProperties?.ledCount || 0)} LED · ${Number(f.appProperties?.lightCount || 0)} ${lightsLabel} · ` +
+              new Date(f.modifiedTime).toLocaleString(state.locale === 'en' ? 'en-GB' : 'vi-VN'),
+            'data-drive16-load',
+            f.id
+          )).join('')
+        : `<div class="info-box">${driveErr
+            ? esc16(t16('Không mở được Google Drive: ', 'Could not open Google Drive: ') + (driveErr.message || driveErr))
+            : t16('Bạn chưa có dự án nào trên Google Drive.', 'You have no projects on Google Drive yet.')}</div>`;
+      const legacyHtml = legacy.length
+        ? `<p><strong>${t16('Bản lưu cũ trên Alpha Studio (chỉ mở lại)', 'Older saves on Alpha Studio (open only)')}</strong></p>` +
+          legacy.map((p) => row(
+            p.title,
+            `${Number(p.stageSummary?.ledCount || 0)} LED · ${Number(p.stageSummary?.lightCount || 0)} ${lightsLabel}`,
+            'data-cloud16-load',
+            p._id
+          )).join('')
+        : '';
+      window.dialog(
+        t16('Dự án Google Drive của tôi', 'My Google Drive projects'),
+        driveHtml + legacyHtml,
+        [{ label: t16('Đóng', 'Close') }]
+      );
+      const closeModal = () => {
+        const modal = document.getElementById('modal');
+        if (modal && typeof modal.close === 'function') modal.close();
+      };
+      document.querySelectorAll?.('[data-drive16-load]')?.forEach((btn) => {
+        btn.onclick = async () => {
+          const id = btn.getAttribute('data-drive16-load');
+          closeModal();
+          await loadDriveProject(id, files.find((f) => f.id === id)?.name);
+        };
+      });
+      document.querySelectorAll?.('[data-cloud16-load]')?.forEach((btn) => {
+        btn.onclick = async () => {
+          closeModal();
+          await loadCloudProject(btn.getAttribute('data-cloud16-load'));
+        };
+      });
     } catch (err) {
-      if (typeof window.toast === 'function') {
-        window.toast(err?.message || t16('Vui lòng đăng nhập để mở danh sách dự án Cloud.', 'Please sign in to view your Cloud projects.'));
-      }
+      window.toast?.(t16('Không mở được danh sách Google Drive: ', 'Could not open Google Drive list: ') + (err?.message || err));
     }
+  }
+
+  // Link duyệt cho khách: tải bản chụp hiện tại thẳng lên B2 qua URL ký sẵn (không đi qua body JSON của API).
+  async function uploadShareSnapshot() {
+    const payload = await serializeCurrentStage();
+    const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+    const isUpdate = Boolean(state.lastSavedProjectId) && state.shareStage === currentStage();
+    const res = await fetch(
+      isUpdate ? apiUrl(`/projects/${encodeURIComponent(state.lastSavedProjectId)}`) : apiUrl('/projects'),
+      {
+        method: isUpdate ? 'PUT' : 'POST',
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
+        credentials: 'include',
+        body: JSON.stringify({
+          title: projectTitleOf(payload),
+          fileSize: blob.size,
+          stageSummary: stageSummaryOf(payload),
+          requestUploadUrl: true
+        })
+      }
+    );
+    if (isUpdate && res.status === 404) {
+      state.lastSavedProjectId = null; // bản chụp cũ đã bị xoá: tạo bản mới
+      return uploadShareSnapshot();
+    }
+    const json = await res.json().catch(() => ({}));
+    const uploadUrl = json?.data?.uploadInfo?.presignedUrl;
+    if (!res.ok || !json.success || !json.data?.project?._id || !uploadUrl) {
+      throw new Error(json?.message || t16('Không tạo được bản chụp sân khấu để chia sẻ.', 'Could not create a stage snapshot for sharing.'));
+    }
+    const put = await fetch(uploadUrl, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: blob });
+    if (!put.ok) throw new Error(t16('Tải bản chụp lên kho lưu trữ thất bại', 'Snapshot upload to storage failed') + ` (HTTP ${put.status})`);
+    state.lastSavedProjectId = json.data.project._id;
+    state.shareStage = currentStage();
+    return state.lastSavedProjectId;
   }
 
   async function shareClientReviewLink(explicitProjectId = null) {
     if (state.clientReviewMode) return null;
     try {
-      let targetId = explicitProjectId || state.lastSavedProjectId;
-      if (!targetId) {
-        const saved = await cloudSaveProject();
-        targetId = saved?.project?._id || state.lastSavedProjectId;
-      }
-      if (!targetId) {
-        throw new Error(t16('Hãy lưu dự án lên Cloud trước khi tạo link chia sẻ.', 'Please save the project to Cloud before creating a share link.'));
-      }
+      if (!state.token) throw new Error(t16('Vui lòng đăng nhập trước.', 'Please sign in first.'));
+      setBusy16(true, t16('Đang tải bản chụp sân khấu để chia sẻ...', 'Uploading stage snapshot for sharing...'));
+      const targetId = explicitProjectId || await uploadShareSnapshot();
       const res = await fetch(apiUrl(`/projects/${encodeURIComponent(targetId)}/share`), {
         method: 'POST',
         headers: authHeaders({ 'Content-Type': 'application/json' }),
@@ -800,20 +989,18 @@
       }
       const shareUrl = `${window.location.origin}/studio/led-studio?share=${encodeURIComponent(json.data.shareToken)}`;
       await navigator.clipboard?.writeText(shareUrl).catch(() => {});
-      if (typeof window.toast === 'function') {
-        window.toast(
-          t16(
-            'Đã tạo & sao chép link duyệt 3D (Client Review 7 ngày) vào Clipboard.',
-            'Created & copied 7-day 3D Client Review link to Clipboard.'
-          )
-        );
-      }
+      window.toast?.(
+        t16(
+          'Đã tạo & sao chép link duyệt 3D (Client Review 7 ngày) vào Clipboard.',
+          'Created & copied 7-day 3D Client Review link to Clipboard.'
+        )
+      );
       return shareUrl;
     } catch (err) {
-      if (typeof window.toast === 'function') {
-        window.toast(t16('Không thể tạo link chia sẻ: ', 'Could not create share link: ') + (err?.message || t16('Vui lòng đăng nhập trước.', 'Please sign in first.')));
-      }
+      window.toast?.(t16('Không thể tạo link chia sẻ: ', 'Could not create share link: ') + (err?.message || err));
       return null;
+    } finally {
+      setBusy16(false);
     }
   }
 
@@ -1095,13 +1282,13 @@
     const saveBtn = document.createElement('button');
     saveBtn.id = 'cloud16SaveBtn';
     saveBtn.className = 'btn small';
-    saveBtn.textContent = t16('☁ Lưu Cloud', '☁ Save Cloud');
-    saveBtn.onclick = () => cloudSaveProject();
+    saveBtn.textContent = t16('☁ Lưu Drive', '☁ Save to Drive');
+    saveBtn.onclick = () => driveSaveProject();
 
     const openBtn = document.createElement('button');
     openBtn.id = 'cloud16OpenBtn';
     openBtn.className = 'btn small';
-    openBtn.textContent = t16('📂 Mở Cloud', '📂 Open Cloud');
+    openBtn.textContent = t16('📂 Mở Drive', '📂 Open Drive');
     openBtn.onclick = () => openCloudProjectsModal();
 
     const presetsBtn = document.createElement('button');
@@ -1147,6 +1334,9 @@
     if (msg.apiBaseUrl) {
       state.apiBaseUrl = normalizeApiBaseUrl(msg.apiBaseUrl);
     }
+    if (typeof msg.googleClientId === 'string' && msg.googleClientId.trim()) {
+      state.googleClientId = msg.googleClientId.trim();
+    }
     if ('token' in msg || 'user' in msg) {
       const prevUserId = state.user?._id || state.user?.id || null;
       const nextToken = msg.token ? String(msg.token) : null;
@@ -1155,6 +1345,11 @@
       if (!nextToken || prevUserId !== nextUserId) {
         state.lastSavedProjectId = null;
         state.currentProjectTitle = null;
+        // Đổi/thoát tài khoản Alpha: bỏ quyền Google Drive và file đang gắn của người trước.
+        state.driveToken = null;
+        state.driveTokenExpiresAt = 0;
+        state.driveFileId = null;
+        state.driveModelName = null;
       }
       state.token = nextToken;
       state.user = nextUser;
@@ -1241,8 +1436,11 @@
     isClientReviewMode: () => state.clientReviewMode,
     enterClientReviewMode,
     toggleReviewLayer,
-    cloudSaveProject,
-    saveCloudProject: cloudSaveProject,
+    driveSaveProject,
+    listDriveProjects,
+    loadDriveProject,
+    uploadShareSnapshot,
+    saveCloudProject: driveSaveProject,
     listCloudProjects,
     loadCloudProject,
     openCloudProjectsModal,

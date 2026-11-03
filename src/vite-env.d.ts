@@ -9,6 +9,8 @@ interface ImportMetaEnv {
   /** Nhiều tài khoản Cloudinary, ngăn cách bằng dấu phẩy, khớp cặp theo thứ tự */
   readonly VITE_CLOUDINARY_CLOUD_NAMES?: string;
   readonly VITE_CLOUDINARY_UPLOAD_PRESETS?: string;
+  /** Google OAuth Web client ID (public) cho LED Studio lưu dự án vào Google Drive cá nhân */
+  readonly VITE_GOOGLE_CLIENT_ID?: string;
 }
 
 interface ImportMeta {
