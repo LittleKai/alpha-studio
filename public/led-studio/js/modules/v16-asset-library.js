@@ -1011,10 +1011,10 @@
    laserdancer:{tag:'LASER SUIT / BEAM',color:'#2c5d48',action:'spin',desc:'Nghệ sĩ múa Laser mặc giáp phản quang kèm 2 đầu phát tia Laser trên cổ tay.'},
    fandancer:{tag:'MÚA QUẠT / LỤA 9 NAN',color:'#6e3455',action:'fan',desc:'Vũ công múa quạt lụa truyền thống gắn 2 quạt 9 nan phát sáng trên hai cổ tay IK.'},
    dj:{tag:'DJ / EDM BOOTH',color:'#0e7490',action:'wave',desc:'DJ / Producer đeo tai nghe phát sáng đứng điều khiển bàn DJ Turntable & Mixer LED.'},
-   violinist:{tag:'STRINGS / VIOLIN',color:'#9f1239',action:'wave',desc:'Nghệ sĩ Violin biểu diễn kèm đàn vĩ cầm gỗ & vĩ kéo gắn trực tiếp trên hai tay IK.'},
-   saxophonist:{tag:'BRASS / SAXOPHONE',color:'#b45309',action:'dance',desc:'Nghệ sĩ kèn Saxophone đồng mạ vàng biểu diễn solo Jazz / Funk / Live Band.'},
-   mc:{tag:'HOST / KEYNOTE MC',color:'#1d4ed8',action:'reach',desc:'MC / Diễn giả sự kiện cầm micro không dây & thẻ kịch bản Keynote.'},
-   rapper:{tag:'HIP-HOP / HYPE MIC',color:'#7e22ce',action:'dance',desc:'Rapper / Hype Man đội mũ Snapback, dây chuyền vàng & micro mạ vàng khuấy động sân khấu.'}
+   violinist:{tag:'STRINGS / VIOLIN',color:'#9f1239',action:'dance',desc:'Nghệ sĩ Violin biểu diễn kèm đàn vĩ cầm gỗ đặt trên vai & vĩ kéo gắn trực tiếp trên tay phải IK.'},
+   saxophonist:{tag:'BRASS / SAXOPHONE',color:'#b45309',action:'dance',desc:'Nghệ sĩ kèn Saxophone đồng mạ vàng đeo dây cổ, hai tay bấm phím biểu diễn solo Jazz / Funk.'},
+   mc:{tag:'HOST / KEYNOTE MC',color:'#1d4ed8',action:'dance',desc:'MC / Diễn giả sự kiện cầm micro không dây đưa gần miệng & tay trái cầm thẻ kịch bản Keynote.'},
+   rapper:{tag:'HIP-HOP / HYPE MIC',color:'#7e22ce',action:'dance',desc:'Rapper / Hype Man đội mũ Snapback, dây chuyền vàng, cầm micro vàng sát miệng & vung tay khuấy động theo beat.'}
   };
 
   const ACT_PREVIEW_MAP16={
@@ -1133,6 +1133,7 @@
      }
      const s0=projectPt(x0,y0,z0), s1=projectPt(x1,y1,z1), s2=projectPt(x2,y2,z2);
      if(!s0||!s1||!s2)continue;
+     if(Math.max(s0.x,s1.x,s2.x)-Math.min(s0.x,s1.x,s2.x)<0.55 && Math.max(s0.y,s1.y,s2.y)-Math.min(s0.y,s1.y,s2.y)<0.55)continue;
 
      // Use outward vertex normals from mesh.n (since loft11/torso wind CW around +Y)
      let nx=0, ny=0, nz=0;
@@ -1175,9 +1176,10 @@
      const r=Math.min(255,Math.round(((col[0]??0.65)*shade+(em[0]||0)*0.92+spec+rimDot*0.05)*255));
      const g=Math.min(255,Math.round(((col[1]??0.72)*shade+(em[1]||0)*0.92+spec+rimDot*0.10)*255));
      const b=Math.min(255,Math.round(((col[2]??0.82)*shade+(em[2]||0)*0.92+spec+rimDot*0.18)*255));
+     const cw=(s1.x-s0.x)*(s2.y-s0.y)<(s1.y-s0.y)*(s2.x-s0.x);
      tris.push({
       z:(s0.z+s1.z+s2.z)*0.3333,
-      x0:s0.x,y0:s0.y,x1:s1.x,y1:s1.y,x2:s2.x,y2:s2.y,
+      x0:s0.x,y0:s0.y,x1:cw?s2.x:s1.x,y1:cw?s2.y:s1.y,x2:cw?s1.x:s2.x,y2:cw?s1.y:s2.y,
       fill:`rgb(${r},${g},${b})`
      });
     }
@@ -1219,14 +1221,18 @@
    // Seal sub-pixel anti-aliasing seams between adjacent triangles so solid meshes never look see-through
    ctx.lineJoin='round';
    ctx.lineWidth=Math.max(0.55,0.45*uiScale);
-   for(const t of tris){
-    ctx.fillStyle=t.fill;
-    ctx.strokeStyle=t.fill;
+   for(let i=0;i<tris.length;){
+    const fill=tris[i].fill;
+    ctx.fillStyle=fill;
+    ctx.strokeStyle=fill;
     ctx.beginPath();
-    ctx.moveTo(t.x0,t.y0);
-    ctx.lineTo(t.x1,t.y1);
-    ctx.lineTo(t.x2,t.y2);
-    ctx.closePath();
+    while(i<tris.length && tris[i].fill===fill){
+     const t=tris[i++];
+     ctx.moveTo(t.x0,t.y0);
+     ctx.lineTo(t.x1,t.y1);
+     ctx.lineTo(t.x2,t.y2);
+     ctx.closePath();
+    }
     ctx.fill();
     ctx.stroke();
    }
@@ -1255,12 +1261,12 @@
   // rendering entirely. Disk entries are keyed by a fingerprint of the code/data the renders depend on;
   // bump THUMB_CACHE_VERSION16 when geometry the fingerprint cannot see changes (the wrapped buildHuman
   // layers in core 04/06 and modules/v12, mesh helpers like rod/torso, node11 merging).
-  const THUMB_CACHE_VERSION16=2;
+  const THUMB_CACHE_VERSION16=3;
   const THUMB_DB16='ledstudio-thumbs16';
   const thumbJobs16=new Map();
   let thumbTimer16=0, thumbDisk16=null, thumbDiskReady16=false;
   function fingerprint16(){
-   const src=[THUMB_CACHE_VERSION16,[...document.scripts].map(s=>s.getAttribute('src')).join(','),
+   const src=[THUMB_CACHE_VERSION16,
     typeof buildArtHuman11==='function'?String(buildArtHuman11):'',String(S.buildHuman),String(S.castMatrix),
     renderMeshes3DToCanvas16,buildAssetMeshes,getCachedPerformerNodes16,getCrowdEntries16,buildPerformerPreviewEntries16,
     getPerformerFixedBounds16,getPerformerPreviewURL16,actMembers16,getActBounds16,getActPreviewURL16,
@@ -1270,35 +1276,58 @@
    for(let i=0;i<src.length;i++){h^=src.charCodeAt(i);h=Math.imul(h,0x01000193);}
    return (h>>>0).toString(36);
   }
+  function flushCachedThumbImgs16(){
+   for(const [key,job] of thumbJobs16){
+    if(A.previewCache.has(key)){
+     const url=A.previewCache.get(key);
+     thumbJobs16.delete(key);
+     for(const img of document.querySelectorAll('img'))if(img.getAttribute('src')===job.placeholder)img.src=url;
+    }
+   }
+  }
   // Resolves to {db,prefix} (or null without IndexedDB) after loading this fingerprint's stills into
   // A.previewCache and deleting stale ones.
   function openThumbDisk16(){
    if(thumbDisk16)return thumbDisk16;
    return thumbDisk16=new Promise(resolve=>{
+    const done=val=>{thumbDiskReady16=true;flushCachedThumbImgs16();resolve(val);};
     let req;
-    try{req=indexedDB.open(THUMB_DB16,1);}catch(_){resolve(null);return;}
+    try{req=indexedDB.open(THUMB_DB16,1);}catch(_){done(null);return;}
     req.onupgradeneeded=()=>req.result.createObjectStore('thumbs');
-    req.onerror=()=>resolve(null);
+    req.onerror=()=>done(null);
     req.onsuccess=()=>{
      const db=req.result, prefix=fingerprint16()+'|';
-     const tx=db.transaction('thumbs','readwrite');
+     let tx;
+     try{tx=db.transaction('thumbs','readwrite');}catch(_){done(null);return;}
      tx.objectStore('thumbs').openCursor().onsuccess=e=>{
       const cur=e.target.result;
       if(!cur)return;
       const k=String(cur.key);
       if(k.startsWith(prefix)){
-       if(!A.previewCache.has(k.slice(prefix.length)))A.previewCache.set(k.slice(prefix.length),URL.createObjectURL(cur.value));
+       const cacheKey=k.slice(prefix.length);
+       if(!A.previewCache.has(cacheKey)){
+        const v=cur.value;
+        if(typeof v==='string'&&v.startsWith('data:image/'))A.previewCache.set(cacheKey,v);
+        else if(v instanceof Blob)A.previewCache.set(cacheKey,URL.createObjectURL(v));
+       }
       }else cur.delete();
       cur.continue();
      };
-     tx.oncomplete=tx.onerror=tx.onabort=()=>resolve({db,prefix});
+     tx.oncomplete=tx.onerror=tx.onabort=()=>done({db,prefix});
     };
    });
   }
-  function saveThumbDisk16(key,blob){
+  function saveThumbDisk16(key,val){
    openThumbDisk16().then(d=>{
     if(!d)return;
-    try{d.db.transaction('thumbs','readwrite').objectStore('thumbs').put(blob,d.prefix+key);}catch(err){console.warn('[v16] thumbnail cache',err);}
+    const write=payload=>{try{d.db.transaction('thumbs','readwrite').objectStore('thumbs').put(payload,d.prefix+key);}catch(err){console.warn('[v16] thumbnail cache',err);}};
+    if(typeof val==='string')write(val);
+    else if(val instanceof Blob && typeof FileReader==='function'){
+     const fr=new FileReader();
+     fr.onload=()=>write(typeof fr.result==='string'?fr.result:val);
+     fr.onerror=()=>write(val);
+     fr.readAsDataURL(val);
+    }else write(val);
    });
   }
   function queueThumb16(key,title,subtitle,accent,draw){
@@ -1312,11 +1341,18 @@
    if(!thumbTimer16)thumbTimer16=setTimeout(pumpThumbs16,0);
    return job.placeholder;
   }
+  function thumbPriority16(key,job){
+   if(job.urgent)return 0;
+   if(key.startsWith('cast:'))return 1;
+   if(key.startsWith('asset:'))return 2;
+   if(key.startsWith('act:'))return 3;
+   return 4;
+  }
   function pumpThumbs16(){
    thumbTimer16=0;
    if(!thumbDiskReady16){
     thumbTimer16=-1; // waiting for the disk cache; queueThumb16 must not start a second pump
-    openThumbDisk16().then(()=>{thumbDiskReady16=true;thumbTimer16=0;pumpThumbs16();});
+    openThumbDisk16().then(()=>{thumbTimer16=0;pumpThumbs16();});
     return;
    }
    const finish=(key,job,url)=>{
@@ -1324,23 +1360,28 @@
     A.previewCache.set(key,url);
     for(const img of document.querySelectorAll('img'))if(img.getAttribute('src')===job.placeholder)img.src=url;
    };
+   const scheduleNext=()=>{
+    if(!thumbTimer16&&[...thumbJobs16.values()].some(j=>!j.started)){
+     thumbTimer16=setTimeout(pumpThumbs16,28);
+    }
+   };
    // Stills already loaded from disk need no render
-   for(const [key,job] of thumbJobs16)if(!job.started&&A.previewCache.has(key))finish(key,job,A.previewCache.get(key));
+   flushCachedThumbImgs16();
    const pending=[...thumbJobs16].filter(([,j])=>!j.started);
-   const next=pending.find(([,j])=>j.urgent)||pending[0];
-   if(!next)return;
-   const [key,job]=next;
+   if(!pending.length)return;
+   pending.sort((a,b)=>thumbPriority16(a[0],a[1])-thumbPriority16(b[0],b[1]));
+   const [key,job]=pending[0];
    job.started=true; // stays in the map until finished so a re-render meanwhile reuses the same placeholder
    let out=null;
    try{out=job.draw();}catch(err){console.warn('[v16] thumbnail',key,err);}
-   if(typeof out==='string')finish(key,job,out);
+   if(typeof out==='string'){finish(key,job,out);scheduleNext();}
    else if(out?.toBlob)out.toBlob(b=>{
-    if(!b){finish(key,job,job.placeholder);return;}
+    if(!b){finish(key,job,job.placeholder);scheduleNext();return;}
     finish(key,job,URL.createObjectURL(b));
     saveThumbDisk16(key,b);
-   },'image/webp',0.82);
-   else finish(key,job,job.placeholder);
-   if([...thumbJobs16.values()].some(j=>!j.started))thumbTimer16=setTimeout(pumpThumbs16,16);
+    scheduleNext();
+   },'image/webp',0.80);
+   else{finish(key,job,job.placeholder);scheduleNext();}
   }
   // Render this still next (e.g. the one just selected in a sidebar) instead of waiting behind the grid
   function prioritizeThumb16(src){
@@ -1353,7 +1394,7 @@
    return queueThumb16('asset:'+kind,spec.name,spec.label,spec.color,()=>{
     const meshes=buildAssetMeshes({id:'prev_'+kind,kind,name:spec.name,pos:[0,0,0],yaw:0,scale:1,color:spec.color});
     const cvs=document.createElement('canvas');
-    cvs.width=320;cvs.height=208;
+    cvs.width=240;cvs.height=156;
     return renderMeshes3DToCanvas16(cvs,meshes,{
      yaw:0.52,pitch:0.22,zoom:1.92,noURL:true,
      title:spec.name,subtitle:spec.label,accent:spec.color,badge:spec.cat
@@ -1365,7 +1406,7 @@
    const key=type+'|'+(col||'');
    if(A.castNodeCache16.has(key))return A.castNodeCache16.get(key);
    const prevQ=S.choreo11?.quality;
-   if(S.choreo11)S.choreo11.quality='light';
+   if(S.choreo11)S.choreo11.quality='preview';
    let nodes=[];
    try{
     const dummy={id:'__node_cache_'+type,type,name:(S.castNames&&S.castNames[type])||type,pos:[0,0,0],yaw:0,height:1.75,color:col,skin:'#c49474',animate:true};
@@ -1441,13 +1482,13 @@
    return queueThumb16(cacheKey,title,meta.tag,meta.color,()=>{
     const entries=buildPerformerPreviewEntries16(type,{action:actKey,time:0.65});
     const cvs=document.createElement('canvas');
-    cvs.width=480;cvs.height=360;
+    cvs.width=240;cvs.height=180;
     return renderMeshes3DToCanvas16(cvs,entries,{
      yaw:type==='drummer'||type==='keyboardist'||type==='dj'?0.38:0.28,
      pitch:0.16,
      zoom:1.78,
      noURL:true,
-     maxTris:200000,
+     maxTris:45000,
      fixedBounds:getPerformerFixedBounds16(type,1.75),
      title,
      subtitle:meta.tag,
@@ -1499,9 +1540,9 @@
    if(!spec)return '';
    return queueThumb16('act:'+actId,spec.name,spec.tag,'#61e8ff',()=>{
     const cvs=document.createElement('canvas');
-    cvs.width=480;cvs.height=300;
+    cvs.width=260;cvs.height=164;
     return renderMeshes3DToCanvas16(cvs,buildActPreviewEntries16(actId),{
-     yaw:0.3,pitch:0.2,zoom:1.55,noURL:true,maxTris:200000,
+     yaw:0.3,pitch:0.2,zoom:1.55,noURL:true,maxTris:40000,
      fixedBounds:getActBounds16(actId),
      title:spec.name,subtitle:spec.tag,accent:'#61e8ff',badge:spec.tag
     });
@@ -1536,9 +1577,9 @@
    if(!ex)return '';
    return queueThumb16('qex:'+id,ex.label,ex.sub,'#61e8ff',()=>{
     const cvs=document.createElement('canvas');
-    cvs.width=480;cvs.height=320;
+    cvs.width=320;cvs.height=214;
     return renderMeshes3DToCanvas16(cvs,buildQuickExampleEntries16(ex),{
-     yaw:0.32,pitch:0.55,zoom:1.45,noURL:true,maxTris:250000, // higher angle so front rows/props don't hide the act
+     yaw:0.32,pitch:0.55,zoom:1.45,noURL:true,maxTris:50000, // higher angle so front rows/props don't hide the act
      title:ex.label,subtitle:ex.sub,accent:'#61e8ff',badge:'MẪU DÀN DỰNG'
     });
    });
@@ -2202,7 +2243,7 @@
        ${roles.map(([id,name])=>{
         const m=PERFORMER_META16[id]||{tag:'STAGE CAST 3D',color:'#38bdf8'};
         return `<button type="button" class="cast-card v16-cast-card" data-cast-pick16="role:${esc16(id)}" aria-pressed="false">
-         <div class="v16-cast-thumb"><img src="${getPerformerPreviewURL16(id)}" alt="${esc16(name)}"></div>
+         <div class="v16-cast-thumb"><img src="${esc16(getPerformerPreviewURL16(id))}" alt="${esc16(name)}" decoding="async"></div>
          <span>${esc16(m.tag)}</span>
          <div class="v16-cast-card-foot"><b>${esc16(name)}</b></div>
         </button>`;
@@ -2214,7 +2255,7 @@
         <div class="dir-act-grid" style="margin-top:6px">
          ${actEntries.map(([id,s])=>`
           <button type="button" data-cast-pick16="act:${esc16(id)}" aria-pressed="false">
-           <img class="v16-act-thumb" src="${getActPreviewURL16(id)}" alt="${esc16(s.name)}">
+           <img class="v16-act-thumb" src="${esc16(getActPreviewURL16(id))}" alt="${esc16(s.name)}" decoding="async" loading="lazy">
            <small>${esc16(s.tag)}</small>
            <strong>${esc16(s.name)}</strong>
            <span>XEM TRƯỚC ĐỘI HÌNH</span>
@@ -2334,7 +2375,14 @@
 
   S.openCastLibrary16=openCastLibrary16;
   S.openCastLibrary=openCastLibrary16;
-  setTimeout(openThumbDisk16,0); // load persisted stills before any gallery opens
+  openThumbDisk16().then(()=>{
+   setTimeout(()=>{
+    for(const id of Object.keys(S.castNames||{})){
+     const m=PERFORMER_META16[id]||PERFORMER_META16.singer;
+     if(!A.previewCache.has('cast:'+id+':'+m.action))getPerformerPreviewURL16(id);
+    }
+   },900);
+  }); // load persisted stills immediately & gently pre-warm missing role thumbnails in idle time
   const castBtnTop=$('v07Cast');
   if(castBtnTop)castBtnTop.onclick=openCastLibrary16;
 
@@ -2623,6 +2671,8 @@
     if(url){
      const img=document.createElement('img');
      img.className='v16-act-thumb';
+     img.decoding='async';
+     img.loading='lazy';
      img.src=url;
      img.alt=actId;
      btn.prepend(img);

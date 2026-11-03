@@ -314,25 +314,26 @@
        if(!inst){inst={name:'instrument',pivot:[0,1,0],meshes:[],kind11:'instrument'};nodes.push(inst);}
        return inst;
      };
+     const qPrev=lite||(typeof choreo11!=='undefined'&&choreo11.quality==='preview'), N12=qPrev?7:10, R12=qPrev?5:8;
      if(head&&body){
        const skin=[...hexrgb(d.skin||'#c49674'),1], cloth=[...hexrgb(d.color||'#6b4c88'),1];
-       const neckFill=rod('Neck filler',[0,1.42,0],[0,1.54,0],.068,.078,skin,10);
-       const collar=torso([[1.34,.20,.15],[1.41,.23,.18],[1.48,.17,.14]], [cloth[0]*.8,cloth[1]*.8,cloth[2]*.8,1], 14);
+       const neckFill=rod('Neck filler',[0,1.42,0],[0,1.54,0],.068,.078,skin,N12);
+       const collar=torso([[1.34,.20,.15],[1.41,.23,.18],[1.48,.17,.14]], [cloth[0]*.8,cloth[1]*.8,cloth[2]*.8,1], qPrev?9:14);
        body.meshes.push(neckFill, collar);
      }
      if(body && left && right){
        const fillCol=[...hexrgb(d.color||'#6b4c88'),1];
-       body.meshes.push(rod('Shoulder L',[-.10,1.33,.02],[-.18,1.26,.03],.052,.046,fillCol,9));
-       body.meshes.push(rod('Shoulder R',[ .10,1.33,.02],[ .18,1.26,.03],.052,.046,fillCol,9));
-       body.meshes.push(rod('Waist fill',[0,.98,.02],[0,1.12,.03],.12,.11,fillCol,10));
+       body.meshes.push(rod('Shoulder L',[-.10,1.33,.02],[-.18,1.26,.03],.052,.046,fillCol,N12));
+       body.meshes.push(rod('Shoulder R',[ .10,1.33,.02],[ .18,1.26,.03],.052,.046,fillCol,N12));
+       body.meshes.push(rod('Waist fill',[0,.98,.02],[0,1.12,.03],.12,.11,fillCol,N12));
      }
      const steel=[.72,.78,.86,1], dark=[.12,.15,.20,1], brass=[.94,.76,.26,1], wood=[.54,.24,.14,1];
      if(d.type==='dj'){
        if(head){
          head.meshes.push(
-           rod('DJ Headband',[-.105,1.69,0],[.105,1.69,0],.014,.014,[.16,.20,.26,1],8),
-           glow8(ellipsoid('DJ Earcup L',[-.108,1.60,.01],[.028,.042,.036],[.22,.88,.98,1],10,8),'#38bdf8',.9),
-           glow8(ellipsoid('DJ Earcup R',[ .108,1.60,.01],[.028,.042,.036],[.22,.88,.98,1],10,8),'#38bdf8',.9)
+           rod('DJ Headband',[-.105,1.69,0],[.105,1.69,0],.014,.014,[.16,.20,.26,1],N12),
+           glow8(ellipsoid('DJ Earcup L',[-.108,1.60,.01],[.028,.042,.036],[.22,.88,.98,1],N12,R12),'#38bdf8',.9),
+           glow8(ellipsoid('DJ Earcup R',[ .108,1.60,.01],[.028,.042,.036],[.22,.88,.98,1],N12,R12),'#38bdf8',.9)
          );
        }
        if(body){
@@ -345,73 +346,87 @@
        djInst.meshes.push(
          boxMesh('DJ Console Table',[0,.92,.44],[1.06,.07,.44],[.15,.19,.26,1]),
          glow8(boxMesh('DJ LED Front',[0,.52,.64],[1.02,.76,.03],[.14,.78,.96,1]),'#38bdf8',.65),
-         glow8(ellipsoid('Turntable Platter L',[-.26,.97,.44],[.15,.016,.15],[.22,.90,.98,1],14,6),'#38bdf8',.75),
-         glow8(ellipsoid('Turntable Platter R',[ .26,.97,.44],[.15,.016,.15],[.96,.38,.78,1],14,6),'#f472b6',.75),
+         glow8(ellipsoid('Turntable Platter L',[-.26,.97,.44],[.15,.016,.15],[.22,.90,.98,1],N12+2,R12),'#38bdf8',.75),
+         glow8(ellipsoid('Turntable Platter R',[ .26,.97,.44],[.15,.016,.15],[.96,.38,.78,1],N12+2,R12),'#f472b6',.75),
          boxMesh('DJ Mixer Center',[0,.97,.44],[.20,.03,.26],dark),
-         rod('DJ Stand Leg L',[-.44,0,.44],[-.44,.90,.44],.024,.024,steel,8),
-         rod('DJ Stand Leg R',[ .44,0,.44],[ .44,.90,.44],.024,.024,steel,8)
+         rod('DJ Stand Leg L',[-.44,0,.44],[-.44,.90,.44],.024,.024,steel,N12),
+         rod('DJ Stand Leg R',[ .44,0,.44],[ .44,.90,.44],.024,.024,steel,N12)
        );
      }else if(d.type==='violinist'){
-       if(left){
-         const la=left.anchor11||[-.25,.80,.06];
-         left.meshes.push(
-           ellipsoid('Violin Body',[la[0]+.08,la[1]+.10,la[2]+.16],[.095,.032,.16],wood,14,10),
-           rod('Violin Neck',[la[0]+.08,la[1]+.11,la[2]+.28],[la[0]+.08,la[1]+.14,la[2]+.48],.016,.013,dark,8),
-           rod('Violin Strings',[la[0]+.08,la[1]+.13,la[2]+.10],[la[0]+.08,la[1]+.15,la[2]+.46],.006,.006,[.92,.94,.98,1],6)
+       if(body){
+         body.meshes.push(
+           ellipsoid('Violin Body',[-.10,1.385,.17],[.078,.022,.085],wood,N12+2,R12),
+           ellipsoid('Violin Upper Bout',[-.14,1.372,.25],[.062,.020,.068],[.68,.30,.15,1],N12+2,R12),
+           ellipsoid('Violin Chinrest',[-.075,1.408,.135],[.032,.012,.036],dark,N12,R12),
+           rod('Violin Tailpiece',[-.095,1.402,.14],[-.12,1.396,.20],.014,.008,dark,N12),
+           boxMesh('Violin Bridge',[-.125,1.402,.215],[.032,.016,.006],[.86,.72,.52,1]),
+           rod('Violin Neck',[-.15,1.365,.28],[-.23,1.345,.43],.014,.011,dark,N12),
+           ellipsoid('Violin Scroll',[-.242,1.342,.455],[.018,.020,.022],wood,N12,R12),
+           rod('Violin Strings',[-.10,1.406,.15],[-.23,1.358,.43],.005,.004,[.92,.94,.98,1],6)
          );
        }
        if(right){
-         const ra=right.anchor11||[.25,.80,.06];
+         const ra=right.anchor11||[.245,.848,.05];
          right.meshes.push(
-           rod('Violin Bow',[ra[0]-.02,ra[1]+.02,ra[2]+.04],[ra[0]-.28,ra[1]+.18,ra[2]+.42],.007,.005,brass,7)
+           boxMesh('Violin Bow Frog',[ra[0]-.005,ra[1]-.035,ra[2]+.010],[.018,.024,.016],dark),
+           rod('Violin Bow',[ra[0]+.005,ra[1]-.015,ra[2]+.012],[ra[0]-.10,ra[1]-.48,ra[2]-.045],.006,.004,brass,7),
+           rod('Violin Bow Hair',[ra[0]+.002,ra[1]-.022,ra[2]+.004],[ra[0]-.102,ra[1]-.478,ra[2]-.052],.004,.003,[.94,.95,.98,1],6)
          );
        }
      }else if(d.type==='saxophonist'){
-       if(right){
-         const ra=right.anchor11||[.25,.80,.06];
-         right.meshes.push(
-           rod('Saxophone Neck',[ra[0]-.12,ra[1]+.36,ra[2]+.12],[ra[0]-.06,ra[1]+.24,ra[2]+.24],.014,.018,brass,8),
-           rod('Saxophone Body',[ra[0]-.06,ra[1]+.24,ra[2]+.24],[ra[0]-.04,ra[1]-.12,ra[2]+.30],.022,.038,brass,10),
-           rod('Saxophone Bell',[ra[0]-.04,ra[1]-.12,ra[2]+.30],[ra[0]-.02,ra[1]+.02,ra[2]+.42],.038,.075,brass,12),
-           ellipsoid('Saxophone Bell Rim',[ra[0]-.02,ra[1]+.03,ra[2]+.43],[.078,.078,.024],brass,12,8)
+       if(body){
+         body.meshes.push(
+           rod('Saxophone Strap L',[-.055,1.44,.04],[.02,1.18,.22],.006,.005,dark,6),
+           rod('Saxophone Strap R',[ .055,1.44,.04],[.02,1.18,.22],.006,.005,dark,6),
+           rod('Saxophone Mouthpiece',[0,1.545,.085],[.008,1.525,.155],.010,.014,dark,N12),
+           rod('Saxophone Neck',[.008,1.525,.155],[.018,1.42,.235],.014,.019,brass,N12),
+           rod('Saxophone Body',[.018,1.42,.235],[.055,.94,.295],.020,.038,brass,N12),
+           rod('Saxophone Keys',[.012,1.36,.258],[.048,1.02,.318],.008,.010,steel,6),
+           ellipsoid('Saxophone Bow',[.060,.92,.33],[.042,.048,.055],brass,N12,R12),
+           rod('Saxophone Bell',[.062,.93,.365],[.068,1.15,.43],.038,.078,brass,N12),
+           ellipsoid('Saxophone Bell Rim',[.068,1.16,.435],[.082,.082,.024],brass,N12,R12),
+           ellipsoid('Saxophone Bell Bore',[.068,1.165,.44],[.066,.066,.012],dark,N12,R12)
          );
        }
      }else if(d.type==='mc'){
        if(right){
-         const ra=right.anchor11||[.25,.80,.06];
+         const ra=right.anchor11||[.245,.848,.05];
          right.meshes.push(
-           rod('MC Wireless Mic',[ra[0]-.02,ra[1]+.01,ra[2]+.06],[ra[0]-.05,ra[1]+.14,ra[2]+.18],.014,.018,dark,8),
-           glow8(ellipsoid('MC Mic Grille',[ra[0]-.06,ra[1]+.16,ra[2]+.20],[.024,.024,.028],[.38,.82,.98,1],10,8),'#38bdf8',.6)
+           rod('MC Wireless Mic',[ra[0],ra[1]+.012,ra[2]+.062],[ra[0],ra[1]-.082,ra[2]-.052],.013,.016,dark,N12),
+           glow8(ellipsoid('MC Mic Grille',[ra[0],ra[1]-.100,ra[2]-.072],[.023,.025,.023],[.38,.82,.98,1],N12,R12),'#38bdf8',.65)
          );
        }
        if(left){
-         const la=left.anchor11||[-.25,.80,.06];
-         left.meshes.push(
-           boxMesh('MC Cue Card',[la[0]+.06,la[1]+.06,la[2]+.14],[.16,.11,.012],[.92,.95,.99,1]),
-           glow8(boxMesh('MC Card Badge',[la[0]+.06,la[1]+.06,la[2]+.148],[.12,.04,.006],[.22,.64,.96,1]),'#38bdf8',.45)
-         );
+         const la=left.anchor11||[-.245,.848,.05];
+         const card=boxMesh('MC Cue Card',[la[0]+.045,la[1]-.072,la[2]+.018],[.15,.105,.010],[.92,.95,.99,1]);
+         const badge=glow8(boxMesh('MC Card Badge',[la[0]+.045,la[1]-.072,la[2]+.025],[.11,.038,.006],[.22,.64,.96,1]),'#38bdf8',.45);
+         card.material.doubleSided=true;
+         badge.material.doubleSided=true;
+         left.meshes.push(card,badge);
        }
      }else if(d.type==='rapper'){
        if(head){
          head.meshes.push(
-           ellipsoid('Snapback Crown',[0,1.69,-.01],[.102,.055,.108],[.15,.17,.22,1],12,8),
-           boxMesh('Snapback Visor',[0,1.67,.09],[.15,.012,.09],brass)
+           ellipsoid('Snapback Crown',[0,1.69,-.01],[.102,.055,.108],[.15,.17,.22,1],N12,R12),
+           boxMesh('Snapback Visor',[0,1.665,.092],[.15,.012,.09],brass)
          );
        }
        if(body){
          body.meshes.push(
            glow8(rod('Gold Chain L',[-.065,1.42,.10],[0,1.18,.135],.010,.010,brass,7),'#facc15',.5),
-           glow8(rod('Gold Chain R',[ .065,1.42,.10],[0,1.18,.135],.010,.010,brass,7),'#facc15',.5)
+           glow8(rod('Gold Chain R',[ .065,1.42,.10],[0,1.18,.135],.010,.010,brass,7),'#facc15',.5),
+           glow8(ellipsoid('Gold Medallion',[0,1.16,.138],[.024,.028,.008],brass,N12,R12),'#facc15',.65)
          );
        }
        if(right){
-         const ra=right.anchor11||[.25,.80,.06];
+         const ra=right.anchor11||[.245,.848,.05];
          right.meshes.push(
-           rod('Gold Mic Handle',[ra[0]-.02,ra[1]+.02,ra[2]+.06],[ra[0]-.05,ra[1]+.15,ra[2]+.18],.015,.019,brass,8),
-           glow8(ellipsoid('Gold Mic Capsule',[ra[0]-.06,ra[1]+.17,ra[2]+.20],[.026,.026,.030],brass,10,8),'#facc15',.65)
+           rod('Gold Mic Handle',[ra[0],ra[1]+.012,ra[2]+.062],[ra[0],ra[1]-.082,ra[2]-.052],.014,.018,brass,N12),
+           glow8(ellipsoid('Gold Mic Capsule',[ra[0],ra[1]-.102,ra[2]-.074],[.026,.028,.026],brass,N12,R12),'#facc15',.65)
          );
        }
      }
+     for(const n of nodes)for(const m of n.meshes||[])m.cast11=true;
    }
    return nodes.filter(n=>n.meshes?.length);
  };

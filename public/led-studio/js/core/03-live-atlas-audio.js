@@ -180,7 +180,9 @@ function planAtlas(items,options={}){
  const gpuMax=typeof engine!=='undefined'&&engine?.maxSize?engine.maxSize:8192;
  o.maxWidth=Math.min(gpuMax,Math.max(64,Math.floor(+o.maxWidth||4096)));o.maxHeight=Math.min(gpuMax,Math.max(64,Math.floor(+o.maxHeight||4096)));
  o.maxWidth=Math.floor(o.maxWidth/8)*8;o.maxHeight=Math.floor(o.maxHeight/8)*8;
+ const ids=new Set();
  const valid=items.map(item=>{
+  if(typeof item.surfaceId!=='string'||!item.surfaceId||ids.has(item.surfaceId))throw Error('LED ID thiếu hoặc trùng.');ids.add(item.surfaceId);
   const w=+item.w,h=+item.h;if(!Number.isInteger(w)||!Number.isInteger(h)||w<1||h<1)throw Error('Pixel ph\u1ea3i l\u00e0 s\u1ed1 nguy\u00ean d\u01b0\u01a1ng: '+item.name);
   if(w+2*o.gap>o.maxWidth||h+2*o.gap>o.maxHeight)throw Error(item.name+' ('+w+' x '+h+') l\u1edbn h\u01a1n canvas. T\u0103ng gi\u1edbi h\u1ea1n, kh\u00f4ng t\u1ef1 gi\u1ea3m pixel.');
   return {...item,w,h};
@@ -210,15 +212,44 @@ function planAtlas(items,options={}){
   }
  }
  const activePixels=pages.reduce((n,p)=>n+p.activePixels,0),canvasPixels=pages.reduce((n,p)=>n+p.canvasPixels,0);
- return {format:'ALPHA_OPTIMIZED_ATLAS/1',createdAt:new Date().toISOString(),options:o,pages,activePixels,canvasPixels,
+ return {format:'ALPHA_OPTIMIZED_ATLAS/1',createdAt:new Date().toISOString(),options:o,sourceItems:valid.map(({surfaceId,w,h})=>({surfaceId,w,h})),pages,activePixels,canvasPixels,
   fillPercent:+(activePixels/canvasPixels*100).toFixed(2),rawRGBGBperSecond:+(canvasPixels*3*o.fps/1e9).toFixed(3),
   note:'Content packing only. Native pixel dimensions must be verified. No rotation, no resampling, no change to stage geometry. Not a LED receiving-card map; not a mathematically guaranteed optimum.'};
 }
-function validateAtlas(plan){
- const errors=[];for(const p of plan.pages){
-  if(p.width%8||p.height%8)errors.push(p.id+': alignment');
-  for(let i=0;i<p.items.length;i++){const r=p.items[i];if(r.x<0||r.y<0||r.x+r.w>p.width||r.y+r.h>p.height)errors.push(r.name+': bounds');for(let j=i+1;j<p.items.length;j++)if(rectanglesOverlap(r,p.items[j]))errors.push(r.name+': overlap');}
- }return errors;
+function validateAtlas(plan,expectedItems=plan?.sourceItems){
+ // Invariants informed by maxrects-packer; see js/vendor/NOTICE.md.
+ const errors=[],seen=new Map(),positive=n=>Number.isSafeInteger(n)&&n>0;
+ if(!Array.isArray(plan?.pages)||!plan.pages.length)return ['Atlas: pages'];
+ for(const p of plan.pages){
+  if(!p||!Array.isArray(p.items)){errors.push('Atlas: page');continue;}
+  if(!positive(p.width)||!positive(p.height)||p.width%8||p.height%8)errors.push(p.id+': dimensions/alignment');
+  if(!Number.isSafeInteger(p.gap)||p.gap<0||p.gap>64)errors.push(p.id+': gap');
+  if(p.unplaced?.length)errors.push(p.id+': unplaced');
+  const padded=[];
+  for(const r of p.items){
+   if(!r){errors.push('Atlas: item');continue;}
+   if(typeof r.surfaceId!=='string'||!r.surfaceId||seen.has(r.surfaceId))errors.push('Atlas: duplicate/missing ID');
+   seen.set(r.surfaceId,r);
+   if(!Number.isSafeInteger(r.x)||!Number.isSafeInteger(r.y)||!positive(r.w)||!positive(r.h)){errors.push(r.name+': geometry');continue;}
+   const box={x:r.x-p.gap,y:r.y-p.gap,w:r.w+2*p.gap,h:r.h+2*p.gap};
+   if(box.x<0||box.y<0||box.x+box.w>p.width||box.y+box.h>p.height)errors.push(r.name+': padded bounds');
+   if(padded.some(other=>rectanglesOverlap(box,other)))errors.push(r.name+': padded overlap');
+   padded.push(box);
+  }
+ }
+ if(expectedItems!==undefined){
+  if(!Array.isArray(expectedItems))errors.push('Atlas: source items');
+  else{
+   const ids=new Set();
+   for(const item of expectedItems){
+    const actual=seen.get(item?.surfaceId);
+    if(!item||typeof item.surfaceId!=='string'||ids.has(item.surfaceId)||!positive(item.w)||!positive(item.h)||!actual||actual.w!==item.w||actual.h!==item.h)errors.push('Atlas: conservation');
+    ids.add(item?.surfaceId);
+   }
+   if(ids.size!==seen.size)errors.push('Atlas: conservation count');
+  }
+ }
+ return errors;
 }
 function paintAtlas(canvas,page,{labels=true,fullSize=false}={}){
  const limit=fullSize?1:Math.min(1,1280/page.width,660/page.height);
@@ -545,7 +576,7 @@ function createAtlasRenderer(page){
    gl.bindFramebuffer(gl.FRAMEBUFFER,framebuffer);gl.viewport(0,0,w,h);gl.disable(gl.DEPTH_TEST);gl.disable(gl.BLEND);gl.disable(gl.CULL_FACE);gl.disable(gl.POLYGON_OFFSET_FILL);gl.clearColor(0,0,0,1);gl.clear(gl.COLOR_BUFFER_BIT);
    e.selectPass(1);gl.useProgram(e.program);e.view='stage';e.showGuides=false;e.globalTest=false;
    e.uniform('uVP',M.ortho(0,w,h,0,-10,10),'m');e.uniform('uEye',[0,0,10]);e.uniform('uTime',time);e.uniform('uAccent',hexrgb(e.accent));e.uniform('uMaster',[e.master.width,e.master.height]);
-   for(const item of entries)if(item.s.enabled!==false)e.draw(item.mesh,1,{...item.s,liftMm:0});
+   for(const item of entries)if(item.s.enabled!==false)e.draw(item.mesh,1,{...item.s,liftMm:0,_contentTime:time});
    gl.readPixels(0,0,w,h,gl.RGBA,gl.UNSIGNED_BYTE,pixels);
    for(let y=0;y<h;y++)image.data.set(pixels.subarray((h-y-1)*w*4,(h-y)*w*4),y*w*4);
    ctx.putImageData(image,0,0);frames++;
@@ -579,7 +610,7 @@ function beginAtlasRecording(page,{duration=10,fps=30,withAudio=true}={}){
  }catch(err){renderer.dispose();for(const t of stream?.getTracks()||[])t.stop();state.atlasRecording=null;state.recording=false;state.recorder=null;throw err;}
 }
 function openAtlasRecording(page){
- dialog('Xu\u1ea5t clip c\u1ee5m / '+page.width+' x '+page.height,`<p>Ghi n\u1ed9i dung \u0111ang ch\u1ea1y tr\u00ean t\u1eebng LED v\u00e0o canvas c\u1ee5m, gi\u1eef nguy\u00ean mapping s\u00e2n kh\u1ea5u. Kh\u00f4ng ch\u1ee9a ph\u1ed1i c\u1ea3nh hay v\u1ecf s\u00e2n kh\u1ea5u.</p><div class="pro-settings"><label>Gi\u00e2y<input id="atlasRecordDuration" type="number" min="1" max="120" value="10"></label><label>FPS m\u1ee5c ti\u00eau<select id="atlasRecordFPS"><option>30</option><option>50</option><option>60</option></select></label><label class="check-row"><input id="atlasRecordAudio" type="checkbox" checked>Thu bus audio</label></div><div class="info-box warning">Xu\u1ea5t realtime t\u1ed1n th\u00eam GPU v\u00e0 b\u0103ng th\u00f4ng. FPS th\u1ef1c t\u1ebf c\u00f3 th\u1ec3 th\u1ea5p h\u01a1n m\u1ee5c ti\u00eau; kh\u00f4ng thay th\u1ebf render offline ch\u00ednh x\u00e1c t\u1eebng frame. B\u1ea5m Xu\u1ea5t / D\u1eebng ghi \u0111\u1ec3 k\u1ebft th\u00fac s\u1edbm.</div>`,[{label:'H\u1ee7y'},{label:'Ghi visual c\u1ee5m',primary:true,action:async()=>{try{const duration=+$('atlasRecordDuration').value,fps=+$('atlasRecordFPS').value,withAudio=$('atlasRecordAudio').checked;if(withAudio&&!await enableAudio(true))return;beginAtlasRecording(page,{duration,fps,withAudio});}catch(e){toast(e.message,8000);}}}]);
+ dialog('Xu\u1ea5t clip c\u1ee5m / '+page.width+' x '+page.height,`<p>Ghi n\u1ed9i dung \u0111ang ch\u1ea1y tr\u00ean t\u1eebng LED v\u00e0o canvas c\u1ee5m, gi\u1eef nguy\u00ean mapping s\u00e2n kh\u1ea5u. Kh\u00f4ng ch\u1ee9a ph\u1ed1i c\u1ea3nh hay v\u1ecf s\u00e2n kh\u1ea5u.</p><div class="pro-settings"><label>Gi\u00e2y<input id="atlasRecordDuration" type="number" min="1" max="120" value="10"></label><label>FPS m\u1ee5c ti\u00eau<select id="atlasRecordFPS"><option>30</option><option>50</option><option>60</option></select></label><label class="check-row"><input id="atlasRecordAudio" type="checkbox" checked>Thu bus audio</label></div><div class="info-box warning">Xu\u1ea5t realtime t\u1ed1n th\u00eam GPU v\u00e0 b\u0103ng th\u00f4ng. FPS th\u1ef1c t\u1ebf c\u00f3 th\u1ec3 th\u1ea5p h\u01a1n m\u1ee5c ti\u00eau; kh\u00f4ng thay th\u1ebf render offline ch\u00ednh x\u00e1c t\u1eebng frame. B\u1ea5m Xu\u1ea5t / D\u1eebng ghi \u0111\u1ec3 k\u1ebft th\u00fac s\u1edbm.</div>`,[{label:'H\u1ee7y'},{label:'Xuất offline (không âm thanh)',close:false,action:()=>window.STUDIO.atlasExport.open(page)},{label:'Ghi visual c\u1ee5m',primary:true,action:async()=>{try{const duration=+$('atlasRecordDuration').value,fps=+$('atlasRecordFPS').value,withAudio=$('atlasRecordAudio').checked;if(withAudio&&!await enableAudio(true))return;beginAtlasRecording(page,{duration,fps,withAudio});}catch(e){toast(e.message,8000);}}}]);
 }
 
 /* Fixed live control surface; lightweight labels refresh separately from rendering. */
@@ -647,12 +678,15 @@ function keepRendering(fn){if(typeof fn==='function')idleRender.wakers.push(fn);
 function sceneIdle(now){
  const c=engine.camera,key=state.time+'|'+c.yaw+'|'+c.pitch+'|'+c.distance+'|'+c.target+'|'+c.fov+'|'+engine.view;
  const changed=key!==idleRender.lastKey;idleRender.lastKey=key;
- if(changed||state.playing||state.recording||state.atlasRecording||live.open||idleRender.held||now-idleRender.lastInput<2500)return false;
+ if(changed||state.playing||state.recording||state.atlasRecording)return false;
+ if($('modal')?.open)return true;
+ if(live.open||idleRender.held||now-idleRender.lastInput<2500)return false;
  for(const fn of idleRender.wakers){try{if(fn())return false;}catch(e){}}
  return true;
 }
 loop=function(now){
  const realDt=Math.max(0,(now-state.lastFrame)/1000);state.lastFrame=now;const dt=Math.min(realDt,1);
+ if(state.offlineExport){requestAnimationFrame(loop);return;}
  if(document.hidden){requestAnimationFrame(loop);return;}
  try{
   if(state.playing&&!stableUI.scrubbing){advancePlayback(dt);updateRange10();if(state.time>=state.duration){if(state.loop){state.time%=state.duration;syncVideos(true);}else{state.time=state.duration;setPlaying(false);}}}
@@ -701,5 +735,5 @@ const liveAPI={live,toggleLive,keepRendering,launchCue,captureCue,advanceLive,pa
  createAtlasRenderer,exportAtlasVisualPNG,beginAtlasRecording,getPerformance:performanceDiagnostics,activeVideos,packLiveExtras};
 
 showHelp=function(){
- dialog('ALPHA 0.5 LIVE / H\u01b0\u1edbng d\u1eabn',`<h3>1. Gi\u1eef mapping c\u0169</h3><p>L\u01b0u .ledstudio trong b\u1ea3n c\u0169, m\u1edf l\u1ea1i \u1edf b\u1ea3n n\u00e0y. Model, UV, crop v\u00e0 v\u1ecb tr\u00ed \u0111\u00e8n \u0111\u01b0\u1ee3c gi\u1eef nguy\u00ean.</p><h3>2. X\u00f3a nhi\u1ec1u map</h3><p>B\u1ea5m <b>LED / s\u1ed1 l\u01b0\u1ee3ng</b>, tick c\u00e1c m\u00e0n r\u1ed3i x\u00f3a. Ch\u1ec9 x\u00f3a mapping, kh\u00f4ng x\u00f3a model. Ctrl+Z ho\u00e0n t\u00e1c.</p><h3>3. Pixel Studio</h3><p>Nh\u1eadp cabinet/pixel th\u1ef1c, t\u00ednh v\u00e0 duy\u1ec7t s\u1ed1 pixel, r\u1ed3i gom chung master ho\u1eb7c theo c\u1ee5m. Xu\u1ea5t PNG h\u01b0\u1edbng d\u1eabn/JSON/CSV, ho\u1eb7c <b>PNG visual / WebM visual</b> \u0111\u1ec3 l\u1ea5y n\u1ed9i dung \u0111ang ch\u1ea1y. Kh\u00f4ng t\u1ef1 \u0111\u1ed5i crop c\u0169 cho \u0111\u1ebfn khi b\u1ea1n n\u1ea1p clip cho c\u1ee5m.</p><h3>4. LIVE VJ</h3><p>Q W E R / A S D G g\u1ecdi 8 look. B\u1eadt <b>Ghi look</b> ho\u1eb7c Shift+click \u0111\u1ec3 l\u01b0u look hi\u1ec7n t\u1ea1i. Ch\u1ecdn Crossfade/Wipe/Dip/Cut. X: Blackout; gi\u1eef C: Flash; gi\u1eef V: Strobe sau khi cho ph\u00e9p. T: TAP BPM. Strobe nh\u00e1y nhanh, tr\u00e1nh ng\u01b0\u1eddi nh\u1ea1y s\u00e1ng.</p><h3>5. Audio</h3><p>B\u1ea5m <b>B\u1eadt Audio</b>. Ch\u1ecdn ti\u1ebfng video, MP3/WAV ri\u00eang ho\u1eb7c tr\u1ed9n c\u1ea3 hai. C\u00f3 volume ri\u00eang, offset, loop v\u00e0 thu audio trong WebM.</p><h3>6. \u0110\u1ed9 m\u01b0\u1ee3t</h3><p>Auto / 55 FPS t\u1ef1 gi\u1ea3m \u0111\u1ed9 ph\u00e2n gi\u1ea3i preview; c\u00f3 Nh\u1eb9 v\u00e0 Si\u00eau nh\u1eb9. S\u1ed1 FPS l\u00e0 s\u1ed1 \u0111o th\u1ef1c, kh\u00f4ng cam k\u1ebft tr\u00ean 50 FPS tr\u00ean m\u1ecdi GPU. Clip 30 FPS kh\u00f4ng t\u1ef1 th\u00e0nh 60 FPS.</p><div class="info-box">B\u1ea3n ph\u00e1t tri\u1ec3n local/offline. Ghi WebM realtime, ch\u01b0a render offline frame-accurate. Ch\u01b0a c\u00f3 MP4 output, NDI/Spout, DMX, genlock hay m\u1edf SKP tr\u1ef1c ti\u1ebfp. Ph\u00edm F: to\u00e0n c\u1ea3nh; L: kh\u00f3a g\u00f3c; Space: ph\u00e1t/t\u1ea1m d\u1eebng.</div>`,[{label:'\u0110\u00f3ng'},{label:'Pixel Studio',action:openPixelStudio},{label:'Audio / Nh\u1ea1c',action:openAudioPanel},{label:'M\u1edf LIVE VJ',primary:true,action:()=>toggleLive(true)}]);
+ dialog('ALPHA 0.5 LIVE / H\u01b0\u1edbng d\u1eabn',`<h3>1. Gi\u1eef mapping c\u0169</h3><p>L\u01b0u .ledstudio trong b\u1ea3n c\u0169, m\u1edf l\u1ea1i \u1edf b\u1ea3n n\u00e0y. Model, UV, crop v\u00e0 v\u1ecb tr\u00ed \u0111\u00e8n \u0111\u01b0\u1ee3c gi\u1eef nguy\u00ean.</p><h3>2. X\u00f3a nhi\u1ec1u map</h3><p>B\u1ea5m <b>LED / s\u1ed1 l\u01b0\u1ee3ng</b>, tick c\u00e1c m\u00e0n r\u1ed3i x\u00f3a. Ch\u1ec9 x\u00f3a mapping, kh\u00f4ng x\u00f3a model. Ctrl+Z ho\u00e0n t\u00e1c.</p><h3>3. Pixel Studio</h3><p>Nh\u1eadp cabinet/pixel th\u1ef1c, t\u00ednh v\u00e0 duy\u1ec7t s\u1ed1 pixel, r\u1ed3i gom chung master ho\u1eb7c theo c\u1ee5m. Xu\u1ea5t PNG h\u01b0\u1edbng d\u1eabn/JSON/CSV, ho\u1eb7c <b>PNG visual / WebM visual</b> \u0111\u1ec3 l\u1ea5y n\u1ed9i dung \u0111ang ch\u1ea1y. Kh\u00f4ng t\u1ef1 \u0111\u1ed5i crop c\u0169 cho \u0111\u1ebfn khi b\u1ea1n n\u1ea1p clip cho c\u1ee5m.</p><h3>4. LIVE VJ</h3><p>Q W E R / A S D G g\u1ecdi 8 look. B\u1eadt <b>Ghi look</b> ho\u1eb7c Shift+click \u0111\u1ec3 l\u01b0u look hi\u1ec7n t\u1ea1i. Ch\u1ecdn Crossfade/Wipe/Dip/Cut. X: Blackout; gi\u1eef C: Flash; gi\u1eef V: Strobe sau khi cho ph\u00e9p. T: TAP BPM. Strobe nh\u00e1y nhanh, tr\u00e1nh ng\u01b0\u1eddi nh\u1ea1y s\u00e1ng.</p><h3>5. Audio</h3><p>B\u1ea5m <b>B\u1eadt Audio</b>. Ch\u1ecdn ti\u1ebfng video, MP3/WAV ri\u00eang ho\u1eb7c tr\u1ed9n c\u1ea3 hai. C\u00f3 volume ri\u00eang, offset, loop v\u00e0 thu audio trong WebM.</p><h3>6. \u0110\u1ed9 m\u01b0\u1ee3t</h3><p>Auto / 55 FPS t\u1ef1 gi\u1ea3m \u0111\u1ed9 ph\u00e2n gi\u1ea3i preview; c\u00f3 Nh\u1eb9 v\u00e0 Si\u00eau nh\u1eb9. S\u1ed1 FPS l\u00e0 s\u1ed1 \u0111o th\u1ef1c, kh\u00f4ng cam k\u1ebft tr\u00ean 50 FPS tr\u00ean m\u1ecdi GPU. Clip 30 FPS kh\u00f4ng t\u1ef1 th\u00e0nh 60 FPS.</p><div class="info-box">B\u1ea3n ph\u00e1t tri\u1ec3n local/offline. Ghi WebM realtime có audio; xuất atlas offline WebM/MP4 không âm thanh cho look LED hiện tại. Chưa có offline toàn show, NDI/Spout, DMX, genlock hay m\u1edf SKP tr\u1ef1c ti\u1ebfp. Ph\u00edm F: to\u00e0n c\u1ea3nh; L: kh\u00f3a g\u00f3c; Space: ph\u00e1t/t\u1ea1m d\u1eebng.</div>`,[{label:'\u0110\u00f3ng'},{label:'Pixel Studio',action:openPixelStudio},{label:'Audio / Nh\u1ea1c',action:openAudioPanel},{label:'M\u1edf LIVE VJ',primary:true,action:()=>toggleLive(true)}]);
 };
