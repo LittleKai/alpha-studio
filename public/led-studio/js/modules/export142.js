@@ -94,6 +94,7 @@
           compose(recording.canvas, { letterbox: true });
           recording.canvas.getContext('2d').getImageData(0, 0, 1, 1);
           recording.track?.requestFrame?.();
+          recording.stream?.requestFrame?.();
           recording.frames++;
         } catch (error) {
           recording.error = error.message;
@@ -107,7 +108,7 @@
   beginLiveRecording = function ({ duration = 10, fps = 30, withAudio = true } = {}) {
     if (state.recording) throw Error('Đang ghi video. Hãy dừng bản ghi hiện tại trước.');
     if (!window.MediaRecorder || !HTMLCanvasElement.prototype.captureStream) {
-      throw Error('Trình duyệt chưa hỗ trợ ghi canvas. Hãy dùng Chrome hoặc Edge.');
+      throw Error('Trình duyệt chưa hỗ trợ ghi canvas. Hãy dùng Chrome, Edge hoặc Firefox.');
     }
     duration = clamp(Number(duration) || 10, 1, 120);
     fps = clamp(Math.round(Number(fps) || 30), 10, 60);
@@ -136,7 +137,7 @@
       // Explicitly publish each composed frame. Some Chromium/offscreen canvas
       // paths do not produce any encoded frames from captureStream(fps) alone.
       stream = canvas.captureStream(0);
-      if (typeof stream.getVideoTracks()[0]?.requestFrame !== 'function') {
+      if (typeof stream.getVideoTracks()[0]?.requestFrame !== 'function' && typeof stream.requestFrame !== 'function') {
         for (const track of stream.getTracks()) track.stop();
         stream = canvas.captureStream(fps);
       }
@@ -147,7 +148,7 @@
       recorder = new MediaRecorder(stream, {
         mimeType: mime, videoBitsPerSecond: 10000000, audioBitsPerSecond: 160000
       });
-      const session = { canvas, track: stream.getVideoTracks()[0], fps, frames: 0, lastFrame: -Infinity, started: performance.now(), error: null };
+      const session = { canvas, stream, track: stream.getVideoTracks()[0], fps, frames: 0, lastFrame: -Infinity, started: performance.now(), error: null };
       recording = session;
       state.recorder = recorder; state.recording = true; state.recordAudio = withAudio;
       recorder.onstart = () => {
@@ -159,6 +160,7 @@
         canvas.getContext('2d').drawImage(canvas, 0, 0);
         canvas.getContext('2d').getImageData(0, 0, 1, 1);
         session.track?.requestFrame?.();
+        session.stream?.requestFrame?.();
         state.recordTimer = setTimeout(() => {
           if (recorder.state !== 'inactive') recorder.stop();
         }, duration * 1000);

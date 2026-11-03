@@ -23,12 +23,13 @@ StageEngine.prototype.uniform=function(name,value,type){
  }
  return PERF_BASE.uniform.call(this,name,value,type);
 };
+function videoFrameCount(v){return v.getVideoPlaybackQuality?.().totalVideoFrames||v.mozPaintedFrames||v.mozDecodedFrames||v.webkitDecodedFrameCount||0;}
 StageEngine.prototype.texture=function(source){
  const gl=this.gl;if(!source)return this.white;
  let t=this.texCache.get(source);
  const video=source instanceof HTMLVideoElement;
  if(!t){
-  t={tex:gl.createTexture(),uploaded:false,lastTime:-1,version:0,uploadedVersion:-1,width:0,height:0,lastUploadAt:0};
+  t={tex:gl.createTexture(),uploaded:false,lastTime:-1,version:0,uploadedVersion:-1,lastDecodedFrames:-1,width:0,height:0,lastUploadAt:0};
   this.texCache.set(source,t);gl.bindTexture(gl.TEXTURE_2D,t.tex);
   for(const [p,v]of [[gl.TEXTURE_MIN_FILTER,gl.LINEAR],[gl.TEXTURE_MAG_FILTER,gl.LINEAR],[gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE],[gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE]])gl.texParameteri(gl.TEXTURE_2D,p,v);
   if(video&&typeof attachVideoElement==='function')attachVideoElement(source);
@@ -39,15 +40,15 @@ StageEngine.prototype.texture=function(source){
   }
  }
  if(video&&source.readyState<2)return t.uploaded?t.tex:this.white;
- const now=performance.now(),minGap=video&&source._heavyVideo&&state.playing&&(this.previewScale<1||perfState.fps>0&&perfState.fps<48)?26:0;
- const changed=!t.uploaded||(video&&now-t.lastUploadAt>=minGap&&(t.useCallback?t.version!==t.uploadedVersion||Math.abs(source.currentTime-t.lastTime)>.045:Math.abs(source.currentTime-t.lastTime)>.0001));
+ const now=performance.now(),minGap=video&&source._heavyVideo&&state.playing&&(this.previewScale<1||perfState.fps>0&&perfState.fps<48)?26:0,qFrames=video?videoFrameCount(source):0;
+ const changed=!t.uploaded||(video&&now-t.lastUploadAt>=minGap&&(t.useCallback&&t.version>0?t.version!==t.uploadedVersion||Math.abs(source.currentTime-t.lastTime)>.25:qFrames>0?qFrames!==t.lastDecodedFrames||Math.abs(source.currentTime-t.lastTime)>.25:Math.abs(source.currentTime-t.lastTime)>=(source._heavyVideo?.031:.015)));
  if(changed){
   try{
    const w=video?source.videoWidth:source.naturalWidth||source.width,h=video?source.videoHeight:source.naturalHeight||source.height;
    gl.bindTexture(gl.TEXTURE_2D,t.tex);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,false);
    if(t.uploaded&&t.width===w&&t.height===h)gl.texSubImage2D(gl.TEXTURE_2D,0,0,0,gl.RGBA,gl.UNSIGNED_BYTE,source);
    else gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,source);
-   t.uploaded=true;t.width=w;t.height=h;t.lastTime=video?source.currentTime:0;t.uploadedVersion=t.version;t.lastUploadAt=now;
+   t.uploaded=true;t.width=w;t.height=h;t.lastTime=video?source.currentTime:0;t.uploadedVersion=t.version;t.lastDecodedFrames=qFrames;t.lastUploadAt=now;
    if(video)perfState.uploadedFrames++;
   }catch(e){return this.white;}
  }
