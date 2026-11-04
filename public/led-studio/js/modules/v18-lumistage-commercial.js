@@ -111,8 +111,26 @@
     }
 
     const lumiState = {
+      lang: (S.cloud16?.state?.locale || document.documentElement?.dataset?.locale) === 'en' ? 'en' : 'vi',
       telemetryOptIn: loadTelemetryOptIn(),
       musicShowCues: [],
+      activeCueIndex: -1,
+      pendingPreview: null,
+      showSafetyLock: false,
+      masterBlackout: false,
+      _savedLightPowers: null,
+      _savedSurfaceBrightness: null,
+      dmxBridge: {
+        streaming: false,
+        protocol: 'artnet', // 'artnet' (UDP 6454) | 'sacn' (UDP 5568)
+        host: '127.0.0.1',
+        port: 6454,
+        wsPort: 9454,
+        universe: 0,
+        sequence: 1,
+        packetsSent: 0,
+        lastDmx512: null
+      },
       lastSightlineReport: null,
       brandIdentity: {
         brandName: 'GROUPLIFE EVENT',
@@ -142,6 +160,47 @@
         priceOverrides: {}
       }
     };
+
+    const LUMI_I18N = {
+      vi: {
+        templatesBtn: '🏛 6 Mẫu VN',
+        aiBtn: '✨ AI Sân khấu',
+        bomBtn: '📋 BOM & Báo giá',
+        liveShowBtn: '🎛 Chạy Show',
+        billingBtn: '💎 Credit & Pro',
+        billingProBtn: '💎 PRO · ',
+        lockBlocked: '🔒 Đang bật Khóa An toàn Chạy Show (E4) — hãy mở khóa trước khi sửa bố cục sân khấu.',
+        previewReady: 'Đã tạo bản xem trước phương án AI. Bấm "Áp dụng" để chốt hoặc "Hoàn tác" để hủy.',
+        previewCommitted: '✅ Đã xác nhận áp dụng phương án sân khấu AI.',
+        previewReverted: '↩ Đã hủy bản xem trước và khôi phục bố cục trước đó.'
+      },
+      en: {
+        templatesBtn: '🏛 6 Stage Templates',
+        aiBtn: '✨ Stage AI',
+        bomBtn: '📋 BOM & Quote',
+        liveShowBtn: '🎛 Live Show',
+        billingBtn: '💎 Credits & Pro',
+        billingProBtn: '💎 PRO · ',
+        lockBlocked: '🔒 Safe Show Lock (E4) is active — unlock before modifying stage layout.',
+        previewReady: 'AI Stage Preview active. Click "Apply" to commit or "Revert" to undo.',
+        previewCommitted: '✅ AI stage layout committed.',
+        previewReverted: '↩ AI preview reverted to previous stage state.'
+      }
+    };
+
+    function t18(key) {
+      const dict = LUMI_I18N[lumiState.lang] || LUMI_I18N.vi;
+      return dict[key] || LUMI_I18N.vi[key] || key;
+    }
+
+    function setLumiLanguage(lang) {
+      lumiState.lang = String(lang || '').toLowerCase() === 'en' ? 'en' : 'vi';
+      if (document.documentElement?.dataset) {
+        document.documentElement.dataset.locale = lumiState.lang;
+      }
+      updateTopbarBadge18();
+      return lumiState.lang;
+    }
 
     // =========================================================================
     // C3 — 6 MẪU SÂN KHẤU SỰ KIỆN VIỆT NAM (THAM SỐ HOÁ)
@@ -417,6 +476,10 @@
     }
 
     function applyStageTemplate(templateId, overrides = {}) {
+      if (lumiState.showSafetyLock) {
+        window.toast?.(t18('lockBlocked'));
+        return false;
+      }
       const tpl = VN_STAGE_TEMPLATES[templateId];
       if (!tpl) {
         window.toast?.('Không tìm thấy mẫu sân khấu: ' + templateId);
@@ -478,12 +541,15 @@
 
         createdScreens.push({
           mesh: q,
+          frameMesh: frame,
           name: scr.name,
           wPx: computePixelDim(wM, pitch),
           hPx: computePixelDim(hM, pitch),
           wM,
           hM,
-          pitchMm: pitch
+          pitchMm: pitch,
+          pos: [cx, cy, cz],
+          yawDeg: scr.yawDeg || 0
         });
       }
 
@@ -494,10 +560,13 @@
       let maxH = 64;
       for (const s of createdScreens) {
         const surf = window.createSurface(s.mesh, s.name, { x: cursorX, y: 0, w: s.wPx, h: s.hPx });
-        if (surf && !eng.surfaces.includes(surf)) eng.surfaces.push(surf);
         surf.pitchMm = s.pitchMm;
         surf.physicalWidthM = s.wM;
         surf.physicalHeightM = s.hM;
+        surf.sourceMeshId = s.mesh?.id || surf.sourceMeshId || null;
+        surf.frameMeshId = s.frameMesh?.id || null;
+        surf.pos = s.pos;
+        surf.yawDeg = s.yawDeg;
         cursorX += s.wPx;
         maxH = Math.max(maxH, s.hPx);
       }
@@ -909,7 +978,64 @@
       return k;
     }
 
+    function findSurfaceStageMeshes(eng, surf) {
+      if (!eng || !Array.isArray(eng.stage) || !surf) return [];
+      return eng.stage.filter(
+        (m) =>
+          m &&
+          (m === surf.mesh ||
+            (surf.sourceMeshId && m.id === surf.sourceMeshId) ||
+            (surf.frameMeshId && m.id === surf.frameMeshId) ||
+            (surf.name && (m.name === surf.name || m.name === surf.name + '_Frame')))
+      );
+    }
+
+    function scaleMeshAroundCenter(mesh, sx, sy, sz = 1) {
+      if (!mesh?.p || mesh.p.length < 3) return;
+      const c = mesh.bounds?.center || [0, 0, 0];
+      const p = (mesh.p = new Float32Array(mesh.p));
+      for (let i = 0; i + 2 < p.length; i += 3) {
+        p[i] = c[0] + (p[i] - c[0]) * sx;
+        p[i + 1] = c[1] + (p[i + 1] - c[1]) * sy;
+        p[i + 2] = c[2] + (p[i + 2] - c[2]) * sz;
+      }
+      if (typeof window.M?.bbox === 'function') {
+        mesh.bounds = window.M.bbox(p);
+      } else if (mesh.bounds) {
+        if (Array.isArray(mesh.bounds.size)) {
+          mesh.bounds.size = [
+            (mesh.bounds.size[0] || 0) * sx,
+            (mesh.bounds.size[1] || 0) * sy,
+            (mesh.bounds.size[2] || 0) * sz
+          ];
+        }
+      }
+    }
+
+    function cloneMeshState18(m) {
+      if (!m) return null;
+      return {
+        mesh: m,
+        p: m.p ? new Float32Array(m.p) : null,
+        n: m.n ? new Float32Array(m.n) : null,
+        bounds: m.bounds ? JSON.parse(JSON.stringify(m.bounds)) : null
+      };
+    }
+
+    function restoreMeshState18(eng, ms) {
+      if (!ms?.mesh) return null;
+      if (ms.p) ms.mesh.p = new Float32Array(ms.p);
+      if (ms.n) ms.mesh.n = new Float32Array(ms.n);
+      if (ms.bounds) ms.mesh.bounds = JSON.parse(JSON.stringify(ms.bounds));
+      eng?.releaseMesh?.(ms.mesh);
+      return ms.mesh;
+    }
+
     function executeStageCommands(commands = [], { recordUndo = true } = {}) {
+      if (lumiState.showSafetyLock) {
+        window.toast?.(t18('lockBlocked'));
+        return 0;
+      }
       if (!Array.isArray(commands) || !commands.length) return 0;
       const eng = getEngine();
       if (!eng) return 0;
@@ -974,6 +1100,9 @@
           surf.pitchMm = pitchMm;
           surf.physicalWidthM = wM;
           surf.physicalHeightM = hM;
+          surf.sourceMeshId = q.id || surf.sourceMeshId || null;
+          surf.pos = pos.slice();
+          surf.yawDeg = yawDeg;
           repackSurfacesMaster(eng);
           eng._stageBatchDirty = true;
           applied++;
@@ -986,13 +1115,35 @@
             eng.surfaces.find((s) => s.id === cmd.id || s.name === cmd.name) ||
             eng.surfaces[0];
           if (target) {
+            const oldW = Number(target.physicalWidthM || target.physical?.width || target.physical?.[0]) || 4;
+            const oldH = Number(target.physicalHeightM || target.physical?.height || target.physical?.[1]) || 2.5;
             if (cmd.pitchMm || cmd.pitch) target.pitchMm = Math.max(1.2, Math.min(16, Number(cmd.pitchMm || cmd.pitch)));
             if (cmd.widthM || cmd.width) target.physicalWidthM = Math.max(0.5, Number(cmd.widthM || cmd.width));
             if (cmd.heightM || cmd.height) target.physicalHeightM = Math.max(0.5, Number(cmd.heightM || cmd.height));
+            const nextW = Number(target.physicalWidthM) || oldW;
+            const nextH = Number(target.physicalHeightM) || oldH;
+            if (Array.isArray(target.physical)) target.physical = [nextW, nextH];
             const p = target.pitchMm || 3.91;
             if (target.physicalWidthM) target.w = computePixelDim(target.physicalWidthM, p);
             if (target.physicalHeightM) target.h = computePixelDim(target.physicalHeightM, p);
             if (cmd.brightness !== undefined) target.brightness = Math.max(0.1, Math.min(2, Number(cmd.brightness) || 1));
+            if ((Math.abs(nextW - oldW) > 1e-4 || Math.abs(nextH - oldH) > 1e-4) && oldW > 0 && oldH > 0) {
+              const sx = nextW / oldW;
+              const sy = nextH / oldH;
+              if (target.mesh) {
+                scaleMeshAroundCenter(target.mesh, sx, sy, 1);
+                eng.releaseMesh?.(target.mesh);
+              }
+              for (const m of findSurfaceStageMeshes(eng, target)) {
+                if (m !== target.mesh) {
+                  scaleMeshAroundCenter(m, sx, sy, 1);
+                  eng.releaseMesh?.(m);
+                }
+              }
+              eng._stageBatchDirty = true;
+              eng.computeBounds?.();
+            }
+            window.updateTest?.(target);
             repackSurfacesMaster(eng);
             applied++;
           }
@@ -1000,13 +1151,31 @@
         }
 
         if (action === 'remove_led') {
-          const beforeLen = eng.surfaces.length;
+          const removed = [];
           if (Number.isInteger(cmd.index) && cmd.index >= 0 && cmd.index < eng.surfaces.length) {
-            eng.surfaces.splice(cmd.index, 1);
+            removed.push(...eng.surfaces.splice(cmd.index, 1));
           } else {
-            eng.surfaces = eng.surfaces.filter((s) => s.id !== cmd.id && s.name !== cmd.name);
+            const keep = [];
+            for (const s of eng.surfaces) {
+              if (s.id === cmd.id || s.name === cmd.name) removed.push(s);
+              else keep.push(s);
+            }
+            eng.surfaces = keep;
           }
-          if (eng.surfaces.length !== beforeLen) {
+          if (removed.length > 0) {
+            const stageToRemove = new Set();
+            for (const rem of removed) {
+              eng.releaseMesh?.(rem.mesh);
+              for (const m of findSurfaceStageMeshes(eng, rem)) {
+                stageToRemove.add(m);
+                eng.releaseMesh?.(m);
+              }
+            }
+            if (stageToRemove.size > 0 && Array.isArray(eng.stage)) {
+              eng.stage = eng.stage.filter((m) => !stageToRemove.has(m));
+              eng._stageBatchDirty = true;
+              eng.computeBounds?.();
+            }
             repackSurfacesMaster(eng);
             applied++;
           }
@@ -1034,27 +1203,41 @@
           const h = Number(cmd.height) || eng.size?.height || 7;
           const d = Math.max(eng.size?.depth || 8, 5);
           const color = /^#[0-9a-f]{6}$/i.test(String(cmd.color || '')) ? cmd.color : '#38bdf8';
-          const isBeam = String(cmd.fixtureType || cmd.kind || 'beam').toLowerCase().includes('beam');
+          const rawType = String(cmd.fixtureType || cmd.kind || 'beam').toLowerCase();
+          const rowRaw = String(cmd.row || 'back').toLowerCase();
+          const spec = rawType.includes('katana')
+            ? { prefix: 'Katana Bar #', power: 4.0, angle: 18, sweep: true, ofl: 'vn-stage/katana-bar-12x40w' }
+            : rawType.includes('blinder') || rawType.includes('cob')
+            ? { prefix: 'COB Blinder #', power: 5.2, angle: 42, sweep: false, ofl: 'vn-stage/cob-blinder-2x100w' }
+            : rawType.includes('wash')
+            ? { prefix: 'Wash Zoom #', power: 3.8, angle: 28, sweep: false, ofl: 'vn-stage/wash-zoom-36x18' }
+            : rawType.includes('par')
+            ? { prefix: 'Par LED #', power: 3.5, angle: 24, sweep: false, ofl: 'vn-stage/par-led-54x3w' }
+            : rawType.includes('350') || rawType.includes('17r') || rawType.includes('spot')
+            ? { prefix: 'Beam 350 #', power: 5.0, angle: 10, sweep: true, ofl: 'vn-stage/beam-350-17r' }
+            : { prefix: 'Beam 230 #', power: 4.8, angle: 12, sweep: true, ofl: 'vn-stage/beam-230-7r' };
+          const yPos = rowRaw === 'floor' ? 0.95 : +(h * 0.92).toFixed(2);
+          const zPos = rowRaw === 'front' ? +(d * 0.22).toFixed(2) : rowRaw === 'floor' ? +(-d * 0.12).toFixed(2) : +(-d * 0.2).toFixed(2);
           for (let i = 0; i < count && eng.lights.length < 128; i++) {
             const u = count > 1 ? i / (count - 1) - 0.5 : 0;
             const idx = eng.lights.length + 1;
             eng.lights.push({
               id: 'light_ai_' + Date.now().toString(36) + '_' + i,
-              name: (isBeam ? 'Beam 230 #' : 'Par Wash #') + String(idx).padStart(2, '0'),
-              pos: [+(u * w * 0.85).toFixed(2), +(h * 0.92).toFixed(2), +(-d * 0.2).toFixed(2)],
-              target: [+(u * w * 0.4).toFixed(2), 0.25, +(d * 0.5).toFixed(2)],
+              name: spec.prefix + String(idx).padStart(2, '0'),
+              pos: [+(u * w * 0.85).toFixed(2), yPos, zPos],
+              target: [+(u * w * 0.4).toFixed(2), rowRaw === 'floor' ? +(h * 0.65).toFixed(2) : 0.25, +(d * 0.5).toFixed(2)],
               color,
-              power: isBeam ? 4.8 : 3.5,
-              angle: isBeam ? 12 : 24,
+              power: spec.power,
+              angle: spec.angle,
               enabled: true,
-              sweep: isBeam,
+              sweep: spec.sweep,
               speed: 0.4,
               phase: +(i * 0.35).toFixed(2),
               fx: cmd.fx || 'steady',
               fxDepth: 0.55,
               fxSpeed: 2.2,
               boost: 1,
-              oflProfileId: isBeam ? 'vn-stage/beam-230-7r' : 'vn-stage/par-led-54x3w'
+              oflProfileId: spec.ofl
             });
           }
           eng.rebuildFixtures?.();
@@ -1078,6 +1261,58 @@
                 : null;
               S.stageAssets16.addCatalogItem(resolvedKind, p);
             }
+            applied++;
+          }
+          continue;
+        }
+
+        if (action === 'move_led') {
+          const target =
+            (Number.isInteger(cmd.index) && eng.surfaces[cmd.index]) ||
+            eng.surfaces.find((s) => s.id === cmd.id || s.name === cmd.name) ||
+            eng.surfaces[0];
+          if (target?.mesh && typeof window.transformMesh === 'function' && window.M?.translate) {
+            const dx = Math.max(-50, Math.min(50, Number(cmd.dx ?? cmd.x ?? 0) || 0));
+            const dy = Math.max(-20, Math.min(20, Number(cmd.dy ?? cmd.y ?? 0) || 0));
+            const dz = Math.max(-50, Math.min(50, Number(cmd.dz ?? cmd.z ?? 0) || 0));
+            const tMat = window.M.translate([dx, dy, dz]);
+            window.transformMesh(target.mesh, tMat);
+            eng.releaseMesh?.(target.mesh);
+            for (const m of findSurfaceStageMeshes(eng, target)) {
+              if (m !== target.mesh) {
+                window.transformMesh(m, tMat);
+                eng.releaseMesh?.(m);
+              }
+            }
+            if (Array.isArray(target.pos) && target.pos.length === 3) {
+              target.pos = [+(target.pos[0] + dx).toFixed(2), +(target.pos[1] + dy).toFixed(2), +(target.pos[2] + dz).toFixed(2)];
+            } else if (Array.isArray(target.mesh.bounds?.center)) {
+              target.pos = target.mesh.bounds.center.map((v) => +Number(v).toFixed(2));
+            }
+            eng._stageBatchDirty = true;
+            eng.computeBounds?.();
+            applied++;
+          }
+          continue;
+        }
+
+        if (action === 'move_prop') {
+          const items = Array.isArray(S.stageAssets16?.items) ? S.stageAssets16.items : [];
+          const rawTarget = String(cmd.id || cmd.kind || cmd.assetId || cmd.name || '').trim();
+          const resolvedKind = resolveCatalogPropKind(rawTarget, S.stageAssets16?.catalog);
+          const item =
+            items.find((it) => it.id === rawTarget || it.kind === resolvedKind || it.kind === rawTarget || it.name === rawTarget) ||
+            items[items.length - 1];
+          if (item && Array.isArray(item.pos)) {
+            const dx = Math.max(-50, Math.min(50, Number(cmd.dx ?? 0) || 0));
+            const dy = Math.max(-20, Math.min(20, Number(cmd.dy ?? 0) || 0));
+            const dz = Math.max(-50, Math.min(50, Number(cmd.dz ?? 0) || 0));
+            item.pos = [
+              +((Number(item.pos[0]) || 0) + dx).toFixed(2),
+              +((Number(item.pos[1]) || 0) + dy).toFixed(2),
+              +((Number(item.pos[2]) || 0) + dz).toFixed(2)
+            ];
+            S.stageAssets16?.syncItemMeshes?.(item);
             applied++;
           }
           continue;
@@ -1150,11 +1385,330 @@
       return applied;
     }
 
+    // A2 Nâng cao — Chế độ Xem trước (Preview) -> Áp dụng (Commit) / Hoàn tác (Revert)
+    function previewStageCommands(commands = []) {
+      if (lumiState.showSafetyLock) {
+        window.toast?.(t18('lockBlocked'));
+        return 0;
+      }
+      if (lumiState.pendingPreview?.active) {
+        revertStagePreview();
+      }
+      const eng = getEngine();
+      const snapshotBefore = {
+        surfaces: Array.isArray(eng?.surfaces)
+          ? eng.surfaces.map((s) => ({
+              ...s,
+              crop: Array.isArray(s.crop) ? s.crop.slice() : s.crop,
+              physical: Array.isArray(s.physical) ? s.physical.slice() : s.physical,
+              pos: Array.isArray(s.pos) ? s.pos.slice() : s.pos,
+              meshState: cloneMeshState18(s.mesh)
+            }))
+          : null,
+        stage: Array.isArray(eng?.stage) ? eng.stage.map((m) => cloneMeshState18(m)) : null,
+        lights: Array.isArray(eng?.lights)
+          ? eng.lights.map((l) => ({
+              ...l,
+              pos: Array.isArray(l.pos) ? l.pos.slice() : l.pos,
+              target: Array.isArray(l.target) ? l.target.slice() : l.target
+            }))
+          : null,
+        master: eng?.master ? { ...eng.master } : null,
+        size: eng?.size ? { ...eng.size } : null,
+        accent: eng?.accent,
+        selected: eng?.selected,
+        items: Array.isArray(S.stageAssets16?.items)
+          ? S.stageAssets16.items.map((it) => ({
+              ...it,
+              pos: Array.isArray(it.pos) ? it.pos.slice() : it.pos
+            }))
+          : null,
+        historyLen: Array.isArray(window.state?.history) ? window.state.history.length : null,
+        redoCopy: Array.isArray(window.state?.redo) ? window.state.redo.slice() : null
+      };
+      const applied = executeStageCommands(commands, { recordUndo: true });
+      if (applied > 0) {
+        lumiState.pendingPreview = {
+          active: true,
+          commandCount: applied,
+          commands: Array.isArray(commands) ? commands.slice() : [],
+          snapshotBefore,
+          createdAt: Date.now()
+        };
+        window.toast?.(t18('previewReady'));
+      }
+      return applied;
+    }
+
+    function commitStagePreview() {
+      if (!lumiState.pendingPreview?.active) return false;
+      lumiState.pendingPreview = null;
+      trackLumiEvent('preview_committed');
+      window.toast?.(t18('previewCommitted'));
+      return true;
+    }
+
+    function revertStagePreview() {
+      if (!lumiState.pendingPreview?.active) return false;
+      const snap = lumiState.pendingPreview.snapshotBefore;
+      lumiState.pendingPreview = null;
+      if (snap) {
+        const eng = getEngine();
+        if (eng) {
+          if (snap.stage) {
+            eng.stage = snap.stage.map((ms) => restoreMeshState18(eng, ms)).filter(Boolean);
+          }
+          if (snap.surfaces) {
+            eng.surfaces = snap.surfaces.map(({ meshState, ...rest }) => {
+              if (meshState) restoreMeshState18(eng, meshState);
+              const restoredSurf = {
+                ...rest,
+                crop: Array.isArray(rest.crop) ? rest.crop.slice() : rest.crop,
+                physical: Array.isArray(rest.physical) ? rest.physical.slice() : rest.physical,
+                pos: Array.isArray(rest.pos) ? rest.pos.slice() : rest.pos
+              };
+              window.updateTest?.(restoredSurf);
+              return restoredSurf;
+            });
+          }
+          if (snap.lights) {
+            eng.lights = snap.lights.map((l) => ({
+              ...l,
+              pos: Array.isArray(l.pos) ? l.pos.slice() : l.pos,
+              target: Array.isArray(l.target) ? l.target.slice() : l.target
+            }));
+          }
+          if (snap.master) eng.master = { ...snap.master };
+          if (snap.size) eng.size = { ...snap.size };
+          if (snap.accent !== undefined) eng.accent = snap.accent;
+          if (snap.selected !== undefined) eng.selected = snap.selected;
+          eng._stageBatchDirty = true;
+          repackSurfacesMaster(eng);
+          eng.computeBounds?.();
+          eng.rebuildFixtures?.();
+        }
+        if (snap.items && S.stageAssets16) {
+          S.stageAssets16.items = snap.items.map((it) => ({
+            ...it,
+            pos: Array.isArray(it.pos) ? it.pos.slice() : it.pos
+          }));
+          S.stageAssets16.rebuildAll?.();
+        }
+        if (Array.isArray(window.state?.history) && typeof snap.historyLen === 'number') {
+          window.state.history.length = Math.max(0, Math.min(window.state.history.length, snap.historyLen));
+          if (Array.isArray(snap.redoCopy)) window.state.redo = snap.redoCopy.slice();
+          window.historyButtons?.();
+        }
+      }
+      window.renderUI?.();
+      trackLumiEvent('preview_reverted');
+      window.toast?.(t18('previewReverted'));
+      return true;
+    }
+
+    // =========================================================================
+    // A8 — TRỢ LÝ HƯỚNG DẪN SỬ DỤNG PHẦN MỀM & "LÀM GIÚP LUÔN" (COPILOT GUIDE)
+    // =========================================================================
+    const LUMI_HELP_TOPICS = [
+      {
+        id: 'led_mapping',
+        keywords: /màn led|ghép màn|led cánh|wing|novastar|pixel pitch|p2\.5|p3\.91|mapping/i,
+        titleVi: 'Cách tạo & ghép màn hình LED (Chính + Cánh) và tính bộ xử lý NovaStar',
+        titleEn: 'How to create & map LED screens (Main + Wings) and calculate NovaStar processors',
+        answerVi:
+          '📘 HƯỚNG DẪN MÀN HÌNH LED & PIXEL MAPPING:\n' +
+          '1. Mở bước "02 LED" trên thanh công cụ hoặc chọn "🏛 6 Mẫu VN" để dựng nhanh hệ LED Chính + Cánh.\n' +
+          '2. Nhấp vào từng màn LED trên sân khấu 3D để đổi kích thước (m), độ phân giải (px) và Pixel Pitch (P2.5 / P2.97 / P3.91 / P4.81).\n' +
+          '3. Mở "📋 BOM & Báo giá" để xem tự động số lượng cabinet 500×500mm, số cổng RJ45 Cat6A và khuyến nghị bộ xử lý NovaStar (VX4S / VX600 / VX1000).',
+        answerEn:
+          '📘 LED WALL & PIXEL MAPPING GUIDE:\n' +
+          '1. Switch to step "02 LED" or click "🏛 6 Stage Templates" to spawn Main + Wing LED walls.\n' +
+          '2. Select any LED screen in 3D to adjust dimensions (m), resolution (px), and Pixel Pitch.\n' +
+          '3. Open "📋 BOM & Quote" for automatic 500×500mm cabinet count, RJ45 port count, and NovaStar processor sizing.',
+        quickActionId: 'add_wing_leds',
+        quickActionLabelVi: '⚡ Làm giúp luôn: Thêm 2 màn LED cánh 2.5×4m (P3.91)',
+        quickActionLabelEn: '⚡ Do it for me: Add 2 Side Wing LEDs 2.5×4m (P3.91)'
+      },
+      {
+        id: 'dmx_lighting',
+        keywords: /đèn|beam|moving head|par led|katana|dmx|pan|tilt|ofl|ánh sáng/i,
+        titleVi: 'Cách treo đèn Moving Head / Par LED, gán hồ sơ OFL DMX512 và xoay Pan/Tilt',
+        titleEn: 'How to rig Moving Head / Par LED fixtures, assign OFL DMX512 profiles & Pan/Tilt',
+        answerVi:
+          '📘 HƯỚNG DẪN ĐÈN SÂN KHẤU DMX512 & RIG 3 NODE:\n' +
+          '1. Chuyển sang bước "03 ÁNH SÁNG" hoặc mở Kho Đạo cụ 3D để thêm đèn Moving Head Beam 230/350, Wash 36×18, Par LED 54×3W hoặc Katana Bar.\n' +
+          '2. Các mẫu đèn 3D chuẩn hợp đồng led-asset/v1 có sẵn 3 node tách biệt (Base / Yoke / Head), tự động treo lên cao độ Truss và xoay Pan/Tilt độc lập.\n' +
+          '3. Chọn hồ sơ Open Fixture Library (21 mẫu đèn VN) trong Fixture Desk để đồng bộ kênh DMX 16-bit.',
+        answerEn:
+          '📘 DMX512 LIGHTING & 3-NODE KINEMATIC RIG GUIDE:\n' +
+          '1. Open step "03 LIGHTING" or the 3D Asset Library to add Beam 230/350, Wash 36×18, Par LED, or Katana fixtures.\n' +
+          '2. 3-node GLB fixtures (Base / Yoke / Head) auto-mount at Truss height and support independent Pan/Tilt rotation.\n' +
+          '3. Assign any of the 21 OFL DMX512 profiles in Fixture Desk.',
+        quickActionId: 'add_beam_rig',
+        quickActionLabelVi: '⚡ Làm giúp luôn: Treo thêm 8 đèn Beam 230W lên khung Truss',
+        quickActionLabelEn: '⚡ Do it for me: Rig 8 Beam 230W moving heads on Truss'
+      },
+      {
+        id: 'audience_sightline',
+        keywords: /bàn ghế|khán giả|tầm nhìn|tia nhìn|sightline|hội trường|tiệc tròn|ibm|banquet/i,
+        titleVi: 'Cách rải bàn ghế tự động theo số khách và kiểm tra tia nhìn khán giả (A3)',
+        titleEn: 'How to auto-layout audience seating and verify 3D SMPTE sightlines (A3)',
+        answerVi:
+          '📘 HƯỚNG DẪN BỐ TRÍ BÀN GHẾ & KIỂM TRA TIA NHÌN (A3):\n' +
+          '1. Trong cửa sổ AI Sân khấu, nhập số lượng khách (VD: "300 khách bàn tiệc tròn" hoặc "150 khách bàn IBM") rồi bấm "🪑 Bố trí Bàn ghế & Tia nhìn (A3)".\n' +
+          '2. Hệ thống tự động chia hàng, chừa lối đi trung tâm và kiểm tra góc ngẩng dọc (<= 30° chuẩn SMPTE), góc lệch ngang (<= 45°) cùng khoảng cách nhìn tối thiểu theo Pixel Pitch.',
+        answerEn:
+          '📘 AUDIENCE SEATING & 3D SIGHTLINE CHECK (A3):\n' +
+          '1. Enter guest count in the Stage AI modal and click "🪑 Seating & Sightlines (A3)".\n' +
+          '2. LumiStage auto-arranges Gala round tables, IBM tables, or Banquet chairs and checks SMPTE vertical/horizontal viewing angles.',
+        quickActionId: 'auto_seating_200',
+        quickActionLabelVi: '⚡ Làm giúp luôn: Xếp bàn tiệc Gala cho 200 khách & kiểm tra tia nhìn',
+        quickActionLabelEn: '⚡ Do it for me: Layout Gala tables for 200 guests & check sightlines'
+      },
+      {
+        id: 'music_show',
+        keywords: /nhạc|bpm|timeline|cue|biên đạo|đạo diễn|drop|intro|timecode/i,
+        titleVi: 'Cách lên kịch bản đèn & LED Matrix tự động theo BPM bài nhạc (A4)',
+        titleEn: 'How to auto-generate BPM-synced lighting & LED Matrix show cues (A4)',
+        answerVi:
+          '📘 HƯỚNG DẪN ĐẠO DIỄN SHOW THEO NHẠC (A4):\n' +
+          '1. Nhập tốc độ BPM và phong cách sự kiện (VD: "128 BPM EDM" hoặc "100 BPM Wedding") rồi bấm "🎵 Đạo diễn Nhạc & Đèn (A4)".\n' +
+          '2. Hệ thống tự động tạo 5 phân đoạn chuẩn (Intro -> Verse -> Build-up -> Drop/Climax -> Outro) trên Timeline kèm hiệu ứng đèn và độ sáng Dimmer.',
+        answerEn:
+          '📘 BPM MUSIC SHOW DIRECTOR GUIDE (A4):\n' +
+          '1. Enter BPM and mood (e.g. "128 BPM EDM") and click "🎵 Music & Light Cues (A4)".\n' +
+          '2. LumiStage generates 5 structured show sections (Intro, Verse, Build-up, Drop, Outro) synced to bar duration.',
+        quickActionId: 'generate_edm_cues',
+        quickActionLabelVi: '⚡ Làm giúp luôn: Sinh kịch bản 5 Cue nhạc EDM 128 BPM',
+        quickActionLabelEn: '⚡ Do it for me: Generate 5 EDM 128 BPM show cues'
+      },
+      {
+        id: 'bom_dxf_quote',
+        keywords: /báo giá|bom|vật tư|dxf|autocad|cad|pdf|excel|csv|công suất|điện 3 pha|grouplife/i,
+        titleVi: 'Cách xuất Bảng vật tư (BOM), Báo giá PDF/CSV và Bản vẽ AutoCAD .DXF (D3–D5)',
+        titleEn: 'How to export Auto BOM, Commercial Quotation PDF/CSV & 2D AutoCAD .DXF (D3–D5)',
+        answerVi:
+          '📘 HƯỚNG DẪN BÓC TÁCH VẬT TƯ (BOM), BÁO GIÁ & BẢN VẼ AUTOCAD (.DXF):\n' +
+          '1. Bấm nút "📋 BOM & Báo giá" trên thanh công cụ trên cùng.\n' +
+          '2. Điều chỉnh số ngày thuê, đơn giá từng hạng mục, chi phí vận chuyển và chế độ thuế (KCT / VAT 8% / 10%).\n' +
+          '3. Bấm "🖨 In / PDF Báo giá", "📊 Xuất Excel (CSV)", "📏 Xuất AutoCAD .DXF" (Mặt bằng & Mặt đứng) hoặc "📂 Nhập Mặt bằng .DXF" của địa điểm.',
+        answerEn:
+          '📘 AUTO BOM, COMMERCIAL QUOTE & AUTOCAD .DXF GUIDE:\n' +
+          '1. Click "📋 BOM & Quote" in the top toolbar.\n' +
+          '2. Customize rental days, unit prices, transport fees, and tax mode.\n' +
+          '3. Export A4 PDF Quotation, Excel CSV, or 2D AutoCAD .DXF (Top View & Front Elevation), or import a venue .DXF floorplan.',
+        quickActionId: 'open_bom_modal',
+        quickActionLabelVi: '⚡ Làm giúp luôn: Mở bảng BOM, Báo giá & Xuất AutoCAD .DXF',
+        quickActionLabelEn: '⚡ Do it for me: Open BOM, Quotation & AutoCAD .DXF modal'
+      },
+      {
+        id: 'live_show_dmx',
+        keywords: /chạy show|live|art-net|artnet|sacn|udp|hdmi|màn thật|khóa giao diện|remote|điện thoại/i,
+        titleVi: 'Cách phát ra màn hình LED thật (HDMI 1:1), điều khiển DMX Art-Net/sACN & Khóa an toàn (E1–E4)',
+        titleEn: 'How to output 1:1 HDMI LED Wall, stream Art-Net/sACN DMX & lock live show UI (E1–E4)',
+        answerVi:
+          '📘 HƯỚNG DẪN CHẠY SHOW THẬT (NHÓM E — E1..E4):\n' +
+          '1. Bấm nút "🎛 Chạy Show" trên thanh công cụ để mở Bàn Điều Khiển Chạy Show Trực Tiếp.\n' +
+          '2. E1 (DMX Art-Net / sACN): Chạy `node scripts/dmx-udp-bridge.mjs` trên máy tính và bật phát DMX 512 kênh ra bộ giải mã Art-Net (UDP 6454) hoặc sACN (UDP 5568).\n' +
+          '3. E2 (Live LED Output): Bấm "🖥 Mở Cửa sổ Phát LED 1:1 (HDMI)" rồi kéo sang màn hình thứ 2 nối với bộ xử lý NovaStar.\n' +
+          '4. E3 & E4: Bấm chuyển Cue trực tiếp trên điện thoại (Mobile Lite) và bật "🔒 Khóa An toàn Chạy Show" để tránh bấm nhầm xoá/sửa sân khấu.',
+        answerEn:
+          '📘 LIVE SHOW HARDWARE SUITE GUIDE (E1–E4):\n' +
+          '1. Click "🎛 Live Show" in the top bar.\n' +
+          '2. E1 (Art-Net / sACN): Run `node scripts/dmx-udp-bridge.mjs` and stream 512-channel DMX frames over UDP 6454 / 5568.\n' +
+          '3. E2 (1:1 LED Wall Output): Launch the secondary HDMI output window for your NovaStar processor.\n' +
+          '4. E3 & E4: Trigger cues from Mobile Lite and enable Safe Show Lock to prevent accidental edits.',
+        quickActionId: 'open_live_show_modal',
+        quickActionLabelVi: '⚡ Làm giúp luôn: Mở Bàn Điều Khiển Chạy Show Thật (E1–E4)',
+        quickActionLabelEn: '⚡ Do it for me: Open Live Show Hardware Console (E1–E4)'
+      }
+    ];
+
+    function answerSoftwareGuide(queryText = '') {
+      const q = String(queryText || '').trim();
+      const matched = LUMI_HELP_TOPICS.find((t) => t.keywords.test(q)) || LUMI_HELP_TOPICS[0];
+      const isEn = lumiState.lang === 'en';
+      const allTopicsOverview = LUMI_HELP_TOPICS.map(
+        (t, idx) => `${idx + 1}. ${isEn ? t.titleEn : t.titleVi}`
+      ).join('\n');
+      const reply =
+        (isEn ? matched.answerEn : matched.answerVi) +
+        `\n\n📚 ${isEn ? 'All Help Topics (A8):' : 'Danh mục Hướng dẫn nhanh (A8):'}\n` +
+        allTopicsOverview;
+      trackLumiEvent('guide_opened', { topicId: matched.id });
+      return {
+        topicId: matched.id,
+        title: isEn ? matched.titleEn : matched.titleVi,
+        reply,
+        quickActionId: matched.quickActionId,
+        quickActionLabel: isEn ? matched.quickActionLabelEn : matched.quickActionLabelVi
+      };
+    }
+
+    function runQuickGuideAction(actionId) {
+      switch (actionId) {
+        case 'add_wing_leds':
+          return previewStageCommands([
+            { action: 'add_led', name: 'LED_WING_L_AI', widthM: 2.5, heightM: 4.0, pitchMm: 3.91, pos: [-5.5, 2.8, -1.8], yawDeg: 15 },
+            { action: 'add_led', name: 'LED_WING_R_AI', widthM: 2.5, heightM: 4.0, pitchMm: 3.91, pos: [5.5, 2.8, -1.8], yawDeg: -15 }
+          ]);
+        case 'add_beam_rig':
+          return previewStageCommands([{ action: 'add_light', count: 8, fixtureType: 'beam', color: '#38bdf8' }]);
+        case 'auto_seating_200':
+          return layoutAudienceSeating({ type: 'gala_round_table', guestCount: 200 });
+        case 'generate_edm_cues':
+          return generateMusicShowCues({ bpm: 128, mood: 'edm' });
+        case 'open_bom_modal':
+          openBomAndQuoteModal();
+          return true;
+        case 'open_live_show_modal':
+          openLiveShowModal();
+          return true;
+        default:
+          return false;
+      }
+    }
+
     // Bộ phân tích câu lệnh tiếng Việt cục bộ (Offline Fallback khi không có mạng / chưa đăng nhập)
     function parseStagePromptOffline(promptText) {
       const text = String(promptText || '').toLowerCase();
       const commands = [];
       let reply = '';
+
+      // Phát hiện lệnh dịch chuyển tương đối (A2): "đẩy màn LED lùi 1m", "dịch bàn DJ sang phải 2m", "nâng màn LED lên 0.5m"
+      const moveVerb = /(?:đẩy|day|dịch|dich|dời|doi|kéo|keo|lùi|lui|tiến|tien|nâng|nang|hạ|ha|move|shift)\b/i.test(text);
+      const distMatch = text.match(/(\d+(?:[.,]\d+)?)\s*m\b/i);
+      if (moveVerb && distMatch && !/(\d+)\s*[x×*]\s*(\d+)/.test(text)) {
+        const dist = parseFloat(distMatch[1].replace(',', '.')) || 1.0;
+        let dx = 0, dy = 0, dz = 0;
+        if (/lùi|lui|ra sau|về sau|back/.test(text)) dz = -dist;
+        else if (/tiến|tien|lên trước|ra trước|forward|front/.test(text)) dz = dist;
+        if (/phải|phai|right/.test(text)) dx = dist;
+        else if (/trái|trai|left/.test(text)) dx = -dist;
+        if (/nâng|nang|cao lên|lên cao|up|raise/.test(text)) dy = dist;
+        else if (/hạ|ha|thấp xuống|xuống|down|lower/.test(text)) dy = -dist;
+        if (dx === 0 && dy === 0 && dz === 0) dz = -dist;
+
+        if (/màn|man|led|screen/.test(text)) {
+          const idxMatch = text.match(/(?:số|so|#)\s*(\d+)/i);
+          const index = idxMatch ? Math.max(0, parseInt(idxMatch[1], 10) - 1) : 0;
+          commands.push({ action: 'move_led', index, dx, dy, dz });
+          reply = `Đã dịch chuyển màn hình LED (Δx=${dx}m, Δy=${dy}m, Δz=${dz}m).`;
+          return { reply, commands };
+        }
+        const propKind = /dj/.test(text)
+          ? 'dj_booth'
+          : /bục|buc|podium/.test(text)
+          ? 'vip_podium'
+          : /cổng|cong|arch/.test(text)
+          ? 'backdrop_arch'
+          : /bàn|ban|table/.test(text)
+          ? 'gala_round_table'
+          : '';
+        commands.push({ action: 'move_prop', kind: propKind, dx, dy, dz });
+        reply = `Đã dịch chuyển đạo cụ trên sân khấu (Δx=${dx}m, Δy=${dy}m, Δz=${dz}m).`;
+        return { reply, commands };
+      }
 
       const sizeMatch = text.match(/(\d+(?:[.,]\d+)?)\s*[x×*]\s*(\d+(?:[.,]\d+)?)\s*m?/i);
       const widthM = sizeMatch ? parseFloat(sizeMatch[1].replace(',', '.')) : null;
@@ -1299,7 +1853,7 @@
             lumiState.freeAiCreditsRemaining = nextFree;
           }
           if (Array.isArray(data.commands) && data.commands.length) {
-            executeStageCommands(data.commands, { recordUndo: true });
+            previewStageCommands(data.commands);
           }
           updateTopbarBadge18();
           return data;
@@ -1307,7 +1861,7 @@
           // Nếu lỗi mạng cục bộ thì fallback sang bộ giải mã offline
           if (!token && !lumiState.byok.enabled) {
             const local = parseStagePromptOffline(cleanPrompt);
-            executeStageCommands(local.commands, { recordUndo: true });
+            previewStageCommands(local.commands);
             return local;
           }
           throw err;
@@ -1317,7 +1871,7 @@
       }
 
       const local = parseStagePromptOffline(cleanPrompt);
-      executeStageCommands(local.commands, { recordUndo: true });
+      previewStageCommands(local.commands);
       lumiState.lastAiReply = local.reply;
       return local;
     }
@@ -2113,7 +2667,18 @@
         `<button type="button" class="btn" id="lumi18SeatingBtn">🪑 Bố trí Bàn ghế & Tia nhìn (A3)</button>` +
         `<button type="button" class="btn" id="lumi18MusicCuesBtn">🎵 Đạo diễn Nhạc & Đèn (A4)</button>` +
         `<button type="button" class="btn" id="lumi18BrandSyncBtn">🎨 Màu Thương hiệu (A5)</button>` +
+        `<button type="button" class="btn" id="lumi18GuideBtn">❓ Hướng dẫn & Làm giúp (A8)</button>` +
         `</div></div>` +
+        `<div id="lumi18PreviewBar" class="info-box" style="display:${lumiState.pendingPreview?.active ? 'flex' : 'none'};justify-content:space-between;align-items:center;border:1px solid #38bdf8">` +
+        `<span>👁 <strong>Chế độ Xem trước AI (A2):</strong> Đã áp dụng thử phương án lên sân khấu 3D.</span>` +
+        `<div style="display:flex;gap:6px">` +
+        `<button type="button" class="btn small primary" id="lumi18CommitPreviewBtn">✅ Áp dụng (Commit)</button>` +
+        `<button type="button" class="btn small" id="lumi18RevertPreviewBtn">↩ Hoàn tác (Revert)</button>` +
+        `</div></div>` +
+        `<div id="lumi18GuideActionBox" class="info-box" style="display:none;justify-content:space-between;align-items:center">` +
+        `<span id="lumi18GuideActionTitle"></span>` +
+        `<button type="button" class="btn small primary" id="lumi18GuideQuickBtn">⚡ Làm giúp luôn</button>` +
+        `</div>` +
         `<div id="lumi18AiOutput" class="info-box" style="max-height:200px;overflow:auto;white-space:pre-wrap;font-size:12.5px">${
           lumiState.lastAiReply
             ? esc18(lumiState.lastAiReply)
@@ -2264,9 +2829,51 @@
       const optBtn = $('lumi18OptimizeBudgetBtn');
       if (optBtn) {
         optBtn.onclick = () => {
-          executeStageCommands([{ action: 'optimize_budget', pitchMm: 3.91, maxLights: 16 }], { recordUndo: true });
+          previewStageCommands([{ action: 'optimize_budget', pitchMm: 3.91, maxLights: 16 }]);
+          const prevBar = $('lumi18PreviewBar');
+          if (prevBar) prevBar.style.display = 'flex';
           const out = $('lumi18AiOutput');
           if (out) out.textContent = 'Đã tối ưu cấu hình Pixel Pitch (P3.91/P4.81 cho màn phụ) và cân đối số lượng đèn để giảm chi phí thuê.\n\n' + buildClientProposalText();
+        };
+      }
+
+      const commitBtn = $('lumi18CommitPreviewBtn');
+      if (commitBtn) {
+        commitBtn.onclick = () => {
+          commitStagePreview();
+          const prevBar = $('lumi18PreviewBar');
+          if (prevBar) prevBar.style.display = 'none';
+        };
+      }
+      const revertBtn = $('lumi18RevertPreviewBtn');
+      if (revertBtn) {
+        revertBtn.onclick = () => {
+          revertStagePreview();
+          const prevBar = $('lumi18PreviewBar');
+          if (prevBar) prevBar.style.display = 'none';
+        };
+      }
+
+      const guideBtn = $('lumi18GuideBtn');
+      if (guideBtn) {
+        guideBtn.onclick = () => {
+          const q = ($('lumi18AiPrompt')?.value || '').trim();
+          const g = answerSoftwareGuide(q);
+          const out = $('lumi18AiOutput');
+          if (out) out.textContent = g.reply;
+          const actBox = $('lumi18GuideActionBox');
+          const actTitle = $('lumi18GuideActionTitle');
+          const quickBtn = $('lumi18GuideQuickBtn');
+          if (actBox && actTitle && quickBtn) {
+            actBox.style.display = 'flex';
+            actTitle.textContent = g.title;
+            quickBtn.textContent = g.quickActionLabel;
+            quickBtn.onclick = () => {
+              runQuickGuideAction(g.quickActionId);
+              const prevBar = $('lumi18PreviewBar');
+              if (prevBar && lumiState.pendingPreview?.active) prevBar.style.display = 'flex';
+            };
+          }
         };
       }
     }
@@ -2444,6 +3051,10 @@
         `<div style="display:flex;justify-content:space-between;align-items:center">` +
         `<span>👑 <strong>LumiStage Pro Năm (365 ngày)</strong> · Tặng +4.500 Cr AI (Tiết kiệm 22%)</span>` +
         `<button type="button" class="btn small primary" data-lumi18-buy="lumi_pro_yearly">13.900 Credits (1.390.000đ)</button>` +
+        `</div>` +
+        `<div style="display:flex;justify-content:space-between;align-items:center">` +
+        `<span>🎛 <strong>LumiStage Show Pro+ (Chạy Show DMX/Art-Net · 30 ngày)</strong> · Tặng +800 Cr AI</span>` +
+        `<button type="button" class="btn small primary" data-lumi18-buy="lumi_show_pro_plus">2.990 Credits (299.000đ)</button>` +
         `</div></div>` +
         `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center">` +
         `<span>🔗 <strong>Cài đặt nâng cao Link duyệt 3D</strong> (Thời hạn 24h–30 ngày & Mật khẩu bảo vệ)</span>` +
@@ -2479,12 +3090,501 @@
       }
     }
 
+    // =========================================================================
+    // NHÓM E (E1–E4) — CHẠY SHOW THẬT: DMX ART-NET / SACN, LIVE LED OUTPUT,
+    // REMOTE CUE CONTROL & CHẾ ĐỘ KHOÁ AN TOÀN CHẠY SHOW
+    // =========================================================================
+    function hexToRgbBytes18(hex) {
+      const m = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(String(hex || '#38bdf8').trim());
+      if (!m) return [56, 189, 248];
+      return [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)];
+    }
+
+    // E1: Mã hoá toàn bộ đèn sân khấu thành khung 512 kênh DMX512 (16ch / đèn, tối đa 32 đèn / Universe)
+    function encodeDmxUniverseFrame(universe = 0) {
+      const dmx = new Uint8Array(512);
+      if (lumiState.masterBlackout) {
+        lumiState.dmxBridge.lastDmx512 = dmx;
+        return dmx;
+      }
+      const eng = getEngine();
+      const lights = Array.isArray(eng?.lights) ? eng.lights : [];
+      const glbRigs = typeof S.stageAssets16?.fixtureRigs16?.values === 'function'
+        ? [...S.stageAssets16.fixtureRigs16.values()]
+        : [];
+      const allFixtures = [
+        ...lights.map((l) => {
+          const dx = (Number(l.target?.[0]) || 0) - (Number(l.pos?.[0]) || 0);
+          const dy = (Number(l.target?.[1]) || 0) - (Number(l.pos?.[1]) || 5);
+          const dz = (Number(l.target?.[2]) || 0) - (Number(l.pos?.[2]) || 0);
+          const panDeg = (Math.atan2(dx, dz || 0.001) * 180) / Math.PI;
+          const tiltDeg = (Math.atan2(Math.hypot(dx, dz), -dy || 0.001) * 180) / Math.PI;
+          return {
+            enabled: l.enabled !== false,
+            panDeg,
+            tiltDeg,
+            dimmer: Math.max(0, Math.min(1, (Number(l.power) || 0) / 6)),
+            color: l.color || '#38bdf8',
+            fx: l.fx || 'steady'
+          };
+        }),
+        ...glbRigs.map((r) => ({
+          enabled: true,
+          panDeg: Number(r.panDeg) || 0,
+          tiltDeg: Number(r.tiltDeg) || 0,
+          dimmer: 1.0,
+          color: eng?.accent || '#38bdf8',
+          fx: 'steady'
+        }))
+      ];
+
+      const startIdx = Math.max(0, Number(universe) | 0) * 32;
+      for (let i = 0; i < 32 && startIdx + i < allFixtures.length; i++) {
+        const fx = allFixtures[startIdx + i];
+        const base = i * 16;
+        if (!fx.enabled) continue;
+        // 16-bit Pan (-270..+270 deg -> 0..65535) & Tilt (-135..+135 deg -> 0..65535)
+        const panNorm = Math.max(0, Math.min(1, (fx.panDeg + 270) / 540));
+        const tiltNorm = Math.max(0, Math.min(1, (fx.tiltDeg + 135) / 270));
+        const pan16 = Math.round(panNorm * 65535);
+        const tilt16 = Math.round(tiltNorm * 65535);
+        const [r, g, b] = hexToRgbBytes18(fx.color);
+        const dim = Math.max(0, Math.min(255, Math.round(fx.dimmer * 255)));
+        const shutter = fx.fx === 'strobe' ? 220 : fx.fx === 'pulse' ? 140 : 255;
+
+        dmx[base + 0] = (pan16 >> 8) & 0xff;  // CH1: Pan coarse
+        dmx[base + 1] = pan16 & 0xff;         // CH2: Pan fine
+        dmx[base + 2] = (tilt16 >> 8) & 0xff; // CH3: Tilt coarse
+        dmx[base + 3] = tilt16 & 0xff;        // CH4: Tilt fine
+        dmx[base + 4] = dim;                  // CH5: Master Dimmer
+        dmx[base + 5] = shutter;              // CH6: Shutter / Strobe
+        dmx[base + 6] = r;                    // CH7: Red
+        dmx[base + 7] = g;                    // CH8: Green
+        dmx[base + 8] = b;                    // CH9: Blue
+        dmx[base + 9] = Math.min(r, g, b);    // CH10: White
+      }
+      lumiState.dmxBridge.lastDmx512 = dmx;
+      return dmx;
+    }
+
+    // E1: Đóng gói gói tin chuẩn Art-Net ArtDmx (OpCode 0x5000, 530 bytes)
+    function buildArtNetPacket18(universe = 0, dmx512 = encodeDmxUniverseFrame(universe), sequence = 1) {
+      const pkt = new Uint8Array(530);
+      const header = [0x41, 0x72, 0x74, 0x2d, 0x4e, 0x65, 0x74, 0x00, 0x00, 0x50, 0x00, 14];
+      for (let i = 0; i < header.length; i++) pkt[i] = header[i];
+      pkt[12] = ((Number(sequence) || 1) & 0xff) || 1;
+      pkt[13] = 0;
+      const uni = Math.max(0, Math.min(32767, Number(universe) | 0));
+      pkt[14] = uni & 0xff;
+      pkt[15] = (uni >> 8) & 0x7f;
+      pkt[16] = 0x02; // 512 high byte
+      pkt[17] = 0x00; // 512 low byte
+      for (let i = 0; i < 512 && i < (dmx512?.length || 0); i++) {
+        pkt[18 + i] = dmx512[i] & 0xff;
+      }
+      return pkt;
+    }
+
+    // E1: Đóng gói gói tin chuẩn ANSI E1.31 (sACN, 638 bytes)
+    function buildSacnPacket18(universe = 1, dmx512 = null, sequence = 1) {
+      const uni = Math.max(1, Math.min(63999, Number(universe) || 1));
+      const frame = dmx512 || encodeDmxUniverseFrame(Math.max(0, uni - 1));
+      const pkt = new Uint8Array(638);
+      pkt[0] = 0x00; pkt[1] = 0x10; // Preamble 0x0010
+      const acnId = [0x41, 0x53, 0x43, 0x2d, 0x45, 0x31, 0x2e, 0x31, 0x37, 0x00, 0x00, 0x00];
+      for (let i = 0; i < acnId.length; i++) pkt[4 + i] = acnId[i];
+      const rootLen = 0x7000 | (638 - 16);
+      pkt[16] = (rootLen >> 8) & 0xff; pkt[17] = rootLen & 0xff;
+      pkt[21] = 0x04; // VECTOR_ROOT_E131_DATA
+      // Deterministic non-zero 16-byte sACN CID ("LumiStage-E131-1")
+      const cid = [0x4c, 0x75, 0x6d, 0x69, 0x53, 0x74, 0x61, 0x67, 0x65, 0x2d, 0x45, 0x31, 0x33, 0x31, 0x2d, 0x31];
+      for (let i = 0; i < 16; i++) pkt[22 + i] = cid[i];
+      const frameLen = 0x7000 | (638 - 38);
+      pkt[38] = (frameLen >> 8) & 0xff; pkt[39] = frameLen & 0xff;
+      pkt[43] = 0x02; // VECTOR_E131_DATA_PACKET
+      const srcName = 'LumiStage Studio';
+      for (let i = 0; i < srcName.length; i++) pkt[44 + i] = srcName.charCodeAt(i);
+      pkt[108] = 100; // Priority 100
+      pkt[111] = (Number(sequence) || 1) & 0xff;
+      pkt[113] = (uni >> 8) & 0xff; pkt[114] = uni & 0xff;
+      const dmpLen = 0x7000 | (638 - 115);
+      pkt[115] = (dmpLen >> 8) & 0xff; pkt[116] = dmpLen & 0xff;
+      pkt[117] = 0x02; // VECTOR_DMP_SET_PROPERTY
+      pkt[118] = 0xa1;
+      pkt[122] = 0x01; // Increment 1
+      pkt[123] = 0x02; pkt[124] = 0x01; // 513 values (start code + 512)
+      pkt[125] = 0x00; // Start code 0
+      for (let i = 0; i < 512 && i < (frame?.length || 0); i++) {
+        pkt[126 + i] = frame[i] & 0xff;
+      }
+      return pkt;
+    }
+
+    async function sendDmxFrameToBridge(opts = {}) {
+      const cfg = lumiState.dmxBridge;
+      const universe = opts.universe !== undefined ? Number(opts.universe) : cfg.universe;
+      const protocol = opts.protocol || cfg.protocol || 'artnet';
+      const host = opts.host || cfg.host || '127.0.0.1';
+      const port = opts.port || cfg.port || (protocol === 'sacn' ? 5568 : 6454);
+      const wsPort = opts.wsPort || cfg.wsPort || 9454;
+      const dmx = encodeDmxUniverseFrame(universe);
+      cfg.sequence = (cfg.sequence % 255) + 1;
+      try {
+        const res = await fetch(`http://127.0.0.1:${wsPort}/dmx`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            proto: protocol,
+            universe,
+            host,
+            port,
+            channels: Array.from(dmx)
+          })
+        });
+        const json = await res.json().catch(() => ({}));
+        if (res.ok && json.ok) {
+          cfg.packetsSent++;
+          return { sent: true, bytes: json.bytes, packetsSent: cfg.packetsSent };
+        }
+        return { sent: false, reason: json.error || `HTTP ${res.status}` };
+      } catch {
+        return { sent: false, reason: 'bridge_unreachable' };
+      }
+    }
+
+    let dmxTimer18 = null;
+    function startDmxLiveStream(opts = {}) {
+      Object.assign(lumiState.dmxBridge, opts, { streaming: true });
+      if (dmxTimer18) clearInterval(dmxTimer18);
+      dmxTimer18 = setInterval(() => {
+        sendDmxFrameToBridge().catch(() => {});
+      }, 33); // ~30Hz DMX refresh
+      trackLumiEvent('dmx_bridge_started', { protocol: lumiState.dmxBridge.protocol });
+      return true;
+    }
+
+    function stopDmxLiveStream() {
+      lumiState.dmxBridge.streaming = false;
+      if (dmxTimer18) {
+        clearInterval(dmxTimer18);
+        dmxTimer18 = null;
+      }
+      return true;
+    }
+
+    // E2: Mở cửa sổ phát nội dung LED 1:1 theo Pixel Map ra cổng HDMI / NovaStar
+    function renderLiveLedOutputFrame(targetWin = lumiState._liveOutputWin) {
+      if (!targetWin || targetWin.closed) return false;
+      const outCanvas = targetWin.document?.getElementById?.('ledOutCanvas');
+      const ctx2d = outCanvas?.getContext?.('2d');
+      if (!outCanvas || !ctx2d) return false;
+      const w = Number(outCanvas.width) || 1920;
+      const h = Number(outCanvas.height) || 1080;
+      ctx2d.fillStyle = '#000000';
+      ctx2d.fillRect(0, 0, w, h);
+      if (lumiState.masterBlackout) return true;
+
+      const eng = getEngine();
+      const glCanvas = document.getElementById?.('glcanvas');
+      let drewAny = false;
+      if (Array.isArray(eng?.surfaces) && eng.surfaces.length > 0) {
+        for (const s of eng.surfaces) {
+          if (s.enabled === false || (Number(s.brightness) ?? 1) <= 0) continue;
+          const sx = Number(s.x) || 0;
+          const sy = Number(s.y) || 0;
+          const sw = Math.max(8, Number(s.w) || 640);
+          const sh = Math.max(8, Number(s.h) || 360);
+          const srcCanvas = s.testCanvas || glCanvas;
+          if (srcCanvas && typeof ctx2d.drawImage === 'function') {
+            try {
+              ctx2d.drawImage(srcCanvas, sx, sy, sw, sh);
+              drewAny = true;
+              continue;
+            } catch {
+              // fallback to procedural tile below
+            }
+          }
+          ctx2d.fillStyle = eng?.accent || '#38bdf8';
+          ctx2d.fillRect(sx, sy, sw, sh);
+          drewAny = true;
+        }
+      }
+      if (!drewAny && glCanvas && typeof ctx2d.drawImage === 'function') {
+        try {
+          ctx2d.drawImage(glCanvas, 0, 0, w, h);
+        } catch {
+          // ignore cross-context canvas error
+        }
+      }
+      return true;
+    }
+
+    function openLiveLedOutputWindow() {
+      const eng = getEngine();
+      const masterW = Math.max(640, Math.min(3840, Number(eng?.master?.width) || 1920));
+      const masterH = Math.max(360, Math.min(2160, Number(eng?.master?.height) || 1080));
+      const win = window.open('', 'LumiStage_LED_Wall_Output', `width=${Math.min(1280, masterW)},height=${Math.min(720, masterH)}`);
+      if (!win) {
+        window.toast?.('Trình duyệt chặn cửa sổ Live LED Output. Hãy cho phép pop-up rồi bấm lại.');
+        return null;
+      }
+      const html = `<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>LumiStage Live LED Output (${masterW}×${masterH}px)</title>
+      <style>html,body{margin:0;padding:0;width:100%;height:100%;background:#000;overflow:hidden;display:flex;align-items:center;justify-content:center}
+      canvas{width:100%;height:100%;object-fit:contain;image-rendering:pixelated}
+      .hud{position:fixed;top:10px;right:10px;z-index:9;display:flex;gap:8px;opacity:.85}
+      .hud button{background:#0284c7;color:#fff;border:0;padding:6px 12px;border-radius:4px;cursor:pointer;font-weight:600}
+      </style></head><body>
+      <div class="hud" id="hud"><button onclick="document.documentElement.requestFullscreen?.();document.getElementById('hud').style.display='none'">⛶ Fullscreen HDMI Output (${masterW}×${masterH})</button></div>
+      <canvas id="ledOutCanvas" width="${masterW}" height="${masterH}"></canvas>
+      </body></html>`;
+      win.document.open();
+      win.document.write(html);
+      win.document.close();
+      lumiState._liveOutputWin = win;
+      renderLiveLedOutputFrame(win);
+      const raf = win.requestAnimationFrame || window.requestAnimationFrame;
+      if (typeof raf === 'function') {
+        const tick = () => {
+          if (!win || win.closed || lumiState._liveOutputWin !== win) return;
+          renderLiveLedOutputFrame(win);
+          raf(tick);
+        };
+        raf(tick);
+      }
+      trackLumiEvent('live_led_output_opened', { width: masterW, height: masterH });
+      window.toast?.(`Đã mở cửa sổ phát LED 1:1 (${masterW}×${masterH} px). Kéo sang màn hình HDMI nối bộ xử lý NovaStar và bấm Fullscreen.`);
+      return win;
+    }
+
+    // E3: Điều khiển Cue Trình diễn & Master Blackout (Dùng chung cho Desktop & Mobile Remote)
+    function triggerShowCue(indexOrId = 0) {
+      if (!lumiState.musicShowCues.length) {
+        generateMusicShowCues({ bpm: 128, mood: 'edm' });
+      }
+      const cues = lumiState.musicShowCues;
+      let idx = typeof indexOrId === 'number'
+        ? indexOrId
+        : cues.findIndex((c) => c.id === indexOrId || c.section === indexOrId);
+      if (idx < 0 || idx >= cues.length) idx = 0;
+      lumiState.activeCueIndex = idx;
+      const cue = cues[idx];
+      const eng = getEngine();
+      if (window.state) {
+        window.state.time = Number(cue.startSec) || 0;
+      }
+      if (eng && Array.isArray(eng.lights)) {
+        const scale = (Number(cue.dimmerPercent) || 100) / 100;
+        eng.lights.forEach((l) => {
+          l.color = cue.lightColor || l.color;
+          l.fx = cue.lightFx || 'steady';
+          l.power = +(4.8 * scale).toFixed(2);
+        });
+        eng.rebuildFixtures?.();
+      }
+      if (lumiState.dmxBridge.streaming) {
+        sendDmxFrameToBridge().catch(() => {});
+      }
+      window.renderUI?.();
+      trackLumiEvent('show_cue_triggered', { cueId: cue.id, index: idx });
+      return cue;
+    }
+
+    function nextShowCue() {
+      const len = lumiState.musicShowCues.length || 5;
+      const nextIdx = (lumiState.activeCueIndex + 1) % len;
+      return triggerShowCue(nextIdx);
+    }
+
+    function prevShowCue() {
+      const len = lumiState.musicShowCues.length || 5;
+      const prevIdx = (lumiState.activeCueIndex - 1 + len) % len;
+      return triggerShowCue(prevIdx);
+    }
+
+    function toggleMasterBlackout(forceState) {
+      const eng = getEngine();
+      const next = typeof forceState === 'boolean' ? forceState : !lumiState.masterBlackout;
+      lumiState.masterBlackout = next;
+      if (eng) {
+        if (next) {
+          lumiState._savedLightPowers = (eng.lights || []).map((l) => Number(l.power) ?? 4);
+          lumiState._savedSurfaceBrightness = (eng.surfaces || []).map((s) => Number(s.brightness) ?? 1);
+          (eng.lights || []).forEach((l) => { l.power = 0; });
+          (eng.surfaces || []).forEach((s) => { s.brightness = 0; });
+        } else {
+          (eng.lights || []).forEach((l, i) => {
+            l.power = lumiState._savedLightPowers?.[i] ?? 4.2;
+          });
+          (eng.surfaces || []).forEach((s, i) => {
+            s.brightness = lumiState._savedSurfaceBrightness?.[i] ?? 1;
+          });
+        }
+        eng.rebuildFixtures?.();
+      }
+      renderLiveLedOutputFrame();
+      window.renderUI?.();
+      return lumiState.masterBlackout;
+    }
+
+    // E4: Chế độ chạy show an toàn, khoá giao diện tránh bấm nhầm xoá/sửa sân khấu
+    function setShowSafetyLock(locked) {
+      const flag = Boolean(locked);
+      lumiState.showSafetyLock = flag;
+      if (document.body?.classList && document.body.classList.contains('lumi-show-locked') !== flag) {
+        document.body.classList.toggle('lumi-show-locked', flag);
+      }
+      updateTopbarBadge18();
+      trackLumiEvent('show_lock_toggled', { locked: flag });
+      return flag;
+    }
+
+    function openLiveShowModal() {
+      if (typeof window.dialog !== 'function') return;
+      if (!lumiState.musicShowCues.length) {
+        generateMusicShowCues({ bpm: 128, mood: 'edm' });
+      }
+      const dmx = lumiState.dmxBridge;
+      const cuesHtml = lumiState.musicShowCues
+        .map(
+          (c, idx) =>
+            `<button type="button" class="btn small ${lumiState.activeCueIndex === idx ? 'primary' : ''}" data-lumi18-cue="${idx}">` +
+            `▶ ${esc18(c.section)} (${c.startSec}s · ${c.dimmerPercent}%)</button>`
+        )
+        .join('');
+
+      const html =
+        `<div style="display:grid;gap:10px">` +
+        `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">` +
+        `<div><strong>🎛 Bàn Điều Khiển Chạy Show Trực Tiếp (Nhóm E: E1–E4)</strong><br>` +
+        `<small>Điều khiển DMX512 Art-Net / sACN, xuất màn hình LED 1:1 HDMI, Bấm Cue & Khóa an toàn giao diện</small></div>` +
+        `<div style="display:flex;gap:6px">` +
+        `<button type="button" class="btn small ${lumiState.showSafetyLock ? 'primary' : ''}" id="lumi18LockToggleBtn">${
+          lumiState.showSafetyLock ? '🔒 Đang Khóa An Toàn (E4)' : '🔓 Bật Khóa An Toàn (E4)'
+        }</button>` +
+        `<button type="button" class="btn small ${lumiState.masterBlackout ? 'primary' : ''}" id="lumi18BlackoutBtn">${
+          lumiState.masterBlackout ? '🌑 ĐANG BLACKOUT (0%)' : '💡 Master Blackout'
+        }</button>` +
+        `</div></div>` +
+        `<div class="info-box" style="display:grid;gap:8px">` +
+        `<strong>1. E1 — Cầu nối Điều khiển Đèn Thật DMX512 (Art-Net UDP 6454 / sACN E1.31 UDP 5568)</strong>` +
+        `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">` +
+        `<label style="font-size:12px">Giao thức<select id="lumi18DmxProto" class="search">` +
+        `<option value="artnet" ${dmx.protocol === 'artnet' ? 'selected' : ''}>Art-Net (UDP 6454)</option>` +
+        `<option value="sacn" ${dmx.protocol === 'sacn' ? 'selected' : ''}>sACN E1.31 (UDP 5568)</option>` +
+        `</select></label>` +
+        `<label style="font-size:12px">IP Card / Node Đèn<input id="lumi18DmxHost" class="search" value="${esc18(dmx.host)}"></label>` +
+        `<label style="font-size:12px">Universe<input id="lumi18DmxUni" type="number" min="0" max="63" class="search" value="${dmx.universe}"></label>` +
+        `<label style="font-size:12px">Cổng Bridge Local<input id="lumi18DmxWsPort" type="number" class="search" value="${dmx.wsPort}"></label>` +
+        `</div>` +
+        `<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">` +
+        `<small>Lệnh chạy Bridge tại máy: <code>node scripts/dmx-udp-bridge.mjs --protocol ${esc18(dmx.protocol)} --host ${esc18(dmx.host)}</code> · Đã gửi: <strong>${dmx.packetsSent}</strong> gói</small>` +
+        `<div style="display:flex;gap:6px">` +
+        `<button type="button" class="btn small primary" id="lumi18DmxStreamBtn">${dmx.streaming ? '⏹ Dừng phát DMX' : '📡 Bắt đầu phát DMX (30Hz)'}</button>` +
+        `<button type="button" class="btn small" id="lumi18DmxTestBtn">⚡ Gửi 1 gói thử</button>` +
+        `</div></div></div>` +
+        `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">` +
+        `<div><strong>2. E2 — Xuất Màn Hình LED Thật 1:1 theo Pixel Map (HDMI -> NovaStar)</strong><br>` +
+        `<small>Mở cửa sổ phụ không viền đúng độ phân giải Master Canvas để kéo sang cổng HDMI thứ 2</small></div>` +
+        `<button type="button" class="btn small primary" id="lumi18LiveLedOutBtn">🖥 Mở Cửa sổ Phát LED 1:1</button>` +
+        `</div>` +
+        `<div class="info-box" style="display:grid;gap:8px">` +
+        `<div style="display:flex;justify-content:space-between;align-items:center">` +
+        `<strong>3. E3 — Bàn Bấm Cue Tiết Mục (Đồng bộ Mobile Lite Remote)</strong>` +
+        `<div style="display:flex;gap:6px">` +
+        `<button type="button" class="btn small" id="lumi18PrevCueBtn">⏮ Cue Trước</button>` +
+        `<button type="button" class="btn small primary" id="lumi18NextCueBtn">Cue Tiếp ⏭</button>` +
+        `</div></div>` +
+        `<div style="display:flex;gap:6px;flex-wrap:wrap">${cuesHtml}</div>` +
+        `</div></div>`;
+
+      window.dialog('Bàn Điều Khiển Chạy Show Thật (LumiStage Show Pro+ · E1–E4)', html, [{ label: 'Đóng' }]);
+
+      const syncDmxCfg = () => {
+        dmx.protocol = $('lumi18DmxProto')?.value || 'artnet';
+        dmx.host = ($('lumi18DmxHost')?.value || '127.0.0.1').trim();
+        dmx.universe = Math.max(0, Number($('lumi18DmxUni')?.value) || 0);
+        dmx.wsPort = Math.max(1024, Number($('lumi18DmxWsPort')?.value) || 9454);
+        dmx.port = dmx.protocol === 'sacn' ? 5568 : 6454;
+      };
+
+      const lockBtn = $('lumi18LockToggleBtn');
+      if (lockBtn) {
+        lockBtn.onclick = () => {
+          setShowSafetyLock(!lumiState.showSafetyLock);
+          openLiveShowModal();
+        };
+      }
+      const boBtn = $('lumi18BlackoutBtn');
+      if (boBtn) {
+        boBtn.onclick = () => {
+          toggleMasterBlackout();
+          openLiveShowModal();
+        };
+      }
+      const streamBtn = $('lumi18DmxStreamBtn');
+      if (streamBtn) {
+        streamBtn.onclick = () => {
+          syncDmxCfg();
+          if (dmx.streaming) stopDmxLiveStream();
+          else startDmxLiveStream();
+          openLiveShowModal();
+        };
+      }
+      const testBtn = $('lumi18DmxTestBtn');
+      if (testBtn) {
+        testBtn.onclick = async () => {
+          syncDmxCfg();
+          const res = await sendDmxFrameToBridge();
+          window.toast?.(
+            res.sent
+              ? `Đã phát gói DMX (${res.bytes} bytes) qua ${dmx.protocol.toUpperCase()} tới ${dmx.host}:${dmx.port}.`
+              : `Chưa kết nối được Local DMX Bridge tại cổng ${dmx.wsPort}. Hãy chạy: node scripts/dmx-udp-bridge.mjs`
+          );
+          openLiveShowModal();
+        };
+      }
+      const ledOutBtn = $('lumi18LiveLedOutBtn');
+      if (ledOutBtn) ledOutBtn.onclick = () => openLiveLedOutputWindow();
+
+      const prevBtn = $('lumi18PrevCueBtn');
+      if (prevBtn) {
+        prevBtn.onclick = () => {
+          prevShowCue();
+          openLiveShowModal();
+        };
+      }
+      const nextBtn = $('lumi18NextCueBtn');
+      if (nextBtn) {
+        nextBtn.onclick = () => {
+          nextShowCue();
+          openLiveShowModal();
+        };
+      }
+      document.querySelectorAll?.('[data-lumi18-cue]')?.forEach((btn) => {
+        btn.onclick = () => {
+          const idx = Number(btn.getAttribute('data-lumi18-cue')) || 0;
+          triggerShowCue(idx);
+          openLiveShowModal();
+        };
+      });
+    }
+
     function updateTopbarBadge18() {
+      const tplBtn = $('lumi18TemplatesBtn');
+      if (tplBtn) tplBtn.textContent = t18('templatesBtn');
+      const aiBtn = $('lumi18AiBtn');
+      if (aiBtn) aiBtn.textContent = t18('aiBtn');
+      const bomBtn = $('lumi18BomBtn');
+      if (bomBtn) bomBtn.textContent = t18('bomBtn');
+      const showBtn = $('lumi18LiveShowBtn');
+      if (showBtn) {
+        showBtn.textContent = lumiState.showSafetyLock ? `🔒 ${t18('liveShowBtn')}` : t18('liveShowBtn');
+      }
       const btn = $('lumi18BillingBtn');
       if (btn) {
         btn.textContent = lumiState.isProActive
-          ? `💎 PRO · ${lumiState.balanceCredits} Cr`
-          : `💎 Credit & Pro`;
+          ? `${t18('billingProBtn')}${lumiState.balanceCredits} Cr`
+          : t18('billingBtn');
       }
     }
 
@@ -2502,7 +3602,7 @@
         tplBtn.id = 'lumi18TemplatesBtn';
         tplBtn.type = 'button';
         tplBtn.className = 'btn small';
-        tplBtn.textContent = '🏛 6 Mẫu VN';
+        tplBtn.textContent = t18('templatesBtn');
         tplBtn.title = '6 Mẫu sân khấu sự kiện Việt Nam (Hội nghị, Tiệc cưới, EDM, Khai trương, Gala, Lễ hội)';
         tplBtn.onclick = () => openStageTemplatesModal();
 
@@ -2510,7 +3610,7 @@
         aiBtn.id = 'lumi18AiBtn';
         aiBtn.type = 'button';
         aiBtn.className = 'btn small primary';
-        aiBtn.textContent = '✨ AI Sân khấu';
+        aiBtn.textContent = t18('aiBtn');
         aiBtn.title = 'Trợ lý AI tạo sân khấu 3D (Gemini Flash 3.8 · 1/3 giá chính thức + BYOK)';
         aiBtn.onclick = () => openStageAiModal();
 
@@ -2518,19 +3618,28 @@
         bomBtn.id = 'lumi18BomBtn';
         bomBtn.type = 'button';
         bomBtn.className = 'btn small';
-        bomBtn.textContent = '📋 BOM & Báo giá';
+        bomBtn.textContent = t18('bomBtn');
         bomBtn.title = 'Bóc tách khối lượng tự động (BOM), Báo giá PDF/CSV & Bản vẽ AutoCAD .DXF';
         bomBtn.onclick = () => openBomAndQuoteModal();
+
+        const showBtn = document.createElement('button');
+        showBtn.id = 'lumi18LiveShowBtn';
+        showBtn.type = 'button';
+        showBtn.className = 'btn small';
+        showBtn.textContent = t18('liveShowBtn');
+        showBtn.title = 'Chạy Show Thật (E1–E4): DMX Art-Net/sACN, Live LED 1:1 HDMI, Bấm Cue & Khóa An Toàn';
+        showBtn.onclick = () => openLiveShowModal();
 
         const billBtn = document.createElement('button');
         billBtn.id = 'lumi18BillingBtn';
         billBtn.type = 'button';
         billBtn.className = 'btn small';
-        billBtn.textContent = '💎 Credit & Pro';
+        billBtn.textContent = t18('billingBtn');
         billBtn.title = 'Quản lý Credit, Xoá Watermark & Gói LumiStage Pro';
         billBtn.onclick = () => openBillingModal();
 
         wfRight.prepend(billBtn);
+        wfRight.prepend(showBtn);
         wfRight.prepend(bomBtn);
         wfRight.prepend(tplBtn);
         wfRight.prepend(aiBtn);
@@ -2575,9 +3684,18 @@
     S.lumi18 = {
       state: lumiState,
       brand: LUMI_BRAND,
+      i18n: LUMI_I18N,
+      t18,
+      setLumiLanguage,
       templates: VN_STAGE_TEMPLATES,
+      helpTopics: LUMI_HELP_TOPICS,
       applyStageTemplate,
       executeStageCommands,
+      previewStageCommands,
+      commitStagePreview,
+      revertStagePreview,
+      answerSoftwareGuide,
+      runQuickGuideAction,
       parseStagePromptOffline,
       runStageAiPrompt,
       computeStageBom,
@@ -2600,9 +3718,23 @@
       layoutAudienceSeating,
       generateMusicShowCues,
       applyBrandIdentity,
+      encodeDmxUniverseFrame,
+      buildArtNetPacket18,
+      buildSacnPacket18,
+      sendDmxFrameToBridge,
+      startDmxLiveStream,
+      stopDmxLiveStream,
+      renderLiveLedOutputFrame,
+      openLiveLedOutputWindow,
+      triggerShowCue,
+      nextShowCue,
+      prevShowCue,
+      toggleMasterBlackout,
+      setShowSafetyLock,
       openStageTemplatesModal,
       openStageAiModal,
       openBomAndQuoteModal,
+      openLiveShowModal,
       openBillingModal
     };
   } catch (err) {

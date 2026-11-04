@@ -382,7 +382,33 @@
       ]
     },
     {
+      id: 'vn-stage/wash-zoom-36x18',
+      aliases: ['wash-zoom-36x18'],
+      manufacturer: 'VN Stage Rental',
+      name: 'Moving Head Wash Zoom 36×18W RGBWA+UV',
+      category: 'wash',
+      physical: { beamAngleMin: 10, beamAngleMax: 60, lumens: 14200, powerW: 650, weightKg: 11.5, panMaxDeg: 540, tiltMaxDeg: 270 },
+      modes: [
+        {
+          name: '16ch Wash Zoom',
+          channelCount: 16,
+          channels: [
+            { offset: 1, name: 'Pan', type: 'Pan', resolution: 16, fineOffset: 2, defaultValue: 128 },
+            { offset: 3, name: 'Tilt', type: 'Tilt', resolution: 16, fineOffset: 4, defaultValue: 128 },
+            { offset: 6, name: 'Dimmer', type: 'Intensity', resolution: 8, defaultValue: 255 },
+            { offset: 7, name: 'Strobe', type: 'ShutterStrobe', resolution: 8, defaultValue: 0 },
+            { offset: 8, name: 'Red', type: 'ColorIntensity', color: 'Red', resolution: 8, defaultValue: 255 },
+            { offset: 9, name: 'Green', type: 'ColorIntensity', color: 'Green', resolution: 8, defaultValue: 255 },
+            { offset: 10, name: 'Blue', type: 'ColorIntensity', color: 'Blue', resolution: 8, defaultValue: 255 },
+            { offset: 11, name: 'White', type: 'ColorIntensity', color: 'White', resolution: 8, defaultValue: 0 },
+            { offset: 14, name: 'Zoom', type: 'Zoom', resolution: 8, defaultValue: 128 }
+          ]
+        }
+      ]
+    },
+    {
       id: 'vn-stage/par-led-54x3w',
+      aliases: ['par-led-54x3w'],
       manufacturer: 'VN Stage Rental',
       name: 'Par LED 54×3W RGBW',
       category: 'par',
@@ -425,10 +451,11 @@
     },
     {
       id: 'vn-stage/katana-bar-12x40w',
+      aliases: ['vn-stage/katana-led-bar-1m', 'katana-led-bar-1m'],
       manufacturer: 'VN Stage Rental',
       name: 'Đèn Katana / Moving Matrix Bar 12×40W',
       category: 'pixel',
-      physical: { beamAngleMin: 4, beamAngleMax: 35, lumens: 11000, powerW: 550, weightKg: 14.5, panMaxDeg: 0, tiltMaxDeg: 210 },
+      physical: { beamAngleMin: 4, beamAngleMax: 35, lumens: 11000, powerW: 550, weightKg: 14.5, panMaxDeg: 180, tiltMaxDeg: 210 },
       modes: [
         {
           name: '17ch Standard Bar',

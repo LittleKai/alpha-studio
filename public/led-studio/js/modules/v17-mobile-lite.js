@@ -66,6 +66,10 @@ try{
  function renderLights(){
   const presets=[['concert','Concert','Concert'],['warm','Ấm','Warm'],['cool','Lạnh','Cool'],['blackout','Tắt hết','Blackout']];
   let html=`<div class="ml17-grid">${presets.map(([k,vi,en])=>`<button type="button" data-rig="${k}">${L(vi,en)}</button>`).join('')}</div>`;
+  if(S.lumi18){
+   const bo=!!S.lumi18.state?.masterBlackout;
+   html+=`<div class="ml17-grid" style="margin-top:6px"><button type="button" data-lumi-remote="prev">&#9198; ${L('Cue trước','Prev Cue')}</button><button type="button" data-lumi-remote="next">${L('Cue tiếp','Next Cue')} &#9197;</button><button type="button" data-lumi-remote="blackout" class="${bo?'active':''}">${bo?L('Bỏ tắt (Live)','Un-blackout'):L('Blackout tổng','Master Blackout')}</button><button type="button" data-lumi-remote="panel">${L('Bàn chạy show','Live Show Deck')}</button></div>`;
+  }
   if(!E.lights.length)return html+`<p class="ml17-hint">${L('Dự án chưa có đèn. Đặt đèn trên máy tính.','No lights yet. Place them on a computer.')}</p>`;
   html+=E.lights.map((l,i)=>`<div class="ml17-light${l.enabled?'':' off'}" data-light="${i}"><input type="checkbox" data-k="enabled" ${l.enabled?'checked':''} aria-label="${L('Bật đèn','Light on')}"><b>${safe(l.name||L('Đèn','Light')+' '+(i+1))}</b><input type="color" data-k="color" value="${safe(l.color||'#ffffff')}" aria-label="${L('Màu','Color')}">${range('ml17Power'+i,0,12,.1,l.power??0).replace('<input','<input data-k="power" aria-label="'+L('Cường độ','Intensity')+'"')}</div>`).join('');
   return html;
@@ -116,6 +120,14 @@ try{
   if(t.dataset.led!==undefined){S.selectSurface?.(t.dataset.led);return renderSheet();}
   if(t.id==='ml17AddMedia')return $('mediaInput')?.click();
   if(t.dataset.rig){S.rigPreset?.(t.dataset.rig);return renderSheet();}
+  if(t.dataset.lumiRemote){
+   const act=t.dataset.lumiRemote;
+   if(act==='prev')S.lumi18?.prevShowCue?.();
+   else if(act==='next')S.lumi18?.nextShowCue?.();
+   else if(act==='blackout')S.lumi18?.toggleMasterBlackout?.();
+   else if(act==='panel')S.lumi18?.openLiveShowModal?.();
+   return renderSheet();
+  }
   if(t.dataset.click){clickDesktop(t.dataset.click);if(['undoBtn','redoBtn','themeToggleBtn','langToggleBtn16'].includes(t.dataset.click))requestAnimationFrame(renderSheet);}
  });
  root.addEventListener('pointerdown',e=>{if(e.target.matches('input[type=range]')){ML.held=true;ML.started=false;}});
