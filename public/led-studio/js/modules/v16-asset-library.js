@@ -346,7 +346,7 @@
   }
 
   // Track 1B: 28° Crease Edge computation (scale-invariant & back-face-safe, ported from 5.Design_mcp glb_viewer_runtime.js)
-  A.catalog=CATALOG;A.addCatalogItem=addCatalogItem;A.deleteItem=deleteItem;A.clearAll=()=>{A.items=[];clearAllAssetMeshes();};A.rebuildAll=rebuildAllAssetMeshes;A.syncItemMeshes=syncItemMeshes;
+  A.catalog=CATALOG;A.addCatalogItem=addCatalogItem;A.deleteItem=deleteItem;A.clearAll=()=>{A.items=[];clearAllAssetMeshes();A.fixtureRigs16?.clear();};A.rebuildAll=rebuildAllAssetMeshes;A.syncItemMeshes=syncItemMeshes;
    function computeCreaseEdges(mesh,creaseDeg=28){
    const cached=creaseCache.get(mesh);
    if(cached && cached.p===mesh.p && cached.bounds===mesh.bounds && cached.deg===creaseDeg)return cached.segments;
@@ -449,6 +449,9 @@
   // Track 5: Keyless CC0 Online Asset Search (Poly Haven + Wikimedia Commons + Google Drive Design_MCP GLB Pack)
   const GDRIVE_FOLDER_URL16='https://drive.google.com/drive/u/0/folders/1fhlZmvpR-FcaGbPh3RV1TlhSEAxTnhIv';
   const GDRIVE_ASSETS16=[
+   {id:'fixture_moving_head_spot_01',localUrl:'./assets/pilot/fixture_moving_head_spot_01.glb',sidecarUrl:'./assets/pilot/fixture_moving_head_spot_01.asset.json',thumbUrl:'./assets/pilot/fixture_moving_head_spot_01.webp',origin:'mount-point',ofl_fixture:'generic/moving-head-spot-350w',size_m:[0.375,0.52,0.318],title:'Moving Head Spot 350W (Tách Yoke/Head DMX)',dims:'GLB Pilot v1 · 338 KB · 568 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'moving head spot beam light den san khau truss dmx fixture',accent:'#38bdf8'},
+   {id:'prop_inflatable_arch_01',localUrl:'./assets/pilot/prop_inflatable_arch_01.glb',sidecarUrl:'./assets/pilot/prop_inflatable_arch_01.asset.json',thumbUrl:'./assets/pilot/prop_inflatable_arch_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[6.0,4.0,1.1],title:'Cổng Hơi Sự Kiện 6×4m (Inflatable Event Arch)',dims:'GLB Pilot v1 · 365 KB · 2348 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'inflatable arch cong hoi su kien entrance gate 6x4m prop',accent:'#0ea5e9'},
+   {id:'furniture_chiavari_chair_01',localUrl:'./assets/pilot/furniture_chiavari_chair_01.glb',sidecarUrl:'./assets/pilot/furniture_chiavari_chair_01.asset.json',thumbUrl:'./assets/pilot/furniture_chiavari_chair_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.42,0.92,0.44],title:'Ghế Tiệc Cưới Chiavari Vàng Kim (Banquet Chair)',dims:'GLB Pilot v1 · 343 KB · 1272 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'chiavari chair ghe tiec cuoi banquet event furniture',accent:'#f59e0b'},
    {id:'gd_human_mocap',fileId:'1GThK9vKEgLE8CErNO_nr6gaQu1ExH89T',title:'Human Mocap Dancer (Có xương & Animation)',dims:'Rigged GLB · 329 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human dancer person mocap nguoi vu cong nhan vat animation',accent:'#38bdf8'},
    {id:'gd_human_base',fileId:'1Kmnv88yxAj4I_f81rSx_IXLThbX29mbV',title:'Human Base Performer (Có xương & Animation)',dims:'Rigged GLB · 310 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human performer actor nguoi nhan vat animation',accent:'#61e8ff'},
    {id:'gd_human_addon',fileId:'1SJ3XeMFQbTfkOroADqdMvYb3_CFXKNxX',title:'Human Stage Action Pack (Có xương & Animation)',dims:'Rigged GLB · 340 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human dance action nguoi bieu dien animation',accent:'#8b7dff'},
@@ -708,12 +711,19 @@
      A.searchResults=finalItems.map(item=>({
       id:item.id,
       fileId:item.fileId,
+      localUrl:item.localUrl||null,
+      sidecarUrl:item.sidecarUrl||null,
+      origin:item.origin||null,
+      ofl_fixture:item.ofl_fixture||null,
+      size_m:item.size_m||null,
       source:'gdrive_glb',
       title:item.title,
       license:item.license,
-      thumb:item.thumbId
-       ? `https://drive.usercontent.google.com/download?id=${encodeURIComponent(item.thumbId)}&export=download`
-       : svgFallbackPreviewURL16(item.title,item.dims,item.accent||'#38bdf8'),
+      thumb:item.thumbUrl
+       ? item.thumbUrl
+       : item.thumbId
+        ? `https://drive.usercontent.google.com/download?id=${encodeURIComponent(item.thumbId)}&export=download`
+        : svgFallbackPreviewURL16(item.title,item.dims,item.accent||'#38bdf8'),
       dims:item.dims
      }));
      A.searchStatus=matches.length
@@ -805,6 +815,108 @@
    }
   }
 
+  A.fixtureRigs16=new Map();
+
+  function resolveOflFixture16(oflId){
+   const raw=String(oflId||'').trim();
+   if(!raw)return null;
+   const normKey=raw.toLowerCase();
+   const normSlug=normKey.replace(/\//g,'-');
+   const globalResolver=(typeof window!=='undefined'&&typeof window.resolveOflFixture==='function'&&window.resolveOflFixture)||(typeof globalThis!=='undefined'&&typeof globalThis.resolveOflFixture==='function'&&globalThis.resolveOflFixture);
+   let fx=globalResolver?globalResolver(raw):null;
+   if(!fx){
+    const list=(typeof window!=='undefined'&&window.OFL_FIXTURES)||(typeof globalThis!=='undefined'&&globalThis.OFL_FIXTURES)||[];
+    fx=list.find(x=>x.id===raw||x.id.toLowerCase()===normKey||x.id.toLowerCase().replace(/\//g,'-')===normSlug||(Array.isArray(x.aliases)&&x.aliases.some(a=>{const al=String(a||'').toLowerCase();return al===normKey||al.replace(/\//g,'-')===normSlug;})))||null;
+   }
+   if(!fx)return null;
+   const mode=fx.modes?.[0]||{name:'Standard (16ch)',channelCount:16,channels:[]};
+   return {
+    requestedId:raw,
+    profileId:fx.id,
+    manufacturer:fx.manufacturer,
+    name:fx.name,
+    category:fx.category,
+    powerW:fx.physical?.powerW??350,
+    weightKg:fx.physical?.weightKg??16.5,
+    beamAngleMin:fx.physical?.beamAngleMin??1.5,
+    beamAngleMax:fx.physical?.beamAngleMax??38,
+    panMaxDeg:fx.physical?.panMaxDeg??540,
+    tiltMaxDeg:fx.physical?.tiltMaxDeg??270,
+    modeName:mode.name,
+    channelCount:mode.channelCount||16,
+    channels:(mode.channels||[]).map(ch=>({...ch}))
+   };
+  }
+
+  function buildFixtureRig16(meshes,shift,oflMeta,rigId){
+   const partName=m=>String(m?.nodeChain?.[m.nodeChain.length-1]?.name||String(m?.name||'').split('/').pop()||'').trim();
+   const findPart=re=>meshes.find(m=>re.test(partName(m))||(Array.isArray(m.nodeChain)&&m.nodeChain.some(n=>re.test(String(n.name||'')))))||null;
+   const baseMesh=findPart(/LED_Fixture_Base|(?:^|[_\s-])base$/i);
+   const yokeMesh=findPart(/LED_Fixture_Yoke|(?:^|[_\s-])yoke$/i);
+   const headMesh=findPart(/LED_Fixture_Head|(?:^|[_\s-])head$/i);
+   if(!yokeMesh&&!headMesh)return null;
+   for(const m of [baseMesh,yokeMesh,headMesh].filter(Boolean)){
+    m._restP16=new Float32Array(m.p);
+    m._restN16=m.n?new Float32Array(m.n):null;
+   }
+   const pivot=[...(shift||[0,0,0])];
+   const headPivot=headMesh?.bounds?.center?[...headMesh.bounds.center]:[pivot[0],pivot[1]+0.38,pivot[2]];
+   const baseId=String(rigId||('RIG16_'+Date.now().toString(36)));
+   let uniqueId=baseId,seq=2;
+   while(A.fixtureRigs16.has(uniqueId))uniqueId=baseId+'_'+(seq++);
+   const rig={
+    id:uniqueId,
+    baseId,
+    baseMesh,
+    yokeMesh,
+    headMesh,
+    pivot,
+    headPivot,
+    panDeg:0,
+    tiltDeg:0,
+    oflFixture:oflMeta||null,
+    setPanTilt(panDeg=0,tiltDeg=0){
+     const maxPan=(oflMeta?.panMaxDeg||540)*0.5;
+     const maxTilt=(oflMeta?.tiltMaxDeg||270)*0.5;
+     const pDeg=clamp16(Number(panDeg)||0,-maxPan,maxPan);
+     const tDeg=clamp16(Number(tiltDeg)||0,-maxTilt,maxTilt);
+     rig.panDeg=pDeg;
+     rig.tiltDeg=tDeg;
+     const panRad=pDeg*Math.PI/180;
+     const tiltRad=tDeg*Math.PI/180;
+     const matPan=M.mm(M.translate(pivot),M.mm(M.rotate([0,1,0],panRad),M.translate([-pivot[0],-pivot[1],-pivot[2]])));
+     if(yokeMesh&&yokeMesh._restP16){
+      yokeMesh.p=new Float32Array(yokeMesh._restP16);
+      if(yokeMesh._restN16)yokeMesh.n=new Float32Array(yokeMesh._restN16);
+      transformMesh(yokeMesh,matPan);
+      engine?.releaseMesh?.(yokeMesh);
+     }
+     if(headMesh&&headMesh._restP16){
+      headMesh.p=new Float32Array(headMesh._restP16);
+      if(headMesh._restN16)headMesh.n=new Float32Array(headMesh._restN16);
+      const matTilt=M.mm(M.translate(headPivot),M.mm(M.rotate([1,0,0],tiltRad),M.translate([-headPivot[0],-headPivot[1],-headPivot[2]])));
+      transformMesh(headMesh,M.mm(matPan,matTilt));
+      engine?.releaseMesh?.(headMesh);
+     }
+     if(engine)engine._stageBatchDirty=true;
+     S.mount136?.invalidate?.();
+     if(typeof window!=='undefined'&&typeof window.paint==='function')window.paint();
+     return {panDeg:pDeg,tiltDeg:tDeg,yokeBounds:yokeMesh?.bounds||null,headBounds:headMesh?.bounds||null};
+    }
+   };
+   A.fixtureRigs16.set(rig.id,rig);
+   return rig;
+  }
+
+  function setFixturePanTilt16(rigId,panDeg=0,tiltDeg=0){
+   const key=String(rigId||'').trim();
+   const rig=key
+    ?(A.fixtureRigs16.get(key)||[...A.fixtureRigs16.values()].find(r=>r.id===key||r.baseId===key||r.oflFixture?.requestedId===key||r.oflFixture?.profileId===key)||null)
+    :([...A.fixtureRigs16.values()][0]||null);
+   if(!rig)return null;
+   return rig.setPanTilt(panDeg,tiltDeg);
+  }
+
   function commitImportedMeshesToStage16(parsed,title,opts={}){
    if(!parsed?.meshes?.length)throw Error('Model không có mesh hợp lệ.');
    checkpoint();
@@ -845,24 +957,35 @@
      if(m._gltfAnim?.sceneAnim)m._gltfAnim.sceneAnim.modelShift=shift.slice();
     }
    }
+   const oflMeta=opts.ofl_fixture?resolveOflFixture16(opts.ofl_fixture):null;
    let finalMin=[Infinity,Infinity,Infinity],finalMax=[-Infinity,-Infinity,-Infinity];
    for(const m of parsed.meshes){
     m.name='CC0 '+title+' / '+m.name;
     m._assetOrigin16=isMountPoint?'mount-point':'floor-center';
+    if(oflMeta){
+     m._oflFixture=oflMeta;
+     m._fixturePowerW=oflMeta.powerW;
+     m._fixtureWeightKg=oflMeta.weightKg;
+    }
     engine.stage.push(m);
     for(let i=0;i<3;i++){finalMin[i]=Math.min(finalMin[i],m.bounds.min[i]);finalMax[i]=Math.max(finalMax[i],m.bounds.max[i]);}
    }
+   const rig=buildFixtureRig16(parsed.meshes,shift,oflMeta,String(opts.id||title||'fixture'));
    engine._stageBatchDirty=true;
    S.mount136?.invalidate?.();
    engine.view='stage';
    renderUI?.();
    paint();
    return {
+    id:rig?.id||opts.id||title,
     title,
     origin:isMountPoint?'mount-point':'floor-center',
     meshCount:parsed.meshes.length,
     shift,
-    bounds:{min:finalMin,max:finalMax,size:M.sub(finalMax,finalMin)}
+    bounds:{min:finalMin,max:finalMax,size:M.sub(finalMax,finalMin)},
+    oflFixture:oflMeta,
+    rig,
+    setPanTilt:rig?rig.setPanTilt:null
    };
   }
 
@@ -879,15 +1002,17 @@
    }
    const rawTitle=String(opts.title||sidecar?.title||sidecar?.id||glbFile.name||'GLB Prop').replace(/\.glb$/i,'');
    const origin=opts.origin||sidecar?.origin||(/^fixture_/i.test(rawTitle)?'mount-point':'floor-center');
+   const ofl_fixture=opts.ofl_fixture!==undefined?opts.ofl_fixture:(sidecar?.ofl_fixture||null);
    const parsed=await Importer.gltf(glbFile,new Map());
    const committed=commitImportedMeshesToStage16(parsed,rawTitle,{
     ...opts,
-    id:sidecar?.id||rawTitle,
+    id:sidecar?.id||opts.id||rawTitle,
     origin,
+    ofl_fixture,
     preserveMetricScale:opts.preserveMetricScale??true
    });
-   toast(`Đã nạp đạo cụ GLB "${rawTitle}" (${committed.origin}) vào sân khấu!`);
-   return {...committed,warnings:parsed.warnings||[],meshes:parsed.meshes};
+   toast(`Đã nạp đạo cụ GLB "${rawTitle}" (${committed.origin}${committed.oflFixture?' · DMX '+committed.oflFixture.profileId:''}) vào sân khấu!`);
+   return {...committed,sidecar,warnings:parsed.warnings||[],meshes:parsed.meshes};
   }
 
   function openLocalGlbFilePicker16(){
@@ -923,14 +1048,26 @@
    try{
     busy(true,'Đang tải asset 3D / Media: '+r.title+'...');
     if(r.source==='gdrive_glb'){
-     const dlUrl=`https://drive.usercontent.google.com/download?id=${encodeURIComponent(r.fileId)}&export=download`;
-     const glbRes=await fetch(dlUrl);
-     if(!glbRes.ok)throw Error('Không tải được file GLB từ Google Drive (HTTP '+glbRes.status+').');
-     const glbBlob=await glbRes.blob();
-     const glbFile=new File([glbBlob],(r.id||'model')+'.glb',{type:'model/gltf-binary'});
-     const parsed=await Importer.gltf(glbFile,new Map());
-     commitImportedMeshesToStage16(parsed,r.title);
-     toast('Đã nạp model 3D "'+r.title+'" từ Google Drive vào sân khấu!');
+     if(r.localUrl){
+      const glbRes=await fetch(r.localUrl);
+      if(!glbRes.ok)throw Error('Không tải được file GLB cục bộ (HTTP '+glbRes.status+').');
+      const glbBlob=await glbRes.blob();
+      const glbFile=new File([glbBlob],(r.id||'model')+'.glb',{type:'model/gltf-binary'});
+      let sidecar=null;
+      if(r.sidecarUrl){
+       try{const scRes=await fetch(r.sidecarUrl);if(scRes.ok)sidecar=await scRes.json();}catch(_){}
+      }
+      await importLocalGlbProp(glbFile,{id:r.id,title:r.title,origin:r.origin,ofl_fixture:r.ofl_fixture,sidecar,preserveMetricScale:true});
+     }else{
+      const dlUrl=`https://drive.usercontent.google.com/download?id=${encodeURIComponent(r.fileId)}&export=download`;
+      const glbRes=await fetch(dlUrl);
+      if(!glbRes.ok)throw Error('Không tải được file GLB từ Google Drive (HTTP '+glbRes.status+').');
+      const glbBlob=await glbRes.blob();
+      const glbFile=new File([glbBlob],(r.id||'model')+'.glb',{type:'model/gltf-binary'});
+      const parsed=await Importer.gltf(glbFile,new Map());
+      commitImportedMeshesToStage16(parsed,r.title,{id:r.id,origin:r.origin,ofl_fixture:r.ofl_fixture,preserveMetricScale:true});
+      toast('Đã nạp model 3D "'+r.title+'" từ Google Drive vào sân khấu!');
+     }
     }else if(r.source==='polyhaven_model'){
      const filesData=await fetchJsonWithTimeout(`https://api.polyhaven.com/files/${encodeURIComponent(r.id)}`);
      const gltfNode=filesData?.gltf?.['1k']?.gltf || filesData?.gltf?.['2k']?.gltf || Object.values(filesData?.gltf||{})[0]?.gltf;
@@ -2179,9 +2316,9 @@
   S.snapshot=(...args)=>snapshot(...args);
   S.restore=(...args)=>restore(...args);
 
-  const oldImport=importModel, oldDemo=demo;
-  importModel=async function(...args){const prev=state.model,res=await oldImport(...args);if(state.model!==prev){A.items=[];A.selected=null;A.meshMap.clear();if(A.isOpen)paint();}return res;};
-  demo=function(...args){const prev=state.model,res=oldDemo(...args);if(state.model!==prev){A.items=[];A.selected=null;A.meshMap.clear();if(A.isOpen)paint();}return res;};
+   const oldImport=importModel, oldDemo=demo;
+   importModel=async function(...args){const prev=state.model,res=await oldImport(...args);if(state.model!==prev){A.items=[];A.selected=null;A.meshMap.clear();A.fixtureRigs16.clear();if(A.isOpen)paint();}return res;};
+   demo=function(...args){const prev=state.model,res=oldDemo(...args);if(state.model!==prev){A.items=[];A.selected=null;A.meshMap.clear();A.fixtureRigs16.clear();if(A.isOpen)paint();}return res;};
   S.importModel=importModel;
   S.demo=demo;
 
@@ -2207,6 +2344,7 @@
   Object.assign(A,{
    open,close,addCatalogItem,deleteItem,computeWindSafety,computeCreaseEdges,runOnlineSearch,
    commitImportedMeshesToStage16,importLocalGlbProp,openLocalGlbFilePicker16,
+   resolveOflFixture16,setFixturePanTilt:setFixturePanTilt16,GDRIVE_ASSETS16,
    expandSearchTerms16,translateViToEn16,
    serialize:serializeAssets,restore:restoreAssets,
    getAssetPreviewURL16,getPerformerPreviewURL16,getActPreviewURL16,renderMeshes3DToCanvas16,

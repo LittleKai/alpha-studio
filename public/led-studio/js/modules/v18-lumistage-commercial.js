@@ -20,6 +20,7 @@
       name: 'LumiStage',
       tagline: 'by Alpha Studio · GROUPLIFE',
       legalEntity: 'CÔNG TY TNHH MTV GROUPLIFE',
+      watermarkText: 'LUMISTAGE FREE · GROUPLIFE · LUMISTAGE.VN',
       taxNote: 'KCT (Phần mềm & dịch vụ thiết kế công nghệ không chịu thuế GTGT)',
       creditRateVnd: 100,
       aiPricing: {
@@ -1393,10 +1394,17 @@
         };
       });
 
-      const beamCount = lights.filter((l) => (l.angle || 15) <= 18 || /beam|pointe|spot/i.test(l.name)).length;
-      const washCount = Math.max(0, lights.length - beamCount);
-      const lightMaxKw = +(beamCount * 0.38 + washCount * 0.2).toFixed(2);
-      const lightWeightKg = beamCount * 17 + washCount * 4;
+      const glbRigs = typeof S.stageAssets16?.fixtureRigs16?.values === 'function'
+        ? [...S.stageAssets16.fixtureRigs16.values()]
+        : [];
+      const glbFixtureKw = glbRigs.reduce((s, r) => s + ((Number(r.oflFixture?.powerW) || 380) / 1000), 0);
+      const glbFixtureWeightKg = glbRigs.reduce((s, r) => s + (Number(r.oflFixture?.weightKg) || 17), 0);
+      const engineBeamCount = lights.filter((l) => (l.angle || 15) <= 18 || /beam|pointe|spot/i.test(l.name)).length;
+      const washCount = Math.max(0, lights.length - engineBeamCount);
+      const beamCount = engineBeamCount + glbRigs.length;
+      const totalLights = lights.length + glbRigs.length;
+      const lightMaxKw = +(engineBeamCount * 0.38 + washCount * 0.2 + glbFixtureKw).toFixed(2);
+      const lightWeightKg = Math.round(engineBeamCount * 17 + washCount * 4 + glbFixtureWeightKg);
 
       const stageW = +(eng?.size?.width || 16).toFixed(1);
       const stageD = +(eng?.size?.depth || 8).toFixed(1);
@@ -1521,7 +1529,7 @@
           recommendedProcessor,
           beamCount,
           washCount,
-          totalLights: lights.length,
+          totalLights,
           totalMaxKw,
           totalAvgKw,
           currentPerPhaseAmps,
@@ -1604,7 +1612,7 @@
       ].join('\n');
     }
 
-    function generateStageDxf() {
+    function generateStageDxf(opts = {}) {
       const eng = getEngine();
       const bom = computeStageBom();
       const w = bom.summary.stageW || 16;
@@ -1614,6 +1622,9 @@
       // 1. MẶT BẰNG (TOP VIEW — gốc tại (0, 0))
       entities.push(dxfText('DIMENSIONS', -w / 2, d / 2 + 1.8, 0.45, `MAT BANG SAN KHAU (TOP VIEW) - ${w}m x ${d}m`));
       entities.push(dxfRect('STAGE_PLATFORM', 0, 0, w, d));
+      if (opts?.watermark) {
+        entities.push(dxfText('WATERMARK', -w / 2, -d / 2 - 1.2, 0.35, LUMI_BRAND.watermarkText));
+      }
 
       for (const s of eng?.surfaces || []) {
         const c = s.mesh?.bounds?.center || [0, 2.5, -2];
@@ -1658,7 +1669,8 @@
     async function exportStageDxf() {
       const ok = await ensureExportAllowed('dxf_cad');
       if (!ok) return null;
-      const dxf = generateStageDxf();
+      const watermark = shouldWatermarkExport();
+      const dxf = generateStageDxf({ watermark });
       const name = (window.state?.model?.name || 'LumiStage').replace(/[^a-zA-Z0-9_-]/g, '_');
       window.downloadText?.(`${name}_2D_CAD.dxf`, dxf);
       window.toast?.('Đã xuất bản vẽ kỹ thuật 2D AutoCAD (.dxf) Mặt bằng & Mặt đứng (đơn vị: mét).');

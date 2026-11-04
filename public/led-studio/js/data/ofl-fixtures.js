@@ -339,6 +339,7 @@
     },
     {
       id: 'vn-stage/beam-350-17r',
+      aliases: ['generic/moving-head-spot-350w', 'moving-head-spot-350w'],
       manufacturer: 'VN Stage Rental',
       name: 'Beam 350 17R Hybrid 3in1',
       category: 'hybrid',
@@ -485,11 +486,32 @@
     }
   ];
 
+  function resolveOflFixture(oflId) {
+    const normKey = String(oflId || '').trim().toLowerCase();
+    if (!normKey) return null;
+    const normSlug = normKey.replace(/\//g, '-');
+    return (
+      OFL_FIXTURES.find(
+        (x) =>
+          x.id === oflId ||
+          x.id.toLowerCase() === normKey ||
+          x.id.toLowerCase().replace(/\//g, '-') === normSlug ||
+          (Array.isArray(x.aliases) &&
+            x.aliases.some((a) => {
+              const al = String(a || '').toLowerCase();
+              return al === normKey || al.replace(/\//g, '-') === normSlug;
+            }))
+      ) || null
+    );
+  }
+
   Object.freeze(OFL_FIXTURES);
   if (typeof window !== 'undefined') {
     window.OFL_FIXTURES = OFL_FIXTURES;
+    window.resolveOflFixture = resolveOflFixture;
   }
   if (typeof globalThis !== 'undefined') {
     globalThis.OFL_FIXTURES = OFL_FIXTURES;
+    globalThis.resolveOflFixture = resolveOflFixture;
   }
 })();

@@ -271,7 +271,8 @@ if(typeof window!=='undefined'){
 function applyOflProfile(lightId, oflId, modeIndex = 0){
  const list=(typeof window!=='undefined'&&window.OFL_FIXTURES)||[];
  const normKey=String(oflId||'').trim().toLowerCase();
- const fx=list.find(x=>x.id===oflId||x.id.toLowerCase()===normKey||x.id.toLowerCase().replace(/\//g,'-')===normKey);if(!fx)return null;
+ const normSlug=normKey.replace(/\//g,'-');
+ const fx=(typeof window!=='undefined'&&typeof window.resolveOflFixture==='function'&&window.resolveOflFixture(oflId))||list.find(x=>x.id===oflId||x.id.toLowerCase()===normKey||x.id.toLowerCase().replace(/\//g,'-')===normSlug||(Array.isArray(x.aliases)&&x.aliases.some(a=>{const al=String(a||'').toLowerCase();return al===normKey||al.replace(/\//g,'-')===normSlug;})));if(!fx)return null;
  const l=(engine?.lights||[]).find(x=>x.id===lightId)||selected128();if(!l)return null;
  let resolvedIdx=Number(modeIndex);
  if(!Number.isFinite(resolvedIdx)&&typeof modeIndex==='string'){
