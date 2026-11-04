@@ -314,6 +314,174 @@
           ]
         }
       ]
+    },
+    {
+      id: 'vn-stage/beam-230-7r',
+      manufacturer: 'VN Stage Rental',
+      name: 'Beam 230 7R Moving Head',
+      category: 'beam',
+      physical: { beamAngleMin: 0.8, beamAngleMax: 3.8, lumens: 11200, powerW: 350, weightKg: 16.5, panMaxDeg: 540, tiltMaxDeg: 270 },
+      modes: [
+        {
+          name: 'Standard (16ch)',
+          channelCount: 16,
+          channels: [
+            { offset: 1, name: 'Color Wheel', type: 'ColorWheel', resolution: 8, defaultValue: 0 },
+            { offset: 2, name: 'Strobe', type: 'ShutterStrobe', resolution: 8, defaultValue: 255 },
+            { offset: 3, name: 'Dimmer', type: 'Intensity', resolution: 8, defaultValue: 255 },
+            { offset: 4, name: 'Gobo', type: 'Gobo', resolution: 8, defaultValue: 0 },
+            { offset: 5, name: 'Prism', type: 'Prism', resolution: 8, defaultValue: 0 },
+            { offset: 10, name: 'Pan', type: 'Pan', resolution: 16, fineOffset: 11, defaultValue: 128 },
+            { offset: 12, name: 'Tilt', type: 'Tilt', resolution: 16, fineOffset: 13, defaultValue: 128 }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'vn-stage/beam-350-17r',
+      manufacturer: 'VN Stage Rental',
+      name: 'Beam 350 17R Hybrid 3in1',
+      category: 'hybrid',
+      physical: { beamAngleMin: 1.5, beamAngleMax: 38, lumens: 16800, powerW: 500, weightKg: 21.0, panMaxDeg: 540, tiltMaxDeg: 270 },
+      modes: [
+        {
+          name: 'Standard (16ch)',
+          channelCount: 16,
+          channels: [
+            { offset: 1, name: 'Color Wheel', type: 'ColorWheel', resolution: 8, defaultValue: 0 },
+            { offset: 2, name: 'Strobe', type: 'ShutterStrobe', resolution: 8, defaultValue: 255 },
+            { offset: 3, name: 'Dimmer', type: 'Intensity', resolution: 8, defaultValue: 255 },
+            { offset: 4, name: 'Gobo', type: 'Gobo', resolution: 8, defaultValue: 0 },
+            { offset: 9, name: 'Zoom', type: 'Zoom', resolution: 8, defaultValue: 64 },
+            { offset: 10, name: 'Pan', type: 'Pan', resolution: 16, fineOffset: 11, defaultValue: 128 },
+            { offset: 12, name: 'Tilt', type: 'Tilt', resolution: 16, fineOffset: 13, defaultValue: 128 }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'vn-stage/beam-450-pro',
+      manufacturer: 'VN Stage Rental',
+      name: 'Beam 450 Pro BSW Waterproof',
+      category: 'hybrid',
+      physical: { beamAngleMin: 1.8, beamAngleMax: 45, lumens: 24000, powerW: 650, weightKg: 26.5, panMaxDeg: 540, tiltMaxDeg: 270 },
+      modes: [
+        {
+          name: '20ch Tour',
+          channelCount: 20,
+          channels: [
+            { offset: 1, name: 'Pan', type: 'Pan', resolution: 16, fineOffset: 2, defaultValue: 128 },
+            { offset: 3, name: 'Tilt', type: 'Tilt', resolution: 16, fineOffset: 4, defaultValue: 128 },
+            { offset: 6, name: 'Dimmer', type: 'Intensity', resolution: 8, defaultValue: 255 },
+            { offset: 7, name: 'Strobe', type: 'ShutterStrobe', resolution: 8, defaultValue: 255 },
+            { offset: 8, name: 'Color Wheel', type: 'ColorWheel', resolution: 8, defaultValue: 0 },
+            { offset: 14, name: 'Zoom', type: 'Zoom', resolution: 8, defaultValue: 64 }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'vn-stage/par-led-54x3w',
+      manufacturer: 'VN Stage Rental',
+      name: 'Par LED 54×3W RGBW',
+      category: 'par',
+      physical: { beamAngleMin: 25, beamAngleMax: 25, lumens: 3800, powerW: 180, weightKg: 2.8, panMaxDeg: 180, tiltMaxDeg: 180 },
+      modes: [
+        {
+          name: '8ch RGBW',
+          channelCount: 8,
+          channels: [
+            { offset: 1, name: 'Dimmer', type: 'Intensity', resolution: 8, defaultValue: 255 },
+            { offset: 2, name: 'Red', type: 'ColorIntensity', color: 'Red', resolution: 8, defaultValue: 255 },
+            { offset: 3, name: 'Green', type: 'ColorIntensity', color: 'Green', resolution: 8, defaultValue: 255 },
+            { offset: 4, name: 'Blue', type: 'ColorIntensity', color: 'Blue', resolution: 8, defaultValue: 255 },
+            { offset: 5, name: 'White', type: 'ColorIntensity', color: 'White', resolution: 8, defaultValue: 0 },
+            { offset: 6, name: 'Strobe', type: 'ShutterStrobe', resolution: 8, defaultValue: 0 }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'vn-stage/par-led-18x10w',
+      manufacturer: 'VN Stage Rental',
+      name: 'Par LED 18×10W 4in1 IP65',
+      category: 'par',
+      physical: { beamAngleMin: 25, beamAngleMax: 35, lumens: 4500, powerW: 200, weightKg: 4.5, panMaxDeg: 180, tiltMaxDeg: 180 },
+      modes: [
+        {
+          name: '8ch IP65',
+          channelCount: 8,
+          channels: [
+            { offset: 1, name: 'Dimmer', type: 'Intensity', resolution: 8, defaultValue: 255 },
+            { offset: 2, name: 'Red', type: 'ColorIntensity', color: 'Red', resolution: 8, defaultValue: 255 },
+            { offset: 3, name: 'Green', type: 'ColorIntensity', color: 'Green', resolution: 8, defaultValue: 255 },
+            { offset: 4, name: 'Blue', type: 'ColorIntensity', color: 'Blue', resolution: 8, defaultValue: 255 },
+            { offset: 5, name: 'White', type: 'ColorIntensity', color: 'White', resolution: 8, defaultValue: 0 },
+            { offset: 6, name: 'Strobe', type: 'ShutterStrobe', resolution: 8, defaultValue: 0 }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'vn-stage/katana-bar-12x40w',
+      manufacturer: 'VN Stage Rental',
+      name: 'Đèn Katana / Moving Matrix Bar 12×40W',
+      category: 'pixel',
+      physical: { beamAngleMin: 4, beamAngleMax: 35, lumens: 11000, powerW: 550, weightKg: 14.5, panMaxDeg: 0, tiltMaxDeg: 210 },
+      modes: [
+        {
+          name: '17ch Standard Bar',
+          channelCount: 17,
+          channels: [
+            { offset: 1, name: 'Tilt', type: 'Tilt', resolution: 16, fineOffset: 2, defaultValue: 128 },
+            { offset: 4, name: 'Dimmer', type: 'Intensity', resolution: 8, defaultValue: 255 },
+            { offset: 5, name: 'Strobe', type: 'ShutterStrobe', resolution: 8, defaultValue: 0 },
+            { offset: 6, name: 'Zoom', type: 'Zoom', resolution: 8, defaultValue: 64 },
+            { offset: 7, name: 'Red', type: 'ColorIntensity', color: 'Red', resolution: 8, defaultValue: 255 },
+            { offset: 8, name: 'Green', type: 'ColorIntensity', color: 'Green', resolution: 8, defaultValue: 255 },
+            { offset: 9, name: 'Blue', type: 'ColorIntensity', color: 'Blue', resolution: 8, defaultValue: 255 },
+            { offset: 10, name: 'White', type: 'ColorIntensity', color: 'White', resolution: 8, defaultValue: 0 }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'vn-stage/cob-blinder-2x100w',
+      manufacturer: 'VN Stage Rental',
+      name: 'Đèn Blinder COB 2×100W Warm/Cool',
+      category: 'strobe',
+      physical: { beamAngleMin: 55, beamAngleMax: 65, lumens: 9500, powerW: 220, weightKg: 4.2, panMaxDeg: 180, tiltMaxDeg: 180 },
+      modes: [
+        {
+          name: '6ch Dual COB',
+          channelCount: 6,
+          channels: [
+            { offset: 1, name: 'Dimmer', type: 'Intensity', resolution: 8, defaultValue: 255 },
+            { offset: 2, name: 'Warm White', type: 'ColorIntensity', color: 'Amber', resolution: 8, defaultValue: 255 },
+            { offset: 3, name: 'Cool White', type: 'ColorIntensity', color: 'White', resolution: 8, defaultValue: 255 },
+            { offset: 4, name: 'Strobe', type: 'ShutterStrobe', resolution: 8, defaultValue: 0 }
+          ]
+        }
+      ]
+    },
+    {
+      id: 'vn-stage/cob-blinder-4x100w',
+      manufacturer: 'VN Stage Rental',
+      name: 'Đèn Blinder Audience 4×100W',
+      category: 'strobe',
+      physical: { beamAngleMin: 60, beamAngleMax: 70, lumens: 18500, powerW: 440, weightKg: 7.8, panMaxDeg: 180, tiltMaxDeg: 180 },
+      modes: [
+        {
+          name: '8ch 4-Eye COB',
+          channelCount: 8,
+          channels: [
+            { offset: 1, name: 'Dimmer', type: 'Intensity', resolution: 8, defaultValue: 255 },
+            { offset: 2, name: 'Strobe', type: 'ShutterStrobe', resolution: 8, defaultValue: 0 },
+            { offset: 3, name: 'Warm White', type: 'ColorIntensity', color: 'Amber', resolution: 8, defaultValue: 255 },
+            { offset: 4, name: 'Cool White', type: 'ColorIntensity', color: 'White', resolution: 8, defaultValue: 255 }
+          ]
+        }
+      ]
     }
   ];
 

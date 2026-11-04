@@ -24,10 +24,18 @@
    co2_jet:{name:'Súng Cột Khói CO2 / Sparkular',label:'CO2 / SPARK FX',cat:'Đạo cụ / FX',color:'#38bdf8',desc:'Máy bắn cột khói lạnh CO2 & pháo điện đại cảnh'},
    vip_podium:{name:'Bục Phát Biểu & Cầu Khai Mạc',label:'VIP PODIUM',cat:'Sân khấu',color:'#f59e0b',desc:'Bục phát biểu Keynote + quả cầu LED chạm tay khai mạc'},
    led_arch_gate:{name:'Cổng Chào LED Vòm 5m',label:'LED ARCH GATE',cat:'Màn LED phụ',color:'#a855f7',desc:'Cổng vòm LED sự kiện 5.0×3.6m phát sáng viền Neon'},
-   catwalk_runway:{name:'Sàn Catwalk Chữ T 4m',label:'CATWALK T-STAGE',cat:'Sân khấu',color:'#475569',desc:'Đường băng Catwalk vươn ra khán giả kèm viền LED sàn'}
+   catwalk_runway:{name:'Sàn Catwalk Chữ T 4m',label:'CATWALK T-STAGE',cat:'Sân khấu',color:'#475569',desc:'Đường băng Catwalk vươn ra khán giả kèm viền LED sàn'},
+   backdrop_arch:{name:'Backdrop Check-in Vòm Sự Kiện 4m',label:'BACKDROP ARCH',cat:'Sân khấu',color:'#38bdf8',desc:'Phông chụp ảnh vòm 3 lớp + bục thảm đỏ check-in sự kiện'},
+   gala_round_table:{name:'Bàn Tròn Tiệc Gala 10 Ghế (Ø1.8m)',label:'GALA TABLE',cat:'Bàn ghế VIP',color:'#f8fafc',desc:'Bàn tiệc tròn khăn phủ Ø1.8m + 10 ghế Banquet xoay tròn'},
+   conference_ibm_table:{name:'Bàn Đại Biểu Hội Nghị IBM 1.8m',label:'IBM TABLE',cat:'Bàn ghế VIP',color:'#1e293b',desc:'Bàn hội nghị chữ nhật 1.8×0.6m phủ khăn + 2 ghế đại biểu'},
+   banquet_chair:{name:'Ghế Banquet Sự Kiện Áo Nơ VIP',label:'BANQUET CHAIR',cat:'Bàn ghế VIP',color:'#e2e8f0',desc:'Ghế hội nghị/tiệc cưới bọc nệm kèm nơ lưng vàng đồng'},
+   foh_control_booth:{name:'Bàn Điều Khiển FOH Âm Thanh / Ánh Sáng',label:'FOH BOOTH',cat:'Sân khấu',color:'#334155',desc:'Khu kỹ thuật FOH gồm bàn mixer ánh sáng GrandMA + bàn âm thanh'},
+   decor_palm_planter:{name:'Chậu Cây Cảnh Sân Khấu / Cánh Gà',label:'STAGE PLANTER',cat:'Đạo cụ / FX',color:'#22c55e',desc:'Bồn cây xanh trang trí mép sân khấu và bục phát biểu'},
+   haze_machine_pro:{name:'Máy Phun Sương Haze Sân Khấu 1500W',label:'HAZE 1500W',cat:'Đạo cụ / FX',color:'#64748b',desc:'Máy tạo sương mỏng làm nổi tia đèn Beam / Laser'},
+   cold_spark_fountain:{name:'Máy Pháo Điện Lạnh Sparkular 700W',label:'COLD SPARK',cat:'Đạo cụ / FX',color:'#fbbf24',desc:'Máy bắn tia pháo điện lạnh cao 3m an toàn trong nhà'}
   };
 
-  const ALLOWED_LICENSES=['cc0','cc-zero','public domain','pdm','cc-by','cc by','cc-by-sa','cc by-sa'];
+  const ALLOWED_LICENSES=['cc0','cc-zero','public domain','pdm','cc-by','cc by'];
   const creaseCache=new WeakMap();
   const SVG_LOCK_CLOSED16='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" fill="currentColor"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>';
   const SVG_LOCK_OPEN16='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>';
@@ -209,6 +217,49 @@
     edgeR.material.emissive=[.10,.45,.58];
     edgeF.material.emissive=[.10,.45,.58];
     parts.push(edgeL,edgeR,edgeF);
+   }else if(k==='backdrop_arch'){
+    parts.push(boxMesh('Backdrop Base Platform',[0,.05,0],[4.2,.10,1.2],dark));
+    parts.push(boxMesh('Backdrop Center Panel',[0,1.45,-.12],[2.4,2.8,.08],col));
+    parts.push(boxMesh('Backdrop Left Wing',[-1.35,1.25,-.04],[1.1,2.4,.08],[.92,.95,.99,1]));
+    parts.push(boxMesh('Backdrop Right Wing',[1.35,1.25,-.04],[1.1,2.4,.08],[.92,.95,.99,1]));
+   }else if(k==='gala_round_table'){
+    parts.push(rod('Gala Table Pedestal',[0,.02,0],[0,.74,0],.32,.14,dark,16));
+    parts.push(rod('Gala Table Top Ø1.8m',[0,.74,0],[0,.80,0],.90,.90,col,24));
+    for(let i=0;i<10;i++){
+     const a=i*Math.PI*2/10, cx=Math.cos(a)*1.28, cz=Math.sin(a)*1.28;
+     parts.push(boxMesh('Gala Chair Seat '+(i+1),[cx,.44,cz],[.42,.08,.42],[.88,.91,.96,1]));
+     parts.push(boxMesh('Gala Chair Back '+(i+1),[cx*1.12,.72,cz*1.12],[.40,.52,.07],[.95,.75,.28,1]));
+    }
+   }else if(k==='conference_ibm_table'){
+    parts.push(boxMesh('IBM Table Skirt',[0,.38,0],[1.80,.74,.60],col));
+    parts.push(boxMesh('IBM Table Top',[0,.76,0],[1.84,.04,.64],[.94,.96,.98,1]));
+    for(const cx of [-.48,.48]){
+     parts.push(boxMesh('VIP Chair Seat',[cx,.44,-.52],[.46,.08,.46],steel));
+     parts.push(boxMesh('VIP Chair Back',[cx,.76,-.72],[.46,.58,.08],dark));
+    }
+   }else if(k==='banquet_chair'){
+    parts.push(boxMesh('Banquet Seat',[0,.44,0],[.44,.08,.44],col));
+    parts.push(boxMesh('Banquet Legs',[0,.22,0],[.40,.42,.40],dark));
+    parts.push(boxMesh('Banquet Backrest',[0,.76,-.19],[.42,.56,.06],col));
+    parts.push(boxMesh('Banquet Gold Sash',[0,.72,-.20],[.44,.12,.08],[.95,.75,.22,1]));
+   }else if(k==='foh_control_booth'){
+    parts.push(boxMesh('FOH Riser Deck',[0,.10,0],[2.8,.20,1.8],dark));
+    parts.push(boxMesh('FOH Console Desk',[0,.58,-.15],[2.4,.76,.82],col));
+    parts.push(boxMesh('GrandMA Lighting Console',[-.58,1.02,-.12],[.82,.12,.52],[.14,.18,.24,1]));
+    parts.push(boxMesh('Digital Audio Mixer',[.58,1.02,-.12],[.82,.12,.52],[.18,.22,.30,1]));
+   }else if(k==='decor_palm_planter'){
+    parts.push(boxMesh('Planter Box',[0,.28,0],[.62,.56,.62],dark));
+    parts.push(ellipsoid('Foliage Cluster Center',[0,.88,0],[.42,.52,.42],col,14,12));
+    parts.push(ellipsoid('Foliage Cluster Left',[-.22,.76,.12],[.28,.36,.28],[.16,.72,.38,1],12,10));
+    parts.push(ellipsoid('Foliage Cluster Right',[.22,.76,-.12],[.28,.36,.28],[.16,.72,.38,1],12,10));
+   }else if(k==='haze_machine_pro'){
+    parts.push(boxMesh('Haze Flightcase',[0,.22,0],[.58,.44,.46],col));
+    parts.push(boxMesh('Haze Nozzle Vent',[0,.28,.24],[.26,.12,.04],steel));
+   }else if(k==='cold_spark_fountain'){
+    parts.push(boxMesh('Sparkular Base',[0,.14,0],[.28,.28,.28],dark));
+    const sp1=rod('Cold Spark Plume',[0,.28,0],[0,2.45,0],.04,.32,col,14);
+    sp1.material.emissive=[.95,.78,.25];
+    parts.push(sp1);
    }
    const s=clamp16(item.scale??1,.1,10), yaw=(item.yaw||0)*Math.PI/180, p=item.pos||[0,0,0];
    const mat=M.mm(M.translate(p),M.mm(M.rotate([0,1,0],yaw),M.trs([0,0,0],IDENTITY_Q,[s,s,s])));
@@ -295,7 +346,8 @@
   }
 
   // Track 1B: 28° Crease Edge computation (scale-invariant & back-face-safe, ported from 5.Design_mcp glb_viewer_runtime.js)
-  function computeCreaseEdges(mesh,creaseDeg=28){
+  A.catalog=CATALOG;A.addCatalogItem=addCatalogItem;A.deleteItem=deleteItem;A.clearAll=()=>{A.items=[];clearAllAssetMeshes();};A.rebuildAll=rebuildAllAssetMeshes;A.syncItemMeshes=syncItemMeshes;
+   function computeCreaseEdges(mesh,creaseDeg=28){
    const cached=creaseCache.get(mesh);
    if(cached && cached.p===mesh.p && cached.bounds===mesh.bounds && cached.deg===creaseDeg)return cached.segments;
    const p=mesh.p, triCount=(p.length/9)|0;
@@ -408,19 +460,7 @@
    {id:'gd_shark_anim',fileId:'1EF9eobaWvmifUc1NTMi1A42UMLAs_jeK',title:'Cá Mập 3D Đại Dương (Shark Animated)',dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage shark ocean sea ca map dai duong animation',accent:'#0ea5e9'},
    {id:'gd_snake_anim',fileId:'1r2sXhxMWjXGRBkCDeK-tCN5oSnpKMGPt',title:'Rắn Thần 3D Chuyển Động (Snake Animated)',dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage snake animal ran animation',accent:'#10b981'},
    {id:'gd_spider_anim',fileId:'1xRYooI8UKl0KVqLWwlMTZYsklGdH-17S',title:'Nhện Máy 3D Halloween / Sci-Fi (Animated)',dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage spider scifi halloween nhen animation',accent:'#6366f1'},
-   {id:'gd_sofa_vip',fileId:'1qZsnLqLa6VZ8VVyupICOuY7ubfE24YYG',thumbId:'1yipPunKiYrq0YpRfrziWJsj2QnM8l2T6',title:'Ghế Sofa VIP Talkshow / Lounge',dims:'GLB 3D · Sofa',license:'Design_MCP / Warehouse 3D',tags:'stage sofa chair couch lounge vip ghe ban talkshow',accent:'#38bdf8'},
-   {id:'gd_coffee_table',fileId:'1FoPSWTtDLbstacKgGA-LjvY3XCCMYH_r',thumbId:'1QI6bz7yyH1DXC688z8YIr29Z8F-_1X7j',title:'Bàn Trà Talkshow / VIP Lounge',dims:'GLB 3D · Table',license:'Design_MCP / Warehouse 3D',tags:'stage table coffee desk ban tra talkshow vip',accent:'#60a5fa'},
-   {id:'gd_chair_cc0',fileId:'13tGfeOv5c0QxacaQbXPZEmui6sOR--YD',title:'Ghế Đơn Sân Khấu (Quaternius CC0)',dims:'GLB 3D · 13 KB',license:'CC0 1.0 (Quaternius)',tags:'stage chair seat stool ghe ngoi talkshow',accent:'#34d399'},
-   {id:'gd_dining_table',fileId:'1EaaMHchYJzxqnp6swhORSQCDS6ysnX_v',thumbId:'1cd4CIQiEtEYO1GsEWHE6JXbkW6gMzG53',title:'Bàn Gỗ Dài Hội Nghị / Tọa Đàm',dims:'GLB 3D · Wood Table',license:'Design_MCP / Warehouse 3D',tags:'stage table desk wood conference ban go hoi nghi toa dam',accent:'#fbbf24'},
-   {id:'gd_foh_desk',fileId:'1Dfra_yFdmZAA1fKNR_tYJvY5cW3Xv7f1',thumbId:'1It2So4YzxhaGgvzXA663ExXt2Hrcv5q9',title:'Bàn Điều Khiển FOH / Bàn Đại Biểu',dims:'GLB 3D · Desk',license:'Design_MCP / Warehouse 3D',tags:'stage desk table foh dj control ban dieu khien dai bieu',accent:'#818cf8'},
-   {id:'gd_side_table',fileId:'13lwhTmdvbjWUXF9kMcTtcLy4TlIhDwSZ',thumbId:'1XjjXbKYYmmD2YJ5hWzHS3l8rgusrOfaV',title:'Bàn Phụ Gỗ Trang Trí Sân Khấu',dims:'GLB 3D · Side Table',license:'Design_MCP / Warehouse 3D',tags:'stage table side wood prop ban phu trang tri',accent:'#f59e0b'},
-   {id:'gd_desk_lamp',fileId:'1GSHDuFGE8ardxY9N5PJoVsiXA2D6Th91',thumbId:'1-vzoO7QpIs7AUGbtDi2PVhcwgWhaD8zR',title:'Đèn Bàn Hiện Đại (Stage Prop Lamp)',dims:'GLB 3D · Lamp',license:'Design_MCP / Warehouse 3D',tags:'stage lamp light lighting den ban anh sang prop',accent:'#facc15'},
-   {id:'gd_monstera',fileId:'10Eeguqt36ezfFE7e1Q8xVWYYhTmiEA1K',thumbId:'1LecPU2IPxK2FYJZoq3w-DQO2NLuY8e6d',title:'Chậu Cây Monstera Trang Trí Cánh Gà',dims:'GLB 3D · Plant',license:'Design_MCP / Warehouse 3D',tags:'stage plant tree leaf green cay canh chau cay trang tri',accent:'#22c55e'},
-   {id:'gd_planter',fileId:'1fGTa8FACeF2ihY1ZNMNFZakaU3SzIq0y',thumbId:'1xddhGLacIYghyHTJhl4vkEg1rVvP0SrO',title:'Bồn Cây Cảnh Trang Trí Bục VIP',dims:'GLB 3D · Planter',license:'Design_MCP / Warehouse 3D',tags:'stage plant planter tree green bon cay canh vip',accent:'#4ade80'},
-   {id:'gd_tv_monitor',fileId:'1MKRG8Z3vIj7TDCoG92no8Ngc-Fm6KSdn',thumbId:'12zDsc7hY2CLWDZbO0mh4vQMM37zywD02',title:'Màn Hình TV Nhắc Lời (Stage Monitor)',dims:'GLB 3D · Screen',license:'Design_MCP / Warehouse 3D',tags:'stage tv screen monitor led display man hinh tivi nhac loi',accent:'#38bdf8'},
-   {id:'gd_sculpture',fileId:'1Ukb5B2qfot0AnrX5eFEFGcScww99GA76',thumbId:'1v0IhFxnVvCfcuOUhjMA0pz9A0RHWeXp9',title:'Khối Điêu Khắc Hình Học (Stage Art)',dims:'GLB 3D · Decor',license:'Design_MCP / Warehouse 3D',tags:'stage geometric sculpture art decor khoi dieu khac trang tri',accent:'#c084fc'},
-   {id:'gd_books_decor',fileId:'19njeqR4IbLxMYGhYgK3f9hfMJ0XydUp1',thumbId:'1KTfcrQXnI1Be_bgE5zirFldeiGd0GhH6',title:'Bộ Sách Đạo Cụ Bàn Tọa Đàm',dims:'GLB 3D · Prop',license:'Design_MCP / Warehouse 3D',tags:'stage book prop decor sach dao cu',accent:'#94a3b8'},
-   {id:'gd_modern_bed',fileId:'18d65IY--YgGHHEHeeZiBdYauQDFLJR3w',thumbId:'1uH0wgwAxBqyE2GjFC0HQem-JC2ghUAWT',title:'Giường Đạo Cụ Cảnh Nhạc Kịch / MV',dims:'GLB 3D · Set Prop',license:'Design_MCP / Warehouse 3D',tags:'stage bed prop musical mv giuong dao cu nhac kich',accent:'#f472b6'}
+   {id:'gd_chair_cc0',fileId:'13tGfeOv5c0QxacaQbXPZEmui6sOR--YD',title:'Ghế Đơn Sân Khấu (Quaternius CC0)',dims:'GLB 3D · 13 KB',license:'CC0 1.0 (Quaternius)',tags:'stage chair seat stool ghe ngoi talkshow',accent:'#34d399'}
   ];
 
   const SEARCH_SYNONYMS16={
@@ -581,21 +621,19 @@
   ];
 
   async function translateViToEn16(rawQuery){
-   const q=String(rawQuery||'').trim();
+   const q=String(rawQuery||'').trim().toLowerCase();
    if(!q || q.length<2)return '';
-   const cacheKey=q.toLowerCase();
-   if(A.translateCache.has(cacheKey))return A.translateCache.get(cacheKey);
-   try{
-    const url=`https://translate.googleapis.com/translate_a/single?client=gtx&sl=vi&tl=en&dt=t&q=${encodeURIComponent(q)}`;
-    const data=await fetchJsonWithTimeout(url,1600);
-    const translated=Array.isArray(data?.[0])?data[0].map(seg=>seg?.[0]||'').join(' ').trim().toLowerCase():'';
-    if(translated && translated!==cacheKey){
-     A.translateCache.set(cacheKey,translated);
-     return translated;
+   if(A.translateCache.has(q))return A.translateCache.get(q);
+   const qAscii=stripVi16(q);
+   const matched=[];
+   for(const entry of SEARCH_SYNONYMS_ENTRIES16){
+    if(q===entry.key || qAscii===entry.keyAscii || q.includes(entry.key) || (entry.keyAscii.length>=3 && qAscii.includes(entry.keyAscii))){
+     if(entry.list[0])matched.push(entry.list[0]);
     }
-   }catch(_){}
-   A.translateCache.set(cacheKey,'');
-   return '';
+   }
+   const translated=matched.slice(0,4).join(' ');
+   A.translateCache.set(q,translated);
+   return translated;
   }
 
   function expandSearchTerms16(rawQuery,extraEn=''){
@@ -767,14 +805,16 @@
    }
   }
 
-  function commitImportedMeshesToStage16(parsed,title){
+  function commitImportedMeshesToStage16(parsed,title,opts={}){
    if(!parsed?.meshes?.length)throw Error('Model không có mesh hợp lệ.');
    checkpoint();
    const b=engine.stageBounds||{min:[-9,0,-4],max:[9,7,4]};
    let min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity];
    for(const m of parsed.meshes)for(let i=0;i<3;i++){min[i]=Math.min(min[i],m.bounds.min[i]);max[i]=Math.max(max[i],m.bounds.max[i]);}
    const spanY=Math.max(0.001,max[1]-min[1]);
-   const autoScale=(spanY>18||spanY<0.08)?clamp16(1.8/spanY,0.01,50):1;
+   const isMountPoint=opts.origin==='mount-point'||/^fixture_/i.test(String(opts.id||title||''));
+   const preserveScale=opts.preserveMetricScale===true||isMountPoint;
+   const autoScale=preserveScale?1:((spanY>18||spanY<0.08)?clamp16(1.8/spanY,0.01,50):1);
    if(Math.abs(autoScale-1)>0.01){
     const sMat=M.trs([0,0,0],IDENTITY_Q,[autoScale,autoScale,autoScale]);
     min=[Infinity,Infinity,Infinity];max=[-Infinity,-Infinity,-Infinity];
@@ -785,18 +825,96 @@
    }
    const offsetCount=engine.stage.filter(m=>String(m.name||'').startsWith('CC0 ')).length;
    const offsetX=(offsetCount%5-2)*0.95;
-   const shift=[offsetX-(min[0]+max[0])*.5,(b.min?.[1]||0)-min[1],1.2-(min[2]+max[2])*.5];
+   let shift;
+   if(opts.keepOrigin===true){
+    shift=[0,0,0];
+   }else if(Array.isArray(opts.pos)&&opts.pos.length===3){
+    shift=isMountPoint
+     ?[opts.pos[0],opts.pos[1],opts.pos[2]]
+     :[opts.pos[0]-(min[0]+max[0])*.5,opts.pos[1]-min[1],opts.pos[2]-(min[2]+max[2])*.5];
+   }else if(isMountPoint){
+    // Giữ nguyên gốc treo mount-point [0,0,0] của đèn và đặt lên cao độ khung Truss
+    const trussY=Math.max(4.5,(b.max?.[1]||6.0)-0.5);
+    shift=[offsetX,trussY,0];
+   }else{
+    shift=[offsetX-(min[0]+max[0])*.5,(b.min?.[1]||0)-min[1],1.2-(min[2]+max[2])*.5];
+   }
+   if(shift[0]!==0||shift[1]!==0||shift[2]!==0){
+    for(const m of parsed.meshes){
+     transformMesh(m,M.translate(shift));
+     if(m._gltfAnim?.sceneAnim)m._gltfAnim.sceneAnim.modelShift=shift.slice();
+    }
+   }
+   let finalMin=[Infinity,Infinity,Infinity],finalMax=[-Infinity,-Infinity,-Infinity];
    for(const m of parsed.meshes){
-    transformMesh(m,M.translate(shift));
-    if(m._gltfAnim?.sceneAnim)m._gltfAnim.sceneAnim.modelShift=shift.slice();
     m.name='CC0 '+title+' / '+m.name;
+    m._assetOrigin16=isMountPoint?'mount-point':'floor-center';
     engine.stage.push(m);
+    for(let i=0;i<3;i++){finalMin[i]=Math.min(finalMin[i],m.bounds.min[i]);finalMax[i]=Math.max(finalMax[i],m.bounds.max[i]);}
    }
    engine._stageBatchDirty=true;
    S.mount136?.invalidate?.();
    engine.view='stage';
    renderUI?.();
    paint();
+   return {
+    title,
+    origin:isMountPoint?'mount-point':'floor-center',
+    meshCount:parsed.meshes.length,
+    shift,
+    bounds:{min:finalMin,max:finalMax,size:M.sub(finalMax,finalMin)}
+   };
+  }
+
+  async function importLocalGlbProp(fileOrFiles,opts={}){
+   const list=Array.isArray(fileOrFiles)||(typeof FileList!=='undefined'&&fileOrFiles instanceof FileList)
+    ? Array.from(fileOrFiles)
+    : [fileOrFiles].filter(Boolean);
+   const glbFile=list.find(f=>/\.glb$/i.test(String(f?.name||'')))||list[0];
+   if(!glbFile)throw Error('Hãy chọn tệp đạo cụ .glb hợp lệ.');
+   let sidecar=opts.sidecar||null;
+   const jsonFile=list.find(f=>/\.asset\.json$/i.test(String(f?.name||'')));
+   if(!sidecar && jsonFile && typeof jsonFile.text==='function'){
+    try{sidecar=JSON.parse(await jsonFile.text());}catch(_){}
+   }
+   const rawTitle=String(opts.title||sidecar?.title||sidecar?.id||glbFile.name||'GLB Prop').replace(/\.glb$/i,'');
+   const origin=opts.origin||sidecar?.origin||(/^fixture_/i.test(rawTitle)?'mount-point':'floor-center');
+   const parsed=await Importer.gltf(glbFile,new Map());
+   const committed=commitImportedMeshesToStage16(parsed,rawTitle,{
+    ...opts,
+    id:sidecar?.id||rawTitle,
+    origin,
+    preserveMetricScale:opts.preserveMetricScale??true
+   });
+   toast(`Đã nạp đạo cụ GLB "${rawTitle}" (${committed.origin}) vào sân khấu!`);
+   return {...committed,warnings:parsed.warnings||[],meshes:parsed.meshes};
+  }
+
+  function openLocalGlbFilePicker16(){
+   let inp=$('v16LocalGlbInput');
+   if(!inp){
+    inp=document.createElement('input');
+    inp.type='file';
+    inp.id='v16LocalGlbInput';
+    inp.accept='.glb,.json';
+    inp.multiple=true;
+    inp.hidden=true;
+    document.body.appendChild(inp);
+    inp.onchange=async ()=>{
+     const files=inp.files?Array.from(inp.files):[];
+     inp.value='';
+     if(!files.length)return;
+     try{
+      busy(true,'Đang nạp đạo cụ .GLB vào sân khấu...');
+      await importLocalGlbProp(files);
+     }catch(err){
+      toast(err?.message||String(err));
+     }finally{
+      busy(false);
+     }
+    };
+   }
+   inp.click();
   }
 
   async function importOnlineResult(idx){
@@ -1770,6 +1888,7 @@
         <small id="v16PropLiveDesc">${esc16(prevSpec.cat)} · ${esc16(prevSpec.desc||prevSpec.label)}</small>
         <div class="v16-grid">
          <button data-add16="${esc16(prevKind)}" id="v16PropLiveAddBtn" class="btn small primary">+ Đặt vào sân khấu</button>
+         <button data-act16="importLocalGlb" id="v16ImportLocalGlbBtn" class="btn small" title="Nạp thêm đạo cụ .GLB (và .asset.json) từ máy vào sân khấu đang mở, bảo toàn kích thước mét & gốc mount-point">📂 Nhập .GLB</button>
          <button data-act16="openCast" class="btn small">🕺 Người 3D</button>
         </div>
        </div>
@@ -1957,6 +2076,7 @@
    const act=b.dataset.act16;
    if(act==='close'){close();}
    else if(act==='openCast'){openCastLibrary16();}
+   else if(act==='importLocalGlb'){openLocalGlbFilePicker16();}
    else if(act==='place'){A.placeMode=!A.placeMode;if(A.placeMode)toast('Click lên mặt sàn/sân khấu 3D để đặt vị trí cho asset.');paint();}
    else if(act==='delete'){const it=currentItem();if(it)deleteItem(it.id);}
    else if(act==='focus'){const it=currentItem();if(it){engine.view='stage';engine.camera.target=[...it.pos];engine.camera.distance=Math.max(4,engine.camera.distance*.65);}}
@@ -2086,6 +2206,7 @@
   }
   Object.assign(A,{
    open,close,addCatalogItem,deleteItem,computeWindSafety,computeCreaseEdges,runOnlineSearch,
+   commitImportedMeshesToStage16,importLocalGlbProp,openLocalGlbFilePicker16,
    expandSearchTerms16,translateViToEn16,
    serialize:serializeAssets,restore:restoreAssets,
    getAssetPreviewURL16,getPerformerPreviewURL16,getActPreviewURL16,renderMeshes3DToCanvas16,

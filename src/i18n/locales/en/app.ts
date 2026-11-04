@@ -116,10 +116,10 @@ export default {
       edit: "Edit"
     },
     ledStudio: {
-      seoTitle: "LED Stage Studio 3D — Stage Design, LED Mapping & Timecode Show",
-      seoDesc: "WebGL2 3D event stage designer, LED pixel mapper, 35 LED Matrix effects, OFL DMX512 lighting desk, and ILDA laser timecode show studio.",
-      breadcrumb: "LED Stage Studio 3D",
-      badge: "ALPHA CREATIVE LED STUDIO V16"
+      seoTitle: "LumiStage (LED Stage Studio 3D) — Stage Design, LED Mapping, AI & Quotation",
+      seoDesc: "LumiStage (by Alpha Studio · GROUPLIFE): WebGL2 3D event stage designer, Gemini Flash 3.8 AI stage assistant, automatic BOM & quotation, AutoCAD .DXF, OFL DMX512 lighting desk, and ILDA laser studio.",
+      breadcrumb: "LumiStage · LED Stage Studio 3D",
+      badge: "LUMISTAGE V18 · BY ALPHA STUDIO"
     },
     hub: {
       hero: {
@@ -205,9 +205,9 @@ export default {
           f3: "Fully offline translation, portable Windows build with auto-updates"
         },
         ledStudio: {
-          f1: "Import 3D stages (Meshopt GLB/glTF, DAE, OBJ) with metric LED screen detection",
-          f2: "35 3D LED Matrix effects, Open Fixture Library DMX512 lighting desk & ILDA (.ild) laser scanner",
-          f3: "SMPTE/MTC Timecode sync, Pixel Map PNG/CSV & WebM export, plus read-only 3D client review links"
+          f1: "6 Vietnamese stage templates, Gemini Flash 3.8 AI stage assistant (1/3 official price + BYOK) & 3D seating sightline check",
+          f2: "35 3D LED Matrix effects, 128-fixture Open Fixture Library DMX512 lighting desk & ILDA (.ild) laser scanner",
+          f3: "Automatic BOM & Quotation (PDF/CSV), 2D AutoCAD (.DXF) export/import, 4K PNG renders & password-protected 3D review links"
         }
       },
       open: "Open",
@@ -226,8 +226,8 @@ export default {
           desc: "Case studies, prompts, workflows, templates and playbooks for event & communication teams"
         },
         ledStudio: {
-          title: "LED Stage Studio 3D",
-          desc: "3D event stage design, LED screen mapping, 35 LED Matrix effects, DMX512 lighting & ILDA laser timecode show programming"
+          title: "LumiStage · LED Stage Studio 3D",
+          desc: "3D event stage design, Gemini Flash 3.8 AI assistant, automatic BOM & quotation, AutoCAD .DXF, DMX512 lighting & ILDA laser show"
         },
         generate: {
           title: "Generate Image & Video",

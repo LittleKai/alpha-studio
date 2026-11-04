@@ -45,7 +45,7 @@ export default function LedStudioPage() {
     <iframe
       ref={iframeRef}
       src={iframeSrc}
-      title="ALPHA Creative LED Stage Studio"
+      title="LumiStage — LED Stage Studio 3D (by Alpha Studio · GROUPLIFE)"
       onLoad={syncWithIframe}
       className="w-full flex-1 border-0 bg-[#07111f]"
       allow="autoplay; fullscreen; clipboard-read; clipboard-write"

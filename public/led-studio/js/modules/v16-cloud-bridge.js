@@ -71,7 +71,13 @@
     cachedPresets: [],
     reviewGuardsBound: false,
     reviewSharedTitle: null,
-    layerVisibility: { stage: true, led: true, lights: true, laser: true, cast: true }
+    layerVisibility: { stage: true, led: true, lights: true, laser: true, cast: true },
+    sharePassword: '',
+    reviewStatus: 'pending',
+    reviewBy: '',
+    reviewNote: '',
+    reviewComments: [],
+    pinCommentMode: false
   };
 
   function t16(viText, enText) {
@@ -303,6 +309,10 @@
     '#cloud16OpenBtn',
     '#cloud16PresetsBtn',
     '#cloud16ShareBtn',
+    '#lumi18AiBtn',
+    '#lumi18TemplatesBtn',
+    '#lumi18BomBtn',
+    '#lumi18BillingBtn',
     '#durationInput',
     '#duration',
     '#loopBtn',
@@ -344,6 +354,8 @@
 
     window.addEventListener('keydown', (e) => {
       if (!state.clientReviewMode) return;
+      const tag = String(e.target?.tagName || '').toUpperCase();
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
       const key = String(e.key || '').toLowerCase();
       const allowedReviewKeys = new Set([
         ' ',
@@ -536,6 +548,10 @@
         `<button type="button" class="btn small active" aria-pressed="true" data-review-layer="lights">${t16('Ánh sáng', 'Lighting')}</button>` +
         `<button type="button" class="btn small active" aria-pressed="true" data-review-layer="laser">Laser</button>` +
         `<button type="button" class="btn small active" aria-pressed="true" data-review-layer="cast">${t16('Nhân vật', 'Performers')}</button>` +
+        `<button type="button" class="btn small" id="review16PinBtn" title="${t16('Bấm vào điểm trên sân khấu 3D để ghim nhận xét', 'Click on 3D stage to pin a comment')}">${t16('📌 Ghim 3D', '📌 Pin 3D')}</button>` +
+        `<button type="button" class="btn small" id="review16CommentsBtn">${t16('💬 Bình luận', '💬 Comments')} (0)</button>` +
+        `<button type="button" class="btn small primary" id="review16ApproveBtn">${t16('✅ Duyệt phương án', '✅ Approve')}</button>` +
+        `<button type="button" class="btn small" id="review16ChangesBtn">${t16('✏️ Cần chỉnh sửa', '✏️ Request Changes')}</button>` +
         `</div>`;
       const topbar = document.querySelector('.topbar');
       if (topbar && topbar.parentNode && typeof topbar.after === 'function') {
@@ -562,10 +578,240 @@
       bar.querySelectorAll?.('[data-review-layer]')?.forEach((btn) => {
         btn.onclick = () => toggleReviewLayer(btn.getAttribute('data-review-layer'));
       });
+      const pinBtn = bar.querySelector('#review16PinBtn');
+      if (pinBtn) {
+        pinBtn.onclick = () => {
+          state.pinCommentMode = !state.pinCommentMode;
+          pinBtn.classList.toggle('active', state.pinCommentMode);
+          window.toast?.(
+            state.pinCommentMode
+              ? t16('📌 Hãy bấm vào vị trí bất kỳ trên sân khấu 3D để ghim nhận xét.', '📌 Click anywhere on the 3D stage to pin a comment.')
+              : t16('Đã tắt chế độ ghim nhận xét 3D.', 'Disabled 3D pin comment mode.')
+          );
+        };
+      }
+      const commentsBtn = bar.querySelector('#review16CommentsBtn');
+      if (commentsBtn) commentsBtn.onclick = () => openReviewCommentsModal();
+      const approveBtn = bar.querySelector('#review16ApproveBtn');
+      if (approveBtn) approveBtn.onclick = () => openReviewDecisionModal('approved');
+      const changesBtn = bar.querySelector('#review16ChangesBtn');
+      if (changesBtn) changesBtn.onclick = () => openReviewDecisionModal('changes_requested');
+      bindReviewPinCanvas();
     }
     bar.hidden = false;
     applyLocaleToDOM();
+    updateReviewBarSummary();
     return bar;
+  }
+
+  function updateReviewBarSummary() {
+    const cBtn = document.getElementById('review16CommentsBtn');
+    if (cBtn) {
+      const count = Array.isArray(state.reviewComments) ? state.reviewComments.length : 0;
+      cBtn.textContent = `${t16('💬 Bình luận', '💬 Comments')} (${count})`;
+    }
+    if (state.clientReviewMode && state.reviewSharedTitle) {
+      let badge = '';
+      if (state.reviewStatus === 'approved') {
+        badge = ` · ✅ ${t16('ĐÃ DUYỆT', 'APPROVED')}${state.reviewBy ? ` (${state.reviewBy})` : ''}`;
+      } else if (state.reviewStatus === 'changes_requested') {
+        badge = ` · ✏️ ${t16('CẦN CHỈNH SỬA', 'CHANGES REQUESTED')}${state.reviewBy ? ` (${state.reviewBy})` : ''}`;
+      }
+      setReviewStatus(
+        (state.locale === 'en' ? `Viewing: ${state.reviewSharedTitle}` : `Đang xem: ${state.reviewSharedTitle}`) + badge
+      );
+    }
+  }
+
+  function bindReviewPinCanvas() {
+    const canvas = document.getElementById('glcanvas');
+    if (!canvas || canvas.dataset?.boundReviewPin16) return;
+    if (canvas.dataset) canvas.dataset.boundReviewPin16 = '1';
+    canvas.addEventListener('click', (e) => {
+      if (!state.clientReviewMode || !state.pinCommentMode) return;
+      const eng = window.STUDIO?.engine || window.engine;
+      let pos = [0, 1.5, 0];
+      let targetName = 'Stage';
+      try {
+        const hit = eng?.pick?.(e.clientX, e.clientY);
+        if (hit && Array.isArray(hit.point)) {
+          pos = hit.point.map((v) => +Number(v || 0).toFixed(2));
+          targetName = hit.mesh?.name || hit.surface?.name || 'Stage 3D';
+        } else if (Array.isArray(eng?.camera?.target)) {
+          pos = eng.camera.target.map((v) => +Number(v || 0).toFixed(2));
+        }
+      } catch {
+        // fallback pos
+      }
+      state.pinCommentMode = false;
+      document.getElementById('review16PinBtn')?.classList?.remove('active');
+      openReviewCommentsModal(pos, targetName);
+    });
+  }
+
+  async function submitReviewComment(commentInput = {}) {
+    if (!state.shareToken) throw new Error(t16('Chưa có mã link duyệt 3D.', 'Missing 3D review shareToken.'));
+    const headers = {
+      'Content-Type': 'application/json',
+      ...(state.sharePassword ? { 'x-share-password': state.sharePassword } : {})
+    };
+    const res = await fetch(apiUrl(`/share/${encodeURIComponent(state.shareToken)}/comments`), {
+      method: 'POST',
+      headers,
+      credentials: 'include',
+      body: JSON.stringify({
+        author: String(commentInput.author || t16('Khách hàng', 'Client')).trim(),
+        message: String(commentInput.message || '').trim(),
+        position: Array.isArray(commentInput.position) ? commentInput.position : [0, 1.5, 0],
+        targetName: String(commentInput.targetName || '')
+      })
+    });
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok || !json.success) {
+      throw new Error(json?.message || t16('Không gửi được bình luận 3D.', 'Could not submit 3D comment.'));
+    }
+    if (Array.isArray(json.data?.reviewComments)) {
+      state.reviewComments = json.data.reviewComments;
+    } else if (json.data?.comment) {
+      state.reviewComments.push(json.data.comment);
+    }
+    updateReviewBarSummary();
+    return json.data;
+  }
+
+  async function submitReviewDecision(decision, author = '', note = '') {
+    if (!state.shareToken) throw new Error(t16('Chưa có mã link duyệt 3D.', 'Missing 3D review shareToken.'));
+    const headers = {
+      'Content-Type': 'application/json',
+      ...(state.sharePassword ? { 'x-share-password': state.sharePassword } : {})
+    };
+    const cleanAuthor = String(author || t16('Khách hàng', 'Client')).trim();
+    const res = await fetch(apiUrl(`/share/${encodeURIComponent(state.shareToken)}/decision`), {
+      method: 'POST',
+      headers,
+      credentials: 'include',
+      body: JSON.stringify({
+        status: decision,
+        decision,
+        reviewerName: cleanAuthor,
+        author: cleanAuthor,
+        note: String(note || '').trim()
+      })
+    });
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok || !json.success) {
+      throw new Error(json?.message || t16('Không cập nhật được trạng thái duyệt.', 'Could not update review decision.'));
+    }
+    state.reviewStatus = json.data?.reviewStatus || decision;
+    state.reviewBy = json.data?.reviewBy || author;
+    state.reviewNote = json.data?.reviewNote || note;
+    updateReviewBarSummary();
+    return json.data;
+  }
+
+  function openReviewCommentsModal(prefillPos = null, prefillTarget = '') {
+    if (typeof window.dialog !== 'function') return;
+    const comments = Array.isArray(state.reviewComments) ? state.reviewComments : [];
+    const posArr = Array.isArray(prefillPos) ? prefillPos : [0, 1.5, 0];
+    const listHtml = comments.length
+      ? comments.map((c, idx) => {
+          const p = Array.isArray(c.position) ? c.position : [0, 0, 0];
+          return (
+            `<div class="info-box" style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px">` +
+            `<div><strong>#${idx + 1} · ${esc16(c.author || 'Client')}</strong> ` +
+            `<small>(${esc16(p.join(', '))}m)</small><br>` +
+            `<span>${esc16(c.message || '')}</span></div>` +
+            `<button type="button" class="btn small" data-review-fly="${esc16(p.join(','))}">🔍 ${t16('Xem điểm', 'Focus')}</button>` +
+            `</div>`
+          );
+        }).join('')
+      : `<div class="info-box">${t16('Chưa có bình luận ghim 3D nào.', 'No 3D pinned comments yet.')}</div>`;
+
+    const formHtml =
+      `<div style="max-height:220px;overflow:auto;margin-bottom:10px">${listHtml}</div>` +
+      `<div class="info-box">` +
+      `<strong>📌 ${t16('Thêm nhận xét ghim 3D', 'Add 3D Pin Comment')} (${esc16(posArr.join(', '))}m ${prefillTarget ? '· ' + esc16(prefillTarget) : ''})</strong>` +
+      `<div style="display:grid;gap:8px;margin-top:8px">` +
+      `<input id="review16CommentAuthor" class="search" placeholder="${t16('Tên của bạn / Đơn vị duyệt', 'Your Name / Organization')}" value="${esc16(state.reviewBy || '')}">` +
+      `<textarea id="review16CommentMsg" rows="3" style="width:100%;padding:8px;border-radius:6px;background:rgba(15,23,42,.8);color:#e2e8f0;border:1px solid rgba(148,163,184,.3)" placeholder="${t16('Nhập nội dung góp ý tại vị trí 3D này (VD: Hạ thấp màn LED cánh trái 0.5m)...', 'Enter feedback at this 3D position...')}"></textarea>` +
+      `<button type="button" class="btn primary" id="review16SubmitCommentBtn">📌 ${t16('Gửi bình luận 3D', 'Post 3D Comment')}</button>` +
+      `</div></div>`;
+
+    window.dialog(
+      t16('Bình luận ghim 3D trên sân khấu', '3D Stage Pinned Comments'),
+      formHtml,
+      [{ label: t16('Đóng', 'Close') }]
+    );
+
+    document.querySelectorAll?.('[data-review-fly]')?.forEach((btn) => {
+      btn.onclick = () => {
+        const raw = String(btn.getAttribute('data-review-fly') || '').split(',').map(Number);
+        const eng = window.STUDIO?.engine || window.engine;
+        if (eng?.camera && raw.length === 3 && raw.every(Number.isFinite)) {
+          eng.camera.target = [raw[0], raw[1], raw[2]];
+          eng.render?.(window.state?.time || 0);
+        }
+        const modal = document.getElementById('modal');
+        if (modal && typeof modal.close === 'function') modal.close();
+      };
+    });
+
+    const submitBtn = document.getElementById('review16SubmitCommentBtn');
+    if (submitBtn) {
+      submitBtn.onclick = async () => {
+        const author = document.getElementById('review16CommentAuthor')?.value || '';
+        const message = document.getElementById('review16CommentMsg')?.value || '';
+        if (!message.trim()) {
+          window.toast?.(t16('Vui lòng nhập nội dung nhận xét.', 'Please enter a comment message.'));
+          return;
+        }
+        try {
+          await submitReviewComment({ author, message, position: posArr, targetName: prefillTarget });
+          window.toast?.(t16('Đã ghim bình luận 3D thành công.', 'Pinned 3D comment successfully.'));
+          openReviewCommentsModal(posArr, prefillTarget);
+        } catch (err) {
+          window.toast?.(err?.message || String(err));
+        }
+      };
+    }
+  }
+
+  function openReviewDecisionModal(decision = 'approved') {
+    if (typeof window.dialog !== 'function') return;
+    const isApprove = decision === 'approved';
+    const html =
+      `<div class="info-box" style="display:grid;gap:8px">` +
+      `<p>${isApprove
+        ? t16('Xác nhận <strong>DUYỆT PHƯƠNG ÁN SÂN KHẤU 3D</strong> này để đội kỹ thuật tiến hành bóc tách BOM & thi công.', 'Confirm <strong>APPROVAL</strong> of this 3D stage design for BOM & production.')
+        : t16('Gửi yêu cầu <strong>CHỈNH SỬA PHƯƠNG ÁN</strong> kèm ghi chú tổng thể cho đội thiết kế.', 'Request <strong>DESIGN CHANGES</strong> with overall notes for the design team.')}</p>` +
+      `<input id="review16DecisionAuthor" class="search" placeholder="${t16('Họ tên / Chức vụ người duyệt', 'Approver Name / Title')}" value="${esc16(state.reviewBy || '')}">` +
+      `<textarea id="review16DecisionNote" rows="3" style="width:100%;padding:8px;border-radius:6px;background:rgba(15,23,42,.8);color:#e2e8f0;border:1px solid rgba(148,163,184,.3)" placeholder="${t16('Ghi chú duyệt hoặc yêu cầu chỉnh sửa...', 'Approval note or requested changes...')}"></textarea>` +
+      `<button type="button" class="btn primary" id="review16ConfirmDecisionBtn">${isApprove ? t16('✅ Xác nhận Duyệt phương án', '✅ Confirm Approval') : t16('✏️ Gửi yêu cầu chỉnh sửa', '✏️ Submit Change Request')}</button>` +
+      `</div>`;
+    window.dialog(
+      isApprove ? t16('Duyệt phương án sân khấu 3D', 'Approve 3D Stage Design') : t16('Yêu cầu chỉnh sửa phương án', 'Request Design Changes'),
+      html,
+      [{ label: t16('Huỷ', 'Cancel') }]
+    );
+    const confirmBtn = document.getElementById('review16ConfirmDecisionBtn');
+    if (confirmBtn) {
+      confirmBtn.onclick = async () => {
+        const author = document.getElementById('review16DecisionAuthor')?.value || '';
+        const note = document.getElementById('review16DecisionNote')?.value || '';
+        try {
+          await submitReviewDecision(decision, author, note);
+          const modal = document.getElementById('modal');
+          if (modal && typeof modal.close === 'function') modal.close();
+          window.toast?.(
+            isApprove
+              ? t16('✅ Đã ghi nhận DUYỆT PHƯƠNG ÁN thành công!', '✅ Stage design APPROVED!')
+              : t16('✏️ Đã gửi yêu cầu chỉnh sửa cho đội thiết kế.', '✏️ Sent change request to the design team.')
+          );
+        } catch (err) {
+          window.toast?.(err?.message || String(err));
+        }
+      };
+    }
   }
 
   function setReviewStatus(text, isError = false) {
@@ -791,6 +1037,78 @@
     return Array.isArray(json.files) ? json.files : [];
   }
 
+  async function listDriveRevisions(fileId) {
+    if (!fileId) return [];
+    const params = new URLSearchParams({
+      fields: 'revisions(id,modifiedTime,size,originalFilename,keepForever)',
+      pageSize: '30'
+    });
+    const res = await driveFetch(`${DRIVE_FILES}/${encodeURIComponent(fileId)}/revisions?${params}`);
+    const json = await res.json();
+    const revs = Array.isArray(json.revisions) ? json.revisions : [];
+    return revs.slice().reverse();
+  }
+
+  async function restoreDriveRevision(fileId, revisionId, fileName = 'drive.ledstudio') {
+    if (state.clientReviewMode || !fileId || !revisionId) return false;
+    try {
+      setBusy16(true, t16('Đang khôi phục phiên bản từ Google Drive...', 'Restoring revision from Google Drive...'));
+      const res = await driveFetch(`${DRIVE_FILES}/${encodeURIComponent(fileId)}/revisions/${encodeURIComponent(revisionId)}?alt=media`);
+      const payload = await res.json();
+      const applyFn = STUDIO.applyProjectData142 || window.applyProjectData142;
+      if (typeof applyFn !== 'function') {
+        throw new Error(t16('Bộ nạp dự án V15.1 chưa sẵn sàng.', 'V15.1 project loader is not ready.'));
+      }
+      await applyFn(payload, fileName);
+      state.driveFileId = fileId;
+      state.driveModelName = payload?.model?.name || null;
+      state.driveStage = currentStage();
+      state.currentProjectTitle = String(fileName).replace(/\.ledstudio$/i, '');
+      window.toast?.(t16(`Đã khôi phục phiên bản "${state.currentProjectTitle}" (${revisionId}).`, `Restored revision "${state.currentProjectTitle}" (${revisionId}).`));
+      return true;
+    } catch (err) {
+      window.toast?.(t16('Không khôi phục được phiên bản Google Drive: ', 'Failed to restore Google Drive revision: ') + (err?.message || err));
+      return false;
+    } finally {
+      setBusy16(false);
+    }
+  }
+
+  async function openDriveRevisionsModal(fileId, fileName = 'drive.ledstudio') {
+    if (state.clientReviewMode || !fileId) return;
+    try {
+      const revisions = await listDriveRevisions(fileId);
+      if (typeof window.dialog !== 'function') return;
+      const html = revisions.length
+        ? revisions.map((r, i) => {
+            const dt = r.modifiedTime ? new Date(r.modifiedTime).toLocaleString(state.locale === 'en' ? 'en-GB' : 'vi-VN') : r.id;
+            const kb = r.size ? `${Math.max(1, Math.round(Number(r.size) / 1024))} KB` : '';
+            return (
+              `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;gap:10px">` +
+              `<div><strong>${i === 0 ? t16('Bản mới nhất', 'Latest') : `${t16('Phiên bản', 'Revision')} #${revisions.length - i}`}</strong> · <small>${esc16(dt)} ${kb ? '· ' + esc16(kb) : ''}</small></div>` +
+              `<button type="button" class="btn small primary" data-drive16-rev="${esc16(r.id)}">⏱ ${t16('Khôi phục', 'Restore')}</button>` +
+              `</div>`
+            );
+          }).join('')
+        : `<div class="info-box">${t16('Chưa có lịch sử phiên bản cho tệp này.', 'No revision history found for this file.')}</div>`;
+      window.dialog(
+        `${t16('Lịch sử phiên bản Google Drive', 'Google Drive Version History')}: ${esc16(fileName)}`,
+        html,
+        [{ label: t16('Quay lại', 'Back'), action: () => openCloudProjectsModal() }, { label: t16('Đóng', 'Close') }]
+      );
+      document.querySelectorAll?.('[data-drive16-rev]')?.forEach((btn) => {
+        btn.onclick = async () => {
+          const revId = btn.getAttribute('data-drive16-rev');
+          const modal = document.getElementById('modal');
+          if (modal && typeof modal.close === 'function') modal.close();
+          await restoreDriveRevision(fileId, revId, fileName);
+        };
+      });
+    } catch (err) {
+      window.toast?.(t16('Không tải được lịch sử phiên bản: ', 'Could not load revision history: ') + (err?.message || err));
+    }
+  }
+
   async function loadDriveProject(fileId, fileName = 'drive.ledstudio') {
     if (state.clientReviewMode || !fileId) return false;
     try {
@@ -883,11 +1201,13 @@
       const legacy = state.token ? await listCloudProjects().catch(() => []) : [];
       if (driveErr && !legacy.length) throw driveErr;
       if (typeof window.dialog !== 'function') return;
-      const row = (name, sub, attr, id) =>
+      const row = (name, sub, attr, id, revId = null) =>
         `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;gap:10px">` +
         `<div><strong>${esc16(name)}</strong><br><small>${esc16(sub)}</small></div>` +
+        `<div style="display:flex;gap:6px;align-items:center">` +
+        (revId ? `<button type="button" class="btn small" data-drive16-revisions="${esc16(revId)}" title="${t16('Xem lịch sử phiên bản trên Google Drive', 'View Google Drive version history')}">⏱ ${t16('Lịch sử', 'History')}</button>` : '') +
         `<button type="button" class="btn small primary" ${attr}="${esc16(id)}">${t16('Mở dự án', 'Open')}</button>` +
-        `</div>`;
+        `</div></div>`;
       const lightsLabel = t16('Đèn', 'Lights');
       const driveHtml = files.length
         ? files.map((f) => row(
@@ -895,6 +1215,7 @@
             `${Number(f.appProperties?.ledCount || 0)} LED · ${Number(f.appProperties?.lightCount || 0)} ${lightsLabel} · ` +
               new Date(f.modifiedTime).toLocaleString(state.locale === 'en' ? 'en-GB' : 'vi-VN'),
             'data-drive16-load',
+            f.id,
             f.id
           )).join('')
         : `<div class="info-box">${driveErr
@@ -923,6 +1244,13 @@
           const id = btn.getAttribute('data-drive16-load');
           closeModal();
           await loadDriveProject(id, files.find((f) => f.id === id)?.name);
+        };
+      });
+      document.querySelectorAll?.('[data-drive16-revisions]')?.forEach((btn) => {
+        btn.onclick = async () => {
+          const id = btn.getAttribute('data-drive16-revisions');
+          closeModal();
+          await openDriveRevisionsModal(id, files.find((f) => f.id === id)?.name || 'drive.ledstudio');
         };
       });
       document.querySelectorAll?.('[data-cloud16-load]')?.forEach((btn) => {
@@ -971,17 +1299,23 @@
     return state.lastSavedProjectId;
   }
 
-  async function shareClientReviewLink(explicitProjectId = null) {
+  async function shareClientReviewLink(explicitProjectId = null, options = {}) {
     if (state.clientReviewMode) return null;
     try {
       if (!state.token) throw new Error(t16('Vui lòng đăng nhập trước.', 'Please sign in first.'));
       setBusy16(true, t16('Đang tải bản chụp sân khấu để chia sẻ...', 'Uploading stage snapshot for sharing...'));
       const targetId = explicitProjectId || await uploadShareSnapshot();
+      const expiresInHours = Math.max(1, Math.min(720, Number(options?.expiresInHours) || 168));
+      const password = String(options?.password || '').trim();
       const res = await fetch(apiUrl(`/projects/${encodeURIComponent(targetId)}/share`), {
         method: 'POST',
         headers: authHeaders({ 'Content-Type': 'application/json' }),
         credentials: 'include',
-        body: JSON.stringify({ enabled: true, expiresInHours: 168 })
+        body: JSON.stringify({
+          enabled: true,
+          expiresInHours,
+          ...(password ? { password } : {})
+        })
       });
       const json = await res.json();
       if (!res.ok || !json.success || !json.data?.shareToken) {
@@ -989,10 +1323,11 @@
       }
       const shareUrl = `${window.location.origin}/studio/led-studio?share=${encodeURIComponent(json.data.shareToken)}`;
       await navigator.clipboard?.writeText(shareUrl).catch(() => {});
+      const daysLabel = expiresInHours >= 24 ? `${Math.round(expiresInHours / 24)} ${t16('ngày', 'days')}` : `${expiresInHours}h`;
       window.toast?.(
         t16(
-          'Đã tạo & sao chép link duyệt 3D (Client Review 7 ngày) vào Clipboard.',
-          'Created & copied 7-day 3D Client Review link to Clipboard.'
+          `Đã tạo & sao chép link duyệt 3D (${daysLabel}${password ? ' · Có mật khẩu' : ''}) vào Clipboard.`,
+          `Created & copied 3D Client Review link (${daysLabel}${password ? ' · Password protected' : ''}) to Clipboard.`
         )
       );
       return shareUrl;
@@ -1001,6 +1336,42 @@
       return null;
     } finally {
       setBusy16(false);
+    }
+  }
+
+  function openShareLinkDialog() {
+    if (state.clientReviewMode || typeof window.dialog !== 'function') return;
+    const html =
+      `<div class="info-box" style="display:grid;gap:10px">` +
+      `<label style="display:grid;gap:4px"><strong>${t16('Thời hạn hiệu lực Link duyệt 3D', '3D Review Link Expiry')}</strong>` +
+      `<select id="share16ExpirySelect" style="padding:6px;border-radius:6px;background:rgba(15,23,42,.9);color:#e2e8f0;border:1px solid rgba(148,163,184,.3)">` +
+      `<option value="24">${t16('24 giờ (1 ngày)', '24 hours (1 day)')}</option>` +
+      `<option value="72">${t16('72 giờ (3 ngày)', '72 hours (3 days)')}</option>` +
+      `<option value="168" selected>${t16('7 ngày (Mặc định)', '7 days (Default)')}</option>` +
+      `<option value="720">${t16('30 ngày (Gói Pro / Mở khoá dự án)', '30 days (Pro / Unlocked Project)')}</option>` +
+      `</select></label>` +
+      `<label style="display:grid;gap:4px"><strong>${t16('Mật khẩu bảo vệ (Tuỳ chọn — Gói Pro / Mở khoá dự án)', 'Password Protection (Optional — Pro / Unlocked Project)')}</strong>` +
+      `<input id="share16PasswordInput" type="password" class="search" placeholder="${t16('Để trống nếu muốn mở công khai không cần mật khẩu', 'Leave blank for public access without password')}"></label>` +
+      `<div id="share16ResultBox" class="info-box" style="display:none;word-break:break-all"></div>` +
+      `<button type="button" class="btn primary" id="share16CreateBtn">🔗 ${t16('Tạo & Sao chép Link duyệt 3D', 'Create & Copy 3D Review Link')}</button>` +
+      `</div>`;
+    window.dialog(
+      t16('Chia sẻ Link Duyệt Sân Khấu 3D (Client Review)', 'Share 3D Stage Client Review Link'),
+      html,
+      [{ label: t16('Đóng', 'Close') }]
+    );
+    const createBtn = document.getElementById('share16CreateBtn');
+    if (createBtn) {
+      createBtn.onclick = async () => {
+        const expiresInHours = Number(document.getElementById('share16ExpirySelect')?.value || 168);
+        const password = String(document.getElementById('share16PasswordInput')?.value || '').trim();
+        const url = await shareClientReviewLink(null, { expiresInHours, password });
+        const box = document.getElementById('share16ResultBox');
+        if (url && box) {
+          box.style.display = 'block';
+          box.innerHTML = `<strong>✅ ${t16('Đã sao chép vào Clipboard:', 'Copied to Clipboard:')}</strong><br><a href="${esc16(url)}" target="_blank" rel="noopener" style="color:#38bdf8">${esc16(url)}</a>`;
+        }
+      };
     }
   }
 
@@ -1362,18 +1733,26 @@
 
   window.addEventListener('message', handleHostMessage);
 
-  async function loadSharedProject(rawShareToken) {
+  async function loadSharedProject(rawShareToken, providedPassword = '') {
     const shareToken = String(rawShareToken || '').trim();
     if (!shareToken) return false;
     enterClientReviewMode(shareToken);
     document.body.dataset.shareStatus = 'loading';
     state.reviewSharedTitle = null;
+    if (providedPassword) state.sharePassword = String(providedPassword);
     setReviewStatus(t16('Đang tải bản xem duyệt 3D...', 'Loading 3D review scene...'));
     try {
-      const res = await fetch(apiUrl(`/share/${encodeURIComponent(shareToken)}`), {
-        credentials: 'include'
-      });
+      const fetchOpts = state.sharePassword
+        ? { credentials: 'include', headers: { 'x-share-password': state.sharePassword } }
+        : { credentials: 'include' };
+      const res = await fetch(apiUrl(`/share/${encodeURIComponent(shareToken)}`), fetchOpts);
       const json = await res.json().catch(() => ({}));
+      if ((res.status === 401 || json?.requiresPassword || json?.data?.requiresPassword) && typeof window.prompt === 'function' && !providedPassword) {
+        const entered = window.prompt(t16('Dự án 3D này được bảo vệ bằng mật khẩu. Vui lòng nhập mật khẩu:', 'This 3D project is password-protected. Please enter password:')) || '';
+        if (entered.trim()) {
+          return await loadSharedProject(shareToken, entered.trim());
+        }
+      }
       if (!res.ok || !json.success) {
         throw new Error(json?.message || t16('Link chia sẻ không hợp lệ hoặc đã hết hạn.', 'Share link is invalid or has expired.'));
       }
@@ -1393,9 +1772,14 @@
       await applyFn(projectPayload, `${json.data?.title || 'shared'}.ledstudio`);
       document.body.dataset.shareStatus = 'loaded';
       state.reviewSharedTitle = json.data?.title || t16('Sân khấu 3D', '3D Stage');
+      state.reviewStatus = json.data?.reviewStatus || 'pending';
+      state.reviewBy = json.data?.reviewBy || '';
+      state.reviewNote = json.data?.reviewNote || '';
+      state.reviewComments = Array.isArray(json.data?.reviewComments) ? json.data.reviewComments : [];
       setReviewStatus(
         t16(`Đang xem: ${state.reviewSharedTitle}`, `Viewing: ${state.reviewSharedTitle}`)
       );
+      updateReviewBarSummary();
       return true;
     } catch (err) {
       document.body.dataset.shareStatus = 'error';
@@ -1438,6 +1822,9 @@
     toggleReviewLayer,
     driveSaveProject,
     listDriveProjects,
+    listDriveRevisions,
+    restoreDriveRevision,
+    openDriveRevisionsModal,
     loadDriveProject,
     uploadShareSnapshot,
     saveCloudProject: driveSaveProject,
@@ -1445,8 +1832,13 @@
     loadCloudProject,
     openCloudProjectsModal,
     shareClientReviewLink,
+    openShareLinkDialog,
     createClientShareLink: shareClientReviewLink,
     loadSharedProject,
+    submitReviewComment,
+    submitReviewDecision,
+    openReviewCommentsModal,
+    openReviewDecisionModal,
     loadCloudPreset,
     publishCloudPreset,
     openPresetsModal

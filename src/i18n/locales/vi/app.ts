@@ -116,10 +116,10 @@ export default {
       edit: "Chỉnh sửa"
     },
     ledStudio: {
-      seoTitle: "LED Stage Studio 3D — Thiết kế sân khấu, Mapping LED & Timecode Show",
-      seoDesc: "Ứng dụng WebGL2 thiết kế sân khấu sự kiện 3D, mapping màn hình LED, lập trình 35 hiệu ứng LED Matrix, điều khiển đèn DMX512 OFL và Laser ILDA.",
-      breadcrumb: "LED Stage Studio 3D",
-      badge: "ALPHA CREATIVE LED STUDIO V16"
+      seoTitle: "LumiStage (LED Stage Studio 3D) — Thiết kế sân khấu, Mapping LED, AI & Báo giá",
+      seoDesc: "LumiStage (by Alpha Studio · GROUPLIFE): Ứng dụng WebGL2 thiết kế sân khấu 3D, trợ lý AI Gemini Flash 3.8, bóc tách BOM/Báo giá, xuất AutoCAD .DXF, điều khiển đèn DMX512 OFL và Laser ILDA.",
+      breadcrumb: "LumiStage · LED Stage Studio 3D",
+      badge: "LUMISTAGE V18 · BY ALPHA STUDIO"
     },
     hub: {
       hero: {
@@ -205,9 +205,9 @@ export default {
           f3: "Dịch ngoại tuyến hoàn toàn, bản Windows portable tự động cập nhật"
         },
         ledStudio: {
-          f1: "Nhập sân khấu 3D (GLB/glTF Meshopt, DAE, OBJ) & tự động nhận diện màn hình LED theo hệ mét",
-          f2: "35 hiệu ứng LED Matrix 3D, bàn điều khiển đèn DMX512 (OFL) & Laser Show chuẩn ILDA (.ild)",
-          f3: "Đồng bộ Timecode SMPTE/MTC, xuất Pixel Map PNG/CSV, video WebM & chia sẻ link duyệt 3D"
+          f1: "6 mẫu sân khấu sự kiện VN, trợ lý AI Gemini Flash 3.8 (1/3 giá chính thức + BYOK) & bố trí bàn ghế/tia nhìn 3D",
+          f2: "35 hiệu ứng LED Matrix 3D, bàn điều khiển 128 đèn DMX512 (OFL) & Laser Show chuẩn ILDA (.ild)",
+          f3: "Tự động bóc tách khối lượng (BOM), xuất Báo giá PDF/CSV, bản vẽ 2D AutoCAD (.DXF), ảnh 4K & link duyệt 3D"
         }
       },
       open: "Mở",
@@ -226,8 +226,8 @@ export default {
           desc: "Case study, prompt, workflow, template và playbook cho ngành sự kiện – truyền thông"
         },
         ledStudio: {
-          title: "LED Stage Studio 3D",
-          desc: "Thiết kế sân khấu 3D, mapping màn hình LED, lập trình 35 hiệu ứng LED Matrix, đèn DMX512 & Laser ILDA theo Timecode"
+          title: "LumiStage · LED Stage Studio 3D",
+          desc: "Thiết kế sân khấu 3D, trợ lý AI Gemini Flash 3.8, tự động bóc tách BOM/Báo giá, xuất AutoCAD .DXF, đèn DMX512 & Laser ILDA"
         },
         generate: {
           title: "Tạo ảnh & video",

@@ -114,7 +114,7 @@ StageEngine.prototype.render=function(time=0,options={}){
  this.gl.activeTexture(this.gl.TEXTURE0);
  for(const a of activeVideos())if(a.element.readyState>=2)this.texture(a.element);
  this.gl.useProgram(this.program);
- this.uniform('uLightCount',Math.min(16,this.lights.length),'i');
+ this.uniform('uLightCount',Math.min(32,this.lights.length),'i');
  const canvas=PERF_BASE.render.call(this,time,options);perfState.cpuMs=performance.now()-t;return canvas;
 };
 function reportPerformance(now,dt){

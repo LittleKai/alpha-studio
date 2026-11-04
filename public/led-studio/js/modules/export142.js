@@ -43,7 +43,7 @@
     if (state.recording) throw Error('Dừng ghi video trước khi chụp khung hình.');
     width = Math.round(Number(width)); height = Math.round(Number(height));
     if (!Number.isFinite(width + height) || width < 16 || height < 16 ||
-        width > 4096 || height > 4096 || width * height > 8388608) {
+        width > 4096 || height > 4096 || width * height > 16777216) {
       throw Error('Kích thước ảnh cần nằm trong 16–4096 px và tối đa 8 megapixel.');
     }
     const canvas = document.createElement('canvas');
@@ -54,6 +54,9 @@
       E.render(state.time, { width, height });
       paintEffects();
       compose(canvas);
+      if (typeof S !== 'undefined' && S.lumi18?.shouldWatermarkExport?.()) {
+        drawLumiWatermark(canvas);
+      }
     } finally {
       E.view = before.view; E.showGuides = before.guides; E.settings.grid = before.grid;
       E.render(state.time);
@@ -232,7 +235,52 @@
   if ($('recordBtn')) $('recordBtn').onclick = () => recordPreview();
   const label = $('exportShot')?.querySelector('span');
   if (label) label.textContent = '1920×1080 · gồm LED Matrix / PAR / LINE / Laser FX';
+  function drawLumiWatermark(canvas) {
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return canvas;
+    const w = canvas.width, h = canvas.height;
+    ctx.save();
+    const fontSize = Math.max(14, Math.round(h * 0.022));
+    ctx.font = `600 ${fontSize}px system-ui, -apple-system, sans-serif`;
+    const label = 'LumiStage — Bản xem thử · grouplife.vn';
+    const padX = Math.round(fontSize * 0.8), padY = Math.round(fontSize * 0.5);
+    const textW = ctx.measureText(label).width;
+    const boxW = textW + padX * 2, boxH = fontSize + padY * 2;
+    const bx = w - boxW - Math.round(w * 0.02), by = h - boxH - Math.round(h * 0.025);
+    ctx.fillStyle = 'rgba(8, 11, 19, 0.72)';
+    ctx.fillRect(bx, by, boxW, boxH);
+    ctx.strokeStyle = 'rgba(56, 189, 248, 0.55)';
+    ctx.lineWidth = Math.max(1, Math.round(h / 720));
+    ctx.strokeRect(bx, by, boxW, boxH);
+    ctx.fillStyle = 'rgba(226, 232, 240, 0.92)';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(label, bx + padX, by + boxH / 2);
+    ctx.restore();
+    return canvas;
+  }
+
+  async function exportShot4K() {
+    if (state.recording) { toast('Dừng ghi video trước khi xuất ảnh 4K.'); return null; }
+    try {
+      if (S.lumi18?.ensureExportAllowed) {
+        const ok = await S.lumi18.ensureExportAllowed('4k_png');
+        if (!ok) return null;
+      }
+      const frame = captureFrame({ width: 3840, height: 2160 });
+      const blob = await new Promise(resolve => frame.toBlob(resolve, 'image/png'));
+      if (!blob) throw Error('Trình duyệt không tạo được ảnh PNG 4K.');
+      download('LumiStage_4K_3840x2160.png', blob);
+      toast('Đã xuất phối cảnh 3D 4K UHD (3840×2160 PNG).');
+      return blob;
+    } catch (error) {
+      toast('Không xuất được ảnh 4K: ' + error.message, 7000);
+      return null;
+    }
+  }
+
   S.exportShot = exportShot;
+  S.exportShot4K = exportShot4K;
+  S.drawLumiWatermark = drawLumiWatermark;
   S.recordPreview = recordPreview;
   S.beginLiveRecording = beginLiveRecording;
   S.capture142 = { captureFrame, compose, paintEffects, beginRecording: beginLiveRecording,
