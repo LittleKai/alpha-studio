@@ -17,7 +17,7 @@
   fan_dance:{name:'Múa quạt',kind:'fandancer',count:6,radius:3.4,tag:'FAN DANCE / FLOW'},
   keymoment:{name:'Key moment sân khấu',kind:null,count:0,radius:3.1,tag:'KEY MOMENT / LIFT'},
   ribbon:{name:'Múa lụa',kind:'fandancer',count:4,radius:3.2,tag:'RIBBON / SWIRL'},
-  live_band:{name:'Ban nhạc Live Concert',kind:'singer',roles:['guitarist','violinist','singer','saxophonist','drummer'],count:5,radius:3.6,tag:'LIVE BAND / 5 NGƯỜI'},
+  live_band:{name:'Ban nhạc Live Concert',kind:'singer',roles:['guitarist','violinist','singer','saxophonist','drummer'],count:5,radius:3.6,tag:'LIVE band / 5 người'},
   dj_festival:{name:'DJ EDM Festival Drop',kind:'leddancer',roles:['laserdancer','leddancer','dj','leddancer','laserdancer'],count:5,radius:3.5,tag:'DJ DROP / LED CREW'},
   opening_gala:{name:'Khai mạc Gala & MC',kind:'dancer',roles:['fandancer','dancer','mc','dancer','fandancer'],count:5,radius:3.2,tag:'GALA / MC & DANCERS'}
  });
@@ -152,19 +152,20 @@
  function inject12Toolbar(){
   const bar=document.querySelector('.dir-toolbar')||document.querySelector('.topbar')||document.querySelector('.toolbar');
   if(bar && !$('v12Overlay')){
-   const b=document.createElement('button'); b.className='btn small'; b.id='v12Overlay'; b.textContent='Timeline: Gọn';
-   b.onclick=()=>{stage12.overlayMode=stage12.overlayMode==='compact'?'full':'compact'; document.body.classList.toggle('v121-compact',stage12.overlayMode==='compact'); b.textContent='Timeline: '+(stage12.overlayMode==='compact'?'Gọn':'Đầy đủ'); renderSequence();};
+   const b=document.createElement('button'); b.className='btn small'; b.id='v12Overlay'; b.textContent=trChoreo10("Timeline: Gọn","Timeline: Compact");
+   b.onclick=()=>{stage12.overlayMode=stage12.overlayMode==='compact'?'full':'compact'; document.body.classList.toggle('v121-compact',stage12.overlayMode==='compact'); b.textContent='Timeline: '+(stage12.overlayMode==='compact'?trChoreo10("Gọn","Compact"):trChoreo10("Đầy đủ","Full")); renderSequence();};
    bar.appendChild(b);
   }
   const media=document.querySelector('.media-section');
   if(media && !$('v12Demo')){
-   const b=document.createElement('button'); b.className='btn small'; b.id='v12Demo'; b.textContent='Demo V12';
-   b.onclick=()=>dialog('Mở demo V12?','<p>Demo ưu tiên biên đạo, thêm múa quạt, key moment bàn nâng và tránh chồng screen / 3D.</p>',[{label:'Hủy'},{label:'Mở demo',primary:true,action:()=>createChoreoDemo12().catch(e=>toast(e.message))}]);
+   const b=document.createElement('button'); b.className='btn small'; b.id='v12Demo'; b.textContent=trChoreo10('Demo sân khấu','Stage demo');
+   b.onclick=()=>dialog(trChoreo10("Mở demo V12?","Open choreography demo?"),"<p>"+trChoreo10("Demo ưu tiên biên đạo, thêm múa quạt, key moment bàn nâng và tránh chồng screen / 3D.","Demo focuses on choreography, fan dance and stage lift key moments while avoiding screen / 3D overlap.")+"</p>",[{label:trChoreo10("Hủy","Cancel")},{label:trChoreo10("Mở demo","Open demo"),primary:true,action:()=>createChoreoDemo12().catch(e=>toast(e.message))}]);
    media.appendChild(b);
   }
  }
  const oldRenderUI=renderUI;
  renderUI=function(){const r=oldRenderUI();setTimeout(inject12Toolbar,0);return r;};
+ window.addEventListener('ledstudio:locale',()=>{const b=$('v12Overlay');if(b)b.textContent='Timeline: '+(stage12.overlayMode==='compact'?trChoreo10('Gọn','Compact'):trChoreo10('Đầy đủ','Full'));});
  inject12Toolbar(); document.body.classList.add('v121-compact');
  if(window.STUDIO) window.STUDIO.version='1.2.1';
 })();
@@ -251,7 +252,7 @@
        else if(kind==='kneel_rise') r.keys=[stamp(p,0,x,-depth*.25,'walk','smooth','path',.65),stamp(p,.35,x*.9,0,'kneel','hold','front',.45),stamp(p,.58,x*.9,0,'kneel','hold','front',.45),stamp(p,.82,x*.95,depth*.22,'reach','curve','front',.82),stamp(p,1,x,depth*.10,'finale','smooth','front',1)];
        r.enabled=true;
      });
-     choreo11.key=route11()?.keys[0]?.id; dirty11(); renderUI(); toast('Đã tạo biên đạo nâng cao.'); return;
+     choreo11.key=route11()?.keys[0]?.id; dirty11(); renderUI(); toast(trChoreo10("Đã tạo biên đạo nâng cao.","Advanced choreography created.")); return;
    }
    return oldFormation11(kind,{record,span,depth});
  };
@@ -274,7 +275,7 @@
    const actRows=[...document.querySelectorAll('[data-add-act]')];
    if(actRows.length && !document.getElementById('v122FormBtns')){
      const wrap=document.createElement('div'); wrap.id='v122FormBtns'; wrap.className='dir-act-row';
-     wrap.innerHTML='<b>Biên đạo nâng cao</b><div><button data-v122-form="fan_open">Múa quạt mở</button><button data-v122-form="fan_wave">Fan wave</button><button data-v122-form="cross_flow">Cross flow</button><button data-v122-form="hero_arc">Hero arc</button><button data-v122-form="kneel_rise">Quỳ / đứng</button></div><p class="hint-text">Tạo nhanh biên đạo mượt hơn, rồi kéo mốc trên sân khấu để chỉnh tiếp.</p>';
+     wrap.innerHTML="<b>"+trChoreo10("Biên đạo nâng cao","Advanced choreography")+"</b><div><button data-v122-form=\"fan_open\">"+trChoreo10("Múa quạt mở","Open fan dance")+"</button><button data-v122-form=\"fan_wave\">"+trChoreo10("Sóng quạt","Fan wave")+"</button><button data-v122-form=\"cross_flow\">"+trChoreo10("Di chuyển chéo","Cross flow")+"</button><button data-v122-form=\"hero_arc\">"+trChoreo10("Vòng cung trung tâm","Hero arc")+"</button><button data-v122-form=\"kneel_rise\">"+trChoreo10("Quỳ / đứng","Kneel / rise")+"</button></div><p class=\"hint-text\">"+trChoreo10("Tạo nhanh biên đạo mượt hơn, rồi kéo mốc trên sân khấu để chỉnh tiếp.","Create smoother choreography quickly, then drag stage waypoints to refine it.")+"</p>";
      const host=document.querySelector('.dir-section .hint-text')?.parentElement || document.querySelector('.dir-section');
      if(host) host.appendChild(wrap);
      wrap.querySelectorAll('button[data-v122-form]').forEach(btn=>btn.onclick=()=>formation11(btn.dataset.v122Form,{record:true,span:5.2,depth:2.2}));
@@ -282,6 +283,7 @@
  }
  const oldRenderUI=renderUI;
  renderUI=function(){ const r=oldRenderUI(); setTimeout(inject122,0); return r; };
+ window.addEventListener('ledstudio:locale',()=>{const host=$('v122FormBtns');if(!host)return;host.querySelector('b').textContent=trChoreo10('Biên đạo nâng cao','Advanced choreography');host.querySelector('p').textContent=trChoreo10('Tạo nhanh biên đạo mượt hơn, rồi kéo mốc trên sân khấu để chỉnh tiếp.','Create smoother choreography quickly, then drag stage waypoints to refine it.');for(const [key,vi,en]of [['fan_open','Múa quạt mở','Open fan dance'],['fan_wave','Sóng quạt','Fan wave'],['cross_flow','Di chuyển chéo','Cross flow'],['hero_arc','Vòng cung trung tâm','Hero arc'],['kneel_rise','Quỳ / đứng','Kneel / rise']]){const button=host.querySelector('[data-v122-form="'+key+'"]');if(button)button.textContent=trChoreo10(vi,en);}});
  inject122();
  if(window.STUDIO) window.STUDIO.version='1.2.2';
 })();
@@ -446,15 +448,15 @@
    setPlaying(false); demo(); seq.people=[]; director.acts=[]; seq.clips=[]; seq.tracks=[]; stage10.scenes=[]; choreo11.routes=[]; state.duration=50;
    const z=.35,y=deckY(0,z); const plan=[['fan_dance',0,12],['led_dance',12,10],['water_drums',22,8],['keymoment',30,10],['laser',40,10]];
    for(const [type,start,duration] of plan){ const a=addAct8(type,{pos:[0,y,z]}); const c=addActClip8(a.id,{start,duration,cycle10:8,loop:true,fade:0,name:(a.name||type)}); stage10.scenes.push({id:uid('scene'),name:a.name,start,duration,actId:a.id,clipIds:[c.id],color:'#7ba3c8'}); autoBlock123(a.id); }
-   rebuildCast(); rebuildActCache(); renderUI(); toast('Đã tạo show V12.3 với biên đạo và bàn nâng.');
+   rebuildCast(); rebuildActCache(); renderUI(); toast(trChoreo10("Đã tạo show V12.3 với biên đạo và bàn nâng.","Show created with choreography and stage lifts."));
  }
  window.STUDIO.createShow123=createShow123;
 
  function inject123(){
    const bar=document.querySelector('.dir-toolbar')||document.querySelector('.toolbar');
    
-   if(bar && !$('v123Auto')){const b=document.createElement('button');b.id='v123Auto';b.className='btn small';b.textContent='Tạo biên đạo';b.onclick=()=>{const a=director.selection?.kind==='act'?director.selection.id:director.acts[0]?.id;if(a)autoBlock123(a);else toast('Chưa có act.');};bar.appendChild(b);}
-   if(bar && !$('v123Demo')){const b=document.createElement('button');b.id='v123Demo';b.className='btn small';b.textContent='Show mẫu V12.3';b.onclick=createShow123;bar.appendChild(b);}
+   if(bar && !$('v123Auto')){const b=document.createElement('button');b.id='v123Auto';b.className='btn small';b.textContent=trChoreo10("Tạo biên đạo","Create choreography");b.onclick=()=>{const a=director.selection?.kind==='act'?director.selection.id:director.acts[0]?.id;if(a)autoBlock123(a);else toast(trChoreo10("Chưa có act.","No performance yet."));};bar.appendChild(b);}
+   if(bar && !$('v123Demo')){const b=document.createElement('button');b.id='v123Demo';b.className='btn small';b.textContent=trChoreo10("Show mẫu","Sample show");b.onclick=createShow123;bar.appendChild(b);}
  }
  const oldRender123=renderUI;
  renderUI=function(){const r=oldRender123();setTimeout(inject123,0);return r;};
@@ -661,15 +663,15 @@
   return {point:hit.point,mesh:hit.mesh,y:hit.point[1]};
  }
  function cancelDraw(){L.drawing=false;L.drag=null;L.anchor=null;const tip=$('liftMini124');if(tip)tip.hidden=true;drawUI();}
- function beginDraw(){if(engine.view!=='stage'){engine.view='stage';renderUI()}L.drawing=true;L.anchor=null;L.drag=null;L.mouse=null;openLiftPanel();drawUI();toast('Kéo chuột trên mặt sàn để khoanh vùng nâng. Hoặc click hai góc.');}
+ function beginDraw(){if(engine.view!=='stage'){engine.view='stage';renderUI()}L.drawing=true;L.anchor=null;L.drag=null;L.mouse=null;openLiftPanel();drawUI();toast(trChoreo10("Kéo chuột trên mặt sàn để khoanh vùng nâng. Hoặc click hai góc.","Drag on the floor to mark a lift area, or click two corners."));}
  function addLift(x0,z0,x1,z1,src){
   const rect={x0:Math.min(x0,x1),x1:Math.max(x0,x1),z0:Math.min(z0,z1),z1:Math.max(z0,z1)};
-  if(rect.x1-rect.x0<.20||rect.z1-rect.z0<.20){toast('Vùng nâng phải rộng và sâu ít nhất 20 cm.');return null;}
-  for(const it of L.items)if(Math.min(it.x1,rect.x1)-Math.max(it.x0,rect.x0)>.015&&Math.min(it.z1,rect.z1)-Math.max(it.z0,rect.z0)>.015&&Math.abs(it.y-src.y)<.10){toast('Vùng nâng bị chồng lên vùng khác. Hãy chọn khoảng không giao nhau.');return null;}
+  if(rect.x1-rect.x0<.20||rect.z1-rect.z0<.20){toast(trChoreo10("Vùng nâng phải rộng và sâu ít nhất 20 cm.","Lift area must be at least 20 cm wide and deep."));return null;}
+  for(const it of L.items)if(Math.min(it.x1,rect.x1)-Math.max(it.x0,rect.x0)>.015&&Math.min(it.z1,rect.z1)-Math.max(it.z0,rect.z0)>.015&&Math.abs(it.y-src.y)<.10){toast(trChoreo10("Vùng nâng bị chồng lên vùng khác. Hãy chọn khoảng không giao nhau.","Lift area overlaps another area. Choose a non-overlapping area."));return null;}
   const mesh=src.mesh;if(!mesh||!engine.stage.includes(mesh))return null;
   try{checkpoint()}catch(_){}
-  const item={id:uidLift(),name:'BÀN NÂNG '+(L.items.length+1),meshId:mesh.id,sourceKey:mesh.sourceKey||'',y:src.y,...rect,rise:.85,start:1.0,duration:6,up:2,hold:2,timeline:false,enabled:true,fallback:false};
-  L.items.push(item);L.selected=item.id;L.manual=false;getSource(mesh);reCut();cancelDraw();renderPanel();renderSequence();toast('Đã khoanh vùng bàn nâng chữ X. Bấm “+ Đặt vào Timeline” để lập cue nâng/hạ.');return item;
+  const item={id:uidLift(),name:'Bàn nâng '+(L.items.length+1),meshId:mesh.id,sourceKey:mesh.sourceKey||'',y:src.y,...rect,rise:.85,start:1.0,duration:6,up:2,hold:2,timeline:false,enabled:true,fallback:false};
+  L.items.push(item);L.selected=item.id;L.manual=false;getSource(mesh);reCut();cancelDraw();renderPanel();renderSequence();toast(trChoreo10("Đã khoanh vùng bàn nâng chữ X. Bấm “+ Đặt vào Timeline” để lập cue nâng/hạ.","Scissor lift area marked. Click “+ Add to timeline” to schedule the lift cue."));return item;
  }
  function endRect(e,src,finishPoint){if(!src||!finishPoint)return;
   const mesh=src.mesh,b=mesh.bounds;
@@ -678,7 +680,7 @@
  }
  function handleDown(e){if(!L.drawing||!isStageView()||e.button!==0)return;
   const src=L.anchor||pickDeck(e);
-  if(!src){toast('Hãy khoanh trên mặt phẳng sàn thật của sân khấu, không chọn vách LED.');e.stopImmediatePropagation();return;}
+  if(!src){toast(trChoreo10("Hãy khoanh trên mặt phẳng sàn thật của sân khấu, không chọn vách LED.","Mark the actual stage floor plane, not an LED wall."));e.stopImmediatePropagation();return;}
   if(!L.anchor)L.anchor=src;
   L.drag={source:src,down:[e.clientX,e.clientY],last:[e.clientX,e.clientY]};
   engine.canvas.setPointerCapture?.(e.pointerId);e.preventDefault();e.stopImmediatePropagation();
@@ -712,15 +714,15 @@
   }
  };
  const numberField=(id,label,value,min,max,step=.1)=>`<label>${label}<input id="${id}" type="number" value="${fmtLift(value,step<.1?2:1)}" min="${min}" max="${max}" step="${step}"></label>`;
- function panelMarkup(){const selected=byId(L.selected);let html=`<div class="lift-h"><div><b><span style="color:#6be7f1">╳</span> BÀN NÂNG CHỮ X</b><small>SCISSOR LIFT / STAGE SURFACE</small></div><button id="liftClose124">×</button></div><div class="lift-b"><div class="lift-actions"><button class="primary ${L.drawing?'on':''}" id="liftDraw124">${L.drawing?'Đang chọn sàn...':'+ Khoanh vùng sàn'}</button><button id="liftCancel124" ${!L.drawing?'disabled':''}>Hủy</button></div><div class="lift-info">Kéo chuột trên <b>mặt sàn của model 3D</b> để khoanh vùng nâng. Không cần thêm tiết mục hay tạo một bục đặt lên sàn.</div>`;
-  html+=`<div class="lift-list">${L.items.map(item=>`<button data-select-lift="${safeId(item.id)}" class="${L.selected===item.id?'active':''}"><strong>${esc(item.name)}</strong> · ${fmtLift(item.x1-item.x0)} × ${fmtLift(item.z1-item.z0)}m${item.fallback?' · mặt sàn thay thế':''}${item.missing?' · thiếu model':''}</button>`).join('')||'<span style="font-size:10px;color:#7298a9">Chưa có vùng bàn nâng nào.</span>'}</div>`;
-  if(selected){html+=`<div class="lift-divider"></div><label>Tên vùng sàn<input id="liftName124" maxlength="42" value="${esc(selected.name)}"></label><div class="lift-grid">${numberField('liftX124','Tọa độ X',selected.x0,-10000,10000,.01)}${numberField('liftZ124','Tọa độ Z',selected.z0,-10000,10000,.01)}${numberField('liftW124','Rộng (m)',selected.x1-selected.x0,.2,30,.05)}${numberField('liftD124','Sâu (m)',selected.z1-selected.z0,.2,30,.05)}${numberField('liftRise124','Cao nâng (m)',selected.rise,0,5,.05)}${numberField('liftStart124','Start time (s)',selected.start,0,600,.05)}${numberField('liftUp124','Thời gian nâng (s)',selected.up,.1,30,.1)}${numberField('liftHold124','Giữ ở trên (s)',selected.hold,0,60,.1)}${numberField('liftDown124','Thời gian hạ (s)',Math.max(.1,selected.duration-selected.up-selected.hold),.1,30,.1)}</div>`;
-   html+=`<div class="lift-actions"><button class="primary" id="liftApply124">Áp dụng</button><button id="liftDelete124">Xóa vùng</button></div><div class="lift-actions lift-cue-actions125"><button id="liftToTimeline125" class="lift-cta">${selected.timeline===false?'+ Đặt vào Timeline':'↗ Đến Timeline'}</button><button id="liftRemoveTimeline125" ${selected.timeline===false?'disabled':''}>Bỏ cue</button></div><p class="lift-status">${selected.timeline===false?'Chưa đặt timecode. Dùng “Xem cao thủ công” để thử trước, rồi bấm “+ Đặt vào Timeline”.':`Đã đặt trên timeline tại ${fmtLift(selected.start)}s · dài ${fmtLift(selected.duration)}s. Kéo clip chữ X để thay đổi giờ chạy.`}</p><label class="lift-row-check"><input id="liftEnable124" type="checkbox" ${selected.enabled?'checked':''}> Bật vùng sàn nâng</label><label class="lift-row-check"><input id="liftManual124" type="checkbox" ${L.manual?'checked':''}> Xem cao thủ công (tắt để theo timecode)</label><label>Độ cao thử <b id="liftNow124">${fmtLift(liftLevel(selected,state.time))}m</b><input id="liftPreview124" type="range" min="0" max="${selected.rise}" step=".01" value="${L.manual?L.manualHeight:0}" ${!L.manual?'disabled':''}></label><div class="lift-track"><div class="lift-bar" style="left:0;width:100%"></div></div><div class="lift-info">Timecode: ${fmtLift(selected.start)}s → ${fmtLift(selected.start+selected.duration)}s. Khi phát show, sàn tự nâng → giữ → hạ. Mở SHOW Timeline để kéo đoạn nâng/hạ như một track riêng.</div>`;
+ function panelMarkup(){const selected=byId(L.selected);let html=`<div class="lift-h"><div><b><span style="color:var(--accent)">╳</span> ${trChoreo10("Bàn nâng chữ x","Scissor lift")}</b><small>${trChoreo10("Bàn nâng / Mặt sàn sân khấu","Scissor lift / stage surface")}</small></div><button id="liftClose124" aria-label="${trChoreo10("Đóng","Close")}" title="${trChoreo10("Đóng","Close")}"><svg class=ico aria-hidden=true><use href=#i-x></use></svg></button></div><div class="lift-b"><div class="lift-actions"><button class="primary ${L.drawing?'on':''}" id="liftDraw124">${L.drawing?trChoreo10("Đang chọn sàn...","Selecting floor..."):trChoreo10("+ Khoanh vùng sàn","+ Mark floor area")}</button><button id="liftCancel124" ${!L.drawing?'disabled':''}>${trChoreo10("Hủy","Cancel")}</button></div><div class="lift-info">${trChoreo10("Kéo chuột trên ","Drag on the ")}<b>${trChoreo10("mặt sàn của model 3D","3D model floor")}</b>${trChoreo10(" để khoanh vùng nâng. Không cần thêm tiết mục hay tạo một bục đặt lên sàn."," to mark a lift area. No performance or extra platform is needed.")}</div>`;
+  html+=`<div class="lift-list">${L.items.map(item=>`<button data-select-lift="${safeId(item.id)}" class="${L.selected===item.id?'active':''}"><strong>${esc(item.name)}</strong> · ${fmtLift(item.x1-item.x0)} × ${fmtLift(item.z1-item.z0)}m${item.fallback?trChoreo10(" · mặt sàn thay thế"," · fallback floor"):''}${item.missing?trChoreo10(" · thiếu model"," · missing model"):''}</button>`).join('')||"<span style=\"font-size:var(--fs-sm);color:var(--text-muted)\">"+trChoreo10("Chưa có vùng bàn nâng nào.","No lift areas yet.")+"</span>"}</div>`;
+  if(selected){html+=`<div class="lift-divider"></div><label>${trChoreo10("Tên vùng sàn","Floor area name")}<input id="liftName124" maxlength="42" value="${esc(selected.name)}"></label><div class="lift-grid">${numberField('liftX124',trChoreo10("Tọa độ X","X coordinate"),selected.x0,-10000,10000,.01)}${numberField('liftZ124',trChoreo10("Tọa độ Z","Z coordinate"),selected.z0,-10000,10000,.01)}${numberField('liftW124',trChoreo10("Rộng (m)","Width (m)"),selected.x1-selected.x0,.2,30,.05)}${numberField('liftD124',trChoreo10("Sâu (m)","Depth (m)"),selected.z1-selected.z0,.2,30,.05)}${numberField('liftRise124',trChoreo10("Cao nâng (m)","Lift height (m)"),selected.rise,0,5,.05)}${numberField('liftStart124',trChoreo10("Bắt đầu (s)","Start time (s)"),selected.start,0,600,.05)}${numberField('liftUp124',trChoreo10("Thời gian nâng (s)","Rise time (s)"),selected.up,.1,30,.1)}${numberField('liftHold124',trChoreo10("Giữ ở trên (s)","Hold at top (s)"),selected.hold,0,60,.1)}${numberField('liftDown124',trChoreo10("Thời gian hạ (s)","Lowering time (s)"),Math.max(.1,selected.duration-selected.up-selected.hold),.1,30,.1)}</div>`;
+   html+=`<div class="lift-actions"><button class="primary" id="liftApply124">${trChoreo10("Áp dụng","Apply")}</button><button id="liftDelete124">${trChoreo10("Xóa vùng","Delete area")}</button></div><div class="lift-actions lift-cue-actions125"><button id="liftToTimeline125" class="lift-cta">${selected.timeline===false?trChoreo10("+ Đặt vào Timeline","+ Add to timeline"):trChoreo10("Đến Timeline","Go to timeline")}</button><button id="liftRemoveTimeline125" ${selected.timeline===false?'disabled':''}>${trChoreo10("Bỏ cue","Remove cue")}</button></div><p class="lift-status">${selected.timeline===false?trChoreo10("Chưa đặt timecode. Dùng “Xem cao thủ công” để thử trước, rồi bấm “+ Đặt vào Timeline”.","No timecode set. Use “Manual height preview” to test, then click “+ Add to timeline”."):`${trChoreo10("Đã đặt trên timeline tại ","Scheduled on timeline at ")}${fmtLift(selected.start)}${trChoreo10("s · dài ","s · duration ")}${fmtLift(selected.duration)}${trChoreo10("s. Kéo clip chữ X để thay đổi giờ chạy.","s. Drag the scissor lift clip to change timing.")}`}</p><label class="lift-row-check"><input id="liftEnable124" type="checkbox" ${selected.enabled?'checked':''}>${trChoreo10(" Bật vùng sàn nâng"," Enable lift area")}</label><label class="lift-row-check"><input id="liftManual124" type="checkbox" ${L.manual?'checked':''}>${trChoreo10(" Xem cao thủ công (tắt để theo timecode)"," Manual height preview (disable to follow timecode)")}</label><label>${trChoreo10("Độ cao thử ","Preview height ")}<b id="liftNow124">${fmtLift(liftLevel(selected,state.time))}m</b><input id="liftPreview124" type="range" min="0" max="${selected.rise}" step=".01" value="${L.manual?L.manualHeight:0}" ${!L.manual?'disabled':''}></label><div class="lift-track"><div class="lift-bar" style="left:0;width:100%"></div></div><div class="lift-info">Timecode: ${fmtLift(selected.start)}s → ${fmtLift(selected.start+selected.duration)}${trChoreo10("s. Khi phát show, sàn tự nâng → giữ → hạ. Mở SHOW Timeline để kéo đoạn nâng/hạ như một track riêng.","s. During playback, the floor rises → holds → lowers. Open SHOW Timeline to drag the lift cue as a separate track.")}</div>`;
   }
-  html+='<div class="lift-foot">Mô phỏng 3D cho duyệt thiết kế. Phần cắt chỉ áp dụng cho mặt phẳng ngang của mesh; kết cấu nâng/hạ, tải trọng và an toàn thiết bị thật cần đơn vị kỹ thuật kiểm tra.</div></div>';return html;
+  html+="<div class=\"lift-foot\">"+trChoreo10("Mô phỏng 3D cho duyệt thiết kế. Phần cắt chỉ áp dụng cho mặt phẳng ngang của mesh; kết cấu nâng/hạ, tải trọng và an toàn thiết bị thật cần đơn vị kỹ thuật kiểm tra.","3D simulation for design review. Cuts apply only to horizontal mesh planes; real lift structure, loads and equipment safety require technical inspection.")+"</div></div>";return html;
  }
  function panel(){let host=$('stageLift124');if(!host){host=document.createElement('aside');host.id='stageLift124';document.querySelector('.right-panel').appendChild(host);}return host;}
- function drawUI(){const mini=$('liftMini124');if(mini){mini.hidden=!L.drawing;mini.textContent=L.drawing?'Kéo chuột trên mặt sàn → khoanh vùng nâng · ESC để hủy':'';}}
+ function drawUI(){const mini=$('liftMini124');if(mini){mini.hidden=!L.drawing;mini.textContent=L.drawing?trChoreo10("Kéo chuột trên mặt sàn → khoanh vùng nâng · ESC để hủy","Drag on floor → mark lift area · ESC to cancel"):'';}}
  function renderPanel(){const host=panel();document.body.classList.toggle('lift-dock-open',L.open&&!state.presenting);host.hidden=!L.open||state.presenting;if(!L.open||state.presenting)return;host.innerHTML=panelMarkup();
   $('liftClose124').onclick=()=>{L.open=false;cancelDraw();renderPanel()};
   $('liftDraw124').onclick=beginDraw;$('liftCancel124').onclick=cancelDraw;
@@ -729,37 +731,37 @@
   $('liftToTimeline125').onclick=()=>{
    try{checkpoint()}catch(_){}
    if(item.timeline===false){item.timeline=true;item.start=lim(state.time,0,600);const targetEnd=item.start+item.duration;if(targetEnd>600){item.start=Math.max(0,600-item.duration);}state.duration=Math.min(600,Math.max(state.duration,item.start+item.duration));}
-   L.manual=false;toggleSequence(true);if(!seq.enabled)enableSequence(true);renderPanel();renderSequence();toast('Đã đặt cue bàn nâng chữ X vào timeline. Kéo clip để chỉnh thời điểm.');
+   L.manual=false;toggleSequence(true);if(!seq.enabled)enableSequence(true);renderPanel();renderSequence();toast(trChoreo10("Đã đặt cue bàn nâng chữ X vào timeline. Kéo clip để chỉnh thời điểm.","Scissor lift cue added to timeline. Drag the clip to adjust timing."));
   };
-  $('liftRemoveTimeline125').onclick=()=>{try{checkpoint()}catch(_){}item.timeline=false;L.manual=false;renderPanel();renderSequence();toast('Đã bỏ cue khỏi timeline, không xóa vùng sàn.');};
+  $('liftRemoveTimeline125').onclick=()=>{try{checkpoint()}catch(_){}item.timeline=false;L.manual=false;renderPanel();renderSequence();toast(trChoreo10("Đã bỏ cue khỏi timeline, không xóa vùng sàn.","Cue removed from timeline. Floor area retained."));};
   $('liftName124').onchange=e=>{item.name=e.target.value.trim().slice(0,42)||item.name;renderSequence()};
   $('liftEnable124').onchange=e=>{item.enabled=e.target.checked;renderSequence()};
   $('liftManual124').onchange=e=>{L.manual=e.target.checked;L.manualHeight=0;renderPanel()};
   $('liftPreview124').oninput=e=>{L.manualHeight=lim(e.target.value,0,item.rise);const label=$('liftNow124');if(label)label.textContent=fmtLift(L.manualHeight)+' m'};
   $('liftApply124').onclick=()=>{
    const x=Number($('liftX124').value),z=Number($('liftZ124').value),w=Number($('liftW124').value),d=Number($('liftD124').value),rise=Number($('liftRise124').value),start=Number($('liftStart124').value),up=Number($('liftUp124').value),hold=Number($('liftHold124').value),down=Number($('liftDown124').value);
-   if(![x,z,w,d,rise,start,up,hold,down].every(Number.isFinite)||w<.20||d<.20||up<=0||down<=0){toast('Thông số vùng sàn hoặc timecode không hợp lệ.');return;}
+   if(![x,z,w,d,rise,start,up,hold,down].every(Number.isFinite)||w<.20||d<.20||up<=0||down<=0){toast(trChoreo10("Thông số vùng sàn hoặc timecode không hợp lệ.","Invalid floor area or timecode parameters."));return;}
    const others=L.items.filter(a=>a.id!==item.id);
-   if(others.some(a=>a.y===item.y&&Math.min(a.x1,x+w)-Math.max(a.x0,x)>.03&&Math.min(a.z1,z+d)-Math.max(a.z0,z)>.03)){toast('Vùng mới chồng lên một bàn nâng khác.');return;}
+   if(others.some(a=>a.y===item.y&&Math.min(a.x1,x+w)-Math.max(a.x0,x)>.03&&Math.min(a.z1,z+d)-Math.max(a.z0,z)>.03)){toast(trChoreo10("Vùng mới chồng lên một bàn nâng khác.","New area overlaps another lift."));return;}
    try{checkpoint()}catch(_){}
    Object.assign(item,{x0:x,x1:x+w,z0:z,z1:z+d,rise:lim(rise,0,5),start:lim(start,0,600),up:lim(up,.1,30),hold:lim(hold,0,60),duration:lim(up,.1,30)+lim(hold,0,60)+lim(down,.1,30)});
-   L.manualHeight=lim(L.manualHeight,0,item.rise);reCut();renderPanel();renderSequence();toast('Đã cập nhật vùng sàn và cue nâng/hạ.');
+   L.manualHeight=lim(L.manualHeight,0,item.rise);reCut();renderPanel();renderSequence();toast(trChoreo10("Đã cập nhật vùng sàn và cue nâng/hạ.","Floor area and lift cue updated."));
   };
-  $('liftDelete124').onclick=()=>{try{checkpoint()}catch(_){}L.items=L.items.filter(l=>l.id!==item.id);L.selected=L.items[0]?.id||null;L.manual=false;reCut();renderPanel();renderSequence();toast('Đã xóa vùng nâng và khôi phục sàn gốc.')};
+  $('liftDelete124').onclick=()=>{try{checkpoint()}catch(_){}L.items=L.items.filter(l=>l.id!==item.id);L.selected=L.items[0]?.id||null;L.manual=false;reCut();renderPanel();renderSequence();toast(trChoreo10("Đã xóa vùng nâng và khôi phục sàn gốc.","Lift area deleted and original floor restored."))};
  }
- function openLiftPanel(){if(state.presenting){toast('Hãy trở về chế độ chỉnh sửa trước khi đặt bàn nâng.');return;}L.open=true;renderPanel()}
+ function openLiftPanel(){if(state.presenting){toast(trChoreo10("Hãy trở về chế độ chỉnh sửa trước khi đặt bàn nâng.","Return to edit mode before placing a lift."));return;}L.open=true;renderPanel()}
  function injectToolbar(){const bar=document.querySelector('.dir-toolbar')||document.querySelector('.workflow-right')||document.querySelector('.navigation-strip');if(bar&&!$('v124LiftBtn')){
-  const b=document.createElement('button');b.id='v124LiftBtn';b.type='button';b.className='btn small';b.innerHTML='╳ Bàn nâng chữ X';b.title='Khoanh một vùng trên sàn sân khấu hiện có';b.onclick=openLiftPanel;bar.appendChild(b);
+  const b=document.createElement('button');b.id='v124LiftBtn';b.type='button';b.className='btn small';b.innerHTML=trChoreo10("╳ Bàn nâng chữ X","╳ Scissor lift");b.title=trChoreo10("Khoanh một vùng trên sàn sân khấu hiện có","Mark an area on the existing stage floor");b.onclick=openLiftPanel;bar.appendChild(b);
  }
-  const nav=document.querySelector('.view-actions');if(nav&&!$('v125LiftNav')){const b=document.createElement('button');b.className='btn small';b.id='v125LiftNav';b.textContent='╳ Bàn nâng';b.title='Mở bảng điều khiển bàn nâng chữ X';b.onclick=openLiftPanel;nav.appendChild(b);}
+  const nav=document.querySelector('.view-actions');if(nav&&!$('v125LiftNav')){const b=document.createElement('button');b.className='btn small';b.id='v125LiftNav';b.textContent=trChoreo10("╳ Bàn nâng","╳ Stage lift");b.title=trChoreo10("Mở bảng điều khiển bàn nâng chữ X","Open scissor lift controls");b.onclick=openLiftPanel;nav.appendChild(b);}
   const viewport=$('viewport');if(viewport&&!$('liftMini124')){const h=document.createElement('div');h.id='liftMini124';h.hidden=true;viewport.appendChild(h)};
  }
  const priorRenderUI=renderUI;
  renderUI=function(){const result=priorRenderUI();injectToolbar();if(L.open)renderPanel();return result};
  const priorRenderSequence=renderSequence;
- function attachLiftShortcut(){const foot=document.querySelector('.seq-footer');if(!foot||$('seqAddLift125'))return;const b=document.createElement('button');b.type='button';b.className='btn';b.id='seqAddLift125';b.textContent='+ Bàn nâng X';b.onclick=()=>{const current=byId(L.selected)||L.items.find(x=>x.timeline===false);L.selected=current?.id||null;openLiftPanel();if(!current)beginDraw();};foot.prepend(b)}
+ function attachLiftShortcut(){const foot=document.querySelector('.seq-footer');if(!foot||$('seqAddLift125'))return;const b=document.createElement('button');b.type='button';b.className='btn';b.id='seqAddLift125';b.textContent=trChoreo10("+ Bàn nâng X","+ Scissor lift");b.onclick=()=>{const current=byId(L.selected)||L.items.find(x=>x.timeline===false);L.selected=current?.id||null;openLiftPanel();if(!current)beginDraw();};foot.prepend(b)}
  renderSequence=function(){const result=priorRenderSequence();if(!seq.open)return result;const inner=$('seqInner');if(!inner)return result;
-  attachLiftShortcut();const line=inner.querySelector('#seqLine');const barW=Math.max(400,state.duration*seq.pps);const extra=document.createElement('div');extra.id='liftTracks124';extra.innerHTML=L.items.filter(l=>l.timeline!==false).map(l=>`<div class="seq-row"><div class="seq-label"><button data-lift-mute="${l.id}">${l.enabled?'ON':'M'}</button><b>▰ ${esc(l.name)}</b><button data-lift-edit="${l.id}">⚙</button></div><div class="seq-lane" style="width:${barW}px;--beat-width:${60/seq.bpm*seq.pps}px"><button class="seq-clip v124-lift-clip v125-lift-clip" data-lift-clip="${l.id}" style="left:${l.start*seq.pps}px;width:${Math.max(10,l.duration*seq.pps)}px"><i class="trim left" data-trim="left"></i>${esc(l.name)} · Nâng → Giữ → Hạ<i class="trim right" data-trim="right"></i></button></div></div>`).join('');
+  attachLiftShortcut();const line=inner.querySelector('#seqLine');const barW=Math.max(400,state.duration*seq.pps);const extra=document.createElement('div');extra.id='liftTracks124';extra.innerHTML=L.items.filter(l=>l.timeline!==false).map(l=>`<div class="seq-row"><div class="seq-label"><button data-lift-mute="${l.id}">${l.enabled?'ON':'M'}</button><b>▰ ${esc(l.name)}</b><button data-lift-edit="${l.id}" title="${trChoreo10("Sửa bàn nâng","Edit lift")}" aria-label="${trChoreo10("Sửa bàn nâng","Edit lift")}"><svg class=ico aria-hidden=true><use href=#i-settings></use></svg></button></div><div class="seq-lane" style="width:${barW}px;--beat-width:${60/seq.bpm*seq.pps}px"><button class="seq-clip v124-lift-clip v125-lift-clip" data-lift-clip="${l.id}" style="left:${l.start*seq.pps}px;width:${Math.max(10,l.duration*seq.pps)}px"><i class="trim left" data-trim="left"></i>${esc(l.name)}${trChoreo10(" · Nâng → Giữ → Hạ"," · Rise → Hold → Lower")}<i class="trim right" data-trim="right"></i></button></div></div>`).join('');
   if(line)inner.insertBefore(extra,line);else inner.appendChild(extra);
   extra.querySelectorAll('[data-lift-edit]').forEach(b=>b.onclick=()=>{L.selected=b.dataset.liftEdit;openLiftPanel()});
   extra.querySelectorAll('[data-lift-mute]').forEach(b=>b.onclick=()=>{const it=byId(b.dataset.liftMute);if(it)it.enabled=!it.enabled;renderSequence()});
@@ -803,7 +805,8 @@
    }reCut();
   }return out;
  };
- injectToolbar();renderPanel();window.STUDIO.version='1.2.5'; const brand=document.querySelector('.brand small');if(brand)brand.textContent='V12.5 / SCISSOR LIFT';
+ window.addEventListener('ledstudio:locale',()=>{for(const [id,vi,en]of [['v123Auto','Tạo biên đạo','Create choreography'],['v123Demo','Show mẫu','Sample show'],['v124LiftBtn','╳ Bàn nâng chữ X','╳ Scissor lift'],['v125LiftNav','╳ Bàn nâng','╳ Stage lift'],['seqAddLift125','+ Bàn nâng X','+ Scissor lift']]){const b=$(id);if(b)b.textContent=trChoreo10(vi,en);}const main=$('v124LiftBtn'),nav=$('v125LiftNav');if(main)main.title=trChoreo10('Khoanh một vùng trên sàn sân khấu hiện có','Mark an area on the existing stage floor');if(nav)nav.title=trChoreo10('Mở bảng điều khiển bàn nâng chữ X','Open scissor lift controls');const brand=document.querySelector('.brand small');if(brand)brand.textContent=trChoreo10('Bàn nâng sân khấu','Stage scissor lift');drawUI();renderPanel();});
+ injectToolbar();renderPanel();window.STUDIO.version='1.2.5'; const brand=document.querySelector('.brand small');if(brand)brand.textContent=trChoreo10('Bàn nâng sân khấu','Stage scissor lift');
  window.STUDIO.stageLift={
   get items(){return L.items},get selected(){return byId(L.selected)},get debug(){return {drawing:L.drawing,anchor:L.anchor&&{point:L.anchor.point,y:L.anchor.y,mesh:L.anchor.mesh?.name},drag:L.drag&&{down:L.drag.down,last:L.drag.last},mouse:L.mouse}},open:openLiftPanel,draw:beginDraw,add:addLift,
   height:liftLevel,pointAt:pointAtPlane,addCue(id,time=state.time){const item=byId(id);if(!item)return false;item.timeline=true;item.start=lim(time,0,600);state.duration=Math.min(600,Math.max(state.duration,item.start+item.duration));renderSequence();return true},removeCue(id){const item=byId(id);if(!item)return false;item.timeline=false;renderSequence();return true},delete(id){L.items=L.items.filter(x=>x.id!==id);reCut();renderPanel()},rebuild:reCut,statistics:()=>({lifts:L.items.length,cutMeshes:L.cache.size,geometryLifts:L.extras.size})

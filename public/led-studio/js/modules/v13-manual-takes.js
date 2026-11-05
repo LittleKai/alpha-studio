@@ -1,12 +1,13 @@
 /* V13.1: Direct hand-controlled choreography recorder, independent of mapping/renderer. */
 (function(){
 'use strict';
+const uiText=(vi,en)=>window.tr?window.tr(vi,en):vi;
 try {
   if(!window.STUDIO || !engine || !stage10 || !seq || !choreo11) return;
   const S=window.STUDIO, FPS_OPTIONS=[24,25,30,60];
   const R={open:false,mode:'idle',fps:30,sceneName:'Biên đạo ghi tay 01',actId:'',personId:'',start:0,end:0,elapsed:0,
     states:new Map(),samples:new Map(),marks:[],hold:null,drag:null,holdLast:0,wallLast:0,clockRAF:0,prevLoop:false,
-    previewActor:null,seenMove:false,speed:1.1,review:false,history:[],lastMessage:'Sẵn sàng tạo cảnh mới.',maxSeconds:90};
+    previewActor:null,seenMove:false,speed:1.1,review:false,history:[],lastMessage:uiText("Sẵn sàng tạo cảnh mới.","Ready to create a scene."),maxSeconds:90};
   const n=(a,min,max)=>Math.max(min,Math.min(max,Number(a)||0));
   const ed=(id)=>document.getElementById(id);
   const txt=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -16,12 +17,12 @@ try {
   function tc(t){t=Math.max(0,t);const count=Math.floor(t*R.fps+1e-5),fr=count%R.fps,sec=Math.floor(count/R.fps),s=sec%60,m=Math.floor(sec/60)%60,h=Math.floor(sec/3600);return [h,m,s,fr].map(x=>String(x).padStart(2,'0')).join(':');}
   function updateLabel(msg){R.lastMessage=msg;const e=ed('m131Status');if(e)e.textContent=msg;}
   function refreshActSelect(){const select=ed('m131Act'),pers=ed('m131Person');if(!select)return;
-    const old=R.actId;select.innerHTML=director.acts.map(a=>`<option value="${txt(a.id)}">${txt(a.name||a.type)} · ${a.people?.length||0} người</option>`).join('');
+    const old=R.actId;select.innerHTML=director.acts.map(a=>`<option value="${txt(a.id)}">${txt(a.name||a.type)} · ${a.people?.length||0} ${uiText("người","people")}</option>`).join('');
     if(!director.acts.some(a=>a.id===R.actId))R.actId=director.acts[0]?.id||'';
     select.value=R.actId;
     const ps=people();if(!ps.some(p=>p.id===R.personId))R.personId=ps[0]?.id||'';
     if(pers){pers.innerHTML=ps.map(p=>`<option value="${txt(p.id)}">${txt(p.name||p.type)}</option>`).join('');pers.value=R.personId;}
-    if(old!==R.actId && R.mode==='idle')updateLabel('Đã chọn tiết mục '+(chosenAct()?.name||'—'));
+    if(old!==R.actId && R.mode==='idle')updateLabel(uiText("Đã chọn tiết mục ","Selected act ")+(chosenAct()?.name||'—'));
   }
   function poseFor(p,time){const base=priorPose(p,time);return {pos:[...base.pos],yaw:base.yaw||0,action:base.action||'dance',energy:n(base.energy??.70,0,1),distance:base.distance||0,speed:0,direction:base.direction||[0,0,1]};}
   const priorPose=routePose11,priorVisible=actPersonVisible8;
@@ -56,10 +57,10 @@ try {
   }
   function allSamples(force=false){for(const id of R.states.keys())recordSample(id,force);}
   function mark(note='Mốc động tác'){if(R.mode!=='record')return;
-    allSamples(true);R.marks.push({t:currentElapsed(),label:note});updateLabel('Đã đánh dấu '+note+' tại '+tc(state.time));renderMarkers();}
+    allSamples(true);R.marks.push({t:currentElapsed(),label:note});updateLabel(uiText("Đã đánh dấu ","Marked ")+note+uiText(" tại "," at ")+tc(state.time));renderMarkers();}
   function setAction(action){if(!chosenPerson()||R.mode!=='record')return;
     const d=R.states.get(R.personId);if(!d)return;d.action=action;d.energy=action==='hold'?.20:action==='drum'?.9:.75;
-    recordSample(R.personId,true);mark('Động tác: '+({walk:'Bước',dance:'Múa',reach:'Vươn',turn:'Xoay',hold:'Giữ',drum:'Trống',glide:'Lướt'}[action]||action));renderActions();}
+    recordSample(R.personId,true);mark('Động tác: '+({walk:uiText("Bước","Walk"),dance:uiText("Múa","Dance"),reach:uiText("Vươn","Reach"),turn:uiText("Xoay","Turn"),hold:uiText("Giữ","Hold"),drum:uiText("Trống","Drum"),glide:uiText("Lướt","Glide")}[action]||action));renderActions();}
   function move(id,dir,amount){if(R.mode!=='record')return;const d=R.states.get(id);if(!d)return;
     const p=seq.people.find(x=>x.id===id);if(!p)return;
     const old=[...d.pos];const unit=amount;
@@ -73,9 +74,9 @@ try {
   }
   function start(){if(R.mode==='record')return;
     if(R.mode==='review'){R.mode='idle';R.states.clear();R.samples.clear();R.marks=[];}
-    const a=chosenAct();if(!a||!people().length){updateLabel('Chọn tiết mục có người, hoặc tạo nhóm biên đạo mẫu.');return;}
+    const a=chosenAct();if(!a||!people().length){updateLabel(uiText("Chọn tiết mục có người, hoặc tạo nhóm biên đạo mẫu.","Select an act with performers or create a sample group."));return;}
     const from=ed('m131Start')?Number(ed('m131Start').value):state.time;
-    if(!Number.isFinite(from)||from<0||from>=599){updateLabel('Timecode bắt đầu phải nhỏ hơn 09:59.');return;}
+    if(!Number.isFinite(from)||from<0||from>=599){updateLabel(uiText("Timecode bắt đầu phải nhỏ hơn 09:59.","Start timecode must be before 09:59."));return;}
     R.sceneName=(ed('m131Name')?.value||('Biên đạo '+(R.history.length+1))).trim().slice(0,64);
     R.start=n(from,0,599);R.end=R.start;R.elapsed=0;R.states.clear();R.samples.clear();R.marks=[];
     R.maxSeconds=Math.min(90,600-R.start);R.prevLoop=state.loop;state.loop=false;
@@ -85,18 +86,18 @@ try {
     for(const p of people()){const z=poseFor(p,R.start);R.states.set(p.id,z);R.samples.set(p.id,[{...z,pos:[...z.pos],t:0}]);}
     R.mode='record';R.seenMove=false;R.hold=null;R.drag=null;
     enableAudio(true).catch(()=>{});setPlaying(true);
-    updateLabel('● Đang ghi. Kéo người trên 3D hoặc bấm nút di chuyển/động tác.');
+    updateLabel(uiText("Đang ghi. Kéo người trên 3D hoặc bấm nút di chuyển/động tác.","Recording. Drag performers in 3D or use movement and action buttons."));
     paintMode();updateTime();
   }
   function end(){if(R.mode!=='record')return;
     if(R.drag){R.drag=null;}R.hold=null;R.end=Math.max(R.start+.10,Math.min(state.time,R.start+R.maxSeconds));
     R.elapsed=R.end-R.start;allSamples(true);R.mode='review';setPlaying(false);state.loop=R.prevLoop;seekTimeline(R.start);
     for(const arr of R.samples.values())if(arr.length===1)arr.push({...arr[0],pos:[...arr[0].pos],t:R.elapsed});
-    updateLabel('■ Đã kết thúc '+tc(R.end)+' · '+R.elapsed.toFixed(2)+'s. Bấm LƯU CẢNH vào SHOW TIME.');
+    updateLabel(uiText("Đã kết thúc ","Finished ")+tc(R.end)+' · '+R.elapsed.toFixed(2)+uiText("s. Bấm LƯU CẢNH vào SHOW TIME.","s. Select Save scene to show timeline."));
     paintMode();updateTime();renderMarkers();
   }
   function cancel(){if(R.mode==='record'){R.hold=null;setPlaying(false);state.loop=R.prevLoop;}
-    R.mode='idle';R.states.clear();R.samples.clear();R.marks=[];R.drag=null;updateLabel('Đã hủy lượt ghi. Không thay đổi show hoặc mapping.');paintMode();renderMarkers();}
+    R.mode='idle';R.states.clear();R.samples.clear();R.marks=[];R.drag=null;updateLabel(uiText("Đã hủy lượt ghi. Không thay đổi show hoặc mapping.","Take discarded. Show and mapping unchanged."));paintMode();renderMarkers();}
   function normalizeForRoute(p,c,samples){const r={clip:c.id,person:p.id,enabled:true,baseHeight:p.height||1.75,carryProp:false,keys:[]};
     let source=samples.filter(x=>Number.isFinite(x.t)&&Array.isArray(x.pos)).sort((a,b)=>a.t-b.t);
     const dur=Math.max(.10,c.duration);if(!source.length) return null;
@@ -116,36 +117,36 @@ try {
     if(r.keys.at(-1).u<.999)r.keys.push(key11(1,[...r.keys.at(-1).offset],{yaw:r.keys.at(-1).yaw,face:'angle',action:'hold'}));
     return r;
   }
-  function save(){if(R.mode!=='review'){updateLabel('Hãy Bắt đầu → Kết thúc trước khi lưu cảnh.');return;}
-    const a=chosenAct();if(!a){updateLabel('Tiết mục gốc không còn. Chưa thể lưu.');return;}
+  function save(){if(R.mode!=='review'){updateLabel(uiText("Hãy Bắt đầu → Kết thúc trước khi lưu cảnh.","Start and finish recording before saving a scene."));return;}
+    const a=chosenAct();if(!a){updateLabel(uiText("Tiết mục gốc không còn. Chưa thể lưu.","Original act no longer exists. Cannot save."));return;}
     const duration=n(R.end-R.start,.1,600-R.start);
     let scene=null;
     try{
       scene=createScene10({name:R.sceneName||'Biên đạo ghi tay',start:R.start,duration,actId:a.id,visual:false,color:'#38b6a4'});
       const clip=sceneClips10(scene).find(x=>x.source===a.id);
-      if(!clip)throw Error('Không tạo được clip biên đạo.');
+      if(!clip)throw Error(uiText("Không tạo được clip biên đạo.","Could not create choreography clip."));
       const selectedActors=people();let count=0;
       for(const p of selectedActors){const route=normalizeForRoute(p,clip,R.samples.get(p.id)||[]);if(!route)continue;
         choreo11.routes=choreo11.routes.filter(r=>!(r.person===p.id&&r.clip===clip.id));
         choreo11.routes.push(route);count++;
       }
-      if(!count)throw Error('Lượt ghi chưa có người diễn.');
+      if(!count)throw Error(uiText("Lượt ghi chưa có người diễn.","No performers in this take."));
       // Manual marks become actual SHOW timeline markers, not only an unsaved counter.
       for(const m of R.marks){seq.markers.push({id:uid('marker'),name:String(m.label||'Manual mark').slice(0,48),time:n(R.start+m.t,R.start,R.end)});}
       dirty11();seq.enabled=true;invalidateSeq();
       R.history.push({sceneId:scene.id,actId:a.id,name:scene.name,start:scene.start,duration:scene.duration,marks:R.marks.length,people:count});
       R.history=R.history.slice(-40);R.mode='idle';R.states.clear();R.samples.clear();R.marks=[];R.drag=null;
       toggleSequence(true);renderSequence();seekTimeline(scene.start);renderUI();
-      updateLabel('Đã lưu '+scene.name+' ('+count+' người, '+duration.toFixed(2)+'s) vào SHOW Timeline.');
+      updateLabel(uiText("Đã lưu ","Saved ")+scene.name+' ('+count+uiText(" người, "," people, ")+duration.toFixed(2)+uiText("s) vào SHOW Timeline.","s) to the show timeline."));
       paintMode();renderSaved();return scene;
     }catch(err){if(scene){seq.clips=seq.clips.filter(c=>c.scene10!==scene.id);stage10.scenes=stage10.scenes.filter(s=>s.id!==scene.id);invalidateSeq();}
-      updateLabel('Không lưu được: '+(err.message||err));return null;
+      updateLabel(uiText("Không lưu được: ","Could not save: ")+(err.message||err));return null;
     }
   }
-  function replay(){if(R.mode==='record'){updateLabel('Kết thúc ghi trước khi phát thử.');return;}
-    if(R.mode==='review'){seekTimeline(R.start);setPlaying(true);updateLabel('Đang duyệt lại thao tác vừa ghi.');return;}
+  function replay(){if(R.mode==='record'){updateLabel(uiText("Kết thúc ghi trước khi phát thử.","Finish recording before playback."));return;}
+    if(R.mode==='review'){seekTimeline(R.start);setPlaying(true);updateLabel(uiText("Đang duyệt lại thao tác vừa ghi.","Reviewing the recorded take."));return;}
     const last=R.history.at(-1);if(last&&stage10.scenes.some(s=>s.id===last.sceneId))playScene10(last.sceneId,false);
-    else updateLabel('Chưa có cảnh đã lưu.');
+    else updateLabel(uiText("Chưa có cảnh đã lưu.","No scenes saved."));
   }
   function tick(now){if(!R.open && R.mode==='idle'){R.clockRAF=requestAnimationFrame(tick);return;}
     if(R.mode==='record'){
@@ -163,17 +164,17 @@ try {
   function updateTime(){const t=R.mode==='review'?R.end:R.mode==='record'?state.time:n(Number(ed('m131Start')?.value)||state.time,0,600);
     const el=ed('m131TC');if(el)el.textContent=tc(t);
     const el2=ed('m131Elapsed');if(el2)el2.textContent=tc(R.mode==='record'?R.elapsed:R.mode==='review'?R.end-R.start:0);
-    const el3=ed('m131ClockState');if(el3)el3.textContent=R.mode==='record'?'ĐANG GHI':R.mode==='review'?'CHỜ LƯU':'SẴN SÀNG';
+    const el3=ed('m131ClockState');if(el3)el3.textContent=R.mode==='record'?uiText("Đang ghi","Recording"):R.mode==='review'?uiText("Chờ lưu","Ready to save"):uiText("Sẵn sàng","Ready");
     const progress=ed('m131Bar');if(progress)progress.style.width=(R.mode==='record'?n(R.elapsed/R.maxSeconds*100,0,100):R.mode==='review'?100:0)+'%';
     const startClock=ed('m131ClockStart');if(startClock)startClock.textContent=tc(R.start);
     const endClock=ed('m131ClockEnd');if(endClock)endClock.textContent=R.mode==='idle'?'--:--:--:--':tc(R.mode==='review'?R.end:state.time);
   }
-  function renderMarkers(){const host=ed('m131Markers');if(!host)return;host.innerHTML=R.marks.length?R.marks.map((m,i)=>`<button type="button" data-m131-seek="${i}"><b>${tc(R.start+m.t)}</b><span>${txt(m.label)}</span></button>`).join(''):'<span class="m131-muted">Các mốc thao tác sẽ xuất hiện ở đây.</span>';
+  function renderMarkers(){const host=ed('m131Markers');if(!host)return;host.innerHTML=R.marks.length?R.marks.map((m,i)=>`<button type="button" data-m131-seek="${i}"><b>${tc(R.start+m.t)}</b><span>${txt(m.label)}</span></button>`).join(''):`<span class="m131-muted">${uiText("Các mốc thao tác sẽ xuất hiện ở đây.","Action markers appear here.")}</span>`;
     host.querySelectorAll('[data-m131-seek]').forEach(b=>b.onclick=()=>{if(R.mode==='record')return;const m=R.marks[Number(b.dataset.m131Seek)];if(m)seekTimeline(R.start+m.t);});}
   function renderSaved(){const host=ed('m131Saved');if(!host)return;const list=R.history.filter(h=>stage10.scenes.some(s=>s.id===h.sceneId));
-    host.innerHTML=list.length?list.slice().reverse().slice(0,8).map(h=>`<button data-m131-scene="${txt(h.sceneId)}"><strong>${txt(h.name)}</strong><small>${tc(h.start)} · ${h.duration.toFixed(2)}s · ${h.people} người</small></button>`).join(''):'<div class="m131-muted">Cảnh đã lưu sẽ xuất hiện ở đây.</div>';
+    host.innerHTML=list.length?list.slice().reverse().slice(0,8).map(h=>`<button data-m131-scene="${txt(h.sceneId)}"><strong>${txt(h.name)}</strong><small>${tc(h.start)} · ${h.duration.toFixed(2)}s · ${h.people} ${uiText("người","people")}</small></button>`).join(''):`<div class="m131-muted">${uiText("Cảnh đã lưu sẽ xuất hiện ở đây.","Saved scenes appear here.")}</div>`;
     host.querySelectorAll('[data-m131-scene]').forEach(b=>b.onclick=()=>{close();playScene10(b.dataset.m131Scene,false);});}
-  function updatePoseInfo(){const d=R.states.get(R.personId),el=ed('m131Pos');if(el)el.textContent=d?`X ${d.pos[0].toFixed(2)} · Z ${d.pos[2].toFixed(2)} · ${d.yaw.toFixed(0)}°`:'Chưa chọn người';}
+  function updatePoseInfo(){const d=R.states.get(R.personId),el=ed('m131Pos');if(el)el.textContent=d?`X ${d.pos[0].toFixed(2)} · Z ${d.pos[2].toFixed(2)} · ${d.yaw.toFixed(0)}°`:uiText("Chưa chọn người","No performer selected");}
   function renderActions(){document.querySelectorAll('[data-m131-action]').forEach(b=>b.classList.toggle('selected',R.states.get(R.personId)?.action===b.dataset.m131Action));}
   function paintMode(){const a=R.mode;
     for(const [id,on] of [['m131StartBtn',a==='idle'],['m131MarkBtn',a==='record'],['m131EndBtn',a==='record'],['m131SaveBtn',a==='review'],['m131ReplayBtn',a==='review'||a==='idle'],['m131CancelBtn',a!=='idle']])if(ed(id))ed(id).disabled=!on;
@@ -182,44 +183,44 @@ try {
     updatePoseInfo();renderActions();renderSaved();
   }
   function buildUI(){if(!ed('m131Panel'))return;const panel=ed('m131Panel');panel.innerHTML=`
-    <header class="m131-header"><div><b>● MANUAL TAKE / GHI TAY</b><small>Điều khiển thật → chuyển thành cảnh biên đạo</small></div><button id="m131Close" title="Đóng">×</button></header>
+    <header class="m131-header"><div><b>${uiText("MANUAL TAKE / GHI TAY","Manual take")}</b><small>${uiText("Điều khiển thật → chuyển thành cảnh biên đạo","Record live controls as choreography scenes")}</small></div><button id="m131Close" title="${uiText("Đóng","Close")}"><svg class=ico aria-hidden=true><use href=#i-x></use></svg></button></header>
     <div class="m131-scroll">
-      <section class="m131-section"><h3>01 / TÊN CẢNH · TIẾT MỤC</h3>
-        <label>Tên cảnh<input id="m131Name" value="${txt(R.sceneName)}" maxlength="64" placeholder="Ví dụ: Múa quạt mở màn"></label>
-        <label>Tiết mục cần ghi<select id="m131Act"></select></label><button class="m131-minor" id="m131CreateAct">+ Tạo nhóm biên đạo 4 người</button>
-        <label>Chọn người điều khiển<select id="m131Person"></select></label>
+      <section class="m131-section"><h3>${uiText("01 / TÊN CẢNH · TIẾT MỤC","01 / Scene and act")}</h3>
+        <label>${uiText("Tên cảnh","Scene name")}<input id="m131Name" value="${txt(R.sceneName)}" maxlength="64" placeholder="${uiText("Ví dụ: Múa quạt mở màn","Example: Opening fan dance")}"></label>
+        <label>${uiText("Tiết mục cần ghi","Act to record")}<select id="m131Act"></select></label><button class="m131-minor" id="m131CreateAct">${uiText("+ Tạo nhóm biên đạo 4 người","+ Create four-person group")}</button>
+        <label>${uiText("Chọn người điều khiển","Performer to control")}<select id="m131Person"></select></label>
       </section>
-      <section class="m131-section m131-clockbox"><h3>02 / GHI TIME TRỰC TIẾP</h3>
-        <div class="m131-row"><label style="flex:1">Giây bắt đầu<input type="number" id="m131Start" min="0" max="599" step=".1" value="${n(state.time,0,599).toFixed(2)}"></label><label style="width:86px">FPS<select id="m131Fps">${FPS_OPTIONS.map(f=>`<option value="${f}" ${f===R.fps?'selected':''}>${f} fps</option>`).join('')}</select></label></div>
-        <div class="m131-clock"><b id="m131TC">00:00:00:00</b><span id="m131ClockState">SẴN SÀNG</span></div>
-        <div class="m131-clockmeta"><span>BẮT ĐẦU <b id="m131ClockStart">--:--</b></span><span>KẾT THÚC <b id="m131ClockEnd">--:--</b></span></div>
+      <section class="m131-section m131-clockbox"><h3>${uiText("02 / GHI TIME TRỰC TIẾP","02 / Live recording")}</h3>
+        <div class="m131-row"><label style="flex:1">${uiText("Giây bắt đầu","Start seconds")}<input type="number" id="m131Start" min="0" max="599" step=".1" value="${n(state.time,0,599).toFixed(2)}"></label><label style="width:86px">FPS<select id="m131Fps">${FPS_OPTIONS.map(f=>`<option value="${f}" ${f===R.fps?'selected':''}>${f} fps</option>`).join('')}</select></label></div>
+        <div class="m131-clock"><b id="m131TC">00:00:00:00</b><span id="m131ClockState">${uiText("SẴN SÀNG","Ready")}</span></div>
+        <div class="m131-clockmeta"><span>${uiText("BẮT ĐẦU ","Start ")}<b id="m131ClockStart">--:--</b></span><span>${uiText("KẾT THÚC ","End ")}<b id="m131ClockEnd">--:--</b></span></div>
         <div class="m131-meter"><div id="m131Bar"></div></div>
-        <div class="m131-elapsed">Thời lượng đã ghi: <strong id="m131Elapsed">00:00:00:00</strong></div>
-        <div class="m131-row m131-actions"><button id="m131StartBtn" class="m131-green">● BẮT ĐẦU</button><button id="m131MarkBtn">◆ ĐÁNH DẤU</button><button id="m131EndBtn" class="m131-red">■ KẾT THÚC</button></div>
-        <div class="m131-row m131-actions"><button id="m131ReplayBtn">▶ Phát lại</button><button id="m131CancelBtn">Hủy lượt ghi</button></div>
+        <div class="m131-elapsed">${uiText("Thời lượng đã ghi: ","Recorded duration: ")}<strong id="m131Elapsed">00:00:00:00</strong></div>
+        <div class="m131-row m131-actions"><button id="m131StartBtn" class="m131-green">${uiText("BẮT ĐẦU","Start")}</button><button id="m131MarkBtn">${uiText("ĐÁNH DẤU","Add marker")}</button><button id="m131EndBtn" class="m131-red">${uiText("KẾT THÚC","End")}</button></div>
+        <div class="m131-row m131-actions"><button id="m131ReplayBtn">${uiText("Phát lại","Replay")}</button><button id="m131CancelBtn">${uiText("Hủy lượt ghi","Discard take")}</button></div>
       </section>
-      <section class="m131-section"><h3>03 / CHỈ TAY · DI CHUYỂN NGƯỜI</h3>
-        <div class="m131-help">Giữ nút hướng để nhân vật di chuyển; hoặc <b>kéo người trực tiếp trong khung 3D</b> khi đang ghi. Mỗi chuyển động tự tạo mốc vị trí.</div>
+      <section class="m131-section"><h3>${uiText("03 / CHỈ TAY · DI CHUYỂN NGƯỜI","03 / Move performers")}</h3>
+        <div class="m131-help">${uiText("Giữ nút hướng để nhân vật di chuyển; hoặc ","Hold direction buttons to move performers, or ")}<b>${uiText("kéo người trực tiếp trong khung 3D","drag performers directly in 3D")}</b>${uiText(" khi đang ghi. Mỗi chuyển động tự tạo mốc vị trí."," while recording. Each movement creates a position keyframe.")}</div>
         <div class="m131-dpad">
-          <span></span><button data-m131-jog="forward" title="Tiến vào sân khấu">↑</button><span></span>
-          <button data-m131-jog="left" title="Qua trái">←</button><button data-m131-jog="back" title="Lùi lại">↓</button><button data-m131-jog="right" title="Qua phải">→</button>
+          <span></span><button data-m131-jog="forward" title="${uiText("Tiến vào sân khấu","Move upstage")}">↑</button><span></span>
+          <button data-m131-jog="left" title="${uiText("Qua trái","Move left")}">←</button><button data-m131-jog="back" title="${uiText("Lùi lại","Move backward")}">↓</button><button data-m131-jog="right" title="${uiText("Qua phải","Move right")}">→</button>
         </div>
-        <div class="m131-row m131-actions"><button data-m131-jog="turnLeft">↶ Xoay trái</button><button data-m131-jog="turnRight">Xoay phải ↷</button></div>
-        <label>Tốc độ di chuyển <input id="m131Speed" type="range" min=".2" max="3" step=".1" value="${R.speed}"><small id="m131SpeedOut">${R.speed.toFixed(1)} m/s</small></label>
+        <div class="m131-row m131-actions"><button data-m131-jog="turnLeft">${uiText("Xoay trái","Turn left")}</button><button data-m131-jog="turnRight">${uiText("Xoay phải ↷","Turn right ↷")}</button></div>
+        <label>${uiText("Tốc độ di chuyển ","Movement speed ")}<input id="m131Speed" type="range" min=".2" max="3" step=".1" value="${R.speed}"><small id="m131SpeedOut">${R.speed.toFixed(1)} m/s</small></label>
         <div id="m131Pos" class="m131-coords">X 0.00 · Z 0.00</div>
-        <h4>ĐỘNG TÁC BẤM LÀ GHI</h4>
-        <div class="m131-posegrid">${[['walk','BƯỚC'],['dance','MÚA'],['reach','VƯƠN'],['turn','XOAY'],['hold','DỪNG'],['drum','TRỐNG'],['glide','LƯỚT']].map(([a,b])=>`<button data-m131-action="${a}">${b}</button>`).join('')}</div>
+        <h4>${uiText("ĐỘNG TÁC BẤM LÀ GHI","Record actions")}</h4>
+        <div class="m131-posegrid">${[['walk',uiText("Bước","Walk")],['dance',uiText("MÚA","Dance")],['reach',uiText("Vươn","Reach")],['turn',uiText("XOAY","Turn")],['hold',uiText("Dừng","Stop")],['drum',uiText("Trống","Drum")],['glide',uiText("Lướt","Glide")]].map(([a,b])=>`<button data-m131-action="${a}">${b}</button>`).join('')}</div>
       </section>
-      <section class="m131-section"><h3>04 / MỐC ĐÃ GHI</h3><div id="m131Markers" class="m131-markers"></div></section>
-      <section class="m131-section m131-save"><button id="m131SaveBtn" class="m131-savebtn">+ LƯU CẢNH VÀO SHOW TIME</button><p>Ghi lại đường di chuyển và động tác của từng người trong clip biên đạo. Không thay đổi model, UV, LED hay đèn.</p></section>
-      <section class="m131-section"><h3>CẢNH ĐÃ LƯU</h3><div id="m131Saved" class="m131-saved"></div></section>
+      <section class="m131-section"><h3>${uiText("04 / MỐC ĐÃ GHI","04 / Recorded markers")}</h3><div id="m131Markers" class="m131-markers"></div></section>
+      <section class="m131-section m131-save"><button id="m131SaveBtn" class="m131-savebtn">${uiText("+ LƯU CẢNH VÀO SHOW TIME","+ Save scene to show timeline")}</button><p>${uiText("Ghi lại đường di chuyển và động tác của từng người trong clip biên đạo. Không thay đổi model, UV, LED hay đèn.","Save each performer's movements and actions in a choreography clip. Model, UVs, LEDs and lighting stay unchanged.")}</p></section>
+      <section class="m131-section"><h3>${uiText("CẢNH ĐÃ LƯU","Saved scenes")}</h3><div id="m131Saved" class="m131-saved"></div></section>
     </div><footer id="m131Status">${txt(R.lastMessage)}</footer>`;
     ed('m131Close').onclick=close;
     ed('m131Act').onchange=e=>{R.actId=e.target.value;refreshActSelect();paintMode();};
     ed('m131Person').onchange=e=>{R.personId=e.target.value;renderActions();updatePoseInfo();};
     ed('m131Name').onchange=e=>R.sceneName=e.target.value;
     ed('m131Fps').onchange=e=>{R.fps=+e.target.value;updateTime();};
-    ed('m131CreateAct').onclick=()=>{if(R.mode==='record')return;const a=addAct8('dance');if(a){R.actId=a.id;R.personId=a.people?.[0]||'';refreshActSelect();updateLabel('Đã tạo nhóm mới. Chọn Bắt đầu để ghi.');}};
+    ed('m131CreateAct').onclick=()=>{if(R.mode==='record')return;const a=addAct8('dance');if(a){R.actId=a.id;R.personId=a.people?.[0]||'';refreshActSelect();updateLabel(uiText("Đã tạo nhóm mới. Chọn Bắt đầu để ghi.","Group created. Select Start to record."));}};
     ed('m131StartBtn').onclick=start;ed('m131MarkBtn').onclick=()=>mark('Mốc '+(R.marks.length+1));ed('m131EndBtn').onclick=end;
     ed('m131SaveBtn').onclick=save;ed('m131CancelBtn').onclick=cancel;ed('m131ReplayBtn').onclick=replay;
     ed('m131Speed').oninput=e=>{R.speed=+e.target.value;ed('m131SpeedOut').textContent=R.speed.toFixed(1)+' m/s';};
@@ -229,7 +230,7 @@ try {
       for(const type of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(type,()=>{
         if(R.hold!==b.dataset.m131Jog)return;const d=performance.now()-Number(b.dataset.started||0);if(d<230)move(R.personId,R.hold,.23);recordSample(R.personId,true);R.hold=null;b.classList.remove('held');});
     }
-    refreshActSelect();paintMode();updateTime();renderMarkers();renderSaved();
+    refreshActSelect();paintMode();updateTime();renderMarkers();renderSaved();window.translateUiText?.(panel);
   }
   function syncHost(){const panel=ed('m131Panel');if(!panel)return;
     if(R.open){const present=!!state.presenting;const container=present?document.body:document.querySelector('.right-panel');
@@ -264,8 +265,8 @@ try {
   }
   function endPointer(e){if(!R.drag)return;e.preventDefault();e.stopImmediatePropagation();recordSample(R.drag.p.id,true);R.drag=null;}
   function install(){const panel=document.createElement('aside');panel.id='m131Panel';panel.hidden=true;document.querySelector('.right-panel')?.appendChild(panel);
-    const tools=$('dirToolbar');if(tools){const b=document.createElement('button');b.className='btn small m131-launch';b.textContent='● GHI TAY / SCENE';b.dataset.m131Toggle='1';b.onclick=open;tools.appendChild(b);}
-    const row=$('presentControls')?.querySelector('.show-row');if(row){const b=document.createElement('button');b.className='btn small m131-launch';b.textContent='● GHI BIÊN ĐẠO';b.dataset.m131Toggle='1';b.onclick=open;row.prepend(b);}
+    const tools=$('dirToolbar');if(tools){const b=document.createElement('button');b.className='btn small m131-launch';b.textContent=uiText("GHI TAY / SCENE","Record choreography");b.dataset.m131Toggle='1';b.onclick=open;tools.appendChild(b);}
+    const row=$('presentControls')?.querySelector('.show-row');if(row){const b=document.createElement('button');b.className='btn small m131-launch';b.textContent=uiText("Ghi biên đạo","Record choreography");b.dataset.m131Toggle='1';b.onclick=open;row.prepend(b);}
     document.addEventListener('pointerdown',startPointer,true);document.addEventListener('pointermove',dragPointer,true);document.addEventListener('pointerup',endPointer,true);document.addEventListener('pointercancel',endPointer,true);
     window.addEventListener('blur',()=>{R.hold=null;R.drag=null;});
     const o=new MutationObserver(()=>{if(R.open)syncHost();});o.observe(document.body,{attributes:true,attributeFilter:['class']});
@@ -292,6 +293,7 @@ try {
    stage geometry, or choreography routes. Uses V12.8 fixture dock + V13.0 stable renderer. */
 (function(){
 'use strict';
+const uiText=(vi,en)=>window.tr?window.tr(vi,en):vi;
 try {
   if(!window.STUDIO || typeof seq==='undefined' || !engine || !lighting9) return;
   const S=window.STUDIO, EPS=1e-6, MAX_TAKES=48, MAX_FRAMES=2200;
@@ -302,7 +304,7 @@ try {
   const id132=()=>`lt_${Math.random().toString(36).slice(2,10)}`;
   const R={mode:'idle',name:'Lighting / Ghi tay 01',fps:30,scope:'all',start:0,end:0,duration:0,
     ids:[],samples:new Map(),base:new Map(),marks:[],takes:new Map(),saved:[],lastCount:0,
-    priorLoop:false,priorSequence:false,startDraft:null,selectedTake:null,status:'Sẵn sàng ghi chuyển động đèn.',
+    priorLoop:false,priorSequence:false,startDraft:null,selectedTake:null,status:uiText("Sẵn sàng ghi chuyển động đèn.","Ready to record lighting movements."),
     wallSample:0,wallUI:0,needUI:true,followTimeline:true};
   const prefix='manual132:';
   function timecode132(t){const n=Math.max(0,Math.floor(Math.max(0,t)*R.fps+1e-5)),f=n%R.fps,s=Math.floor(n/R.fps);return [Math.floor(s/3600),Math.floor(s/60)%60,s%60,f].map(x=>String(x).padStart(2,'0')).join(':');}
@@ -329,29 +331,29 @@ try {
   }
   function fmtStatus132(msg){R.status=msg;R.needUI=true;const s=E('l132Status');if(s)s.textContent=msg;}
   function marker132(){if(R.mode!=='record')return;record132(true);const name=E('l132MarkName')?.value.trim()||`Điểm đèn ${R.marks.length+1}`;
-    const t=clamp132(state.time-R.start,0,120);R.marks.push({time:t,name:name.slice(0,48)});fmtStatus132(`◆ Đánh dấu tại ${timecode132(state.time)} — ${name}`);}
+    const t=clamp132(state.time-R.start,0,120);R.marks.push({time:t,name:name.slice(0,48)});fmtStatus132(`${uiText("Đánh dấu tại ","Marked at ")}${timecode132(state.time)} — ${name}`);}
   function prepare132(){const from=Number(E('l132StartTime')?.value);R.start=Number.isFinite(from)?clamp132(from,0,599.5):clamp132(state.time,0,599.5);
-    R.name=(E('l132Name')?.value||`Ghi đèn ${R.saved.length+1}`).trim().slice(0,60)||'Ghi thao tác đèn';R.fps=[24,25,30,50,60].includes(+E('l132FPS')?.value)?+E('l132FPS').value:30;
+    R.name=(E('l132Name')?.value||`Ghi đèn ${R.saved.length+1}`).trim().slice(0,60)||uiText("Ghi thao tác đèn","Record lighting");R.fps=[24,25,30,50,60].includes(+E('l132FPS')?.value)?+E('l132FPS').value:30;
     R.scope=E('l132Scope')?.value==='selected'?'selected':'all';
     R.ids=R.scope==='selected'?[selected132()?.id].filter(Boolean):engine.lights.map(l=>l.id);
-    if(!R.ids.length){fmtStatus132('Chưa có đèn. Thêm đèn trong thư viện trước khi ghi.');return false;}
+    if(!R.ids.length){fmtStatus132(uiText("Chưa có đèn. Thêm đèn trong thư viện trước khi ghi.","No fixtures. Add fixtures from the library before recording."));return false;}
     R.base=new Map(engine.lights.map(l=>[l.id,snap132(l)]));R.samples=new Map();
     for(const id of R.ids){const l=engine.lights.find(x=>x.id===id);if(l)R.samples.set(id,[toSample132(snap132(l),0)]);}
     R.marks=[];R.end=R.start;R.duration=0;R.lastCount=R.ids.length;R.priorLoop=!!state.loop;R.priorSequence=!!seq.enabled;return true;
   }
-  function start132(){if(R.mode==='record')return false;if(S.manual131?.state?.mode==='record'){fmtStatus132('Hãy kết thúc lượt ghi biên đạo người trước khi ghi đèn.');return false;}if(R.mode==='review')discard132(false);
+  function start132(){if(R.mode==='record')return false;if(S.manual131?.state?.mode==='record'){fmtStatus132(uiText("Hãy kết thúc lượt ghi biên đạo người trước khi ghi đèn.","Finish recording choreography before recording lighting."));return false;}if(R.mode==='review')discard132(false);
     if(!prepare132())return false;
     if(typeof ensureDuration10==='function')ensureDuration10(Math.min(600,Math.max(state.duration,R.start+Math.min(8,600-R.start))));
     else state.duration=Math.max(state.duration,R.start+8);
     state.loop=false;lighting9.preview=null;
     enableSequence(true);seekTimeline(R.start);R.mode='record';setPlaying(true);
-    fmtStatus132('● ĐANG GHI: kéo Pan/Tilt, điểm chiếu, vị trí, màu hoặc dimmer của đèn.');update132();return true;
+    fmtStatus132(uiText("ĐANG GHI: kéo Pan/Tilt, điểm chiếu, vị trí, màu hoặc dimmer của đèn.","Recording: adjust fixture pan/tilt, target, position, color or dimmer."));update132();return true;
   }
   function end132(){if(R.mode!=='record')return false;record132(true);
     R.end=clamp132(Math.max(state.time,R.start+.12),R.start+.12,Math.min(600,R.start+120));R.duration=R.end-R.start;
     for(const [id,arr] of R.samples){const last=arr.at(-1);if(last&&last.t<R.duration-.005)arr.push({...cloneState132(last),t:R.duration});}
     R.mode='review';setPlaying(false);state.loop=R.priorLoop;seekTimeline(R.start);
-    fmtStatus132(`■ Kết thúc: ${R.duration.toFixed(2)}s, ${count132()} keyframe. Bấm LƯU CẢNH vào SHOW TIME.`);update132();return true;
+    fmtStatus132(`${uiText("Kết thúc: ","Finished: ")}${R.duration.toFixed(2)}s, ${count132()} ${uiText("keyframe. Bấm LƯU CẢNH vào SHOW TIME.","keyframes. Select Save scene to show timeline.")}`);update132();return true;
   }
   function restoreBase132(){for(const [id,s] of R.base){const l=engine.lights.find(x=>x.id===id);if(!l)continue;
     Object.assign(l,cloneState132(s));
@@ -359,7 +361,7 @@ try {
   function discard132(restore=true){if(R.mode==='record')setPlaying(false);
     if(restore && R.base.size)restoreBase132();state.loop=R.priorLoop;
     R.mode='idle';R.samples.clear();R.ids=[];R.base.clear();R.marks=[];R.end=R.start;R.duration=0;
-    invalidateSeq();fmtStatus132('Đã hủy lượt ghi đèn, không tác động mapping/biên đạo.');update132();}
+    invalidateSeq();fmtStatus132(uiText("Đã hủy lượt ghi đèn, không tác động mapping/biên đạo.","Lighting take discarded. Mapping and choreography unchanged."));update132();}
   function colorBlend132(a,b,u){let c='#';for(let i=1;i<7;i+=2){const x=parseInt(a.slice(i,i+2),16),y=parseInt(b.slice(i,i+2),16);c+=Math.round(x+(y-x)*u).toString(16).padStart(2,'0');}return c;}
   function lerpState132(samples,t,smooth=false){if(!samples?.length)return null;if(t<=samples[0].t)return cloneState132(samples[0]);if(t>=samples.at(-1).t)return cloneState132(samples.at(-1));
     let lo=0,hi=samples.length-1;while(hi-lo>1){const mid=(hi+lo)>>1;if(samples[mid].t<=t)lo=mid;else hi=mid;}
@@ -403,33 +405,33 @@ try {
     if(!lamps.length)return null;
     return {id:String(d.id).slice(0,80),name:String(d.name||'Ghi đèn').slice(0,60),duration:dur,fps:[24,25,30,50,60].includes(+d.fps)?+d.fps:30,lamps,marks:(Array.isArray(d.marks)?d.marks:[]).slice(0,100).map(m=>({time:clamp132(m.time,0,dur),name:String(m.name||'Mốc đèn').slice(0,48)}))};
   }
-  function save132(){if(R.mode!=='review')return null;if(seq.clips.length>=495){fmtStatus132('Timeline đã quá 495 clip; xóa bớt trước khi ghi.');return null;}
+  function save132(){if(R.mode!=='review')return null;if(seq.clips.length>=495){fmtStatus132(uiText("Timeline đã quá 495 clip; xóa bớt trước khi ghi.","Timeline has reached 495 clips; remove some before recording."));return null;}
     const data=validTake132({id:uuid132(),name:R.name,duration:R.duration,fps:R.fps,marks:R.marks,lamps:[...R.samples.entries()].map(([id,frames])=>({id,frames}))});
-    if(!data){fmtStatus132('Không có dữ liệu đèn hợp lệ để lưu.');return null;}
+    if(!data){fmtStatus132(uiText("Không có dữ liệu đèn hợp lệ để lưu.","No valid lighting data to save."));return null;}
     let track=seq.tracks.find(tr=>tr.type==='light'&&tr.name==='LIGHT TAKE / GHI ĐÈN');
-    if(!track&&seq.tracks.length>=24){fmtStatus132('Đã đủ 24 track. Hãy xóa bớt một track để lưu cảnh.');return null;}
+    if(!track&&seq.tracks.length>=24){fmtStatus132(uiText("Đã đủ 24 track. Hãy xóa bớt một track để lưu cảnh.","All 24 tracks are in use. Remove a track to save the scene."));return null;}
     checkpoint();R.takes.set(data.id,data);
     if(!track){track={id:id132(),name:'LIGHT TAKE / GHI ĐÈN',type:'light',target:'all',muted:false};seq.tracks.push(track);}
     if(typeof ensureDuration10==='function')ensureDuration10(R.end+.1);
     else state.duration=Math.max(state.duration,R.end+.1);
     const clip=addClip(track.id,{source:prefix+data.id,name:'● '+R.name,start:R.start,duration:R.duration,rate:1,in:0,loop:false,fade:0,gain:1,color:'#f2ae68'});
-    if(!clip){R.takes.delete(data.id);fmtStatus132('Không thể tạo clip trên timeline.');return null;}
+    if(!clip){R.takes.delete(data.id);fmtStatus132(uiText("Không thể tạo clip trên timeline.","Could not create a timeline clip."));return null;}
     const scene={id:id132(),name:R.name,start:R.start,duration:R.duration,actId:null,color:'#d39867',clipIds:[clip.id]};
     stage10.scenes.push(scene);stage10.selectedScene=scene.id;clip.scene10=scene.id;
     for(const m of data.marks)seq.markers.push({id:id132(),time:Math.min(600,R.start+m.time),name:'LIGHT / '+m.name});
     R.startDraft=null;R.saved.push({id:data.id,sceneId:scene.id,clipId:clip.id,name:R.name,start:R.start,duration:R.duration,count:count132()});R.saved=R.saved.slice(-48);
     restoreBase132();R.samples.clear();R.base.clear();R.marks=[];R.mode='idle';R.ids=[];R.selectedTake=data.id;
-    enableSequence(true);seekTimeline(R.start);renderSequence();fmtStatus132('✓ Đã lưu cảnh đèn vào SHOW TIME. Kéo clip màu cam để dời lịch; phát lại để kiểm tra.');update132();return {clip,scene,take:data};
+    enableSequence(true);seekTimeline(R.start);renderSequence();fmtStatus132(uiText("✓ Đã lưu cảnh đèn vào SHOW TIME. Kéo clip màu cam để dời lịch; phát lại để kiểm tra.","Lighting scene saved to the show timeline. Drag the orange clip to reschedule; replay to check."));update132();return {clip,scene,take:data};
   }
-  function replay132(){const item=R.saved.at(-1);if(!item){fmtStatus132('Chưa có cảnh đèn nào được lưu.');return false;}if(R.mode==='record')return false;
-    R.mode='idle';enableSequence(true);seekTimeline(item.start);setPlaying(true);fmtStatus132(`▶ Đang phát lại ${item.name}.`);return true;
+  function replay132(){const item=R.saved.at(-1);if(!item){fmtStatus132(uiText("Chưa có cảnh đèn nào được lưu.","No lighting scenes saved."));return false;}if(R.mode==='record')return false;
+    R.mode='idle';enableSequence(true);seekTimeline(item.start);setPlaying(true);fmtStatus132(`${uiText("Đang phát lại ","Replaying ")}${item.name}.`);return true;
   }
   function update132(){const panel=E('l132Panel');if(!panel)return;
     const writing=R.mode==='record',review=R.mode==='review';
     const cur=writing?state.time:review?R.end:state.time;
     const e=E('l132TC');if(e)e.textContent=timecode132(cur);
     const q=E('l132Elapsed');if(q)q.textContent=timecode132(writing?state.time-R.start:review?R.duration:0);
-    const st=E('l132State');if(st){st.textContent=writing?'● ĐANG GHI':review?'■ CHỜ LƯU':'SẴN SÀNG';st.dataset.mode=R.mode;}
+    const st=E('l132State');if(st){st.textContent=writing?uiText("Đang ghi","Recording"):review?uiText("Chờ lưu","Ready to save"):uiText("Sẵn sàng","Ready");st.dataset.mode=R.mode;}
     const bar=E('l132Bar');if(bar)bar.style.width=`${review?100:writing?clamp132((state.time-R.start)/Math.max(.1,Math.min(120,state.duration-R.start))*100,0,100):0}%`;
     const count=E('l132Count');if(count)count.textContent=String(count132());
     const start=E('l132StartRead');if(start)start.textContent=timecode132(R.start);
@@ -437,39 +439,40 @@ try {
     const msg=E('l132Status');if(msg)msg.textContent=R.status;
     for(const [id,allowed] of [['l132Begin',R.mode==='idle'],['l132Mark',writing],['l132End',writing],['l132Save',review],['l132Cancel',writing||review],['l132Replay',R.saved.length>0]])if(E(id))E(id).disabled=!allowed;
     for(const id of ['l132Scope','l132StartTime','l132Name','l132FPS'])if(E(id))E(id).disabled=R.mode!=='idle';
-    const btn=E('l132Launch');if(btn){btn.textContent=writing?'● ĐANG GHI ĐÈN':'● Ghi thao tác đèn';btn.classList.toggle('recording132',writing);}
+    const btn=E('l132Launch');if(btn){btn.textContent=writing?'Đang ghi đèn':uiText("Ghi thao tác đèn","Record lighting");btn.classList.toggle('recording132',writing);}
     const markers=E('l132Markers');if(markers){const str=R.marks.map(m=>`${timecode132(R.start+m.time)} ${m.name}`).join('  ·  ');if(markers.textContent!==str)markers.textContent=str;}
-    const saved=E('l132Saved');if(saved){const item=R.saved.at(-1);saved.textContent=item?`CẢNH GẦN NHẤT: ${item.name} · ${item.duration.toFixed(2)}s · ${item.count} mẫu`:'Chưa lưu cảnh đèn.';}
+    const saved=E('l132Saved');if(saved){const item=R.saved.at(-1);saved.textContent=item?`Cảnh gần nhất: ${item.name} · ${item.duration.toFixed(2)}s · ${item.count} mẫu`:uiText("Chưa lưu cảnh đèn.","No lighting scenes saved.");}
     if(R.needUI){R.needUI=false;drawChart132();}
+    window.translateUiText?.(panel);
   }
   function drawChart132(){const svg=E('l132Chart');if(!svg)return;
     const selected=selected132(),id=R.samples.has(selected?.id)?selected?.id:R.ids[0],arr=R.samples.get(id);
-    if(!arr||arr.length<2){svg.innerHTML='<text x="10" y="38" fill="#7798b0" font-size="11">Di chuyển Pan/Tilt để hiển thị đường ghi.</text>';return;}
+    if(!arr||arr.length<2){svg.innerHTML=`<text x="10" y="38" fill="#7798b0" font-size="11">${uiText("Di chuyển Pan/Tilt để hiển thị đường ghi.","Adjust pan/tilt to display recording curves.")}</text>`;return;}
     const duration=Math.max(.1,R.mode==='review'?R.duration:state.time-R.start),pts=a=>arr.map(p=>{
       const d=p.target.map((v,i)=>v-p.pos[i]),pan=Math.atan2(d[0],d[2])*180/Math.PI,tilt=Math.atan2(d[1],Math.hypot(d[0],d[2]))*180/Math.PI;
       const val=a==='pan'?pan:tilt;return `${(8+p.t/duration*292).toFixed(1)},${(a==='pan'?38-pan/180*28:55-tilt/90*24).toFixed(1)}`;
     }).join(' ');
     svg.innerHTML=`<polyline points="${pts('pan')}" fill="none" stroke="#5ce3d5" stroke-width="1.7"/><polyline points="${pts('tilt')}" fill="none" stroke="#f7b76d" stroke-width="1.6"/><text x="8" y="12" fill="#87e3d4" font-size="9">PAN</text><text x="48" y="12" fill="#f7b76d" font-size="9">TILT</text>`;
   }
-  const PANEL=`<section id="l132Panel" aria-label="Ghi thao tác đèn theo timecode">
-      <div class="l132-top"><b>● LIGHT TAKE / GHI ĐÈN</b><span id="l132State">SẴN SÀNG</span></div>
-      <p>Điều khiển Pan/Tilt, điểm chiếu, XYZ, màu và dimmer ở các thanh bên dưới; mỗi thao tác sẽ thành keyframe của một cảnh đèn.</p>
-      <label class="l132-label">Tên cảnh<input id="l132Name" maxlength="60" value="Lighting / Ghi tay 01"></label>
+  const panelHTML132=()=>`<section id="l132Panel" aria-label="${uiText("Ghi thao tác đèn theo timecode","Record lighting with timecode")}">
+      <div class="l132-top"><b>${uiText("LIGHT TAKE / GHI ĐÈN","Record lighting")}</b><span id="l132State">${uiText("SẴN SÀNG","Ready")}</span></div>
+      <p>${uiText("Điều khiển Pan/Tilt, điểm chiếu, XYZ, màu và dimmer ở các thanh bên dưới; mỗi thao tác sẽ thành keyframe của một cảnh đèn.","Adjust pan/tilt, target, XYZ, color and dimmer below; each change becomes a lighting keyframe.")}</p>
+      <label class="l132-label">${uiText("Tên cảnh","Scene name")}<input id="l132Name" maxlength="60" value="Lighting / Ghi tay 01"></label>
       <div class="l132-grid">
-        <label class="l132-label">Bắt đầu (giây)<input id="l132StartTime" type="number" min="0" max="599.5" step=".1" value="0"></label>
+        <label class="l132-label">${uiText("Bắt đầu (giây)","Start (seconds)")}<input id="l132StartTime" type="number" min="0" max="599.5" step=".1" value="0"></label>
         <label class="l132-label">FPS<select id="l132FPS"><option>24</option><option>25</option><option selected>30</option><option>50</option><option>60</option></select></label>
       </div>
-      <label class="l132-label">Ghi đèn<select id="l132Scope"><option value="all">Tất cả đèn — nhiều đèn cùng một cảnh</option><option value="selected">Chỉ đèn đang chọn</option></select></label>
+      <label class="l132-label">${uiText("Ghi đèn","Record fixtures")}<select id="l132Scope"><option value="all">${uiText("Tất cả đèn — nhiều đèn cùng một cảnh","All fixtures in one scene")}</option><option value="selected">${uiText("Chỉ đèn đang chọn","Selected fixture only")}</option></select></label>
       <div class="l132-clock"><strong id="l132TC">00:00:00:00</strong><small id="l132Elapsed">00:00:00:00</small></div>
-      <div class="l132-ends"><span>BẮT ĐẦU <b id="l132StartRead">00:00:00:00</b></span><span>KẾT THÚC <b id="l132EndRead">--:--:--:--</b></span><span><b id="l132Count">0</b> KEY</span></div>
+      <div class="l132-ends"><span>${uiText("BẮT ĐẦU ","Start ")}<b id="l132StartRead">00:00:00:00</b></span><span>${uiText("KẾT THÚC ","End ")}<b id="l132EndRead">--:--:--:--</b></span><span><b id="l132Count">0</b> KEY</span></div>
       <div class="l132-meter"><div id="l132Bar"></div></div>
-      <div class="l132-buttons"><button id="l132Begin" class="l132-go">● BẮT ĐẦU</button><button id="l132Mark">◆ MỐC</button><button id="l132End" class="l132-stop">■ KẾT THÚC</button></div>
+      <div class="l132-buttons"><button id="l132Begin" class="l132-go">${uiText("BẮT ĐẦU","Start")}</button><button id="l132Mark">${uiText("MỐC","Marker")}</button><button id="l132End" class="l132-stop">${uiText("KẾT THÚC","End")}</button></div>
       <svg id="l132Chart" viewBox="0 0 308 68" preserveAspectRatio="none"></svg>
-      <label class="l132-label l132-marker">Tên mốc<input id="l132MarkName" placeholder="Ví dụ: đèn quay về giữa" maxlength="48"></label>
-      <div class="l132-buttons"><button id="l132Save" class="l132-save">+ LƯU CẢNH VÀO SHOW TIME</button></div>
-      <div class="l132-buttons"><button id="l132Replay">▶ Phát lại</button><button id="l132Cancel">Hủy lượt ghi</button><button id="l132Timeline">▦ SHOW Timeline</button></div>
-      <div id="l132Markers" class="l132-marks"></div><div id="l132Saved" class="l132-saved">Chưa lưu cảnh đèn.</div>
-      <div id="l132Status" role="status">Sẵn sàng ghi chuyển động đèn.</div>
+      <label class="l132-label l132-marker">${uiText("Tên mốc","Marker name")}<input id="l132MarkName" placeholder="${uiText("Ví dụ: đèn quay về giữa","Example: Lights return to center")}" maxlength="48"></label>
+      <div class="l132-buttons"><button id="l132Save" class="l132-save">${uiText("+ LƯU CẢNH VÀO SHOW TIME","+ Save scene to show timeline")}</button></div>
+      <div class="l132-buttons"><button id="l132Replay">${uiText("Phát lại","Replay")}</button><button id="l132Cancel">${uiText("Hủy lượt ghi","Discard take")}</button><button id="l132Timeline">SHOW Timeline</button></div>
+      <div id="l132Markers" class="l132-marks"></div><div id="l132Saved" class="l132-saved">${uiText("Chưa lưu cảnh đèn.","No lighting scenes saved.")}</div>
+      <div id="l132Status" role="status">${uiText("Sẵn sàng ghi chuyển động đèn.","Ready to record lighting movements.")}</div>
     </section>`;
   function bind132(){E('l132Begin')?.addEventListener('click',()=>start132());E('l132Mark')?.addEventListener('click',marker132);
     E('l132End')?.addEventListener('click',()=>end132());E('l132Save')?.addEventListener('click',()=>save132());
@@ -483,7 +486,7 @@ try {
   function mount132(){const d=E('pro127dock');if(!d||d.hidden||!S.pro127?.open)return;
     if(E('l132Panel'))return;
     const header=d.querySelector(':scope > header'),content=d.querySelector(':scope > .pro127-content');
-    if(!header||!content)return;header.insertAdjacentHTML('afterend',PANEL);bind132();
+    if(!header||!content)return;header.insertAdjacentHTML('afterend',panelHTML132());bind132();
   }
   // Fixture dock re-renders its innerHTML on light selection; re-mount the recorder strip.
   const dock=E('pro127dock');if(dock){new MutationObserver(()=>mount132()).observe(dock,{childList:true});}
@@ -491,7 +494,7 @@ try {
       const btn=document.querySelector('[data-pro127="fixture"]');if(btn)btn.click();
     }mount132();E('l132Panel')?.scrollIntoView({block:'nearest',behavior:'instant'});}
   function insertLaunch132(){const bar=E('pro127bar');if(!bar||E('l132Launch'))return;
-    const btn=document.createElement('button');btn.id='l132Launch';btn.type='button';btn.textContent='● Ghi thao tác đèn';btn.onclick=launch132;
+    const btn=document.createElement('button');btn.id='l132Launch';btn.type='button';btn.textContent=uiText("Ghi thao tác đèn","Record lighting");btn.onclick=launch132;
     const summary=E('pro127summary');if(summary)bar.insertBefore(btn,summary);else bar.appendChild(btn);update132();
   }
   // Shared controls only: the choreography recorder in V13.1 is unchanged.
@@ -499,15 +502,15 @@ try {
   renderUI=function(){const result=beforeRenderUI132();insertLaunch132();mount132();return result;};
   const beforeSourceOptions132=sourceOptions;
   sourceOptions=function(type,value){if(type==='light'&&typeof value==='string'&&value.startsWith(prefix)){
-      const t=R.takes.get(value.slice(prefix.length));return `<option selected value="${escape132(value)}">${escape132('● Ghi tay / '+(t?.name||'Lighting Take'))}</option>`+beforeSourceOptions132(type,value);
+      const t=R.takes.get(value.slice(prefix.length));return `<option selected value="${escape132(value)}">${escape132(uiText("Ghi tay / ","Manual / ")+(t?.name||'Lighting Take'))}</option>`+beforeSourceOptions132(type,value);
     }return beforeSourceOptions132(type,value);};
   // Keep source ID on editing; scene relationship remains intact if a take is dragged/trimmed.
   const beforeEditClip132=editClip;
   editClip=function(id,...rest){const clip=seq.clips.find(c=>c.id===id);
     if(!clip||!String(clip.source).startsWith(prefix))return beforeEditClip132(id,...rest);
     const data=R.takes.get(String(clip.source).slice(prefix.length));
-    dialog('Chỉnh cảnh đèn đã ghi',`<div class="v07-form"><label class="wide">Tên cảnh<input id="l132ClipName" value="${escape132(clip.name)}"></label><label>Bắt đầu (giây)<input type="number" id="l132ClipStart" value="${clip.start.toFixed(2)}" min="0" step="0.05"></label><label>Thời lượng (giây)<input type="number" id="l132ClipDur" value="${clip.duration.toFixed(2)}" min=".1" max="120" step=".05"></label><label>Source IN (giây)<input type="number" id="l132ClipIn" value="${(clip.in||0).toFixed(2)}" min="0" max="${data?.duration||120}" step=".05"></label><label>Tốc độ<input type="number" id="l132ClipRate" value="${clip.rate||1}" min=".25" max="4" step=".05"></label></div><p class="hint-text">Kéo hoặc kéo mép clip trên SHOW Timeline để thay đổi vị trí/thời lượng. Không làm thay đổi tọa độ đèn trên model gốc.</p>`,[
-      {label:'Hủy'},{label:'Lưu clip',primary:true,action:()=>{checkpoint();const start=clamp132(E('l132ClipStart').value,0,599.8),duration=clamp132(E('l132ClipDur').value,.1,Math.min(120,600-start));
+    dialog(uiText("Chỉnh cảnh đèn đã ghi","Edit recorded lighting scene"),`<div class="v07-form"><label class="wide">${uiText("Tên cảnh","Scene name")}<input id="l132ClipName" value="${escape132(clip.name)}"></label><label>${uiText("Bắt đầu (giây)","Start (seconds)")}<input type="number" id="l132ClipStart" value="${clip.start.toFixed(2)}" min="0" step="0.05"></label><label>${uiText("Thời lượng (giây)","Duration (seconds)")}<input type="number" id="l132ClipDur" value="${clip.duration.toFixed(2)}" min=".1" max="120" step=".05"></label><label>${uiText("Source IN (giây)","Source in (seconds)")}<input type="number" id="l132ClipIn" value="${(clip.in||0).toFixed(2)}" min="0" max="${data?.duration||120}" step=".05"></label><label>${uiText("Tốc độ","Speed")}<input type="number" id="l132ClipRate" value="${clip.rate||1}" min=".25" max="4" step=".05"></label></div><p class="hint-text">${uiText("Kéo hoặc kéo mép clip trên SHOW Timeline để thay đổi vị trí/thời lượng. Không làm thay đổi tọa độ đèn trên model gốc.","Drag or trim the clip in the show timeline to change its position/duration. Original fixture coordinates remain unchanged.")}</p>`,[
+      {label:uiText("Hủy","Cancel")},{label:uiText("Lưu clip","Save clip"),primary:true,action:()=>{checkpoint();const start=clamp132(E('l132ClipStart').value,0,599.8),duration=clamp132(E('l132ClipDur').value,.1,Math.min(120,600-start));
         clip.name=E('l132ClipName').value.slice(0,60)||clip.name;clip.start=start;clip.duration=duration;clip.in=clamp132(E('l132ClipIn').value,0,data?.duration||120);clip.rate=clamp132(E('l132ClipRate').value,.25,4);
         const sc=stage10.scenes.find(s=>s.id===clip.scene10);if(sc){sc.name=clip.name;sc.start=start;sc.duration=duration;}
         if(typeof ensureDuration10==='function')ensureDuration10(start+duration);invalidateSeq();renderSequence();}}
@@ -542,13 +545,14 @@ try {
   S.lightTake132={start:start132,end:end132,save:save132,cancel:discard132,replay:replay132,mark:marker132,launch:launch132,record:record132,
     get mode(){return R.mode;},get time(){return {start:R.start,end:R.end,duration:R.duration};},get counts(){return {lamps:R.ids.length,keys:count132(),takes:R.takes.size,scenes:R.saved.length};},
     get data(){return structuredClone([...R.takes.values()]);},get saved(){return structuredClone(R.saved);},get state(){return R;},get current(){return selected132();},get at(){return (id,t)=>lerpState132(R.takes.get(id)?.lamps?.[0]?.frames,t);}};
-  S.version='1.3.2';document.title='ALPHA | Creative LED Studio V13.2 — Ghi thao tác đèn';const logo=document.querySelector('.brand small');if(logo && !logo.textContent.includes('V13.2'))logo.textContent+=' · V13.2 GHI ĐÈN';insertLaunch132();mount132();requestAnimationFrame(tick132);
+  S.version='1.3.2';document.title='ALPHA | Creative LED Studio V13.2 — Ghi thao tác đèn';const logo=document.querySelector('.brand small');insertLaunch132();mount132();requestAnimationFrame(tick132);
 }catch(err){console.error('LIGHT TAKE 13.2 bootstrap failed',err);}
 })();
 
 /* V13.3 UI recovery; intentionally does not touch video, 3D, UV, scene or light timecode. */
 (function(){
  'use strict';
+const uiText=(vi,en)=>window.tr?window.tr(vi,en):vi;
  const S=window.STUDIO;
  if(!S || typeof state==='undefined')return;
  try{
@@ -596,17 +600,17 @@ try {
    const top=byId('l132Panel')?.querySelector('.l132-top');
    if(top&&!byId('ui133TakeExpand')){
     const btn=document.createElement('button');btn.type='button';btn.id='ui133TakeExpand';
-    btn.title='Thu gọn hoặc mở rộng phần ghi thao tác đèn';
+    btn.title=uiText("Thu gọn hoặc mở rộng phần ghi thao tác đèn","Collapse or expand lighting recorder");
     btn.onclick=()=>{UX.takeExpanded=!UX.takeExpanded;refreshTake();};
     top.appendChild(btn);
    }
-   const btn=byId('ui133TakeExpand');if(btn){btn.textContent=expanded?'Thu gọn ▲':'Mở ghi đèn ▼';btn.setAttribute('aria-expanded',String(!!expanded));}
+   const btn=byId('ui133TakeExpand');if(btn){btn.textContent=expanded?uiText("Thu gọn ▲","Collapse ▲"):uiText("Mở ghi đèn ▼","Expand lighting recorder ▼");btn.setAttribute('aria-expanded',String(!!expanded));}
   }
   function installResetButton(){
    const strip=document.querySelector('.navigation-strip');if(strip&&!byId('ui133Reset')){
     const button=document.createElement('button');button.type='button';button.id='ui133Reset';
-    button.className='btn small';button.title='Đóng bảng nổi và khôi phục giao diện có thể bấm';
-    button.textContent='↺ Bố cục';button.onclick=resetWorkspace;
+    button.className='btn small';button.title=uiText("Đóng bảng nổi và khôi phục giao diện có thể bấm","Close floating panels and restore workspace controls");
+    button.textContent=uiText("Bố cục","Layout");button.onclick=resetWorkspace;
     const anchor=byId('assetDrawer');strip.insertBefore(button,anchor||null);
    }
   }
@@ -656,6 +660,8 @@ try {
   installResetButton();refreshTake();
   S.ui133={reset:resetWorkspace,recover:recoverEditor,refresh:refreshTake,get state(){return {presenting:state.presenting,fixture:S.pro127?.tab,expanded:UX.takeExpanded,recoveries:UX.recoveries};}};
   S.version='13.3.0';document.title='ALPHA | Creative LED Studio V13.3 - UI STABLE';
-  const b=document.querySelector('.brand small');if(b&&!b.textContent.includes('V13.3'))b.textContent+=' · V13.3 UI STABLE';
+  const b=document.querySelector('.brand small');
  }catch(err){console.error('UI V13.3 failed; original scene data preserved',err);}
 })();
+
+window.addEventListener('ledstudio:locale',()=>{for(const id of ['m131Panel','l132Panel','ui133Reset']){const el=document.getElementById(id);if(el)window.translateUiText?.(el);}});

@@ -2,6 +2,7 @@
    Styling never edits the traced contour, source binding, or timeline levels. */
 (function (root, factory) {
   'use strict';
+  const mxTr=(vi,en)=>typeof window!=='undefined'&&typeof window.tr==='function'?window.tr(vi,en):vi;
   const api = factory();
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (root) {
@@ -10,6 +11,7 @@
   }
 })(typeof window === 'undefined' ? null : window, function () {
   'use strict';
+  const mxTr=(vi,en)=>typeof window!=='undefined'&&typeof window.tr==='function'?window.tr(vi,en):vi;
   const PROFILE = Object.freeze({ width: .06, pitch: .09, diffuser: false, glow: true });
   const mm = value => Math.round(value * 100000) / 100;
   const allowedScope = value => value === 'all' ? 'all' : 'selected';
@@ -29,7 +31,7 @@
         value: mm(widths.length ? widths.reduce((a,b) => a+b,0) / widths.length : .06),
         mixed: max-min > 1e-9, pixels: !!paths.length && paths.every(p => !p.diffuser),
         ribbon: !!paths.length && paths.every(p => p.diffuser),
-        name: paths.length === 1 ? paths[0].name : paths.length + ' viền' };
+        name: paths.length === 1 ? paths[0].name : paths.length + mxTr(' viền', ' outlines') };
     }
     function end() {
       const changed = !!edit?.changed, repaint = pendingPaint;
@@ -59,7 +61,7 @@
       notify(source); return true;
     }
     function setWidth(value, options = {}) {
-      if (!Number.isFinite(value)) throw new TypeError('Độ dày cần là một số hữu hạn.');
+      if (!Number.isFinite(value)) throw new TypeError(mxTr("Độ dày cần là một số hữu hạn.","Thickness must be a finite number."));
       const width = Math.min(500, Math.max(1, value)) / 1000;
       const target = allowedScope(options.scope ?? scope), gesture = !!options.gesture;
       if (gesture) {
@@ -73,7 +75,7 @@
       end(); return changed(resolve(allowedScope(target)), PROFILE, null, false);
     }
     function setStyle(style, target = scope) {
-      if (style !== 'pixels' && style !== 'ribbon') throw new TypeError('Chọn Hạt LED hoặc Dải liền.');
+      if (style !== 'pixels' && style !== 'ribbon') throw new TypeError(mxTr("Chọn Hạt LED hoặc Dải liền.","Choose LED pixels or Ribbon."));
       end(); return changed(resolve(allowedScope(target)), { diffuser: style === 'ribbon' }, null, false);
     }
     return { begin, end, setWidth, applyProfile, setStyle, status,
@@ -96,15 +98,27 @@
     X.appearance151 = C; if (!document) return C;
     const view = document.createElement('section');
     view.id = 'mx151Appearance'; view.className = 'mx151-appearance';
-    view.setAttribute('aria-label', 'Độ dày và kiểu LED Matrix');
-    view.innerHTML = '<div class="mx151-heading"><strong>ĐỘ DÀY LED</strong><output id="mx151WidthValue" for="mx151WidthRange mx151WidthNumber"></output></div>'
-      + '<label class="mx151-scope" for="mx151WidthScope">Chỉnh cho<select id="mx151WidthScope"><option value="selected">Viền đang chọn</option><option value="all">Tất cả viền</option></select></label>'
-      + '<div class="mx151-width-row"><input id="mx151WidthRange" type="range" min="1" max="500" step="1" aria-label="Kéo độ dày LED Matrix, milimét">'
-      + '<input id="mx151WidthNumber" type="number" min="1" max="500" step="1" inputmode="decimal" aria-label="Nhập độ dày LED Matrix, milimét"><span>mm</span></div>'
-      + '<div class="mx143-grid"><button id="mx151Pixels" type="button">Hạt LED</button><button id="mx151Ribbon" type="button">Dải liền</button></div>'
-      + '<button id="mx151ClearProfile" type="button" title="Rộng 60 mm, bước hạt 90 mm, bật quầng sáng. Áp dụng cho phạm vi đang chọn.">LED rõ · 60 mm</button>'
+    view.setAttribute('aria-label', mxTr("Độ dày và kiểu LED Matrix","LED Matrix thickness and style"));
+    const markupview=()=>("<div class=\"mx151-heading\"><strong>"+mxTr("Độ dày LED","LED thickness")+"</strong><output id=\"mx151WidthValue\" for=\"mx151WidthRange mx151WidthNumber\"></output></div>")
+      + ("<label class=\"mx151-scope\" for=\"mx151WidthScope\">"+mxTr("Chỉnh cho","Adjust for")+"<select id=\"mx151WidthScope\"><option value=\"selected\">"+mxTr("Viền đang chọn","Selected outline")+"</option><option value=\"all\">"+mxTr("Tất cả viền","All outlines")+"</option></select></label>")
+      + ("<div class=\"mx151-width-row\"><input id=\"mx151WidthRange\" type=\"range\" min=\"1\" max=\"500\" step=\"1\" aria-label=\""+mxTr("Kéo độ dày LED Matrix, milimét","Adjust LED Matrix thickness, millimeters")+"\">")
+      + ("<input id=\"mx151WidthNumber\" type=\"number\" min=\"1\" max=\"500\" step=\"1\" inputmode=\"decimal\" aria-label=\""+mxTr("Nhập độ dày LED Matrix, milimét","Enter LED Matrix thickness, millimeters")+"\"><span>mm</span></div>")
+      + ("<div class=\"mx143-grid\"><button id=\"mx151Pixels\" type=\"button\">"+mxTr("Hạt LED","LED pixels")+"</button><button id=\"mx151Ribbon\" type=\"button\">"+mxTr("Dải liền","Ribbon")+"</button></div>")
+      + ("<button id=\"mx151ClearProfile\" type=\"button\" title=\""+mxTr("Rộng 60 mm, bước hạt 90 mm, bật quầng sáng. Áp dụng cho phạm vi đang chọn.","60 mm width, 90 mm pixel pitch, glow enabled. Applies to the selected scope.")+"\">"+mxTr("LED rõ · 60 mm","Clear LEDs · 60 mm")+"</button>")
       + '<p id="mx151WidthStatus" role="status"></p>'
-      + '<small>Độ sáng chỉnh tại Hiệu ứng / Timeline.</small>';
+      + ("<small>"+mxTr("Độ sáng chỉnh tại Hiệu ứng / Timeline.","Adjust brightness in Effects / Timeline.")+"</small>");
+    view.innerHTML=markupview();
+    root?.addEventListener?.('ledstudio:locale',()=>{
+      view.setAttribute('aria-label',mxTr('Độ dày và kiểu LED Matrix','LED Matrix thickness and style'));
+      const template=document.createElement('template');template.innerHTML=markupview();
+      const copy=(live,fresh)=>{
+        if(live.nodeType===3){live.nodeValue=fresh.nodeValue;return;}
+        for(const key of ['aria-label','title','placeholder'])if(fresh.hasAttribute?.(key))live.setAttribute(key,fresh.getAttribute(key));
+        for(let i=0;i<fresh.childNodes.length;i++)if(live.childNodes[i])copy(live.childNodes[i],fresh.childNodes[i]);
+      };
+      for(let i=0;i<template.content.childNodes.length;i++)if(view.childNodes[i])copy(view.childNodes[i],template.content.childNodes[i]);
+      update();
+    });
     const get = id => view.querySelector('#' + id);
     const range = get('mx151WidthRange'), number = get('mx151WidthNumber'), output = get('mx151WidthValue');
     const scope = get('mx151WidthScope'), pixels = get('mx151Pixels'), ribbon = get('mx151Ribbon'), profile = get('mx151ClearProfile');
@@ -115,11 +129,11 @@
       for (const node of [range, number, pixels, ribbon, profile]) node.disabled = !s.count;
       scope.value = C.scope;
       range.style.setProperty('--mx151-fill', ((value-1)/499*100) + '%');
-      range.setAttribute('aria-valuetext', s.mixed ? s.min + ' đến ' + s.max + ' milimét; kéo để chỉnh đồng loạt' : value + ' milimét');
+      range.setAttribute('aria-valuetext', s.mixed ? s.min + mxTr(" đến "," to ") + s.max + mxTr(" milimét; kéo để chỉnh đồng loạt"," millimeters; drag to adjust all") : value + mxTr(" milimét"," millimeters"));
       output.textContent = !s.count ? '—' : s.mixed ? s.min + '–' + s.max + ' mm' : value + ' mm';
       pixels.setAttribute('aria-pressed', String(s.pixels)); ribbon.setAttribute('aria-pressed', String(s.ribbon));
       pixels.classList.toggle('active', s.pixels); ribbon.classList.toggle('active', s.ribbon);
-      get('mx151WidthStatus').textContent = !s.count ? 'Chọn một viền đã tạo để chỉnh.' : s.mixed ? s.count + ' viền khác độ dày · kéo để đặt chung.' : s.name + ' · ' + (s.pixels ? 'Hiện từng hạt LED' : s.ribbon ? 'Dải sáng liền' : 'Nhiều kiểu LED');
+      get('mx151WidthStatus').textContent = !s.count ? mxTr("Chọn một viền đã tạo để chỉnh.","Select a created outline to edit.") : s.mixed ? s.count + mxTr(" viền khác độ dày · kéo để đặt chung."," outlines have different widths · drag to set all.") : s.name + ' · ' + (s.pixels ? mxTr("Hiện từng hạt LED","Individual LED pixels") : s.ribbon ? mxTr("Dải sáng liền","Continuous light ribbon") : mxTr("Nhiều kiểu LED","Mixed LED styles"));
     }
     function bind(input) {
       const begin = () => { if (!input.disabled) C.begin(); };

@@ -7,49 +7,51 @@
  */
 (function (root, factory) {
   'use strict';
+  const mxTr=(vi,en)=>typeof window!=='undefined'&&typeof window.tr==='function'?window.tr(vi,en):vi;
   const api = factory();
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (root) root.Matrix143FX = api;
 })(typeof window !== 'undefined' ? window : typeof globalThis !== 'undefined' ? globalThis : null, function () {
   'use strict';
+  const mxTr=(vi,en)=>typeof window!=='undefined'&&typeof window.tr==='function'?window.tr(vi,en):vi;
   const TAU = Math.PI * 2;
   const limits = Object.freeze({ maxCount: 4096, maxRows: 64, maxCells: 65536 });
   const presets = Object.freeze([
-    { id: 'steady', name: 'Sáng liên tục', description: 'Giữ toàn bộ điểm LED sáng theo màu và độ sáng đã chọn.' },
-    { id: 'blink', name: 'Chớp đều', description: 'Bật và tắt đồng thời theo nhịp; tần số tối đa 3 Hz.' },
-    { id: 'strobe', name: 'Strobe · tối đa 3 Hz', description: 'Chớp ngắn theo beat với giới hạn 3 lần mỗi giây.' },
-    { id: 'pulse', name: 'Nhịp sáng mềm', description: 'Tăng và giảm sáng liên tục theo đường cong mềm.' },
-    { id: 'chase', name: 'Chạy xuôi theo viền', description: 'Một dải LED chạy vòng theo thứ tự các điểm trên viền.' },
-    { id: 'chaseReverse', name: 'Chạy ngược theo viền', description: 'Một dải LED chạy vòng ngược thứ tự các điểm trên viền.' },
-    { id: 'pingPong', name: 'Chạy qua lại', description: 'Cụm LED chạy tới hai đầu rồi đổi hướng, không nhảy đầu.' },
-    { id: 'comet', name: 'Sao chổi xuôi', description: 'Điểm sáng với đuôi giảm sáng chạy xuôi theo thứ tự điểm.' },
-    { id: 'cometReverse', name: 'Sao chổi ngược', description: 'Điểm sáng với đuôi giảm sáng chạy ngược theo thứ tự điểm.' },
-    { id: 'accumulate', name: 'Sáng dồn xuôi', description: 'Lấp đầy từng cụm theo chiều xuôi trong thời lượng cue, sau đó giữ sáng.' },
-    { id: 'accumulateReverse', name: 'Sáng dồn ngược', description: 'Lấp đầy từng cụm theo chiều ngược trong thời lượng cue, sau đó giữ sáng.' },
-    { id: 'centerOut', name: 'Từ tâm ra hai bên', description: 'Hai dải sáng đối xứng di chuyển từ tâm tới hai đầu.' },
-    { id: 'centerIn', name: 'Từ hai bên vào tâm', description: 'Hai dải sáng đối xứng di chuyển từ hai đầu về tâm.' },
-    { id: 'alternating', name: 'Cụm chẵn / lẻ', description: 'Luân phiên bật các cụm LED chẵn và lẻ.' },
-    { id: 'theaterChase', name: 'Chase ba nhịp', description: 'Mỗi cụm thứ ba sáng và chuyển lần lượt qua ba vị trí.' },
-    { id: 'twoColorChase', name: 'Chạy hai màu', description: 'Các dải màu chính và màu phụ chạy nối tiếp nhau.' },
-    { id: 'rainbowCycle', name: 'Đổi màu cầu vồng', description: 'Toàn dải đổi màu liên tục; các hàng có lệch màu nhẹ.' },
-    { id: 'rainbowChase', name: 'Cầu vồng chuyển động', description: 'Dải màu cầu vồng phân bố theo vị trí và chạy dọc LED.' },
-    { id: 'sparkle', name: 'Lấp lánh ngẫu nhiên', description: 'Các cụm sáng ngắn theo seed cố định; tua lại cho cùng kết quả.' },
-    { id: 'twinkle', name: 'Nhấp nhô ánh sao', description: 'Mỗi điểm LED lên xuống sáng mềm với pha riêng theo seed.' },
-    { id: 'wave', name: 'Sóng sáng', description: 'Sóng độ sáng chạy dọc dải và lệch pha giữa các hàng.' },
-    { id: 'colorWipe', name: 'Quét đổi màu', description: 'Màu chính thay dần màu phụ trong thời lượng cue rồi giữ lại.' },
-    { id: 'scan', name: 'Quét cột ma trận', description: 'Một cột sáng mềm quét đồng bộ qua toàn bộ các hàng.' },
-    { id: 'groupSequence', name: 'Sáng lần lượt theo cụm', description: 'Bật trọn từng cụm nối tiếp; độ lớn cụm quyết định số LED mỗi bước.' },
-    { id: 'blackout', name: 'Tắt toàn bộ', description: 'Đặt độ sáng của toàn bộ điểm LED về 0.' },
-    { id: 'dualComet', name: 'Hai sao chổi đối hướng', description: 'Hai sao chổi mang hai màu chạy ngược chiều; cụm chỉnh đầu sáng, đuôi chỉnh vệt mờ.' },
-    { id: 'meteorRain', name: 'Mưa sao băng', description: 'Các vệt sáng rơi lệch nhịp theo seed; ma trận rơi qua các hàng, dải đơn chạy dọc viền.' },
-    { id: 'fire', name: 'Lửa chuyển động', description: 'Mảng sáng hai màu dao động mềm theo seed, nóng ở hàng dưới và dịu dần lên trên.' },
-    { id: 'waterRipple', name: 'Gợn sóng mặt nước', description: 'Nhiều vòng sóng hai màu lan từ tâm; cụm chỉnh bước sóng, đuôi chỉnh độ lan xa.' },
-    { id: 'diagonalChase', name: 'Vệt sáng chéo', description: 'Các vệt có đuôi mềm chạy chéo qua các hàng; dải đơn hiển thị chuỗi vệt nối tiếp.' },
-    { id: 'checkerboard', name: 'Bàn cờ đổi màu', description: 'Các ô LED xen kẽ giữa hai màu và đổi sáng mềm theo nhịp, lệch ô giữa các hàng.' },
-    { id: 'zipper', name: 'Khóa kéo hai phía', description: 'Hai màu lấp đầy các răng LED xen kẽ từ hai đầu rồi mở ra; đuôi chỉnh độ mềm.' },
-    { id: 'breathingGradient', name: 'Dải màu thở', description: 'Dải chuyển sắc hai màu trôi chậm trong nhịp sáng lên xuống; cụm chỉnh độ rộng dải màu.' },
-    { id: 'bouncingBalls', name: 'Bóng sáng nảy', description: 'Các bóng sáng hai màu nảy theo quỹ đạo cong, lệch nhịp theo seed và không nhảy qua đầu viền.' },
-    { id: 'confetti', name: 'Pháo giấy hai màu', description: 'Các cụm màu xuất hiện theo seed rồi mờ dần; cụm chỉnh kích thước, đuôi chỉnh thời gian lưu sáng.' }
+    { id: 'steady', name: 'Sáng liên tục', get label(){return mxTr(this.name,"Steady light");}, get description(){return mxTr("Giữ toàn bộ điểm LED sáng theo màu và độ sáng đã chọn.","Keep all LEDs lit with the selected color and brightness.");} },
+    { id: 'blink', name: 'Chớp đều', get label(){return mxTr(this.name,"Blink");}, get description(){return mxTr("Bật và tắt đồng thời theo nhịp; tần số tối đa 3 Hz.","Switch all LEDs on and off in time; up to 3 Hz.");} },
+    { id: 'strobe', name: 'Strobe · tối đa 3 Hz', get label(){return mxTr(this.name,"Strobe · up to 3 Hz");}, get description(){return mxTr("Chớp ngắn theo beat với giới hạn 3 lần mỗi giây.","Short beat flashes limited to 3 per second.");} },
+    { id: 'pulse', name: 'Nhịp sáng mềm', get label(){return mxTr(this.name,"Soft pulse");}, get description(){return mxTr("Tăng và giảm sáng liên tục theo đường cong mềm.","Smoothly increase and decrease brightness.");} },
+    { id: 'chase', name: 'Chạy xuôi theo viền', get label(){return mxTr(this.name,"Forward chase");}, get description(){return mxTr("Một dải LED chạy vòng theo thứ tự các điểm trên viền.","An LED band loops forward along the outline points.");} },
+    { id: 'chaseReverse', name: 'Chạy ngược theo viền', get label(){return mxTr(this.name,"Reverse chase");}, get description(){return mxTr("Một dải LED chạy vòng ngược thứ tự các điểm trên viền.","An LED band loops backward along the outline points.");} },
+    { id: 'pingPong', name: 'Chạy qua lại', get label(){return mxTr(this.name,"Ping-pong");}, get description(){return mxTr("Cụm LED chạy tới hai đầu rồi đổi hướng, không nhảy đầu.","LED groups travel between both ends and reverse without wrapping.");} },
+    { id: 'comet', name: 'Sao chổi xuôi', get label(){return mxTr(this.name,"Forward comet");}, get description(){return mxTr("Điểm sáng với đuôi giảm sáng chạy xuôi theo thứ tự điểm.","A bright point with a fading tail moves forward along the points.");} },
+    { id: 'cometReverse', name: 'Sao chổi ngược', get label(){return mxTr(this.name,"Reverse comet");}, get description(){return mxTr("Điểm sáng với đuôi giảm sáng chạy ngược theo thứ tự điểm.","A bright point with a fading tail moves backward along the points.");} },
+    { id: 'accumulate', name: 'Sáng dồn xuôi', get label(){return mxTr(this.name,"Forward accumulation");}, get description(){return mxTr("Lấp đầy từng cụm theo chiều xuôi trong thời lượng cue, sau đó giữ sáng.","Fill groups forward during the cue, then hold.");} },
+    { id: 'accumulateReverse', name: 'Sáng dồn ngược', get label(){return mxTr(this.name,"Reverse accumulation");}, get description(){return mxTr("Lấp đầy từng cụm theo chiều ngược trong thời lượng cue, sau đó giữ sáng.","Fill groups backward during the cue, then hold.");} },
+    { id: 'centerOut', name: 'Từ tâm ra hai bên', get label(){return mxTr(this.name,"Center out");}, get description(){return mxTr("Hai dải sáng đối xứng di chuyển từ tâm tới hai đầu.","Two symmetric light bands move from the center to both ends.");} },
+    { id: 'centerIn', name: 'Từ hai bên vào tâm', get label(){return mxTr(this.name,"Center in");}, get description(){return mxTr("Hai dải sáng đối xứng di chuyển từ hai đầu về tâm.","Two symmetric light bands move from both ends to the center.");} },
+    { id: 'alternating', name: 'Cụm chẵn / lẻ', get label(){return mxTr(this.name,"Even / odd groups");}, get description(){return mxTr("Luân phiên bật các cụm LED chẵn và lẻ.","Alternate even and odd LED groups.");} },
+    { id: 'theaterChase', name: 'Chase ba nhịp', get label(){return mxTr(this.name,"Three-step chase");}, get description(){return mxTr("Mỗi cụm thứ ba sáng và chuyển lần lượt qua ba vị trí.","Light every third group and cycle through three positions.");} },
+    { id: 'twoColorChase', name: 'Chạy hai màu', get label(){return mxTr(this.name,"Two-color chase");}, get description(){return mxTr("Các dải màu chính và màu phụ chạy nối tiếp nhau.","Primary and secondary color bands chase in sequence.");} },
+    { id: 'rainbowCycle', name: 'Đổi màu cầu vồng', get label(){return mxTr(this.name,"Rainbow cycle");}, get description(){return mxTr("Toàn dải đổi màu liên tục; các hàng có lệch màu nhẹ.","Cycle colors across the strip with slight offsets between rows.");} },
+    { id: 'rainbowChase', name: 'Cầu vồng chuyển động', get label(){return mxTr(this.name,"Rainbow chase");}, get description(){return mxTr("Dải màu cầu vồng phân bố theo vị trí và chạy dọc LED.","A rainbow spreads by position and moves along the LEDs.");} },
+    { id: 'sparkle', name: 'Lấp lánh ngẫu nhiên', get label(){return mxTr(this.name,"Random sparkle");}, get description(){return mxTr("Các cụm sáng ngắn theo seed cố định; tua lại cho cùng kết quả.","Short seeded sparkles; seeking back reproduces the same result.");} },
+    { id: 'twinkle', name: 'Nhấp nhô ánh sao', get label(){return mxTr(this.name,"Star twinkle");}, get description(){return mxTr("Mỗi điểm LED lên xuống sáng mềm với pha riêng theo seed.","Each LED fades smoothly with its own seeded phase.");} },
+    { id: 'wave', name: 'Sóng sáng', get label(){return mxTr(this.name,"Light wave");}, get description(){return mxTr("Sóng độ sáng chạy dọc dải và lệch pha giữa các hàng.","Brightness waves travel along the strip with phase offsets between rows.");} },
+    { id: 'colorWipe', name: 'Quét đổi màu', get label(){return mxTr(this.name,"Color wipe");}, get description(){return mxTr("Màu chính thay dần màu phụ trong thời lượng cue rồi giữ lại.","Primary color gradually replaces secondary color during the cue, then holds.");} },
+    { id: 'scan', name: 'Quét cột ma trận', get label(){return mxTr(this.name,"Matrix column scan");}, get description(){return mxTr("Một cột sáng mềm quét đồng bộ qua toàn bộ các hàng.","A soft light column scans all rows together.");} },
+    { id: 'groupSequence', name: 'Sáng lần lượt theo cụm', get label(){return mxTr(this.name,"Group sequence");}, get description(){return mxTr("Bật trọn từng cụm nối tiếp; độ lớn cụm quyết định số LED mỗi bước.","Light whole groups in sequence; group size sets LEDs per step.");} },
+    { id: 'blackout', name: 'Tắt toàn bộ', get label(){return mxTr(this.name,"Blackout");}, get description(){return mxTr("Đặt độ sáng của toàn bộ điểm LED về 0.","Set all LED brightness to 0.");} },
+    { id: 'dualComet', name: 'Hai sao chổi đối hướng', get label(){return mxTr(this.name,"Opposing comets");}, get description(){return mxTr("Hai sao chổi mang hai màu chạy ngược chiều; cụm chỉnh đầu sáng, đuôi chỉnh vệt mờ.","Two colored comets move in opposite directions; group sets the head, tail sets the fading trail.");} },
+    { id: 'meteorRain', name: 'Mưa sao băng', get label(){return mxTr(this.name,"Meteor rain");}, get description(){return mxTr("Các vệt sáng rơi lệch nhịp theo seed; ma trận rơi qua các hàng, dải đơn chạy dọc viền.","Seeded light trails fall at different times; across matrix rows or along a single outline strip.");} },
+    { id: 'fire', name: 'Lửa chuyển động', get label(){return mxTr(this.name,"Moving fire");}, get description(){return mxTr("Mảng sáng hai màu dao động mềm theo seed, nóng ở hàng dưới và dịu dần lên trên.","Seeded two-color light flickers smoothly, hotter on lower rows and softer above.");} },
+    { id: 'waterRipple', name: 'Gợn sóng mặt nước', get label(){return mxTr(this.name,"Water ripple");}, get description(){return mxTr("Nhiều vòng sóng hai màu lan từ tâm; cụm chỉnh bước sóng, đuôi chỉnh độ lan xa.","Two-color ripples spread from the center; group sets wavelength, tail sets reach.");} },
+    { id: 'diagonalChase', name: 'Vệt sáng chéo', get label(){return mxTr(this.name,"Diagonal trails");}, get description(){return mxTr("Các vệt có đuôi mềm chạy chéo qua các hàng; dải đơn hiển thị chuỗi vệt nối tiếp.","Soft-tailed trails run diagonally across rows; a single strip shows successive trails.");} },
+    { id: 'checkerboard', name: 'Bàn cờ đổi màu', get label(){return mxTr(this.name,"Color checkerboard");}, get description(){return mxTr("Các ô LED xen kẽ giữa hai màu và đổi sáng mềm theo nhịp, lệch ô giữa các hàng.","LED cells alternate between two colors and pulse smoothly, offset between rows.");} },
+    { id: 'zipper', name: 'Khóa kéo hai phía', get label(){return mxTr(this.name,"Two-sided zipper");}, get description(){return mxTr("Hai màu lấp đầy các răng LED xen kẽ từ hai đầu rồi mở ra; đuôi chỉnh độ mềm.","Two colors fill alternating LED teeth from both ends, then open; tail sets softness.");} },
+    { id: 'breathingGradient', name: 'Dải màu thở', get label(){return mxTr(this.name,"Breathing gradient");}, get description(){return mxTr("Dải chuyển sắc hai màu trôi chậm trong nhịp sáng lên xuống; cụm chỉnh độ rộng dải màu.","A two-color gradient drifts through a breathing pulse; group sets color band width.");} },
+    { id: 'bouncingBalls', name: 'Bóng sáng nảy', get label(){return mxTr(this.name,"Bouncing lights");}, get description(){return mxTr("Các bóng sáng hai màu nảy theo quỹ đạo cong, lệch nhịp theo seed và không nhảy qua đầu viền.","Two-color lights bounce on curved paths with seeded timing, without wrapping past outline ends.");} },
+    { id: 'confetti', name: 'Pháo giấy hai màu', get label(){return mxTr(this.name,"Two-color confetti");}, get description(){return mxTr("Các cụm màu xuất hiện theo seed rồi mờ dần; cụm chỉnh kích thước, đuôi chỉnh thời gian lưu sáng.","Seeded color groups appear and fade; group sets size, tail sets persistence.");} }
   ].map(Object.freeze));
   const presetIds = new Set(presets.map(item => item.id));
 

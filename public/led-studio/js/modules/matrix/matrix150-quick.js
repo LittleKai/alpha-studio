@@ -9,6 +9,7 @@
   if(root)root.Matrix150Quick=api;
 })(typeof window!=='undefined'?window:typeof globalThis!=='undefined'?globalThis:this,function(H){
   'use strict';
+  const mxTr=(vi,en)=>typeof window!=='undefined'&&typeof window.tr==='function'?window.tr(vi,en):vi;
   const cmp=(a,b)=>a<b?-1:a>b?1:0;
   const integer=(v,fallback,min,max)=>Number.isFinite(+v)?Math.max(min,Math.min(max,Math.floor(+v))):fallback;
   const validId=v=>typeof v==='number'&&Number.isSafeInteger(v)&&v>=0;
@@ -31,7 +32,7 @@
     return (a>>>0).toString(16).padStart(8,'0')+(b>>>0).toString(16).padStart(8,'0');
   }
   function plan(meshes,options={}){
-    if(!Array.isArray(meshes))throw TypeError('Danh sách object cần là một mảng.');
+    if(!Array.isArray(meshes))throw TypeError(mxTr("Danh sách object cần là một mảng.","Object list must be an array."));
     options=options&&typeof options==='object'?options:{};
     const maxSources=integer(options.maxSources??32,32,1,32),maxTriangles=integer(options.maxTriangles??300000,300000,1,3000000);
     const records=[],byKey=new Map(),warnings=[];
@@ -40,23 +41,23 @@
       if(!mesh||typeof mesh!=='object'){stats.invalidMeshes++;continue;}
       if(mesh.hidden||mesh.visible===false){stats.hiddenMeshes++;continue;}stats.visibleMeshes++;
       const key=keyFor(mesh);if(key===null){stats.invalidMeshes++;continue;}
-      if(byKey.has(key))throw Error('Trùng mã object nguồn: '+key+'. Không thể lập phạm vi quét duy nhất.');
+      if(byKey.has(key))throw Error(mxTr("Trùng mã object nguồn: ","Duplicate source object ID: ")+key+mxTr(". Không thể lập phạm vi quét duy nhất.",". Cannot build a unique scan scope."));
       const triangles=triangleCount(mesh),record={key,mesh,triangles,ids:sourceIds(mesh),label:typeof mesh.name==='string'&&mesh.name?mesh.name:'Object '+String(mesh.id??key)};
       if(triangles===null)stats.unknownTriangleMeshes++;else stats.estimatedTriangles+=triangles;
       records.push(record);byKey.set(key,record);
     }
     records.sort((a,b)=>cmp(a.key,b.key));stats.meshCount=records.length;
-    if(!records.length)return {scopes:[],stats,warnings:stats.invalidMeshes?[stats.invalidMeshes+' mục thiếu object hoặc mã nguồn hợp lệ.']:[]};
+    if(!records.length)return {scopes:[],stats,warnings:stats.invalidMeshes?[stats.invalidMeshes+mxTr(" mục thiếu object hoặc mã nguồn hợp lệ."," items lack a valid object or source ID.")]:[]};
     let hierarchy=options.hierarchy;
-    if(!hierarchy){if(!H?.build)throw Error('Chưa nạp bộ đọc nhóm object Matrix149Hierarchy.');hierarchy=H.build(records.map(r=>r.mesh));}
-    const root=hierarchy.root||hierarchy.tree;if(!root||!Array.isArray(root.meshKeys)||!Array.isArray(root.children))throw Error('Cây nhóm object không hợp lệ.');
+    if(!hierarchy){if(!H?.build)throw Error(mxTr("Chưa nạp bộ đọc nhóm object Matrix149Hierarchy.","Matrix149Hierarchy object group reader is not loaded."));hierarchy=H.build(records.map(r=>r.mesh));}
+    const root=hierarchy.root||hierarchy.tree;if(!root||!Array.isArray(root.meshKeys)||!Array.isArray(root.children))throw Error(mxTr("Cây nhóm object không hợp lệ.","Invalid object group hierarchy."));
     stats.hierarchyMode=hierarchy.stats?.mode||'unknown';
     const expected=records.map(r=>r.key),actual=root.meshKeys.slice().sort(cmp);
-    if(actual.length!==expected.length||actual.some((key,i)=>typeof key!=='string'||key!==expected[i]))throw Error('Cây nhóm không khớp các object đang hiện. Lập lại phạm vi quét.');
+    if(actual.length!==expected.length||actual.some((key,i)=>typeof key!=='string'||key!==expected[i]))throw Error(mxTr("Cây nhóm không khớp các object đang hiện. Lập lại phạm vi quét.","Group hierarchy does not match visible objects. Rebuild the scan scope."));
     const visited=new Set(),stack=[root];
-    while(stack.length){const node=stack.pop();if(!node||visited.has(node)||!Array.isArray(node.meshKeys)||!Array.isArray(node.children))throw Error('Cây nhóm bị lặp hoặc không hợp lệ.');visited.add(node);
-      const keys=node.meshKeys.slice().sort(cmp);if(new Set(keys).size!==keys.length||keys.some(k=>typeof k!=='string'||!byKey.has(k)))throw Error('Mã nguồn trong cây nhóm không hợp lệ.');
-      if(node.children.length){const children=node.children.flatMap(n=>Array.isArray(n?.meshKeys)?n.meshKeys:[]).sort(cmp);if(children.length!==keys.length||children.some((k,i)=>k!==keys[i]))throw Error('Các nhóm con phải chia nguồn riêng biệt và đầy đủ.');stack.push(...node.children);}
+    while(stack.length){const node=stack.pop();if(!node||visited.has(node)||!Array.isArray(node.meshKeys)||!Array.isArray(node.children))throw Error(mxTr("Cây nhóm bị lặp hoặc không hợp lệ.","Group hierarchy contains cycles or is invalid."));visited.add(node);
+      const keys=node.meshKeys.slice().sort(cmp);if(new Set(keys).size!==keys.length||keys.some(k=>typeof k!=='string'||!byKey.has(k)))throw Error(mxTr("Mã nguồn trong cây nhóm không hợp lệ.","Invalid source ID in group hierarchy."));
+      if(node.children.length){const children=node.children.flatMap(n=>Array.isArray(n?.meshKeys)?n.meshKeys:[]).sort(cmp);if(children.length!==keys.length||children.some((k,i)=>k!==keys[i]))throw Error(mxTr("Các nhóm con phải chia nguồn riêng biệt và đầy đủ.","Child groups must partition all sources without overlap."));stack.push(...node.children);}
     }
     // H.build removes a model-wide unary ancestry. Recover it only when every
     // visible record has validated numeric ancestry, so a one-block model still
@@ -72,7 +73,7 @@
     const scopes=[],claimed=new Set();
     function add(keys,label){
       keys=keys.slice().sort(cmp);if(!keys.length)return;
-      if(keys.length>maxSources||keys.some(k=>claimed.has(k)))throw Error('Phạm vi quét bị trùng nguồn hoặc vượt giới hạn.');
+      if(keys.length>maxSources||keys.some(k=>claimed.has(k)))throw Error(mxTr("Phạm vi quét bị trùng nguồn hoặc vượt giới hạn.","Scan scope has duplicate sources or exceeds limits."));
       for(const key of keys)claimed.add(key);
       const scope={id:'mx150_scope_'+hash(keys),label:label||byKey.get(keys[0]).label,meshKeys:keys};scopes.push(scope);
       if(keys.length===1){stats.singletonScopes++;if((byKey.get(keys[0]).triangles??0)>maxTriangles)stats.oversizedScopes++;}else stats.sourceScopes++;
@@ -90,15 +91,15 @@
       for(const key of keys)add([key],byKey.get(key).label);
     }
     visit(start);
-    if(claimed.size!==records.length)throw Error('Phạm vi quét chưa bao phủ đủ nguồn.');
+    if(claimed.size!==records.length)throw Error(mxTr("Phạm vi quét chưa bao phủ đủ nguồn.","Scan scope does not cover all sources."));
     scopes.sort((a,b)=>cmp(a.meshKeys[0],b.meshKeys[0])||cmp(a.id,b.id));
     const ids=new Map();for(const scope of scopes){if(!ids.has(scope.id))ids.set(scope.id,[]);ids.get(scope.id).push(scope);}
     for(const same of ids.values())if(same.length>1)same.forEach((scope,i)=>{scope.id+='_'+i;});
     stats.scopeCount=scopes.length;
-    if(stats.invalidMeshes)warnings.push(stats.invalidMeshes+' mục thiếu object hoặc mã nguồn hợp lệ, chưa thể quét.');
-    if(hierarchy.stats?.invalidHierarchyMeshes)warnings.push(hierarchy.stats.invalidHierarchyMeshes+' object có quan hệ nhóm không nhất quán; các nguồn đó được quét riêng.');
-    if(stats.oversizedScopes)warnings.push(stats.oversizedScopes+' object riêng lẻ vượt '+maxTriangles+' tam giác; vẫn có trong danh sách quét để báo kết quả hoặc giới hạn rõ ràng.');
-    if(stats.unknownTriangleMeshes)warnings.push(stats.unknownTriangleMeshes+' object chưa đếm được tam giác; quét riêng để không vượt ngân sách của cả nhóm.');
+    if(stats.invalidMeshes)warnings.push(stats.invalidMeshes+mxTr(" mục thiếu object hoặc mã nguồn hợp lệ, chưa thể quét."," items lack valid objects or source IDs and cannot be scanned."));
+    if(hierarchy.stats?.invalidHierarchyMeshes)warnings.push(hierarchy.stats.invalidHierarchyMeshes+mxTr(" object có quan hệ nhóm không nhất quán; các nguồn đó được quét riêng."," objects have inconsistent group relationships; those sources are scanned individually."));
+    if(stats.oversizedScopes)warnings.push(stats.oversizedScopes+mxTr(" object riêng lẻ vượt "," individual objects exceed ")+maxTriangles+mxTr(" tam giác; vẫn có trong danh sách quét để báo kết quả hoặc giới hạn rõ ràng."," triangles; retained in the scan list to report results or explicit limits."));
+    if(stats.unknownTriangleMeshes)warnings.push(stats.unknownTriangleMeshes+mxTr(" object chưa đếm được tam giác; quét riêng để không vượt ngân sách của cả nhóm."," objects have unknown triangle counts; scanned individually to stay within the group budget."));
     return {scopes,stats,warnings};
   }
   const finitePoint=p=>(Array.isArray(p)||ArrayBuffer.isView(p))&&p.length===3&&Number.isFinite(p[0])&&Number.isFinite(p[1])&&Number.isFinite(p[2]);
@@ -117,8 +118,8 @@
   // Input must come from ONE extraction: componentIndex is local to that call.
   // Return original path objects unchanged so contributor and plane metadata stay intact.
   function chooseContours(paths,mode='main'){
-    if(!Array.isArray(paths))throw TypeError('Danh sách viền cần là một mảng.');
-    if(!['main','outer','all'].includes(mode))throw Error('Phạm vi cạnh cần là main, outer hoặc all.');
+    if(!Array.isArray(paths))throw TypeError(mxTr("Danh sách viền cần là một mảng.","Outline list must be an array."));
+    if(!['main','outer','all'].includes(mode))throw Error(mxTr("Phạm vi cạnh cần là main, outer hoặc all.","Edge scope must be main, outer or all."));
     const valid=paths.map(pathMetrics).filter(Boolean),warnings=[],chosen=[],byComponent=new Map();
     if(mode==='all')chosen.push(...valid);
     else if(mode==='outer')chosen.push(...valid.filter(e=>!e.hole));
@@ -126,8 +127,8 @@
     if(mode==='main')chosen.push(...byComponent.values());chosen.sort(priority);
     const holes=valid.filter(e=>e.hole).length,selectedHoles=chosen.filter(e=>e.hole).length,unknown=valid.filter(e=>e.component===null).length;
     const stats={mode,inputPaths:paths.length,validPaths:valid.length,selectedPaths:chosen.length,omittedPaths:paths.length-chosen.length,invalidPaths:paths.length-valid.length,omittedHoles:holes-selectedHoles,omittedOuter:valid.length-holes-(chosen.length-selectedHoles),components:new Set(valid.filter(e=>e.component!==null).map(e=>e.component)).size+unknown,unknownComponentPaths:unknown};
-    if(stats.invalidPaths)warnings.push(stats.invalidPaths+' viền có điểm hoặc độ dài không hợp lệ, chưa thể dùng.');
-    if(unknown&&mode==='main')warnings.push(unknown+' viền chưa có mã mảng liên thông; giữ riêng các bao ngoài thay vì gộp nhầm.');
+    if(stats.invalidPaths)warnings.push(stats.invalidPaths+mxTr(" viền có điểm hoặc độ dài không hợp lệ, chưa thể dùng."," outlines have invalid points or lengths and cannot be used."));
+    if(unknown&&mode==='main')warnings.push(unknown+mxTr(" viền chưa có mã mảng liên thông; giữ riêng các bao ngoài thay vì gộp nhầm."," outlines lack connected component IDs; outer boundaries remain separate to avoid incorrect merging."));
     return {paths:chosen.map(e=>e.path),stats,warnings};
   }
   return {version:'15.0.0',plan,chooseContours};

@@ -3,6 +3,7 @@
    Appearance changes deliberately do not invalidate contour geometry. */
 (function (root, factory) {
   'use strict';
+  const mxTr=(vi,en)=>typeof window!=='undefined'&&typeof window.tr==='function'?window.tr(vi,en):vi;
   const api = factory();
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (root) {
@@ -11,10 +12,11 @@
   }
 })(typeof window === 'undefined' ? null : window, function () {
   'use strict';
+  const mxTr=(vi,en)=>typeof window!=='undefined'&&typeof window.tr==='function'?window.tr(vi,en):vi;
   const unit = (value, fallback = 1) => Number.isFinite(value) ? Math.max(0, Math.min(1, value)) : fallback;
   const percent = value => String(Math.round(unit(value) * 1000) / 10);
   const inputLevel = value => {
-    if (!Number.isFinite(value)) throw new TypeError('Độ sáng cần là một số hữu hạn.');
+    if (!Number.isFinite(value)) throw new TypeError(mxTr("Độ sáng cần là một số hữu hạn.","Brightness must be a finite number."));
     return unit(value);
   };
   const gestureHosts = new WeakMap();
@@ -78,7 +80,7 @@
       return changed;
     }
     function begin(kind = 'master', target = scope) {
-      if (kind !== 'master' && kind !== 'target') throw new TypeError('Không tìm thấy điều khiển độ sáng.');
+      if (kind !== 'master' && kind !== 'target') throw new TypeError(mxTr("Không tìm thấy điều khiển độ sáng.","Brightness control not found."));
       if (edit?.kind === kind && (kind === 'master' || edit.target === target)) return;
       if (edit) end();
       edit = { kind, target, ids: kind === 'target' ? resolve(target).map(path => path.id) : [],
@@ -141,21 +143,33 @@
     node.id = 'mx144Brightness';
     node.className = 'mx144-brightness';
     node.setAttribute('role', 'region');
-    node.setAttribute('aria-label', 'Độ sáng LED Matrix');
-    node.innerHTML = '<div class="mx144-brightness-title"><strong>CÂN MỨC SÁNG CỦA VIỀN</strong><span>0% = tắt</span></div>'
-      + '<div class="mx144-brightness-label"><label for="mx144MasterRange">Tổng viền · Master</label><output id="mx144MasterValue" for="mx144MasterRange mx144MasterNumber"></output></div>'
-      + '<div class="mx144-brightness-row"><input id="mx144MasterRange" type="range" min="0" max="100" step="0.1" aria-label="Độ sáng tổng Matrix, phần trăm"><div class="mx144-percent"><input id="mx144MasterNumber" type="number" min="0" max="100" step="0.1" inputmode="decimal" aria-label="Nhập độ sáng tổng Matrix, phần trăm"><span aria-hidden="true">%</span></div></div>'
-      + '<div class="mx144-brightness-scope"><label for="mx144BrightnessTarget">Chỉnh viền / nhóm</label><select id="mx144BrightnessTarget" aria-label="Đích chỉnh độ sáng"></select></div>'
-      + '<div class="mx144-brightness-row"><input id="mx144TargetRange" type="range" min="0" max="100" step="0.1" aria-label="Độ sáng viền hoặc nhóm, phần trăm"><div class="mx144-percent"><input id="mx144TargetNumber" type="number" min="0" max="100" step="0.1" inputmode="decimal" aria-label="Nhập độ sáng viền hoặc nhóm, phần trăm"><span aria-hidden="true">%</span></div></div>'
+    node.setAttribute('aria-label', mxTr("Độ sáng LED Matrix","LED Matrix brightness"));
+    const markupnode=()=>("<div class=\"mx144-brightness-title\"><strong>"+mxTr("Cân mức sáng của viền","Balance outline brightness")+"</strong><span>"+mxTr("0% = tắt","0% = off")+"</span></div>")
+      + ("<div class=\"mx144-brightness-label\"><label for=\"mx144MasterRange\">"+mxTr("Tổng viền · Master","All outlines · Master")+"</label><output id=\"mx144MasterValue\" for=\"mx144MasterRange mx144MasterNumber\"></output></div>")
+      + ("<div class=\"mx144-brightness-row\"><input id=\"mx144MasterRange\" type=\"range\" min=\"0\" max=\"100\" step=\"0.1\" aria-label=\""+mxTr("Độ sáng tổng Matrix, phần trăm","Master Matrix brightness, percent")+"\"><div class=\"mx144-percent\"><input id=\"mx144MasterNumber\" type=\"number\" min=\"0\" max=\"100\" step=\"0.1\" inputmode=\"decimal\" aria-label=\""+mxTr("Nhập độ sáng tổng Matrix, phần trăm","Enter master Matrix brightness, percent")+"\"><span aria-hidden=\"true\">%</span></div></div>")
+      + ("<div class=\"mx144-brightness-scope\"><label for=\"mx144BrightnessTarget\">"+mxTr("Chỉnh viền / nhóm","Adjust outline / group")+"</label><select id=\"mx144BrightnessTarget\" aria-label=\""+mxTr("Đích chỉnh độ sáng","Brightness target")+"\"></select></div>")
+      + ("<div class=\"mx144-brightness-row\"><input id=\"mx144TargetRange\" type=\"range\" min=\"0\" max=\"100\" step=\"0.1\" aria-label=\""+mxTr("Độ sáng viền hoặc nhóm, phần trăm","Outline or group brightness, percent")+"\"><div class=\"mx144-percent\"><input id=\"mx144TargetNumber\" type=\"number\" min=\"0\" max=\"100\" step=\"0.1\" inputmode=\"decimal\" aria-label=\""+mxTr("Nhập độ sáng viền hoặc nhóm, phần trăm","Enter outline or group brightness, percent")+"\"><span aria-hidden=\"true\">%</span></div></div>")
       + '<p id="mx144BrightnessStatus" class="mx144-brightness-status" role="status"></p>';
+    node.innerHTML=markupnode();
+    root?.addEventListener?.('ledstudio:locale',()=>{
+      node.setAttribute('aria-label',mxTr('Độ sáng LED Matrix','LED Matrix brightness'));
+      const template=document.createElement('template');template.innerHTML=markupnode();
+      const copy=(live,fresh)=>{
+        if(live.nodeType===3){live.nodeValue=fresh.nodeValue;return;}
+        for(const key of ['aria-label','title','placeholder'])if(fresh.hasAttribute?.(key))live.setAttribute(key,fresh.getAttribute(key));
+        for(let i=0;i<fresh.childNodes.length;i++)if(live.childNodes[i])copy(live.childNodes[i],fresh.childNodes[i]);
+      };
+      for(let i=0;i<template.content.childNodes.length;i++)if(node.childNodes[i])copy(node.childNodes[i],template.content.childNodes[i]);
+      update();
+    });
     const get = id => node.querySelector('#' + id);
     const masterRange = get('mx144MasterRange'), masterNumber = get('mx144MasterNumber'), masterValue = get('mx144MasterValue');
     const targetRange = get('mx144TargetRange'), targetNumber = get('mx144TargetNumber'), targetSelect = get('mx144BrightnessTarget'), output = get('mx144BrightnessStatus');
     let choiceKey = '';
     function choices() {
       const selected = X.paths.find(path => path.id === X.selected);
-      return [['selected', selected ? 'Viền đang chọn · ' + selected.name : 'Viền đang chọn · chưa có'],
-        ['all', 'Tất cả viền'], ...Array.from(new Set(X.paths.map(path => path.group))).map(group => ['group:' + group, 'Nhóm · ' + (group || '(chưa đặt tên)')])];
+      return [['selected', selected ? mxTr("Viền đang chọn · ","Selected outline · ") + selected.name : mxTr("Viền đang chọn · chưa có","Selected outline · none")],
+        ['all', mxTr("Tất cả viền","All outlines")], ...Array.from(new Set(X.paths.map(path => path.group))).map(group => ['group:' + group, mxTr("Nhóm · ","Group · ") + (group || mxTr("(chưa đặt tên)","(unnamed)"))])];
     }
     function value(input, next, source) { if (input !== source) input.value = next; }
     function update(source = null) {
@@ -169,16 +183,16 @@
       const master = percent(X.masterBrightness), state = B.status();
       value(masterRange, master, source); value(masterNumber, master, source); masterValue.textContent = master + '%';
       fillTrack(masterRange, X.masterBrightness);
-      masterRange.setAttribute('aria-valuetext', master + ' phần trăm');
+      masterRange.setAttribute('aria-valuetext', master + mxTr(" phần trăm"," percent"));
       value(targetRange, percent(state.value), source);
       fillTrack(targetRange, state.value);
       value(targetNumber, state.count && !state.mixed ? percent(state.value) : '', source);
       targetNumber.placeholder = state.count ? percent(state.min) + '–' + percent(state.max) : '—';
       targetRange.disabled = targetNumber.disabled = state.count === 0;
       const levels = state.mixed ? percent(state.min) + '–' + percent(state.max) + '%' : percent(state.value) + '%';
-      targetRange.setAttribute('aria-valuetext', state.count ? levels + (state.mixed ? ', các viền khác mức sáng' : '') : 'Chưa có viền');
-      output.textContent = !state.count ? 'Chọn hoặc tạo viền để chỉnh độ sáng.' : state.count + ' viền · hiện ' + levels +
-        (state.mixed ? ' · kéo để đặt cùng mức.' : '') + (unit(X.masterBrightness) === 0 ? ' Tổng 0%: Matrix đang tắt.' : '');
+      targetRange.setAttribute('aria-valuetext', state.count ? levels + (state.mixed ? mxTr(", các viền khác mức sáng",", outlines have different brightness levels") : '') : mxTr("Chưa có viền","No outlines"));
+      output.textContent = !state.count ? mxTr("Chọn hoặc tạo viền để chỉnh độ sáng.","Select or create an outline to adjust brightness.") : state.count + mxTr(" viền · hiện "," outlines · current ") + levels +
+        (state.mixed ? mxTr(" · kéo để đặt cùng mức."," · drag to set the same level.") : '') + (unit(X.masterBrightness) === 0 ? mxTr(" Tổng 0%: Matrix đang tắt."," Master 0%: Matrix is off.") : '');
       node.classList.toggle('is-blackout', unit(X.masterBrightness) === 0);
     }
     for (const [input, kind] of [[masterRange, 'master'], [masterNumber, 'master'], [targetRange, 'target'], [targetNumber, 'target']]) bindInput(input, kind, B, update);

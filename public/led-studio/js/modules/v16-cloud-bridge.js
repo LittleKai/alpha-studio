@@ -81,6 +81,7 @@
   };
 
   function t16(viText, enText) {
+    if (window.tr) return window.tr(viText, enText);
     return state.locale === 'en' ? enText : viText;
   }
 
@@ -88,40 +89,40 @@
     ['#helpBtn', 'Hướng dẫn', 'Guide'],
     ['#loadProject', 'Mở dự án', 'Open Project'],
     ['#saveProject', 'Lưu dự án', 'Save Project'],
-    ['#presentBtn', '▷ Trình diễn', '▷ Present'],
+    ['#presentBtn', 'Trình diễn', 'Present'],
     ['#recovery142OpenBtn', 'Dự phòng', 'Recovery'],
-    ['#cloud16SaveBtn', '☁ Lưu Drive', '☁ Save to Drive'],
-    ['#cloud16OpenBtn', '📂 Mở Drive', '📂 Open Drive'],
-    ['#cloud16PresetsBtn', '📦 Kho Preset', '📦 Presets'],
-    ['#cloud16ShareBtn', '🔗 Link duyệt 3D', '🔗 3D Review Link'],
-    ['.workflow [data-step="stage"] b', 'SÂN KHẤU 3D', '3D STAGE'],
+    ['#cloud16SaveBtn', 'Lưu Drive', 'Save to Drive'],
+    ['#cloud16OpenBtn', 'Mở Drive', 'Open Drive'],
+    ['#cloud16PresetsBtn', 'Kho Preset', 'Presets'],
+    ['#cloud16ShareBtn', 'Link duyệt 3D', '3D Review Link'],
+    ['.workflow [data-step="stage"] b', 'Sân khấu 3D', '3D STAGE'],
     ['.workflow [data-step="mapping"] b', 'LED & VIDEO', 'LED & VIDEO'],
-    ['.workflow [data-step="lighting"] b', 'ÁNH SÁNG & SHOW', 'LIGHTING & SHOW'],
+    ['.workflow [data-step="lighting"] b', 'Ánh sáng & show', 'LIGHTING & SHOW'],
     ['#ledManagerBtn', 'Quản lý LED', 'LED Manager'],
-    ['#exportBtn', 'Xuất ↗', 'Export ↗'],
+    ['#exportBtn', 'Xuất ', 'Export '],
     ['#importModel strong', 'Nhập sân khấu 3D', 'Import 3D Stage'],
     ['#importModel small', 'Kéo file vào cửa sổ để bắt đầu', 'Drag files into window to start'],
     ['#demoBtn', 'Sân khấu mẫu', 'Demo Stage'],
     ['#importFolder', 'Thư mục', 'Folder'],
-    ['#skpHelp', 'Từ SketchUp ↗', 'From SketchUp ↗'],
+    ['#skpHelp', 'Từ SketchUp ', 'From SketchUp '],
     ['#autoDetect', 'Nhận diện LED', 'Auto-detect LED'],
     ['#drawQuad', '+ 4 góc', '+ 4-Point Quad'],
     ['#repairMapping', 'Sửa mapping 3D', 'Repair 3D Mapping'],
     ['.media-section .section-heading h3', 'Thư viện video', 'Video Library'],
     ['#addMedia', '+ Thêm', '+ Add'],
-    ['#sampleVideo', '▶ Thử với video mapped mẫu', '▶ Try Demo Mapped Video'],
+    ['#sampleVideo', 'Thử với video mapped mẫu', 'Try Demo Mapped Video'],
     ['.media-section .micro-note', 'File ở trên máy bạn. Không upload lên server.', 'Files stay on your device. No server upload.'],
-    ['.view-tabs [data-view="stage"]', '◇ Sân khấu 3D', '◇ 3D Stage'],
-    ['.view-tabs [data-view="map"]', '▦ Pixel Map', '▦ Pixel Map'],
-    ['.view-tabs [data-view="solo"]', '□ LED đang chọn', '□ Selected LED'],
-    ['#overviewBtn', '⌖ Toàn cảnh', '⌖ Overview'],
+    ['.view-tabs [data-view="stage"]', 'Sân khấu 3D', '3D Stage'],
+    ['.view-tabs [data-view="map"]', 'Pixel Map', 'Pixel Map'],
+    ['.view-tabs [data-view="solo"]', 'LED đang chọn', 'Selected LED'],
+    ['#overviewBtn', 'Toàn cảnh', 'Overview'],
     ['#lockCameraBtn', 'Khóa góc', 'Lock Cam'],
     ['#focusBtn', 'Mở rộng', 'Expand'],
     ['#assetDrawer', 'Dữ liệu', 'Assets'],
     ['#inspectorDrawer', 'Thông số', 'Inspector'],
     ['#v125LiftNav', '╳ Bàn nâng', '╳ Stage Lift'],
     ['#v124LiftBtn', '╳ Bàn nâng chữ X', '╳ Scissor Lift'],
-    ['#dirFrameLED', '▣ Căn LED', '▣ Frame LED'],
+    ['#dirFrameLED', 'Căn LED', 'Frame LED'],
     ['#dirToolbar [data-tool-mode="navigate"]', 'Xem', 'View'],
     ['#dirToolbar [data-tool-mode="move"]', 'Kéo', 'Move'],
     ['#dirToolbar [data-tool-mode="rotate"]', 'Xoay', 'Rotate'],
@@ -132,12 +133,12 @@
     ['#pro127bar [data-pro127="fixture"]', '+ Đèn / Nhận diện', '+ Lights / Detect'],
     ['#pro127bar [data-pro127="fx"]', 'Timecode đèn · 24 FX', 'Light Timecode · 24 FX'],
     ['#pro127bar [data-pro127="vj"]', 'VJ FX Live', 'VJ FX Live'],
-    ['#pro127bar [data-pro127="bright"]', '☀ Tăng sáng', '☀ Boost Brightness'],
-    ['#l132Launch', '● Ghi thao tác đèn', '● Record Light Take'],
-    ['#matrix143OpenBtn', 'LED MATRIX VIỀN', 'LED MATRIX CONTOUR'],
-    ['#matrix148DrawBtn', '✎ VẼ ĐƯỜNG VIỀN', '✎ DRAW LED PATH'],
+    ['#pro127bar [data-pro127="bright"]', 'Tăng sáng', 'Boost Brightness'],
+    ['#l132Launch', 'Ghi thao tác đèn', 'Record Light Take'],
+    ['#matrix143OpenBtn', 'LED matrix viền', 'LED MATRIX CONTOUR'],
+    ['#matrix148DrawBtn', 'Vẽ đường viền', 'DRAW LED PATH'],
     ['#interactionHint', 'Kéo: xoay   /   Chuột phải: di chuyển   /   Cuộn: zoom', 'Drag: orbit   /   Right-click: pan   /   Scroll: zoom'],
-    ['#screenshotBtn', 'Chụp phối cảnh ↗', 'Capture Shot ↗'],
+    ['#screenshotBtn', 'Chụp phối cảnh ', 'Capture Shot '],
     ['#exitPresent', 'Về chỉnh sửa', 'Exit Present'],
     ['#showExit', 'Về chỉnh sửa', 'Exit Present'],
     ['#showPlay', 'Phát', 'Play'],
@@ -149,8 +150,8 @@
     ['#recovery142Restore', 'Khôi phục', 'Restore'],
     ['#recovery142Download', 'Tải bản dự phòng', 'Download Backup'],
     ['#recovery142Rescue', 'Tải phiên trước', 'Download Previous'],
-    ['#clientReviewBar16 .review-badge', 'CHẾ ĐỘ DUYỆT 3D (CHỈ ĐỌC)', '3D CLIENT REVIEW (READ-ONLY)'],
-    ['#review16PlayBtn', '▶ Phát / Tạm dừng', '▶ Play / Pause'],
+    ['#clientReviewBar16 .review-badge', 'Chế độ duyệt 3D (chỉ đọc)', '3D CLIENT REVIEW (READ-ONLY)'],
+    ['#review16PlayBtn', 'Phát / Tạm dừng', 'Play / Pause'],
     ['#clientReviewBar16 [data-review-cam="front"]', 'Chính diện', 'Front'],
     ['#clientReviewBar16 [data-review-cam="iso"]', 'Toàn cảnh', 'Overview'],
     ['#clientReviewBar16 [data-review-cam="left"]', 'Cánh trái', 'Left Wing'],
@@ -160,6 +161,24 @@
     ['#clientReviewBar16 [data-review-layer="lights"]', 'Ánh sáng', 'Lighting'],
     ['#clientReviewBar16 [data-review-layer="laser"]', 'Laser', 'Laser'],
     ['#clientReviewBar16 [data-review-layer="cast"]', 'Nhân vật', 'Performers']
+  ];
+
+  const STATIC_UI_TEXT16 = [
+    ['Đang khởi động sân khấu 3D…', 'Loading 3D stage…'],
+    ['Thiết kế sân khấu 3D', '3D stage design'],
+    ['Chạy tại máy', 'Local'], ['Tài nguyên dự án', 'Project assets'],
+    ['Xem trực tiếp', 'Live preview'], ['Lặp', 'Loop'],
+    ['Camera tự xoay', 'Auto-rotate camera'], ['Chất lượng xem', 'Preview quality'],
+    ['Tổng', 'Master'], ['Dữ liệu', 'Assets'], ['Thông số', 'Inspector'],
+    ['Không gian 3D thật. Media trên máy bạn.', 'Real 3D space. Media stays on your device.'],
+    ['Về chỉnh sửa', 'Back to editor'], ['Phát', 'Play'], ['Toàn cảnh', 'Fit stage'],
+    ['Tự xoay: Tắt', 'Auto-rotate: Off'], ['Đang xử lý...', 'Working…'],
+    ['Thả model hoặc video vào đây', 'Drop a model or video here'],
+    ['Kéo: xoay   /   Chuột phải: di chuyển   /   Cuộn: zoom', 'Drag: orbit / Right drag: pan / Scroll: zoom'],
+    ['Space: phát  ·  F: toàn cảnh  ·  1/2/3: chuyển bước  ·  Ctrl+S: lưu', 'Space: play · F: fit · 1/2/3: workspace · Ctrl+S: save'],
+    ['Cỡ chữ', 'Text size'], ['Màu nền', 'Theme'], ['Ngôn ngữ', 'Language'],
+    ['Nhỏ', 'Small'], ['Vừa', 'Medium'], ['Lớn', 'Large'], ['Tối', 'Dark'], ['Sáng', 'Light'],
+    ['Cài đặt giao diện', 'Interface settings'], ['Giao diện', 'Interface'], ['Đóng', 'Close']
   ];
 
   function applyLocaleToDOM() {
@@ -172,7 +191,7 @@
     }
     for (const [sel, viText, enText] of DOM_TRANSLATIONS) {
       const el = document.querySelector?.(sel);
-      if (el) el.textContent = isEn ? enText : viText;
+      if (el) el.textContent = t16(viText, enText);
     }
     const langBtn = document.getElementById('langToggleBtn16');
     if (langBtn) {
@@ -200,8 +219,8 @@
     if (gridBtn) {
       const clean = gridBtn.classList?.contains?.('active');
       gridBtn.textContent = clean
-        ? (isEn ? '◉ Show Grid' : '◉ Hiện lưới')
-        : (isEn ? '◌ Hide Grid' : '◌ Ẩn lưới');
+        ? (isEn ? 'Show Grid' : 'Hiện lưới')
+        : (isEn ? 'Hide Grid' : 'Ẩn lưới');
     }
     const exportItems = [
       ['#exportShot', 'Phối cảnh 3D', '3D Perspective Shot', 'PNG / 1920 x 1080', 'PNG / 1920 x 1080'],
@@ -235,6 +254,8 @@
         isEn ? `Viewing: ${state.reviewSharedTitle}` : `Đang xem: ${state.reviewSharedTitle}`
       );
     }
+    for (const [vi, en] of STATIC_UI_TEXT16) window.tr?.(vi, en);
+    window.translateUiText?.();
   }
 
   function applyLocale(locale) {
@@ -246,6 +267,9 @@
       // ignore storage errors
     }
     applyLocaleToDOM();
+    window.renderUI?.();
+    window.translateUiText?.();
+    window.dispatchEvent?.(new CustomEvent('ledstudio:locale', { detail: { locale: next } }));
     return next;
   }
 
@@ -310,6 +334,10 @@
     '#cloud16PresetsBtn',
     '#cloud16ShareBtn',
     '#lumi18AiBtn',
+    '#aiChat18',
+    '#aiChat18Toggle',
+    '#account18Chip',
+    '#account18Menu',
     '#lumi18TemplatesBtn',
     '#lumi18BomBtn',
     '#lumi18BillingBtn',
@@ -534,11 +562,11 @@
       bar.setAttribute?.('aria-label', t16('Thanh điều khiển duyệt 3D', '3D Client Review Controls'));
       bar.innerHTML =
         `<div class="review-layers">` +
-        `<span class="review-badge">${t16('CHẾ ĐỘ DUYỆT 3D (CHỈ ĐỌC)', '3D CLIENT REVIEW (READ-ONLY)')}</span>` +
+        `<span class="review-badge">${t16('Chế độ duyệt 3D (chỉ đọc)', '3D CLIENT REVIEW (READ-ONLY)')}</span>` +
         `<strong id="clientReviewStatus16">${t16('Đang tải dự án...', 'Loading project...')}</strong>` +
         `</div>` +
         `<div class="review-cameras">` +
-        `<button type="button" class="btn small" id="review16PlayBtn">${t16('▶ Phát / Tạm dừng', '▶ Play / Pause')}</button>` +
+        `<button type="button" class="btn small" id="review16PlayBtn">${t16('Phát / Tạm dừng', 'Play / Pause')}</button>` +
         `<button type="button" class="btn small" data-review-cam="front">${t16('Chính diện', 'Front')}</button>` +
         `<button type="button" class="btn small" data-review-cam="iso">${t16('Toàn cảnh', 'Overview')}</button>` +
         `<button type="button" class="btn small" data-review-cam="left">${t16('Cánh trái', 'Left Wing')}</button>` +
@@ -548,10 +576,10 @@
         `<button type="button" class="btn small active" aria-pressed="true" data-review-layer="lights">${t16('Ánh sáng', 'Lighting')}</button>` +
         `<button type="button" class="btn small active" aria-pressed="true" data-review-layer="laser">Laser</button>` +
         `<button type="button" class="btn small active" aria-pressed="true" data-review-layer="cast">${t16('Nhân vật', 'Performers')}</button>` +
-        `<button type="button" class="btn small" id="review16PinBtn" title="${t16('Bấm vào điểm trên sân khấu 3D để ghim nhận xét', 'Click on 3D stage to pin a comment')}">${t16('📌 Ghim 3D', '📌 Pin 3D')}</button>` +
-        `<button type="button" class="btn small" id="review16CommentsBtn">${t16('💬 Bình luận', '💬 Comments')} (0)</button>` +
-        `<button type="button" class="btn small primary" id="review16ApproveBtn">${t16('✅ Duyệt phương án', '✅ Approve')}</button>` +
-        `<button type="button" class="btn small" id="review16ChangesBtn">${t16('✏️ Cần chỉnh sửa', '✏️ Request Changes')}</button>` +
+        `<button type="button" class="btn small" id="review16PinBtn" title="${t16('Bấm vào điểm trên sân khấu 3D để ghim nhận xét', 'Click on 3D stage to pin a comment')}">${t16('Ghim 3D', 'Pin 3D')}</button>` +
+        `<button type="button" class="btn small" id="review16CommentsBtn">${t16('Bình luận', 'Comments')} (0)</button>` +
+        `<button type="button" class="btn small primary" id="review16ApproveBtn">${t16('Duyệt phương án', 'Approve')}</button>` +
+        `<button type="button" class="btn small" id="review16ChangesBtn">${t16('Cần chỉnh sửa', 'Request Changes')}</button>` +
         `</div>`;
       const topbar = document.querySelector('.topbar');
       if (topbar && topbar.parentNode && typeof topbar.after === 'function') {
@@ -585,7 +613,7 @@
           pinBtn.classList.toggle('active', state.pinCommentMode);
           window.toast?.(
             state.pinCommentMode
-              ? t16('📌 Hãy bấm vào vị trí bất kỳ trên sân khấu 3D để ghim nhận xét.', '📌 Click anywhere on the 3D stage to pin a comment.')
+              ? t16('Hãy bấm vào vị trí bất kỳ trên sân khấu 3D để ghim nhận xét.', 'Click anywhere on the 3D stage to pin a comment.')
               : t16('Đã tắt chế độ ghim nhận xét 3D.', 'Disabled 3D pin comment mode.')
           );
         };
@@ -608,14 +636,14 @@
     const cBtn = document.getElementById('review16CommentsBtn');
     if (cBtn) {
       const count = Array.isArray(state.reviewComments) ? state.reviewComments.length : 0;
-      cBtn.textContent = `${t16('💬 Bình luận', '💬 Comments')} (${count})`;
+      cBtn.textContent = `${t16('Bình luận', 'Comments')} (${count})`;
     }
     if (state.clientReviewMode && state.reviewSharedTitle) {
       let badge = '';
       if (state.reviewStatus === 'approved') {
-        badge = ` · ✅ ${t16('ĐÃ DUYỆT', 'APPROVED')}${state.reviewBy ? ` (${state.reviewBy})` : ''}`;
+        badge = ` · ${t16('Đã duyệt', 'APPROVED')}${state.reviewBy ? ` (${state.reviewBy})` : ''}`;
       } else if (state.reviewStatus === 'changes_requested') {
-        badge = ` · ✏️ ${t16('CẦN CHỈNH SỬA', 'CHANGES REQUESTED')}${state.reviewBy ? ` (${state.reviewBy})` : ''}`;
+        badge = ` · ${t16('Cần chỉnh sửa', 'CHANGES REQUESTED')}${state.reviewBy ? ` (${state.reviewBy})` : ''}`;
       }
       setReviewStatus(
         (state.locale === 'en' ? `Viewing: ${state.reviewSharedTitle}` : `Đang xem: ${state.reviewSharedTitle}`) + badge
@@ -721,7 +749,7 @@
             `<div><strong>#${idx + 1} · ${esc16(c.author || 'Client')}</strong> ` +
             `<small>(${esc16(p.join(', '))}m)</small><br>` +
             `<span>${esc16(c.message || '')}</span></div>` +
-            `<button type="button" class="btn small" data-review-fly="${esc16(p.join(','))}">🔍 ${t16('Xem điểm', 'Focus')}</button>` +
+            `<button type="button" class="btn small" data-review-fly="${esc16(p.join(','))}">${t16('Xem điểm', 'Focus')}</button>` +
             `</div>`
           );
         }).join('')
@@ -730,11 +758,11 @@
     const formHtml =
       `<div style="max-height:220px;overflow:auto;margin-bottom:10px">${listHtml}</div>` +
       `<div class="info-box">` +
-      `<strong>📌 ${t16('Thêm nhận xét ghim 3D', 'Add 3D Pin Comment')} (${esc16(posArr.join(', '))}m ${prefillTarget ? '· ' + esc16(prefillTarget) : ''})</strong>` +
+      `<strong>${t16('Thêm nhận xét ghim 3D', 'Add 3D Pin Comment')} (${esc16(posArr.join(', '))}m ${prefillTarget ? '· ' + esc16(prefillTarget) : ''})</strong>` +
       `<div style="display:grid;gap:8px;margin-top:8px">` +
       `<input id="review16CommentAuthor" class="search" placeholder="${t16('Tên của bạn / Đơn vị duyệt', 'Your Name / Organization')}" value="${esc16(state.reviewBy || '')}">` +
       `<textarea id="review16CommentMsg" rows="3" style="width:100%;padding:8px;border-radius:6px;background:rgba(15,23,42,.8);color:#e2e8f0;border:1px solid rgba(148,163,184,.3)" placeholder="${t16('Nhập nội dung góp ý tại vị trí 3D này (VD: Hạ thấp màn LED cánh trái 0.5m)...', 'Enter feedback at this 3D position...')}"></textarea>` +
-      `<button type="button" class="btn primary" id="review16SubmitCommentBtn">📌 ${t16('Gửi bình luận 3D', 'Post 3D Comment')}</button>` +
+      `<button type="button" class="btn primary" id="review16SubmitCommentBtn">${t16('Gửi bình luận 3D', 'Post 3D Comment')}</button>` +
       `</div></div>`;
 
     window.dialog(
@@ -782,11 +810,11 @@
     const html =
       `<div class="info-box" style="display:grid;gap:8px">` +
       `<p>${isApprove
-        ? t16('Xác nhận <strong>DUYỆT PHƯƠNG ÁN SÂN KHẤU 3D</strong> này để đội kỹ thuật tiến hành bóc tách BOM & thi công.', 'Confirm <strong>APPROVAL</strong> of this 3D stage design for BOM & production.')
-        : t16('Gửi yêu cầu <strong>CHỈNH SỬA PHƯƠNG ÁN</strong> kèm ghi chú tổng thể cho đội thiết kế.', 'Request <strong>DESIGN CHANGES</strong> with overall notes for the design team.')}</p>` +
+        ? t16('Xác nhận <strong>Duyệt phương án sân khấu 3D</strong> này để đội kỹ thuật tiến hành bóc tách BOM & thi công.', 'Confirm <strong>APPROVAL</strong> of this 3D stage design for BOM & production.')
+        : t16('Gửi yêu cầu <strong>Chỉnh sửa phương án</strong> kèm ghi chú tổng thể cho đội thiết kế.', 'Request <strong>DESIGN CHANGES</strong> with overall notes for the design team.')}</p>` +
       `<input id="review16DecisionAuthor" class="search" placeholder="${t16('Họ tên / Chức vụ người duyệt', 'Approver Name / Title')}" value="${esc16(state.reviewBy || '')}">` +
       `<textarea id="review16DecisionNote" rows="3" style="width:100%;padding:8px;border-radius:6px;background:rgba(15,23,42,.8);color:#e2e8f0;border:1px solid rgba(148,163,184,.3)" placeholder="${t16('Ghi chú duyệt hoặc yêu cầu chỉnh sửa...', 'Approval note or requested changes...')}"></textarea>` +
-      `<button type="button" class="btn primary" id="review16ConfirmDecisionBtn">${isApprove ? t16('✅ Xác nhận Duyệt phương án', '✅ Confirm Approval') : t16('✏️ Gửi yêu cầu chỉnh sửa', '✏️ Submit Change Request')}</button>` +
+      `<button type="button" class="btn primary" id="review16ConfirmDecisionBtn">${isApprove ? t16('Xác nhận Duyệt phương án', 'Confirm Approval') : t16('Gửi yêu cầu chỉnh sửa', 'Submit Change Request')}</button>` +
       `</div>`;
     window.dialog(
       isApprove ? t16('Duyệt phương án sân khấu 3D', 'Approve 3D Stage Design') : t16('Yêu cầu chỉnh sửa phương án', 'Request Design Changes'),
@@ -804,8 +832,8 @@
           if (modal && typeof modal.close === 'function') modal.close();
           window.toast?.(
             isApprove
-              ? t16('✅ Đã ghi nhận DUYỆT PHƯƠNG ÁN thành công!', '✅ Stage design APPROVED!')
-              : t16('✏️ Đã gửi yêu cầu chỉnh sửa cho đội thiết kế.', '✏️ Sent change request to the design team.')
+              ? t16('Đã ghi nhận DUYỆT PHƯƠNG ÁN thành công', 'Stage design APPROVED!')
+              : t16('Đã gửi yêu cầu chỉnh sửa cho đội thiết kế.', 'Sent change request to the design team.')
           );
         } catch (err) {
           window.toast?.(err?.message || String(err));
@@ -1086,7 +1114,7 @@
             return (
               `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;gap:10px">` +
               `<div><strong>${i === 0 ? t16('Bản mới nhất', 'Latest') : `${t16('Phiên bản', 'Revision')} #${revisions.length - i}`}</strong> · <small>${esc16(dt)} ${kb ? '· ' + esc16(kb) : ''}</small></div>` +
-              `<button type="button" class="btn small primary" data-drive16-rev="${esc16(r.id)}">⏱ ${t16('Khôi phục', 'Restore')}</button>` +
+              `<button type="button" class="btn small primary" data-drive16-rev="${esc16(r.id)}">${t16('Khôi phục', 'Restore')}</button>` +
               `</div>`
             );
           }).join('')
@@ -1205,7 +1233,7 @@
         `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;gap:10px">` +
         `<div><strong>${esc16(name)}</strong><br><small>${esc16(sub)}</small></div>` +
         `<div style="display:flex;gap:6px;align-items:center">` +
-        (revId ? `<button type="button" class="btn small" data-drive16-revisions="${esc16(revId)}" title="${t16('Xem lịch sử phiên bản trên Google Drive', 'View Google Drive version history')}">⏱ ${t16('Lịch sử', 'History')}</button>` : '') +
+        (revId ? `<button type="button" class="btn small" data-drive16-revisions="${esc16(revId)}" title="${t16('Xem lịch sử phiên bản trên Google Drive', 'View Google Drive version history')}">${t16('Lịch sử', 'History')}</button>` : '') +
         `<button type="button" class="btn small primary" ${attr}="${esc16(id)}">${t16('Mở dự án', 'Open')}</button>` +
         `</div></div>`;
       const lightsLabel = t16('Đèn', 'Lights');
@@ -1353,10 +1381,10 @@
       `<label style="display:grid;gap:4px"><strong>${t16('Mật khẩu bảo vệ (Tuỳ chọn — Gói Pro / Mở khoá dự án)', 'Password Protection (Optional — Pro / Unlocked Project)')}</strong>` +
       `<input id="share16PasswordInput" type="password" class="search" placeholder="${t16('Để trống nếu muốn mở công khai không cần mật khẩu', 'Leave blank for public access without password')}"></label>` +
       `<div id="share16ResultBox" class="info-box" style="display:none;word-break:break-all"></div>` +
-      `<button type="button" class="btn primary" id="share16CreateBtn">🔗 ${t16('Tạo & Sao chép Link duyệt 3D', 'Create & Copy 3D Review Link')}</button>` +
+      `<button type="button" class="btn primary" id="share16CreateBtn">${t16('Tạo & Sao chép Link duyệt 3D', 'Create & Copy 3D Review Link')}</button>` +
       `</div>`;
     window.dialog(
-      t16('Chia sẻ Link Duyệt Sân Khấu 3D (Client Review)', 'Share 3D Stage Client Review Link'),
+      t16('Chia sẻ Link Duyệt Sân Khấu 3D', 'Share 3D Stage Client Review Link'),
       html,
       [{ label: t16('Đóng', 'Close') }]
     );
@@ -1369,7 +1397,7 @@
         const box = document.getElementById('share16ResultBox');
         if (url && box) {
           box.style.display = 'block';
-          box.innerHTML = `<strong>✅ ${t16('Đã sao chép vào Clipboard:', 'Copied to Clipboard:')}</strong><br><a href="${esc16(url)}" target="_blank" rel="noopener" style="color:#38bdf8">${esc16(url)}</a>`;
+          box.innerHTML = `<strong>${t16('Đã sao chép vào Clipboard:', 'Copied to Clipboard:')}</strong><br><a href="${esc16(url)}" target="_blank" rel="noopener" style="color:#38bdf8">${esc16(url)}</a>`;
         }
       };
     }
@@ -1623,6 +1651,56 @@
     }
   }
 
+  // Interface settings: UI size (S/M/L) + theme + language, in a native popover.
+  // Size is pre-applied in index.html <head> from localStorage['ledstudio-ui-size'].
+  function applyUiSize16(size) {
+    const next = size === 's' || size === 'l' ? size : 'm';
+    if (next === 'm') delete document.documentElement.dataset.uiSize;
+    else document.documentElement.dataset.uiSize = next;
+    try { window.localStorage?.setItem('ledstudio-ui-size', next); } catch { /* ignore */ }
+  }
+  function injectUiSettings16(actions) {
+    if (document.getElementById('uiSettingsBtn16')) return;
+    const btn = document.createElement('button');
+    btn.id = 'uiSettingsBtn16';
+    btn.type = 'button';
+    btn.className = 'icon-btn';
+    btn.title = t16('Cài đặt giao diện', 'Interface settings');
+    btn.setAttribute('aria-label', btn.title);
+    btn.setAttribute('popovertarget', 'uiSettings16');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>';
+    const pop = document.createElement('div');
+    pop.id = 'uiSettings16';
+    pop.className = 'ui-settings';
+    pop.setAttribute('popover', '');
+    pop.setAttribute('role', 'dialog');
+    pop.setAttribute('aria-label', btn.title);
+    const seg = (name, label, opts) => `<fieldset class="ui-seg"><legend>${label}</legend>${opts.map(([v, txt]) =>
+      `<label><input type="radio" name="${name}" value="${v}"><span>${txt}</span></label>`).join('')}</fieldset>`;
+    pop.innerHTML =
+      `<h3>${t16('Giao diện', 'Interface')}</h3>` +
+      seg('uiSize16', t16('Cỡ chữ', 'Text size'), [['s', t16('Nhỏ', 'Small')], ['m', t16('Vừa', 'Medium')], ['l', t16('Lớn', 'Large')]]) +
+      seg('uiTheme16', t16('Màu nền', 'Theme'), [['dark', t16('Tối', 'Dark')], ['light', t16('Sáng', 'Light')]]) +
+      seg('uiLang16', t16('Ngôn ngữ', 'Language'), [['vi', 'Tiếng Việt'], ['en', 'English']]);
+    const sync = () => {
+      const cur = { uiSize16: document.documentElement.dataset.uiSize || 'm', uiTheme16: state.theme === 'light' ? 'light' : 'dark', uiLang16: state.locale === 'en' ? 'en' : 'vi' };
+      pop.querySelectorAll('input[type=radio]').forEach((r) => { r.checked = cur[r.name] === r.value; });
+    };
+    pop.addEventListener('change', (e) => {
+      const r = e.target;
+      if (r.name === 'uiSize16') applyUiSize16(r.value);
+      if (r.name === 'uiTheme16') applyTheme(r.value);
+      if (r.name === 'uiLang16') applyLocale(r.value);
+    });
+    pop.addEventListener('toggle', (e) => { btn.setAttribute('aria-expanded', String(e.newState === 'open')); if (e.newState === 'open') sync(); });
+    // Global letter shortcuts must not fire while a radio has focus.
+    pop.addEventListener('keydown', (e) => { if (e.key !== 'Escape') e.stopPropagation(); });
+    btn.setAttribute('aria-expanded', 'false');
+    const anchor = document.getElementById('langToggleBtn16') || document.getElementById('themeToggleBtn');
+    if (anchor && anchor.parentNode === actions) anchor.after(btn); else actions.append(btn);
+    document.body.append(pop);
+  }
+
   function injectCloudButtons() {
     const actions = document.querySelector('.topbar .header-actions');
     if (!actions || document.getElementById('cloud16SaveBtn')) return;
@@ -1649,29 +1727,30 @@
         actions.prepend(langBtn);
       }
     }
+    injectUiSettings16(actions);
 
     const saveBtn = document.createElement('button');
     saveBtn.id = 'cloud16SaveBtn';
     saveBtn.className = 'btn small';
-    saveBtn.textContent = t16('☁ Lưu Drive', '☁ Save to Drive');
+    saveBtn.textContent = t16('Lưu Drive', 'Save to Drive');
     saveBtn.onclick = () => driveSaveProject();
 
     const openBtn = document.createElement('button');
     openBtn.id = 'cloud16OpenBtn';
     openBtn.className = 'btn small';
-    openBtn.textContent = t16('📂 Mở Drive', '📂 Open Drive');
+    openBtn.textContent = t16('Mở Drive', 'Open Drive');
     openBtn.onclick = () => openCloudProjectsModal();
 
     const presetsBtn = document.createElement('button');
     presetsBtn.id = 'cloud16PresetsBtn';
     presetsBtn.className = 'btn small';
-    presetsBtn.textContent = t16('📦 Kho Preset', '📦 Presets');
+    presetsBtn.textContent = t16('Kho Preset', 'Presets');
     presetsBtn.onclick = () => openPresetsModal();
 
     const shareBtn = document.createElement('button');
     shareBtn.id = 'cloud16ShareBtn';
     shareBtn.className = 'btn small';
-    shareBtn.textContent = t16('🔗 Link duyệt 3D', '🔗 3D Review Link');
+    shareBtn.textContent = t16('Link duyệt 3D', '3D Review Link');
     shareBtn.onclick = () => shareClientReviewLink();
 
     actions.prepend(shareBtn);
@@ -1709,6 +1788,7 @@
       state.googleClientId = msg.googleClientId.trim();
     }
     if ('token' in msg || 'user' in msg) {
+      const prevToken = state.token || null;
       const prevUserId = state.user?._id || state.user?.id || null;
       const nextToken = msg.token ? String(msg.token) : null;
       const nextUser = msg.user && typeof msg.user === 'object' ? msg.user : null;
@@ -1724,6 +1804,9 @@
       }
       state.token = nextToken;
       state.user = nextUser;
+      if (!nextToken || prevToken !== nextToken || prevUserId !== nextUserId) {
+        STUDIO.lumi18?.syncAccount18?.();
+      }
     }
     if (msg.shareToken) {
       loadSharedProject(String(msg.shareToken));

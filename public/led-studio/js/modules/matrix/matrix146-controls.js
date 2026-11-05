@@ -2,6 +2,7 @@
    controls never remount while a pointer/keyboard gesture is active. */
 (function (root, factory) {
   'use strict';
+  const mxTr=(vi,en)=>typeof window!=='undefined'&&typeof window.tr==='function'?window.tr(vi,en):vi;
   const api = factory();
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (root) {
@@ -10,6 +11,7 @@
   }
 })(typeof window === 'undefined' ? null : window, function () {
   'use strict';
+  const mxTr=(vi,en)=>typeof window!=='undefined'&&typeof window.tr==='function'?window.tr(vi,en):vi;
   const unit = n => Math.min(1, Math.max(0, n));
   const percent = n => String(Math.round(unit(n) * 1000) / 10);
 
@@ -26,7 +28,7 @@
       return changed;
     }
     function begin(kind, id = null) {
-      if (kind !== 'effect' && kind !== 'cue') throw new TypeError('Loại độ sáng không hợp lệ.');
+      if (kind !== 'effect' && kind !== 'cue') throw new TypeError(mxTr("Loại độ sáng không hợp lệ.","Invalid brightness type."));
       if (kind === 'cue' && !X.getCue(id)) return false;
       if (edit?.kind === kind && edit.id === id) return true;
       if (edit) end();
@@ -34,7 +36,7 @@
       return true;
     }
     function set(kind, value, id = null, source = null) {
-      if (!Number.isFinite(value)) throw new TypeError('Độ sáng cần là một số hữu hạn.');
+      if (!Number.isFinite(value)) throw new TypeError(mxTr("Độ sáng cần là một số hữu hạn.","Brightness must be a finite number."));
       value = unit(value);
       // A selected cue can change elsewhere during a gesture. Its target stays
       // the cue captured at pointerdown, never the newly selected neighbour.
@@ -62,8 +64,8 @@
 
   function levelMarkup(prefix, label) {
     return '<label for="' + prefix + 'Range">' + label + ' <output id="' + prefix + 'Value"></output></label>'
-      + '<div class="mx146-level-row"><input id="' + prefix + 'Range" type="range" min="0" max="100" step="0.1" aria-label="' + label + ', phần trăm">'
-      + '<input id="' + prefix + 'Number" type="number" min="0" max="100" step="0.1" inputmode="decimal" aria-label="Nhập ' + label.toLowerCase() + ', phần trăm"><span>%</span></div>';
+      + '<div class="mx146-level-row"><input id="' + prefix + 'Range" type="range" min="0" max="100" step="0.1" aria-label="' + label + mxTr(', phần trăm', ', percent') + '">'
+      + '<input id="' + prefix + ("Number\" type=\"number\" min=\"0\" max=\"100\" step=\"0.1\" inputmode=\"decimal\" aria-label=\""+mxTr("Nhập ","Enter ")) + label.toLowerCase() + (","+mxTr(" phần trăm"," percent")+"\"><span>%</span></div>");
   }
 
   function install(S, options = {}) {
@@ -80,15 +82,38 @@
     if (!document) return C;
     const effect = document.createElement('div');
     effect.id = 'mx146EffectBrightness'; effect.className = 'mx146-level';
-    effect.innerHTML = levelMarkup('mx146FxBrightness', 'Độ sáng hiệu ứng / cue mới')
-      + '<small>Mức sáng dùng khi xem thử và được lưu riêng vào cue mới.</small>';
+    const markupeffect=()=>levelMarkup('mx146FxBrightness', mxTr("Độ sáng hiệu ứng / cue mới","Effect / new cue brightness"))
+      + ("<small>"+mxTr("Mức sáng dùng khi xem thử và được lưu riêng vào cue mới.","Used for preview and saved separately in new cues.")+"</small>");
+    effect.innerHTML=markupeffect();
+    root?.addEventListener?.('ledstudio:locale',()=>{
+      const template=document.createElement('template');template.innerHTML=markupeffect();
+      const copy=(live,fresh)=>{
+        if(live.nodeType===3){live.nodeValue=fresh.nodeValue;return;}
+        for(const key of ['aria-label','title','placeholder'])if(fresh.hasAttribute?.(key))live.setAttribute(key,fresh.getAttribute(key));
+        for(let i=0;i<fresh.childNodes.length;i++)if(live.childNodes[i])copy(live.childNodes[i],fresh.childNodes[i]);
+      };
+      for(let i=0;i<template.content.childNodes.length;i++)if(effect.childNodes[i])copy(effect.childNodes[i],template.content.childNodes[i]);
+      update();
+    });
     const timeline = document.createElement('div');
     timeline.id = 'mx146TimelineBrightness'; timeline.className = 'mx146-timeline-level';
-    timeline.setAttribute('role', 'region'); timeline.setAttribute('aria-label', 'Độ sáng cue LED Matrix trong timeline');
-    timeline.innerHTML = '<div class="mx146-timeline-label"><strong>LED MATRIX</strong><span id="mx146TimelineCueName"></span></div>'
-      + '<div class="mx146-level">' + levelMarkup('mx146TimelineBrightness', 'Độ sáng cue') + '</div>'
-      + '<button id="mx146TimelineEdit" type="button" class="btn">Chỉnh cue</button>'
-      + '<button id="mx146TimelineEffects" type="button" class="btn">35 hiệu ứng</button>';
+    timeline.setAttribute('role', 'region'); timeline.setAttribute('aria-label', mxTr("Độ sáng cue LED Matrix trong timeline","LED Matrix timeline cue brightness"));
+    const markuptimeline=()=>'<div class="mx146-timeline-label"><strong>LED MATRIX</strong><span id="mx146TimelineCueName"></span></div>'
+      + '<div class="mx146-level">' + levelMarkup('mx146TimelineBrightness', mxTr("Độ sáng cue","Cue brightness")) + '</div>'
+      + ("<button id=\"mx146TimelineEdit\" type=\"button\" class=\"btn\">"+mxTr("Chỉnh cue","Edit cue")+"</button>")
+      + ("<button id=\"mx146TimelineEffects\" type=\"button\" class=\"btn\">"+mxTr("35 hiệu ứng","35 effects")+"</button>");
+    timeline.innerHTML=markuptimeline();
+    root?.addEventListener?.('ledstudio:locale',()=>{
+      timeline.setAttribute('aria-label',mxTr('Độ sáng cue LED Matrix trong timeline','LED Matrix timeline cue brightness'));
+      const template=document.createElement('template');template.innerHTML=markuptimeline();
+      const copy=(live,fresh)=>{
+        if(live.nodeType===3){live.nodeValue=fresh.nodeValue;return;}
+        for(const key of ['aria-label','title','placeholder'])if(fresh.hasAttribute?.(key))live.setAttribute(key,fresh.getAttribute(key));
+        for(let i=0;i<fresh.childNodes.length;i++)if(live.childNodes[i])copy(live.childNodes[i],fresh.childNodes[i]);
+      };
+      for(let i=0;i<template.content.childNodes.length;i++)if(timeline.childNodes[i])copy(timeline.childNodes[i],template.content.childNodes[i]);
+      update();
+    });
     const get = (node, id) => node.querySelector('#' + id);
     const fxRange = get(effect, 'mx146FxBrightnessRange'), fxNumber = get(effect, 'mx146FxBrightnessNumber');
     const cueRange = get(timeline, 'mx146TimelineBrightnessRange'), cueNumber = get(timeline, 'mx146TimelineBrightnessNumber');
@@ -100,14 +125,14 @@
       if (source !== number) number.value = text;
       range.disabled = number.disabled = disabled;
       range.style.setProperty('--mx146-fill', text + '%');
-      range.setAttribute('aria-valuetext', disabled ? 'Chọn cue LED Matrix' : text + ' phần trăm');
+      range.setAttribute('aria-valuetext', disabled ? mxTr("Chọn cue LED Matrix","Select an LED Matrix cue") : text + mxTr(" phần trăm"," percent"));
       get(node, prefix + 'Value').textContent = disabled ? '—' : text + '%';
     }
     function update(source = null) {
       updatePair(effect, 'mx146FxBrightness', X.effect.brightness, source);
       const cue = selectedCue();
       updatePair(timeline, 'mx146TimelineBrightness', cue ? X.cueSpec(cue).brightness : 0, source, !cue);
-      cueName.textContent = cue ? cue.name : 'Chọn một cue Matrix trên timeline';
+      cueName.textContent = cue ? cue.name : mxTr("Chọn một cue Matrix trên timeline","Select a Matrix cue on the timeline");
       cueName.title = cueName.textContent; editButton.disabled = !cue;
       timeline.hidden = !X.paths.length && !cue;
     }
@@ -142,7 +167,7 @@
       });
     }
     editButton.addEventListener('click', () => { const cue = selectedCue(); if (cue) X.editCue(cue.id); });
-    get(timeline, 'mx146TimelineEffects').textContent = X.effects.presets.length + ' hiệu ứng';
+    get(timeline, 'mx146TimelineEffects').textContent = X.effects.presets.length + mxTr(" hiệu ứng"," effects");
     get(timeline, 'mx146TimelineEffects').addEventListener('click', () => X.open('effects'));
     C.subscribe(update);
     C.mount = panel => {

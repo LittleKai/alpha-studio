@@ -7,36 +7,48 @@
   const S=window.STUDIO;
   if(!S || !S.engine) return;
   const engine=S.engine, state=S.state, $=id=>document.getElementById(id);
+  const tr=(vi,en)=>window.tr?window.tr(vi,en):vi;
   const clamp16=(v,a,b)=>Math.min(b,Math.max(a,Number.isFinite(+v)?+v:a));
   const esc16=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
   const CATALOG={
-   truss_tower:{name:'Trụ Truss Đứng 3.6m',label:'TRUSS TOWER',cat:'Khung / Giàn',color:'#8c9bb0',desc:'Cột truss hộp nhôm 0.4×3.6m + đế thép'},
-   truss_arch:{name:'Cổng Truss Goalpost 6m',label:'TRUSS ARCH',cat:'Khung / Giàn',color:'#94a3b8',desc:'Khung cổng truss 6.0×4.2m treo đèn/LED'},
-   line_array:{name:'Cụm Loa Line Array (6 thùng)',label:'LINE ARRAY',cat:'Âm thanh',color:'#27303f',desc:'Dàn loa treo J-array 6 cabinet + khung treo'},
-   sub_stack:{name:'Cụm Loa Sub Đôi 18"',label:'SUB STACK',cat:'Âm thanh',color:'#1e2530',desc:'2 thùng loa siêu trầm đặt sàn 1.2×0.9m'},
-   totem_led:{name:'Cột LED Totem Đứng 1×3m',label:'LED TOTEM',cat:'Màn LED phụ',color:'#29caff',desc:'Khung + mặt LED 1.0×3.0m (map được video)'},
-   dj_booth:{name:'Bàn DJ Booth LED 2.4m',label:'DJ BOOTH',cat:'Sân khấu',color:'#38bdf8',desc:'Bàn DJ + mặt trước LED 2.4×1.1m + CDJ mixer'},
-   stage_riser:{name:'Bục Sân Khấu Riser 2×1.5m',label:'STAGE RISER',cat:'Sân khấu',color:'#334155',desc:'Bục nâng ban nhạc / trống cao 0.4m'},
-   stage_stairs:{name:'Bậc Thang Sân Khấu 4 Bậc',label:'STAGE STAIRS',cat:'Sân khấu',color:'#475569',desc:'Cầu thang 4 bậc rộng 1.2m lên sàn diễn'},
-   crowd_barrier:{name:'Rào Chắn Khán Giả Mojo 2m',label:'BARRIER',cat:'An toàn',color:'#64748b',desc:'Rào chắn hợp kim nhôm chống xô đẩy 2.0×1.1m'},
-   kinetic_ring:{name:'Vòng LED Kinetic Ø2.4m',label:'KINETIC RING',cat:'Đạo cụ / FX',color:'#f59e0b',desc:'Vòng ánh sáng treo trần phát sáng emissive'},
-   co2_jet:{name:'Súng Cột Khói CO2 / Sparkular',label:'CO2 / SPARK FX',cat:'Đạo cụ / FX',color:'#38bdf8',desc:'Máy bắn cột khói lạnh CO2 & pháo điện đại cảnh'},
-   vip_podium:{name:'Bục Phát Biểu & Cầu Khai Mạc',label:'VIP PODIUM',cat:'Sân khấu',color:'#f59e0b',desc:'Bục phát biểu Keynote + quả cầu LED chạm tay khai mạc'},
-   led_arch_gate:{name:'Cổng Chào LED Vòm 5m',label:'LED ARCH GATE',cat:'Màn LED phụ',color:'#a855f7',desc:'Cổng vòm LED sự kiện 5.0×3.6m phát sáng viền Neon'},
-   catwalk_runway:{name:'Sàn Catwalk Chữ T 4m',label:'CATWALK T-STAGE',cat:'Sân khấu',color:'#475569',desc:'Đường băng Catwalk vươn ra khán giả kèm viền LED sàn'},
-   backdrop_arch:{name:'Backdrop Check-in Vòm Sự Kiện 4m',label:'BACKDROP ARCH',cat:'Sân khấu',color:'#38bdf8',desc:'Phông chụp ảnh vòm 3 lớp + bục thảm đỏ check-in sự kiện'},
-   gala_round_table:{name:'Bàn Tròn Tiệc Gala 10 Ghế (Ø1.8m)',label:'GALA TABLE',cat:'Bàn ghế VIP',color:'#f8fafc',desc:'Bàn tiệc tròn khăn phủ Ø1.8m + 10 ghế Banquet xoay tròn'},
-   conference_ibm_table:{name:'Bàn Đại Biểu Hội Nghị IBM 1.8m',label:'IBM TABLE',cat:'Bàn ghế VIP',color:'#1e293b',desc:'Bàn hội nghị chữ nhật 1.8×0.6m phủ khăn + 2 ghế đại biểu'},
-   banquet_chair:{name:'Ghế Banquet Sự Kiện Áo Nơ VIP',label:'BANQUET CHAIR',cat:'Bàn ghế VIP',color:'#e2e8f0',desc:'Ghế hội nghị/tiệc cưới bọc nệm kèm nơ lưng vàng đồng'},
-   foh_control_booth:{name:'Bàn Điều Khiển FOH Âm Thanh / Ánh Sáng',label:'FOH BOOTH',cat:'Sân khấu',color:'#334155',desc:'Khu kỹ thuật FOH gồm bàn mixer ánh sáng GrandMA + bàn âm thanh'},
-   decor_palm_planter:{name:'Chậu Cây Cảnh Sân Khấu / Cánh Gà',label:'STAGE PLANTER',cat:'Đạo cụ / FX',color:'#22c55e',desc:'Bồn cây xanh trang trí mép sân khấu và bục phát biểu'},
-   haze_machine_pro:{name:'Máy Phun Sương Haze Sân Khấu 1500W',label:'HAZE 1500W',cat:'Đạo cụ / FX',color:'#64748b',desc:'Máy tạo sương mỏng làm nổi tia đèn Beam / Laser'},
-   cold_spark_fountain:{name:'Máy Pháo Điện Lạnh Sparkular 700W',label:'COLD SPARK',cat:'Đạo cụ / FX',color:'#fbbf24',desc:'Máy bắn tia pháo điện lạnh cao 3m an toàn trong nhà'}
+   truss_tower:{name:'Trụ Truss Đứng 3.6m',get displayName(){return tr(this.name,"3.6m upright truss tower");},label:'TRUSS TOWER',get cat(){return tr('Khung / Giàn',"Frame / truss");},color:'#8c9bb0',get desc(){return tr('Cột truss hộp nhôm 0.4×3.6m + đế thép',"0.4×3.6m aluminum box truss with steel base");}},
+   truss_arch:{name:'Cổng Truss Goalpost 6m',get displayName(){return tr(this.name,"6m goalpost truss arch");},label:'TRUSS ARCH',get cat(){return tr('Khung / Giàn',"Frame / truss");},color:'#94a3b8',get desc(){return tr('Khung cổng truss 6.0×4.2m treo đèn/LED',"6.0×4.2m truss arch for lighting / LED");}},
+   line_array:{name:'Cụm Loa Line Array (6 thùng)',get displayName(){return tr(this.name,"Line array (6 cabinets)");},label:'LINE ARRAY',get cat(){return tr('Âm thanh',"Audio");},color:'#27303f',get desc(){return tr('Dàn loa treo J-array 6 cabinet + khung treo',"Six-cabinet suspended J-array with rigging frame");}},
+   sub_stack:{name:'Cụm Loa Sub Đôi 18"',get displayName(){return tr(this.name,"Dual 18\" subwoofer stack");},label:'SUB STACK',get cat(){return tr('Âm thanh',"Audio");},color:'#1e2530',get desc(){return tr('2 thùng loa siêu trầm đặt sàn 1.2×0.9m',"Two floor subwoofers, 1.2×0.9m");}},
+   totem_led:{name:'Cột LED Totem Đứng 1×3m',get displayName(){return tr(this.name,"1×3m LED totem");},label:'LED TOTEM',get cat(){return tr('Màn LED phụ',"Auxiliary LED");},color:'#29caff',get desc(){return tr('Khung + mặt LED 1.0×3.0m (map được video)',"1.0×3.0m frame and video-mappable LED face");}},
+   dj_booth:{name:'Bàn DJ Booth LED 2.4m',get displayName(){return tr(this.name,"2.4m LED DJ booth");},label:'DJ BOOTH',get cat(){return tr('Sân khấu',"Stage");},color:'#38bdf8',get desc(){return tr('Bàn DJ + mặt trước LED 2.4×1.1m + CDJ mixer',"DJ desk with 2.4×1.1m LED front and CDJ mixer");}},
+   stage_riser:{name:'Bục Sân Khấu Riser 2×1.5m',get displayName(){return tr(this.name,"2×1.5m stage riser");},label:'STAGE RISER',get cat(){return tr('Sân khấu',"Stage");},color:'#334155',get desc(){return tr('Bục nâng ban nhạc / trống cao 0.4m',"0.4m-high band / drum riser");}},
+   stage_stairs:{name:'Bậc Thang Sân Khấu 4 Bậc',get displayName(){return tr(this.name,"Four-step stage stairs");},label:'STAGE STAIRS',get cat(){return tr('Sân khấu',"Stage");},color:'#475569',get desc(){return tr('Cầu thang 4 bậc rộng 1.2m lên sàn diễn',"1.2m-wide four-step stage access");}},
+   crowd_barrier:{name:'Rào Chắn Khán Giả Mojo 2m',get displayName(){return tr(this.name,"2m Mojo crowd barrier");},label:'BARRIER',get cat(){return tr('An toàn',"Safety");},color:'#64748b',get desc(){return tr('Rào chắn hợp kim nhôm chống xô đẩy 2.0×1.1m',"2.0×1.1m aluminum crowd barrier");}},
+   kinetic_ring:{name:'Vòng LED Kinetic Ø2.4m',get displayName(){return tr(this.name,"Ø2.4m kinetic LED ring");},label:'KINETIC RING',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#f59e0b',get desc(){return tr('Vòng ánh sáng treo trần phát sáng emissive',"Suspended emissive lighting ring");}},
+   co2_jet:{name:'Súng Cột Khói CO2',get displayName(){return tr(this.name,"CO2 jet");},label:'CO2 / SPARK FX',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#38bdf8',get desc(){return tr('Máy bắn cột khói lạnh CO2 & pháo điện đại cảnh',"Cold CO2 jet and electric stage spark effect");}},
+   vip_podium:{name:'Bục Phát Biểu & Cầu Khai Mạc',get displayName(){return tr(this.name,"VIP lectern & opening sphere");},label:'VIP PODIUM',get cat(){return tr('Sân khấu',"Stage");},color:'#f59e0b',get desc(){return tr('Bục phát biểu Keynote + quả cầu LED chạm tay khai mạc',"Keynote lectern with touch-activated LED opening sphere");}},
+   led_arch_gate:{name:'Cổng Chào LED Vòm 5m',get displayName(){return tr(this.name,"5m LED entrance arch");},label:'LED ARCH GATE',get cat(){return tr('Màn LED phụ',"Auxiliary LED");},color:'#a855f7',get desc(){return tr('Cổng vòm LED sự kiện 5.0×3.6m phát sáng viền Neon',"5.0×3.6m event arch with neon LED trim");}},
+   catwalk_runway:{name:'Sàn Catwalk Chữ T 4m',get displayName(){return tr(this.name,"4m T-shaped catwalk");},label:'CATWALK T-STAGE',get cat(){return tr('Sân khấu',"Stage");},color:'#475569',get desc(){return tr('Đường băng Catwalk vươn ra khán giả kèm viền LED sàn',"Audience-facing catwalk with LED floor trim");}},
+   backdrop_arch:{name:'Backdrop Check-in Vòm Sự Kiện 4m',get displayName(){return tr(this.name,"4m event arch backdrop");},label:'BACKDROP ARCH',get cat(){return tr('Sân khấu',"Stage");},color:'#38bdf8',get desc(){return tr('Phông chụp ảnh vòm 3 lớp + bục thảm đỏ check-in sự kiện',"Three-layer photo backdrop and red-carpet check-in platform");}},
+   gala_round_table:{name:'Bàn Tròn Tiệc Gala 10 Ghế (Ø1.8m)',get displayName(){return tr(this.name,"Ø1.8m gala table with 10 chairs");},label:'GALA TABLE',get cat(){return tr('Bàn ghế VIP',"VIP furniture");},color:'#f8fafc',get desc(){return tr('Bàn tiệc tròn khăn phủ Ø1.8m + 10 ghế Banquet xoay tròn',"Round covered table with ten banquet chairs");}},
+   conference_ibm_table:{name:'Bàn Đại Biểu Hội Nghị IBM 1.8m',get displayName(){return tr(this.name,"1.8m IBM conference table");},label:'IBM TABLE',get cat(){return tr('Bàn ghế VIP',"VIP furniture");},color:'#1e293b',get desc(){return tr('Bàn hội nghị chữ nhật 1.8×0.6m phủ khăn + 2 ghế đại biểu',"Covered 1.8×0.6m conference table with two delegate chairs");}},
+   banquet_chair:{name:'Ghế Banquet Sự Kiện Áo Nơ VIP',get displayName(){return tr(this.name,"VIP banquet chair with sash");},label:'BANQUET CHAIR',get cat(){return tr('Bàn ghế VIP',"VIP furniture");},color:'#e2e8f0',get desc(){return tr('Ghế hội nghị/tiệc cưới bọc nệm kèm nơ lưng vàng đồng',"Padded event chair with gold back sash");}},
+   foh_control_booth:{name:'Bàn Điều Khiển FOH Âm Thanh / Ánh Sáng',get displayName(){return tr(this.name,"FOH audio / lighting booth");},label:'FOH BOOTH',get cat(){return tr('Sân khấu',"Stage");},color:'#334155',get desc(){return tr('Khu kỹ thuật FOH gồm bàn mixer ánh sáng GrandMA + bàn âm thanh',"FOH desk with GrandMA lighting console and audio mixer");}},
+   decor_palm_planter:{name:'Chậu Cây Cảnh Sân Khấu / Cánh Gà',get displayName(){return tr(this.name,"Stage / wing planter");},label:'STAGE PLANTER',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#22c55e',get desc(){return tr('Bồn cây xanh trang trí mép sân khấu và bục phát biểu',"Decorative greenery for stage edges and lecterns");}},
+   haze_machine_pro:{name:'Máy Phun Sương Haze Sân Khấu 1500W',get displayName(){return tr(this.name,"1500W stage haze machine");},label:'HAZE 1500W',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#64748b',get desc(){return tr('Máy tạo sương mỏng làm nổi tia đèn Beam',"Fine haze machine to reveal beam lighting");}},
+   cold_spark_fountain:{name:'Máy Pháo Điện Lạnh Sparkular 700W',get displayName(){return tr(this.name,"700W Sparkular cold spark fountain");},label:'COLD SPARK',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#fbbf24',get desc(){return tr('Máy bắn tia pháo điện lạnh cao 3m an toàn trong nhà',"Indoor cold spark effect up to 3m high");}}
   };
+
+  function itemDisplayName16(item){
+   const spec=CATALOG[item.kind],name=String(item.name||'');
+   if(!spec)return name;
+   const suffix=name.slice(spec.name.length);
+   return name===spec.name||name.startsWith(spec.name+' #')&&/^ #\d+$/.test(suffix)?spec.displayName+suffix:name;
+  }
 
   const ALLOWED_LICENSES=['cc0','cc-zero','public domain','pdm','cc-by','cc by'];
   const creaseCache=new WeakMap();
+  // Panel group collapse state survives reloads (keys = group heading text).
+  const COLLAPSE_KEY16='ledstudio-collapsed';
+  function loadCollapsed16(){try{const v=JSON.parse(localStorage.getItem(COLLAPSE_KEY16)||'{}');return{all:!!v.all,keys:Array.isArray(v.keys)?v.keys.slice(0,200):[]};}catch(e){return{all:false,keys:[]};}}
+  function saveCollapsed16(){try{localStorage.setItem(COLLAPSE_KEY16,JSON.stringify({all:A.allBlocksCollapsed,keys:[...A.collapsedBlocks].slice(0,200)}));}catch(e){}}
   const SVG_LOCK_CLOSED16='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" fill="currentColor"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>';
   const SVG_LOCK_OPEN16='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>';
 
@@ -53,7 +65,7 @@
    translateCache:new Map(),
    searchResults:[],
    searching:false,
-   searchStatus:'Chọn nguồn dữ liệu hoặc từ khóa gợi ý bên dưới để duyệt & nạp thẳng vào sân khấu 3D.',
+   searchStatus:tr('Chọn nguồn dữ liệu hoặc từ khóa gợi ý bên dưới để duyệt & nạp thẳng vào sân khấu 3D.',"Choose a source or suggested keyword below to browse and import into the 3D stage."),
    polyCache:{},
    measureMode:false,
    measurePts:[],
@@ -62,8 +74,8 @@
    blenderUI:true,
    tShelfHidden:false,
    openMenuKey:null,
-   collapsedBlocks:new Set(),
-   allBlocksCollapsed:false,
+   collapsedBlocks:new Set(loadCollapsed16().keys),
+   allBlocksCollapsed:loadCollapsed16().all,
    previewCache:new Map(),
    castNodeCache16:new Map(),
    previewKind:'truss_tower',
@@ -92,6 +104,7 @@
 
   // Centralized dock coordinator to prevent overlapping right-panel tools (Bug #6 guard)
   function closeAllDocks16(except=''){
+   if(except!=='aiChat18')S.lumi18?.closeAiChat18?.();
    if(except!=='v16Asset' && A.isOpen)close();
    if(except!=='fx141')S.fx141?.close?.();
    if(except!=='matrix143')S.matrix143?.close?.();
@@ -310,8 +323,8 @@
 
   function addCatalogItem(kind,pos=null){
    const spec=CATALOG[kind];
-   if(!spec){toast('Loại asset không hợp lệ.');return null;}
-   if(A.items.length>=64){toast('Giới hạn tối đa 64 Stage Asset trong một dự án.');return null;}
+   if(!spec){toast(tr('Loại asset không hợp lệ.',"Invalid asset type."));return null;}
+   if(A.items.length>=64){toast(tr('Giới hạn tối đa 64 Stage Asset trong một dự án.',"A project supports up to 64 stage assets."));return null;}
    checkpoint();
    const count=A.items.filter(x=>x.kind===kind).length+1;
    const b=engine.stageBounds||{min:[-9,0,-4],max:[9,7,4]};
@@ -330,7 +343,7 @@
    syncItemMeshes(item);
    engine.view='stage';
    paint();
-   toast('Đã thêm '+item.name+' vào sân khấu 3D.');
+   toast(tr('Đã thêm ',"Added ")+itemDisplayName16(item)+tr(' vào sân khấu 3D.'," to the 3D stage."));
    return item;
   }
 
@@ -342,7 +355,7 @@
    removeAssetMeshes(removed.id);
    A.selected=A.items[0]?.id||null;
    paint();
-   toast('Đã xóa '+removed.name+'.');
+   toast(tr('Đã xóa ',"Deleted ")+itemDisplayName16(removed)+'.');
   }
 
   // Track 1B: 28° Crease Edge computation (scale-invariant & back-face-safe, ported from 5.Design_mcp glb_viewer_runtime.js)
@@ -449,33 +462,33 @@
   // Track 5: Keyless CC0 Online Asset Search (Poly Haven + Wikimedia Commons + Google Drive Design_MCP GLB Pack)
   const GDRIVE_FOLDER_URL16='https://drive.google.com/drive/u/0/folders/1fhlZmvpR-FcaGbPh3RV1TlhSEAxTnhIv';
   const GDRIVE_ASSETS16=[
-   {id:'fixture_moving_head_spot_01',localUrl:'./assets/pilot/fixture_moving_head_spot_01.glb',sidecarUrl:'./assets/pilot/fixture_moving_head_spot_01.asset.json',thumbUrl:'./assets/pilot/fixture_moving_head_spot_01.webp',origin:'mount-point',ofl_fixture:'generic/moving-head-spot-350w',size_m:[0.375,0.52,0.318],title:'Moving Head Spot 350W (Tách Yoke/Head DMX)',dims:'GLB Pilot v1 · 338 KB · 568 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'moving head spot beam light den san khau truss dmx fixture',accent:'#38bdf8'},
-   {id:'fixture_beam_230_7r_01',localUrl:'./assets/pilot/fixture_beam_230_7r_01.glb',sidecarUrl:'./assets/pilot/fixture_beam_230_7r_01.asset.json',thumbUrl:'./assets/pilot/fixture_beam_230_7r_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/beam-230-7r',size_m:[0.34,0.48,0.262],title:'Beam 230 7R Moving Head (Tách Yoke/Head DMX)',dims:'GLB Batch 1 · 293 KB · 472 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'beam 230 7r sharpy moving head den beam san khau dmx fixture',accent:'#38bdf8'},
-   {id:'fixture_wash_zoom_36x18_01',localUrl:'./assets/pilot/fixture_wash_zoom_36x18_01.glb',sidecarUrl:'./assets/pilot/fixture_wash_zoom_36x18_01.asset.json',thumbUrl:'./assets/pilot/fixture_wash_zoom_36x18_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/wash-zoom-36x18',size_m:[0.37,0.468,0.252],title:'Moving Head Wash Zoom 36×18W (Tách Yoke/Head DMX)',dims:'GLB Batch 1 · 307 KB · 616 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'wash zoom 36x18 moving head led rgbw den wash san khau dmx fixture',accent:'#60a5fa'},
-   {id:'fixture_par_led_54x3w_01',localUrl:'./assets/pilot/fixture_par_led_54x3w_01.glb',sidecarUrl:'./assets/pilot/fixture_par_led_54x3w_01.asset.json',thumbUrl:'./assets/pilot/fixture_par_led_54x3w_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/par-led-54x3w',size_m:[0.29,0.36,0.222],title:'Par LED 54×3W RGBW (Tách Yoke/Head DMX)',dims:'GLB Batch 1 · 352 KB · 412 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'par led 54x3w rgbw stage wash light den par san khau dmx fixture',accent:'#34d399'},
-   {id:'fixture_katana_led_bar_1m_01',localUrl:'./assets/pilot/fixture_katana_led_bar_1m_01.glb',sidecarUrl:'./assets/pilot/fixture_katana_led_bar_1m_01.asset.json',thumbUrl:'./assets/pilot/fixture_katana_led_bar_1m_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/katana-led-bar-1m',size_m:[1.0,0.28,0.18],title:'Đèn Thanh Katana LED Matrix Bar 1m (Tách Yoke/Head DMX)',dims:'GLB Batch 1 · 299 KB · 332 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'katana led bar 1m pixel matrix batten den thanh led san khau dmx fixture',accent:'#a855f7'},
-   {id:'prop_inflatable_arch_01',localUrl:'./assets/pilot/prop_inflatable_arch_01.glb',sidecarUrl:'./assets/pilot/prop_inflatable_arch_01.asset.json',thumbUrl:'./assets/pilot/prop_inflatable_arch_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[6.0,4.0,1.1],title:'Cổng Hơi Sự Kiện 6×4m (Inflatable Event Arch)',dims:'GLB Pilot v1 · 365 KB · 2348 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'inflatable arch cong hoi su kien entrance gate 6x4m prop',accent:'#0ea5e9'},
-   {id:'furniture_chiavari_chair_01',localUrl:'./assets/pilot/furniture_chiavari_chair_01.glb',sidecarUrl:'./assets/pilot/furniture_chiavari_chair_01.asset.json',thumbUrl:'./assets/pilot/furniture_chiavari_chair_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.42,0.92,0.44],title:'Ghế Tiệc Cưới Chiavari Vàng Kim (Banquet Chair)',dims:'GLB Pilot v1 · 343 KB · 1272 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'chiavari chair ghe tiec cuoi banquet event furniture',accent:'#f59e0b'},
-   {id:'stage_sofa_vip_01',localUrl:'./assets/pilot/stage_sofa_vip_01.glb',sidecarUrl:'./assets/pilot/stage_sofa_vip_01.asset.json',thumbUrl:'./assets/pilot/stage_sofa_vip_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.8,0.82,0.855],title:'Sofa VIP Talkshow 3 Chỗ 1.8m (VIP Stage Sofa)',dims:'GLB Batch 1 · 219 KB · 316 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'sofa vip talkshow lounge couch ghe sofa san khau furniture',accent:'#f59e0b'},
-   {id:'furniture_banquet_table_01',localUrl:'./assets/pilot/furniture_banquet_table_01.glb',sidecarUrl:'./assets/pilot/furniture_banquet_table_01.asset.json',thumbUrl:'./assets/pilot/furniture_banquet_table_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.8,0.76,1.8],title:'Bàn Tiệc Tròn Gala 1.8m (Round Banquet Table)',dims:'GLB Batch 1 · 92 KB · 432 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'banquet table round gala dining ban tiec tron 1.8m furniture',accent:'#fbbf24'},
-   {id:'furniture_conference_chair_01',localUrl:'./assets/pilot/furniture_conference_chair_01.glb',sidecarUrl:'./assets/pilot/furniture_conference_chair_01.asset.json',thumbUrl:'./assets/pilot/furniture_conference_chair_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.48,0.88,0.5195],title:'Ghế Hội Nghị Đại Biểu Khung Đồng (VIP Conference Chair)',dims:'GLB Batch 1 · 284 KB · 248 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'conference chair banquet vip ghe hoi nghi dai bieu furniture',accent:'#f59e0b'},
-   {id:'prop_podium_reception_01',localUrl:'./assets/pilot/prop_podium_reception_01.glb',sidecarUrl:'./assets/pilot/prop_podium_reception_01.asset.json',thumbUrl:'./assets/pilot/prop_podium_reception_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.78,1.1497,0.56],title:'Bục Phát Biểu & Bàn Lễ Tân VIP Gỗ Sồi (Keynote Podium)',dims:'GLB Batch 1 · 290 KB · 304 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'podium lectern reception keynote buc phat bieu ban le tan vip furniture',accent:'#d97706'},
-   {id:'prop_stage_plant_01',localUrl:'./assets/pilot/prop_stage_plant_01.glb',sidecarUrl:'./assets/pilot/prop_stage_plant_01.asset.json',thumbUrl:'./assets/pilot/prop_stage_plant_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.7098,1.35,0.7098],title:'Chậu Cây Cảnh Nhiệt Đới Sân Khấu (Stage Planter)',dims:'GLB Batch 1 · 294 KB · 328 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'stage plant planter palm monstera chau cay canh san khau decor',accent:'#10b981'},
-   {id:'prop_chandelier_stage_01',localUrl:'./assets/pilot/prop_chandelier_stage_01.glb',sidecarUrl:'./assets/pilot/prop_chandelier_stage_01.asset.json',thumbUrl:'./assets/pilot/prop_chandelier_stage_01.webp',origin:'mount-point',ofl_fixture:null,size_m:[1.194,1.1,1.1768],title:'Đèn Chùm Pha Lê Gala / Tiệc Cưới (Crystal Chandelier)',dims:'GLB Batch 1 · 426 KB · 1936 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'chandelier crystal gala wedding den chum pha le san khau decor',accent:'#fde047'},
-   {id:'prop_decor_shelf_01',localUrl:'./assets/pilot/prop_decor_shelf_01.glb',sidecarUrl:'./assets/pilot/prop_decor_shelf_01.asset.json',thumbUrl:'./assets/pilot/prop_decor_shelf_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.2,1.8,0.4255],title:'Kệ Trưng Bày Cúp & Sản Phẩm 4 Tầng (Display Shelf)',dims:'GLB Batch 1 · 252 KB · 576 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'shelf display rack trophy cup ke trung bay san pham decor',accent:'#38bdf8'},
-   {id:'prop_vip_carpet_01',localUrl:'./assets/pilot/prop_vip_carpet_01.glb',sidecarUrl:'./assets/pilot/prop_vip_carpet_01.asset.json',thumbUrl:'./assets/pilot/prop_vip_carpet_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[2.0,0.024,3.6],title:'Thảm Đỏ Khánh Tiết VIP Viền Vàng 2×3.6m (VIP Red Carpet)',dims:'GLB Batch 1 · 120 KB · 156 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'carpet rug red runner vip tham do khanh tiet su kien decor',accent:'#ef4444'},
-   {id:'gd_human_mocap',fileId:'1GThK9vKEgLE8CErNO_nr6gaQu1ExH89T',title:'Human Mocap Dancer (Có xương & Animation)',dims:'Rigged GLB · 329 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human dancer person mocap nguoi vu cong nhan vat animation',accent:'#38bdf8'},
-   {id:'gd_human_base',fileId:'1Kmnv88yxAj4I_f81rSx_IXLThbX29mbV',title:'Human Base Performer (Có xương & Animation)',dims:'Rigged GLB · 310 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human performer actor nguoi nhan vat animation',accent:'#61e8ff'},
-   {id:'gd_human_addon',fileId:'1SJ3XeMFQbTfkOroADqdMvYb3_CFXKNxX',title:'Human Stage Action Pack (Có xương & Animation)',dims:'Rigged GLB · 340 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human dance action nguoi bieu dien animation',accent:'#8b7dff'},
-   {id:'gd_dragon_anim',fileId:'1tnxVDQwxnPpqLKhm0b1i_AbV0VNtCHvl',title:'Rồng 3D Đại Cảnh (Dragon Rigged Animation)',dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage dragon mascot fx rong phuong dai canh animation',accent:'#f59e0b'},
-   {id:'gd_bird_anim',fileId:'1hRG_Qv0xsuN0gFQCKf9BbQzgLdH_PcrV',title:'Chim / Phượng Hoàng 3D Vỗ Cánh (Animated)',dims:'Rigged GLB · 329 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage bird phoenix wing chim phuong hoang animation',accent:'#fb7185'},
-   {id:'gd_horse_anim',fileId:'18WGQJUIp4nv5ibeK3D_mtKK6MqODW7Kq',title:'Ngựa 3D Phi Nước Đại (Horse Animated)',dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage horse animal ngua thu animation',accent:'#a855f7'},
-   {id:'gd_fox_anim',fileId:'1PdWashC3t9RcQlfXjuqzjJELaBbI1Zwa',title:'Hồ Ly / Cáo 3D Chuyển Động (Fox Animated)',dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage fox animal cao ho ly animation',accent:'#f97316'},
-   {id:'gd_kaiju_anim',fileId:'1TPyDHRF7f_ykt_cvm0QWtJNWi5H59KGv',title:'Quái Thú Kaiju 3D Đại Cảnh (Animated)',dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage monster kaiju boss quai thu animation',accent:'#ef4444'},
-   {id:'gd_shark_anim',fileId:'1EF9eobaWvmifUc1NTMi1A42UMLAs_jeK',title:'Cá Mập 3D Đại Dương (Shark Animated)',dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage shark ocean sea ca map dai duong animation',accent:'#0ea5e9'},
-   {id:'gd_snake_anim',fileId:'1r2sXhxMWjXGRBkCDeK-tCN5oSnpKMGPt',title:'Rắn Thần 3D Chuyển Động (Snake Animated)',dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage snake animal ran animation',accent:'#10b981'},
-   {id:'gd_spider_anim',fileId:'1xRYooI8UKl0KVqLWwlMTZYsklGdH-17S',title:'Nhện Máy 3D Halloween / Sci-Fi (Animated)',dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage spider scifi halloween nhen animation',accent:'#6366f1'},
-   {id:'gd_chair_cc0',fileId:'13tGfeOv5c0QxacaQbXPZEmui6sOR--YD',title:'Ghế Đơn Sân Khấu (Quaternius CC0)',dims:'GLB 3D · 13 KB',license:'CC0 1.0 (Quaternius)',tags:'stage chair seat stool ghe ngoi talkshow',accent:'#34d399'}
+   {id:'fixture_moving_head_spot_01',localUrl:'./assets/pilot/fixture_moving_head_spot_01.glb',sidecarUrl:'./assets/pilot/fixture_moving_head_spot_01.asset.json',thumbUrl:'./assets/pilot/fixture_moving_head_spot_01.webp',origin:'mount-point',ofl_fixture:'generic/moving-head-spot-350w',size_m:[0.375,0.52,0.318],title:'Moving Head Spot 350W (Tách Yoke/Head DMX)',get displayTitle(){return tr(this.title,"Moving Head Spot 350W (DMX yoke / head)");},dims:'GLB Pilot v1 · 338 KB · 568 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'moving head spot beam light den san khau truss dmx fixture',accent:'#38bdf8'},
+   {id:'fixture_beam_230_7r_01',localUrl:'./assets/pilot/fixture_beam_230_7r_01.glb',sidecarUrl:'./assets/pilot/fixture_beam_230_7r_01.asset.json',thumbUrl:'./assets/pilot/fixture_beam_230_7r_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/beam-230-7r',size_m:[0.34,0.48,0.262],title:'Beam 230 7R Moving Head (Tách Yoke/Head DMX)',get displayTitle(){return tr(this.title,"Beam 230 7R Moving Head (DMX yoke / head)");},dims:'GLB Batch 1 · 293 KB · 472 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'beam 230 7r sharpy moving head den beam san khau dmx fixture',accent:'#38bdf8'},
+   {id:'fixture_wash_zoom_36x18_01',localUrl:'./assets/pilot/fixture_wash_zoom_36x18_01.glb',sidecarUrl:'./assets/pilot/fixture_wash_zoom_36x18_01.asset.json',thumbUrl:'./assets/pilot/fixture_wash_zoom_36x18_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/wash-zoom-36x18',size_m:[0.37,0.468,0.252],title:'Moving Head Wash Zoom 36×18W (Tách Yoke/Head DMX)',get displayTitle(){return tr(this.title,"Moving Head Wash Zoom 36×18W (DMX yoke / head)");},dims:'GLB Batch 1 · 307 KB · 616 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'wash zoom 36x18 moving head led rgbw den wash san khau dmx fixture',accent:'#60a5fa'},
+   {id:'fixture_par_led_54x3w_01',localUrl:'./assets/pilot/fixture_par_led_54x3w_01.glb',sidecarUrl:'./assets/pilot/fixture_par_led_54x3w_01.asset.json',thumbUrl:'./assets/pilot/fixture_par_led_54x3w_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/par-led-54x3w',size_m:[0.29,0.36,0.222],title:'Par LED 54×3W RGBW (Tách Yoke/Head DMX)',get displayTitle(){return tr(this.title,"Par LED 54×3W RGBW (DMX yoke / head)");},dims:'GLB Batch 1 · 352 KB · 412 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'par led 54x3w rgbw stage wash light den par san khau dmx fixture',accent:'#34d399'},
+   {id:'fixture_katana_led_bar_1m_01',localUrl:'./assets/pilot/fixture_katana_led_bar_1m_01.glb',sidecarUrl:'./assets/pilot/fixture_katana_led_bar_1m_01.asset.json',thumbUrl:'./assets/pilot/fixture_katana_led_bar_1m_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/katana-led-bar-1m',size_m:[1.0,0.28,0.18],title:'Đèn Thanh Katana LED Matrix Bar 1m (Tách Yoke/Head DMX)',get displayTitle(){return tr(this.title,"Katana LED Matrix Bar 1m (DMX yoke / head)");},dims:'GLB Batch 1 · 299 KB · 332 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'katana led bar 1m pixel matrix batten den thanh led san khau dmx fixture',accent:'#a855f7'},
+   {id:'prop_inflatable_arch_01',localUrl:'./assets/pilot/prop_inflatable_arch_01.glb',sidecarUrl:'./assets/pilot/prop_inflatable_arch_01.asset.json',thumbUrl:'./assets/pilot/prop_inflatable_arch_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[6.0,4.0,1.1],title:'Cổng Hơi Sự Kiện 6×4m',get displayTitle(){return tr(this.title,"6×4m inflatable event arch");},dims:'GLB Pilot v1 · 365 KB · 2348 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'inflatable arch cong hoi su kien entrance gate 6x4m prop',accent:'#0ea5e9'},
+   {id:'furniture_chiavari_chair_01',localUrl:'./assets/pilot/furniture_chiavari_chair_01.glb',sidecarUrl:'./assets/pilot/furniture_chiavari_chair_01.asset.json',thumbUrl:'./assets/pilot/furniture_chiavari_chair_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.42,0.92,0.44],title:'Ghế Tiệc Cưới Chiavari Vàng Kim',get displayTitle(){return tr(this.title,"Gold Chiavari wedding chair");},dims:'GLB Pilot v1 · 343 KB · 1272 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'chiavari chair ghe tiec cuoi banquet event furniture',accent:'#f59e0b'},
+   {id:'stage_sofa_vip_01',localUrl:'./assets/pilot/stage_sofa_vip_01.glb',sidecarUrl:'./assets/pilot/stage_sofa_vip_01.asset.json',thumbUrl:'./assets/pilot/stage_sofa_vip_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.8,0.82,0.855],title:'Sofa VIP Talkshow 3 Chỗ 1.8m (VIP Stage Sofa)',get displayTitle(){return tr(this.title,"1.8m three-seat VIP talkshow sofa");},dims:'GLB Batch 1 · 219 KB · 316 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'sofa vip talkshow lounge couch ghe sofa san khau furniture',accent:'#f59e0b'},
+   {id:'furniture_banquet_table_01',localUrl:'./assets/pilot/furniture_banquet_table_01.glb',sidecarUrl:'./assets/pilot/furniture_banquet_table_01.asset.json',thumbUrl:'./assets/pilot/furniture_banquet_table_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.8,0.76,1.8],title:'Bàn Tiệc Tròn Gala 1.8m',get displayTitle(){return tr(this.title,"1.8m round gala table");},dims:'GLB Batch 1 · 92 KB · 432 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'banquet table round gala dining ban tiec tron 1.8m furniture',accent:'#fbbf24'},
+   {id:'furniture_conference_chair_01',localUrl:'./assets/pilot/furniture_conference_chair_01.glb',sidecarUrl:'./assets/pilot/furniture_conference_chair_01.asset.json',thumbUrl:'./assets/pilot/furniture_conference_chair_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.48,0.88,0.5195],title:'Ghế Hội Nghị Đại Biểu Khung Đồng (VIP Conference Chair)',get displayTitle(){return tr(this.title,"Brass-frame VIP conference chair");},dims:'GLB Batch 1 · 284 KB · 248 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'conference chair banquet vip ghe hoi nghi dai bieu furniture',accent:'#f59e0b'},
+   {id:'prop_podium_reception_01',localUrl:'./assets/pilot/prop_podium_reception_01.glb',sidecarUrl:'./assets/pilot/prop_podium_reception_01.asset.json',thumbUrl:'./assets/pilot/prop_podium_reception_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.78,1.1497,0.56],title:'Bục Phát Biểu & Bàn Lễ Tân VIP Gỗ Sồi',get displayTitle(){return tr(this.title,"Oak VIP lectern & reception desk");},dims:'GLB Batch 1 · 290 KB · 304 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'podium lectern reception keynote buc phat bieu ban le tan vip furniture',accent:'#d97706'},
+   {id:'prop_stage_plant_01',localUrl:'./assets/pilot/prop_stage_plant_01.glb',sidecarUrl:'./assets/pilot/prop_stage_plant_01.asset.json',thumbUrl:'./assets/pilot/prop_stage_plant_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.7098,1.35,0.7098],title:'Chậu Cây Cảnh Nhiệt Đới Sân Khấu',get displayTitle(){return tr(this.title,"Tropical stage planter");},dims:'GLB Batch 1 · 294 KB · 328 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'stage plant planter palm monstera chau cay canh san khau decor',accent:'#10b981'},
+   {id:'prop_chandelier_stage_01',localUrl:'./assets/pilot/prop_chandelier_stage_01.glb',sidecarUrl:'./assets/pilot/prop_chandelier_stage_01.asset.json',thumbUrl:'./assets/pilot/prop_chandelier_stage_01.webp',origin:'mount-point',ofl_fixture:null,size_m:[1.194,1.1,1.1768],title:'Đèn Chùm Pha Lê Gala / Tiệc Cưới',get displayTitle(){return tr(this.title,"Crystal gala / wedding chandelier");},dims:'GLB Batch 1 · 426 KB · 1936 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'chandelier crystal gala wedding den chum pha le san khau decor',accent:'#fde047'},
+   {id:'prop_decor_shelf_01',localUrl:'./assets/pilot/prop_decor_shelf_01.glb',sidecarUrl:'./assets/pilot/prop_decor_shelf_01.asset.json',thumbUrl:'./assets/pilot/prop_decor_shelf_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.2,1.8,0.4255],title:'Kệ Trưng Bày Cúp & Sản Phẩm 4 Tầng',get displayTitle(){return tr(this.title,"Four-tier trophy & product display shelf");},dims:'GLB Batch 1 · 252 KB · 576 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'shelf display rack trophy cup ke trung bay san pham decor',accent:'#38bdf8'},
+   {id:'prop_vip_carpet_01',localUrl:'./assets/pilot/prop_vip_carpet_01.glb',sidecarUrl:'./assets/pilot/prop_vip_carpet_01.asset.json',thumbUrl:'./assets/pilot/prop_vip_carpet_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[2.0,0.024,3.6],title:'Thảm Đỏ Khánh Tiết VIP Viền Vàng 2×3.6m (VIP Red Carpet)',get displayTitle(){return tr(this.title,"2×3.6m gold-trimmed VIP red carpet");},dims:'GLB Batch 1 · 120 KB · 156 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'carpet rug red runner vip tham do khanh tiet su kien decor',accent:'#ef4444'},
+   {id:'gd_human_mocap',fileId:'1GThK9vKEgLE8CErNO_nr6gaQu1ExH89T',title:'Human Mocap Dancer (Có xương & Animation)',get displayTitle(){return tr(this.title,"Human Mocap Dancer (rigged & animated)");},dims:'Rigged GLB · 329 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human dancer person mocap nguoi vu cong nhan vat animation',accent:'#38bdf8'},
+   {id:'gd_human_base',fileId:'1Kmnv88yxAj4I_f81rSx_IXLThbX29mbV',title:'Human Base Performer (Có xương & Animation)',get displayTitle(){return tr(this.title,"Human Base Performer (rigged & animated)");},dims:'Rigged GLB · 310 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human performer actor nguoi nhan vat animation',accent:'#61e8ff'},
+   {id:'gd_human_addon',fileId:'1SJ3XeMFQbTfkOroADqdMvYb3_CFXKNxX',title:'Human Stage Action Pack (Có xương & Animation)',get displayTitle(){return tr(this.title,"Human Stage Action Pack (rigged & animated)");},dims:'Rigged GLB · 340 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human dance action nguoi bieu dien animation',accent:'#8b7dff'},
+   {id:'gd_dragon_anim',fileId:'1tnxVDQwxnPpqLKhm0b1i_AbV0VNtCHvl',title:'Rồng 3D Đại Cảnh',get displayTitle(){return tr(this.title,"3D stage dragon");},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage dragon mascot fx rong phuong dai canh animation',accent:'#f59e0b'},
+   {id:'gd_bird_anim',fileId:'1hRG_Qv0xsuN0gFQCKf9BbQzgLdH_PcrV',title:'Chim / Phượng Hoàng 3D Vỗ Cánh',get displayTitle(){return tr(this.title,"3D bird / phoenix with wing animation");},dims:'Rigged GLB · 329 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage bird phoenix wing chim phuong hoang animation',accent:'#fb7185'},
+   {id:'gd_horse_anim',fileId:'18WGQJUIp4nv5ibeK3D_mtKK6MqODW7Kq',title:'Ngựa 3D Phi Nước Đại',get displayTitle(){return tr(this.title,"3D galloping horse");},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage horse animal ngua thu animation',accent:'#a855f7'},
+   {id:'gd_fox_anim',fileId:'1PdWashC3t9RcQlfXjuqzjJELaBbI1Zwa',title:'Hồ Ly / Cáo 3D Chuyển Động',get displayTitle(){return tr(this.title,"Animated 3D fox");},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage fox animal cao ho ly animation',accent:'#f97316'},
+   {id:'gd_kaiju_anim',fileId:'1TPyDHRF7f_ykt_cvm0QWtJNWi5H59KGv',title:'Quái Thú Kaiju 3D Đại Cảnh',get displayTitle(){return tr(this.title,"3D stage Kaiju monster");},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage monster kaiju boss quai thu animation',accent:'#ef4444'},
+   {id:'gd_shark_anim',fileId:'1EF9eobaWvmifUc1NTMi1A42UMLAs_jeK',title:'Cá Mập 3D Đại Dương',get displayTitle(){return tr(this.title,"3D ocean shark");},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage shark ocean sea ca map dai duong animation',accent:'#0ea5e9'},
+   {id:'gd_snake_anim',fileId:'1r2sXhxMWjXGRBkCDeK-tCN5oSnpKMGPt',title:'Rắn Thần 3D Chuyển Động',get displayTitle(){return tr(this.title,"Animated 3D serpent");},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage snake animal ran animation',accent:'#10b981'},
+   {id:'gd_spider_anim',fileId:'1xRYooI8UKl0KVqLWwlMTZYsklGdH-17S',title:'Nhện Máy 3D Halloween / Sci-Fi',get displayTitle(){return tr(this.title,"3D Halloween / Sci-Fi robot spider");},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage spider scifi halloween nhen animation',accent:'#6366f1'},
+   {id:'gd_chair_cc0',fileId:'13tGfeOv5c0QxacaQbXPZEmui6sOR--YD',title:'Ghế Đơn Sân Khấu (Quaternius CC0)',get displayTitle(){return tr(this.title,"Stage chair (Quaternius CC0)");},dims:'GLB 3D · 13 KB',license:'CC0 1.0 (Quaternius)',tags:'stage chair seat stool ghe ngoi talkshow',accent:'#34d399'}
   ];
 
   const SEARCH_SYNONYMS16={
@@ -697,7 +710,7 @@
 
   async function runOnlineSearch(){
    const q=(A.searchQuery||'').trim().toLowerCase();
-   A.searching=true; A.searchStatus='Đang tìm kiếm trên kho Asset...'; paint();
+   A.searching=true; A.searchStatus=tr('Đang tìm kiếm trên kho Asset...',"Searching asset libraries..."); paint();
    try{
     let apiTranslated='';
     const initialTerms=expandSearchTerms16(q);
@@ -730,17 +743,18 @@
       size_m:item.size_m||null,
       source:'gdrive_glb',
       title:item.title,
+      get displayTitle(){return item.displayTitle;},
       license:item.license,
       thumb:item.thumbUrl
        ? item.thumbUrl
        : item.thumbId
         ? `https://drive.usercontent.google.com/download?id=${encodeURIComponent(item.thumbId)}&export=download`
-        : svgFallbackPreviewURL16(item.title,item.dims,item.accent||'#38bdf8'),
+        : svgFallbackPreviewURL16(item.displayTitle,item.dims,item.accent||'#38bdf8'),
       dims:item.dims
      }));
      A.searchStatus=matches.length
-      ? `Tìm thấy ${matches.length} model GLB 3D từ Google Drive Design_MCP (nạp trực tiếp không cần giải nén).`
-      : `Không khớp chính xác "${A.searchQuery}" — đang hiển thị ${finalItems.length} model GLB 3D có sẵn trong Google Drive.`;
+      ? tr(`Tìm thấy ${matches.length} model GLB 3D từ Google Drive Design_MCP (nạp trực tiếp không cần giải nén).`,`Found ${matches.length} Google Drive Design_MCP GLB models (import directly without extracting).`)
+      : tr(`Không khớp chính xác "${A.searchQuery}" — đang hiển thị ${finalItems.length} model GLB 3D có sẵn trong Google Drive.`,`No exact match for "${A.searchQuery}" — showing ${finalItems.length} available Google Drive GLB models.`);
     }else if(A.searchSource==='polyhaven_models' || A.searchSource==='polyhaven_textures'){
      const type=A.searchSource==='polyhaven_models'?'models':'textures';
      if(!A.polyCache[type]){
@@ -791,8 +805,8 @@
       dims:meta.dimensions?meta.dimensions.map(d=>(d/1000).toFixed(2)+'m').join('×'):(meta.categories||[]).slice(0,2).join(', ')
      }));
      A.searchStatus=usedFallback
-      ? `Từ khóa "${A.searchQuery}" không khớp trực tiếp — gợi ý ${A.searchResults.length} asset CC0 phổ biến từ Poly Haven.`
-      : `Tìm thấy ${A.searchResults.length} asset CC0 từ Poly Haven (${type==='models'?'Mô hình 3D':'Texture'}).`;
+      ? tr(`Từ khóa "${A.searchQuery}" không khớp trực tiếp — gợi ý ${A.searchResults.length} asset CC0 phổ biến từ Poly Haven.`,`No direct match for "${A.searchQuery}" — suggesting ${A.searchResults.length} popular Poly Haven CC0 assets.`)
+      : tr(`Tìm thấy ${A.searchResults.length} asset CC0 từ Poly Haven (${type==='models'?tr('Mô hình 3D',"3D models"):'Texture'}).`,`Found ${A.searchResults.length} Poly Haven CC0 assets (${type==='models'?tr('Mô hình 3D',"3D models"):'Texture'}).`);
     }else{
      const wikiQuery=enList.length?enList.slice(0,4).join(' '):(terms.length?terms.slice(0,3).join(' '):(q||'stage concert lighting'));
      const api=`https://commons.wikimedia.org/w/api.php?origin=*&action=query&generator=search&gsrsearch=${encodeURIComponent('filetype:bitmap '+wikiQuery)}&gsrnamespace=6&gsrlimit=24&prop=imageinfo&iiprop=url|extmetadata|dimensions&iiurlwidth=320&format=json`;
@@ -816,11 +830,11 @@
       });
      }
      A.searchResults=out.slice(0,18);
-     A.searchStatus=A.searchResults.length?`Tìm thấy ${A.searchResults.length} ảnh CC0/CC-BY từ Wikimedia Commons.`:'Không tìm thấy ảnh CC0/CC-BY khớp từ khóa.';
+     A.searchStatus=A.searchResults.length?tr(`Tìm thấy ${A.searchResults.length} ảnh CC0/CC-BY từ Wikimedia Commons.`,`Found ${A.searchResults.length} Wikimedia Commons CC0/CC-BY images.`):tr('Không tìm thấy ảnh CC0/CC-BY khớp từ khóa.',"No matching CC0/CC-BY images found.");
     }
    }catch(err){
     A.searchResults=[];
-    A.searchStatus='Không kết nối được kho online ('+(err?.message||'Offline')+'). Bạn có thể chọn nguồn Google Drive Design_MCP hoặc Thư viện Đạo cụ 3D Offline.';
+    A.searchStatus=tr('Không kết nối được kho online (',"Could not connect to the online library (")+(err?.message||'Offline')+tr('). Bạn có thể chọn nguồn Google Drive Design_MCP hoặc Thư viện Đạo cụ 3D Offline.',"). Choose Google Drive Design_MCP or the offline 3D prop library.");
    }finally{
     A.searching=false;
     paint();
@@ -930,7 +944,7 @@
   }
 
   function commitImportedMeshesToStage16(parsed,title,opts={}){
-   if(!parsed?.meshes?.length)throw Error('Model không có mesh hợp lệ.');
+   if(!parsed?.meshes?.length)throw Error(tr('Model không có mesh hợp lệ.',"Model has no valid meshes."));
    checkpoint();
    const b=engine.stageBounds||{min:[-9,0,-4],max:[9,7,4]};
    let min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity];
@@ -1006,7 +1020,7 @@
     ? Array.from(fileOrFiles)
     : [fileOrFiles].filter(Boolean);
    const glbFile=list.find(f=>/\.glb$/i.test(String(f?.name||'')))||list[0];
-   if(!glbFile)throw Error('Hãy chọn tệp đạo cụ .glb hợp lệ.');
+   if(!glbFile)throw Error(tr('Hãy chọn tệp đạo cụ .glb hợp lệ.',"Choose a valid .glb prop file."));
    let sidecar=opts.sidecar||null;
    const jsonFile=list.find(f=>/\.asset\.json$/i.test(String(f?.name||'')));
    if(!sidecar && jsonFile && typeof jsonFile.text==='function'){
@@ -1023,7 +1037,7 @@
     ofl_fixture,
     preserveMetricScale:opts.preserveMetricScale??true
    });
-   toast(`Đã nạp đạo cụ GLB "${rawTitle}" (${committed.origin}${committed.oflFixture?' · DMX '+committed.oflFixture.profileId:''}) vào sân khấu!`);
+   toast(tr(`Đã nạp đạo cụ GLB "${rawTitle}" (${committed.origin}${committed.oflFixture?' · DMX '+committed.oflFixture.profileId:''}) vào sân khấu`,`Imported GLB prop "${rawTitle}" (${committed.origin}${committed.oflFixture?' · DMX '+committed.oflFixture.profileId:''}) into the stage`));
    return {...committed,sidecar,warnings:parsed.warnings||[],meshes:parsed.meshes};
   }
 
@@ -1042,7 +1056,7 @@
      inp.value='';
      if(!files.length)return;
      try{
-      busy(true,'Đang nạp đạo cụ .GLB vào sân khấu...');
+      busy(true,tr('Đang nạp đạo cụ .GLB vào sân khấu...',"Importing .GLB prop into the stage..."));
       await importLocalGlbProp(files);
      }catch(err){
       toast(err?.message||String(err));
@@ -1058,11 +1072,11 @@
    const r=A.searchResults[idx];
    if(!r)return;
    try{
-    busy(true,'Đang tải asset 3D / Media: '+r.title+'...');
+    busy(true,tr('Đang tải asset 3D / Media: ',"Loading 3D asset / media: ")+r.title+'...');
     if(r.source==='gdrive_glb'){
      if(r.localUrl){
       const glbRes=await fetch(r.localUrl);
-      if(!glbRes.ok)throw Error('Không tải được file GLB cục bộ (HTTP '+glbRes.status+').');
+      if(!glbRes.ok)throw Error(tr('Không tải được file GLB cục bộ (HTTP ',"Could not load local GLB file (HTTP ")+glbRes.status+').');
       const glbBlob=await glbRes.blob();
       const glbFile=new File([glbBlob],(r.id||'model')+'.glb',{type:'model/gltf-binary'});
       let sidecar=null;
@@ -1073,19 +1087,19 @@
      }else{
       const dlUrl=`https://drive.usercontent.google.com/download?id=${encodeURIComponent(r.fileId)}&export=download`;
       const glbRes=await fetch(dlUrl);
-      if(!glbRes.ok)throw Error('Không tải được file GLB từ Google Drive (HTTP '+glbRes.status+').');
+      if(!glbRes.ok)throw Error(tr('Không tải được file GLB từ Google Drive (HTTP ',"Could not download GLB from Google Drive (HTTP ")+glbRes.status+').');
       const glbBlob=await glbRes.blob();
       const glbFile=new File([glbBlob],(r.id||'model')+'.glb',{type:'model/gltf-binary'});
       const parsed=await Importer.gltf(glbFile,new Map());
       commitImportedMeshesToStage16(parsed,r.title,{id:r.id,origin:r.origin,ofl_fixture:r.ofl_fixture,preserveMetricScale:true});
-      toast('Đã nạp model 3D "'+r.title+'" từ Google Drive vào sân khấu!');
+      toast(tr('Đã nạp model 3D "',"Imported 3D model \"")+r.title+tr('" từ Google Drive vào sân khấu',"\" from Google Drive into the stage"));
      }
     }else if(r.source==='polyhaven_model'){
      const filesData=await fetchJsonWithTimeout(`https://api.polyhaven.com/files/${encodeURIComponent(r.id)}`);
      const gltfNode=filesData?.gltf?.['1k']?.gltf || filesData?.gltf?.['2k']?.gltf || Object.values(filesData?.gltf||{})[0]?.gltf;
-     if(!gltfNode?.url)throw Error('Không tìm thấy gói glTF 1K trên Poly Haven.');
+     if(!gltfNode?.url)throw Error(tr('Không tìm thấy gói glTF 1K trên Poly Haven.',"No 1K glTF package found on Poly Haven."));
      const gltfRes=await fetch(gltfNode.url);
-     if(!gltfRes.ok)throw Error('Không tải được file .gltf');
+     if(!gltfRes.ok)throw Error(tr('Không tải được file .gltf',"Could not download .gltf file"));
      const gltfBlob=await gltfRes.blob();
      const gltfFile=new File([gltfBlob],r.id+'.gltf',{type:'model/gltf+json'});
      const map=new Map([[gltfFile.name.toLowerCase(),gltfFile]]);
@@ -1109,28 +1123,28 @@
      }));
      const parsed=await Importer.gltf(gltfFile,map);
      commitImportedMeshesToStage16(parsed,r.title);
-     toast('Đã nạp model 3D CC0 "'+r.title+'" vào sân khấu!');
+     toast(tr('Đã nạp model 3D CC0 "',"Imported CC0 3D model \"")+r.title+tr('" vào sân khấu',"\" into the stage"));
     }else if(r.source==='polyhaven_tex'){
      const filesData=await fetchJsonWithTimeout(`https://api.polyhaven.com/files/${encodeURIComponent(r.id)}`);
      const diffUrl=filesData?.Diffuse?.['1k']?.jpg?.url || filesData?.diff?.['1k']?.jpg?.url || filesData?.col?.['1k']?.jpg?.url;
-     if(!diffUrl)throw Error('Không tìm thấy ảnh Diffuse 1K.');
+     if(!diffUrl)throw Error(tr('Không tìm thấy ảnh Diffuse 1K.',"No 1K diffuse image found."));
      const imgRes=await fetch(diffUrl);
-     if(!imgRes.ok)throw Error('Không tải được ảnh texture.');
+     if(!imgRes.ok)throw Error(tr('Không tải được ảnh texture.',"Could not download texture image."));
      const blob=await imgRes.blob();
      const file=new File([blob],r.id+'_diffuse_1k.jpg',{type:'image/jpeg'});
      await addMediaFile(file);
-     toast('Đã nạp texture CC0 "'+r.title+'" vào Media LED!');
+     toast(tr('Đã nạp texture CC0 "',"Imported CC0 texture \"")+r.title+tr('" vào Media LED',"\" into LED media"));
     }else if(r.source==='wikimedia_img'){
      const imgRes=await fetch(r.downloadUrl);
-     if(!imgRes.ok)throw Error('Không tải được ảnh Wikimedia.');
+     if(!imgRes.ok)throw Error(tr('Không tải được ảnh Wikimedia.',"Could not download Wikimedia image."));
      const blob=await imgRes.blob();
      const ext=(r.title.split('.').pop()||'jpg').toLowerCase();
      const file=new File([blob],r.title.replace(/[^a-zA-Z0-9._-]/g,'_'),{type:blob.type||('image/'+ext)});
      await addMediaFile(file);
-     toast('Đã nạp ảnh CC0/CC-BY "'+r.title+'" vào Media LED!');
+     toast(tr('Đã nạp ảnh CC0/CC-BY "',"Imported CC0/CC-BY image \"")+r.title+tr('" vào Media LED',"\" into LED media"));
     }
    }catch(err){
-    toast('Lỗi tải asset: '+(err?.message||err));
+    toast(tr('Lỗi tải asset: ',"Asset download failed: ")+(err?.message||err));
    }finally{
     busy(false);
    }
@@ -1230,7 +1244,7 @@
      checkpoint();
      it.pos=hit.point.map(v=>+Number(v).toFixed(2));
      syncItemMeshes(it);
-     toast('Đã đặt '+it.name+' tại ['+it.pos.join(', ')+'] m.');
+     toast(tr('Đã đặt ',"Placed ")+it.name+tr(' tại ['," at [")+it.pos.join(', ')+'] m.');
     }
     A.placeMode=false;
     paint();
@@ -1243,9 +1257,9 @@
      A.measurePts.push([...hit.point]);
      if(A.measurePts.length===2){
       const d=M.sub(A.measurePts[1],A.measurePts[0]);
-      toast(`Khoảng cách 3D: ${Math.hypot(...d).toFixed(2)} m`);
+      toast(tr(`Khoảng cách 3D: ${Math.hypot(...d).toFixed(2)} m`,`3D distance: ${Math.hypot(...d).toFixed(2)} m`));
      }else{
-      toast('Đã chọn điểm 1. Click điểm thứ 2 trên sân khấu để đo.');
+      toast(tr('Đã chọn điểm 1. Click điểm thứ 2 trên sân khấu để đo.',"Point 1 selected. Click a second stage point to measure."));
      }
      paint();
      e.stopImmediatePropagation();
@@ -1267,21 +1281,21 @@
   // onto 2D Canvas thumbnails and interactive 3D preview stages.
   // ============================================================================
   const PERFORMER_META16={
-   singer:{tag:'VOCAL / MIC',color:'#33677f',action:'dance',desc:'Ca sĩ chính kèm micro cầm tay & chân đế micro sân khấu 3D.'},
-   guitarist:{tag:'STRINGS / GUITAR',color:'#803f65',action:'dance',desc:'Nghệ sĩ Guitar điện 3D kèm thân đàn, cần đàn & dây đeo vai.'},
-   keyboardist:{tag:'KEYS / PIANO',color:'#345852',action:'dance',desc:'Nghệ sĩ đàn Keyboard 24 phím đặt trên chân chữ X + ghế ngồi.'},
-   drummer:{tag:'RHYTHM / DRUMS',color:'#c59042',action:'drum',desc:'Tay trống 3D ngồi sau bộ trống jazz đầy đủ (kick, snare, tom, cymbal) & dùi trống.'},
-   dancer:{tag:'MOVE / DANCE',color:'#8a4267',action:'wave',desc:'Vũ công đương đại 14 khớp xương IK với trang phục biểu diễn & dải thắt lưng.'},
-   audience:{tag:'CROWD / 24 NGƯỜI',color:'#34475c',action:'hold',desc:'Cụm khán giả 3D đứng cổ vũ dưới sân khấu (tối ưu gộp mesh tĩnh).'},
-   leddancer:{tag:'LED SUIT / BATON',color:'#1c4d66',action:'wave',desc:'Vũ công mặc giáp LED phát sáng Neon kèm 2 thanh gậy LED Baton trên hai tay.'},
-   waterdrummer:{tag:'TRỐNG NƯỚC / FX',color:'#2e6278',action:'drum',desc:'Nghệ sĩ trống nước LED kèm mặt trống phát sáng, chân đế & hạt nước bắn theo beat.'},
-   laserdancer:{tag:'LASER SUIT / BEAM',color:'#2c5d48',action:'spin',desc:'Nghệ sĩ múa Laser mặc giáp phản quang kèm 2 đầu phát tia Laser trên cổ tay.'},
-   fandancer:{tag:'MÚA QUẠT / LỤA 9 NAN',color:'#6e3455',action:'fan',desc:'Vũ công múa quạt lụa truyền thống gắn 2 quạt 9 nan phát sáng trên hai cổ tay IK.'},
-   dj:{tag:'DJ / EDM BOOTH',color:'#0e7490',action:'wave',desc:'DJ / Producer đeo tai nghe phát sáng đứng điều khiển bàn DJ Turntable & Mixer LED.'},
-   violinist:{tag:'STRINGS / VIOLIN',color:'#9f1239',action:'dance',desc:'Nghệ sĩ Violin biểu diễn kèm đàn vĩ cầm gỗ đặt trên vai & vĩ kéo gắn trực tiếp trên tay phải IK.'},
-   saxophonist:{tag:'BRASS / SAXOPHONE',color:'#b45309',action:'dance',desc:'Nghệ sĩ kèn Saxophone đồng mạ vàng đeo dây cổ, hai tay bấm phím biểu diễn solo Jazz / Funk.'},
-   mc:{tag:'HOST / KEYNOTE MC',color:'#1d4ed8',action:'dance',desc:'MC / Diễn giả sự kiện cầm micro không dây đưa gần miệng & tay trái cầm thẻ kịch bản Keynote.'},
-   rapper:{tag:'HIP-HOP / HYPE MIC',color:'#7e22ce',action:'dance',desc:'Rapper / Hype Man đội mũ Snapback, dây chuyền vàng, cầm micro vàng sát miệng & vung tay khuấy động theo beat.'}
+   singer:{tag:'VOCAL / MIC',color:'#33677f',action:'dance',get desc(){return tr('Ca sĩ chính kèm micro cầm tay & chân đế micro sân khấu 3D.',"Lead singer with handheld microphone and 3D microphone stand.");}},
+   guitarist:{tag:'STRINGS / GUITAR',color:'#803f65',action:'dance',get desc(){return tr('Nghệ sĩ Guitar điện 3D kèm thân đàn, cần đàn & dây đeo vai.',"Electric guitarist with guitar body, neck and shoulder strap.");}},
+   keyboardist:{tag:'KEYS / PIANO',color:'#345852',action:'dance',get desc(){return tr('Nghệ sĩ đàn Keyboard 24 phím đặt trên chân chữ X + ghế ngồi.',"Keyboard performer with 24-key keyboard, X stand and seat.");}},
+   drummer:{tag:'RHYTHM / DRUMS',color:'#c59042',action:'drum',get desc(){return tr('Tay trống 3D ngồi sau bộ trống jazz đầy đủ & dùi trống.',"3D drummer seated behind a full jazz drum kit with sticks.");}},
+   dancer:{tag:'MOVE / DANCE',color:'#8a4267',action:'wave',get desc(){return tr('Vũ công đương đại 14 khớp xương IK với trang phục biểu diễn & dải thắt lưng.',"Contemporary dancer with 14 IK joints, performance costume and sash.");}},
+   audience:{get tag(){return tr('Crowd / 24 người','Crowd / 24 people');},color:'#34475c',action:'hold',get desc(){return tr('Cụm khán giả 3D đứng cổ vũ dưới sân khấu (tối ưu gộp mesh tĩnh).',"3D audience cheering below the stage, optimized as static meshes.");}},
+   leddancer:{tag:'LED SUIT / BATON',color:'#1c4d66',action:'wave',get desc(){return tr('Vũ công mặc giáp LED phát sáng Neon kèm 2 thanh gậy LED Baton trên hai tay.',"Neon LED-suit dancer holding two LED batons.");}},
+   waterdrummer:{get tag(){return tr('Trống nước / FX','Water drums / FX');},color:'#2e6278',action:'drum',get desc(){return tr('Nghệ sĩ trống nước LED kèm mặt trống phát sáng, chân đế & hạt nước bắn theo beat.',"LED water drummer with glowing drum head, stand and beat-driven water particles.");}},
+   laserdancer:{tag:'LASER SUIT / BEAM',color:'#2c5d48',action:'spin',get desc(){return tr('Nghệ sĩ múa Laser mặc giáp phản quang kèm 2 đầu phát tia Laser trên cổ tay.',"Laser dancer in a reflective suit with two wrist-mounted laser emitters.");}},
+   fandancer:{get tag(){return tr('Múa quạt / lụa 9 nan',"Nine-rib fan / silk dance");},color:'#6e3455',action:'fan',get desc(){return tr('Vũ công múa quạt lụa truyền thống gắn 2 quạt 9 nan phát sáng trên hai cổ tay IK.',"Traditional silk-fan dancer with two glowing nine-rib fans on IK wrists.");}},
+   dj:{tag:'DJ / EDM BOOTH',color:'#0e7490',action:'wave',get desc(){return tr('DJ / Producer đeo tai nghe phát sáng đứng điều khiển bàn DJ Turntable & Mixer LED.',"DJ / producer with glowing headphones, turntable booth and LED mixer.");}},
+   violinist:{tag:'STRINGS / VIOLIN',color:'#9f1239',action:'dance',get desc(){return tr('Nghệ sĩ Violin biểu diễn kèm đàn vĩ cầm gỗ đặt trên vai & vĩ kéo gắn trực tiếp trên tay phải IK.',"Violinist with a wooden violin on the shoulder and bow attached to the right IK hand.");}},
+   saxophonist:{tag:'BRASS / SAXOPHONE',color:'#b45309',action:'dance',get desc(){return tr('Nghệ sĩ kèn Saxophone đồng mạ vàng đeo dây cổ, hai tay bấm phím biểu diễn solo Jazz / Funk.',"Gold saxophone performer with neck strap and two-handed Jazz / Funk playing.");}},
+   mc:{tag:'HOST / KEYNOTE MC',color:'#1d4ed8',action:'dance',get desc(){return tr('MC / Diễn giả sự kiện cầm micro không dây đưa gần miệng & tay trái cầm thẻ kịch bản Keynote.',"Event host / keynote speaker with wireless microphone and cue cards.");}},
+   rapper:{tag:'HIP-HOP / HYPE MIC',color:'#7e22ce',action:'dance',get desc(){return tr('Rapper / Hype Man đội mũ Snapback, dây chuyền vàng, cầm micro vàng sát miệng & vung tay khuấy động theo beat.',"Rapper / hype man with snapback, gold chain and microphone, moving to the beat.");}}
   };
 
   const ACT_PREVIEW_MAP16={
@@ -1658,13 +1672,13 @@
   function getAssetPreviewURL16(kind){
    const spec=CATALOG[kind];
    if(!spec)return '';
-   return queueThumb16('asset:'+kind,spec.name,spec.label,spec.color,()=>{
+   return queueThumb16('asset:'+tr('vi','en')+':'+kind,spec.displayName,spec.label,spec.color,()=>{
     const meshes=buildAssetMeshes({id:'prev_'+kind,kind,name:spec.name,pos:[0,0,0],yaw:0,scale:1,color:spec.color});
     const cvs=document.createElement('canvas');
     cvs.width=240;cvs.height=156;
     return renderMeshes3DToCanvas16(cvs,meshes,{
      yaw:0.52,pitch:0.22,zoom:1.92,noURL:true,
-     title:spec.name,subtitle:spec.label,accent:spec.color,badge:spec.cat
+     title:spec.displayName||spec.name,subtitle:spec.label,accent:spec.color,badge:spec.cat
     });
    });
   }
@@ -1746,7 +1760,7 @@
    const actKey=(action&&action!=='auto')?action:meta.action;
    const cacheKey='cast:'+type+':'+actKey;
    const title=(S.castNames&&S.castNames[type])||type;
-   return queueThumb16(cacheKey,title,meta.tag,meta.color,()=>{
+   return queueThumb16(cacheKey+':'+tr('vi','en'),title,meta.tag,meta.color,()=>{
     const entries=buildPerformerPreviewEntries16(type,{action:actKey,time:0.65});
     const cvs=document.createElement('canvas');
     cvs.width=240;cvs.height=180;
@@ -1805,13 +1819,13 @@
   function getActPreviewURL16(actId){
    const spec=S.ACT_TYPES?.[actId];
    if(!spec)return '';
-   return queueThumb16('act:'+actId,spec.name,spec.tag,'#61e8ff',()=>{
+   return queueThumb16('act:'+tr('vi','en')+':'+actId,spec.name,spec.tag,'#61e8ff',()=>{
     const cvs=document.createElement('canvas');
     cvs.width=260;cvs.height=164;
     return renderMeshes3DToCanvas16(cvs,buildActPreviewEntries16(actId),{
      yaw:0.3,pitch:0.2,zoom:1.55,noURL:true,maxTris:40000,
      fixedBounds:getActBounds16(actId),
-     title:spec.name,subtitle:spec.tag,accent:'#61e8ff',badge:spec.tag
+     title:spec.displayName||spec.name,subtitle:spec.tag,accent:'#61e8ff',badge:spec.tag
     });
    });
   }
@@ -1842,12 +1856,12 @@
   function getQuickExamplePreviewURL16(id){
    const ex=QUICK_EXAMPLES16.find(x=>x.id===id);
    if(!ex)return '';
-   return queueThumb16('qex:'+id,ex.label,ex.sub,'#61e8ff',()=>{
+   return queueThumb16('qex:'+tr('vi','en')+':'+id,ex.label,ex.sub,'#61e8ff',()=>{
     const cvs=document.createElement('canvas');
     cvs.width=320;cvs.height=214;
     return renderMeshes3DToCanvas16(cvs,buildQuickExampleEntries16(ex),{
      yaw:0.32,pitch:0.55,zoom:1.45,noURL:true,maxTris:50000, // higher angle so front rows/props don't hide the act
-     title:ex.label,subtitle:ex.sub,accent:'#61e8ff',badge:'MẪU DÀN DỰNG'
+     title:ex.label,subtitle:ex.sub,accent:'#61e8ff',badge:tr('Mẫu dàn dựng',"Stage preset")
     });
    });
   }
@@ -1866,7 +1880,7 @@
     pitch:0.24,
     zoom:1.92,
     noURL:true,
-    title:spec.name,
+    title:spec.displayName||spec.name,
     subtitle:spec.label,
     accent:col,
     badge:spec.label
@@ -1895,9 +1909,9 @@
   const QUICK_EXAMPLES16=[
    {
     id:'concert_band',
-    label:'🎸 Ban nhạc Live Concert',
-    sub:'5 Nghệ sĩ + Bục Riser + 2 CO2 FX',
-    desc:'Thêm đội hình Ca sĩ, Guitarist, Violin, Saxophone, Tay trống kèm bục Riser & 2 súng khói CO2.',
+    get label(){return tr('Ban nhạc Live Concert',"Live concert band");},
+    get sub(){return tr('5 Nghệ sĩ + Bục Riser + 2 CO2 FX',"5 musicians + riser + 2 CO2 jets");},
+    get desc(){return tr('Thêm đội hình Ca sĩ, Guitarist, Violin, Saxophone, Tay trống kèm bục Riser & 2 súng khói CO2.',"Add a singer, guitarist, violinist, saxophonist and drummer with riser and two CO2 jets.");},
     act:'live_band',
     cast:[],
     props:[
@@ -1908,9 +1922,9 @@
    },
    {
     id:'edm_festival',
-    label:'🎧 EDM DJ Festival Drop',
-    sub:'DJ + 4 Vũ công LED/Laser + Booth & Vòng Kinetic',
-    desc:'Dàn dựng đại nhạc hội EDM với bàn DJ Booth LED, vòng Kinetic treo trần, 2 cột khói CO2 & đội vũ công.',
+    get label(){return tr('EDM DJ Festival Drop',"EDM DJ Festival Drop");},
+    get sub(){return tr('DJ + 4 Vũ công LED/Laser + Booth & Vòng Kinetic',"DJ + 4 LED / laser dancers + booth & kinetic ring");},
+    get desc(){return tr('Dàn dựng đại nhạc hội EDM với bàn DJ Booth LED, vòng Kinetic treo trần, 2 cột khói CO2 & đội vũ công.',"EDM stage with LED DJ booth, suspended kinetic ring, two CO2 jets and dancers.");},
     act:'dj_festival',
     cast:[],
     props:[
@@ -1922,9 +1936,9 @@
    },
    {
     id:'royal_fan_drum',
-    label:'🪭 Múa Quạt Lụa & Trống Nước',
-    sub:'6 Vũ công quạt 9 nan + 2 Trống nước + Cổng LED',
-    desc:'Tiết mục mở màn truyền thống kết hợp hiện đại với đội múa quạt lụa 9 nan, 2 trống nước LED & cổng vòm.',
+    get label(){return tr('Múa Quạt Lụa & Trống Nước',"Silk fan dance & water drums");},
+    get sub(){return tr('6 Vũ công quạt 9 nan + 2 Trống nước + Cổng LED',"6 nine-rib fan dancers + 2 water drums + LED arch");},
+    get desc(){return tr('Tiết mục mở màn truyền thống kết hợp hiện đại với đội múa quạt lụa 9 nan, 2 trống nước LED & cổng vòm.',"Traditional and modern opening act with silk-fan dancers, two LED water drums and an arch.");},
     act:'fan_dance',
     cast:[
      {type:'waterdrummer',pos:[-2.6,0,1.25]},
@@ -1936,9 +1950,9 @@
    },
    {
     id:'gala_keynote',
-    label:'🎤 Lễ Khai mạc & Keynote VIP',
-    sub:'MC Diễn giả + Bục Cầu LED + Vũ đoàn & Khán giả',
-    desc:'Dàn dựng lễ khai mạc / hội nghị VIP gồm MC, bục phát biểu chạm cầu LED, vũ đoàn chào mừng & cụm khán giả.',
+    get label(){return tr('Lễ Khai mạc & Keynote VIP',"VIP opening ceremony & keynote");},
+    get sub(){return tr('MC Diễn giả + Bục Cầu LED + Vũ đoàn & Khán giả',"Host + LED sphere lectern + dancers & audience");},
+    get desc(){return tr('Dàn dựng lễ khai mạc / hội nghị VIP gồm MC, bục phát biểu chạm cầu LED, vũ đoàn chào mừng & cụm khán giả.',"VIP opening / conference scene with host, LED sphere lectern, welcome dancers and audience.");},
     act:'opening_gala',
     cast:[
      {type:'audience',pos:[0,0,3.4]}
@@ -1951,9 +1965,9 @@
    },
    {
     id:'hiphop_cypher',
-    label:'🔥 Rap / Hip-Hop Catwalk Show',
-    sub:'Rapper + DJ + Saxophone + Vũ công LED + Sàn chữ T',
-    desc:'Sân khấu Rap / Hip-Hop với sàn Catwalk chữ T vươn ra khán giả, Rapper chính, DJ, Saxophone & vũ công LED.',
+    get label(){return tr('Rap / Hip-Hop Catwalk Show',"Rap / Hip-Hop Catwalk Show");},
+    get sub(){return tr('Rapper + DJ + Saxophone + Vũ công LED + Sàn chữ T',"Rapper + DJ + saxophone + LED dancers + T-stage");},
+    get desc(){return tr('Sân khấu Rap / Hip-Hop với sàn Catwalk chữ T vươn ra khán giả, Rapper chính, DJ, Saxophone & vũ công LED.',"Rap / Hip-Hop stage with audience-facing T-catwalk, lead rapper, DJ, saxophonist and LED dancers.");},
     act:null,
     cast:[
      {type:'rapper',pos:[0,0,1.85]},
@@ -2010,7 +2024,7 @@
    S.renderCastManager?.();
    engine.view='stage';
    if(A.isOpen)paint();
-   toast('Đã dàn dựng mẫu 3D: '+ex.label);
+   toast(tr('Đã dàn dựng mẫu 3D: ',"Applied 3D stage preset: ")+ex.label);
    return ex;
   }
 
@@ -2029,48 +2043,48 @@
    if(A.tab==='catalog'){
     bodyHtml=`
      <section class="v16-section">
-      <h4>XEM TRƯỚC 3D TRỰC QUAN (KÉO ĐỂ XOAY 360°)</h4>
+      <h4>${tr("XEM TRƯỚC 3D TRỰC QUAN (KÉO ĐỂ XOAY 360°)","3D PREVIEW (DRAG TO ROTATE 360°)")}</h4>
       <div class="v16-live-preview">
-       <canvas id="v16PropLiveCanvas" width="320" height="240" title="Kéo chuột để xoay mô hình đạo cụ 3D"></canvas>
+       <canvas id="v16PropLiveCanvas" width="320" height="240" title="${tr("Kéo chuột để xoay mô hình đạo cụ 3D","Drag to rotate the 3D prop")}"></canvas>
        <div class="v16-live-meta">
-        <strong id="v16PropLiveTitle">${esc16(prevSpec.name)}</strong>
+        <strong id="v16PropLiveTitle">${esc16(prevSpec.displayName)}</strong>
         <small id="v16PropLiveDesc">${esc16(prevSpec.cat)} · ${esc16(prevSpec.desc||prevSpec.label)}</small>
         <div class="v16-grid">
-         <button data-add16="${esc16(prevKind)}" id="v16PropLiveAddBtn" class="btn small primary">+ Đặt vào sân khấu</button>
-         <button data-act16="importLocalGlb" id="v16ImportLocalGlbBtn" class="btn small" title="Nạp thêm đạo cụ .GLB (và .asset.json) từ máy vào sân khấu đang mở, bảo toàn kích thước mét & gốc mount-point">📂 Nhập .GLB</button>
-         <button data-act16="openCast" class="btn small">🕺 Người 3D</button>
+         <button data-add16="${esc16(prevKind)}" id="v16PropLiveAddBtn" class="btn small primary">${tr("+ Đặt vào sân khấu","+ Add to stage")}</button>
+         <button data-act16="importLocalGlb" id="v16ImportLocalGlbBtn" class="btn small" title="${tr("Nạp thêm đạo cụ .GLB (và .asset.json) từ máy vào sân khấu đang mở, bảo toàn kích thước mét & gốc mount-point","Import a local .GLB prop (and .asset.json), preserving meter dimensions and mount-point origin")}">${tr("Nhập .GLB","Import .GLB")}</button>
+         <button data-act16="openCast" class="btn small">${tr("Người 3D","3D performers")}</button>
         </div>
        </div>
       </div>
      </section>
      <section class="v16-section">
-      <h4>MẪU DÀN DỰNG SÂN KHẤU NHANH (1-CLICK EXAMPLES)</h4>
+      <h4>${tr("MẪU DÀN DỰNG SÂN KHẤU NHANH (1-CLICK EXAMPLES)","QUICK STAGE PRESETS")}</h4>
       <div class="v16-example-bar compact">
        ${QUICK_EXAMPLES16.map(ex=>`<button type="button" data-qex16="${esc16(ex.id)}" class="v16-example-chip" title="${esc16(ex.desc)}"><b>${esc16(ex.label)}</b><small>${esc16(ex.sub)}</small></button>`).join('')}
       </div>
      </section>
      <section class="v16-section">
-      <h4>THƯ VIỆN ĐẠO CỤ & KẾT CẤU SÂN KHẤU 3D (OFFLINE · ${Object.keys(CATALOG).length} MẪU)</h4>
+      <h4>${tr("THƯ VIỆN ĐẠO CỤ & KẾT CẤU SÂN KHẤU 3D (OFFLINE · ","3D PROPS & STAGE STRUCTURES (OFFLINE · ")}${Object.keys(CATALOG).length}${tr(" MẪU)"," PRESETS)")}</h4>
       <div class="v16-catgrid">
        ${Object.entries(CATALOG).map(([k,v])=>`
         <button data-add16="${k}" data-prev16="${k}" class="v16-catcard ${k===prevKind?'active':''}">
-         <span class="v16-catthumb"><img src="${getAssetPreviewURL16(k)}" alt="${esc16(v.name)}" loading="lazy"></span>
+         <span class="v16-catthumb"><img src="${getAssetPreviewURL16(k)}" alt="${esc16(v.displayName)}" loading="lazy"></span>
          <span class="v16-cathead"><i class="v16-dot" style="background:${esc16(v.color)}"></i><b>+ ${esc16(v.label)}</b></span>
-         <small>${esc16(v.name)}</small>
+         <small>${esc16(v.displayName)}</small>
         </button>`).join('')}
       </div>
      </section>
      <section class="v16-section">
-      <h4>ASSET ĐÃ ĐẶT TRÊN SÂN KHẤU (${A.items.length} / 64)</h4>
+      <h4>${tr("ASSET ĐÃ ĐẶT TRÊN SÂN KHẤU (","STAGE ASSETS (")}${A.items.length} / 64)</h4>
       <div class="v16-chips">
-       ${A.items.map(x=>`<button data-sel16="${esc16(x.id)}" class="btn small ${x.id===A.selected?'primary':''}">${esc16(x.name)}</button>`).join('')||'<p class="v16-empty">Chưa có đạo cụ phụ. Chọn một hạng mục ở trên để đặt vào sân khấu 3D.</p>'}
+       ${A.items.map(x=>`<button data-sel16="${esc16(x.id)}" class="btn small ${x.id===A.selected?'primary':''}">${esc16(itemDisplayName16(x))}</button>`).join('')||`<p class="v16-empty">${tr("Chưa có đạo cụ phụ. Chọn một hạng mục ở trên để đặt vào sân khấu 3D.","No props yet. Choose an item above to add it to the 3D stage.")}</p>`}
       </div>
      </section>
      ${it?`
       <section class="v16-section">
        <div class="v16-row-between">
-        <h4>CHỈNH SỬA: ${esc16(it.name)}</h4>
-        <button data-act16="place" class="btn small ${A.placeMode?'primary':''}">⌖ Click đặt trên 3D</button>
+        <h4>${tr("CHỈNH SỬA: ","EDIT: ")}${esc16(itemDisplayName16(it))}</h4>
+        <button data-act16="place" class="btn small ${A.placeMode?'primary':''}">${tr("Click đặt trên 3D","Click to place in 3D")}</button>
        </div>
        <div class="v16-grid thirds">
         <label>X (m)<input data-f16="pos0" type="number" step="0.1" value="${it.pos[0]}"></label>
@@ -2078,42 +2092,42 @@
         <label>Z (m)<input data-f16="pos2" type="number" step="0.1" value="${it.pos[2]}"></label>
        </div>
        <div class="v16-grid thirds">
-        <label>Xoay Yaw (°)<input data-f16="yaw" type="number" step="5" value="${it.yaw||0}"></label>
-        <label>Tỷ lệ Scale<input data-f16="scale" type="number" min="0.2" max="5" step="0.1" value="${it.scale||1}"></label>
-        <label>Màu sắc<input data-f16="color" type="color" value="${esc16(it.color||'#8c9bb0')}"></label>
+        <label>${tr("Xoay Yaw (°)","Yaw (°)")}<input data-f16="yaw" type="number" step="5" value="${it.yaw||0}"></label>
+        <label>${tr("Tỷ lệ Scale","Scale")}<input data-f16="scale" type="number" min="0.2" max="5" step="0.1" value="${it.scale||1}"></label>
+        <label>${tr("Màu sắc","Color")}<input data-f16="color" type="color" value="${esc16(it.color||'#8c9bb0')}"></label>
        </div>
        <div class="v16-grid">
-        <button data-act16="focus" class="btn small">⌖ Focus Camera</button>
-        <button data-act16="delete" class="btn small danger">✕ Xóa đạo cụ</button>
+        <button data-act16="focus" class="btn small">Focus Camera</button>
+        <button data-act16="delete" class="btn small danger">${tr("Xóa đạo cụ","Delete prop")}</button>
        </div>
       </section>`:''}
     `;
    }else if(A.tab==='search'){
     const qChips=[
-     ['','★ Tất cả nổi bật'],
-     ['loa','🔊 Loa / Audio'],
-     ['đèn','💡 Đèn / Ánh sáng'],
-     ['camera','🎥 Camera / TV'],
-     ['ghế','🛋 Bàn ghế Talkshow'],
-     ['cây','🌿 Cây cảnh'],
-     ['animation','🐉 Nhân vật & Rồng 3D (GDrive)']
+     ['',tr('Tất cả nổi bật',"All featured")],
+     ['loa',tr('Loa / Audio',"Speakers / audio")],
+     ['đèn',tr('Đèn / Ánh sáng',"Fixtures / lighting")],
+     ['camera','Camera / TV'],
+     ['ghế',tr('Bàn ghế Talkshow',"Talkshow furniture")],
+     ['cây',tr('Cây cảnh',"Plants")],
+     ['animation',tr('Nhân vật & Rồng 3D (GDrive)',"3D characters & dragons (GDrive)")]
     ];
     bodyHtml=`
      <section class="v16-section">
-      <h4>TÌM ASSET 3D &amp; MEDIA (CC0 / GOOGLE DRIVE DESIGN_MCP)</h4>
-      <label>Nguồn dữ liệu mở
+      <h4>${tr("TÌM ASSET 3D &amp; MEDIA (CC0 / GOOGLE DRIVE DESIGN_MCP)","FIND 3D ASSETS &amp; MEDIA (CC0 / GOOGLE DRIVE DESIGN_MCP)")}</h4>
+      <label>${tr("Nguồn dữ liệu mở","Open asset source")}
        <select id="v16SearchSource">
-        <option value="polyhaven_models" ${A.searchSource==='polyhaven_models'?'selected':''}>Poly Haven — Mô hình 3D Đạo cụ / Nội thất (CC0)</option>
+        <option value="polyhaven_models" ${A.searchSource==='polyhaven_models'?'selected':''}>${tr("Poly Haven — Mô hình 3D Đạo cụ / Nội thất (CC0)","Poly Haven — 3D props / furniture (CC0)")}</option>
         <option value="gdrive_models" ${A.searchSource==='gdrive_models'?'selected':''}>Google Drive Design_MCP — ${GDRIVE_ASSETS16.length} Model GLB 3D &amp; Animation</option>
-        <option value="polyhaven_textures" ${A.searchSource==='polyhaven_textures'?'selected':''}>Poly Haven — Texture / Phông nền Sân khấu (CC0)</option>
-        <option value="wikimedia_images" ${A.searchSource==='wikimedia_images'?'selected':''}>Wikimedia Commons — Ảnh / Visual Sân khấu (CC0 / CC-BY)</option>
+        <option value="polyhaven_textures" ${A.searchSource==='polyhaven_textures'?'selected':''}>${tr("Poly Haven — Texture / Phông nền Sân khấu (CC0)","Poly Haven — stage textures / backdrops (CC0)")}</option>
+        <option value="wikimedia_images" ${A.searchSource==='wikimedia_images'?'selected':''}>${tr("Wikimedia Commons — Ảnh / Visual Sân khấu (CC0 / CC-BY)","Wikimedia Commons — stage images / visuals (CC0 / CC-BY)")}</option>
        </select>
       </label>
       <div class="v16-searchbar">
-       <input id="v16SearchInput" type="text" value="${esc16(A.searchQuery)}" placeholder="Gõ tiếng Việt/Anh (tự dịch VI→EN): thùng phi, hàng rào, thảm, đèn...">
-       <button data-act16="search" class="btn primary small" ${A.searching?'disabled':''}>${A.searching?'Đang tìm...':'Tìm CC0'}</button>
+       <input id="v16SearchInput" type="text" value="${esc16(A.searchQuery)}" placeholder="${tr("Gõ tiếng Việt/Anh (tự dịch VI→EN): thùng phi, hàng rào, thảm, đèn...","Search in Vietnamese or English: barrel, barrier, carpet, lamp...")}">
+       <button data-act16="search" class="btn primary small" ${A.searching?'disabled':''}>${A.searching?tr('Đang tìm...',"Searching..."):tr('Tìm CC0',"Find CC0")}</button>
       </div>
-      ${A.translatedHint?`<div class="v16-note" style="margin-bottom:6px;padding:4px 8px;font-size:11px;color:var(--accent-primary)">🌐 Tự động dịch VI → EN: <b>${esc16(A.translatedHint)}</b></div>`:''}
+      ${A.translatedHint?`<div class="v16-note" style="margin-bottom:6px;padding:4px 8px;font-size:var(--fs-sm);color:var(--accent-text)">${tr("Tự động dịch VI → EN: ","Auto translation VI → EN: ")}<b>${esc16(A.translatedHint)}</b></div>`:''}
       <div class="v16-chips" style="margin-bottom:6px">
        ${qChips.map(([val,lbl])=>`<button type="button" data-qsearch16="${esc16(val)}" class="btn small ${A.searchQuery===val?'primary':''}">${esc16(lbl)}</button>`).join('')}
       </div>
@@ -2122,47 +2136,47 @@
        ${A.searchResults.map((r,idx)=>`
         <div class="v16-rescard">
          <div class="v16-thumb">
-          <img src="${esc16(r.thumb)}" alt="${esc16(r.title)}" loading="lazy">
+          <img src="${esc16(r.thumb)}" alt="${esc16(r.displayTitle||r.title)}" loading="lazy">
          </div>
-         <strong title="${esc16(r.title)}">${esc16(r.title)}</strong>
+         <strong title="${esc16(r.displayTitle||r.title)}">${esc16(r.displayTitle||r.title)}</strong>
          <small>${esc16(r.license)}${r.dims?' · '+esc16(r.dims):''}</small>
-         <button data-import16="${idx}" class="btn small primary">+ ${(r.source==='polyhaven_model'||r.source==='gdrive_glb')?'Nạp 3D vào Stage':'Nạp làm Media LED'}</button>
+         <button data-import16="${idx}" class="btn small primary">+ ${(r.source==='polyhaven_model'||r.source==='gdrive_glb')?tr('Nạp 3D vào Stage',"Add 3D to stage"):tr('Nạp làm Media LED',"Add as LED media")}</button>
         </div>`).join('')}
       </div>
      </section>
     `;
    }else{
     const sfOk=wReport.currentSF>=1.5;
-    let measureInfo='Chưa chọn điểm đo. Bấm nút bên trên rồi click 2 điểm trên sân khấu 3D.';
-    if(A.measurePts.length===1)measureInfo=`Điểm 1: [${A.measurePts[0].map(v=>v.toFixed(2)).join(', ')}] m — Hãy click điểm 2 trên 3D.`;
+    let measureInfo=tr('Chưa chọn điểm đo. Bấm nút bên trên rồi click 2 điểm trên sân khấu 3D.',"No measurement points. Enable measurement, then click two stage points.");
+    if(A.measurePts.length===1)measureInfo=tr(`Điểm 1: [${A.measurePts[0].map(v=>v.toFixed(2)).join(', ')}] m — Hãy click điểm 2 trên 3D.`,`Point 1: [${A.measurePts[0].map(v=>v.toFixed(2)).join(', ')}] m — Click point 2 in 3D.`);
     else if(A.measurePts.length===2){
      const d=M.sub(A.measurePts[1],A.measurePts[0]);
-     measureInfo=`Khoảng cách: <b>${Math.hypot(...d).toFixed(2)} m</b> (ΔX ${Math.abs(d[0]).toFixed(2)}m · ΔY ${Math.abs(d[1]).toFixed(2)}m · ΔZ ${Math.abs(d[2]).toFixed(2)}m)`;
+     measureInfo=tr(`Khoảng cách: <b>${Math.hypot(...d).toFixed(2)} m</b> (ΔX ${Math.abs(d[0]).toFixed(2)}m · ΔY ${Math.abs(d[1]).toFixed(2)}m · ΔZ ${Math.abs(d[2]).toFixed(2)}m)`,`Distance: <b>${Math.hypot(...d).toFixed(2)} m</b> (ΔX ${Math.abs(d[0]).toFixed(2)}m · ΔY ${Math.abs(d[1]).toFixed(2)}m · ΔZ ${Math.abs(d[2]).toFixed(2)}m)`);
     }
     bodyHtml=`
      <section class="v16-section">
-      <h4>THƯỚC ĐO 3D & VIỀN KỸ THUẬT CREASE 28°</h4>
+      <h4>${tr("THƯỚC ĐO 3D & VIỀN KỸ THUẬT CREASE 28°","3D MEASURE & 28° CREASE EDGES")}</h4>
       <div class="v16-grid thirds">
-       <button data-act16="toggleMeasure" class="btn small ${A.measureMode?'primary':''}">⌖ ${A.measureMode?'Đang Đo 3D':'Đo 2 điểm 3D'}</button>
-       <button data-act16="clearMeasure" class="btn small">Xóa mốc đo</button>
-       <button data-act16="toggleCrease" class="btn small ${A.creaseEnabled?'primary':''}">◫ Viền 28°</button>
+       <button data-act16="toggleMeasure" class="btn small ${A.measureMode?'primary':''}">⌖ ${A.measureMode?tr('Đang Đo 3D',"Measuring in 3D"):tr('Đo 2 điểm 3D',"Measure two 3D points")}</button>
+       <button data-act16="clearMeasure" class="btn small">${tr("Xóa mốc đo","Clear measurement")}</button>
+       <button data-act16="toggleCrease" class="btn small ${A.creaseEnabled?'primary':''}">${tr("Viền 28°","28° edges")}</button>
       </div>
       <div class="v16-note">${measureInfo}</div>
      </section>
      <section class="v16-section">
-      <h4>TẢI TRỌNG GIÓ, CHỐNG LẬT & CHỐNG TRƯỢT (TCVN 2737:2023)</h4>
+      <h4>${tr("TẢI TRỌNG GIÓ, CHỐNG LẬT & CHỐNG TRƯỢT (TCVN 2737:2023)","WIND LOAD, OVERTURNING & SLIDING (TCVN 2737:2023)")}</h4>
       <div class="v16-grid">
-       <label>Vận tốc gió V (m/s)<input data-w16="speed" type="number" min="0" max="50" step="1" value="${wReport.V}"></label>
-       <label>Hệ số cản Cd<input data-w16="cd" type="number" min="0.5" max="2.0" step="0.05" value="${wReport.cd}"></label>
-       <label>Sâu chân đế B (m)<input data-w16="baseDepth" type="number" min="0.4" max="6" step="0.1" value="${wReport.baseDepth}"></label>
-       <label>Tự trọng (kg/m²)<input data-w16="selfKgPerM2" type="number" min="15" max="120" step="1" value="${wReport.selfKg}"></label>
-       <label>Hệ số ma sát μ<input data-w16="mu" type="number" min="0.1" max="1.2" step="0.05" value="${wReport.mu}"></label>
+       <label>${tr("Vận tốc gió V (m/s)","Wind speed V (m/s)")}<input data-w16="speed" type="number" min="0" max="50" step="1" value="${wReport.V}"></label>
+       <label>${tr("Hệ số cản Cd","Drag coefficient Cd")}<input data-w16="cd" type="number" min="0.5" max="2.0" step="0.05" value="${wReport.cd}"></label>
+       <label>${tr("Sâu chân đế B (m)","Base depth B (m)")}<input data-w16="baseDepth" type="number" min="0.4" max="6" step="0.1" value="${wReport.baseDepth}"></label>
+       <label>${tr("Tự trọng (kg/m²)","Self-weight (kg/m²)")}<input data-w16="selfKgPerM2" type="number" min="15" max="120" step="1" value="${wReport.selfKg}"></label>
+       <label>${tr("Hệ số ma sát μ","Friction coefficient μ")}<input data-w16="mu" type="number" min="0.1" max="1.2" step="0.05" value="${wReport.mu}"></label>
       </div>
       <div class="v16-windbox ${sfOk?'ok':'warn'}">
-       <div>Tổng diện tích LED đón gió: <b>${wReport.totalArea.toFixed(1)} m²</b> · Áp lực q: <b>${wReport.q.toFixed(0)} N/m²</b></div>
-       <div>Lực đẩy ngang F: <b>${(wReport.totalForce/1000).toFixed(2)} kN</b> · Mô-men lật: <b>${(wReport.overturnMoment/1000).toFixed(2)} kN·m</b></div>
-       <div>SF tổng hợp: <b>${wReport.currentSF.toFixed(2)}</b> (Lật: <b>${wReport.overturnSF.toFixed(2)}</b> · Trượt: <b>${wReport.slidingSF.toFixed(2)}</b> · Chuẩn ≥ 1.50)</div>
-       <div class="v16-ballast">Đối trọng (Ballast) cần dằn thêm: <b>${wReport.ballastKg.toLocaleString('en-US')} kg</b> (Lật: ${wReport.overturnBallastKg.toLocaleString('en-US')} kg · Trượt: ${wReport.slidingBallastKg.toLocaleString('en-US')} kg)</div>
+       <div>${tr("Tổng diện tích LED đón gió: ","Total LED wind area: ")}<b>${wReport.totalArea.toFixed(1)} m²</b>${tr(" · Áp lực q: "," · Pressure q: ")}<b>${wReport.q.toFixed(0)} N/m²</b></div>
+       <div>${tr("Lực đẩy ngang F: ","Lateral force F: ")}<b>${(wReport.totalForce/1000).toFixed(2)} kN</b>${tr(" · Mô-men lật: "," · Overturning moment: ")}<b>${(wReport.overturnMoment/1000).toFixed(2)} kN·m</b></div>
+       <div>${tr("SF tổng hợp: ","Combined SF: ")}<b>${wReport.currentSF.toFixed(2)}</b> ${tr("(Lật: ","(Overturning: ")}<b>${wReport.overturnSF.toFixed(2)}</b>${tr(" · Trượt: "," · Sliding: ")}<b>${wReport.slidingSF.toFixed(2)}</b>${tr(" · Chuẩn ≥ 1.50)"," · Required ≥ 1.50)")}</div>
+       <div class="v16-ballast">${tr("Đối trọng (Ballast) cần dằn thêm: ","Additional ballast required: ")}<b>${wReport.ballastKg.toLocaleString('en-US')} kg</b> ${tr("(Lật: ","(Overturning: ")}${wReport.overturnBallastKg.toLocaleString('en-US')} kg${tr(" · Trượt: "," · Sliding: ")}${wReport.slidingBallastKg.toLocaleString('en-US')} kg)</div>
       </div>
      </section>
     `;
@@ -2171,15 +2185,15 @@
    panel.innerHTML=`
     <div class="v16-head">
      <div>
-      <strong>❖ ĐẠO CỤ 3D · TÌM CC0 · ĐO & TẢI GIÓ</strong>
-      <small>Thư viện Sân khấu V1.1 · Poly Haven & Wikimedia · TCVN 2737</small>
+      <strong>${tr("ĐẠO CỤ 3D · TÌM CC0 · ĐO & TẢI GIÓ","3D PROPS · FIND CC0 · MEASURE & WIND LOAD")}</strong>
+      <small>${tr("Thư viện Sân khấu V1.1 · Poly Haven & Wikimedia · TCVN 2737","Stage library · Poly Haven & Wikimedia · TCVN 2737")}</small>
      </div>
-     <button data-act16="close" class="btn small" title="Quay lại Inspector">← Đóng</button>
+     <button data-act16="close" class="btn small" title="${tr("Quay lại Inspector","Back to Inspector")}">${tr("Đóng","Close")}</button>
     </div>
-    <div class="v16-tabs" role="tablist" aria-label="Phân nhóm Thư viện Đạo cụ">
-     <button role="tab" aria-selected="${A.tab==='catalog'}" data-tab16="catalog" class="${A.tab==='catalog'?'active':''}">Đạo cụ 3D</button>
-     <button role="tab" aria-selected="${A.tab==='search'}" data-tab16="search" class="${A.tab==='search'?'active':''}">Tìm Asset CC0</button>
-     <button role="tab" aria-selected="${A.tab==='tools'}" data-tab16="tools" class="${A.tab==='tools'?'active':''}">Đo 3D & Gió</button>
+    <div class="v16-tabs" role="tablist" aria-label="${tr("Phân nhóm Thư viện Đạo cụ","Prop library sections")}">
+     <button role="tab" aria-selected="${A.tab==='catalog'}" data-tab16="catalog" class="${A.tab==='catalog'?'active':''}">${tr("Đạo cụ 3D","3D props")}</button>
+     <button role="tab" aria-selected="${A.tab==='search'}" data-tab16="search" class="${A.tab==='search'?'active':''}">${tr("Tìm Asset CC0","Find CC0 assets")}</button>
+     <button role="tab" aria-selected="${A.tab==='tools'}" data-tab16="tools" class="${A.tab==='tools'?'active':''}">${tr("Đo 3D & Gió","3D measure & wind")}</button>
     </div>
     <div class="v16-content">${bodyHtml}</div>
    `;
@@ -2194,7 +2208,7 @@
     A.previewKind=k;
     const spec=CATALOG[k];
     const tEl=$('v16PropLiveTitle'), dEl=$('v16PropLiveDesc'), bEl=$('v16PropLiveAddBtn');
-    if(tEl)tEl.textContent=spec.name;
+    if(tEl)tEl.textContent=spec.displayName;
     if(dEl)dEl.textContent=spec.cat+' · '+(spec.desc||spec.label);
     if(bEl)bEl.dataset.add16=k;
     panel.querySelectorAll('.v16-catcard[data-prev16]').forEach(c=>c.classList.toggle('active',c.dataset.prev16===k));
@@ -2226,7 +2240,7 @@
    if(act==='close'){close();}
    else if(act==='openCast'){openCastLibrary16();}
    else if(act==='importLocalGlb'){openLocalGlbFilePicker16();}
-   else if(act==='place'){A.placeMode=!A.placeMode;if(A.placeMode)toast('Click lên mặt sàn/sân khấu 3D để đặt vị trí cho asset.');paint();}
+   else if(act==='place'){A.placeMode=!A.placeMode;if(A.placeMode)toast(tr('Click lên mặt sàn/sân khấu 3D để đặt vị trí cho asset.',"Click the 3D floor or stage to place the asset."));paint();}
    else if(act==='delete'){const it=currentItem();if(it)deleteItem(it.id);}
    else if(act==='focus'){const it=currentItem();if(it){engine.view='stage';engine.camera.target=[...it.pos];engine.camera.distance=Math.max(4,engine.camera.distance*.65);}}
    else if(act==='search'){
@@ -2236,7 +2250,7 @@
     runOnlineSearch();
    }else if(act==='toggleMeasure'){
     A.measureMode=!A.measureMode;
-    if(A.measureMode){A.placeMode=false;toast('Chế độ Đo 3D: Click 2 điểm bất kỳ trên sân khấu 3D để đo khoảng cách.');}
+    if(A.measureMode){A.placeMode=false;toast(tr('Chế độ Đo 3D: Click 2 điểm bất kỳ trên sân khấu 3D để đo khoảng cách.',"3D measure: click any two stage points to measure distance."));}
     paint();
    }else if(act==='clearMeasure'){
     A.measurePts=[];paint();
@@ -2335,7 +2349,7 @@
   S.demo=demo;
 
   function open(tab=A.tab){
-   if(state.presenting){toast('Thoát Trình diễn để mở Thư viện Đạo cụ & Đo 3D.');return;}
+   if(state.presenting){toast(tr('Thoát Trình diễn để mở Thư viện Đạo cụ & Đo 3D.',"Exit presentation to open the prop library and 3D measure."));return;}
    closeAllDocks16('v16Asset');
    A.tab=tab;
    A.isOpen=true;
@@ -2416,29 +2430,29 @@
     const counts={};
     for(const m of members)counts[m.role]=(counts[m.role]||0)+1;
     const roster=Object.entries(counts).map(([r,n])=>(n>1?n+'× ':'')+(S.castNames?.[r]||r)).join(' · ');
-    eyebrow='XEM TRƯỚC ĐỘI HÌNH TIẾT MỤC 3D';
+    eyebrow=tr('Xem trước đội hình tiết mục 3D',"Preview 3D act formation");
     title=`${spec.name} (${spec.tag})`;
-    desc=members.length?`${members.length} người: ${roster}. Thêm cả đội hình vào sân khấu như một tiết mục.`:'Khoảnh khắc sân khấu (không kèm người biểu diễn).';
-    addLabel=`+ Thêm đội hình "${spec.name}" vào sân khấu`;
+    desc=members.length?tr(`${members.length} người: ${roster}. Thêm cả đội hình vào sân khấu như một tiết mục.`,`${members.length} performers: ${roster}. Add the full formation as a stage act.`):tr('Khoảnh khắc sân khấu (không kèm người biểu diễn).',"Stage scene (no performers).");
+    addLabel=tr(`+ Thêm đội hình "${spec.name}" vào sân khấu`,`+ Add formation "${spec.name}" to stage`);
    }else if(sel.kind==='qex'){
     const ex=QUICK_EXAMPLES16.find(x=>x.id===sel.id);
     const parts=[];
-    if(ex.act&&S.ACT_TYPES?.[ex.act])parts.push(`Đội hình ${S.ACT_TYPES[ex.act].name} (${actMembers16(ex.act).length} người)`);
+    if(ex.act&&S.ACT_TYPES?.[ex.act])parts.push(tr(`Đội hình ${S.ACT_TYPES[ex.act].name} (${actMembers16(ex.act).length} người)`,`Formation ${S.ACT_TYPES[ex.act].name} (${actMembers16(ex.act).length} performers)`));
     for(const c of ex.cast||[])parts.push(S.castNames?.[c.type]||c.type);
-    for(const pr of ex.props||[])parts.push(CATALOG[pr.kind]?.name||pr.kind);
+    for(const pr of ex.props||[])parts.push(CATALOG[pr.kind]?.displayName||pr.kind);
     const tally={};
     for(const p of parts)tally[p]=(tally[p]||0)+1;
-    eyebrow='XEM TRƯỚC MẪU DÀN DỰNG SÂN KHẤU';
+    eyebrow=tr('Xem trước mẫu dàn dựng sân khấu',"Preview stage preset");
     title=ex.label;
-    desc=`${ex.desc} Gồm: ${Object.entries(tally).map(([p,n])=>(n>1?n+'× ':'')+p).join(' · ')}.`;
-    addLabel='+ Áp dụng mẫu này vào sân khấu';
+    desc=tr(`${ex.desc} Gồm: ${Object.entries(tally).map(([p,n])=>(n>1?n+'× ':'')+p).join(' · ')}.`,`${ex.desc} Includes: ${Object.entries(tally).map(([p,n])=>(n>1?n+'× ':'')+p).join(' · ')}.`);
+    addLabel=tr('+ Áp dụng mẫu này vào sân khấu',"+ Apply this stage preset");
    }else{
     const meta=PERFORMER_META16[sel.id]||PERFORMER_META16.singer;
     const name=S.castNames?.[sel.id]||sel.id;
-    eyebrow='XEM TRƯỚC MÔ HÌNH NHÂN VẬT 3D & ĐẠO CỤ CẦM TAY';
+    eyebrow=tr('Xem trước mô hình nhân vật 3D & đạo cụ cầm tay',"Preview 3D performer & handheld props");
     title=`${name} (${meta.tag})`;
     desc=meta.desc;
-    addLabel=`+ Thêm "${name}" vào sân khấu`;
+    addLabel=tr(`+ Thêm "${name}" vào sân khấu`,`+ Add "${name}" to stage`);
     set('v16CastColorInp',el=>{el.value=A.castPreviewColor;});
    }
    const live=castIsLive16(sel);
@@ -2484,24 +2498,24 @@
    if(!S.castNames?.[A.castPreviewType])A.castPreviewType=roles[0]?.[0]||'singer';
    A.castPreviewColor=(PERFORMER_META16[A.castPreviewType]||PERFORMER_META16.singer).color;
    const poseOpts=[
-    ['auto','Động tác mặc định theo vai'],
-    ['fan','Múa quạt / lụa 9 nan (Fan)'],
-    ['wave','Sóng tay (Wave)'],
-    ['spin','Xoay 360° (Spin)'],
-    ['dance','Nhảy theo nhịp (Dance)'],
-    ['reach','Vươn tay cao (Reach)'],
-    ['kneel','Quỳ biểu cảm (Kneel)'],
-    ['finale','Tư thế kết màn (Hero Finale)'],
-    ['drum','Đánh trống (Drum)'],
-    ['hold','Đứng yên (Hold)']
+    ['auto',tr('Động tác mặc định theo vai',"Default role motion")],
+    ['fan',tr('Múa quạt / lụa 9 nan',"Nine-rib fan / silk dance")],
+    ['wave',tr('Sóng tay',"Arm wave")],
+    ['spin',tr('Xoay 360° (Spin)',"360° spin")],
+    ['dance',tr('Nhảy theo nhịp',"Dance to beat")],
+    ['reach',tr('Vươn tay cao',"Reach up")],
+    ['kneel',tr('Quỳ biểu cảm',"Expressive kneel")],
+    ['finale',tr('Tư thế kết màn',"Finale pose")],
+    ['drum',tr('Đánh trống',"Drum")],
+    ['hold',tr('Đứng yên',"Stand still")]
    ];
    const actEntries=Object.entries(S.ACT_TYPES||{});
 
-   dialog('CAST / Thư viện Người 3D & Tiết mục Sân khấu',`
+   dialog(tr('CAST / Thư viện Người 3D & Tiết mục Sân khấu',"CAST / 3D performers & stage acts"),`
     <div class="v16-cast-layout">
      <div class="v16-cast-library">
       <div class="v16-example-section">
-       <span class="v16-example-title">✨ Mẫu Dàn dựng Sân khấu &amp; Tiết mục Nhanh</span>
+       <span class="v16-example-title">${tr("Mẫu Dàn dựng Sân khấu &amp; Tiết mục Nhanh","Stage presets &amp; quick acts")}</span>
        <div class="v16-example-bar">
         ${QUICK_EXAMPLES16.map(ex=>`
          <button type="button" class="v16-example-chip" data-cast-pick16="qex:${esc16(ex.id)}" aria-pressed="false" title="${esc16(ex.desc)}">
@@ -2522,56 +2536,56 @@
       </div>
       ${actEntries.length?`
        <details open style="margin-bottom:10px">
-        <summary style="cursor:pointer;font-size:11px;font-weight:700;color:var(--accent-primary);margin-bottom:6px">▸ Cụm Tiết mục 3D theo đội hình (${actEntries.length} đội hình mẫu)</summary>
+        <summary style="cursor:pointer;font-size:var(--fs-sm);font-weight:700;color:var(--accent-text);margin-bottom:6px">${tr("Cụm Tiết mục 3D theo đội hình (","3D act formations (")}${actEntries.length}${tr(" đội hình mẫu)"," preset formations)")}</summary>
         <div class="dir-act-grid" style="margin-top:6px">
          ${actEntries.map(([id,s])=>`
           <button type="button" data-cast-pick16="act:${esc16(id)}" aria-pressed="false">
            <img class="v16-act-thumb" src="${esc16(getActPreviewURL16(id))}" alt="${esc16(s.name)}" decoding="async" loading="lazy">
            <small>${esc16(s.tag)}</small>
            <strong>${esc16(s.name)}</strong>
-           <span>XEM TRƯỚC ĐỘI HÌNH</span>
+           <span>${tr("XEM TRƯỚC ĐỘI HÌNH","PREVIEW FORMATION")}</span>
           </button>`).join('')}
         </div>
        </details>`:''}
       <div class="seq-tools" style="margin-bottom:10px">
-       <label><input id="castAnimate" type="checkbox" ${S.seq?.animate?'checked':''}>Chuyển động theo beat</label>
-       <button class="btn" id="frameCast">Toàn cảnh + người</button>
-       <button class="btn" id="exportCast">Xuất GLB tư thế hiện tại</button>
+       <label><input id="castAnimate" type="checkbox" ${S.seq?.animate?'checked':''}>${tr("Chuyển động theo beat","Animate to beat")}</label>
+       <button class="btn" id="frameCast">${tr("Toàn cảnh + người","Frame stage & performers")}</button>
+       <button class="btn" id="exportCast">${tr("Xuất GLB tư thế hiện tại","Export current pose as GLB")}</button>
       </div>
       <div id="castRows"></div>
-      <p class="hint-text">Bấm vào mẫu, nhân vật hoặc đội hình để xem trước ở khung bên phải; chỉ nút "+ Thêm" trong khung đó mới đưa lên sân khấu.</p>
+      <p class="hint-text">${tr("Bấm vào mẫu, nhân vật hoặc đội hình để xem trước ở khung bên phải; chỉ nút \"+ Thêm\" trong khung đó mới đưa lên sân khấu.","Select a preset, performer or formation to preview on the right. Press \"+ Add\" in that preview to place it on stage.")}</p>
      </div>
-     <aside class="v16-cast-stage" aria-label="Xem trước và thêm vào sân khấu">
+     <aside class="v16-cast-stage" aria-label="${tr("Xem trước và thêm vào sân khấu","Preview and add to stage")}">
       <div class="v16-cast-canvas-wrap">
-       <canvas id="v16CastLiveCanvas" width="520" height="390" title="Kéo chuột trái/phải để xoay xem nhân vật 3D 360°"></canvas>
+       <canvas id="v16CastLiveCanvas" width="520" height="390" title="${tr("Kéo chuột trái/phải để xoay xem nhân vật 3D 360°","Drag left or right to rotate the 3D performer 360°")}"></canvas>
        <img id="v16CastPreviewImg" class="v16-cast-preview-img" alt="" hidden>
-       <span class="v16-cast-canvas-hint" id="v16CastHint">🔄 Kéo trên khung 3D để xoay 360°</span>
+       <span class="v16-cast-canvas-hint" id="v16CastHint">${tr("Kéo trên khung 3D để xoay 360°","Drag the 3D view to rotate 360°")}</span>
       </div>
       <div class="v16-cast-controls">
        <span class="eyebrow" id="v16CastStageEyebrow"></span>
        <h4 id="v16CastStageTitle"></h4>
        <p id="v16CastStageDesc"></p>
        <div class="v16-cast-form" id="v16CastForm">
-        <label>Động tác
+        <label>${tr("Động tác","Motion")}
          <select id="v16CastPoseSel">
           ${poseOpts.map(([k,lbl])=>`<option value="${k}" ${A.castPreviewAction===k?'selected':''}>${esc16(lbl)}</option>`).join('')}
          </select>
         </label>
-        <label>Màu trang phục
+        <label>${tr("Màu trang phục","Costume color")}
          <input id="v16CastColorInp" type="color" value="${esc16(A.castPreviewColor)}">
         </label>
-        <label>Chiều cao (m)
+        <label>${tr("Chiều cao (m)","Height (m)")}
          <input id="v16CastHeightInp" type="number" min="1.3" max="2.2" step="0.05" value="${A.castPreviewHeight}">
         </label>
        </div>
        <div class="v16-cast-cta">
         <button type="button" class="btn primary" id="v16CastAddBtn"></button>
-        <button type="button" class="btn" id="v16CastPlaceNewBtn">⌖ Thêm &amp; Click đặt lên sàn 3D</button>
+        <button type="button" class="btn" id="v16CastPlaceNewBtn">${tr("Thêm &amp; Click đặt lên sàn 3D","Add &amp; click to place on 3D floor")}</button>
        </div>
       </div>
      </aside>
     </div>
-   `,[{label:'Đóng'}]);
+   `,[{get label(){return tr('Đóng',"Close");}}]);
 
    const modal=$('modal');
    modal?.classList.add('pro-wide','v16-cast-wide');
@@ -2613,7 +2627,7 @@
      engine.view='stage';
      state.pickTask=null;
      const qh=$('quadHint');
-     if(qh){qh.textContent='Click sàn để đặt '+p.name+'. Esc: hủy.';qh.classList.remove('hidden');}
+     if(qh){qh.textContent=tr('Click sàn để đặt ',"Click the floor to place ")+p.name+tr('. Esc: hủy.',". Esc: cancel.");qh.classList.remove('hidden');}
     }
     return p;
    }
@@ -2625,7 +2639,7 @@
     const a=S.addAct8?.(sel.id);
     if(a){
      S.renderCastManager?.();
-     toast('Đã thêm đội hình 3D: '+a.name);
+     toast(tr('Đã thêm đội hình 3D: ',"Added 3D formation: ")+a.name);
     }
    });
    $('v16CastPlaceNewBtn')?.addEventListener('click',()=>addConfiguredPerson16(A.castPreviewType,true));
@@ -2670,30 +2684,30 @@
   // - Compact Viewport Header Dropdown Menus (#v16HeaderMenus + #v16MenuPopover)
   // - Collapsible Accordions for Outliner & Properties sections
   const PROP_TABS16=[
-   {key:'inspector',icon:'🎛',label:'Inspector (Thông số đối tượng & Sân khấu)'},
-   {key:'v16Asset',icon:'📦',label:'Đạo cụ 3D · Tìm CC0 · Đo 3D & Gió TCVN'},
-   {key:'pro127',icon:'💡',label:'Fixture Desk DMX / OFL 16-bit'},
-   {key:'matrix143',icon:'🎆',label:'LED Matrix Contour · 35 FX'},
-   {key:'fx141',icon:'⚡',label:'Đa đèn FX Timecode (Par / Line / Laser Bar)'},
-   {key:'laser135',icon:'🔦',label:'Laser Show ILDA (.ild)'},
-   {key:'mount136',icon:'🧲',label:'Stage Mount (Gắn đèn 6 mặt khối)'},
-   {key:'stageLift124',icon:'🏗',label:'Bàn nâng chữ X (Stage & Scissor Lift)'},
-   {key:'m131',icon:'🕺',label:'Ghi tay Biên đạo 3D (Manual Choreo Take)'},
-   {key:'l132',icon:'⏺',label:'Ghi tay Ánh sáng (Manual Light Take)'}
+   {key:'inspector',icon:'sliders-horizontal',get label(){return tr('Inspector (Thông số đối tượng & Sân khấu)',"Inspector (object & stage properties)");}},
+   {key:'v16Asset',icon:'package',get label(){return tr('Đạo cụ 3D · Tìm CC0 · Đo 3D & Gió TCVN',"3D props · Find CC0 · 3D measure & TCVN wind");}},
+   {key:'pro127',icon:'lightbulb',label:'Fixture Desk DMX / OFL 16-bit'},
+   {key:'matrix143',icon:'sparkles',label:'LED Matrix Contour · 35 FX'},
+   {key:'fx141',icon:'zap',get label(){return tr('Đa đèn FX Timecode',"Multi-fixture FX timecode");}},
+   {key:'laser135',icon:'flashlight',label:'Laser Show ILDA (.ild)'},
+   {key:'mount136',icon:'magnet',get label(){return tr('Stage Mount (Gắn đèn 6 mặt khối)',"Stage mount (six-face fixture mounting)");}},
+   {key:'stageLift124',icon:'arrow-up-from-line',get label(){return tr('Bàn nâng chữ X',"Scissor lift");}},
+   {key:'m131',icon:'person-standing',get label(){return tr('Ghi tay Biên đạo 3D',"Record 3D choreography");}},
+   {key:'l132',icon:'circle-dot',get label(){return tr('Ghi tay Ánh sáng',"Record lighting");}}
   ];
 
   const TSHELF_TOOLS16=[
-   {key:'select',icon:'↖',title:'Chọn & Xoay khung nhìn 3D (Select / Orbit)'},
-   {key:'move',icon:'✥',title:'Di chuyển đối tượng / cụm (Move)'},
-   {key:'rotate',icon:'↻',title:'Xoay đối tượng / cụm (Rotate)'},
-   {key:'quad',icon:'⬚',title:'Vẽ màn LED 4 góc trên model (+ 4 góc)'},
-   {key:'measure',icon:'📏',title:'Thước đo khoảng cách 2 điểm 3D'},
-   {key:'crease',icon:'◫',title:'Bật/tắt viền kỹ thuật Crease 28° (Wireframe)'},
-   {key:'asset',icon:'📦',title:'Thêm Đạo cụ Sân khấu 3D & Tìm CC0'},
-   {key:'lift',icon:'🏗',title:'Khoanh vùng Bàn nâng chữ X (Stage Lift)'},
-   {key:'fixture',icon:'💡',title:'Bàn điều khiển Đèn DMX / Nhận diện đèn'},
-   {key:'matrix',icon:'🎆',title:'Quét viền LED Matrix 35 FX'},
-   {key:'laser',icon:'🔦',title:'Thiết kế & Đặt tia Laser ILDA'}
+   {key:'select',icon:'mouse-pointer-2',get title(){return tr('Chọn & Xoay khung nhìn 3D',"Select & orbit 3D view");}},
+   {key:'move',icon:'move',get title(){return tr('Di chuyển đối tượng / cụm',"Move object / group");}},
+   {key:'rotate',icon:'rotate-cw',get title(){return tr('Xoay đối tượng / cụm',"Rotate object / group");}},
+   {key:'quad',icon:'square-dashed',get title(){return tr('Vẽ màn LED 4 góc trên model (+ 4 góc)',"Draw a four-corner LED surface on the model");}},
+   {key:'measure',icon:'ruler',get title(){return tr('Thước đo khoảng cách 2 điểm 3D',"Measure distance between two 3D points");}},
+   {key:'crease',icon:'box',get title(){return tr('Bật/tắt viền kỹ thuật Crease 28°',"Toggle 28° crease edges");}},
+   {key:'asset',icon:'package',get title(){return tr('Thêm Đạo cụ Sân khấu 3D & Tìm CC0',"Add 3D stage props & find CC0");}},
+   {key:'lift',icon:'arrow-up-from-line',get title(){return tr('Khoanh vùng Bàn nâng chữ X',"Define scissor lift region");}},
+   {key:'fixture',icon:'lightbulb',get title(){return tr('Bàn điều khiển Đèn DMX / Nhận diện đèn',"DMX fixture desk / fixture detection");}},
+   {key:'matrix',icon:'sparkles',get title(){return tr('Quét viền LED Matrix 35 FX',"LED Matrix contour scan · 35 FX");}},
+   {key:'laser',icon:'flashlight',get title(){return tr('Thiết kế & Đặt tia Laser ILDA',"Design & place ILDA laser beams");}}
   ];
 
   function activeDockKey16(){
@@ -2714,7 +2728,7 @@
   }
 
   function openDockByKey16(key){
-   if(state.presenting){toast('Thoát chế độ Trình diễn để mở bảng công cụ.');return;}
+   if(state.presenting){toast(tr('Thoát chế độ Trình diễn để mở bảng công cụ.',"Exit presentation to open tool panels."));return;}
    const cur=activeDockKey16();
    if(key==='inspector' || (cur===key && key!=='inspector')){
     closeAllDocks16('inspector');
@@ -2760,7 +2774,7 @@
     $('drawQuad')?.click();
    }else if(key==='measure'){
     A.measureMode=!A.measureMode;
-    if(A.measureMode){A.placeMode=false;toast('Thước đo 3D: Click 2 điểm bất kỳ trên sân khấu 3D để đo khoảng cách.');}
+    if(A.measureMode){A.placeMode=false;toast(tr('Thước đo 3D: Click 2 điểm bất kỳ trên sân khấu 3D để đo khoảng cách.',"3D measure: click any two stage points to measure distance."));}
     paint();
    }else if(key==='crease'){
     A.creaseEnabled=!A.creaseEnabled;
@@ -2781,60 +2795,60 @@
 
   function buildMenuItems16(menuKey){
    if(menuKey==='view')return [
-    {label:'⌖ Toàn cảnh sân khấu (Frame All)',kbd:'F',run:()=>$('overviewBtn')?.click()},
-    {label:'🎥 Góc nhìn Chính diện (Front)',kbd:'1',run:()=>document.querySelector('#cameraBar [data-camera="front"]')?.click()},
-    {label:'🎥 Góc nhìn Phối cảnh 3/4 (ISO)',kbd:'3',run:()=>document.querySelector('#cameraBar [data-camera="iso"]')?.click()},
-    {label:'🎥 Góc nhìn Cạnh bên (Side)',kbd:'7',run:()=>document.querySelector('#cameraBar [data-camera="side"]')?.click()},
-    {label:'🎥 Góc nhìn Từ trên xuống (Top)',kbd:'9',run:()=>document.querySelector('#cameraBar [data-camera="top"]')?.click()},
+    {get label(){return tr('Toàn cảnh sân khấu',"Frame stage");},kbd:'F',run:()=>$('overviewBtn')?.click()},
+    {get label(){return tr('Góc nhìn Chính diện',"Front view");},kbd:'1',run:()=>document.querySelector('#cameraBar [data-camera="front"]')?.click()},
+    {get label(){return tr('Góc nhìn Phối cảnh 3/4 (ISO)',"Three-quarter isometric view");},kbd:'3',run:()=>document.querySelector('#cameraBar [data-camera="iso"]')?.click()},
+    {get label(){return tr('Góc nhìn Cạnh bên',"Side view");},kbd:'7',run:()=>document.querySelector('#cameraBar [data-camera="side"]')?.click()},
+    {get label(){return tr('Góc nhìn Từ trên xuống',"Top view");},kbd:'9',run:()=>document.querySelector('#cameraBar [data-camera="top"]')?.click()},
     {sep:true},
-    {label:(engine?.cameraLocked?'🔒 Mở khóa góc Camera (Đang khóa)':'🔓 Khóa góc Camera'),kbd:'L',run:()=>$('lockCameraBtn')?.click()},
-    {label:'◫ Viền kỹ thuật Crease 28° (Wireframe)',kbd:'',run:()=>{A.creaseEnabled=!A.creaseEnabled;paint();syncBlenderState16();}},
-    {label:'🛠 Ẩn / Hiện thanh công cụ nổi 3D (Phím T)',kbd:'T',run:()=>toggleTShelf16()},
-    {label:'📋 Ẩn / Hiện bảng hai bên (Chế độ Tập trung)',kbd:'N',run:()=>$('focusBtn')?.click()},
-    {label:'☰ Bật / Tắt thanh công cụ ngang đầy đủ',kbd:'',run:()=>$('v16AllToolsBtn')?.click()}
+    {label:(engine?.cameraLocked?tr('Mở khóa góc Camera (Đang khóa)',"Unlock camera (locked)"):tr('Khóa góc Camera',"Lock camera")),kbd:'L',run:()=>$('lockCameraBtn')?.click()},
+    {get label(){return tr('Viền kỹ thuật Crease 28°',"28° crease edges");},kbd:'',run:()=>{A.creaseEnabled=!A.creaseEnabled;paint();syncBlenderState16();}},
+    {get label(){return tr('Ẩn / Hiện thanh công cụ nổi 3D (Phím T)',"Toggle floating 3D tools (T)");},kbd:'T',run:()=>toggleTShelf16()},
+    {get label(){return tr('Ẩn / Hiện bảng hai bên (Chế độ Tập trung)',"Toggle side panels (focus mode)");},kbd:'N',run:()=>$('focusBtn')?.click()},
+    {get label(){return tr('Bật / Tắt thanh công cụ ngang đầy đủ',"Toggle full horizontal toolbar");},kbd:'',run:()=>$('v16AllToolsBtn')?.click()}
    ];
    if(menuKey==='add')return [
-    {label:'📥 Nhập mô hình sân khấu (.GLB / .DAE / .OBJ)',kbd:'',run:()=>$('importModel')?.click()},
-    {label:'🏛 Nạp sân khấu mẫu (Demo Stage)',kbd:'',run:()=>$('demoBtn')?.click()},
-    {label:'🎬 Thêm Video / Ảnh vào Thư viện Media',kbd:'',run:()=>$('addMedia')?.click()},
+    {get label(){return tr('Nhập mô hình sân khấu (.GLB / .DAE / .OBJ)',"Import stage model (.GLB / .DAE / .OBJ)");},kbd:'',run:()=>$('importModel')?.click()},
+    {get label(){return tr('Nạp sân khấu mẫu',"Load demo stage");},kbd:'',run:()=>$('demoBtn')?.click()},
+    {get label(){return tr('Thêm Video / Ảnh vào Thư viện Media',"Add video / images to media library");},kbd:'',run:()=>$('addMedia')?.click()},
     {sep:true},
-    ...Object.entries(CATALOG).map(([k,v])=>({label:`+ ${v.name}`,kbd:v.label,thumb:getAssetPreviewURL16(k),run:()=>addCatalogItem(k)})),
+    ...Object.entries(CATALOG).map(([k,v])=>({label:`+ ${v.displayName}`,kbd:v.label,thumb:getAssetPreviewURL16(k),run:()=>addCatalogItem(k)})),
     {sep:true},
-    {label:'🌐 Tìm Asset 3D & Texture CC0 (Poly Haven / Wikimedia)',kbd:'CC0',run:()=>open('search')},
-    {label:'🕺 Thêm Nhân vật 3D (Cast Performers · 15 vai & 5 mẫu show)',kbd:'3D',thumb:getPerformerPreviewURL16('fandancer'),run:()=>openCastLibrary16()}
+    {get label(){return tr('Tìm Asset 3D & Texture CC0',"Find CC0 3D assets & textures");},kbd:'CC0',run:()=>open('search')},
+    {get label(){return tr('Thêm Nhân vật 3D (Cast Performers · 15 vai & 5 mẫu show)',"Add 3D performers (15 roles & 5 show presets)");},kbd:'3D',thumb:getPerformerPreviewURL16('fandancer'),run:()=>openCastLibrary16()}
    ];
    if(menuKey==='stage')return [
-    {label:'⚡ Tự động nhận diện các màn hình LED',kbd:'',run:()=>$('autoDetect')?.click()},
-    {label:'⬚ Vẽ màn LED 4 góc trên model',kbd:'',run:()=>$('drawQuad')?.click()},
-    {label:'🔧 Sửa mapping 3D bám mặt trước',kbd:'',run:()=>$('repairMapping')?.click()},
-    {label:'📐 Hệ quy chiếu mét thật (Spatial V0.4)',kbd:'',run:()=>$('spatialMapBtn')?.click()},
+    {get label(){return tr('Tự động nhận diện các màn hình LED',"Auto-detect LED surfaces");},kbd:'',run:()=>$('autoDetect')?.click()},
+    {get label(){return tr('Vẽ màn LED 4 góc trên model',"Draw four-corner LED surface");},kbd:'',run:()=>$('drawQuad')?.click()},
+    {get label(){return tr('Sửa mapping 3D bám mặt trước',"Repair front-face 3D mapping");},kbd:'',run:()=>$('repairMapping')?.click()},
+    {get label(){return tr('Hệ quy chiếu mét thật',"Real-world meter reference");},kbd:'',run:()=>$('spatialMapBtn')?.click()},
     {sep:true},
-    {label:'🖥 Quản lý danh sách màn LED',kbd:'',run:()=>$('ledManagerBtn')?.click()},
-    {label:'🎨 Pixel Studio (Đóng gói Atlas 4K)',kbd:'',run:()=>$('atlasBtn')?.click()},
-    {label:'🏗 Bàn nâng chữ X (Stage & Scissor Lift)',kbd:'',run:()=>openDockByKey16('stageLift124')},
-    {label:'📏 Thước đo khoảng cách 2 điểm 3D',kbd:'',run:()=>triggerTShelfTool16('measure')},
-    {label:'🌬 Tính tải gió & Đối trọng TCVN 2737:2023',kbd:'',run:()=>open('tools')}
+    {get label(){return tr('Quản lý danh sách màn LED',"Manage LED surfaces");},kbd:'',run:()=>$('ledManagerBtn')?.click()},
+    {get label(){return tr('Pixel Studio (Đóng gói Atlas 4K)',"Pixel Studio (4K atlas packing)");},kbd:'',run:()=>$('atlasBtn')?.click()},
+    {get label(){return tr('Bàn nâng chữ X',"Scissor lift");},kbd:'',run:()=>openDockByKey16('stageLift124')},
+    {get label(){return tr('Thước đo khoảng cách 2 điểm 3D',"Measure distance between two 3D points");},kbd:'',run:()=>triggerTShelfTool16('measure')},
+    {get label(){return tr('Tính tải gió & Đối trọng TCVN 2737:2023',"Wind load & ballast (TCVN 2737:2023)");},kbd:'',run:()=>open('tools')}
    ];
    if(menuKey==='lighting')return [
-    {label:'💡 Bàn điều khiển Đèn DMX / OFL (Fixture Desk)',kbd:'',run:()=>openDockByKey16('pro127')},
-    {label:'🎆 Hệ thống LED Matrix 35 FX (Quét viền 3D)',kbd:'',run:()=>openDockByKey16('matrix143')},
-    {label:'✏ Vẽ viền LED Matrix trực tiếp trên 3D',kbd:'',run:()=>$('matrix148DrawBtn')?.click()},
-    {label:'⚡ Đa đèn FX Timecode (Par / Line / Laser Bar)',kbd:'',run:()=>openDockByKey16('fx141')},
-    {label:'🔦 Thiết kế & Phát tia Laser ILDA (.ild)',kbd:'',run:()=>openDockByKey16('laser135')},
-    {label:'🧲 Gắn đèn theo 6 mặt khối (Stage Mount)',kbd:'',run:()=>openDockByKey16('mount136')},
+    {get label(){return tr('Bàn điều khiển Đèn DMX / OFL',"DMX / OFL fixture desk");},kbd:'',run:()=>openDockByKey16('pro127')},
+    {get label(){return tr('Hệ thống LED Matrix 35 FX (Quét viền 3D)',"LED Matrix · 35 FX (3D contour scan)");},kbd:'',run:()=>openDockByKey16('matrix143')},
+    {get label(){return tr('Vẽ viền LED Matrix trực tiếp trên 3D',"Draw LED Matrix contours in 3D");},kbd:'',run:()=>$('matrix148DrawBtn')?.click()},
+    {get label(){return tr('Đa đèn FX Timecode',"Multi-fixture FX timecode");},kbd:'',run:()=>openDockByKey16('fx141')},
+    {get label(){return tr('Thiết kế & Phát tia Laser ILDA (.ild)',"Design & play ILDA laser beams (.ild)");},kbd:'',run:()=>openDockByKey16('laser135')},
+    {get label(){return tr('Gắn đèn theo 6 mặt khối',"Mount fixtures on six faces");},kbd:'',run:()=>openDockByKey16('mount136')},
     {sep:true},
-    {label:'🎵 Phân tích nhạc & Tự lập kịch bản đèn (FX9)',kbd:'',run:()=>$('lxToolbar')?.click()},
-    {label:'⏺ Ghi tay thao tác ánh sáng (Light Take)',kbd:'',run:()=>openDockByKey16('l132')}
+    {get label(){return tr('Phân tích nhạc & Tự lập kịch bản đèn (FX9)',"Analyze audio & generate lighting cues");},kbd:'',run:()=>$('lxToolbar')?.click()},
+    {get label(){return tr('Ghi tay thao tác ánh sáng',"Record lighting controls");},kbd:'',run:()=>openDockByKey16('l132')}
    ];
    if(menuKey==='show')return [
-    {label:'🎞 Mở / Đóng SHOW Timeline (Sequencer đa làn)',kbd:'',run:()=>$('v07Timeline')?.click()},
-    {label:'⏱ Bàn điều khiển Show Timecode SMPTE',kbd:'',run:()=>$('tc134EditBtn')?.click()},
-    {label:'📋 Quản lý tiết mục (Show Rundown V10)',kbd:'',run:()=>$('rundownToggle10')?.click()},
-    {label:'🕺 Biên đạo 3D khớp xương IK (12 động tác)',kbd:'',run:()=>$('choreoToggle11')?.click()},
-    {label:'🕺 Ghi tay chuyển động nhân vật (Manual Take)',kbd:'',run:()=>openDockByKey16('m131')},
+    {get label(){return tr('Mở / Đóng SHOW Timeline (Sequencer đa làn)',"Toggle show timeline (multitrack sequencer)");},kbd:'',run:()=>$('v07Timeline')?.click()},
+    {get label(){return tr('Bàn điều khiển Show Timecode SMPTE',"SMPTE show timecode desk");},kbd:'',run:()=>$('tc134EditBtn')?.click()},
+    {get label(){return tr('Quản lý tiết mục',"Manage acts");},kbd:'',run:()=>$('rundownToggle10')?.click()},
+    {get label(){return tr('Biên đạo 3D khớp xương IK (12 động tác)',"3D IK choreography (12 motions)");},kbd:'',run:()=>$('choreoToggle11')?.click()},
+    {get label(){return tr('Ghi tay chuyển động nhân vật',"Record performer motion");},kbd:'',run:()=>openDockByKey16('m131')},
     {sep:true},
-    {label:'🎛 Bàn trộn LIVE VJ & Audio Mixer',kbd:'',run:()=>$('vjToggle')?.click()},
-    {label:'▶ Bắt đầu Trình diễn toàn màn hình',kbd:'',run:()=>$('presentBtn')?.click()}
+    {get label(){return tr('Bàn trộn LIVE VJ & Audio Mixer',"Live VJ & audio mixer");},kbd:'',run:()=>$('vjToggle')?.click()},
+    {get label(){return tr('Bắt đầu Trình diễn toàn màn hình',"Start fullscreen presentation");},kbd:'',run:()=>$('presentBtn')?.click()}
    ];
    return [];
   }
@@ -2989,7 +3003,7 @@
       setClass16(lkBtn,'active',lk);
       lkBtn.setAttribute('aria-pressed',String(lk));
       lkBtn.innerHTML=lk?SVG_LOCK_CLOSED16:SVG_LOCK_OPEN16;
-      lkBtn.title=lk?'Đã khóa góc Camera (Click để mở khóa · Phím L)':'Khóa / Mở khóa góc Camera (Phím L)';
+      lkBtn.title=lk?tr('Đã khóa góc Camera (Click để mở khóa · Phím L)',"Camera locked (click to unlock · L)"):tr('Khóa / Mở khóa góc Camera (Phím L)',"Lock / unlock camera (L)");
      }
     }
     if(withAccordions)decorateInspectorAccordions16();
@@ -3015,10 +3029,10 @@
     ob.id='v16OutlinerBar';
     ob.className='v16-outliner-bar';
     ob.innerHTML=`
-     <span class="v16-outliner-title">❖ CÂY SÂN KHẤU &amp; MEDIA</span>
+     <span class="v16-outliner-title">${tr("CÂY SÂN KHẤU &amp; MEDIA","STAGE &amp; MEDIA OUTLINER")}</span>
      <div class="v16-outliner-actions">
-      <button type="button" data-outliner16="import" title="Mở / Thu gọn mục Nhập sân khấu 3D">+ Nhập 3D</button>
-      <button type="button" data-outliner16="media" title="Mở / Thu gọn Thư viện Video LED">+ Media</button>
+      <button type="button" data-outliner16="import" title="${tr("Mở / Thu gọn mục Nhập sân khấu 3D","Expand / collapse 3D stage import")}">${tr("+ Nhập 3D","+ Import 3D")}</button>
+      <button type="button" data-outliner16="media" title="${tr("Mở / Thu gọn Thư viện Video LED","Expand / collapse LED video library")}">+ Media</button>
      </div>
     `;
     lp.prepend(ob);
@@ -3028,16 +3042,16 @@
     if(impSec){
      impSec.classList.add('v16-collapsed');
      const k=impSec.querySelector('.section-kicker');
-     if(k){k.classList.add('v16-acc-header');k.title='Click để đóng / mở mục Nhập mô hình 3D';k.onclick=()=>impSec.classList.toggle('v16-collapsed');}
+     if(k){k.classList.add('v16-acc-header');k.title=tr('Click để đóng / mở mục Nhập mô hình 3D',"Click to expand / collapse 3D model import");k.onclick=()=>impSec.classList.toggle('v16-collapsed');}
     }
     if(medSec){
      medSec.classList.add('v16-collapsed');
      const h=medSec.querySelector('.section-heading');
-     if(h){h.classList.add('v16-acc-header');h.title='Click để đóng / mở Thư viện Video';h.onclick=e=>{if(e.target.closest('button'))return;medSec.classList.toggle('v16-collapsed');};}
+     if(h){h.classList.add('v16-acc-header');h.title=tr('Click để đóng / mở Thư viện Video',"Click to expand / collapse video library");h.onclick=e=>{if(e.target.closest('button'))return;medSec.classList.toggle('v16-collapsed');};}
     }
     if(objSec){
      const h=objSec.querySelector('.section-heading');
-     if(h){h.classList.add('v16-acc-header');h.title='Click để đóng / mở Cây cấu trúc sân khấu';h.onclick=e=>{if(e.target.closest('button'))return;objSec.classList.toggle('v16-collapsed');};}
+     if(h){h.classList.add('v16-acc-header');h.title=tr('Click để đóng / mở Cây cấu trúc sân khấu',"Click to expand / collapse stage outliner");h.onclick=e=>{if(e.target.closest('button'))return;objSec.classList.toggle('v16-collapsed');};}
     }
     ob.addEventListener('click',e=>{
      const b=e.target.closest('button[data-outliner16]');
@@ -3053,8 +3067,8 @@
     const rail=document.createElement('nav');
     rail.id='v16PropRail';
     rail.className='v16-prop-rail';
-    rail.setAttribute('aria-label','Thanh chuyển nhanh mô-đun kỹ thuật');
-    rail.innerHTML=PROP_TABS16.map(t=>`<button type="button" data-prop16="${t.key}" title="${esc16(t.label)}"><span>${t.icon}</span></button>`).join('');
+    rail.setAttribute('aria-label',tr('Thanh chuyển nhanh mô-đun kỹ thuật',"Technical module shortcuts"));
+    rail.innerHTML=PROP_TABS16.map(t=>`<button type="button" data-prop16="${t.key}" title="${esc16(t.label)}" aria-label="${esc16(t.label)}">${icon(t.icon)}</button>`).join('');
     rail.addEventListener('click',e=>{
      const b=e.target.closest('button[data-prop16]');
      if(b)openDockByKey16(b.dataset.prop16);
@@ -3070,15 +3084,16 @@
      const row=document.createElement('div');
      row.className='v16-prop-headbar';
      row.innerHTML=`
-      <span class="v16-prop-crumb">⚙ THÔNG SỐ &amp; HIỆU CHỈNH</span>
-      <button type="button" id="v16CollapseAllBtn" class="btn small" title="Thu gọn / Mở rộng toàn bộ các mục thông số">▾ Thu gọn mục</button>
+      <span class="v16-prop-crumb">${tr("THÔNG SỐ &amp; HIỆU CHỈNH","PROPERTIES &amp; ADJUSTMENTS")}</span>
+      <button type="button" id="v16CollapseAllBtn" class="btn small" title="${tr("Thu gọn / Mở rộng toàn bộ các mục thông số","Collapse / expand all property sections")}">${A.allBlocksCollapsed?tr('Mở rộng mục',"Expand sections"):tr('Thu gọn mục',"Collapse sections")}</button>
      `;
      ih.prepend(row);
      $('v16CollapseAllBtn')?.addEventListener('click',()=>{
       A.allBlocksCollapsed=!A.allBlocksCollapsed;
       A.collapsedBlocks.clear();
+      saveCollapsed16();
       const btn=$('v16CollapseAllBtn');
-      if(btn)btn.textContent=A.allBlocksCollapsed?'▸ Mở rộng mục':'▾ Thu gọn mục';
+      if(btn)btn.textContent=A.allBlocksCollapsed?tr('Mở rộng mục',"Expand sections"):tr('Thu gọn mục',"Collapse sections");
       decorateInspectorAccordions16();
      });
     }
@@ -3098,6 +3113,7 @@
        if(collapsed)A.collapsedBlocks.add(key);
        else A.collapsedBlocks.delete(key);
       }
+      saveCollapsed16();
      }
     });
    }
@@ -3109,20 +3125,19 @@
     menus.id='v16HeaderMenus';
     menus.className='v16-header-menus';
     menus.innerHTML=`
-     <button type="button" data-v16menu="view">Góc nhìn ▾</button>
-     <button type="button" data-v16menu="add">Thêm 3D ▾</button>
-     <button type="button" data-v16menu="stage">Màn LED ▾</button>
-     <button type="button" data-v16menu="lighting">Ánh sáng &amp; FX ▾</button>
-     <button type="button" data-v16menu="show">Show &amp; Kịch bản ▾</button>
+     <button type="button" data-v16menu="view">${window.tr?.('Góc nhìn ▾','View ▾')??'Góc nhìn ▾'}</button>
+     <button type="button" data-v16menu="add">${window.tr?.('Thêm 3D ▾','Add 3D ▾')??'Thêm 3D ▾'}</button>
+     <button type="button" data-v16menu="stage">${window.tr?.('Màn LED ▾','LED screens ▾')??'Màn LED ▾'}</button>
+     <button type="button" data-v16menu="lighting">${window.tr?.('Ánh sáng &amp; FX ▾','Lighting &amp; FX ▾')??'Ánh sáng &amp; FX ▾'}</button>
+     <button type="button" data-v16menu="show">${window.tr?.('Show &amp; Kịch bản ▾','Show &amp; rundown ▾')??'Show &amp; Kịch bản ▾'}</button>
     `;
     const tabs=vt.querySelector('.view-tabs');
     if(tabs)tabs.after(menus);else vt.prepend(menus);
-    menus.addEventListener('click',e=>{
-     const b=e.target.closest('button[data-v16menu]');
-     if(!b)return;
+    menus.querySelectorAll('button[data-v16menu]').forEach(b=>b.addEventListener('click',e=>{
      e.stopPropagation();
      openHeaderMenu16(b.dataset.v16menu,b);
-    });
+     b.closest('[popover]')?.hidePopover();
+    }));
 
     const va=vt.querySelector('.view-actions');
     if(va && !$('v16QuickCreaseBtn')){
@@ -3130,15 +3145,15 @@
      cr.id='v16QuickCreaseBtn';
      cr.type='button';
      cr.className='icon-btn';
-     cr.title='Bật / tắt viền kỹ thuật Crease 28° (Wireframe)';
-     cr.textContent='◫';
+     cr.title=tr('Bật / tắt viền kỹ thuật Crease 28°',"Toggle 28° crease edges");
+     cr.innerHTML=icon('box');cr.setAttribute('aria-label',cr.title);
      cr.onclick=()=>triggerTShelfTool16('crease');
      const ms=document.createElement('button');
      ms.id='v16QuickMeasureBtn';
      ms.type='button';
      ms.className='icon-btn';
-     ms.title='Thước đo khoảng cách 2 điểm 3D';
-     ms.textContent='📏';
+     ms.title=tr('Thước đo khoảng cách 2 điểm 3D',"Measure distance between two 3D points");
+     ms.innerHTML=icon('ruler');ms.setAttribute('aria-label',ms.title);
      ms.onclick=()=>triggerTShelfTool16('measure');
      va.prepend(cr,ms);
     }
@@ -3169,8 +3184,8 @@
     const shelf=document.createElement('aside');
     shelf.id='v16TShelf';
     shelf.className='v16-tshelf';
-    shelf.setAttribute('aria-label','Thanh công cụ nổi 3D');
-    shelf.innerHTML=TSHELF_TOOLS16.map(t=>`<button type="button" data-tshelf16="${t.key}" title="${esc16(t.title)}">${t.icon}</button>`).join('');
+    shelf.setAttribute('aria-label',tr('Thanh công cụ nổi 3D',"Floating 3D toolbar"));
+    shelf.innerHTML=TSHELF_TOOLS16.map(t=>`<button type="button" data-tshelf16="${t.key}" title="${esc16(t.title)}" aria-label="${esc16(t.title)}">${icon(t.icon)}</button>`).join('');
     shelf.addEventListener('click',e=>{
      const b=e.target.closest('button[data-tshelf16]');
      if(b)triggerTShelfTool16(b.dataset.tshelf16);
@@ -3183,12 +3198,12 @@
     nav.id='v16ViewportNav';
     nav.className='v16-viewport-nav';
     nav.innerHTML=`
-     <canvas id="v16AxisGizmo" width="60" height="60" title="Click X / Y / Z để chuyển góc nhìn Side / Top / Front"></canvas>
+     <canvas id="v16AxisGizmo" width="60" height="60" title="${tr("Click X / Y / Z để chuyển góc nhìn Side / Top / Front","Click X / Y / Z for side / top / front view")}"></canvas>
      <div class="v16-nav-pills">
-      <button type="button" data-v16nav="frame" title="Toàn cảnh sân khấu (Phím F)">⌖</button>
-      <button type="button" data-v16nav="cam" title="Đổi góc Camera: Front / 3/4 / Side / Top">🎥</button>
-      <button type="button" id="v16NavLockBtn" data-v16nav="lock" title="Khóa / Mở khóa góc Camera (Phím L)" aria-pressed="false">${SVG_LOCK_OPEN16}</button>
-      <button type="button" data-v16nav="focus" title="Chế độ Tập trung (Ẩn / Hiện bảng hai bên · Phím N)">⛶</button>
+      <button type="button" data-v16nav="frame" title="${tr("Toàn cảnh sân khấu (Phím F)","Frame stage (F)")}" aria-label="${tr("Toàn cảnh sân khấu","Frame stage")}">${icon('scan')}</button>
+      <button type="button" data-v16nav="cam" title="${tr("Đổi góc Camera: Front / 3/4 / Side / Top","Change camera: front / three-quarter / side / top")}" aria-label="${tr("Đổi góc camera","Change camera view")}">${icon('video')}</button>
+      <button type="button" id="v16NavLockBtn" data-v16nav="lock" title="${tr("Khóa / Mở khóa góc Camera (Phím L)","Lock / unlock camera (L)")}" aria-pressed="false">${SVG_LOCK_OPEN16}</button>
+      <button type="button" data-v16nav="focus" title="${tr("Chế độ Tập trung (Ẩn / Hiện bảng hai bên · Phím N)","Focus mode (toggle side panels · N)")}" aria-label="${tr("Chế độ tập trung","Focus mode")}">${icon('columns-3')}</button>
      </div>
     `;
     vp.appendChild(nav);
@@ -3282,8 +3297,8 @@
     const b=document.createElement('button');
     b.id='v16AssetBtn';
     b.className='btn small';
-    b.textContent='❖ Đạo cụ & Đo 3D';
-    b.title='Mở Thư viện Đạo cụ 3D, Tìm Asset CC0 (Poly Haven / Wikimedia), Thước đo 3D & Tính tải gió TCVN';
+    b.textContent=tr('Đạo cụ & Đo 3D',"Props & 3D measure");
+    b.title=tr('Mở Thư viện Đạo cụ 3D, Tìm Asset CC0, Thước đo 3D & Tính tải gió TCVN',"Open 3D props, CC0 asset search, 3D measure & TCVN wind load");
     b.onclick=()=>{if(A.isOpen)close();else open('catalog');};
     wf.insertBefore(b,$('exportBtn')||wf.firstChild);
    }
@@ -3291,8 +3306,8 @@
     const t=document.createElement('button');
     t.id='v16AllToolsBtn';
     t.className='btn small';
-    t.textContent='☰ Thanh đầy đủ';
-    t.title='Hiện / ẩn toàn bộ các thanh công cụ ngang cổ điển trên mọi bước';
+    t.textContent=tr('Thanh đầy đủ',"Full toolbar");
+    t.title=tr('Hiện / ẩn toàn bộ các thanh công cụ ngang cổ điển trên mọi bước',"Show / hide full horizontal toolbars in every workspace");
     t.onclick=()=>{
      A.allToolsVisible=!A.allToolsVisible;
      setClass16(document.body,'v16-all-tools',!!A.allToolsVisible);
@@ -3313,6 +3328,30 @@
    });
   });
 
+  window.addEventListener('ledstudio:locale',()=>{
+   const active=document.activeElement;
+   if(A.isOpen && !(active?.matches?.('input[type="range"]')))paint();
+   for(const tab of PROP_TABS16){
+    const button=document.querySelector('[data-prop16="'+tab.key+'"]');
+    if(button){button.title=tab.label;button.setAttribute('aria-label',tab.label);}
+   }
+   for(const tool of TSHELF_TOOLS16){
+    const button=document.querySelector('[data-tshelf16="'+tool.key+'"]');
+    if(button){button.title=tool.title;button.setAttribute('aria-label',tool.title);}
+   }
+   if($('modal')?.open && $('v16CastStageTitle')){
+    syncCastSidebar16();
+    document.querySelectorAll('#modalBody [data-cast-pick16] img').forEach(img=>{
+     const [kind,id]=img.closest('[data-cast-pick16]').dataset.castPick16.split(':');
+     if(kind==='role')img.src=getPerformerPreviewURL16(id);
+     else if(kind==='act')img.src=getActPreviewURL16(id);
+    });
+   }
+   window.translateUiText?.(panel);
+   const lock=$('v16NavLockBtn');if(lock)lock._lkState=undefined;
+   syncBlenderState16();
+  });
+
   const prevRenderUI=renderUI;
   renderUI=function(...args){
    const rp=document.querySelector('.right-panel');
@@ -3326,9 +3365,9 @@
   syncWorkspaceStepUI();
   const vRaw16=String(window.APP_VERSION||'1.2').trim().replace(/^[vV]/,'');
   S.version=vRaw16.split('.').length===2?vRaw16+'.0':vRaw16;
-  document.title=`ALPHA Creative LED Studio V${vRaw16} | Sân khấu 3D · 35 FX · Đạo cụ & Biên đạo`;
+  document.title=`ALPHA Creative LED Studio V${vRaw16} | ${tr("Sân khấu 3D · 35 FX · Đạo cụ & Biên đạo","3D stage · 35 FX · Props & choreography")}`;
   const brandSmall=document.querySelector('.brand small');
-  if(brandSmall)brandSmall.textContent=`V${vRaw16} / SÂN KHẤU 3D · 35 FX · DMX & ILDA`;
+  if(brandSmall)brandSmall.textContent=`V${vRaw16} / ${tr("Sân khấu 3D · 35 FX · DMX & ILDA","3D stage · 35 FX · DMX & ILDA")}`;
   const buildSpan=document.querySelector('.bottom-status > span:last-child');
   if(buildSpan)buildSpan.textContent=`ALPHA / LOCAL BUILD ${vRaw16}`;
  } catch(err) {

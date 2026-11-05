@@ -143,11 +143,13 @@
       projectUnlocked: false,
       singleExportPasses: 0,
       balanceCredits: 0,
+      balanceReady: false,
       freeAiCreditsRemaining: 50,
       effort: 'medium',
       byok: loadByokConfig(),
       lastAiReply: null,
       lastAiUsage: null,
+      chat18: [],
       quoteConfig: {
         clientName: 'Quý Khách hàng / Đối tác Sự kiện',
         eventName: '',
@@ -161,40 +163,76 @@
       }
     };
 
+    if (typeof window.snapshot === 'function' && typeof window.restore === 'function') {
+      const priorSnapshot = window.snapshot, priorRestore = window.restore;
+      window.snapshot = function () {
+        const data = priorSnapshot();
+        data.lumi18 = structuredClone({ musicShowCues: lumiState.musicShowCues, activeCueIndex: lumiState.activeCueIndex, brandIdentity: lumiState.brandIdentity, clientName: lumiState.quoteConfig.clientName, seqCues: window.seq?.cues });
+        return data;
+      };
+      window.restore = function (data) {
+        if (data.lumi18) {
+          const saved = structuredClone(data.lumi18);
+          Object.assign(lumiState, { musicShowCues: saved.musicShowCues, activeCueIndex: saved.activeCueIndex, brandIdentity: saved.brandIdentity });
+          lumiState.quoteConfig.clientName = saved.clientName;
+          if (window.seq && Array.isArray(saved.seqCues)) window.seq.cues = saved.seqCues;
+        }
+        return priorRestore(data);
+      };
+    }
+
+    function lastUndo18() { return (S.state || window.state)?.history?.at(-1); }
+
+    function singleUndo18(action) {
+      const state = S.state || window.state;
+      const history = state?.history?.slice();
+      const prior = lastUndo18();
+      const before = history && window.snapshot?.();
+      try { return action(); }
+      finally {
+        if (before && lastUndo18() !== prior) {
+          state.history.splice(0, state.history.length, ...history.slice(-34), before);
+          window.historyButtons?.();
+        }
+      }
+    }
+
     const LUMI_I18N = {
       vi: {
-        templatesBtn: '🏛 6 Mẫu VN',
-        aiBtn: '✨ AI Sân khấu',
-        bomBtn: '📋 BOM & Báo giá',
-        liveShowBtn: '🎛 Chạy Show',
-        billingBtn: '💎 Credit & Pro',
-        billingProBtn: '💎 PRO · ',
-        lockBlocked: '🔒 Đang bật Khóa An toàn Chạy Show (E4) — hãy mở khóa trước khi sửa bố cục sân khấu.',
+        templatesBtn: '6 Mẫu VN',
+        aiBtn: 'AI Sân khấu',
+        bomBtn: 'BOM & Báo giá',
+        liveShowBtn: 'Chạy Show',
+        billingBtn: 'Credit & Pro',
+        billingProBtn: 'PRO · ',
+        lockBlocked: 'Đang bật Khóa An toàn Chạy Show — hãy mở khóa trước khi sửa bố cục sân khấu.',
         previewReady: 'Đã tạo bản xem trước phương án AI. Bấm "Áp dụng" để chốt hoặc "Hoàn tác" để hủy.',
-        previewCommitted: '✅ Đã xác nhận áp dụng phương án sân khấu AI.',
-        previewReverted: '↩ Đã hủy bản xem trước và khôi phục bố cục trước đó.'
+        previewCommitted: 'Đã xác nhận áp dụng phương án sân khấu AI.',
+        previewReverted: 'Đã hủy bản xem trước và khôi phục bố cục trước đó.'
       },
       en: {
-        templatesBtn: '🏛 6 Stage Templates',
-        aiBtn: '✨ Stage AI',
-        bomBtn: '📋 BOM & Quote',
-        liveShowBtn: '🎛 Live Show',
-        billingBtn: '💎 Credits & Pro',
-        billingProBtn: '💎 PRO · ',
-        lockBlocked: '🔒 Safe Show Lock (E4) is active — unlock before modifying stage layout.',
+        templatesBtn: '6 Stage Templates',
+        aiBtn: 'Stage AI',
+        bomBtn: 'BOM & Quote',
+        liveShowBtn: 'Live Show',
+        billingBtn: 'Credits & Pro',
+        billingProBtn: 'PRO · ',
+        lockBlocked: 'Safe Show Lock (E4) is active — unlock before modifying stage layout.',
         previewReady: 'AI Stage Preview active. Click "Apply" to commit or "Revert" to undo.',
-        previewCommitted: '✅ AI stage layout committed.',
-        previewReverted: '↩ AI preview reverted to previous stage state.'
+        previewCommitted: 'AI stage layout committed.',
+        previewReverted: 'AI preview reverted to previous stage state.'
       }
     };
 
     function t18(key) {
+      if (typeof window.tr === 'function') return window.tr(LUMI_I18N.vi[key] || key, LUMI_I18N.en[key] || LUMI_I18N.vi[key] || key);
       const dict = LUMI_I18N[lumiState.lang] || LUMI_I18N.vi;
       return dict[key] || LUMI_I18N.vi[key] || key;
     }
 
     function setLumiLanguage(lang) {
       lumiState.lang = String(lang || '').toLowerCase() === 'en' ? 'en' : 'vi';
+      if (S.cloud16?.applyLocale) return S.cloud16.applyLocale(lumiState.lang);
       if (document.documentElement?.dataset) {
         document.documentElement.dataset.locale = lumiState.lang;
       }
@@ -235,7 +273,7 @@
       },
       wedding: {
         id: 'wedding',
-        name: 'Tiệc cưới Sang trọng / Luxury Wedding',
+        name: 'Tiệc cưới Sang trọng',
         category: 'Wedding / Romance',
         summary: 'Sân khấu 14×7m kèm đường dẫn Catwalk, LED chính 8×4m + 4 cột LED Totem, cổng vòm hoa/backdrop, bàn tiệc tròn Gala, pháo điện lạnh.',
         widthM: 14,
@@ -263,7 +301,7 @@
       },
       concert: {
         id: 'concert',
-        name: 'Đại nhạc hội EDM / Countdown Festival',
+        name: 'Đại nhạc hội EDM',
         category: 'Concert / EDM',
         summary: 'Sân khấu đại cảnh 24×12m, LED chính 14×6m + 4 cánh LED nghiêng + Header, bàn DJ trung tâm, Line Array, 32 đèn Moving Head Beam.',
         widthM: 24,
@@ -482,7 +520,7 @@
       }
       const tpl = VN_STAGE_TEMPLATES[templateId];
       if (!tpl) {
-        window.toast?.('Không tìm thấy mẫu sân khấu: ' + templateId);
+        window.toast?.(tr18("Không tìm thấy mẫu sân khấu: ", "Stage template not found: ") + templateId);
         return false;
       }
       const eng = getEngine();
@@ -605,7 +643,7 @@
       eng.view = 'stage';
       eng.cameraPreset?.('iso');
       window.renderUI?.();
-      window.toast?.(`Đã dựng mẫu "${tpl.name}" (${widthM}×${depthM}m · P${defaultPitch}). Bấm Ctrl+Z nếu muốn hoàn tác.`);
+      window.toast?.(tr18(`Đã dựng mẫu "${tpl.name}" (${widthM}×${depthM}m · P${defaultPitch}). Bấm Ctrl+Z nếu muốn hoàn tác.`, `Built "${templatePresentation18(tpl).name}" (${widthM}×${depthM}m · P${defaultPitch}). Press Ctrl+Z to undo.`));
       return true;
     }
 
@@ -678,7 +716,7 @@
       }
       if (horizontalAngleDeg > 45) {
         warnings.push(
-          `Góc nhìn lệch cánh hai bên (${horizontalAngleDeg}°) > 45° — khuyến nghị bổ sung 2 màn LED phụ (Side Wing) nghiêng 12°–15°.`
+          `Góc nhìn lệch cánh hai bên (${horizontalAngleDeg}°) > 45° — khuyến nghị bổ sung 2 màn LED phụ nghiêng 12°–15°.`
         );
       }
       if (occludingProps.length > 0) {
@@ -687,13 +725,21 @@
 
       const passed = warnings.length === 0;
       const summaryVi =
-        `👁 KIỂM TRA TIA NHÌN KHÁN GIẢ (3D SIGHTLINE CHECK):\n` +
+        `KIỂM TRA TIA NHÌN KHÁN GIẢ (3D SIGHTLINE CHECK):\n` +
         `- Khoảng cách khán giả: Hàng đầu ${minViewDistM}m → Hàng cuối ${maxViewDistM}m (Chuẩn nhìn rõ LED P${pitchMm}: từ ${minPitchDistM}m, tối ưu ${optimalPitchDistM}m).\n` +
-        `- Góc ngẩng dọc (Vertical Sightline): ${verticalAngleDeg}° (Chuẩn <= 30°) · Góc lệch ngang (Horizontal): ${horizontalAngleDeg}° (Chuẩn <= 45°).\n` +
+        `- Góc ngẩng dọc: ${verticalAngleDeg}° (Chuẩn <= 30°) · Góc lệch ngang: ${horizontalAngleDeg}° (Chuẩn <= 45°).\n` +
         (warnings.length
           ? `- Cảnh báo tầm nhìn:\n  + ${warnings.join('\n  + ')}`
           : `- Đánh giá: ĐẠT CHUẨN TẦM NHÌN 100% — Không có vật cản che khuất màn LED chính.`);
 
+      const warningsEn = [];
+      if (minViewDistM < minPitchDistM) warningsEn.push('Front row (' + minViewDistM + 'm) is too close for LED P' + pitchMm + ' (minimum ' + minPitchDistM + 'm). Move VIP seats back or use P2.5/P2.97.');
+      if (verticalAngleDeg > 32) warningsEn.push('Front-row vertical angle (' + verticalAngleDeg + '°) exceeds SMPTE comfort guidance (30°).');
+      if (horizontalAngleDeg > 45) warningsEn.push('Side viewing angle (' + horizontalAngleDeg + '°) exceeds 45°. Add two auxiliary LED screens angled 12°–15°.');
+      if (occludingProps.length) warningsEn.push('Props may obstruct the main LED: ' + occludingProps.join(', ') + '.');
+
+      const summaryEn = `Audience sightline check:\n- Audience distance: ${minViewDistM}–${maxViewDistM}m (LED P${pitchMm}: minimum ${minPitchDistM}m, optimal ${optimalPitchDistM}m).\n- Vertical angle: ${verticalAngleDeg}° (≤ 30°); horizontal angle: ${horizontalAngleDeg}° (≤ 45°).\n` +
+        (passed ? 'Sightlines clear: no props obstruct the main LED screen.' : warningsEn.join('\n'));
       const report = {
         passed,
         pitchMm,
@@ -705,7 +751,8 @@
         horizontalAngleDeg,
         occludingProps,
         warnings,
-        summaryVi
+        summaryVi,
+        summaryEn
       };
       lumiState.lastSightlineReport = report;
       trackLumiEvent('sightline_checked', { passed, verticalAngleDeg, horizontalAngleDeg });
@@ -890,7 +937,7 @@
       trackLumiEvent('music_show_cues', { bpm: cleanBpm, mood: cleanMood });
 
       const summaryVi =
-        `🎵 KỊCH BẢN ĐẠO DIỄN ÁNH SÁNG & LED THEO NHẠC (${pal.label} · ${cleanBpm} BPM · 1 Khuông = ${barSec}s):\n` +
+        `Kịch bản đạo diễn ánh sáng & LED theo nhạc (${pal.label} · ${cleanBpm} BPM · 1 Khuông = ${barSec}s):\n` +
         cues
           .map(
             (c) =>
@@ -898,12 +945,15 @@
           )
           .join('\n');
 
+      const summaryEn = `Music and lighting cues (${pal.label} · ${cleanBpm} BPM · bar = ${barSec}s):\n` +
+        cues.map((c, i) => `- [${c.startSec}s → +${c.durationSec}s] ${['Intro', 'Verse', 'Build-up', 'Drop / Climax', 'Outro'][i]}: DMX ${c.lightFx.toUpperCase()} · ${c.lightColor} · Dimmer ${c.dimmerPercent}% · LED (${c.ledContent.replace('đồng bộ nhịp', 'beat sync').replace('tăng tốc', 'accelerating').replace('Thương hiệu', 'Brand')})`).join('\n');
       return {
         bpm: cleanBpm,
         mood: cleanMood,
         barSec,
         cues,
-        summaryVi
+        summaryVi,
+        summaryEn
       };
     }
 
@@ -941,17 +991,19 @@
       trackLumiEvent('brand_identity_applied', { lightsUpdated });
 
       const summaryVi =
-        `🎨 ĐÃ ĐỒNG BỘ BỘ NHẬN DIỆN THƯƠNG HIỆU LÊN SÂN KHẤU 3D:\n` +
+        `ĐÃ ĐỒNG BỘ BỘ NHẬN DIỆN THƯƠNG HIỆU LÊN SÂN KHẤU 3D:\n` +
         `- Thương hiệu / Khách hàng: ${cleanName}\n` +
-        `- Màu chủ đạo (Primary): ${primary} · Màu điểm nhấn (Accent): ${accent}\n` +
+        `- Màu chủ đạo: ${primary} · Màu điểm nhấn: ${accent}\n` +
         `- Đã cập nhật đồng bộ ${lightsUpdated} đèn DMX + màu chủ đạo LED Matrix + thông tin Khách hàng trên Báo giá.`;
 
+      const summaryEn = `Brand identity applied to the 3D stage:\n- Brand / client: ${cleanName}\n- Primary: ${primary} · Accent: ${accent}\n- Updated ${lightsUpdated} DMX lights, LED Matrix accent and quotation client.`;
       return {
         brandName: cleanName,
         primaryColor: primary,
         accentColor: accent,
         lightsUpdated,
-        summaryVi
+        summaryVi,
+        summaryEn
       };
     }
 
@@ -1423,16 +1475,18 @@
               pos: Array.isArray(it.pos) ? it.pos.slice() : it.pos
             }))
           : null,
-        historyLen: Array.isArray(window.state?.history) ? window.state.history.length : null,
-        redoCopy: Array.isArray(window.state?.redo) ? window.state.redo.slice() : null
+        historyCopy: (S.state || window.state)?.history?.slice() || null,
+        redoCopy: (S.state || window.state)?.redo?.slice() || null
       };
-      const applied = executeStageCommands(commands, { recordUndo: true });
+      const undoBefore = lastUndo18();
+      const applied = singleUndo18(() => executeStageCommands(commands, { recordUndo: true }));
       if (applied > 0) {
         lumiState.pendingPreview = {
           active: true,
           commandCount: applied,
           commands: Array.isArray(commands) ? commands.slice() : [],
           snapshotBefore,
+          undoSnapshot: lastUndo18() !== undoBefore ? lastUndo18() : null,
           createdAt: Date.now()
         };
         window.toast?.(t18('previewReady'));
@@ -1494,9 +1548,10 @@
           }));
           S.stageAssets16.rebuildAll?.();
         }
-        if (Array.isArray(window.state?.history) && typeof snap.historyLen === 'number') {
-          window.state.history.length = Math.max(0, Math.min(window.state.history.length, snap.historyLen));
-          if (Array.isArray(snap.redoCopy)) window.state.redo = snap.redoCopy.slice();
+        const state = S.state || window.state;
+        if (Array.isArray(state?.history) && snap.historyCopy) {
+          state.history.splice(0, state.history.length, ...snap.historyCopy);
+          if (Array.isArray(snap.redoCopy)) state.redo = snap.redoCopy.slice();
           window.historyButtons?.();
         }
       }
@@ -1516,18 +1571,18 @@
         titleVi: 'Cách tạo & ghép màn hình LED (Chính + Cánh) và tính bộ xử lý NovaStar',
         titleEn: 'How to create & map LED screens (Main + Wings) and calculate NovaStar processors',
         answerVi:
-          '📘 HƯỚNG DẪN MÀN HÌNH LED & PIXEL MAPPING:\n' +
-          '1. Mở bước "02 LED" trên thanh công cụ hoặc chọn "🏛 6 Mẫu VN" để dựng nhanh hệ LED Chính + Cánh.\n' +
+          'HƯỚNG DẪN MÀN HÌNH LED & PIXEL MAPPING:\n' +
+          '1. Mở bước "02 LED" trên thanh công cụ hoặc chọn "6 Mẫu VN" để dựng nhanh hệ LED Chính + Cánh.\n' +
           '2. Nhấp vào từng màn LED trên sân khấu 3D để đổi kích thước (m), độ phân giải (px) và Pixel Pitch (P2.5 / P2.97 / P3.91 / P4.81).\n' +
-          '3. Mở "📋 BOM & Báo giá" để xem tự động số lượng cabinet 500×500mm, số cổng RJ45 Cat6A và khuyến nghị bộ xử lý NovaStar (VX4S / VX600 / VX1000).',
+          '3. Mở "BOM & Báo giá" để xem tự động số lượng cabinet 500×500mm, số cổng RJ45 Cat6A và khuyến nghị bộ xử lý NovaStar (VX4S / VX600 / VX1000).',
         answerEn:
-          '📘 LED WALL & PIXEL MAPPING GUIDE:\n' +
-          '1. Switch to step "02 LED" or click "🏛 6 Stage Templates" to spawn Main + Wing LED walls.\n' +
+          'LED WALL & PIXEL MAPPING GUIDE:\n' +
+          '1. Switch to step "02 LED" or click "6 Stage Templates" to spawn Main + Wing LED walls.\n' +
           '2. Select any LED screen in 3D to adjust dimensions (m), resolution (px), and Pixel Pitch.\n' +
-          '3. Open "📋 BOM & Quote" for automatic 500×500mm cabinet count, RJ45 port count, and NovaStar processor sizing.',
+          '3. Open "BOM & Quote" for automatic 500×500mm cabinet count, RJ45 port count, and NovaStar processor sizing.',
         quickActionId: 'add_wing_leds',
-        quickActionLabelVi: '⚡ Làm giúp luôn: Thêm 2 màn LED cánh 2.5×4m (P3.91)',
-        quickActionLabelEn: '⚡ Do it for me: Add 2 Side Wing LEDs 2.5×4m (P3.91)'
+        quickActionLabelVi: 'Làm giúp luôn: Thêm 2 màn LED cánh 2.5×4m (P3.91)',
+        quickActionLabelEn: 'Do it for me: Add 2 Side Wing LEDs 2.5×4m (P3.91)'
       },
       {
         id: 'dmx_lighting',
@@ -1535,113 +1590,108 @@
         titleVi: 'Cách treo đèn Moving Head / Par LED, gán hồ sơ OFL DMX512 và xoay Pan/Tilt',
         titleEn: 'How to rig Moving Head / Par LED fixtures, assign OFL DMX512 profiles & Pan/Tilt',
         answerVi:
-          '📘 HƯỚNG DẪN ĐÈN SÂN KHẤU DMX512 & RIG 3 NODE:\n' +
-          '1. Chuyển sang bước "03 ÁNH SÁNG" hoặc mở Kho Đạo cụ 3D để thêm đèn Moving Head Beam 230/350, Wash 36×18, Par LED 54×3W hoặc Katana Bar.\n' +
-          '2. Các mẫu đèn 3D chuẩn hợp đồng led-asset/v1 có sẵn 3 node tách biệt (Base / Yoke / Head), tự động treo lên cao độ Truss và xoay Pan/Tilt độc lập.\n' +
+          'HƯỚNG DẪN ĐÈN SÂN KHẤU DMX512 & RIG 3 NODE:\n' +
+          '1. Chuyển sang bước "03 Ánh sáng" hoặc mở Kho Đạo cụ 3D để thêm đèn Moving Head Beam 230/350, Wash 36×18, Par LED 54×3W hoặc Katana Bar.\n' +
+          '2. Các mẫu đèn 3D chuẩn hợp đồng led-asset/v1 có sẵn 3 node tách biệt, tự động treo lên cao độ Truss và xoay Pan/Tilt độc lập.\n' +
           '3. Chọn hồ sơ Open Fixture Library (21 mẫu đèn VN) trong Fixture Desk để đồng bộ kênh DMX 16-bit.',
         answerEn:
-          '📘 DMX512 LIGHTING & 3-NODE KINEMATIC RIG GUIDE:\n' +
+          'DMX512 LIGHTING & 3-NODE KINEMATIC RIG GUIDE:\n' +
           '1. Open step "03 LIGHTING" or the 3D Asset Library to add Beam 230/350, Wash 36×18, Par LED, or Katana fixtures.\n' +
           '2. 3-node GLB fixtures (Base / Yoke / Head) auto-mount at Truss height and support independent Pan/Tilt rotation.\n' +
           '3. Assign any of the 21 OFL DMX512 profiles in Fixture Desk.',
         quickActionId: 'add_beam_rig',
-        quickActionLabelVi: '⚡ Làm giúp luôn: Treo thêm 8 đèn Beam 230W lên khung Truss',
-        quickActionLabelEn: '⚡ Do it for me: Rig 8 Beam 230W moving heads on Truss'
+        quickActionLabelVi: 'Làm giúp luôn: Treo thêm 8 đèn Beam 230W lên khung Truss',
+        quickActionLabelEn: 'Do it for me: Rig 8 Beam 230W moving heads on Truss'
       },
       {
         id: 'audience_sightline',
         keywords: /bàn ghế|khán giả|tầm nhìn|tia nhìn|sightline|hội trường|tiệc tròn|ibm|banquet/i,
-        titleVi: 'Cách rải bàn ghế tự động theo số khách và kiểm tra tia nhìn khán giả (A3)',
+        titleVi: 'Cách rải bàn ghế tự động theo số khách và kiểm tra tia nhìn khán giả',
         titleEn: 'How to auto-layout audience seating and verify 3D SMPTE sightlines (A3)',
         answerVi:
-          '📘 HƯỚNG DẪN BỐ TRÍ BÀN GHẾ & KIỂM TRA TIA NHÌN (A3):\n' +
-          '1. Trong cửa sổ AI Sân khấu, nhập số lượng khách (VD: "300 khách bàn tiệc tròn" hoặc "150 khách bàn IBM") rồi bấm "🪑 Bố trí Bàn ghế & Tia nhìn (A3)".\n' +
+          'HƯỚNG DẪN BỐ TRÍ BÀN GHẾ & KIỂM TRA TIA NHÌN:\n' +
+          '1. Trong cửa sổ AI Sân khấu, nhập số lượng khách (VD: "300 khách bàn tiệc tròn" hoặc "150 khách bàn IBM") rồi bấm "Bố trí Bàn ghế & Tia nhìn".\n' +
           '2. Hệ thống tự động chia hàng, chừa lối đi trung tâm và kiểm tra góc ngẩng dọc (<= 30° chuẩn SMPTE), góc lệch ngang (<= 45°) cùng khoảng cách nhìn tối thiểu theo Pixel Pitch.',
         answerEn:
-          '📘 AUDIENCE SEATING & 3D SIGHTLINE CHECK (A3):\n' +
-          '1. Enter guest count in the Stage AI modal and click "🪑 Seating & Sightlines (A3)".\n' +
+          'AUDIENCE SEATING & 3D SIGHTLINE CHECK (A3):\n' +
+          '1. Enter guest count in the Stage AI modal and click "Seating & Sightlines (A3)".\n' +
           '2. LumiStage auto-arranges Gala round tables, IBM tables, or Banquet chairs and checks SMPTE vertical/horizontal viewing angles.',
         quickActionId: 'auto_seating_200',
-        quickActionLabelVi: '⚡ Làm giúp luôn: Xếp bàn tiệc Gala cho 200 khách & kiểm tra tia nhìn',
-        quickActionLabelEn: '⚡ Do it for me: Layout Gala tables for 200 guests & check sightlines'
+        quickActionLabelVi: 'Làm giúp luôn: Xếp bàn tiệc Gala cho 200 khách & kiểm tra tia nhìn',
+        quickActionLabelEn: 'Do it for me: Layout Gala tables for 200 guests & check sightlines'
       },
       {
         id: 'music_show',
         keywords: /nhạc|bpm|timeline|cue|biên đạo|đạo diễn|drop|intro|timecode/i,
-        titleVi: 'Cách lên kịch bản đèn & LED Matrix tự động theo BPM bài nhạc (A4)',
+        titleVi: 'Cách lên kịch bản đèn & LED Matrix tự động theo BPM bài nhạc',
         titleEn: 'How to auto-generate BPM-synced lighting & LED Matrix show cues (A4)',
         answerVi:
-          '📘 HƯỚNG DẪN ĐẠO DIỄN SHOW THEO NHẠC (A4):\n' +
-          '1. Nhập tốc độ BPM và phong cách sự kiện (VD: "128 BPM EDM" hoặc "100 BPM Wedding") rồi bấm "🎵 Đạo diễn Nhạc & Đèn (A4)".\n' +
+          'HƯỚNG DẪN ĐẠO DIỄN SHOW THEO NHẠC:\n' +
+          '1. Nhập tốc độ BPM và phong cách sự kiện (VD: "128 BPM EDM" hoặc "100 BPM Wedding") rồi bấm "Đạo diễn Nhạc & Đèn".\n' +
           '2. Hệ thống tự động tạo 5 phân đoạn chuẩn (Intro -> Verse -> Build-up -> Drop/Climax -> Outro) trên Timeline kèm hiệu ứng đèn và độ sáng Dimmer.',
         answerEn:
-          '📘 BPM MUSIC SHOW DIRECTOR GUIDE (A4):\n' +
-          '1. Enter BPM and mood (e.g. "128 BPM EDM") and click "🎵 Music & Light Cues (A4)".\n' +
+          'BPM MUSIC SHOW DIRECTOR GUIDE (A4):\n' +
+          '1. Enter BPM and mood (e.g. "128 BPM EDM") and click "Music & Light Cues (A4)".\n' +
           '2. LumiStage generates 5 structured show sections (Intro, Verse, Build-up, Drop, Outro) synced to bar duration.',
         quickActionId: 'generate_edm_cues',
-        quickActionLabelVi: '⚡ Làm giúp luôn: Sinh kịch bản 5 Cue nhạc EDM 128 BPM',
-        quickActionLabelEn: '⚡ Do it for me: Generate 5 EDM 128 BPM show cues'
+        quickActionLabelVi: 'Làm giúp luôn: Sinh kịch bản 5 Cue nhạc EDM 128 BPM',
+        quickActionLabelEn: 'Do it for me: Generate 5 EDM 128 BPM show cues'
       },
       {
         id: 'bom_dxf_quote',
         keywords: /báo giá|bom|vật tư|dxf|autocad|cad|pdf|excel|csv|công suất|điện 3 pha|grouplife/i,
-        titleVi: 'Cách xuất Bảng vật tư (BOM), Báo giá PDF/CSV và Bản vẽ AutoCAD .DXF (D3–D5)',
+        titleVi: 'Cách xuất Bảng vật tư (BOM), Báo giá PDF/CSV và Bản vẽ AutoCAD .DXF',
         titleEn: 'How to export Auto BOM, Commercial Quotation PDF/CSV & 2D AutoCAD .DXF (D3–D5)',
         answerVi:
-          '📘 HƯỚNG DẪN BÓC TÁCH VẬT TƯ (BOM), BÁO GIÁ & BẢN VẼ AUTOCAD (.DXF):\n' +
-          '1. Bấm nút "📋 BOM & Báo giá" trên thanh công cụ trên cùng.\n' +
+          'HƯỚNG DẪN BÓC TÁCH VẬT TƯ (BOM), BÁO GIÁ & BẢN VẼ AUTOCAD (.DXF):\n' +
+          '1. Bấm nút "BOM & Báo giá" trên thanh công cụ trên cùng.\n' +
           '2. Điều chỉnh số ngày thuê, đơn giá từng hạng mục, chi phí vận chuyển và chế độ thuế (KCT / VAT 8% / 10%).\n' +
-          '3. Bấm "🖨 In / PDF Báo giá", "📊 Xuất Excel (CSV)", "📏 Xuất AutoCAD .DXF" (Mặt bằng & Mặt đứng) hoặc "📂 Nhập Mặt bằng .DXF" của địa điểm.',
+          '3. Bấm "In / PDF Báo giá", "Xuất Excel (CSV)", "Xuất AutoCAD .DXF" (Mặt bằng & Mặt đứng) hoặc "Nhập Mặt bằng .DXF" của địa điểm.',
         answerEn:
-          '📘 AUTO BOM, COMMERCIAL QUOTE & AUTOCAD .DXF GUIDE:\n' +
-          '1. Click "📋 BOM & Quote" in the top toolbar.\n' +
+          'AUTO BOM, COMMERCIAL QUOTE & AUTOCAD .DXF GUIDE:\n' +
+          '1. Click "BOM & Quote" in the top toolbar.\n' +
           '2. Customize rental days, unit prices, transport fees, and tax mode.\n' +
           '3. Export A4 PDF Quotation, Excel CSV, or 2D AutoCAD .DXF (Top View & Front Elevation), or import a venue .DXF floorplan.',
         quickActionId: 'open_bom_modal',
-        quickActionLabelVi: '⚡ Làm giúp luôn: Mở bảng BOM, Báo giá & Xuất AutoCAD .DXF',
-        quickActionLabelEn: '⚡ Do it for me: Open BOM, Quotation & AutoCAD .DXF modal'
+        quickActionLabelVi: 'Làm giúp luôn: Mở bảng BOM, Báo giá & Xuất AutoCAD .DXF',
+        quickActionLabelEn: 'Do it for me: Open BOM, Quotation & AutoCAD .DXF modal'
       },
       {
         id: 'live_show_dmx',
         keywords: /chạy show|live|art-net|artnet|sacn|udp|hdmi|màn thật|khóa giao diện|remote|điện thoại/i,
-        titleVi: 'Cách phát ra màn hình LED thật (HDMI 1:1), điều khiển DMX Art-Net/sACN & Khóa an toàn (E1–E4)',
+        titleVi: 'Cách phát ra màn hình LED thật (HDMI 1:1), điều khiển DMX Art-Net/sACN & Khóa an toàn',
         titleEn: 'How to output 1:1 HDMI LED Wall, stream Art-Net/sACN DMX & lock live show UI (E1–E4)',
         answerVi:
-          '📘 HƯỚNG DẪN CHẠY SHOW THẬT (NHÓM E — E1..E4):\n' +
-          '1. Bấm nút "🎛 Chạy Show" trên thanh công cụ để mở Bàn Điều Khiển Chạy Show Trực Tiếp.\n' +
+          'HƯỚNG DẪN CHẠY SHOW THẬT (NHÓM E — E1..E4):\n' +
+          '1. Bấm nút "Chạy Show" trên thanh công cụ để mở Bàn Điều Khiển Chạy Show Trực Tiếp.\n' +
           '2. E1 (DMX Art-Net / sACN): Chạy `node scripts/dmx-udp-bridge.mjs` trên máy tính và bật phát DMX 512 kênh ra bộ giải mã Art-Net (UDP 6454) hoặc sACN (UDP 5568).\n' +
-          '3. E2 (Live LED Output): Bấm "🖥 Mở Cửa sổ Phát LED 1:1 (HDMI)" rồi kéo sang màn hình thứ 2 nối với bộ xử lý NovaStar.\n' +
-          '4. E3 & E4: Bấm chuyển Cue trực tiếp trên điện thoại (Mobile Lite) và bật "🔒 Khóa An toàn Chạy Show" để tránh bấm nhầm xoá/sửa sân khấu.',
+          '3. E2 (Live LED Output): Bấm "Mở Cửa sổ Phát LED 1:1 (HDMI)" rồi kéo sang màn hình thứ 2 nối với bộ xử lý NovaStar.\n' +
+          '4. E3 & E4: Bấm chuyển Cue trực tiếp trên điện thoại và bật "Khóa An toàn Chạy Show" để tránh bấm nhầm xoá/sửa sân khấu.',
         answerEn:
-          '📘 LIVE SHOW HARDWARE SUITE GUIDE (E1–E4):\n' +
-          '1. Click "🎛 Live Show" in the top bar.\n' +
+          'LIVE SHOW HARDWARE SUITE GUIDE (E1–E4):\n' +
+          '1. Click "Live Show" in the top bar.\n' +
           '2. E1 (Art-Net / sACN): Run `node scripts/dmx-udp-bridge.mjs` and stream 512-channel DMX frames over UDP 6454 / 5568.\n' +
           '3. E2 (1:1 LED Wall Output): Launch the secondary HDMI output window for your NovaStar processor.\n' +
           '4. E3 & E4: Trigger cues from Mobile Lite and enable Safe Show Lock to prevent accidental edits.',
         quickActionId: 'open_live_show_modal',
-        quickActionLabelVi: '⚡ Làm giúp luôn: Mở Bàn Điều Khiển Chạy Show Thật (E1–E4)',
-        quickActionLabelEn: '⚡ Do it for me: Open Live Show Hardware Console (E1–E4)'
+        quickActionLabelVi: 'Làm giúp luôn: Mở Bàn Điều Khiển Chạy Show Thật',
+        quickActionLabelEn: 'Do it for me: Open Live Show Hardware Console (E1–E4)'
       }
     ];
 
     function answerSoftwareGuide(queryText = '') {
       const q = String(queryText || '').trim();
       const matched = LUMI_HELP_TOPICS.find((t) => t.keywords.test(q)) || LUMI_HELP_TOPICS[0];
-      const isEn = lumiState.lang === 'en';
-      const allTopicsOverview = LUMI_HELP_TOPICS.map(
-        (t, idx) => `${idx + 1}. ${isEn ? t.titleEn : t.titleVi}`
-      ).join('\n');
-      const reply =
-        (isEn ? matched.answerEn : matched.answerVi) +
-        `\n\n📚 ${isEn ? 'All Help Topics (A8):' : 'Danh mục Hướng dẫn nhanh (A8):'}\n` +
-        allTopicsOverview;
+      const replyVi = matched.answerVi + '\n\nDanh mục Hướng dẫn nhanh:\n' + LUMI_HELP_TOPICS.map((t, idx) => `${idx + 1}. ${t.titleVi}`).join('\n');
+      const replyEn = matched.answerEn + '\n\nAll Help Topics (A8):\n' + LUMI_HELP_TOPICS.map((t, idx) => `${idx + 1}. ${t.titleEn}`).join('\n');
       trackLumiEvent('guide_opened', { topicId: matched.id });
       return {
         topicId: matched.id,
-        title: isEn ? matched.titleEn : matched.titleVi,
-        reply,
+        title: tr18(matched.titleVi, matched.titleEn),
+        reply: tr18(replyVi, replyEn), replyVi, replyEn,
         quickActionId: matched.quickActionId,
-        quickActionLabel: isEn ? matched.quickActionLabelEn : matched.quickActionLabelVi
+        quickActionLabel: tr18(matched.quickActionLabelVi, matched.quickActionLabelEn),
+        quickActionLabelVi: matched.quickActionLabelVi, quickActionLabelEn: matched.quickActionLabelEn
       };
     }
 
@@ -1693,7 +1743,7 @@
           const idxMatch = text.match(/(?:số|so|#)\s*(\d+)/i);
           const index = idxMatch ? Math.max(0, parseInt(idxMatch[1], 10) - 1) : 0;
           commands.push({ action: 'move_led', index, dx, dy, dz });
-          reply = `Đã dịch chuyển màn hình LED (Δx=${dx}m, Δy=${dy}m, Δz=${dz}m).`;
+          reply = tr18(`Đã dịch chuyển màn hình LED (Δx=${dx}m, Δy=${dy}m, Δz=${dz}m).`, `Moved LED screen (Δx=${dx}m, Δy=${dy}m, Δz=${dz}m).`);
           return { reply, commands };
         }
         const propKind = /dj/.test(text)
@@ -1706,7 +1756,7 @@
           ? 'gala_round_table'
           : '';
         commands.push({ action: 'move_prop', kind: propKind, dx, dy, dz });
-        reply = `Đã dịch chuyển đạo cụ trên sân khấu (Δx=${dx}m, Δy=${dy}m, Δz=${dz}m).`;
+        reply = tr18(`Đã dịch chuyển đạo cụ trên sân khấu (Δx=${dx}m, Δy=${dy}m, Δz=${dz}m).`, `Moved stage prop (Δx=${dx}m, Δy=${dy}m, Δz=${dz}m).`);
         return { reply, commands };
       }
 
@@ -1720,22 +1770,22 @@
 
       if (/tiệc cưới|tiec cuoi|wedding|đám cưới/.test(text)) {
         commands.push({ action: 'load_template', templateId: 'wedding', widthM, depthM, pitchMm, lightCount });
-        reply = 'Đã dựng phương án Sân khấu Tiệc cưới Sang trọng kèm cổng vòm, đường dẫn Catwalk và pháo điện lạnh.';
+        reply = tr18("Đã dựng phương án Sân khấu Tiệc cưới Sang trọng kèm cổng vòm, đường dẫn Catwalk và pháo điện lạnh.", "Created a luxury wedding stage with arch, catwalk and cold sparks.");
       } else if (/edm|concert|đại nhạc hội|countdown|dj/.test(text)) {
         commands.push({ action: 'load_template', templateId: 'concert', widthM, depthM, pitchMm, lightCount });
-        reply = 'Đã dựng phương án Đại nhạc hội EDM / Countdown với hệ LED đa cánh, bàn DJ, Line Array và dàn Moving Head Beam.';
+        reply = tr18("Đã dựng phương án Đại nhạc hội EDM / Countdown với hệ LED đa cánh, bàn DJ, Line Array và dàn Moving Head Beam.", "Created an EDM / Countdown stage with LED wings, DJ desk, line arrays and moving head beams.");
       } else if (/khai trương|khánh thành|ra mắt|grand opening|launch/.test(text)) {
         commands.push({ action: 'load_template', templateId: 'grand_opening', widthM, depthM, pitchMm, lightCount });
-        reply = 'Đã dựng phương án Sân khấu Lễ Khai trương / Ra mắt sản phẩm với cổng LED Arch và bục phát biểu VIP.';
+        reply = tr18("Đã dựng phương án Sân khấu Lễ Khai trương / Ra mắt sản phẩm với cổng LED Arch và bục phát biểu VIP.", "Created a grand opening / product launch stage with LED arch and VIP podium.");
       } else if (/gala|year end|yep|tất niên/.test(text)) {
         commands.push({ action: 'load_template', templateId: 'gala_dinner', widthM, depthM, pitchMm, lightCount });
-        reply = 'Đã dựng phương án Sân khấu Gala Dinner / Year End Party kèm vòng LED Kinetic trần và bàn tiệc Gala.';
+        reply = tr18("Đã dựng phương án Sân khấu Gala Dinner / Year End Party kèm vòng LED Kinetic trần và bàn tiệc Gala.", "Created a Gala Dinner / Year End Party stage with overhead kinetic LED ring and banquet tables.");
       } else if (/ngoài trời|outdoor|beerfest|lễ hội/.test(text)) {
         commands.push({ action: 'load_template', templateId: 'outdoor_festival', widthM, depthM, pitchMm, lightCount });
-        reply = 'Đã dựng phương án Sân khấu Lễ hội Ngoài trời (Outdoor P4.81) kèm mái vòm Truss, rào chắn Mojo và trạm FOH.';
+        reply = tr18("Đã dựng phương án Sân khấu Lễ hội Ngoài trời (Outdoor P4.81) kèm mái vòm Truss, rào chắn Mojo và trạm FOH.", "Created an outdoor festival stage (P4.81) with truss roof, Mojo barriers and FOH station.");
       } else if (/hội nghị|hoi nghi|doanh nghiệp|đại hội|conference|seminar/.test(text)) {
         commands.push({ action: 'load_template', templateId: 'conference', widthM, depthM, pitchMm, lightCount });
-        reply = 'Đã dựng phương án Sân khấu Hội nghị Doanh nghiệp với màn LED trung tâm, 2 màn cánh, bục VIP và bàn đại biểu IBM.';
+        reply = tr18("Đã dựng phương án Sân khấu Hội nghị Doanh nghiệp với màn LED trung tâm, 2 màn cánh, bục VIP và bàn đại biểu IBM.", "Created a corporate conference stage with central LED, two LED wings, VIP podium and IBM delegate tables.");
       } else {
         if (widthM && depthM) {
           commands.push({ action: 'set_stage_size', widthM, depthM, heightM: 0.9 });
@@ -1759,7 +1809,7 @@
         if (!commands.length) {
           commands.push({ action: 'load_template', templateId: 'gala_dinner', widthM, depthM, pitchMm, lightCount });
         }
-        reply = 'Đã thực thi cập nhật cấu hình sân khấu 3D theo yêu cầu của bạn.';
+        reply = tr18("Đã thực thi cập nhật cấu hình sân khấu 3D theo yêu cầu của bạn.", "Updated the 3D stage configuration as requested.");
       }
       return { reply, commands };
     }
@@ -1787,16 +1837,17 @@
       };
     }
 
-    async function runStageAiPrompt(promptText, mode = 'command') {
+    async function runStageAiPrompt(promptText, mode = 'command', signal) {
+      signal?.throwIfAborted();
       const cleanPrompt = String(promptText || '').trim();
-      if (!cleanPrompt) throw new Error('Vui lòng nhập yêu cầu thiết kế sân khấu.');
+      if (!cleanPrompt) throw new Error(tr18("Vui lòng nhập yêu cầu thiết kế sân khấu.", "Enter a stage design request."));
       const cloud = S.cloud16;
       const apiUrl = cloud?.apiUrl ? cloud.apiUrl('/ai/stage') : '/api/led-studio/ai/stage';
       const token = cloud?.state?.token || null;
 
       if (token || lumiState.byok.enabled) {
         try {
-          window.busy?.(true, 'LumiStage AI (Gemini Flash 3.8) đang tính toán phương án sân khấu 3D...');
+          if (!signal) window.busy?.(true, tr18("Đang xử lý yêu cầu AI…", "Processing AI request…"));
           const stageCtx = currentStageContext();
           const body = {
             prompt: cleanPrompt,
@@ -1822,11 +1873,14 @@
               ...(token ? { Authorization: `Bearer ${token}` } : {})
             },
             credentials: 'include',
-            body: JSON.stringify(body)
+            body: JSON.stringify(body),
+            signal
           });
           const json = await res.json().catch(() => ({}));
+          signal?.throwIfAborted();
+          if (token !== (cloud?.state?.token || null)) throw new DOMException('Account changed', 'AbortError');
           if (!res.ok || !json.success) {
-            throw new Error(json?.message || `Lỗi gọi AI HTTP ${res.status}`);
+            throw new Error(json?.message || tr18(`Lỗi gọi AI HTTP ${res.status}`, `AI request failed: HTTP ${res.status}`));
           }
           const data = json.data || {};
           const bill = data.billing || data;
@@ -1846,8 +1900,9 @@
                   totalTokens: bill.totalTokens
                 }
               : null);
+          lumiState.lastAiUsage = { ...(lumiState.lastAiUsage || {}), creditsCharged: data.creditsCharged ?? bill.creditCharged ?? 0 };
           const nextBal = data.balanceAfter ?? bill.remainingBalance;
-          if (typeof nextBal === 'number') lumiState.balanceCredits = nextBal;
+          if (typeof nextBal === 'number') { lumiState.balanceCredits = nextBal; lumiState.balanceReady = true; }
           const nextFree = data.freeAiCreditsRemaining ?? bill.remainingFreeAiCredits;
           if (typeof nextFree === 'number') {
             lumiState.freeAiCreditsRemaining = nextFree;
@@ -1859,14 +1914,14 @@
           return data;
         } catch (err) {
           // Nếu lỗi mạng cục bộ thì fallback sang bộ giải mã offline
-          if (!token && !lumiState.byok.enabled) {
+          if (err?.name !== 'AbortError' && !token && !lumiState.byok.enabled) {
             const local = parseStagePromptOffline(cleanPrompt);
             previewStageCommands(local.commands);
             return local;
           }
           throw err;
         } finally {
-          window.busy?.(false);
+          if (!signal) window.busy?.(false);
         }
       }
 
@@ -1990,7 +2045,7 @@
         warnings.push(`Dòng tải đỉnh 3 pha (~${currentPerPhaseAmps}A/pha) vượt chuẩn tủ nguồn 63A — cần tủ phân phối nguồn 100A–125A 3 pha 5 dây.`);
       }
       if (totalRiggingWeightKg > 1800) {
-        warnings.push(`Tổng tải treo (${totalRiggingWeightKg} kg) lớn — bắt buộc dùng Palăng xích điện (Chain Hoist) 1 tấn × 6–8 điểm và giằng chống gió theo TCVN 2737:2023.`);
+        warnings.push(`Tổng tải treo (${totalRiggingWeightKg} kg) lớn — bắt buộc dùng Palăng xích điện 1 tấn × 6–8 điểm và giằng chống gió theo TCVN 2737:2023.`);
       }
 
       const bomRows = [
@@ -2227,7 +2282,7 @@
       const dxf = generateStageDxf({ watermark });
       const name = (window.state?.model?.name || 'LumiStage').replace(/[^a-zA-Z0-9_-]/g, '_');
       window.downloadText?.(`${name}_2D_CAD.dxf`, dxf);
-      window.toast?.('Đã xuất bản vẽ kỹ thuật 2D AutoCAD (.dxf) Mặt bằng & Mặt đứng (đơn vị: mét).');
+      window.toast?.(tr18("Đã xuất bản vẽ kỹ thuật 2D AutoCAD (.dxf) Mặt bằng & Mặt đứng (đơn vị: mét).", "Exported AutoCAD (.dxf) floor plan and elevation (units: meters)."));
       return dxf;
     }
 
@@ -2293,7 +2348,7 @@
       const text = await file.text();
       let segments = parseDxfFloorplan(text, unitScale);
       if (!segments.length) {
-        throw new Error('Không tìm thấy nét vẽ LINE / LWPOLYLINE trong tệp .DXF.');
+        throw new Error(tr18("Không tìm thấy nét vẽ LINE / LWPOLYLINE trong tệp .DXF.", "No LINE / LWPOLYLINE entities found in the .DXF file."));
       }
       // Tự động căn tâm mặt bằng về gốc (0, 0) và kiểm tra tỷ lệ mét/mm
       let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
@@ -2328,7 +2383,7 @@
       eng._stageBatchDirty = true;
       eng.computeBounds?.();
       window.renderUI?.();
-      window.toast?.(`Đã nhập mặt bằng CAD 2D (${maxSegs} nét vẽ) lên sàn sân khấu 3D.`);
+      window.toast?.(tr18(`Đã nhập mặt bằng CAD 2D (${maxSegs} nét vẽ) lên sàn sân khấu 3D.`, `Imported 2D CAD floor plan (${maxSegs} lines) onto the 3D stage.`));
       return maxSegs;
     }
 
@@ -2357,7 +2412,8 @@
           credentials: 'include'
         });
         const json = await res.json().catch(() => ({}));
-        if (res.ok && json.success && json.data) {
+        if (res.ok && json.success && json.data && token === cloud.state?.token) {
+          lumiState.balanceReady = true;
           const sub = json.data.subscription || json.data;
           const isPro = Boolean(sub.proActive ?? sub.isProActive ?? json.data.isProActive);
           lumiState.tier = sub.plan || json.data.tier || (isPro ? 'pro' : 'free');
@@ -2383,11 +2439,11 @@
       const cloud = S.cloud16;
       const token = cloud?.state?.token;
       if (!token) {
-        window.toast?.('Vui lòng đăng nhập tài khoản Alpha Studio để thanh toán bằng Credit.');
+        window.toast?.(tr18("Vui lòng đăng nhập tài khoản Alpha Studio để thanh toán bằng Credit.", "Sign in to Alpha Studio to pay with credits."));
         return null;
       }
       try {
-        window.busy?.(true, 'Đang xử lý giao dịch Credit LumiStage...');
+        window.busy?.(true, tr18("Đang xử lý giao dịch Credit LumiStage...", "Processing credit transaction..."));
         const resolvedProjId = projectId || cloud.state.lastSavedProjectId || undefined;
         const res = await fetch(cloud.apiUrl('/billing/checkout'), {
           method: 'POST',
@@ -2405,11 +2461,11 @@
         });
         const json = await res.json().catch(() => ({}));
         if (!res.ok || !json.success) {
-          throw new Error(json?.message || 'Giao dịch không thành công.');
+          throw new Error(json?.message || tr18("Giao dịch không thành công.", "Transaction failed."));
         }
         await refreshBillingStatus();
         if (productKey === 'lumi_unlock_project') lumiState.projectUnlocked = true;
-        window.toast?.(json.message || 'Đã kích hoạt thành công bằng Credit!');
+        window.toast?.(json.message || tr18("Đã kích hoạt thành công bằng Credit", "Successfully activated with credits"));
         return json.data;
       } catch (err) {
         window.toast?.(err?.message || String(err));
@@ -2471,7 +2527,7 @@
 
       const csv = '\uFEFF' + rows.map((r) => r.map((c) => `"${String(c ?? '').replace(/"/g, '""')}"`).join(',')).join('\r\n');
       window.downloadText?.(`Bao_Gia_LumiStage_${q.eventDate}.csv`, csv);
-      window.toast?.('Đã xuất bảng báo giá thương mại (.CSV mở bằng Excel).');
+      window.toast?.(tr18("Đã xuất bảng báo giá thương mại (.CSV mở bằng Excel).", "Exported quotation (.CSV for Excel)."));
       return csv;
     }
 
@@ -2498,7 +2554,7 @@
 
       const win = window.open('', '_blank', 'width=1024,height=800');
       if (!win) {
-        window.toast?.('Trình duyệt chặn cửa sổ In PDF. Hãy cho phép pop-up rồi bấm lại.');
+        window.toast?.(tr18("Trình duyệt chặn cửa sổ In PDF. Hãy cho phép pop-up rồi bấm lại.", "The browser blocked the PDF print window. Allow pop-ups and try again."));
         return false;
       }
 
@@ -2521,7 +2577,7 @@
         @media print{.no-print{display:none}}
       </style></head><body>
       <div class="no-print" style="margin-bottom:14px;text-align:right">
-        <button onclick="window.print()" style="padding:8px 16px;background:#0284c7;color:#fff;border:0;border-radius:6px;cursor:pointer;font-weight:600">🖨 In / Lưu thành PDF (Chuẩn A4)</button>
+        <button onclick="window.print()" style="padding:8px 16px;background:#0284c7;color:#fff;border:0;border-radius:6px;cursor:pointer;font-weight:600">In / Lưu thành PDF (Chuẩn A4)</button>
       </div>
       <div class="head">
         <div>
@@ -2582,35 +2638,66 @@
     // =========================================================================
     // GIAO DIỆN MODAL: 6 MẪU SÂN KHẤU VN, TRỢ LÝ AI, BOM/BÁO GIÁ & CREDIT PRO
     // =========================================================================
+    function templatePresentation18(tpl) {
+      const en = {
+        "Hội nghị Doanh nghiệp / Đại hội Cổ đông": [
+          "Corporate conference / shareholders meeting",
+          "12×6m stage, main P3.91 LED (7×3.5m), two LED wings (2.5×3.5m), VIP podium, IBM delegate tables and 16 Par/Beam lights."
+        ],
+        "Tiệc cưới Sang trọng": [
+          "Luxury wedding",
+          "14×7m stage with catwalk, 8×4m main LED, four LED totems, floral arch, round banquet tables and cold sparks."
+        ],
+        "Đại nhạc hội EDM": [
+          "EDM concert",
+          "24×12m stage, 14×6m main LED, four angled LED wings and header, central DJ desk, line arrays and 32 moving head beams."
+        ],
+        "Lễ Khai trương / Khánh thành / Ra mắt SP": [
+          "Grand opening / product launch",
+          "10×5m stage, 6×3.5m main LED, two 1×2.5m LED standees, LED arch, VIP podium and confetti."
+        ],
+        "Gala Dinner / Year End Party (YEP)": [
+          "Gala Dinner / Year End Party",
+          "16×8m stage, 9×4.5m main LED, two 2.5×4m wings, overhead kinetic LED ring, four round gala tables and 24 Beam/Katana lights."
+        ],
+        "Lễ hội Ngoài trời / Beerfest / Countdown": [
+          "Outdoor festival / Beerfest / Countdown",
+          "20×10m stage with wind-resistant truss roof, 12×5m outdoor P4.81 LED, Mojo barriers, FOH tower, line arrays and subs."
+        ]
+      };
+      const categoriesVi = { conference: 'Doanh nghiệp / Hội nghị', wedding: 'Tiệc cưới / Lãng mạn', concert: 'Nhạc hội / EDM', grand_opening: 'Khai trương / Ra mắt', gala_dinner: 'Gala / Tất niên', outdoor_festival: 'Ngoài trời / Lễ hội' };
+      return { name: tr18(tpl.name, en[tpl.name]?.[0] || tpl.name), summary: tr18(tpl.summary, en[tpl.name]?.[1] || tpl.summary), category: tr18(categoriesVi[tpl.id] || tpl.category, tpl.category) };
+    }
+
     function openStageTemplatesModal() {
       if (typeof window.dialog !== 'function') return;
       const cardsHtml = Object.values(VN_STAGE_TEMPLATES)
         .map(
           (tpl) =>
             `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px">` +
-            `<div><strong>🏛 ${esc18(tpl.name)}</strong> <small style="color:#38bdf8">[${esc18(tpl.category)}]</small><br>` +
-            `<small>${esc18(tpl.summary)}</small></div>` +
-            `<button type="button" class="btn small primary" data-lumi18-tpl="${esc18(tpl.id)}">Dựng 3D</button>` +
+            `<div><strong>${esc18(templatePresentation18(tpl).name)}</strong> <small style="color:#38bdf8">[${esc18(templatePresentation18(tpl).category)}]</small><br>` +
+            `<small>${esc18(templatePresentation18(tpl).summary)}</small></div>` +
+            `<button type="button" class="btn small primary" data-lumi18-tpl="${esc18(tpl.id)}">${tr18("Dựng 3D", "Build 3D")}</button>` +
             `</div>`
         )
         .join('');
 
       const paramHtml =
         `<div class="info-box" style="margin-bottom:10px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px">` +
-        `<label style="font-size:12px">Rộng sàn (m)<input id="lumi18TplW" type="number" min="4" max="60" step="1" placeholder="Mặc định mẫu" class="search"></label>` +
-        `<label style="font-size:12px">Sâu sàn (m)<input id="lumi18TplD" type="number" min="3" max="40" step="1" placeholder="Mặc định mẫu" class="search"></label>` +
-        `<label style="font-size:12px">Cao sàn (m)<input id="lumi18TplH" type="number" min="0.2" max="3" step="0.1" placeholder="Mặc định mẫu" class="search"></label>` +
-        `<label style="font-size:12px">Pixel Pitch<select id="lumi18TplPitch" class="search">` +
-        `<option value="">Theo mẫu chuẩn</option>` +
-        `<option value="2.5">P2.5 Indoor Siêu nét</option>` +
-        `<option value="2.97">P2.97 Sự kiện / Tiệc cưới</option>` +
-        `<option value="3.91">P3.91 Phổ thông (500×500)</option>` +
-        `<option value="4.81">P4.81 Outdoor / Lễ hội</option>` +
+        `<label style="font-size:var(--fs-md)">${tr18("Rộng sàn (m)", "Stage width (m)")}<input id="lumi18TplW" type="number" min="4" max="60" step="1" placeholder="${tr18("Mặc định mẫu", "Template default")}" class="search"></label>` +
+        `<label style="font-size:var(--fs-md)">${tr18("Sâu sàn (m)", "Stage depth (m)")}<input id="lumi18TplD" type="number" min="3" max="40" step="1" placeholder="${tr18("Mặc định mẫu", "Template default")}" class="search"></label>` +
+        `<label style="font-size:var(--fs-md)">${tr18("Cao sàn (m)", "Stage height (m)")}<input id="lumi18TplH" type="number" min="0.2" max="3" step="0.1" placeholder="${tr18("Mặc định mẫu", "Template default")}" class="search"></label>` +
+        `<label style="font-size:var(--fs-md)">Pixel Pitch<select id="lumi18TplPitch" class="search">` +
+        `<option value="">${tr18("Theo mẫu chuẩn", "Template default")}</option>` +
+        `<option value="2.5">${tr18("P2.5 Indoor Siêu nét", "P2.5 high definition indoor")}</option>` +
+        `<option value="2.97">${tr18("P2.97 Sự kiện / Tiệc cưới", "P2.97 events / weddings")}</option>` +
+        `<option value="3.91">${tr18("P3.91 Phổ thông (500×500)", "P3.91 standard (500×500)")}</option>` +
+        `<option value="4.81">${tr18("P4.81 Outdoor / Lễ hội", "P4.81 outdoor / festivals")}</option>` +
         `</select></label>` +
         `</div>` +
         `<div style="max-height:360px;overflow:auto">${cardsHtml}</div>`;
 
-      window.dialog('6 Mẫu Sân Khấu Sự Kiện Việt Nam (LumiStage Parameterized)', paramHtml, [{ label: 'Đóng' }]);
+      window.dialog(tr18('6 Mẫu Sân Khấu Sự Kiện Việt Nam', '6 Vietnamese event stage templates'), paramHtml, [{ label: tr18('Đóng', 'Close') }]);
       document.querySelectorAll?.('[data-lumi18-tpl]')?.forEach((btn) => {
         btn.onclick = () => {
           const tplId = btn.getAttribute('data-lumi18-tpl');
@@ -2625,258 +2712,222 @@
       });
     }
 
-    function openStageAiModal() {
-      if (typeof window.dialog !== 'function') return;
-      const bom = computeStageBom();
-      const s = bom.summary;
-      const byok = lumiState.byok;
-      const html =
-        `<div style="display:grid;gap:10px">` +
-        `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">` +
-        `<div><strong>🤖 Trợ lý AI Sân khấu 3D (${esc18(LUMI_BRAND.name)})</strong><br>` +
-        `<small>Giá Web AI = <strong>1/3 Gemini chính thức</strong>: 25 Cr/1M input · 210 Cr/1M output (1 Cr = 100đ)</small></div>` +
-        `<div style="display:flex;gap:6px;align-items:center">` +
-        `<span class="local-badge">Ví: ${lumiState.balanceCredits} Cr · AI tặng: ${lumiState.freeAiCreditsRemaining} Cr</span>` +
-        `<button type="button" class="btn small" id="lumi18UndoAiBtn" title="Hoàn tác thao tác AI vừa chạy">↶ Hoàn tác (Undo)</button>` +
-        `</div></div>` +
-        `<div class="info-box" style="display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end">` +
-        `<label style="font-size:12px">Chế độ Suy luận (Gemini Flash 3.8 via gcli — 3 Effort)<select id="lumi18EffortSelect" class="search">` +
-        LUMI_BRAND.aiPricing.efforts
-          .map((e) => `<option value="${esc18(e.id)}" ${lumiState.effort === e.id ? 'selected' : ''}>${esc18(e.label)}</option>`)
-          .join('') +
-        `</select></label>` +
-        `<label class="check-row" style="margin:0;padding:6px 8px"><input type="checkbox" id="lumi18ByokToggle" ${byok.enabled ? 'checked' : ''}> 🔑 Dùng API Key riêng (BYOK · 0 Credit)</label>` +
-        `</div>` +
-        `<div id="lumi18ByokBox" class="info-box" style="display:${byok.enabled ? 'grid' : 'none'};grid-template-columns:repeat(2,1fr);gap:8px">` +
-        `<label style="font-size:12px">Nhà cung cấp (Provider)<select id="lumi18ByokProvider" class="search">` +
-        ['gemini', 'openai', 'openrouter', 'deepseek', 'groq', 'anthropic', 'custom']
-          .map((p) => `<option value="${p}" ${byok.provider === p ? 'selected' : ''}>${p.toUpperCase()}</option>`)
-          .join('') +
-        `</select></label>` +
-        `<label style="font-size:12px">Model ID<input id="lumi18ByokModel" class="search" value="${esc18(byok.model)}" placeholder="gemini-2.5-flash / gpt-4o-mini"></label>` +
-        `<label style="font-size:12px">API Key cá nhân (Lưu cục bộ trên trình duyệt)<input id="lumi18ByokKey" type="password" class="search" value="${esc18(byok.apiKey)}" placeholder="<YOUR_API_KEY>"></label>` +
-        `<label style="font-size:12px">Base URL (Tuỳ chọn cho Custom OpenAI)<input id="lumi18ByokUrl" class="search" value="${esc18(byok.baseUrl)}" placeholder="https://api.openai.com/v1"></label>` +
-        `</div>` +
-        `<div class="info-box" style="display:grid;gap:8px">` +
-        `<textarea id="lumi18AiPrompt" rows="3" style="width:100%;padding:8px;border-radius:6px;background:rgba(15,23,42,.85);color:#e2e8f0;border:1px solid rgba(148,163,184,.3)" placeholder="Nhập yêu cầu tiếng Việt (VD: Tạo sân khấu Gala Dinner 16x8m, màn LED chính 9x4.5m P3.91, 2 màn cánh, 24 đèn Beam 230 và 2 máy pháo điện)..."></textarea>` +
-        `<div style="display:flex;gap:6px;flex-wrap:wrap">` +
-        `<button type="button" class="btn primary" id="lumi18RunCmdBtn">✨ Thực thi lên Sân khấu 3D</button>` +
-        `<button type="button" class="btn" id="lumi18RunAuditBtn">🔍 AI Kiểm toán Kỹ thuật</button>` +
-        `<button type="button" class="btn" id="lumi18RunProposalBtn">📝 Viết Thuyết minh Khách hàng</button>` +
-        `<button type="button" class="btn" id="lumi18OptimizeBudgetBtn">💰 Tối ưu Ngân sách</button>` +
-        `<button type="button" class="btn" id="lumi18SeatingBtn">🪑 Bố trí Bàn ghế & Tia nhìn (A3)</button>` +
-        `<button type="button" class="btn" id="lumi18MusicCuesBtn">🎵 Đạo diễn Nhạc & Đèn (A4)</button>` +
-        `<button type="button" class="btn" id="lumi18BrandSyncBtn">🎨 Màu Thương hiệu (A5)</button>` +
-        `<button type="button" class="btn" id="lumi18GuideBtn">❓ Hướng dẫn & Làm giúp (A8)</button>` +
-        `</div></div>` +
-        `<div id="lumi18PreviewBar" class="info-box" style="display:${lumiState.pendingPreview?.active ? 'flex' : 'none'};justify-content:space-between;align-items:center;border:1px solid #38bdf8">` +
-        `<span>👁 <strong>Chế độ Xem trước AI (A2):</strong> Đã áp dụng thử phương án lên sân khấu 3D.</span>` +
-        `<div style="display:flex;gap:6px">` +
-        `<button type="button" class="btn small primary" id="lumi18CommitPreviewBtn">✅ Áp dụng (Commit)</button>` +
-        `<button type="button" class="btn small" id="lumi18RevertPreviewBtn">↩ Hoàn tác (Revert)</button>` +
-        `</div></div>` +
-        `<div id="lumi18GuideActionBox" class="info-box" style="display:none;justify-content:space-between;align-items:center">` +
-        `<span id="lumi18GuideActionTitle"></span>` +
-        `<button type="button" class="btn small primary" id="lumi18GuideQuickBtn">⚡ Làm giúp luôn</button>` +
-        `</div>` +
-        `<div id="lumi18AiOutput" class="info-box" style="max-height:200px;overflow:auto;white-space:pre-wrap;font-size:12.5px">${
-          lumiState.lastAiReply
-            ? esc18(lumiState.lastAiReply)
-            : `📊 <strong>Kiểm toán nhanh hiện tại:</strong> Sàn ${s.stageW}×${s.stageD}m · LED ${s.totalLedAreaM2} m² (${s.totalCabinets500} cab) · ${s.totalPixels.toLocaleString('vi-VN')} px (${s.recommendedProcessor}) · Điện 3 pha ${s.totalMaxKw} kW (~${s.currentPerPhaseAmps}A/pha) · Tải treo ${s.totalRiggingWeightKg} kg.`
-        }</div>` +
-        `</div>`;
+    const tr18 = (vi, en) => typeof window.tr === 'function' ? window.tr(vi, en) : lumiState.lang === 'en' ? en : vi;
+    const ico18 = (name) => `<svg class="ico" aria-hidden="true"><use href="#i-${name}"></use></svg>`;
+    let chatController18 = null;
+    let chatWidth18 = 0;
+    const CHAT_ACTIONS18 = [
+      ['command', 'Thiết kế sân khấu', 'Design a stage'],
+      ['audit', 'Kiểm tra kỹ thuật', 'Technical audit'],
+      ['proposal', 'Viết thuyết minh', 'Write a proposal'],
+      ['budget', 'Tối ưu ngân sách', 'Optimize budget'],
+      ['seating', 'Bố trí bàn ghế', 'Arrange seating'],
+      ['music', 'Kịch bản nhạc & đèn', 'Music & lighting cues'],
+      ['brand', 'Màu thương hiệu', 'Brand colors'],
+      ['guide', 'Hướng dẫn sử dụng', 'Software guide']
+    ];
 
-      window.dialog('Trợ lý AI Sân khấu 3D & Kiểm toán Kỹ thuật (LumiStage AI)', html, [{ label: 'Đóng' }]);
+    function saveChatLayout18() {
+      try { localStorage.setItem('ledstudio-ai-chat', JSON.stringify({ open: !$('aiChat18')?.hidden, width: chatWidth18 })); } catch { /* storage unavailable */ }
+    }
 
-      const effortSel = $('lumi18EffortSelect');
-      if (effortSel) effortSel.onchange = () => { lumiState.effort = effortSel.value; };
+    function syncChatBounds18() {
+      const panel = $('aiChat18');
+      if (!panel) return;
+      const dock = document.querySelector('.right-panel')?.getBoundingClientRect();
+      const top = document.querySelector('.workflow')?.getBoundingClientRect().bottom || 88;
+      const bottom = document.querySelector('.timeline-panel')?.getBoundingClientRect().top || innerHeight;
+      // The chat occupies the existing inspector, without resizing or covering the stage canvas.
+      const maxWidth = dock?.width > 0 ? dock.width : Math.min(360, innerWidth);
+      panel.style.setProperty('--ai-top', `${top}px`);
+      panel.style.setProperty('--ai-bottom', `${Math.max(0, innerHeight - bottom)}px`);
+      panel.style.setProperty('--ai-width', `${Math.max(Math.min(260, maxWidth), Math.min(chatWidth18 || maxWidth, maxWidth))}px`);
+      $('aiChat18Resize')?.setAttribute('aria-valuenow', String(parseInt(panel.style.getPropertyValue('--ai-width'), 10)));
+    }
 
-      const byokToggle = $('lumi18ByokToggle');
-      if (byokToggle) {
-        byokToggle.onchange = () => {
-          const box = $('lumi18ByokBox');
-          if (box) box.style.display = byokToggle.checked ? 'grid' : 'none';
-          saveByokConfig({ ...lumiState.byok, enabled: byokToggle.checked });
-        };
-      }
+    function renderChat18() {
+      const body = $('aiChat18Messages');
+      if (!body) return;
+      const buttons = CHAT_ACTIONS18.map(([mode, vi, en]) => `<button class="btn text" type="button" data-chat18-action="${mode}">${tr18(vi, en)}</button>`).join('');
+      body.innerHTML = lumiState.chat18.length ? lumiState.chat18.map((m, i) => {
+        const active = m.preview?.active && m.preview === lumiState.pendingPreview;
+        const canUndo = !lumiState.pendingPreview?.active && m.undoSnapshot && m.undoSnapshot === lastUndo18() && !m.undone;
+        return `<article class="ai18-message ${m.role}" aria-label="${m.role === 'user' ? tr18('Bạn', 'You') : tr18('Trợ lý AI', 'AI assistant')}"><div class="ai18-text">${esc18(m.textPair ? tr18(...m.textPair) : m.text)}</div>` +
+          (m.preview ? `<div class="ai18-preview"><strong>${tr18('Phương án sân khấu', 'Stage preview')}</strong><p>${active ? tr18('Đang xem trước trên sân khấu.', 'Previewing on the stage.') : m.previewStatus === 'applied' ? tr18('Đã áp dụng.', 'Applied.') : m.previewStatus === 'reverted' ? tr18('Đã hoàn tác.', 'Reverted.') : tr18('Bản xem trước đã kết thúc.', 'Preview ended.')}</p>` +
+            (active ? `<div class="ai18-actions"><button class="btn primary" data-chat18-commit="${i}">${tr18('Áp dụng', 'Apply')}</button><button class="btn" data-chat18-revert="${i}">${tr18('Hoàn tác', 'Revert')}</button></div>` : '') + `</div>` : '') +
+          (m.guide ? `<button class="btn" data-chat18-guide="${i}">${esc18(tr18(m.guide.quickActionLabelVi, m.guide.quickActionLabelEn))}</button>` : '') +
+          (canUndo ? `<button class="btn text" data-chat18-undo="${i}">${tr18('Hoàn tác thao tác AI', 'Undo AI action')}</button>` : '') + `</article>`;
+      }).join('') : `<div class="ai18-empty"><h3>${tr18('Bạn muốn dựng sân khấu nào?', 'What stage would you like to create?')}</h3><p>${tr18('Mô tả ý tưởng hoặc chọn một tác vụ.', 'Describe your idea or choose a task.')}</p><div class="ai18-suggestions">${buttons}</div></div>`;
+      body.scrollTop = body.scrollHeight;
+      $('aiChat18Slash').innerHTML = buttons;
+      $('aiChat18Send').innerHTML = ico18(chatController18 ? 'square' : 'send');
+      const sendLabel = chatController18 ? tr18('Dừng', 'Stop') : tr18('Gửi', 'Send');
+      $('aiChat18Send').title = sendLabel;
+      $('aiChat18Send').setAttribute('aria-label', sendLabel);
+      $('aiChat18Send').classList.toggle('is-busy', Boolean(chatController18));
+      body.setAttribute('aria-busy', String(Boolean(chatController18)));
+      const cost = lumiState.lastAiUsage?.creditsCharged;
+      $('aiChat18Usage').textContent = lumiState.byok.enabled ? tr18('Đang dùng API key riêng', 'Using your own API key') : cost != null ? tr18(`Lần gần nhất: ${cost} Credit`, `Last request: ${cost} credits`) : tr18(`AI miễn phí còn ${lumiState.freeAiCreditsRemaining} Credit`, `${lumiState.freeAiCreditsRemaining} free AI credits remaining`);
+    }
 
-      const syncByokInputs = () => {
-        saveByokConfig({
-          enabled: Boolean($('lumi18ByokToggle')?.checked),
-          provider: $('lumi18ByokProvider')?.value || 'gemini',
-          model: $('lumi18ByokModel')?.value || 'gemini-2.5-flash',
-          apiKey: $('lumi18ByokKey')?.value || '',
-          baseUrl: $('lumi18ByokUrl')?.value || ''
-        });
-      };
-
-      const undoBtn = $('lumi18UndoAiBtn');
-      if (undoBtn) {
-        undoBtn.onclick = () => {
-          window.undo?.();
-          window.toast?.('Đã hoàn tác thao tác sân khấu trước đó.');
-        };
-      }
-
-      const runMode = async (mode, defaultPrompt = '') => {
-        syncByokInputs();
-        const promptVal = ($('lumi18AiPrompt')?.value || '').trim() || defaultPrompt;
-        if (!promptVal) {
-          window.toast?.('Hãy nhập mô tả sân khấu hoặc yêu cầu cho AI.');
-          return;
-        }
-        try {
-          const data = await runStageAiPrompt(promptVal, mode);
-          const out = $('lumi18AiOutput');
-          if (out) {
-            const usageObj = data.usage || data.billing || null;
-            const charged = data.creditsCharged ?? data.billing?.creditCharged ?? 0;
-            const usageTxt = usageObj && usageObj.promptTokens !== undefined
-              ? `\n\n[Token: ${usageObj.promptTokens || 0} in / ${usageObj.completionTokens || 0} out · Chi phí: ${charged} Credit]`
-              : '';
-            const propText =
-              typeof data.proposal === 'object' && data.proposal?.summary
-                ? data.proposal.summary
-                : typeof data.proposal === 'string'
-                ? data.proposal
-                : '';
-            out.textContent = (data.reply || propText || data.auditSummary || 'Đã thực thi xong.') + usageTxt;
-          }
-        } catch (err) {
-          window.toast?.(err?.message || String(err));
-        }
-      };
-
-      const cmdBtn = $('lumi18RunCmdBtn');
-      if (cmdBtn) cmdBtn.onclick = () => runMode('command');
-
-      const auditBtn = $('lumi18RunAuditBtn');
-      if (auditBtn) {
-        auditBtn.onclick = () => {
-          const out = $('lumi18AiOutput');
-          if (out) out.textContent = buildClientProposalText();
-        };
-      }
-
-      const propBtn = $('lumi18RunProposalBtn');
-      if (propBtn) {
-        propBtn.onclick = () => {
-          const txt = buildClientProposalText();
-          const out = $('lumi18AiOutput');
-          if (out) out.textContent = txt;
-          navigator.clipboard?.writeText(txt).catch(() => {});
-          window.toast?.('Đã tạo & sao chép bản Thuyết minh Kỹ thuật Sân khấu 3D vào Clipboard.');
-        };
-      }
-
-      const seatingBtn = $('lumi18SeatingBtn');
-      if (seatingBtn) {
-        seatingBtn.onclick = () => {
-          const promptTxt = ($('lumi18AiPrompt')?.value || '').toLowerCase();
-          const guestMatch = promptTxt.match(/(\d+)\s*(?:khách|khach|pax|ghế|ghe|bàn|ban)/i);
-          const guestCount = guestMatch ? parseInt(guestMatch[1], 10) : 200;
-          const type = /ibm|hội nghị|hoi nghi|đại biểu/.test(promptTxt)
-            ? 'conference_ibm_table'
-            : /ghế|ghe|rạp|theater/.test(promptTxt)
-            ? 'banquet_chair'
-            : 'gala_round_table';
-          const res = layoutAudienceSeating({ type, guestCount });
-          const out = $('lumi18AiOutput');
-          if (out) {
-            out.textContent =
-              `🪑 ĐÃ BỐ TRÍ KHÁN ĐÀI 3D TỰ ĐỘNG:\n` +
-              `- Loại hình: ${res.label} · Quy mô: ${res.guestCount} khách (${res.unitsNeeded} cụm bàn/ghế · ${res.rows} hàng × ${res.colsPerRow} cụm/hàng).\n` +
-              `- Tọa độ dãy ghế: Hàng đầu Z = ${res.firstRowZ}m → Hàng cuối Z = ${res.lastRowZ}m.\n\n` +
-              res.sightline.summaryVi;
-          }
-        };
-      }
-
-      const musicBtn = $('lumi18MusicCuesBtn');
-      if (musicBtn) {
-        musicBtn.onclick = () => {
-          const promptTxt = ($('lumi18AiPrompt')?.value || '').toLowerCase();
-          const bpmMatch = promptTxt.match(/(\d{2,3})\s*bpm/i);
-          const bpm = bpmMatch ? parseInt(bpmMatch[1], 10) : 128;
-          const mood = /cưới|wedding/.test(promptTxt)
-            ? 'wedding'
-            : /hội nghị|conference/.test(promptTxt)
-            ? 'conference'
-            : /gala|award/.test(promptTxt)
-            ? 'gala'
-            : 'edm';
-          const res = generateMusicShowCues({ bpm, mood });
-          const out = $('lumi18AiOutput');
-          if (out) out.textContent = res.summaryVi;
-        };
-      }
-
-      const brandBtn = $('lumi18BrandSyncBtn');
-      if (brandBtn) {
-        brandBtn.onclick = () => {
-          const promptTxt = ($('lumi18AiPrompt')?.value || '').trim();
-          const hexes = promptTxt.match(/#[0-9a-f]{6}/gi) || [];
-          const res = applyBrandIdentity({
-            brandName: lumiState.quoteConfig.clientName || 'GROUPLIFE EVENT',
-            primaryColor: hexes[0] || '#38bdf8',
-            accentColor: hexes[1] || '#f59e0b'
-          });
-          const out = $('lumi18AiOutput');
-          if (out) out.textContent = res.summaryVi;
-        };
-      }
-
-      const optBtn = $('lumi18OptimizeBudgetBtn');
-      if (optBtn) {
-        optBtn.onclick = () => {
+    async function runChatAction18(mode = 'command', suppliedPrompt) {
+      if (chatController18) return;
+      const input = $('lumi18AiPrompt');
+      const raw = (suppliedPrompt ?? input?.value ?? '').trim();
+      const prompt = raw.startsWith('/') ? raw.replace(/^\/\w*\s*/, '') : raw;
+      const action = CHAT_ACTIONS18.find(a => a[0] === mode) || CHAT_ACTIONS18[0];
+      if (mode === 'command' && !prompt) { input?.focus(); return; }
+      const message = { role: 'assistant', text: '' };
+      lumiState.chat18.push({ role: 'user', text: prompt || tr18(action[1], action[2]), textPair: prompt ? null : action.slice(1) }, message);
+      input.value = '';
+      $('aiChat18Slash').hidden = true;
+      chatController18 = new AbortController();
+      renderChat18();
+      const undoBefore = lastUndo18();
+      try {
+        if (mode === 'proposal') message.text = buildClientProposalText();
+        else if (mode === 'budget') {
           previewStageCommands([{ action: 'optimize_budget', pitchMm: 3.91, maxLights: 16 }]);
-          const prevBar = $('lumi18PreviewBar');
-          if (prevBar) prevBar.style.display = 'flex';
-          const out = $('lumi18AiOutput');
-          if (out) out.textContent = 'Đã tối ưu cấu hình Pixel Pitch (P3.91/P4.81 cho màn phụ) và cân đối số lượng đèn để giảm chi phí thuê.\n\n' + buildClientProposalText();
-        };
-      }
-
-      const commitBtn = $('lumi18CommitPreviewBtn');
-      if (commitBtn) {
-        commitBtn.onclick = () => {
-          commitStagePreview();
-          const prevBar = $('lumi18PreviewBar');
-          if (prevBar) prevBar.style.display = 'none';
-        };
-      }
-      const revertBtn = $('lumi18RevertPreviewBtn');
-      if (revertBtn) {
-        revertBtn.onclick = () => {
-          revertStagePreview();
-          const prevBar = $('lumi18PreviewBar');
-          if (prevBar) prevBar.style.display = 'none';
-        };
-      }
-
-      const guideBtn = $('lumi18GuideBtn');
-      if (guideBtn) {
-        guideBtn.onclick = () => {
-          const q = ($('lumi18AiPrompt')?.value || '').trim();
-          const g = answerSoftwareGuide(q);
-          const out = $('lumi18AiOutput');
-          if (out) out.textContent = g.reply;
-          const actBox = $('lumi18GuideActionBox');
-          const actTitle = $('lumi18GuideActionTitle');
-          const quickBtn = $('lumi18GuideQuickBtn');
-          if (actBox && actTitle && quickBtn) {
-            actBox.style.display = 'flex';
-            actTitle.textContent = g.title;
-            quickBtn.textContent = g.quickActionLabel;
-            quickBtn.onclick = () => {
-              runQuickGuideAction(g.quickActionId);
-              const prevBar = $('lumi18PreviewBar');
-              if (prevBar && lumiState.pendingPreview?.active) prevBar.style.display = 'flex';
-            };
-          }
-        };
+          message.textPair = ['Đã tạo phương án tối ưu ngân sách. Kiểm tra sân khấu trước khi áp dụng.', 'Budget preview ready. Check the stage before applying.'];
+        } else if (mode === 'seating') {
+          const guests = prompt.match(/(\d+)\s*(?:khách|khach|pax|guests|seats|ghế|ghe|bàn|ban)/i);
+          const type = /ibm|hội nghị|hoi nghi|conference|đại biểu/i.test(prompt) ? 'conference_ibm_table' : /ghế|ghe|rạp|theater|seats/i.test(prompt) ? 'banquet_chair' : 'gala_round_table';
+          const r = singleUndo18(() => layoutAudienceSeating({ type, guestCount: guests ? +guests[1] : 200 }));
+          message.textPair = [`Đã bố trí ${r.guestCount} khách, ${r.rows} hàng × ${r.colsPerRow} cụm/hàng.\n${r.sightline.summaryVi}`, `Arranged seating for ${r.guestCount} guests, ${r.rows} rows × ${r.colsPerRow} groups per row.\n${r.sightline.summaryEn || ''}`];
+        } else if (mode === 'music') {
+          const bpm = prompt.match(/(\d{2,3})\s*bpm/i);
+          const mood = /cưới|wedding/i.test(prompt) ? 'wedding' : /hội nghị|conference/i.test(prompt) ? 'conference' : /gala|award/i.test(prompt) ? 'gala' : 'edm';
+          const r = generateMusicShowCues({ bpm: bpm ? +bpm[1] : 128, mood });
+          message.textPair = [r.summaryVi, r.summaryEn || `Created ${r.cues?.length || lumiState.musicShowCues.length} music and lighting cues.`];
+        } else if (mode === 'brand') {
+          const colors = prompt.match(/#[0-9a-f]{6}/gi) || [];
+          const r = applyBrandIdentity({ brandName: lumiState.quoteConfig.clientName || 'GROUPLIFE EVENT', primaryColor: colors[0] || '#38bdf8', accentColor: colors[1] || '#f59e0b' });
+          message.textPair = [r.summaryVi, r.summaryEn || 'Applied the brand colors to the stage.'];
+        } else if (mode === 'guide') {
+          message.guide = answerSoftwareGuide(prompt);
+          message.text = message.guide.reply;
+          message.textPair = [message.guide.replyVi, message.guide.replyEn];
+        } else if (mode === 'audit' && !S.cloud16?.state?.token && !lumiState.byok.enabled) {
+          message.text = buildClientProposalText();
+        } else {
+          const data = await runStageAiPrompt(prompt || tr18('Kiểm tra kỹ thuật sân khấu hiện tại', 'Audit the current stage'), mode, chatController18.signal);
+          message.text = data.reply || data.auditSummary || (typeof data.proposal === 'string' ? data.proposal : data.proposal?.summary) || tr18('Đã xử lý yêu cầu.', 'Request completed.');
+        }
+        if (lumiState.pendingPreview?.active) message.preview = lumiState.pendingPreview;
+        else if (lastUndo18() !== undoBefore) message.undoSnapshot = lastUndo18();
+      } catch (err) {
+        message.text = err?.name === 'AbortError' ? tr18('Đã dừng chờ kết quả. Số dư sẽ được đối chiếu lại.', 'Stopped waiting for the result. The balance will be refreshed.') : err?.message || String(err);
+        if (err?.name === 'AbortError') await refreshBillingStatus();
+      } finally {
+        chatController18 = null;
+        renderChat18();
       }
     }
+
+    function ensureAiChat18() {
+      if ($('aiChat18')) return;
+      const panel = document.createElement('section');
+      panel.id = 'aiChat18';
+      panel.hidden = true;
+      panel.setAttribute('role', 'complementary');
+      panel.setAttribute('aria-label', tr18('Trợ lý AI', 'AI assistant'));
+      const button = (id, icon, vi, en) => `<button type="button" class="icon-btn" id="${id}" title="${tr18(vi, en)}" aria-label="${tr18(vi, en)}">${ico18(icon)}</button>`;
+      panel.innerHTML = `<div id="aiChat18Resize" role="separator" tabindex="0" aria-orientation="vertical" aria-label="${tr18('Độ rộng khung chat', 'Chat width')}" aria-valuemin="260" aria-valuemax="560"></div>` +
+        `<header><h2>${tr18('Trợ lý AI', 'AI assistant')}</h2><div>${button('aiChat18New', 'plus', 'Cuộc trò chuyện mới', 'New conversation')}${button('aiChat18SettingsBtn', 'settings', 'Cài đặt AI', 'AI settings')}${button('aiChat18Close', 'x', 'Đóng', 'Close')}</div></header>` +
+        `<div id="aiChat18Settings" hidden><label>${tr18('Mức suy luận', 'Reasoning effort')}<select class="search" id="lumi18EffortSelect">${['low', 'medium', 'high'].map((id, i) => `<option value="${id}" ${lumiState.effort === id ? 'selected' : ''}>${tr18(['Nhanh', 'Cân bằng', 'Chuyên sâu'][i], ['Fast', 'Balanced', 'Thorough'][i])}</option>`).join('')}</select></label>` +
+        `<label class="check-row"><input type="checkbox" id="lumi18ByokToggle" ${lumiState.byok.enabled ? 'checked' : ''}>${tr18('Dùng API key riêng', 'Use your own API key')}</label>` +
+        `<div id="lumi18ByokBox" ${lumiState.byok.enabled ? '' : 'hidden'}><label>${tr18('Nhà cung cấp', 'Provider')}<select class="search" id="lumi18ByokProvider">${['gemini', 'openai', 'openrouter', 'deepseek', 'groq', 'anthropic', 'custom'].map(p => `<option ${p === lumiState.byok.provider ? 'selected' : ''} value="${p}">${p}</option>`).join('')}</select></label>` +
+        `<label>Model<input class="search" id="lumi18ByokModel" value="${esc18(lumiState.byok.model)}"></label>` +
+        `<label>API key<input class="search" id="lumi18ByokKey" type="password" autocomplete="off" value="${esc18(lumiState.byok.apiKey)}"></label>` +
+        `<label>${tr18('Địa chỉ máy chủ', 'Server URL')}<input class="search" id="lumi18ByokUrl" type="url" value="${esc18(lumiState.byok.baseUrl)}" placeholder="https://api.openai.com/v1"></label></div></div>` +
+        `<div id="aiChat18Messages" role="log" aria-live="polite" aria-relevant="additions text"></div>` +
+        `<form id="aiChat18Form"><div id="aiChat18Slash" hidden aria-label="${tr18('Tác vụ AI', 'AI tasks')}"></div><label class="ai18-input-label" for="lumi18AiPrompt">${tr18('Yêu cầu AI', 'Message AI')}</label><textarea class="search" id="lumi18AiPrompt" rows="3" placeholder="${tr18('Mô tả sân khấu hoặc gõ /', 'Describe your stage or type /')}"></textarea><div class="ai18-compose-foot"><small id="aiChat18Usage"></small><button type="submit" class="btn primary icon-btn" id="aiChat18Send"></button></div></form>`;
+      document.body.appendChild(panel);
+      $('aiChat18Close').onclick = closeAiChat18;
+      $('aiChat18New').onclick = () => {
+        if (chatController18) chatController18.abort();
+        if (lumiState.pendingPreview?.active) revertStagePreview();
+        lumiState.chat18 = [];
+        renderChat18();
+      };
+      $('aiChat18SettingsBtn').onclick = () => {
+        $('aiChat18Settings').hidden = !$('aiChat18Settings').hidden;
+        $('aiChat18SettingsBtn').setAttribute('aria-expanded', String(!$('aiChat18Settings').hidden));
+      };
+      const syncByokInputs = () => {
+        lumiState.effort = $('lumi18EffortSelect').value;
+        saveByokConfig({ enabled: $('lumi18ByokToggle').checked, provider: $('lumi18ByokProvider').value, model: $('lumi18ByokModel').value, apiKey: $('lumi18ByokKey').value, baseUrl: $('lumi18ByokUrl').value });
+        $('lumi18ByokBox').hidden = !lumiState.byok.enabled;
+        renderChat18();
+      };
+      $('aiChat18Settings').addEventListener('change', syncByokInputs);
+      $('aiChat18Form').onsubmit = e => {
+        e.preventDefault();
+        if (chatController18) { chatController18.abort(); return; }
+        const match = $('lumi18AiPrompt').value.match(/^\/(command|audit|proposal|budget|seating|music|brand|guide)\b/);
+        runChatAction18(match?.[1] || 'command');
+      };
+      $('lumi18AiPrompt').oninput = () => { $('aiChat18Slash').hidden = !$('lumi18AiPrompt').value.startsWith('/'); };
+      panel.addEventListener('keydown', e => {
+        e.stopPropagation();
+        if (e.key === 'Escape' || (e.ctrlKey && e.key.toLowerCase() === 'i')) { e.preventDefault(); closeAiChat18(); }
+        else if (e.target.id === 'lumi18AiPrompt' && e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); $('aiChat18Form').requestSubmit(); }
+      });
+      panel.addEventListener('click', e => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        if (btn.dataset.chat18Action) return runChatAction18(btn.dataset.chat18Action);
+        const kind = ['commit', 'revert', 'undo', 'guide'].find(k => btn.hasAttribute(`data-chat18-${k}`));
+        if (!kind) return;
+        const m = lumiState.chat18[Number(btn.getAttribute(`data-chat18-${kind}`))];
+        if (!m) return;
+        if (kind === 'guide') { runQuickGuideAction(m.guide.quickActionId); if (lumiState.pendingPreview?.active) m.preview = lumiState.pendingPreview; }
+        else if (kind === 'undo') { if (!lumiState.pendingPreview?.active && !m.undone && m.undoSnapshot && m.undoSnapshot === lastUndo18()) { window.undo?.(); m.undone = true; } }
+        else if (m.preview === lumiState.pendingPreview && m.preview.active) {
+          if (kind === 'commit') { m.undoSnapshot = m.preview.undoSnapshot; commitStagePreview(); m.previewStatus = 'applied'; }
+          else { revertStagePreview(); m.previewStatus = 'reverted'; }
+        }
+        renderChat18();
+      });
+      const resize = $('aiChat18Resize');
+      resize.onpointerdown = e => {
+        const start = e.clientX, width = panel.getBoundingClientRect().width;
+        resize.setPointerCapture(e.pointerId);
+        resize.onpointermove = ev => { chatWidth18 = width + start - ev.clientX; syncChatBounds18(); };
+        resize.onpointerup = resize.onpointercancel = () => { resize.onpointermove = null; chatWidth18 = panel.getBoundingClientRect().width; saveChatLayout18(); };
+      };
+      resize.onkeydown = e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); chatWidth18 = panel.getBoundingClientRect().width + (e.key === 'ArrowLeft' ? 10 : -10); syncChatBounds18(); saveChatLayout18(); } };
+      if (typeof ResizeObserver !== 'undefined') {
+        const observer = new ResizeObserver(syncChatBounds18);
+        for (const selector of ['.workflow', '.right-panel', '.timeline-panel']) { const el = document.querySelector(selector); if (el) observer.observe(el); }
+      }
+      window.addEventListener('resize', syncChatBounds18);
+      renderChat18();
+    }
+
+    function closeAiChat18() {
+      const panel = $('aiChat18');
+      if (panel) panel.hidden = true;
+      $('aiChat18Toggle')?.setAttribute('aria-expanded', 'false');
+      saveChatLayout18();
+      if (panel?.contains(document.activeElement)) $('aiChat18Toggle')?.focus();
+    }
+
+    function openStageAiModal() {
+      if (S.cloud16?.isClientReviewMode?.()) return;
+      ensureAiChat18();
+      const panel = $('aiChat18');
+      if (!panel.hidden) return closeAiChat18();
+      S.closeAllDocks16?.('aiChat18');
+      panel.hidden = false;
+      syncChatBounds18();
+      renderChat18();
+      $('aiChat18Toggle')?.setAttribute('aria-expanded', 'true');
+      saveChatLayout18();
+      $('lumi18AiPrompt')?.focus();
+    }
+
+
 
     function openBomAndQuoteModal() {
       if (typeof window.dialog !== 'function') return;
@@ -2889,7 +2940,26 @@
       const discount = Math.round((gross * (Number(q.discountPercent) || 0)) / 100);
       const afterDiscount = gross - discount;
 
+      const displayRow = (r) => {
+        if (tr18('vi', 'en') !== 'en') return r;
+        let name = r.name, spec = r.spec;
+        if (r.key === 'processor') {
+          name = 'Video processor ' + s.recommendedProcessor.replaceAll('cổng RJ45 · tối đa', 'RJ45 ports · max').replace('Ghép đồng bộ Genlock', 'Genlock synchronization');
+          spec = s.rj45PortsNeeded + ' primary + backup Cat6A network cables';
+        } else if (r.key === 'beam_230') name = 'Moving Head Beam 230W/350W IP20/IP65';
+        else if (r.key === 'par_led') name = 'Par LED 54×3W / COB Blinder Wash';
+        else if (r.key === 'truss_m') {
+          name = 'Aluminum truss 300×300 / 400×400mm + hoists';
+          spec = 'Total rigging load ~' + s.totalRiggingWeightKg + ' kg';
+        } else if (r.key === 'stage_m2') {
+          name = 'Modular stage (' + s.stageW + '×' + s.stageD + 'm), black carpet / cover';
+          spec = 'Galvanized steel frame + 18mm structural plywood';
+        } else if (r.key.startsWith('prop_')) spec = spec.replace('Vị trí', 'Position');
+        return { ...r, name, spec, unit: ({ 'bộ': 'set', 'cây': 'unit', 'm dài': 'm' })[r.unit] || r.unit };
+      };
+
       const rowsHtml = bom.bomRows
+        .map(displayRow)
         .map(
           (r, i) =>
             `<tr>` +
@@ -2905,38 +2975,38 @@
       const html =
         `<div style="display:grid;gap:10px">` +
         `<div class="info-box" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">` +
-        `<div><small>Tổng diện tích LED</small><br><strong>${s.totalLedAreaM2} m² (${s.totalCabinets500} cab)</strong></div>` +
-        `<div><small>Xử lý điểm ảnh</small><br><strong>${(s.totalPixels / 1e6).toFixed(2)}M px (${s.rj45PortsNeeded} cổng)</strong></div>` +
-        `<div><small>Tải điện 3 pha 380V</small><br><strong>${s.totalMaxKw} kW (~${s.currentPerPhaseAmps}A/pha)</strong></div>` +
-        `<div><small>Tổng tải treo Truss</small><br><strong>~${s.totalRiggingWeightKg} kg</strong></div>` +
+        `<div><small>${tr18("Tổng diện tích LED", "Total LED area")}</small><br><strong>${s.totalLedAreaM2} m² (${s.totalCabinets500} cab)</strong></div>` +
+        `<div><small>${tr18("Xử lý điểm ảnh", "Pixel processing")}</small><br><strong>${(s.totalPixels / 1e6).toFixed(2)}M px (${s.rj45PortsNeeded} ${tr18("cổng", "ports")})</strong></div>` +
+        `<div><small>${tr18("Tải điện 3 pha 380V", "380V three-phase load")}</small><br><strong>${s.totalMaxKw} kW (~${s.currentPerPhaseAmps}A/${tr18("pha", "phase")})</strong></div>` +
+        `<div><small>${tr18("Tổng tải treo Truss", "Total truss rigging load")}</small><br><strong>~${s.totalRiggingWeightKg} kg</strong></div>` +
         `</div>` +
         `<div class="info-box" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px">` +
-        `<label style="font-size:12px">Tên Khách hàng / Đơn vị<input id="lumi18QuoteClient" class="search" value="${esc18(q.clientName)}"></label>` +
-        `<label style="font-size:12px">Số ngày thuê<input id="lumi18QuoteDays" type="number" min="1" max="60" class="search" value="${days}"></label>` +
-        `<label style="font-size:12px">Vận chuyển & Lắp đặt (đ)<input id="lumi18QuoteTransport" type="number" step="500000" class="search" value="${Number(q.transportFeeVnd || 0) + Number(q.setupFeeVnd || 0)}"></label>` +
-        `<label style="font-size:12px">Chế độ Thuế<select id="lumi18QuoteVat" class="search">` +
-        `<option value="KCT" ${q.vatMode === 'KCT' ? 'selected' : ''}>KCT (Phần mềm GROUPLIFE)</option>` +
+        `<label style="font-size:var(--fs-md)">${tr18("Tên Khách hàng / Đơn vị", "Client / organization")}<input id="lumi18QuoteClient" class="search" value="${esc18(q.clientName)}"></label>` +
+        `<label style="font-size:var(--fs-md)">${tr18("Số ngày thuê", "Rental days")}<input id="lumi18QuoteDays" type="number" min="1" max="60" class="search" value="${days}"></label>` +
+        `<label style="font-size:var(--fs-md)">${tr18("Vận chuyển & Lắp đặt (đ)", "Transport & setup (VND)")}<input id="lumi18QuoteTransport" type="number" step="500000" class="search" value="${Number(q.transportFeeVnd || 0) + Number(q.setupFeeVnd || 0)}"></label>` +
+        `<label style="font-size:var(--fs-md)">${tr18("Chế độ Thuế", "Tax mode")}<select id="lumi18QuoteVat" class="search">` +
+        `<option value="KCT" ${q.vatMode === 'KCT' ? 'selected' : ''}>${tr18("KCT (Phần mềm GROUPLIFE)", "Tax exempt (GROUPLIFE software)")}</option>` +
         `<option value="8" ${q.vatMode === '8' ? 'selected' : ''}>VAT 8%</option>` +
         `<option value="10" ${q.vatMode === '10' ? 'selected' : ''}>VAT 10%</option>` +
         `</select></label>` +
         `</div>` +
         `<div style="max-height:240px;overflow:auto">` +
-        `<table style="width:100%;border-collapse:collapse;font-size:12px">` +
-        `<thead><tr style="border-bottom:1px solid rgba(148,163,184,.3)"><th style="text-align:left">#</th><th style="text-align:left">Hạng mục thiết bị</th><th style="text-align:left">SL</th><th style="text-align:left">Đơn giá/ngày</th><th style="text-align:right">Thành tiền</th></tr></thead>` +
+        `<table style="width:100%;border-collapse:collapse;font-size:var(--fs-md)">` +
+        `<thead><tr style="border-bottom:1px solid rgba(148,163,184,.3)"><th style="text-align:left">#</th><th style="text-align:left">${tr18("Hạng mục thiết bị", "Equipment item")}</th><th style="text-align:left">${tr18("SL", "Qty")}</th><th style="text-align:left">${tr18("Đơn giá/ngày", "Daily unit price")}</th><th style="text-align:right">${tr18("Thành tiền", "Amount")}</th></tr></thead>` +
         `<tbody>${rowsHtml}</tbody>` +
         `</table></div>` +
         `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">` +
-        `<div><strong>Tổng tạm tính (${days} ngày): <span style="color:#38bdf8">${afterDiscount.toLocaleString('vi-VN')} VNĐ</span></strong><br><small>Đơn vị phát hành: ${esc18(LUMI_BRAND.legalEntity)}</small></div>` +
+        `<div><strong>${tr18("Tổng tạm tính", "Subtotal")} (${days} ${tr18("ngày", "days")}): <span style="color:#38bdf8">${afterDiscount.toLocaleString('vi-VN')} VNĐ</span></strong><br><small>${tr18("Đơn vị phát hành:", "Issued by:")} ${esc18(LUMI_BRAND.legalEntity)}</small></div>` +
         `<div style="display:flex;gap:6px;flex-wrap:wrap">` +
-        `<button type="button" class="btn small primary" id="lumi18PrintQuoteBtn">🖨 In / PDF Báo giá</button>` +
-        `<button type="button" class="btn small" id="lumi18ExportCsvBtn">📊 Xuất Excel (CSV)</button>` +
-        `<button type="button" class="btn small" id="lumi18PrintTechBtn">📐 Hồ sơ Kỹ thuật PDF</button>` +
-        `<button type="button" class="btn small" id="lumi18ExportDxfBtn">📏 Xuất AutoCAD .DXF</button>` +
-        `<button type="button" class="btn small" id="lumi18ImportDxfBtn">📂 Nhập Mặt bằng .DXF</button>` +
+        `<button type="button" class="btn small primary" id="lumi18PrintQuoteBtn">${tr18("In / PDF Báo giá", "Print / PDF quotation")}</button>` +
+        `<button type="button" class="btn small" id="lumi18ExportCsvBtn">${tr18("Xuất Excel (CSV)", "Export Excel (CSV)")}</button>` +
+        `<button type="button" class="btn small" id="lumi18PrintTechBtn">${tr18("Hồ sơ Kỹ thuật PDF", "Technical PDF")}</button>` +
+        `<button type="button" class="btn small" id="lumi18ExportDxfBtn">${tr18("Xuất AutoCAD .DXF", "Export AutoCAD .DXF")}</button>` +
+        `<button type="button" class="btn small" id="lumi18ImportDxfBtn">${tr18("Nhập Mặt bằng .DXF", "Import floor plan .DXF")}</button>` +
         `</div></div>` +
         `</div>`;
 
-      window.dialog('Bóc tách Khối lượng (BOM), Báo giá & Bản vẽ Kỹ thuật CAD (.DXF)', html, [{ label: 'Đóng' }]);
+      window.dialog(tr18('Bóc tách Khối lượng (BOM), Báo giá & Bản vẽ Kỹ thuật CAD (.DXF)', 'Bill of materials, quotation & CAD drawings (.DXF)'), html, [{ label: tr18('Đóng', 'Close') }]);
 
       const syncQuoteInputs = () => {
         q.clientName = $('lumi18QuoteClient')?.value || q.clientName;
@@ -3013,82 +3083,88 @@
       }
     }
 
-    function openBillingModal() {
-      if (typeof window.dialog !== 'function') return;
-      refreshBillingStatus();
-      const html =
-        `<div style="display:grid;gap:10px">` +
-        `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center">` +
-        `<div><strong>💎 Tài khoản ${esc18(LUMI_BRAND.name)}</strong> (${esc18(LUMI_BRAND.legalEntity)})<br>` +
-        `<small>Quy đổi chuẩn: <strong>1 Credit = 100 VNĐ</strong> · Dùng chung ví Credit với Alpha Studio</small></div>` +
-        `<span class="local-badge" style="font-size:13px">${lumiState.isProActive ? 'PRO ACTIVE' : lumiState.projectUnlocked ? 'PROJECT UNLOCKED' : 'FREE TIER'}</span>` +
-        `</div>` +
-        `<div class="info-box" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">` +
-        `<div><small>Số dư Ví Credit</small><br><strong style="font-size:16px;color:#38bdf8">${lumiState.balanceCredits.toLocaleString('vi-VN')} Cr</strong></div>` +
-        `<div><small>Hạn mức AI tặng kèm</small><br><strong style="font-size:16px;color:#a855f7">${lumiState.freeAiCreditsRemaining.toLocaleString('vi-VN')} Cr</strong></div>` +
-        `<div><small>Lượt xuất lẻ không Watermark</small><br><strong style="font-size:16px">${lumiState.singleExportPasses} lượt</strong></div>` +
-        `</div>` +
-        `<div class="info-box" style="display:grid;gap:8px">` +
-        `<strong>1. Xoá Watermark & Mở khoá Dự án lẻ bằng Credit</strong>` +
-        `<div style="display:flex;justify-content:space-between;align-items:center">` +
-        `<span>🔓 <strong>Xuất lẻ 1 bản (4K PNG / PDF / DXF) không Watermark</strong></span>` +
-        `<button type="button" class="btn small primary" data-lumi18-buy="lumi_single_export">50 Credits (5.000đ)</button>` +
-        `</div>` +
-        `<div style="display:flex;justify-content:space-between;align-items:center">` +
-        `<span>🏛 <strong>Mở khoá vĩnh viễn Dự án hiện tại</strong> (4K/PDF/DXF/Báo giá + Mật khẩu Link 3D)</span>` +
-        `<button type="button" class="btn small primary" data-lumi18-buy="lumi_unlock_project">200 Credits (20.000đ)</button>` +
-        `</div></div>` +
-        `<div class="info-box" style="display:grid;gap:8px">` +
-        `<strong>2. Nâng cấp Gói Thuê bao LumiStage Pro (Không giới hạn dự án + Tặng ngân sách AI)</strong>` +
-        `<div style="display:flex;justify-content:space-between;align-items:center">` +
-        `<span>⭐ <strong>LumiStage Pro Tháng (30 ngày)</strong> · Tặng +300 Cr AI</span>` +
-        `<button type="button" class="btn small primary" data-lumi18-buy="lumi_pro_monthly">1.490 Credits (149.000đ)</button>` +
-        `</div>` +
-        `<div style="display:flex;justify-content:space-between;align-items:center">` +
-        `<span>🔥 <strong>LumiStage Pro Quý (90 ngày)</strong> · Tặng +1.000 Cr AI (Tiết kiệm 11%)</span>` +
-        `<button type="button" class="btn small primary" data-lumi18-buy="lumi_pro_quarterly">3.990 Credits (399.000đ)</button>` +
-        `</div>` +
-        `<div style="display:flex;justify-content:space-between;align-items:center">` +
-        `<span>👑 <strong>LumiStage Pro Năm (365 ngày)</strong> · Tặng +4.500 Cr AI (Tiết kiệm 22%)</span>` +
-        `<button type="button" class="btn small primary" data-lumi18-buy="lumi_pro_yearly">13.900 Credits (1.390.000đ)</button>` +
-        `</div>` +
-        `<div style="display:flex;justify-content:space-between;align-items:center">` +
-        `<span>🎛 <strong>LumiStage Show Pro+ (Chạy Show DMX/Art-Net · 30 ngày)</strong> · Tặng +800 Cr AI</span>` +
-        `<button type="button" class="btn small primary" data-lumi18-buy="lumi_show_pro_plus">2.990 Credits (299.000đ)</button>` +
-        `</div></div>` +
-        `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center">` +
-        `<span>🔗 <strong>Cài đặt nâng cao Link duyệt 3D</strong> (Thời hạn 24h–30 ngày & Mật khẩu bảo vệ)</span>` +
-        `<button type="button" class="btn small" id="lumi18ShareCfgBtn">Cấu hình Link 3D</button>` +
-        `</div>` +
-        `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center">` +
-        `<label class="check-row" style="margin:0"><input type="checkbox" id="lumi18TelemetryCheckbox" ${lumiState.telemetryOptIn ? 'checked' : ''}> 📊 <strong>Chia sẻ thống kê tính năng ẩn danh (Opt-in Telemetry)</strong> — Tuân thủ Nghị định 13/2023/NĐ-CP, không gửi file hay hình học sân khấu.</label>` +
-        `</div>` +
-        `</div>`;
-
-      window.dialog('Quản lý Credit, Xoá Watermark & Gói LumiStage Pro', html, [{ label: 'Đóng' }]);
-      document.querySelectorAll?.('[data-lumi18-buy]')?.forEach((btn) => {
-        btn.onclick = async () => {
-          const key = btn.getAttribute('data-lumi18-buy');
-          await purchaseLumiProduct(key);
-          openBillingModal();
-        };
-      });
-      const shareCfgBtn = $('lumi18ShareCfgBtn');
-      const telCheckbox = $('lumi18TelemetryCheckbox');
-      if (telCheckbox) {
-        telCheckbox.onchange = () => {
-          setTelemetryOptIn(telCheckbox.checked);
-          window.toast?.(
-            telCheckbox.checked
-              ? 'Đã bật chia sẻ thống kê tính năng ẩn danh (Opt-in).'
-              : 'Đã tắt chia sẻ thống kê tính năng.'
-          );
-        };
-      }
-      if (shareCfgBtn) {
-        shareCfgBtn.onclick = () => S.cloud16?.openShareLinkDialog?.();
-      }
+    function getWalletUrl18() {
+      return /^https?:$/.test(window.location?.protocol || '') ? new URL('/wallet', window.location.origin).href : null;
     }
+
+    function renderAccountMenu18() {
+      const menu = $('account18Menu');
+      if (!menu) return;
+      const balance = lumiState.balanceReady ? `${lumiState.balanceCredits.toLocaleString()} Credit` : tr18('Chưa tải số dư', 'Balance unavailable');
+      const expires = lumiState.proExpiresAt ? new Date(lumiState.proExpiresAt).toLocaleDateString(lumiState.lang === 'en' ? 'en-GB' : 'vi-VN') : '';
+      const wallet = getWalletUrl18();
+      menu.innerHTML = `<h3>${tr18('Tài khoản', 'Account')}</h3><strong>${esc18(balance)}</strong><p>${lumiState.isProActive ? 'PRO' : tr18('Gói miễn phí', 'Free plan')}${expires ? ` · ${tr18('Hết hạn', 'Expires')} ${esc18(expires)}` : ''}</p>` +
+        `<button class="btn" data-account18="topup">${tr18('Nạp Credit', 'Add credits')}</button><button class="btn primary" data-account18="upgrade">${tr18('Nâng cấp', 'Upgrade')}</button>` +
+        (wallet ? `<a class="btn text" href="${esc18(wallet)}" target="_blank" rel="noopener noreferrer">${tr18('Lịch sử giao dịch', 'Transaction history')}</a>` : '');
+      menu.querySelectorAll('[data-account18]').forEach(b => { b.onclick = () => {
+        menu.hidePopover();
+        if (b.dataset.account18 === 'topup' && wallet) window.open(wallet, '_blank', 'noopener,noreferrer');
+        else openBillingModal();
+      }; });
+    }
+
+    function injectAccount18(actions) {
+      if (!actions || $('account18Chip')) return;
+      const chip = document.createElement('button');
+      chip.id = 'account18Chip'; chip.type = 'button'; chip.className = 'btn small';
+      chip.setAttribute('popovertarget', 'account18Menu'); chip.setAttribute('aria-expanded', 'false');
+      const menu = document.createElement('div');
+      menu.id = 'account18Menu'; menu.className = 'account18-menu'; menu.setAttribute('popover', '');
+      menu.setAttribute('role', 'dialog'); menu.setAttribute('aria-label', tr18('Tài khoản', 'Account'));
+      menu.addEventListener('toggle', e => {
+        chip.setAttribute('aria-expanded', String(e.newState === 'open'));
+        if (e.newState === 'open') { renderAccountMenu18(); refreshBillingStatus().then(renderAccountMenu18); }
+      });
+      actions.appendChild(chip); document.body.appendChild(menu);
+      const settings = $('uiSettings16');
+      if (settings && !$('lumi18ShareCfgBtn')) {
+        const extra = document.createElement('div'); extra.className = 'account18-settings';
+        extra.innerHTML = `<button class="btn" id="lumi18ShareCfgBtn">${tr18('Cấu hình link duyệt 3D', '3D review link settings')}</button><label class="check-row"><input type="checkbox" id="lumi18TelemetryCheckbox" ${lumiState.telemetryOptIn ? 'checked' : ''}>${tr18('Chia sẻ thống kê tính năng ẩn danh', 'Share anonymous feature statistics')}</label>`;
+        settings.appendChild(extra);
+        $('lumi18ShareCfgBtn').onclick = () => { settings.hidePopover(); S.cloud16?.openShareLinkDialog?.(); };
+        $('lumi18TelemetryCheckbox').onchange = e => setTelemetryOptIn(e.target.checked);
+      }
+      updateTopbarBadge18();
+      if (S.cloud16?.state?.token) refreshBillingStatus();
+    }
+
+    async function syncAccount18() {
+      Object.assign(lumiState, {
+        tier: 'free',
+        isProActive: false,
+        proExpiresAt: null,
+        projectUnlocked: false,
+        singleExportPasses: 0,
+        balanceCredits: 0,
+        balanceReady: false,
+        freeAiCreditsRemaining: 50
+      });
+      updateTopbarBadge18();
+      if ($('account18Menu')?.matches?.(':popover-open')) renderAccountMenu18();
+      return S.cloud16?.state?.token ? refreshBillingStatus() : lumiState;
+    }
+
+    async function openBillingModal() {
+      if (typeof window.dialog !== 'function') return;
+      await refreshBillingStatus();
+      const plans = [
+        ['lumi_single_export', tr18('Một lượt xuất', 'Single export'), 50, [tr18('Xuất 4K PNG, PDF hoặc DXF', '4K PNG, PDF or DXF export'), tr18('Không watermark', 'No watermark'), tr18('Dùng một lần', 'One use')]],
+        ['lumi_unlock_project', tr18('Mở khóa dự án', 'Unlock project'), 200, [tr18('Không watermark', 'No watermark'), tr18('Xuất 4K, PDF và DXF', '4K, PDF and DXF export'), tr18('Mật khẩu link duyệt', 'Password protected review links')]],
+        ['lumi_pro_monthly', tr18('Pro tháng', 'Pro monthly'), 1490, [tr18('30 ngày', '30 days'), tr18('Không giới hạn dự án', 'Unlimited projects'), '300 AI Credit']],
+        ['lumi_pro_quarterly', tr18('Pro quý', 'Pro quarterly'), 3990, [tr18('90 ngày', '90 days'), tr18('Không giới hạn dự án', 'Unlimited projects'), '1,000 AI Credit']],
+        ['lumi_pro_yearly', tr18('Pro năm', 'Pro yearly'), 13900, [tr18('365 ngày', '365 days'), tr18('Không giới hạn dự án', 'Unlimited projects'), '4,500 AI Credit']],
+        ['lumi_show_pro_plus', 'Show Pro+', 2990, [tr18('30 ngày', '30 days'), tr18('Chạy show DMX / Art-Net', 'DMX / Art-Net live shows'), '800 AI Credit']]
+      ];
+      const html = `<div class="billing18-summary">${tr18('Số dư', 'Balance')}: ${lumiState.balanceReady ? lumiState.balanceCredits.toLocaleString() : '—'} Credit · 1 Credit = 100 VNĐ</div><div class="billing18-plans">` + plans.map(([key, title, price, benefits]) =>
+        `<section class="billing18-plan"><h3>${esc18(title)}</h3>${key === 'lumi_pro_monthly' ? `<span class="local-badge">${tr18('Đề xuất', 'Recommended')}</span>` : ''}<strong>${price.toLocaleString()} Credit</strong><small>${(price * 100).toLocaleString()} VNĐ</small><ul>${benefits.map(b => `<li>${esc18(b)}</li>`).join('')}</ul><button class="btn ${key === 'lumi_pro_monthly' ? 'primary' : ''}" data-lumi18-buy="${key}">${tr18('Chọn gói', 'Choose plan')}</button></section>`
+      ).join('') + '</div>';
+      window.dialog(tr18('Credit & Pro', 'Credits & Pro'), html, [{ label: tr18('Đóng', 'Close') }]);
+      document.querySelectorAll?.('[data-lumi18-buy]')?.forEach(btn => {
+        btn.onclick = async () => { btn.disabled = true; try { await purchaseLumiProduct(btn.getAttribute('data-lumi18-buy')); await openBillingModal(); } finally { btn.disabled = false; } };
+      });
+    }
+
+
 
     // =========================================================================
     // NHÓM E (E1–E4) — CHẠY SHOW THẬT: DMX ART-NET / SACN, LIVE LED OUTPUT,
@@ -3325,7 +3401,7 @@
       const masterH = Math.max(360, Math.min(2160, Number(eng?.master?.height) || 1080));
       const win = window.open('', 'LumiStage_LED_Wall_Output', `width=${Math.min(1280, masterW)},height=${Math.min(720, masterH)}`);
       if (!win) {
-        window.toast?.('Trình duyệt chặn cửa sổ Live LED Output. Hãy cho phép pop-up rồi bấm lại.');
+        window.toast?.(tr18("Trình duyệt chặn cửa sổ Live LED Output. Hãy cho phép pop-up rồi bấm lại.", "The browser blocked Live LED Output. Allow pop-ups and try again."));
         return null;
       }
       const html = `<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>LumiStage Live LED Output (${masterW}×${masterH}px)</title>
@@ -3334,7 +3410,7 @@
       .hud{position:fixed;top:10px;right:10px;z-index:9;display:flex;gap:8px;opacity:.85}
       .hud button{background:#0284c7;color:#fff;border:0;padding:6px 12px;border-radius:4px;cursor:pointer;font-weight:600}
       </style></head><body>
-      <div class="hud" id="hud"><button onclick="document.documentElement.requestFullscreen?.();document.getElementById('hud').style.display='none'">⛶ Fullscreen HDMI Output (${masterW}×${masterH})</button></div>
+      <div class="hud" id="hud"><button onclick="document.documentElement.requestFullscreen?.();document.getElementById('hud').style.display='none'">Fullscreen HDMI Output (${masterW}×${masterH})</button></div>
       <canvas id="ledOutCanvas" width="${masterW}" height="${masterH}"></canvas>
       </body></html>`;
       win.document.open();
@@ -3352,7 +3428,7 @@
         raf(tick);
       }
       trackLumiEvent('live_led_output_opened', { width: masterW, height: masterH });
-      window.toast?.(`Đã mở cửa sổ phát LED 1:1 (${masterW}×${masterH} px). Kéo sang màn hình HDMI nối bộ xử lý NovaStar và bấm Fullscreen.`);
+      window.toast?.(tr18(`Đã mở cửa sổ phát LED 1:1 (${masterW}×${masterH} px). Kéo sang màn hình HDMI nối bộ xử lý NovaStar và bấm Fullscreen.`, `Opened 1:1 LED output (${masterW}×${masterH} px). Move it to the HDMI screen connected to NovaStar and select Fullscreen.`));
       return win;
     }
 
@@ -3438,6 +3514,11 @@
       return flag;
     }
 
+    function cueSectionLabel18(section) {
+      const en = {"1. Intro (Mở màn)":"1. Intro","2. Verse (Dẫn dắt)":"2. Verse","3. Build-up (Cao trào)":"3. Build-up","4. Drop / Climax (Bùng nổ)":"4. Drop / Climax","5. Outro (Kết màn)":"5. Outro"};
+      return tr18(section, en[section] || section);
+    }
+
     function openLiveShowModal() {
       if (typeof window.dialog !== 'function') return;
       if (!lumiState.musicShowCues.length) {
@@ -3448,56 +3529,56 @@
         .map(
           (c, idx) =>
             `<button type="button" class="btn small ${lumiState.activeCueIndex === idx ? 'primary' : ''}" data-lumi18-cue="${idx}">` +
-            `▶ ${esc18(c.section)} (${c.startSec}s · ${c.dimmerPercent}%)</button>`
+            `${esc18(cueSectionLabel18(c.section))} (${c.startSec}s · ${c.dimmerPercent}%)</button>`
         )
         .join('');
 
       const html =
         `<div style="display:grid;gap:10px">` +
         `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">` +
-        `<div><strong>🎛 Bàn Điều Khiển Chạy Show Trực Tiếp (Nhóm E: E1–E4)</strong><br>` +
-        `<small>Điều khiển DMX512 Art-Net / sACN, xuất màn hình LED 1:1 HDMI, Bấm Cue & Khóa an toàn giao diện</small></div>` +
+        `<div><strong>${tr18("Bàn Điều Khiển Chạy Show Trực Tiếp (Nhóm E: E1–E4)", "Live show console")}</strong><br>` +
+        `<small>${tr18("Điều khiển DMX512 Art-Net / sACN, xuất màn hình LED 1:1 HDMI, Bấm Cue & Khóa an toàn giao diện", "DMX512 Art-Net / sACN, 1:1 HDMI LED output, cues and safety lock")}</small></div>` +
         `<div style="display:flex;gap:6px">` +
         `<button type="button" class="btn small ${lumiState.showSafetyLock ? 'primary' : ''}" id="lumi18LockToggleBtn">${
-          lumiState.showSafetyLock ? '🔒 Đang Khóa An Toàn (E4)' : '🔓 Bật Khóa An Toàn (E4)'
+          lumiState.showSafetyLock ? tr18('Đang Khóa An Toàn', 'Safety lock on') : tr18('Bật Khóa An Toàn', 'Enable safety lock')
         }</button>` +
         `<button type="button" class="btn small ${lumiState.masterBlackout ? 'primary' : ''}" id="lumi18BlackoutBtn">${
-          lumiState.masterBlackout ? '🌑 ĐANG BLACKOUT (0%)' : '💡 Master Blackout'
+          lumiState.masterBlackout ? tr18('Đang blackout (0%)', 'Blackout on (0%)') : 'Master Blackout'
         }</button>` +
         `</div></div>` +
         `<div class="info-box" style="display:grid;gap:8px">` +
-        `<strong>1. E1 — Cầu nối Điều khiển Đèn Thật DMX512 (Art-Net UDP 6454 / sACN E1.31 UDP 5568)</strong>` +
+        `<strong>${tr18("1. E1 — Cầu nối Điều khiển Đèn Thật DMX512 (Art-Net UDP 6454 / sACN E1.31 UDP 5568)", "DMX512 lighting bridge (Art-Net UDP 6454 / sACN E1.31 UDP 5568)")}</strong>` +
         `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">` +
-        `<label style="font-size:12px">Giao thức<select id="lumi18DmxProto" class="search">` +
+        `<label style="font-size:var(--fs-md)">${tr18("Giao thức", "Protocol")}<select id="lumi18DmxProto" class="search">` +
         `<option value="artnet" ${dmx.protocol === 'artnet' ? 'selected' : ''}>Art-Net (UDP 6454)</option>` +
         `<option value="sacn" ${dmx.protocol === 'sacn' ? 'selected' : ''}>sACN E1.31 (UDP 5568)</option>` +
         `</select></label>` +
-        `<label style="font-size:12px">IP Card / Node Đèn<input id="lumi18DmxHost" class="search" value="${esc18(dmx.host)}"></label>` +
-        `<label style="font-size:12px">Universe<input id="lumi18DmxUni" type="number" min="0" max="63" class="search" value="${dmx.universe}"></label>` +
-        `<label style="font-size:12px">Cổng Bridge Local<input id="lumi18DmxWsPort" type="number" class="search" value="${dmx.wsPort}"></label>` +
+        `<label style="font-size:var(--fs-md)">${tr18("IP Card / Node Đèn", "Lighting node IP")}<input id="lumi18DmxHost" class="search" value="${esc18(dmx.host)}"></label>` +
+        `<label style="font-size:var(--fs-md)">Universe<input id="lumi18DmxUni" type="number" min="0" max="63" class="search" value="${dmx.universe}"></label>` +
+        `<label style="font-size:var(--fs-md)">${tr18("Cổng Bridge Local", "Local bridge port")}<input id="lumi18DmxWsPort" type="number" class="search" value="${dmx.wsPort}"></label>` +
         `</div>` +
         `<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">` +
-        `<small>Lệnh chạy Bridge tại máy: <code>node scripts/dmx-udp-bridge.mjs --protocol ${esc18(dmx.protocol)} --host ${esc18(dmx.host)}</code> · Đã gửi: <strong>${dmx.packetsSent}</strong> gói</small>` +
+        `<small>${tr18("Lệnh chạy Bridge tại máy:", "Local bridge command:")} <code>node scripts/dmx-udp-bridge.mjs --protocol ${esc18(dmx.protocol)} --host ${esc18(dmx.host)}</code>${tr18(" · Đã gửi: ", " · Sent: ")}<strong>${dmx.packetsSent}</strong>${tr18(" gói", " packets")}</small>` +
         `<div style="display:flex;gap:6px">` +
-        `<button type="button" class="btn small primary" id="lumi18DmxStreamBtn">${dmx.streaming ? '⏹ Dừng phát DMX' : '📡 Bắt đầu phát DMX (30Hz)'}</button>` +
-        `<button type="button" class="btn small" id="lumi18DmxTestBtn">⚡ Gửi 1 gói thử</button>` +
+        `<button type="button" class="btn small primary" id="lumi18DmxStreamBtn">${dmx.streaming ? tr18('Dừng phát DMX', 'Stop DMX') : tr18('Bắt đầu phát DMX (30Hz)', 'Start DMX (30Hz)')}</button>` +
+        `<button type="button" class="btn small" id="lumi18DmxTestBtn">${tr18("Gửi 1 gói thử", "Send test packet")}</button>` +
         `</div></div></div>` +
         `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">` +
-        `<div><strong>2. E2 — Xuất Màn Hình LED Thật 1:1 theo Pixel Map (HDMI -> NovaStar)</strong><br>` +
-        `<small>Mở cửa sổ phụ không viền đúng độ phân giải Master Canvas để kéo sang cổng HDMI thứ 2</small></div>` +
-        `<button type="button" class="btn small primary" id="lumi18LiveLedOutBtn">🖥 Mở Cửa sổ Phát LED 1:1</button>` +
+        `<div><strong>${tr18("2. E2 — Xuất Màn Hình LED Thật 1:1 theo Pixel Map (HDMI -> NovaStar)", "1:1 LED output from Pixel Map (HDMI → NovaStar)")}</strong><br>` +
+        `<small>${tr18("Mở cửa sổ phụ không viền đúng độ phân giải Master Canvas để kéo sang cổng HDMI thứ 2", "Open a borderless output at Master Canvas resolution and move it to the second HDMI screen")}</small></div>` +
+        `<button type="button" class="btn small primary" id="lumi18LiveLedOutBtn">${tr18("Mở Cửa sổ Phát LED 1:1", "Open 1:1 LED output")}</button>` +
         `</div>` +
         `<div class="info-box" style="display:grid;gap:8px">` +
         `<div style="display:flex;justify-content:space-between;align-items:center">` +
-        `<strong>3. E3 — Bàn Bấm Cue Tiết Mục (Đồng bộ Mobile Lite Remote)</strong>` +
+        `<strong>${tr18("3. E3 — Bàn Bấm Cue Tiết Mục (Đồng bộ Mobile Lite Remote)", "Show cues (synced with Mobile Lite Remote)")}</strong>` +
         `<div style="display:flex;gap:6px">` +
-        `<button type="button" class="btn small" id="lumi18PrevCueBtn">⏮ Cue Trước</button>` +
-        `<button type="button" class="btn small primary" id="lumi18NextCueBtn">Cue Tiếp ⏭</button>` +
+        `<button type="button" class="btn small" id="lumi18PrevCueBtn">${tr18("Cue Trước", "Previous cue")}</button>` +
+        `<button type="button" class="btn small primary" id="lumi18NextCueBtn">${tr18("Cue Tiếp ", "Next cue ")}</button>` +
         `</div></div>` +
         `<div style="display:flex;gap:6px;flex-wrap:wrap">${cuesHtml}</div>` +
         `</div></div>`;
 
-      window.dialog('Bàn Điều Khiển Chạy Show Thật (LumiStage Show Pro+ · E1–E4)', html, [{ label: 'Đóng' }]);
+      window.dialog(tr18('Bàn điều khiển chạy show', 'Live show console'), html, [{ label: tr18('Đóng', 'Close') }]);
 
       const syncDmxCfg = () => {
         dmx.protocol = $('lumi18DmxProto')?.value || 'artnet';
@@ -3537,8 +3618,8 @@
           const res = await sendDmxFrameToBridge();
           window.toast?.(
             res.sent
-              ? `Đã phát gói DMX (${res.bytes} bytes) qua ${dmx.protocol.toUpperCase()} tới ${dmx.host}:${dmx.port}.`
-              : `Chưa kết nối được Local DMX Bridge tại cổng ${dmx.wsPort}. Hãy chạy: node scripts/dmx-udp-bridge.mjs`
+              ? tr18(`Đã phát gói DMX (${res.bytes} bytes) qua ${dmx.protocol.toUpperCase()} tới ${dmx.host}:${dmx.port}.`, `Sent DMX packet (${res.bytes} bytes) via ${dmx.protocol.toUpperCase()} to ${dmx.host}:${dmx.port}.`)
+              : tr18(`Chưa kết nối được Local DMX Bridge tại cổng ${dmx.wsPort}. Hãy chạy: node scripts/dmx-udp-bridge.mjs`, `Cannot connect to Local DMX Bridge on port ${dmx.wsPort}. Run: node scripts/dmx-udp-bridge.mjs`)
           );
           openLiveShowModal();
         };
@@ -3578,48 +3659,88 @@
       if (bomBtn) bomBtn.textContent = t18('bomBtn');
       const showBtn = $('lumi18LiveShowBtn');
       if (showBtn) {
-        showBtn.textContent = lumiState.showSafetyLock ? `🔒 ${t18('liveShowBtn')}` : t18('liveShowBtn');
+        showBtn.textContent = lumiState.showSafetyLock ? `${t18('liveShowBtn')}` : t18('liveShowBtn');
       }
-      const btn = $('lumi18BillingBtn');
-      if (btn) {
-        btn.textContent = lumiState.isProActive
-          ? `${t18('billingProBtn')}${lumiState.balanceCredits} Cr`
-          : t18('billingBtn');
+      const chip = $('account18Chip');
+      if (chip) {
+        chip.innerHTML = ico18(lumiState.isProActive ? 'crown' : 'wallet') + '<span>' + (lumiState.isProActive ? 'PRO' : lumiState.balanceReady ? lumiState.balanceCredits.toLocaleString() + ' Credit' : tr18('Tài khoản', 'Account')) + '</span>';
+        chip.title = tr18('Tài khoản', 'Account'); chip.setAttribute('aria-label', chip.title);
       }
     }
 
+
+    function arrangeToolbar18() {
+      const workflow = document.querySelector('.workflow-right');
+      const header = document.querySelector('.topbar');
+      const actions = document.querySelector('.header-actions');
+      if (!workflow || !header || !actions || $('toolbar18Groups')) return;
+      const file = document.createElement('div'); file.id = 'toolbar18File';
+      for (const id of ['loadProject', 'saveProject', 'undoBtn', 'redoBtn']) { const b = $(id); if (b) file.appendChild(b); }
+      header.insertBefore(file, document.querySelector('.project-name') || actions);
+      for (const [id, vi, en] of [['undoBtn', 'Hoàn tác · Ctrl+Z', 'Undo · Ctrl+Z'], ['redoBtn', 'Làm lại · Ctrl+Shift+Z', 'Redo · Ctrl+Shift+Z']]) {
+        const b = $(id); if (b) { b.title = tr18(vi, en); b.setAttribute('aria-label', b.title); }
+      }
+      const menus = [
+        ['add', 'toolbar18Add'], ['stage', 'toolbar18Led'], ['lighting', 'toolbar18Lights'], ['show', 'toolbar18Show']
+      ];
+      for (const [key, id] of menus) { const b = document.querySelector(`[data-v16menu="${key}"]`); if (b) b.id = id; }
+      const groups = document.createElement('div'); groups.id = 'toolbar18Groups';
+      const buildGroup = (id, vi, en, ids, parent = groups) => {
+        const trigger = document.createElement('button'); trigger.type = 'button'; trigger.className = 'btn small'; trigger.id = `toolbar18-${id}`;
+        trigger.innerHTML = (id === 'more' ? ico18('more-horizontal') : '') + `<span>${tr18(vi, en)}</span>` + (id === 'more' ? '' : ico18('chevron-down'));
+        trigger.title = tr18(vi, en); trigger.setAttribute('aria-label', trigger.title); trigger.setAttribute('aria-expanded', 'false');
+        const pop = document.createElement('div'); pop.id = `toolbar18-${id}-menu`; pop.className = 'toolbar18-menu';
+        pop.setAttribute('popover', ''); pop.setAttribute('role', 'dialog'); pop.setAttribute('aria-label', trigger.title);
+        trigger.setAttribute('popovertarget', pop.id);
+        for (const key of ids) { const b = $(key); if (b) { b.classList.remove('primary'); pop.appendChild(b); } }
+        pop.addEventListener('toggle', e => {
+          trigger.setAttribute('aria-expanded', String(e.newState === 'open'));
+          if (e.newState === 'open') {
+            const r = trigger.getBoundingClientRect(); pop.style.left = `${Math.max(8, Math.min(innerWidth - 270, r.left))}px`; pop.style.top = `${r.bottom + 5}px`;
+          }
+        });
+        pop.addEventListener('click', e => { if (e.target.closest('button') && !e.target.closest('[data-v16menu]')) pop.hidePopover(); }, true);
+        parent.appendChild(trigger); document.body.appendChild(pop);
+      };
+      buildGroup('stage', 'Dựng sân khấu', 'Build stage', ['lumi18TemplatesBtn', 'v16AssetBtn', 'toolbar18Add']);
+      buildGroup('led', 'Mapping LED', 'LED mapping', ['ledManagerBtn', 'atlasBtn', 'toolbar18Led']);
+      buildGroup('lights', 'Ánh sáng & FX', 'Lighting & FX', ['toolbar18Lights', 'vjToggle']);
+      buildGroup('choreo', 'Biên đạo', 'Choreography', ['v07Cast']);
+      buildGroup('show', 'Chạy show', 'Live show', ['v07Timeline', 'v07Audio', 'lumi18LiveShowBtn', 'presentBtn', 'toolbar18Show']);
+      buildGroup('export', 'Xuất', 'Export', ['exportBtn', 'lumi18BomBtn']);
+      buildGroup('more', 'Thêm', 'More', ['cloud16SaveBtn', 'cloud16OpenBtn', 'cloud16PresetsBtn', 'cloud16ShareBtn', 'recovery142OpenBtn', 'helpBtn', 'v16AllToolsBtn', 'langToggleBtn16'], file);
+      workflow.appendChild(groups);
+      for (const id of ['aiChat18Toggle', 'account18Chip', 'uiSettingsBtn16', 'themeToggleBtn']) { const b = $(id); if (b) actions.appendChild(b); }
+      $('v07Timeline')?.replaceChildren(document.createTextNode('Timeline'));
+    }
+
+
     function injectLumiStageUI() {
       if (S.cloud16?.isClientReviewMode?.()) return;
-      document.title = 'LumiStage V1.8 — Thiết kế Sân khấu 3D, Mapping LED, AI & Báo giá (by Alpha Studio)';
+      document.title = 'ALPHA Creative LED Studio';
       const brandTitle = document.querySelector?.('.topbar .brand strong');
-      if (brandTitle) brandTitle.innerHTML = 'LUMI<span>STAGE</span>';
+      if (brandTitle) brandTitle.innerHTML = 'ALPHA <span>Creative LED Studio</span>';
       const brandSub = document.querySelector?.('.topbar .brand small');
-      if (brandSub) brandSub.textContent = 'BY ALPHA STUDIO · GROUPLIFE · 3D LED & DMX';
+      if (brandSub) brandSub.textContent = tr18('Thiết kế sân khấu 3D', '3D stage design');
 
       const wfRight = document.querySelector?.('.workflow .workflow-right');
-      if (wfRight && !$('lumi18AiBtn')) {
+      if (wfRight && !$('lumi18TemplatesBtn')) {
         const tplBtn = document.createElement('button');
         tplBtn.id = 'lumi18TemplatesBtn';
         tplBtn.type = 'button';
         tplBtn.className = 'btn small';
         tplBtn.textContent = t18('templatesBtn');
-        tplBtn.title = '6 Mẫu sân khấu sự kiện Việt Nam (Hội nghị, Tiệc cưới, EDM, Khai trương, Gala, Lễ hội)';
+        tplBtn.title = tr18('6 mẫu sân khấu sự kiện', '6 event stage templates');
         tplBtn.onclick = () => openStageTemplatesModal();
 
-        const aiBtn = document.createElement('button');
-        aiBtn.id = 'lumi18AiBtn';
-        aiBtn.type = 'button';
-        aiBtn.className = 'btn small primary';
-        aiBtn.textContent = t18('aiBtn');
-        aiBtn.title = 'Trợ lý AI tạo sân khấu 3D (Gemini Flash 3.8 · 1/3 giá chính thức + BYOK)';
-        aiBtn.onclick = () => openStageAiModal();
+
 
         const bomBtn = document.createElement('button');
         bomBtn.id = 'lumi18BomBtn';
         bomBtn.type = 'button';
         bomBtn.className = 'btn small';
         bomBtn.textContent = t18('bomBtn');
-        bomBtn.title = 'Bóc tách khối lượng tự động (BOM), Báo giá PDF/CSV & Bản vẽ AutoCAD .DXF';
+        bomBtn.title = tr18('Bóc tách khối lượng, báo giá và bản vẽ DXF', 'Bill of materials, quotes and DXF drawings');
         bomBtn.onclick = () => openBomAndQuoteModal();
 
         const showBtn = document.createElement('button');
@@ -3627,39 +3748,44 @@
         showBtn.type = 'button';
         showBtn.className = 'btn small';
         showBtn.textContent = t18('liveShowBtn');
-        showBtn.title = 'Chạy Show Thật (E1–E4): DMX Art-Net/sACN, Live LED 1:1 HDMI, Bấm Cue & Khóa An Toàn';
+        showBtn.title = tr18('Chạy show, đầu ra LED và khóa an toàn', 'Live show, LED output and safety lock');
         showBtn.onclick = () => openLiveShowModal();
 
-        const billBtn = document.createElement('button');
-        billBtn.id = 'lumi18BillingBtn';
-        billBtn.type = 'button';
-        billBtn.className = 'btn small';
-        billBtn.textContent = t18('billingBtn');
-        billBtn.title = 'Quản lý Credit, Xoá Watermark & Gói LumiStage Pro';
-        billBtn.onclick = () => openBillingModal();
 
-        wfRight.prepend(billBtn);
+
         wfRight.prepend(showBtn);
         wfRight.prepend(bomBtn);
         wfRight.prepend(tplBtn);
-        wfRight.prepend(aiBtn);
+
       }
 
+      const actions = document.querySelector?.('.header-actions');
+      if (actions && !$('aiChat18Toggle')) {
+        const ai = document.createElement('button');
+        ai.id = 'aiChat18Toggle'; ai.type = 'button'; ai.className = 'icon-btn';
+        ai.title = tr18('Trợ lý AI · Ctrl+I', 'AI assistant · Ctrl+I');
+        ai.setAttribute('aria-label', ai.title); ai.setAttribute('aria-controls', 'aiChat18'); ai.setAttribute('aria-expanded', 'false');
+        ai.innerHTML = ico18('bot'); ai.onclick = openStageAiModal;
+        actions.prepend(ai);
+        document.addEventListener('keydown', e => { if (e.ctrlKey && e.key.toLowerCase() === 'i' && !S.cloud16?.isClientReviewMode?.()) { e.preventDefault(); openStageAiModal(); } });
+        try { const layout = JSON.parse(localStorage.getItem('ledstudio-ai-chat') || '{}'); chatWidth18 = Number(layout.width) || 0; if (layout.open) openStageAiModal(); } catch { /* storage unavailable */ }
+      }
+      injectAccount18(actions);
       const exportMenu = $('exportMenu');
       if (exportMenu && !$('exportShot4K')) {
         const btn4K = document.createElement('button');
         btn4K.id = 'exportShot4K';
-        btn4K.innerHTML = 'Phối cảnh 3D 4K UHD <span>PNG / 3840 x 2160</span>';
+        btn4K.innerHTML = tr18('Phối cảnh 3D 4K', '4K stage image') + ' <span>PNG / 3840 x 2160</span>';
         btn4K.onclick = () => S.exportShot4K?.();
 
         const btnDxf = document.createElement('button');
         btnDxf.id = 'exportCadDxf18';
-        btnDxf.innerHTML = 'Bản vẽ 2D AutoCAD <span>DXF / Mặt bằng & Mặt đứng</span>';
+        btnDxf.innerHTML = tr18('Bản vẽ 2D', '2D drawing') + '<span>' + tr18('DXF / Mặt bằng & Mặt đứng', 'DXF / Floor plan & elevation') + '</span>';
         btnDxf.onclick = () => exportStageDxf();
 
         const btnQuote = document.createElement('button');
         btnQuote.id = 'exportQuotePdf18';
-        btnQuote.innerHTML = 'Báo giá & BOM (GROUPLIFE) <span>PDF / CSV Thương mại</span>';
+        btnQuote.innerHTML = tr18('Báo giá & BOM', 'Quote & BOM') + '<span>PDF / CSV</span>';
         btnQuote.onclick = () => openBomAndQuoteModal();
 
         const firstShot = $('exportShot');
@@ -3673,7 +3799,16 @@
           exportMenu.appendChild(btnQuote);
         }
       }
+      arrangeToolbar18();
     }
+
+    window.addEventListener?.('ledstudio:locale', () => {
+      lumiState.lang = document.documentElement.dataset.locale === 'en' ? 'en' : 'vi';
+      updateTopbarBadge18();
+      if ($('aiChat18')) renderChat18();
+      if ($('account18Menu')?.matches(':popover-open')) renderAccountMenu18();
+      window.translateUiText?.();
+    });
 
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => injectLumiStageUI());
@@ -3733,9 +3868,12 @@
       setShowSafetyLock,
       openStageTemplatesModal,
       openStageAiModal,
+      closeAiChat18,
       openBomAndQuoteModal,
       openLiveShowModal,
-      openBillingModal
+      openBillingModal,
+      getWalletUrl18,
+      syncAccount18
     };
   } catch (err) {
     console.error('LumiStage V18 init error:', err);

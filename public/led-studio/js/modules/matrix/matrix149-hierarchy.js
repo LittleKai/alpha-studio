@@ -8,6 +8,7 @@
   if (root) root.Matrix149Hierarchy = api;
 })(typeof window !== 'undefined' ? window : typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
+  const mxTr=(vi,en)=>typeof window!=='undefined'&&typeof window.tr==='function'?window.tr(vi,en):vi;
   const cmp = (a,b) => a < b ? -1 : a > b ? 1 : 0;
   const finite3 = p => p && p.length === 3 && Number.isFinite(p[0]) && Number.isFinite(p[1]) && Number.isFinite(p[2]);
   const integer = (value,fallback,min,max) => Number.isFinite(+value) ? Math.max(min,Math.min(max,Math.floor(+value))) : fallback;
@@ -105,10 +106,10 @@
     const slots=limit-(located.length&&missing.length?1:0),count=Math.min(slots,Math.max(Math.min(4,slots),Math.ceil(Math.sqrt(located.length||missing.length))));
     if(located.length)groups.push(...split(located,count));
     if(missing.length)groups.push(...(located.length?[missing]:split(missing,count)));
-    return groups.map((group,i)=>group.length===1?group[0]:region(group,group.every(u=>!u.bounds)?'Nhóm chưa có tọa độ':'Vùng vị trí '+(i+1)));
+    return groups.map((group,i)=>group.length===1?group[0]:region(group,group.every(u=>!u.bounds)?mxTr("Nhóm chưa có tọa độ","Group without coordinates"):mxTr("Vùng vị trí ","Spatial region ")+(i+1)));
   }
   function build(meshes,options={}) {
-    if(!Array.isArray(meshes))throw TypeError('Danh sách object cần là một mảng.');
+    if(!Array.isArray(meshes))throw TypeError(mxTr("Danh sách object cần là một mảng.","Object list must be an array."));
     options=options&&typeof options==='object'?options:{};
     const limits={maxChildren:integer(options.maxChildren??8,8,2,12),maxDepth:integer(options.maxDepth??12,12,1,32),maxNodes:integer(options.maxNodes??8192,8192,1,65536)};
     const stats={inputMeshes:meshes.length,visibleMeshes:0,hiddenMeshes:0,invalidMeshes:0,leafMeshes:0,meshCount:0,reliableHierarchyMeshes:0,fallbackMeshes:0,invalidHierarchyMeshes:0,missingBounds:0,boundsFromPositions:0,totalNodes:0,sourceNodes:0,spatialNodes:0,meshLeaves:0,maxDepth:0,maxChildren:0,compacted:0,mode:'empty'};
@@ -118,7 +119,7 @@
       if(mesh.hidden||mesh.visible===false){stats.hiddenMeshes++;continue;}
       stats.visibleMeshes++;
       const key=keyFor(mesh);if(key===null){stats.invalidMeshes++;continue;}
-      if(keys.has(key))throw Error('Trùng mã object nguồn: '+key+'. Cần mã riêng trước khi phân cấp.');keys.add(key);
+      if(keys.has(key))throw Error(mxTr("Trùng mã object nguồn: ","Duplicate source object ID: ")+key+mxTr(". Cần mã riêng trước khi phân cấp.",". Assign distinct IDs before building the hierarchy."));keys.add(key);
       const parsed=ancestry(mesh),bounds=meshBounds(mesh,stats);if(!bounds)stats.missingBounds++;
       const label=typeof mesh.name==='string'&&mesh.name.length?mesh.name:'Object '+String(mesh.id??key);
       records.push({key,label,sourceId:mesh.id==null?null:String(mesh.id),bounds,...parsed});
@@ -160,15 +161,15 @@
       if(!identities.has(base))identities.set(base,[]);identities.get(base).push(node);
       return node;
     }
-    const root=emit({kind:'root',label:typeof options.label==='string'&&options.label?options.label:'Toàn bộ model',units,records,bounds:union(records.map(r=>r.bounds))},0,limits.maxNodes);
+    const root=emit({kind:'root',label:typeof options.label==='string'&&options.label?options.label:mxTr("Toàn bộ model","Entire model"),units,records,bounds:union(records.map(r=>r.bounds))},0,limits.maxNodes);
     // Resolve a hash collision deterministically without confusing selections.
     for(const nodes of identities.values())if(nodes.length>1){nodes.sort((a,b)=>cmp(JSON.stringify([a.nodePath||'',a.meshKeys]),JSON.stringify([b.nodePath||'',b.meshKeys])));nodes.forEach((node,i)=>{node.id+='_'+i;});}
     stats.mode=!records.length?'empty':stats.sourceNodes?(stats.spatialNodes||stats.fallbackMeshes?'mixed':'source'):stats.spatialNodes?'spatial':stats.reliableHierarchyMeshes?(stats.fallbackMeshes?'mixed':'source'):'spatial';
-    if(stats.invalidMeshes)warnings.push(stats.invalidMeshes+' mục không có object hoặc mã nguồn hợp lệ, không thể đưa vào cây.');
-    if(stats.invalidHierarchyMeshes)warnings.push(stats.invalidHierarchyMeshes+' object có quan hệ node không nhất quán; dùng nhóm theo vị trí thay cho cây nguồn.');
-    if(stats.fallbackMeshes)warnings.push(stats.fallbackMeshes+' object không có cây node đáng tin cậy; nhóm vị trí chỉ giúp chọn khối, không tự tạo đường biên.');
-    if(stats.missingBounds)warnings.push(stats.missingBounds+' object chưa có giới hạn hình học hợp lệ; vẫn giữ mã nguồn để chọn, không suy đoán vị trí.');
-    if(stats.compacted)warnings.push(stats.compacted+' nhóm chạm giới hạn cây; các mã object bên trong vẫn được giữ đầy đủ để xử lý cả nhóm.');
+    if(stats.invalidMeshes)warnings.push(stats.invalidMeshes+mxTr(" mục không có object hoặc mã nguồn hợp lệ, không thể đưa vào cây."," items have no valid object or source ID and cannot be included in the tree."));
+    if(stats.invalidHierarchyMeshes)warnings.push(stats.invalidHierarchyMeshes+mxTr(" object có quan hệ node không nhất quán; dùng nhóm theo vị trí thay cho cây nguồn."," objects have inconsistent node relationships; spatial groups replace the source hierarchy."));
+    if(stats.fallbackMeshes)warnings.push(stats.fallbackMeshes+mxTr(" object không có cây node đáng tin cậy; nhóm vị trí chỉ giúp chọn khối, không tự tạo đường biên."," objects have no reliable node hierarchy; spatial grouping helps select blocks without creating boundaries automatically."));
+    if(stats.missingBounds)warnings.push(stats.missingBounds+mxTr(" object chưa có giới hạn hình học hợp lệ; vẫn giữ mã nguồn để chọn, không suy đoán vị trí."," objects lack valid geometry bounds; source IDs are retained for selection without guessing positions."));
+    if(stats.compacted)warnings.push(stats.compacted+mxTr(" nhóm chạm giới hạn cây; các mã object bên trong vẫn được giữ đầy đủ để xử lý cả nhóm."," groups reached the tree limit; all contained object IDs are retained for group processing."));
     return {root,tree:root,stats,warnings};
   }
   return {version:'14.9.0',build};

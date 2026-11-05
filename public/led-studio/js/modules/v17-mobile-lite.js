@@ -9,11 +9,10 @@ try{
  const NOTICE_KEY='ledstudio-mobile-notice-v1';
  const query=new URLSearchParams(location.search).get('mobile');
  const mq=matchMedia('(max-width: 820px), (pointer: coarse) and (max-height: 500px)');
- const isEn=()=>(S.cloud16?.state?.locale||document.documentElement.dataset.locale)==='en';
- const L=(vi,en)=>isEn()?en:vi;
+ const L=(vi,en)=>typeof window.tr==='function'?window.tr(vi,en):((S.cloud16?.state?.locale||document.documentElement.dataset.locale)==='en'?en:vi);
  const safe=v=>typeof esc==='function'?esc(v):String(v??'').replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';');
  const review=()=>!!S.cloud16?.isClientReviewMode?.();
- const ML={active:false,tab:null,held:false,started:false,lastSel:undefined,lastKey:'',project:undefined,fitAt:0};
+ const ML={localePending:false,active:false,tab:null,held:false,started:false,lastSel:undefined,lastKey:'',project:undefined,fitAt:0};
  S.mobile17=ML;
 
  const root=document.createElement('div');root.id='mobileLite17';root.className='ml17';root.hidden=true;
@@ -38,6 +37,10 @@ try{
    :L('Bạn đang dùng bản rút gọn cho điện thoại. Mở trên máy tính để dùng đầy đủ: tạo LED, đặt đèn, biên đạo, LED Matrix, xuất file kỹ thuật.','You are using the phone edition. Open on a computer for everything: create LEDs, place lights, choreography, LED Matrix, technical exports.');
   $('ml17Copy').textContent=L('Sao chép link','Copy link');$('ml17NoticeOk').textContent=L('Đã hiểu','Got it');
   $('ml17Exit').title=L('Hiện thanh điều khiển','Show controls');
+  $('ml17Exit').setAttribute('aria-label',L('Hiện thanh điều khiển','Show controls'));
+  $('ml17SheetClose').setAttribute('aria-label',L('Đóng','Close'));
+  $('ml17Play').setAttribute('aria-label',L('Phát / Tạm dừng','Play / Pause'));
+  $('ml17Seek').setAttribute('aria-label',L('Dòng thời gian','Timeline'));
  }
  function pageLink(){try{if(window.top!==window&&window.top.location.origin===location.origin)return window.top.location.href;}catch(e){}return location.href;}
  async function copyLink(){const url=pageLink();try{await navigator.clipboard.writeText(url);window.toast?.(L('Đã sao chép link. Mở link này trên máy tính.','Link copied. Open it on a computer.'));}catch(e){window.prompt?.(L('Sao chép link này:','Copy this link:'),url);}}
@@ -68,7 +71,7 @@ try{
   let html=`<div class="ml17-grid">${presets.map(([k,vi,en])=>`<button type="button" data-rig="${k}">${L(vi,en)}</button>`).join('')}</div>`;
   if(S.lumi18){
    const bo=!!S.lumi18.state?.masterBlackout;
-   html+=`<div class="ml17-grid" style="margin-top:6px"><button type="button" data-lumi-remote="prev">&#9198; ${L('Cue trước','Prev Cue')}</button><button type="button" data-lumi-remote="next">${L('Cue tiếp','Next Cue')} &#9197;</button><button type="button" data-lumi-remote="blackout" class="${bo?'active':''}">${bo?L('Bỏ tắt (Live)','Un-blackout'):L('Blackout tổng','Master Blackout')}</button><button type="button" data-lumi-remote="panel">${L('Bàn chạy show','Live Show Deck')}</button></div>`;
+   html+=`<div class="ml17-grid" style="margin-top:6px"><button type="button" data-lumi-remote="prev">&#9198; ${L('Cue trước','Prev Cue')}</button><button type="button" data-lumi-remote="next">${L('Cue tiếp','Next Cue')} &#9197;</button><button type="button" data-lumi-remote="blackout" class="${bo?'active':''}">${bo?L('Bỏ tắt','Un-blackout'):L('Blackout tổng','Master Blackout')}</button><button type="button" data-lumi-remote="panel">${L('Bàn chạy show','Live Show Deck')}</button></div>`;
   }
   if(!E.lights.length)return html+`<p class="ml17-hint">${L('Dự án chưa có đèn. Đặt đèn trên máy tính.','No lights yet. Place them on a computer.')}</p>`;
   html+=E.lights.map((l,i)=>`<div class="ml17-light${l.enabled?'':' off'}" data-light="${i}"><input type="checkbox" data-k="enabled" ${l.enabled?'checked':''} aria-label="${L('Bật đèn','Light on')}"><b>${safe(l.name||L('Đèn','Light')+' '+(i+1))}</b><input type="color" data-k="color" value="${safe(l.color||'#ffffff')}" aria-label="${L('Màu','Color')}">${range('ml17Power'+i,0,12,.1,l.power??0).replace('<input','<input data-k="power" aria-label="'+L('Cường độ','Intensity')+'"')}</div>`).join('');
@@ -102,7 +105,7 @@ try{
  function openTab(tab){ML.tab=ML.tab===tab?null:tab;renderSheet();}
 
  // Re-render after outside changes (tap-select on the stage, undo, project load) but never while a slider is held.
- function refresh(){if(!ML.active||!ML.tab||ML.held)return;if(E.selected!==ML.lastSel||sceneKey()!==ML.lastKey)renderSheet();}
+ function refresh(){if(ML.held)return;if(ML.localePending){ML.localePending=false;renderSheet();return;}if(!ML.active||!ML.tab)return;if(E.selected!==ML.lastSel||sceneKey()!==ML.lastKey)renderSheet();}
  const prevUI=window.renderUI;
  if(typeof prevUI==='function'){window.renderUI=function(...a){const out=prevUI.apply(this,a);requestAnimationFrame(refresh);return out;};S.renderUI=(...a)=>window.renderUI(...a);}
 
@@ -132,7 +135,7 @@ try{
  });
  root.addEventListener('pointerdown',e=>{if(e.target.matches('input[type=range]')){ML.held=true;ML.started=false;}});
  window.addEventListener('pointerup',()=>{if(ML.held){ML.held=false;requestAnimationFrame(refresh);}});
- window.addEventListener('pointercancel',()=>{ML.held=false;});
+ window.addEventListener('pointercancel',()=>{ML.held=false;requestAnimationFrame(refresh);});
  root.addEventListener('input',e=>{
   const el=e.target,s=E.surfaces.find(x=>x.id===E.selected);
   if(el.id==='ml17Seek'){S.seekTimeline?.(el.value/1000*(state.duration||1));return;}
@@ -163,7 +166,7 @@ try{
   const dur=state.duration||1,seek=$('ml17Seek');
   if(!ML.held||document.activeElement!==seek)seek.value=Math.round(state.time/dur*1000);
   $('ml17Time').textContent=fmt(state.time)+' / '+fmt(dur);
-  const play=$('ml17Play');play.innerHTML=state.playing?'&#10074;&#10074;':'&#9654;';play.classList.toggle('active',!!state.playing);
+  const play=$('ml17Play');{const pk=state.playing?'pause':'play';if(play.dataset.icon!==pk){play.dataset.icon=pk;play.innerHTML=icon(pk);}}play.classList.toggle('active',!!state.playing);
   for(const b of root.querySelectorAll('[data-tab]'))b.hidden=review()&&b.dataset.tab!=='view';
   if(review()&&ML.tab&&ML.tab!=='view'){ML.tab=null;renderSheet();}
   // Saved cameras are framed for wide desktop screens: re-frame once a newly opened project settles.
@@ -184,7 +187,9 @@ try{
  }
  mq.addEventListener?.('change',apply);
  // Language can change from the toolbar or the host page; only our own nodes are rewritten.
- new MutationObserver(()=>{if(ML.active&&!ML.held)renderSheet();}).observe(document.documentElement,{attributes:true,attributeFilter:['data-locale']});
+ const refreshLocale=()=>{staticTexts();if(ML.held){ML.localePending=true;return;}renderSheet();};
+ window.addEventListener('ledstudio:locale',refreshLocale);
+ new MutationObserver(refreshLocale).observe(document.documentElement,{attributes:true,attributeFilter:['data-locale']});
  apply();requestAnimationFrame(tick);
 }catch(err){console.error('[mobile17]',err);}
 })();

@@ -8,6 +8,7 @@
   if(common)module.exports=helpers;else root.Matrix143RenderGeometry=helpers;
 })(typeof window!=='undefined'?window:globalThis,function(G){
   'use strict';
+  const mxTr=(vi,en)=>typeof window!=='undefined'&&typeof window.tr==='function'?window.tr(vi,en):vi;
   const EPS=1e-10;
   const sub=(a,b)=>a.map((v,i)=>v-b[i]),add=(a,b)=>a.map((v,i)=>v+b[i]),mul=(a,s)=>a.map(v=>v*s);
   const dot=(a,b)=>a.reduce((n,v,i)=>n+v*b[i],0),cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
@@ -18,7 +19,7 @@
   // the saved emitter width, path, lift or physical pixel centres.
   const emission=Object.freeze({core:1.8,halo:.85,hotCore:.025,spread:3,bodyPitch:.42,glowPitch:.48});
   function emitterProfile(width,pitch,{diffuser=true,glow=true}={}){
-    if(!Number.isFinite(width)||width<=0||!Number.isFinite(pitch)||pitch<=0)throw Error('LED width and pitch must be positive finite metres.');
+    if(!Number.isFinite(width)||width<=0||!Number.isFinite(pitch)||pitch<=0)throw Error(mxTr("Độ rộng và bước LED phải là số mét hữu hạn dương.","LED width and pitch must be positive finite metres."));
     const bodyHalfWidth=width*.5,bodyHalfLength=Math.min(pitch*emission.bodyPitch,width*2);
     const halfWidth=bodyHalfWidth*(glow?emission.spread:1);
     const halfLength=glow?Math.min(pitch*emission.glowPitch,bodyHalfLength+bodyHalfWidth):bodyHalfLength;
@@ -82,7 +83,7 @@
       const desired=Math.max(minimum,Math.min(perRow,Math.ceil(q.desired??q.requested??minimum)));
       return {index,rows,minimum,desired,count:minimum,remainder:0};});
     const minimumPixels=items.reduce((n,q)=>n+q.minimum*q.rows,0),desiredPixels=items.reduce((n,q)=>n+q.desired*q.rows,0);
-    if(minimumPixels>cap)return {counts:items.map(()=>0),pixels:0,minimumPixels,desiredPixels,error:'Giới hạn pixel không đủ cho số dải tối thiểu.'};
+    if(minimumPixels>cap)return {counts:items.map(()=>0),pixels:0,minimumPixels,desiredPixels,error:mxTr("Giới hạn pixel không đủ cho số dải tối thiểu.","Pixel limit is too low for the minimum strip count.")};
     const extra=desiredPixels-minimumPixels,ratio=extra?Math.min(1,(cap-minimumPixels)/extra):1;
     for(const q of items){const scaled=(q.desired-q.minimum)*ratio;q.count+=Math.floor(scaled);q.remainder=scaled-Math.floor(scaled);}
     let pixels=items.reduce((n,q)=>n+q.count*q.rows,0),remaining=cap-pixels;
@@ -96,17 +97,17 @@
   function row(points,closed,count,normal,lift=0){
     const p=clean(points,closed),n=unit(normal||[0,0,1]);
     const empty=message=>({valid:false,error:message,positions:[],tangents:[],shapePositions:[],shapeCells:[],controlPoints:p.length,count:0,length:0,pitch:0});
-    if(!n||p.length<(closed?3:2)||!Number.isInteger(count)||count<(closed?3:2))return empty('Dải offset không còn đủ điểm để tạo viền.');
+    if(!n||p.length<(closed?3:2)||!Number.isInteger(count)||count<(closed?3:2))return empty(mxTr("Dải offset không còn đủ điểm để tạo viền.","Offset strip has too few points to form an outline."));
     const distances=[0],sizes=[],directions=[];let length=0,area=0;
     for(let i=0;i<p.length-(closed?0:1);i++){
-      const direction=sub(p[(i+1)%p.length],p[i]),size=Math.hypot(...direction);if(size<=EPS)return empty('Dải offset chứa đoạn có độ dài bằng 0.');
-      const tangent=mul(direction,1/size);if(!unit(cross(tangent,n)))return empty('Có đoạn viền song song với pháp tuyến. Chọn lại mặt hoặc sửa điểm.');
+      const direction=sub(p[(i+1)%p.length],p[i]),size=Math.hypot(...direction);if(size<=EPS)return empty(mxTr("Dải offset chứa đoạn có độ dài bằng 0.","Offset strip contains a zero-length segment."));
+      const tangent=mul(direction,1/size);if(!unit(cross(tangent,n)))return empty(mxTr("Có đoạn viền song song với pháp tuyến. Chọn lại mặt hoặc sửa điểm.","An outline segment is parallel to the normal. Select another face or edit points."));
       sizes.push(size);directions.push(tangent);length+=size;distances.push(length);
       if(closed)area+=dot(n,cross(sub(p[i],p[0]),sub(p[(i+1)%p.length],p[0])))*.5;
     }
-    if(length<=EPS||(closed&&Math.abs(area)<=Math.max(EPS*EPS,length*length*1e-12)))return empty('Dải offset bị co thành đường hoặc điểm. Giảm khoảng cách dải / dịch viền.');
+    if(length<=EPS||(closed&&Math.abs(area)<=Math.max(EPS*EPS,length*length*1e-12)))return empty(mxTr("Dải offset bị co thành đường hoặc điểm. Giảm khoảng cách dải / dịch viền.","Offset strip collapsed to a line or point. Reduce strip spacing / offset."));
     const pitch=length/(closed?count:count-1),sample=G.samplePath(p,closed,pitch,count);
-    if(sample.count!==count)return empty('Không lấy đủ pixel trên dải offset.');
+    if(sample.count!==count)return empty(mxTr("Không lấy đủ pixel trên dải offset.","Not enough pixels on the offset strip."));
     const rawKnots=[];
     for(let i=0;i<p.length;i++)rawKnots.push({at:distances[i],control:true});
     for(let i=0;i<count;i++)rawKnots.push({at:i*pitch,control:false});
@@ -144,6 +145,7 @@
 });
 (function(){
   'use strict';
+  const mxTr=(vi,en)=>typeof window!=='undefined'&&typeof window.tr==='function'?window.tr(vi,en):vi;
   if(typeof window==='undefined')return;
   const S=window.STUDIO,X=S?.matrix143;if(!X)return;
   const E=S.engine,G=X.geometry,V=X.vec,RG=window.Matrix143RenderGeometry,canvas=X.canvas,ctx=canvas.getContext('2d');
@@ -165,7 +167,7 @@
       const q=requests[index],p=q.path,count=allocation.counts[index],rows=q.rowPoints.map(points=>RG.row(points,p.closed,count,p.normal,p.lift));
       const valid=rows.filter(row=>row.valid),pitches=valid.map(row=>row.pitch),invalid=rows.length-valid.length;
       const pitchMin=pitches.length?Math.min(...pitches):0,pitchMax=pitches.length?Math.max(...pitches):0;
-      const error=invalid?invalid+' dải offset bị suy biến. Giảm khoảng cách dải / dịch viền hoặc sửa điểm.':null;
+      const error=invalid?invalid+mxTr(" dải offset bị suy biến. Giảm khoảng cách dải / dịch viền hoặc sửa điểm."," offset strips are degenerate. Reduce strip spacing / offset or edit points."):null;
       const data={id:p.id,count,length:q.length,pitch:pitchMax,pitchMin,pitchMax,requested:q.requested,limited:count<q.requested,
         rows,cellOffset:globalCell,shapeVertices:valid.reduce((n,row)=>n+row.shapePositions.length,0),controlPoints:p.points.length,
         invalidRows:invalid,error};
@@ -175,7 +177,7 @@
       globalCell+=count*p.rows;
     }
     if(allocation.error||requiredVertices>MAX_STATIC_VERTICES){
-      info.geometryError=allocation.error||'Viền vượt giới hạn '+MAX_STATIC_VERTICES.toLocaleString('vi-VN')+' đỉnh preview. Giảm số dải/viền hoặc đơn giản hóa đường; hình dạng chưa bị cắt bớt.';
+      info.geometryError=allocation.error||mxTr("Viền vượt giới hạn ","Outline exceeds the limit of ")+MAX_STATIC_VERTICES.toLocaleString('vi-VN')+mxTr(" đỉnh preview. Giảm số dải/viền hoặc đơn giản hóa đường; hình dạng chưa bị cắt bớt."," preview vertices. Reduce strips/outlines or simplify the path; geometry has not been trimmed.");
       info.error=info.geometryError;info.renderedPixels=0;for(const data of pathsCache.values())data.error=info.geometryError;
       geometry={static:new Float32Array(),map:new Uint32Array(),colors:new Float32Array(),dirty:true};return;
     }
@@ -237,7 +239,7 @@
     }
     if(X.mode==='draw'||X.draft.length){stroke(X.draft,false,'#ffd87c');for(const [i,p]of X.draft.map(project).entries()){if(!p)continue;ctx.beginPath();ctx.arc(p.x,p.y,4,0,Math.PI*2);ctx.fillStyle=i?'#72ead8':'#ffe39a';ctx.fill();}return;}
     const path=X.paths.find(p=>p.id===X.selected);if(!path)return;stroke(path.points,path.closed,'#88cfedaa',true,1);
-    const first=project(path.points[0]),second=project(path.points[1]);if(first){ctx.fillStyle='#ffe29a';ctx.beginPath();ctx.arc(first.x,first.y,5,0,Math.PI*2);ctx.fill();ctx.font='bold 10px sans-serif';ctx.fillText('ĐẦU',first.x+8,first.y-8);if(second){const dx=second.x-first.x,dy=second.y-first.y,len=Math.hypot(dx,dy);if(len>2){const x=first.x+dx/len*Math.min(len,22),y=first.y+dy/len*Math.min(len,22),a=Math.atan2(dy,dx);ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x-7*Math.cos(a-.4),y-7*Math.sin(a-.4));ctx.moveTo(x,y);ctx.lineTo(x-7*Math.cos(a+.4),y-7*Math.sin(a+.4));ctx.strokeStyle='#ffe29a';ctx.lineWidth=2;ctx.stroke();}}}
+    const first=project(path.points[0]),second=project(path.points[1]);if(first){ctx.fillStyle='#ffe29a';ctx.beginPath();ctx.arc(first.x,first.y,5,0,Math.PI*2);ctx.fill();ctx.font='bold 10px sans-serif';ctx.fillText(mxTr("ĐẦU","Start"),first.x+8,first.y-8);if(second){const dx=second.x-first.x,dy=second.y-first.y,len=Math.hypot(dx,dy);if(len>2){const x=first.x+dx/len*Math.min(len,22),y=first.y+dy/len*Math.min(len,22),a=Math.atan2(dy,dx);ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x-7*Math.cos(a-.4),y-7*Math.sin(a-.4));ctx.moveTo(x,y);ctx.lineTo(x-7*Math.cos(a+.4),y-7*Math.sin(a+.4));ctx.strokeStyle='#ffe29a';ctx.lineWidth=2;ctx.stroke();}}}
     if(X.mode==='edit')for(let i=0;i<path.points.length;i++){const p=project(path.points[i]);if(!p)continue;ctx.beginPath();ctx.arc(p.x,p.y,i===X.pointIndex?6:3.5,0,Math.PI*2);ctx.fillStyle=i===X.pointIndex?'#ffd36d':'#64d5ff';ctx.fill();ctx.strokeStyle='#112935';ctx.lineWidth=1;ctx.stroke();}
   }
   const priorRender=E.render.bind(E);E.render=function(time,...args){const result=priorRender(time,...args);try{drawGL(Number.isFinite(time)?time:S.state.time);}catch(error){if(info.error!==error.message){console.error('LED Matrix renderer:',error);info.error=error.message;}}return result;};

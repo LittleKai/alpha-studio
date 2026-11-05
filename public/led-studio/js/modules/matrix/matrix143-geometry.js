@@ -8,6 +8,7 @@
   if (root) root.Matrix143Geometry = api;
 })(typeof window !== 'undefined' ? window : typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
+  const mxTr=(vi,en)=>typeof window!=='undefined'&&typeof window.tr==='function'?window.tr(vi,en):en;
   const EPS = 1e-12, TAU = Math.PI * 2;
   const DIRECTIONS = { front:[0,0,1], back:[0,0,-1], top:[0,1,0], bottom:[0,-1,0], left:[-1,0,0], right:[1,0,0] };
   const sub = (a,b) => [a[0]-b[0],a[1]-b[1],a[2]-b[2]];
@@ -270,7 +271,7 @@
     const tree=vertexTree([...endpointIds],points),junctions=new Set(),squared=tolerance*tolerance;
     const maxChecks=clamp(Math.floor(number(settings.maxTopologyChecks,12000000)),1,50000000);
     stats.maxTopologyChecks=maxChecks;
-    function tick(){if(++stats.topologyChecks>maxChecks)throw budgetError('Topology work limit exceeded. Select a smaller section or increase maxTopologyChecks; no partial outline was produced.');}
+    function tick(){if(++stats.topologyChecks>maxChecks)throw budgetError(mxTr("Vượt giới hạn xử lý topology. Chọn phần nhỏ hơn hoặc tăng maxTopologyChecks; chưa tạo viền một phần.","Topology work limit exceeded. Select a smaller section or increase maxTopologyChecks; no partial outline was produced."));}
     if(tree)for(const edge of edgeMap.values()){
       const a=points[edge.a],b=points[edge.b],d=sub(b,a),dd=dot(d,d),length=Math.sqrt(dd),margin=Math.min(.499999,tolerance/length),hits=[];
       const stack=[tree.root];
@@ -307,7 +308,7 @@
       const chain=edge.chain||[edge.a,edge.b];edge.chain=chain;edge.parts=[];
       for(let i=0;i+1<chain.length;i++){
         const a=Math.min(chain[i],chain[i+1]),b=Math.max(chain[i],chain[i+1]),key=a+':'+b;let atom=atoms.get(key);
-        if(!atom){atom={a,b,triangles:[]};atoms.set(key,atom);if(atoms.size>maxAtomicEdges)throw budgetError('Split-edge limit exceeded; no partial outline was produced. Select a smaller mesh.');}
+        if(!atom){atom={a,b,triangles:[]};atoms.set(key,atom);if(atoms.size>maxAtomicEdges)throw budgetError(mxTr("Vượt giới hạn chia cạnh; chưa tạo viền một phần. Chọn mesh nhỏ hơn.","Split-edge limit exceeded; no partial outline was produced. Select a smaller mesh."));}
         for(const id of edge.triangles){if(atom.triangles.length)join(atom.triangles[0],id);atom.triangles.push(id);}
         edge.parts.push(atom);
       }
@@ -392,10 +393,10 @@
     const selected=triangles.filter(t=>!selectionNormal||Math.abs(dot(t.normal,selectionNormal))>=cosine),membership=new Set(selected.map(t=>t.index)),assigned=new Set();
     selected.sort((a,b)=>b.area-a.area||a.index-b.index);
     const maxPlaneChecks=clamp(Math.floor(number(settings.maxPlaneChecks,12000000)),1,50000000);stats.maxPlaneChecks=maxPlaneChecks;
-    function tick(){if(++stats.planeChecks>maxPlaneChecks)throw budgetError('Planar-region work limit exceeded; no partial outline was produced. Select a smaller section.');}
+    function tick(){if(++stats.planeChecks>maxPlaneChecks)throw budgetError(mxTr("Vượt giới hạn xử lý vùng phẳng; chưa tạo viền một phần. Chọn phần nhỏ hơn.","Planar-region work limit exceeded; no partial outline was produced. Select a smaller section."));}
     for(const seed of selected){
       if(assigned.has(seed.index))continue;
-      if(planes.length>=settings.maxPlanes)throw budgetError('Planar-face limit exceeded ('+settings.maxPlanes+'); no partial outline was produced. Select a smaller section or use components mode.');
+      if(planes.length>=settings.maxPlanes)throw budgetError(mxTr("Vượt giới hạn mặt phẳng (","Planar-face limit exceeded (")+settings.maxPlanes+mxTr("); chưa tạo viền một phần. Chọn phần nhỏ hơn hoặc dùng chế độ components.","); no partial outline was produced. Select a smaller section or use components mode."));
       let normal=copy(seed.normal);if(selectionNormal&&dot(normal,selectionNormal)<0)normal=mul(normal,-1);
       const origin=seed.points[0],queue=[seed],region=[];assigned.add(seed.index);
       for(let q=0;q<queue.length;q++){
@@ -457,22 +458,22 @@
       splitEdges:0,splitSegments:0,tJunctions:0,maxTJunctionDeviation:0,atomicEdges:0,topologyChecks:0,planeChecks:0,collinearVerticesRemoved:0,
       maxPlaneDeviation:0,planeDetails:[],pickedDistance:null,pickedPlanes:0,truncated:false,error:null,maxTriangles,maxPlanes:settings.maxPlanes,tolerance:0,planeTolerance:0,normal:null,preferredNormal:null,preferredPoint:null,preferredPointDistance:null,preferredPointTolerance:null,preferredComponents:[]};
     const result=paths=>({paths,stats,warnings});
-    if(!DIRECTIONS[settings.mode]&&settings.mode!=='auto'){warnings.push('Unknown face mode; use front, back, top, bottom, left, right or auto.');return result([]);}
-    if(!['dominant','components','allPlanes'].includes(settings.strategy)){warnings.push('Unknown strategy; use dominant, components or allPlanes.');return result([]);}
-    if(settings.normal!=null&&(!finitePoint(settings.normal)||!unit(settings.normal))){warnings.push('The selected face normal is invalid.');return result([]);}
-    if(settings.preferredNormal!=null){if(!finitePoint(settings.preferredNormal)||!unit(settings.preferredNormal)){warnings.push('The preferred object direction is invalid.');return result([]);}stats.preferredNormal=unit(settings.preferredNormal);}
-    if(settings.preferredPoint!=null){if(!finitePoint(settings.preferredPoint)){warnings.push('The preferred object point is invalid.');return result([]);}stats.preferredPoint=copy(settings.preferredPoint);}
-    if(settings.planePoint!=null&&!finitePoint(settings.planePoint)){warnings.push('The selected face point is invalid.');return result([]);}
-    if(meshes.length>2048){warnings.push('Too many meshes; select a smaller stage section.');stats.truncated=true;return result([]);}
+    if(!DIRECTIONS[settings.mode]&&settings.mode!=='auto'){warnings.push(mxTr("Chế độ mặt không hợp lệ; dùng front, back, top, bottom, left, right hoặc auto.","Unknown face mode; use front, back, top, bottom, left, right or auto."));return result([]);}
+    if(!['dominant','components','allPlanes'].includes(settings.strategy)){warnings.push(mxTr("Cách lấy biên không hợp lệ; dùng dominant, components hoặc allPlanes.","Unknown strategy; use dominant, components or allPlanes."));return result([]);}
+    if(settings.normal!=null&&(!finitePoint(settings.normal)||!unit(settings.normal))){warnings.push(mxTr("Pháp tuyến mặt đã chọn không hợp lệ.","The selected face normal is invalid."));return result([]);}
+    if(settings.preferredNormal!=null){if(!finitePoint(settings.preferredNormal)||!unit(settings.preferredNormal)){warnings.push(mxTr("Hướng ưu tiên của object không hợp lệ.","The preferred object direction is invalid."));return result([]);}stats.preferredNormal=unit(settings.preferredNormal);}
+    if(settings.preferredPoint!=null){if(!finitePoint(settings.preferredPoint)){warnings.push(mxTr("Điểm ưu tiên của object không hợp lệ.","The preferred object point is invalid."));return result([]);}stats.preferredPoint=copy(settings.preferredPoint);}
+    if(settings.planePoint!=null&&!finitePoint(settings.planePoint)){warnings.push(mxTr("Điểm mặt đã chọn không hợp lệ.","The selected face point is invalid."));return result([]);}
+    if(meshes.length>2048){warnings.push(mxTr("Quá nhiều mesh; chọn phần sân khấu nhỏ hơn.","Too many meshes; select a smaller stage section."));stats.truncated=true;return result([]);}
     const sources=[];
     for(let i=0;i<meshes.length;i++){
       const raw=meshes[i]?.p||meshes[i]?.positions||meshes[i]?.vertices;
-      if(!raw||typeof raw.length!=='number'){warnings.push('Mesh '+i+' has no unindexed position buffer.');continue;}
+      if(!raw||typeof raw.length!=='number'){warnings.push('Mesh '+i+mxTr(" không có bộ đệm tọa độ không chỉ mục."," has no unindexed position buffer."));continue;}
       const coordinateCount=Array.isArray(raw[0])?raw.length*3:raw.length;stats.inputTriangles+=Math.floor(coordinateCount/9);
-      if(coordinateCount%9)warnings.push('Incomplete trailing triangle data was ignored in mesh '+i+'.');
+      if(coordinateCount%9)warnings.push(mxTr("Đã bỏ dữ liệu tam giác thiếu ở cuối mesh ","Incomplete trailing triangle data was ignored in mesh ")+i+'.');
       sources.push({mesh:meshes[i],index:i,name:String(meshes[i]?.name||meshes[i]?.id||'Mesh '+(i+1))});
     }
-    if(stats.inputTriangles>maxTriangles){stats.truncated=true;stats.error='Triangle limit exceeded ('+stats.inputTriangles+' > '+maxTriangles+'). Select a smaller mesh or increase maxTriangles; no partial outline was produced.';warnings.push(stats.error);return result([]);}
+    if(stats.inputTriangles>maxTriangles){stats.truncated=true;stats.error=mxTr("Vượt giới hạn tam giác (","Triangle limit exceeded (")+stats.inputTriangles+' > '+maxTriangles+mxTr("). Chọn mesh nhỏ hơn hoặc tăng maxTriangles; chưa tạo viền một phần.","). Select a smaller mesh or increase maxTriangles; no partial outline was produced.");warnings.push(stats.error);return result([]);}
     const triangles=[];let min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity],magnitude=0;
     for(const source of sources){
       const p=meshBuffer(source.mesh);
@@ -485,7 +486,7 @@
         triangles.push({points:[a,b,c],normal:mul(n,1/doubleArea),area:doubleArea*.5,source:source.name,meshIndex:source.index});
       }
     }
-    if(!triangles.length){warnings.push('No valid non-degenerate triangles were found.');return result([]);}
+    if(!triangles.length){warnings.push(mxTr("Không tìm thấy tam giác hợp lệ và không suy biến.","No valid non-degenerate triangles were found."));return result([]);}
     const diagonal=norm(sub(max,min)),numericFloor=Math.max(1e-9,magnitude*Number.EPSILON*32),requested=number(settings.tolerance,diagonal*1e-6);
     const tolerance=Math.max(numericFloor,requested>0?requested:diagonal*1e-6);stats.tolerance=tolerance;
     settings.planeTolerance=Math.max(numericFloor,number(settings.planeTolerance,tolerance*3));stats.planeTolerance=settings.planeTolerance;
@@ -494,7 +495,7 @@
     const planes=[];let topology;
     try{
       topology=buildTopology(triangles,tolerance,stats,settings);
-      if(!topology.triangles.length){warnings.push('No usable triangles remain at this weld tolerance.');return result([]);}
+      if(!topology.triangles.length){warnings.push(mxTr("Không còn tam giác dùng được ở dung sai ghép đỉnh này.","No usable triangles remain at this weld tolerance."));return result([]);}
       const usePreference=settings.strategy!=='allPlanes'&&settings.mode==='auto'&&settings.normal==null&&settings.preferredNormal!=null;
       let preferredComponents=null;
       const automaticSettings={...settings,preferredNormal:undefined};
@@ -509,7 +510,7 @@
         const best=distances.reduce((minimum,distance)=>Math.min(minimum,distance),Infinity),threshold=Math.max(numericFloor,number(settings.preferredPointTolerance,Math.max(settings.planeTolerance*2,tolerance*4))),tie=Math.max(numericFloor,tolerance*.01);
         stats.preferredPointDistance=best;stats.preferredPointTolerance=threshold;preferredComponents=new Set();
         if(best<=threshold)distances.forEach((distance,index)=>{if(distance<=best+tie)preferredComponents.add(index);});
-        else warnings.push('The preferred point does not match this object within tolerance; automatic face orientation was kept.');
+        else warnings.push(mxTr("Điểm ưu tiên không khớp object trong dung sai; giữ hướng mặt tự động.","The preferred point does not match this object within tolerance; automatic face orientation was kept."));
         stats.preferredComponents=[...preferredComponents];
       }else if(usePreference)stats.preferredComponents=topology.components.map(component=>component.index);
       if(settings.strategy==='dominant'){
@@ -530,7 +531,7 @@
       }
     }catch(error){if(!error.geometryLimit)throw error;stats.truncated=true;stats.error=error.message;stats.candidatePlanes=planes.length;warnings.push(error.message);return result([]);}
     stats.candidatePlanes=planes.length;
-    if(!planes.length){warnings.push('No planar face matches the requested direction. Select another face, use allPlanes, or adjust the plane tolerance.');return result([]);}
+    if(!planes.length){warnings.push(mxTr("Không có mặt phẳng khớp hướng yêu cầu. Chọn mặt khác, dùng allPlanes hoặc chỉnh dung sai mặt phẳng.","No planar face matches the requested direction. Select another face, use allPlanes, or adjust the plane tolerance."));return result([]);}
     // Resolve a picked surface against actual triangles before either winding
     // preference or extrusion-cap deduplication. Rear caps remain selectable.
     if(settings.planePoint){
@@ -539,7 +540,7 @@
       stats.pickedDistance=best;
       const threshold=Math.max(numericFloor,number(settings.planePointTolerance,Math.max(settings.planeTolerance*2,tolerance*4))),tie=Math.max(numericFloor,tolerance*.01);
       for(const plane of planes)if(best>threshold||plane.pickedDistance>best+tie){plane.skip=true;plane.reason='different-picked-face';}else{plane.force=true;stats.pickedPlanes++;}
-      if(!stats.pickedPlanes)warnings.push('The picked point is not on a compatible planar face within planePointTolerance.');
+      if(!stats.pickedPlanes)warnings.push(mxTr("Điểm đã bấm không nằm trên mặt phẳng tương thích trong planePointTolerance.","The picked point is not on a compatible planar face within planePointTolerance."));
     }
     for(const plane of planes)if(!plane.skip)plane.paths=planeBoundaries(plane,topology.points,stats,settings);
     if(settings.strategy!=='allPlanes'&&!settings.planePoint){
@@ -554,20 +555,20 @@
       }
       const forward=new Map();for(const plane of planes)if(!plane.skip&&plane.positive>=plane.negative*.5&&plane.positive>0)forward.set(plane.componentIndex,true);
       let reversed=false;for(const plane of planes)if(!plane.skip&&!plane.force){if(forward.get(plane.componentIndex)&&plane.positive<plane.negative*.5){plane.skip=true;plane.reason='opposite-winding';}else if(!forward.get(plane.componentIndex))reversed=true;}
-      if(reversed)warnings.push('Some requested faces use reversed winding; their contours were oriented to the selected direction.');
+      if(reversed)warnings.push(mxTr("Một số mặt có thứ tự đỉnh ngược; viền đã được chỉnh theo hướng đã chọn.","Some requested faces use reversed winding; their contours were oriented to the selected direction."));
     }
     const chosen=planes.filter(p=>!p.skip);stats.planes=chosen.length;stats.selectedComponents=new Set(chosen.map(p=>p.componentIndex)).size;
     stats.selectedTriangles=chosen.reduce((sum,p)=>sum+p.triangles.length,0);stats.skippedTriangles=topology.triangles.length-stats.selectedTriangles;
     for(const plane of chosen){stats.boundaryEdges+=plane.boundaryEdges||0;stats.internalEdges+=plane.internalEdges||0;stats.nonManifoldEdges+=plane.nonManifoldEdges||0;stats.orientationConflicts+=plane.orientationConflicts||0;}
     stats.planeDetails=planes.map(p=>({index:p.index,componentIndex:p.componentIndex,normal:copy(p.normal),offset:p.offset,area:p.area,triangles:p.triangles.length,paths:p.paths.length,boundaryEdges:p.boundaryEdges||0,maxDeviation:p.maxDeviation,selected:!p.skip,reason:p.reason,pickedDistance:p.pickedDistance??null}));
     let paths=chosen.flatMap(p=>p.paths);paths.sort((a,b)=>b.absArea-a.absArea||b.length-a.length||b.planeOffset-a.planeOffset);stats.candidatePaths=paths.length;
-    if(paths.length>maxPaths){stats.discardedPaths+=paths.length-maxPaths;stats.truncated=true;warnings.push('Path limit reached; '+(paths.length-maxPaths)+' smaller contours were omitted. Increase maxPaths or select a smaller section.');paths=paths.slice(0,maxPaths);}
+    if(paths.length>maxPaths){stats.discardedPaths+=paths.length-maxPaths;stats.truncated=true;warnings.push(mxTr("Đã đạt giới hạn đường viền; ","Path limit reached; ")+(paths.length-maxPaths)+mxTr(" viền nhỏ đã bị bỏ qua. Tăng maxPaths hoặc chọn phần nhỏ hơn."," smaller contours were omitted. Increase maxPaths or select a smaller section."));paths=paths.slice(0,maxPaths);}
     stats.paths=paths.length;stats.points=paths.reduce((sum,p)=>sum+p.points.length,0);
-    if(stats.invalidTriangles)warnings.push(stats.invalidTriangles+' malformed triangles were skipped.');
-    if(stats.nonManifoldEdges)warnings.push(stats.nonManifoldEdges+' non-manifold shared edges were detected; inspect these contours before use.');
-    if(stats.orientationConflicts)warnings.push('Overlapping coplanar faces were detected. Repeated boundaries were merged; partially overlapping faces can need manual inspection.');
-    if(paths.some(p=>!p.closed))warnings.push('Some boundaries are open; endpoints are preserved rather than joined across a gap.');
-    if(!paths.length)warnings.push('No usable boundary was found for the selected face and length settings.');
+    if(stats.invalidTriangles)warnings.push(stats.invalidTriangles+mxTr(" tam giác sai định dạng đã bị bỏ qua."," malformed triangles were skipped."));
+    if(stats.nonManifoldEdges)warnings.push(stats.nonManifoldEdges+mxTr(" cạnh chung không đa tạp được phát hiện; kiểm tra viền trước khi dùng."," non-manifold shared edges were detected; inspect these contours before use."));
+    if(stats.orientationConflicts)warnings.push(mxTr("Phát hiện mặt đồng phẳng chồng nhau. Đã gộp biên trùng; cần kiểm tra tay các mặt chồng một phần.","Overlapping coplanar faces were detected. Repeated boundaries were merged; partially overlapping faces can need manual inspection."));
+    if(paths.some(p=>!p.closed))warnings.push(mxTr("Một số viền hở; giữ nguyên điểm cuối, không nối qua khoảng trống.","Some boundaries are open; endpoints are preserved rather than joined across a gap."));
+    if(!paths.length)warnings.push(mxTr("Không tìm thấy viền dùng được với mặt và độ dài đã chọn.","No usable boundary was found for the selected face and length settings."));
     return result(paths);
   }
   return {version:'14.6.0',extract,simplify,samplePath,offsetPath,pathLength};
