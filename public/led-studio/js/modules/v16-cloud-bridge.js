@@ -95,11 +95,14 @@
     ['#cloud16OpenBtn', 'Mở Drive', 'Open Drive'],
     ['#cloud16PresetsBtn', 'Kho Preset', 'Presets'],
     ['#cloud16ShareBtn', 'Link duyệt 3D', '3D Review Link'],
+    ['#v07Audio', 'Bật Audio', 'Enable Audio'],
+    ['#v07Timeline', 'SHOW Timeline', 'SHOW Timeline'],
+    ['#v07Cast', 'Người 3D', '3D People'],
     ['.workflow [data-step="stage"] b', 'Sân khấu 3D', '3D STAGE'],
     ['.workflow [data-step="mapping"] b', 'LED & VIDEO', 'LED & VIDEO'],
     ['.workflow [data-step="lighting"] b', 'Ánh sáng & show', 'LIGHTING & SHOW'],
     ['#ledManagerBtn', 'Quản lý LED', 'LED Manager'],
-    ['#exportBtn', 'Xuất ', 'Export '],
+    ['#exportBtn', 'Xuất', 'Export'],
     ['#importModel strong', 'Nhập sân khấu 3D', 'Import 3D Stage'],
     ['#importModel small', 'Kéo file vào cửa sổ để bắt đầu', 'Drag files into window to start'],
     ['#demoBtn', 'Sân khấu mẫu', 'Demo Stage'],
@@ -197,11 +200,15 @@
     if (langBtn) {
       langBtn.textContent = isEn ? 'EN' : 'VI';
       langBtn.title = isEn ? 'Switch language (EN / VI)' : 'Chuyển ngôn ngữ (VI / EN)';
+      langBtn.setAttribute('aria-label', langBtn.title);
     }
     const themeBtn = document.getElementById('themeToggleBtn');
     if (themeBtn) {
       themeBtn.title = isEn ? 'Switch Light / Dark theme' : 'Chuyển giao diện Sáng / Tối';
+      themeBtn.setAttribute('aria-label', themeBtn.title);
     }
+    const projectName = document.getElementById('projectName');
+    if (projectName) projectName.title = t16('Đổi tên dự án', 'Rename project');
     const searchInput = document.getElementById('objectSearch');
     if (searchInput) {
       searchInput.placeholder = isEn ? 'Search objects / LED...' : 'Tìm object / LED...';

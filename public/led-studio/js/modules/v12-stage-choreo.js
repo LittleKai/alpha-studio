@@ -14,19 +14,19 @@
  };
 
  Object.assign(ACT_TYPES,{
-  fan_dance:{name:'Múa quạt',kind:'fandancer',count:6,radius:3.4,tag:'FAN DANCE / FLOW'},
-  keymoment:{name:'Key moment sân khấu',kind:null,count:0,radius:3.1,tag:'KEY MOMENT / LIFT'},
-  ribbon:{name:'Múa lụa',kind:'fandancer',count:4,radius:3.2,tag:'RIBBON / SWIRL'},
-  live_band:{name:'Ban nhạc Live Concert',kind:'singer',roles:['guitarist','violinist','singer','saxophonist','drummer'],count:5,radius:3.6,tag:'LIVE band / 5 người'},
+  fan_dance:{name:'Fan dance',kind:'fandancer',count:6,radius:3.4,tag:'FAN DANCE / FLOW'},
+  keymoment:{name:'Stage key moment',kind:null,count:0,radius:3.1,tag:'KEY MOMENT / LIFT'},
+  ribbon:{name:'Silk ribbon dance',kind:'fandancer',count:4,radius:3.2,tag:'RIBBON / SWIRL'},
+  live_band:{name:'Live concert band',kind:'singer',roles:['guitarist','violinist','singer','saxophonist','drummer'],count:5,radius:3.6,tag:'LIVE band / 5 người'},
   dj_festival:{name:'DJ EDM Festival Drop',kind:'leddancer',roles:['laserdancer','leddancer','dj','leddancer','laserdancer'],count:5,radius:3.5,tag:'DJ DROP / LED CREW'},
-  opening_gala:{name:'Khai mạc Gala & MC',kind:'dancer',roles:['fandancer','dancer','mc','dancer','fandancer'],count:5,radius:3.2,tag:'GALA / MC & DANCERS'}
+  opening_gala:{name:'Gala opening & MC',kind:'dancer',roles:['fandancer','dancer','mc','dancer','fandancer'],count:5,radius:3.2,tag:'GALA / MC & DANCERS'}
  });
  Object.assign(castNames,{
-  fandancer:'Vũ công quạt / lụa',
+  fandancer:'Fan / silk dancer',
   dj:'DJ / Producer',
-  violinist:'Nghệ sĩ Violin',
-  saxophonist:'Nghệ sĩ Saxophone',
-  mc:'MC / Diễn giả',
+  violinist:'Violinist',
+  saxophonist:'Saxophonist',
+  mc:'MC / Speaker',
   rapper:'Rapper / Hype'
  });
 

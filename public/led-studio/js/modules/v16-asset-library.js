@@ -12,35 +12,35 @@
   const esc16=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
   const CATALOG={
-   truss_tower:{name:'Trụ Truss Đứng 3.6m',get displayName(){return tr(this.name,"3.6m upright truss tower");},label:'TRUSS TOWER',get cat(){return tr('Khung / Giàn',"Frame / truss");},color:'#8c9bb0',get desc(){return tr('Cột truss hộp nhôm 0.4×3.6m + đế thép',"0.4×3.6m aluminum box truss with steel base");}},
-   truss_arch:{name:'Cổng Truss Goalpost 6m',get displayName(){return tr(this.name,"6m goalpost truss arch");},label:'TRUSS ARCH',get cat(){return tr('Khung / Giàn',"Frame / truss");},color:'#94a3b8',get desc(){return tr('Khung cổng truss 6.0×4.2m treo đèn/LED',"6.0×4.2m truss arch for lighting / LED");}},
-   line_array:{name:'Cụm Loa Line Array (6 thùng)',get displayName(){return tr(this.name,"Line array (6 cabinets)");},label:'LINE ARRAY',get cat(){return tr('Âm thanh',"Audio");},color:'#27303f',get desc(){return tr('Dàn loa treo J-array 6 cabinet + khung treo',"Six-cabinet suspended J-array with rigging frame");}},
-   sub_stack:{name:'Cụm Loa Sub Đôi 18"',get displayName(){return tr(this.name,"Dual 18\" subwoofer stack");},label:'SUB STACK',get cat(){return tr('Âm thanh',"Audio");},color:'#1e2530',get desc(){return tr('2 thùng loa siêu trầm đặt sàn 1.2×0.9m',"Two floor subwoofers, 1.2×0.9m");}},
-   totem_led:{name:'Cột LED Totem Đứng 1×3m',get displayName(){return tr(this.name,"1×3m LED totem");},label:'LED TOTEM',get cat(){return tr('Màn LED phụ',"Auxiliary LED");},color:'#29caff',get desc(){return tr('Khung + mặt LED 1.0×3.0m (map được video)',"1.0×3.0m frame and video-mappable LED face");}},
-   dj_booth:{name:'Bàn DJ Booth LED 2.4m',get displayName(){return tr(this.name,"2.4m LED DJ booth");},label:'DJ BOOTH',get cat(){return tr('Sân khấu',"Stage");},color:'#38bdf8',get desc(){return tr('Bàn DJ + mặt trước LED 2.4×1.1m + CDJ mixer',"DJ desk with 2.4×1.1m LED front and CDJ mixer");}},
-   stage_riser:{name:'Bục Sân Khấu Riser 2×1.5m',get displayName(){return tr(this.name,"2×1.5m stage riser");},label:'STAGE RISER',get cat(){return tr('Sân khấu',"Stage");},color:'#334155',get desc(){return tr('Bục nâng ban nhạc / trống cao 0.4m',"0.4m-high band / drum riser");}},
-   stage_stairs:{name:'Bậc Thang Sân Khấu 4 Bậc',get displayName(){return tr(this.name,"Four-step stage stairs");},label:'STAGE STAIRS',get cat(){return tr('Sân khấu',"Stage");},color:'#475569',get desc(){return tr('Cầu thang 4 bậc rộng 1.2m lên sàn diễn',"1.2m-wide four-step stage access");}},
-   crowd_barrier:{name:'Rào Chắn Khán Giả Mojo 2m',get displayName(){return tr(this.name,"2m Mojo crowd barrier");},label:'BARRIER',get cat(){return tr('An toàn',"Safety");},color:'#64748b',get desc(){return tr('Rào chắn hợp kim nhôm chống xô đẩy 2.0×1.1m',"2.0×1.1m aluminum crowd barrier");}},
-   kinetic_ring:{name:'Vòng LED Kinetic Ø2.4m',get displayName(){return tr(this.name,"Ø2.4m kinetic LED ring");},label:'KINETIC RING',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#f59e0b',get desc(){return tr('Vòng ánh sáng treo trần phát sáng emissive',"Suspended emissive lighting ring");}},
-   co2_jet:{name:'Súng Cột Khói CO2',get displayName(){return tr(this.name,"CO2 jet");},label:'CO2 / SPARK FX',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#38bdf8',get desc(){return tr('Máy bắn cột khói lạnh CO2 & pháo điện đại cảnh',"Cold CO2 jet and electric stage spark effect");}},
-   vip_podium:{name:'Bục Phát Biểu & Cầu Khai Mạc',get displayName(){return tr(this.name,"VIP lectern & opening sphere");},label:'VIP PODIUM',get cat(){return tr('Sân khấu',"Stage");},color:'#f59e0b',get desc(){return tr('Bục phát biểu Keynote + quả cầu LED chạm tay khai mạc',"Keynote lectern with touch-activated LED opening sphere");}},
-   led_arch_gate:{name:'Cổng Chào LED Vòm 5m',get displayName(){return tr(this.name,"5m LED entrance arch");},label:'LED ARCH GATE',get cat(){return tr('Màn LED phụ',"Auxiliary LED");},color:'#a855f7',get desc(){return tr('Cổng vòm LED sự kiện 5.0×3.6m phát sáng viền Neon',"5.0×3.6m event arch with neon LED trim");}},
-   catwalk_runway:{name:'Sàn Catwalk Chữ T 4m',get displayName(){return tr(this.name,"4m T-shaped catwalk");},label:'CATWALK T-STAGE',get cat(){return tr('Sân khấu',"Stage");},color:'#475569',get desc(){return tr('Đường băng Catwalk vươn ra khán giả kèm viền LED sàn',"Audience-facing catwalk with LED floor trim");}},
-   backdrop_arch:{name:'Backdrop Check-in Vòm Sự Kiện 4m',get displayName(){return tr(this.name,"4m event arch backdrop");},label:'BACKDROP ARCH',get cat(){return tr('Sân khấu',"Stage");},color:'#38bdf8',get desc(){return tr('Phông chụp ảnh vòm 3 lớp + bục thảm đỏ check-in sự kiện',"Three-layer photo backdrop and red-carpet check-in platform");}},
-   gala_round_table:{name:'Bàn Tròn Tiệc Gala 10 Ghế (Ø1.8m)',get displayName(){return tr(this.name,"Ø1.8m gala table with 10 chairs");},label:'GALA TABLE',get cat(){return tr('Bàn ghế VIP',"VIP furniture");},color:'#f8fafc',get desc(){return tr('Bàn tiệc tròn khăn phủ Ø1.8m + 10 ghế Banquet xoay tròn',"Round covered table with ten banquet chairs");}},
-   conference_ibm_table:{name:'Bàn Đại Biểu Hội Nghị IBM 1.8m',get displayName(){return tr(this.name,"1.8m IBM conference table");},label:'IBM TABLE',get cat(){return tr('Bàn ghế VIP',"VIP furniture");},color:'#1e293b',get desc(){return tr('Bàn hội nghị chữ nhật 1.8×0.6m phủ khăn + 2 ghế đại biểu',"Covered 1.8×0.6m conference table with two delegate chairs");}},
-   banquet_chair:{name:'Ghế Banquet Sự Kiện Áo Nơ VIP',get displayName(){return tr(this.name,"VIP banquet chair with sash");},label:'BANQUET CHAIR',get cat(){return tr('Bàn ghế VIP',"VIP furniture");},color:'#e2e8f0',get desc(){return tr('Ghế hội nghị/tiệc cưới bọc nệm kèm nơ lưng vàng đồng',"Padded event chair with gold back sash");}},
-   foh_control_booth:{name:'Bàn Điều Khiển FOH Âm Thanh / Ánh Sáng',get displayName(){return tr(this.name,"FOH audio / lighting booth");},label:'FOH BOOTH',get cat(){return tr('Sân khấu',"Stage");},color:'#334155',get desc(){return tr('Khu kỹ thuật FOH gồm bàn mixer ánh sáng GrandMA + bàn âm thanh',"FOH desk with GrandMA lighting console and audio mixer");}},
-   decor_palm_planter:{name:'Chậu Cây Cảnh Sân Khấu / Cánh Gà',get displayName(){return tr(this.name,"Stage / wing planter");},label:'STAGE PLANTER',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#22c55e',get desc(){return tr('Bồn cây xanh trang trí mép sân khấu và bục phát biểu',"Decorative greenery for stage edges and lecterns");}},
-   haze_machine_pro:{name:'Máy Phun Sương Haze Sân Khấu 1500W',get displayName(){return tr(this.name,"1500W stage haze machine");},label:'HAZE 1500W',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#64748b',get desc(){return tr('Máy tạo sương mỏng làm nổi tia đèn Beam',"Fine haze machine to reveal beam lighting");}},
-   cold_spark_fountain:{name:'Máy Pháo Điện Lạnh Sparkular 700W',get displayName(){return tr(this.name,"700W Sparkular cold spark fountain");},label:'COLD SPARK',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#fbbf24',get desc(){return tr('Máy bắn tia pháo điện lạnh cao 3m an toàn trong nhà',"Indoor cold spark effect up to 3m high");}}
+   truss_tower:{name:"3.6m upright truss tower",legacyName:'Trụ Truss Đứng 3.6m',get displayName(){return this.name;},label:'TRUSS TOWER',get cat(){return tr('Khung / Giàn',"Frame / truss");},color:'#8c9bb0',get desc(){return tr('Cột truss hộp nhôm 0.4×3.6m + đế thép',"0.4×3.6m aluminum box truss with steel base");}},
+   truss_arch:{name:"6m goalpost truss arch",legacyName:'Cổng Truss Goalpost 6m',get displayName(){return this.name;},label:'TRUSS ARCH',get cat(){return tr('Khung / Giàn',"Frame / truss");},color:'#94a3b8',get desc(){return tr('Khung cổng truss 6.0×4.2m treo đèn/LED',"6.0×4.2m truss arch for lighting / LED");}},
+   line_array:{name:"Line array (6 cabinets)",legacyName:'Cụm Loa Line Array (6 thùng)',get displayName(){return this.name;},label:'LINE ARRAY',get cat(){return tr('Âm thanh',"Audio");},color:'#27303f',get desc(){return tr('Dàn loa treo J-array 6 cabinet + khung treo',"Six-cabinet suspended J-array with rigging frame");}},
+   sub_stack:{name:"Dual 18\" subwoofer stack",legacyName:'Cụm Loa Sub Đôi 18"',get displayName(){return this.name;},label:'SUB STACK',get cat(){return tr('Âm thanh',"Audio");},color:'#1e2530',get desc(){return tr('2 thùng loa siêu trầm đặt sàn 1.2×0.9m',"Two floor subwoofers, 1.2×0.9m");}},
+   totem_led:{name:"1×3m LED totem",legacyName:'Cột LED Totem Đứng 1×3m',get displayName(){return this.name;},label:'LED TOTEM',get cat(){return tr('Màn LED phụ',"Auxiliary LED");},color:'#29caff',get desc(){return tr('Khung + mặt LED 1.0×3.0m (map được video)',"1.0×3.0m frame and video-mappable LED face");}},
+   dj_booth:{name:"2.4m LED DJ booth",legacyName:'Bàn DJ Booth LED 2.4m',get displayName(){return this.name;},label:'DJ BOOTH',get cat(){return tr('Sân khấu',"Stage");},color:'#38bdf8',get desc(){return tr('Bàn DJ + mặt trước LED 2.4×1.1m + CDJ mixer',"DJ desk with 2.4×1.1m LED front and CDJ mixer");}},
+   stage_riser:{name:"2×1.5m stage riser",legacyName:'Bục Sân Khấu Riser 2×1.5m',get displayName(){return this.name;},label:'STAGE RISER',get cat(){return tr('Sân khấu',"Stage");},color:'#334155',get desc(){return tr('Bục nâng ban nhạc / trống cao 0.4m',"0.4m-high band / drum riser");}},
+   stage_stairs:{name:"Four-step stage stairs",legacyName:'Bậc Thang Sân Khấu 4 Bậc',get displayName(){return this.name;},label:'STAGE STAIRS',get cat(){return tr('Sân khấu',"Stage");},color:'#475569',get desc(){return tr('Cầu thang 4 bậc rộng 1.2m lên sàn diễn',"1.2m-wide four-step stage access");}},
+   crowd_barrier:{name:"2m Mojo crowd barrier",legacyName:'Rào Chắn Khán Giả Mojo 2m',get displayName(){return this.name;},label:'BARRIER',get cat(){return tr('An toàn',"Safety");},color:'#64748b',get desc(){return tr('Rào chắn hợp kim nhôm chống xô đẩy 2.0×1.1m',"2.0×1.1m aluminum crowd barrier");}},
+   kinetic_ring:{name:"Ø2.4m kinetic LED ring",legacyName:'Vòng LED Kinetic Ø2.4m',get displayName(){return this.name;},label:'KINETIC RING',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#f59e0b',get desc(){return tr('Vòng ánh sáng treo trần phát sáng emissive',"Suspended emissive lighting ring");}},
+   co2_jet:{name:"CO2 jet",legacyName:'Súng Cột Khói CO2',get displayName(){return this.name;},label:'CO2 / SPARK FX',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#38bdf8',get desc(){return tr('Máy bắn cột khói lạnh CO2 & pháo điện đại cảnh',"Cold CO2 jet and electric stage spark effect");}},
+   vip_podium:{name:"VIP lectern & opening sphere",legacyName:'Bục Phát Biểu & Cầu Khai Mạc',get displayName(){return this.name;},label:'VIP PODIUM',get cat(){return tr('Sân khấu',"Stage");},color:'#f59e0b',get desc(){return tr('Bục phát biểu Keynote + quả cầu LED chạm tay khai mạc',"Keynote lectern with touch-activated LED opening sphere");}},
+   led_arch_gate:{name:"5m LED entrance arch",legacyName:'Cổng Chào LED Vòm 5m',get displayName(){return this.name;},label:'LED ARCH GATE',get cat(){return tr('Màn LED phụ',"Auxiliary LED");},color:'#a855f7',get desc(){return tr('Cổng vòm LED sự kiện 5.0×3.6m phát sáng viền Neon',"5.0×3.6m event arch with neon LED trim");}},
+   catwalk_runway:{name:"4m T-shaped catwalk",legacyName:'Sàn Catwalk Chữ T 4m',get displayName(){return this.name;},label:'CATWALK T-STAGE',get cat(){return tr('Sân khấu',"Stage");},color:'#475569',get desc(){return tr('Đường băng Catwalk vươn ra khán giả kèm viền LED sàn',"Audience-facing catwalk with LED floor trim");}},
+   backdrop_arch:{name:"4m event arch backdrop",legacyName:'Backdrop Check-in Vòm Sự Kiện 4m',get displayName(){return this.name;},label:'BACKDROP ARCH',get cat(){return tr('Sân khấu',"Stage");},color:'#38bdf8',get desc(){return tr('Phông chụp ảnh vòm 3 lớp + bục thảm đỏ check-in sự kiện',"Three-layer photo backdrop and red-carpet check-in platform");}},
+   gala_round_table:{name:"Ø1.8m gala table with 10 chairs",legacyName:'Bàn Tròn Tiệc Gala 10 Ghế (Ø1.8m)',get displayName(){return this.name;},label:'GALA TABLE',get cat(){return tr('Bàn ghế VIP',"VIP furniture");},color:'#f8fafc',get desc(){return tr('Bàn tiệc tròn khăn phủ Ø1.8m + 10 ghế Banquet xoay tròn',"Round covered table with ten banquet chairs");}},
+   conference_ibm_table:{name:"1.8m IBM conference table",legacyName:'Bàn Đại Biểu Hội Nghị IBM 1.8m',get displayName(){return this.name;},label:'IBM TABLE',get cat(){return tr('Bàn ghế VIP',"VIP furniture");},color:'#1e293b',get desc(){return tr('Bàn hội nghị chữ nhật 1.8×0.6m phủ khăn + 2 ghế đại biểu',"Covered 1.8×0.6m conference table with two delegate chairs");}},
+   banquet_chair:{name:"VIP banquet chair with sash",legacyName:'Ghế Banquet Sự Kiện Áo Nơ VIP',get displayName(){return this.name;},label:'BANQUET CHAIR',get cat(){return tr('Bàn ghế VIP',"VIP furniture");},color:'#e2e8f0',get desc(){return tr('Ghế hội nghị/tiệc cưới bọc nệm kèm nơ lưng vàng đồng',"Padded event chair with gold back sash");}},
+   foh_control_booth:{name:"FOH audio / lighting booth",legacyName:'Bàn Điều Khiển FOH Âm Thanh / Ánh Sáng',get displayName(){return this.name;},label:'FOH BOOTH',get cat(){return tr('Sân khấu',"Stage");},color:'#334155',get desc(){return tr('Khu kỹ thuật FOH gồm bàn mixer ánh sáng GrandMA + bàn âm thanh',"FOH desk with GrandMA lighting console and audio mixer");}},
+   decor_palm_planter:{name:"Stage / wing planter",legacyName:'Chậu Cây Cảnh Sân Khấu / Cánh Gà',get displayName(){return this.name;},label:'STAGE PLANTER',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#22c55e',get desc(){return tr('Bồn cây xanh trang trí mép sân khấu và bục phát biểu',"Decorative greenery for stage edges and lecterns");}},
+   haze_machine_pro:{name:"1500W stage haze machine",legacyName:'Máy Phun Sương Haze Sân Khấu 1500W',get displayName(){return this.name;},label:'HAZE 1500W',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#64748b',get desc(){return tr('Máy tạo sương mỏng làm nổi tia đèn Beam',"Fine haze machine to reveal beam lighting");}},
+   cold_spark_fountain:{name:"700W Sparkular cold spark fountain",legacyName:'Máy Pháo Điện Lạnh Sparkular 700W',get displayName(){return this.name;},label:'COLD SPARK',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#fbbf24',get desc(){return tr('Máy bắn tia pháo điện lạnh cao 3m an toàn trong nhà',"Indoor cold spark effect up to 3m high");}}
   };
 
   function itemDisplayName16(item){
    const spec=CATALOG[item.kind],name=String(item.name||'');
    if(!spec)return name;
-   const suffix=name.slice(spec.name.length);
-   return name===spec.name||name.startsWith(spec.name+' #')&&/^ #\d+$/.test(suffix)?spec.displayName+suffix:name;
+   const suffix=name.slice(spec.legacyName.length);
+   return name===spec.legacyName||name.startsWith(spec.legacyName+' #')&&/^ #\d+$/.test(suffix)?spec.name+suffix:name;
   }
 
   const ALLOWED_LICENSES=['cc0','cc-zero','public domain','pdm','cc-by','cc by'];
@@ -278,7 +278,7 @@
    const mat=M.mm(M.translate(p),M.mm(M.rotate([0,1,0],yaw),M.trs([0,0,0],IDENTITY_Q,[s,s,s])));
    for(const m of parts){
     transformMesh(m,mat);
-    m.name=item.name+' / '+m.name;
+    m.name=itemDisplayName16(item)+' / '+m.name;
     m._asset16Id=item.id;
    }
    return parts;
@@ -462,33 +462,33 @@
   // Track 5: Keyless CC0 Online Asset Search (Poly Haven + Wikimedia Commons + Google Drive Design_MCP GLB Pack)
   const GDRIVE_FOLDER_URL16='https://drive.google.com/drive/u/0/folders/1fhlZmvpR-FcaGbPh3RV1TlhSEAxTnhIv';
   const GDRIVE_ASSETS16=[
-   {id:'fixture_moving_head_spot_01',localUrl:'./assets/pilot/fixture_moving_head_spot_01.glb',sidecarUrl:'./assets/pilot/fixture_moving_head_spot_01.asset.json',thumbUrl:'./assets/pilot/fixture_moving_head_spot_01.webp',origin:'mount-point',ofl_fixture:'generic/moving-head-spot-350w',size_m:[0.375,0.52,0.318],title:'Moving Head Spot 350W (Tách Yoke/Head DMX)',get displayTitle(){return tr(this.title,"Moving Head Spot 350W (DMX yoke / head)");},dims:'GLB Pilot v1 · 338 KB · 568 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'moving head spot beam light den san khau truss dmx fixture',accent:'#38bdf8'},
-   {id:'fixture_beam_230_7r_01',localUrl:'./assets/pilot/fixture_beam_230_7r_01.glb',sidecarUrl:'./assets/pilot/fixture_beam_230_7r_01.asset.json',thumbUrl:'./assets/pilot/fixture_beam_230_7r_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/beam-230-7r',size_m:[0.34,0.48,0.262],title:'Beam 230 7R Moving Head (Tách Yoke/Head DMX)',get displayTitle(){return tr(this.title,"Beam 230 7R Moving Head (DMX yoke / head)");},dims:'GLB Batch 1 · 293 KB · 472 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'beam 230 7r sharpy moving head den beam san khau dmx fixture',accent:'#38bdf8'},
-   {id:'fixture_wash_zoom_36x18_01',localUrl:'./assets/pilot/fixture_wash_zoom_36x18_01.glb',sidecarUrl:'./assets/pilot/fixture_wash_zoom_36x18_01.asset.json',thumbUrl:'./assets/pilot/fixture_wash_zoom_36x18_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/wash-zoom-36x18',size_m:[0.37,0.468,0.252],title:'Moving Head Wash Zoom 36×18W (Tách Yoke/Head DMX)',get displayTitle(){return tr(this.title,"Moving Head Wash Zoom 36×18W (DMX yoke / head)");},dims:'GLB Batch 1 · 307 KB · 616 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'wash zoom 36x18 moving head led rgbw den wash san khau dmx fixture',accent:'#60a5fa'},
-   {id:'fixture_par_led_54x3w_01',localUrl:'./assets/pilot/fixture_par_led_54x3w_01.glb',sidecarUrl:'./assets/pilot/fixture_par_led_54x3w_01.asset.json',thumbUrl:'./assets/pilot/fixture_par_led_54x3w_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/par-led-54x3w',size_m:[0.29,0.36,0.222],title:'Par LED 54×3W RGBW (Tách Yoke/Head DMX)',get displayTitle(){return tr(this.title,"Par LED 54×3W RGBW (DMX yoke / head)");},dims:'GLB Batch 1 · 352 KB · 412 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'par led 54x3w rgbw stage wash light den par san khau dmx fixture',accent:'#34d399'},
-   {id:'fixture_katana_led_bar_1m_01',localUrl:'./assets/pilot/fixture_katana_led_bar_1m_01.glb',sidecarUrl:'./assets/pilot/fixture_katana_led_bar_1m_01.asset.json',thumbUrl:'./assets/pilot/fixture_katana_led_bar_1m_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/katana-led-bar-1m',size_m:[1.0,0.28,0.18],title:'Đèn Thanh Katana LED Matrix Bar 1m (Tách Yoke/Head DMX)',get displayTitle(){return tr(this.title,"Katana LED Matrix Bar 1m (DMX yoke / head)");},dims:'GLB Batch 1 · 299 KB · 332 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'katana led bar 1m pixel matrix batten den thanh led san khau dmx fixture',accent:'#a855f7'},
-   {id:'prop_inflatable_arch_01',localUrl:'./assets/pilot/prop_inflatable_arch_01.glb',sidecarUrl:'./assets/pilot/prop_inflatable_arch_01.asset.json',thumbUrl:'./assets/pilot/prop_inflatable_arch_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[6.0,4.0,1.1],title:'Cổng Hơi Sự Kiện 6×4m',get displayTitle(){return tr(this.title,"6×4m inflatable event arch");},dims:'GLB Pilot v1 · 365 KB · 2348 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'inflatable arch cong hoi su kien entrance gate 6x4m prop',accent:'#0ea5e9'},
-   {id:'furniture_chiavari_chair_01',localUrl:'./assets/pilot/furniture_chiavari_chair_01.glb',sidecarUrl:'./assets/pilot/furniture_chiavari_chair_01.asset.json',thumbUrl:'./assets/pilot/furniture_chiavari_chair_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.42,0.92,0.44],title:'Ghế Tiệc Cưới Chiavari Vàng Kim',get displayTitle(){return tr(this.title,"Gold Chiavari wedding chair");},dims:'GLB Pilot v1 · 343 KB · 1272 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'chiavari chair ghe tiec cuoi banquet event furniture',accent:'#f59e0b'},
-   {id:'stage_sofa_vip_01',localUrl:'./assets/pilot/stage_sofa_vip_01.glb',sidecarUrl:'./assets/pilot/stage_sofa_vip_01.asset.json',thumbUrl:'./assets/pilot/stage_sofa_vip_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.8,0.82,0.855],title:'Sofa VIP Talkshow 3 Chỗ 1.8m (VIP Stage Sofa)',get displayTitle(){return tr(this.title,"1.8m three-seat VIP talkshow sofa");},dims:'GLB Batch 1 · 219 KB · 316 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'sofa vip talkshow lounge couch ghe sofa san khau furniture',accent:'#f59e0b'},
-   {id:'furniture_banquet_table_01',localUrl:'./assets/pilot/furniture_banquet_table_01.glb',sidecarUrl:'./assets/pilot/furniture_banquet_table_01.asset.json',thumbUrl:'./assets/pilot/furniture_banquet_table_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.8,0.76,1.8],title:'Bàn Tiệc Tròn Gala 1.8m',get displayTitle(){return tr(this.title,"1.8m round gala table");},dims:'GLB Batch 1 · 92 KB · 432 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'banquet table round gala dining ban tiec tron 1.8m furniture',accent:'#fbbf24'},
-   {id:'furniture_conference_chair_01',localUrl:'./assets/pilot/furniture_conference_chair_01.glb',sidecarUrl:'./assets/pilot/furniture_conference_chair_01.asset.json',thumbUrl:'./assets/pilot/furniture_conference_chair_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.48,0.88,0.5195],title:'Ghế Hội Nghị Đại Biểu Khung Đồng (VIP Conference Chair)',get displayTitle(){return tr(this.title,"Brass-frame VIP conference chair");},dims:'GLB Batch 1 · 284 KB · 248 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'conference chair banquet vip ghe hoi nghi dai bieu furniture',accent:'#f59e0b'},
-   {id:'prop_podium_reception_01',localUrl:'./assets/pilot/prop_podium_reception_01.glb',sidecarUrl:'./assets/pilot/prop_podium_reception_01.asset.json',thumbUrl:'./assets/pilot/prop_podium_reception_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.78,1.1497,0.56],title:'Bục Phát Biểu & Bàn Lễ Tân VIP Gỗ Sồi',get displayTitle(){return tr(this.title,"Oak VIP lectern & reception desk");},dims:'GLB Batch 1 · 290 KB · 304 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'podium lectern reception keynote buc phat bieu ban le tan vip furniture',accent:'#d97706'},
-   {id:'prop_stage_plant_01',localUrl:'./assets/pilot/prop_stage_plant_01.glb',sidecarUrl:'./assets/pilot/prop_stage_plant_01.asset.json',thumbUrl:'./assets/pilot/prop_stage_plant_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.7098,1.35,0.7098],title:'Chậu Cây Cảnh Nhiệt Đới Sân Khấu',get displayTitle(){return tr(this.title,"Tropical stage planter");},dims:'GLB Batch 1 · 294 KB · 328 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'stage plant planter palm monstera chau cay canh san khau decor',accent:'#10b981'},
-   {id:'prop_chandelier_stage_01',localUrl:'./assets/pilot/prop_chandelier_stage_01.glb',sidecarUrl:'./assets/pilot/prop_chandelier_stage_01.asset.json',thumbUrl:'./assets/pilot/prop_chandelier_stage_01.webp',origin:'mount-point',ofl_fixture:null,size_m:[1.194,1.1,1.1768],title:'Đèn Chùm Pha Lê Gala / Tiệc Cưới',get displayTitle(){return tr(this.title,"Crystal gala / wedding chandelier");},dims:'GLB Batch 1 · 426 KB · 1936 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'chandelier crystal gala wedding den chum pha le san khau decor',accent:'#fde047'},
-   {id:'prop_decor_shelf_01',localUrl:'./assets/pilot/prop_decor_shelf_01.glb',sidecarUrl:'./assets/pilot/prop_decor_shelf_01.asset.json',thumbUrl:'./assets/pilot/prop_decor_shelf_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.2,1.8,0.4255],title:'Kệ Trưng Bày Cúp & Sản Phẩm 4 Tầng',get displayTitle(){return tr(this.title,"Four-tier trophy & product display shelf");},dims:'GLB Batch 1 · 252 KB · 576 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'shelf display rack trophy cup ke trung bay san pham decor',accent:'#38bdf8'},
-   {id:'prop_vip_carpet_01',localUrl:'./assets/pilot/prop_vip_carpet_01.glb',sidecarUrl:'./assets/pilot/prop_vip_carpet_01.asset.json',thumbUrl:'./assets/pilot/prop_vip_carpet_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[2.0,0.024,3.6],title:'Thảm Đỏ Khánh Tiết VIP Viền Vàng 2×3.6m (VIP Red Carpet)',get displayTitle(){return tr(this.title,"2×3.6m gold-trimmed VIP red carpet");},dims:'GLB Batch 1 · 120 KB · 156 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'carpet rug red runner vip tham do khanh tiet su kien decor',accent:'#ef4444'},
-   {id:'gd_human_mocap',fileId:'1GThK9vKEgLE8CErNO_nr6gaQu1ExH89T',title:'Human Mocap Dancer (Có xương & Animation)',get displayTitle(){return tr(this.title,"Human Mocap Dancer (rigged & animated)");},dims:'Rigged GLB · 329 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human dancer person mocap nguoi vu cong nhan vat animation',accent:'#38bdf8'},
-   {id:'gd_human_base',fileId:'1Kmnv88yxAj4I_f81rSx_IXLThbX29mbV',title:'Human Base Performer (Có xương & Animation)',get displayTitle(){return tr(this.title,"Human Base Performer (rigged & animated)");},dims:'Rigged GLB · 310 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human performer actor nguoi nhan vat animation',accent:'#61e8ff'},
-   {id:'gd_human_addon',fileId:'1SJ3XeMFQbTfkOroADqdMvYb3_CFXKNxX',title:'Human Stage Action Pack (Có xương & Animation)',get displayTitle(){return tr(this.title,"Human Stage Action Pack (rigged & animated)");},dims:'Rigged GLB · 340 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human dance action nguoi bieu dien animation',accent:'#8b7dff'},
-   {id:'gd_dragon_anim',fileId:'1tnxVDQwxnPpqLKhm0b1i_AbV0VNtCHvl',title:'Rồng 3D Đại Cảnh',get displayTitle(){return tr(this.title,"3D stage dragon");},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage dragon mascot fx rong phuong dai canh animation',accent:'#f59e0b'},
-   {id:'gd_bird_anim',fileId:'1hRG_Qv0xsuN0gFQCKf9BbQzgLdH_PcrV',title:'Chim / Phượng Hoàng 3D Vỗ Cánh',get displayTitle(){return tr(this.title,"3D bird / phoenix with wing animation");},dims:'Rigged GLB · 329 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage bird phoenix wing chim phuong hoang animation',accent:'#fb7185'},
-   {id:'gd_horse_anim',fileId:'18WGQJUIp4nv5ibeK3D_mtKK6MqODW7Kq',title:'Ngựa 3D Phi Nước Đại',get displayTitle(){return tr(this.title,"3D galloping horse");},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage horse animal ngua thu animation',accent:'#a855f7'},
-   {id:'gd_fox_anim',fileId:'1PdWashC3t9RcQlfXjuqzjJELaBbI1Zwa',title:'Hồ Ly / Cáo 3D Chuyển Động',get displayTitle(){return tr(this.title,"Animated 3D fox");},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage fox animal cao ho ly animation',accent:'#f97316'},
-   {id:'gd_kaiju_anim',fileId:'1TPyDHRF7f_ykt_cvm0QWtJNWi5H59KGv',title:'Quái Thú Kaiju 3D Đại Cảnh',get displayTitle(){return tr(this.title,"3D stage Kaiju monster");},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage monster kaiju boss quai thu animation',accent:'#ef4444'},
-   {id:'gd_shark_anim',fileId:'1EF9eobaWvmifUc1NTMi1A42UMLAs_jeK',title:'Cá Mập 3D Đại Dương',get displayTitle(){return tr(this.title,"3D ocean shark");},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage shark ocean sea ca map dai duong animation',accent:'#0ea5e9'},
-   {id:'gd_snake_anim',fileId:'1r2sXhxMWjXGRBkCDeK-tCN5oSnpKMGPt',title:'Rắn Thần 3D Chuyển Động',get displayTitle(){return tr(this.title,"Animated 3D serpent");},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage snake animal ran animation',accent:'#10b981'},
-   {id:'gd_spider_anim',fileId:'1xRYooI8UKl0KVqLWwlMTZYsklGdH-17S',title:'Nhện Máy 3D Halloween / Sci-Fi',get displayTitle(){return tr(this.title,"3D Halloween / Sci-Fi robot spider");},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage spider scifi halloween nhen animation',accent:'#6366f1'},
-   {id:'gd_chair_cc0',fileId:'13tGfeOv5c0QxacaQbXPZEmui6sOR--YD',title:'Ghế Đơn Sân Khấu (Quaternius CC0)',get displayTitle(){return tr(this.title,"Stage chair (Quaternius CC0)");},dims:'GLB 3D · 13 KB',license:'CC0 1.0 (Quaternius)',tags:'stage chair seat stool ghe ngoi talkshow',accent:'#34d399'}
+   {id:'fixture_moving_head_spot_01',localUrl:'./assets/pilot/fixture_moving_head_spot_01.glb',sidecarUrl:'./assets/pilot/fixture_moving_head_spot_01.asset.json',thumbUrl:'./assets/pilot/fixture_moving_head_spot_01.webp',origin:'mount-point',ofl_fixture:'generic/moving-head-spot-350w',size_m:[0.375,0.52,0.318],title:"Moving Head Spot 350W (DMX yoke / head)",get displayTitle(){return this.title;},dims:'GLB Pilot v1 · 338 KB · 568 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'moving head spot beam light den san khau truss dmx fixture',accent:'#38bdf8'},
+   {id:'fixture_beam_230_7r_01',localUrl:'./assets/pilot/fixture_beam_230_7r_01.glb',sidecarUrl:'./assets/pilot/fixture_beam_230_7r_01.asset.json',thumbUrl:'./assets/pilot/fixture_beam_230_7r_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/beam-230-7r',size_m:[0.34,0.48,0.262],title:"Beam 230 7R Moving Head (DMX yoke / head)",get displayTitle(){return this.title;},dims:'GLB Batch 1 · 293 KB · 472 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'beam 230 7r sharpy moving head den beam san khau dmx fixture',accent:'#38bdf8'},
+   {id:'fixture_wash_zoom_36x18_01',localUrl:'./assets/pilot/fixture_wash_zoom_36x18_01.glb',sidecarUrl:'./assets/pilot/fixture_wash_zoom_36x18_01.asset.json',thumbUrl:'./assets/pilot/fixture_wash_zoom_36x18_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/wash-zoom-36x18',size_m:[0.37,0.468,0.252],title:"Moving Head Wash Zoom 36×18W (DMX yoke / head)",get displayTitle(){return this.title;},dims:'GLB Batch 1 · 307 KB · 616 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'wash zoom 36x18 moving head led rgbw den wash san khau dmx fixture',accent:'#60a5fa'},
+   {id:'fixture_par_led_54x3w_01',localUrl:'./assets/pilot/fixture_par_led_54x3w_01.glb',sidecarUrl:'./assets/pilot/fixture_par_led_54x3w_01.asset.json',thumbUrl:'./assets/pilot/fixture_par_led_54x3w_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/par-led-54x3w',size_m:[0.29,0.36,0.222],title:"Par LED 54×3W RGBW (DMX yoke / head)",get displayTitle(){return this.title;},dims:'GLB Batch 1 · 352 KB · 412 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'par led 54x3w rgbw stage wash light den par san khau dmx fixture',accent:'#34d399'},
+   {id:'fixture_katana_led_bar_1m_01',localUrl:'./assets/pilot/fixture_katana_led_bar_1m_01.glb',sidecarUrl:'./assets/pilot/fixture_katana_led_bar_1m_01.asset.json',thumbUrl:'./assets/pilot/fixture_katana_led_bar_1m_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/katana-led-bar-1m',size_m:[1.0,0.28,0.18],title:"Katana LED Matrix Bar 1m (DMX yoke / head)",get displayTitle(){return this.title;},dims:'GLB Batch 1 · 299 KB · 332 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'katana led bar 1m pixel matrix batten den thanh led san khau dmx fixture',accent:'#a855f7'},
+   {id:'prop_inflatable_arch_01',localUrl:'./assets/pilot/prop_inflatable_arch_01.glb',sidecarUrl:'./assets/pilot/prop_inflatable_arch_01.asset.json',thumbUrl:'./assets/pilot/prop_inflatable_arch_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[6.0,4.0,1.1],title:"6×4m inflatable event arch",get displayTitle(){return this.title;},dims:'GLB Pilot v1 · 365 KB · 2348 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'inflatable arch cong hoi su kien entrance gate 6x4m prop',accent:'#0ea5e9'},
+   {id:'furniture_chiavari_chair_01',localUrl:'./assets/pilot/furniture_chiavari_chair_01.glb',sidecarUrl:'./assets/pilot/furniture_chiavari_chair_01.asset.json',thumbUrl:'./assets/pilot/furniture_chiavari_chair_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.42,0.92,0.44],title:"Gold Chiavari wedding chair",get displayTitle(){return this.title;},dims:'GLB Pilot v1 · 343 KB · 1272 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'chiavari chair ghe tiec cuoi banquet event furniture',accent:'#f59e0b'},
+   {id:'stage_sofa_vip_01',localUrl:'./assets/pilot/stage_sofa_vip_01.glb',sidecarUrl:'./assets/pilot/stage_sofa_vip_01.asset.json',thumbUrl:'./assets/pilot/stage_sofa_vip_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.8,0.82,0.855],title:"1.8m three-seat VIP talkshow sofa",get displayTitle(){return this.title;},dims:'GLB Batch 1 · 219 KB · 316 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'sofa vip talkshow lounge couch ghe sofa san khau furniture',accent:'#f59e0b'},
+   {id:'furniture_banquet_table_01',localUrl:'./assets/pilot/furniture_banquet_table_01.glb',sidecarUrl:'./assets/pilot/furniture_banquet_table_01.asset.json',thumbUrl:'./assets/pilot/furniture_banquet_table_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.8,0.76,1.8],title:"1.8m round gala table",get displayTitle(){return this.title;},dims:'GLB Batch 1 · 92 KB · 432 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'banquet table round gala dining ban tiec tron 1.8m furniture',accent:'#fbbf24'},
+   {id:'furniture_conference_chair_01',localUrl:'./assets/pilot/furniture_conference_chair_01.glb',sidecarUrl:'./assets/pilot/furniture_conference_chair_01.asset.json',thumbUrl:'./assets/pilot/furniture_conference_chair_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.48,0.88,0.5195],title:"Brass-frame VIP conference chair",get displayTitle(){return this.title;},dims:'GLB Batch 1 · 284 KB · 248 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'conference chair banquet vip ghe hoi nghi dai bieu furniture',accent:'#f59e0b'},
+   {id:'prop_podium_reception_01',localUrl:'./assets/pilot/prop_podium_reception_01.glb',sidecarUrl:'./assets/pilot/prop_podium_reception_01.asset.json',thumbUrl:'./assets/pilot/prop_podium_reception_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.78,1.1497,0.56],title:"Oak VIP lectern & reception desk",get displayTitle(){return this.title;},dims:'GLB Batch 1 · 290 KB · 304 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'podium lectern reception keynote buc phat bieu ban le tan vip furniture',accent:'#d97706'},
+   {id:'prop_stage_plant_01',localUrl:'./assets/pilot/prop_stage_plant_01.glb',sidecarUrl:'./assets/pilot/prop_stage_plant_01.asset.json',thumbUrl:'./assets/pilot/prop_stage_plant_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.7098,1.35,0.7098],title:"Tropical stage planter",get displayTitle(){return this.title;},dims:'GLB Batch 1 · 294 KB · 328 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'stage plant planter palm monstera chau cay canh san khau decor',accent:'#10b981'},
+   {id:'prop_chandelier_stage_01',localUrl:'./assets/pilot/prop_chandelier_stage_01.glb',sidecarUrl:'./assets/pilot/prop_chandelier_stage_01.asset.json',thumbUrl:'./assets/pilot/prop_chandelier_stage_01.webp',origin:'mount-point',ofl_fixture:null,size_m:[1.194,1.1,1.1768],title:"Crystal gala / wedding chandelier",get displayTitle(){return this.title;},dims:'GLB Batch 1 · 426 KB · 1936 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'chandelier crystal gala wedding den chum pha le san khau decor',accent:'#fde047'},
+   {id:'prop_decor_shelf_01',localUrl:'./assets/pilot/prop_decor_shelf_01.glb',sidecarUrl:'./assets/pilot/prop_decor_shelf_01.asset.json',thumbUrl:'./assets/pilot/prop_decor_shelf_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.2,1.8,0.4255],title:"Four-tier trophy & product display shelf",get displayTitle(){return this.title;},dims:'GLB Batch 1 · 252 KB · 576 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'shelf display rack trophy cup ke trung bay san pham decor',accent:'#38bdf8'},
+   {id:'prop_vip_carpet_01',localUrl:'./assets/pilot/prop_vip_carpet_01.glb',sidecarUrl:'./assets/pilot/prop_vip_carpet_01.asset.json',thumbUrl:'./assets/pilot/prop_vip_carpet_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[2.0,0.024,3.6],title:"2×3.6m gold-trimmed VIP red carpet",get displayTitle(){return this.title;},dims:'GLB Batch 1 · 120 KB · 156 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'carpet rug red runner vip tham do khanh tiet su kien decor',accent:'#ef4444'},
+   {id:'gd_human_mocap',fileId:'1GThK9vKEgLE8CErNO_nr6gaQu1ExH89T',title:"Human Mocap Dancer (rigged & animated)",get displayTitle(){return this.title;},dims:'Rigged GLB · 329 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human dancer person mocap nguoi vu cong nhan vat animation',accent:'#38bdf8'},
+   {id:'gd_human_base',fileId:'1Kmnv88yxAj4I_f81rSx_IXLThbX29mbV',title:"Human Base Performer (rigged & animated)",get displayTitle(){return this.title;},dims:'Rigged GLB · 310 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human performer actor nguoi nhan vat animation',accent:'#61e8ff'},
+   {id:'gd_human_addon',fileId:'1SJ3XeMFQbTfkOroADqdMvYb3_CFXKNxX',title:"Human Stage Action Pack (rigged & animated)",get displayTitle(){return this.title;},dims:'Rigged GLB · 340 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human dance action nguoi bieu dien animation',accent:'#8b7dff'},
+   {id:'gd_dragon_anim',fileId:'1tnxVDQwxnPpqLKhm0b1i_AbV0VNtCHvl',title:"3D stage dragon",get displayTitle(){return this.title;},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage dragon mascot fx rong phuong dai canh animation',accent:'#f59e0b'},
+   {id:'gd_bird_anim',fileId:'1hRG_Qv0xsuN0gFQCKf9BbQzgLdH_PcrV',title:"3D bird / phoenix with wing animation",get displayTitle(){return this.title;},dims:'Rigged GLB · 329 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage bird phoenix wing chim phuong hoang animation',accent:'#fb7185'},
+   {id:'gd_horse_anim',fileId:'18WGQJUIp4nv5ibeK3D_mtKK6MqODW7Kq',title:"3D galloping horse",get displayTitle(){return this.title;},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage horse animal ngua thu animation',accent:'#a855f7'},
+   {id:'gd_fox_anim',fileId:'1PdWashC3t9RcQlfXjuqzjJELaBbI1Zwa',title:"Animated 3D fox",get displayTitle(){return this.title;},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage fox animal cao ho ly animation',accent:'#f97316'},
+   {id:'gd_kaiju_anim',fileId:'1TPyDHRF7f_ykt_cvm0QWtJNWi5H59KGv',title:"3D stage Kaiju monster",get displayTitle(){return this.title;},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage monster kaiju boss quai thu animation',accent:'#ef4444'},
+   {id:'gd_shark_anim',fileId:'1EF9eobaWvmifUc1NTMi1A42UMLAs_jeK',title:"3D ocean shark",get displayTitle(){return this.title;},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage shark ocean sea ca map dai duong animation',accent:'#0ea5e9'},
+   {id:'gd_snake_anim',fileId:'1r2sXhxMWjXGRBkCDeK-tCN5oSnpKMGPt',title:"Animated 3D serpent",get displayTitle(){return this.title;},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage snake animal ran animation',accent:'#10b981'},
+   {id:'gd_spider_anim',fileId:'1xRYooI8UKl0KVqLWwlMTZYsklGdH-17S',title:"3D Halloween / Sci-Fi robot spider",get displayTitle(){return this.title;},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage spider scifi halloween nhen animation',accent:'#6366f1'},
+   {id:'gd_chair_cc0',fileId:'13tGfeOv5c0QxacaQbXPZEmui6sOR--YD',title:"Stage chair (Quaternius CC0)",get displayTitle(){return this.title;},dims:'GLB 3D · 13 KB',license:'CC0 1.0 (Quaternius)',tags:'stage chair seat stool ghe ngoi talkshow',accent:'#34d399'}
   ];
 
   const SEARCH_SYNONYMS16={
@@ -1909,7 +1909,7 @@
   const QUICK_EXAMPLES16=[
    {
     id:'concert_band',
-    get label(){return tr('Ban nhạc Live Concert',"Live concert band");},
+    label:"Live concert band",
     get sub(){return tr('5 Nghệ sĩ + Bục Riser + 2 CO2 FX',"5 musicians + riser + 2 CO2 jets");},
     get desc(){return tr('Thêm đội hình Ca sĩ, Guitarist, Violin, Saxophone, Tay trống kèm bục Riser & 2 súng khói CO2.',"Add a singer, guitarist, violinist, saxophonist and drummer with riser and two CO2 jets.");},
     act:'live_band',
@@ -1922,7 +1922,7 @@
    },
    {
     id:'edm_festival',
-    get label(){return tr('EDM DJ Festival Drop',"EDM DJ Festival Drop");},
+    label:"EDM DJ Festival Drop",
     get sub(){return tr('DJ + 4 Vũ công LED/Laser + Booth & Vòng Kinetic',"DJ + 4 LED / laser dancers + booth & kinetic ring");},
     get desc(){return tr('Dàn dựng đại nhạc hội EDM với bàn DJ Booth LED, vòng Kinetic treo trần, 2 cột khói CO2 & đội vũ công.',"EDM stage with LED DJ booth, suspended kinetic ring, two CO2 jets and dancers.");},
     act:'dj_festival',
@@ -1936,7 +1936,7 @@
    },
    {
     id:'royal_fan_drum',
-    get label(){return tr('Múa Quạt Lụa & Trống Nước',"Silk fan dance & water drums");},
+    label:"Silk fan dance & water drums",
     get sub(){return tr('6 Vũ công quạt 9 nan + 2 Trống nước + Cổng LED',"6 nine-rib fan dancers + 2 water drums + LED arch");},
     get desc(){return tr('Tiết mục mở màn truyền thống kết hợp hiện đại với đội múa quạt lụa 9 nan, 2 trống nước LED & cổng vòm.',"Traditional and modern opening act with silk-fan dancers, two LED water drums and an arch.");},
     act:'fan_dance',
@@ -1950,7 +1950,7 @@
    },
    {
     id:'gala_keynote',
-    get label(){return tr('Lễ Khai mạc & Keynote VIP',"VIP opening ceremony & keynote");},
+    label:"VIP opening ceremony & keynote",
     get sub(){return tr('MC Diễn giả + Bục Cầu LED + Vũ đoàn & Khán giả',"Host + LED sphere lectern + dancers & audience");},
     get desc(){return tr('Dàn dựng lễ khai mạc / hội nghị VIP gồm MC, bục phát biểu chạm cầu LED, vũ đoàn chào mừng & cụm khán giả.',"VIP opening / conference scene with host, LED sphere lectern, welcome dancers and audience.");},
     act:'opening_gala',
@@ -1965,7 +1965,7 @@
    },
    {
     id:'hiphop_cypher',
-    get label(){return tr('Rap / Hip-Hop Catwalk Show',"Rap / Hip-Hop Catwalk Show");},
+    label:"Rap / Hip-Hop Catwalk Show",
     get sub(){return tr('Rapper + DJ + Saxophone + Vũ công LED + Sàn chữ T',"Rapper + DJ + saxophone + LED dancers + T-stage");},
     get desc(){return tr('Sân khấu Rap / Hip-Hop với sàn Catwalk chữ T vươn ra khán giả, Rapper chính, DJ, Saxophone & vũ công LED.',"Rap / Hip-Hop stage with audience-facing T-catwalk, lead rapper, DJ, saxophonist and LED dancers.");},
     act:null,
@@ -2795,57 +2795,57 @@
 
   function buildMenuItems16(menuKey){
    if(menuKey==='view')return [
-    {get label(){return tr('Toàn cảnh sân khấu',"Frame stage");},kbd:'F',run:()=>$('overviewBtn')?.click()},
-    {get label(){return tr('Góc nhìn Chính diện',"Front view");},kbd:'1',run:()=>document.querySelector('#cameraBar [data-camera="front"]')?.click()},
-    {get label(){return tr('Góc nhìn Phối cảnh 3/4 (ISO)',"Three-quarter isometric view");},kbd:'3',run:()=>document.querySelector('#cameraBar [data-camera="iso"]')?.click()},
-    {get label(){return tr('Góc nhìn Cạnh bên',"Side view");},kbd:'7',run:()=>document.querySelector('#cameraBar [data-camera="side"]')?.click()},
-    {get label(){return tr('Góc nhìn Từ trên xuống',"Top view");},kbd:'9',run:()=>document.querySelector('#cameraBar [data-camera="top"]')?.click()},
+    {get label(){return tr('Toàn cảnh sân khấu (Frame All)',"Frame stage (Frame All)");},kbd:'F',run:()=>$('overviewBtn')?.click()},
+    {get label(){return tr('Góc nhìn Chính diện (Front)',"Front view (Front)");},kbd:'1',run:()=>document.querySelector('#cameraBar [data-camera="front"]')?.click()},
+    {get label(){return tr('Góc nhìn Phối cảnh 3/4 (ISO)',"Three-quarter isometric view (ISO)");},kbd:'3',run:()=>document.querySelector('#cameraBar [data-camera="iso"]')?.click()},
+    {get label(){return tr('Góc nhìn Cạnh bên (Side)',"Side view (Side)");},kbd:'7',run:()=>document.querySelector('#cameraBar [data-camera="side"]')?.click()},
+    {get label(){return tr('Góc nhìn Từ trên xuống (Top)',"Top view (Top)");},kbd:'9',run:()=>document.querySelector('#cameraBar [data-camera="top"]')?.click()},
     {sep:true},
     {label:(engine?.cameraLocked?tr('Mở khóa góc Camera (Đang khóa)',"Unlock camera (locked)"):tr('Khóa góc Camera',"Lock camera")),kbd:'L',run:()=>$('lockCameraBtn')?.click()},
-    {get label(){return tr('Viền kỹ thuật Crease 28°',"28° crease edges");},kbd:'',run:()=>{A.creaseEnabled=!A.creaseEnabled;paint();syncBlenderState16();}},
+    {get label(){return tr('Viền kỹ thuật Crease 28° (Wireframe)',"28° crease edges (Wireframe)");},kbd:'',run:()=>{A.creaseEnabled=!A.creaseEnabled;paint();syncBlenderState16();}},
     {get label(){return tr('Ẩn / Hiện thanh công cụ nổi 3D (Phím T)',"Toggle floating 3D tools (T)");},kbd:'T',run:()=>toggleTShelf16()},
     {get label(){return tr('Ẩn / Hiện bảng hai bên (Chế độ Tập trung)',"Toggle side panels (focus mode)");},kbd:'N',run:()=>$('focusBtn')?.click()},
     {get label(){return tr('Bật / Tắt thanh công cụ ngang đầy đủ',"Toggle full horizontal toolbar");},kbd:'',run:()=>$('v16AllToolsBtn')?.click()}
    ];
    if(menuKey==='add')return [
     {get label(){return tr('Nhập mô hình sân khấu (.GLB / .DAE / .OBJ)',"Import stage model (.GLB / .DAE / .OBJ)");},kbd:'',run:()=>$('importModel')?.click()},
-    {get label(){return tr('Nạp sân khấu mẫu',"Load demo stage");},kbd:'',run:()=>$('demoBtn')?.click()},
+    {get label(){return tr('Nạp sân khấu mẫu (Demo Stage)',"Load demo stage");},kbd:'',run:()=>$('demoBtn')?.click()},
     {get label(){return tr('Thêm Video / Ảnh vào Thư viện Media',"Add video / images to media library");},kbd:'',run:()=>$('addMedia')?.click()},
     {sep:true},
     ...Object.entries(CATALOG).map(([k,v])=>({label:`+ ${v.displayName}`,kbd:v.label,thumb:getAssetPreviewURL16(k),run:()=>addCatalogItem(k)})),
     {sep:true},
-    {get label(){return tr('Tìm Asset 3D & Texture CC0',"Find CC0 3D assets & textures");},kbd:'CC0',run:()=>open('search')},
+    {get label(){return tr('Tìm Asset 3D & Texture CC0 (Poly Haven / Wikimedia)',"Find CC0 3D assets & textures (Poly Haven / Wikimedia)");},kbd:'CC0',run:()=>open('search')},
     {get label(){return tr('Thêm Nhân vật 3D (Cast Performers · 15 vai & 5 mẫu show)',"Add 3D performers (15 roles & 5 show presets)");},kbd:'3D',thumb:getPerformerPreviewURL16('fandancer'),run:()=>openCastLibrary16()}
    ];
    if(menuKey==='stage')return [
     {get label(){return tr('Tự động nhận diện các màn hình LED',"Auto-detect LED surfaces");},kbd:'',run:()=>$('autoDetect')?.click()},
-    {get label(){return tr('Vẽ màn LED 4 góc trên model',"Draw four-corner LED surface");},kbd:'',run:()=>$('drawQuad')?.click()},
+    {get label(){return tr('Vẽ màn LED 4 góc trên model (+ 4 góc)',"Draw four-corner LED surface");},kbd:'',run:()=>$('drawQuad')?.click()},
     {get label(){return tr('Sửa mapping 3D bám mặt trước',"Repair front-face 3D mapping");},kbd:'',run:()=>$('repairMapping')?.click()},
-    {get label(){return tr('Hệ quy chiếu mét thật',"Real-world meter reference");},kbd:'',run:()=>$('spatialMapBtn')?.click()},
+    {get label(){return tr('Hệ quy chiếu mét thật (Spatial V0.4)',"Real-world meter reference");},kbd:'',run:()=>$('spatialMapBtn')?.click()},
     {sep:true},
     {get label(){return tr('Quản lý danh sách màn LED',"Manage LED surfaces");},kbd:'',run:()=>$('ledManagerBtn')?.click()},
     {get label(){return tr('Pixel Studio (Đóng gói Atlas 4K)',"Pixel Studio (4K atlas packing)");},kbd:'',run:()=>$('atlasBtn')?.click()},
-    {get label(){return tr('Bàn nâng chữ X',"Scissor lift");},kbd:'',run:()=>openDockByKey16('stageLift124')},
+    {get label(){return tr('Bàn nâng chữ X (Stage & Scissor Lift)',"Scissor lift");},kbd:'',run:()=>openDockByKey16('stageLift124')},
     {get label(){return tr('Thước đo khoảng cách 2 điểm 3D',"Measure distance between two 3D points");},kbd:'',run:()=>triggerTShelfTool16('measure')},
     {get label(){return tr('Tính tải gió & Đối trọng TCVN 2737:2023',"Wind load & ballast (TCVN 2737:2023)");},kbd:'',run:()=>open('tools')}
    ];
    if(menuKey==='lighting')return [
-    {get label(){return tr('Bàn điều khiển Đèn DMX / OFL',"DMX / OFL fixture desk");},kbd:'',run:()=>openDockByKey16('pro127')},
+    {get label(){return tr('Bàn điều khiển Đèn DMX / OFL (Fixture Desk)',"DMX / OFL fixture desk");},kbd:'',run:()=>openDockByKey16('pro127')},
     {get label(){return tr('Hệ thống LED Matrix 35 FX (Quét viền 3D)',"LED Matrix · 35 FX (3D contour scan)");},kbd:'',run:()=>openDockByKey16('matrix143')},
     {get label(){return tr('Vẽ viền LED Matrix trực tiếp trên 3D',"Draw LED Matrix contours in 3D");},kbd:'',run:()=>$('matrix148DrawBtn')?.click()},
-    {get label(){return tr('Đa đèn FX Timecode',"Multi-fixture FX timecode");},kbd:'',run:()=>openDockByKey16('fx141')},
+    {get label(){return tr('Đa đèn FX Timecode (Par / Line / Laser Bar)',"Multi-fixture FX timecode");},kbd:'',run:()=>openDockByKey16('fx141')},
     {get label(){return tr('Thiết kế & Phát tia Laser ILDA (.ild)',"Design & play ILDA laser beams (.ild)");},kbd:'',run:()=>openDockByKey16('laser135')},
-    {get label(){return tr('Gắn đèn theo 6 mặt khối',"Mount fixtures on six faces");},kbd:'',run:()=>openDockByKey16('mount136')},
+    {get label(){return tr('Gắn đèn theo 6 mặt khối (Stage Mount)',"Mount fixtures on six faces");},kbd:'',run:()=>openDockByKey16('mount136')},
     {sep:true},
     {get label(){return tr('Phân tích nhạc & Tự lập kịch bản đèn (FX9)',"Analyze audio & generate lighting cues");},kbd:'',run:()=>$('lxToolbar')?.click()},
-    {get label(){return tr('Ghi tay thao tác ánh sáng',"Record lighting controls");},kbd:'',run:()=>openDockByKey16('l132')}
+    {get label(){return tr('Ghi tay thao tác ánh sáng (Light Take)',"Record lighting controls");},kbd:'',run:()=>openDockByKey16('l132')}
    ];
    if(menuKey==='show')return [
     {get label(){return tr('Mở / Đóng SHOW Timeline (Sequencer đa làn)',"Toggle show timeline (multitrack sequencer)");},kbd:'',run:()=>$('v07Timeline')?.click()},
     {get label(){return tr('Bàn điều khiển Show Timecode SMPTE',"SMPTE show timecode desk");},kbd:'',run:()=>$('tc134EditBtn')?.click()},
-    {get label(){return tr('Quản lý tiết mục',"Manage acts");},kbd:'',run:()=>$('rundownToggle10')?.click()},
+    {get label(){return tr('Quản lý tiết mục (Show Rundown)',"Manage acts");},kbd:'',run:()=>$('rundownToggle10')?.click()},
     {get label(){return tr('Biên đạo 3D khớp xương IK (12 động tác)',"3D IK choreography (12 motions)");},kbd:'',run:()=>$('choreoToggle11')?.click()},
-    {get label(){return tr('Ghi tay chuyển động nhân vật',"Record performer motion");},kbd:'',run:()=>openDockByKey16('m131')},
+    {get label(){return tr('Ghi tay chuyển động nhân vật (Manual Take)',"Record performer motion");},kbd:'',run:()=>openDockByKey16('m131')},
     {sep:true},
     {get label(){return tr('Bàn trộn LIVE VJ & Audio Mixer',"Live VJ & audio mixer");},kbd:'',run:()=>$('vjToggle')?.click()},
     {get label(){return tr('Bắt đầu Trình diễn toàn màn hình',"Start fullscreen presentation");},kbd:'',run:()=>$('presentBtn')?.click()}
@@ -3297,7 +3297,7 @@
     const b=document.createElement('button');
     b.id='v16AssetBtn';
     b.className='btn small';
-    b.textContent=tr('Đạo cụ & Đo 3D',"Props & 3D measure");
+    b.innerHTML=icon('package')+' '+tr('Đạo cụ & Đo 3D',"Props & 3D measure");
     b.title=tr('Mở Thư viện Đạo cụ 3D, Tìm Asset CC0, Thước đo 3D & Tính tải gió TCVN',"Open 3D props, CC0 asset search, 3D measure & TCVN wind load");
     b.onclick=()=>{if(A.isOpen)close();else open('catalog');};
     wf.insertBefore(b,$('exportBtn')||wf.firstChild);
@@ -3306,7 +3306,7 @@
     const t=document.createElement('button');
     t.id='v16AllToolsBtn';
     t.className='btn small';
-    t.textContent=tr('Thanh đầy đủ',"Full toolbar");
+    t.innerHTML=icon('sliders-horizontal')+' '+tr('Thanh đầy đủ',"Full toolbar");
     t.title=tr('Hiện / ẩn toàn bộ các thanh công cụ ngang cổ điển trên mọi bước',"Show / hide full horizontal toolbars in every workspace");
     t.onclick=()=>{
      A.allToolsVisible=!A.allToolsVisible;

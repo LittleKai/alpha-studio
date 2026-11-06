@@ -3676,7 +3676,11 @@
       if (!workflow || !header || !actions || $('toolbar18Groups')) return;
       const file = document.createElement('div'); file.id = 'toolbar18File';
       for (const id of ['loadProject', 'saveProject', 'undoBtn', 'redoBtn']) { const b = $(id); if (b) file.appendChild(b); }
-      header.insertBefore(file, document.querySelector('.project-name') || actions);
+      const center = document.createElement('div'); center.id = 'toolbar18Center';
+      const project = header.querySelector('.project-name');
+      header.insertBefore(center, project || actions);
+      center.appendChild(file);
+      if (project) center.appendChild(project);
       for (const [id, vi, en] of [['undoBtn', 'Hoàn tác · Ctrl+Z', 'Undo · Ctrl+Z'], ['redoBtn', 'Làm lại · Ctrl+Shift+Z', 'Redo · Ctrl+Shift+Z']]) {
         const b = $(id); if (b) { b.title = tr18(vi, en); b.setAttribute('aria-label', b.title); }
       }
@@ -3708,9 +3712,9 @@
       buildGroup('choreo', 'Biên đạo', 'Choreography', ['v07Cast']);
       buildGroup('show', 'Chạy show', 'Live show', ['v07Timeline', 'v07Audio', 'lumi18LiveShowBtn', 'presentBtn', 'toolbar18Show']);
       buildGroup('export', 'Xuất', 'Export', ['exportBtn', 'lumi18BomBtn']);
-      buildGroup('more', 'Thêm', 'More', ['cloud16SaveBtn', 'cloud16OpenBtn', 'cloud16PresetsBtn', 'cloud16ShareBtn', 'recovery142OpenBtn', 'helpBtn', 'v16AllToolsBtn', 'langToggleBtn16'], file);
+      buildGroup('more', 'Thêm', 'More', ['cloud16SaveBtn', 'cloud16OpenBtn', 'cloud16PresetsBtn', 'cloud16ShareBtn', 'recovery142OpenBtn', 'helpBtn', 'v16AllToolsBtn'], file);
       workflow.appendChild(groups);
-      for (const id of ['aiChat18Toggle', 'account18Chip', 'uiSettingsBtn16', 'themeToggleBtn']) { const b = $(id); if (b) actions.appendChild(b); }
+      for (const id of ['aiChat18Toggle', 'account18Chip', 'uiSettingsBtn16', 'langToggleBtn16', 'themeToggleBtn']) { const b = $(id); if (b) actions.appendChild(b); }
       $('v07Timeline')?.replaceChildren(document.createTextNode('Timeline'));
     }
 

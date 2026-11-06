@@ -1,4 +1,4 @@
-/* ===== Design tokens. Deep blue-black studio surfaces, classic cyan-violet button palette,
+/* ===== Design tokens. Deep blue-black studio surfaces, flat blue button palette,
    and semantic accent colours for icons and section headers. Every text token passes WCAG AA
    on every surface; field edges reach 3:1. ===== */
 :root {
@@ -14,6 +14,16 @@
   --border-field: #5a7ca8;
   --border-secondary: #3b5980;
   --border-button: #345177;
+  --button-bg: #253247;
+  --button-hover: #30425e;
+  --button-text: #e6edf7;
+  --button-border: #6483ab;
+  --button-primary: #2563eb;
+  --button-primary-hover: #1d4ed8;
+  --button-on-primary: #ffffff;
+  --button-focus: #6095d8;
+  --utility-bg: #203b60;
+  --utility-text: #dbeaff;
   /* Accent (primary action, selection, focus, section headers & icons). */
   --accent: #61e8ff;
   --accent-hover: #35d7f4;
@@ -78,6 +88,13 @@ html[data-ui-size="l"] { --ui-scale: 1.15; }
   --border-field: #7d7872;
   --border-secondary: #94a3b8;
   --border-button: #a8a39c;
+  --button-bg: #ffffff;
+  --button-hover: #ecebe8;
+  --button-text: #1c1b19;
+  --button-border: #7d7872;
+  --button-focus: #2563eb;
+  --utility-bg: #e0ebff;
+  --utility-text: #1e40af;
   --accent: #1d5bd6;
   --accent-hover: #184cb4;
   --on-accent: #ffffff;
@@ -293,15 +310,85 @@ dialog, .export-menu, #toast {
   background: var(--bg-hover);
 }
 .btn.primary, .play-btn {
-  background: var(--accent-primary);
-  background-image: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  border-color: var(--accent-primary);
-  color: var(--on-accent);
+  background: var(--button-primary);
+  border-color: var(--button-primary);
+  color: var(--button-on-primary);
   font-weight: 700;
 }
 .step.active {
   border-bottom-color: var(--accent-primary) !important;
   color: var(--text-primary);
+}
+/* Step-specific color themes */
+.step[data-step="stage"] {
+  --step-accent: #38bdf8;
+  --step-soft: rgba(56, 189, 248, 0.12);
+  --step-border: rgba(56, 189, 248, 0.35);
+  --step-active-bg: rgba(56, 189, 248, 0.22);
+}
+.step[data-step="mapping"] {
+  --step-accent: #c084fc;
+  --step-soft: rgba(192, 132, 252, 0.12);
+  --step-border: rgba(192, 132, 252, 0.35);
+  --step-active-bg: rgba(192, 132, 252, 0.22);
+}
+.step[data-step="lighting"] {
+  --step-accent: #fbbf24;
+  --step-soft: rgba(251, 191, 36, 0.12);
+  --step-border: rgba(251, 191, 36, 0.35);
+  --step-active-bg: rgba(251, 191, 36, 0.22);
+}
+.step[data-step] > span {
+  background: var(--step-soft);
+  color: var(--step-accent);
+  border: 1px solid var(--step-border);
+  font-weight: 700;
+  transition: all 0.15s ease;
+}
+.step[data-step]:hover {
+  color: var(--step-accent);
+}
+.step[data-step].active {
+  border-bottom-color: var(--step-accent) !important;
+  color: var(--text-primary);
+}
+.step[data-step].active > span {
+  background: var(--step-active-bg) !important;
+  color: var(--step-accent) !important;
+  border-color: var(--step-accent) !important;
+  box-shadow: none;
+}
+.step[data-step].active b {
+  color: var(--step-accent);
+}
+[data-theme="light"] .step[data-step="stage"] {
+  --step-accent: #0284c7;
+  --step-soft: #e0f2fe;
+  --step-border: #7dd3fc;
+  --step-active-bg: #bae6fd;
+}
+[data-theme="light"] .step[data-step="mapping"] {
+  --step-accent: #9333ea;
+  --step-soft: #f3e8ff;
+  --step-border: #d8b4fe;
+  --step-active-bg: #e9d5ff;
+}
+[data-theme="light"] .step[data-step="lighting"] {
+  --step-accent: #d97706;
+  --step-soft: #fef3c7;
+  --step-border: #fde68a;
+  --step-active-bg: #fde68a;
+}
+[data-theme="light"] .step[data-step].active {
+  border-bottom-color: var(--step-accent) !important;
+}
+[data-theme="light"] .step[data-step].active > span {
+  background: var(--step-active-bg) !important;
+  color: var(--step-accent) !important;
+  border-color: var(--step-accent) !important;
+}
+[data-theme="light"] .step[data-step].active b {
+  color: var(--step-accent) !important;
 }
 .timecode, #seqTC, .tc134-clock, .laser135-time, #fps, #engineState {
   font-family: Consolas, Menlo, Monaco, monospace;
@@ -348,15 +435,15 @@ dialog, .export-menu, #toast {
   border-color: var(--border-primary);
 }
 [data-theme="light"] .btn:not(.primary):not(.quiet) {
-  background: var(--bg-field);
-  border-color: var(--border-secondary);
-  color: var(--text-primary);
+  background: var(--button-bg);
+  border-color: var(--button-border);
+  color: var(--button-text);
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
 }
 [data-theme="light"] .btn:not(.primary):not(.quiet):hover {
-  background: var(--bg-panel) !important;
-  border-color: var(--accent) !important;
-  color: var(--accent-text) !important;
+  background: var(--button-hover) !important;
+  border-color: var(--button-focus) !important;
+  color: var(--button-text) !important;
 }
 [data-theme="light"] .brand strong,
 [data-theme="light"] .brand strong span,
@@ -648,9 +735,9 @@ dialog, .export-menu, #toast {
 }
 [data-theme="light"] .btn.primary,
 [data-theme="light"] .play-btn {
-  background: var(--accent) !important;
-  border-color: var(--accent) !important;
-  color: #ffffff !important;
+  background: var(--button-primary) !important;
+  border-color: var(--button-primary) !important;
+  color: var(--button-on-primary) !important;
 }
 
 body.client-review-mode .left-panel,
@@ -790,9 +877,9 @@ body.client-review-mode #viewport {
   padding: 5px 9px !important;
   min-height: 27px !important;
   line-height: 1.2 !important;
-  border: 1px solid var(--border-button) !important;
-  background: var(--bg-card) !important;
-  color: var(--text-primary) !important;
+  border: 1px solid var(--button-border) !important;
+  background: var(--button-bg) !important;
+  color: var(--button-text) !important;
   box-shadow: none !important;
 }
 .header-actions .btn:hover,
@@ -800,7 +887,7 @@ body.client-review-mode #viewport {
 .navigation-strip .btn:hover,
 #dirToolbar button:hover,
 #pro127bar button:hover {
-  border-color: var(--accent-primary) !important;
+  border-color: var(--button-focus) !important;
   background: var(--bg-hover) !important;
 }
 .header-actions .btn.primary,
@@ -819,9 +906,9 @@ body.client-review-mode #viewport {
 #v16AssetBtn.active:hover,
 #v16AllToolsBtn.active,
 #v16AllToolsBtn.active:hover {
-  background: var(--accent-primary) !important;
-  border-color: var(--accent-primary) !important;
-  color: var(--on-accent) !important;
+  background: var(--button-primary) !important;
+  border-color: var(--button-primary) !important;
+  color: var(--button-on-primary) !important;
   font-weight: 700 !important;
 }
 [data-theme="light"] .header-actions .btn,
@@ -829,7 +916,7 @@ body.client-review-mode #viewport {
 [data-theme="light"] .navigation-strip .btn,
 [data-theme="light"] #dirToolbar button,
 [data-theme="light"] #pro127bar button {
-  border-color: var(--border-secondary) !important;
+  border-color: var(--button-border) !important;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05) !important;
 }
 [data-theme="light"] .header-actions .btn:hover,
@@ -837,9 +924,9 @@ body.client-review-mode #viewport {
 [data-theme="light"] .navigation-strip .btn:hover,
 [data-theme="light"] #dirToolbar button:hover,
 [data-theme="light"] #pro127bar button:hover {
-  background: var(--bg-panel) !important;
-  border-color: var(--accent) !important;
-  color: var(--accent-text) !important;
+  background: var(--button-hover) !important;
+  border-color: var(--button-focus) !important;
+  color: var(--button-text) !important;
 }
 [data-theme="light"] .header-actions .btn.primary,
 [data-theme="light"] .workflow-right .btn.primary,
@@ -849,9 +936,9 @@ body.client-review-mode #viewport {
 [data-theme="light"] #pro127bar button.active,
 [data-theme="light"] #v16AssetBtn.active,
 [data-theme="light"] #v16AllToolsBtn.active {
-  background: var(--accent) !important;
-  border-color: var(--accent) !important;
-  color: #ffffff !important;
+  background: var(--button-primary) !important;
+  border-color: var(--button-primary) !important;
+  color: var(--button-on-primary) !important;
 }
 
 /* Compact, unified tool ribbons above the 3D viewport */
@@ -1126,9 +1213,9 @@ body.v16-blender-ui .left-panel .object-section.v16-collapsed {
 body.v16-compact-ui .left-panel .object-section > .item-list,
 body.v16-blender-ui .left-panel .object-section > .item-list {
   min-height: 96px;
-  max-height: clamp(120px, 32vh, 260px);
+  max-height: none;
   overflow-y: auto;
-  flex: 1 1 auto;
+  flex: 1 1 0;
 }
 body.v16-compact-ui .left-panel .import-section,
 body.v16-blender-ui .left-panel .import-section {
@@ -1287,9 +1374,9 @@ body.v16-blender-ui .inspector-block.v16-collapsed > .block-title {
   font-size: var(--fs-sm);
   font-weight: 600;
   border-radius: 6px;
-  border: 1px solid rgba(205, 235, 255, 0.12);
-  background: rgba(17, 34, 58, 0.45);
-  color: var(--text-secondary);
+  border: 1px solid var(--button-border);
+  background: var(--button-bg);
+  color: var(--button-text);
   white-space: nowrap;
 }
 .v16-header-menus button:hover,
@@ -1485,9 +1572,9 @@ body.focus-workspace #v16PropRail {
   box-shadow: 0 6px 20px rgba(15, 23, 42, 0.22);
 }
 [data-theme="light"] .v16-header-menus button {
-  background: var(--bg-field) !important;
-  border-color: var(--border-secondary) !important;
-  color: var(--text-primary) !important;
+  background: var(--button-bg) !important;
+  border-color: var(--button-border) !important;
+  color: var(--button-text) !important;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
 }
 [data-theme="light"] .v16-header-menus button:hover,
@@ -1635,15 +1722,15 @@ html:not([data-theme="light"]) #v16PropRail button[data-prop16="m131"] .ico{colo
 .theme-ico-light{display:none}
 [data-theme="light"] .theme-ico-dark{display:none}
 [data-theme="light"] .theme-ico-light{display:inline-flex}
-/* ===== Buttons: classic dark studio palette & three tiers =====
-   primary  .btn.primary   cyan-to-violet gradient fill with dark text in dark mode
-   default  .btn           deep blue-slate card fill, cyan hover border
+/* ===== Buttons: flat blue studio palette & three tiers =====
+   primary  .btn.primary   solid blue fill with white text in both themes
+   default  .btn           blue-slate fill, visible border
    text     .btn.text / .text-btn   low-emphasis, no box */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:30px;padding:0 12px;border:1px solid var(--border-button);border-radius:6px;background:var(--bg-field);color:var(--text-primary);font-size:var(--fs-sm);font-weight:600;line-height:1.2}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:30px;padding:0 12px;border:1px solid var(--button-border);border-radius:6px;background:var(--button-bg);color:var(--button-text);font-size:var(--fs-sm);font-weight:600;line-height:1.2}
 .btn.small{min-height:28px;padding:0 10px}
-.btn:hover:not(:disabled){background:var(--bg-hover);border-color:var(--accent-primary);filter:none}
-.btn.primary,.play-btn{background:var(--accent-primary);background-image:linear-gradient(135deg,var(--accent-primary),var(--accent-secondary));border-color:var(--accent-primary);color:var(--on-accent);font-weight:700}
-.btn.primary:hover:not(:disabled),.play-btn:hover:not(:disabled){background:var(--accent-primary-hover);background-image:linear-gradient(135deg,var(--accent-primary-hover),#9c8fff);border-color:var(--accent-primary);color:var(--on-accent)}
+.btn:hover:not(:disabled){background:var(--button-hover);border-color:var(--button-focus);filter:none}
+.btn.primary,.play-btn{background:var(--button-primary);border-color:var(--button-primary);color:var(--button-on-primary);font-weight:700}
+.btn.primary:hover:not(:disabled),.play-btn:hover:not(:disabled){background:var(--button-primary-hover)!important;border-color:var(--button-primary-hover)!important;color:var(--button-on-primary)!important}
 .btn.active,.btn[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent-primary);color:var(--text-primary)}
 .btn.text,.btn.quiet,.text-btn{background:transparent;border-color:transparent;color:var(--accent-text);font-weight:600}
 .btn.text:hover:not(:disabled),.btn.quiet:hover:not(:disabled),.text-btn:hover:not(:disabled){background:var(--accent-soft)}
@@ -1653,14 +1740,10 @@ html:not([data-theme="light"]) #v16PropRail button[data-prop16="m131"] .ico{colo
 .icon-btn{border-radius:6px;color:var(--icon-accent)}
 .icon-btn:hover{background:var(--bg-hover);color:var(--text-primary);border-color:var(--border-button)}
 .icon-btn.active,.icon-btn[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent-primary);color:var(--accent-text)}
-/* Classic feature button tints from pre-redesign dark theme */
+/* Brand identity and semantic lock state stay distinct from action colours. */
 .brandmark{background:linear-gradient(135deg,#8f73ef,#5040a0);color:#ffffff}
-html:not([data-theme="light"]) .repair-mapping{background:#133638!important;border-color:#3f7d7b!important;color:#9ef2e8!important}
-html:not([data-theme="light"]) #spatialMapBtn,html:not([data-theme="light"]) #pickLightSidebar{background:#163445;border:1px solid #3f7c99;color:#a8eeff}
-html:not([data-theme="light"]) .workflow-right .live-toggle,html:not([data-theme="light"]) #vjToggle{background:#143a34!important;border-color:#388274!important;color:#a8f7e4!important}
-html:not([data-theme="light"]) #lxToolbar{background:#143831!important;border-color:#386f62!important;color:#a8f2d9!important}
-html:not([data-theme="light"]) .new-tools10 button{background:#143139!important;border-color:#466b77!important;color:#9de6df!important}
-html:not([data-theme="light"]) #choreoToggle11{background:#184543!important;border-color:#55bfb0!important;color:#c7fff2!important}
+.repair-mapping,#choreoToggle11{background:var(--button-bg)!important;border-color:var(--button-border)!important;color:var(--button-text)!important}
+.repair-mapping:hover:not(:disabled),#choreoToggle11:hover:not(:disabled){background:var(--button-hover)!important;border-color:var(--button-focus)!important}
 html:not([data-theme="light"]) #lockCameraBtn.active,html:not([data-theme="light"]) #showLock.active,html:not([data-theme="light"]) #v16NavLockBtn.active{background:#38270b!important;border-color:#f59e0b!important;color:#fef08a!important}
 html:not([data-theme="light"]) #lockCameraBtn.active .ico,html:not([data-theme="light"]) #showLock.active .ico,html:not([data-theme="light"]) #v16NavLockBtn.active svg{color:#fef08a!important}
 @media(prefers-reduced-motion:reduce){.btn.is-busy::after,.btn[aria-busy="true"]::after{animation-duration:2.4s}}
@@ -1696,9 +1779,23 @@ body.client-review-mode #aiChat18,body.client-review-mode #aiChat18Toggle{displa
 .billing18-summary{font-size:var(--fs-sm);color:var(--text-secondary);margin-bottom:16px}.billing18-plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.billing18-plan{display:flex;flex-direction:column;align-items:flex-start;padding:14px;border:1px solid var(--border-field);border-radius:6px;background:var(--bg-field);gap:8px;min-width:0}.billing18-plan h3{font-size:var(--fs-lg);margin:0}.billing18-plan>strong{font-size:var(--fs-lg)}.billing18-plan small{font-size:var(--fs-sm);color:var(--text-secondary)}.billing18-plan ul{padding-left:16px;font-size:var(--fs-sm);line-height:1.7;flex:1}.billing18-plan .btn{width:100%}
 @media(max-width:700px){.billing18-plans{grid-template-columns:1fr}}
 #toolbar18File{display:flex;align-items:center;gap:4px;flex:none}#toolbar18Groups{display:flex;align-items:center;gap:0;min-width:0}
+.topbar:has(#toolbar18Center){display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
+#toolbar18Center{display:flex;align-items:center;justify-content:center;gap:12px;min-width:0}
+.topbar #toolbar18Center .project-name{display:flex;flex:0 1 auto;min-width:0}
+.topbar:has(#toolbar18Center) .header-actions{justify-self:end}
+#projectName{max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border:1px solid transparent;border-radius:6px;background:transparent;color:inherit;padding:5px 7px;text-align:left;font-size:var(--fs-sm)}
+#projectName:hover{background:var(--bg-hover);border-color:var(--border-button)}
+#projectName[hidden]{display:none}
+#projectNameInput{width:200px;font-size:var(--fs-sm);padding:5px 7px}
+.header-actions #langToggleBtn16,.header-actions #themeToggleBtn{display:inline-flex;align-items:center;justify-content:center;min-width:34px;min-height:30px;padding:4px 8px;border:1px solid var(--button-focus)!important;border-radius:6px;background:var(--utility-bg)!important;color:var(--utility-text)!important;font-weight:700}
+.header-actions #langToggleBtn16 .ico,.header-actions #themeToggleBtn .ico{color:currentColor}
+.header-actions #langToggleBtn16:hover,.header-actions #themeToggleBtn:hover{background:var(--button-hover)!important;border-color:var(--button-focus)!important}
+@media(max-width:1100px){#toolbar18Center{gap:6px}.topbar #toolbar18Center .project-name{max-width:130px}.topbar #toolbar18Center .local-badge{display:none}#projectNameInput{width:130px}}
+@media(max-width:1000px){.topbar #toolbar18Center .project-name{display:none}}
+@media(max-width:850px){.topbar:has(#toolbar18Center){grid-template-columns:auto minmax(0,1fr) auto}}
 #toolbar18Groups>.btn{border:0;border-right:1px solid var(--border-primary);border-radius:0;display:inline-flex;gap:4px;align-items:center;white-space:nowrap;padding:6px 10px;font-size:var(--fs-sm)}#toolbar18Groups>.btn:last-child{border-right:0}#toolbar18Groups .ico{width:12px;height:12px}
 .toolbar18-menu{position:fixed;inset:auto;margin:0;padding:8px;min-width:230px;max-width:calc(100vw - 16px);max-height:calc(100vh - 100px);overflow:auto;border:1px solid var(--border-field);border-radius:6px;background:var(--bg-panel);color:var(--text-primary);box-shadow:var(--shadow-pop)}
-.toolbar18-menu>button{display:flex;width:100%;text-align:left;align-items:center;justify-content:flex-start;margin:0;padding:9px 10px;border:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--fs-sm);white-space:normal;border-radius:4px;min-height:32px}.toolbar18-menu>button:hover{background:var(--bg-hover)}.toolbar18-menu>button:focus-visible{outline:2px solid var(--accent)}
+.toolbar18-menu>button{display:flex;width:100%;text-align:left;align-items:center;justify-content:flex-start;gap:6px;margin:0;padding:9px 10px;border:0;background:transparent;color:var(--text-primary);font:inherit;font-size:var(--fs-sm);white-space:normal;border-radius:4px;min-height:32px}.toolbar18-menu>button:hover{background:var(--bg-hover)}.toolbar18-menu>button:focus-visible{outline:2px solid var(--accent)}
 .workflow .workflow-right{overflow:visible;flex:1;min-width:0;justify-content:flex-end}.topbar .header-actions{overflow:visible}.topbar .project-name{flex:1;min-width:0}.topbar .brand{flex:none}.topbar .brand strong{white-space:nowrap}.toolbar18-menu #ledManagerBtn,.toolbar18-menu #atlasBtn,.toolbar18-menu #vjToggle,.toolbar18-menu #v07Cast{display:flex!important}
 @media(max-width:1450px){#toolbar18Groups>.btn{padding:6px 7px}.workflow .steps{gap:4px}.workflow .step{padding:0 4px}.topbar .brand small{display:none}.topbar .project-name{display:flex}.topbar .brand strong span{display:block;font-size:var(--fs-xs)}}
 @media(max-width:1100px){.workflow{overflow:visible;flex-wrap:wrap;align-content:center}#toolbar18Groups>.btn{padding:5px}.workflow .steps .step>span{display:none}.topbar .project-name{display:none}}
