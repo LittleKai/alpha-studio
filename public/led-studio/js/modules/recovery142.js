@@ -523,7 +523,7 @@
   document.body.appendChild(recoveryDialog);
   const recoveryButton = document.createElement('button');
   recoveryButton.id = 'recovery142OpenBtn'; recoveryButton.type = 'button'; recoveryButton.className = 'btn small';
-  recoveryButton.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-history"></use></svg><span>' + L('Dự phòng', "Recovery") + '</span>'; recoveryButton.title = L('Sao lưu và khôi phục dự án', "Back up and restore projects");
+  recoveryButton.textContent = L('Dự phòng', "Recovery"); recoveryButton.title = L('Sao lưu và khôi phục dự án', "Back up and restore projects");
   document.querySelector('.header-actions')?.prepend(recoveryButton);
   function paintStatus() {
     const status = el('recovery142Status');
@@ -619,9 +619,7 @@
     recoveryDialog.querySelector(".recovery142-note").textContent = L("Sao lưu ngay thay bản dự phòng trước. Khôi phục mở bản dự phòng làm dự án hiện tại. Trình duyệt có thể xóa dữ liệu này khi bạn dọn dữ liệu duyệt web.", "Back up now replaces the previous backup. Restore opens the backup as the current project. Clearing browsing data may remove this backup.");
     el('recovery142Close').setAttribute('aria-label', L('Đóng dự phòng', 'Close recovery'));
     recoveryDialog.querySelector('.recovery142-auto > span').firstChild.textContent = L('Tự dự phòng mỗi 30 giây', 'Back up automatically every 30 seconds');
-    const sp = recoveryButton.querySelector('span');
-    if (sp) sp.textContent = L('Dự phòng', 'Recovery');
-    else recoveryButton.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-history"></use></svg><span>' + L('Dự phòng', 'Recovery') + '</span>';
+    recoveryButton.textContent = L('Dự phòng', 'Recovery');
     document.title = L(`ALPHA Creative LED Studio ${shortVer} | Sân khấu 3D · 35 FX · Đạo cụ & Biên đạo`, `ALPHA Creative LED Studio ${shortVer} | 3D Stage · 35 FX · Props & Choreography`);
     if (brand) brand.textContent = L(`${shortVer} / Sân khấu 3D · 35 FX · DMX & ILDA`, `${shortVer} / 3D Stage · 35 FX · DMX & ILDA`);
     if (presentSpan) presentSpan.textContent = L(`XEM SÂN KHẤU / ${shortVer}`, `STAGE PREVIEW / ${shortVer}`);

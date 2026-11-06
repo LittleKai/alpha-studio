@@ -3652,23 +3652,14 @@
 
     function updateTopbarBadge18() {
       const tplBtn = $('lumi18TemplatesBtn');
-      if (tplBtn) {
-        const sp = tplBtn.querySelector('span');
-        if (sp) sp.textContent = t18('templatesBtn');
-        else tplBtn.innerHTML = ico18('box') + `<span>${t18('templatesBtn')}</span>`;
-      }
+      if (tplBtn) tplBtn.textContent = t18('templatesBtn');
       const aiBtn = $('lumi18AiBtn');
       if (aiBtn) aiBtn.textContent = t18('aiBtn');
       const bomBtn = $('lumi18BomBtn');
-      if (bomBtn) {
-        const sp = bomBtn.querySelector('span');
-        if (sp) sp.textContent = t18('bomBtn');
-        else bomBtn.innerHTML = ico18('file-text') + `<span>${t18('bomBtn')}</span>`;
-      }
+      if (bomBtn) bomBtn.textContent = t18('bomBtn');
       const showBtn = $('lumi18LiveShowBtn');
       if (showBtn) {
-        const ico = lumiState.showSafetyLock ? 'lock' : 'clapperboard';
-        showBtn.innerHTML = ico18(ico) + `<span>${t18('liveShowBtn')}</span>`;
+        showBtn.textContent = lumiState.showSafetyLock ? `${t18('liveShowBtn')}` : t18('liveShowBtn');
       }
       const chip = $('account18Chip');
       if (chip) {
@@ -3697,20 +3688,10 @@
         ['add', 'toolbar18Add'], ['stage', 'toolbar18Led'], ['lighting', 'toolbar18Lights'], ['show', 'toolbar18Show']
       ];
       for (const [key, id] of menus) { const b = document.querySelector(`[data-v16menu="${key}"]`); if (b) b.id = id; }
-      const groupIcons = {
-        stage: 'package',
-        led: 'grid-3x3',
-        lights: 'moving-head',
-        choreo: 'drama',
-        show: 'clapperboard',
-        export: 'download',
-        more: 'more-horizontal'
-      };
       const groups = document.createElement('div'); groups.id = 'toolbar18Groups';
       const buildGroup = (id, vi, en, ids, parent = groups) => {
         const trigger = document.createElement('button'); trigger.type = 'button'; trigger.className = 'btn small'; trigger.id = `toolbar18-${id}`;
-        const lead = ico18(groupIcons[id] || 'layers');
-        trigger.innerHTML = `${lead}<span>${tr18(vi, en)}</span>${ico18('chevron-down')}`;
+        trigger.innerHTML = (id === 'more' ? ico18('more-horizontal') : '') + `<span>${tr18(vi, en)}</span>` + (id === 'more' ? '' : ico18('chevron-down'));
         trigger.title = tr18(vi, en); trigger.setAttribute('aria-label', trigger.title); trigger.setAttribute('aria-expanded', 'false');
         const pop = document.createElement('div'); pop.id = `toolbar18-${id}-menu`; pop.className = 'toolbar18-menu';
         pop.setAttribute('popover', ''); pop.setAttribute('role', 'dialog'); pop.setAttribute('aria-label', trigger.title);
@@ -3734,12 +3715,7 @@
       buildGroup('more', 'Thêm', 'More', ['cloud16SaveBtn', 'cloud16OpenBtn', 'cloud16PresetsBtn', 'cloud16ShareBtn', 'recovery142OpenBtn', 'helpBtn', 'v16AllToolsBtn'], file);
       workflow.appendChild(groups);
       for (const id of ['aiChat18Toggle', 'account18Chip', 'uiSettingsBtn16', 'langToggleBtn16', 'themeToggleBtn']) { const b = $(id); if (b) actions.appendChild(b); }
-      const tl = $('v07Timeline');
-      if (tl) {
-        const sp = tl.querySelector('span');
-        if (sp) sp.textContent = tr18('Timeline', 'Timeline');
-        else tl.innerHTML = ico18('sliders-horizontal') + `<span>${tr18('Timeline', 'Timeline')}</span>`;
-      }
+      $('v07Timeline')?.replaceChildren(document.createTextNode('Timeline'));
     }
 
 
@@ -3757,15 +3733,17 @@
         tplBtn.id = 'lumi18TemplatesBtn';
         tplBtn.type = 'button';
         tplBtn.className = 'btn small';
-        tplBtn.innerHTML = ico18('box') + `<span>${t18('templatesBtn')}</span>`;
+        tplBtn.textContent = t18('templatesBtn');
         tplBtn.title = tr18('6 mẫu sân khấu sự kiện', '6 event stage templates');
         tplBtn.onclick = () => openStageTemplatesModal();
+
+
 
         const bomBtn = document.createElement('button');
         bomBtn.id = 'lumi18BomBtn';
         bomBtn.type = 'button';
         bomBtn.className = 'btn small';
-        bomBtn.innerHTML = ico18('file-text') + `<span>${t18('bomBtn')}</span>`;
+        bomBtn.textContent = t18('bomBtn');
         bomBtn.title = tr18('Bóc tách khối lượng, báo giá và bản vẽ DXF', 'Bill of materials, quotes and DXF drawings');
         bomBtn.onclick = () => openBomAndQuoteModal();
 
@@ -3773,7 +3751,7 @@
         showBtn.id = 'lumi18LiveShowBtn';
         showBtn.type = 'button';
         showBtn.className = 'btn small';
-        showBtn.innerHTML = ico18('clapperboard') + `<span>${t18('liveShowBtn')}</span>`;
+        showBtn.textContent = t18('liveShowBtn');
         showBtn.title = tr18('Chạy show, đầu ra LED và khóa an toàn', 'Live show, LED output and safety lock');
         showBtn.onclick = () => openLiveShowModal();
 
@@ -3801,17 +3779,17 @@
       if (exportMenu && !$('exportShot4K')) {
         const btn4K = document.createElement('button');
         btn4K.id = 'exportShot4K';
-        btn4K.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-camera"></use></svg><div><b>' + tr18('Phối cảnh 3D 4K', '4K stage image') + '</b><span>PNG / 3840 x 2160</span></div>';
+        btn4K.innerHTML = tr18('Phối cảnh 3D 4K', '4K stage image') + ' <span>PNG / 3840 x 2160</span>';
         btn4K.onclick = () => S.exportShot4K?.();
 
         const btnDxf = document.createElement('button');
         btnDxf.id = 'exportCadDxf18';
-        btnDxf.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-ruler"></use></svg><div><b>' + tr18('Bản vẽ 2D', '2D drawing') + '</b><span>' + tr18('DXF / Mặt bằng & Mặt đứng', 'DXF / Floor plan & elevation') + '</span></div>';
+        btnDxf.innerHTML = tr18('Bản vẽ 2D', '2D drawing') + '<span>' + tr18('DXF / Mặt bằng & Mặt đứng', 'DXF / Floor plan & elevation') + '</span>';
         btnDxf.onclick = () => exportStageDxf();
 
         const btnQuote = document.createElement('button');
         btnQuote.id = 'exportQuotePdf18';
-        btnQuote.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-file-text"></use></svg><div><b>' + tr18('Báo giá & BOM', 'Quote & BOM') + '</b><span>PDF / CSV</span></div>';
+        btnQuote.innerHTML = tr18('Báo giá & BOM', 'Quote & BOM') + '<span>PDF / CSV</span>';
         btnQuote.onclick = () => openBomAndQuoteModal();
 
         const firstShot = $('exportShot');

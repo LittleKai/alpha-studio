@@ -194,23 +194,7 @@
     }
     for (const [sel, viText, enText] of DOM_TRANSLATIONS) {
       const el = document.querySelector?.(sel);
-      if (el) {
-        const text = t16(viText, enText);
-        const span = el.querySelector?.('span:not(.theme-ico-dark):not(.theme-ico-light)');
-        if (span) {
-          span.textContent = text;
-        } else if (el.querySelector?.('svg')) {
-          const svg = el.querySelector('svg');
-          el.childNodes.forEach((child) => {
-            if (child.nodeType === 3) child.remove();
-          });
-          const newSpan = document.createElement('span');
-          newSpan.textContent = text;
-          el.appendChild(newSpan);
-        } else {
-          el.textContent = text;
-        }
-      }
+      if (el) el.textContent = t16(viText, enText);
     }
     const langBtn = document.getElementById('langToggleBtn16');
     if (langBtn) {
@@ -246,21 +230,16 @@
         : (isEn ? 'Hide Grid' : 'Ẩn lưới');
     }
     const exportItems = [
-      ['#exportShot', '<svg class="ico" aria-hidden="true"><use href="#i-camera"></use></svg>', 'Phối cảnh 3D', '3D Perspective Shot', 'PNG / 1920 x 1080', 'PNG / 1920 x 1080'],
-      ['#exportShot4K', '<svg class="ico" aria-hidden="true"><use href="#i-camera"></use></svg>', 'Phối cảnh 3D 4K', '4K Stage Image', 'PNG / 3840 x 2160', 'PNG / 3840 x 2160'],
-      ['#exportCadDxf18', '<svg class="ico" aria-hidden="true"><use href="#i-ruler"></use></svg>', 'Bản vẽ 2D CAD', '2D CAD Drawing', 'DXF / Mặt bằng & Mặt đứng', 'DXF / Floor plan & elevation'],
-      ['#exportQuotePdf18', '<svg class="ico" aria-hidden="true"><use href="#i-file-text"></use></svg>', 'Báo giá & BOM', 'Quote & BOM', 'PDF / CSV', 'PDF / CSV'],
-      ['#exportMapPNG', '<svg class="ico" aria-hidden="true"><use href="#i-grid-3x3"></use></svg>', 'Pixel Map có nhãn', 'Labeled Pixel Map', 'PNG / đúng kích thước', 'PNG / exact size'],
-      ['#exportJSON', '<svg class="ico" aria-hidden="true"><use href="#i-file-text"></use></svg>', 'Cấu hình mapping', 'Mapping Config', 'JSON', 'JSON'],
-      ['#exportCSV', '<svg class="ico" aria-hidden="true"><use href="#i-file-text"></use></svg>', 'Bảng thông số LED', 'LED Spec Sheet', 'CSV', 'CSV'],
-      ['#recordBtn', '<svg class="ico" aria-hidden="true"><use href="#i-video"></use></svg>', 'Ghi video preview', 'Record Video Preview', 'WebM / realtime + audio', 'WebM / realtime + audio']
+      ['#exportShot', 'Phối cảnh 3D', '3D Perspective Shot', 'PNG / 1920 x 1080', 'PNG / 1920 x 1080'],
+      ['#exportMapPNG', 'Pixel Map có nhãn', 'Labeled Pixel Map', 'PNG / đúng kích thước', 'PNG / exact size'],
+      ['#exportJSON', 'Cấu hình mapping', 'Mapping Config', 'JSON', 'JSON'],
+      ['#exportCSV', 'Bảng thông số LED', 'LED Spec Sheet', 'CSV', 'CSV'],
+      ['#recordBtn', 'Ghi video preview', 'Record Video Preview', 'WebM / realtime + audio', 'WebM / realtime + audio']
     ];
-    for (const [sel, defaultIco, viMain, enMain, viSub, enSub] of exportItems) {
+    for (const [sel, viMain, enMain, viSub, enSub] of exportItems) {
       const btn = document.querySelector?.(sel);
       if (btn) {
-        const oldSvg = btn.querySelector('svg.ico')?.outerHTML;
-        const svgHtml = oldSvg || defaultIco;
-        btn.innerHTML = `${svgHtml}<div><b>${isEn ? enMain : viMain}</b><span>${isEn ? enSub : viSub}</span></div>`;
+        btn.innerHTML = `${isEn ? enMain : viMain} <span>${isEn ? enSub : viSub}</span>`;
       }
     }
     const pq = document.getElementById('previewQuality');
@@ -1142,7 +1121,7 @@
             return (
               `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;gap:10px">` +
               `<div><strong>${i === 0 ? t16('Bản mới nhất', 'Latest') : `${t16('Phiên bản', 'Revision')} #${revisions.length - i}`}</strong> · <small>${esc16(dt)} ${kb ? '· ' + esc16(kb) : ''}</small></div>` +
-              `<button type="button" class="btn small primary" data-drive16-rev="${esc16(r.id)}"><svg class="ico" aria-hidden="true"><use href="#i-history"></use></svg><span>${t16('Khôi phục', 'Restore')}</span></button>` +
+              `<button type="button" class="btn small primary" data-drive16-rev="${esc16(r.id)}">${t16('Khôi phục', 'Restore')}</button>` +
               `</div>`
             );
           }).join('')
@@ -1261,8 +1240,8 @@
         `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;gap:10px">` +
         `<div><strong>${esc16(name)}</strong><br><small>${esc16(sub)}</small></div>` +
         `<div style="display:flex;gap:6px;align-items:center">` +
-        (revId ? `<button type="button" class="btn small" data-drive16-revisions="${esc16(revId)}" title="${t16('Xem lịch sử phiên bản trên Google Drive', 'View Google Drive version history')}"><svg class="ico" aria-hidden="true"><use href="#i-history"></use></svg><span>${t16('Lịch sử', 'History')}</span></button>` : '') +
-        `<button type="button" class="btn small primary" ${attr}="${esc16(id)}"><svg class="ico" aria-hidden="true"><use href="#i-folder-open"></use></svg><span>${t16('Mở dự án', 'Open')}</span></button>` +
+        (revId ? `<button type="button" class="btn small" data-drive16-revisions="${esc16(revId)}" title="${t16('Xem lịch sử phiên bản trên Google Drive', 'View Google Drive version history')}">${t16('Lịch sử', 'History')}</button>` : '') +
+        `<button type="button" class="btn small primary" ${attr}="${esc16(id)}">${t16('Mở dự án', 'Open')}</button>` +
         `</div></div>`;
       const lightsLabel = t16('Đèn', 'Lights');
       const driveHtml = files.length
@@ -1760,25 +1739,25 @@
     const saveBtn = document.createElement('button');
     saveBtn.id = 'cloud16SaveBtn';
     saveBtn.className = 'btn small';
-    saveBtn.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-cloud"></use></svg><span>' + t16('Lưu Drive', 'Save to Drive') + '</span>';
+    saveBtn.textContent = t16('Lưu Drive', 'Save to Drive');
     saveBtn.onclick = () => driveSaveProject();
 
     const openBtn = document.createElement('button');
     openBtn.id = 'cloud16OpenBtn';
     openBtn.className = 'btn small';
-    openBtn.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-cloud"></use></svg><span>' + t16('Mở Drive', 'Open Drive') + '</span>';
+    openBtn.textContent = t16('Mở Drive', 'Open Drive');
     openBtn.onclick = () => openCloudProjectsModal();
 
     const presetsBtn = document.createElement('button');
     presetsBtn.id = 'cloud16PresetsBtn';
     presetsBtn.className = 'btn small';
-    presetsBtn.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-sparkles"></use></svg><span>' + t16('Kho Preset', 'Presets') + '</span>';
+    presetsBtn.textContent = t16('Kho Preset', 'Presets');
     presetsBtn.onclick = () => openPresetsModal();
 
     const shareBtn = document.createElement('button');
     shareBtn.id = 'cloud16ShareBtn';
     shareBtn.className = 'btn small';
-    shareBtn.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-share-2"></use></svg><span>' + t16('Link duyệt 3D', '3D Review Link') + '</span>';
+    shareBtn.textContent = t16('Link duyệt 3D', '3D Review Link');
     shareBtn.onclick = () => shareClientReviewLink();
 
     actions.prepend(shareBtn);
