@@ -516,17 +516,40 @@ faceMesh=function(hit){const m=V031.faceMesh(hit);m.preferredUp=hit.mesh.worldAx
 bindingMetadata=function(mesh,options={}){const base=V031.bindingMetadata(mesh,options),source=engine.stage.find(m=>m.id===base.sourceMeshId);return {...base,bindVersion:'0.4.0',sourceMeshPath:source?.path||null,sourceKey:source?.sourceKey||null,sourceTriangles:mesh._ledBinding?.triangles||options.sourceTriangles||null,referenceSpace:'stage-meters'};};
 sourceForSurface=function(s){if(s.sourceKey){const m=engine.stage.find(m=>m.sourceKey===s.sourceKey);if(m)return m;}if(s.sourceMeshPath){const a=engine.stage.filter(m=>m.path===s.sourceMeshPath);if(a.length===1)return a[0];}return V031.sourceForSurface(s);};
 function normalizeSurfaceHardware(s) {
- const cabW = clamp(Math.round(+s.cabW || 500), 100, 2000);
- const cabH = clamp(Math.round(+s.cabH || 500), 100, 2000);
- const pxW = clamp(Math.round(+s.pxW || 192), 8, 2048);
- const pxH = clamp(Math.round(+s.pxH || 192), 8, 2048);
- const physW = Math.max(0.25, +(s.physical?.[0] || (s.w / pxW) * (cabW / 1000) || 4));
- const physH = Math.max(0.25, +(s.physical?.[1] || (s.h / pxH) * (cabH / 1000) || 2.5));
- const cols = Math.max(1, Math.min(64, Math.ceil((physW * 1000 - 1) / cabW)));
- const rows = Math.max(1, Math.min(64, Math.ceil((physH * 1000 - 1) / cabH)));
+ if (!s || typeof s !== 'object') return s;
+ const rawSpec = s.cabinetSpec && typeof s.cabinetSpec === 'object' ? s.cabinetSpec : {};
+ const cabW = clamp(Math.round(+(s._cabWOverride ?? rawSpec.widthMm ?? rawSpec.cabWmm ?? s.cabW) || 500), 100, 2000);
+ const cabH = clamp(Math.round(+(s._cabHOverride ?? rawSpec.heightMm ?? rawSpec.cabHmm ?? s.cabH) || 500), 100, 2000);
+ const pxW = clamp(Math.round(+(s._pxWOverride ?? rawSpec.pxW ?? s.pxW) || 192), 8, 2048);
+ const pxH = clamp(Math.round(+(s._pxHOverride ?? rawSpec.pxH ?? s.pxH) || 192), 8, 2048);
+ const weightKg = clamp(+(rawSpec.weightKg ?? s.cabWeightKg) || 8.5, 0.5, 200);
+ const maxPowerW = clamp(Math.round(+(rawSpec.maxPowerW ?? s.cabMaxPowerW) || 160), 10, 5000);
+ const avgPowerW = clamp(Math.round(+(rawSpec.avgPowerW ?? s.cabAvgPowerW) || 70), 5, maxPowerW);
+ const nits = clamp(Math.round(+(rawSpec.nits ?? s.nits) || 1200), 100, 10000);
+ delete s._cabWOverride; delete s._cabHOverride; delete s._pxWOverride; delete s._pxHOverride;
+
+ const physW = Math.max(0.25, +(s.physical?.[0] || s.physicalWidthM || (s.w / pxW) * (cabW / 1000) || 4));
+ const physH = Math.max(0.25, +(s.physical?.[1] || s.physicalHeightM || (s.h / pxH) * (cabH / 1000) || 2.5));
+ const cols = clamp(Math.round((s.physical?.[0] || s.physicalWidthM || s.w) ? Math.ceil((physW * 1000 - 1) / cabW) : (+rawSpec.cols || Math.ceil((physW * 1000 - 1) / cabW))), 1, 64);
+ const rows = clamp(Math.round((s.physical?.[1] || s.physicalHeightM || s.h) ? Math.ceil((physH * 1000 - 1) / cabH) : (+rawSpec.rows || Math.ceil((physH * 1000 - 1) / cabH))), 1, 64);
  const angleDeg = clamp(+(s.panelAngleDeg || 0), -15, 15);
- const validOrders = ['snake-tl-h','snake-tr-h','snake-bl-h','snake-br-h','snake-tl-v','snake-tr-v','snake-bl-v','snake-br-v'];
- const wiringOrder = validOrders.includes(s.wiringOrder) ? s.wiringOrder : 'snake-tl-h';
+
+ const orderToPattern = {
+  'snake-tl-h': 'H-TL', 'snake-tr-h': 'H-TR', 'snake-bl-h': 'H-BL', 'snake-br-h': 'H-BR',
+  'snake-tl-v': 'V-TL', 'snake-tr-v': 'V-TR', 'snake-bl-v': 'V-BL', 'snake-br-v': 'V-BR'
+ };
+ const patternToOrder = {
+  'H-TL': 'snake-tl-h', 'H-TR': 'snake-tr-h', 'H-BL': 'snake-bl-h', 'H-BR': 'snake-br-h',
+  'V-TL': 'snake-tl-v', 'V-TR': 'snake-tr-v', 'V-BL': 'snake-bl-v', 'V-BR': 'snake-br-v'
+ };
+ const rawWiring = s.wiringConfig && typeof s.wiringConfig === 'object' ? s.wiringConfig : {};
+ let pattern = rawWiring.pattern || orderToPattern[s.wiringOrder] || (patternToOrder[s.wiringOrder] ? s.wiringOrder : 'H-TL');
+ if (!patternToOrder[pattern]) pattern = orderToPattern[pattern] || 'H-TL';
+ const wiringOrder = patternToOrder[pattern] || 'snake-tl-h';
+ const voltage = +(rawWiring.voltageV ?? rawWiring.voltage) === 110 ? 110 : 220;
+ const maxPixelsPerPort = clamp(Math.round(+(rawWiring.maxPixelsPerPort ?? s.maxPixelsPerPort) || 650000), 10000, 10000000);
+ const maxWattsPerLoop = clamp(Math.round(+(rawWiring.maxWattsPerLoop ?? s.maxWattsPerLoop) || (voltage === 110 ? 1320 : 2200)), 100, 25000);
+
  const rawVoids = Array.isArray(s.virtualTiles) ? s.virtualTiles : [];
  const voidSet = new Set();
  for (const item of rawVoids) {
@@ -537,38 +560,114 @@ function normalizeSurfaceHardware(s) {
    voidSet.add(c + ',' + r);
   }
  }
+ const sortedVoids = [...voidSet].sort((a, b) => {
+  const [ac, ar] = a.split(',').map(Number);
+  const [bc, br] = b.split(',').map(Number);
+  return ar - br || ac - bc;
+ });
+ const totalGrid = cols * rows;
+ if (sortedVoids.length >= totalGrid && totalGrid > 0) {
+  sortedVoids.length = totalGrid - 1;
+ }
+
+ const rawAngles = Array.isArray(s.columnAnglesDeg) ? s.columnAnglesDeg : null;
+ const columnAnglesDeg = [];
+ for (let c = 0; c < cols; c++) {
+  const v = rawAngles && Number.isFinite(+rawAngles[c]) ? +rawAngles[c] : angleDeg;
+  columnAnglesDeg.push(clamp(v, -15, 15));
+ }
+
+ s.cabinetSpec = { widthMm: cabW, heightMm: cabH, cabWmm: cabW, cabHmm: cabH, pxW, pxH, cols, rows, weightKg, maxPowerW, avgPowerW, nits };
+ s.wiringConfig = { pattern, maxPixelsPerPort, maxWattsPerLoop, voltage, voltageV: voltage };
+ s.columnAnglesDeg = columnAnglesDeg;
  s.cabW = cabW; s.cabH = cabH; s.pxW = pxW; s.pxH = pxH;
  s.cabCols = cols; s.cabRows = rows;
  s.panelAngleDeg = angleDeg;
  s.wiringOrder = wiringOrder;
- s.virtualTiles = [...voidSet];
- s.totalCabinetGrid = cols * rows;
- s.activeCabinets = Math.max(0, s.totalCabinetGrid - s.virtualTiles.length);
+ s.virtualTiles = sortedVoids;
+ s.totalCabinetGrid = totalGrid;
+ s.activeCabinets = Math.max(1, totalGrid - s.virtualTiles.length);
  return s;
 }
-function toggleVirtualTile(s, col, row) {
+function toggleVirtualTile(s, col, row, forceVoid) {
  normalizeSurfaceHardware(s);
  const c = Math.floor(+col), r = Math.floor(+row);
- if (c < 0 || c >= s.cabCols || r < 0 || r >= s.cabRows) return s.virtualTiles;
+ if (!Number.isFinite(c) || !Number.isFinite(r) || c < 0 || c >= s.cabCols || r < 0 || r >= s.cabRows) return false;
  const key = c + ',' + r;
  const set = new Set(s.virtualTiles);
- if (set.has(key)) set.delete(key); else set.add(key);
- s.virtualTiles = [...set];
- s.activeCabinets = Math.max(0, s.totalCabinetGrid - s.virtualTiles.length);
- return s.virtualTiles;
+ const wantVoid = typeof forceVoid === 'boolean' ? forceVoid : !set.has(key);
+ if (wantVoid) {
+  if (!set.has(key)) {
+   if (set.size + 1 >= s.totalCabinetGrid) return false;
+   set.add(key);
+  }
+ } else {
+  set.delete(key);
+ }
+ s.virtualTiles = [...set].sort((a, b) => {
+  const [ac, ar] = a.split(',').map(Number);
+  const [bc, br] = b.split(',').map(Number);
+  return ar - br || ac - bc;
+ });
+ s.activeCabinets = Math.max(1, s.totalCabinetGrid - s.virtualTiles.length);
+ return set.has(key);
 }
-function computeCurvedSpanMeters(cols, cabWmm, panelAngleDeg) {
- const n = Math.max(1, Math.round(+cols || 1));
- const w = Math.max(0.1, (+cabWmm || 500) / 1000);
- const arcMeters = +(n * w).toFixed(3);
- const deg = Math.abs(+panelAngleDeg || 0);
- if (deg < 0.05 || n <= 1) return { arcMeters, chordMeters: arcMeters, depthMeters: 0 };
- const theta = (deg * Math.PI) / 180;
- const totalTheta = n * theta;
- const radius = w / (2 * Math.sin(theta / 2));
- const chordMeters = +(2 * radius * Math.sin(totalTheta / 2)).toFixed(3);
- const depthMeters = +(radius * (1 - Math.cos(totalTheta / 2))).toFixed(3);
- return { arcMeters, chordMeters, depthMeters };
+function computeCurvedSpanMeters(surfaceOrCols, cabWmmArg, panelAngleDegArg) {
+ let cols = 1, cabWmm = 500, angles = [0];
+ if (surfaceOrCols && typeof surfaceOrCols === 'object') {
+  normalizeSurfaceHardware(surfaceOrCols);
+  cols = surfaceOrCols.cabCols;
+  cabWmm = surfaceOrCols.cabinetSpec?.cabWmm || surfaceOrCols.cabW || 500;
+  angles = Array.isArray(surfaceOrCols.columnAnglesDeg) && surfaceOrCols.columnAnglesDeg.length === cols
+   ? surfaceOrCols.columnAnglesDeg
+   : Array.from({ length: cols }, () => clamp(+(surfaceOrCols.panelAngleDeg || 0), -15, 15));
+ } else {
+  cols = Math.max(1, Math.round(+surfaceOrCols || 1));
+  cabWmm = Math.max(100, +cabWmmArg || 500);
+  const deg = clamp(+(panelAngleDegArg || 0), -15, 15);
+  angles = Array.from({ length: cols }, () => deg);
+ }
+ const w = Math.max(0.1, cabWmm / 1000);
+ const arcWidthM = +(cols * w).toFixed(3);
+ const columnCoords = [];
+ let x = 0, z = 0, cumDeg = 0;
+ let minZ = 0, maxZ = 0;
+ const uniformDeg = angles.length > 0 && angles.every(a => Math.abs(a - angles[0]) < 1e-6) ? Math.abs(angles[0]) : null;
+ for (let col = 0; col < cols; col++) {
+  const angleDeg = clamp(+angles[col] || 0, -15, 15);
+  cumDeg += angleDeg;
+  const rad = (cumDeg * Math.PI) / 180;
+  const x0 = +x.toFixed(4), z0 = +z.toFixed(4);
+  const x1 = +(x + w * Math.cos(rad)).toFixed(4);
+  const z1 = +(z + w * Math.sin(rad)).toFixed(4);
+  columnCoords.push({ col, x0, z0, x1, z1, angleDeg });
+  x = x1; z = z1;
+  if (z < minZ) minZ = z;
+  if (z > maxZ) maxZ = z;
+ }
+ let chordWidthM = +Math.hypot(x, z).toFixed(3);
+ let depthOffsetM = +(maxZ - minZ).toFixed(3);
+ if (uniformDeg !== null) {
+  if (uniformDeg < 0.05 || cols <= 1) {
+   chordWidthM = arcWidthM;
+   depthOffsetM = 0;
+  } else {
+   const theta = (uniformDeg * Math.PI) / 180;
+   const totalTheta = cols * theta;
+   const radius = w / (2 * Math.sin(theta / 2));
+   chordWidthM = +(2 * radius * Math.sin(totalTheta / 2)).toFixed(3);
+   depthOffsetM = +(radius * (1 - Math.cos(totalTheta / 2))).toFixed(3);
+  }
+ }
+ return {
+  chordWidthM,
+  arcWidthM,
+  depthOffsetM,
+  columnCoords,
+  arcMeters: arcWidthM,
+  chordMeters: chordWidthM,
+  depthMeters: depthOffsetM
+ };
 }
 createSurface=function(mesh,name,options={}){const source=mesh._ledBinding?engine.stage.find(m=>m.id===mesh._ledBinding.sourceMeshId):engine.stage.find(m=>m===mesh);if(source?.worldAxes)mesh.preferredUp=source.worldAxes[1];const info=measureFace(mesh),s=V031.createSurface(mesh,name,{w:clamp(Math.round(info.width*128),8,8192),h:clamp(Math.round(info.height*128),8,8192),...options});s.mesh.preferredUp=mesh.preferredUp?vecCopy(mesh.preferredUp):[0,1,0];s.mappingSpace=options.mappingSpace||'local';s.nativeResolution=options.nativeResolution||{width:s.w,height:s.h,confirmed:false};s.aspectLock=options.aspectLock??true;s.metricFrame={right:info.right,up:info.up,normal:info.normal,origin:info.origin};s.physical=[info.width,info.height];normalizeSurfaceHardware(s);return s;};
 
@@ -599,10 +698,10 @@ assignMaster=function(a,{mode=engine.layout?.mode==='spatial'?'stage':'local'}={
 function manualCropMode(s=surface()){if(!s)return;checkpoint();s.mappingSpace='local';engine.releaseMesh(s.mesh);resetFlatCache();renderUI();toast((typeof window==='undefined'?"Crop riêng. Model 3D và kích thước vật lý không thay đổi.":window.tr?.("Crop riêng. Model 3D và kích thước vật lý không thay đổi.","Manual crop. 3D model and physical dimensions unchanged.")??"Crop riêng. Model 3D và kích thước vật lý không thay đổi."));}
 function restoreSpatialBindings(){for(const s of engine.surfaces){const src=sourceForSurface(s);if(src){s.sourceMeshId=src.id;s.sourceKey=src.sourceKey;s.sourceMeshPath=src.path||null;s.mesh.preferredUp=src.worldAxes?.[1]||[0,1,0];}s.mappingSpace ||= 'local';s.nativeResolution ||= {width:s.w,height:s.h,confirmed:false};s.physical=s.mappingMode==='uv'&&finiteArray(s.physical,2)?s.physical:[measureFace(s.mesh).width,measureFace(s.mesh).height];normalizeSurfaceHardware(s);if(s.mappingSpace==='stage'&&engine.layout?.bounds&&engine.layout?.padding){s.mesh.mapUV=calculateMapUV(s);engine.releaseMesh(s.mesh);}}resetFlatCache();}
 snapshot=function(){return {...V031.snapshot(),coordinates:structuredClone(engine.coordinates),layout:structuredClone(engine.layout),camera:structuredClone(engine.camera)};};
-restore=function(s){if(s.coordinates?.config)applyCoordinateConfig(s.coordinates.config,{record:false,updateAttachments:false,fit:false});if(s.coordinates)engine.coordinates=structuredClone(s.coordinates);engine.layout=structuredClone(s.layout||defaultLayout());V031.restore(s);if(s.camera)engine.camera=structuredClone(s.camera);restoreSpatialBindings();engine.rebuildFixtures();renderUI();};
+restore=function(s){if(s.coordinates?.config)applyCoordinateConfig(s.coordinates.config,{record:false,updateAttachments:false,fit:false});if(s.coordinates)engine.coordinates=structuredClone(s.coordinates);engine.layout=structuredClone(s.layout||defaultLayout());const cloned={...s,surfaces:Array.isArray(s.surfaces)?s.surfaces.map(x=>({...x,crop:x.crop?.slice(),nativeResolution:x.nativeResolution?{...x.nativeResolution}:undefined,physical:x.physical?[...x.physical]:undefined,metricFrame:x.metricFrame?structuredClone(x.metricFrame):undefined,cabinetSpec:x.cabinetSpec?{...x.cabinetSpec}:undefined,virtualTiles:Array.isArray(x.virtualTiles)?[...x.virtualTiles]:[],columnAnglesDeg:Array.isArray(x.columnAnglesDeg)?[...x.columnAnglesDeg]:undefined,wiringConfig:x.wiringConfig?{...x.wiringConfig}:undefined})):[]};V031.restore(cloned);if(s.camera)engine.camera=structuredClone(s.camera);restoreSpatialBindings();engine.rebuildFixtures();renderUI();};
 importModel=async function(files,{silent=false}={}){if(state.importing)return;state.importing=true;busy(true,(typeof window==='undefined'?"Đang đọc model và hệ quy chiếu...":window.tr?.("Đang đọc model và hệ quy chiếu...","Reading model and reference frame...")??"Đang đọc model và hệ quy chiếu..."));try{const list=Array.from(files);if(list.reduce((a,f)=>a+f.size,0)>600*1024*1024)throw Error((typeof window==='undefined'?"Model vượt 600 MB.":window.tr?.("Model vượt 600 MB.","Model exceeds 600 MB.")??"Model vượt 600 MB."));const result=await Importer.load(list);engine.setModel(result.meshes);engine.sourcePunctualLights=result.punctualLights||[];engine.surfaces=[];engine.selected=null;engine.lights=[];engine.rebuildFixtures();state.model={name:result.name,files:result.files,demo:false};state.projectName=result.name.replace(/\.[a-z0-9]+$/i,'');state.warnings=result.warnings;state.history=[];state.redo=[];state.selectedMesh=null;state.hit=null;state.rebindId=null;state.selectedLight=null;cancelSpatialPick();engine.globalTest=false;engine.view='stage';state.step='stage';engine.settings.ambient=.65;engine.settings.beam=.6;const ext=result.name.split('.').pop().toLowerCase();engine.coordinates.sourceInfo={format:ext,normalizedByImporter:true,declaredUnit:ext==='obj'?'unspecified (assumed meters)':ext==='dae'?'COLLADA asset unit / up_axis':'glTF meters / Y-up',...result.coordinateInfo};renderUI();if(!silent){toast((typeof window==='undefined'?"Đã nhập ":window.tr?.("Đã nhập ","Imported ")??"Đã nhập ")+result.name+(typeof window==='undefined'?". Kiểm tra kích thước mét trước khi map. Không tự thêm đèn.":window.tr?.(". Kiểm tra kích thước mét trước khi map. Không tự thêm đèn.",". Check dimensions in meters before mapping. No lights added automatically.")??". Kiểm tra kích thước mét trước khi map. Không tự thêm đèn."),8000);if(result.warnings.length)dialog((typeof window==='undefined'?"Lưu ý model":window.tr?.("Lưu ý model","Model notes")??"Lưu ý model"),'<p>'+result.warnings.map(esc).join('<br>')+'</p>');}return result;}finally{state.importing=false;busy(false);}};
 demo=function(){engine.lights=[];V031.demo();state.projectName='ALPHA_Demo_Stage';engine.layout ||= defaultLayout();for(const s of engine.surfaces)s.mappingSpace='stage';rebuildSpatialMap({width:3840,height:1280,activate:true,record:false});state.history=[];state.redo=[];renderUI();};
-mappingData=function(){const d=V031.mappingData();d.coordinates=structuredClone(engine.coordinates);d.layout=structuredClone(engine.layout);d.screens.forEach((s,i)=>{const x=engine.surfaces[i];s.mappingSpace=x.mappingSpace;s.nativeResolution=x.nativeResolution;s.sourceKey=x.sourceKey;s.worldBounds=x.mesh.bounds;s.note='outputRect is a content viewport, not a receiver-card configuration';});return d;};
+mappingData=function(){const d=V031.mappingData();d.coordinates=structuredClone(engine.coordinates);d.layout=structuredClone(engine.layout);d.screens.forEach((s,i)=>{const x=engine.surfaces[i];normalizeSurfaceHardware(x);s.mappingSpace=x.mappingSpace;s.nativeResolution=x.nativeResolution;s.sourceKey=x.sourceKey;s.worldBounds=x.mesh.bounds;s.cabinetSpec={...x.cabinetSpec};s.virtualTiles=[...x.virtualTiles];s.columnAnglesDeg=[...x.columnAnglesDeg];s.wiringConfig={...x.wiringConfig};s.note='outputRect is a content viewport, not a receiver-card configuration';});return d;};
 mappingWarnings=function(){const arr=V031.mappingWarnings();if(engine.surfaces.some(s=>!s.nativeResolution?.confirmed))arr.push((typeof window==='undefined'?"Chưa xác nhận độ phân giải LED thực cho tất cả màn. Kích thước xem thử không phải pixel map phần cứng.":window.tr?.("Chưa xác nhận độ phân giải LED thực cho tất cả màn. Kích thước xem thử không phải pixel map phần cứng.","Physical LED resolution is not confirmed for all screens. Preview dimensions are not a hardware pixel map.")??"Chưa xác nhận độ phân giải LED thực cho tất cả màn. Kích thước xem thử không phải pixel map phần cứng."));return arr;};
 // Per-screen media selection is explicit local crop. Master assignment bypasses
 // this override and retains shared spatial UVs when requested.
@@ -610,7 +709,7 @@ setSource=function(s,id){V031.setSource(s,id);if(engine.media.has(id)){s.mapping
 const oldReplaceSurfaceGeometry=replaceSurfaceGeometry;
 replaceSurfaceGeometry=function(s,face){oldReplaceSurfaceGeometry(s,face);if(s.mappingSpace==='stage')rebuildSpatialMap({activate:false,record:false});};
 const metricSnapshot=snapshot;
-snapshot=function(){const d=metricSnapshot();d.surfaces=d.surfaces.map(s=>({...s,nativeResolution:s.nativeResolution?{...s.nativeResolution}:undefined,physical:s.physical?[...s.physical]:undefined,metricFrame:s.metricFrame?structuredClone(s.metricFrame):undefined,cabW:s.cabW,cabH:s.cabH,pxW:s.pxW,pxH:s.pxH,cabCols:s.cabCols,cabRows:s.cabRows,panelAngleDeg:s.panelAngleDeg,wiringOrder:s.wiringOrder,virtualTiles:Array.isArray(s.virtualTiles)?[...s.virtualTiles]:[]}));return d;};
+snapshot=function(){const d=metricSnapshot();d.surfaces=d.surfaces.map(s=>({...s,nativeResolution:s.nativeResolution?{...s.nativeResolution}:undefined,physical:s.physical?[...s.physical]:undefined,metricFrame:s.metricFrame?structuredClone(s.metricFrame):undefined,cabW:s.cabW,cabH:s.cabH,pxW:s.pxW,pxH:s.pxH,cabCols:s.cabCols,cabRows:s.cabRows,panelAngleDeg:s.panelAngleDeg,wiringOrder:s.wiringOrder,cabinetSpec:s.cabinetSpec?{...s.cabinetSpec}:undefined,virtualTiles:Array.isArray(s.virtualTiles)?[...s.virtualTiles]:[],columnAnglesDeg:Array.isArray(s.columnAnglesDeg)?[...s.columnAnglesDeg]:undefined,wiringConfig:s.wiringConfig?{...s.wiringConfig}:undefined}));return d;};
 
 /* Anchored fixtures: select source lens, then target in the same metric scene. */
 StageEngine.prototype.rebuildFixtures=function(){for(const m of this.fixtureMeshes)this.releaseMesh(m);this.fixtureMeshes=[];for(const l of this.lights){if(l.origin==='model'||l.origin==='gltf')continue;const size=l.fixtureSize||[.3,.38,.3],mesh=boxMesh(l.name+' / proxy',M.add(l.pos,[0,size[1]*.45,0]),size,[.12,.14,.18,1]);mesh.lightId=l.id;this.fixtureMeshes.push(mesh);}};
@@ -674,7 +773,7 @@ function bindSpatialMappingPanel(s){
 }
 function surfaceHardwarePanel(s){
  normalizeSurfaceHardware(s);
- const curve=computeCurvedSpanMeters(s.cabCols,s.cabW,s.panelAngleDeg);
+ const curve=computeCurvedSpanMeters(s);
  const voidSet=new Set(s.virtualTiles);
  const maxPreviewCols=Math.min(s.cabCols,14),maxPreviewRows=Math.min(s.cabRows,10);
  let gridHtml='<div class="cab-void-grid" style="display:grid;grid-template-columns:repeat('+maxPreviewCols+',1fr);gap:3px;margin:8px 0;">';
@@ -687,16 +786,16 @@ function surfaceHardwarePanel(s){
  gridHtml+='</div>';
  return `<div class="inspector-block hardware-led-panel"><h3 class="block-title"><svg class="ico ico-led" aria-hidden="true"><use href="#i-grid-3x3"></use></svg><span>${(typeof window==='undefined'?"Cabinet, Góc cong & Đi dây":window.tr?.("Cabinet, Góc cong & Đi dây","Cabinet, Curve & Wiring")??"Cabinet, Góc cong & Đi dây")}</span></h3>
  <div class="field-grid two">${field('surfCabW','Rộng Cab (mm)',s.cabW,{min:100,max:2000,step:50})}${field('surfCabH','Cao Cab (mm)',s.cabH,{min:100,max:2000,step:50})}</div>
- <div class="field-grid two">${field('surfAngleDeg','Góc khóa cong (°/cab)',s.panelAngleDeg,{min:-15,max:15,step:2.5})}<div class="field"><label>${(typeof window==='undefined'?"Đi dây tín hiệu":window.tr?.("Đi dây tín hiệu","Signal wiring")??"Đi dây tín hiệu")}</label><select id="surfWiringOrder"><option value="snake-tl-h">Ziczac Ngang · Trái-Trên (TL-H)</option><option value="snake-tr-h">Ziczac Ngang · Phải-Trên (TR-H)</option><option value="snake-bl-h">Ziczac Ngang · Trái-Dưới (BL-H)</option><option value="snake-br-h">Ziczac Ngang · Phải-Dưới (BR-H)</option><option value="snake-tl-v">Ziczac Dọc · Trái-Trên (TL-V)</option><option value="snake-tr-v">Ziczac Dọc · Phải-Trên (TR-V)</option><option value="snake-bl-v">Ziczac Dọc · Trái-Dưới (BL-V)</option><option value="snake-br-v">Ziczac Dọc · Phải-Dưới (BR-V)</option></select></div></div>
- <div class="metric-pair"><div><b>${s.activeCabinets}/${s.totalCabinetGrid} cab</b><span>Lưới ${s.cabCols}×${s.cabRows} (${s.virtualTiles.length} ô rỗng)</span></div><div><b>${curve.chordMeters} m</b><span>Dây cung · Sâu ${curve.depthMeters} m</span></div></div>
+ <div class="field-grid two">${field('surfAngleDeg','Góc khóa cong (°/cab)',s.panelAngleDeg,{min:-15,max:15,step:2.5})}<div class="field"><label>${(typeof window==='undefined'?"Đi dây tín hiệu":window.tr?.("Đi dây tín hiệu","Signal wiring")??"Đi dây tín hiệu")}</label><select id="surfWiringOrder"><option value="snake-tl-h">Ziczac Ngang · Trái-Trên (H-TL)</option><option value="snake-tr-h">Ziczac Ngang · Phải-Trên (H-TR)</option><option value="snake-bl-h">Ziczac Ngang · Trái-Dưới (H-BL)</option><option value="snake-br-h">Ziczac Ngang · Phải-Dưới (H-BR)</option><option value="snake-tl-v">Ziczac Dọc · Trái-Trên (V-TL)</option><option value="snake-tr-v">Ziczac Dọc · Phải-Trên (V-TR)</option><option value="snake-bl-v">Ziczac Dọc · Trái-Dưới (V-BL)</option><option value="snake-br-v">Ziczac Dọc · Phải-Dưới (V-BR)</option></select></div></div>
+ <div class="metric-pair"><div><b>${s.activeCabinets}/${s.totalCabinetGrid} cab</b><span>Lưới ${s.cabCols}×${s.cabRows} (${s.virtualTiles.length} ô rỗng)</span></div><div><b>${curve.chordWidthM} m</b><span>Dây cung · Sâu ${curve.depthOffsetM} m</span></div></div>
  <p class="hint-text">Click ô cabinet bên dưới để bật/tắt <b>Virtual Tile (Ô rỗng cửa vòm)</b>:</p>${gridHtml}</div>`;
 }
 function bindSurfaceHardwarePanel(s){
  if($('surfWiringOrder'))$('surfWiringOrder').value=s.wiringOrder||'snake-tl-h';
- change('surfCabW',v=>{s.cabW=clamp(Math.round(+v)||500,100,2000);normalizeSurfaceHardware(s);renderInspector();});
- change('surfCabH',v=>{s.cabH=clamp(Math.round(+v)||500,100,2000);normalizeSurfaceHardware(s);renderInspector();});
- change('surfAngleDeg',v=>{s.panelAngleDeg=clamp(+v||0,-15,15);normalizeSurfaceHardware(s);renderInspector();});
- change('surfWiringOrder',v=>{s.wiringOrder=v;normalizeSurfaceHardware(s);});
+ change('surfCabW',v=>{s._cabWOverride=clamp(Math.round(+v)||500,100,2000);normalizeSurfaceHardware(s);renderInspector();});
+ change('surfCabH',v=>{s._cabHOverride=clamp(Math.round(+v)||500,100,2000);normalizeSurfaceHardware(s);renderInspector();});
+ change('surfAngleDeg',v=>{s.panelAngleDeg=clamp(+v||0,-15,15);s.columnAnglesDeg=Array.from({length:s.cabCols||1},()=>s.panelAngleDeg);normalizeSurfaceHardware(s);renderInspector();});
+ change('surfWiringOrder',v=>{s.wiringOrder=v;if(s.wiringConfig)delete s.wiringConfig.pattern;normalizeSurfaceHardware(s);});
  document.querySelectorAll('[data-void-tile]').forEach(btn=>{
   btn.onclick=()=>{const [c,r]=btn.dataset.voidTile.split(',').map(Number);toggleVirtualTile(s,c,r);renderInspector();};
  });

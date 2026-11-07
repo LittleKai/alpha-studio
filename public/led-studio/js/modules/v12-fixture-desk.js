@@ -180,7 +180,7 @@ function lensShape128(kind){if(/beam|laser/i.test(kind))return 'beam';if(/wash|f
 const prevFixtureBuild128=StageEngine.prototype.rebuildFixtures;
 StageEngine.prototype.rebuildFixtures=function(){if(this!==engine)return prevFixtureBuild128.call(this);
  for(const m of this.fixtureMeshes)this.releaseMesh(m);this.fixtureMeshes=[];
- for(const l of this.lights){if(l.origin==='model'||l.origin==='gltf')continue;
+ for(const l of this.lights){if(l._deleted8||l.origin==='model'||l.origin==='gltf')continue;
   const kind=l.fixtureType128||l.fixtureType127||l.fixtureType126||'beam',category=lensShape128(kind),p=l.pos,col=[...hexrgb(l.color||'#a5e1ff'),1];let meshes=[],metal=[.11,.15,.20,1],silver=[.25,.33,.40,1];
   if(category==='bar'){
    meshes.push(boxMesh('LED strip housing',M.add(p,[0,.025,0]),[.92,.13,.22],metal));
@@ -396,34 +396,52 @@ S.fixture128.look=(id,look)=>{const l=engine.lights.find(x=>x.id===id);if(!l)ret
 S.fixture128.types=Object.keys(types);
 S.fixture128.looks=LOOKS128.map(x=>x.id);
 const N = S.pro126 || (S.pro126 = {});
-N.buildDmxPatchTable = function() {
- const lights = Array.isArray(engine?.lights) ? engine.lights : [];
- let autoUniverse = 1, autoAddress = 1;
- const rows = lights.map((l, idx) => {
-  const prof = N.profiles?.[l.profileId || l.fixtureType126] || {};
-  const channels = Math.max(1, Number(l.dmxChannels) || Number(l.dmxChannelCount) || Number(prof.dmx) || 16);
-  let universe = Math.max(1, Number(l.universe) || 0);
-  let startAddress = Math.max(1, Number(l.address) || 0);
-  if (!l.universe || !l.address) {
-   if (autoAddress + channels - 1 > 512) {
-    autoUniverse += 1;
-    autoAddress = 1;
-   }
-   universe = universe || autoUniverse;
-   startAddress = startAddress || autoAddress;
-   autoAddress = startAddress + channels;
+function buildDmxPatchTable(lights = (typeof engine !== 'undefined' ? engine.lights : [])) {
+ const list = Array.isArray(lights) ? lights.filter(l => !l?._deleted8) : [];
+ let universe = 1;
+ let address = 1;
+ const rows = list.map((l, idx) => {
+  const prof = (typeof N !== 'undefined' && N?.profiles?.[l?.profileId || l?.fixtureType126]) || {};
+  const chCount = Math.max(1, Math.min(512, Math.round(+l?.dmxChannelCount || +l?.dmxChannels || +l?.channels || +prof.dmx || 16)));
+  if (address + chCount - 1 > 512) {
+   universe += 1;
+   address = 1;
   }
-  const endAddress = startAddress + channels - 1;
-  const pos = Array.isArray(l.pos) ? l.pos : [0, 0, 0];
+  const assignedUni = +l?.dmxUniverse > 0 ? Math.round(+l.dmxUniverse) : (+l?.universe > 0 ? Math.round(+l.universe) : universe);
+  const assignedAddr = +l?.dmxAddress > 0 ? Math.round(+l.dmxAddress) : (+l?.address > 0 ? Math.round(+l.address) : address);
+  if (!l?.dmxUniverse && !l?.dmxAddress && !l?.universe && !l?.address) {
+   address += chCount;
+  } else {
+   universe = assignedUni;
+   address = assignedAddr + chCount;
+  }
+  const type = String(l?.type || l?.fixtureType127 || l?.fixtureType126 || 'beam').toLowerCase();
+  const powerW = +l?.powerW || (type === 'beam' ? 380 : type === 'strobe' ? 1000 : 250);
+  const weightKg = +l?.weightKg || (type === 'beam' ? 18 : type === 'strobe' ? 10 : 9);
+  const pos = Array.isArray(l?.pos) ? l.pos : [0, 0, 0];
+  const endAddress = assignedAddr + chCount - 1;
   return {
    index: idx + 1,
-   id: l.id || ('L' + (idx + 1)),
-   name: l.name || ('Fixture ' + (idx + 1)),
-   profileName: prof.name || l.oflModel || l.profileId || l.fixtureType126 || 'Moving Head 16ch',
-   universe,
-   startAddress,
+   id: l?.id || `FX_${idx + 1}`,
+   fixtureId: l?.id || `FX_${idx + 1}`,
+   name: l?.name || `Fixture #${idx + 1}`,
+   fixtureType: l?.oflModel || prof.name || l?.type || 'Moving Head Beam',
+   profileName: l?.oflModel || prof.name || l?.type || 'Moving Head Beam',
+   modeName: l?.oflModeName || `${chCount}CH Standard`,
+   channelCount: chCount,
+   channels: chCount,
+   universe: assignedUni,
+   address: assignedAddr,
+   startAddress: assignedAddr,
    endAddress,
-   channels,
+   patchLabel: `U${assignedUni}.${String(assignedAddr).padStart(3, '0')}`,
+   powerW,
+   weightKg,
+   posM: [
+    Math.round((+pos[0] || 0) * 100) / 100,
+    Math.round((+pos[1] || 0) * 100) / 100,
+    Math.round((+pos[2] || 0) * 100) / 100
+   ],
    posX: +(Number(pos[0]) || 0).toFixed(2),
    posY: +(Number(pos[1]) || 0).toFixed(2),
    posZ: +(Number(pos[2]) || 0).toFixed(2),
@@ -442,23 +460,37 @@ N.buildDmxPatchTable = function() {
    }
   }
  }
- return { rows, hasConflict: rows.some(r => r.conflict || r.outOfRange) };
-};
-N.exportDmxPatchCsv = function() {
- const table = N.buildDmxPatchTable();
- const header = 'FixtureIndex,FixtureID,Name,Profile,Universe,StartAddress,EndAddress,Channels,PosX_m,PosY_m,PosZ_m,Status';
- const lines = table.rows.map(r => {
-  const status = r.outOfRange ? 'OVER_512' : (r.conflict ? 'CONFLICT' : 'OK');
-  const q = v => '"' + String(v ?? '').replace(/"/g, '""') + '"';
-  return [r.index, q(r.id), q(r.name), q(r.profileName), r.universe, r.startAddress, r.endAddress, r.channels, r.posX, r.posY, r.posZ, status].join(',');
- });
- const csv = '\uFEFF' + [header, ...lines].join('\r\n');
+ rows.rows = rows;
+ rows.hasConflict = rows.some(r => r.conflict || r.outOfRange);
+ return rows;
+}
+function exportDmxPatchCsv(lights) {
+ const rows = buildDmxPatchTable(lights);
+ const quote = (v) => {
+  const s = String(v ?? '');
+  const safeStr = /^[=+@-]/.test(s) ? "'" + s : s;
+  return '"' + safeStr.replace(/"/g, '""') + '"';
+ };
+ const header = ['FixtureID', 'Name', 'Model', 'Mode', 'Channels', 'Universe', 'Address', 'Patch', 'PowerW', 'WeightKg', 'PosX_m', 'PosY_m', 'PosZ_m', 'EndAddress', 'Status'];
+ const lines = [
+  header.join(','),
+  ...rows.map(r => [
+   r.fixtureId, r.name, r.fixtureType, r.modeName, r.channelCount,
+   r.universe, r.address, r.patchLabel, r.powerW, r.weightKg,
+   r.posM[0], r.posM[1], r.posM[2], r.endAddress,
+   r.outOfRange ? 'OVER_512' : (r.conflict ? 'CONFLICT' : 'OK')
+  ].map(quote).join(','))
+ ];
+ const csv = '\ufeff' + lines.join('\r\n');
  if (typeof downloadText === 'function') {
   downloadText('ALPHA_DMX_Patch_Sheet.csv', csv, 'text/csv;charset=utf-8');
  }
  return csv;
-};
-S.exportDmxPatchCsv = N.exportDmxPatchCsv;
+}
+N.buildDmxPatchTable = buildDmxPatchTable;
+N.exportDmxPatchCsv = exportDmxPatchCsv;
+S.buildDmxPatchTable = buildDmxPatchTable;
+S.exportDmxPatchCsv = exportDmxPatchCsv;
 
 // Create actual stable controls, not a floating modal.
 window.addEventListener('ledstudio:locale',()=>{window.translateUiText?.(id('pro127dock'));window.translateUiText?.(id('pro127bar'));});

@@ -271,7 +271,8 @@ function dirApplyEdits(){
   m.worldAxes=(m._sourceAxes||[[1,0,0],[0,1,0],[0,0,1]]).map(v=>M.norm(M.vector(dirCanonicalMatrix(m),v)));
   if(del.has(m.sourceKey)||del.has(m.id)){m._deleted8=true;m.hidden=true;}else if(m._deleted8){m._deleted8=false;m.hidden=false;}
  }
- for(const s of engine.surfaces){const src=dirSourceMesh(s);if(src&&(del.has(src.sourceKey)||del.has(src.id))){s._deleted8=true;s.enabled=false;}else if(s._deleted8){s._deleted8=false;s.enabled=true;}}
+ for(const s of engine.surfaces){const src=dirSourceMesh(s);if(src&&(del.has(src.sourceKey)||del.has(src.id))){s._deleted8=true;s.enabled=false;if(s.mesh)s.mesh.hidden=true;}else if(s._deleted8||s.mesh?.hidden){s._deleted8=false;s.enabled=true;if(s.mesh)s.mesh.hidden=false;}}
+ for(const l of engine.lights){if(l.sourceKey&&del.has(l.sourceKey)){l._deleted8=true;l.enabled=false;}else if(l._deleted8){l._deleted8=false;l.enabled=true;}}
  configureStageBounds();engine._stageBatchDirty=true;resetFlatCache();
 }
 function resetDirector(){
@@ -469,7 +470,8 @@ function deleteSelectedObject8(){
     else if(!m._deleted8){
      m._deleted8=true;m.hidden=true;
      const key=m.sourceKey||m.id;if(key&&!director.deletedKeys.includes(key))director.deletedKeys.push(key);
-     for(const s of engine.surfaces)if(dirSourceMesh(s)===m){s._deleted8=true;s.enabled=false;}
+     for(const s of engine.surfaces)if(dirSourceMesh(s)===m){s._deleted8=true;s.enabled=false;if(s.mesh)s.mesh.hidden=true;if(engine.selected===s.id)engine.selected=engine.surfaces.find(x=>!x._deleted8&&x.id!==s.id)?.id||null;}
+     for(const l of engine.lights)if(l.sourceKey&&(l.sourceKey===m.sourceKey||l.sourceKey===m.id)){l._deleted8=true;l.enabled=false;if(state.selectedLight===l.id)state.selectedLight=engine.lights.find(x=>!x._deleted8&&x.id!==l.id)?.id||null;}
      lastLabel=loc(m.name||'Object');meshChanged=true;deletedCount++;
     }
    }
@@ -483,7 +485,7 @@ function deleteSelectedObject8(){
   }
  }
  if(!deletedCount)return false;
- if(castChanged)rebuildCast();
+ if(castChanged){rebuildCast();if(typeof renderCastManager==='function')renderCastManager();}
  if(actChanged)rebuildActCache();
  if(meshChanged)configureStageBounds();
  director.selection=null;state.selectedMesh=null;state.hit=null;

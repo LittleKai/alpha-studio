@@ -252,91 +252,239 @@ function validateAtlas(plan,expectedItems=plan?.sourceItems){
  return errors;
 }
 function planSurfaceWiring(surface, options = {}) {
- const cols = Math.max(1, Math.round(+surface.cabCols || Math.ceil((+surface.w || 1920) / (+surface.pxW || 192))));
- const rows = Math.max(1, Math.round(+surface.cabRows || Math.ceil((+surface.h || 1080) / (+surface.pxH || 192))));
- const pxW = Math.max(8, Math.round(+surface.pxW || Math.round((+surface.w || 1920) / cols)));
- const pxH = Math.max(8, Math.round(+surface.pxH || Math.round((+surface.h || 1080) / rows)));
- const cabPixels = pxW * pxH;
- const portPixelLimit = Math.max(cabPixels, Math.round(+options.portPixelLimit || 650000));
- const order = String(surface.wiringOrder || 'snake-tl-h');
+ if (!surface || typeof surface !== 'object') {
+  return { pattern: 'H-TL', order: 'snake-tl-h', cols: 0, rows: 0, pxW: 0, pxH: 0, cabPixels: 0, portPixelLimit: 650000, totalCabinets: 0, activeCabinets: 0, voidCabinets: 0, totalPixels: 0, dataPorts: [], ports: [], activeNodes: [], voidTiles: [], powerLoops: [], warnings: [] };
+ }
+ if (typeof normalizeSurfaceHardware === 'function') normalizeSurfaceHardware(surface);
+ const spec = surface.cabinetSpec || {};
+ const cfg = { ...(surface.wiringConfig || {}), ...options };
+ const VALID_PATTERNS = ['H-TL', 'H-TR', 'H-BL', 'H-BR', 'V-TL', 'V-TR', 'V-BL', 'V-BR'];
+ const ORDER_TO_PATTERN = {
+  'snake-tl-h': 'H-TL', 'snake-tr-h': 'H-TR', 'snake-bl-h': 'H-BL', 'snake-br-h': 'H-BR',
+  'snake-tl-v': 'V-TL', 'snake-tr-v': 'V-TR', 'snake-bl-v': 'V-BL', 'snake-br-v': 'V-BR'
+ };
+ const PATTERN_TO_ORDER = {
+  'H-TL': 'snake-tl-h', 'H-TR': 'snake-tr-h', 'H-BL': 'snake-bl-h', 'H-BR': 'snake-br-h',
+  'V-TL': 'snake-tl-v', 'V-TR': 'snake-tr-v', 'V-BL': 'snake-bl-v', 'V-BR': 'snake-br-v'
+ };
+ let pattern = cfg.pattern;
+ if (!VALID_PATTERNS.includes(pattern) && ORDER_TO_PATTERN[cfg.pattern]) pattern = ORDER_TO_PATTERN[cfg.pattern];
+ if (!VALID_PATTERNS.includes(pattern) && ORDER_TO_PATTERN[surface.wiringOrder]) pattern = ORDER_TO_PATTERN[surface.wiringOrder];
+ if (!VALID_PATTERNS.includes(pattern)) pattern = 'H-TL';
+ const order = PATTERN_TO_ORDER[pattern] || String(surface.wiringOrder || 'snake-tl-h');
+
+ const cols = Math.max(1, Math.round(+spec.cols || +surface.cabCols || Math.ceil((+surface.w || 1920) / (+surface.pxW || 192))));
+ const rows = Math.max(1, Math.round(+spec.rows || +surface.cabRows || Math.ceil((+surface.h || 1080) / (+surface.pxH || 192))));
+ const cabPxW = Math.max(1, Math.round(+spec.pxW || +surface.pxW || Math.round((+surface.w || 1920) / cols)));
+ const cabPxH = Math.max(1, Math.round(+spec.pxH || +surface.pxH || Math.round((+surface.h || 1080) / rows)));
+ const cabPixels = cabPxW * cabPxH;
+ const cabWatts = Math.max(1, +spec.maxPowerW || 160);
+ const maxPixelsPerPort = Math.max(1, Math.round(+options.maxPixelsPerPort || +options.portPixelLimit || +cfg.maxPixelsPerPort || 650000));
+ const voltageV = (+(cfg.voltageV ?? cfg.voltage) === 110) ? 110 : 220;
+ const maxWattsPerLoop = Math.max(100, +cfg.maxWattsPerLoop || (voltageV === 110 ? 1320 : 2200));
+
  const voidSet = new Set(Array.isArray(surface.virtualTiles) ? surface.virtualTiles.map(String) : []);
- const vertical = order.endsWith('-v');
- const startRight = order.includes('-tr-') || order.includes('-br-');
- const startBottom = order.includes('-bl-') || order.includes('-br-');
- const orderedCoords = [];
- if (!vertical) {
-  for (let rStep = 0; rStep < rows; rStep++) {
-   const r = startBottom ? (rows - 1 - rStep) : rStep;
-   const revCol = (rStep % 2 === 1) ? !startRight : startRight;
-   for (let cStep = 0; cStep < cols; cStep++) {
-    const c = revCol ? (cols - 1 - cStep) : cStep;
-    orderedCoords.push({ col: c, row: r, isVoid: voidSet.has(c + ',' + r) });
+ const isVertical = pattern.startsWith('V-');
+ const fromBottom = pattern.endsWith('BL') || pattern.endsWith('BR');
+ const fromRight = pattern.endsWith('TR') || pattern.endsWith('BR');
+
+ const traversalOrder = [];
+ if (!isVertical) {
+  for (let rIdx = 0; rIdx < rows; rIdx++) {
+   const row = fromBottom ? (rows - 1 - rIdx) : rIdx;
+   const reverseRow = (rIdx % 2 === 1);
+   const goRightToLeft = fromRight ? !reverseRow : reverseRow;
+   for (let cIdx = 0; cIdx < cols; cIdx++) {
+    const col = goRightToLeft ? (cols - 1 - cIdx) : cIdx;
+    if (voidSet.has(col + ',' + row)) continue;
+    traversalOrder.push({ col, row });
    }
   }
  } else {
-  for (let cStep = 0; cStep < cols; cStep++) {
-   const c = startRight ? (cols - 1 - cStep) : cStep;
-   const revRow = (cStep % 2 === 1) ? !startBottom : startBottom;
-   for (let rStep = 0; rStep < rows; rStep++) {
-    const r = revRow ? (rows - 1 - rStep) : rStep;
-    orderedCoords.push({ col: c, row: r, isVoid: voidSet.has(c + ',' + r) });
+  for (let cIdx = 0; cIdx < cols; cIdx++) {
+   const col = fromRight ? (cols - 1 - cIdx) : cIdx;
+   const reverseCol = (cIdx % 2 === 1);
+   const goBottomToTop = fromBottom ? !reverseCol : reverseCol;
+   for (let rIdx = 0; rIdx < rows; rIdx++) {
+    const row = goBottomToTop ? (rows - 1 - rIdx) : rIdx;
+    if (voidSet.has(col + ',' + row)) continue;
+    traversalOrder.push({ col, row });
    }
   }
  }
- const activeNodes = [];
- const ports = [];
- let currentPort = null;
- for (const cell of orderedCoords) {
-  if (cell.isVoid) continue;
-  if (!currentPort || currentPort.pixels + cabPixels > portPixelLimit) {
-   currentPort = { portIndex: ports.length + 1, pixels: 0, nodes: [] };
-   ports.push(currentPort);
-  }
-  const node = {
-   col: cell.col,
-   row: cell.row,
-   portIndex: currentPort.portIndex,
-   chainIndex: currentPort.nodes.length + 1,
-   globalIndex: activeNodes.length + 1,
-   pixels: cabPixels
-  };
-  currentPort.nodes.push(node);
-  currentPort.pixels += cabPixels;
-  activeNodes.push(node);
+
+ const warnings = [];
+ if (cabPixels > maxPixelsPerPort) {
+  warnings.push(`Cabinet (${cabPxW}x${cabPxH} = ${cabPixels} px) exceeds port limit (${maxPixelsPerPort} px).`);
  }
- return { cols, rows, pxW, pxH, cabPixels, portPixelLimit, order, activeNodes, ports, voidTiles: [...voidSet] };
+ if (cabWatts > maxWattsPerLoop) {
+  warnings.push(`Cabinet (${cabWatts} W) exceeds power loop limit (${maxWattsPerLoop} W).`);
+ }
+
+ const dataPorts = [];
+ let currentPort = null;
+ traversalOrder.forEach((tile, idx) => {
+  if (!currentPort || (currentPort.pixels > 0 && currentPort.pixels + cabPixels > maxPixelsPerPort)) {
+   const pIdx = dataPorts.length + 1;
+   const cabList = [];
+   currentPort = {
+    portId: 'P' + pIdx,
+    portIndex: pIdx,
+    pixels: 0,
+    loadPercent: 0,
+    cabinets: cabList,
+    nodes: cabList
+   };
+   dataPorts.push(currentPort);
+  }
+  const cabNode = {
+   col: tile.col,
+   row: tile.row,
+   seq: currentPort.cabinets.length + 1,
+   chainIndex: currentPort.cabinets.length + 1,
+   portIndex: currentPort.portIndex,
+   globalIndex: idx + 1,
+   pixels: cabPixels,
+   xPx: tile.col * cabPxW,
+   yPx: tile.row * cabPxH,
+   wPx: cabPxW,
+   hPx: cabPxH
+  };
+  currentPort.cabinets.push(cabNode);
+  currentPort.pixels += cabPixels;
+  currentPort.loadPercent = Math.round((currentPort.pixels / maxPixelsPerPort) * 1000) / 10;
+ });
+
+ const powerLoops = [];
+ let currentLoop = null;
+ traversalOrder.forEach((tile) => {
+  if (!currentLoop || (currentLoop.watts > 0 && currentLoop.watts + cabWatts > maxWattsPerLoop)) {
+   const lIdx = powerLoops.length + 1;
+   currentLoop = {
+    loopId: 'L' + lIdx,
+    loopIndex: lIdx,
+    watts: 0,
+    amps: 0,
+    loadPercent: 0,
+    cabinets: []
+   };
+   powerLoops.push(currentLoop);
+  }
+  currentLoop.cabinets.push({
+   col: tile.col,
+   row: tile.row,
+   seq: currentLoop.cabinets.length + 1
+  });
+  currentLoop.watts += cabWatts;
+  currentLoop.amps = Math.round((currentLoop.watts / voltageV) * 100) / 100;
+  currentLoop.loadPercent = Math.round((currentLoop.watts / maxWattsPerLoop) * 1000) / 10;
+ });
+
+ const totalCabinets = cols * rows;
+ let voidCabinets = 0;
+ for (let r = 0; r < rows; r++) {
+  for (let c = 0; c < cols; c++) {
+   if (voidSet.has(c + ',' + r)) voidCabinets++;
+  }
+ }
+ const activeNodes = dataPorts.flatMap(p => p.cabinets);
+
+ return {
+  pattern,
+  order,
+  cols,
+  rows,
+  pxW: cabPxW,
+  pxH: cabPxH,
+  cabPixels,
+  portPixelLimit: maxPixelsPerPort,
+  totalCabinets,
+  activeCabinets: traversalOrder.length,
+  voidCabinets,
+  totalPixels: traversalOrder.length * cabPixels,
+  dataPorts,
+  ports: dataPorts,
+  activeNodes,
+  voidTiles: [...voidSet],
+  powerLoops,
+  warnings
+ };
 }
-function exportResolumeArenaXml(plan) {
- const pages = Array.isArray(plan?.pages) ? plan.pages : [];
- const name = esc(plan?.projectName || 'ALPHA_LED_STAGE');
- const screensXml = pages.map((page, pIdx) => {
-  const pw = Math.max(1, Math.round(+page.width || 1920));
-  const ph = Math.max(1, Math.round(+page.height || 1080));
-  const slicesXml = (page.items || []).map((item, sIdx) => {
-   const x = Math.round(+item.x || 0), y = Math.round(+item.y || 0);
-   const w = Math.max(1, Math.round(+item.w || 192)), h = Math.max(1, Math.round(+item.h || 192));
-   return `      <Slice uniqueId="${1000 + pIdx * 100 + sIdx}" name="${esc(item.name || ('Slice_' + (sIdx + 1)))}" isEnabled="1">
-        <InputRect x="${x}" y="${y}" w="${w}" h="${h}" orientation="0"/>
-        <OutputRect x="${x}" y="${y}" w="${w}" h="${h}" orientation="0"/>
-      </Slice>`;
-  }).join('\n');
-  return `    <Screen uniqueId="${100 + pIdx}" name="${esc(page.name || page.id || ('Screen_' + (pIdx + 1)))}" width="${pw}" height="${ph}">
-      <Slices>
-${slicesXml}
-      </Slices>
-    </Screen>`;
+
+function escXml(str) {
+ return String(str ?? '')
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;')
+  .replace(/'/g, '&apos;');
+}
+
+function exportResolumeArenaXml(surfacesOrPlan = [], masterSize = {}) {
+ const isPlanObj = surfacesOrPlan && !Array.isArray(surfacesOrPlan) && Array.isArray(surfacesOrPlan.pages);
+ const page0 = isPlanObj ? surfacesOrPlan.pages[0] : null;
+ const compW = Math.max(1, Math.round(+masterSize?.width || +page0?.width || 3840));
+ const compH = Math.max(1, Math.round(+masterSize?.height || +page0?.height || 2160));
+ const pages = isPlanObj ? surfacesOrPlan.pages : [{ items: Array.isArray(surfacesOrPlan) ? surfacesOrPlan : [], width: compW, height: compH }];
+ let sliceId = 1000;
+ const screensXml = pages.map((page, pageIndex) => {
+ const list = page.items || [];
+ const slicesXml = list.map((s, idx) => {
+  const x = Math.max(0, Math.round(Number.isFinite(+s?.x) ? +s.x : 0));
+  const y = Math.max(0, Math.round(Number.isFinite(+s?.y) ? +s.y : 0));
+  const w = Math.max(1, Math.round(Number.isFinite(+s?.w) && +s.w > 0 ? +s.w : (+s?.nativeResolution?.width || 1920)));
+  const h = Math.max(1, Math.round(Number.isFinite(+s?.h) && +s.h > 0 ? +s.h : (+s?.nativeResolution?.height || 1080)));
+  const uid = sliceId++;
+  const name = escXml(s?.name || s?.id || `Slice_${idx + 1}`);
+  return [
+   `        <Slice uniqueId="${uid}" name="${name}" isEnabled="1">`,
+   `          <InputRect x="${x}" y="${y}" w="${w}" h="${h}" orientation="0">`,
+   `            <v x="${x}" y="${y}"/>`,
+   `            <v x="${x + w}" y="${y}"/>`,
+   `            <v x="${x + w}" y="${y + h}"/>`,
+   `            <v x="${x}" y="${y + h}"/>`,
+   `          </InputRect>`,
+   `          <OutputRect x="${x}" y="${y}" w="${w}" h="${h}" orientation="0">`,
+   `            <v x="${x}" y="${y}"/>`,
+   `            <v x="${x + w}" y="${y}"/>`,
+   `            <v x="${x + w}" y="${y + h}"/>`,
+   `            <v x="${x}" y="${y + h}"/>`,
+   `          </OutputRect>`,
+   `        </Slice>`
+  ].join('\n');
  }).join('\n');
- return `<?xml version="1.0" encoding="utf-8"?>
-<XmlState name="${name}" version="7.18.0" createdBy="ALPHA Creative LED Studio">
-  <ScreenSetup name="${name}">
-    <CurrentCompositionTextureSize width="${pages[0]?.width || 3840}" height="${pages[0]?.height || 2160}"/>
-    <Screens>
-${screensXml}
-    </Screens>
-  </ScreenSetup>
-</XmlState>`;
+ return [
+  `      <Screen uniqueId="${100 + pageIndex}" name="${escXml(page.name || page.id || ('LED_Processor_' + (pageIndex + 1)))}" width="${Math.max(1, Math.round(+page.width || compW))}" height="${Math.max(1, Math.round(+page.height || compH))}">`,
+  `        <Slices>`, slicesXml, `        </Slices>`, `      </Screen>`
+ ].join('\n');
+ }).join('\n');
+
+ return [
+  `<?xml version="1.0" encoding="utf-8"?>`,
+  `<XmlState name="Arena Advanced Output" version="7.18.0" createdBy="ALPHA Creative LED Studio">`,
+  `  <versionInfo name="Resolume Arena" majorVersion="7" minorVersion="18" microVersion="0"/>`,
+  `  <ScreenSetup name="ALPHA_LED_Stage_Setup">`,
+  `    <CurrentCompositionTextureSize width="${compW}" height="${compH}"/>`,
+  `    <Screens>`,
+  screensXml,
+  `    </Screens>`,
+  `  </ScreenSetup>`,
+  `</XmlState>`
+ ].join('\n');
 }
-function paintAtlas(canvas,page,{labels=true,fullSize=false,wiring=true}={}){
+
+function downloadResolumeXml(plan = live.atlasPlan) {
+ const surfaces = (typeof engine !== 'undefined' && Array.isArray(engine?.surfaces) && engine.surfaces.length && !plan)
+  ? engine.surfaces
+  : (plan || []);
+ const master = plan?.pages?.[0]
+  ? { width: plan.pages[0].width, height: plan.pages[0].height }
+  : (typeof engine !== 'undefined' && engine?.master ? engine.master : { width: 3840, height: 2160 });
+ const xml = exportResolumeArenaXml(surfaces, master);
+ downloadText('ALPHA_Resolume_Arena_Output.xml', xml, 'application/xml;charset=utf-8');
+}
+
+function paintAtlas(canvas,page,{labels=true,fullSize=false,wiring=true,showData=true,showPower=false,pattern=null}={}){
  const limit=fullSize?1:Math.min(1,1280/page.width,660/page.height);
  canvas.width=Math.max(1,Math.round(page.width*limit));canvas.height=Math.max(1,Math.round(page.height*limit));const g=canvas.getContext('2d');g.fillStyle='#080b12';g.fillRect(0,0,canvas.width,canvas.height);g.scale(limit,limit);
  const colors=['#5bd7c6','#a795fa','#f2b66d','#7eaaf4','#e5a5d0','#9bdba0'];
@@ -345,7 +493,7 @@ function paintAtlas(canvas,page,{labels=true,fullSize=false,wiring=true}={}){
   g.fillStyle=labels?colors[i%colors.length]:'#ffffff';g.fillRect(r.x,r.y,r.w,r.h);
   const surf=typeof engine!=='undefined'&&engine?.surfaces?.find(s=>s.id===r.surfaceId);
   if(labels&&wiring&&surf){
-   const wPlan=planSurfaceWiring({...surf,w:r.w,h:r.h});
+   const wPlan=planSurfaceWiring({...surf,w:r.w,h:r.h},pattern?{pattern}:{});
    const cw=r.w/wPlan.cols,ch=r.h/wPlan.rows;
    g.save();
    g.strokeStyle='rgba(8,11,18,0.35)';g.lineWidth=Math.max(1,1/limit);
@@ -359,24 +507,48 @@ function paintAtlas(canvas,page,{labels=true,fullSize=false,wiring=true}={}){
      g.strokeStyle='rgba(255,107,107,0.75)';g.beginPath();g.moveTo(vx+3,vy+3);g.lineTo(vx+cw-3,vy+ch-3);g.moveTo(vx+cw-3,vy+3);g.lineTo(vx+3,vy+ch-3);g.stroke();
     }
    }
-   wPlan.ports.forEach((port,pIdx)=>{
-    const pColor=portColors[pIdx%portColors.length];
-    g.strokeStyle=pColor;g.lineWidth=Math.max(2,2.5/limit);
-    g.beginPath();
-    port.nodes.forEach((n,nIdx)=>{
-     const cx=r.x+(n.col+0.5)*cw,cy=r.y+(n.row+0.5)*ch;
-     if(nIdx===0)g.moveTo(cx,cy);else g.lineTo(cx,cy);
+   if(showData){
+    wPlan.dataPorts.forEach((port,pIdx)=>{
+     const pColor=portColors[pIdx%portColors.length];
+     g.strokeStyle=pColor;g.lineWidth=Math.max(2,2.5/limit);
+     g.beginPath();
+     port.cabinets.forEach((n,nIdx)=>{
+      const cx=r.x+(n.col+0.5)*cw,cy=r.y+(n.row+0.5)*ch;
+      if(nIdx===0)g.moveTo(cx,cy);else g.lineTo(cx,cy);
+     });
+     g.stroke();
+     const first=port.cabinets[0];
+     if(first){
+      const fx=r.x+(first.col+0.5)*cw,fy=r.y+(first.row+0.5)*ch;
+      g.fillStyle='#080b12';g.beginPath();g.arc(fx,fy,Math.max(8,Math.min(14,cw*0.22)),0,Math.PI*2);g.fill();
+      g.strokeStyle=pColor;g.stroke();
+      g.fillStyle=pColor;g.font='bold '+Math.max(9,Math.min(13,cw*0.18))+'px Segoe UI,Arial';g.textAlign='center';g.textBaseline='middle';
+      g.fillText(port.portId,fx,fy);g.textAlign='start';g.textBaseline='alphabetic';
+     }
     });
-    g.stroke();
-    const first=port.nodes[0];
-    if(first){
-     const fx=r.x+(first.col+0.5)*cw,fy=r.y+(first.row+0.5)*ch;
-     g.fillStyle='#080b12';g.beginPath();g.arc(fx,fy,Math.max(8,Math.min(14,cw*0.22)),0,Math.PI*2);g.fill();
-     g.strokeStyle=pColor;g.stroke();
-     g.fillStyle=pColor;g.font='bold '+Math.max(9,Math.min(13,cw*0.18))+'px Segoe UI,Arial';g.textAlign='center';g.textBaseline='middle';
-     g.fillText('P'+port.portIndex,fx,fy);g.textAlign='start';g.textBaseline='alphabetic';
-    }
-   });
+   }
+   if(showPower){
+    g.save();
+    g.setLineDash([Math.max(4,6/limit),Math.max(3,4/limit)]);
+    wPlan.powerLoops.forEach((loop,lIdx)=>{
+     const lColor=portColors[(lIdx+2)%portColors.length];
+     g.strokeStyle=lColor;g.lineWidth=Math.max(1.5,2/limit);
+     g.beginPath();
+     loop.cabinets.forEach((n,nIdx)=>{
+      const cx=r.x+(n.col+0.5)*cw,cy=r.y+(n.row+0.5)*ch+Math.min(8,ch*0.12);
+      if(nIdx===0)g.moveTo(cx,cy);else g.lineTo(cx,cy);
+     });
+     g.stroke();
+     const first=loop.cabinets[0];
+     if(first){
+      const fx=r.x+(first.col+0.5)*cw,fy=r.y+(first.row+0.5)*ch+Math.min(8,ch*0.12);
+      g.fillStyle='#080b12';g.fillRect(fx-10,fy-7,20,14);
+      g.fillStyle=lColor;g.font='bold '+Math.max(8,Math.min(11,cw*0.15))+'px Segoe UI,Arial';g.textAlign='center';g.textBaseline='middle';
+      g.fillText(loop.loopId,fx,fy);g.textAlign='start';g.textBaseline='alphabetic';
+     }
+    });
+    g.restore();
+   }
    g.restore();
   }
   if(labels){g.fillStyle='#102028';g.font='bold '+Math.max(12,Math.min(42,r.w/12,r.h/5))+'px Segoe UI,Arial';g.save();g.beginPath();g.rect(r.x+3,r.y+3,r.w-6,r.h-6);g.clip();g.fillText(r.name,r.x+12,r.y+Math.max(22,Math.min(50,r.h/3)));g.font=Math.max(10,Math.min(28,r.w/15))+'px Segoe UI,Arial';g.fillText(r.w+' x '+r.h+' px',r.x+12,r.y+Math.min(88,r.h*.6));g.restore();}
@@ -434,12 +606,26 @@ function openPixelStudio(){
 function showAtlasResults(plan){
  const box=$('atlasResults');if(!box)return;
  box.innerHTML=`<div class="atlas-summary"><div><b>${plan.pages.length}</b><small>${(window.tr?.("Canvas / clip","Canvas / clip") ?? "Canvas / clip")}</small></div><div><b>${plan.fillPercent}%</b><small>${(window.tr?.("Pixel hữu dụng","Pixel utilization") ?? "Pixel hữu dụng")}</small></div><div><b>${(plan.activePixels/1e6).toFixed(2)} MP</b><small>${(window.tr?.("LED thực","Actual LED pixels") ?? "LED thực")}</small></div><div><b>${plan.rawRGBGBperSecond} GB/s</b><small>${(window.tr?.("RGB chưa nén","Uncompressed RGB") ?? "RGB chưa nén")} / ${plan.options.fps} FPS</small></div></div>
- <div class="atlas-pages">${plan.pages.map((p,i)=>`<button class="btn ${i===0?'active':''}" data-page="${i}">${esc(p.name)} / ${p.width} x ${p.height}</button>`).join('')}</div><canvas id="atlasCanvas"></canvas><div class="atlas-actions"><button class="btn" id="exportAtlasGuide">${(window.tr?.("PNG hướng dẫn","Guide PNG") ?? "PNG hướng dẫn")}</button><button class="btn" id="exportAtlasMask">${(window.tr?.("PNG mặt nạ","Mask PNG") ?? "PNG mặt nạ")}</button><button class="btn" id="atlasVisualPNG">${(window.tr?.("PNG nội dung","Visual PNG") ?? "PNG nội dung")}</button><button class="btn" id="atlasRecord">${(window.tr?.("WebM nội dung","Visual WebM") ?? "WebM nội dung")}</button><button class="btn" id="atlasJSON">JSON</button><button class="btn" id="atlasCSV">CSV</button><button class="btn" id="atlasResolumeXml">Resolume XML</button><button class="btn" id="atlasWiringToggle">${(window.tr?.("Ẩn/Hiện dây tín hiệu","Toggle wiring overlay") ?? "Ẩn/Hiện dây tín hiệu")}</button><button class="btn primary" id="loadAtlasClip">${(window.tr?.("Nạp clip đúng cụm này","Load clip for this group") ?? "Nạp clip đúng cụm này")}</button></div><p class="hint-text">${(window.tr?.("Xuất PNG/JSON → làm motion trên canvas này → nạp clip. Chỉ bước nạp clip mới thay crop của cụm được chọn; mặt LED 3D giữ nguyên. Đây là đề xuất packing, không phải sơ đồ đấu nối.","Export PNG/JSON → create motion on this canvas → load clip. Loading a clip updates only the selected group crop; 3D LED surfaces remain unchanged. This is a packing proposal, not a wiring diagram.") ?? "Xuất PNG/JSON → làm motion trên canvas này → nạp clip. Chỉ bước nạp clip mới thay crop của cụm được chọn; mặt LED 3D giữ nguyên. Đây là đề xuất packing, không phải sơ đồ đấu nối.")}</p>`;
- let index=0,showWiring=true;const display=i=>{index=i;paintAtlas($('atlasCanvas'),plan.pages[i],{wiring:showWiring});box.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',+b.dataset.page===i));};display(0);
+ <div class="atlas-pages">${plan.pages.map((p,i)=>`<button class="btn ${i===0?'active':''}" data-page="${i}">${esc(p.name)} / ${p.width} x ${p.height}</button>`).join('')}</div>
+ <div class="pro-settings" style="margin:6px 0;gap:10px;align-items:center;"><label>${(window.tr?.("Kiểu đi dây","Wiring pattern") ?? "Kiểu đi dây")}<select id="atlasWiringPattern"><option value="H-TL">H-TL</option><option value="H-TR">H-TR</option><option value="H-BL">H-BL</option><option value="H-BR">H-BR</option><option value="V-TL">V-TL</option><option value="V-TR">V-TR</option><option value="V-BL">V-BL</option><option value="V-BR">V-BR</option></select></label><label style="display:inline-flex;align-items:center;gap:4px;"><input type="checkbox" id="atlasShowData" checked> Data Snakes (RJ45)</label><label style="display:inline-flex;align-items:center;gap:4px;"><input type="checkbox" id="atlasShowPower"> Power Loops (20A)</label></div>
+ <canvas id="atlasCanvas"></canvas><div class="atlas-actions"><button class="btn" id="exportAtlasGuide">${(window.tr?.("PNG hướng dẫn","Guide PNG") ?? "PNG hướng dẫn")}</button><button class="btn" id="exportAtlasMask">${(window.tr?.("PNG mặt nạ","Mask PNG") ?? "PNG mặt nạ")}</button><button class="btn" id="atlasVisualPNG">${(window.tr?.("PNG nội dung","Visual PNG") ?? "PNG nội dung")}</button><button class="btn" id="atlasRecord">${(window.tr?.("WebM nội dung","Visual WebM") ?? "WebM nội dung")}</button><button class="btn" id="atlasJSON">JSON</button><button class="btn" id="atlasCSV">CSV</button><button class="btn" id="atlasResolumeXML">Resolume XML</button><button class="btn" id="atlasWiringToggle">${(window.tr?.("Ẩn/Hiện dây tín hiệu","Toggle wiring overlay") ?? "Ẩn/Hiện dây tín hiệu")}</button><button class="btn primary" id="loadAtlasClip">${(window.tr?.("Nạp clip đúng cụm này","Load clip for this group") ?? "Nạp clip đúng cụm này")}</button></div><p class="hint-text">${(window.tr?.("Xuất PNG/JSON → làm motion trên canvas này → nạp clip. Chỉ bước nạp clip mới thay crop của cụm được chọn; mặt LED 3D giữ nguyên. Đây là đề xuất packing, không phải sơ đồ đấu nối.","Export PNG/JSON → create motion on this canvas → load clip. Loading a clip updates only the selected group crop; 3D LED surfaces remain unchanged. This is a packing proposal, not a wiring diagram.") ?? "Xuất PNG/JSON → làm motion trên canvas này → nạp clip. Chỉ bước nạp clip mới thay crop của cụm được chọn; mặt LED 3D giữ nguyên. Đây là đề xuất packing, không phải sơ đồ đấu nối.")}</p>`;
+ let index=0,showWiring=true;
+ const display=i=>{
+  index=i;
+  const showData=!!$('atlasShowData')?.checked;
+  const showPower=!!$('atlasShowPower')?.checked;
+  const pat=$('atlasWiringPattern')?.value||null;
+  paintAtlas($('atlasCanvas'),plan.pages[i],{wiring:showWiring,showData,showPower,pattern:pat});
+  box.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',+b.dataset.page===i));
+ };
+ display(0);
  box.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>display(+b.dataset.page));
+ $('atlasWiringPattern').onchange=()=>display(index);
+ $('atlasShowData').onchange=()=>display(index);
+ $('atlasShowPower').onchange=()=>display(index);
  $('exportAtlasGuide').onclick=()=>exportAtlasPNG(plan.pages[index],true).catch(e=>toast(e.message));$('exportAtlasMask').onclick=()=>exportAtlasPNG(plan.pages[index],false).catch(e=>toast(e.message));
  $('atlasJSON').onclick=()=>exportAtlasJSON(plan);$('atlasCSV').onclick=()=>exportAtlasCSV(plan);
- $('atlasResolumeXml').onclick=()=>downloadText('ALPHA_Resolume_AdvancedOutput.xml',exportResolumeArenaXml({...plan,projectName:state.projectName||'ALPHA_LED_STAGE'}),'application/xml;charset=utf-8');
+ $('atlasResolumeXML').onclick=()=>downloadResolumeXml(plan);
  $('atlasWiringToggle').onclick=()=>{showWiring=!showWiring;display(index);};
  $('atlasVisualPNG').onclick=()=>exportAtlasVisualPNG(plan.pages[index]).catch(e=>toast(e.message,8000));$('atlasRecord').onclick=()=>openAtlasRecording(plan.pages[index]);
  $('loadAtlasClip').onclick=()=>{live.pendingAtlas=plan.pages[index];$('atlasMediaInput').click();};
@@ -856,7 +1042,7 @@ function initLiveEvents(){
  const help=$('helpBtn').onclick;$('helpBtn').onclick=()=>{help();$('modalBody').insertAdjacentHTML('afterbegin',`<h3>${(window.tr?.("Sáng tạo trực tiếp","Live creative") ?? "Sáng tạo trực tiếp")}</h3><p><b>LED</b>${(window.tr?.(": chọn nhiều, xóa an toàn, gom cụm. ",": multi-select, safely delete and group. ") ?? ": chọn nhiều, xóa an toàn, gom cụm. ")}<b>Pixel Studio</b>${(window.tr?.(": tính cabinet, xuất atlas PNG/JSON, nạp clip đúng cụm. ",": calculate cabinets, export atlas PNG/JSON and load clips for each group. ") ?? ": tính cabinet, xuất atlas PNG/JSON, nạp clip đúng cụm. ")}<b>LIVE VJ</b>${(window.tr?.(": 8 look pads, QWER/ASDG; Shift+click ghi look; click phải đổi tên. Crossfade/Wipe/Dip/Cut, X blackout, C flash, V strobe cần bật cho phép. Audio nghe tiếng video hoặc nhạc riêng; WebM thu được audio.",": 8 look pads, QWER/ASDG; Shift+click stores a look; right-click renames. Crossfade/Wipe/Dip/Cut, X blackout, C flash, V strobe requires permission. Listen to video audio or separate music; WebM can record audio.") ?? ": 8 look pads, QWER/ASDG; Shift+click ghi look; click phải đổi tên. Crossfade/Wipe/Dip/Cut, X blackout, C flash, V strobe cần bật cho phép. Audio nghe tiếng video hoặc nhạc riêng; WebM thu được audio.")}</p><p>${(window.tr?.("FPS thực phụ thuộc GPU/model; Auto mục tiêu 55 FPS, không nội suy clip 25/30fps.","Actual FPS depends on GPU/model; Auto targets 55 FPS and does not interpolate 25/30fps clips.") ?? "FPS thực phụ thuộc GPU/model; Auto mục tiêu 55 FPS, không nội suy clip 25/30fps.")}</p>`);};
  renderLiveDock();
 }
-const liveAPI={live,toggleLive,keepRendering,launchCue,captureCue,advanceLive,panicLive,deleteMapIds,openLEDManager,openPixelStudio,planAtlas,validateAtlas,nativeEstimate,assignAtlasClip,exportAtlasPNG,exportAtlasJSON,planSurfaceWiring,exportResolumeArenaXml,
+const liveAPI={live,toggleLive,keepRendering,launchCue,captureCue,advanceLive,panicLive,deleteMapIds,openLEDManager,openPixelStudio,planAtlas,validateAtlas,nativeEstimate,assignAtlasClip,exportAtlasPNG,exportAtlasJSON,planSurfaceWiring,exportResolumeArenaXml,downloadResolumeXml,
  openPerformance,performanceDiagnostics,enableAudio,openAudioPanel,addMusicFile,removeMusic,syncVideos,setPlaying,recordPreview,beginLiveRecording,
  renderUI,loadProject,importModel,demo,assignMaster,mappingData,togglePresentation,activateSpatialLayout,snapshot,restore,
  createAtlasRenderer,exportAtlasVisualPNG,beginAtlasRecording,getPerformance:performanceDiagnostics,activeVideos,packLiveExtras};
