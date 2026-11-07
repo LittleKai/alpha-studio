@@ -1,0 +1,43 @@
+{
+  "contract": "led-asset/v1",
+  "id": "stage_laser_dancer",
+  "title": "Laser Suit Dancer \u2014 matrix laser glove & prism suit performer",
+  "category": "human",
+  "tags": "human dancer laserdancer laser matrix neon prism stylized rigged animation CC0",
+  "size_m": [
+    1.858683,
+    1.817673,
+    0.354801
+  ],
+  "origin": "floor-center",
+  "tris": 3305,
+  "texture_px": 512,
+  "glb_bytes": 467344,
+  "glb_sha256": "636b6df995750bb97ef42edf0f4603c836456718fe59b07e861750f6334c7ea9",
+  "source": "design-mcp/blender/.pjs/led_stage_assets/_scratch/stage-characters-expansion-20261106/stage-laser-dancer",
+  "author": "Mesh2Motion CC0 rig; Design-MCP stylized pilot derivative and laser suit dancer motions",
+  "license": "CC0-1.0",
+  "distribution": "commercial-ok",
+  "ofl_fixture": null,
+  "animation_pilot": {
+    "joints": 66,
+    "skins": 1,
+    "animations": 3,
+    "animation_names": [
+      "Laser Dancer 01 - Beam Pose Flow (8s)",
+      "Laser Dancer 02 - Matrix Spin (8s)",
+      "Laser Dancer 03 - Ready Idle (6s)"
+    ],
+    "default_clip": "Laser Dancer 01 - Beam Pose Flow (8s)",
+    "bind_height_m": 1.817673,
+    "note": "Authored laser suit dancer beam pose flow, matrix spin, and ready idle clips with IK-pinned feet",
+    "texture_size": [
+      512,
+      512
+    ],
+    "target_triangle_range": [
+      3000,
+      5000
+    ]
+  }
+}

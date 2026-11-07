@@ -253,7 +253,7 @@ const v07API={toggleLive,seq,sq,seqData,castNames,renderCastManager,evaluateSequ
 
 /* V08 Director. Editable source-space deltas; original vertices remain immutable. */
 const director={scope:'led',front:null,mode:'navigate',selection:null,group:false,axis:'xz',snap:.1,
- cameras:[],cameraFollow:false,cameraMotion:null,acts:[],edits:{},lightCandidates:[],candidatePreview:null,
+ cameras:[],cameraFollow:false,cameraMotion:null,acts:[],edits:{},deletedKeys:[],lightCandidates:[],candidatePreview:null,
  drag:null,ready:false,loading:false,uiTime:0};
 if(typeof window!=='undefined')window.director=director;
 const D8={snapshot,restore,renderUI,renderInspector,renderLists,renderOverlays,loadProject,importModel,demo,
@@ -261,22 +261,27 @@ const D8={snapshot,restore,renderUI,renderInspector,renderLists,renderOverlays,l
  sourceOptions,targetOptions,editClip,renderSequence,buildHuman,castMatrix,drawCast:StageEngine.prototype.drawCast,
  render:StageEngine.prototype.render,fit:StageEngine.prototype.fit,cameraPreset:StageEngine.prototype.cameraPreset,setPlaying,restoreSeq,addAnchoredLight};
 function dirData(){return structuredClone({version:1,scope:director.scope,front:director.front,cameras:director.cameras,
- cameraFollow:director.cameraFollow,acts:director.acts,edits:director.edits,surfaceUV:engine.surfaces.filter(s=>s.mesh.mapUV).map(s=>({id:s.id,uv:Array.from(s.mesh.mapUV)}))});}
+ cameraFollow:director.cameraFollow,acts:director.acts,edits:director.edits,deletedKeys:director.deletedKeys||[],surfaceUV:engine.surfaces.filter(s=>s.mesh.mapUV).map(s=>({id:s.id,uv:Array.from(s.mesh.mapUV)}))});}
 function dirFiniteMatrix(m){return Array.isArray(m)&&m.length===16&&m.every(v=>Number.isFinite(v)&&Math.abs(v)<1e10);}
 function dirSourceMesh(s){return sourceForSurface(s);}
 function dirCanonicalMatrix(m){return M.mm(engine.coordinates.matrix,director.edits[m.sourceKey]||M.identity());}
 function dirApplyEdits(){
+ const del=new Set(director.deletedKeys||[]);
  for(const m of engine.stage){engine.releaseMesh(m);m.p=new Float32Array(m._sourceP||m.p);transformMesh(m,dirCanonicalMatrix(m));
-  m.worldAxes=(m._sourceAxes||[[1,0,0],[0,1,0],[0,0,1]]).map(v=>M.norm(M.vector(dirCanonicalMatrix(m),v)));}
+  m.worldAxes=(m._sourceAxes||[[1,0,0],[0,1,0],[0,0,1]]).map(v=>M.norm(M.vector(dirCanonicalMatrix(m),v)));
+  if(del.has(m.sourceKey)||del.has(m.id)){m._deleted8=true;m.hidden=true;}else if(m._deleted8){m._deleted8=false;m.hidden=false;}
+ }
+ for(const s of engine.surfaces){const src=dirSourceMesh(s);if(src&&(del.has(src.sourceKey)||del.has(src.id))){s._deleted8=true;s.enabled=false;}else if(s._deleted8){s._deleted8=false;s.enabled=true;}}
  configureStageBounds();engine._stageBatchDirty=true;resetFlatCache();
 }
 function resetDirector(){
- if(director.ready)releaseActCache();Object.assign(director,{scope:'led',front:null,inferredFront:null,mode:'navigate',panel:null,selection:null,cameras:[],acts:[],edits:{},cameraFollow:false,cameraMotion:null,drag:null,candidatePreview:null,lightCandidates:[]});
+ if(director.ready)releaseActCache();Object.assign(director,{scope:'led',front:null,inferredFront:null,mode:'navigate',panel:null,selection:null,cameras:[],acts:[],edits:{},deletedKeys:[],cameraFollow:false,cameraMotion:null,drag:null,candidatePreview:null,lightCandidates:[]});
 }
 function restoreDirector(data){
  director.selection=null;director.drag=null;director.cameraMotion=null;director.candidatePreview=null;director.inferredFront=null;
  director.scope=['led','stage','all','selection'].includes(data?.scope)?data.scope:'led';director.front=finiteArray(data?.front,3)?M.norm(data.front):null;
  director.edits={};for(const [k,v]of Object.entries(data?.edits||{}))if(dirFiniteMatrix(v))director.edits[k]=v;
+ director.deletedKeys=Array.isArray(data?.deletedKeys)?data.deletedKeys.slice(0,2000).map(String):[];
  director.cameras=(data?.cameras||[]).slice(0,24).filter(c=>finiteArray(c.target,3)&&Number.isFinite(c.distance)&&c.distance>0).map(c=>({...c,id:String(c.id),name:String(c.name||'Camera').slice(0,50),fov:clamp(+c.fov||45,20,80),yaw:+c.yaw||0,pitch:clamp(+c.pitch||0,-1.4,1.56)}));
  director.cameraFollow=!!data?.cameraFollow;
  director.acts=(data?.acts||[]).slice(0,24).filter(a=>ACT_TYPES[a.type]&&finiteArray(a.pos,3)).map(a=>({...a,id:String(a.id),name:String(a.name||ACT_TYPES[a.type].name).slice(0,60),scale:clamp(+a.scale||1,.1,10),yaw:+a.yaw||0,hidden:!!a.hidden,people:(a.people||[]).filter(id=>seq.people.some(p=>p.id===id))}));
@@ -415,6 +420,78 @@ function transformFrom8(base,{delta=[0,0,0],yaw=0,scale=1}={}){
  if(base.meshes.length){configureStageBounds();engine._stageBatchDirty=true;resetFlatCache();}engine._fitOnResize=false;invalidateSeq();return true;
 }
 function applyTransform8(values){const base=captureTransform8();if(!base)return false;checkpoint();const ok=transformFrom8(base,values);dirCommit();return ok;}
+function deleteSelectedObject8(){
+ const sel=director.selection;if(!sel||state.presenting||director.drag||(typeof group9!=='undefined'&&group9.marquee))return false;
+ const items=sel.kind==='set'&&typeof currentMembers9==='function'?currentMembers9():[sel];
+ if(!items.length)return false;
+ const hasTarget=items.some(r=>r&&(r.kind==='person'?seq.people.some(p=>p.id===r.id):r.kind==='act'?director.acts.some(a=>a.id===r.id):r.kind==='light'||r.kind==='target'?engine.lights.some(l=>l.id===r.id):r.kind==='surface'?engine.surfaces.some(s=>s.id===r.id):r.kind==='mesh'?engine.stage.some(m=>m.sourceKey===r.id||m.id===r.id):false));
+ if(!hasTarget)return false;
+ checkpoint();
+ let deletedCount=0,lastLabel='',castChanged=false,actChanged=false,meshChanged=false;
+ const loc=typeof localizeObjectName==='function'?localizeObjectName:v=>v,assetIds=new Set();
+ for(const r of items){
+  if(!r)continue;
+  if(r.kind==='person'){
+   const idx=seq.people.findIndex(p=>p.id===r.id);
+   if(idx>=0){
+    const [p]=seq.people.splice(idx,1);lastLabel=loc(p.name||'Performer');
+    for(const a of director.acts)if(Array.isArray(a.people))a.people=a.people.filter(id=>id!==p.id);
+    if(sq.placePerson===p.id){sq.placePerson=null;$('quadHint')?.classList?.add('hidden');}
+    castChanged=true;actChanged=true;deletedCount++;
+   }
+  }else if(r.kind==='act'){
+   const a=director.acts.find(x=>x.id===r.id);
+   if(a){
+    lastLabel=loc(a.name||'Act');
+    seq.people=seq.people.filter(p=>!a.people.includes(p.id)&&p.actId!==a.id);
+    seq.clips=seq.clips.filter(c=>c.source!==a.id);
+    director.acts=director.acts.filter(x=>x.id!==a.id);
+    castChanged=true;actChanged=true;deletedCount++;
+   }
+  }else if(r.kind==='light'||r.kind==='target'){
+   const idx=engine.lights.findIndex(l=>l.id===r.id);
+   if(idx>=0){
+    const [l]=engine.lights.splice(idx,1);lastLabel=loc(l.name||'Light');
+    if(state.selectedLight===l.id)state.selectedLight=engine.lights[0]?.id||null;
+    deletedCount++;
+   }
+  }else if(r.kind==='surface'){
+   const idx=engine.surfaces.findIndex(s=>s.id===r.id);
+   if(idx>=0){
+    const [s]=engine.surfaces.splice(idx,1);lastLabel=loc(s.name||'LED');
+    engine.releaseMesh(s.mesh);if(engine.selected===s.id)engine.selected=engine.surfaces[0]?.id||null;
+    meshChanged=true;deletedCount++;
+   }
+  }else if(r.kind==='mesh'){
+   const meshes=r===sel?selectionMeshes8(sel):engine.stage.filter(m=>m.sourceKey===r.id||m.id===r.id);
+   for(const m of meshes){
+    if(m._asset16Id)assetIds.add(m._asset16Id);
+    else if(!m._deleted8){
+     m._deleted8=true;m.hidden=true;
+     const key=m.sourceKey||m.id;if(key&&!director.deletedKeys.includes(key))director.deletedKeys.push(key);
+     for(const s of engine.surfaces)if(dirSourceMesh(s)===m){s._deleted8=true;s.enabled=false;}
+     lastLabel=loc(m.name||'Object');meshChanged=true;deletedCount++;
+    }
+   }
+  }
+ }
+ if(assetIds.size){
+  const A16=typeof window!=='undefined'&&window.STUDIO?.stageAssets16;
+  for(const aid of assetIds){
+   const it=A16?.items?.find?.(x=>x.id===aid);if(it)lastLabel=loc(it.name||'Prop');
+   if(A16?.deleteItem?.(aid,{record:false,silent:true})){meshChanged=true;deletedCount++;}
+  }
+ }
+ if(!deletedCount)return false;
+ if(castChanged)rebuildCast();
+ if(actChanged)rebuildActCache();
+ if(meshChanged)configureStageBounds();
+ director.selection=null;state.selectedMesh=null;state.hit=null;
+ if(typeof group9!=='undefined')group9.members=[];
+ dirCommit();
+ toast((window.tr?.("Đã xóa ","Deleted ") ?? "Đã xóa ")+(deletedCount>1?deletedCount+(window.tr?.(" mục"," items") ?? " mục"):lastLabel)+(window.tr?.(". Nhấn Ctrl+Z để hoàn tác.",". Press Ctrl+Z to undo.") ?? ". Nhấn Ctrl+Z để hoàn tác."));
+ return true;
+}
 function dragHandle8(e,axis=director.axis){if(e.button!==0||!director.selection||state.presenting)return;e.preventDefault();e.stopImmediatePropagation();const base=captureTransform8();if(!base)return;
  checkpoint();director.cameraFollow=false;director.cameraMotion=null;state.orbit=false;const resume=state.playing;setPlaying(false);
  const origin=engine.project(base.pivot),r=engine.canvas.getBoundingClientRect(),ar=axis==='x'?[1,0,0]:axis==='y'?[0,1,0]:[0,0,1],end=engine.project(M.add(base.pivot,ar)),screen=end&&origin?[end.x-origin.x,end.y-origin.y]:[1,0];
@@ -447,7 +524,8 @@ function initManipulation8(){
  document.addEventListener('pointercancel',e=>{if(director.drag)finishDrag8(e,true);},true);
  window.addEventListener('blur',()=>{if(director.drag)finishDrag8(null,true);});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(director.drag)finishDrag8(null,true);director.pick=null;director.candidatePreview=null;$('quadHint').classList.add('hidden');}
-  if(e.target.matches('input,select,textarea')||$('modal').open)return;
+  if(e.target.matches('input,select,textarea,[contenteditable]')||e.target.isContentEditable||$('modal').open)return;
+  if((e.key==='Delete'||e.key==='Backspace')&&director.selection&&!(seq.open&&seq.selected)){if(deleteSelectedObject8()){e.preventDefault();e.stopImmediatePropagation();return;}}
   if(e.key==='F2'){e.preventDefault();setEditMode8('move');}if(e.key==='F3'){e.preventDefault();setEditMode8('rotate');}if(e.key==='F4'){e.preventDefault();setEditMode8('scale');}
  },true);
 }
@@ -604,7 +682,7 @@ function renderDirectorPanel(){if(!engine||!director.panel)return;const host=$('
  $('inspectorSubtitle').textContent=(window.tr?.("Giữ hệ mét / UV / crop cũ","Keep meters / UV / crop unchanged") ?? "Giữ hệ mét / UV / crop cũ");let content=directorTabs8();
  if(director.panel==='objects'){
   const p=selectionPivot8(),b=selectionBounds8(),sel=director.selection;content+=`<div class="dir-section"><h3>${esc(objectLabel8())}</h3><div class="dir-modes">${[['navigate',(window.tr?.("Xem","View") ?? "Xem")],['select',(window.tr?.("Chọn","Select") ?? "Chọn")],['move',(window.tr?.("Kéo","Move") ?? "Kéo")],['rotate',(window.tr?.("Xoay","Rotate") ?? "Xoay")],['scale',(window.tr?.("Tỷ lệ","Scale") ?? "Tỷ lệ")]].map(([id,n])=>`<button class="btn small ${director.mode===id?'active':''}" data-edit-mode="${id}">${n}</button>`).join('')}</div><p class="hint-text">${(window.tr?.("Bấm vào vật thể, rồi kéo mũi tên X/Y/Z hoặc nút ◆ trên mặt sàn. Giữ Shift để bắt bước. F2/F3/F4: kéo/xoay/tỷ lệ.","Click an object, then drag an X/Y/Z arrow or the floor diamond. Hold Shift to snap. F2/F3/F4: move/rotate/scale.") ?? "Bấm vào vật thể, rồi kéo mũi tên X/Y/Z hoặc nút ◆ trên mặt sàn. Giữ Shift để bắt bước. F2/F3/F4: kéo/xoay/tỷ lệ.")}</p><label class="check-row"><input id="dirGroup" type="checkbox" ${director.group?'checked':''}>${(window.tr?.("Chọn cả group gần nhất","Select nearest parent group") ?? "Chọn cả group gần nhất")}</label><div class="dir-form">${numeric8('dirSnap',(window.tr?.("Bước kéo / m","Move step / m") ?? "Bước kéo / m"),director.snap,.05)}<label>${(window.tr?.("Hướng kéo","Move axis") ?? "Hướng kéo")}<select id="dirAxis">${[['xz',(window.tr?.("Mặt sàn XZ","Floor XZ") ?? "Mặt sàn XZ")],['x',(window.tr?.("Trục X","X axis") ?? "Trục X")],['y',(window.tr?.("Trục Y","Y axis") ?? "Trục Y")],['z',(window.tr?.("Trục Z","Z axis") ?? "Trục Z")]].map(([id,n])=>`<option value="${id}" ${director.axis===id?'selected':''}>${n}</option>`).join('')}</select></label></div></div>`;
-  if(p)content+=`<div class="dir-section"><span class="dir-kicker">${sel.kind==='mesh'?selectionMeshes8().length+' MESH':sel.kind.toUpperCase()} / SHARED METERS</span><div class="dir-form three">${p.map((v,i)=>numeric8('dirPos'+i,['X','Y','Z'][i]+' / m',v)).join('')}</div><div class="dir-form">${numeric8('dirYaw',(window.tr?.("Xoay thêm / độ","Rotate by / degrees") ?? "Xoay thêm / độ"),0,5)}${numeric8('dirScale',(window.tr?.("Nhân tỷ lệ","Scale multiplier") ?? "Nhân tỷ lệ"),1,.05)}</div><button id="dirApply" class="btn primary full-btn">${(window.tr?.("Áp dụng biến đổi","Apply transform") ?? "Áp dụng biến đổi")}</button><button id="dirFrameSelected" class="btn full-btn">${(window.tr?.("Cận vật thể đang chọn","Frame selected object") ?? "Cận vật thể đang chọn")}</button><div class="dir-data">${b.size.map(v=>fmt(v)).join(' \u00d7 ')} m</div><p class="hint-text">${sel.kind==='mesh'?(window.tr?.("Mặt LED và nguồn sáng gắn với object đi cùng. UV/crop/pixel giữ nguyên. Chỉ scale đồng đều.","Attached LED surfaces and lights move with the object. UV/crop/pixels stay unchanged. Uniform scaling only.") ?? "Mặt LED và nguồn sáng gắn với object đi cùng. UV/crop/pixel giữ nguyên. Chỉ scale đồng đều."):(window.tr?.("Nguồn đèn: di chuyển emitter, không tự di chuyển vỏ model.","Lights: move the emitter; the model housing does not move automatically.") ?? "Nguồn đèn: di chuyển emitter, không tự di chuyển vỏ model.")}</p></div>`;
+  if(p)content+=`<div class="dir-section"><span class="dir-kicker">${sel.kind==='mesh'?selectionMeshes8().length+' MESH':sel.kind.toUpperCase()} / SHARED METERS</span><div class="dir-form three">${p.map((v,i)=>numeric8('dirPos'+i,['X','Y','Z'][i]+' / m',v)).join('')}</div><div class="dir-form">${numeric8('dirYaw',(window.tr?.("Xoay thêm / độ","Rotate by / degrees") ?? "Xoay thêm / độ"),0,5)}${numeric8('dirScale',(window.tr?.("Nhân tỷ lệ","Scale multiplier") ?? "Nhân tỷ lệ"),1,.05)}</div><button id="dirApply" class="btn primary full-btn">${(window.tr?.("Áp dụng biến đổi","Apply transform") ?? "Áp dụng biến đổi")}</button><button id="dirFrameSelected" class="btn full-btn">${(window.tr?.("Cận vật thể đang chọn","Frame selected object") ?? "Cận vật thể đang chọn")}</button><button id="dirDeleteSelected" class="btn danger full-btn">${(window.tr?.("Xóa vật thể đang chọn (Del)","Delete selected object (Del)") ?? "Xóa vật thể đang chọn (Del)")}</button><div class="dir-data">${b.size.map(v=>fmt(v)).join(' \u00d7 ')} m</div><p class="hint-text">${sel.kind==='mesh'?(window.tr?.("Mặt LED và nguồn sáng gắn với object đi cùng. UV/crop/pixel giữ nguyên. Chỉ scale đồng đều.","Attached LED surfaces and lights move with the object. UV/crop/pixels stay unchanged. Uniform scaling only.") ?? "Mặt LED và nguồn sáng gắn với object đi cùng. UV/crop/pixel giữ nguyên. Chỉ scale đồng đều."):(window.tr?.("Nguồn đèn: di chuyển emitter, không tự di chuyển vỏ model.","Lights: move the emitter; the model housing does not move automatically.") ?? "Nguồn đèn: di chuyển emitter, không tự di chuyển vỏ model.")}</p></div>`;
  }
  if(director.panel==='cameras'){
   content+=`<div class="dir-section"><h3>${(window.tr?.("Khung nhìn không bị lệch","Aligned camera framing") ?? "Khung nhìn không bị lệch")}</h3><label>${(window.tr?.("Vùng cần xem","Frame area") ?? "Vùng cần xem")}<select id="dirScope">${[['led',(window.tr?.("Cụm màn LED","LED screen group") ?? "Cụm màn LED")],['stage',(window.tr?.("Sân khấu / bỏ nền xa","Stage / exclude distant background") ?? "Sân khấu / bỏ nền xa")],['all',(window.tr?.("Toàn venue + khán giả","Entire venue and audience") ?? "Toàn venue + khán giả")],['selection',(window.tr?.("Vật thể đang chọn","Selected object") ?? "Vật thể đang chọn")]].map(([id,n])=>`<option value="${id}" ${director.scope===id?'selected':''}>${n}</option>`).join('')}</select></label><div class="dir-preset-grid">${[['front',(window.tr?.("Chính diện","Front") ?? "Chính diện")],['hero',(window.tr?.("Hero / 3⁄4","Hero / 3⁄4") ?? "Hero / 3⁄4")],['left',(window.tr?.("Trái / 3⁄4","Left / 3⁄4") ?? "Trái / 3⁄4")],['right',(window.tr?.("Phải / 3⁄4","Right / 3⁄4") ?? "Phải / 3⁄4")],['top',(window.tr?.("Trên cao","Top") ?? "Trên cao")],['low',(window.tr?.("Góc thấp","Low angle") ?? "Góc thấp")]].map(([id,n])=>`<button class="btn" data-cam-preset="${id}">${n}</button>`).join('')}</div><button id="dirFrontPick" class="btn full-btn">${(window.tr?.("Chọn mặt trước chuẩn","Pick reference front face") ?? "Chọn mặt trước chuẩn")}</button><button id="dirTargetPick" class="btn full-btn">${(window.tr?.("Click điểm camera nhìn vào","Pick camera target") ?? "Click điểm camera nhìn vào")}</button><label class="dir-range">${(window.tr?.("Góc rộng / FOV ","Field of view / FOV ") ?? "Góc rộng / FOV ")}<input id="dirFOV" type="range" min="20" max="80" step="1" value="${engine.camera.fov||45}"><span id="dirFOVValue">${engine.camera.fov||45}\u00b0</span></label><div class="dir-form"><label>${(window.tr?.("Tên góc","View name") ?? "Tên góc")}<input id="dirCamName" placeholder="${(window.tr?.("CAM 01 / Toàn cảnh","CAM 01 / Overview") ?? "CAM 01 / Toàn cảnh")}"></label><button id="dirSaveCam" class="btn primary">${(window.tr?.("Lưu góc hiện tại","Save current view") ?? "Lưu góc hiện tại")}</button></div></div>`;
@@ -623,7 +701,7 @@ function renderDirectorPanel(){if(!engine||!director.panel)return;const host=$('
  host.querySelectorAll('[data-edit-mode]').forEach(b=>b.onclick=()=>setEditMode8(b.dataset.editMode));
  if($('dirGroup'))$('dirGroup').onchange=e=>{director.group=e.target.checked;renderUI();};if($('dirSnap'))$('dirSnap').onchange=e=>director.snap=clamp(+e.target.value||0,0,10);if($('dirAxis'))$('dirAxis').onchange=e=>director.axis=e.target.value;
  if($('dirApply'))$('dirApply').onclick=()=>{const p=selectionPivot8(),delta=p.map((v,i)=>(+$('dirPos'+i).value||0)-v);applyTransform8({delta,yaw:+$('dirYaw').value||0,scale:+$('dirScale').value||1});};
- if($('dirFrameSelected'))$('dirFrameSelected').onclick=()=>{director.scope='selection';engine.fit();};
+ if($('dirFrameSelected'))$('dirFrameSelected').onclick=()=>{director.scope='selection';engine.fit();};if($('dirDeleteSelected'))$('dirDeleteSelected').onclick=()=>deleteSelectedObject8();
  if($('dirScope'))$('dirScope').onchange=e=>{director.scope=e.target.value;engine.fit();};
  host.querySelectorAll('[data-cam-preset]').forEach(b=>b.onclick=()=>cameraPreset8(b.dataset.camPreset));
  if($('dirFrontPick'))$('dirFrontPick').onclick=()=>startDirectorPick8('front');if($('dirTargetPick'))$('dirTargetPick').onclick=()=>startDirectorPick8('target');
@@ -662,7 +740,7 @@ renderInspector=function(){if(director.panel)renderDirectorPanel();else D8.rende
 renderUI=function(){D8.renderUI();if(director.ready){renderDirectorPanel();updateDirectorOverlay();refreshShowCameras8();document.querySelectorAll('[data-tool-mode]').forEach(b=>b.classList.toggle('active',director.mode===b.dataset.toolMode));}};
 renderLists=function(){D8.renderLists();if(!director.ready)return;const selectedMeshIds=state.step==='stage'&&director.selection&&typeof selectionMeshes8==='function'?new Set(selectionMeshes8().map(m=>m.id)):null;document.querySelectorAll('#objectList .object-row').forEach(b=>{if(selectedMeshIds?.size)b.classList.toggle('selected',selectedMeshIds.has(b.dataset?.itemId));const action=b.onclick;b.onclick=e=>{if(state.step==='stage'&&director.mode==='navigate'&&(director.selection?.kind==='person'||director.selection?.kind==='act')){director.selection=null;director.panel=null;}action(e);if(director.mode!=='navigate'){if(state.step==='stage'&&state.selectedMesh){const m=engine.stage.find(m=>m.id===state.selectedMesh);if(m)selectObject8('mesh',m.sourceKey||m.id);}else if(state.step==='lighting'&&state.selectedLight)selectObject8('light',state.selectedLight);}};});
  if(state.step!=='stage')return;
- const cast=[...director.acts.map(item=>({kind:'act',item})),...seq.people.filter(p=>!p.actId).map(item=>({kind:'person',item}))],list=$('objectList'),query=$('objectSearch').value.trim().toLowerCase(),count=engine.stage.length+cast.length,loc=typeof localizeObjectName==='function'?localizeObjectName:v=>v,flt=typeof window!=='undefined'&&window._objFilter16||'all';
+ const cast=[...director.acts.map(item=>({kind:'act',item})),...seq.people.filter(p=>!p.actId).map(item=>({kind:'person',item}))],list=$('objectList'),query=$('objectSearch').value.trim().toLowerCase(),count=engine.stage.filter(m=>!m._deleted8).length+cast.length,loc=typeof localizeObjectName==='function'?localizeObjectName:v=>v,flt=typeof window!=='undefined'&&window._objFilter16||'all';
  $('leftCount').textContent=count;$('meshCount').textContent=count+tr(' đối tượng',' objects');
  if(flt==='led'||flt==='struct')return;
  for(const {kind,item} of cast){
@@ -710,7 +788,7 @@ function initDirector8(){showHelp=showDirectorHelp8;$('helpBtn').onclick=showDir
  cameraPreset8('hero','led');renderUI();
 }
 const v08API={director,ACT_TYPES,dirData,cameraBounds8,cameraPreset8,fitCamera8,saveCamera8,recallCamera8,addCameraClip8,cameraPoseForClip8,
- selectObject8,scrollObjectListToSelection8,selectionBounds8,selectionPivot8,captureTransform8,transformFrom8,applyTransform8,pickDirector8,setEditMode8,
+ selectObject8,scrollObjectListToSelection8,selectionBounds8,selectionPivot8,captureTransform8,transformFrom8,applyTransform8,deleteSelectedObject8,pickDirector8,setEditMode8,
  detectStageLights,addDetectedLights,openLightDetection,previewFixture8,splitLensMesh8,lensPlanes8,
  addAct8,removeAct8,addActClip8,actState8,actBounds8,castMatrix,rebuildActCache,renderDirectorPanel,
  packLiveExtras,restoreLiveExtras,loadProject,importModel,demo,snapshot,restore,renderUI,renderInspector,renderLists,
@@ -800,7 +878,7 @@ function initGroups9(){
  document.addEventListener('pointerup',e=>{if(group9.marquee){e.preventDefault();e.stopImmediatePropagation();marqueeEnd9(e);}},true);
  document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,select')||$('modal').open)return;if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='a'){e.preventDefault();e.stopImmediatePropagation();selectStage9();}else if(e.key.toLowerCase()==='b'&&!e.ctrlKey&&!e.metaKey){e.preventDefault();setEditMode8('box');}else if(e.key==='Escape'&&group9.marquee){group9.marquee=null;box.hidden=true;}},true);
 }
-const groups9API={group9,selectionSet9,selectStage9,saveGroup9,selectGroup9,currentMembers9,allStageMembers9,groupAncestors9,parentMembers9,selectionMeshes8,selectionBounds8,selectionPivot8,captureTransform8,transformFrom8,applyTransform8,selectObject8,renderDirectorPanel,dirData,restoreDirector};
+const groups9API={group9,selectionSet9,selectStage9,saveGroup9,selectGroup9,currentMembers9,allStageMembers9,groupAncestors9,parentMembers9,selectionMeshes8,selectionBounds8,selectionPivot8,captureTransform8,transformFrom8,applyTransform8,deleteSelectedObject8,selectObject8,renderDirectorPanel,dirData,restoreDirector};
 
 window.addEventListener('ledstudio:locale',()=>{
  updateShowButtons();

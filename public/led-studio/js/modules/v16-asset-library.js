@@ -374,15 +374,20 @@
    return item;
   }
 
-  function deleteItem(id){
+  function deleteItem(id,opt={}){
    const idx=A.items.findIndex(x=>x.id===id);
-   if(idx<0)return;
-   checkpoint();
+   if(idx<0)return false;
+   if(opt.record!==false)checkpoint();
    const [removed]=A.items.splice(idx,1);
    removeAssetMeshes(removed.id);
    A.selected=A.items[0]?.id||null;
-   paint();
-   toast(tr('Đã xóa ',"Deleted ")+itemDisplayName16(removed)+'.');
+   if(opt.silent!==true){
+    paint();
+    toast(tr('Đã xóa ',"Deleted ")+itemDisplayName16(removed)+'.');
+   }else if(A.isOpen){
+    paint();
+   }
+   return true;
   }
 
   // Track 1B: 28° Crease Edge computation (scale-invariant & back-face-safe, ported from 5.Design_mcp glb_viewer_runtime.js)
