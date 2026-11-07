@@ -102,7 +102,8 @@ const OBJECT_NAME_PAIRS=[
  ['MC Sân Khấu (Nam)','Stage Host'],['MC Sân Khấu (Nữ)','Stage Host (Female)'],
  ['Nghệ Sĩ Guitar Điện','Stage Guitarist'],['Nghệ Sĩ Guitar Bass','Stage Bassist'],['Nghệ Sĩ Đàn Keyboard','Stage Keyboardist'],['Nghệ Sĩ Trống Jazz','Stage Drummer'],
  ['Nghệ Sĩ Violin 3D','Stage Violinist'],['Nghệ Sĩ Saxophone 3D','Stage Saxophonist'],['Rapper Khuấy Động 3D','Stage Rapper'],['DJ Sân Khấu 3D','Stage DJ'],
- ['Vũ Công Giáp LED 3D','LED Suit Dancer'],['Nghệ Sĩ Trống Nước 3D','Water Drummer'],['Vũ Công Laser 3D','Laser Dancer'],['Vũ Công Quạt Lụa 3D','Silk Fan Dancer']
+ ['Vũ Công Giáp LED 3D','LED Suit Dancer'],['Nghệ Sĩ Trống Nước 3D','Water Drummer'],['Vũ Công Laser 3D','Laser Dancer'],['Vũ Công Quạt Lụa 3D','Silk Fan Dancer'],
+ ['Máy Phun Lửa Sân Khấu DMX','DMX stage flame jet'],['Máy Bắn Kim Tuyến Confetti DMX','DMX stadium confetti cannon']
 ];
 const OBJECT_NAME_MAP=new Map();
 for(const pair of OBJECT_NAME_PAIRS){OBJECT_NAME_MAP.set(pair[0],pair);OBJECT_NAME_MAP.set(pair[1],pair);}
@@ -518,36 +519,104 @@ sourceForSurface=function(s){if(s.sourceKey){const m=engine.stage.find(m=>m.sour
 function normalizeSurfaceHardware(s) {
  if (!s || typeof s !== 'object') return s;
  const rawSpec = s.cabinetSpec && typeof s.cabinetSpec === 'object' ? s.cabinetSpec : {};
- const cabW = clamp(Math.round(+(s._cabWOverride ?? rawSpec.widthMm ?? rawSpec.cabWmm ?? s.cabW) || 500), 100, 2000);
- const cabH = clamp(Math.round(+(s._cabHOverride ?? rawSpec.heightMm ?? rawSpec.cabHmm ?? s.cabH) || 500), 100, 2000);
- const pxW = clamp(Math.round(+(s._pxWOverride ?? rawSpec.pxW ?? s.pxW) || 192), 8, 2048);
- const pxH = clamp(Math.round(+(s._pxHOverride ?? rawSpec.pxH ?? s.pxH) || 192), 8, 2048);
- const weightKg = clamp(+(rawSpec.weightKg ?? s.cabWeightKg) || 8.5, 0.5, 200);
- const maxPowerW = clamp(Math.round(+(rawSpec.maxPowerW ?? s.cabMaxPowerW) || 160), 10, 5000);
- const avgPowerW = clamp(Math.round(+(rawSpec.avgPowerW ?? s.cabAvgPowerW) || 70), 5, maxPowerW);
- const nits = clamp(Math.round(+(rawSpec.nits ?? s.nits) || 1200), 100, 10000);
+ const rawWiring = s.wiringConfig && typeof s.wiringConfig === 'object' ? s.wiringConfig : {};
+ const modelId = s.cabinetModelId || s.cabinetBrandId || rawSpec.modelId || null;
+ const catCab = modelId && LED_CABINET_CATALOG[modelId] ? LED_CABINET_CATALOG[modelId] : null;
+ const procId = s.processorModelId || rawWiring.processorModelId || null;
+ const catProc = procId && LED_PROCESSOR_CATALOG[procId] ? LED_PROCESSOR_CATALOG[procId] : null;
+
+ const cabW = clamp(Math.round(+(s._cabWOverride ?? rawSpec.widthMm ?? rawSpec.cabWmm ?? catCab?.widthMm ?? s.cabW) || 500), 100, 2000);
+ const cabH = clamp(Math.round(+(s._cabHOverride ?? rawSpec.heightMm ?? rawSpec.cabHmm ?? catCab?.heightMm ?? s.cabH) || 500), 100, 2000);
+ const pxW = clamp(Math.round(+(s._pxWOverride ?? rawSpec.pxW ?? catCab?.pxW ?? s.pxW) || 192), 8, 2048);
+ const pxH = clamp(Math.round(+(s._pxHOverride ?? rawSpec.pxH ?? catCab?.pxH ?? s.pxH) || 192), 8, 2048);
+ const weightKg = clamp(+(rawSpec.weightKg ?? s.cabWeightKg ?? s.cabinetWeightKg ?? catCab?.weightKg) || 8.5, 0.5, 200);
+ const maxPowerW = clamp(Math.round(+(rawSpec.maxPowerW ?? s.cabMaxPowerW ?? s.cabinetPowerMaxW ?? catCab?.maxPowerW) || 160), 10, 5000);
+ const avgPowerW = clamp(Math.round(+(rawSpec.avgPowerW ?? s.cabAvgPowerW ?? s.cabinetPowerAvgW ?? catCab?.avgPowerW) || 70), 5, maxPowerW);
+ const nits = clamp(Math.round(+(rawSpec.nits ?? s.nits ?? catCab?.nits) || 1200), 100, 10000);
+ const pitchMm = +(rawSpec.pitchMm ?? catCab?.pitchMm ?? +(cabW / pxW).toFixed(2)) || 2.6;
  delete s._cabWOverride; delete s._cabHOverride; delete s._pxWOverride; delete s._pxHOverride;
 
+ const hasExplicitPhysicalW = Boolean(s.physical?.[0] || s.physicalWidthM);
+ const hasExplicitPhysicalH = Boolean(s.physical?.[1] || s.physicalHeightM);
  const physW = Math.max(0.25, +(s.physical?.[0] || s.physicalWidthM || (s.w / pxW) * (cabW / 1000) || 4));
  const physH = Math.max(0.25, +(s.physical?.[1] || s.physicalHeightM || (s.h / pxH) * (cabH / 1000) || 2.5));
- const cols = clamp(Math.round((s.physical?.[0] || s.physicalWidthM || s.w) ? Math.ceil((physW * 1000 - 1) / cabW) : (+rawSpec.cols || Math.ceil((physW * 1000 - 1) / cabW))), 1, 64);
- const rows = clamp(Math.round((s.physical?.[1] || s.physicalHeightM || s.h) ? Math.ceil((physH * 1000 - 1) / cabH) : (+rawSpec.rows || Math.ceil((physH * 1000 - 1) / cabH))), 1, 64);
- const angleDeg = clamp(+(s.panelAngleDeg || 0), -15, 15);
 
+ const cols = clamp(
+  Math.round(
+   hasExplicitPhysicalW
+    ? Math.ceil((physW * 1000 - 1) / cabW)
+    : (+(s.cabCols || rawSpec.cols) || Math.ceil((physW * 1000 - 1) / cabW))
+  ),
+  1,
+  64
+ );
+
+ const hasMixedRowSpec =
+  ((+s.rows500x1000 || 0) > 0 && (+s.rows500x500 || 0) > 0) ||
+  ((+s.rows500x1000 || 0) > 0 && cabH !== 1000) ||
+  ((+s.rows500x500 || 0) > 0 && cabH === 1000);
+ let rows500x1000 = hasMixedRowSpec ? clamp(Math.round(+s.rows500x1000 || 0), 0, 64) : 0;
+ let rows500x500 = hasMixedRowSpec ? clamp(Math.round(+s.rows500x500 || 0), 0, 64) : 0;
+ let rows;
+ if (hasMixedRowSpec && (rows500x1000 + rows500x500) > 0) {
+  rows = clamp(rows500x1000 + rows500x500, 1, 64);
+ } else {
+  rows = clamp(
+   Math.round(
+    hasExplicitPhysicalH
+     ? Math.ceil((physH * 1000 - 1) / cabH)
+     : (+(s.cabRows || rawSpec.rows) || Math.ceil((physH * 1000 - 1) / cabH))
+   ),
+   1,
+   64
+  );
+  if (cabH === 1000) {
+   rows500x1000 = rows;
+   rows500x500 = 0;
+  } else {
+   rows500x1000 = 0;
+   rows500x500 = rows;
+  }
+ }
+
+ const rowLayout = [];
+ for (let r = 0; r < rows; r++) {
+  const isTallRow = hasMixedRowSpec ? (r < rows500x1000) : (cabH === 1000);
+  const rowHmm = hasMixedRowSpec ? (isTallRow ? 1000 : 500) : cabH;
+  const heightRatio = rowHmm / cabH;
+  const rowPxH = Math.max(8, Math.round(pxH * heightRatio));
+  const rowWeightKg = +(weightKg * heightRatio * (rowHmm === 1000 && cabH === 500 ? 0.92 : 1)).toFixed(2);
+  const rowMaxW = Math.max(10, Math.round(maxPowerW * heightRatio));
+  const rowAvgW = Math.max(5, Math.round(avgPowerW * heightRatio));
+  rowLayout.push({
+   row: r,
+   type: cabW + 'x' + rowHmm,
+   widthMm: cabW,
+   heightMm: rowHmm,
+   pxW,
+   pxH: rowPxH,
+   weightKg: rowWeightKg,
+   maxPowerW: rowMaxW,
+   avgPowerW: rowAvgW
+  });
+ }
+
+ const angleDeg = clamp(+(s.panelAngleDeg || 0), -15, 15);
  const orderToPattern = {
   'snake-tl-h': 'H-TL', 'snake-tr-h': 'H-TR', 'snake-bl-h': 'H-BL', 'snake-br-h': 'H-BR',
-  'snake-tl-v': 'V-TL', 'snake-tr-v': 'V-TR', 'snake-bl-v': 'V-BL', 'snake-br-v': 'V-BR'
+  'snake-tl-v': 'V-TL', 'snake-tr-v': 'V-TR', 'snake-bl-v': 'V-BL', 'snake-br-v': 'V-BR',
+  'snake-tl-right': 'H-TL', 'snake-tr-left': 'H-TR', 'snake-bl-right': 'H-BL', 'snake-br-left': 'H-BR',
+  'snake-tl-down': 'V-TL', 'snake-tr-down': 'V-TR', 'snake-bl-up': 'V-BL', 'snake-br-up': 'V-BR'
  };
  const patternToOrder = {
   'H-TL': 'snake-tl-h', 'H-TR': 'snake-tr-h', 'H-BL': 'snake-bl-h', 'H-BR': 'snake-br-h',
   'V-TL': 'snake-tl-v', 'V-TR': 'snake-tr-v', 'V-BL': 'snake-bl-v', 'V-BR': 'snake-br-v'
  };
- const rawWiring = s.wiringConfig && typeof s.wiringConfig === 'object' ? s.wiringConfig : {};
  let pattern = rawWiring.pattern || orderToPattern[s.wiringOrder] || (patternToOrder[s.wiringOrder] ? s.wiringOrder : 'H-TL');
  if (!patternToOrder[pattern]) pattern = orderToPattern[pattern] || 'H-TL';
  const wiringOrder = patternToOrder[pattern] || 'snake-tl-h';
  const voltage = +(rawWiring.voltageV ?? rawWiring.voltage) === 110 ? 110 : 220;
- const maxPixelsPerPort = clamp(Math.round(+(rawWiring.maxPixelsPerPort ?? s.maxPixelsPerPort) || 650000), 10000, 10000000);
+ const maxPixelsPerPort = clamp(Math.round(+(rawWiring.maxPixelsPerPort ?? s.maxPixelsPerPort ?? catProc?.maxPixelsPerPort) || 650000), 10000, 10000000);
  const maxWattsPerLoop = clamp(Math.round(+(rawWiring.maxWattsPerLoop ?? s.maxWattsPerLoop) || (voltage === 110 ? 1320 : 2200)), 100, 25000);
 
  const rawVoids = Array.isArray(s.virtualTiles) ? s.virtualTiles : [];
@@ -569,6 +638,7 @@ function normalizeSurfaceHardware(s) {
  if (sortedVoids.length >= totalGrid && totalGrid > 0) {
   sortedVoids.length = totalGrid - 1;
  }
+ const activeVoidSet = new Set(sortedVoids);
 
  const rawAngles = Array.isArray(s.columnAnglesDeg) ? s.columnAnglesDeg : null;
  const columnAnglesDeg = [];
@@ -577,8 +647,66 @@ function normalizeSurfaceHardware(s) {
   columnAnglesDeg.push(clamp(v, -15, 15));
  }
 
- s.cabinetSpec = { widthMm: cabW, heightMm: cabH, cabWmm: cabW, cabHmm: cabH, pxW, pxH, cols, rows, weightKg, maxPowerW, avgPowerW, nits };
- s.wiringConfig = { pattern, maxPixelsPerPort, maxWattsPerLoop, voltage, voltageV: voltage };
+ let totalWeightKg = 0;
+ let totalPowerMaxW = 0;
+ let totalPowerAvgW = 0;
+ for (let r = 0; r < rows; r++) {
+  const rl = rowLayout[r];
+  for (let c = 0; c < cols; c++) {
+   if (activeVoidSet.has(c + ',' + r)) continue;
+   totalWeightKg += rl.weightKg;
+   totalPowerMaxW += rl.maxPowerW;
+   totalPowerAvgW += rl.avgPowerW;
+  }
+ }
+
+ const totalPhysicalWidthM = +((cols * cabW) / 1000).toFixed(3);
+ const totalPhysicalHeightM = +(rowLayout.reduce((acc, rl) => acc + rl.heightMm, 0) / 1000).toFixed(3);
+ const totalResX = cols * pxW;
+ const totalResY = rowLayout.reduce((acc, rl) => acc + rl.pxH, 0);
+
+ if (catCab) s.cabinetModelId = catCab.id;
+ if (catProc) s.processorModelId = catProc.id;
+ s.shapeType = s.shapeType || 'flat';
+ s.wiringViewMode = s.wiringViewMode === 'rear' ? 'rear' : 'front';
+ s.rows500x1000 = rows500x1000;
+ s.rows500x500 = rows500x500;
+ s.rowLayout = rowLayout;
+ s.totalPhysicalWidthM = totalPhysicalWidthM;
+ s.totalPhysicalHeightM = totalPhysicalHeightM;
+ s.totalResX = totalResX;
+ s.totalResY = totalResY;
+ s.totalWeightKg = +totalWeightKg.toFixed(2);
+ s.totalPowerMaxW = Math.round(totalPowerMaxW);
+ s.totalPowerAvgW = Math.round(totalPowerAvgW);
+
+ s.cabinetSpec = {
+  modelId: catCab?.id || modelId || null,
+  brand: catCab?.brand || rawSpec.brand || 'Generic Touring',
+  model: catCab?.model || rawSpec.model || (cabW + 'x' + cabH + 'mm'),
+  pitchMm,
+  widthMm: cabW,
+  heightMm: cabH,
+  cabWmm: cabW,
+  cabHmm: cabH,
+  pxW,
+  pxH,
+  cols,
+  rows,
+  weightKg,
+  maxPowerW,
+  avgPowerW,
+  nits
+ };
+ s.wiringConfig = {
+  pattern,
+  maxPixelsPerPort,
+  maxWattsPerLoop,
+  voltage,
+  voltageV: voltage,
+  processorModelId: catProc?.id || procId || null,
+  viewMode: s.wiringViewMode
+ };
  s.columnAnglesDeg = columnAnglesDeg;
  s.cabW = cabW; s.cabH = cabH; s.pxW = pxW; s.pxH = pxH;
  s.cabCols = cols; s.cabRows = rows;
@@ -588,6 +716,248 @@ function normalizeSurfaceHardware(s) {
  s.totalCabinetGrid = totalGrid;
  s.activeCabinets = Math.max(1, totalGrid - s.virtualTiles.length);
  return s;
+}
+const LED_CABINET_CATALOG = {
+ roe_bp2v2_500: { id: 'roe_bp2v2_500', brand: 'ROE Visual', model: 'Black Pearl BP2V2 (500x500)', pitchMm: 2.84, widthMm: 500, heightMm: 500, pxW: 176, pxH: 176, weightKg: 9.4, maxPowerW: 190, avgPowerW: 95, nits: 1500, maxCurveDeg: 10 },
+ roe_cb5_1000: { id: 'roe_cb5_1000', brand: 'ROE Visual', model: 'Carbon CB5 MKII (500x1000)', pitchMm: 5.77, widthMm: 500, heightMm: 1000, pxW: 96, pxH: 192, weightKg: 13.8, maxPowerW: 360, avgPowerW: 160, nits: 5000, maxCurveDeg: 15 },
+ absen_pl25_500: { id: 'absen_pl25_500', brand: 'Absen', model: 'Polaris PL2.5 Pro (500x500)', pitchMm: 2.5, widthMm: 500, heightMm: 500, pxW: 200, pxH: 200, weightKg: 8.8, maxPowerW: 175, avgPowerW: 75, nits: 1500, maxCurveDeg: 10 },
+ absen_pl39_1000: { id: 'absen_pl39_1000', brand: 'Absen', model: 'Polaris PL3.9W V10 (500x1000)', pitchMm: 3.91, widthMm: 500, heightMm: 1000, pxW: 128, pxH: 256, weightKg: 13.2, maxPowerW: 340, avgPowerW: 135, nits: 4500, maxCurveDeg: 10 },
+ unilumin_upad4_500: { id: 'unilumin_upad4_500', brand: 'Unilumin', model: 'UpadIV P2.6 (500x500)', pitchMm: 2.6, widthMm: 500, heightMm: 500, pxW: 192, pxH: 192, weightKg: 7.5, maxPowerW: 160, avgPowerW: 65, nits: 1200, maxCurveDeg: 10 },
+ unilumin_ugm2_1000: { id: 'unilumin_ugm2_1000', brand: 'Unilumin', model: 'UGMII P3.9 (500x1000)', pitchMm: 3.91, widthMm: 500, heightMm: 1000, pxW: 128, pxH: 256, weightKg: 12.5, maxPowerW: 320, avgPowerW: 120, nits: 4500, maxCurveDeg: 10 },
+ gloshine_mv26_500: { id: 'gloshine_mv26_500', brand: 'Gloshine', model: 'MV Pro P2.6 (500x500)', pitchMm: 2.6, widthMm: 500, heightMm: 500, pxW: 192, pxH: 192, weightKg: 8.0, maxPowerW: 165, avgPowerW: 70, nits: 1200, maxCurveDeg: 15 },
+ gloshine_ls39_1000: { id: 'gloshine_ls39_1000', brand: 'Gloshine', model: 'LS Outdoor P3.91 (500x1000)', pitchMm: 3.91, widthMm: 500, heightMm: 1000, pxW: 128, pxH: 256, weightKg: 13.0, maxPowerW: 350, avgPowerW: 140, nits: 4800, maxCurveDeg: 10 }
+};
+const LED_PROCESSOR_CATALOG = {
+ novastar_vx600: { id: 'novastar_vx600', brand: 'NovaStar', model: 'VX600', ports: 6, maxPixelsPerPort: 650000, maxTotalPixels: 3900000, protocol: 'Novastar VMP / LCT' },
+ novastar_vx1000: { id: 'novastar_vx1000', brand: 'NovaStar', model: 'VX1000', ports: 10, maxPixelsPerPort: 650000, maxTotalPixels: 6500000, protocol: 'Novastar VMP / LCT' },
+ novastar_mctrl4k: { id: 'novastar_mctrl4k', brand: 'NovaStar', model: 'MCTRL4K', ports: 16, maxPixelsPerPort: 650000, maxTotalPixels: 8800000, protocol: 'Novastar LCT' },
+ novastar_mx40pro: { id: 'novastar_mx40pro', brand: 'NovaStar', model: 'MX40 Pro (COEX)', ports: 20, maxPixelsPerPort: 650000, maxTotalPixels: 13000000, protocol: 'Novastar COEX VMP' },
+ brompton_s8: { id: 'brompton_s8', brand: 'Brompton', model: 'Tessera S8', ports: 8, maxPixelsPerPort: 524288, maxTotalPixels: 4194304, protocol: 'Brompton Tessera' },
+ brompton_sx40: { id: 'brompton_sx40', brand: 'Brompton', model: 'Tessera SX40', ports: 20, maxPixelsPerPort: 524288, maxTotalPixels: 8847360, protocol: 'Brompton Tessera XD' }
+};
+globalThis.LED_CABINET_CATALOG = LED_CABINET_CATALOG;
+globalThis.LED_PROCESSOR_CATALOG = LED_PROCESSOR_CATALOG;
+function computeGeometricScreenLayout(surface) {
+ const s = surface && typeof surface === 'object' ? surface : {};
+ const cabWmm = Math.max(100, +(s.cabinetSpec?.widthMm || s.cabW || 500));
+ const cabHmm = Math.max(100, +(s.cabinetSpec?.heightMm || s.cabH || 500));
+ const cabWM = cabWmm / 1000;
+ const cabHM = cabHmm / 1000;
+ const cols = Math.max(1, Math.round(+(s.cabCols || s.cabinetSpec?.cols || (s.w && s.w <= 64 ? s.w / cabWM : 8))));
+ const rows = Math.max(1, Math.round(+(s.cabRows || s.cabinetSpec?.rows || (s.h && s.h <= 64 ? s.h / cabHM : 4))));
+ const totalWidthM = +(cols * cabWM).toFixed(3);
+ const heightM = +(s.totalPhysicalHeightM || s.physical?.[1] || (s.h && s.h <= 64 ? s.h : rows * cabHM)).toFixed(3);
+ const shapeType = String(s.shapeType || 'flat').toLowerCase();
+
+ if (shapeType === 'l_corner_90') {
+  const splitCol = clamp(Math.round(+(s.cornerSplitCol || Math.floor(cols / 2))), 1, Math.max(1, cols - 1));
+  const wingACols = splitCol;
+  const wingBCols = Math.max(1, cols - splitCol);
+  const wingAW = +(wingACols * cabWM).toFixed(3);
+  const wingBW = +(wingBCols * cabWM).toFixed(3);
+  const cornerAngleDeg = +(s.cornerAngleDeg ?? 90);
+  return {
+   shapeType: 'l_corner_90',
+   cornerAngleDeg,
+   cornerSplitCol: splitCol,
+   miteredCab45: true,
+   heightM,
+   footprintWidthM: wingAW,
+   footprintDepthM: wingBW,
+   segments: [
+    { id: 'wing_a', label: 'Left Wing A', startCol: 0, cols: wingACols, widthM: wingAW, heightM, angleDeg: 0, origin: [0, 0, 0] },
+    { id: 'wing_b', label: 'Right Wing B (90 deg)', startCol: splitCol, cols: wingBCols, widthM: wingBW, heightM, angleDeg: cornerAngleDeg, origin: [wingAW, 0, 0] }
+   ]
+  };
+ }
+
+ if (shapeType === 'cube') {
+  const cubeFaces = clamp(Math.round(+(s.cubeFaces || 4)), 4, 6);
+  const sideCols = Math.max(1, Math.floor(cols / 4));
+  const sideWidthM = +(sideCols * cabWM).toFixed(3);
+  const faceNames = ['front', 'right', 'back', 'left', 'bottom', 'top'].slice(0, cubeFaces);
+  const segments = faceNames.map((faceId, idx) => ({
+   id: faceId,
+   label: 'Cube Face ' + faceId.toUpperCase(),
+   startCol: idx < 4 ? idx * sideCols : 0,
+   cols: sideCols,
+   widthM: sideWidthM,
+   heightM: faceId === 'bottom' || faceId === 'top' ? sideWidthM : heightM,
+   angleDeg: idx < 4 ? idx * 90 : 0
+  }));
+  return {
+   shapeType: 'cube',
+   cubeFaces,
+   footprintWidthM: sideWidthM,
+   footprintDepthM: sideWidthM,
+   heightM,
+   segments
+  };
+ }
+
+ if (shapeType === 'cylinder_360') {
+  const circumferenceM = +(s.w && s.w < 100 ? s.w : totalWidthM).toFixed(3);
+  const radiusM = +(circumferenceM / (2 * Math.PI)).toFixed(3);
+  const diameterM = +(radiusM * 2).toFixed(3);
+  const stepAngleDeg = +(360 / cols).toFixed(2);
+  return {
+   shapeType: 'cylinder_360',
+   circumferenceM,
+   radiusM,
+   diameterM,
+   stepAngleDeg,
+   footprintWidthM: diameterM,
+   footprintDepthM: diameterM,
+   heightM,
+   segments: [{ id: 'ring_360', label: '360 Cylinder Ring', startCol: 0, cols, widthM: circumferenceM, heightM, radiusM }]
+  };
+ }
+
+ if (shapeType === 'arc') {
+  const curve = computeCurvedSpanMeters(s);
+  return {
+   shapeType: 'arc',
+   footprintWidthM: curve.chordWidthM,
+   footprintDepthM: curve.depthOffsetM,
+   arcWidthM: curve.arcWidthM,
+   heightM,
+   segments: [{ id: 'arc_main', label: 'Curved Arc Wall', startCol: 0, cols, widthM: curve.arcWidthM, heightM }]
+  };
+ }
+
+ return {
+  shapeType: 'flat',
+  footprintWidthM: totalWidthM,
+  footprintDepthM: 0.15,
+  heightM,
+  segments: [{ id: 'flat_main', label: 'Flat LED Wall', startCol: 0, cols, widthM: totalWidthM, heightM }]
+ };
+}
+function renderSurfaceCalibrationTestCard(surfaceArg, targetCanvas, opts = {}) {
+ const s = surfaceArg && typeof surfaceArg === 'object' ? surfaceArg : {};
+ normalizeSurfaceHardware(s);
+ const widthPx = clamp(Math.round(+(opts.widthPx || s.totalResX || (s.cabCols * s.pxW) || 1920)), 64, 16384);
+ const heightPx = clamp(Math.round(+(opts.heightPx || s.totalResY || (s.cabRows * s.pxH) || 1080)), 64, 16384);
+ const canvas = targetCanvas || (typeof document !== 'undefined' ? document.createElement('canvas') : { width: 0, height: 0, getContext: () => null });
+ canvas.width = widthPx;
+ canvas.height = heightPx;
+ const ctx = canvas.getContext ? canvas.getContext('2d') : null;
+ if (!ctx) return { canvas, widthPx, heightPx, cols: s.cabCols, rows: s.cabRows, activeCabinets: s.activeCabinets };
+
+ ctx.save?.();
+ ctx.fillStyle = '#0b101d';
+ ctx.fillRect(0, 0, widthPx, heightPx);
+
+ // Draw cabinet grid (including mixed 500x1000 + 500x500 row heights)
+ const voidSet = new Set(s.virtualTiles || []);
+ const rowLayout = Array.isArray(s.rowLayout) && s.rowLayout.length === s.cabRows
+  ? s.rowLayout
+  : Array.from({ length: s.cabRows }, (_, r) => ({ row: r, pxW: s.pxW, pxH: s.pxH, heightMm: s.cabH }));
+ const colW = widthPx / Math.max(1, s.cabCols);
+ let yCursor = 0;
+ for (let r = 0; r < s.cabRows; r++) {
+  const rl = rowLayout[r];
+  const rowH = Math.max(8, rl.pxH || Math.round(heightPx / Math.max(1, s.cabRows)));
+  for (let c = 0; c < s.cabCols; c++) {
+   const x0 = Math.round(c * colW);
+   const cw = Math.round((c + 1) * colW) - x0;
+   const isVoid = voidSet.has(c + ',' + r);
+   ctx.fillStyle = isVoid ? '#05070d' : ((c + r) % 2 === 0 ? '#131d33' : '#192642');
+   ctx.fillRect(x0, yCursor, cw, rowH);
+   ctx.strokeStyle = isVoid ? 'rgba(248,113,113,0.45)' : 'rgba(56,189,248,0.55)';
+   ctx.lineWidth = 1;
+   ctx.strokeRect(x0 + 0.5, yCursor + 0.5, Math.max(1, cw - 1), Math.max(1, rowH - 1));
+   ctx.fillStyle = isVoid ? '#f87171' : '#93c5fd';
+   ctx.font = 'bold ' + Math.max(11, Math.min(24, Math.floor(Math.min(cw, rowH) * 0.14))) + 'px monospace';
+   ctx.textAlign = 'left';
+   ctx.textBaseline = 'top';
+   ctx.fillText('C' + (c + 1) + 'R' + (r + 1) + (isVoid ? ' VOID' : ''), x0 + 6, yCursor + 6);
+  }
+  yCursor += rowH;
+ }
+
+ // SMPTE Color Bars at bottom 8%
+ const smpteColors = ['#e5e7eb', '#facc15', '#22d3ee', '#22c55e', '#e879f9', '#ef4444', '#3b82f6', '#111827'];
+ const barH = Math.max(16, Math.round(heightPx * 0.08));
+ const barY = heightPx - barH;
+ const barW = widthPx / smpteColors.length;
+ for (let i = 0; i < smpteColors.length; i++) {
+  ctx.fillStyle = smpteColors[i];
+  ctx.fillRect(Math.round(i * barW), barY, Math.ceil(barW), barH);
+ }
+
+ // Outer 1px alignment border & full diagonals
+ ctx.strokeStyle = '#facc15';
+ ctx.lineWidth = 2;
+ ctx.strokeRect(1, 1, Math.max(2, widthPx - 2), Math.max(2, heightPx - 2));
+ ctx.beginPath();
+ ctx.moveTo(0, 0);
+ ctx.lineTo(widthPx, heightPx);
+ ctx.moveTo(widthPx, 0);
+ ctx.lineTo(0, heightPx);
+ ctx.stroke();
+
+ // Central 1:1 aspect-ratio verification circle
+ const cx = Math.round(widthPx / 2);
+ const cy = Math.round(heightPx / 2);
+ const radius = Math.max(16, Math.round(Math.min(widthPx, heightPx) * 0.36));
+ ctx.strokeStyle = '#38bdf8';
+ ctx.lineWidth = 3;
+ ctx.beginPath();
+ ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+ ctx.stroke();
+
+ // Central screen specification callout
+ const bannerW = Math.min(widthPx - 16, Math.max(220, Math.round(widthPx * 0.42)));
+ const bannerH = Math.min(heightPx - 16, Math.max(64, Math.round(heightPx * 0.16)));
+ ctx.fillStyle = 'rgba(9,13,24,0.88)';
+ ctx.fillRect(Math.round(cx - bannerW / 2), Math.round(cy - bannerH / 2), bannerW, bannerH);
+ ctx.strokeStyle = '#38bdf8';
+ ctx.lineWidth = 1.5;
+ ctx.strokeRect(Math.round(cx - bannerW / 2), Math.round(cy - bannerH / 2), bannerW, bannerH);
+ ctx.fillStyle = '#f8fafc';
+ ctx.textAlign = 'center';
+ ctx.textBaseline = 'middle';
+ ctx.font = 'bold ' + Math.max(12, Math.round(bannerH * 0.28)) + 'px monospace';
+ ctx.fillText(String(s.name || s.id || 'LED SCREEN') + ' · ' + widthPx + 'x' + heightPx + ' px', cx, cy - Math.round(bannerH * 0.16));
+ ctx.fillStyle = '#38bdf8';
+ ctx.font = Math.max(11, Math.round(bannerH * 0.21)) + 'px monospace';
+ ctx.fillText(s.cabCols + 'x' + s.cabRows + ' cab (' + s.activeCabinets + ' active) · ' + s.totalPhysicalWidthM + 'x' + s.totalPhysicalHeightM + ' m', cx, cy + Math.round(bannerH * 0.18));
+ ctx.restore?.();
+
+ return {
+  canvas,
+  widthPx,
+  heightPx,
+  cols: s.cabCols,
+  rows: s.cabRows,
+  activeCabinets: s.activeCabinets,
+  screenName: String(s.name || s.id || 'LED_SCREEN')
+ };
+}
+function exportSurfaceCalibrationPng(surfaceOrId) {
+ const tLoc = (vi, en) => (typeof window === 'undefined' ? vi : window.tr?.(vi, en) ?? vi);
+ let s = surfaceOrId;
+ if (typeof surfaceOrId === 'string' && typeof engine !== 'undefined' && Array.isArray(engine?.surfaces)) {
+  s = engine.surfaces.find(x => x.id === surfaceOrId || x.name === surfaceOrId);
+ }
+ if (!s && typeof surface === 'function') s = surface();
+ if (!s) {
+  if (typeof toast === 'function') toast(tLoc('Chưa chọn màn LED để xuất Test Card.', 'Select an LED screen before exporting a Test Card.'), 4300, 'warn');
+  return null;
+ }
+ const meta = renderSurfaceCalibrationTestCard(s);
+ if (typeof document !== 'undefined' && meta.canvas?.toDataURL) {
+  const a = document.createElement('a');
+  a.href = meta.canvas.toDataURL('image/png');
+  const slug = String(s.name || s.id || 'screen').replace(/[^a-zA-Z0-9_-]+/g, '_');
+  a.download = slug + '_' + meta.widthPx + 'x' + meta.heightPx + '_testcard.png';
+  document.body?.appendChild?.(a);
+  a.click?.();
+  document.body?.removeChild?.(a);
+  if (typeof toast === 'function') toast(tLoc('Đã xuất Test Card 1:1 (' + meta.widthPx + 'x' + meta.heightPx + ' px) cho ' + (s.name || s.id), 'Exported 1:1 Test Card (' + meta.widthPx + 'x' + meta.heightPx + ' px) for ' + (s.name || s.id)));
+ }
+ return meta;
 }
 function toggleVirtualTile(s, col, row, forceVoid) {
  normalizeSurfaceHardware(s);
@@ -698,7 +1068,7 @@ assignMaster=function(a,{mode=engine.layout?.mode==='spatial'?'stage':'local'}={
 function manualCropMode(s=surface()){if(!s)return;checkpoint();s.mappingSpace='local';engine.releaseMesh(s.mesh);resetFlatCache();renderUI();toast((typeof window==='undefined'?"Crop riêng. Model 3D và kích thước vật lý không thay đổi.":window.tr?.("Crop riêng. Model 3D và kích thước vật lý không thay đổi.","Manual crop. 3D model and physical dimensions unchanged.")??"Crop riêng. Model 3D và kích thước vật lý không thay đổi."));}
 function restoreSpatialBindings(){for(const s of engine.surfaces){const src=sourceForSurface(s);if(src){s.sourceMeshId=src.id;s.sourceKey=src.sourceKey;s.sourceMeshPath=src.path||null;s.mesh.preferredUp=src.worldAxes?.[1]||[0,1,0];}s.mappingSpace ||= 'local';s.nativeResolution ||= {width:s.w,height:s.h,confirmed:false};s.physical=s.mappingMode==='uv'&&finiteArray(s.physical,2)?s.physical:[measureFace(s.mesh).width,measureFace(s.mesh).height];normalizeSurfaceHardware(s);if(s.mappingSpace==='stage'&&engine.layout?.bounds&&engine.layout?.padding){s.mesh.mapUV=calculateMapUV(s);engine.releaseMesh(s.mesh);}}resetFlatCache();}
 snapshot=function(){return {...V031.snapshot(),coordinates:structuredClone(engine.coordinates),layout:structuredClone(engine.layout),camera:structuredClone(engine.camera)};};
-restore=function(s){if(s.coordinates?.config)applyCoordinateConfig(s.coordinates.config,{record:false,updateAttachments:false,fit:false});if(s.coordinates)engine.coordinates=structuredClone(s.coordinates);engine.layout=structuredClone(s.layout||defaultLayout());const cloned={...s,surfaces:Array.isArray(s.surfaces)?s.surfaces.map(x=>({...x,crop:x.crop?.slice(),nativeResolution:x.nativeResolution?{...x.nativeResolution}:undefined,physical:x.physical?[...x.physical]:undefined,metricFrame:x.metricFrame?structuredClone(x.metricFrame):undefined,cabinetSpec:x.cabinetSpec?{...x.cabinetSpec}:undefined,virtualTiles:Array.isArray(x.virtualTiles)?[...x.virtualTiles]:[],columnAnglesDeg:Array.isArray(x.columnAnglesDeg)?[...x.columnAnglesDeg]:undefined,wiringConfig:x.wiringConfig?{...x.wiringConfig}:undefined})):[]};V031.restore(cloned);if(s.camera)engine.camera=structuredClone(s.camera);restoreSpatialBindings();engine.rebuildFixtures();renderUI();};
+restore=function(s){if(s.coordinates?.config)applyCoordinateConfig(s.coordinates.config,{record:false,updateAttachments:false,fit:false});if(s.coordinates)engine.coordinates=structuredClone(s.coordinates);engine.layout=structuredClone(s.layout||defaultLayout());const cloned={...s,surfaces:Array.isArray(s.surfaces)?s.surfaces.map(x=>({...x,crop:x.crop?.slice(),nativeResolution:x.nativeResolution?{...x.nativeResolution}:undefined,physical:x.physical?[...x.physical]:undefined,metricFrame:x.metricFrame?structuredClone(x.metricFrame):undefined,cabinetSpec:x.cabinetSpec?{...x.cabinetSpec}:undefined,virtualTiles:Array.isArray(x.virtualTiles)?[...x.virtualTiles]:[],columnAnglesDeg:Array.isArray(x.columnAnglesDeg)?[...x.columnAnglesDeg]:undefined,wiringConfig:x.wiringConfig?{...x.wiringConfig}:undefined,rowLayout:Array.isArray(x.rowLayout)?x.rowLayout.map(r=>({...r})):undefined,cabinetModelId:x.cabinetModelId,processorModelId:x.processorModelId,shapeType:x.shapeType,wiringViewMode:x.wiringViewMode,rows500x1000:x.rows500x1000,rows500x500:x.rows500x500})):[]};V031.restore(cloned);if(s.camera)engine.camera=structuredClone(s.camera);restoreSpatialBindings();engine.rebuildFixtures();renderUI();};
 importModel=async function(files,{silent=false}={}){if(state.importing)return;state.importing=true;busy(true,(typeof window==='undefined'?"Đang đọc model và hệ quy chiếu...":window.tr?.("Đang đọc model và hệ quy chiếu...","Reading model and reference frame...")??"Đang đọc model và hệ quy chiếu..."));try{const list=Array.from(files);if(list.reduce((a,f)=>a+f.size,0)>600*1024*1024)throw Error((typeof window==='undefined'?"Model vượt 600 MB.":window.tr?.("Model vượt 600 MB.","Model exceeds 600 MB.")??"Model vượt 600 MB."));const result=await Importer.load(list);engine.setModel(result.meshes);engine.sourcePunctualLights=result.punctualLights||[];engine.surfaces=[];engine.selected=null;engine.lights=[];engine.rebuildFixtures();state.model={name:result.name,files:result.files,demo:false};state.projectName=result.name.replace(/\.[a-z0-9]+$/i,'');state.warnings=result.warnings;state.history=[];state.redo=[];state.selectedMesh=null;state.hit=null;state.rebindId=null;state.selectedLight=null;cancelSpatialPick();engine.globalTest=false;engine.view='stage';state.step='stage';engine.settings.ambient=.65;engine.settings.beam=.6;const ext=result.name.split('.').pop().toLowerCase();engine.coordinates.sourceInfo={format:ext,normalizedByImporter:true,declaredUnit:ext==='obj'?'unspecified (assumed meters)':ext==='dae'?'COLLADA asset unit / up_axis':'glTF meters / Y-up',...result.coordinateInfo};renderUI();if(!silent){toast((typeof window==='undefined'?"Đã nhập ":window.tr?.("Đã nhập ","Imported ")??"Đã nhập ")+result.name+(typeof window==='undefined'?". Kiểm tra kích thước mét trước khi map. Không tự thêm đèn.":window.tr?.(". Kiểm tra kích thước mét trước khi map. Không tự thêm đèn.",". Check dimensions in meters before mapping. No lights added automatically.")??". Kiểm tra kích thước mét trước khi map. Không tự thêm đèn."),8000);if(result.warnings.length)dialog((typeof window==='undefined'?"Lưu ý model":window.tr?.("Lưu ý model","Model notes")??"Lưu ý model"),'<p>'+result.warnings.map(esc).join('<br>')+'</p>');}return result;}finally{state.importing=false;busy(false);}};
 demo=function(){engine.lights=[];V031.demo();state.projectName='ALPHA_Demo_Stage';engine.layout ||= defaultLayout();for(const s of engine.surfaces)s.mappingSpace='stage';rebuildSpatialMap({width:3840,height:1280,activate:true,record:false});state.history=[];state.redo=[];renderUI();};
 mappingData=function(){const d=V031.mappingData();d.coordinates=structuredClone(engine.coordinates);d.layout=structuredClone(engine.layout);d.screens.forEach((s,i)=>{const x=engine.surfaces[i];normalizeSurfaceHardware(x);s.mappingSpace=x.mappingSpace;s.nativeResolution=x.nativeResolution;s.sourceKey=x.sourceKey;s.worldBounds=x.mesh.bounds;s.cabinetSpec={...x.cabinetSpec};s.virtualTiles=[...x.virtualTiles];s.columnAnglesDeg=[...x.columnAnglesDeg];s.wiringConfig={...x.wiringConfig};s.note='outputRect is a content viewport, not a receiver-card configuration';});return d;};
@@ -709,7 +1079,7 @@ setSource=function(s,id){V031.setSource(s,id);if(engine.media.has(id)){s.mapping
 const oldReplaceSurfaceGeometry=replaceSurfaceGeometry;
 replaceSurfaceGeometry=function(s,face){oldReplaceSurfaceGeometry(s,face);if(s.mappingSpace==='stage')rebuildSpatialMap({activate:false,record:false});};
 const metricSnapshot=snapshot;
-snapshot=function(){const d=metricSnapshot();d.surfaces=d.surfaces.map(s=>({...s,nativeResolution:s.nativeResolution?{...s.nativeResolution}:undefined,physical:s.physical?[...s.physical]:undefined,metricFrame:s.metricFrame?structuredClone(s.metricFrame):undefined,cabW:s.cabW,cabH:s.cabH,pxW:s.pxW,pxH:s.pxH,cabCols:s.cabCols,cabRows:s.cabRows,panelAngleDeg:s.panelAngleDeg,wiringOrder:s.wiringOrder,cabinetSpec:s.cabinetSpec?{...s.cabinetSpec}:undefined,virtualTiles:Array.isArray(s.virtualTiles)?[...s.virtualTiles]:[],columnAnglesDeg:Array.isArray(s.columnAnglesDeg)?[...s.columnAnglesDeg]:undefined,wiringConfig:s.wiringConfig?{...s.wiringConfig}:undefined}));return d;};
+snapshot=function(){const d=metricSnapshot();d.surfaces=d.surfaces.map(s=>({...s,nativeResolution:s.nativeResolution?{...s.nativeResolution}:undefined,physical:s.physical?[...s.physical]:undefined,metricFrame:s.metricFrame?structuredClone(s.metricFrame):undefined,cabW:s.cabW,cabH:s.cabH,pxW:s.pxW,pxH:s.pxH,cabCols:s.cabCols,cabRows:s.cabRows,panelAngleDeg:s.panelAngleDeg,wiringOrder:s.wiringOrder,cabinetSpec:s.cabinetSpec?{...s.cabinetSpec}:undefined,virtualTiles:Array.isArray(s.virtualTiles)?[...s.virtualTiles]:[],columnAnglesDeg:Array.isArray(s.columnAnglesDeg)?[...s.columnAnglesDeg]:undefined,wiringConfig:s.wiringConfig?{...s.wiringConfig}:undefined,rowLayout:Array.isArray(s.rowLayout)?s.rowLayout.map(r=>({...r})):undefined,cabinetModelId:s.cabinetModelId,processorModelId:s.processorModelId,shapeType:s.shapeType,wiringViewMode:s.wiringViewMode,rows500x1000:s.rows500x1000,rows500x500:s.rows500x500}));return d;};
 
 /* Anchored fixtures: select source lens, then target in the same metric scene. */
 StageEngine.prototype.rebuildFixtures=function(){for(const m of this.fixtureMeshes)this.releaseMesh(m);this.fixtureMeshes=[];for(const l of this.lights){if(l.origin==='model'||l.origin==='gltf')continue;const size=l.fixtureSize||[.3,.38,.3],mesh=boxMesh(l.name+' / proxy',M.add(l.pos,[0,size[1]*.45,0]),size,[.12,.14,.18,1]);mesh.lightId=l.id;this.fixtureMeshes.push(mesh);}};
@@ -772,30 +1142,61 @@ function bindSpatialMappingPanel(s){
  }
 }
 function surfaceHardwarePanel(s){
+ const tLoc=(vi,en)=>(typeof window==='undefined'?vi:window.tr?.(vi,en)??vi);
  normalizeSurfaceHardware(s);
  const curve=computeCurvedSpanMeters(s);
+ const geom=computeGeometricScreenLayout(s);
  const voidSet=new Set(s.virtualTiles);
  const maxPreviewCols=Math.min(s.cabCols,14),maxPreviewRows=Math.min(s.cabRows,10);
  let gridHtml='<div class="cab-void-grid" style="display:grid;grid-template-columns:repeat('+maxPreviewCols+',1fr);gap:3px;margin:8px 0;">';
  for(let r=0;r<maxPreviewRows;r++){
   for(let c=0;c<maxPreviewCols;c++){
    const key=c+','+r,isVoid=voidSet.has(key);
-   gridHtml+='<button type="button" class="btn small" data-void-tile="'+key+'" style="padding:3px 2px;font-size:10px;opacity:'+(isVoid?'0.32':'1')+';border-style:'+(isVoid?'dashed':'solid')+';" title="'+(isVoid?'Ô rỗng / Virtual Void':'Cabinet thật ('+(c+1)+','+(r+1)+')')+'">'+(isVoid?'∅':(c+1)+':'+(r+1))+'</button>';
+   gridHtml+='<button type="button" class="btn small" data-void-tile="'+key+'" style="padding:3px 2px;font-size:11px;opacity:'+(isVoid?'0.32':'1')+';border-style:'+(isVoid?'dashed':'solid')+';" title="'+(isVoid?tLoc('Ô rỗng / Virtual Void','Virtual Void tile'):tLoc('Cabinet thật ('+(c+1)+','+(r+1)+')','Active cabinet ('+(c+1)+','+(r+1)+')'))+'">'+(isVoid?'∅':(c+1)+':'+(r+1))+'</button>';
   }
  }
  gridHtml+='</div>';
- return `<div class="inspector-block hardware-led-panel"><h3 class="block-title"><svg class="ico ico-led" aria-hidden="true"><use href="#i-grid-3x3"></use></svg><span>${(typeof window==='undefined'?"Cabinet, Góc cong & Đi dây":window.tr?.("Cabinet, Góc cong & Đi dây","Cabinet, Curve & Wiring")??"Cabinet, Góc cong & Đi dây")}</span></h3>
- <div class="field-grid two">${field('surfCabW','Rộng Cab (mm)',s.cabW,{min:100,max:2000,step:50})}${field('surfCabH','Cao Cab (mm)',s.cabH,{min:100,max:2000,step:50})}</div>
- <div class="field-grid two">${field('surfAngleDeg','Góc khóa cong (°/cab)',s.panelAngleDeg,{min:-15,max:15,step:2.5})}<div class="field"><label>${(typeof window==='undefined'?"Đi dây tín hiệu":window.tr?.("Đi dây tín hiệu","Signal wiring")??"Đi dây tín hiệu")}</label><select id="surfWiringOrder"><option value="snake-tl-h">Ziczac Ngang · Trái-Trên (H-TL)</option><option value="snake-tr-h">Ziczac Ngang · Phải-Trên (H-TR)</option><option value="snake-bl-h">Ziczac Ngang · Trái-Dưới (H-BL)</option><option value="snake-br-h">Ziczac Ngang · Phải-Dưới (H-BR)</option><option value="snake-tl-v">Ziczac Dọc · Trái-Trên (V-TL)</option><option value="snake-tr-v">Ziczac Dọc · Phải-Trên (V-TR)</option><option value="snake-bl-v">Ziczac Dọc · Trái-Dưới (V-BL)</option><option value="snake-br-v">Ziczac Dọc · Phải-Dưới (V-BR)</option></select></div></div>
- <div class="metric-pair"><div><b>${s.activeCabinets}/${s.totalCabinetGrid} cab</b><span>Lưới ${s.cabCols}×${s.cabRows} (${s.virtualTiles.length} ô rỗng)</span></div><div><b>${curve.chordWidthM} m</b><span>Dây cung · Sâu ${curve.depthOffsetM} m</span></div></div>
- <p class="hint-text">Click ô cabinet bên dưới để bật/tắt <b>Virtual Tile (Ô rỗng cửa vòm)</b>:</p>${gridHtml}</div>`;
+ const cabOpts=['<option value="">'+tLoc('-- Tùy chỉnh kích thước --','-- Custom dimensions --')+'</option>'].concat(Object.values(LED_CABINET_CATALOG).map(c=>`<option value="${c.id}" ${s.cabinetModelId===c.id?'selected':''}>${esc(c.brand+' · '+c.model)}</option>`)).join('');
+ const procOpts=['<option value="">'+tLoc('-- Mặc định (650k px/port) --','-- Default (650k px/port) --')+'</option>'].concat(Object.values(LED_PROCESSOR_CATALOG).map(p=>`<option value="${p.id}" ${s.processorModelId===p.id?'selected':''}>${esc(p.brand+' '+p.model+' ('+p.ports+'P · '+(p.maxPixelsPerPort/1000).toFixed(0)+'k)')}</option>`)).join('');
+ const shapeOpts=[['flat',tLoc('Phẳng (Flat Wall)','Flat Wall')],['arc',tLoc('Màn cong (Curved Arc)','Curved Arc')],['l_corner_90',tLoc('Góc vuông 90° (L-Corner)','90° L-Corner')],['cube',tLoc('Khối Cube 4/5 mặt','4/5-Face Cube')],['cylinder_360',tLoc('Trụ tròn 360° (Cylinder)','360° Cylinder')]].map(([v,lbl])=>`<option value="${v}" ${(s.shapeType||'flat')===v?'selected':''}>${lbl}</option>`).join('');
+ return `<div class="inspector-block hardware-led-panel"><h3 class="block-title"><svg class="ico ico-led" aria-hidden="true"><use href="#i-grid-3x3"></use></svg><span>${tLoc("Cabinet, Góc cong & Đi dây","Cabinet, Curve & Wiring")}</span></h3>
+ <div class="field"><label>${tLoc('Model Tủ LED (Touring Catalog)','LED Cabinet Model (Touring Catalog)')}</label><select id="surfCabinetModel">${cabOpts}</select></div>
+ <div class="field"><label>${tLoc('LED Processor (Giới hạn Port)','LED Processor (Port Limit)')}</label><select id="surfProcessorModel">${procOpts}</select></div>
+ <div class="field-grid two">${field('surfCabW',tLoc('Rộng Cab (mm)','Cab Width (mm)'),s.cabW,{min:100,max:2000,step:50})}${field('surfCabH',tLoc('Cao Cab (mm)','Cab Height (mm)'),s.cabH,{min:100,max:2000,step:50})}</div>
+ <div class="field-grid two">${field('surfRows1000',tLoc('Hàng 500×1000','500×1000 Rows'),s.rows500x1000||0,{min:0,max:64,step:1})}${field('surfRows500',tLoc('Hàng 500×500','500×500 Rows'),s.rows500x500||0,{min:0,max:64,step:1})}</div>
+ <div class="field"><label>${tLoc('Hình học màn hình (Screen Geometry)','Screen Geometry')}</label><select id="surfShapeType">${shapeOpts}</select></div>
+ <div class="field-grid two">${field('surfAngleDeg',tLoc('Góc khóa cong (°/cab)','Curve lock angle (°/cab)'),s.panelAngleDeg,{min:-15,max:15,step:2.5})}<div class="field"><label>${tLoc("Đi dây tín hiệu","Signal wiring")}</label><select id="surfWiringOrder"><option value="snake-tl-h">${tLoc('Ziczac Ngang · Trái-Trên (H-TL)','Horizontal Snake · Top-Left (H-TL)')}</option><option value="snake-tr-h">${tLoc('Ziczac Ngang · Phải-Trên (H-TR)','Horizontal Snake · Top-Right (H-TR)')}</option><option value="snake-bl-h">${tLoc('Ziczac Ngang · Trái-Dưới (H-BL)','Horizontal Snake · Bottom-Left (H-BL)')}</option><option value="snake-br-h">${tLoc('Ziczac Ngang · Phải-Dưới (H-BR)','Horizontal Snake · Bottom-Right (H-BR)')}</option><option value="snake-tl-v">${tLoc('Ziczac Dọc · Trái-Trên (V-TL)','Vertical Snake · Top-Left (V-TL)')}</option><option value="snake-tr-v">${tLoc('Ziczac Dọc · Phải-Trên (V-TR)','Vertical Snake · Top-Right (V-TR)')}</option><option value="snake-bl-v">${tLoc('Ziczac Dọc · Trái-Dưới (V-BL)','Vertical Snake · Bottom-Left (V-BL)')}</option><option value="snake-br-v">${tLoc('Ziczac Dọc · Phải-Dưới (V-BR)','Vertical Snake · Bottom-Right (V-BR)')}</option></select></div></div>
+ <div class="metric-pair"><div><b>${s.activeCabinets}/${s.totalCabinetGrid} cab</b><span>${tLoc(`Lưới ${s.cabCols}×${s.cabRows} · ${s.totalWeightKg} kg`,`Grid ${s.cabCols}×${s.cabRows} · ${s.totalWeightKg} kg`)}</span></div><div><b>${geom.footprintWidthM}×${geom.footprintDepthM} m</b><span>${tLoc(`Dây cung ${curve.chordWidthM} m · Sâu ${curve.depthOffsetM} m`,`Chord ${curve.chordWidthM} m · Depth ${curve.depthOffsetM} m`)}</span></div></div>
+ <button type="button" class="btn full-btn" id="exportSurfTestCardBtn" style="margin-top:6px;">${tLoc('Xuất 1:1 Calibration Test Card (PNG)','Export 1:1 Calibration Test Card (PNG)')}</button>
+ <p class="hint-text">${tLoc('Click ô cabinet bên dưới để bật/tắt <b>Virtual Tile (Ô rỗng cửa vòm)</b>:','Click any cabinet tile below to toggle <b>Virtual Tile (Archway void)</b>:')}</p>${gridHtml}</div>`;
 }
 function bindSurfaceHardwarePanel(s){
  if($('surfWiringOrder'))$('surfWiringOrder').value=s.wiringOrder||'snake-tl-h';
+ change('surfCabinetModel',v=>{
+  s.cabinetModelId=v||null;
+  if(v&&LED_CABINET_CATALOG[v]){
+   const cat=LED_CABINET_CATALOG[v];
+   s.cabinetSpec={...s.cabinetSpec,modelId:cat.id,widthMm:cat.widthMm,heightMm:cat.heightMm,pxW:cat.pxW,pxH:cat.pxH,weightKg:cat.weightKg,maxPowerW:cat.maxPowerW,avgPowerW:cat.avgPowerW,nits:cat.nits,pitchMm:cat.pitchMm};
+   delete s.rows500x1000;delete s.rows500x500;
+  }
+  normalizeSurfaceHardware(s);renderInspector();
+ });
+ change('surfProcessorModel',v=>{
+  s.processorModelId=v||null;
+  if(v&&LED_PROCESSOR_CATALOG[v]){
+   s.maxPixelsPerPort=LED_PROCESSOR_CATALOG[v].maxPixelsPerPort;
+   if(s.wiringConfig)s.wiringConfig.maxPixelsPerPort=s.maxPixelsPerPort;
+  }
+  normalizeSurfaceHardware(s);renderInspector();
+ });
  change('surfCabW',v=>{s._cabWOverride=clamp(Math.round(+v)||500,100,2000);normalizeSurfaceHardware(s);renderInspector();});
- change('surfCabH',v=>{s._cabHOverride=clamp(Math.round(+v)||500,100,2000);normalizeSurfaceHardware(s);renderInspector();});
+ change('surfCabH',v=>{s._cabHOverride=clamp(Math.round(+v)||500,100,2000);delete s.rows500x1000;delete s.rows500x500;normalizeSurfaceHardware(s);renderInspector();});
+ change('surfRows1000',v=>{s.rows500x1000=clamp(Math.round(+v)||0,0,64);s.rows500x500=clamp(Math.round(+(s.rows500x500??0)),0,64);normalizeSurfaceHardware(s);renderInspector();});
+ change('surfRows500',v=>{s.rows500x500=clamp(Math.round(+v)||0,0,64);s.rows500x1000=clamp(Math.round(+(s.rows500x1000??0)),0,64);normalizeSurfaceHardware(s);renderInspector();});
+ change('surfShapeType',v=>{s.shapeType=v||'flat';normalizeSurfaceHardware(s);renderInspector();});
  change('surfAngleDeg',v=>{s.panelAngleDeg=clamp(+v||0,-15,15);s.columnAnglesDeg=Array.from({length:s.cabCols||1},()=>s.panelAngleDeg);normalizeSurfaceHardware(s);renderInspector();});
  change('surfWiringOrder',v=>{s.wiringOrder=v;if(s.wiringConfig)delete s.wiringConfig.pattern;normalizeSurfaceHardware(s);});
+ if($('exportSurfTestCardBtn'))$('exportSurfTestCardBtn').onclick=()=>exportSurfaceCalibrationPng(s);
  document.querySelectorAll('[data-void-tile]').forEach(btn=>{
   btn.onclick=()=>{const [c,r]=btn.dataset.voidTile.split(',').map(Number);toggleVirtualTile(s,c,r);renderInspector();};
  });
@@ -869,7 +1270,7 @@ function initSpatialEvents(){
  $('autoDetect').textContent=(typeof window==='undefined'?"Nhận diện LED":window.tr?.("Nhận diện LED","Detect LEDs")??"Nhận diện LED");
  $('helpBtn').onclick=()=>dialog((typeof window==='undefined'?"V0.4 / cùng hệ quy chiếu":window.tr?.("V0.4 / cùng hệ quy chiếu","Shared reference frame")??"V0.4 / cùng hệ quy chiếu"),(typeof window==='undefined'?"<h3>1. Kiểm tra tỷ lệ</h3><p>Nhập GLB/DAE/OBJ. Xem kích thước mét. Cần sửa: Hệ quy chiếu hoặc Đo 2 điểm.</p><h3>2. Gắn LED</h3><p>Chọn mặt phát hình. Map theo bố cục sân khấu giữ nguyên khoảng hở và góc nghiêng. Nhập pixel LED thực riêng khi có số liệu.</p><h3>3. Chọn đúng kiểu video</h3><p>Hình tổng: spatial master. Clip đã chia ô: manual crop. Không thể tự suy ra bố cục clip đó từ model.</p><h3>4. Đèn</h3><p>Click mặt kính đèn trên model, sau đó click điểm chiếu. Preset chỉ thay đổi look, không di chuyển đèn.</p><h3>5. Lưu</h3><p>File .ledstudio lưu cả hệ quy chiếu, mapping và nguồn sáng. Bản này là preview cục bộ; không có DMX hay cấu hình processor LED.</p>":window.tr?.("<h3>1. Kiểm tra tỷ lệ</h3><p>Nhập GLB/DAE/OBJ. Xem kích thước mét. Cần sửa: Hệ quy chiếu hoặc Đo 2 điểm.</p><h3>2. Gắn LED</h3><p>Chọn mặt phát hình. Map theo bố cục sân khấu giữ nguyên khoảng hở và góc nghiêng. Nhập pixel LED thực riêng khi có số liệu.</p><h3>3. Chọn đúng kiểu video</h3><p>Hình tổng: spatial master. Clip đã chia ô: manual crop. Không thể tự suy ra bố cục clip đó từ model.</p><h3>4. Đèn</h3><p>Click mặt kính đèn trên model, sau đó click điểm chiếu. Preset chỉ thay đổi look, không di chuyển đèn.</p><h3>5. Lưu</h3><p>File .ledstudio lưu cả hệ quy chiếu, mapping và nguồn sáng. Bản này là preview cục bộ; không có DMX hay cấu hình processor LED.</p>","<h3>1. Check scale</h3><p>Import GLB/DAE/OBJ. Check dimensions in meters. Adjust using Reference frame or Measure two points.</p><h3>2. Attach LEDs</h3><p>Select emitting faces. Stage layout mapping preserves gaps and angles. Enter actual LED pixels separately when known.</p><h3>3. Choose the correct video type</h3><p>Full image: spatial master. Tiled clip: manual crop. Clip layout cannot be inferred from the model.</p><h3>4. Lights</h3><p>Click a fixture lens on the model, then its target. Presets change looks without moving lights.</p><h3>5. Save</h3><p>The .ledstudio file saves the reference frame, mapping and light sources. This is a local preview; no DMX or LED processor configuration here.</p>")??"<h3>1. Kiểm tra tỷ lệ</h3><p>Nhập GLB/DAE/OBJ. Xem kích thước mét. Cần sửa: Hệ quy chiếu hoặc Đo 2 điểm.</p><h3>2. Gắn LED</h3><p>Chọn mặt phát hình. Map theo bố cục sân khấu giữ nguyên khoảng hở và góc nghiêng. Nhập pixel LED thực riêng khi có số liệu.</p><h3>3. Chọn đúng kiểu video</h3><p>Hình tổng: spatial master. Clip đã chia ô: manual crop. Không thể tự suy ra bố cục clip đó từ model.</p><h3>4. Đèn</h3><p>Click mặt kính đèn trên model, sau đó click điểm chiếu. Preset chỉ thay đổi look, không di chuyển đèn.</p><h3>5. Lưu</h3><p>File .ledstudio lưu cả hệ quy chiếu, mapping và nguồn sáng. Bản này là preview cục bộ; không có DMX hay cấu hình processor LED.</p>"));
 }
-const spatialAPI={applyCoordinateConfig,calculateFrame,measureFace,rebuildSpatialMap,activateSpatialLayout,manualCropMode,referenceFrameDialog,startSpatialPick,cancelSpatialPick,addAnchoredLight,handleSpatialClick,restoreSpatialBindings,normalizeSurfaceHardware,toggleVirtualTile,computeCurvedSpanMeters,get layout(){return engine.layout;},undo,redo};
+const spatialAPI={applyCoordinateConfig,calculateFrame,measureFace,rebuildSpatialMap,activateSpatialLayout,manualCropMode,referenceFrameDialog,startSpatialPick,cancelSpatialPick,addAnchoredLight,handleSpatialClick,restoreSpatialBindings,normalizeSurfaceHardware,toggleVirtualTile,computeCurvedSpanMeters,computeGeometricScreenLayout,renderSurfaceCalibrationTestCard,exportSurfaceCalibrationPng,LED_CABINET_CATALOG,LED_PROCESSOR_CATALOG,get layout(){return engine.layout;},undo,redo};
 
 /* V0.4.1 UI/playback maintenance. No geometry, UV, crop or coordinate mutations. */
 const STABLE_BASE={renderUI,renderInspector,loadProject,exportShot,exportMapPNG};

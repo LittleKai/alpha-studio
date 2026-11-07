@@ -1953,7 +1953,12 @@
         ? eng
         : (Array.isArray(eng?.surfaces) ? eng.surfaces : []);
       const activeSurfaces = surfaces.filter(s => !s?._deleted8);
-      const lights = (!Array.isArray(eng) && Array.isArray(eng?.lights)) ? eng.lights.filter(l => !l._deleted8 && l.enabled !== false) : [];
+      const baseLights = (!Array.isArray(eng) && Array.isArray(eng?.lights)) ? eng.lights.filter(l => !l._deleted8 && l.enabled !== false) : [];
+      const rawRigs = !Array.isArray(eng) ? (eng?.fixtureRigs16 ?? (typeof S !== 'undefined' ? S.stageAssets16?.fixtureRigs16 : null)) : null;
+      const extraRigs = Array.isArray(rawRigs)
+        ? rawRigs
+        : (typeof rawRigs?.values === 'function' ? [...rawRigs.values()] : []);
+      const lights = [...baseLights, ...extraRigs];
 
       const powerCircuits = [];
       let totalLedWeightKg = 0;
@@ -2008,13 +2013,14 @@
         const cols = w ? w.cols : Math.max(1, Number(spec.cols) || 8);
         const rows = w ? w.rows : Math.max(1, Number(spec.rows) || 4);
 
+        const surfaceKg = Number(s.totalWeightKg) || activeCabs * (Number(spec.weightKg) || 8.5);
         totalActiveCabs += activeCabs;
         totalVoidCabs += voidCabs;
-        totalLedWeightKg += activeCabs * (Number(spec.weightKg) || 8.5);
+        totalLedWeightKg += surfaceKg;
         hangingBars += cols;
 
-        const heightM = (rows * (Number(spec.heightMm) || 500)) / 1000;
-        groundStackBallastKg += Math.round(activeCabs * (Number(spec.weightKg) || 8.5) * 1.35 + Math.pow(Math.max(0, heightM), 1.6) * 28);
+        const heightM = Number(s.totalPhysicalHeightM) || (rows * (Number(spec.heightMm) || 500)) / 1000;
+        groundStackBallastKg += Math.round(surfaceKg * 1.35 + Math.pow(Math.max(0, heightM), 1.6) * 28);
 
         if (w && Array.isArray(w.powerLoops)) {
           w.powerLoops.forEach((loop) => {
@@ -2047,8 +2053,8 @@
       let totalLightWeightKg = 0;
       lights.forEach((l) => {
         const type = String(l.type || 'beam').toLowerCase();
-        const w = Number(l.powerW) || (type === 'beam' ? 380 : type === 'strobe' ? 1000 : 250);
-        const kg = Number(l.weightKg) || (type === 'beam' ? 18 : type === 'strobe' ? 10 : 9);
+        const w = Number(l.powerW ?? l.oflFixture?.powerW) || (type === 'beam' ? 380 : type === 'strobe' ? 1000 : 250);
+        const kg = Number(l.weightKg ?? l.oflFixture?.weightKg) || (type === 'beam' ? 18 : type === 'strobe' ? 10 : 9);
         totalLightWeightKg += kg;
         if (currentLightCircuitW + w > 2200) {
           powerCircuits.push({ id: `LX_C${lightCircuitIdx++}`, watts: currentLightCircuitW, amps: +(currentLightCircuitW / 220).toFixed(2), type: 'LIGHT' });
@@ -2095,13 +2101,16 @@
       const requiredAmps = maxPhaseAmps * 1.25;
       const mainBreakerAmps = maxPhaseAmps > 0 ? (breakerSteps.find((b) => b >= requiredAmps) || 400) : 32;
 
-      const trussSpanM = Math.max(2, +opts.trussSpanM || +(eng?.size?.width) || 12);
+      const trussSpanM = Math.max(2, +(opts.trussSpanM || opts.spanM || eng?.size?.width || 12));
+      const cableAllowanceKg = +(totalLightWeightKg * 0.15).toFixed(2);
+      const lightingWeightKg = +(totalLightWeightKg + cableAllowanceKg).toFixed(2);
       const totalRigWeightKg = totalLedWeightKg + totalLightWeightKg;
-      const udlKgPerM = Math.round((totalRigWeightKg / trussSpanM) * 10) / 10;
-      const qNPerM = udlKgPerM * 9.81;
+      const effectiveDeflectionLoadKg = totalLedWeightKg + lightingWeightKg;
+      const udlKgPerM = Math.round((effectiveDeflectionLoadKg / trussSpanM) * 10) / 10;
+      const qNPerM = (effectiveDeflectionLoadKg / trussSpanM) * 9.81;
       const E = 69e9;
       const I = 1.65e-5;
-      const deflectionM = totalRigWeightKg > 0 ? (5 * qNPerM * Math.pow(trussSpanM, 4)) / (384 * E * I) : 0;
+      const deflectionM = effectiveDeflectionLoadKg > 0 ? (5 * qNPerM * Math.pow(trussSpanM, 4)) / (384 * E * I) : 0;
       const deflectionMm = Math.round(deflectionM * 1000 * 100) / 100;
       const maxAllowedDeflectionMm = Math.round(((trussSpanM * 1000) / 200) * 10) / 10;
       if (deflectionMm > maxAllowedDeflectionMm) {
@@ -2147,6 +2156,8 @@
         rigging: {
           totalLedWeightKg: Math.round(totalLedWeightKg * 10) / 10,
           totalLightWeightKg,
+          cableAllowanceKg,
+          lightingWeightKg,
           totalRigWeightKg: Math.round(totalRigWeightKg * 10) / 10,
           trussSpanM,
           udlKgPerM,
@@ -2181,7 +2192,191 @@
         ballastKg: groundStackBallastKg,
         powercon20ACircuits,
         phaseLoadAmps,
-        recommendedBreaker
+        recommendedBreaker,
+        lightingWeightKg,
+        cableAllowanceKg,
+        trussDeflectionMm: deflectionMm,
+        maxAllowableDeflectionMm: maxAllowedDeflectionMm
+      };
+    }
+
+    function getSfxCatalogSpec18(type) {
+      const cat = (typeof globalThis !== 'undefined' && globalThis.SFX_CATALOG) || (typeof S !== 'undefined' && S?.SFX_CATALOG) || {};
+      const fallback = {
+        cold_spark_fountain: { id: 'cold_spark_fountain', plumeHeightM: 3.5, safetyRadiusM: 1.5, safetyHeightM: 4.5, indoorAllowed: true, consumableName: 'Ti-Zr Spark Granules (200g pouch)', consumableUnit: 'g', packSize: 200, burnRatePerMin: 25 },
+        co2_jet: { id: 'co2_jet', plumeHeightM: 8.0, safetyRadiusM: 2.0, safetyHeightM: 8.5, indoorAllowed: true, consumableName: 'Liquid CO2 Siphon Cylinder (20kg)', consumableUnit: 'kg', packSize: 20, burnRatePerSec: 0.45 },
+        flame_jet: { id: 'flame_jet', plumeHeightM: 6.0, safetyRadiusM: 3.0, safetyHeightM: 8.0, indoorAllowed: false, consumableName: 'Isopar / LPG Pyro Fuel (5L canister)', consumableUnit: 'L', packSize: 5, burnRatePerMin: 0.25 },
+        confetti_cannon: { id: 'confetti_cannon', plumeHeightM: 12.0, safetyRadiusM: 2.5, safetyHeightM: 10.0, indoorAllowed: true, consumableName: 'Flameproof Metallic Confetti (1kg bag)', consumableUnit: 'kg', packSize: 1, burnRatePerShot: 0.5 },
+        haze_machine_pro: { id: 'haze_machine_pro', plumeHeightM: 2.0, safetyRadiusM: 0.5, safetyHeightM: 2.5, indoorAllowed: true, consumableName: 'Neutral Touring Haze Fluid (2.5L bottle)', consumableUnit: 'mL', packSize: 2500, burnRatePerHour: 120 }
+      };
+      return cat[type] || fallback[type] || fallback.cold_spark_fountain;
+    }
+
+    function computeSfxSafetyZones(input = {}) {
+      const venueEnv = String(input.venueEnv || 'outdoor').toLowerCase() === 'indoor' ? 'indoor' : 'outdoor';
+      const ceilingHeightM = Math.max(2.5, +(input.ceilingHeightM || 12.0));
+      const audienceLineZ = Number.isFinite(+input.audienceLineZ) ? +input.audienceLineZ : 4.0;
+      const units = Array.isArray(input.units) ? input.units : [];
+
+      const zones = [];
+      const violations = [];
+      units.forEach((u, idx) => {
+        const type = String(u?.type || u?.kind || 'cold_spark_fountain');
+        const spec = getSfxCatalogSpec18(type);
+        const pos = Array.isArray(u?.pos) ? u.pos : [u?.x ?? 0, u?.y ?? 0, u?.z ?? 0];
+        const x = +(u?.x ?? pos[0]) || 0;
+        const y = +(u?.y ?? pos[1]) || 0;
+        const z = +(u?.z ?? pos[2]) || 0;
+        const unitId = String(u?.id || `SFX_${idx + 1}`);
+        const safetyRadiusM = +(u?.safetyRadiusM || spec.safetyRadiusM || 1.5);
+        const safetyHeightM = +(u?.safetyHeightM || spec.safetyHeightM || 4.5);
+        const plumeHeightM = +(u?.plumeHeightM || spec.plumeHeightM || 3.5);
+
+        zones.push({
+          unitId,
+          type,
+          x,
+          y,
+          z,
+          safetyRadiusM,
+          safetyHeightM,
+          plumeHeightM,
+          indoorAllowed: Boolean(spec.indoorAllowed)
+        });
+
+        if (venueEnv === 'indoor' && !spec.indoorAllowed) {
+          violations.push({
+            unitId,
+            type,
+            severity: 'CRITICAL',
+            code: 'INDOOR_PYRO_PROHIBITED',
+            message: `${unitId} (${type}) prohibited indoors per NFPA 1126 / EN 16256.`
+          });
+        }
+        if (y + safetyHeightM > ceilingHeightM) {
+          violations.push({
+            unitId,
+            type,
+            severity: 'CRITICAL',
+            code: 'CEILING_CLEARANCE_BREACH',
+            message: `${unitId} safety clearance height (${(y + safetyHeightM).toFixed(1)}m) exceeds venue ceiling (${ceilingHeightM.toFixed(1)}m).`
+          });
+        }
+        if (Math.abs(audienceLineZ - z) < safetyRadiusM) {
+          violations.push({
+            unitId,
+            type,
+            severity: 'CRITICAL',
+            code: 'AUDIENCE_DISTANCE_BREACH',
+            message: `${unitId} is ${Math.abs(audienceLineZ - z).toFixed(2)}m from audience line (minimum required: ${safetyRadiusM}m).`
+          });
+        }
+      });
+
+      return {
+        venueEnv,
+        ceilingHeightM,
+        audienceLineZ,
+        zones,
+        violations,
+        hasCriticalHazard: violations.some((v) => v.severity === 'CRITICAL')
+      };
+    }
+
+    function computeSfxConsumablesBom(input = {}) {
+      const units = Array.isArray(input.units) ? input.units : [];
+      const cuesPerUnit = Math.max(1, +(input.cuesPerUnit ?? 6));
+      const avgCueDurationSec = Math.max(1, +(input.avgCueDurationSec ?? 5));
+      const showDurationHours = Math.max(0.5, +(input.showDurationHours ?? 2));
+      const grouped = new Map();
+      units.forEach((u) => {
+        const type = String(u?.type || u?.kind || '');
+        if (!type) return;
+        grouped.set(type, (grouped.get(type) || 0) + 1);
+      });
+
+      const items = [];
+      for (const [sfxType, unitCount] of grouped.entries()) {
+        const spec = getSfxCatalogSpec18(sfxType);
+        let rawQty = 0;
+        if (spec.burnRatePerMin) {
+          rawQty = unitCount * ((cuesPerUnit * avgCueDurationSec) / 60) * spec.burnRatePerMin;
+        } else if (spec.burnRatePerSec) {
+          rawQty = unitCount * (cuesPerUnit * avgCueDurationSec) * spec.burnRatePerSec;
+        } else if (spec.burnRatePerShot) {
+          rawQty = unitCount * cuesPerUnit * spec.burnRatePerShot;
+        } else if (spec.burnRatePerHour) {
+          rawQty = unitCount * showDurationHours * spec.burnRatePerHour;
+        }
+        const totalQuantity = +rawQty.toFixed(2);
+        const packSize = Math.max(1, +spec.packSize || 1);
+        const packsRequired = Math.max(1, Math.ceil((rawQty * 1.15) / packSize));
+        items.push({
+          sfxType,
+          unitCount,
+          consumableName: spec.consumableName,
+          unit: spec.consumableUnit,
+          totalQuantity,
+          packSize,
+          packsRequired
+        });
+      }
+      return {
+        cuesPerUnit,
+        avgCueDurationSec,
+        showDurationHours,
+        items
+      };
+    }
+
+    function computePhotometricFootprint(input = {}) {
+      const lights = Array.isArray(input.lights) ? input.lights : [];
+      const ledScreenNits = Math.max(100, +(input.ledScreenNits || 1200));
+      const cones = lights.map((l, idx) => {
+        const pos = Array.isArray(l?.pos) ? l.pos : [l?.x ?? 0, l?.y ?? 7, l?.z ?? 0];
+        const x = +(l?.x ?? pos[0]) || 0;
+        const y = Math.max(0.5, +(l?.y ?? pos[1]) || 7.0);
+        const z = +(l?.z ?? pos[2]) || 0;
+        const target = Array.isArray(l?.target) ? l.target : [l?.targetX ?? x, 0, l?.targetZ ?? z];
+        const hitX = +(target[0] ?? x).toFixed(3);
+        const hitZ = +(target[2] ?? z).toFixed(3);
+        const throwDistanceM = +Math.max(0.5, Math.hypot(hitX - x, y - (target[1] || 0), hitZ - z)).toFixed(3);
+        const type = String(l?.type || 'beam').toLowerCase();
+        const beamAngleDeg = Math.max(1, Math.min(120, +(l?.beamAngleDeg || (l?.angle ? l.angle * 2 : (type === 'beam' ? 6 : 30)))));
+        const halfRad = (beamAngleDeg * Math.PI) / 360;
+        const spotRadiusM = +(throwDistanceM * Math.tan(halfRad)).toFixed(3);
+        const spotDiameterM = +(spotRadiusM * 2).toFixed(3);
+        const luminousFluxLm = Math.max(100, +(l?.luminousFluxLm || (type === 'beam' ? 18000 : type === 'strobe' ? 40000 : 22000)));
+        const omegaSr = Math.max(1e-4, 2 * Math.PI * (1 - Math.cos(halfRad)));
+        const candela = (luminousFluxLm / omegaSr) * 0.85;
+        const cosIncidence = Math.max(0.15, y / throwDistanceM);
+        const estimatedLux = Math.round((candela / (throwDistanceM * throwDistanceM)) * cosIncidence);
+        return {
+          id: l?.id || `LIGHT_${idx + 1}`,
+          name: l?.name || `Fixture #${idx + 1}`,
+          type,
+          hitX,
+          hitZ,
+          throwDistanceM,
+          beamAngleDeg,
+          spotRadiusM,
+          spotDiameterM,
+          estimatedLux
+        };
+      });
+
+      const avgFloorLux = cones.length ? Math.round(cones.reduce((acc, c) => acc + c.estimatedLux, 0) / cones.length) : 0;
+      const luxToNitsRatio = +(avgFloorLux / ledScreenNits).toFixed(2);
+      const exposureStatus = luxToNitsRatio < 0.8
+        ? 'LED_OVEREXPOSED'
+        : (luxToNitsRatio > 2.5 ? 'STAGE_HOTSPOT' : 'BALANCED_BROADCAST');
+
+      return {
+        cones,
+        avgFloorLux,
+        ledScreenNits,
+        luxToNitsRatio,
+        exposureStatus
       };
     }
 
@@ -2191,6 +2386,8 @@
       if (!target.physical && (target.widthM || target.heightM)) {
         target.physical = [Number(target.widthM) || 4, Number(target.heightM) || 2.5];
       }
+      const viewMode = (riggingOpts?.viewMode || target?.wiringViewMode) === 'rear' ? 'rear' : 'front';
+      const viewBanner = viewMode === 'rear' ? 'REAR VIEW (TECHNICIAN MIRROR)' : 'FRONT VIEW (AUDIENCE)';
       const normFn = typeof normalizeSurfaceHardware === 'function'
         ? normalizeSurfaceHardware
         : (typeof window !== 'undefined' && typeof window.normalizeSurfaceHardware === 'function'
@@ -2214,18 +2411,26 @@
           : { chordWidthM: Number(target.chordMeters || target.widthM) || 4, depthOffsetM: Number(target.depthMeters) || 0 };
       const rows = Math.max(1, spec.rows | 0);
       const cols = Math.max(1, spec.cols | 0);
-      const hMeters = ((rows * (spec.heightMm || 500)) / 1000).toFixed(2);
+      const totalHm = Number(target.totalPhysicalHeightM) || (rows * (spec.heightMm || 500)) / 1000;
+      const hMeters = totalHm.toFixed(2);
       const wMeters = ((cols * (spec.widthMm || 500)) / 1000).toFixed(2);
-      const angles = Array.isArray(target.columnAnglesDeg)
+      const rawAngles = Array.isArray(target.columnAnglesDeg)
         ? target.columnAnglesDeg
         : Array.from({ length: cols }, () => Number(target.panelAngleDeg) || 0);
+      const angles = viewMode === 'rear' ? [...rawAngles].reverse() : rawAngles;
 
       let sideCells = '';
       const cellH = Math.min(28, Math.floor(150 / rows));
+      const rowLayout = Array.isArray(target.rowLayout) && target.rowLayout.length === rows ? target.rowLayout : null;
+      const totalLayoutMm = rowLayout ? Math.max(1, rowLayout.reduce((sum, rl) => sum + (Number(rl.heightMm) || 500), 0)) : rows * (spec.heightMm || 500);
+      const stackPx = rows * cellH;
+      let curY = 55;
       for (let r = 0; r < rows; r++) {
-        const y = 55 + r * cellH;
-        sideCells += `<rect x="95" y="${y}" width="18" height="${cellH - 2}" fill="#0ea5e9" stroke="#0284c7" stroke-width="1"/>`;
-        sideCells += `<line x1="113" y1="${y + cellH / 2}" x2="155" y2="${55 + rows * cellH}" stroke="#64748b" stroke-dasharray="3,2"/>`;
+        const rowMm = rowLayout ? (Number(rowLayout[r].heightMm) || 500) : (spec.heightMm || 500);
+        const rH = rowLayout ? Math.max(8, Math.round((rowMm / totalLayoutMm) * stackPx)) : cellH;
+        sideCells += `<rect x="95" y="${curY}" width="18" height="${Math.max(4, rH - 2)}" fill="#0ea5e9" stroke="#0284c7" stroke-width="1"/>`;
+        sideCells += `<line x1="113" y1="${curY + rH / 2}" x2="155" y2="${55 + stackPx}" stroke="#64748b" stroke-dasharray="3,2"/>`;
+        curY += rH;
       }
 
       const stepLen = Math.min(26, Math.floor(220 / cols));
@@ -2235,15 +2440,16 @@
         heading += ((angles[c] || 0) * Math.PI) / 180;
         const nx = cx + Math.cos(heading) * stepLen;
         const ny = cy - Math.sin(heading) * stepLen;
+        const colLabel = viewMode === 'rear' ? `C${cols - c}` : `C${c + 1}`;
         topPath += `<line x1="${cx.toFixed(1)}" y1="${cy.toFixed(1)}" x2="${nx.toFixed(1)}" y2="${ny.toFixed(1)}" stroke="#22c55e" stroke-width="5" stroke-linecap="round"/>`;
-        topPath += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="2.5" fill="#f8fafc"/>`;
+        topPath += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="2.5" fill="#f8fafc"><title>${colLabel}</title></circle>`;
         cx = nx;
         cy = ny;
       }
 
       return [
         `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" width="100%" height="280" style="background:#0b1120;border:1px solid #1e293b;border-radius:8px;font-family:monospace">`,
-        `  <text x="20" y="26" fill="#e2e8f0" font-size="13" font-weight="bold">Side View (Rigging / Ballast) — ${esc18(target.name || 'LED')} (${hMeters}m H)</text>`,
+        `  <text x="20" y="26" fill="#e2e8f0" font-size="13" font-weight="bold">Side View (${viewBanner}) — ${esc18(target.name || 'LED')} (${hMeters}m H)</text>`,
         `  <rect x="75" y="38" width="95" height="12" fill="#f59e0b" rx="2"/>`,
         `  <text x="180" y="48" fill="#fbbf24" font-size="11">Truss + Hanging Bar</text>`,
         sideCells,
@@ -2253,7 +2459,7 @@
         `  <line x1="280" y1="15" x2="280" y2="265" stroke="#1e293b" stroke-width="1"/>`,
         `  <text x="305" y="26" fill="#e2e8f0" font-size="13" font-weight="bold">Top View (Curve / Chord: ${curve.chordWidthM}m / Depth: ${curve.depthOffsetM}m)</text>`,
         topPath,
-        `  <text x="305" y="245" fill="#94a3b8" font-size="11">Total Arc Width: ${wMeters}m (${cols}x${rows} cabinets)</text>`,
+        `  <text x="305" y="245" fill="#94a3b8" font-size="11">Total Arc Width: ${wMeters}m (${cols}x${rows} cabinets · ${viewBanner})</text>`,
         `</svg>`
       ].join('\n');
     }
@@ -2464,6 +2670,7 @@
       const engineeringRider = computeEngineeringRider({
         surfaces: surfaces.length ? surfaces : ledItems,
         lights,
+        fixtureRigs16: glbRigs,
         size: eng?.size
       });
       const structureSvg = buildStructurePreviewSvg(surfaces.length ? surfaces[0] : ledItems[0]);
@@ -2568,81 +2775,124 @@
     }
 
     function generateStageDxf(opts = {}) {
-      const eng = getEngine();
-      const bom = computeStageBom();
-      const w = bom.summary.stageW || 16;
-      const d = bom.summary.stageD || 8;
+      const eng = typeof getEngine === 'function' ? getEngine() : null;
+      const bom = typeof computeStageBom === 'function' ? computeStageBom() : null;
+      const w = Number(opts?.stageW || bom?.summary?.stageW || eng?.size?.width || 16);
+      const d = Number(opts?.stageD || bom?.summary?.stageD || eng?.size?.depth || 8);
+      const viewMode = opts?.viewMode === 'rear' ? 'rear' : 'front';
+      const surfaceList = Array.isArray(opts?.surfaces) ? opts.surfaces : (Array.isArray(eng?.surfaces) ? eng.surfaces : []);
+      const lightList = Array.isArray(opts?.lights) ? opts.lights : (Array.isArray(eng?.lights) ? eng.lights : []);
+      const sfxList = Array.isArray(opts?.sfxUnits) ? opts.sfxUnits : [];
       const entities = [];
 
       // 1. MẶT BẰNG (TOP VIEW — gốc tại (0, 0))
       entities.push(dxfText('DIMENSIONS', -w / 2, d / 2 + 1.8, 0.45, `MAT BANG SAN KHAU (TOP VIEW) - ${w}m x ${d}m`));
       entities.push(dxfRect('STAGE_PLATFORM', 0, 0, w, d));
-      if (opts?.watermark) {
+      if (opts?.watermark && typeof LUMI_BRAND !== 'undefined') {
         entities.push(dxfText('WATERMARK', -w / 2, -d / 2 - 1.2, 0.35, LUMI_BRAND.watermarkText));
       }
 
-      for (const s of eng?.surfaces || []) {
-        if (s._deleted8) continue;
+      for (const s of surfaceList) {
+        if (!s || s._deleted8) continue;
         const c = s.mesh?.bounds?.center || [0, 2.5, -2];
-        const sw = Number(s.physicalWidthM || s.physical?.width || 4);
+        const sw = Number(s.physicalWidthM || s.physical?.[0] || s.physical?.width || s.totalPhysicalWidthM || 4);
         entities.push(dxfRect('LED_SCREENS', c[0], -c[2], sw, 0.25));
-        entities.push(dxfText('LED_SCREENS', c[0] - sw * 0.4, -c[2] + 0.3, 0.25, `${s.name} (${sw}m P${s.pitchMm || 3.91})`));
+        entities.push(dxfText('LED_SCREENS', c[0] - sw * 0.4, -c[2] + 0.3, 0.25, `${s.name || s.id || 'LED'} (${sw}m P${s.pitchMm || 3.91})`));
       }
 
-      for (const l of eng?.lights || []) {
-        if (l.enabled === false) continue;
-        const px = l.pos?.[0] || 0, pz = -(l.pos?.[2] || 0);
+      for (const l of lightList) {
+        if (!l || l.enabled === false) continue;
+        const px = l.pos?.[0] ?? l.x ?? 0, pz = -(l.pos?.[2] ?? l.z ?? 0);
         entities.push(dxfRect('LIGHT_FIXTURES', px, pz, 0.3, 0.3));
       }
 
-      // 2. MẶT ĐỨNG CHÍNH DIỆN (FRONT ELEVATION — dịch sang phải (w + 8, 0))
+      if (typeof computePhotometricFootprint === 'function' && lightList.length > 0) {
+        const photo = computePhotometricFootprint({ lights: lightList });
+        for (const cone of photo.cones) {
+          entities.push(dxfRect('LUX_FOOTPRINT', cone.hitX, -cone.hitZ, cone.spotDiameterM, cone.spotDiameterM));
+          entities.push(dxfText('LUX_FOOTPRINT', cone.hitX - 0.3, -cone.hitZ, 0.18, `${cone.estimatedLux} lx`));
+        }
+      }
+
+      if (typeof computeSfxSafetyZones === 'function' && sfxList.length > 0) {
+        const safety = computeSfxSafetyZones({ units: sfxList });
+        for (const zZone of safety.zones) {
+          const diam = zZone.safetyRadiusM * 2;
+          entities.push(dxfRect('SAFETY_CLEARANCE', zZone.x, -zZone.z, diam, diam));
+          entities.push(dxfText('SAFETY_CLEARANCE', zZone.x - 0.4, -zZone.z, 0.2, `CLEARANCE R=${zZone.safetyRadiusM}m`));
+        }
+      }
+
+      // 2. MẶT ĐỨNG (FRONT ELEVATION / REAR VIEW TECHNICIAN MIRROR — dịch sang phải (w + 10, 0))
       const ox = w + 10;
-      entities.push(dxfText('DIMENSIONS', ox - w / 2, 7.5, 0.45, `MAT DUNG CHINH DIEN (FRONT ELEVATION)`));
+      const elevHeader = viewMode === 'rear'
+        ? 'MAT DUNG PHIA SAU - REAR VIEW (TECHNICIAN MIRROR)'
+        : 'MAT DUNG CHINH DIEN (FRONT ELEVATION)';
+      entities.push(dxfText('DIMENSIONS', ox - w / 2, 7.5, 0.45, elevHeader));
       entities.push(dxfRect('STAGE_PLATFORM', ox, 0.45, w, 0.9));
 
-      for (const s of eng?.surfaces || []) {
-        if (s._deleted8) continue;
+      for (const s of surfaceList) {
+        if (!s || s._deleted8) continue;
         const c = s.mesh?.bounds?.center || [0, 2.8, -2];
-        const sw = Number(s.physicalWidthM || s.physical?.[0] || s.physical?.width || 4);
-        const sh = Number(s.physicalHeightM || s.physical?.[1] || s.physical?.height || 3);
+        const sw = Number(s.physicalWidthM || s.physical?.[0] || s.physical?.width || s.totalPhysicalWidthM || 4);
+        const sh = Number(s.physicalHeightM || s.physical?.[1] || s.physical?.height || s.totalPhysicalHeightM || 3);
         const cx = ox + c[0], cy = c[1];
         entities.push(dxfRect('LED_SCREENS', cx, cy, sw, sh));
-        entities.push(dxfText('LED_SCREENS', cx - sw * 0.42, cy + sh * 0.5 + 0.18, 0.22, `${s.name} ${sw}x${sh}m (${s.w}x${s.h}px)`));
+        entities.push(dxfText('LED_SCREENS', cx - sw * 0.42, cy + sh * 0.5 + 0.18, 0.22, `${s.name || s.id || 'LED'} ${sw}x${sh}m (${s.w}x${s.h}px) [${viewMode.toUpperCase()} VIEW]`));
 
         // Cabinet grid & serpentine wiring layers (PANEL_OUTLINE, VIRTUAL_VOID, WIRING_DATA, WIRING_POWER)
         const cols = Math.max(1, Math.min(48, Number(s.cabCols) || Math.ceil(sw / 0.5)));
         const rows = Math.max(1, Math.min(32, Number(s.cabRows) || Math.ceil(sh / 0.5)));
         const cw = sw / cols, ch = sh / rows;
         const left = cx - sw * 0.5, top = cy + sh * 0.5;
+        const rowLayout = Array.isArray(s.rowLayout) && s.rowLayout.length === rows ? s.rowLayout : null;
+        const totalLayoutM = rowLayout ? Math.max(0.1, rowLayout.reduce((sum, rl) => sum + ((Number(rl.heightMm) || 500) / 1000), 0)) : sh;
+        const rowHeights = [];
+        const rowCenterY = [];
+        for (let r = 0, accY = top; r < rows; r++) {
+          const rh = rowLayout ? sh * (((Number(rowLayout[r].heightMm) || 500) / 1000) / totalLayoutM) : ch;
+          rowHeights.push(rh);
+          rowCenterY.push(accY - rh * 0.5);
+          accY -= rh;
+        }
         const voidSet = new Set(Array.isArray(s.virtualTiles) ? s.virtualTiles.map(String) : []);
 
         for (let r = 0; r < rows; r++) {
+          const rh = rowHeights[r] ?? ch;
+          const tileCy = rowCenterY[r] ?? (top - (r + 0.5) * ch);
           for (let col = 0; col < cols; col++) {
-            const tileCx = left + (col + 0.5) * cw;
-            const tileCy = top - (r + 0.5) * ch;
+            const dispCol = viewMode === 'rear' ? (cols - 1 - col) : col;
+            const tileCx = left + (dispCol + 0.5) * cw;
             if (voidSet.has(`${col},${r}`)) {
-              entities.push(dxfRect('VIRTUAL_VOID', tileCx, tileCy, cw * 0.92, ch * 0.92));
+              entities.push(dxfRect('VIRTUAL_VOID', tileCx, tileCy, cw * 0.92, rh * 0.92));
             } else {
-              entities.push(dxfRect('PANEL_OUTLINE', tileCx, tileCy, cw, ch));
+              entities.push(dxfRect('PANEL_OUTLINE', tileCx, tileCy, cw, rh));
             }
           }
         }
 
-        const wPlan = typeof window.planSurfaceWiring === 'function'
-          ? window.planSurfaceWiring(s)
-          : (typeof S.atlas?.planSurfaceWiring === 'function' ? S.atlas.planSurfaceWiring(s) : null);
+        const wireFn = typeof planSurfaceWiring === 'function'
+          ? planSurfaceWiring
+          : (typeof window !== 'undefined' && typeof window.planSurfaceWiring === 'function'
+            ? window.planSurfaceWiring
+            : (typeof S !== 'undefined' ? S.atlas?.planSurfaceWiring : null));
+        const wPlan = wireFn ? wireFn(s, { viewMode }) : null;
         if (wPlan && Array.isArray(wPlan.dataPorts)) {
           for (const port of wPlan.dataPorts) {
             for (let idx = 0; idx + 1 < port.cabinets.length; idx++) {
               const a = port.cabinets[idx], b = port.cabinets[idx + 1];
-              const x1 = left + (a.col + 0.5) * cw, y1 = top - (a.row + 0.5) * ch;
-              const x2 = left + (b.col + 0.5) * cw, y2 = top - (b.row + 0.5) * ch;
+              const colA = a.displayCol ?? a.col;
+              const colB = b.displayCol ?? b.col;
+              const x1 = left + (colA + 0.5) * cw, y1 = rowCenterY[a.row] ?? (top - (a.row + 0.5) * ch);
+              const x2 = left + (colB + 0.5) * cw, y2 = rowCenterY[b.row] ?? (top - (b.row + 0.5) * ch);
               entities.push(dxfLine('WIRING_DATA', x1, y1, x2, y2));
             }
             const first = port.cabinets[0];
             if (first) {
-              const fx = left + (first.col + 0.25) * cw, fy = top - (first.row + 0.5) * ch;
-              entities.push(dxfText('WIRING_DATA', fx, fy, Math.min(0.14, ch * 0.28), port.portId));
+              const colF = first.displayCol ?? first.col;
+              const rhF = rowHeights[first.row] ?? ch;
+              const fx = left + (colF + 0.25) * cw, fy = rowCenterY[first.row] ?? (top - (first.row + 0.5) * ch);
+              entities.push(dxfText('WIRING_DATA', fx, fy, Math.min(0.14, rhF * 0.28), port.portId));
             }
           }
         }
@@ -2650,14 +2900,18 @@
           for (const loop of wPlan.powerLoops) {
             for (let idx = 0; idx + 1 < loop.cabinets.length; idx++) {
               const a = loop.cabinets[idx], b = loop.cabinets[idx + 1];
-              const x1 = left + (a.col + 0.5) * cw, y1 = top - (a.row + 0.5) * ch - 0.04;
-              const x2 = left + (b.col + 0.5) * cw, y2 = top - (b.row + 0.5) * ch - 0.04;
+              const colA = a.displayCol ?? a.col;
+              const colB = b.displayCol ?? b.col;
+              const x1 = left + (colA + 0.5) * cw, y1 = (rowCenterY[a.row] ?? (top - (a.row + 0.5) * ch)) - 0.04;
+              const x2 = left + (colB + 0.5) * cw, y2 = (rowCenterY[b.row] ?? (top - (b.row + 0.5) * ch)) - 0.04;
               entities.push(dxfLine('WIRING_POWER', x1, y1, x2, y2));
             }
             const first = loop.cabinets[0];
             if (first) {
-              const fx = left + (first.col + 0.25) * cw, fy = top - (first.row + 0.5) * ch - 0.08;
-              entities.push(dxfText('WIRING_POWER', fx, fy, Math.min(0.12, ch * 0.24), loop.loopId));
+              const colF = first.displayCol ?? first.col;
+              const rhF = rowHeights[first.row] ?? ch;
+              const fx = left + (colF + 0.25) * cw, fy = (rowCenterY[first.row] ?? (top - (first.row + 0.5) * ch)) - 0.08;
+              entities.push(dxfText('WIRING_POWER', fx, fy, Math.min(0.12, rhF * 0.24), loop.loopId));
             }
           }
         }
@@ -4275,6 +4529,9 @@
       runStageAiPrompt,
       computeStageBom,
       computeEngineeringRider,
+      computeSfxSafetyZones,
+      computeSfxConsumablesBom,
+      computePhotometricFootprint,
       buildStructurePreviewSvg,
       buildClientProposalText,
       generateStageDxf,

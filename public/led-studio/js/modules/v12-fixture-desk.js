@@ -464,6 +464,199 @@ function buildDmxPatchTable(lights = (typeof engine !== 'undefined' ? engine.lig
  rows.hasConflict = rows.some(r => r.conflict || r.outOfRange);
  return rows;
 }
+function autoRigFixturesOnTruss(spec = {}) {
+ const trussId = String(spec.trussId || 'TRUSS_MAIN');
+ const spanM = Math.max(1.0, +(spec.spanM || 12));
+ const centerX = +(spec.centerX || 0);
+ const trimHeightM = +(spec.trimHeightM ?? spec.y ?? 8.0);
+ const z = +(spec.z || 0);
+ const fixtureCount = Math.max(0, Math.min(64, Math.round(+(spec.fixtureCount ?? 8))));
+ const fixtureType = String(spec.fixtureType || 'beam').toLowerCase();
+ const fixtureWeightKg = Math.max(1, +(spec.fixtureWeightKg || (fixtureType === 'beam' ? 22 : fixtureType === 'strobe' ? 12 : 14)));
+ const fixturePowerW = Math.max(20, +(spec.fixturePowerW || (fixtureType === 'beam' ? 420 : fixtureType === 'strobe' ? 1000 : 300)));
+ const startUniverse = Math.max(1, Math.round(+(spec.startUniverse || 1)));
+ const startAddress = Math.max(1, Math.min(512, Math.round(+(spec.startAddress || 1))));
+ const dmxChannels = Math.max(1, Math.min(512, Math.round(+(spec.dmxChannels || 16))));
+
+ const marginM = Math.max(0.45, +(spanM * 0.08).toFixed(3));
+ const usableSpanM = Math.max(0.2, +(spanM - 2 * marginM).toFixed(3));
+ const stepM = fixtureCount > 1 ? usableSpanM / (fixtureCount - 1) : 0;
+
+ const offsets = new Array(fixtureCount).fill(0);
+ const halfPairs = Math.floor(fixtureCount / 2);
+ for (let i = 0; i < halfPairs; i++) {
+  const rightIdx = fixtureCount - 1 - i;
+  let absOff = (usableSpanM / 2) - i * stepM;
+  const mod2 = absOff % 2.0;
+  if (mod2 < 0.08 || (2.0 - mod2) < 0.08) {
+   absOff = Math.max(0.15, absOff - 0.10);
+  }
+  offsets[i] = -absOff;
+  offsets[rightIdx] = absOff;
+ }
+ if (fixtureCount % 2 === 1) {
+  const halfMod2 = (usableSpanM / 2) % 2.0;
+  if (halfMod2 < 0.08 || (2.0 - halfMod2) < 0.08) {
+   offsets[halfPairs] = 0.10;
+  }
+ }
+
+ let uni = startUniverse;
+ let addr = startAddress;
+ const fixtures = [];
+ for (let i = 0; i < fixtureCount; i++) {
+  if (addr + dmxChannels - 1 > 512) {
+   uni += 1;
+   addr = 1;
+  }
+  const xPos = +(centerX + offsets[i]).toFixed(4);
+  const yPos = +trimHeightM.toFixed(3);
+  const zPos = +z.toFixed(3);
+  fixtures.push({
+   id: `${trussId}_FX_${i + 1}`,
+   name: `${fixtureType.toUpperCase()} #${i + 1}`,
+   trussId,
+   type: fixtureType,
+   x: xPos,
+   y: yPos,
+   z: zPos,
+   pos: [xPos, yPos, zPos],
+   target: [xPos, 0, zPos],
+   weightKg: fixtureWeightKg,
+   powerW: fixturePowerW,
+   dmxUniverse: uni,
+   dmxAddress: addr,
+   dmxChannels,
+   patchLabel: `U${uni}.${String(addr).padStart(3, '0')}`
+  });
+  addr += dmxChannels;
+ }
+
+ const totalFixtureWeightKg = +(fixtureCount * fixtureWeightKg).toFixed(2);
+ const cableAllowanceKg = +(totalFixtureWeightKg * 0.15).toFixed(2);
+ return {
+  trussId,
+  spanM,
+  marginM,
+  usableSpanM,
+  totalFixtureWeightKg,
+  cableAllowanceKg,
+  totalRiggedLoadKg: +(totalFixtureWeightKg + cableAllowanceKg).toFixed(2),
+  fixtures
+ };
+}
+function escapeXml12(str) {
+ return String(str ?? '')
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;')
+  .replace(/'/g, '&apos;');
+}
+function buildGrandMaFixtureXml(lights = (typeof engine !== 'undefined' ? engine.lights : []), opts = {}) {
+ const list = Array.isArray(lights) ? lights.filter(l => !l?._deleted8) : [];
+ const version = String(opts.version || 'ma3').toLowerCase() === 'ma2' ? 'ma2' : 'ma3';
+ const layerName = escapeXml12(opts.layerName || 'ALPHA_Stage_Rig');
+
+ let cursorUni = 1;
+ let cursorAddr = 1;
+ const patched = list.map((l, idx) => {
+  const chCount = Math.max(1, Math.min(512, Math.round(+(l?.dmxChannelCount || l?.dmxChannels || l?.channels || 16))));
+  let reqUni = Math.max(1, Math.round(+(l?.dmxUniverse || l?.universe || cursorUni)));
+  let reqAddr = Math.max(1, Math.round(+(l?.dmxAddress || l?.address || cursorAddr)));
+  if (reqAddr + chCount - 1 > 512) {
+   reqUni += 1;
+   reqAddr = 1;
+  }
+  if (reqUni < cursorUni || (reqUni === cursorUni && reqAddr < cursorAddr)) {
+   reqUni = cursorUni;
+   reqAddr = cursorAddr;
+   if (reqAddr + chCount - 1 > 512) {
+    reqUni += 1;
+    reqAddr = 1;
+   }
+  }
+  cursorUni = reqUni;
+  cursorAddr = reqAddr + chCount;
+  if (cursorAddr > 512) {
+   cursorUni += 1;
+   cursorAddr = 1;
+  }
+
+  const rawPos = Array.isArray(l?.pos) ? l.pos : [l?.x ?? 0, l?.y ?? 0, l?.z ?? 0];
+  const posX = (+(l?.x ?? rawPos[0]) || 0).toFixed(3);
+  const posY = (+(l?.z ?? rawPos[2]) || 0).toFixed(3);
+  const posZ = (+(l?.y ?? rawPos[1]) || 0).toFixed(3);
+  const rotX = (+(l?.rx ?? 0) || 0).toFixed(1);
+  const rotY = (+(l?.ry ?? 0) || 0).toFixed(1);
+  const rotZ = (+(l?.rz ?? 0) || 0).toFixed(1);
+  const fixId = Math.max(1, Math.round(+(l?.fixId || (101 + idx))));
+  const name = escapeXml12(l?.name || `Fixture_${idx + 1}`);
+  const fixtureType = escapeXml12(l?.oflModel || l?.type || 'Moving Head Beam');
+  const patchDot = `${reqUni}.${String(reqAddr).padStart(3, '0')}`;
+  return { idx, fixId, name, fixtureType, chCount, reqUni, reqAddr, patchDot, posX, posY, posZ, rotX, rotY, rotZ };
+ });
+
+ if (version === 'ma2') {
+  const ma2Fixtures = patched.map(f => [
+   `      <Fixture index="${f.idx}" name="${f.name}" fixture_id="${f.fixId}" channel_id="${f.fixId}">`,
+   `        <FixtureType name="${f.fixtureType}" />`,
+   `        <SubFixture index="0" react_to_grandmaster="true" color="ffffff">`,
+   `          <Patch><Address>${f.patchDot}</Address></Patch>`,
+   `          <AbsolutePosition><Location x="${f.posX}" y="${f.posY}" z="${f.posZ}" /><Rotation x="${f.rotX}" y="${f.rotY}" z="${f.rotZ}" /></AbsolutePosition>`,
+   `        </SubFixture>`,
+   `      </Fixture>`
+  ].join('\n')).join('\n');
+  const ma2Macros = patched.map((f, i) =>
+   `    <Macroline index="${i}"><text>Assign Fixture ${f.fixId} /x=${f.posX} /y=${f.posY} /z=${f.posZ} /dmx=${f.patchDot}</text></Macroline>`
+  ).join('\n');
+  return [
+   `<?xml version="1.0" encoding="utf-8"?>`,
+   `<MA xmlns="http://schemas.malighting.de/grandma2/xml/MA" major_vers="3" minor_vers="9" stream_vers="60">`,
+   `  <Info datetime="${new Date().toISOString()}" showfile="ALPHA_Creative_LED_Studio" />`,
+   `  <FixtureLayer index="0" name="${layerName}">`,
+   ma2Fixtures,
+   `  </FixtureLayer>`,
+   `  <Macro index="0" name="ALPHA Auto-Position 3D">`,
+   ma2Macros,
+   `  </Macro>`,
+   `</MA>`
+  ].join('\n');
+ }
+
+ const ma3Fixtures = patched.map(f =>
+  `      <Fixture Name="${f.name}" FixId="${f.fixId}" Patch="${f.patchDot}" FixtureType="${f.fixtureType}" Channels="${f.chCount}" PosX="${f.posX}" PosY="${f.posY}" PosZ="${f.posZ}" RotX="${f.rotX}" RotY="${f.rotY}" RotZ="${f.rotZ}" />`
+ ).join('\n');
+ const ma3MacroLines = patched.map((f, i) =>
+  `      <MacroLine Index="${i + 1}" Command="Set Fixture ${f.fixId} Property &quot;PosX&quot; &quot;${f.posX}&quot; &quot;PosY&quot; &quot;${f.posY}&quot; &quot;PosZ&quot; &quot;${f.posZ}&quot; &quot;Patch&quot; &quot;${f.patchDot}&quot;" />`
+ ).join('\n');
+ return [
+  `<?xml version="1.0" encoding="UTF-8"?>`,
+  `<GMA3 DataVersion="1.9.7.0">`,
+  `  <Patch>`,
+  `    <FixtureLayer Name="${layerName}">`,
+  ma3Fixtures,
+  `    </FixtureLayer>`,
+  `  </Patch>`,
+  `  <MacroPool>`,
+  `    <Macro Name="ALPHA_3D_Stage_Setup">`,
+  ma3MacroLines,
+  `    </Macro>`,
+  `  </MacroPool>`,
+  `</GMA3>`
+ ].join('\n');
+}
+function exportGrandMaXml(lights = (typeof engine !== 'undefined' ? engine.lights : []), opts = {}) {
+ const version = String(opts.version || 'ma3').toLowerCase() === 'ma2' ? 'ma2' : 'ma3';
+ const xml = buildGrandMaFixtureXml(lights, { ...opts, version });
+ const fname = version === 'ma2' ? 'ALPHA_GrandMA2_Stage_Layer.xml' : 'ALPHA_GrandMA3_Stage_Layer.xml';
+ if (typeof downloadText === 'function') {
+  downloadText(fname, xml, 'application/xml;charset=utf-8');
+ } else if (typeof downloadTextFile === 'function') {
+  downloadTextFile(fname, xml, 'application/xml;charset=utf-8');
+ }
+ return xml;
+}
 function exportDmxPatchCsv(lights) {
  const rows = buildDmxPatchTable(lights);
  const quote = (v) => {
@@ -489,8 +682,17 @@ function exportDmxPatchCsv(lights) {
 }
 N.buildDmxPatchTable = buildDmxPatchTable;
 N.exportDmxPatchCsv = exportDmxPatchCsv;
+N.autoRigFixturesOnTruss = autoRigFixturesOnTruss;
+N.buildGrandMaFixtureXml = buildGrandMaFixtureXml;
+N.exportGrandMaXml = exportGrandMaXml;
 S.buildDmxPatchTable = buildDmxPatchTable;
 S.exportDmxPatchCsv = exportDmxPatchCsv;
+S.autoRigFixturesOnTruss = autoRigFixturesOnTruss;
+S.buildGrandMaFixtureXml = buildGrandMaFixtureXml;
+S.exportGrandMaXml = exportGrandMaXml;
+S.fixture128.autoRig = autoRigFixturesOnTruss;
+S.fixture128.buildGrandMaXml = buildGrandMaFixtureXml;
+S.fixture128.exportGrandMaXml = exportGrandMaXml;
 
 // Create actual stable controls, not a floating modal.
 window.addEventListener('ledstudio:locale',()=>{window.translateUiText?.(id('pro127dock'));window.translateUiText?.(id('pro127bar'));});
