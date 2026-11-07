@@ -108,7 +108,7 @@
     ['#importModel small', 'Kéo file vào cửa sổ để bắt đầu', 'Drag files into window to start'],
     ['#demoBtn', 'Sân khấu mẫu', 'Demo Stage'],
     ['#importFolder', 'Thư mục', 'Folder'],
-    ['#skpHelp', 'Từ SketchUp ', 'From SketchUp '],
+    ['#skpHelp', 'HD SketchUp', 'SketchUp Guide'],
     ['#autoDetect', 'Nhận diện LED', 'Auto-detect LED'],
     ['#drawQuad', '+ 4 góc', '+ 4-Point Quad'],
     ['#repairMapping', 'Sửa mapping 3D', 'Repair 3D Mapping'],
@@ -185,12 +185,42 @@
     ['Cài đặt giao diện', 'Interface settings'], ['Giao diện', 'Interface'], ['Đóng', 'Close']
   ];
 
-  function applyLocaleToDOM() {
+  function applyLocaleToDOM(onlyDynamic = false) {
     const isEn = state.locale === 'en';
+    const localeTag = isEn ? 'en' : 'vi';
+    if (onlyDynamic && state._appliedDomLocale === localeTag) {
+      const leftTitle = document.getElementById('leftTitle');
+      if (leftTitle) {
+        const txt = (leftTitle.textContent || '').trim();
+        if (txt === 'Cấu trúc sân khấu' || txt === 'Stage Structure') {
+          leftTitle.textContent = isEn ? 'Stage Structure' : 'Cấu trúc sân khấu';
+        } else if (txt === 'Danh sách màn LED' || txt === 'LED Surfaces' || txt === 'Danh sách LED' || txt === 'LED List') {
+          leftTitle.textContent = isEn ? 'LED Surfaces' : 'Danh sách màn LED';
+        } else if (txt === 'Hệ thống đèn' || txt === 'Lighting System') {
+          leftTitle.textContent = isEn ? 'Lighting System' : 'Hệ thống đèn';
+        }
+      }
+      const gridBtn = document.getElementById('show137EditorButton');
+      if (gridBtn) {
+        const clean = gridBtn.classList?.contains?.('active');
+        gridBtn.textContent = clean
+          ? (isEn ? 'Show Grid' : 'Hiện lưới')
+          : (isEn ? 'Hide Grid' : 'Ẩn lưới');
+      }
+      if (state.clientReviewMode && state.reviewSharedTitle) {
+        setReviewStatus(
+          isEn ? `Viewing: ${state.reviewSharedTitle}` : `Đang xem: ${state.reviewSharedTitle}`
+        );
+      }
+      const insp = document.getElementById('inspectorContent');
+      if (insp) window.translateUiText?.(insp);
+      return;
+    }
+    state._appliedDomLocale = localeTag;
     if (document.documentElement) {
-      document.documentElement.lang = isEn ? 'en' : 'vi';
+      document.documentElement.lang = localeTag;
       if (document.documentElement.dataset) {
-        document.documentElement.dataset.locale = isEn ? 'en' : 'vi';
+        document.documentElement.dataset.locale = localeTag;
       }
     }
     for (const [sel, viText, enText] of DOM_TRANSLATIONS) {
@@ -226,6 +256,19 @@
     }
     const projectName = document.getElementById('projectName');
     if (projectName) projectName.title = t16('Đổi tên dự án', 'Rename project');
+    for (const [id, viTitle, enTitle] of [
+      ['ledManagerBtn', 'Quản lý danh sách & cấu hình các màn hình LED', 'Manage LED screen list & hardware settings'],
+      ['atlasBtn', 'Pixel Studio — Đóng gói Atlas 4K, đi dây cabinet & xuất Resolume XML', 'Pixel Studio — 4K Atlas packing, cabinet wiring & Resolume XML'],
+      ['vjToggle', 'Bật / tắt bảng Hiệu ứng LIVE VJ', 'Toggle LIVE VJ effects panel'],
+      ['exportBtn', 'Xuất ảnh phối cảnh, Pixel Map, CAD 2D, Báo giá & Video', 'Export perspective shots, Pixel Map, 2D CAD, Quote & Video'],
+      ['demoBtn', 'Khôi phục sân khấu mẫu mặc định', 'Restore default demo stage'],
+      ['importFolder', 'Nhập thư mục chứa model DAE / glTF kèm ảnh texture', 'Import folder containing DAE / glTF model and textures'],
+      ['skpHelp', 'Hướng dẫn xuất file GLB / DAE từ SketchUp', 'Guide for exporting GLB / DAE from SketchUp'],
+      ['loopBtn', 'Bật / tắt lặp lại timeline', 'Toggle timeline loop']
+    ]) {
+      const btn = document.getElementById(id);
+      if (btn) btn.title = t16(viTitle, enTitle);
+    }
     const searchInput = document.getElementById('objectSearch');
     if (searchInput) {
       searchInput.placeholder = isEn ? 'Search objects / LED...' : 'Tìm object / LED...';
@@ -1793,7 +1836,7 @@
       const prevRenderUI = window.renderUI;
       const wrappedRenderUI = function (...args) {
         const res = prevRenderUI.apply(this, args);
-        applyLocaleToDOM();
+        applyLocaleToDOM(true);
         return res;
       };
       wrappedRenderUI._wrappedLocale16 = true;

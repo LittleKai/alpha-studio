@@ -8,7 +8,7 @@ body.matrix143-open .right-panel>:not(#matrix143Panel){display:none!important}
 #matrix143Panel *{box-sizing:border-box}
 #matrix143Panel button{min-width:0;min-height:32px;border:1px solid var(--border-field);background:var(--bg-field);color:var(--text-primary);border-radius:6px;padding:7px 8px;font:600 var(--fs-sm)/1.3 'Segoe UI',Arial,sans-serif;cursor:pointer;white-space:normal;overflow-wrap:anywhere}
 #matrix143Panel button:hover{border-color:var(--accent);background:var(--bg-hover)}
-#matrix143Panel button.primary{background:var(--accent-primary);background-image:linear-gradient(135deg,var(--accent-primary),var(--accent-secondary));border-color:var(--accent-primary);color:var(--on-accent)}
+#matrix143Panel button.primary{background:var(--button-primary);background-image:none;border-color:var(--button-primary);color:var(--button-on-primary);font-weight:700}
 #matrix143Panel button.active{border-color:var(--accent);background:var(--accent-soft);color:var(--text-primary)}
 #matrix143Panel button.danger{background:var(--bg-field);border-color:var(--border-field)}
 .mx143-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px;background:var(--bg-panel);border-bottom:1px solid var(--border-field);flex:0 0 auto}
@@ -313,9 +313,9 @@ body.matrix143-open.focus-workspace .right-panel{display:block!important;positio
   font-weight: 700 !important;
 }
 [data-theme="light"] #matrix143Panel button.primary:not(:disabled) {
-  background: var(--accent) !important;
-  border-color: var(--accent) !important;
-  color: #ffffff !important;
+  background: var(--button-primary) !important;
+  border-color: var(--button-primary) !important;
+  color: var(--button-on-primary) !important;
   font-weight: 700 !important;
 }
 [data-theme="light"] #matrix143Panel button.primary:not(:disabled) * {

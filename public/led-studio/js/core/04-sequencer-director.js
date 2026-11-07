@@ -73,7 +73,8 @@ function buildHuman(desc,lite=false,pose=0){
  for(const [name,parts,pivot]of [['body',body,[0,0,0]],['head',head,[0,1.43+dy,0]],['left',left,[-.18,1.32+dy,0]],['right',right,[.18,1.32+dy,0]],['instrument',instrument,[0,0,0]]])if(parts.length)nodes.push({name,pivot,meshes:mergeCast(parts,desc.type+' / '+name)});return nodes;}
 function castMatrix(d,node,t){const scale=d.height/1.75,p=t*2*Math.PI*seq.bpm/60+(d.phase||0),animated=seq.animate&&d.animate!==false&&d.type!=='audience';let angle=0,axis=[1,0,0];if(animated){if(node.name==='head')angle=Math.sin(p*.5)*.045;if(node.name==='right')angle=Math.sin(p*(d.type==='drummer'?2:1))*(d.type==='guitarist'?.09:d.type==='drummer'?.23:.025);if(node.name==='left')angle=Math.sin(p*(d.type==='drummer'?2:1)+Math.PI)*(d.type==='drummer'?.23:d.type==='dancer'?.13:.025);if(d.type==='dancer'&&node.name!=='instrument'){axis=[0,0,1];angle+=Math.sin(p*.5)*.04;}}
  const root=M.mm(M.translate([d.pos[0]+(animated?Math.sin(p*.5)*.024:0),d.pos[1],d.pos[2]]),M.mm(M.rotate([0,1,0],d.yaw*Math.PI/180),M.trs([0,0,0],[0,0,0,1],[scale,scale,scale])));return M.mm(root,M.mm(M.translate(node.pivot),M.mm(M.rotate(axis,angle),M.translate(M.mul(node.pivot,-1)))));}
-function rebuildCast(){for(const a of castCache.values())for(const n of a)for(const m of n.meshes)engine.releaseMesh(m);castCache.clear();for(const d of seq.people){if(d.type==='audience'){const parts=[],count=clamp(d.count||24,1,96),cols=Math.min(d.columns||12,count);for(let i=0;i<count;i++){const q={...d,color:['#34475c','#6d4c66','#3f6062','#67676e'][i%4],skin:['#b77f5e','#d4a585','#a27153'][i%3]};for(const node of buildHuman(q,true,i))for(const m of node.meshes){transformMesh(m,M.translate([((i%cols)-(cols-1)/2)*(d.spacing||.65),0,Math.floor(i/cols)*(d.spacing||.65)*.95]));parts.push(m);}}castCache.set(d.id,[{name:'crowd',pivot:[0,0,0],meshes:mergeCast(parts,'Grouped audience')}]);}else castCache.set(d.id,buildHuman(d));}}
+function castSig7(d){return [d.type,d.color,d.skin,d.count,d.columns,d.spacing,d.model18||'',typeof stage10!=='undefined'?stage10.detail:'',typeof choreo11!=='undefined'?choreo11.quality+'|'+choreo11.style+'|'+(choreo11.routes?.some(r=>r.person===d.id&&r.carryProp)?1:0):''].join('|');}
+function rebuildCast(){if(typeof state!=='undefined'&&state._restoring){state._deferCast=true;return;}const keep=new Set(seq.people.map(d=>d.id));for(const [id,a]of castCache)if(!keep.has(id)){for(const n of a)for(const m of n.meshes)engine.releaseMesh(m);castCache.delete(id);}for(const d of seq.people){const sig=castSig7(d),old=castCache.get(d.id);if(old&&old._castSig===sig&&(!d.model18||old[0]?.model18===d.model18))continue;if(old)for(const n of old)for(const m of n.meshes)engine.releaseMesh(m);let nodes;if(d.type==='audience'){const parts=[],count=clamp(d.count||24,1,96),cols=Math.min(d.columns||12,count);for(let i=0;i<count;i++){const q={...d,color:['#34475c','#6d4c66','#3f6062','#67676e'][i%4],skin:['#b77f5e','#d4a585','#a27153'][i%3]};for(const node of buildHuman(q,true,i))for(const m of node.meshes){transformMesh(m,M.translate([((i%cols)-(cols-1)/2)*(d.spacing||.65),0,Math.floor(i/cols)*(d.spacing||.65)*.95]));parts.push(m);}}nodes=[{name:'crowd',pivot:[0,0,0],meshes:mergeCast(parts,'Grouped audience')}];}else nodes=buildHuman(d);nodes._castSig=sig;castCache.set(d.id,nodes);}}
 StageEngine.prototype.drawCast=function(t){if(this!==engine)return;for(const d of seq.people){if(d.hidden)continue;for(const node of castCache.get(d.id)||[]){const mat=castMatrix(d,node,t);for(const m of node.meshes){m.actorMatrix=mat;this.draw(m,0);}}}};
 function deckY(x,z){const b=engine.stageBounds,o=[x,b.max[1]+1,z],d=[0,-1,0],maxDeckY=b.min[1]+engine.size.height*.32,filter=(_t,_a,_b,_c,dist,normal)=>Math.abs(normal[1])>=.9&&(o[1]-dist)<=maxDeckY;let best=Infinity,y=b.min[1];for(const m of engine.stage){if(m.hidden)continue;const hit=raycastMeshBVH(m,o,d,best,filter);if(hit&&hit.distance<best){best=hit.distance;y=o[1]-hit.distance;}}return y;}
 function addPerson(type,opt={}){if(!castNames[type]||seq.people.length>=16)return;checkpoint();const b=engine.stageBounds,i=seq.people.length,x=b.center[0]+((i%4)-1.5)*1.3,z=b.center[2]+Math.min(1,engine.size.depth*.12);const d={id:uid('person'),type,name:castNames[type]+' '+(i+1),pos:[x,deckY(x,z),z],yaw:0,height:1.75,color:['#33677f','#803f65','#c59042','#345852'][i%4],skin:'#c49474',animate:true,phase:i*.8,count:24,columns:12,spacing:.65,...opt};if(type==='audience'&&!opt.pos){d.pos=[b.center[0],b.min[1],b.max[2]+2];d.yaw=180;d.animate=false;}seq.people.push(d);rebuildCast();renderCastManager();if(typeof director!=='undefined'&&!d.actId&&director.ready&&!director.loading&&typeof selectObject8==='function'){if(typeof state!=='undefined')state.step='stage';director.mode='move';selectObject8('person',d.id);}return d;}
@@ -220,8 +221,8 @@ function demoMusicFile(seconds=12,bpm=120){const sr=22050,n=seconds*sr,b=new Arr
 async function createShowDemo(){await enableAudio(true);checkpoint();clearRuntime();seq.tracks=newTracks();seq.clips=[];seq.markers=[0,4,8].map((t,i)=>({id:uid('mark'),time:t,name:['OPEN','BUILD','HERO'][i]}));seq.bpm=120;seq.offset=0;seq.rate=1;state.duration=12;for(let i=0;i<3;i++){addClip('main',{source:'motion:'+i,name:['OPEN / Energy','BUILD / Liquid','HERO / Neon'][i],start:i*4,duration:4,fade:.25});addClip('lights',{source:['warm','sweep','fan'][i],name:['WARM','SWEEP','FAN'][i],start:i*4,duration:4,color:['#ffd196','#7ae3ff','#bb97ff'][i]});}addClip('audio',{source:'music',name:'ALPHA / 120 BPM',start:0,duration:12,fade:0});await addMusicFile(demoMusicFile(),{silent:true});sq.waveform=null;seq.enabled=true;state.time=0;live.audioMode='music';toggleSequence(true);setPlaying(true);renderUI();}
 function confirmShowDemo(){dialog((window.tr?.("Tạo demo SHOW 12 giây?","Create a 12-second show demo?") ?? "Tạo demo SHOW 12 giây?"),`<p>${(window.tr?.("Thay track hiện tại bằng 3 đoạn visual, cue đèn và nhạc tự tạo 120 BPM. ","Replace current tracks with three visual clips, lighting cues and generated 120 BPM music. ") ?? "Thay track hiện tại bằng 3 đoạn visual, cue đèn và nhạc tự tạo 120 BPM. ")}<b>${(window.tr?.("Không đổi model, mapping, crop và vị trí đèn.","Model, mapping, crop and light positions stay unchanged.") ?? "Không đổi model, mapping, crop và vị trí đèn.")}</b>${(window.tr?.(" Nhạc riêng hiện tại sẽ được thay thế; hãy lưu dự án trước."," Current music will be replaced; save your project first.") ?? " Nhạc riêng hiện tại sẽ được thay thế; hãy lưu dự án trước.")}</p>`,[{label:(window.tr?.("Hủy","Cancel") ?? "Hủy")},{label:(window.tr?.("Tạo + nghe demo","Create and play demo") ?? "Tạo + nghe demo"),primary:true,action:createShowDemo}]);}
 function testSpeakers(){enableAudio(true).then(on=>{if(!on)return;const ctx=live.audioContext,o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=330;g.gain.setValueAtTime(.0001,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.08,ctx.currentTime+.03);g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.35);o.connect(g);g.connect(live.masterGain);o.start();o.stop(ctx.currentTime+.4);o.onended=()=>{o.disconnect();g.disconnect();};toast((window.tr?.("Test loa: 0.4 giay.","Speaker test: 0.4 seconds.") ?? "Test loa: 0.4 giay."));});}
-function resetSeq(){clearRuntime();for(const nodes of castCache.values())for(const n of nodes)for(const m of n.meshes)engine.releaseMesh(m);castCache.clear();Object.assign(seq,{enabled:false,tracks:newTracks(),clips:[],markers:[],people:[],selected:null,strobe:false,reactive:false});sq.waveform=null;}
-function restoreSeq(data,legacy=null){resetSeq();if(!data&&legacy?.timeLayers){data={tracks:newTracks(),clips:[],people:legacy.peopleLibrary||[],enabled:false};for(const l of legacy.timeLayers){const track=l.id==='visual'?'main':l.id==='light'?'lights':'audio';for(const c of l.items||[])data.clips.push({id:c.id,track,start:c.start,duration:c.end-c.start,source:l.id==='visual'?'cue:'+clamp((+c.value||1)-1,0,7):c.value==='concert'?'sweep':c.value==='cool'?'fan':c.value,name:c.label||c.value});}}if(!data)return;
+function resetSeq(keepCast=false){clearRuntime();if(!keepCast){for(const nodes of castCache.values())for(const n of nodes)for(const m of n.meshes)engine.releaseMesh(m);castCache.clear();}Object.assign(seq,{enabled:false,tracks:newTracks(),clips:[],markers:[],people:[],selected:null,strobe:false,reactive:false});sq.waveform=null;}
+function restoreSeq(data,legacy=null){resetSeq(true);if(!data&&legacy?.timeLayers){data={tracks:newTracks(),clips:[],people:legacy.peopleLibrary||[],enabled:false};for(const l of legacy.timeLayers){const track=l.id==='visual'?'main':l.id==='light'?'lights':'audio';for(const c of l.items||[])data.clips.push({id:c.id,track,start:c.start,duration:c.end-c.start,source:l.id==='visual'?'cue:'+clamp((+c.value||1)-1,0,7):c.value==='concert'?'sweep':c.value==='cool'?'fan':c.value,name:c.label||c.value});}}if(!data){rebuildCast();return;}
  seq.bpm=clamp(+data.bpm||120,40,240);seq.offset=clamp(+data.offset||0,0,600);seq.rate=clamp(+data.rate||1,.25,4);seq.pps=clamp(+data.pps||40,8,120);seq.snap=data.snap!==false;seq.enabled=!!data.enabled;seq.animate=data.animate!==false;seq.reactive=!!data.reactive;
  const ids=new Set();seq.tracks=(Array.isArray(data.tracks)?data.tracks:newTracks()).slice(0,24).filter(t=>['visual','light','audio','act','camera','vj'].includes(t.type)&&!ids.has(t.id)&&ids.add(t.id)).map(t=>({id:String(t.id),type:t.type,name:String(t.name||t.type).slice(0,48),target:String(t.target||'all'),muted:!!t.muted,generated9:!!t.generated9}));const used=new Set();
  seq.clips=(data.clips||[]).slice(0,500).filter(c=>ids.has(c.track)&&Number.isFinite(+c.start)&&Number.isFinite(+c.duration)&&+c.duration>0&&!used.has(c.id)&&used.add(c.id)).map(c=>({id:String(c.id),track:c.track,start:clamp(+c.start,0,600),duration:clamp(+c.duration,.05,600),source:String(c.source||'motion:0'),name:String(c.name||sourceName(c.source)).slice(0,60),in:clamp(+c.in||0,0,36000),rate:clamp(+c.rate||1,.125,8),loop:c.loop!==false,fade:clamp(+c.fade||0,0,10),gain:clamp(Number(c.gain??1),0,3),depth:clamp(Number(c.depth??.75),0,1),color:/^#[0-9a-f]{6}$/i.test(c.color)?c.color:'#87dfff',audio:c.audio!==false,mapping:['keep','map','full'].includes(c.mapping)?c.mapping:'keep',cameraMode:['cut','blend','push','orbit','crane'].includes(c.cameraMode)?c.cameraMode:'cut',fromCamera:String(c.fromCamera||c.source),fx9:c.fx9?validFX9(c.fx9):undefined,fx141:c.fx141&&typeof c.fx141==='object'?structuredClone(c.fx141):undefined,matrix143:c.matrix143&&typeof c.matrix143==='object'?structuredClone(c.matrix143):undefined,generated9:c.generated9||null,scene10:c.scene10?String(c.scene10):null,cycle10:clamp(+c.cycle10||8,.25,120)}));
@@ -229,7 +230,7 @@ function restoreSeq(data,legacy=null){resetSeq();if(!data&&legacy?.timeLayers){d
  seq.people=(data.people||[]).slice(0,16).filter(p=>castNames[p.type]&&finiteArray(p.pos,3)).map(p=>({id:String(p.id||uid('person')),type:p.type,name:String(p.name||castNames[p.type]).slice(0,50),pos:p.pos.map(v=>clamp(v,-10000,10000)),height:clamp(+p.height||1.75,.3,4),yaw:+p.yaw||0,color:/^#[0-9a-f]{6}$/i.test(p.color)?p.color:'#37677f',skin:/^#[0-9a-f]{6}$/i.test(p.skin)?p.skin:'#c49474',animate:p.animate!==false,hidden:!!p.hidden,count:clamp(+p.count||24,1,96),columns:clamp(+p.columns||12,1,24),spacing:clamp(+p.spacing||.65,.3,2),phase:+p.phase||0,actId:p.actId?String(p.actId):null,previewAction16:p.previewAction16?String(p.previewAction16).slice(0,24):undefined,...window.STUDIO?.characters18?.sanitize(p)}));rebuildCast();invalidateSeq();}
 const V7={renderUI,renderInspector,renderLists,updateStableControls,enableAudio,openAudioPanel,packLiveExtras,restoreLiveExtras,snapshot,restore,importModel,demo,onStageClick,toggleLive,setPlaying,loadProject,applyCoordinateConfig};
 renderInspector=function(){V7.renderInspector();const host=$('inspectorContent');if(!host||$('showLightTools'))return;if(state.step==='lighting'){const d=document.createElement('div');d.id='showLightTools';d.className='show-light-tools';d.innerHTML=`<h3><svg class="ico ico-show" aria-hidden="true"><use href="#i-sparkles"></use></svg><span>${(window.tr?.("LIGHT SHOW","Light show") ?? "LIGHT SHOW")}</span></h3><div class="actions-row"><button class="btn" id="detectShowLights">${(window.tr?.("Nhận diện đèn","Detect lights") ?? "Nhận diện đèn")}</button><button class="btn" id="lightTimeline">Timecode FX</button></div><label class="check-row"><input id="lightReactive" type="checkbox" ${seq.reactive?'checked':''}>${(window.tr?.("Đèn theo bass / mức âm","Lights follow bass / audio level") ?? "Đèn theo bass / mức âm")}</label><label class="check-row"><input id="lightStrobeArm" type="checkbox" ${seq.strobe?'checked':''}>${(window.tr?.("Cho phép strobe (nháy sáng)","Allow strobe (flashing lights)") ?? "Cho phép strobe (nháy sáng)")}</label><p>${(window.tr?.("FX theo timeline giữ nguyên vị trí đèn. Bật Audio để phản ứng theo nhạc.","Timeline FX keep light positions fixed. Enable audio for music response.") ?? "FX theo timeline giữ nguyên vị trí đèn. Bật Audio để phản ứng theo nhạc.")}</p>`;host.prepend(d);$('detectShowLights').onclick=openLightDetection;$('lightTimeline').onclick=()=>{toggleSequence(true);editClip(null,'light');};$('lightReactive').onchange=e=>seq.reactive=e.target.checked;$('lightStrobeArm').onchange=e=>{seq.strobe=e.target.checked;if(e.target.checked)toast((window.tr?.("Cảnh báo nhấp nháy: tránh người nhạy sáng.","Flashing light warning: avoid use around photosensitive viewers.") ?? "Cảnh báo nhấp nháy: tránh người nhạy sáng."),6000);};}if(state.step==='stage'){const b=document.createElement('button');b.className='btn primary full-btn';b.textContent=(window.tr?.("Thư viện người / khán giả 3D","3D performers / audience library") ?? "Thư viện người / khán giả 3D");b.onclick=openCastLibrary;host.prepend(b);}};
-renderLists=function(){V7.renderLists();document.querySelectorAll('.media-row').forEach((row,i)=>{const a=state.media[i];if(!a)return;row.draggable=true;row.ondragstart=e=>{e.dataTransfer.setData('application/x-alpha-media',a.id);e.dataTransfer.effectAllowed='copy';};});};
+renderLists=function(){const skip=typeof director!=='undefined'&&director.ready&&state.step==='stage'&&(typeof window==='undefined'||window._smartGroup16!==false)&&typeof smartGroupInfo9==='function'&&engine.stage.some(m=>!m._deleted8&&smartGroupInfo9(m).members.length>1);state._skipStageRows8=skip;try{V7.renderLists();}finally{state._skipStageRows8=false;}document.querySelectorAll('.media-row').forEach((row,i)=>{const a=state.media[i];if(!a)return;row.draggable=true;row.ondragstart=e=>{e.dataTransfer.setData('application/x-alpha-media',a.id);e.dataTransfer.effectAllowed='copy';};});};
 function updateShowButtons(){setText('v07Audio',live.audioEnabled?(window.tr?.("Audio ON","Audio on") ?? "Audio ON"):(window.tr?.("Bật Audio","Enable audio") ?? "Bật Audio"));$('v07Audio')?.classList.toggle('active',live.audioEnabled);$('v07Timeline')?.classList.toggle('active',seq.open);}
 renderUI=function(){V7.renderUI();updateShowButtons();if(seq.open&&!sq.drag)renderSequence();};
 updateStableControls=function(){V7.updateStableControls();updateSeqPlayhead();};
@@ -238,7 +239,7 @@ openAudioPanel=function(){V7.openAudioPanel();const b=document.createElement('bu
 packLiveExtras=async function(){const d=await V7.packLiveExtras();d.show=seqData();return d;};
 restoreLiveExtras=async function(d){await V7.restoreLiveExtras(d);restoreSeq(d?.show,d);state.playing=false;renderUI();};
 snapshot=function(){const d=V7.snapshot();d.show=seqData();return d;};
-restore=function(d){V7.restore(d);restoreSeq(d.show);renderUI();};
+restore=function(d){state._restoring=(state._restoring||0)+1;try{V7.restore(d);restoreSeq(d.show);state._deferUI=true;}finally{if(!--state._restoring&&typeof flushDeferredRestore==='function')flushDeferredRestore();}};
 importModel=async function(files,opt){const old=state.model;const r=await V7.importModel(files,opt);if(state.model!==old&&!state.loadingProject){resetSeq();renderSequence();}return r;};
 demo=function(){resetSeq();return V7.demo();};
 onStageClick=function(e){if(sq.placePerson){const p=seq.people.find(p=>p.id===sq.placePerson),h=engine.pick(e.clientX,e.clientY,false)||floorHit(e);if(h&&p){checkpoint();p.pos=[...h.point];sq.placePerson=null;$('quadHint').classList.add('hidden');toast((window.tr?.("Đã đặt ","Placed ") ?? "Đã đặt ")+p.name+'.');}return;}return V7.onStageClick(e);};
@@ -252,10 +253,10 @@ function initV07(){const tools=document.querySelector('.workflow-right');for(con
 const v07API={toggleLive,seq,sq,seqData,castNames,renderCastManager,evaluateSequence,enableSequence,addClip,activeClips,targetMatch,snapTime,showTC,splitClip,duplicateClip,removeClip,editClip,editTrack,toggleSequence,renderSequence,seekTimeline,syncVideos,activeVideos,advancePlayback,enableAudio,openAudioPanel,sampleAudioMeter,analyzeTempo,analyzeMusic,demoMusicFile,createShowDemo,detectStageLights,addDetectedLights,openLightDetection,addPerson,rebuildCast,frameCast,castMatrix,exportCastGLB,openCastLibrary,setPlaying,packLiveExtras,restoreLiveExtras,restoreSeq,snapshot,restore,renderUI,applyCoordinateConfig,clearRuntime};
 
 /* V08 Director. Editable source-space deltas; original vertices remain immutable. */
-const director={scope:'led',front:null,mode:'navigate',selection:null,group:false,axis:'xz',snap:.1,
+const director={scope:'led',front:null,mode:'navigate',selection:null,group:true,axis:'xz',snap:.1,
  cameras:[],cameraFollow:false,cameraMotion:null,acts:[],edits:{},deletedKeys:[],lightCandidates:[],candidatePreview:null,
  drag:null,ready:false,loading:false,uiTime:0};
-if(typeof window!=='undefined')window.director=director;
+if(typeof window!=='undefined'){window.director=director;if(window._smartGroup16===undefined)window._smartGroup16=true;}
 const D8={snapshot,restore,renderUI,renderInspector,renderLists,renderOverlays,loadProject,importModel,demo,
  packLiveExtras,restoreLiveExtras,applyCoordinateConfig,onStageClick,togglePresentation,selectCamera,
  sourceOptions,targetOptions,editClip,renderSequence,buildHuman,castMatrix,drawCast:StageEngine.prototype.drawCast,
@@ -264,16 +265,25 @@ function dirData(){return structuredClone({version:1,scope:director.scope,front:
  cameraFollow:director.cameraFollow,acts:director.acts,edits:director.edits,deletedKeys:director.deletedKeys||[],surfaceUV:engine.surfaces.filter(s=>s.mesh.mapUV).map(s=>({id:s.id,uv:Array.from(s.mesh.mapUV)}))});}
 function dirFiniteMatrix(m){return Array.isArray(m)&&m.length===16&&m.every(v=>Number.isFinite(v)&&Math.abs(v)<1e10);}
 function dirSourceMesh(s){return sourceForSurface(s);}
+function sameMat8(a,b){if(!a||!b||a.length!==16||b.length!==16)return false;for(let i=0;i<16;i++)if(Math.abs(a[i]-b[i])>1e-7)return false;return true;}
 function dirCanonicalMatrix(m){return M.mm(engine.coordinates.matrix,director.edits[m.sourceKey]||M.identity());}
 function dirApplyEdits(){
- const del=new Set(director.deletedKeys||[]);
- for(const m of engine.stage){engine.releaseMesh(m);m.p=new Float32Array(m._sourceP||m.p);transformMesh(m,dirCanonicalMatrix(m));
-  m.worldAxes=(m._sourceAxes||[[1,0,0],[0,1,0],[0,0,1]]).map(v=>M.norm(M.vector(dirCanonicalMatrix(m),v)));
-  if(del.has(m.sourceKey)||del.has(m.id)){m._deleted8=true;m.hidden=true;}else if(m._deleted8){m._deleted8=false;m.hidden=false;}
+ _sgCache9=null;const del=new Set(director.deletedKeys||[]);let stageChanged=false;
+ for(const m of engine.stage){
+  if(m._asset16Id)continue;
+  const canon=dirCanonicalMatrix(m),srcP=m._sourceP||m.p;
+  if(!m._appliedCanon8||m._appliedSourceP8!==srcP||!sameMat8(m._appliedCanon8,canon)){
+   engine.releaseMesh(m);m.p=new Float32Array(srcP);transformMesh(m,canon);
+   m.worldAxes=(m._sourceAxes||[[1,0,0],[0,1,0],[0,0,1]]).map(v=>M.norm(M.vector(canon,v)));
+   m._appliedCanon8=canon.slice();m._appliedSourceP8=srcP;stageChanged=true;
+  }
+  const wantDel=del.has(m.sourceKey)||del.has(m.id);
+  if(wantDel){if(!m._deleted8||!m.hidden){m._deleted8=true;m.hidden=true;stageChanged=true;}}
+  else if(m._deleted8){m._deleted8=false;m.hidden=false;stageChanged=true;}
  }
  for(const s of engine.surfaces){const src=dirSourceMesh(s);if(src&&(del.has(src.sourceKey)||del.has(src.id))){s._deleted8=true;s.enabled=false;if(s.mesh)s.mesh.hidden=true;}else if(s._deleted8||s.mesh?.hidden){s._deleted8=false;s.enabled=true;if(s.mesh)s.mesh.hidden=false;}}
  for(const l of engine.lights){if(l.sourceKey&&del.has(l.sourceKey)){l._deleted8=true;l.enabled=false;}else if(l._deleted8){l._deleted8=false;l.enabled=true;}}
- configureStageBounds();engine._stageBatchDirty=true;resetFlatCache();
+ if(stageChanged){configureStageBounds();engine._stageBatchDirty=true;resetFlatCache();}
 }
 function resetDirector(){
  if(director.ready)releaseActCache();Object.assign(director,{scope:'led',front:null,inferredFront:null,mode:'navigate',panel:null,selection:null,cameras:[],acts:[],edits:{},deletedKeys:[],cameraFollow:false,cameraMotion:null,drag:null,candidatePreview:null,lightCandidates:[]});
@@ -286,12 +296,12 @@ function restoreDirector(data){
  director.cameras=(data?.cameras||[]).slice(0,24).filter(c=>finiteArray(c.target,3)&&Number.isFinite(c.distance)&&c.distance>0).map(c=>({...c,id:String(c.id),name:String(c.name||'Camera').slice(0,50),fov:clamp(+c.fov||45,20,80),yaw:+c.yaw||0,pitch:clamp(+c.pitch||0,-1.4,1.56)}));
  director.cameraFollow=!!data?.cameraFollow;
  director.acts=(data?.acts||[]).slice(0,24).filter(a=>ACT_TYPES[a.type]&&finiteArray(a.pos,3)).map(a=>({...a,id:String(a.id),name:String(a.name||ACT_TYPES[a.type].name).slice(0,60),scale:clamp(+a.scale||1,.1,10),yaw:+a.yaw||0,hidden:!!a.hidden,people:(a.people||[]).filter(id=>seq.people.some(p=>p.id===id))}));
- dirApplyEdits();for(const item of data?.surfaceUV||[]){const s=engine.surfaces.find(s=>s.id===item.id);if(s&&Array.isArray(item.uv)&&item.uv.length===s.mesh.uv.length&&item.uv.every(Number.isFinite)){s.mesh.mapUV=new Float32Array(item.uv);engine.releaseMesh(s.mesh);}}rebuildActCache();engine.rebuildFixtures();
+ dirApplyEdits();for(const item of data?.surfaceUV||[]){const s=engine.surfaces.find(s=>s.id===item.id);if(s&&Array.isArray(item.uv)&&item.uv.length===s.mesh.uv.length&&item.uv.every(Number.isFinite)){if(!s.mesh.mapUV||s.mesh.mapUV.length!==item.uv.length||s.mesh.mapUV.some((v,i)=>Math.abs(v-item.uv[i])>1e-6)){s.mesh.mapUV=new Float32Array(item.uv);engine.releaseMesh(s.mesh);}}}rebuildActCache();engine.rebuildFixtures();
 }
 packLiveExtras=async function(){const d=await D8.packLiveExtras();d.director=dirData();return d;};
 restoreLiveExtras=async function(d){await D8.restoreLiveExtras(d);restoreDirector(d?.director);renderUI();};
 snapshot=function(){const d=D8.snapshot();d.director=dirData();return d;};
-restore=function(d){D8.restore(d);restoreDirector(d.director);renderUI();};
+restore=function(d){state._restoring=(state._restoring||0)+1;try{D8.restore(d);restoreDirector(d.director);state._deferUI=true;}finally{if(!--state._restoring&&typeof flushDeferredRestore==='function')flushDeferredRestore();}};
 importModel=async function(files,opt){const before=state.model;const result=await D8.importModel(files,opt);
  if(state.model!==before&&!state.loadingProject){resetDirector();engine.camera.fov=45;cameraPreset8('front','stage');renderUI();}return result;};
 demo=function(){resetDirector();const r=D8.demo();if(engine){engine.sourcePunctualLights=[];if(director.ready)cameraPreset8('hero','led');}return r;};
@@ -354,7 +364,7 @@ function cameraPreset8(kind='front',scope=director.scope){
  fitCamera8(cameraBounds8());engine._fitOnResize=true;updateStableControls();renderUI();return structuredClone(c);
 }
 StageEngine.prototype.cameraPreset=function(name){if(!director.ready){return D8.cameraPreset.call(this,name);}cameraPreset8(({iso:'hero',side:'right'})[name]||name);};
-selectCamera=function(name){cameraPreset8(({iso:'hero',side:'right'})[name]||name);};
+selectCamera=function(name){document.querySelectorAll('[data-camera]').forEach(b=>b.classList.toggle('active',b.dataset.camera===name));cameraPreset8(({iso:'hero',side:'right'})[name]||name);};
 showOverview=function(){cameraPreset8('front',engine.surfaces.length?'led':'stage');};
 function saveCamera8(name){if(director.cameras.length>=24){toast((window.tr?.("Tối đa 24 camera.","Up to 24 cameras.") ?? "Tối đa 24 camera."));return null;}checkpoint();const c={...structuredClone(engine.camera),id:uid('cam'),name:String(name||'CAM '+(director.cameras.length+1)).slice(0,50)};director.cameras.push(c);renderDirectorPanel();refreshShowCameras8();return c;}
 function recallCamera8(id){const c=director.cameras.find(c=>c.id===id);if(!c)return false;director.cameraFollow=false;director.cameraMotion=null;state.orbit=false;Object.assign(engine.camera,structuredClone(c));engine._fitOnResize=false;engine.view='stage';updateStableControls();return true;}
@@ -375,8 +385,7 @@ function personBounds8(p){const scale=(p.height||1.75)/1.75,crowd=p.type==='audi
  const b={min:[-w/2,0,-.3],max:[w/2,h*1.12,d]},mat=M.mm(M.translate(p.pos),M.rotate([0,1,0],(p.yaw||0)*Math.PI/180));return dirBounds(dirCorners(b).map(v=>M.point(mat,v)));}
 function actBounds8(a){const pts=[];for(const id of a.people||[]){const p=seq.people.find(p=>p.id===id);if(p)pts.push(...dirCorners(personBounds8(p)));}const r=(ACT_TYPES[a.type]?.radius||2)*a.scale;pts.push(M.add(a.pos,[-r,0,-1*a.scale]),M.add(a.pos,[r,3*a.scale,1*a.scale]));return dirBounds(pts);}
 function selectionMeshes8(sel=director.selection){if(sel?.kind!=='mesh')return [];const m=engine.stage.find(m=>m.sourceKey===sel.id||m.id===sel.id);if(!m)return [];
- if(!director.group)return [m];const path=m.nodePath?.split('/').slice(0,-1).join('/');if(path)return engine.stage.filter(x=>x.nodePath?.startsWith(path+'/'));
- const parent=(m.path||'').split('/').slice(0,-2).join('/');return parent?engine.stage.filter(x=>x.path?.startsWith(parent+'/')):[m];}
+ if(!director.group)return [m];return smartGroupInfo9(m).members;}
 function selectionBounds8(sel=director.selection){if(!sel)return null;if(sel.kind==='mesh'){const m=selectionMeshes8(sel);return m.length?stageBounds(m):null;}
  if(sel.kind==='person'){const p=seq.people.find(p=>p.id===sel.id);return p?personBounds8(p):null;}
  if(sel.kind==='act'){const a=director.acts.find(a=>a.id===sel.id);return a?actBounds8(a):null;}
@@ -387,6 +396,47 @@ function selectObject8(kind,id){director.selection={kind,id};director.panel='obj
  if(kind==='mesh'){const m=engine.stage.find(m=>m.sourceKey===id||m.id===id);state.selectedMesh=m?.id||null;engine.selected=engine.surfaces.find(s=>dirSourceMesh(s)===m)?.id||null;}
  if(kind==='light'||kind==='target'){state.selectedLight=id;state.step='lighting';}
  renderUI();scrollObjectListToSelection8();return director.selection;}
+let _sgCache9=null;
+function buildSmartGroupIndex9(){
+ const stage=engine.stage.filter(x=>!x._deleted8),byMesh=new Map(),byKey=new Map(),byAsset=new Map(),bySmart=new Map(),byPrefix=new Map();
+ for(const m of stage){
+  if(m.sourceKey)byKey.set(m.sourceKey,m);if(m.id)byKey.set(m.id,m);
+  if(m._asset16Id){let a=byAsset.get(m._asset16Id);if(!a){a=[];byAsset.set(m._asset16Id,a);}a.push(m);}
+  if(m._smartGroupId){let a=bySmart.get(m._smartGroupId);if(!a){a=[];bySmart.set(m._smartGroupId,a);}a.push(m);}
+  const path=m.nodePath||(m.path||'').split('/').slice(0,-1).join('/'),prefix=path.split('/').filter(Boolean)[0];
+  if(prefix){let a=byPrefix.get(prefix);if(!a){a=[];byPrefix.set(prefix,a);}a.push(m);m._sgPrefix9=prefix;}else m._sgPrefix9='';
+ }
+ const customByMesh=new Map();
+ if(typeof group9!=='undefined'&&Array.isArray(group9.groups)){
+  for(const gr of group9.groups){
+   if(!Array.isArray(gr.members)||gr.members.length<2)continue;
+   const seen=new Set(),members=[];
+   for(const r of gr.members){if(r?.kind!=='mesh')continue;const x=byKey.get(r.id);if(x&&!seen.has(x)){seen.add(x);members.push(x);}}
+   if(members.length>1){const info={id:'custom_'+gr.id,name:gr.name,members};for(const x of members)if(!customByMesh.has(x))customByMesh.set(x,info);}
+  }
+ }
+ const aItems=typeof window!=='undefined'&&(window.stageAssets16?.items||window.STUDIO?.stageAssets16?.items),aMap=Array.isArray(aItems)?new Map(aItems.map(a=>[a.id,a])):null;
+ const assetInfos=new Map(),smartInfos=new Map(),prefixInfos=new Map();
+ for(const m of stage){
+  if(customByMesh.has(m)){byMesh.set(m,customByMesh.get(m));continue;}
+  if(m._asset16Id){const members=byAsset.get(m._asset16Id);if(members&&members.length>1){let info=assetInfos.get(m._asset16Id);if(!info){const it=aMap?.get(m._asset16Id),name=it?.name||(m.name?.includes(' / ')?m.name.split(' / ')[0]:m.name)||m._asset16Id;info={id:'asset16_'+m._asset16Id,name,members};assetInfos.set(m._asset16Id,info);}byMesh.set(m,info);continue;}}
+  if(m._smartGroupId){const members=bySmart.get(m._smartGroupId);if(members&&members.length>1){let info=smartInfos.get(m._smartGroupId);if(!info){const name=(typeof window!=='undefined'&&window.tr?window.tr(m._groupLabelVi||m._smartGroupId,m._groupLabelEn||m._smartGroupId):(m._groupLabelVi||m._smartGroupId));info={id:'smart_'+m._smartGroupId,name,members};smartInfos.set(m._smartGroupId,info);}byMesh.set(m,info);continue;}}
+  const prefix=m._sgPrefix9;
+  if(prefix){const members=byPrefix.get(prefix);if(members&&members.length>1&&members.length<stage.length){let info=prefixInfos.get(prefix);if(!info){info={id:'path_'+prefix,name:(m.nodeChain?.[0]?.name)||prefix,members};prefixInfos.set(prefix,info);}byMesh.set(m,info);continue;}}
+  byMesh.set(m,{id:null,name:m.name||m.id||'',members:[m]});
+ }
+ const gLen=typeof group9!=='undefined'&&Array.isArray(group9.groups)?group9.groups.length:0;
+ _sgCache9={stage:engine.stage,len:engine.stage.length,gLen,byMesh};
+ if(typeof queueMicrotask==='function')queueMicrotask(()=>{_sgCache9=null;});
+ return _sgCache9;
+}
+function smartGroupInfo9(m){
+ if(!m)return {id:null,name:'',members:[]};
+ const gLen=typeof group9!=='undefined'&&Array.isArray(group9.groups)?group9.groups.length:0;
+ const c=(_sgCache9&&_sgCache9.stage===engine.stage&&_sgCache9.len===engine.stage.length&&_sgCache9.gLen===gLen&&!m._deleted8)?_sgCache9:buildSmartGroupIndex9();
+ return c.byMesh.get(m)||{id:null,name:m.name||m.id||'',members:[m]};
+}
+if(typeof window!=='undefined')window.smartGroupInfo9=smartGroupInfo9;
 function scrollObjectListToSelection8(){if(typeof document!=='undefined')document.querySelector?.('.left-panel .object-section')?.classList?.remove('v16-collapsed');const list=$('objectList'),row=list?.querySelector?.('.object-row.selected')||list?.children?.find?.(c=>c.className?.includes?.('object-row')&&c.className?.includes?.('selected'));if(!list||!row)return false;row.scrollIntoView?.({block:'nearest'});const rows=[...(list.querySelectorAll?.('.object-row')||[])];const allRows=rows.length?rows:(list.children||[]).filter(c=>c.className?.includes?.('object-row'));const idx=allRows.indexOf(row),top=typeof row.offsetTop==='number'&&row.offsetTop>0?row.offsetTop:Math.max(0,idx)*38,h=row.offsetHeight||38,bottom=top+h,viewH=list.clientHeight||0;if(viewH>0){if(bottom>(list.scrollTop||0)+viewH)list.scrollTop=bottom-viewH;else if(top<(list.scrollTop||0))list.scrollTop=top;}else list.scrollTop=top;return true;}
 function rayMesh8(ray,m,mat=null){const inv=mat?M.inverse(mat):null,o=inv?M.point(inv,ray.o):ray.o,d=inv?M.norm(M.vector(inv,ray.d)):ray.d;const hit=raycastMeshBVH(m,o,d);if(!hit)return null;const world=mat?M.point(mat,hit.point):hit.point;return {distance:Math.hypot(...M.sub(world,ray.o)),point:world};}
 function pickDirector8(x,y){const ray=dirRay(x,y),stage=engine.pick(x,y,false);let found=stage?{kind:'mesh',id:stage.mesh.sourceKey,distance:stage.distance,point:stage.point}:null;
@@ -397,11 +447,14 @@ function pickDirector8(x,y){const ray=dirRay(x,y),stage=engine.pick(x,y,false);l
  if(state.step==='lighting')for(const l of engine.lights)for(const key of ['pos','target']){const p=engine.project(l[key]),r=engine.canvas.getBoundingClientRect();if(p&&p.z>-1&&p.z<1&&Math.hypot(x-r.left-p.x,y-r.top-p.y)<11)found={kind:key==='pos'?'light':'target',id:l.id,point:l[key]};}
  return found;
 }
-function captureTransform8(){const sel=structuredClone(director.selection),pivot=selectionPivot8(),base={sel,pivot,people:[],lights:[],surfaces:[],meshes:[],act:null};if(!sel||!pivot)return null;
+function captureTransform8(){const sel=structuredClone(director.selection),pivot=selectionPivot8(),base={sel,pivot,people:[],lights:[],surfaces:[],meshes:[],assets16:[],act:null};if(!sel||!pivot)return null;
  if(sel.kind==='mesh'){
   const meshes=selectionMeshes8(sel),keys=new Set(meshes.map(m=>m.sourceKey));base.meshes=meshes.map(m=>({m,p:new Float32Array(m.p),n:new Float32Array(m.n),edit:[...(director.edits[m.sourceKey]||M.identity())],axes:m.worldAxes?.map(v=>[...v])}));
   base.surfaces=engine.surfaces.filter(s=>keys.has(dirSourceMesh(s)?.sourceKey)).map(s=>({s,p:new Float32Array(s.mesh.p),n:new Float32Array(s.mesh.n),normal:[...(s.bindingNormal||[0,0,1])],physical:[...s.physical],metric:s.metricFrame?structuredClone(s.metricFrame):null}));
   base.lights=engine.lights.filter(l=>keys.has(l.sourceKey)).map(l=>({l,pos:[...l.pos],target:[...l.target]}));
+  const assetIds=new Set(meshes.map(m=>m._asset16Id).filter(Boolean));
+  const aItems=typeof window!=='undefined'&&(window.stageAssets16?.items||window.STUDIO?.stageAssets16?.items);
+  if(assetIds.size&&Array.isArray(aItems))base.assets16=aItems.filter(it=>assetIds.has(it.id)).map(it=>({it,pos:[...(it.pos||[0,0,0])],yaw:it.yaw||0,scale:it.scale??1}));
  }else if(sel.kind==='person'){const p=seq.people.find(p=>p.id===sel.id);if(p)base.people.push({p,pos:[...p.pos],yaw:p.yaw,height:p.height});}
  else if(sel.kind==='act'){const a=director.acts.find(a=>a.id===sel.id);if(a){base.act={a,pos:[...a.pos],yaw:a.yaw,scale:a.scale};for(const id of a.people){const p=seq.people.find(p=>p.id===id);if(p)base.people.push({p,pos:[...p.pos],yaw:p.yaw,height:p.height});}}}
  else{const l=engine.lights.find(l=>l.id===sel.id);if(l)base.lights.push({l,pos:[...l.pos],target:[...l.target]});}
@@ -411,7 +464,8 @@ function transformFrom8(base,{delta=[0,0,0],yaw=0,scale=1}={}){
  if(!base||!finiteArray(delta,3)||!Number.isFinite(yaw)||!Number.isFinite(scale)||scale<=0)return false;
  scale=clamp(scale,.05,20);const pivot=base.pivot,D=M.mm(M.translate(M.add(pivot,delta)),M.mm(M.rotate([0,1,0],yaw*Math.PI/180),M.mm(M.trs([0,0,0],IDENTITY_Q,[scale,scale,scale]),M.translate(M.mul(pivot,-1)))));
  for(const b of base.meshes){const m=b.m;engine.releaseMesh(m);m.p=new Float32Array(b.p);transformMesh(m,D);m.n=new Float32Array(b.n.length);for(let i=0;i<b.n.length;i+=3)m.n.set(M.norm(M.vector(D,[b.n[i],b.n[i+1],b.n[i+2]])),i);
-  director.edits[m.sourceKey]=M.mm(engine.coordinates.inverse,M.mm(D,M.mm(engine.coordinates.matrix,b.edit)));m.worldAxes=b.axes?.map(v=>M.norm(M.vector(D,v)));}
+  director.edits[m.sourceKey]=M.mm(engine.coordinates.inverse,M.mm(D,M.mm(engine.coordinates.matrix,b.edit)));m.worldAxes=b.axes?.map(v=>M.norm(M.vector(D,v)));m._appliedCanon8=null;}
+ for(const b of base.assets16||[]){b.it.pos=M.point(D,b.pos);b.it.yaw=b.yaw+yaw;b.it.scale=clamp((b.scale||1)*scale,.1,10);}
  for(const b of base.surfaces){const s=b.s,previous=s.mesh;engine.releaseMesh(previous);s.mesh=makeMesh(previous.name,b.p,previous.uv,b.n,previous.material);s.mesh.mapUV=previous.mapUV;s.mesh.preferredUp=previous.preferredUp;transformMesh(s.mesh,D);s.bindingNormal=M.norm(M.vector(D,b.normal));if(s.mappingMode==='face')for(let i=0;i<s.mesh.n.length;i+=3)s.mesh.n.set(s.bindingNormal,i);s.physical=b.physical.map(v=>v*scale);
   if(b.metric){s.metricFrame=structuredClone(b.metric);s.metricFrame.origin=M.point(D,b.metric.origin);for(const k of ['right','up','normal'])s.metricFrame[k]=M.norm(M.vector(D,b.metric[k]));}}
  for(const b of base.people){b.p.pos=M.point(D,b.pos);b.p.yaw=b.yaw+yaw;b.p.height=b.height*scale;}
@@ -511,7 +565,18 @@ function moveDrag8(e){const g=director.drag;if(!g)return;e.preventDefault();e.st
  transformFrom8(g.base,{delta,yaw,scale});
 }
 function finishDrag8(e,cancel=false){const g=director.drag;if(!g)return;if(e){e.preventDefault();e.stopImmediatePropagation();}if(cancel)transformFrom8(g.base,{});director.drag=null;if(g.moved||cancel)dirCommit();if(g.resume)setPlaying(true);updateDirectorOverlay();}
-function setEditMode8(mode){director.mode=mode;director.panel='objects';director.cameraFollow=false;state.orbit=false;engine.view='stage';cancelSpatialPick();sq.placePerson=null;renderUI();}
+function setEditMode8(mode){
+ director.mode=mode;director.panel='objects';director.cameraFollow=false;state.orbit=false;engine.view='stage';cancelSpatialPick();sq.placePerson=null;
+ if(['move','rotate','scale'].includes(mode)&&!director.selection&&state.selectedMesh){
+  const m=engine.stage.find(x=>x.id===state.selectedMesh||x.sourceKey===state.selectedMesh);
+  if(m){
+   const info=director.group&&(typeof group9==='undefined'||group9.scope==='parent')?smartGroupInfo9(m):null;
+   if(info&&info.members.length>1&&typeof selectionSet9==='function'){selectionSet9(info.members.map(x=>({kind:'mesh',id:x.sourceKey||x.id})),{label:info.name});return;}
+   selectObject8('mesh',m.sourceKey||m.id);return;
+  }
+ }
+ renderUI();
+}
 function initManipulation8(){
  const c=engine.canvas;
  c.addEventListener('pointerdown',e=>{
@@ -629,8 +694,8 @@ function updateDrops8(cache,a,t){if(cache.lastT===t)return;cache.lastT=t;const c
 }
 function makeLines8(count,color){const m=makeMesh('Animated light ribbons',new Float32Array(count*18),new Float32Array(count*12),new Float32Array(count*18).fill(0),{color,emissive:color.slice(0,3).map(v=>v*2)});for(let i=2;i<m.n.length;i+=3)m.n[i]=1;return m;}
 function lineGeometry8(mesh,lines,width=.012){const p=mesh.p;for(let i=0;i<lines.length;i++){const [a,b]=lines[i],v=M.sub(b,a),right=M.norm(M.cross(v,Math.abs(v[1])>.9?[1,0,0]:[0,1,0])),r=M.mul(right,width),corners=[M.add(a,r),M.sub(a,r),M.sub(b,r),M.add(b,r)];for(let j=0;j<6;j++)p.set(corners[[0,1,2,0,2,3][j]],i*18+j*3);}const b=engine.buffers.get(mesh.id);if(b){engine.gl.bindBuffer(engine.gl.ARRAY_BUFFER,b.buffers[0]);engine.gl.bufferSubData(engine.gl.ARRAY_BUFFER,0,p);}mesh.bounds=M.bbox(p);}
-function releaseActCache(){for(const c of actCache.values())for(const m of c.meshes||[])engine.releaseMesh(m);actCache.clear();}
-function rebuildActCache(){releaseActCache();for(const a of director.acts){const c={meshes:[],parts:[]},metal=[.10,.15,.22,1],gold=[.95,.64,.19,1],blue=[.10,.8,.92,1];
+function releaseActCache(){for(const c of actCache.values())for(const m of c.meshes||[])engine.releaseMesh(m);actCache.clear();actCache._sig='';}
+function rebuildActCache(){if(typeof state!=='undefined'&&state._restoring){state._deferActs=true;return;}const sig=director.acts.map(a=>`${a.id}:${a.type}:${(a.people||[]).length}`).join('|');if(actCache._sig===sig&&actCache.size===director.acts.length)return;releaseActCache();actCache._sig=sig;for(const a of director.acts){const c={meshes:[],parts:[]},metal=[.10,.15,.22,1],gold=[.95,.64,.19,1],blue=[.10,.8,.92,1];
   if(a.type==='water_drums'){c.drops=makeDynamic8((a.people.length||3)*22,'Water splashes',[.22,.82,.95,1]);c.meshes.push(c.drops.mesh);}
   if(a.type==='dance'||a.type==='led_dance'||a.type==='laser'){c.lines=makeLines8(a.type==='laser'?24:48,a.type==='laser'?[.2,1,.56,1]:[.35,.68,1,1]);c.meshes.push(c.lines);}
   if(a.type==='reveal'){
@@ -741,7 +806,53 @@ onStageClick=function(e){if(director.pick){const hit=engine.pick(e.clientX,e.cli
  }return D8.onStageClick(e);};
 renderInspector=function(){if(director.panel)renderDirectorPanel();else D8.renderInspector();};
 renderUI=function(){D8.renderUI();if(director.ready){renderDirectorPanel();updateDirectorOverlay();refreshShowCameras8();document.querySelectorAll('[data-tool-mode]').forEach(b=>b.classList.toggle('active',director.mode===b.dataset.toolMode));}};
-renderLists=function(){D8.renderLists();if(!director.ready)return;const selectedMeshIds=state.step==='stage'&&director.selection&&typeof selectionMeshes8==='function'?new Set(selectionMeshes8().map(m=>m.id)):null;document.querySelectorAll('#objectList .object-row').forEach(b=>{if(selectedMeshIds?.size)b.classList.toggle('selected',selectedMeshIds.has(b.dataset?.itemId));const action=b.onclick;b.onclick=e=>{if(state.step==='stage'&&director.mode==='navigate'&&(director.selection?.kind==='person'||director.selection?.kind==='act')){director.selection=null;director.panel=null;}action(e);if(director.mode!=='navigate'){if(state.step==='stage'&&state.selectedMesh){const m=engine.stage.find(m=>m.id===state.selectedMesh);if(m)selectObject8('mesh',m.sourceKey||m.id);}else if(state.step==='lighting'&&state.selectedLight)selectObject8('light',state.selectedLight);}};});
+const expandedSmartGroups9=new Set();
+renderLists=function(){D8.renderLists();_sgCache9=null;if(!director.ready)return;const selectedMeshIds=state.step==='stage'&&director.selection&&typeof selectionMeshes8==='function'?new Set(selectionMeshes8().map(m=>m.id)):null;
+ if(state.step==='stage'&&(typeof window==='undefined'||window._smartGroup16!==false)){
+  const list=$('objectList'),query=$('objectSearch').value.trim().toLowerCase(),loc=typeof localizeObjectName==='function'?localizeObjectName:v=>v,flt=typeof window!=='undefined'&&window._objFilter16||'all';
+  const visibleStage=engine.stage.filter(m=>{if(m._deleted8)return false;if(flt!=='all'&&typeof matchesObjectFilter16==='function'&&!matchesObjectFilter16(m,flt))return false;if(!query)return true;const raw=(m.name||'').toLowerCase(),info=smartGroupInfo9(m);return raw.includes(query)||loc(m.name).toLowerCase().includes(query)||(info.name&&loc(info.name).toLowerCase().includes(query));});
+  if(visibleStage.some(m=>smartGroupInfo9(m).members.length>1)){
+   list.innerHTML='';const seenGroups=new Set();
+   for(const m of visibleStage){
+    const info=smartGroupInfo9(m);
+    if(info.id&&info.members.length>1){
+     if(seenGroups.has(info.id))continue;seenGroups.add(info.id);
+     const grpMeshes=info.members,totalTris=Math.round(grpMeshes.reduce((s,x)=>s+(x.p?.length||0)/9,0)),isSel=grpMeshes.some(x=>selectedMeshIds?.has(x.id)||state.selectedMesh===x.id),isExp=expandedSmartGroups9.has(info.id);
+     const b=document.createElement('button');b.className='object-row is-smart-group '+(isSel?'selected':'');b.dataset.groupId=info.id;b.dataset.itemId=grpMeshes[0].id;
+     const detail=grpMeshes.length+tr(' phần · ',' parts · ')+fmt(totalTris)+tr(' tam giác',' triangles');
+     const grpIcon=typeof objectRowIcon9==='function'?objectRowIcon9({name:info.name,_smartGroupId:info.id,nodePath:grpMeshes[0]?.nodePath},'mesh',true):'<span class="row-icon">&#9635;</span>';
+     b.innerHTML=`${grpIcon}<span class="row-main"><strong>${esc(loc(info.name))}</strong><small>${esc(detail)}</small></span><span class="row-group-exp" data-exp-grp="${esc(info.id)}" title="${esc(tr('Mở rộng / Thu gọn chi tiết nhóm','Expand / Collapse group parts'))}">${isExp?'&#9662; ':'&#9656; '}${grpMeshes.length}</span>`;
+     b.onclick=e=>{if(e?.target?.closest?.('[data-exp-grp]')){e.stopPropagation?.();if(expandedSmartGroups9.has(info.id))expandedSmartGroups9.delete(info.id);else expandedSmartGroups9.add(info.id);renderLists();return;}
+      const refs=grpMeshes.map(x=>({kind:'mesh',id:x.sourceKey||x.id}));
+      if(typeof selectionSet9==='function')selectionSet9(refs,{label:loc(info.name)});else{state.selectedMesh=grpMeshes[0].id;renderUI();}};
+     list.appendChild(b);
+     if(isExp){
+      for(const sub of grpMeshes.slice(0,60)){
+       const cb=document.createElement('button'),subSel=state.selectedMesh===sub.id&&director.selection?.kind!=='set';
+       cb.className='object-row is-group-child '+(subSel?'selected':'');cb.dataset.itemId=sub.id;
+       const subDet=fmt((sub.p?.length||0)/9)+tr(' tam giác',' triangles');
+       const subIcon=typeof objectRowIcon9==='function'?objectRowIcon9(sub,'mesh',false):'<span class="row-icon">&#9671;</span>';
+       cb.innerHTML=`${subIcon}<span class="row-main"><strong>${esc(loc(sub.name))}</strong><small>${esc(subDet)}</small></span>`;
+       cb.onclick=()=>{director.group=false;selectObject8('mesh',sub.sourceKey||sub.id);};
+       list.appendChild(cb);
+      }
+     }
+    }else{
+     const b=document.createElement('button'),isSel=selectedMeshIds?.has(m.id)||state.selectedMesh===m.id;
+     b.className='object-row '+(isSel?'selected':'');b.dataset.itemId=m.id;
+     const detail=fmt((m.p?.length||0)/9)+tr(' tam giác',' triangles');
+     const singleIcon=typeof objectRowIcon9==='function'?objectRowIcon9(m,'mesh',false):'<span class="row-icon">&#9671;</span>';
+     b.innerHTML=`${singleIcon}<span class="row-main"><strong>${esc(loc(m.name))}</strong><small>${esc(detail)}</small></span>`;
+     b.onclick=()=>{if(director.mode==='navigate'&&(director.selection?.kind==='person'||director.selection?.kind==='act')){director.selection=null;director.panel=null;}state.selectedMesh=m.id;state.hit=null;engine.selected=null;if(director.mode!=='navigate')selectObject8('mesh',m.sourceKey||m.id);else renderUI();};
+     list.appendChild(b);
+    }
+   }
+  }else{
+   document.querySelectorAll('#objectList .object-row').forEach(b=>{if(selectedMeshIds?.size)b.classList.toggle('selected',selectedMeshIds.has(b.dataset?.itemId));const action=b.onclick;b.onclick=e=>{if(state.step==='stage'&&director.mode==='navigate'&&(director.selection?.kind==='person'||director.selection?.kind==='act')){director.selection=null;director.panel=null;}action(e);if(director.mode!=='navigate'){if(state.step==='stage'&&state.selectedMesh){const m=engine.stage.find(m=>m.id===state.selectedMesh);if(m)selectObject8('mesh',m.sourceKey||m.id);}else if(state.step==='lighting'&&state.selectedLight)selectObject8('light',state.selectedLight);}};});
+  }
+ }else{
+  document.querySelectorAll('#objectList .object-row').forEach(b=>{if(selectedMeshIds?.size)b.classList.toggle('selected',selectedMeshIds.has(b.dataset?.itemId));const action=b.onclick;b.onclick=e=>{if(state.step==='stage'&&director.mode==='navigate'&&(director.selection?.kind==='person'||director.selection?.kind==='act')){director.selection=null;director.panel=null;}action(e);if(director.mode!=='navigate'){if(state.step==='stage'&&state.selectedMesh){const m=engine.stage.find(m=>m.id===state.selectedMesh);if(m)selectObject8('mesh',m.sourceKey||m.id);}else if(state.step==='lighting'&&state.selectedLight)selectObject8('light',state.selectedLight);}};});
+ }
  if(state.step!=='stage')return;
  const cast=[...director.acts.map(item=>({kind:'act',item})),...seq.people.filter(p=>!p.actId).map(item=>({kind:'person',item}))],list=$('objectList'),query=$('objectSearch').value.trim().toLowerCase(),count=engine.stage.filter(m=>!m._deleted8).length+cast.length,loc=typeof localizeObjectName==='function'?localizeObjectName:v=>v,flt=typeof window!=='undefined'&&window._objFilter16||'all';
  $('leftCount').textContent=count;$('meshCount').textContent=count+tr(' đối tượng',' objects');
@@ -753,7 +864,8 @@ renderLists=function(){D8.renderLists();if(!director.ready)return;const selected
   const row=document.createElement('button'),refs=director.selection?.kind==='set'&&typeof group9!=='undefined'?group9.members:[director.selection];
   row.className='object-row '+(refs.some(r=>r?.kind===kind&&r.id===item.id)?'selected':'');
   const detail=kind==='act'?tr('Đội hình 3D','3D formation'):loc(castNames[item.type]||tr('Người 3D','3D person'));
-  row.innerHTML=`<span class="row-icon">&#9671;</span><span class="row-main"><strong>${esc(dispName)}</strong><small>${esc(detail)}${item.hidden?' / '+tr('Ẩn','Hidden'):''}</small></span>`;
+  const castIcon=typeof objectRowIcon9==='function'?objectRowIcon9(item,kind,false):'<span class="row-icon">&#9671;</span>';
+  row.innerHTML=`${castIcon}<span class="row-main"><strong>${esc(dispName)}</strong><small>${esc(detail)}${item.hidden?' / '+tr('Ẩn','Hidden'):''}</small></span>`;
   row.onclick=()=>selectObject8(kind,item.id);list.appendChild(row);
  }
 };
@@ -801,7 +913,7 @@ const directorLegacyHelp8=showHelp;
 function showDirectorHelp8(){dialog('V08 DIRECTOR / H\u01b0\u1edbng d\u1eabn',`<h3>1. S\u1eeda g\u00f3c nh\u00ecn</h3><p>B\u1ea5m <b>C\u0103n LED</b>. Trong Camera, ch\u1ecdn <b>LED / S\u00e2n kh\u1ea5u / To\u00e0n b\u1ed9</b>. D\u00f9ng <b>Ch\u1ecdn m\u1eb7t tr\u01b0\u1edbc</b> khi model quay l\u1ec7ch. Ch\u1ec9 thay camera, kh\u00f4ng xoay model.</p><h3>2. K\u00e9o v\u1eadt th\u1ec3</h3><p>F2 / K\u00e9o, F3 / Xoay, F4 / Scale. Click v\u1eadt th\u1ec3 r\u1ed3i k\u00e9o tr\u1ee5c XYZ; h\u00ecnh thoi l\u00e0 m\u1eb7t XZ. Shift b\u1eaft d\u00ednh. Ctrl+Z ho\u00e0n t\u00e1c. B\u1eadt ch\u1ecdn nh\u00f3m n\u1ebfu mu\u1ed1n k\u00e9o c\u1ea3 c\u1ee5m.</p><h3>3. Camera</h3><p>L\u01b0u g\u00f3c, g\u1ecdi l\u1ea1i khi tr\u00ecnh di\u1ec5n, th\u00eam camera v\u00e0o timeline. C\u1ea7n b\u1eadt <b>${(window.tr?.("Camera theo timecode","Camera follows timecode") ?? "Camera theo timecode")}</b> v\u00e0 ON c\u1ee7a SHOW Timeline. Cut / Blend / Push / Orbit / Crane.</p><h3>4. \u0110\u00e8n</h3><p>Qu\u00e9t m\u1eb7t \u0111\u00e8n, xem v\u1ecb tr\u00ed, \u0111\u1ea3o tia khi c\u1ea7n r\u1ed3i g\u1eafn c\u00e1c \u0111\u00e8n \u0111\u00e3 duy\u1ec7t. Kh\u00f4ng t\u1ef1 coi t\u00e2m v\u1ecf \u0111\u00e8n l\u00e0 m\u1eb7t k\u00ednh. Model g\u1ed9p/thi\u1ebfu t\u00ean: click k\u00ednh v\u00e0 \u0111i\u1ec3m chi\u1ebfu.</p><h3>5. Ti\u1ebft m\u1ee5c 3D</h3><p>Th\u00eam ti\u1ebft m\u1ee5c, \u0111\u1eb7t tr\u00ean s\u00e0n, k\u00e9o/xoay c\u1ee5m r\u1ed3i + Timeline. Double-click clip \u0111\u1ec3 ch\u1ec9nh gi\u1edd. N\u01b0\u1edbc v\u00e0 laser l\u00e0 hi\u1ec7u \u1ee9ng 3D c\u00e1ch \u0111i\u1ec7u, kh\u00f4ng ph\u1ea3i t\u00ednh to\u00e1n thi c\u00f4ng/an to\u00e0n. Kh\u00f4ng xu\u1ea5t DMX/LTC.</p>`,[{label:(window.tr?.("Đóng","Close") ?? "Đóng")},{label:'LED / VJ / Audio',action:directorLegacyHelp8},{label:'Camera',action:()=>{director.panel='cameras';renderUI();}},{label:(window.tr?.("Tiết mục 3D","3D acts") ?? "Tiết mục 3D"),primary:true,action:()=>{director.panel='acts';renderUI();}}]);};
 
 /* V09: explicit, stable scene selections. No implicit root reparenting. */
-const group9={members:[],groups:[],scope:'single',includePeople:false,includeLights:true,marquee:null,panel:false};
+const group9={members:[],groups:[],scope:'parent',includePeople:false,includeLights:true,marquee:null,panel:false};
 const G9={selectionMeshes8,selectionBounds8,selectionPivot8,objectLabel8,captureTransform8,transformFrom8,selectObject8,renderDirectorPanel,dirData,restoreDirector,resetDirector,renderOverlays,dirCommit};
 function refKey9(r){return r.kind+':'+r.id;}
 function meshByKey9(id){return engine.stage.find(m=>m.sourceKey===id||m.id===id);}
@@ -809,8 +921,8 @@ function validMember9(r){return r&&(['mesh','person','act','light','target','sur
 function normalizedMembers9(items){const seen=new Set(),out=[];for(const r of items||[]){if(!validMember9(r)||seen.has(refKey9(r)))continue;seen.add(refKey9(r));out.push({kind:r.kind,id:String(r.id)});}const acts=new Set(out.filter(r=>r.kind==='act').map(r=>r.id));return out.filter(r=>r.kind!=='person'||!acts.has(seq.people.find(p=>p.id===r.id)?.actId));}
 function currentMembers9(){return director.selection?.kind==='set'?normalizedMembers9(group9.members):director.selection?[director.selection]:[];}
 function selectionSet9(items,{append=false,label=null}={}){group9.members=normalizedMembers9([...(append?currentMembers9():[]),...items]);director.selection=group9.members.length?{kind:'set',id:'active',name:label||null}:null;const firstMesh=meshByKey9(group9.members.find(r=>r.kind==='mesh')?.id);state.selectedMesh=firstMesh?.id||null;engine.selected=null;director.panel='objects';director.cameraFollow=false;renderUI();if(group9.members.length)scrollObjectListToSelection8();return group9.members;}
-function groupAncestors9(m){const path=m.nodePath||(m.path||'').split('/').slice(0,-1).join('/'),parts=path.split('/').filter(Boolean),out=[];for(let i=parts.length-1;i>=1;i--){const prefix=parts.slice(0,i).join('/'),members=engine.stage.filter(x=>(x.nodePath||x.path||'').startsWith(prefix+'/'));if(members.length>1&&members.length<engine.stage.length)out.push({prefix,name:(m.nodeChain?.[i-1]?.name)||prefix,count:members.length});}return out;}
-function parentMembers9(m,level=0){const a=groupAncestors9(m),g=a[Math.min(level,a.length-1)];return g?engine.stage.filter(x=>(x.nodePath||x.path||'').startsWith(g.prefix+'/')).map(x=>({kind:'mesh',id:x.sourceKey})): [{kind:'mesh',id:m.sourceKey}];}
+function groupAncestors9(m){if(!m)return [];const out=[],info=smartGroupInfo9(m);if(info.members.length>1)out.push({prefix:info.id,name:info.name,count:info.members.length,members:info.members});const path=m.nodePath||(m.path||'').split('/').slice(0,-1).join('/'),parts=path.split('/').filter(Boolean);for(let i=parts.length-1;i>=1;i--){const prefix=parts.slice(0,i).join('/'),members=engine.stage.filter(x=>!x._deleted8&&(x.nodePath||x.path||'').startsWith(prefix+'/'));if(members.length>1&&members.length<engine.stage.length&&!out.some(o=>o.count===members.length))out.push({prefix,name:(m.nodeChain?.[i-1]?.name)||prefix,count:members.length,members});}return out;}
+function parentMembers9(m,level=0){if(!m)return [];const a=groupAncestors9(m),g=a[Math.min(level,a.length-1)];return g?(g.members||engine.stage.filter(x=>(x.nodePath||x.path||'').startsWith(g.prefix+'/'))).map(x=>({kind:'mesh',id:x.sourceKey||x.id})):[{kind:'mesh',id:m.sourceKey||m.id}];}
 function allStageMembers9({people=group9.includePeople,lights=group9.includeLights,visible=true}={}){const out=engine.stage.filter(m=>!visible||!m.hidden).map(m=>({kind:'mesh',id:m.sourceKey}));for(const s of engine.surfaces)if(!dirSourceMesh(s))out.push({kind:'surface',id:s.id});if(lights)for(const l of engine.lights)out.push({kind:'light',id:l.id});if(people){for(const a of director.acts)out.push({kind:'act',id:a.id});for(const p of seq.people)if(!p.actId)out.push({kind:'person',id:p.id});}return out;}
 function selectStage9(options={}){setEditMode8('move');return selectionSet9(allStageMembers9(options),{label:(window.tr?.("Toàn sân khấu","Entire stage") ?? "Toàn sân khấu")});}
 function saveGroup9(name){const members=currentMembers9();if(!members.length){toast((window.tr?.("Chọn vật thể trước khi tạo nhóm.","Select objects before creating a group.") ?? "Chọn vật thể trước khi tạo nhóm."));return null;}checkpoint();const g={id:uid('group'),name:String(name||'Group '+(group9.groups.length+1)).slice(0,64),members:normalizedMembers9(members)};group9.groups.push(g);renderUI();return g;}
@@ -822,9 +934,12 @@ objectLabel8=function(){return director.selection?.kind==='set'?(director.select
 captureTransform8=function(){
  const sel=director.selection;if(sel?.kind!=='set'&&sel?.kind!=='surface'){const b=G9.captureTransform8();if(b){b.acts=b.act?[b.act]:[];b.allAttached=b.sel.kind==='mesh';}return b;}
  const refs=currentMembers9(),pivot=selectionPivot8();if(!pivot)return null;
- const base={sel:structuredClone(sel),pivot,people:[],lights:[],surfaces:[],meshes:[],acts:[],act:null,allAttached:true};
+ const base={sel:structuredClone(sel),pivot,people:[],lights:[],surfaces:[],meshes:[],assets16:[],acts:[],act:null,allAttached:true};
  const keys=new Set(refs.filter(r=>r.kind==='mesh').map(r=>r.id));
  base.meshes=engine.stage.filter(m=>keys.has(m.sourceKey)||keys.has(m.id)).map(m=>({m,p:new Float32Array(m.p),n:new Float32Array(m.n),edit:[...(director.edits[m.sourceKey]||M.identity())],axes:m.worldAxes?.map(v=>[...v])}));
+ const assetIds=new Set(base.meshes.map(b=>b.m._asset16Id).filter(Boolean));
+ const aItems=typeof window!=='undefined'&&(window.stageAssets16?.items||window.STUDIO?.stageAssets16?.items);
+ if(assetIds.size&&Array.isArray(aItems))base.assets16=aItems.filter(it=>assetIds.has(it.id)).map(it=>({it,pos:[...(it.pos||[0,0,0])],yaw:it.yaw||0,scale:it.scale??1}));
  const explicitSurfaces=new Set(refs.filter(r=>r.kind==='surface').map(r=>r.id));
  base.surfaces=engine.surfaces.filter(s=>keys.has(dirSourceMesh(s)?.sourceKey)||explicitSurfaces.has(s.id)).map(s=>({s,p:new Float32Array(s.mesh.p),n:new Float32Array(s.mesh.n),normal:[...(s.bindingNormal||[0,0,1])],physical:[...s.physical],metric:s.metricFrame?structuredClone(s.metricFrame):null}));
  const personIds=new Set(refs.filter(r=>r.kind==='person').map(r=>r.id));for(const r of refs.filter(r=>r.kind==='act')){const a=director.acts.find(a=>a.id===r.id);if(a){base.acts.push({a,pos:[...a.pos],yaw:a.yaw||0,scale:a.scale||1});for(const id of a.people)personIds.add(id);}}
@@ -872,16 +987,20 @@ function initGroups9(){
   e.preventDefault();e.stopImmediatePropagation();
   if(director.mode==='box'){group9.marquee={x:e.clientX,y:e.clientY,append:e.shiftKey};box.hidden=false;const rect=engine.canvas.getBoundingClientRect();Object.assign(box.style,{left:(e.clientX-rect.left)+'px',top:(e.clientY-rect.top)+'px',width:'0',height:'0'});return;}
   const hit=pickDirector8(e.clientX,e.clientY);if(!hit){if(!e.shiftKey)selectionSet9([]);return;}
-  let refs=[{kind:hit.kind,id:hit.id}];if(hit.kind==='mesh'){if(group9.scope==='stage')refs=allStageMembers9();else if(group9.scope==='parent')refs=parentMembers9(meshByKey9(hit.id));}
+  let refs=[{kind:hit.kind,id:hit.id}],grpLabel=null;
+  if(hit.kind==='mesh'&&!e.altKey){
+   if(group9.scope==='stage')refs=allStageMembers9();
+   else if(group9.scope==='parent'){const m=meshByKey9(hit.id),info=smartGroupInfo9(m);refs=parentMembers9(m);if(info.members.length>1)grpLabel=info.name;}
+  }
   if(e.shiftKey){const old=currentMembers9(),remove=refs.every(r=>old.some(o=>refKey9(o)===refKey9(r)));selectionSet9(remove?old.filter(o=>!refs.some(r=>refKey9(o)===refKey9(r))):[...old,...refs]);return;}
-  if(!memberContainsHit9(hit))selectionSet9(refs);else{director.panel='objects';}
+  if(!memberContainsHit9(hit))selectionSet9(refs,{label:grpLabel});else{director.panel='objects';}
   if(['move','rotate','scale'].includes(director.mode))dragHandle8(e,director.axis);
  },true);
  document.addEventListener('pointermove',e=>{const g=group9.marquee;if(!g)return;e.preventDefault();const r=engine.canvas.getBoundingClientRect();Object.assign(box.style,{left:(Math.min(g.x,e.clientX)-r.left)+'px',top:(Math.min(g.y,e.clientY)-r.top)+'px',width:Math.abs(e.clientX-g.x)+'px',height:Math.abs(e.clientY-g.y)+'px'});},true);
  document.addEventListener('pointerup',e=>{if(group9.marquee){e.preventDefault();e.stopImmediatePropagation();marqueeEnd9(e);}},true);
- document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,select')||$('modal').open)return;if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='a'){e.preventDefault();e.stopImmediatePropagation();selectStage9();}else if(e.key.toLowerCase()==='b'&&!e.ctrlKey&&!e.metaKey){e.preventDefault();setEditMode8('box');}else if(e.key==='Escape'&&group9.marquee){group9.marquee=null;box.hidden=true;}},true);
+ document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,select')||$('modal').open)return;if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='a'){e.preventDefault();e.stopImmediatePropagation();selectStage9();}else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='g'){e.preventDefault();e.stopImmediatePropagation();const g=saveGroup9($('g9Name')?.value||'');if(g)toast((window.tr?.("Đã gộp nhóm: ","Saved group: ")??"Đã gộp nhóm: ")+g.name);}else if(e.key.toLowerCase()==='b'&&!e.ctrlKey&&!e.metaKey){e.preventDefault();setEditMode8('box');}else if(e.key==='Escape'&&group9.marquee){group9.marquee=null;box.hidden=true;}},true);
 }
-const groups9API={group9,selectionSet9,selectStage9,saveGroup9,selectGroup9,currentMembers9,allStageMembers9,groupAncestors9,parentMembers9,selectionMeshes8,selectionBounds8,selectionPivot8,captureTransform8,transformFrom8,applyTransform8,deleteSelectedObject8,selectObject8,renderDirectorPanel,dirData,restoreDirector};
+const groups9API={group9,smartGroupInfo9,selectionSet9,selectStage9,saveGroup9,selectGroup9,currentMembers9,allStageMembers9,groupAncestors9,parentMembers9,selectionMeshes8,selectionBounds8,selectionPivot8,captureTransform8,transformFrom8,applyTransform8,deleteSelectedObject8,selectObject8,renderDirectorPanel,dirData,restoreDirector};
 
 window.addEventListener('ledstudio:locale',()=>{
  updateShowButtons();

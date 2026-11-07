@@ -6,6 +6,10 @@
   'use strict';
   try {
     const S = (window.STUDIO = window.STUDIO || {});
+    if (!window.M && typeof M !== 'undefined') window.M = M;
+    if (!window.state && typeof state !== 'undefined') window.state = state;
+    if (!window.seq && typeof seq !== 'undefined') window.seq = seq;
+    if (!window.engine && typeof engine !== 'undefined') window.engine = engine;
     const $ = (id) => document.getElementById(id);
     const esc18 = (v) =>
       String(v ?? '').replace(/[&<>"']/g, (ch) => ({
@@ -160,6 +164,107 @@
         discountPercent: 0,
         vatMode: 'KCT', // 'KCT' | '8' | '10'
         priceOverrides: {}
+      },
+      dmxProgrammer18: {
+        freezeDmx: false,
+        parChaseMode: 'carousel', // 'carousel' | 'mirror_domino' | 'dual_carousel' | 'gala_sparkle'
+        groupPalettes: {
+          beam: ['#00f0ff', '#ff007f', '#ffe600', '#0055ff'],
+          wash: ['#ff007f', '#00f0ff', '#7700ff', '#ffaa00'],
+          par: ['#01ffa0', '#00d4ff', '#ff007f', '#ffe600'],
+          laser: ['#00ff66', '#01ffa0', '#00f0ff', '#ff00aa']
+        },
+        optics: {
+          aperture: 0.035,
+          zoomDeg: 14,
+          spreadFactor: 1.0
+        },
+        groups: {
+          G1: { id: 'G1', label: 'G1 · Front Truss', panOffsetDeg: 0, tiltOffsetDeg: 0, fanningSpreadDeg: 0, dimmer: 100 },
+          G2: { id: 'G2', label: 'G2 · Mid Truss', panOffsetDeg: 0, tiltOffsetDeg: 0, fanningSpreadDeg: 0, dimmer: 100 },
+          G3: { id: 'G3', label: 'G3 · Back Truss', panOffsetDeg: 0, tiltOffsetDeg: 0, fanningSpreadDeg: 0, dimmer: 100 },
+          G4: { id: 'G4', label: 'G4 · Floor / Deck', panOffsetDeg: 0, tiltOffsetDeg: 0, fanningSpreadDeg: 0, dimmer: 100 },
+          G5: { id: 'G5', label: 'G5 · Side Towers', panOffsetDeg: 0, tiltOffsetDeg: 0, fanningSpreadDeg: 0, dimmer: 100 }
+        }
+      },
+      structureConfig18: {
+        venueType: 'indoor_hall', // 'indoor_hall' | 'outdoor_roof' | 'coliseum_arena'
+        venueXRay: false,
+        deckWidthM: 14,
+        deckDepthM: 8,
+        deckHeightM: 1.2,
+        deckMaterial: 'mirror', // 'mirror' | 'black_wood'
+        moduleSize: '2x1m',
+        stairLayout: 'front_dual', // 'front_center' | 'front_dual' | 'side_lr' | 'rear_tech' | 'catwalk_tip' | 'all_around'
+        catwalkType: 'straight', // 'none' | 'straight' | 'circular_cnc' | 'octagonal_45'
+        catwalkLengthM: 6.0,
+        bStageWidthM: 4.0,
+        layherBayStandard: '2.07m', // '2.07m' | '2.57m' | '2.00m'
+        liveSymmetry3D: false,
+        crowdBounce: true,
+        crowdCount: 36
+      },
+      audioWorkstation18: {
+        brandPreset: 'lacoustics_k2',
+        boxesPerSide: 12,
+        bumperHeightM: 8.5,
+        topTiltDeg: -2.0,
+        jCurveFactor: 1.25,
+        splayAnglesDeg: [0.5, 0.5, 1.0, 1.0, 1.5, 2.0, 2.5, 3.0, 4.0, 5.0, 6.0, 7.5],
+        subTopology: 'cardioid_csa', // 'stacks_lr' | 'cardioid_csa' | 'center_sub_arc'
+        subCount: 12,
+        crossoverHz: 80,
+        subDelayMs: 3.2,
+        subPolarityInverted: true,
+        venueDepthM: 45,
+        venueWidthM: 28,
+        rt60Sec: 1.35,
+        ambientNoiseDb: 45,
+        targetSplFohDba: 102,
+        heatmapVisible: true,
+        waveFlowVisible: false,
+        abSlotA: null,
+        abSlotB: null,
+        bandPlot: {
+          drums: true,
+          percussion: true,
+          grandPiano: true,
+          keys: true,
+          horns: true,
+          vocalMics: 4,
+          monitorWedges: 8,
+          iemChannels: 10,
+          micGainDb: 0
+        }
+      },
+      venuePower18: {
+        selectedOutlet: '63A_3P', // '16A_1P' | '16A_3P' | '32A_3P' | '63A_3P' | '125A_3P'
+        voltageV: 230,
+        powerFactor: 0.92,
+        headroomPct: 20
+      },
+      warehouse18: {
+        stock: {
+          roe_bp2v2_500: { name: 'ROE Black Pearl BP2V2 (500x500)', category: 'LED Cabinet', owned: 120, rma: 6, unitSubRentUsd: 18, perCase: 8, caseVolM3: 0.48, caseWeightKg: 82 },
+          absen_pl39_1000: { name: 'Absen Polaris PL3.9 Pro (500x1000)', category: 'LED Cabinet', owned: 64, rma: 4, unitSubRentUsd: 24, perCase: 6, caseVolM3: 0.62, caseWeightKg: 94 },
+          unilumin_ugm2_1000: { name: 'Unilumin UpadIV UGMII (500x1000)', category: 'LED Cabinet', owned: 48, rma: 2, unitSubRentUsd: 22, perCase: 6, caseVolM3: 0.60, caseWeightKg: 90 },
+          brompton_sx40: { name: 'Brompton Tessera SX40 4K Processor', category: 'LED Processor', owned: 4, rma: 0, unitSubRentUsd: 250, perCase: 1, caseVolM3: 0.18, caseWeightKg: 24 },
+          novastar_vx1000: { name: 'NovaStar VX1000 All-in-One Controller', category: 'LED Processor', owned: 6, rma: 1, unitSubRentUsd: 110, perCase: 2, caseVolM3: 0.16, caseWeightKg: 19 },
+          fixture_beam_spot: { name: 'Moving Head Beam / Spot Hybrid 480W', category: 'DMX Lighting', owned: 24, rma: 2, unitSubRentUsd: 45, perCase: 2, caseVolM3: 0.52, caseWeightKg: 68 },
+          fixture_wash_par: { name: 'Moving Wash & PAR LED RGBW', category: 'DMX Lighting', owned: 32, rma: 2, unitSubRentUsd: 28, perCase: 4, caseVolM3: 0.44, caseWeightKg: 54 },
+          fixture_barra_blinder: { name: 'Pixel Barra 12-Cell & Audience Blinder', category: 'DMX Lighting', owned: 20, rma: 1, unitSubRentUsd: 30, perCase: 4, caseVolM3: 0.38, caseWeightKg: 46 },
+          audio_line_array_box: { name: 'Line Array Element Dual 12" K2-Class', category: 'Pro Audio', owned: 24, rma: 0, unitSubRentUsd: 85, perCase: 4, caseVolM3: 0.92, caseWeightKg: 165 },
+          audio_sub_218: { name: 'Dual 18" Cardioid Subwoofer KS28-Class', category: 'Pro Audio', owned: 12, rma: 1, unitSubRentUsd: 70, perCase: 2, caseVolM3: 0.88, caseWeightKg: 172 },
+          sfx_pyro_unit: { name: 'Sparkular / CO2 Cryo / Flame DMX Unit', category: 'Pyro & SFX', owned: 16, rma: 2, unitSubRentUsd: 55, perCase: 4, caseVolM3: 0.36, caseWeightKg: 48 },
+          deck_module_2x1: { name: 'Stage Deck Module 2x1m EN 13814', category: 'Stage Structure', owned: 60, rma: 2, unitSubRentUsd: 15, perCase: 10, caseVolM3: 1.15, caseWeightKg: 340 }
+        }
+      },
+      screenCapture18: {
+        active: false,
+        stream: null,
+        videoEl: null,
+        startedAtMs: 0,
+        frameCount: 0
       }
     };
 
@@ -167,7 +272,7 @@
       const priorSnapshot = window.snapshot, priorRestore = window.restore;
       window.snapshot = function () {
         const data = priorSnapshot();
-        data.lumi18 = structuredClone({ musicShowCues: lumiState.musicShowCues, activeCueIndex: lumiState.activeCueIndex, brandIdentity: lumiState.brandIdentity, clientName: lumiState.quoteConfig.clientName, seqCues: window.seq?.cues });
+        data.lumi18 = structuredClone({ musicShowCues: lumiState.musicShowCues, activeCueIndex: lumiState.activeCueIndex, brandIdentity: lumiState.brandIdentity, clientName: lumiState.quoteConfig.clientName, seqCues: window.seq?.cues, activeStageSet18: (S.state || window.state)?.activeStageSet18, structureConfig18: lumiState.structureConfig18, audioWorkstation18: lumiState.audioWorkstation18 });
         return data;
       };
       window.restore = function (data) {
@@ -176,6 +281,9 @@
           Object.assign(lumiState, { musicShowCues: saved.musicShowCues, activeCueIndex: saved.activeCueIndex, brandIdentity: saved.brandIdentity });
           lumiState.quoteConfig.clientName = saved.clientName;
           if (window.seq && Array.isArray(saved.seqCues)) window.seq.cues = saved.seqCues;
+          if (S.state || window.state) (S.state || window.state).activeStageSet18 = saved.activeStageSet18;
+          if (saved.structureConfig18) lumiState.structureConfig18 = saved.structureConfig18;
+          if (saved.audioWorkstation18) lumiState.audioWorkstation18 = saved.audioWorkstation18;
         }
         return priorRestore(data);
       };
@@ -255,9 +363,9 @@
         pitchMm: 3.91,
         style: 'cool',
         screens: [
-          { name: 'LED_MAIN_CENTER', pos: [0, 2.65, -2.2], wM: 7.0, hM: 3.5, yawDeg: 0, pitchMm: 3.91 },
-          { name: 'LED_WING_LEFT', pos: [-5.1, 2.65, -1.7], wM: 2.5, hM: 3.5, yawDeg: 12, pitchMm: 3.91 },
-          { name: 'LED_WING_RIGHT', pos: [5.1, 2.65, -1.7], wM: 2.5, hM: 3.5, yawDeg: -12, pitchMm: 3.91 }
+          { name: 'LED_MAIN_CENTER', pos: [0, 2.65, -2.2], wM: 7.0, hM: 3.5, yawDeg: 0, pitchMm: 3.91, cabinetModelId: 'absen_pl25_500', processorModelId: 'novastar_vx1000', rows500x1000: 3, rows500x500: 1 },
+          { name: 'LED_WING_LEFT', pos: [-5.1, 2.65, -1.7], wM: 2.5, hM: 3.5, yawDeg: 12, pitchMm: 3.91, cabinetModelId: 'absen_pl25_500', processorModelId: 'novastar_vx600', rows500x1000: 3, rows500x500: 1 },
+          { name: 'LED_WING_RIGHT', pos: [5.1, 2.65, -1.7], wM: 2.5, hM: 3.5, yawDeg: -12, pitchMm: 3.91, cabinetModelId: 'absen_pl25_500', processorModelId: 'novastar_vx600', rows500x1000: 3, rows500x500: 1 }
         ],
         truss: 'portal',
         lightCount: 16,
@@ -282,11 +390,11 @@
         pitchMm: 2.97,
         style: 'warm',
         screens: [
-          { name: 'LED_WEDDING_MAIN', pos: [0, 2.8, -2.5], wM: 8.0, hM: 4.0, yawDeg: 0, pitchMm: 2.97 },
-          { name: 'LED_TOTEM_L1', pos: [-4.8, 2.5, -2.0], wM: 1.0, hM: 3.5, yawDeg: 10, pitchMm: 2.97 },
-          { name: 'LED_TOTEM_R1', pos: [4.8, 2.5, -2.0], wM: 1.0, hM: 3.5, yawDeg: -10, pitchMm: 2.97 },
-          { name: 'LED_TOTEM_L2', pos: [-6.2, 2.3, -1.4], wM: 1.0, hM: 3.0, yawDeg: 16, pitchMm: 3.91 },
-          { name: 'LED_TOTEM_R2', pos: [6.2, 2.3, -1.4], wM: 1.0, hM: 3.0, yawDeg: -16, pitchMm: 3.91 }
+          { name: 'LED_WEDDING_MAIN', pos: [0, 2.8, -2.5], wM: 8.0, hM: 4.0, yawDeg: 0, pitchMm: 2.97, cabinetModelId: 'roe_bp2v2_500', processorModelId: 'brompton_sx40' },
+          { name: 'LED_TOTEM_L1', pos: [-4.8, 2.5, -2.0], wM: 1.0, hM: 3.5, yawDeg: 10, pitchMm: 2.97, cabinetModelId: 'roe_bp2v2_500', processorModelId: 'brompton_s8', rows500x1000: 3, rows500x500: 1 },
+          { name: 'LED_TOTEM_R1', pos: [4.8, 2.5, -2.0], wM: 1.0, hM: 3.5, yawDeg: -10, pitchMm: 2.97, cabinetModelId: 'roe_bp2v2_500', processorModelId: 'brompton_s8', rows500x1000: 3, rows500x500: 1 },
+          { name: 'LED_TOTEM_L2', pos: [-6.2, 2.3, -1.4], wM: 1.0, hM: 3.0, yawDeg: 16, pitchMm: 3.91, cabinetModelId: 'unilumin_ugm2_1000', processorModelId: 'novastar_vx600' },
+          { name: 'LED_TOTEM_R2', pos: [6.2, 2.3, -1.4], wM: 1.0, hM: 3.0, yawDeg: -16, pitchMm: 3.91, cabinetModelId: 'unilumin_ugm2_1000', processorModelId: 'novastar_vx600' }
         ],
         truss: 'arch',
         lightCount: 20,
@@ -310,12 +418,12 @@
         pitchMm: 3.91,
         style: 'concert',
         screens: [
-          { name: 'LED_EDM_MAIN', pos: [0, 4.3, -3.8], wM: 14.0, hM: 6.0, yawDeg: 0, pitchMm: 3.91 },
-          { name: 'LED_WING_L1', pos: [-8.6, 4.1, -3.0], wM: 2.5, hM: 5.5, yawDeg: 18, pitchMm: 3.91 },
-          { name: 'LED_WING_R1', pos: [8.6, 4.1, -3.0], wM: 2.5, hM: 5.5, yawDeg: -18, pitchMm: 3.91 },
-          { name: 'LED_WING_L2', pos: [-11.2, 3.8, -2.0], wM: 2.0, hM: 5.0, yawDeg: 28, pitchMm: 4.81 },
-          { name: 'LED_WING_R2', pos: [11.2, 3.8, -2.0], wM: 2.0, hM: 5.0, yawDeg: -28, pitchMm: 4.81 },
-          { name: 'LED_DJ_FRONT', pos: [0, 1.7, 0.6], wM: 3.0, hM: 1.0, yawDeg: 0, pitchMm: 2.97 }
+          { name: 'LED_EDM_MAIN', pos: [0, 4.3, -3.8], wM: 14.0, hM: 6.0, yawDeg: 0, pitchMm: 3.91, cabinetModelId: 'roe_cb5_1000', processorModelId: 'brompton_sx40' },
+          { name: 'LED_WING_L1', pos: [-8.6, 4.1, -3.0], wM: 2.5, hM: 5.5, yawDeg: 18, pitchMm: 3.91, cabinetModelId: 'gloshine_mv26_500', processorModelId: 'novastar_vx1000', rows500x1000: 5, rows500x500: 1 },
+          { name: 'LED_WING_R1', pos: [8.6, 4.1, -3.0], wM: 2.5, hM: 5.5, yawDeg: -18, pitchMm: 3.91, cabinetModelId: 'gloshine_mv26_500', processorModelId: 'novastar_vx1000', rows500x1000: 5, rows500x500: 1 },
+          { name: 'LED_WING_L2', pos: [-11.2, 3.8, -2.0], wM: 2.0, hM: 5.0, yawDeg: 28, pitchMm: 4.81, cabinetModelId: 'gloshine_ls39_1000', processorModelId: 'novastar_vx1000' },
+          { name: 'LED_WING_R2', pos: [11.2, 3.8, -2.0], wM: 2.0, hM: 5.0, yawDeg: -28, pitchMm: 4.81, cabinetModelId: 'gloshine_ls39_1000', processorModelId: 'novastar_vx1000' },
+          { name: 'LED_DJ_FRONT', pos: [0, 1.7, 0.6], wM: 3.0, hM: 1.0, yawDeg: 0, pitchMm: 2.97, cabinetModelId: 'roe_bp2v2_500', processorModelId: 'brompton_s8' }
         ],
         truss: 'box',
         lightCount: 32,
@@ -343,9 +451,9 @@
         pitchMm: 2.97,
         style: 'warm',
         screens: [
-          { name: 'LED_LAUNCH_MAIN', pos: [0, 2.45, -1.8], wM: 6.0, hM: 3.5, yawDeg: 0, pitchMm: 2.97 },
-          { name: 'LED_STANDEE_L', pos: [-3.9, 1.95, -1.3], wM: 1.0, hM: 2.5, yawDeg: 10, pitchMm: 2.97 },
-          { name: 'LED_STANDEE_R', pos: [3.9, 1.95, -1.3], wM: 1.0, hM: 2.5, yawDeg: -10, pitchMm: 2.97 }
+          { name: 'LED_LAUNCH_MAIN', pos: [0, 2.45, -1.8], wM: 6.0, hM: 3.5, yawDeg: 0, pitchMm: 2.97, cabinetModelId: 'unilumin_upad4_500', processorModelId: 'novastar_vx1000', rows500x1000: 3, rows500x500: 1 },
+          { name: 'LED_STANDEE_L', pos: [-3.9, 1.95, -1.3], wM: 1.0, hM: 2.5, yawDeg: 10, pitchMm: 2.97, cabinetModelId: 'unilumin_upad4_500', processorModelId: 'novastar_vx600', rows500x1000: 2, rows500x500: 1 },
+          { name: 'LED_STANDEE_R', pos: [3.9, 1.95, -1.3], wM: 1.0, hM: 2.5, yawDeg: -10, pitchMm: 2.97, cabinetModelId: 'unilumin_upad4_500', processorModelId: 'novastar_vx600', rows500x1000: 2, rows500x500: 1 }
         ],
         truss: 'portal',
         lightCount: 12,
@@ -369,9 +477,9 @@
         pitchMm: 3.91,
         style: 'concert',
         screens: [
-          { name: 'LED_GALA_MAIN', pos: [0, 3.25, -2.8], wM: 9.0, hM: 4.5, yawDeg: 0, pitchMm: 3.91 },
-          { name: 'LED_GALA_WING_L', pos: [-6.1, 3.0, -2.1], wM: 2.5, hM: 4.0, yawDeg: 15, pitchMm: 3.91 },
-          { name: 'LED_GALA_WING_R', pos: [6.1, 3.0, -2.1], wM: 2.5, hM: 4.0, yawDeg: -15, pitchMm: 3.91 }
+          { name: 'LED_GALA_MAIN', pos: [0, 3.25, -2.8], wM: 9.0, hM: 4.5, yawDeg: 0, pitchMm: 3.91, cabinetModelId: 'roe_bp2v2_500', processorModelId: 'brompton_sx40', rows500x1000: 4, rows500x500: 1 },
+          { name: 'LED_GALA_WING_L', pos: [-6.1, 3.0, -2.1], wM: 2.5, hM: 4.0, yawDeg: 15, pitchMm: 3.91, cabinetModelId: 'absen_pl39_1000', processorModelId: 'novastar_vx1000' },
+          { name: 'LED_GALA_WING_R', pos: [6.1, 3.0, -2.1], wM: 2.5, hM: 4.0, yawDeg: -15, pitchMm: 3.91, cabinetModelId: 'absen_pl39_1000', processorModelId: 'novastar_vx1000' }
         ],
         truss: 'box',
         lightCount: 24,
@@ -397,10 +505,10 @@
         pitchMm: 4.81,
         style: 'concert',
         screens: [
-          { name: 'LED_OUTDOOR_MAIN', pos: [0, 3.7, -3.2], wM: 12.0, hM: 5.0, yawDeg: 0, pitchMm: 4.81 },
-          { name: 'LED_OUTDOOR_WING_L', pos: [-7.8, 3.45, -2.4], wM: 2.5, hM: 4.5, yawDeg: 16, pitchMm: 4.81 },
-          { name: 'LED_OUTDOOR_WING_R', pos: [7.8, 3.45, -2.4], wM: 2.5, hM: 4.5, yawDeg: -16, pitchMm: 4.81 },
-          { name: 'LED_HEADER_BANNER', pos: [0, 6.6, -3.0], wM: 12.0, hM: 0.8, yawDeg: 0, pitchMm: 4.81 }
+          { name: 'LED_OUTDOOR_MAIN', pos: [0, 3.7, -3.2], wM: 12.0, hM: 5.0, yawDeg: 0, pitchMm: 4.81, cabinetModelId: 'roe_cb5_1000', processorModelId: 'novastar_mx40pro' },
+          { name: 'LED_OUTDOOR_WING_L', pos: [-7.8, 3.45, -2.4], wM: 2.5, hM: 4.5, yawDeg: 16, pitchMm: 4.81, cabinetModelId: 'gloshine_mv26_500', processorModelId: 'novastar_vx1000', rows500x1000: 4, rows500x500: 1 },
+          { name: 'LED_OUTDOOR_WING_R', pos: [7.8, 3.45, -2.4], wM: 2.5, hM: 4.5, yawDeg: -16, pitchMm: 4.81, cabinetModelId: 'gloshine_mv26_500', processorModelId: 'novastar_vx1000', rows500x1000: 4, rows500x500: 1 },
+          { name: 'LED_HEADER_BANNER', pos: [0, 6.6, -3.0], wM: 12.0, hM: 1.0, yawDeg: 0, pitchMm: 4.81, cabinetModelId: 'gloshine_ls39_1000', processorModelId: 'novastar_vx1000' }
         ],
         truss: 'box',
         lightCount: 28,
@@ -486,27 +594,57 @@
           : style === 'cool'
           ? ['#7fc9ff', '#d6eeff', '#38bdf8']
           : ['#5cd6ff', '#be7bff', '#ff8c42', '#38bdf8'];
+      const spanM = Math.max(4, +(widthM * 0.96).toFixed(2));
+      const endClearM = Math.max(0.42, +(spanM * 0.08).toFixed(3));
+      const usableSpanM = Math.max(0.5, spanM - endClearM * 2);
+      const dmxChannels = 16;
+      let curUniverse = 1;
+      let curAddr = 1;
       eng.lights = Array.from({ length: n }, (_, i) => {
         const u = n > 1 ? i / (n - 1) - 0.5 : 0;
         const row = i % 2;
         const zPos = row === 0 ? -depthM * 0.25 : depthM * 0.18;
+        const rawX = +(u * usableSpanM).toFixed(3);
+        const distFromLeft = rawX + spanM * 0.5;
+        const spigotMod = distFromLeft % 2.0;
+        const nudge = Math.min(spigotMod, 2.0 - spigotMod) < 0.06 ? (rawX < 0 ? -0.08 : 0.08) : 0;
+        const posX = +(rawX + nudge).toFixed(3);
+        if (curAddr + dmxChannels - 1 > 512) {
+          curUniverse += 1;
+          curAddr = 1;
+        }
+        const fixtureUni = curUniverse;
+        const fixtureAddr = curAddr;
+        curAddr += dmxChannels;
+        const isBeam = row === 0;
         return {
           id: 'light_' + i,
-          name: (row === 0 ? 'Beam 230 #' : 'Par/Wash #') + String(i + 1).padStart(2, '0'),
-          pos: [+(u * widthM * 0.86).toFixed(2), +(topY - 0.15).toFixed(2), +zPos.toFixed(2)],
+          name: (isBeam ? 'Beam 230 #' : 'Par/Wash #') + String(i + 1).padStart(2, '0'),
+          type: isBeam ? 'beam' : 'wash',
+          model: isBeam ? 'Robe Pointe 280W' : 'Martin MAC Aura XB',
+          oflModel: isBeam ? 'Robe Pointe 280W' : 'Martin MAC Aura XB',
+          oflProfileId: isBeam ? 'vn-stage/beam-230-7r' : 'vn-stage/par-led-54x3w',
+          weightKg: isBeam ? 18 : 11,
+          powerW: isBeam ? 380 : 250,
+          beamAngleDeg: isBeam ? 5 : 28,
+          luminousFluxLm: isBeam ? 18500 : 22000,
+          dmxUniverse: fixtureUni,
+          dmxAddress: fixtureAddr,
+          dmxChannels,
+          trussId: isBeam ? 'TRUSS_BACK' : 'TRUSS_FRONT',
+          pos: [posX, +(topY - 0.15).toFixed(2), +zPos.toFixed(2)],
           target: [+(u * widthM * (style === 'concert' ? -0.42 : 0.55)).toFixed(2), 0.3, +(depthM * 0.48).toFixed(2)],
           color: palette[i % palette.length],
           power: style === 'warm' ? 3.4 : 4.6,
-          angle: row === 0 ? 12 : 24,
+          angle: isBeam ? 12 : 24,
           enabled: true,
-          sweep: style === 'concert' || row === 0,
+          sweep: style === 'concert' || isBeam,
           speed: 0.35,
           phase: +(i * 0.35).toFixed(2),
           fx: 'steady',
           fxDepth: 0.55,
           fxSpeed: 2.2,
-          boost: 1,
-          oflProfileId: row === 0 ? 'vn-stage/beam-230-7r' : 'vn-stage/par-led-54x3w'
+          boost: 1
         };
       });
       if (window.state) window.state.selectedLight = eng.lights[0]?.id || null;
@@ -534,20 +672,8 @@
       const scaleX = widthM / tpl.widthM;
       const scaleZ = depthM / tpl.depthM;
 
-      const meshes = [];
+      const screenMeshes = [];
       const createdScreens = [];
-      meshes.push(window.boxMesh('Stage platform', [0, heightM / 2, 0], [widthM, heightM, depthM], [0.34, 0.37, 0.44, 1]));
-      for (let i = 0; i < 3; i++) {
-        meshes.push(
-          window.boxMesh(
-            'Front step ' + (i + 1),
-            [0, (heightM * (i + 1)) / 6, depthM / 2 + 0.55 - i * 0.18],
-            [Math.min(6, widthM * 0.38), heightM / 3, 0.9 - i * 0.18],
-            [0.42, 0.45, 0.52, 1]
-          )
-        );
-      }
-
       let maxTopY = heightM + 4.5;
       for (const scr of tpl.screens) {
         const wM = +(scr.wM * scaleX).toFixed(2);
@@ -570,12 +696,23 @@
         );
         const ry = ((scr.yawDeg || 0) * Math.PI) / 180;
         const mat = window.M.mm(window.M.translate([cx, cy, cz]), window.M.rotate([0, 1, 0], ry));
+        const ledGrp = 'led_asm_' + scr.name;
+        const grpVi = `Cụm Màn LED: ${scr.name}`;
+        const grpEn = `LED Screen Assembly: ${scr.name}`;
         window.transformMesh(q, mat);
-        meshes.push(q);
+        q._smartGroupId = ledGrp;
+        q.nodePath = ledGrp + '/panel';
+        q._groupLabelVi = grpVi;
+        q._groupLabelEn = grpEn;
+        screenMeshes.push(q);
 
         const frame = window.boxMesh(scr.name + '_Frame', [0, 0, -0.09], [wM + 0.1, hM + 0.1, 0.16], [0.12, 0.13, 0.17, 1]);
         window.transformMesh(frame, mat);
-        meshes.push(frame);
+        frame._smartGroupId = ledGrp;
+        frame.nodePath = ledGrp + '/frame';
+        frame._groupLabelVi = grpVi;
+        frame._groupLabelEn = grpEn;
+        screenMeshes.push(frame);
 
         createdScreens.push({
           mesh: q,
@@ -587,11 +724,40 @@
           hM,
           pitchMm: pitch,
           pos: [cx, cy, cz],
-          yawDeg: scr.yawDeg || 0
+          yawDeg: scr.yawDeg || 0,
+          cabinetModelId: scr.cabinetModelId || null,
+          processorModelId: scr.processorModelId || null,
+          rows500x1000: scr.rows500x1000,
+          rows500x500: scr.rows500x500,
+          shapeType: scr.shapeType || 'flat'
         });
       }
 
-      meshes.push(...buildTrussMeshes(widthM, depthM, heightM, maxTopY, tpl.truss));
+      let meshes = [];
+      if (typeof window.buildStageShellMeshes === 'function') {
+        meshes = window.buildStageShellMeshes({
+          widthM,
+          depthM,
+          heightM,
+          topY: Math.max(heightM + 4.5, maxTopY + 0.55),
+          trussMode: tpl.truss || 'portal',
+          includePA: true
+        });
+      } else {
+        meshes.push(window.boxMesh('Stage platform', [0, heightM / 2, 0], [widthM, heightM, depthM], [0.34, 0.37, 0.44, 1]));
+        for (let i = 0; i < 3; i++) {
+          meshes.push(
+            window.boxMesh(
+              'Front step ' + (i + 1),
+              [0, (heightM * (i + 1)) / 6, depthM / 2 + 0.55 - i * 0.18],
+              [Math.min(6, widthM * 0.38), heightM / 3, 0.9 - i * 0.18],
+              [0.42, 0.45, 0.52, 1]
+            )
+          );
+        }
+        meshes.push(...buildTrussMeshes(widthM, depthM, heightM, maxTopY, tpl.truss));
+      }
+      meshes.push(...screenMeshes);
       eng.setModel(meshes);
       eng.surfaces = [];
       let cursorX = 0;
@@ -605,6 +771,12 @@
         surf.frameMeshId = s.frameMesh?.id || null;
         surf.pos = s.pos;
         surf.yawDeg = s.yawDeg;
+        if (s.cabinetModelId) surf.cabinetModelId = s.cabinetModelId;
+        if (s.processorModelId) surf.processorModelId = s.processorModelId;
+        if (s.rows500x1000 !== undefined) surf.rows500x1000 = s.rows500x1000;
+        if (s.rows500x500 !== undefined) surf.rows500x500 = s.rows500x500;
+        if (s.shapeType) surf.shapeType = s.shapeType;
+        window.normalizeSurfaceHardware?.(surf);
         cursorX += s.wPx;
         maxH = Math.max(maxH, s.hPx);
       }
@@ -1172,10 +1344,16 @@
             const oldH = Number(target.physicalHeightM || target.physical?.height || target.physical?.[1]) || 2.5;
             if (cmd.pitchMm || cmd.pitch) target.pitchMm = Math.max(1.2, Math.min(16, Number(cmd.pitchMm || cmd.pitch)));
             if (cmd.widthM || cmd.width) target.physicalWidthM = Math.max(0.5, Number(cmd.widthM || cmd.width));
-            if (cmd.heightM || cmd.height) target.physicalHeightM = Math.max(0.5, Number(cmd.heightM || cmd.height));
+            if (cmd.heightM || cmd.height) {
+              target.physicalHeightM = Math.max(0.5, Number(cmd.heightM || cmd.height));
+              delete target.rows500x1000;
+              delete target.rows500x500;
+              delete target._mixedSpecHeightM;
+            }
             const nextW = Number(target.physicalWidthM) || oldW;
             const nextH = Number(target.physicalHeightM) || oldH;
             if (Array.isArray(target.physical)) target.physical = [nextW, nextH];
+            window.normalizeSurfaceHardware?.(target);
             const p = target.pitchMm || 3.91;
             if (target.physicalWidthM) target.w = computePixelDim(target.physicalWidthM, p);
             if (target.physicalHeightM) target.h = computePixelDim(target.physicalHeightM, p);
@@ -2200,7 +2378,14 @@
       };
     }
 
+    function normalizeSfxType18(rawType) {
+      const t = String(rawType || '').trim();
+      if (t === 'co2_cannon' || t === 'co2_cannon_jet') return 'co2_jet';
+      return t;
+    }
+
     function getSfxCatalogSpec18(type) {
+      const normType = normalizeSfxType18(type);
       const cat = (typeof globalThis !== 'undefined' && globalThis.SFX_CATALOG) || (typeof S !== 'undefined' && S?.SFX_CATALOG) || {};
       const fallback = {
         cold_spark_fountain: { id: 'cold_spark_fountain', plumeHeightM: 3.5, safetyRadiusM: 1.5, safetyHeightM: 4.5, indoorAllowed: true, consumableName: 'Ti-Zr Spark Granules (200g pouch)', consumableUnit: 'g', packSize: 200, burnRatePerMin: 25 },
@@ -2209,19 +2394,26 @@
         confetti_cannon: { id: 'confetti_cannon', plumeHeightM: 12.0, safetyRadiusM: 2.5, safetyHeightM: 10.0, indoorAllowed: true, consumableName: 'Flameproof Metallic Confetti (1kg bag)', consumableUnit: 'kg', packSize: 1, burnRatePerShot: 0.5 },
         haze_machine_pro: { id: 'haze_machine_pro', plumeHeightM: 2.0, safetyRadiusM: 0.5, safetyHeightM: 2.5, indoorAllowed: true, consumableName: 'Neutral Touring Haze Fluid (2.5L bottle)', consumableUnit: 'mL', packSize: 2500, burnRatePerHour: 120 }
       };
-      return cat[type] || fallback[type] || fallback.cold_spark_fountain;
+      return cat[normType] || fallback[normType] || fallback.cold_spark_fountain;
+    }
+
+    function extractStageSfxUnits18(explicitUnits) {
+      if (Array.isArray(explicitUnits)) return explicitUnits;
+      const items = (typeof S !== 'undefined' && Array.isArray(S?.stageAssets16?.items)) ? S.stageAssets16.items : [];
+      const known = new Set(['cold_spark_fountain', 'co2_jet', 'flame_jet', 'confetti_cannon', 'haze_machine_pro']);
+      return items.filter((it) => known.has(normalizeSfxType18(it?.type || it?.kind)));
     }
 
     function computeSfxSafetyZones(input = {}) {
       const venueEnv = String(input.venueEnv || 'outdoor').toLowerCase() === 'indoor' ? 'indoor' : 'outdoor';
       const ceilingHeightM = Math.max(2.5, +(input.ceilingHeightM || 12.0));
       const audienceLineZ = Number.isFinite(+input.audienceLineZ) ? +input.audienceLineZ : 4.0;
-      const units = Array.isArray(input.units) ? input.units : [];
+      const units = extractStageSfxUnits18(input.units ?? input.sfxUnits);
 
       const zones = [];
       const violations = [];
       units.forEach((u, idx) => {
-        const type = String(u?.type || u?.kind || 'cold_spark_fountain');
+        const type = normalizeSfxType18(u?.type || u?.kind || 'cold_spark_fountain') || 'cold_spark_fountain';
         const spec = getSfxCatalogSpec18(type);
         const pos = Array.isArray(u?.pos) ? u.pos : [u?.x ?? 0, u?.y ?? 0, u?.z ?? 0];
         const x = +(u?.x ?? pos[0]) || 0;
@@ -2284,13 +2476,13 @@
     }
 
     function computeSfxConsumablesBom(input = {}) {
-      const units = Array.isArray(input.units) ? input.units : [];
+      const units = extractStageSfxUnits18(input.units ?? input.sfxUnits);
       const cuesPerUnit = Math.max(1, +(input.cuesPerUnit ?? 6));
       const avgCueDurationSec = Math.max(1, +(input.avgCueDurationSec ?? 5));
       const showDurationHours = Math.max(0.5, +(input.showDurationHours ?? 2));
       const grouped = new Map();
       units.forEach((u) => {
-        const type = String(u?.type || u?.kind || '');
+        const type = normalizeSfxType18(u?.type || u?.kind || '');
         if (!type) return;
         grouped.set(type, (grouped.get(type) || 0) + 1);
       });
@@ -2478,24 +2670,35 @@
       let totalLedWeightKg = 0;
 
       const ledItems = surfaces.map((s, idx) => {
+        const normFn = typeof normalizeSurfaceHardware === 'function'
+          ? normalizeSurfaceHardware
+          : (typeof window !== 'undefined' && typeof window.normalizeSurfaceHardware === 'function'
+            ? window.normalizeSurfaceHardware
+            : S.spatial?.normalizeSurfaceHardware);
+        if (typeof normFn === 'function') normFn(s);
         const wiring = typeof planSurfaceWiring === 'function' ? planSurfaceWiring(s) : null;
         const spec = s.cabinetSpec;
-        const pitch = Number(s.pitchMm) || 3.91;
-        const wM = +(Number(s.physicalWidthM || s.physical?.[0] || s.physical?.width || (s.w * pitch) / 1000 || 4)).toFixed(2);
-        const hM = +(Number(s.physicalHeightM || s.physical?.[1] || s.physical?.height || (s.h * pitch) / 1000 || 2.5)).toFixed(2);
-        const cabWmm = Number(s.cabW) || 500;
-        const cabHmm = Number(s.cabH) || 500;
+        const pitch = Number(s.pitchMm || spec?.pitchMm) || 3.91;
+        const wM = +(Number(s.physicalWidthM || s.physical?.[0] || s.physical?.width || s.totalPhysicalWidthM || (s.w * pitch) / 1000 || 4)).toFixed(2);
+        const hM = +(Number(s.physicalHeightM || s.physical?.[1] || s.physical?.height || s.totalPhysicalHeightM || (s.h * pitch) / 1000 || 2.5)).toFixed(2);
+        const cabWmm = Number(s.cabW || spec?.widthMm) || 500;
+        const cabHmm = Number(s.cabH || spec?.heightMm) || 500;
         const cols500 = Math.max(1, Number(s.cabCols) || Math.ceil((wM * 1000 - 1) / cabWmm));
         const rows500 = Math.max(1, Number(s.cabRows) || Math.ceil((hM * 1000 - 1) / cabHmm));
         const virtualTiles = Array.isArray(s.virtualTiles) ? s.virtualTiles : [];
         const voidCount = virtualTiles.length;
-        const cabinets500 = Math.max(1, cols500 * rows500 - voidCount);
-        const cabAreaM2 = (cabWmm / 1000) * (cabHmm / 1000);
-        const areaM2 = +(cabinets500 * cabAreaM2).toFixed(2);
-        const pixels = wiring ? wiring.totalPixels : (Number(s.w) || 1920) * (Number(s.h) || 1080);
-        const maxKw = +(spec ? cabinets500 * spec.maxPowerW / 1000 : areaM2 * 0.65).toFixed(2);
-        const avgKw = +(spec ? cabinets500 * spec.avgPowerW / 1000 : areaM2 * 0.28).toFixed(2);
-        const weightKg = Math.round(cabinets500 * (spec?.weightKg || 7.8));
+        const totalGrid = Math.max(1, cols500 * rows500);
+        const activeCabinets = Math.max(1, totalGrid - voidCount);
+        const hasRowLayout = Array.isArray(s.rowLayout) && s.rowLayout.length > 0;
+        const fullAreaM2 = hasRowLayout
+          ? ((Number(s.totalPhysicalWidthM) || wM) * (Number(s.totalPhysicalHeightM) || hM))
+          : (totalGrid * (cabWmm / 1000) * (cabHmm / 1000));
+        const areaM2 = +(fullAreaM2 * (activeCabinets / totalGrid)).toFixed(2);
+        const cabinets500 = Math.max(activeCabinets, Math.round(areaM2 / 0.25));
+        const pixels = wiring ? wiring.totalPixels : (Number(s.totalResX) && Number(s.totalResY) ? s.totalResX * s.totalResY : (Number(s.w) || 1920) * (Number(s.h) || 1080));
+        const maxKw = +(Number(s.totalPowerMaxW) > 0 ? s.totalPowerMaxW / 1000 : (spec ? activeCabinets * spec.maxPowerW / 1000 : areaM2 * 0.65)).toFixed(2);
+        const avgKw = +(Number(s.totalPowerAvgW) > 0 ? s.totalPowerAvgW / 1000 : (spec ? activeCabinets * spec.avgPowerW / 1000 : areaM2 * 0.28)).toFixed(2);
+        const weightKg = Number(s.totalWeightKg) > 0 ? Math.round(s.totalWeightKg) : Math.round(activeCabinets * (spec?.weightKg || 7.8));
         const panelAngleDeg = Number(s.panelAngleDeg) || 0;
         const curveInfo = typeof S.spatial?.computeCurvedSpanMeters === 'function'
           ? S.spatial.computeCurvedSpanMeters(s)
@@ -2524,7 +2727,7 @@
           cabinets500,
           cabCols: cols500,
           cabRows: rows500,
-          activeCabinets: cabinets500,
+          activeCabinets,
           voidCount,
           virtualTiles,
           panelAngleDeg,
@@ -2782,7 +2985,9 @@
       const viewMode = opts?.viewMode === 'rear' ? 'rear' : 'front';
       const surfaceList = Array.isArray(opts?.surfaces) ? opts.surfaces : (Array.isArray(eng?.surfaces) ? eng.surfaces : []);
       const lightList = Array.isArray(opts?.lights) ? opts.lights : (Array.isArray(eng?.lights) ? eng.lights : []);
-      const sfxList = Array.isArray(opts?.sfxUnits) ? opts.sfxUnits : [];
+      const sfxList = typeof extractStageSfxUnits18 === 'function'
+        ? extractStageSfxUnits18(opts?.sfxUnits)
+        : (Array.isArray(opts?.sfxUnits) ? opts.sfxUnits : []);
       const entities = [];
 
       // 1. MẶT BẰNG (TOP VIEW — gốc tại (0, 0))
@@ -4494,12 +4699,5560 @@
         }
       }
       arrangeToolbar18();
+      installLmpToolbox18();
+      seedDefaultStageDemo18(true);
+    }
+
+    function buildGeometricLedMesh18(name, wM, hM, shapeType = 'flat', curveDegPerCab = 0) {
+      const makeM = window.makeMesh;
+      if (typeof makeM !== 'function' || (shapeType === 'flat' && !curveDegPerCab)) {
+        return window.quadMesh(
+          name,
+          [
+            [-wM / 2, hM / 2, 0],
+            [wM / 2, hM / 2, 0],
+            [wM / 2, -hM / 2, 0],
+            [-wM / 2, -hM / 2, 0]
+          ],
+          { color: [0.04, 0.05, 0.08, 1] }
+        );
+      }
+      const p = [];
+      const uv = [];
+      const pushQuad = (x0, z0, x1, z1, u0, u1) => {
+        const yT = hM / 2;
+        const yB = -hM / 2;
+        p.push(
+          x0, yT, z0, x1, yT, z1, x1, yB, z1,
+          x0, yT, z0, x1, yB, z1, x0, yB, z0
+        );
+        uv.push(
+          u0, 0, u1, 0, u1, 1,
+          u0, 0, u1, 1, u0, 1
+        );
+      };
+      if (shapeType === 'l_corner_90') {
+        const w1 = wM * 0.65;
+        const w2 = wM * 0.35;
+        const xCorner = w1 / 2;
+        pushQuad(-w1 / 2, 0, xCorner, 0, 0, 0.65);
+        pushQuad(xCorner, 0, xCorner, w2, 0.65, 1);
+      } else if (shapeType === 'cube') {
+        const side = Math.max(0.5, wM / 4);
+        const r = side / 2;
+        pushQuad(-r, r, r, r, 0, 0.25);
+        pushQuad(r, r, r, -r, 0.25, 0.5);
+        pushQuad(r, -r, -r, -r, 0.5, 0.75);
+        pushQuad(-r, -r, -r, r, 0.75, 1);
+      } else if (shapeType === 'cylinder_360') {
+        const segs = 20;
+        const rad = Math.max(0.4, wM / (Math.PI * 2));
+        for (let i = 0; i < segs; i++) {
+          const a0 = (i / segs) * Math.PI * 2;
+          const a1 = ((i + 1) / segs) * Math.PI * 2;
+          pushQuad(Math.sin(a0) * rad, Math.cos(a0) * rad, Math.sin(a1) * rad, Math.cos(a1) * rad, i / segs, (i + 1) / segs);
+        }
+      } else {
+        const segs = 12;
+        const totalDeg = clamp18((curveDegPerCab || -5) * Math.max(2, Math.round(wM * 2)), -120, 120);
+        const totalRad = (totalDeg * Math.PI) / 180;
+        const rad = Math.abs(totalRad) > 0.02 ? wM / Math.abs(totalRad) : 100;
+        const sign = totalRad < 0 ? 1 : -1;
+        for (let i = 0; i < segs; i++) {
+          const u0 = i / segs;
+          const u1 = (i + 1) / segs;
+          const a0 = (u0 - 0.5) * Math.abs(totalRad);
+          const a1 = (u1 - 0.5) * Math.abs(totalRad);
+          const x0 = Math.sin(a0) * rad;
+          const z0 = (1 - Math.cos(a0)) * rad * sign;
+          const x1 = Math.sin(a1) * rad;
+          const z1 = (1 - Math.cos(a1)) * rad * sign;
+          pushQuad(x0, z0, x1, z1, u0, u1);
+        }
+      }
+      return makeM(name, p, uv, null, { color: [0.04, 0.05, 0.08, 1] });
+    }
+
+    const STAGE_SETS18 = {
+      1: {
+        id: 1,
+        code: 'S1',
+        shortVi: 'S1 Live',
+        shortEn: 'S1 Live',
+        titleVi: 'Set 1 · Sân khấu Live Concert',
+        titleEn: 'Set 1 · Live Concert Stage',
+        shell: { widthM: 19, depthM: 7, heightM: 0.6, topY: 6.6, trussMode: 'portal', includePA: true },
+        rigStyle: 'concert',
+        screens: [
+          { name: 'LED_MAIN', pos: [0, 3.05, -2.1], wM: 9.0, hM: 4.5, yawDeg: 0, map: { x: 960, y: 160, w: 1920, h: 960, cabinetModelId: 'roe_bp2v2_500', processorModelId: 'brompton_sx40', rows500x1000: 4, rows500x500: 1, shapeType: 'flat' } },
+          { name: 'LED_WING_L', pos: [-6.25, 3.05, -1.65], wM: 2.5, hM: 4.5, yawDeg: 10, map: { x: 320, y: 160, w: 520, h: 960, cabinetModelId: 'absen_pl39_1000', processorModelId: 'novastar_vx1000', shapeType: 'flat' } },
+          { name: 'LED_WING_R', pos: [6.25, 3.05, -1.65], wM: 2.5, hM: 4.5, yawDeg: -10, map: { x: 3000, y: 160, w: 520, h: 960, cabinetModelId: 'absen_pl39_1000', processorModelId: 'novastar_vx1000', shapeType: 'flat' } }
+        ],
+        assets: [
+          { kind: 'stage_riser', pos: [0, 0.6, -0.7], yaw: 0 },
+          { kind: 'sub_stack', pos: [-7.4, 0, 2.2], yaw: 8 },
+          { kind: 'sub_stack', pos: [7.4, 0, 2.2], yaw: -8 },
+          { kind: 'foh_control_booth', pos: [0, 0, 7.6], yaw: 0 }
+        ],
+        cast: [
+          { type: 'singer', pos: [0, 0.6, 1.35], color: '#ff5d8f' },
+          { type: 'guitarist', pos: [-2.35, 0.6, 0.55], color: '#45d4ff' },
+          { type: 'keyboardist', pos: [2.35, 0.6, 0.55], color: '#ffc857' },
+          { type: 'drummer', pos: [0, 1.2, -0.7], color: '#9b7bff' }
+        ]
+      },
+      2: {
+        id: 2,
+        code: 'S2',
+        shortVi: 'S2 EDM',
+        shortEn: 'S2 EDM',
+        titleVi: 'Set 2 · Sân khấu Lễ hội EDM & DJ',
+        titleEn: 'Set 2 · EDM DJ Festival Stage',
+        shell: { widthM: 21, depthM: 7.5, heightM: 0.6, topY: 7.0, trussMode: 'box', includePA: true },
+        rigStyle: 'concert',
+        screens: [
+          { name: 'LED_MAIN', pos: [0, 3.05, -2.2], wM: 10.0, hM: 4.5, yawDeg: 0, map: { x: 960, y: 160, w: 1920, h: 960, cabinetModelId: 'roe_bp2v2_500', processorModelId: 'brompton_sx40', rows500x1000: 4, rows500x500: 1, shapeType: 'flat' } },
+          { name: 'LED_WING_L', pos: [-7.1, 3.05, -1.5], wM: 3.0, hM: 4.5, yawDeg: 16, map: { x: 240, y: 160, w: 600, h: 960, cabinetModelId: 'absen_pl39_1000', processorModelId: 'novastar_vx1000', shapeType: 'flat' } },
+          { name: 'LED_WING_R', pos: [7.1, 3.05, -1.5], wM: 3.0, hM: 4.5, yawDeg: -16, map: { x: 3000, y: 160, w: 600, h: 960, cabinetModelId: 'absen_pl39_1000', processorModelId: 'novastar_vx1000', shapeType: 'flat' } },
+          { name: 'LED_HEADER', pos: [0, 6.0, -1.8], wM: 10.0, hM: 1.0, yawDeg: 0, map: { x: 960, y: 0, w: 1920, h: 140, cabinetModelId: 'unilumin_ugm2_1000', processorModelId: 'novastar_vx1000', shapeType: 'flat' } }
+        ],
+        assets: [
+          { kind: 'dj_booth', pos: [0, 0.6, 0.45], yaw: 0 },
+          { kind: 'kinetic_ring', pos: [0, 1.8, 0.45], yaw: 0 },
+          { kind: 'sub_stack', pos: [-8.0, 0, 2.4], yaw: 10 },
+          { kind: 'sub_stack', pos: [8.0, 0, 2.4], yaw: -10 },
+          { kind: 'co2_jet', pos: [-3.6, 0.6, 2.5], yaw: 0 },
+          { kind: 'co2_jet', pos: [-1.4, 0.6, 2.5], yaw: 0 },
+          { kind: 'co2_jet', pos: [1.4, 0.6, 2.5], yaw: 0 },
+          { kind: 'co2_jet', pos: [3.6, 0.6, 2.5], yaw: 0 }
+        ],
+        cast: [
+          { type: 'dj', pos: [0, 0.6, -0.15], color: '#22d3ee' },
+          { type: 'leddancer', pos: [-2.8, 0.6, 1.25], color: '#38bdf8' },
+          { type: 'leddancer', pos: [2.8, 0.6, 1.25], color: '#a855f7' }
+        ]
+      },
+      3: {
+        id: 3,
+        code: 'S3',
+        shortVi: 'S3 Conf',
+        shortEn: 'S3 Conf',
+        titleVi: 'Set 3 · Sân khấu Hội nghị & Keynote',
+        titleEn: 'Set 3 · Conference & Keynote Stage',
+        shell: { widthM: 17, depthM: 6.2, heightM: 0.55, topY: 6.2, trussMode: 'portal', includePA: true },
+        rigStyle: 'cool',
+        screens: [
+          { name: 'LED_MAIN', pos: [0, 2.55, -1.85], wM: 10.0, hM: 3.5, yawDeg: 0, map: { x: 820, y: 180, w: 2200, h: 780, cabinetModelId: 'roe_bp2v2_500', processorModelId: 'brompton_sx40', rows500x1000: 3, rows500x500: 1, shapeType: 'flat' } },
+          { name: 'LED_WING_L', pos: [-6.3, 2.55, -1.35], wM: 2.0, hM: 3.5, yawDeg: 14, map: { x: 240, y: 180, w: 480, h: 780, cabinetModelId: 'absen_pl39_1000', processorModelId: 'novastar_vx1000', shapeType: 'flat' } },
+          { name: 'LED_WING_R', pos: [6.3, 2.55, -1.35], wM: 2.0, hM: 3.5, yawDeg: -14, map: { x: 3120, y: 180, w: 480, h: 780, cabinetModelId: 'absen_pl39_1000', processorModelId: 'novastar_vx1000', shapeType: 'flat' } }
+        ],
+        assets: [
+          { kind: 'vip_podium', pos: [2.8, 0.55, 1.15], yaw: -12 },
+          { kind: 'conference_ibm_table', pos: [-3.2, 0, 5.2], yaw: 0 },
+          { kind: 'conference_ibm_table', pos: [3.2, 0, 5.2], yaw: 0 },
+          { kind: 'decor_palm_planter', pos: [-6.6, 0.55, 1.5], yaw: 0 },
+          { kind: 'decor_palm_planter', pos: [6.6, 0.55, 1.5], yaw: 0 }
+        ],
+        cast: [
+          { type: 'mc', pos: [0.4, 0.55, 1.2], color: '#38bdf8' }
+        ]
+      },
+      4: {
+        id: 4,
+        code: 'S4',
+        shortVi: 'S4 Gala',
+        shortEn: 'S4 Gala',
+        titleVi: 'Set 4 · Sân khấu Gala Dinner & Trao giải',
+        titleEn: 'Set 4 · Gala Dinner & Awards Stage',
+        shell: { widthM: 18, depthM: 6.8, heightM: 0.6, topY: 6.5, trussMode: 'portal', includePA: true },
+        rigStyle: 'warm',
+        screens: [
+          { name: 'LED_MAIN', pos: [0, 2.8, -1.9], wM: 9.0, hM: 4.0, yawDeg: 0, shapeType: 'flat', curveDegPerCab: -4, map: { x: 960, y: 160, w: 1920, h: 880, cabinetModelId: 'roe_cb5_1000', processorModelId: 'brompton_sx40', shapeType: 'flat', curveDegPerCab: -4 } },
+          { name: 'LED_WING_L', pos: [-6.0, 2.8, -1.4], wM: 2.0, hM: 4.0, yawDeg: 16, map: { x: 320, y: 160, w: 480, h: 880, cabinetModelId: 'absen_pl39_1000', processorModelId: 'novastar_vx1000', shapeType: 'flat' } },
+          { name: 'LED_WING_R', pos: [6.0, 2.8, -1.4], wM: 2.0, hM: 4.0, yawDeg: -16, map: { x: 3040, y: 160, w: 480, h: 880, cabinetModelId: 'absen_pl39_1000', processorModelId: 'novastar_vx1000', shapeType: 'flat' } }
+        ],
+        assets: [
+          { kind: 'catwalk_runway', pos: [0, 0, 4.8], yaw: 0 },
+          { kind: 'vip_podium', pos: [-3.2, 0.6, 1.2], yaw: 12 },
+          { kind: 'gala_round_table', pos: [-4.4, 0, 6.2], yaw: 0 },
+          { kind: 'gala_round_table', pos: [4.4, 0, 6.2], yaw: 0 },
+          { kind: 'cold_spark_fountain', pos: [-4.2, 0.6, 2.4], yaw: 0 },
+          { kind: 'cold_spark_fountain', pos: [-1.8, 0.6, 2.4], yaw: 0 },
+          { kind: 'cold_spark_fountain', pos: [1.8, 0.6, 2.4], yaw: 0 },
+          { kind: 'cold_spark_fountain', pos: [4.2, 0.6, 2.4], yaw: 0 }
+        ],
+        cast: [
+          { type: 'mc', pos: [0, 0.6, 1.4], color: '#fbbf24' },
+          { type: 'violinist', pos: [-1.8, 0.6, 0.5], color: '#f472b6' },
+          { type: 'saxophonist', pos: [1.8, 0.6, 0.5], color: '#60a5fa' }
+        ]
+      },
+      5: {
+        id: 5,
+        code: 'S5',
+        shortVi: 'S5 Open',
+        shortEn: 'S5 Open',
+        titleVi: 'Set 5 · Sân khấu Lễ Khai mạc & Nghệ thuật',
+        titleEn: 'Set 5 · Grand Opening & Cultural Stage',
+        shell: { widthM: 18, depthM: 6.8, heightM: 0.6, topY: 6.6, trussMode: 'portal', includePA: true },
+        rigStyle: 'warm',
+        screens: [
+          { name: 'LED_MAIN', pos: [0, 3.05, -2.1], wM: 8.5, hM: 4.5, yawDeg: 0, map: { x: 960, y: 160, w: 1920, h: 960, cabinetModelId: 'roe_bp2v2_500', processorModelId: 'brompton_sx40', rows500x1000: 4, rows500x500: 1, shapeType: 'flat' } },
+          { name: 'LED_WING_L', pos: [-6.0, 3.05, -1.6], wM: 2.5, hM: 4.5, yawDeg: 14, map: { x: 320, y: 160, w: 520, h: 960, cabinetModelId: 'absen_pl39_1000', processorModelId: 'novastar_vx1000', shapeType: 'flat' } },
+          { name: 'LED_WING_R', pos: [6.0, 3.05, -1.6], wM: 2.5, hM: 4.5, yawDeg: -14, map: { x: 3000, y: 160, w: 520, h: 960, cabinetModelId: 'absen_pl39_1000', processorModelId: 'novastar_vx1000', shapeType: 'flat' } }
+        ],
+        assets: [
+          { kind: 'led_arch_gate', pos: [0, 0.6, -0.4], yaw: 0 },
+          { kind: 'vip_podium', pos: [0, 0.6, 1.55], yaw: 0 },
+          { kind: 'totem_led', pos: [-4.4, 0.6, 0.6], yaw: 12 },
+          { kind: 'totem_led', pos: [4.4, 0.6, 0.6], yaw: -12 },
+          { kind: 'cold_spark_fountain', pos: [-2.8, 0.6, 2.4], yaw: 0 },
+          { kind: 'cold_spark_fountain', pos: [2.8, 0.6, 2.4], yaw: 0 }
+        ],
+        cast: [
+          { type: 'waterdrummer', pos: [-2.1, 0.6, 0.8], color: '#38bdf8' },
+          { type: 'waterdrummer', pos: [2.1, 0.6, 0.8], color: '#38bdf8' },
+          { type: 'fandancer', pos: [-3.5, 0.6, 1.4], color: '#fb7185' },
+          { type: 'fandancer', pos: [3.5, 0.6, 1.4], color: '#fb7185' }
+        ]
+      },
+      6: {
+        id: 6,
+        code: 'S6',
+        shortVi: 'S6 Arena',
+        shortEn: 'S6 Arena',
+        titleVi: 'Set 6 · Sân khấu Đại nhạc hội Arena Tour',
+        titleEn: 'Set 6 · Arena Tour 360° Stage',
+        shell: { widthM: 22, depthM: 8.0, heightM: 0.65, topY: 7.4, trussMode: 'box', includePA: true },
+        rigStyle: 'concert',
+        screens: [
+          { name: 'LED_MAIN', pos: [0, 3.1, -2.4], wM: 10.0, hM: 4.5, yawDeg: 0, map: { x: 960, y: 160, w: 1920, h: 960, cabinetModelId: 'roe_bp2v2_500', processorModelId: 'brompton_sx40', rows500x1000: 4, rows500x500: 1, shapeType: 'flat' } },
+          { name: 'LED_WING_L', pos: [-7.3, 3.1, -1.7], wM: 3.0, hM: 4.5, yawDeg: 18, map: { x: 240, y: 160, w: 600, h: 960, cabinetModelId: 'absen_pl39_1000', processorModelId: 'novastar_vx1000', shapeType: 'flat' } },
+          { name: 'LED_WING_R', pos: [7.3, 3.1, -1.7], wM: 3.0, hM: 4.5, yawDeg: -18, map: { x: 3000, y: 160, w: 600, h: 960, cabinetModelId: 'absen_pl39_1000', processorModelId: 'novastar_vx1000', shapeType: 'flat' } },
+          { name: 'LED_CUBE_CENTER', pos: [0, 5.4, 0.6], wM: 6.0, hM: 1.5, yawDeg: 25, shapeType: 'cube', map: { x: 1280, y: 0, w: 1280, h: 150, cabinetModelId: 'absen_pl25_500', processorModelId: 'brompton_s8', shapeType: 'cube' } }
+        ],
+        assets: [
+          { kind: 'catwalk_runway', pos: [0, 0, 5.4], yaw: 0 },
+          { kind: 'stage_riser', pos: [0, 0.65, -0.9], yaw: 0 },
+          { kind: 'dj_booth', pos: [0, 1.25, -0.9], yaw: 0 },
+          { kind: 'sub_stack', pos: [-8.4, 0, 2.6], yaw: 8 },
+          { kind: 'sub_stack', pos: [8.4, 0, 2.6], yaw: -8 },
+          { kind: 'foh_control_booth', pos: [0, 0, 9.2], yaw: 0 },
+          { kind: 'flame_jet', pos: [-5.2, 0.65, 2.6], yaw: 0 },
+          { kind: 'flame_jet', pos: [-2.2, 0.65, 2.6], yaw: 0 },
+          { kind: 'flame_jet', pos: [2.2, 0.65, 2.6], yaw: 0 },
+          { kind: 'flame_jet', pos: [5.2, 0.65, 2.6], yaw: 0 }
+        ],
+        cast: [
+          { type: 'rapper', pos: [0, 0.65, 1.6], color: '#f97316' },
+          { type: 'dj', pos: [0, 1.25, -1.35], color: '#22d3ee' },
+          { type: 'laserdancer', pos: [-3.0, 0.65, 1.1], color: '#10b981' },
+          { type: 'laserdancer', pos: [3.0, 0.65, 1.1], color: '#10b981' }
+        ]
+      }
+    };
+
+    function populateSetAssetsAndCast18(setCfg) {
+      const sa = S.stageAssets16;
+      const st = S.state || window.state;
+      if (typeof sa?.clearAll === 'function' && typeof sa?.syncItemMeshes === 'function') {
+        sa.clearAll();
+        const cat = sa.catalog || {};
+        const counts = {};
+        (setCfg.assets || []).forEach((seed, idx) => {
+          const spec = cat[seed.kind];
+          if (!spec) return;
+          counts[seed.kind] = (counts[seed.kind] || 0) + 1;
+          const item = {
+            id: `AST16_SET${setCfg.id}_${idx + 1}`,
+            kind: seed.kind,
+            name: `${spec.name} #${counts[seed.kind]}`,
+            pos: seed.pos.slice(),
+            yaw: seed.yaw || 0,
+            scale: seed.scale || 1,
+            color: seed.color || spec.color || '#38bdf8'
+          };
+          sa.items.push(item);
+          sa.syncItemMeshes(item);
+        });
+      }
+      const seqObj = S.seq || window.seq;
+      const dirObj = S.director || window.director;
+      if (seqObj && Array.isArray(setCfg.cast) && typeof S.addPerson === 'function') {
+        const wasLoading = dirObj ? dirObj.loading : false;
+        if (dirObj) dirObj.loading = true;
+        seqObj.people = [];
+        if (dirObj && Array.isArray(dirObj.acts)) dirObj.acts = [];
+        setCfg.cast.forEach((c) => {
+          S.addPerson(c.type, { pos: c.pos.slice(), color: c.color });
+        });
+        if (dirObj) {
+          dirObj.loading = wasLoading;
+          dirObj.selection = null;
+          dirObj.mode = 'navigate';
+        }
+        S.rebuildCast?.();
+        S.renderCastManager?.();
+      }
+    }
+
+    function applyStageSet18(setIndex = 1, opts = {}) {
+      const idx = clamp18(Math.round(+setIndex) || 1, 1, 6);
+      const setCfg = STAGE_SETS18[idx] || STAGE_SETS18[1];
+      const eng = S.engine || getEngine();
+      const st = S.state || window.state;
+      if (!eng || typeof window.createSurface !== 'function' || typeof window.M?.mm !== 'function') {
+        return false;
+      }
+      return singleUndo18(() => {
+      if (opts.recordUndo !== false) window.checkpoint?.();
+      if (S.stageLift?.items) S.stageLift.items.length = 0;
+
+      const shellMeshes = typeof window.buildStageShellMeshes === 'function'
+        ? window.buildStageShellMeshes(setCfg.shell)
+        : [];
+      const screens = [];
+      for (const scr of setCfg.screens) {
+        const shape = scr.shapeType || scr.map?.shapeType || 'flat';
+        const curve = scr.curveDegPerCab ?? scr.map?.curveDegPerCab ?? 0;
+        const q = (shape !== 'flat' || curve)
+          ? buildGeometricLedMesh18(scr.name, scr.wM, scr.hM, shape, curve)
+          : window.quadMesh(
+              scr.name,
+              [[-scr.wM / 2, scr.hM / 2, 0], [scr.wM / 2, scr.hM / 2, 0], [scr.wM / 2, -scr.hM / 2, 0], [-scr.wM / 2, -scr.hM / 2, 0]],
+              { color: [0.04, 0.05, 0.08, 1] }
+            );
+        const ry = ((scr.yawDeg || 0) * Math.PI) / 180;
+        const mat = window.M.mm(window.M.translate(scr.pos), window.M.rotate([0, 1, 0], ry));
+        const ledGrp = 'led_asm_' + scr.name;
+        const grpVi = `Cụm Màn LED: ${scr.name}`;
+        const grpEn = `LED Screen Assembly: ${scr.name}`;
+        window.transformMesh(q, mat);
+        q._smartGroupId = ledGrp;
+        q.nodePath = ledGrp + '/panel';
+        q._groupLabelVi = grpVi;
+        q._groupLabelEn = grpEn;
+        shellMeshes.push(q);
+        if (shape === 'flat' && !curve && typeof window.boxMesh === 'function') {
+          const frame = window.boxMesh(scr.name.replace('LED', 'Frame'), [0, 0, -0.10], [scr.wM + 0.12, scr.hM + 0.12, 0.18], [0.12, 0.13, 0.17, 1]);
+          window.transformMesh(frame, mat);
+          frame._smartGroupId = ledGrp;
+          frame.nodePath = ledGrp + '/frame';
+          frame._groupLabelVi = grpVi;
+          frame._groupLabelEn = grpEn;
+          shellMeshes.push(frame);
+        }
+        screens.push({ mesh: q, cfg: scr });
+      }
+
+      eng.setModel(shellMeshes);
+      eng.surfaces = [];
+      eng.master = { width: 3840, height: 1280 };
+      for (const s of screens) {
+        const map = { ...(s.cfg.map || {}) };
+        const surf = window.createSurface(s.mesh, s.cfg.name, map);
+        if (surf) {
+          if (map.cabinetModelId) surf.cabinetModelId = map.cabinetModelId;
+          if (map.processorModelId) surf.processorModelId = map.processorModelId;
+          if (map.rows500x1000 !== undefined) surf.rows500x1000 = map.rows500x1000;
+          if (map.rows500x500 !== undefined) surf.rows500x500 = map.rows500x500;
+          if (map.shapeType) surf.shapeType = map.shapeType;
+          if (map.curveDegPerCab !== undefined) surf.curveDegPerCab = map.curveDegPerCab;
+          surf.physicalWidthM = s.cfg.wM;
+          surf.physicalHeightM = s.cfg.hM;
+          surf.physical = [s.cfg.wM, s.cfg.hM];
+          surf.pos = s.cfg.pos.slice();
+          surf.yawDeg = s.cfg.yawDeg || 0;
+          window.normalizeSurfaceHardware?.(surf);
+        }
+      }
+      eng.selected = eng.surfaces[0]?.id || null;
+      if (typeof window.rigPreset === 'function') {
+        window.rigPreset(setCfg.rigStyle || 'concert', false);
+      }
+      populateSetAssetsAndCast18(setCfg);
+      if (st) {
+        st.activeStageSet18 = idx;
+        st.selectedMesh = null;
+        st.hit = null;
+      }
+      if (eng) eng._stageBatchDirty = true;
+      window.renderUI?.();
+      renderLmpToolbox18();
+      renderLmpLiveShowDock18();
+      if (opts.silent !== true) {
+        window.toast?.(tr18(`Đã chuyển sang ${setCfg.titleVi}`, `Switched to ${setCfg.titleEn}`));
+      }
+      return true;
+      });
+    }
+
+    function seedDefaultStageDemo18(onlyIfEmpty = false) {
+      const sa = S.stageAssets16;
+      const st = S.state || window.state;
+      if (typeof sa?.syncItemMeshes !== 'function' || typeof sa?.clearAll !== 'function') return false;
+      if (onlyIfEmpty && (!st?.model?.demo || (Array.isArray(sa.items) && sa.items.length > 0))) return false;
+      populateSetAssetsAndCast18(STAGE_SETS18[1]);
+      if (st) st.activeStageSet18 = 1;
+      if (S.engine) S.engine._stageBatchDirty = true;
+      S.renderLists?.();
+      renderLmpToolbox18();
+      return true;
+    }
+
+    if (typeof window.demo === 'function' && !window.demo._lmpSeeded18) {
+      const priorDemo18 = window.demo;
+      const wrappedDemo18 = function (...args) {
+        const res = priorDemo18.apply(this, args);
+        seedDefaultStageDemo18(false);
+        if (window.state) {
+          window.state.history = [];
+          window.state.redo = [];
+          window.historyButtons?.();
+        }
+        return res;
+      };
+      wrappedDemo18._lmpSeeded18 = true;
+      window.demo = wrappedDemo18;
+      S.demo = wrappedDemo18;
+    }
+
+    let lmpActiveTab18 = 'structure';
+    let lmpCollapsed18 = true;
+
+    function addToolboxStructure18(kind) {
+      const sa = S.stageAssets16;
+      if (typeof sa?.addCatalogItem !== 'function') return null;
+      const deckH = Math.max(0.4, (S.engine?.stageBounds?.min?.[1] || 0) + 0.5);
+      return singleUndo18(() => {
+        if (kind === 'platform') return sa.addCatalogItem('stage_riser', [0, deckH, 0.8]);
+        if (kind === 'layher') return sa.addCatalogItem('truss_tower', [-8.4, 0, -1.5]);
+        if (kind === 'stairs') return sa.addCatalogItem('stage_stairs', [0, 0, 3.6]);
+        if (kind === 'straight_truss') return sa.addCatalogItem('truss_arch', [0, deckH, -1.2]);
+        if (kind === 'vertical_truss') return sa.addCatalogItem('truss_tower', [5.8, deckH, -1.2]);
+        if (kind === 'circular_truss') return sa.addCatalogItem('kinetic_ring', [0, deckH + 1.4, 0.4]);
+        if (kind === 'line_array') {
+          sa.addCatalogItem('line_array', [-7.2, deckH, 0.9]);
+          return sa.addCatalogItem('line_array', [7.2, deckH, 0.9]);
+        }
+        if (kind === 'sub_stack') {
+          sa.addCatalogItem('sub_stack', [-7.4, 0, 2.2]);
+          return sa.addCatalogItem('sub_stack', [7.4, 0, 2.2]);
+        }
+        if (kind === 'dj_booth') return sa.addCatalogItem('dj_booth', [0, deckH, 0.5]);
+        if (kind === 'foh_booth') return sa.addCatalogItem('foh_control_booth', [0, 0, 7.6]);
+        if (kind === 'podium') return sa.addCatalogItem('vip_podium', [0, deckH, 1.4]);
+        if (kind === 'ibm_table') return sa.addCatalogItem('conference_ibm_table', [0, 0, 5.2]);
+        if (kind === 'gala_table') return sa.addCatalogItem('gala_round_table', [0, 0, 5.8]);
+        if (kind === 'live_band') {
+          const riser = sa.addCatalogItem('stage_riser', [0, deckH, -0.4]);
+          if (typeof S.addAct8 === 'function') S.addAct8('live_band', { pos: [0, deckH + 0.38, -0.4] });
+          return riser;
+        }
+        return sa.addCatalogItem(kind, [0, deckH, 0.5]);
+      });
+    }
+
+    function addToolboxLighting18(kind) {
+      const eng = S.engine;
+      if (!eng) return [];
+      window.checkpoint?.();
+      if (!Array.isArray(eng.lights)) eng.lights = [];
+      const w = Math.max(8, eng.size?.width || 16);
+      const h = Math.max(5, eng.size?.height || 7);
+      const d = Math.max(5, eng.size?.depth || 7);
+      const presets = {
+        beams: { label: 'Beam 230 7R', type: 'beam', model: 'Robe Pointe 280W', oflProfileId: 'vn-stage/beam-230-7r', count: 4, weightKg: 15, powerW: 380, beamAngleDeg: 5, angle: 7, flux: 18500, ch: 16, color: '#38bdf8', y: +(h * 0.92).toFixed(2), z: +(-d * 0.2).toFixed(2), ty: 0.25, tz: +(d * 0.55).toFixed(2), sweep: true, fx: 'steady' },
+        spot: { label: 'Spot Profile', type: 'spot', model: 'Moving Head Spot 350W', oflProfileId: 'generic/moving-head-spot-350w', count: 4, weightKg: 21, powerW: 420, beamAngleDeg: 14, angle: 12, flux: 24000, ch: 20, color: '#a855f7', y: +(h * 0.88).toFixed(2), z: +(-d * 0.12).toFixed(2), ty: 0.4, tz: +(d * 0.45).toFixed(2), sweep: true, fx: 'steady' },
+        wash: { label: 'Wash Zoom', type: 'wash', model: 'Martin MAC Aura XB', oflProfileId: 'vn-stage/wash-zoom-36x18', count: 4, weightKg: 19, powerW: 450, beamAngleDeg: 28, angle: 22, flux: 22000, ch: 16, color: '#ec4899', y: +(h * 0.9).toFixed(2), z: +(-d * 0.15).toFixed(2), ty: 0.3, tz: +(d * 0.35).toFixed(2), sweep: false, fx: 'steady' },
+        par: { label: 'PAR LED 54x3W', type: 'par', model: 'PAR LED 54x3W RGBW', oflProfileId: 'vn-stage/par-led-54x3w', count: 6, weightKg: 4.5, powerW: 180, beamAngleDeg: 25, angle: 20, flux: 9500, ch: 8, color: '#22c55e', y: +(h * 0.85).toFixed(2), z: +(-d * 0.08).toFixed(2), ty: 0.2, tz: +(d * 0.25).toFixed(2), sweep: false, fx: 'steady' },
+        barra: { label: 'Barra LED 1m', type: 'bar', model: 'Katana LED Matrix Bar 1m', oflProfileId: 'vn-stage/katana-led-bar-1m', count: 4, weightKg: 8.5, powerW: 280, beamAngleDeg: 12, angle: 12, flux: 14000, ch: 24, color: '#00f5d4', y: 0.58, z: 2.45, ty: 4.6, tz: 0.4, sweep: false, fx: 'pulse' },
+        blinders: { label: 'Blinder 4-Lite', type: 'blinder', model: 'Audience Blinder 4-Lite', oflProfileId: 'vn-stage/cob-blinder-4x100w', count: 4, weightKg: 9.5, powerW: 400, beamAngleDeg: 45, angle: 28, flux: 32000, ch: 8, color: '#fbbf24', y: +(h * 0.91).toFixed(2), z: +(d * 0.05).toFixed(2), ty: 0.8, tz: +(d * 0.75).toFixed(2), sweep: false, fx: 'steady' },
+        strobe: { label: 'Atomic Strobe', type: 'strobe', model: 'Atomic 3000 DMX Strobe', oflProfileId: 'vn-stage/atomic-strobe-3000w', count: 4, weightKg: 7.5, powerW: 1500, beamAngleDeg: 50, angle: 30, flux: 45000, ch: 6, color: '#ffffff', y: +(h * 0.89).toFixed(2), z: +(-d * 0.18).toFixed(2), ty: 0.5, tz: +(d * 0.5).toFixed(2), sweep: false, fx: 'strobe' },
+        fresnel: { label: 'Fresnel 200W', type: 'fresnel', model: 'Theater Fresnel 200W Warm', oflProfileId: 'vn-stage/par-led-54x3w', count: 4, weightKg: 6.8, powerW: 220, beamAngleDeg: 35, angle: 24, flux: 16000, ch: 4, color: '#fde68a', y: +(h * 0.94).toFixed(2), z: +(d * 0.28).toFixed(2), ty: 1.2, tz: 0.4, sweep: false, fx: 'steady' },
+        lasers: { label: 'ILDA Laser 10W', type: 'laser', model: 'KVANT Clubmax 10W ILDA', oflProfileId: 'vn-stage/beam-230-7r', count: 2, weightKg: 12, powerW: 320, beamAngleDeg: 4, angle: 5, flux: 26000, ch: 16, color: '#10b981', y: 2.2, z: -1.6, ty: 1.6, tz: 4.8, sweep: true, fx: 'pulse' }
+      };
+      const cfg = presets[kind] || presets.beams;
+      let lastU = 1;
+      let nextAddr = 1;
+      eng.lights.forEach((l) => {
+        const u = Math.max(1, +l.dmxUniverse || 1);
+        const endA = (+l.dmxAddress || 1) + (+l.dmxChannels || 16);
+        if (u > lastU || (u === lastU && endA > nextAddr)) {
+          lastU = u;
+          nextAddr = endA;
+        }
+      });
+      if (nextAddr + cfg.ch - 1 > 512) {
+        lastU += 1;
+        nextAddr = 1;
+      }
+      const autoRigFn = S.autoRigFixturesOnTruss || window.autoRigFixturesOnTruss;
+      const autoRig = typeof autoRigFn === 'function'
+        ? autoRigFn({
+            trussId: cfg.y < 1.2 ? 'STAGE_DECK_FRONT' : 'TRUSS_MAIN',
+            spanM: Math.max(6, +(w * 0.78).toFixed(2)),
+            centerX: 0,
+            trimHeightM: cfg.y,
+            z: cfg.z,
+            fixtureCount: cfg.count,
+            fixtureType: cfg.type,
+            fixtureModel: cfg.model,
+            oflProfileId: cfg.oflProfileId,
+            fixtureWeightKg: cfg.weightKg,
+            fixturePowerW: cfg.powerW,
+            startUniverse: lastU,
+            startAddress: nextAddr,
+            dmxChannels: cfg.ch
+          })
+        : {
+            fixtures: Array.from({ length: cfg.count }, (_, idx) => ({
+              x: +(((idx / Math.max(1, cfg.count - 1)) - 0.5) * Math.max(4, w * 0.65)).toFixed(2),
+              dmxUniverse: lastU,
+              dmxAddress: nextAddr + idx * cfg.ch,
+              dmxChannels: cfg.ch,
+              trussId: cfg.y < 1.2 ? 'STAGE_DECK_FRONT' : 'TRUSS_MAIN'
+            }))
+          };
+      const baseIdx = eng.lights.length;
+      const added = autoRig.fixtures.map((f, i) => ({
+        id: `light_${Date.now().toString(36)}_${baseIdx + i}`,
+        name: `${cfg.label} #${baseIdx + i + 1}`,
+        type: cfg.type,
+        model: cfg.model,
+        oflModel: cfg.model,
+        oflProfileId: cfg.oflProfileId,
+        weightKg: cfg.weightKg,
+        powerW: cfg.powerW,
+        beamAngleDeg: cfg.beamAngleDeg,
+        luminousFluxLm: cfg.flux,
+        dmxUniverse: f.dmxUniverse,
+        dmxAddress: f.dmxAddress,
+        dmxChannels: f.dmxChannels,
+        trussId: f.trussId,
+        pos: [f.x, cfg.y, cfg.z],
+        target: [+(f.x * 0.85).toFixed(2), cfg.ty, cfg.tz],
+        color: cfg.color,
+        power: 4.5,
+        angle: cfg.angle,
+        enabled: true,
+        sweep: cfg.sweep,
+        speed: 0.4,
+        phase: i * 0.45,
+        fx: cfg.fx,
+        fxDepth: cfg.fx === 'strobe' ? 0.95 : 0.55,
+        fxSpeed: cfg.fx === 'strobe' ? 8.5 : 2.2,
+        boost: 1.15
+      }));
+      eng.lights.push(...added);
+      if (window.state && added[0]) window.state.selectedLight = added[0].id;
+      if (kind === 'lasers' && S.laserShow?.enable) {
+        try { S.laserShow.enable(true); } catch { /* ignore */ }
+      }
+      eng.rebuildFixtures?.();
+      window.renderUI?.();
+      renderLmpToolbox18();
+      window.toast?.(tr18(`Đã thêm ${added.length} đèn ${cfg.label} (Auto-Rig DMX U${lastU}).`, `Added ${added.length} ${cfg.label} fixtures (Auto-Rig DMX U${lastU}).`));
+      return added;
+    }
+
+    // =========================================================================
+    // V18.4 LEDMAPPER.PRO LIVE SHOW ENGINE (6 SHOW PRESETS + LASER + 3D PYRO/SFX)
+    // =========================================================================
+    const LMP_BEAM_PALETTES18 = [
+      ['#00f0ff', '#ff007f', '#ffe600', '#0055ff'],
+      ['#01ffa0', '#0055ff', '#00f0ff', '#aa00ff'],
+      ['#ff2a00', '#ffaa00', '#ffe600', '#ff0055'],
+      ['#ff00aa', '#7700ff', '#00e5ff', '#01ffa0'],
+      ['#ffffff', '#0066ff', '#00f0ff', '#ffaa00'],
+      ['#ff0055', '#ffe600', '#01ffa0', '#00d4ff', '#aa00ff']
+    ];
+    const LMP_WASH_PALETTES18 = [
+      ['#ff007f', '#00f0ff', '#7700ff', '#ffaa00'],
+      ['#0055ff', '#01ffa0', '#aa00ff', '#00e5ff'],
+      ['#ff5500', '#ff0055', '#ffcc00', '#ff2a00'],
+      ['#7700ff', '#00e5ff', '#ff00aa', '#0055ff'],
+      ['#0066ff', '#ffaa00', '#ffffff', '#00f0ff'],
+      ['#01ffa0', '#00d4ff', '#aa00ff', '#ff0055', '#ffe600']
+    ];
+    const LMP_LASER_PALETTES18 = ['#00ff66', '#01ffa0', '#00f0ff', '#ff00aa', '#7700ff', '#ffe600'];
+    const LMP_FIREWORK_COLORS18 = ['#ff0055', '#00f0ff', '#ffe600', '#01ffa0', '#aa00ff', '#ff6a00', '#ffffff'];
+    const nowMs18 = () => (typeof performance !== 'undefined' && typeof performance.now === 'function' ? performance.now() : Date.now());
+    const clamp18 = (v, min, max) => Math.min(max, Math.max(min, Number.isFinite(+v) ? +v : min));
+
+    const liveShow18 = {
+      running: false,
+      activeShow: 1,
+      effectiveShow: 1,
+      prevShow: 1,
+      transitionFromShow: 1,
+      transitionStartSec: 0,
+      transitionAlpha: 1,
+      aiAuto: false,
+      multicolor: true,
+      speed: 2.0,
+      lightsOn: true,
+      blindersOn: false,
+      laserOn: true,
+      sfxOn: true,
+      strobe: false,
+      blackout: false,
+      parChaseMode: 'auto',
+      fanLaw: 'auto',
+      beamFanLaw: 'auto',
+      laserPattern: 'auto',
+      autoCam: false,
+      autoCamPausedUntilMs: 0,
+      savedCamera: null,
+      dockHidden: true,
+      dockCollapsed: true,
+      motorPhasePan: 0,
+      motorPhaseTilt: 0,
+      showElapsedSec: 0,
+      lastTickMs: 0,
+      sfxPhase: 0,
+      sparkUntilMs: 0,
+      co2UntilMs: 0,
+      flameUntilMs: 0,
+      skyFlashUntilMs: 0,
+      skyFlashColor: '#ffe600',
+      lastAerialAutoMs: 0,
+      crowdBouncePhase: 0,
+      crowdBounceOffsetM: 0,
+      _crowdSmoothEnergy: 0,
+      _screenHaloPools: [],
+      _floorProjections: [],
+      _deckGlints: [],
+      _laserRenderData: [],
+      _laserPrevTargets18: new Map(),
+      _sfxStageGlow: { active: false, pos: [0, 1.2, 2.2], color: '#ff9900', power: 0 },
+      _sfxSkyBurst: { active: false, pos: [0, 8.5, -1.8], color: '#ffe600', power: 0 },
+      particles: [],
+      aerialShells: [],
+      activeNozzles: [],
+      savedLights: null,
+      savedSettings: null
+    };
+    lumiState.liveShow18 = liveShow18;
+
+    function hexToRgb255_18(hex) {
+      const s = String(hex || '#00f0ff').replace('#', '');
+      if (!/^[0-9a-f]{6}$/i.test(s)) return [0, 240, 255];
+      return [parseInt(s.slice(0, 2), 16), parseInt(s.slice(2, 4), 16), parseInt(s.slice(4, 6), 16)];
+    }
+
+    function hexToRgb01_18(hex) {
+      const [r, g, b] = hexToRgb255_18(hex);
+      return [r / 255, g / 255, b / 255];
+    }
+
+    function rgb01ToHex18(r, g, b) {
+      const toHex = (v) => clamp18(Math.round(v * 255), 0, 255).toString(16).padStart(2, '0');
+      return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+    }
+
+    function mixHex18(hexA, hexB, t) {
+      const u = clamp18(t, 0, 1);
+      if (u <= 0.001) return hexA || '#00f0ff';
+      if (u >= 0.999) return hexB || '#00f0ff';
+      const [r1, g1, b1] = hexToRgb01_18(hexA);
+      const [r2, g2, b2] = hexToRgb01_18(hexB);
+      return rgb01ToHex18(r1 + (r2 - r1) * u, g1 + (g2 - g1) * u, b1 + (b2 - b1) * u);
+    }
+
+    function rgba18(hex, alpha = 1) {
+      const [r, g, b] = hexToRgb255_18(hex);
+      return `rgba(${r},${g},${b},${clamp18(alpha, 0, 1).toFixed(3)})`;
+    }
+
+    // P7: Quintic C2 Smoothstep transition curve 6t^5 - 15t^4 + 10t^3
+    function quinticSmooth18(u) {
+      const t = clamp18(u, 0, 1);
+      return t * t * t * (t * (t * 6 - 15) + 10);
+    }
+
+    // P7: 76% Palette Hold + 24% Quintic Glide
+    function samplePaletteGlide18(palette, phase) {
+      const pal = Array.isArray(palette) && palette.length ? palette : ['#00f0ff'];
+      if (pal.length === 1) return pal[0];
+      const p = (((Number(phase) || 0) % pal.length) + pal.length) % pal.length;
+      const i0 = Math.floor(p) % pal.length;
+      const i1 = (i0 + 1) % pal.length;
+      const frac = p - Math.floor(p);
+      if (frac <= 0.76) return pal[i0];
+      const u = quinticSmooth18((frac - 0.76) / 0.24);
+      return mixHex18(pal[i0], pal[i1], u);
+    }
+
+    function dominoTail18(idx, total, head, tailLen) {
+      const n = Math.max(1, total);
+      const dist = (((head - idx) % n) + n) % n;
+      return dist <= tailLen ? Math.pow(1 - dist / Math.max(0.1, tailLen), 1.65) : 0;
+    }
+
+    function classifyFixture18(l, idx, total) {
+      const t = String(l?.type || l?.fixtureCategory18 || '').toLowerCase();
+      if (['beam', 'spot', 'wash', 'par', 'bar', 'blinder', 'strobe', 'fresnel', 'laser'].includes(t)) return t;
+      const nm = String(l?.name || '').toLowerCase();
+      if (nm.includes('laser')) return 'laser';
+      if (nm.includes('barra') || nm.includes('bar') || nm.includes('katana')) return 'bar';
+      if (nm.includes('blinder')) return 'blinder';
+      if (nm.includes('strobe') || nm.includes('atomic')) return 'strobe';
+      if (nm.includes('wash') || nm.includes('aura')) return 'wash';
+      if (nm.includes('spot') || nm.includes('profile')) return 'spot';
+      if (nm.includes('fresnel')) return 'fresnel';
+      if (nm.includes('par')) return 'par';
+      if (nm.includes('beam') || nm.includes('pointe')) return 'beam';
+      const y = Number(l?.pos?.[1]) || 4;
+      if (y < 1.3) return idx % 2 === 0 ? 'bar' : 'beam';
+      const mod = idx % 8;
+      if (mod === 0 || mod === 1) return 'beam';
+      if (mod === 2 || mod === 3) return 'spot';
+      if (mod === 4) return 'wash';
+      if (mod === 5) return 'par';
+      if (mod === 6) return 'bar';
+      return 'blinder';
+    }
+
+    // P7: 5 Beam Group Fan Laws (v_converge, v_diverge, x_cross, parallel_wing, parallel_zero)
+    function evalBeamFanLaw18(lawName, px, idx, total, phasePan, phaseTilt, spreadScale = 1) {
+      const n = Math.max(1, total);
+      const u = n > 1 ? (idx / (n - 1)) * 2 - 1 : clamp18(px / 6.0, -1, 1);
+      const side = px === 0 ? (u >= 0 ? 1 : -1) : (px >= 0 ? 1 : -1);
+      const absU = Math.abs(u);
+      const law = String(lawName || 'v_converge').toLowerCase();
+      let panAngle = 0;
+      let tiltWave = 0;
+      if (law === 'v_converge') {
+        panAngle = -side * (0.22 + absU * 0.42) * spreadScale + Math.sin(phasePan * 0.85) * 0.28;
+        tiltWave = Math.cos(phaseTilt + absU * 1.4) * 0.85;
+      } else if (law === 'v_diverge') {
+        panAngle = side * (0.18 + absU * 0.54) * spreadScale + Math.sin(phasePan * 0.9 + u * 0.6) * 0.25;
+        tiltWave = Math.sin(phaseTilt + absU * 1.2) * 0.92;
+      } else if (law === 'x_cross') {
+        const pairSign = (idx % 2 === 0 ? 1 : -1) * side;
+        panAngle = pairSign * (0.48 + 0.24 * Math.sin(phasePan * 1.35)) * spreadScale;
+        tiltWave = Math.cos(phaseTilt * 1.3 + (idx % 2) * Math.PI * 0.5) * 0.88;
+      } else if (law === 'parallel_wing') {
+        panAngle = side * 0.36 * spreadScale + Math.sin(phasePan + side * 0.8) * 0.44;
+        tiltWave = Math.sin(phaseTilt * 1.15 + absU * 0.9) * 0.9;
+      } else {
+        // parallel_zero
+        panAngle = Math.sin(phasePan) * 0.48 * spreadScale;
+        tiltWave = Math.cos(phaseTilt + u * 0.35) * 0.85;
+      }
+      return { panAngle, tiltWave, law };
+    }
+
+    // P5: Audience Blinder & Hybrid Strobe Multi-Cell Thermal Flash Engine
+    function evalBlinderThermalFlash18(l, idx, nowMs, blindersOn = false, showIdx = 1) {
+      const px = Number(l?.pos?.[0]) || 0;
+      const py = Number(l?.pos?.[1]) || 4;
+      const pz = Number(l?.pos?.[2]) || 0;
+      const hash = Math.abs(px * 917.3 + py * 431.7 + pz * 193.1 + idx * 257.9);
+      const periodMs = 155;
+      const localT = (nowMs + hash) % periodMs;
+      const active = blindersOn || showIdx === 4 || showIdx === 6;
+      let ka = 0;
+      if (active) {
+        if (localT < 48) ka = 1.0;
+        else if (localT < 118) ka = Math.pow(1 - (localT - 48) / 70, 1.85);
+        else ka = 0.08;
+        if (blindersOn) ka = Math.max(ka, 0.50 + 0.50 * ka);
+      } else {
+        ka = 0.16 + 0.14 * Math.max(0, Math.sin(nowMs * 0.004 + idx * 0.9));
+      }
+      ka = clamp18(ka, 0, 1);
+      const color = ka > 0.72 ? '#ffffff' : ka > 0.35 ? '#ffe600' : '#ff7700';
+      const blastScale = +(3.2 + 5.8 * ka).toFixed(2);
+      const power = +(active ? 4.2 + ka * 8.4 : 1.8 + ka * 2.4).toFixed(2);
+      return { ka, color, blastScale, power, hash };
+    }
+
+    // P2: 3D RGB ILDA Laser Scan Patterns (Ps = 0..3) + IEC 60825-1 +3.20m Horizon Clamp + Exponential Smoothing
+    function evalLaserScanPattern18(patternIdx, origin, uIdx, tSec, spd, multicolor = true, palette = LMP_LASER_PALETTES18) {
+      const pIdx = ((Math.round(Number(patternIdx) || 0) % 4) + 4) % 4;
+      const beamCount = pIdx === 3 ? 20 : 16;
+      const pal = Array.isArray(palette) && palette.length ? palette : LMP_LASER_PALETTES18;
+      const baseCol = pal[(uIdx + pIdx) % pal.length];
+      const altCol = pal[(uIdx + pIdx + 2) % pal.length];
+      const rays = [];
+      const cacheMap = liveShow18._laserPrevTargets18;
+      const smoothAlpha = 0.38;
+      const safetyHorizonY = 3.20;
+
+      for (let b = 0; b < beamCount; b++) {
+        const u = (b / Math.max(1, beamCount - 1)) - 0.5;
+        let yaw = u * 1.15;
+        let pitch = -0.02;
+        let gate = true;
+        if (pIdx === 0) {
+          // Pattern 0: Liquid Sky Wave Sheet
+          yaw += Math.sin(tSec * spd * 1.4 + uIdx) * 0.28;
+          pitch = 0.02 + Math.sin(tSec * spd * 3.6 + b * 0.55 + uIdx) * 0.09;
+        } else if (pIdx === 1) {
+          // Pattern 1: Geometric Scanning Cone Tunnel
+          const theta = (b / beamCount) * Math.PI * 2 + tSec * spd * 2.4 * (uIdx % 2 === 0 ? 1 : -1);
+          const rad = 0.20 + 0.22 * Math.abs(Math.sin(tSec * spd * 1.6));
+          yaw = Math.cos(theta) * rad;
+          pitch = 0.04 + Math.sin(theta) * rad * 0.65;
+        } else if (pIdx === 2) {
+          // Pattern 2: Dual-Mirror X-Cross Chopper
+          const sign = uIdx % 2 === 0 ? 1 : -1;
+          yaw = sign * 0.28 + u * 0.95 + Math.sin(tSec * spd * 2.8) * 0.22 * sign;
+          pitch = 0.01 + Math.cos(tSec * spd * 2.2 + b * 0.4) * 0.08;
+          gate = ((b + Math.floor(tSec * spd * 12)) % 3) !== 0;
+        } else {
+          // Pattern 3: Festival Climax Starburst
+          yaw = u * 1.42 + Math.sin(tSec * spd * 2.2 + b * 0.35) * 0.25;
+          pitch = 0.03 + Math.cos(tSec * spd * 3.1 + b * 0.48) * 0.14;
+        }
+        const range = 16.5;
+        const safeOriginY = Math.max(safetyHorizonY, Number(origin[1]) || 3.6);
+        const rawX = origin[0] + Math.sin(yaw) * Math.cos(pitch) * range;
+        const rawY = Math.max(safetyHorizonY, safeOriginY + Math.sin(pitch) * range);
+        const rawZ = origin[2] + Math.cos(yaw) * Math.cos(pitch) * range;
+        const key = `${uIdx}:${b}`;
+        const prev = cacheMap?.get(key);
+        const target3d = prev
+          ? [
+              prev[0] + (rawX - prev[0]) * smoothAlpha,
+              Math.max(safetyHorizonY, prev[1] + (rawY - prev[1]) * smoothAlpha),
+              prev[2] + (rawZ - prev[2]) * smoothAlpha
+            ]
+          : [rawX, rawY, rawZ];
+        cacheMap?.set(key, target3d);
+        const rayCol = multicolor ? (b % 2 === 0 ? baseCol : altCol) : '#00ff66';
+        rays.push({ b, u, target3d, rayCol, gate });
+      }
+      return { origin: [origin[0], Math.max(safetyHorizonY, Number(origin[1]) || 3.6), origin[2]], patternIdx: pIdx, baseCol, altCol, rays, safetyHorizonY };
+    }
+
+    // P8: Screen Halo Ambient Bleed (dmx_screenhalo_)
+    function evalScreenHaloBleed18(eng, tSec, spd) {
+      const pools = [];
+      if (!eng || !Array.isArray(eng.surfaces)) return pools;
+      const deckY = Math.max(0.42, (eng.stageBounds?.min?.[1] || 0) + 0.46);
+      const accent = eng.accent || '#00f0ff';
+      for (let i = 0; i < eng.surfaces.length; i++) {
+        const s = eng.surfaces[i];
+        if (!s || s.enabled === false) continue;
+        const b = s.mesh?.bounds;
+        const cx = Number.isFinite(Number(s.pos?.[0])) ? Number(s.pos[0]) : (b ? (b.min[0] + b.max[0]) * 0.5 : 0);
+        const cz = Number.isFinite(Number(s.pos?.[2])) ? Number(s.pos[2]) : (b ? (b.min[2] + b.max[2]) * 0.5 : -1.5);
+        const wM = Number(s.physicalWidthM || s.physical?.[0]) || (b ? Math.max(1.5, b.max[0] - b.min[0]) : 3.2);
+        const pulse = 0.72 + 0.28 * Math.sin(tSec * spd * 2.2 + i * 1.1);
+        const br = clamp18(Number(s.brightness ?? 1), 0.1, 1.5);
+        pools.push({
+          id: `dmx_screenhalo_${s.id || i}`,
+          kind: 'screenHalo',
+          pos: [cx, deckY + 0.014, cz + 1.05],
+          radiusX: clamp18(wM * 0.58, 1.2, 5.2),
+          radiusZ: clamp18(wM * 0.34, 0.9, 2.8),
+          color: accent,
+          alpha: clamp18(0.22 * pulse * br, 0.04, 0.38)
+        });
+      }
+      return pools;
+    }
+
+    // P9: Auto Cinematic Camera Director (5-Shot 10s Ease-In-Out Tour with 8s manual pause)
+    const LMP_CAM_TOUR_SHOTS18 = [
+      { name: 'fob_wide', yaw: 0.0, pitch: 0.18, distScale: 1.08, targetOff: [0, 0, 0] },
+      { name: 'low_hero_left', yaw: -0.46, pitch: 0.07, distScale: 0.76, targetOff: [-1.4, -0.35, 0.4] },
+      { name: 'low_hero_right', yaw: 0.46, pitch: 0.07, distScale: 0.76, targetOff: [1.4, -0.35, 0.4] },
+      { name: 'overhead_rig', yaw: 0.18, pitch: 0.62, distScale: 1.16, targetOff: [0, 0.4, -0.4] },
+      { name: 'center_close', yaw: -0.08, pitch: 0.12, distScale: 0.64, targetOff: [0, -0.2, 0.6] }
+    ];
+
+    function stepAutoCameraDirector18(eng, ls, dt, nowMs = nowMs18()) {
+      if (!eng || !eng.camera || eng.view !== 'stage' || !ls?.autoCam || !ls.running) return false;
+      if (nowMs < (ls.autoCamPausedUntilMs || 0)) return false;
+      if (!ls.savedCamera) {
+        ls.savedCamera = {
+          yaw: eng.camera.yaw,
+          pitch: eng.camera.pitch,
+          distance: eng.camera.distance,
+          target: Array.isArray(eng.camera.target) ? eng.camera.target.slice() : [0, 2.5, 0]
+        };
+      }
+      const shotDur = 10.0;
+      const totalShots = LMP_CAM_TOUR_SHOTS18.length;
+      const t = ls.showElapsedSec || 0;
+      const idx0 = Math.floor(t / shotDur) % totalShots;
+      const idx1 = (idx0 + 1) % totalShots;
+      const u = clamp18((t % shotDur) / shotDur, 0, 1);
+      const smoothU = u * u * (3 - 2 * u);
+      const ease = 0.68 * u + 0.32 * smoothU;
+      const s0 = LMP_CAM_TOUR_SHOTS18[idx0];
+      const s1 = LMP_CAM_TOUR_SHOTS18[idx1];
+      const baseDist = Math.max(eng.size?.width || 18, (eng.size?.height || 8) * 1.7, eng.size?.depth || 8) * 1.12;
+      const baseTargetY = (eng.size?.height || 6) * 0.42;
+
+      eng.camera.yaw = s0.yaw + (s1.yaw - s0.yaw) * ease;
+      eng.camera.pitch = s0.pitch + (s1.pitch - s0.pitch) * ease;
+      eng.camera.distance = baseDist * (s0.distScale + (s1.distScale - s0.distScale) * ease);
+      eng.camera.target = [
+        s0.targetOff[0] + (s1.targetOff[0] - s0.targetOff[0]) * ease,
+        baseTargetY + s0.targetOff[1] + (s1.targetOff[1] - s0.targetOff[1]) * ease,
+        s0.targetOff[2] + (s1.targetOff[2] - s0.targetOff[2]) * ease
+      ];
+      return true;
+    }
+
+    function getStageSfxNozzles18() {
+      const sa = S.stageAssets16;
+      const items = Array.isArray(sa?.items) ? sa.items : [];
+      const deckY = Math.max(0.45, (S.engine?.stageBounds?.min?.[1] || 0) + 0.5);
+      const byType = {
+        cold_spark_fountain: [],
+        co2_jet: [],
+        flame_jet: [],
+        confetti_cannon: []
+      };
+      items.forEach((it) => {
+        const k = normalizeSfxType18(it.kind || it.type);
+        if (byType[k] && Array.isArray(it.pos)) {
+          byType[k].push({ id: it.id, kind: k, pos: [Number(it.pos[0]) || 0, Number(it.pos[1]) || deckY, Number(it.pos[2]) || 2.4], item: it });
+        }
+      });
+      if (!byType.cold_spark_fountain.length) {
+        [-4.8, -1.6, 1.6, 4.8].forEach((x, i) => byType.cold_spark_fountain.push({ id: `v_spark_${i}`, kind: 'cold_spark_fountain', pos: [x, deckY, 2.55] }));
+      }
+      if (!byType.co2_jet.length) {
+        [-3.4, -1.1, 1.1, 3.4].forEach((x, i) => byType.co2_jet.push({ id: `v_co2_${i}`, kind: 'co2_jet', pos: [x, deckY, 2.45] }));
+      }
+      if (!byType.flame_jet.length) {
+        [-5.8, -2.2, 2.2, 5.8].forEach((x, i) => byType.flame_jet.push({ id: `v_flame_${i}`, kind: 'flame_jet', pos: [x, deckY, 2.2] }));
+      }
+      if (!byType.confetti_cannon.length) {
+        [-6.2, -2.0, 2.0, 6.2].forEach((x, i) => byType.confetti_cannon.push({ id: `v_aerial_${i}`, kind: 'confetti_cannon', pos: [x, deckY + 0.3, -1.9] }));
+      }
+      for (const k of Object.keys(byType)) {
+        byType[k].sort((a, b) => a.pos[0] - b.pos[0]);
+      }
+      return byType;
+    }
+
+    // P6: 9-Type 3D Pyro/SFX Particle Spawner (Types 1=spark, 2=flame, 3=co2, 4=shell, 5=star, 6=crackle, 7=gold_mine, 8=willow_trail, 9=muzzle_flash)
+    function spawnNozzleParticles18(nozzle, kind, intensity = 1) {
+      const pArr = liveShow18.particles;
+      if (pArr.length > 2200) pArr.splice(0, pArr.length - 2200);
+      const [nx, ny, nz] = nozzle.pos;
+      if (kind === 'cold_spark_fountain') {
+        const count = Math.max(2, Math.round(5 * intensity));
+        for (let i = 0; i < count; i++) {
+          const a = Math.random() * Math.PI * 2;
+          const spread = (Math.random() * 0.75 + 0.1) * (0.6 + 0.4 * intensity);
+          pArr.push({
+            pType: 1,
+            kind: 'spark',
+            x: nx + (Math.random() - 0.5) * 0.12,
+            y: ny + 0.18,
+            z: nz + (Math.random() - 0.5) * 0.12,
+            vx: Math.cos(a) * spread,
+            vy: (5.6 + Math.random() * 3.6) * (0.75 + 0.35 * intensity),
+            vz: Math.sin(a) * spread,
+            deckY: ny,
+            age: 0,
+            maxAge: 0.55 + Math.random() * 0.45,
+            size: 2.2 + Math.random() * 2.2,
+            color: Math.random() > 0.35 ? '#ffe680' : '#ffffff',
+            seed: Math.random() * 100
+          });
+        }
+      } else if (kind === 'co2_jet') {
+        const count = Math.max(2, Math.round(4 * intensity));
+        for (let i = 0; i < count; i++) {
+          const a = Math.random() * Math.PI * 2;
+          const spread = Math.random() * 0.95 + 0.15;
+          pArr.push({
+            pType: 3,
+            kind: 'co2',
+            x: nx + (Math.random() - 0.5) * 0.16,
+            y: ny + 0.25,
+            z: nz + (Math.random() - 0.5) * 0.16,
+            vx: Math.cos(a) * spread,
+            vy: (12.5 + Math.random() * 6.5) * (0.8 + 0.25 * intensity),
+            vz: Math.sin(a) * spread,
+            age: 0,
+            maxAge: 0.48 + Math.random() * 0.32,
+            size: 0.24 + Math.random() * 0.22,
+            color: '#dff8ff',
+            seed: Math.random() * 100
+          });
+        }
+      } else if (kind === 'flame_jet') {
+        const count = Math.max(2, Math.round(4 * intensity));
+        for (let i = 0; i < count; i++) {
+          pArr.push({
+            pType: 2,
+            kind: 'flame',
+            x: nx + (Math.random() - 0.5) * 0.18,
+            y: ny + 0.2,
+            z: nz + (Math.random() - 0.5) * 0.18,
+            vx: (Math.random() - 0.5) * 0.65,
+            vy: (4.8 + Math.random() * 3.2) * (0.8 + 0.3 * intensity),
+            vz: (Math.random() - 0.5) * 0.65,
+            age: 0,
+            maxAge: 0.42 + Math.random() * 0.28,
+            size: 0.32 + Math.random() * 0.28,
+            color: '#ff7b00',
+            seed: Math.random() * 100
+          });
+        }
+      }
+    }
+
+    const LMP_BURST_STYLES18 = ['peony_fib', 'saturn_ring', 'chrysanthemum_dual', 'willow_crossette'];
+
+    function launchAerialPyro18(volleyCount = 4, forcedStyle = null) {
+      const nozzles = getStageSfxNozzles18().confetti_cannon;
+      const count = clamp18(volleyCount, 1, 8);
+      const now = nowMs18();
+      const pArr = liveShow18.particles;
+      for (let i = 0; i < count; i++) {
+        const nz = nozzles[i % nozzles.length] || { pos: [(i - (count - 1) / 2) * 3.2, 0.8, -1.8] };
+        const col = LMP_FIREWORK_COLORS18[(i + Math.floor(now / 250)) % LMP_FIREWORK_COLORS18.length];
+        const col2 = LMP_FIREWORK_COLORS18[(i + 2 + Math.floor(now / 250)) % LMP_FIREWORK_COLORS18.length];
+        const styleName = forcedStyle && LMP_BURST_STYLES18.includes(forcedStyle)
+          ? forcedStyle
+          : LMP_BURST_STYLES18[(i + Math.floor(now / 400)) % LMP_BURST_STYLES18.length];
+        const sx = nz.pos[0] + (Math.random() - 0.5) * 0.5;
+        const sy = nz.pos[1] + 0.4;
+        const sz = nz.pos[2];
+
+        liveShow18.aerialShells.push({
+          pType: 4,
+          x: sx,
+          y: sy,
+          z: sz,
+          vx: (Math.random() - 0.5) * 1.6 + nz.pos[0] * 0.08,
+          vy: 11.8 + Math.random() * 3.4,
+          vz: (Math.random() - 0.5) * 1.2,
+          targetY: 8.2 + Math.random() * 3.6,
+          color: col,
+          color2: col2,
+          burstStyle: styleName,
+          trail: []
+        });
+
+        // Type 9: Mortar Muzzle Flash at launch base
+        pArr.push({
+          pType: 9,
+          kind: 'muzzle_flash',
+          x: sx,
+          y: sy,
+          z: sz,
+          px: sx,
+          py: sy,
+          pz: sz,
+          vx: 0,
+          vy: 1.2,
+          vz: 0,
+          age: 0,
+          maxAge: 0.14,
+          size: 5.5,
+          color: '#ffffff',
+          seed: i * 13.7
+        });
+
+        // Type 7: Low-altitude Gold Mine fan from mortar base
+        for (let m = 0; m < 8; m++) {
+          const ma = (m / 8) * Math.PI * 2 + Math.random() * 0.3;
+          const mSpd = 0.8 + Math.random() * 0.9;
+          pArr.push({
+            pType: 7,
+            kind: 'gold_mine',
+            x: sx,
+            y: sy,
+            z: sz,
+            px: sx,
+            py: sy,
+            pz: sz,
+            vx: Math.cos(ma) * mSpd,
+            vy: 4.5 + Math.random() * 2.8,
+            vz: Math.sin(ma) * mSpd,
+            age: 0,
+            maxAge: 0.42 + Math.random() * 0.22,
+            size: 2.6,
+            color: '#ffd166',
+            seed: m * 7.1
+          });
+        }
+      }
+      liveShow18.skyFlashUntilMs = now + 450;
+      liveShow18.skyFlashColor = LMP_FIREWORK_COLORS18[Math.floor(now / 200) % LMP_FIREWORK_COLORS18.length];
+      ensureLiveShowLoop18();
+      return count;
+    }
+
+    // P6: 4 Aerial Burst Geometries (0=peony_fib, 1=saturn_ring, 2=chrysanthemum_dual, 3=willow_crossette)
+    function detonateAerialShell18(shell) {
+      const pArr = liveShow18.particles;
+      if (pArr.length > 2200) pArr.splice(0, pArr.length - 1800);
+      const style = String(shell?.burstStyle || 'peony_fib');
+      const starCount = style === 'peony_fib' ? 84 : 68;
+      const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+
+      for (let i = 0; i < starCount; i++) {
+        let dx = 0;
+        let dy = 0;
+        let dz = 0;
+        let spd = 4.6 + Math.random() * 3.2;
+        let maxAge = 0.88 + Math.random() * 0.52;
+        let starCol = i % 3 === 0 ? '#ffffff' : i % 2 === 0 ? shell.color : shell.color2;
+        let isWillow = false;
+        let canCrossette = false;
+
+        if ((style === 'saturn_ring' || style === 'ring') && i < 32) {
+          const theta = (i / 32) * Math.PI * 2;
+          const tilt = 0.28;
+          dx = Math.cos(theta);
+          dy = Math.sin(theta) * Math.sin(tilt);
+          dz = Math.sin(theta) * Math.cos(tilt);
+          spd = 6.2 + (i % 2) * 0.8;
+          starCol = '#ffe600';
+        } else {
+          const y = 1 - (i / Math.max(1, starCount - 1)) * 2;
+          const r = Math.sqrt(Math.max(0, 1 - y * y));
+          const theta = goldenAngle * i;
+          dx = Math.cos(theta) * r;
+          dy = y;
+          dz = Math.sin(theta) * r;
+          if (style === 'chrysanthemum_dual') {
+            const shellLayer = i % 2 === 0 ? 1.22 : 0.72;
+            spd *= shellLayer;
+            isWillow = true;
+          } else if (style === 'willow_crossette') {
+            spd *= 0.92;
+            maxAge = 1.25 + Math.random() * 0.45;
+            starCol = i % 4 === 0 ? '#ffffff' : '#ffd166';
+            isWillow = true;
+            canCrossette = i % 6 === 0;
+          }
+        }
+
+        pArr.push({
+          pType: 5,
+          kind: 'firework_star',
+          burstStyle: style,
+          isWillow,
+          canCrossette,
+          didSplit: false,
+          x: shell.x,
+          y: shell.y,
+          z: shell.z,
+          px: shell.x,
+          py: shell.y,
+          pz: shell.z,
+          vx: dx * spd,
+          vy: dy * spd + 1.1,
+          vz: dz * spd,
+          age: 0,
+          maxAge,
+          size: 2.6 + Math.random() * 2.0,
+          color: starCol,
+          seed: Math.random() * 100
+        });
+      }
+      const now = nowMs18();
+      liveShow18.skyFlashUntilMs = now + 420;
+      liveShow18.skyFlashColor = shell.color || '#ffe600';
+      liveShow18._sfxSkyBurst = {
+        active: true,
+        pos: [shell.x, shell.y, shell.z],
+        color: shell.color || '#ffe600',
+        power: 14.5
+      };
+    }
+
+    function stepParticlesAndShells18(dt, nowMs) {
+      const shells = liveShow18.aerialShells;
+      const pArr = liveShow18.particles;
+      for (let i = shells.length - 1; i >= 0; i--) {
+        const s = shells[i];
+        s.trail.push([s.x, s.y, s.z]);
+        if (s.trail.length > 8) s.trail.shift();
+        s.x += s.vx * dt;
+        s.y += s.vy * dt;
+        s.z += s.vz * dt;
+        s.vy -= 4.8 * dt;
+        // Type 8: Rising comet micro-trail
+        if (Math.random() < 0.72 && pArr.length < 2200) {
+          pArr.push({
+            pType: 8,
+            kind: 'willow_trail',
+            x: s.x,
+            y: s.y,
+            z: s.z,
+            px: s.x,
+            py: s.y + 0.15,
+            pz: s.z,
+            vx: (Math.random() - 0.5) * 0.65,
+            vy: -1.0 - Math.random() * 1.2,
+            vz: (Math.random() - 0.5) * 0.65,
+            age: 0,
+            maxAge: 0.28 + Math.random() * 0.16,
+            size: 1.9,
+            color: '#ffe680',
+            seed: i
+          });
+        }
+        if (s.y >= s.targetY || s.vy <= 0.6) {
+          detonateAerialShell18(s);
+          shells.splice(i, 1);
+        }
+      }
+
+      for (let i = pArr.length - 1; i >= 0; i--) {
+        const p = pArr[i];
+        p.age += dt;
+        if (p.age >= p.maxAge) {
+          pArr.splice(i, 1);
+          continue;
+        }
+        p.px = p.x;
+        p.py = p.y;
+        p.pz = p.z;
+        const u = p.age / Math.max(0.05, p.maxAge);
+
+        if (p.kind === 'spark' || p.pType === 1 || p.pType === 7) {
+          p.vy -= 9.8 * dt;
+          p.x += p.vx * dt;
+          p.y += p.vy * dt;
+          p.z += p.vz * dt;
+          if (p.y <= (p.deckY || 0.45) && p.vy < 0) {
+            p.y = p.deckY || 0.45;
+            p.vy = Math.abs(p.vy) * 0.28;
+            p.vx *= 0.7;
+            p.vz *= 0.7;
+          }
+          // Type 6 crackle micro-pop near end of spark life
+          if (u > 0.78 && !p._crackled && Math.random() < 0.08 && pArr.length < 2200) {
+            p._crackled = true;
+            pArr.push({
+              pType: 6,
+              kind: 'crackle_star',
+              x: p.x,
+              y: p.y,
+              z: p.z,
+              px: p.x,
+              py: p.y,
+              pz: p.z,
+              vx: (Math.random() - 0.5) * 3.2,
+              vy: 1.2 + Math.random() * 2.2,
+              vz: (Math.random() - 0.5) * 3.2,
+              age: 0,
+              maxAge: 0.16,
+              size: 2.1,
+              color: '#ffffff',
+              seed: p.seed
+            });
+          }
+        } else if (p.kind === 'co2' || p.pType === 3) {
+          const drag = Math.pow(0.90, dt * 60);
+          p.vx *= drag;
+          p.vy *= Math.pow(0.91, dt * 60);
+          p.vz *= drag;
+          p.x += p.vx * dt + Math.sin(nowMs * 0.015 + p.seed) * 0.8 * dt;
+          p.y += p.vy * dt;
+          p.z += p.vz * dt;
+          p.size += 1.65 * dt;
+        } else if (p.kind === 'flame' || p.pType === 2) {
+          p.vy += 3.8 * dt;
+          const whip = Math.sin(nowMs * 0.018 + p.y * 2.2 + p.seed) * 1.45;
+          p.x += (p.vx + whip) * dt;
+          p.y += p.vy * dt;
+          p.z += p.vz * dt;
+          p.size += 0.55 * dt;
+          // Blackbody thermal color ramp: white-yellow -> orange -> red -> dark smoke
+          p.color = u < 0.22 ? '#fff7ae' : u < 0.52 ? '#ff8800' : u < 0.82 ? '#d92200' : '#3a2622';
+        } else if (p.kind === 'firework_star' || p.pType === 5) {
+          const drag = Math.pow(p.isWillow ? 0.955 : 0.94, dt * 60);
+          p.vx *= drag;
+          p.vy = p.vy * drag - (p.isWillow ? 2.6 : 3.4) * dt;
+          p.vz *= drag;
+          p.x += p.vx * dt;
+          p.y += p.vy * dt;
+          p.z += p.vz * dt;
+          if (p.isWillow && Math.random() < 0.35 && pArr.length < 2200) {
+            pArr.push({
+              pType: 8,
+              kind: 'willow_trail',
+              x: p.x,
+              y: p.y,
+              z: p.z,
+              px: p.px,
+              py: p.py,
+              pz: p.pz,
+              vx: p.vx * 0.15,
+              vy: -0.6,
+              vz: p.vz * 0.15,
+              age: 0,
+              maxAge: 0.32,
+              size: 1.5,
+              color: '#ffd166',
+              seed: p.seed
+            });
+          }
+          if (p.canCrossette && !p.didSplit && u > 0.62 && pArr.length < 2150) {
+            p.didSplit = true;
+            const dirs = [[1, 0.3, 0], [-1, 0.3, 0], [0, 0.3, 1], [0, 0.3, -1]];
+            for (const [cx, cy, cz] of dirs) {
+              pArr.push({
+                pType: 6,
+                kind: 'crackle_star',
+                x: p.x,
+                y: p.y,
+                z: p.z,
+                px: p.x,
+                py: p.y,
+                pz: p.z,
+                vx: cx * 3.4,
+                vy: cy * 3.4,
+                vz: cz * 3.4,
+                age: 0,
+                maxAge: 0.28,
+                size: 2.2,
+                color: '#ffffff',
+                seed: p.seed
+              });
+            }
+          }
+        } else {
+          // Types 6 (crackle_star), 8 (willow_trail), 9 (muzzle_flash)
+          p.vy -= 2.4 * dt;
+          p.x += p.vx * dt;
+          p.y += p.vy * dt;
+          p.z += p.vz * dt;
+        }
+      }
+
+      // Update dynamic 3D stage/sky point light pulses (sfxStageGlow & sfxSkyBurst)
+      const activeNz = liveShow18.activeNozzles || [];
+      if (activeNz.length > 0) {
+        const nz0 = activeNz[0];
+        liveShow18._sfxStageGlow = {
+          active: true,
+          pos: [nz0.pos[0], nz0.pos[1] + 1.4, nz0.pos[2]],
+          color: nz0.color || '#ff9900',
+          power: +(6.5 + nz0.level * 5.5).toFixed(2)
+        };
+      } else {
+        liveShow18._sfxStageGlow.active = false;
+        liveShow18._sfxStageGlow.power = 0;
+      }
+      if (nowMs >= liveShow18.skyFlashUntilMs) {
+        liveShow18._sfxSkyBurst.active = false;
+        liveShow18._sfxSkyBurst.power = 0;
+      } else {
+        const rem = clamp18((liveShow18.skyFlashUntilMs - nowMs) / 420, 0, 1);
+        liveShow18._sfxSkyBurst.active = true;
+        liveShow18._sfxSkyBurst.power = +(14.5 * rem).toFixed(2);
+      }
+    }
+
+    function evalShowPanTilt18(sIdx, phasePan, phaseTilt, px, py, pz) {
+      let panAngle = 0;
+      let tiltWave = 0;
+      if (sIdx === 1) {
+        panAngle = Math.sin(phasePan + (px + py) * 0.3) * (Math.PI / 3.4);
+        tiltWave = Math.sin(phaseTilt + (px + py) * 0.3);
+      } else if (sIdx === 2) {
+        panAngle = Math.sin(phasePan + (Math.abs(px) + py) * 0.4) * (Math.PI / 3.0) * (px >= 0 ? 1 : -1);
+        tiltWave = Math.cos(phaseTilt + (Math.abs(px) + py) * 0.4);
+      } else if (sIdx === 3) {
+        const dir = Math.sin((px + py) * 5) > 0 ? 1 : -1;
+        panAngle = dir * Math.sin(phasePan * 2.0) * (Math.PI / 2.8);
+        tiltWave = Math.cos(phaseTilt * 2.0 + (Math.abs(px) + py) * 0.2);
+      } else if (sIdx === 4) {
+        panAngle = Math.sin(phasePan * 1.5 + px * 0.3 + py * 0.4) * (Math.PI / 2.8);
+        tiltWave = Math.cos(phasePan * 1.5 + px * 0.3 + py * 0.4);
+      } else if (sIdx === 5) {
+        panAngle = Math.sin(phasePan * 0.8) * (Math.PI / 4.0) * (px >= 0 ? 1 : -1);
+        tiltWave = Math.sin(phaseTilt * 0.8 + (Math.abs(px) + py) * 0.2);
+      } else {
+        panAngle = Math.sin(phasePan * 1.5 + px * 0.5 + py * 0.4 + pz * 0.3) * (Math.PI / 2.6);
+        tiltWave = Math.cos(phaseTilt * 1.8 + px * 0.5 + py * 0.4 + pz * 0.3);
+      }
+      return { panAngle, tiltWave };
+    }
+
+    function tickLiveShow18(nowMs = nowMs18()) {
+      const ls = liveShow18;
+      const eng = S.engine;
+      const dt = ls.lastTickMs > 0 ? clamp18((nowMs - ls.lastTickMs) / 1000, 0.001, 0.1) : 1 / 60;
+      ls.lastTickMs = nowMs;
+
+      const manualPyroActive = nowMs < ls.sparkUntilMs || nowMs < ls.co2UntilMs || nowMs < ls.flameUntilMs || ls.particles.length > 0 || ls.aerialShells.length > 0;
+      if (!ls.running && !manualPyroActive) {
+        ls.activeNozzles = [];
+        ls._floorProjections = [];
+        ls._deckGlints = [];
+        ls._laserRenderData = [];
+        ls._screenHaloPools = [];
+        return false;
+      }
+
+      const spd = clamp18(ls.speed || 2.0, 0.2, 5.0);
+      if (ls.running) {
+        ls.showElapsedSec += dt;
+        ls.motorPhasePan += dt * spd;
+        ls.motorPhaseTilt += dt * spd * 0.7;
+      }
+      const tSec = ls.showElapsedSec || nowMs / 1000;
+      const showIdx = ls.aiAuto ? (Math.floor(tSec / 8) % 6) + 1 : clamp18(Math.round(ls.activeShow) || 1, 1, 6);
+      if (showIdx !== ls.effectiveShow) {
+        ls.transitionFromShow = ls.effectiveShow || showIdx;
+        ls.transitionStartSec = tSec;
+        ls.effectiveShow = showIdx;
+      }
+      const transDur = clamp18(1.15 / spd, 0.55, 1.65);
+      ls.transitionAlpha = quinticSmooth18((tSec - (ls.transitionStartSec || 0)) / transDur);
+
+      // 1. Evaluate 7-Phase Auto SFX Sequencer (W = 0..6) + Manual Pyro Triggers
+      const nozzlesByType = getStageSfxNozzles18();
+      const activeNozzles = [];
+      const phaseDuration = 4.5 / Math.max(0.4, spd * 0.5);
+      const W = Math.floor(tSec / phaseDuration) % 7;
+      ls.sfxPhase = W;
+      const subMode = Math.floor(tSec / (phaseDuration / 3)) % 3;
+
+      const nozzleGate = (idx, total, mode) => {
+        if (mode === 0) return 1;
+        if (mode === 1) {
+          const half = Math.max(1, (total - 1) / 2);
+          const wave = Math.abs(Math.abs(idx - half) - Math.abs(Math.sin(tSec * spd * 2.2)) * half);
+          return clamp18(1 - wave / Math.max(0.9, half * 0.65), 0, 1);
+        }
+        return (idx % 2 === Math.floor(tSec * spd * 3.0) % 2) ? 1 : 0;
+      };
+
+      const sparkAuto = ls.running && ls.sfxOn && !ls.blackout && (W === 0 || W === 3 || W === 5 || W === 6);
+      const flameAuto = ls.running && ls.sfxOn && !ls.blackout && (W === 1 || W === 3 || W === 4 || W === 6);
+      const co2Auto = ls.running && ls.sfxOn && !ls.blackout && (W === 2 || W === 4 || W === 5 || W === 6);
+      const aerialAuto = ls.running && ls.sfxOn && !ls.blackout && (W === 6 || showIdx === 4 || showIdx === 6);
+
+      if (sparkAuto || nowMs < ls.sparkUntilMs) {
+        const list = nozzlesByType.cold_spark_fountain;
+        list.forEach((nz, idx) => {
+          const lvl = nowMs < ls.sparkUntilMs ? 1 : nozzleGate(idx, list.length, subMode);
+          if (lvl > 0.15) {
+            activeNozzles.push({ ...nz, level: lvl, color: '#ffd166', heightM: 4.2 * lvl, angle: 11 });
+            spawnNozzleParticles18(nz, 'cold_spark_fountain', lvl);
+          }
+        });
+      }
+      if (co2Auto || nowMs < ls.co2UntilMs) {
+        const list = nozzlesByType.co2_jet;
+        const pulseGate = nowMs < ls.co2UntilMs ? 1 : (Math.sin(tSec * spd * 3.8) > -0.15 ? 1 : 0);
+        if (pulseGate > 0) {
+          list.forEach((nz, idx) => {
+            const lvl = nowMs < ls.co2UntilMs ? 1 : nozzleGate(idx, list.length, subMode);
+            if (lvl > 0.15) {
+              activeNozzles.push({ ...nz, level: lvl, color: '#c8f6ff', heightM: 6.8 * lvl, angle: 15 });
+              spawnNozzleParticles18(nz, 'co2_jet', lvl);
+            }
+          });
+        }
+      }
+      if (flameAuto || nowMs < ls.flameUntilMs) {
+        const list = nozzlesByType.flame_jet;
+        const flameGate = nowMs < ls.flameUntilMs ? 1 : (Math.sin(tSec * spd * 4.5) > -0.25 ? 1 : 0);
+        if (flameGate > 0) {
+          list.forEach((nz, idx) => {
+            const lvl = nowMs < ls.flameUntilMs ? 1 : nozzleGate(idx, list.length, subMode);
+            if (lvl > 0.15) {
+              activeNozzles.push({ ...nz, level: lvl, color: '#ff6a00', heightM: 4.8 * lvl, angle: 14 });
+              spawnNozzleParticles18(nz, 'flame_jet', lvl);
+            }
+          });
+        }
+      }
+      if (aerialAuto && nowMs - ls.lastAerialAutoMs > (W === 6 ? 1850 : 2650)) {
+        ls.lastAerialAutoMs = nowMs;
+        launchAerialPyro18(W === 6 ? 4 : 2);
+      }
+
+      ls.activeNozzles = activeNozzles;
+      stepParticlesAndShells18(dt, nowMs);
+
+      const dmxProg = lumiState.dmxProgrammer18;
+      const floorProjections = [];
+      const deckGlints = [];
+      const MAX_DECK_GLINTS = 8;
+      const deckY = Math.max(0.42, (eng?.stageBounds?.min?.[1] || 0) + 0.46);
+      let activeLightEnergySum = 0;
+
+      // 2. Drive 3D DMX Lights (Pan/Tilt waves, Quintic C2 Show Transitions, 5 Fan Laws, 4 PAR Chases, Multi-Cell Blinders, 5-Profile Shaders)
+      if (eng && Array.isArray(eng.lights) && ls.running && !dmxProg?.freezeDmx) {
+        const customBeamPal = dmxProg?.groupPalettes?.beam;
+        const customWashPal = dmxProg?.groupPalettes?.wash;
+        const customParPal = dmxProg?.groupPalettes?.par;
+        const beamPal = Array.isArray(customBeamPal) && customBeamPal.length ? customBeamPal : LMP_BEAM_PALETTES18[(showIdx - 1) % LMP_BEAM_PALETTES18.length];
+        const prevBeamPal = LMP_BEAM_PALETTES18[((ls.transitionFromShow || showIdx) - 1) % LMP_BEAM_PALETTES18.length];
+        const washPal = Array.isArray(customWashPal) && customWashPal.length ? customWashPal : LMP_WASH_PALETTES18[(showIdx - 1) % LMP_WASH_PALETTES18.length];
+        const prevWashPal = LMP_WASH_PALETTES18[((ls.transitionFromShow || showIdx) - 1) % LMP_WASH_PALETTES18.length];
+        const parPal = Array.isArray(customParPal) && customParPal.length ? customParPal : beamPal;
+        const total = eng.lights.length;
+        const phasePan = ls.motorPhasePan;
+        const phaseTilt = ls.motorPhaseTilt;
+        const transU = ls.transitionAlpha ?? 1;
+
+        // Sync procedural LED surface accent & effect with active show
+        eng.accent = samplePaletteGlide18(beamPal, tSec * 0.45);
+        if (typeof eng.effect === 'number') eng.effect = (showIdx - 1) % 4;
+
+        const defaultLaws = ['v_converge', 'v_diverge', 'x_cross', 'parallel_wing', 'parallel_zero', 'x_cross'];
+        const reqFanLaw = (ls.fanLaw && ls.fanLaw !== 'auto') ? ls.fanLaw : ((ls.beamFanLaw && ls.beamFanLaw !== 'auto') ? ls.beamFanLaw : 'auto');
+        const activeFanLaw = reqFanLaw !== 'auto' ? reqFanLaw : defaultLaws[(showIdx - 1) % defaultLaws.length];
+
+        eng.lights.forEach((l, idx) => {
+          if (!l) return;
+          if (!l._origShow18) {
+            l._origShow18 = {
+              target: Array.isArray(l.target) ? l.target.slice() : [0, 0, 0],
+              color: l.color || '#38bdf8',
+              power: Number.isFinite(+l.power) ? +l.power : 3.5,
+              angle: Number.isFinite(+l.angle) ? +l.angle : 14,
+              enabled: l.enabled !== false,
+              sweep: !!l.sweep,
+              fx: l.fx || 'steady',
+              beamProfile18: l.beamProfile18 ?? 0,
+              gobo9: l.gobo9 ? { ...l.gobo9 } : null,
+              optics: Object.fromEntries(['aperture', 'fixtureProfile18', 'profileId18', 'coneLenScale18', '_blinderBlastScale18', 'dmxGroup18', '_liveCat18'].filter((key) => Object.hasOwn(l, key)).map((key) => [key, l[key]]))
+            };
+          }
+          const cat = classifyFixture18(l, idx, total);
+          l._liveCat18 = cat;
+          const grpId = assignFixtureGroup18(l, idx, total);
+          l.dmxGroup18 = grpId;
+          const grpCfg = dmxProg?.groups?.[grpId] || { panOffsetDeg: 0, tiltOffsetDeg: 0, fanningSpreadDeg: 0, dimmer: 100 };
+
+          if (ls.blackout || !ls.lightsOn || (Number(grpCfg.dimmer) || 100) <= 0) {
+            if (cat === 'blinder' && ls.blindersOn && !ls.blackout) {
+              // Blinders can still flash when blindersOn is explicitly held
+            } else {
+              l.power = 0;
+              l.enabled = false;
+              return;
+            }
+          }
+          l.enabled = true;
+          l.sweep = false;
+          l.fx = 'steady';
+
+          const px = Number(l.pos?.[0]) || 0;
+          const py = Number(l.pos?.[1]) || 5;
+          const pz = Number(l.pos?.[2]) || 0;
+
+          // Quintic C2 blended Pan & Tilt target wave equations
+          const curWave = evalShowPanTilt18(showIdx, phasePan, phaseTilt, px, py, pz);
+          let panAngle = curWave.panAngle;
+          let tiltWave = curWave.tiltWave;
+          if (transU < 0.999 && ls.transitionFromShow !== showIdx) {
+            const oldWave = evalShowPanTilt18(ls.transitionFromShow || 1, phasePan, phaseTilt, px, py, pz);
+            panAngle = oldWave.panAngle + (curWave.panAngle - oldWave.panAngle) * transU;
+            tiltWave = oldWave.tiltWave + (curWave.tiltWave - oldWave.tiltWave) * transU;
+          }
+
+          // Blend with 5 Beam Group Fan Laws for moving heads
+          if (cat === 'beam' || cat === 'spot') {
+            const fanRes = evalBeamFanLaw18(activeFanLaw, px, idx, total, phasePan, phaseTilt, 1.0);
+            const fanWeight = reqFanLaw !== 'auto' ? 0.65 : 0.28;
+            panAngle = panAngle * (1 - fanWeight) + fanRes.panAngle * fanWeight;
+            tiltWave = tiltWave * (1 - fanWeight) + fanRes.tiltWave * fanWeight;
+          }
+
+          // Apply DMX Group Programmer Pan/Tilt/Fanning offsets (G1..G5)
+          const normSign = px === 0 ? ((idx / Math.max(1, total - 1)) - 0.5) * 2 : clamp18(px / 6.0, -1, 1);
+          const panOffRad = (((Number(grpCfg.panOffsetDeg) || 0) + normSign * (Number(grpCfg.fanningSpreadDeg) || 0)) * Math.PI) / 180;
+          const tiltOffM = ((Number(grpCfg.tiltOffsetDeg) || 0) / 45) * 2.2;
+          panAngle += panOffRad;
+
+          if (py > 1.6) {
+            l.target = [
+              +(px * 0.72 + Math.sin(panAngle) * 7.2).toFixed(3),
+              +(Math.max(0.05, 0.35 + tiltWave * 1.25 + tiltOffM)).toFixed(3),
+              +(1.35 + Math.cos(panAngle) * 3.6 + tiltWave * 2.1).toFixed(3)
+            ];
+          } else {
+            l.target = [
+              +(px * 0.88 + Math.sin(panAngle) * 5.2).toFixed(3),
+              +(4.4 + tiltWave * 2.1 + tiltOffM).toFixed(3),
+              +(pz + 2.8 + Math.cos(panAngle) * 2.4).toFixed(3)
+            ];
+          }
+
+          const beamGlide = samplePaletteGlide18(beamPal, idx * 0.38 + tSec * spd * 0.48);
+          const washGlide = samplePaletteGlide18(washPal, idx * 0.35 + tSec * spd * 0.36);
+          const baseBeamCol = ls.multicolor
+            ? (transU < 0.999 ? mixHex18(samplePaletteGlide18(prevBeamPal, idx * 0.38 + tSec * spd * 0.48), beamGlide, transU) : beamGlide)
+            : beamPal[0];
+          const baseWashCol = ls.multicolor
+            ? (transU < 0.999 ? mixHex18(samplePaletteGlide18(prevWashPal, idx * 0.35 + tSec * spd * 0.36), washGlide, transU) : washGlide)
+            : washPal[0];
+          const dimmerScale = clamp18((Number(grpCfg.dimmer) ?? 100) / 100, 0, 1.5);
+          const spreadFactor = clamp18(Number(dmxProg?.optics?.spreadFactor) || 1.0, 0.4, 2.5);
+
+          if (cat === 'par' || cat === 'bar') {
+            const chaseMode = (ls.parChaseMode && ls.parChaseMode !== 'auto')
+              ? ls.parChaseMode
+              : (dmxProg?.parChaseMode || (showIdx === 1 ? 'carousel' : showIdx === 2 ? 'mirror_domino' : showIdx === 3 ? 'dual_carousel' : 'gala_sparkle'));
+            const chaseRes = computeParUplightChase18(idx, total, tSec, spd, chaseMode, parPal);
+            l.color = ls.multicolor ? chaseRes.color : parPal[0];
+            l.power = +(Math.max(0.35, chaseRes.level * 7.2) * dimmerScale).toFixed(2);
+            l.angle = +((cat === 'bar' ? 11 : 20) * spreadFactor).toFixed(1);
+            l.coneLenScale18 = chaseRes.coneLenScale;
+            l.fixtureProfile18 = cat === 'bar' ? 'led_pixel_bar_curtain_v1' : 'par_uplight_v1';
+            l.profileId18 = cat === 'bar' ? 'pixel_bar_curtain_v1' : 'par_uplight_v1';
+            l.beamProfile18 = cat === 'bar' ? 4 : 3;
+            l.gobo9 = null;
+            if (cat === 'par' && l.power > 0.5) {
+              floorProjections.push({
+                kind: 'parPool',
+                patKind: 0,
+                pos: [px, deckY + 0.013, pz + 0.55],
+                radius: 1.25 * (chaseRes.coneLenScale || 1),
+                color: l.color,
+                alpha: clamp18((l.power / 10) * 0.42, 0.06, 0.46)
+              });
+            }
+          } else if (cat === 'blinder') {
+            const bRes = evalBlinderThermalFlash18(l, idx, nowMs, ls.blindersOn, showIdx);
+            l.color = bRes.color;
+            l.power = +(bRes.power * dimmerScale).toFixed(2);
+            l.angle = +(44 * spreadFactor).toFixed(1);
+            l._blinderBlastScale18 = bRes.blastScale;
+            l.fixtureProfile18 = 'wash_v3';
+            l.profileId18 = 'wash_v3';
+            l.beamProfile18 = 2;
+            l.gobo9 = null;
+          } else if (cat === 'wash' || cat === 'fresnel') {
+            const pulse = 0.72 + 0.28 * Math.sin(tSec * spd * 2.1 + idx * 0.8);
+            l.color = cat === 'fresnel' && !ls.multicolor ? '#fde68a' : baseWashCol;
+            l.power = +(5.8 * pulse * dimmerScale).toFixed(2);
+            l.angle = +((cat === 'fresnel' ? 28 : 25) * spreadFactor).toFixed(1);
+            l.fixtureProfile18 = 'wash_v3';
+            l.profileId18 = 'wash_v3';
+            l.beamProfile18 = 2;
+            l.gobo9 = null;
+            if (l.target[1] < 2.6) {
+              floorProjections.push({
+                kind: 'washPool',
+                patKind: 0,
+                pos: [l.target[0], deckY + 0.012, l.target[2]],
+                radius: 2.25,
+                color: l.color,
+                alpha: clamp18((l.power / 11) * 0.36, 0.05, 0.42)
+              });
+            }
+          } else {
+            // Moving Head Beams (0=haze_beam_v4) & Spot / Profile (1=spot_profile_v1)
+            const pulse = 0.78 + 0.22 * Math.sin(tSec * spd * 2.6 + idx * 0.65);
+            l.color = baseBeamCol;
+            l.power = +(7.6 * pulse * dimmerScale).toFixed(2);
+            l.angle = +((cat === 'spot' ? 12 : 6.5) * spreadFactor).toFixed(1);
+            l.aperture = Number(dmxProg?.optics?.aperture) || (cat === 'spot' ? 0.045 : 0.028);
+            l.fixtureProfile18 = cat === 'spot' ? 'spot_profile_v1' : 'haze_beam_v4';
+            l.profileId18 = l.fixtureProfile18;
+            l.beamProfile18 = cat === 'spot' ? 1 : 0;
+            const goboPatterns = ['starburst', 'mandala', 'petals', 'tunnel_ring', 'cross_prism'];
+            const gTypeIdx = (idx + showIdx - 1) % 5;
+            l.gobo9 = {
+              type: gTypeIdx + 1,
+              pattern: goboPatterns[gTypeIdx],
+              angle: tSec * 1.85 * (idx % 2 === 0 ? 1 : -1) + idx * 0.7,
+              size: cat === 'spot' ? 1.15 : 0.92
+            };
+            if (l.target[1] < 2.2) {
+              floorProjections.push({
+                kind: 'goboSpot',
+                patKind: gTypeIdx + 1,
+                pos: [l.target[0], deckY + 0.016, l.target[2]],
+                radius: cat === 'spot' ? 1.55 : 1.05,
+                angle: l.gobo9.angle,
+                pattern: l.gobo9.pattern,
+                color: l.color,
+                alpha: clamp18((l.power / 9.5) * 0.58, 0.1, 0.68)
+              });
+              if (deckGlints.length < MAX_DECK_GLINTS) {
+                deckGlints.push({
+                  kind: 'deckGlint',
+                  patKind: 7,
+                  pos: [l.target[0], deckY + 0.018, l.target[2]],
+                  radius: cat === 'spot' ? 0.55 : 0.42,
+                  color: '#ffffff',
+                  alpha: clamp18((l.power / 9.5) * 0.72, 0.15, 0.82)
+                });
+              }
+            }
+          }
+
+          // Audience Blinder Override [F] (Multi-Cell Thermal Flash)
+          if (ls.blindersOn && (cat === 'blinder' || cat === 'wash' || cat === 'fresnel' || idx % 4 === 3)) {
+            const bHit = evalBlinderThermalFlash18(l, idx, nowMs, true, showIdx);
+            l.color = bHit.color;
+            l.power = bHit.power;
+            l.angle = 42;
+            l._blinderBlastScale18 = bHit.blastScale;
+          }
+
+          // 14 Hz Strobe Override [Z]
+          if (ls.strobe || (cat === 'strobe' && (showIdx === 3 || showIdx === 4 || showIdx === 6))) {
+            const gate = ((nowMs + idx * 19) % 71.4) < 18.5;
+            l.color = '#ffffff';
+            l.power = gate ? 11.5 : 0.12;
+          }
+
+          activeLightEnergySum += Math.min(1.0, (Number(l.power) || 0) / 8.5);
+        });
+
+        // Dynamic 3D stage/sky point light pulses from Pyro & Aerial Firework bursts
+        if ((ls._sfxStageGlow?.active || ls._sfxSkyBurst?.active) && eng.lights.length > 0 && !ls.blackout) {
+          const skyActive = ls._sfxSkyBurst?.active && nowMs < ls.skyFlashUntilMs;
+          const glowCol = skyActive ? ls._sfxSkyBurst.color : (ls._sfxStageGlow?.color || '#ff9900');
+          const glowPow = skyActive ? ls._sfxSkyBurst.power : (ls._sfxStageGlow?.power || 9.8);
+          const frontLight = eng.lights[0];
+          if (frontLight && !ls.strobe) {
+            frontLight.color = glowCol;
+            frontLight.power = Math.max(frontLight.power || 6, glowPow);
+          }
+        }
+      }
+
+      ls._floorProjections = floorProjections;
+      ls._deckGlints = deckGlints;
+      ls._screenHaloPools = ls.running && !ls.blackout ? evalScreenHaloBleed18(eng, tSec, spd) : [];
+
+      // 3. Evaluate 3D RGB ILDA Laser Scan Patterns (Ps = 0..3) with +3.20m horizon clamp
+      const laserRenderData = [];
+      if (ls.running && ls.laserOn && !ls.blackout) {
+        const laserUnits = [
+          [-4.5, 3.6, -1.6],
+          [4.5, 3.6, -1.6]
+        ];
+        if (showIdx === 4 || showIdx === 6) laserUnits.push([0, 5.1, -1.7]);
+        const patternIdx = ls.laserPattern && ls.laserPattern !== 'auto'
+          ? clamp18(Number(ls.laserPattern) || 0, 0, 3)
+          : (showIdx - 1) % 4;
+        const customLaserPal = dmxProg?.groupPalettes?.laser;
+        const laserPal = Array.isArray(customLaserPal) && customLaserPal.length ? customLaserPal : LMP_LASER_PALETTES18;
+        laserUnits.forEach((origin, uIdx) => {
+          laserRenderData.push(evalLaserScanPattern18(patternIdx, origin, uIdx, tSec, spd, ls.multicolor, laserPal));
+        });
+      }
+      ls._laserRenderData = laserRenderData;
+
+      // 4. Update Crowd/Floor Reactive Energy (_crowdSmoothEnergy with asymmetric attack 2.15/s & release 1.05/s)
+      const lightCount = Math.max(1, eng?.lights?.length || 1);
+      const rawEnergy = ls.running && !ls.blackout
+        ? clamp18(
+            (activeLightEnergySum / lightCount) * 0.65 +
+              (activeNozzles.length > 0 ? 0.25 : 0) +
+              (ls.blindersOn || ls.strobe ? 0.25 : 0),
+            0,
+            1
+          )
+        : 0;
+      const rate = rawEnergy > (ls._crowdSmoothEnergy || 0) ? 2.15 : 1.05;
+      ls._crowdSmoothEnergy = clamp18(
+        (ls._crowdSmoothEnergy || 0) + (rawEnergy - (ls._crowdSmoothEnergy || 0)) * Math.min(1, dt * rate),
+        0,
+        1
+      );
+
+      const structCfg = lumiState.structureConfig18;
+      if (ls.running && structCfg?.crowdBounce) {
+        ls.crowdBouncePhase = (ls.crowdBouncePhase || 0) + dt * spd * (3.2 + ls._crowdSmoothEnergy * 2.2);
+        ls.crowdBounceOffsetM = +(Math.abs(Math.sin(ls.crowdBouncePhase)) * (0.14 + 0.14 * ls._crowdSmoothEnergy)).toFixed(3);
+      } else {
+        ls.crowdBounceOffsetM = 0;
+      }
+
+      // 5. Step Auto Cinematic Camera Director (5-Shot 10s Tour)
+      stepAutoCameraDirector18(eng, ls, dt, nowMs);
+
+      return true;
+    }
+
+    function ensureLmpFxBatchProgram18(eng) {
+      const gl = eng?.gl;
+      if (!gl) return null;
+      if (eng._lmpFxProg18 && eng._lmpFxGlRef18 === gl) return eng._lmpFxProg18;
+      const vsSrc = `#version 300 es
+precision highp float;
+layout(location=0) in vec3 aPos;
+layout(location=1) in vec2 aUV;
+layout(location=2) in vec4 aColor;
+uniform mat4 uVP;
+uniform int uPassMode;
+out vec2 vUV;
+out vec4 vColor;
+out vec3 vWorld;
+void main(){
+  vUV = aUV;
+  vColor = aColor;
+  vWorld = aPos;
+  gl_Position = uVP * vec4(aPos, 1.0);
+  if(uPassMode == 3){
+    float dist = max(1.5, gl_Position.w);
+    gl_PointSize = clamp(aUV.x * (220.0 / dist), 2.0, 64.0);
+  }
+}`;
+      const fsSrc = `#version 300 es
+precision highp float;
+in vec2 vUV;
+in vec4 vColor;
+in vec3 vWorld;
+uniform float uTime;
+uniform int uPassMode;
+out vec4 frag;
+void main(){
+  if(uPassMode == 0){
+    float radial = clamp(1.0 - vUV.y, 0.0, 1.0);
+    float w1 = sin(vWorld.x * 2.4 + uTime * 3.2) * cos(vWorld.z * 1.9 - uTime * 2.1);
+    float w2 = sin(vWorld.x * 5.1 - vWorld.z * 4.3 + uTime * 4.7);
+    float turb = clamp(0.65 + 0.25 * w1 + 0.18 * w2, 0.2, 1.35);
+    float edge = smoothstep(0.0, 0.12, vUV.x) * smoothstep(1.0, 0.88, vUV.x);
+    float a = vColor.a * pow(radial, 0.72) * turb * edge;
+    vec3 col = mix(vColor.rgb, vec3(1.0), clamp(pow(radial, 2.5) * 0.45 + max(0.0, w1) * 0.22, 0.0, 0.75));
+    frag = vec4(col, clamp(a, 0.0, 1.0));
+    return;
+  }
+  if(uPassMode == 1){
+    vec2 p = vUV * 2.0 - 1.0;
+    float r = length(p);
+    if(r > 1.0) discard;
+    float patKind = floor(vColor.a / 2.0);
+    float baseAlpha = fract(vColor.a);
+    float fall = pow(max(0.0, 1.0 - r), 1.45);
+    float mask = 1.0;
+    if(patKind > 0.5 && patKind < 6.5){
+      float a = atan(p.y, p.x) + uTime * (mod(patKind, 2.0) < 0.5 ? 1.85 : -1.85);
+      float lobes = patKind < 1.5 ? 6.0 : patKind < 2.5 ? 8.0 : patKind < 3.5 ? 5.0 : 4.0;
+      if(patKind > 3.5 && patKind < 4.5){
+        mask = 0.35 + 0.65 * smoothstep(-0.2, 0.5, sin(r * 18.8 - uTime * 3.0));
+      } else {
+        mask = 0.32 + 0.68 * smoothstep(-0.15, 0.55, cos(a * lobes)) * smoothstep(0.08, 0.28, r);
+      }
+    } else if(patKind >= 6.5){
+      fall = pow(max(0.0, 1.0 - r), 2.6);
+    }
+    vec3 col = mix(vColor.rgb, vec3(1.0), pow(max(0.0, 1.0 - r), 3.0) * 0.55);
+    frag = vec4(col, clamp(baseAlpha * fall * mask, 0.0, 1.0));
+    return;
+  }
+  if(uPassMode == 2){
+    frag = vColor;
+    return;
+  }
+  vec2 pc = gl_PointCoord * 2.0 - 1.0;
+  float pr = length(pc);
+  if(pr > 1.0) discard;
+  float glow = exp(-pr * pr * 3.2);
+  float core = smoothstep(0.42, 0.0, pr);
+  vec3 col = mix(vColor.rgb, vec3(1.0, 0.99, 0.95), core * 0.72);
+  frag = vec4(col, clamp(vColor.a * glow, 0.0, 1.0));
+}`;
+      const compile = (type, src) => {
+        const s = gl.createShader(type);
+        gl.shaderSource(s, src);
+        gl.compileShader(s);
+        if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+          gl.deleteShader(s);
+          return null;
+        }
+        return s;
+      };
+      const vs = compile(gl.VERTEX_SHADER, vsSrc);
+      const fs = compile(gl.FRAGMENT_SHADER, fsSrc);
+      if (!vs || !fs) return null;
+      const prog = gl.createProgram();
+      gl.attachShader(prog, vs);
+      gl.attachShader(prog, fs);
+      gl.linkProgram(prog);
+      gl.deleteShader(vs);
+      gl.deleteShader(fs);
+      if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+        gl.deleteProgram(prog);
+        return null;
+      }
+      const vao = gl.createVertexArray();
+      const buf = gl.createBuffer();
+      const maxVerts = 8192;
+      const data = new Float32Array(maxVerts * 9);
+      gl.bindVertexArray(vao);
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, data.byteLength, gl.DYNAMIC_DRAW);
+      const stride = 9 * 4;
+      gl.enableVertexAttribArray(0);
+      gl.vertexAttribPointer(0, 3, gl.FLOAT, false, stride, 0);
+      gl.enableVertexAttribArray(1);
+      gl.vertexAttribPointer(1, 2, gl.FLOAT, false, stride, 3 * 4);
+      gl.enableVertexAttribArray(2);
+      gl.vertexAttribPointer(2, 4, gl.FLOAT, false, stride, 5 * 4);
+      gl.bindVertexArray(null);
+
+      eng._lmpFxGlRef18 = gl;
+      eng._lmpFxProg18 = {
+        prog,
+        vao,
+        buf,
+        data,
+        maxVerts,
+        uVP: gl.getUniformLocation(prog, 'uVP'),
+        uTime: gl.getUniformLocation(prog, 'uTime'),
+        uPassMode: gl.getUniformLocation(prog, 'uPassMode')
+      };
+      return eng._lmpFxProg18;
+    }
+
+    // Draw extra 3D WebGL2 volumetric cones + batched Liquid Sky sheets, Floor Gobo/Wash/PAR/Glints/ScreenHalo decals, 16-beam Laser rays & 3D GPU Pyro particles
+    function drawWebglVolumetricExtras18(eng, nowMs = nowMs18()) {
+      const ls = liveShow18;
+      if (!eng || eng.view !== 'stage' || !eng.gl || typeof eng.makeBeam !== 'function') return;
+      const manualPyroActive = nowMs < ls.sparkUntilMs || nowMs < ls.co2UntilMs || nowMs < ls.flameUntilMs || ls.activeNozzles.length > 0 || ls.particles.length > 0 || ls.aerialShells.length > 0;
+      if ((!ls.running || ls.blackout) && !manualPyroActive) return;
+
+      const gl = eng.gl;
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+      gl.depthMask(false);
+
+      try {
+        const tSec = ls.showElapsedSec || nowMs / 1000;
+        // 1. Tight high-intensity inner core for Beams, 6-finger rotating prism for Spot/Profile (spot_profile_v1), and 12-cell curtain for Barra LED (led_pixel_bar_curtain_v1)
+        if (ls.running && ls.lightsOn && !ls.blackout) {
+          for (let i = 0; i < eng.lights.length; i++) {
+            const l = eng.lights[i];
+            if (!l || !l.enabled || l.power <= 0.2) continue;
+            const cat = l._liveCat18 || classifyFixture18(l, i, eng.lights.length);
+            if (cat === 'beam' || cat === 'spot') {
+              const coreLight = {
+                pos: l.pos,
+                target: l.target,
+                color: '#ffffff',
+                angle: Math.max(1.8, (l.angle || 7) * 0.36),
+                aperture: 0.018,
+                beamProfile18: 0,
+                beamLength: Math.hypot(l.target[0] - l.pos[0], l.target[1] - l.pos[1], l.target[2] - l.pos[2]) + 1.5
+              };
+              const mesh = eng.makeBeam(coreLight);
+              eng.draw(mesh, 2, null, Math.min(0.42, 0.24 * (l.power / 6)));
+
+              if (cat === 'spot') {
+                const rotBase = l.gobo9?.angle || tSec * 1.6;
+                for (let f = 0; f < 6; f++) {
+                  const a = rotBase + (f * Math.PI) / 3;
+                  const fingerTarget = [
+                    l.target[0] + Math.cos(a) * 0.42,
+                    l.target[1],
+                    l.target[2] + Math.sin(a) * 0.42
+                  ];
+                  const fingerMesh = eng.makeBeam({
+                    pos: l.pos,
+                    target: fingerTarget,
+                    color: l.color,
+                    angle: 2.2,
+                    aperture: 0.014,
+                    beamProfile18: 1
+                  });
+                  eng.draw(fingerMesh, 2, null, Math.min(0.24, 0.14 * (l.power / 6)));
+                }
+              }
+            } else if (cat === 'bar') {
+              for (let c = 0; c < 6; c++) {
+                const u = c / 5 - 0.5;
+                const cellPos = [l.pos[0] + u * 0.92, l.pos[1], l.pos[2]];
+                const cellTarget = [l.target[0] + u * 1.15, l.target[1], l.target[2]];
+                const barRay = {
+                  pos: cellPos,
+                  target: cellTarget,
+                  color: l.color,
+                  angle: 4.2,
+                  aperture: 0.02,
+                  beamProfile18: 4,
+                  beamLength: 6.5
+                };
+                const mesh = eng.makeBeam(barRay);
+                eng.draw(mesh, 2, null, Math.min(0.28, 0.16 * (l.power / 6)));
+              }
+            }
+          }
+        }
+
+        // 2. 3D Volumetric Pyro Cones at each firing Sparkular / CO2 / Flame nozzle
+        for (const nz of ls.activeNozzles) {
+          const pyroCone = {
+            pos: nz.pos,
+            target: [nz.pos[0], nz.pos[1] + nz.heightM, nz.pos[2]],
+            color: nz.color,
+            angle: nz.angle || 12,
+            aperture: 0.04,
+            beamProfile18: 3,
+            beamLength: nz.heightM
+          };
+          const mesh = eng.makeBeam(pyroCone);
+          eng.draw(mesh, 2, null, Math.min(0.45, 0.34 * nz.level));
+        }
+
+        // 3. Single Cached WebGL2 Batch Program for 3D Liquid Sky Laser Sheets, Floor Decals, Laser Rays & GPU Pyro Particles
+        const fxProg = ensureLmpFxBatchProgram18(eng);
+        if (fxProg && eng.vp) {
+          const { prog, vao, buf, data, maxVerts, uVP, uTime, uPassMode } = fxProg;
+          gl.useProgram(prog);
+          gl.bindVertexArray(vao);
+          gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+          gl.uniformMatrix4fv(uVP, false, eng.vp);
+          gl.uniform1f(uTime, tSec);
+
+          const pushVert = (idx, x, y, z, u, v, r, g, b, a) => {
+            if (idx >= maxVerts) return idx;
+            const o = idx * 9;
+            data[o] = x;
+            data[o + 1] = y;
+            data[o + 2] = z;
+            data[o + 3] = u;
+            data[o + 4] = v;
+            data[o + 5] = r;
+            data[o + 6] = g;
+            data[o + 7] = b;
+            data[o + 8] = a;
+            return idx + 1;
+          };
+
+          // Pass 0: 3D Liquid Sky Laser Interference Sheet (uPassMode = 0, gl.TRIANGLES)
+          const lasers = ls._laserRenderData || [];
+          if (lasers.length > 0) {
+            let vCount = 0;
+            for (const unit of lasers) {
+              const org = unit.origin;
+              const rays = unit.rays;
+              const [br, bg, bb] = hexToRgb01_18(unit.baseCol);
+              const [ar, ag, ab] = hexToRgb01_18(unit.altCol);
+              for (let r = 0; r + 1 < rays.length; r++) {
+                const pA = rays[r].target3d;
+                const pB = rays[r + 1].target3d;
+                const u0 = r / Math.max(1, rays.length - 1);
+                const u1 = (r + 1) / Math.max(1, rays.length - 1);
+                vCount = pushVert(vCount, org[0], org[1], org[2], (u0 + u1) * 0.5, 0, br, bg, bb, 0.24);
+                vCount = pushVert(vCount, pA[0], pA[1], pA[2], u0, 1, ar, ag, ab, 0.08);
+                vCount = pushVert(vCount, pB[0], pB[1], pB[2], u1, 1, br, bg, bb, 0.08);
+              }
+            }
+            if (vCount > 0) {
+              gl.uniform1i(uPassMode, 0);
+              gl.bufferSubData(gl.ARRAY_BUFFER, 0, data.subarray(0, vCount * 9));
+              gl.drawArrays(gl.TRIANGLES, 0, vCount);
+            }
+          }
+
+          // Pass 1: 3D Floor Gobo Projections, Wash Pools, PAR Scallops, Specular Deck Glints & Screen Halo Bleed (uPassMode = 1, gl.TRIANGLES)
+          const decals = [
+            ...(ls._screenHaloPools || []),
+            ...(ls._floorProjections || []),
+            ...(ls._deckGlints || [])
+          ];
+          if (decals.length > 0) {
+            let vCount = 0;
+            for (const d of decals) {
+              const cx = d.pos[0];
+              const cy = d.pos[1];
+              const cz = d.pos[2];
+              const rx = d.radiusX || d.radius || 1.2;
+              const rz = d.radiusZ || d.radius || 1.2;
+              const [r, g, b] = hexToRgb01_18(d.color || '#00f0ff');
+              const patKind = Number(d.patKind) || 0;
+              const encAlpha = patKind * 2.0 + clamp18(d.alpha || 0.3, 0.02, 0.96);
+              vCount = pushVert(vCount, cx - rx, cy, cz - rz, 0, 0, r, g, b, encAlpha);
+              vCount = pushVert(vCount, cx + rx, cy, cz - rz, 1, 0, r, g, b, encAlpha);
+              vCount = pushVert(vCount, cx + rx, cy, cz + rz, 1, 1, r, g, b, encAlpha);
+              vCount = pushVert(vCount, cx - rx, cy, cz - rz, 0, 0, r, g, b, encAlpha);
+              vCount = pushVert(vCount, cx + rx, cy, cz + rz, 1, 1, r, g, b, encAlpha);
+              vCount = pushVert(vCount, cx - rx, cy, cz + rz, 0, 1, r, g, b, encAlpha);
+            }
+            if (vCount > 0) {
+              gl.uniform1i(uPassMode, 1);
+              gl.bufferSubData(gl.ARRAY_BUFFER, 0, data.subarray(0, vCount * 9));
+              gl.drawArrays(gl.TRIANGLES, 0, vCount);
+            }
+          }
+
+          // Pass 2: 3D 16-Beam ILDA Laser Core Rays & 3D Pyro Velocity Streaks (uPassMode = 2, gl.LINES)
+          let lineVerts = 0;
+          for (const unit of lasers) {
+            const org = unit.origin;
+            for (const ray of unit.rays) {
+              const [r, g, b] = hexToRgb01_18(ray.rayCol);
+              lineVerts = pushVert(lineVerts, org[0], org[1], org[2], 0, 0, 1, 1, 1, 0.95);
+              lineVerts = pushVert(lineVerts, ray.target3d[0], ray.target3d[1], ray.target3d[2], 1, 1, r, g, b, 0.82);
+            }
+          }
+          for (const s of ls.aerialShells) {
+            for (let t = 0; t + 1 < s.trail.length; t++) {
+              const p0 = s.trail[t];
+              const p1 = s.trail[t + 1];
+              const a = ((t + 1) / s.trail.length) * 0.85;
+              lineVerts = pushVert(lineVerts, p0[0], p0[1], p0[2], 0, 0, 1, 0.9, 0.5, a * 0.5);
+              lineVerts = pushVert(lineVerts, p1[0], p1[1], p1[2], 1, 1, 1, 0.98, 0.85, a);
+            }
+          }
+          for (let i = 0; i < ls.particles.length; i++) {
+            const p = ls.particles[i];
+            if (p.px === undefined || p.pType === 3) continue;
+            const u = clamp18(p.age / Math.max(0.05, p.maxAge), 0, 1);
+            const alpha = (1 - u) * 0.9;
+            if (alpha <= 0.05) continue;
+            const [r, g, b] = hexToRgb01_18(p.color || '#ffe680');
+            lineVerts = pushVert(lineVerts, p.px, p.py, p.pz, 0, 0, r, g, b, alpha * 0.35);
+            lineVerts = pushVert(lineVerts, p.x, p.y, p.z, 1, 1, 1, 0.98, 0.9, alpha);
+          }
+          if (lineVerts > 0) {
+            gl.uniform1i(uPassMode, 2);
+            gl.bufferSubData(gl.ARRAY_BUFFER, 0, data.subarray(0, lineVerts * 9));
+            gl.drawArrays(gl.LINES, 0, lineVerts);
+          }
+
+          // Pass 3: 3D GPU Pyro & Firework Point Sprites (uPassMode = 3, gl.POINTS)
+          let ptVerts = 0;
+          for (const s of ls.aerialShells) {
+            ptVerts = pushVert(ptVerts, s.x, s.y, s.z, 4.8, 0, 1, 0.96, 0.8, 0.98);
+          }
+          for (let i = 0; i < ls.particles.length; i++) {
+            const p = ls.particles[i];
+            const u = clamp18(p.age / Math.max(0.05, p.maxAge), 0, 1);
+            const twinkle = p.pType === 5 && u > 0.55 ? (Math.sin(nowMs * 0.05 + p.seed) > 0 ? 1 : 0.25) : 1;
+            const alpha = (1 - u) * twinkle * (p.pType === 3 ? 0.42 : 0.92);
+            if (alpha <= 0.04) continue;
+            const [r, g, b] = hexToRgb01_18(p.color || '#ffe680');
+            const ptSize = p.pType === 3 ? p.size * 18 : p.pType === 2 ? p.size * 16 : p.size * 2.2;
+            ptVerts = pushVert(ptVerts, p.x, p.y, p.z, ptSize, u, r, g, b, alpha);
+          }
+          if (ptVerts > 0) {
+            gl.uniform1i(uPassMode, 3);
+            gl.bufferSubData(gl.ARRAY_BUFFER, 0, data.subarray(0, ptVerts * 9));
+            gl.drawArrays(gl.POINTS, 0, ptVerts);
+          }
+        }
+      } finally {
+        gl.bindVertexArray(null);
+        if (eng.program) gl.useProgram(eng.program);
+        gl.depthMask(true);
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+        gl.disable(gl.BLEND);
+      }
+      return true;
+    }
+
+    function renderLiveShowOverlay18(nowMs = nowMs18(), { clean = false } = {}) {
+      const can = $('lmpShowOverlay18');
+      const eng = S.engine;
+      if (!can || !eng) return null;
+      const ctx = can.getContext?.('2d', { alpha: true });
+      if (!ctx) return null;
+
+      const ls = liveShow18;
+      const manualPyroActive = nowMs < ls.sparkUntilMs || nowMs < ls.co2UntilMs || nowMs < ls.flameUntilMs || ls.particles.length > 0 || ls.aerialShells.length > 0;
+      const active = (ls.running || manualPyroActive) && eng.view === 'stage' && !!eng.vp;
+      if (!active) {
+        if (can._dirty18 && can.width > 0) {
+          ctx.setTransform(1, 0, 0, 1, 0, 0);
+          ctx.clearRect(0, 0, can.width, can.height);
+          can._dirty18 = false;
+        }
+        return can;
+      }
+
+      const w = can.clientWidth || eng.canvas?.clientWidth || 0;
+      const h = can.clientHeight || eng.canvas?.clientHeight || 0;
+      if (w < 2 || h < 2) return can;
+      const dpr = Math.min(1.5, window.devicePixelRatio || 1);
+      const cw = Math.round(w * dpr);
+      const ch = Math.round(h * dpr);
+      if (can.width !== cw || can.height !== ch) {
+        can.width = cw;
+        can.height = ch;
+      }
+      can._dirty18 = true;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, w, h);
+
+      const proj = (pt) => {
+        const p = eng.project?.(pt);
+        return p && Number.isFinite(p.x + p.y + p.z) && p.z > -0.98 && p.z < 1.12 ? p : null;
+      };
+
+      ctx.save();
+      ctx.globalCompositeOperation = 'screen';
+
+      const tSec = ls.showElapsedSec || nowMs / 1000;
+      const spd = clamp18(ls.speed || 2.0, 0.2, 5.0);
+      const showIdx = ls.effectiveShow || 1;
+
+      // 0. Planar Mirror Reflective Deck Reflections (Phase B)
+      if (lumiState.structureConfig18?.deckMaterial === 'mirror' && !ls.blackout) {
+        drawMirrorDeckReflections18(ctx, proj, eng, tSec, spd);
+      }
+
+      // 1. Sky / Audience Flash from Aerial Pyro or Strobe/Blinders
+      if (nowMs < ls.skyFlashUntilMs && !ls.blackout) {
+        const flashAlpha = clamp18((ls.skyFlashUntilMs - nowMs) / 450, 0, 1) * 0.22;
+        const skyGrad = ctx.createLinearGradient(0, 0, 0, h * 0.75);
+        skyGrad.addColorStop(0, rgba18(ls.skyFlashColor, flashAlpha));
+        skyGrad.addColorStop(1, rgba18(ls.skyFlashColor, 0));
+        ctx.fillStyle = skyGrad;
+        ctx.fillRect(0, 0, w, h);
+      }
+
+      // 2. Render Volumetric Moving Head Shafts, Barra LED 12-Cell Curtains (pixel_bar_curtain_v1), Parabolic Wall Scallops (par_uplight_v1), Lens Head Flares & Rotating Floor Gobo Projections (spot_profile_v1)
+      if (ls.running && ls.lightsOn && !ls.blackout && Array.isArray(eng.lights)) {
+        for (let i = 0; i < eng.lights.length; i++) {
+          const l = eng.lights[i];
+          if (!l || !l.enabled || l.power <= 0.15) continue;
+          const p0 = proj(l.pos);
+          const p1 = proj(l.target);
+          if (!p0) continue;
+          const cat = l._liveCat18 || classifyFixture18(l, i, eng.lights.length);
+          const intensity = clamp18(l.power / 8.5, 0.1, 1.35);
+
+          if (cat === 'bar' && p1) {
+            // 12-cell Barra LED linear array + curtain rays (pixel_bar_curtain_v1: 0.92 x 6.5 x 0.45m)
+            const cells = computePixelBarCurtainCells18(l.pos, l.target, tSec, spd, i, l.color);
+            for (const cell of cells) {
+              const cp0 = proj(cell.emitterPos);
+              const cp1 = proj(cell.rayEndPos);
+              if (!cp0 || !cp1) continue;
+              const cellAlpha = clamp18(intensity * cell.wave * 0.36, 0.03, 0.48);
+              ctx.strokeStyle = rgba18(cell.color, cellAlpha);
+              ctx.lineWidth = 4.5;
+              ctx.beginPath();
+              ctx.moveTo(cp0.x, cp0.y);
+              ctx.lineTo(cp1.x, cp1.y);
+              ctx.stroke();
+
+              ctx.fillStyle = cell.wave > 0.82 ? '#ffffff' : cell.color;
+              ctx.beginPath();
+              ctx.arc(cp0.x, cp0.y, 2.6, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          } else if (p1) {
+            // Parabolic Wall-Wash Scallop + Floor Pool for par_uplight_v1
+            if (cat === 'par') {
+              drawParabolicWallScallop18(ctx, proj, l.pos, l.color, intensity, 3.6, 1.45);
+            }
+            // Volumetric light cone in screen-projected 3D space
+            const distPx = Math.hypot(p1.x - p0.x, p1.y - p0.y);
+            const coneSpread = cat === 'beam' ? 0.11 : cat === 'spot' ? 0.19 : cat === 'wash' || cat === 'fresnel' ? 0.34 : 0.42;
+            const endRadius = clamp18(distPx * coneSpread, 12, 160);
+            const dx = p1.x - p0.x;
+            const dy = p1.y - p0.y;
+            const len = Math.max(1, Math.hypot(dx, dy));
+            const nx = -dy / len;
+            const ny = dx / len;
+
+            const grad = ctx.createLinearGradient(p0.x, p0.y, p1.x, p1.y);
+            const coneAlpha = cat === 'beam' || cat === 'spot' ? 0.32 * intensity : 0.18 * intensity;
+            grad.addColorStop(0, rgba18('#ffffff', Math.min(0.65, coneAlpha * 1.5)));
+            grad.addColorStop(0.18, rgba18(l.color, coneAlpha));
+            grad.addColorStop(1, rgba18(l.color, 0));
+
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            ctx.moveTo(p0.x - nx * 2.5, p0.y - ny * 2.5);
+            ctx.lineTo(p0.x + nx * 2.5, p0.y + ny * 2.5);
+            ctx.lineTo(p1.x + nx * endRadius, p1.y + ny * endRadius);
+            ctx.lineTo(p1.x - nx * endRadius, p1.y - ny * endRadius);
+            ctx.closePath();
+            ctx.fill();
+
+            // Tight central laser-like beam core for Moving Head Beams & Rotating Floor Gobo for Spot/Profile (spot_profile_v1)
+            if (cat === 'beam' || cat === 'spot') {
+              ctx.strokeStyle = rgba18('#ffffff', Math.min(0.55, intensity * 0.42));
+              ctx.lineWidth = cat === 'beam' ? 2.2 : 1.5;
+              ctx.beginPath();
+              ctx.moveTo(p0.x, p0.y);
+              ctx.lineTo(p1.x, p1.y);
+              ctx.stroke();
+
+              // Floor Gobo / Rotating Projection ring when hitting the stage deck
+              if (l.target[1] < 1.8) {
+                const spotR = clamp18(endRadius * 0.55, 10, 64);
+                const spotGrad = ctx.createRadialGradient(p1.x, p1.y, 1, p1.x, p1.y, spotR);
+                spotGrad.addColorStop(0, rgba18('#ffffff', 0.42 * intensity));
+                spotGrad.addColorStop(0.45, rgba18(l.color, 0.28 * intensity));
+                spotGrad.addColorStop(1, rgba18(l.color, 0));
+                ctx.fillStyle = spotGrad;
+                ctx.beginPath();
+                ctx.ellipse(p1.x, p1.y, spotR, spotR * 0.48, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                drawRotatingFloorGobo18(
+                  ctx,
+                  p1.x,
+                  p1.y,
+                  spotR,
+                  spotR * 0.48,
+                  l.gobo9?.angle || (tSec * 1.85 + i),
+                  l.gobo9?.pattern || 'starburst',
+                  l.color,
+                  intensity
+                );
+              }
+            }
+          }
+
+          // Fixture lens head flare
+          const flareR = cat === 'blinder' ? 24 * intensity : 12 * intensity;
+          if (flareR > 2) {
+            const fg = ctx.createRadialGradient(p0.x, p0.y, 0.5, p0.x, p0.y, flareR);
+            fg.addColorStop(0, 'rgba(255,255,255,0.92)');
+            fg.addColorStop(0.28, rgba18(l.color, 0.72));
+            fg.addColorStop(1, rgba18(l.color, 0));
+            ctx.fillStyle = fg;
+            ctx.beginPath();
+            ctx.arc(p0.x, p0.y, flareR, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      }
+
+      // 3. 16-Beam ILDA Laser Fan & Liquid Sky Wave Sheet (4 patterns from ledmapper.pro)
+      if (ls.running && ls.laserOn && !ls.blackout) {
+        const laserUnits = [
+          [-4.5, 3.4, -1.6],
+          [4.5, 3.4, -1.6]
+        ];
+        if (showIdx === 4 || showIdx === 6) laserUnits.push([0, 5.1, -1.7]);
+        const patternIdx = ls.laserPattern === 'auto' ? (showIdx - 1) % 4 : (Number(ls.laserPattern) || 0) % 4;
+        const beamCount = patternIdx === 3 ? 20 : 16;
+
+        laserUnits.forEach((origin, uIdx) => {
+          const pOrigin = proj(origin);
+          if (!pOrigin) return;
+          const customLaserPal = lumiState.dmxProgrammer18?.groupPalettes?.laser;
+          const laserPal = Array.isArray(customLaserPal) && customLaserPal.length ? customLaserPal : LMP_LASER_PALETTES18;
+          const baseCol = laserPal[(uIdx + showIdx - 1) % laserPal.length];
+          const altCol = laserPal[(uIdx + showIdx + 1) % laserPal.length];
+          const ends = [];
+
+          for (let b = 0; b < beamCount; b++) {
+            const u = (b / (beamCount - 1)) - 0.5;
+            let yaw = u * 1.15;
+            let pitch = -0.02;
+            let gate = true;
+            if (patternIdx === 0) {
+              // Pattern 0: Wide Sine Fan + Liquid Sky Wave Sheet
+              yaw += Math.sin(tSec * spd * 1.4 + uIdx) * 0.28;
+              pitch = 0.02 + Math.sin(tSec * spd * 3.6 + b * 0.55 + uIdx) * 0.09;
+            } else if (patternIdx === 1) {
+              // Pattern 1: Geometric Scanning Cone Tunnel
+              const theta = (b / beamCount) * Math.PI * 2 + tSec * spd * 2.4 * (uIdx % 2 === 0 ? 1 : -1);
+              const rad = 0.20 + 0.22 * Math.abs(Math.sin(tSec * spd * 1.6));
+              yaw = Math.cos(theta) * rad;
+              pitch = 0.04 + Math.sin(theta) * rad * 0.65;
+            } else if (patternIdx === 2) {
+              // Pattern 2: Dual-Mirror X-Cross Chopper
+              const sign = uIdx % 2 === 0 ? 1 : -1;
+              yaw = sign * 0.28 + u * 0.95 + Math.sin(tSec * spd * 2.8) * 0.22 * sign;
+              pitch = 0.01 + Math.cos(tSec * spd * 2.2 + b * 0.4) * 0.08;
+              gate = ((b + Math.floor(tSec * spd * 12)) % 3) !== 0;
+            } else {
+              // Pattern 3: Festival Climax Starburst
+              yaw = u * 1.42 + Math.sin(tSec * spd * 2.2 + b * 0.35) * 0.25;
+              pitch = 0.03 + Math.cos(tSec * spd * 3.1 + b * 0.48) * 0.14;
+            }
+            if (!gate) continue;
+            const range = 16.5;
+            const target3d = [
+              origin[0] + Math.sin(yaw) * Math.cos(pitch) * range,
+              Math.max(3.2, origin[1] + Math.sin(pitch) * range),
+              origin[2] + Math.cos(yaw) * Math.cos(pitch) * range
+            ];
+            const pEnd = proj(target3d);
+            if (!pEnd) continue;
+            const rayCol = ls.multicolor ? (b % 2 === 0 ? baseCol : altCol) : '#00ff66';
+            ends.push({ pEnd, rayCol });
+          }
+
+          // Liquid Sky Interference Sheet fill between adjacent rays
+          if (ends.length >= 2) {
+            ctx.beginPath();
+            ctx.moveTo(pOrigin.x, pOrigin.y);
+            for (const e of ends) ctx.lineTo(e.pEnd.x, e.pEnd.y);
+            ctx.closePath();
+            const sheetGrad = ctx.createRadialGradient(pOrigin.x, pOrigin.y, 2, pOrigin.x, pOrigin.y, 260);
+            sheetGrad.addColorStop(0, rgba18(baseCol, 0.22));
+            sheetGrad.addColorStop(0.6, rgba18(altCol, 0.08));
+            sheetGrad.addColorStop(1, rgba18(baseCol, 0));
+            ctx.fillStyle = sheetGrad;
+            ctx.fill();
+          }
+
+          // Crisp coherent laser rays
+          for (const { pEnd, rayCol } of ends) {
+            ctx.strokeStyle = rgba18(rayCol, 0.28);
+            ctx.lineWidth = 4.5;
+            ctx.beginPath();
+            ctx.moveTo(pOrigin.x, pOrigin.y);
+            ctx.lineTo(pEnd.x, pEnd.y);
+            ctx.stroke();
+
+            ctx.strokeStyle = rgba18(rayCol, 0.92);
+            ctx.lineWidth = 1.4;
+            ctx.beginPath();
+            ctx.moveTo(pOrigin.x, pOrigin.y);
+            ctx.lineTo(pEnd.x, pEnd.y);
+            ctx.stroke();
+
+            ctx.strokeStyle = 'rgba(235,255,255,0.78)';
+            ctx.lineWidth = 0.65;
+            ctx.beginPath();
+            ctx.moveTo(pOrigin.x, pOrigin.y);
+            ctx.lineTo(pEnd.x, pEnd.y);
+            ctx.stroke();
+          }
+
+          // Laser aperture emitter glow
+          const lg = ctx.createRadialGradient(pOrigin.x, pOrigin.y, 0.5, pOrigin.x, pOrigin.y, 16);
+          lg.addColorStop(0, '#ffffff');
+          lg.addColorStop(0.3, rgba18(baseCol, 0.85));
+          lg.addColorStop(1, rgba18(baseCol, 0));
+          ctx.fillStyle = lg;
+          ctx.beginPath();
+          ctx.arc(pOrigin.x, pOrigin.y, 16, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+
+      // 4. Render Active Pyro Nozzle Plumes (Sparkular, CO2, Flames) + Base Stage Glow
+      for (const nz of ls.activeNozzles) {
+        const pBase = proj(nz.pos);
+        const pTop = proj([nz.pos[0], nz.pos[1] + nz.heightM, nz.pos[2]]);
+        if (!pBase || !pTop) continue;
+        const plumeH = Math.max(12, Math.hypot(pTop.x - pBase.x, pTop.y - pBase.y));
+
+        if (nz.kind === 'cold_spark_fountain') {
+          const g = ctx.createLinearGradient(pBase.x, pBase.y, pTop.x, pTop.y);
+          g.addColorStop(0, 'rgba(255,255,255,0.95)');
+          g.addColorStop(0.35, 'rgba(255,225,110,0.65)');
+          g.addColorStop(1, 'rgba(255,140,0,0)');
+          ctx.strokeStyle = g;
+          ctx.lineWidth = Math.max(6, plumeH * 0.14);
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+          ctx.moveTo(pBase.x, pBase.y);
+          ctx.lineTo(pTop.x, pTop.y);
+          ctx.stroke();
+        } else if (nz.kind === 'co2_jet') {
+          const topW = Math.max(14, plumeH * 0.28);
+          const g = ctx.createLinearGradient(pBase.x, pBase.y, pTop.x, pTop.y);
+          g.addColorStop(0, 'rgba(240,253,255,0.85)');
+          g.addColorStop(0.45, 'rgba(185,242,255,0.42)');
+          g.addColorStop(1, 'rgba(140,225,255,0)');
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.moveTo(pBase.x - 3, pBase.y);
+          ctx.lineTo(pBase.x + 3, pBase.y);
+          ctx.lineTo(pTop.x + topW, pTop.y);
+          ctx.lineTo(pTop.x - topW, pTop.y);
+          ctx.closePath();
+          ctx.fill();
+        } else if (nz.kind === 'flame_jet') {
+          const whipX = Math.sin(nowMs * 0.02 + nz.pos[0]) * (plumeH * 0.08);
+          const g = ctx.createLinearGradient(pBase.x, pBase.y, pTop.x + whipX, pTop.y);
+          g.addColorStop(0, 'rgba(255,252,190,0.96)');
+          g.addColorStop(0.35, 'rgba(255,130,0,0.82)');
+          g.addColorStop(0.75, 'rgba(220,30,0,0.45)');
+          g.addColorStop(1, 'rgba(120,10,0,0)');
+          ctx.strokeStyle = g;
+          ctx.lineWidth = Math.max(10, plumeH * 0.22);
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+          ctx.moveTo(pBase.x, pBase.y);
+          ctx.quadraticCurveTo((pBase.x + pTop.x) * 0.5 - whipX * 0.6, (pBase.y + pTop.y) * 0.5, pTop.x + whipX, pTop.y);
+          ctx.stroke();
+        }
+
+        // Nozzle floor glow
+        const baseR = Math.max(16, plumeH * 0.32);
+        const bg = ctx.createRadialGradient(pBase.x, pBase.y, 1, pBase.x, pBase.y, baseR);
+        bg.addColorStop(0, 'rgba(255,255,255,0.9)');
+        bg.addColorStop(0.35, rgba18(nz.color, 0.55 * nz.level));
+        bg.addColorStop(1, rgba18(nz.color, 0));
+        ctx.fillStyle = bg;
+        ctx.beginPath();
+        ctx.arc(pBase.x, pBase.y, baseR, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // 5. Render Rising Aerial Pyro Comet Shells
+      for (const s of ls.aerialShells) {
+        const pHead = proj([s.x, s.y, s.z]);
+        if (!pHead) continue;
+        if (s.trail.length >= 2) {
+          ctx.strokeStyle = rgba18('#ffe680', 0.78);
+          ctx.lineWidth = 2.6;
+          ctx.beginPath();
+          let started = false;
+          for (const pt of s.trail) {
+            const pr = proj(pt);
+            if (!pr) continue;
+            if (!started) { ctx.moveTo(pr.x, pr.y); started = true; }
+            else ctx.lineTo(pr.x, pr.y);
+          }
+          if (started) {
+            ctx.lineTo(pHead.x, pHead.y);
+            ctx.stroke();
+          }
+        }
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(pHead.x, pHead.y, 3.8, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // 6. Render 3D Physics Particles (Sparkular sparks, CO2 clouds, Flame tongues, Aerial Firework stars)
+      for (let i = 0; i < ls.particles.length; i++) {
+        const p = ls.particles[i];
+        const pr = proj([p.x, p.y, p.z]);
+        if (!pr) continue;
+        const u = clamp18(p.age / Math.max(0.05, p.maxAge), 0, 1);
+        const lifeAlpha = 1 - u;
+
+        if (p.kind === 'spark' || p.kind === 'gold_mine' || p.kind === 'mine_gold') {
+          const prevPr = p.px !== undefined ? proj([p.px, p.py, p.pz]) : null;
+          ctx.strokeStyle = u < 0.35 ? `rgba(255,255,240,${(lifeAlpha * 0.95).toFixed(2)})` : `rgba(255,190,60,${(lifeAlpha * 0.85).toFixed(2)})`;
+          ctx.lineWidth = Math.max(1.2, p.size * (1 - u * 0.5));
+          ctx.beginPath();
+          ctx.moveTo(prevPr ? prevPr.x : pr.x, prevPr ? prevPr.y : pr.y + 4);
+          ctx.lineTo(pr.x, pr.y);
+          ctx.stroke();
+        } else if (p.kind === 'co2') {
+          const rPx = clamp18(p.size * 18, 4, 34);
+          const cg = ctx.createRadialGradient(pr.x, pr.y, 0.5, pr.x, pr.y, rPx);
+          cg.addColorStop(0, `rgba(240,252,255,${(lifeAlpha * 0.36).toFixed(3)})`);
+          cg.addColorStop(1, 'rgba(180,235,255,0)');
+          ctx.fillStyle = cg;
+          ctx.beginPath();
+          ctx.arc(pr.x, pr.y, rPx, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (p.kind === 'flame') {
+          const rPx = clamp18(p.size * 22 * (1 - u * 0.35), 4, 32);
+          const col = u < 0.25 ? '#fff7ae' : u < 0.6 ? '#ff7b00' : '#d91b00';
+          const fg = ctx.createRadialGradient(pr.x, pr.y, 0.5, pr.x, pr.y, rPx);
+          fg.addColorStop(0, rgba18(col, lifeAlpha * 0.62));
+          fg.addColorStop(1, rgba18(col, 0));
+          ctx.fillStyle = fg;
+          ctx.beginPath();
+          ctx.arc(pr.x, pr.y, rPx, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (p.kind === 'muzzle_flash') {
+          const rPx = clamp18(p.size * 16 * lifeAlpha, 4, 42);
+          const mg = ctx.createRadialGradient(pr.x, pr.y, 0.5, pr.x, pr.y, rPx);
+          mg.addColorStop(0, `rgba(255,255,255,${(lifeAlpha * 0.92).toFixed(2)})`);
+          mg.addColorStop(0.45, rgba18(p.color || '#ffe680', lifeAlpha * 0.65));
+          mg.addColorStop(1, rgba18(p.color || '#ffe680', 0));
+          ctx.fillStyle = mg;
+          ctx.beginPath();
+          ctx.arc(pr.x, pr.y, rPx, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (p.kind === 'firework_star' || p.kind === 'crackle_star' || p.kind === 'firework_crackle' || p.kind === 'willow_trail' || p.kind === 'comet_micro') {
+          const twinkle = u > 0.55 ? (Math.sin(nowMs * 0.05 + p.seed) > 0 ? 1 : 0.25) : 1;
+          const alpha = lifeAlpha * twinkle;
+          if (alpha <= 0.04) continue;
+          const prevPr = p.px !== undefined ? proj([p.px, p.py, p.pz]) : null;
+          if (prevPr) {
+            ctx.strokeStyle = rgba18(p.color, alpha * 0.85);
+            ctx.lineWidth = Math.max(1.2, p.size * (1 - u * 0.4));
+            ctx.beginPath();
+            ctx.moveTo(prevPr.x, prevPr.y);
+            ctx.lineTo(pr.x, pr.y);
+            ctx.stroke();
+          }
+          ctx.fillStyle = u < 0.25 ? '#ffffff' : rgba18(p.color, alpha);
+          ctx.beginPath();
+          ctx.arc(pr.x, pr.y, Math.max(1.5, p.size * (1 - u * 0.45)), 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // 7. Render Organic Crowd Bounce silhouettes (Phase B) & Acoustic Wave Flow (Phase C)
+      if (lumiState.structureConfig18?.crowdBounce && ls.running) {
+        drawOrganicCrowdBounce18(ctx, proj, eng, tSec, spd, ls.running);
+      }
+      if (lumiState.audioWorkstation18?.waveFlowVisible && ls.running) {
+        drawAudioWaveFlowOverlay18(ctx, proj, eng, tSec, spd);
+      }
+
+      ctx.restore();
+      return can;
+    }
+
+    let liveShowRafId18 = 0;
+    function ensureLiveShowLoop18() {
+      if (liveShowRafId18 || typeof requestAnimationFrame !== 'function') return;
+      const step = (now) => {
+        const ls = liveShow18;
+        const active = lumiState.screenCapture18.active || ls.running || now < ls.sparkUntilMs || now < ls.co2UntilMs || now < ls.flameUntilMs || ls.particles.length > 0 || ls.aerialShells.length > 0;
+        if (!active) {
+          liveShowRafId18 = 0;
+          renderLiveShowOverlay18(now);
+          return;
+        }
+        liveShowRafId18 = requestAnimationFrame(step);
+        if (S.engine && !window.state?.playing) {
+          S.engine.render(window.state?.time || 0);
+        }
+      };
+      liveShowRafId18 = requestAnimationFrame(step);
+    }
+
+    function startLiveShow18(showMode = null) {
+      const ls = liveShow18;
+      const eng = S.engine;
+      if (showMode != null) {
+        if (showMode === 'ai') ls.aiAuto = true;
+        else {
+          ls.aiAuto = false;
+          ls.activeShow = clamp18(Math.round(+showMode) || 1, 1, 6);
+        }
+      }
+      if (!ls.running && eng) {
+        ls.savedSettings = eng.settings ? { ...eng.settings } : null;
+        ls.savedMotion = { accent: eng.accent, effect: eng.effect };
+        if (eng.settings) {
+          eng.settings.beam = Math.max(Number(eng.settings.beam) || 0.45, 0.88);
+          eng.settings.haze = Math.max(Number(eng.settings.haze) || 18, 26);
+          eng.settings.exposure = Math.max(Number(eng.settings.exposure) || 1.0, 1.18);
+        }
+      }
+      ls.running = true;
+      ls.blackout = false;
+      ls.lastTickMs = nowMs18();
+      hookEngineRender18();
+      if (S.laser135) {
+        S.laser135.active = ls.laserOn;
+        S.laser135.previewPlaying = ls.laserOn;
+      }
+      if (window.state && !window.state.playing && typeof window.setPlaying === 'function') {
+        try { window.setPlaying(true); } catch { /* ignore */ }
+      }
+      tickLiveShow18(nowMs18());
+      if (eng && typeof eng.render === 'function') {
+        try { eng.render(window.state?.time || 0); } catch { /* ignore */ }
+      }
+      ensureLiveShowLoop18();
+      renderLmpToolbox18();
+      renderLmpLiveShowDock18();
+      return ls;
+    }
+
+    function stopLiveShow18() {
+      const ls = liveShow18;
+      const eng = S.engine;
+      ls.running = false;
+      ls.blindersOn = false;
+      ls.strobe = false;
+      ls.blackout = false;
+      ls.activeNozzles = [];
+      ls.crowdBounceOffsetM = 0;
+      ls._crowdSmoothEnergy = 0;
+      ls._floorProjections = [];
+      ls._deckGlints = [];
+      ls._screenHaloPools = [];
+      ls._floorDecalInstances = [];
+      ls._deckGlintInstances = [];
+      ls._screenHaloInstances = [];
+      ls._laserRenderData = [];
+      ls._sfxStageGlow.active = false;
+      ls._sfxStageGlow.power = 0;
+      ls._sfxSkyBurst.active = false;
+      ls._sfxSkyBurst.power = 0;
+      if (eng && Array.isArray(eng.lights)) {
+        eng.lights.forEach((l) => {
+          if (l && l._origShow18) {
+            l.target = l._origShow18.target.slice();
+            l.color = l._origShow18.color;
+            l.power = l._origShow18.power;
+            l.angle = l._origShow18.angle;
+            l.enabled = l._origShow18.enabled;
+            l.sweep = l._origShow18.sweep;
+            l.fx = l._origShow18.fx;
+            l.beamProfile18 = l._origShow18.beamProfile18 ?? 0;
+            l.gobo9 = l._origShow18.gobo9 ? { ...l._origShow18.gobo9 } : null;
+            for (const key of ['aperture', 'fixtureProfile18', 'profileId18', 'coneLenScale18', '_blinderBlastScale18', 'dmxGroup18', '_liveCat18']) delete l[key];
+            Object.assign(l, l._origShow18.optics);
+            delete l._origShow18;
+          }
+        });
+      }
+      if (eng && ls.savedCamera && eng.camera) {
+        eng.camera.yaw = ls.savedCamera.yaw;
+        eng.camera.pitch = ls.savedCamera.pitch;
+        eng.camera.distance = ls.savedCamera.distance;
+        if (Array.isArray(ls.savedCamera.target)) eng.camera.target = ls.savedCamera.target.slice();
+        ls.savedCamera = null;
+      }
+      if (eng && ls.savedSettings && eng.settings) {
+        Object.assign(eng.settings, ls.savedSettings);
+        ls.savedSettings = null;
+      }
+      if (eng && ls.savedMotion) {
+        Object.assign(eng, ls.savedMotion);
+        ls.savedMotion = null;
+      }
+      if (S.laser135) {
+        S.laser135.previewPlaying = false;
+      }
+      if (eng && typeof eng.render === 'function') {
+        try { eng.render(window.state?.time || 0); } catch { /* ignore */ }
+      }
+      renderLiveShowOverlay18(nowMs18());
+      renderLmpToolbox18();
+      renderLmpLiveShowDock18();
+      return ls;
+    }
+
+    function toggleLiveShow18() {
+      return liveShow18.running ? stopLiveShow18() : startLiveShow18();
+    }
+
+    function setLiveShowMode18(mode, opts = {}) {
+      const ls = liveShow18;
+      if (mode === 'ai') {
+        ls.aiAuto = !ls.aiAuto;
+      } else {
+        ls.aiAuto = false;
+        const idx = clamp18(Math.round(+mode) || 1, 1, 6);
+        if (ls.activeShow !== idx) {
+          ls.prevShow = ls.activeShow;
+          ls.transitionStartMs = nowMs18();
+          ls.transitionDurSec = clamp18(1.15 / Math.max(0.2, ls.speed || 2.0), 0.55, 1.65);
+          ls.transitionAlpha = 0;
+        }
+        ls.activeShow = idx;
+        if (opts.applySet !== false) {
+          applyStageSet18(idx, opts);
+        }
+      }
+      if (!ls.running) startLiveShow18();
+      else {
+        tickLiveShow18(nowMs18());
+        renderLmpToolbox18();
+        renderLmpLiveShowDock18();
+      }
+      return ls;
+    }
+
+    function setLiveShowSpeed18(val) {
+      liveShow18.speed = clamp18(Number(val) || 2.0, 0.2, 5.0);
+      renderLmpToolbox18();
+      renderLmpLiveShowDock18();
+      return liveShow18.speed;
+    }
+
+    function setParChaseMode18(mode) {
+      const valid = ['auto', 'carousel', 'mirror_domino', 'dual_carousel', 'gala_sparkle', 'static'];
+      const m = String(mode || 'auto').toLowerCase();
+      liveShow18.parChaseMode = valid.includes(m) ? m : 'auto';
+      if (lumiState.dmxProgrammer18 && m !== 'auto') {
+        lumiState.dmxProgrammer18.parChaseMode = liveShow18.parChaseMode;
+      }
+      renderLmpLiveShowDock18();
+      return liveShow18.parChaseMode;
+    }
+
+    function setBeamFanLaw18(law) {
+      const valid = ['auto', 'v_converge', 'v_diverge', 'x_cross', 'parallel_wing', 'parallel_zero'];
+      const l = String(law || 'auto').toLowerCase();
+      const next = valid.includes(l) ? l : 'auto';
+      liveShow18.fanLaw = next;
+      liveShow18.beamFanLaw = next;
+      renderLmpLiveShowDock18();
+      return next;
+    }
+
+    function setLaserPattern18(pat) {
+      if (pat === 'auto' || pat === '' || pat == null) {
+        liveShow18.laserPattern = 'auto';
+      } else {
+        liveShow18.laserPattern = clamp18(Math.round(Number(pat)) || 0, 0, 3);
+      }
+      renderLmpLiveShowDock18();
+      return liveShow18.laserPattern;
+    }
+
+    function toggleAutoCamera18(force) {
+      const ls = liveShow18;
+      const eng = S.engine;
+      const next = typeof force === 'boolean' ? force : !ls.autoCam;
+      if (next && !ls.autoCam && eng?.camera) {
+        ls.savedCamera = {
+          yaw: eng.camera.yaw,
+          pitch: eng.camera.pitch,
+          distance: eng.camera.distance,
+          target: Array.isArray(eng.camera.target) ? eng.camera.target.slice() : [0, 2.5, 0]
+        };
+        ls.autoCamPausedUntilMs = 0;
+        if (!ls.running) startLiveShow18();
+      } else if (!next && ls.autoCam && eng?.camera && ls.savedCamera) {
+        eng.camera.yaw = ls.savedCamera.yaw;
+        eng.camera.pitch = ls.savedCamera.pitch;
+        eng.camera.distance = ls.savedCamera.distance;
+        if (Array.isArray(ls.savedCamera.target)) eng.camera.target = ls.savedCamera.target.slice();
+        ls.savedCamera = null;
+      }
+      ls.autoCam = next;
+      renderLmpLiveShowDock18();
+      return ls.autoCam;
+    }
+
+    function toggleLiveShowFx18(fxKey) {
+      const ls = liveShow18;
+      if (fxKey === 'multicolor') ls.multicolor = !ls.multicolor;
+      else if (fxKey === 'lights') ls.lightsOn = !ls.lightsOn;
+      else if (fxKey === 'blinders') {
+        ls.blindersOn = !ls.blindersOn;
+        if (ls.blindersOn && !ls.running) startLiveShow18();
+      } else if (fxKey === 'laser') {
+        ls.laserOn = !ls.laserOn;
+        if (S.laser135) S.laser135.active = ls.laserOn;
+      } else if (fxKey === 'sfx') {
+        ls.sfxOn = !ls.sfxOn;
+      } else if (fxKey === 'strobe') {
+        ls.strobe = !ls.strobe;
+        if (ls.strobe && !ls.running) startLiveShow18();
+      } else if (fxKey === 'bo') {
+        ls.blackout = !ls.blackout;
+        toggleMasterBlackout();
+      } else if (fxKey === 'full') {
+        ls.blackout = false;
+        ls.lightsOn = true;
+        ls.blindersOn = true;
+        if (lumiState.masterBlackout) toggleMasterBlackout();
+        if (!ls.running) startLiveShow18();
+      }
+      tickLiveShow18(nowMs18());
+      if (S.engine && typeof S.engine.render === 'function') {
+        try { S.engine.render(window.state?.time || 0); } catch { /* ignore */ }
+      }
+      renderLmpToolbox18();
+      renderLmpLiveShowDock18();
+      return ls;
+    }
+
+    function triggerPyroBurst18(filterKind = 'all') {
+      const sa = S.stageAssets16;
+      const eng = S.engine;
+      const now = nowMs18();
+      hookEngineRender18();
+      const norm = filterKind === 'all' ? 'all' : normalizeSfxType18(filterKind);
+
+      if (norm === 'all' || norm === 'cold_spark_fountain') liveShow18.sparkUntilMs = now + 2600;
+      if (norm === 'all' || norm === 'co2_jet') liveShow18.co2UntilMs = now + 2200;
+      if (norm === 'all' || norm === 'flame_jet') liveShow18.flameUntilMs = now + 2400;
+      if (norm === 'all' || norm === 'confetti_cannon') launchAerialPyro18(4);
+
+      const nozzlesByType = getStageSfxNozzles18();
+      if (norm === 'all' || norm === 'cold_spark_fountain') {
+        nozzlesByType.cold_spark_fountain.forEach((nz) => spawnNozzleParticles18(nz, 'cold_spark_fountain', 1.25));
+      }
+      if (norm === 'all' || norm === 'co2_jet') {
+        nozzlesByType.co2_jet.forEach((nz) => spawnNozzleParticles18(nz, 'co2_jet', 1.25));
+      }
+      if (norm === 'all' || norm === 'flame_jet') {
+        nozzlesByType.flame_jet.forEach((nz) => spawnNozzleParticles18(nz, 'flame_jet', 1.25));
+      }
+
+      const items = Array.isArray(sa?.items) ? sa.items : [];
+      const sfxTypes = new Set(['cold_spark_fountain', 'co2_jet', 'flame_jet', 'confetti_cannon', 'haze_machine_pro']);
+      const targets = items.filter((it) => {
+        const k = normalizeSfxType18(it.kind || it.type);
+        if (!sfxTypes.has(k)) return false;
+        return norm === 'all' || k === norm;
+      });
+      targets.forEach((it) => {
+        const baseScale = Number(it._baseScale18) || Number(it.scale) || 1;
+        it._baseScale18 = baseScale;
+        it.scale = +(baseScale * 1.42).toFixed(2);
+        sa?.syncItemMeshes?.(it);
+      });
+      if (eng?.settings) {
+        eng.settings.haze = Math.max(Number(eng.settings.haze) || 16, 28);
+        eng.settings.beam = Math.max(Number(eng.settings.beam) || 0.6, 0.88);
+      }
+      if (eng) eng._stageBatchDirty = true;
+      if (typeof setTimeout === 'function') {
+        setTimeout(() => {
+          targets.forEach((it) => {
+            if (it._baseScale18) it.scale = it._baseScale18;
+            sa?.syncItemMeshes?.(it);
+          });
+          if (eng) eng._stageBatchDirty = true;
+        }, 1600);
+      }
+
+      tickLiveShow18(now);
+      if (eng && typeof eng.render === 'function') {
+        try { eng.render(window.state?.time || 0); } catch { /* ignore */ }
+      }
+      ensureLiveShowLoop18();
+      const totalTriggered = Math.max(targets.length, liveShow18.activeNozzles.length, liveShow18.aerialShells.length);
+      window.toast?.(tr18(`Đã kích hoạt hiệu ứng Pyro & SFX 3D (${totalTriggered} cụm).`, `Triggered 3D Pyro & SFX burst (${totalTriggered} emitters).`));
+      return totalTriggered;
+    }
+
+    function addToolboxPyroSfx18(kind) {
+      const sa = S.stageAssets16;
+      if (typeof sa?.addCatalogItem !== 'function') return [];
+      const deckH = Math.max(0.4, (S.engine?.stageBounds?.min?.[1] || 0) + 0.5);
+      const mapKind = {
+        sparkular: { id: 'cold_spark_fountain', xs: [-4.8, -1.6, 1.6, 4.8], z: 2.55 },
+        co2_jets: { id: 'co2_jet', xs: [-4.2, -1.4, 1.4, 4.2], z: 2.4 },
+        flames: { id: 'flame_jet', xs: [-5.4, -2.0, 2.0, 5.4], z: 2.15 },
+        hazer: { id: 'haze_machine_pro', xs: [-7.4, 7.4], z: -0.6 },
+        aerial_pyro: { id: 'confetti_cannon', xs: [-5.6, -2.2, 2.2, 5.6], z: 2.75 }
+      };
+      const cfg = mapKind[kind] || mapKind.sparkular;
+      const created = singleUndo18(() => cfg.xs.map((x) => sa.addCatalogItem(cfg.id, [x, deckH, cfg.z])).filter(Boolean));
+      if (kind === 'hazer' && S.engine?.settings) {
+        S.engine.settings.haze = 28;
+      }
+      renderLmpToolbox18();
+      triggerPyroBurst18(cfg.id);
+      return created;
+    }
+
+    function addToolboxScreen18(kind) {
+      const eng = S.engine;
+      if (!eng || typeof window.createSurface !== 'function') return null;
+      if (kind === 'pixel_map_2d') {
+        const mapBtn = document.querySelector('.view-tabs [data-view="map"]') || $('atlasBtn');
+        mapBtn?.click();
+        return null;
+      }
+      window.checkpoint?.();
+      const idx = (eng.surfaces?.length || 0) + 1;
+      const presets = {
+        main_wall: { name: `LED_MAIN_${idx}`, wM: 4.0, hM: 2.5, pos: [0, 2.6, -1.8], yawDeg: 0, cabinetModelId: 'roe_bp2v2_500', processorModelId: 'brompton_sx40', rows500x1000: 2, rows500x500: 1, shapeType: 'flat', curveDegPerCab: 0 },
+        side_wings: { name: `LED_WING_${idx}`, wM: 2.0, hM: 4.0, pos: [idx % 2 ? -5.8 : 5.8, 2.8, -1.2], yawDeg: idx % 2 ? 12 : -12, cabinetModelId: 'absen_pl39_1000', processorModelId: 'novastar_vx1000', shapeType: 'flat', curveDegPerCab: 0 },
+        header: { name: `LED_HEADER_${idx}`, wM: 8.0, hM: 1.0, pos: [0, 5.8, -1.8], yawDeg: 0, cabinetModelId: 'unilumin_ugm2_1000', processorModelId: 'novastar_vx1000', shapeType: 'flat', curveDegPerCab: 0 },
+        curved: { name: `LED_CURVED_${idx}`, wM: 6.0, hM: 3.0, pos: [0, 2.8, -1.4], yawDeg: 0, cabinetModelId: 'roe_cb5_1000', processorModelId: 'brompton_sx40', shapeType: 'flat', curveDegPerCab: -5 },
+        l_corner_90: { name: `LED_LCORNER_${idx}`, wM: 6.0, hM: 3.0, pos: [-2.4, 2.6, -0.8], yawDeg: 15, cabinetModelId: 'roe_bp2v2_500', processorModelId: 'brompton_sx40', rows500x1000: 3, rows500x500: 0, shapeType: 'l_corner_90', curveDegPerCab: 0 },
+        cube: { name: `LED_CUBE_${idx}`, wM: 6.0, hM: 1.5, pos: [0, 4.8, 0.4], yawDeg: 25, cabinetModelId: 'absen_pl25_500', processorModelId: 'brompton_s8', shapeType: 'cube', curveDegPerCab: 0 },
+        cylinder_360: { name: `LED_CYLINDER_${idx}`, wM: 6.0, hM: 2.5, pos: [0, 2.6, 0.5], yawDeg: 0, cabinetModelId: 'roe_bp2v2_500', processorModelId: 'brompton_sx40', rows500x1000: 2, rows500x500: 1, shapeType: 'cylinder_360', curveDegPerCab: 0 }
+      };
+      const cfg = presets[kind] || presets.main_wall;
+      const q = buildGeometricLedMesh18(cfg.name, cfg.wM, cfg.hM, cfg.shapeType, cfg.curveDegPerCab);
+      const ry = ((cfg.yawDeg || 0) * Math.PI) / 180;
+      const mat = window.M.mm(window.M.translate(cfg.pos), window.M.rotate([0, 1, 0], ry));
+      window.transformMesh(q, mat);
+      eng.stage.push(q);
+      const surf = window.createSurface(q, cfg.name, {
+        x: 0,
+        y: 0,
+        w: computePixelDim(cfg.wM, 2.6),
+        h: computePixelDim(cfg.hM, 2.6),
+        cabinetModelId: cfg.cabinetModelId,
+        processorModelId: cfg.processorModelId,
+        rows500x1000: cfg.rows500x1000,
+        rows500x500: cfg.rows500x500,
+        shapeType: cfg.shapeType,
+        curveDegPerCab: cfg.curveDegPerCab
+      });
+      surf.physicalWidthM = cfg.wM;
+      surf.physicalHeightM = cfg.hM;
+      surf.physical = [cfg.wM, cfg.hM];
+      surf.pos = cfg.pos.slice();
+      surf.yawDeg = cfg.yawDeg;
+      window.normalizeSurfaceHardware?.(surf);
+      eng.selected = surf.id;
+      eng._stageBatchDirty = true;
+      window.renderUI?.();
+      renderLmpToolbox18();
+      window.toast?.(tr18(`Đã thêm màn hình ${cfg.name} (${cfg.wM}×${cfg.hM}m · ${cfg.shapeType}).`, `Added LED screen ${cfg.name} (${cfg.wM}×${cfg.hM}m · ${cfg.shapeType}).`));
+      return surf;
+    }
+
+    function toggleLiveShowDock18(force) {
+      liveShow18.dockHidden = typeof force === 'boolean' ? !force : !liveShow18.dockHidden;
+      renderLmpLiveShowDock18();
+      renderLmpToolbox18();
+      return !liveShow18.dockHidden;
+    }
+
+    function renderLmpLiveShowDock18() {
+      const dock = $('lmpLiveShowDock18');
+      if (!dock) return;
+      const ls = liveShow18;
+      dock.classList.toggle('is-hidden', !!ls.dockHidden);
+      dock.hidden = !!ls.dockHidden;
+      dock.classList.toggle('is-collapsed', !!ls.dockCollapsed);
+      const showBtns = [1, 2, 3, 4, 5, 6]
+        .map((n) => {
+          const cfg = STAGE_SETS18[n];
+          const tip = cfg ? tr18(cfg.titleVi, cfg.titleEn) : `Set ${n}`;
+          return `<button type="button" class="lmp-dock-btn18 is-cue ${!ls.aiAuto && ls.activeShow === n ? 'active' : ''}" data-lmp-showmode="${n}" title="${esc18(tip)}">${esc18(cfg?.code || 'S' + n)}</button>`;
+        })
+        .join('');
+      const chaseOpts = [
+        ['auto', tr18('PAR: Tự động', 'PAR: Auto')],
+        ['carousel', 'Carousel'],
+        ['mirror_domino', 'Mirror Domino'],
+        ['dual_carousel', 'Dual Carousel'],
+        ['gala_sparkle', 'Gala Sparkle'],
+        ['static', 'Static']
+      ]
+        .map(([val, lbl]) => `<option value="${val}" ${ls.parChaseMode === val ? 'selected' : ''}>${esc18(lbl)}</option>`)
+        .join('');
+      const curFanLaw = (ls.fanLaw && ls.fanLaw !== 'auto') ? ls.fanLaw : (ls.beamFanLaw || 'auto');
+      const fanOpts = [
+        ['auto', tr18('Fan: Tự động', 'Fan: Auto')],
+        ['v_converge', 'V-Converge'],
+        ['v_diverge', 'V-Diverge'],
+        ['x_cross', 'X-Cross'],
+        ['parallel_wing', 'Parallel Wing'],
+        ['parallel_zero', 'Parallel Zero']
+      ]
+        .map(([val, lbl]) => `<option value="${val}" ${curFanLaw === val ? 'selected' : ''}>${esc18(lbl)}</option>`)
+        .join('');
+      const laserOpts = [
+        ['auto', tr18('Laser: Tự động', 'Laser: Auto')],
+        ['0', 'P0 · Liquid Sky'],
+        ['1', 'P1 · Cone Tunnel'],
+        ['2', 'P2 · X-Chopper'],
+        ['3', 'P3 · Starburst']
+      ]
+        .map(([val, lbl]) => `<option value="${val}" ${String(ls.laserPattern) === val ? 'selected' : ''}>${esc18(lbl)}</option>`)
+        .join('');
+      dock.innerHTML =
+        `<div class="lmp-dock-row18">` +
+        `<button type="button" id="lmpDockStartShowBtn18" class="lmp-dock-btn18 is-start ${ls.running ? 'is-running' : ''}" data-lmp-start="1" title="${tr18('Chạy / Dừng Live Show (Phím P / Esc)', 'Start / Stop Live Show (Key P / Esc)')}">${ico18(ls.running ? 'square' : 'play')}<span>${ls.running ? tr18('DỪNG SHOW', 'STOP SHOW') : tr18('CHẠY SHOW', 'START SHOW')}</span><kbd class="lmp-dock-kbd18">P</kbd></button>` +
+        `<div class="lmp-dock-group18 is-cues" role="group" aria-label="${tr18('Mẫu sân khấu & Chế độ Show', 'Stage Sets & Show Modes')}">` +
+        showBtns +
+        `<button type="button" class="lmp-dock-btn18 is-cue ${ls.aiAuto ? 'active' : ''}" data-lmp-showmode="ai" title="${tr18('Đạo diễn AI tự động (Đổi kịch bản mỗi 8 giây)', 'AI Auto Director (Cycles every 8s)')}">AI</button>` +
+        `<button type="button" class="lmp-dock-btn18 is-cue ${ls.multicolor ? 'active' : ''}" data-lmp-showfx="multicolor" title="${tr18('Bảng màu Đa sắc (Phím C)', 'Multicolor Palettes (Key C)')}">${tr18('ĐA SẮC', 'MULTI')}</button>` +
+        `</div>` +
+        `<div class="lmp-dock-group18 is-buses" role="group" aria-label="${tr18('Kênh điều khiển Show', 'Show Channels')}">` +
+        `<button type="button" class="lmp-dock-btn18 ${ls.lightsOn ? 'active' : ''}" data-lmp-showfx="lights" title="${tr18('Đèn Moving Head & PAR (Phím M)', 'Moving Heads & PARs (Key M)')}">${tr18('ĐÈN', 'LIGHTS')}</button>` +
+        `<button type="button" class="lmp-dock-btn18 ${ls.blindersOn ? 'active' : ''}" data-lmp-showfx="blinders" title="${tr18('Đèn chớp Blinder khán giả (Phím F)', 'Audience Blinders (Key F)')}">${tr18('CHỚP KHÁN GIẢ', 'BLINDERS')}</button>` +
+        `<button type="button" class="lmp-dock-btn18 ${ls.laserOn ? 'active' : ''}" data-lmp-showfx="laser" title="${tr18('Laser 16 tia ILDA & Liquid Sky (Phím L)', '16-Beam ILDA Laser & Liquid Sky (Key L)')}">LASER</button>` +
+        `<button type="button" class="lmp-dock-btn18 ${ls.sfxOn ? 'active' : ''}" data-lmp-showfx="sfx" title="${tr18('Pháo & SFX tự động 7 pha (Phím X)', '7-Phase Auto Pyro & SFX (Key X)')}">${tr18('PHÁO', 'PYRO')}</button>` +
+        `<button type="button" class="lmp-dock-btn18 ${ls.strobe ? 'active' : ''}" data-lmp-showfx="strobe" title="${tr18('Đèn chớp Strobe 14 Hz (Phím Z)', '14 Hz Strobe (Key Z)')}">${tr18('CHỚP 14HZ', 'STROBE')}</button>` +
+        `<button type="button" class="lmp-dock-btn18 ${ls.autoCam ? 'active' : ''}" data-lmp-autocam="1" title="${tr18('Đạo diễn Camera tự động 5 góc quay (Tạm dừng 8s khi kéo chuột)', '5-Shot Auto Camera Director (8s pause on manual orbit)')}">${tr18('AUTO CAM', 'AUTO CAM')}</button>` +
+        `<button type="button" class="lmp-dock-btn18 is-bo ${ls.blackout ? 'active' : ''}" data-lmp-showfx="bo" title="${tr18('Tắt toàn bộ đèn Blackout (Phím B)', 'Blackout (Key B)')}">${tr18('TẮT ĐÈN', 'B.O.')}</button>` +
+        `</div>` +
+        `<button type="button" class="lmp-dock-btn18 is-fold ${!ls.dockCollapsed ? 'active' : ''}" data-lmp-dockfold="1" aria-expanded="${!ls.dockCollapsed}" title="${tr18('Thu gọn / Mở rộng bàn bắn Pyro', 'Collapse / Expand Pyro row')}">${ico18('chevron-down')}<span>SFX</span></button>` +
+        `<button type="button" class="lmp-dock-btn18 is-hide" data-lmp-dockhide="1" title="${tr18('Ẩn bàn điều khiển Live Show', 'Hide Live Show Dock')}" aria-label="${tr18('Ẩn bàn điều khiển Live Show', 'Hide Live Show Dock')}">${ico18('x')}</button>` +
+        `</div>` +
+        `<div class="lmp-dock-row18 lmp-dock-extra18">` +
+        `<div class="lmp-dock-group18 is-pyro-bank" role="group" aria-label="${tr18('Kích hoạt Pháo & SFX thủ công', 'Manual Pyro Triggers')}">` +
+        `<button type="button" class="lmp-dock-btn18 is-pyro" data-lmp-fire="cold_spark_fountain" title="${tr18('Pháo điện lạnh Sparkular (Phím 7)', 'Sparkular Cold Sparks (Key 7)')}">${ico18('sparkles')}<span>${tr18('PHÁO ĐIỆN [7]', 'SPARK [7]')}</span></button>` +
+        `<button type="button" class="lmp-dock-btn18 is-pyro" data-lmp-fire="co2_jet" title="${tr18('Súng cột khói lạnh CO2 (Phím 8)', 'CO2 Cryo Jets (Key 8)')}">${ico18('cloud')}<span>CO2 [8]</span></button>` +
+        `<button type="button" class="lmp-dock-btn18 is-pyro" data-lmp-fire="flame_jet" title="${tr18('Máy phun lửa DMX (Phím 9)', 'DMX Flame Jets (Key 9)')}">${ico18('zap')}<span>${tr18('LỬA [9]', 'FLAME [9]')}</span></button>` +
+        `<button type="button" class="lmp-dock-btn18 is-pyro" data-lmp-fire="confetti_cannon" title="${tr18('Pháo hoa tầm cao & Kim tuyến (Phím 0)', 'Aerial Pyro Fireworks (Key 0)')}">${ico18('sun')}<span>${tr18('PHÁO HOA [0]', 'AERIAL [0]')}</span></button>` +
+        `<button type="button" class="lmp-dock-btn18 is-pyro is-finale" data-lmp-fire="all" title="${tr18('Kích hoạt toàn bộ hiệu ứng Grand Finale', 'Grand Finale Fire All')}">${ico18('sparkles')}<span>${tr18('BẮN TẤT CẢ', 'FIRE ALL')}</span></button>` +
+        `</div>` +
+        `<div class="lmp-dock-group18 is-fx-selects" role="group" aria-label="${tr18('Chế độ Chase, Fan Law & Laser', 'Chase, Fan Law & Laser Selectors')}">` +
+        `<select class="lmp-dock-select18" data-lmp-parchase="1" aria-label="${tr18('Chế độ đuổi đèn PAR', 'PAR Chase Engine')}" title="${tr18('Chế độ đuổi đèn PAR', 'PAR Chase Engine')}">${chaseOpts}</select>` +
+        `<select class="lmp-dock-select18" data-lmp-fanlaw="1" aria-label="${tr18('Quy luật quạt chùm tia Beam', 'Beam Fan Law')}" title="${tr18('Quy luật quạt chùm tia Beam', 'Beam Fan Law')}">${fanOpts}</select>` +
+        `<select class="lmp-dock-select18" data-lmp-laserpat="1" aria-label="${tr18('Mẫu quét tia Laser ILDA', 'ILDA Laser Scan Pattern')}" title="${tr18('Mẫu quét tia Laser ILDA', 'ILDA Laser Scan Pattern')}">${laserOpts}</select>` +
+        `</div>` +
+        `<label class="lmp-tb-speedrow18" title="${tr18('Tốc độ chạy Show (0.2x - 5.0x)', 'Show Speed (0.2x - 5.0x)')}"><span>${tr18('TỐC ĐỘ', 'SPD')}</span><input type="range" min="0.2" max="5.0" step="0.1" value="${ls.speed.toFixed(1)}" data-lmp-speed="1"><b>${ls.speed.toFixed(1)}x</b></label>` +
+        `</div>`;
+    }
+
+    function hookEngineRender18() {
+      const eng = S.engine;
+      if (eng && typeof eng.makeBeam === 'function' && !eng._lmpBeamHooked18) {
+        const baseMakeBeam18 = eng.makeBeam.bind(eng);
+        eng.makeBeam = function (light) {
+          let savedTarget = null;
+          let hadTempTarget = false;
+          const scale = Number(light?.coneLenScale18);
+          if (light && Number.isFinite(scale) && scale > 0 && Math.abs(scale - 1) > 1e-3 && Array.isArray(light.pos)) {
+            const baseT = light._target || light.target || [0, 0, 0];
+            const dx = (Number(baseT[0]) || 0) - (Number(light.pos[0]) || 0);
+            const dy = (Number(baseT[1]) || 0) - (Number(light.pos[1]) || 0);
+            const dz = (Number(baseT[2]) || 0) - (Number(light.pos[2]) || 0);
+            const d = Math.hypot(dx, dy, dz) || 1;
+            const newD = Math.max(0.2, (d + 3) * scale - 3);
+            const k = newD / d;
+            savedTarget = light._target;
+            hadTempTarget = Object.prototype.hasOwnProperty.call(light, '_target');
+            light._target = [
+              (Number(light.pos[0]) || 0) + dx * k,
+              (Number(light.pos[1]) || 0) + dy * k,
+              (Number(light.pos[2]) || 0) + dz * k
+            ];
+          }
+          let res;
+          try {
+            res = baseMakeBeam18(light);
+          } finally {
+            if (savedTarget !== null || hadTempTarget) {
+              if (hadTempTarget) light._target = savedTarget;
+              else delete light._target;
+            }
+          }
+          const prof = Number(light?.beamProfile18) || 0;
+          this.uniform?.('uBeamProfile', prof);
+          if (res && typeof res === 'object') res._beamProfile18 = prof;
+          return res;
+        };
+        if (typeof eng.draw === 'function') {
+          const baseDraw18 = eng.draw.bind(eng);
+          eng.draw = function (mesh, mode = 0, surface = null, opacity = 1) {
+            const cap = lumiState.screenCapture18;
+            const video = cap.active && cap.videoEl;
+            if (mode === 1 && surface && video?.readyState >= 2 && this.media && video.videoWidth <= this.maxSize && video.videoHeight <= this.maxSize) {
+              const globalTest = this.globalTest;
+              this.media.set(cap, { element: video, width: video.videoWidth, height: video.videoHeight });
+              this.globalTest = false;
+              try {
+                return baseDraw18(mesh, mode, { ...surface, source: cap, crop: [0, 0, video.videoWidth, video.videoHeight], mappingSpace: 'uv' }, opacity);
+              } finally {
+                this.globalTest = globalTest;
+                this.media.delete(cap);
+              }
+            }
+            if (mode === 2) {
+              this.selectPass?.(2);
+              this.uniform?.('uBeamProfile', Number(mesh?._beamProfile18) || 0);
+            }
+            try {
+              return baseDraw18(mesh, mode, surface, opacity);
+            } finally {
+              if (mode === 2) {
+                this.uniform?.('uBeamProfile', 0);
+              }
+            }
+          };
+        }
+        eng._lmpBeamHooked18 = true;
+      }
+      if (eng && typeof eng.render === 'function' && !eng._lmpShowHooked18) {
+        const baseRender18 = eng.render.bind(eng);
+        eng.render = function (time = 0, options = {}) {
+          const now = nowMs18();
+          tickLiveShow18(now);
+          const out = baseRender18(time, options);
+          drawWebglVolumetricExtras18(this, now);
+          renderLiveShowOverlay18(now);
+          return out;
+        };
+        eng._lmpShowHooked18 = true;
+      }
+      if (typeof S.keepRendering === 'function' && !S._lmpKeepRenderingHooked18) {
+        const baseKeep18 = S.keepRendering.bind(S);
+        S.keepRendering = function () {
+          const ls = liveShow18;
+          if (lumiState.screenCapture18.active || ls.running || ls.particles.length > 0 || ls.aerialShells.length > 0) return true;
+          return baseKeep18();
+        };
+        S._lmpKeepRenderingHooked18 = true;
+      }
+    }
+
+    function installLmpLiveShowDock18() {
+      const vp = $('viewport');
+      if (vp && !$('lmpShowOverlay18')) {
+        const overlay = document.createElement('canvas');
+        overlay.id = 'lmpShowOverlay18';
+        overlay.setAttribute?.('aria-label', 'Live Show 3D Lighting, Laser and Pyro Overlay');
+        vp.appendChild?.(overlay);
+      }
+      if (vp && !$('lmpLiveShowDock18')) {
+        const dock = document.createElement('div');
+        dock.id = 'lmpLiveShowDock18';
+        dock.className = 'is-hidden';
+        dock.hidden = true;
+        dock.setAttribute?.('role', 'region');
+        dock.setAttribute?.('aria-label', tr18('Bàn điều khiển Live Show', 'Live Show Control Dock'));
+        vp.appendChild?.(dock);
+
+        dock.addEventListener?.('click', (e) => {
+          const startBtn = e.target.closest?.('[data-lmp-start]');
+          if (startBtn) {
+            toggleLiveShow18();
+            return;
+          }
+          const modeBtn = e.target.closest?.('[data-lmp-showmode]');
+          if (modeBtn) {
+            setLiveShowMode18(modeBtn.getAttribute('data-lmp-showmode'));
+            return;
+          }
+          const fxBtn = e.target.closest?.('[data-lmp-showfx]');
+          if (fxBtn) {
+            toggleLiveShowFx18(fxBtn.getAttribute('data-lmp-showfx'));
+            return;
+          }
+          const autoCamBtn = e.target.closest?.('[data-lmp-autocam]');
+          if (autoCamBtn) {
+            toggleAutoCamera18();
+            return;
+          }
+          const fireBtn = e.target.closest?.('[data-lmp-fire]');
+          if (fireBtn) {
+            triggerPyroBurst18(fireBtn.getAttribute('data-lmp-fire'));
+            return;
+          }
+          const foldBtn = e.target.closest?.('[data-lmp-dockfold]');
+          if (foldBtn) {
+            liveShow18.dockCollapsed = !liveShow18.dockCollapsed;
+            renderLmpLiveShowDock18();
+            return;
+          }
+          const hideBtn = e.target.closest?.('[data-lmp-dockhide]');
+          if (hideBtn) {
+            toggleLiveShowDock18(false);
+          }
+        });
+        dock.addEventListener?.('change', (e) => {
+          const parSel = e.target.closest?.('[data-lmp-parchase]');
+          if (parSel) {
+            setParChaseMode18(parSel.value);
+            return;
+          }
+          const fanSel = e.target.closest?.('[data-lmp-fanlaw]');
+          if (fanSel) {
+            setBeamFanLaw18(fanSel.value);
+            return;
+          }
+          const laserSel = e.target.closest?.('[data-lmp-laserpat]');
+          if (laserSel) {
+            setLaserPattern18(laserSel.value);
+          }
+        });
+        dock.addEventListener?.('input', (e) => {
+          const spdInput = e.target.closest?.('[data-lmp-speed]');
+          if (spdInput) {
+            liveShow18.speed = clamp18(Number(spdInput.value) || 2.0, 0.2, 5.0);
+            const b = dock.querySelector?.('.lmp-tb-speedrow18 b');
+            if (b) b.textContent = `${liveShow18.speed.toFixed(1)}x`;
+          }
+        });
+        renderLmpLiveShowDock18();
+      }
+
+      const glCanvas = $('glcanvas') || S.engine?.canvas;
+      if (glCanvas && !glCanvas._lmpAutoCamPauseHooked18) {
+        glCanvas._lmpAutoCamPauseHooked18 = true;
+        const pauseAutoCam = () => {
+          if (liveShow18.autoCam) {
+            liveShow18.autoCamPausedUntilMs = nowMs18() + 8000;
+          }
+        };
+        glCanvas.addEventListener?.('pointerdown', pauseAutoCam, { passive: true });
+        glCanvas.addEventListener?.('wheel', pauseAutoCam, { passive: true });
+      }
+
+      hookEngineRender18();
+
+      // Global & Scoped keyboard shortcuts for Live Show (P, C, M, F, L, X, Z, B, 1-6, 7-0, Escape)
+      if (!window._lmpShowKeysInstalled18) {
+        window._lmpShowKeysInstalled18 = true;
+        document.addEventListener?.('keydown', (e) => {
+          if (e.target?.matches?.('input,textarea,select,[contenteditable]') || $('modal')?.open || e.ctrlKey || e.metaKey || e.altKey) return;
+          const k = String(e.key || '').toLowerCase();
+          const showActiveOrDockOpen = liveShow18.running || !liveShow18.dockHidden;
+          if (k === 'p') {
+            e.preventDefault?.();
+            toggleLiveShow18();
+          } else if (k === 'escape' && liveShow18.running && !window.state?.pickTask && !document.body?.classList?.contains('present-mode')) {
+            e.preventDefault?.();
+            stopLiveShow18();
+          } else if (k === 'f' && showActiveOrDockOpen) {
+            e.preventDefault?.();
+            toggleLiveShowFx18('blinders');
+          } else if (k === 'l' && showActiveOrDockOpen) {
+            e.preventDefault?.();
+            toggleLiveShowFx18('laser');
+          } else if (/^[1-6]$/.test(k) && showActiveOrDockOpen) {
+            e.preventDefault?.();
+            setLiveShowMode18(Number(k), { applySet: false });
+          } else if (k === 'c' && liveShow18.running) {
+            e.preventDefault?.();
+            toggleLiveShowFx18('multicolor');
+          } else if (k === 'm' && liveShow18.running) {
+            e.preventDefault?.();
+            toggleLiveShowFx18('lights');
+          } else if (k === 'x' && liveShow18.running) {
+            e.preventDefault?.();
+            toggleLiveShowFx18('sfx');
+          } else if (k === 'z' && liveShow18.running) {
+            e.preventDefault?.();
+            toggleLiveShowFx18('strobe');
+          } else if (k === 'b') {
+            e.preventDefault?.();
+            if (liveShow18.running) {
+              toggleLiveShowFx18('bo');
+            } else {
+              window._paintVoidsMode18 = !window._paintVoidsMode18;
+              const pvBtn = $('surfPaintVoidsBtn');
+              if (pvBtn) pvBtn.classList.toggle('primary', !!window._paintVoidsMode18);
+              window.toast?.(
+                window._paintVoidsMode18
+                  ? tr18('Đã bật chế độ Paint Voids / Panel Ảo [Phím B]. Click/kéo trên ô cabinet để đục rỗng.', 'Paint Voids [Key B] enabled. Click/drag cabinet cells to toggle voids.')
+                  : tr18('Đã tắt chế độ Paint Voids [Phím B].', 'Paint Voids [Key B] disabled.')
+              );
+            }
+          } else if (k === '7' && showActiveOrDockOpen) {
+            e.preventDefault?.();
+            triggerPyroBurst18('cold_spark_fountain');
+          } else if (k === '8' && showActiveOrDockOpen) {
+            e.preventDefault?.();
+            triggerPyroBurst18('co2_jet');
+          } else if (k === '9' && showActiveOrDockOpen) {
+            e.preventDefault?.();
+            triggerPyroBurst18('flame_jet');
+          } else if (k === '0' && showActiveOrDockOpen) {
+            e.preventDefault?.();
+            triggerPyroBurst18('confetti_cannon');
+          }
+        });
+      }
+    }
+
+    // =========================================================================
+    // PHASE A — 3D LIGHTING STUDIO, VOLUMETRIC EFFECTS, DMX PROGRAMMER & BROADCAST/ILDA AUDIT
+    // =========================================================================
+    function assignFixtureGroup18(light, idx = 0, total = 1) {
+      if (light?.dmxGroup18 && /^G[1-5]$/.test(light.dmxGroup18)) return light.dmxGroup18;
+      const px = Number(light?.pos?.[0]) || 0;
+      const py = Number(light?.pos?.[1]) || 5;
+      const pz = Number(light?.pos?.[2]) || 0;
+      if (py < 1.5) return 'G4';
+      if (Math.abs(px) > 5.0) return 'G5';
+      if (pz > 1.2) return 'G1';
+      if (pz > -0.6) return 'G2';
+      return 'G3';
+    }
+
+    function computeParUplightChase18(idx, total, tSec, spd, chaseMode = 'carousel', palette = ['#01ffa0', '#00d4ff', '#ff007f', '#ffe600']) {
+      const n = Math.max(1, Number(total) || 1);
+      const pal = Array.isArray(palette) && palette.length ? palette : ['#01ffa0', '#00d4ff', '#ff007f', '#ffe600'];
+      const mode = String(chaseMode || 'carousel').toLowerCase();
+      const baseColor = samplePaletteGlide18(pal, idx * 0.35 + tSec * spd * 0.65);
+      let level = 0.85;
+      let color = baseColor;
+      let isSparkle = false;
+
+      if (mode === 'static') {
+        level = 0.88;
+      } else if (mode === 'mirror_domino') {
+        const half = Math.max(1, (n - 1) / 2);
+        const wave = Math.abs(Math.abs(idx - half) - Math.abs(Math.sin(tSec * spd * 1.95)) * half);
+        level = clamp18(1 - wave / Math.max(1.1, half * 0.62), 0.12, 1.15);
+        const symIdx = Math.round(Math.abs(idx - half));
+        color = pal[symIdx % pal.length];
+      } else if (mode === 'dual_carousel') {
+        const h1 = (tSec * spd * 3.4) % n;
+        const h2 = (h1 + n / 2) % n;
+        level = Math.max(dominoTail18(idx, n, h1, Math.max(1.8, n * 0.35)), dominoTail18(idx, n, h2, Math.max(1.8, n * 0.35)));
+        level = clamp18(level, 0.14, 1.15);
+        color = pal[(idx + Math.floor(tSec * spd)) % pal.length];
+      } else if (mode === 'gala_sparkle') {
+        const h1 = (tSec * spd * 3.6) % n;
+        const h2 = (h1 + n / 3) % n;
+        const h3 = (h1 + (2 * n) / 3) % n;
+        const base = Math.max(dominoTail18(idx, n, h1, 2.4), dominoTail18(idx, n, h2, 2.4), dominoTail18(idx, n, h3, 2.4));
+        level = clamp18(0.36 + 0.52 * base, 0.18, 1.3);
+        if (Math.sin(tSec * 12.5 + idx * 1.73) > 0.78) {
+          color = '#ffffff';
+          level = 1.25;
+          isSparkle = true;
+        }
+      } else {
+        // Default: 'carousel' with 16-second direction reversal + domino tail
+        const dir = Math.floor(tSec / 16) % 2 === 0 ? 1 : -1;
+        const rawHead = (tSec * spd * 2.8 * dir) % n;
+        const head = (rawHead + n) % n;
+        const effIdx = dir > 0 ? idx : (n - 1 - idx);
+        const effHead = dir > 0 ? head : (n - 1 - head);
+        level = clamp18(dominoTail18(effIdx, n, effHead, Math.max(2.0, n * 0.45)), 0.15, 1.15);
+        if (level > 0.78) color = '#ffffff';
+      }
+
+      const coneLenScale = +(0.32 + 0.68 * Math.sqrt(clamp18(level, 0.08, 1.0))).toFixed(3);
+      return { mode, level: +level.toFixed(3), color, coneLenScale, isSparkle, profileId: 'par_uplight_v1' };
+    }
+    const evalParChaseEngine18 = computeParUplightChase18;
+
+    function computePixelBarCurtainCells18(lightPos = [0, 0.6, 2.2], lightTarget = [0, 4.5, 0.5], tSec = 0, spd = 2.0, fixtureIdx = 0, baseColor = '#00f0ff') {
+      const cells = [];
+      const barWidthM = 0.92;
+      const curtainHeightM = 6.5;
+      const curtainDepthM = 0.45;
+      const dx = (Number(lightTarget[0]) || 0) - (Number(lightPos[0]) || 0);
+      const dy = (Number(lightTarget[1]) || 4) - (Number(lightPos[1]) || 0.5);
+      const dz = (Number(lightTarget[2]) || 0) - (Number(lightPos[2]) || 0);
+      const len = Math.max(0.1, Math.hypot(dx, dy, dz));
+      const ux = dx / len;
+      const uy = dy / len;
+      const uz = dz / len;
+
+      for (let c = 0; c < 12; c++) {
+        const u = (c / 11) - 0.5;
+        const offsetX = u * barWidthM;
+        const wave = 0.45 + 0.55 * Math.sin(tSec * spd * 5.0 + c * 0.55 + fixtureIdx);
+        const emitterPos = [
+          +(Number(lightPos[0]) + offsetX).toFixed(3),
+          +(Number(lightPos[1])).toFixed(3),
+          +(Number(lightPos[2])).toFixed(3)
+        ];
+        const rayEndPos = [
+          +(emitterPos[0] + ux * curtainHeightM + u * curtainDepthM).toFixed(3),
+          +(emitterPos[1] + uy * curtainHeightM).toFixed(3),
+          +(emitterPos[2] + uz * curtainHeightM).toFixed(3)
+        ];
+        cells.push({
+          cellIndex: c + 1,
+          emitterPos,
+          rayEndPos,
+          wave: +wave.toFixed(3),
+          color: wave > 0.85 ? '#ffffff' : baseColor,
+          profileId: 'pixel_bar_curtain_v1',
+          dimensionsM: [barWidthM, curtainHeightM, curtainDepthM]
+        });
+      }
+      return cells;
+    }
+
+    function drawRotatingFloorGobo18(ctx, cx, cy, rx, ry, rotRad = 0, pattern = 'starburst', color = '#00f0ff', intensity = 1) {
+      if (!ctx || rx < 4 || ry < 2) return;
+      const petals = pattern === 'mandala' ? 8 : pattern === 'petals' ? 6 : pattern === 'cross_prism' ? 4 : pattern === 'tunnel_ring' ? 10 : 7;
+      ctx.strokeStyle = rgba18('#ffffff', clamp18(0.52 * intensity, 0.08, 0.85));
+      ctx.lineWidth = 1.35;
+      for (let p = 0; p < petals; p++) {
+        const a = rotRad + (p * Math.PI * 2) / petals;
+        const x1 = cx + Math.cos(a) * rx * 0.22;
+        const y1 = cy + Math.sin(a) * ry * 0.22;
+        const x2 = cx + Math.cos(a) * rx * 0.88;
+        const y2 = cy + Math.sin(a) * ry * 0.88;
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+
+        ctx.fillStyle = p % 2 === 0 ? '#ffffff' : rgba18(color, 0.85);
+        ctx.beginPath();
+        ctx.arc(x2, y2, Math.max(1.5, rx * 0.07), 0, Math.PI * 2);
+        ctx.fill();
+      }
+      if (pattern === 'tunnel_ring' || pattern === 'mandala') {
+        ctx.strokeStyle = rgba18(color, clamp18(0.45 * intensity, 0.08, 0.75));
+        ctx.beginPath();
+        ctx.ellipse(cx, cy, rx * 0.62, ry * 0.62, 0, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    }
+
+    function drawParabolicWallScallop18(ctx, proj, pos, color = '#01ffa0', intensity = 1, heightM = 3.6, widthM = 1.4) {
+      if (!ctx || typeof proj !== 'function' || !Array.isArray(pos)) return;
+      const base = proj(pos);
+      const apex = proj([pos[0], pos[1] + heightM, pos[2] - 0.15]);
+      const left = proj([pos[0] - widthM * 0.5, pos[1] + heightM * 0.72, pos[2] - 0.1]);
+      const right = proj([pos[0] + widthM * 0.5, pos[1] + heightM * 0.72, pos[2] - 0.1]);
+      if (!base || !apex || !left || !right) return;
+
+      const g = ctx.createLinearGradient(base.x, base.y, apex.x, apex.y);
+      g.addColorStop(0, rgba18('#ffffff', clamp18(0.55 * intensity, 0.1, 0.85)));
+      g.addColorStop(0.35, rgba18(color, clamp18(0.38 * intensity, 0.06, 0.65)));
+      g.addColorStop(1, rgba18(color, 0));
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.moveTo(base.x - 4, base.y);
+      ctx.quadraticCurveTo(left.x, left.y, apex.x, apex.y);
+      ctx.quadraticCurveTo(right.x, right.y, base.x + 4, base.y);
+      ctx.closePath();
+      ctx.fill();
+
+      // Floor wash pool around PAR uplight base
+      const poolR = Math.max(10, Math.hypot(right.x - left.x, right.y - left.y) * 0.45);
+      const pg = ctx.createRadialGradient(base.x, base.y, 1, base.x, base.y, poolR);
+      pg.addColorStop(0, rgba18('#ffffff', 0.48 * intensity));
+      pg.addColorStop(0.5, rgba18(color, 0.26 * intensity));
+      pg.addColorStop(1, rgba18(color, 0));
+      ctx.fillStyle = pg;
+      ctx.beginPath();
+      ctx.ellipse(base.x, base.y, poolR, poolR * 0.45, 0, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function toggleFreezeDmx18(forceState) {
+      const prog = lumiState.dmxProgrammer18;
+      prog.freezeDmx = typeof forceState === 'boolean' ? forceState : !prog.freezeDmx;
+      return prog.freezeDmx;
+    }
+
+    function applyDmxGroupProgrammer18(overrides = {}) {
+      const prog = lumiState.dmxProgrammer18;
+      if (overrides.parChaseMode) prog.parChaseMode = String(overrides.parChaseMode);
+      if (typeof overrides.freezeDmx === 'boolean') prog.freezeDmx = overrides.freezeDmx;
+      if (overrides.groupPalettes && typeof overrides.groupPalettes === 'object') {
+        for (const k of ['beam', 'wash', 'par', 'laser']) {
+          if (Array.isArray(overrides.groupPalettes[k]) && overrides.groupPalettes[k].length) {
+            prog.groupPalettes[k] = overrides.groupPalettes[k].map((c) => String(c));
+          }
+        }
+      }
+      if (overrides.optics && typeof overrides.optics === 'object') {
+        if (overrides.optics.aperture !== undefined) prog.optics.aperture = clamp18(overrides.optics.aperture, 0.01, 0.15);
+        if (overrides.optics.zoomDeg !== undefined) prog.optics.zoomDeg = clamp18(overrides.optics.zoomDeg, 2, 60);
+        if (overrides.optics.spreadFactor !== undefined) prog.optics.spreadFactor = clamp18(overrides.optics.spreadFactor, 0.4, 2.5);
+      }
+      if (overrides.groups && typeof overrides.groups === 'object') {
+        for (const gKey of ['G1', 'G2', 'G3', 'G4', 'G5']) {
+          if (overrides.groups[gKey] && typeof overrides.groups[gKey] === 'object') {
+            const g = prog.groups[gKey];
+            const src = overrides.groups[gKey];
+            if (src.panOffsetDeg !== undefined) g.panOffsetDeg = clamp18(src.panOffsetDeg, -180, 180);
+            if (src.tiltOffsetDeg !== undefined) g.tiltOffsetDeg = clamp18(src.tiltOffsetDeg, -90, 90);
+            if (src.fanningSpreadDeg !== undefined) g.fanningSpreadDeg = clamp18(src.fanningSpreadDeg, -90, 90);
+            if (src.dimmer !== undefined) g.dimmer = clamp18(src.dimmer, 0, 100);
+          }
+        }
+      }
+
+      const eng = S.engine;
+      const lights = Array.isArray(eng?.lights) ? eng.lights : [];
+      const total = lights.length;
+      lights.forEach((l, idx) => {
+        if (!l) return;
+        const cat = classifyFixture18(l, idx, total);
+        const grpId = assignFixtureGroup18(l, idx, total);
+        l.dmxGroup18 = grpId;
+        const g = prog.groups[grpId] || prog.groups.G1;
+        const pal = cat === 'wash' || cat === 'fresnel' ? prog.groupPalettes.wash : cat === 'par' || cat === 'bar' ? prog.groupPalettes.par : prog.groupPalettes.beam;
+        if (Array.isArray(pal) && pal.length) {
+          l.color = pal[idx % pal.length];
+        }
+        l.aperture = prog.optics.aperture;
+        l.angle = +(prog.optics.zoomDeg * prog.optics.spreadFactor).toFixed(1);
+        const px = Number(l.pos?.[0]) || 0;
+        const py = Number(l.pos?.[1]) || 5;
+        const pz = Number(l.pos?.[2]) || 0;
+        const normSign = px === 0 ? ((idx / Math.max(1, total - 1)) - 0.5) * 2 : clamp18(px / 6.0, -1, 1);
+        const panRad = (((Number(g.panOffsetDeg) || 0) + normSign * (Number(g.fanningSpreadDeg) || 0)) * Math.PI) / 180;
+        const tiltOffM = ((Number(g.tiltOffsetDeg) || 0) / 45) * 2.5;
+        l.target = [
+          +(px + Math.sin(panRad) * 5.5).toFixed(3),
+          +(Math.max(0.1, (py > 1.6 ? 0.8 : 4.2) + tiltOffM)).toFixed(3),
+          +(pz + Math.cos(panRad) * 3.5).toFixed(3)
+        ];
+        l.power = +((6.0 * clamp18(g.dimmer, 0, 100)) / 100).toFixed(2);
+        l.enabled = g.dimmer > 0;
+      });
+      eng?.rebuildFixtures?.();
+      return prog;
+    }
+
+    function computeBroadcastAndIldaAudit18(opts = {}) {
+      const eng = S.engine;
+      const lights = Array.isArray(opts.lights) ? opts.lights : Array.isArray(eng?.lights) ? eng.lights : [];
+      const surfaces = Array.isArray(opts.surfaces) ? opts.surfaces : Array.isArray(eng?.surfaces) ? eng.surfaces : [];
+      const photo = computePhotometricFootprint({ lights, ledScreenNits: opts.ledWallNits || 1200 });
+
+      const ledWallNits = Number(opts.ledWallNits) || Number(photo.ledScreenNits) || 1200;
+      const keylightLux = Number(opts.keylightLux) || Number(photo.avgFrontLux) || 1450;
+      const recommendedNits = Math.round(clamp18(keylightLux * 0.65, 450, 1800));
+      const contrastRatio = +(ledWallNits / Math.max(1, keylightLux * 0.318)).toFixed(2);
+      const balanceStatus = contrastRatio > 3.2 ? 'LED_OVERPOWERING' : contrastRatio < 0.85 ? 'KEYLIGHT_HOT' : 'OPTIMAL';
+
+      // Broadcast Camera Moire Risk calculation from pixel pitch, focal length, aperture & distance
+      const pitchMm = Number(opts.pixelPitchMm) || Number(surfaces[0]?.pixelPitchMm) || 2.6;
+      const cameraDistanceM = clamp18(Number(opts.cameraDistanceM) || 12, 1.5, 100);
+      const focalLengthMm = clamp18(Number(opts.focalLengthMm) || 50, 14, 400);
+      const apertureFStop = clamp18(Number(opts.apertureFStop) || 2.8, 1.2, 22);
+      const minSafeDistanceM = +((pitchMm * 2.8 * (focalLengthMm / 50)) / Math.max(0.7, apertureFStop / 2.8)).toFixed(2);
+      const moireRatio = cameraDistanceM / Math.max(0.5, minSafeDistanceM);
+      const moireRisk = moireRatio < 0.85 ? 'HIGH' : moireRatio < 1.25 ? 'MEDIUM' : 'LOW';
+
+      // IEC 60825-1 ILDA Laser Safety Horizon check: audience scan height must be Y >= +3.20m
+      const ildaHorizonM = 3.2;
+      const laserBeams = Array.isArray(opts.laserTargets)
+        ? opts.laserTargets
+        : [
+            { id: 'LASER_L', originY: 3.4, minTargetY: Number(opts.lowestLaserTargetY ?? 3.35) },
+            { id: 'LASER_R', originY: 3.4, minTargetY: Number(opts.lowestLaserTargetY ?? 3.35) }
+          ];
+      let lowestBeamY = 99;
+      const violations = [];
+      for (const b of laserBeams) {
+        const originY = Number(b.originY), targetY = Number(b.minTargetY);
+        const yMin = Number.isFinite(originY) && Number.isFinite(targetY) ? Math.min(originY, targetY) : 0;
+        if (yMin < lowestBeamY) lowestBeamY = yMin;
+        if (yMin < ildaHorizonM) {
+          violations.push({
+            id: b.id || 'LASER',
+            heightM: +yMin.toFixed(2),
+            standard: 'IEC 60825-1',
+            message: `Laser beam ${b.id || 'LASER'} drops to +${yMin.toFixed(2)}m (below +${ildaHorizonM.toFixed(2)}m MPE horizon)`
+          });
+        }
+      }
+      if (!Number.isFinite(lowestBeamY) || lowestBeamY === 99) lowestBeamY = 3.4;
+
+      return {
+        keylightLux: Math.round(keylightLux),
+        ledWallNits: Math.round(ledWallNits),
+        recommendedNits,
+        contrastRatio,
+        balanceStatus,
+        pixelPitchMm: pitchMm,
+        cameraDistanceM,
+        focalLengthMm,
+        apertureFStop,
+        minSafeDistanceM,
+        moireRisk,
+        ildaStandard: 'IEC 60825-1',
+        ildaHorizonM,
+        lowestBeamY: +lowestBeamY.toFixed(2),
+        ildaSafe: violations.length === 0 && lowestBeamY >= ildaHorizonM,
+        violations
+      };
+    }
+
+    function exportChamsysMagicQCsv18({ lights = null, download = false } = {}) {
+      const eng = S.engine;
+      const src = Array.isArray(lights) ? lights : Array.isArray(eng?.lights) ? eng.lights : [];
+      const rows = ['Head No,Name,Manufacturer,Model,Mode,Patch,Group,HangX_m,HangY_m,HangZ_m,ClampOffsetCL_m'];
+      let curUni = 1;
+      let curAddr = 1;
+      src.forEach((l, idx) => {
+        const cat = classifyFixture18(l, idx, src.length);
+        const grp = assignFixtureGroup18(l, idx, src.length);
+        const ch = Number(l.dmxChannels) || (cat === 'spot' ? 24 : cat === 'beam' ? 16 : cat === 'bar' ? 36 : 12);
+        let uni = Number(l.dmxUniverse) || curUni;
+        let addr = Number(l.dmxAddress) || curAddr;
+        if (addr + ch - 1 > 512) {
+          uni += 1;
+          addr = 1;
+        }
+        curUni = uni;
+        curAddr = addr + ch;
+        const mfr = cat === 'spot' || cat === 'wash' ? 'Robe' : cat === 'beam' ? 'Claypaky' : 'Chauvet_Pro';
+        const model = cat === 'spot' ? 'Forte_Profile' : cat === 'beam' ? 'Sharpy_Plus' : cat === 'bar' ? 'COLORado_PXL_Bar16' : cat === 'par' ? 'SlimPAR_Pro' : 'Pointe_Hybrid';
+        const px = +(Number(l.pos?.[0] ?? l.x) || 0).toFixed(2);
+        const py = +(Number(l.pos?.[1] ?? l.y) || 6.0).toFixed(2);
+        const pz = +(Number(l.pos?.[2] ?? l.z) || 0).toFixed(2);
+        const safeName = String(l.name || `Head_${idx + 1}`).replace(/,/g, ' ');
+        rows.push(`${idx + 1},${safeName},${mfr},${model},${ch}ch,${uni}-${String(addr).padStart(3, '0')},${grp},${px},${py},${pz},${px >= 0 ? '+' + px.toFixed(2) : px.toFixed(2)}`);
+      });
+      const csv = rows.join('\n');
+      if (download && typeof window.downloadText === 'function') {
+        window.downloadText('ChamSys_MagicQ_Patch.csv', csv);
+      }
+      return csv;
+    }
+
+    function exportTrussClampTapeCsv18({ lights = null, download = false } = {}) {
+      const eng = S.engine;
+      const src = Array.isArray(lights) ? lights : Array.isArray(eng?.lights) ? eng.lights : [];
+      const sorted = src
+        .map((l, idx) => {
+          const px = +(Number(l.pos?.[0] ?? l.x) || 0).toFixed(2);
+          const py = +(Number(l.pos?.[1] ?? l.y) || 6.0).toFixed(2);
+          const grp = assignFixtureGroup18(l, idx, src.length);
+          const side = px < -0.01 ? 'STAGE_RIGHT (L)' : px > 0.01 ? 'STAGE_LEFT (R)' : 'CENTER_LINE (CL)';
+          return {
+            grp,
+            id: l.id || `FIX_${idx + 1}`,
+            name: String(l.name || `Fixture_${idx + 1}`).replace(/,/g, ' '),
+            side,
+            px,
+            distClM: +Math.abs(px).toFixed(2),
+            tapeCm: Math.round(Math.abs(px) * 100),
+            py,
+            weightKg: Number(l.weightKg) || 22
+          };
+        })
+        .sort((a, b) => a.grp.localeCompare(b.grp) || a.px - b.px);
+
+      const rows = ['TrussGroup,FixtureID,Name,SideFromCL,SignedX_m,DistanceFromCL_m,TapeMarkFromCL_cm,TrimHeightY_m,WeightKg'];
+      for (const r of sorted) {
+        rows.push(`${r.grp},${r.id},${r.name},${r.side},${r.px >= 0 ? '+' + r.px.toFixed(2) : r.px.toFixed(2)},${r.distClM.toFixed(2)},CL ${r.px >= 0 ? '+' : '-'}${r.tapeCm}cm,${r.py.toFixed(2)},${r.weightKg}`);
+      }
+      const csv = rows.join('\n');
+      if (download && typeof window.downloadText === 'function') {
+        window.downloadText('Truss_Clamp_Tape_CL0.00m.csv', csv);
+      }
+      return csv;
+    }
+
+    function openDmxProgrammerModal18() {
+      if (typeof window.dialog !== 'function') return null;
+      const prog = lumiState.dmxProgrammer18;
+      const audit = computeBroadcastAndIldaAudit18();
+      const grpRows = ['G1', 'G2', 'G3', 'G4', 'G5']
+        .map((gId) => {
+          const g = prog.groups[gId];
+          return (
+            `<div class="lmp-prog-row18" data-dmx-grp="${gId}">` +
+            `<b>${esc18(g.label)}</b>` +
+            `<label><span>Pan (°)</span><input type="range" min="-90" max="90" step="1" value="${g.panOffsetDeg}" data-grp-field="panOffsetDeg"></label>` +
+            `<label><span>Tilt (°)</span><input type="range" min="-60" max="60" step="1" value="${g.tiltOffsetDeg}" data-grp-field="tiltOffsetDeg"></label>` +
+            `<label><span>Fanning (°)</span><input type="range" min="-60" max="60" step="1" value="${g.fanningSpreadDeg}" data-grp-field="fanningSpreadDeg"></label>` +
+            `<label><span>Dimmer (%)</span><input type="range" min="0" max="100" step="1" value="${g.dimmer}" data-grp-field="dimmer"></label>` +
+            `</div>`
+          );
+        })
+        .join('');
+
+      const html =
+        `<div class="lmp-modal-grid18">` +
+        `<div class="info-box">` +
+        `<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">` +
+        `<strong>${tr18('Bàn Lập Trình Nhóm DMX (G1–G5) & Bảng Màu Độc Lập', 'DMX Group Programmer (G1–G5) & Palette Editor')}</strong>` +
+        `<div style="display:flex;gap:6px">` +
+        `<button type="button" class="btn small ${prog.freezeDmx ? 'primary' : ''}" id="dmxProgFreezeBtn18">${prog.freezeDmx ? tr18('Đang Khóa Freeze DMX', 'Freeze DMX Active') : tr18('Khóa Freeze DMX', 'Freeze DMX')}</button>` +
+        `<button type="button" class="btn small" id="dmxExportChamsysBtn18">ChamSys MagicQ CSV</button>` +
+        `<button type="button" class="btn small" id="dmxExportClampTapeBtn18">Truss Clamp Tape CSV (CL 0.00m)</button>` +
+        `</div></div>` +
+        `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px">` +
+        `<label><span>PAR Chase Mode</span><select id="dmxParChaseSelect18">` +
+        `<option value="carousel" ${prog.parChaseMode === 'carousel' ? 'selected' : ''}>Carousel</option>` +
+        `<option value="mirror_domino" ${prog.parChaseMode === 'mirror_domino' ? 'selected' : ''}>Mirror Domino</option>` +
+        `<option value="dual_carousel" ${prog.parChaseMode === 'dual_carousel' ? 'selected' : ''}>Dual Carousel</option>` +
+        `<option value="gala_sparkle" ${prog.parChaseMode === 'gala_sparkle' ? 'selected' : ''}>Gala Sparkle</option>` +
+        `</select></label>` +
+        `<label><span>Aperture (m)</span><input type="number" id="dmxApertureInput18" min="0.01" max="0.12" step="0.005" value="${prog.optics.aperture}"></label>` +
+        `<label><span>Zoom (°)</span><input type="number" id="dmxZoomInput18" min="2" max="55" step="1" value="${prog.optics.zoomDeg}"></label>` +
+        `<label><span>Spread Factor</span><input type="number" id="dmxSpreadInput18" min="0.4" max="2.2" step="0.1" value="${prog.optics.spreadFactor}"></label>` +
+        `</div></div>` +
+        `<div class="info-box">${grpRows}</div>` +
+        `<div class="info-box">` +
+        `<strong>${tr18('Kiểm Toán Broadcast TV Optics, Moiré & An Toàn Laser ILDA (IEC 60825-1)', 'Broadcast TV Optics, Moiré & ILDA Laser Safety Audit (IEC 60825-1)')}</strong>` +
+        `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px">` +
+        `<div><small>Keylight vs LED Nits</small><br><b>${audit.keylightLux} Lux / ${audit.ledWallNits} Nits (${audit.balanceStatus})</b></div>` +
+        `<div><small>Camera Moiré Risk</small><br><b>${audit.moireRisk} (Min Safe ${audit.minSafeDistanceM}m)</b></div>` +
+        `<div><small>ILDA Horizon (Y >= +3.20m)</small><br><b>${audit.ildaSafe ? 'PASS' : 'WARN'} (Lowest +${audit.lowestBeamY}m)</b></div>` +
+        `</div></div></div>`;
+
+      window.dialog(tr18('3D Lighting Studio & DMX Group Programmer', '3D Lighting Studio & DMX Group Programmer'), html, [
+        { label: tr18('Đóng', 'Close'), onClick: () => $('modal')?.close() }
+      ]);
+
+      $('dmxProgFreezeBtn18')?.addEventListener('click', () => {
+        toggleFreezeDmx18();
+        openDmxProgrammerModal18();
+      });
+      $('dmxExportChamsysBtn18')?.addEventListener('click', () => {
+        exportChamsysMagicQCsv18({ download: true });
+        window.toast?.(tr18('Đã xuất bảng Patch ChamSys MagicQ CSV.', 'Exported ChamSys MagicQ Patch CSV.'));
+      });
+      $('dmxExportClampTapeBtn18')?.addEventListener('click', () => {
+        exportTrussClampTapeCsv18({ download: true });
+        window.toast?.(tr18('Đã xuất thước dán Truss Clamp Tape CSV từ tâm CL 0.00m.', 'Exported Truss Clamp Tape CSV from CL 0.00m.'));
+      });
+      const syncModalInputs = () => {
+        const groups = {};
+        document.querySelectorAll?.('[data-dmx-grp]').forEach((row) => {
+          const gId = row.getAttribute('data-dmx-grp');
+          groups[gId] = {};
+          row.querySelectorAll?.('[data-grp-field]').forEach((inp) => {
+            groups[gId][inp.getAttribute('data-grp-field')] = Number(inp.value) || 0;
+          });
+        });
+        applyDmxGroupProgrammer18({
+          parChaseMode: $('dmxParChaseSelect18')?.value || prog.parChaseMode,
+          optics: {
+            aperture: Number($('dmxApertureInput18')?.value) || prog.optics.aperture,
+            zoomDeg: Number($('dmxZoomInput18')?.value) || prog.optics.zoomDeg,
+            spreadFactor: Number($('dmxSpreadInput18')?.value) || prog.optics.spreadFactor
+          },
+          groups
+        });
+      };
+      $('modal')?.querySelectorAll?.('input,select').forEach((el) => {
+        el.addEventListener('input', syncModalInputs);
+        el.addEventListener('change', syncModalInputs);
+      });
+      return prog;
+    }
+
+    // =========================================================================
+    // PHASE B — 3D STRUCTURE CONFIG, MIRROR DECK, LIVE SYMMETRY 3D & ORGANIC CROWD BOUNCE
+    // =========================================================================
+    const EN13814_STAIR_LAYOUTS18 = {
+      front_center: { id: 'front_center', labelVi: 'Thang Chính Giữa (Front Center)', labelEn: 'Front Center Stair', count: 1 },
+      front_dual: { id: 'front_dual', labelVi: 'Thang Đôi Trái/Phải (Front Dual L/R)', labelEn: 'Front Dual Stairs L/R', count: 2 },
+      side_lr: { id: 'side_lr', labelVi: 'Thang 2 Cánh Gà (Side Wings L/R)', labelEn: 'Side Wing Stairs L/R', count: 2 },
+      rear_tech: { id: 'rear_tech', labelVi: 'Thang Kỹ Thuật Hậu Trường (Rear Tech)', labelEn: 'Rear Technical Stair', count: 1 },
+      catwalk_tip: { id: 'catwalk_tip', labelVi: 'Thang Mũi Catwalk / B-Stage', labelEn: 'Catwalk / B-Stage Tip Stair', count: 2 },
+      all_around: { id: 'all_around', labelVi: 'Thang Vây 4 Hướng (Arena 4-Way)', labelEn: 'Arena 4-Way Stairs', count: 4 }
+    };
+
+    function computeModularDeckAndLayher18(cfgOverrides = {}) {
+      const cfg = { ...lumiState.structureConfig18, ...cfgOverrides };
+      const deckW = Math.max(2, Math.round((Number(cfg.deckWidthM) || 14) / 2) * 2);
+      const deckD = Math.max(2, Math.round(Number(cfg.deckDepthM) || 8));
+      const deckH = clamp18(Number(cfg.deckHeightM) || 1.2, 0.2, 4.0);
+      const moduleCols = Math.round(deckW / 2); // 2m wide modules
+      const moduleRows = Math.round(deckD / 1); // 1m deep modules
+      const mainDeckModules = moduleCols * moduleRows;
+
+      let catwalkModules = 0;
+      let catwalkAreaM2 = 0;
+      const catLen = clamp18(Number(cfg.catwalkLengthM) || 6, 0, 20);
+      const bWidth = clamp18(Number(cfg.bStageWidthM) || 4, 2, 10);
+      if (cfg.catwalkType === 'straight') {
+        catwalkModules = Math.ceil(catLen) * 1 + Math.ceil((bWidth * bWidth) / 2);
+        catwalkAreaM2 = catLen * 2 + bWidth * bWidth;
+      } else if (cfg.catwalkType === 'circular_cnc') {
+        catwalkAreaM2 = +(catLen * 2 + Math.PI * Math.pow(bWidth * 0.5, 2)).toFixed(2);
+        catwalkModules = Math.ceil(catwalkAreaM2 / 2);
+      } else if (cfg.catwalkType === 'octagonal_45') {
+        catwalkAreaM2 = +(catLen * 2 + 0.828 * bWidth * bWidth).toFixed(2);
+        catwalkModules = Math.ceil(catwalkAreaM2 / 2);
+      }
+
+      const totalDeckModules = mainDeckModules + catwalkModules;
+      const legCount = (moduleCols + 1) * (moduleRows + 1) + catwalkModules * 2;
+      const clampCount = totalDeckModules * 4;
+
+      // EN 13814 Stair Calculation (170mm riser, 280mm tread, 1.10m handrail)
+      const stairMeta = EN13814_STAIR_LAYOUTS18[cfg.stairLayout] || EN13814_STAIR_LAYOUTS18.front_dual;
+      const stepsPerStair = Math.max(2, Math.ceil((deckH * 1000) / 170));
+      const stairRunM = +((stepsPerStair * 280) / 1000).toFixed(2);
+
+      // Layher Allround Scaffolding Bays (2.07m / 2.57m / 2.00m)
+      const bayLenM = cfg.layherBayStandard === '2.57m' ? 2.57 : cfg.layherBayStandard === '2.00m' ? 2.0 : 2.07;
+      const baysWide = Math.max(1, Math.ceil(deckW / bayLenM));
+      const baysDeep = Math.max(1, Math.ceil(deckD / bayLenM));
+      const levels = Math.max(1, Math.ceil(deckH / 2.0));
+      const standardsCount = (baysWide + 1) * (baysDeep + 1) * levels;
+      const ledgersCount = (baysWide * (baysDeep + 1) + baysDeep * (baysWide + 1)) * levels * 2;
+      const diagonalsCount = (baysWide + baysDeep) * levels * 2;
+
+      return {
+        venueType: cfg.venueType,
+        venueXRay: !!cfg.venueXRay,
+        deckMaterial: cfg.deckMaterial === 'black_wood' ? 'black_wood' : 'mirror',
+        reflectivity: cfg.deckMaterial === 'mirror' ? 0.78 : 0.12,
+        moduleSize: '2x1m',
+        deckWidthM: deckW,
+        deckDepthM: deckD,
+        deckHeightM: deckH,
+        moduleCols,
+        moduleRows,
+        mainDeckModules,
+        catwalkType: cfg.catwalkType,
+        catwalkModules,
+        catwalkAreaM2,
+        totalDeckModules,
+        legCount,
+        clampCount,
+        stairStandard: 'EN 13814',
+        stairLayout: stairMeta.id,
+        stairUnits: stairMeta.count,
+        stepsPerStair,
+        riserHeightMm: 170,
+        treadDepthMm: 280,
+        handrailHeightM: 1.1,
+        stairRunM,
+        layherBayStandard: `${bayLenM.toFixed(2)}m`,
+        layherBayLengthM: bayLenM,
+        baysWide,
+        baysDeep,
+        standardsCount,
+        ledgersCount,
+        diagonalsCount,
+        liveSymmetry3D: !!cfg.liveSymmetry3D,
+        crowdBounce: !!cfg.crowdBounce
+      };
+    }
+
+    function enforceLiveSymmetry3D18() {
+      const eng = S.engine;
+      const sa = S.stageAssets16;
+      let mirroredFixtures = 0;
+      let mirroredAssets = 0;
+
+      // Mirror left-side lights (X < -0.25) onto right-side counterparts (X > +0.25) across X = 0
+      if (Array.isArray(eng?.lights)) {
+        const leftLights = eng.lights.filter((l) => l && Number(l.pos?.[0]) < -0.25);
+        const rightLights = eng.lights.filter((l) => l && Number(l.pos?.[0]) > 0.25);
+        leftLights.forEach((lLeft, idx) => {
+          const rLight = rightLights[idx];
+          if (rLight) {
+            rLight.pos = [-Number(lLeft.pos[0]), Number(lLeft.pos[1]), Number(lLeft.pos[2])];
+            if (Array.isArray(lLeft.target)) {
+              rLight.target = [-Number(lLeft.target[0]), Number(lLeft.target[1]), Number(lLeft.target[2])];
+            }
+            rLight.color = lLeft.color;
+            rLight.power = lLeft.power;
+            rLight.angle = lLeft.angle;
+            mirroredFixtures++;
+          }
+        });
+      }
+
+      // Mirror left-side stage assets (X < -0.25) onto right-side counterparts across X = 0
+      if (Array.isArray(sa?.items)) {
+        const byKind = new Map();
+        for (const it of sa.items) {
+          const k = String(it.kind || it.type || 'item');
+          if (!byKind.has(k)) byKind.set(k, []);
+          byKind.get(k).push(it);
+        }
+        for (const list of byKind.values()) {
+          const lefts = list.filter((it) => Number(it.pos?.[0]) < -0.25).sort((a, b) => a.pos[0] - b.pos[0]);
+          const rights = list.filter((it) => Number(it.pos?.[0]) > 0.25).sort((a, b) => b.pos[0] - a.pos[0]);
+          lefts.forEach((lIt, i) => {
+            let rIt = rights[i];
+            if (!rIt && typeof sa.addCatalogItem === 'function') {
+              rIt = sa.addCatalogItem(lIt.kind || lIt.type, [-Number(lIt.pos[0]), Number(lIt.pos[1]), Number(lIt.pos[2])]);
+            }
+            if (rIt) {
+              rIt.pos = [-Number(lIt.pos[0]), Number(lIt.pos[1]), Number(lIt.pos[2])];
+              if (lIt.rot) rIt.rot = [Number(lIt.rot[0]) || 0, -(Number(lIt.rot[1]) || 0), Number(lIt.rot[2]) || 0];
+              rIt.scale = lIt.scale;
+              sa.syncItemMeshes?.(rIt);
+              mirroredAssets++;
+            }
+          });
+        }
+      }
+
+      if (eng) eng._stageBatchDirty = true;
+      return { mirroredFixtures, mirroredAssets };
+    }
+
+    function applyStructureConfig18(partialCfg = {}) {
+      const cfg = lumiState.structureConfig18;
+      Object.assign(cfg, partialCfg);
+      const calc = computeModularDeckAndLayher18(cfg);
+      const eng = S.engine;
+      if (eng) {
+        if (eng.settings) {
+          eng.settings.floorReflect = calc.reflectivity;
+          eng.settings.venueXRay = calc.venueXRay;
+        }
+        if (Array.isArray(eng.stage)) {
+          eng.stage.forEach((m) => {
+            if (!m) return;
+            const nm = String(m.name || '').toLowerCase();
+            if (nm.includes('deck') || nm.includes('floor') || nm.includes('stage')) {
+              m.color = calc.deckMaterial === 'mirror' ? [0.06, 0.09, 0.14] : [0.08, 0.07, 0.06];
+              m.reflective18 = calc.deckMaterial === 'mirror';
+            }
+            if (nm.includes('roof') || nm.includes('venue') || nm.includes('pillar')) {
+              m.wireframe18 = calc.venueXRay;
+            }
+          });
+        }
+        if (cfg.liveSymmetry3D) {
+          enforceLiveSymmetry3D18();
+        }
+        eng._stageBatchDirty = true;
+      }
+      return calc;
+    }
+
+    function drawMirrorDeckReflections18(ctx, proj, eng, tSec, spd) {
+      if (!ctx || typeof proj !== 'function' || !eng) return;
+      const deckY = Math.max(0.4, (eng.stageBounds?.min?.[1] || 0) + 0.45);
+      const lights = Array.isArray(eng.lights) ? eng.lights : [];
+      for (let i = 0; i < lights.length; i++) {
+        const l = lights[i];
+        if (!l || !l.enabled || l.power <= 0.2 || !Array.isArray(l.pos) || !Array.isArray(l.target)) continue;
+        const refTarget = [l.target[0], 2 * deckY - l.target[1], l.target[2]];
+        const p0 = proj([l.target[0], deckY, l.target[2]]);
+        const p1 = proj(refTarget.map((v, k) => (k === 1 ? Math.min(deckY - 0.2, v) : v)));
+        if (!p0 || !p1) continue;
+        const g = ctx.createLinearGradient(p0.x, p0.y, p1.x, p1.y);
+        g.addColorStop(0, rgba18(l.color || '#00f0ff', 0.22));
+        g.addColorStop(1, rgba18(l.color || '#00f0ff', 0));
+        ctx.strokeStyle = g;
+        ctx.lineWidth = 6;
+        ctx.beginPath();
+        ctx.moveTo(p0.x, p0.y);
+        ctx.lineTo(p1.x, p1.y);
+        ctx.stroke();
+      }
+    }
+
+    function drawOrganicCrowdBounce18(ctx, proj, eng, tSec = 0, spd = 2.0, running = true) {
+      if (!ctx || typeof proj !== 'function') return 0;
+      const count = clamp18(Number(lumiState.structureConfig18?.crowdCount) || 24, 6, 72);
+      let drawn = 0;
+      for (let i = 0; i < count; i++) {
+        const row = Math.floor(i / 12);
+        const col = i % 12;
+        const x = (col - 5.5) * 1.15 + (row % 2) * 0.45;
+        const z = 4.2 + row * 1.25;
+        const bounce = running ? Math.abs(Math.sin(tSec * spd * 4.2 + i * 0.65)) * 0.24 : 0;
+        const headY = 1.68 + bounce;
+        const pHead = proj([x, headY, z]);
+        const pShoulders = proj([x, headY - 0.35, z]);
+        if (!pHead || !pShoulders) continue;
+
+        ctx.fillStyle = rgba18('#38bdf8', 0.28);
+        ctx.beginPath();
+        ctx.arc(pHead.x, pHead.y, 4.2, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.strokeStyle = rgba18('#01ffa0', 0.24);
+        ctx.lineWidth = 3.2;
+        ctx.beginPath();
+        ctx.moveTo(pHead.x, pHead.y + 4);
+        ctx.lineTo(pShoulders.x, pShoulders.y);
+        ctx.stroke();
+        drawn++;
+      }
+      return drawn;
+    }
+
+    function openStructureConfigModal18() {
+      if (typeof window.dialog !== 'function') return null;
+      const cfg = lumiState.structureConfig18;
+      const calc = computeModularDeckAndLayher18(cfg);
+      const stairOpts = Object.values(EN13814_STAIR_LAYOUTS18)
+        .map((st) => `<option value="${st.id}" ${cfg.stairLayout === st.id ? 'selected' : ''}>${esc18(tr18(st.labelVi, st.labelEn))}</option>`)
+        .join('');
+
+      const html =
+        `<div class="lmp-modal-grid18">` +
+        `<div class="info-box">` +
+        `<strong>${tr18('Cấu Hình Hội Trường (Venue), Mặt Sàn Gương Mirror & Giàn Giáo Layher Allround', '3D Venue Shell, Mirror Reflective Deck & Layher Allround Config')}</strong>` +
+        `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px">` +
+        `<label><span>Venue Type</span><select id="structVenueType18">` +
+        `<option value="indoor_hall" ${cfg.venueType === 'indoor_hall' ? 'selected' : ''}>Indoor Hall</option>` +
+        `<option value="outdoor_roof" ${cfg.venueType === 'outdoor_roof' ? 'selected' : ''}>Outdoor Roof</option>` +
+        `<option value="coliseum_arena" ${cfg.venueType === 'coliseum_arena' ? 'selected' : ''}>Coliseum Arena</option>` +
+        `</select></label>` +
+        `<label><span>Deck Surface</span><select id="structDeckMat18">` +
+        `<option value="mirror" ${cfg.deckMaterial === 'mirror' ? 'selected' : ''}>Mirror Reflective Deck</option>` +
+        `<option value="black_wood" ${cfg.deckMaterial === 'black_wood' ? 'selected' : ''}>Black Wood Anti-Slip</option>` +
+        `</select></label>` +
+        `<label><span>Layher Allround Bay</span><select id="structLayherBay18">` +
+        `<option value="2.07m" ${cfg.layherBayStandard === '2.07m' ? 'selected' : ''}>2.07m Metric Standard</option>` +
+        `<option value="2.57m" ${cfg.layherBayStandard === '2.57m' ? 'selected' : ''}>2.57m Heavy Span</option>` +
+        `<option value="2.00m" ${cfg.layherBayStandard === '2.00m' ? 'selected' : ''}>2.00m Event Grid</option>` +
+        `</select></label>` +
+        `<label><span>Stairs (EN 13814)</span><select id="structStairLayout18">${stairOpts}</select></label>` +
+        `<label><span>Catwalk + B-Stage</span><select id="structCatwalkType18">` +
+        `<option value="none" ${cfg.catwalkType === 'none' ? 'selected' : ''}>None</option>` +
+        `<option value="straight" ${cfg.catwalkType === 'straight' ? 'selected' : ''}>Straight Thrust</option>` +
+        `<option value="circular_cnc" ${cfg.catwalkType === 'circular_cnc' ? 'selected' : ''}>Circular CNC</option>` +
+        `<option value="octagonal_45" ${cfg.catwalkType === 'octagonal_45' ? 'selected' : ''}>Octagonal 45°</option>` +
+        `</select></label>` +
+        `<div style="display:flex;flex-direction:column;gap:4px;justify-content:center">` +
+        `<label style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="structVenueXRay18" ${cfg.venueXRay ? 'checked' : ''}><span>Venue X-Ray</span></label>` +
+        `<label style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="structLiveSym18" ${cfg.liveSymmetry3D ? 'checked' : ''}><span>Live Symmetry 3D (X=0)</span></label>` +
+        `<label style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="structCrowdBounce18" ${cfg.crowdBounce ? 'checked' : ''}><span>Organic Crowd Bounce</span></label>` +
+        `</div></div></div>` +
+        `<div class="info-box" id="structSummaryBox18">` +
+        `<b>Module 2×1m:</b> ${calc.totalDeckModules} tấm (${calc.legCount} chân, ${calc.clampCount} khóa) · ` +
+        `<b>Cầu thang EN 13814:</b> ${calc.stairUnits} cụm × ${calc.stepsPerStair} bậc (170×280mm) · ` +
+        `<b>Layher ${calc.layherBayStandard}:</b> ${calc.standardsCount} trụ đứng, ${calc.ledgersCount} giằng ngang, ${calc.diagonalsCount} giằng chéo` +
+        `</div></div>`;
+
+      window.dialog(tr18('Cấu hình Kết cấu 3D, Sàn Gương & Đối Xứng Gương', '3D Structure, Mirror Deck & Live Symmetry'), html, [
+        { label: tr18('Áp dụng & Đóng', 'Apply & Close'), className: 'primary', onClick: () => $('modal')?.close() }
+      ]);
+
+      const syncStruct = () => {
+        const res = applyStructureConfig18({
+          venueType: $('structVenueType18')?.value || cfg.venueType,
+          deckMaterial: $('structDeckMat18')?.value || cfg.deckMaterial,
+          layherBayStandard: $('structLayherBay18')?.value || cfg.layherBayStandard,
+          stairLayout: $('structStairLayout18')?.value || cfg.stairLayout,
+          catwalkType: $('structCatwalkType18')?.value || cfg.catwalkType,
+          venueXRay: !!$('structVenueXRay18')?.checked,
+          liveSymmetry3D: !!$('structLiveSym18')?.checked,
+          crowdBounce: !!$('structCrowdBounce18')?.checked
+        });
+        const sumBox = $('structSummaryBox18');
+        if (sumBox) {
+          sumBox.innerHTML =
+            `<b>Module 2×1m:</b> ${res.totalDeckModules} tấm (${res.legCount} chân, ${res.clampCount} khóa) · ` +
+            `<b>Cầu thang EN 13814:</b> ${res.stairUnits} cụm × ${res.stepsPerStair} bậc (170×280mm) · ` +
+            `<b>Layher ${res.layherBayStandard}:</b> ${res.standardsCount} trụ đứng, ${res.ledgersCount} giằng ngang, ${res.diagonalsCount} giằng chéo`;
+        }
+      };
+      $('modal')?.querySelectorAll?.('input,select').forEach((el) => {
+        el.addEventListener('change', syncStruct);
+      });
+      return calc;
+    }
+
+    // =========================================================================
+    // PHASE C — 3D AUDIO & LINE ARRAY CALIBRATION WORKSTATION #1..#25
+    // =========================================================================
+    const AUDIO_BRAND_PRESETS18 = {
+      lacoustics_k2: { id: 'lacoustics_k2', name: 'L-Acoustics K2 + KS28', maxSpl1mDb: 147, boxWeightKg: 56, hDispDeg: 110 },
+      dbaudiotechnik_gsl: { id: 'dbaudiotechnik_gsl', name: 'd&b audiotechnik GSL8 + SL-SUB', maxSpl1mDb: 146, boxWeightKg: 80, hDispDeg: 80 },
+      meyer_panther: { id: 'meyer_panther', name: 'Meyer Sound PANTHER + 2100-LFC', maxSpl1mDb: 150, boxWeightKg: 68, hDispDeg: 95 },
+      jbl_vtx_a12: { id: 'jbl_vtx_a12', name: 'JBL VTX A12 + B28', maxSpl1mDb: 146, boxWeightKg: 61, hDispDeg: 90 },
+      adamson_e15: { id: 'adamson_e15', name: 'Adamson E15 + E219', maxSpl1mDb: 147, boxWeightKg: 60, hDispDeg: 90 }
+    };
+
+    function computeLineArrayJCurve18(cfgOverrides = {}) {
+      const cfg = { ...lumiState.audioWorkstation18, ...cfgOverrides };
+      const preset = AUDIO_BRAND_PRESETS18[cfg.brandPreset] || AUDIO_BRAND_PRESETS18.lacoustics_k2;
+      const count = clamp18(Math.round(Number(cfg.boxesPerSide) || 12), 4, 24);
+      const bumperH = clamp18(Number(cfg.bumperHeightM) || 8.5, 3.5, 22);
+      const topTilt = clamp18(Number(cfg.topTiltDeg) || -2.0, -15, 5);
+      const jFactor = clamp18(Number(cfg.jCurveFactor) || 1.25, 0.5, 2.5);
+      const earHeightM = 1.65;
+
+      const cabinets = [];
+      let cumTilt = topTilt;
+      for (let i = 0; i < count; i++) {
+        const rawSplay = Array.isArray(cfg.splayAnglesDeg) && Number.isFinite(+cfg.splayAnglesDeg[i])
+          ? +cfg.splayAnglesDeg[i]
+          : +(0.5 + Math.pow(i / Math.max(1, count - 1), 1.65) * 6.5 * jFactor).toFixed(1);
+        const splayDeg = clamp18(rawSplay, 0.5, 10.0);
+        if (i > 0) cumTilt -= splayDeg;
+        const boxY = +(bumperH - (i + 0.5) * 0.36).toFixed(2);
+        const depRad = (Math.max(1.5, Math.abs(cumTilt)) * Math.PI) / 180;
+        const aimZ = +clamp18((boxY - earHeightM) / Math.tan(depRad), 2.5, cfg.venueDepthM || 45).toFixed(2);
+        const throwDistM = +Math.hypot(boxY - earHeightM, aimZ).toFixed(2);
+        const splAtAimDba = +(preset.maxSpl1mDb - 20 * Math.log10(Math.max(1, throwDistM)) - 12).toFixed(1);
+        cabinets.push({
+          boxIndex: i + 1,
+          model: preset.name.split(' + ')[0],
+          splayDeg: +splayDeg.toFixed(1),
+          cumulativeTiltDeg: +cumTilt.toFixed(1),
+          heightY: boxY,
+          aimDistanceZM: aimZ,
+          throwDistanceM: throwDistM,
+          splOnAxisDba: splAtAimDba,
+          weightKg: preset.boxWeightKg
+        });
+      }
+
+      const bumperFrameKg = 92;
+      const hangWeightPerSideKg = cabinets.length * preset.boxWeightKg + bumperFrameKg;
+      const safetyFactorBgvC1 = +(2000 / Math.max(1, hangWeightPerSideKg)).toFixed(2);
+
+      return {
+        brandPreset: preset.id,
+        brandName: preset.name,
+        boxesPerSide: count,
+        bumperHeightM: bumperH,
+        topTiltDeg: topTilt,
+        bottomTiltDeg: cabinets[cabinets.length - 1]?.cumulativeTiltDeg || topTilt,
+        totalVerticalSpreadDeg: +(Math.abs((cabinets[cabinets.length - 1]?.cumulativeTiltDeg || topTilt) - topTilt) + 10).toFixed(1),
+        hangWeightPerSideKg,
+        safetyFactorBgvC1,
+        bgvC1Safe: safetyFactorBgvC1 >= 2.0,
+        cabinets
+      };
+    }
+
+    function exportPinSplayCsv18({ cfg = null, download = false } = {}) {
+      const j = computeLineArrayJCurve18(cfg || {});
+      const rows = ['BoxIndex,CabinetModel,PinHoleAngle_deg,CumulativeTilt_deg,HeightY_m,AimDistanceZ_m,SPL_OnAxis_dBA,WeightKg'];
+      for (const c of j.cabinets) {
+        rows.push(`${c.boxIndex},${c.model},${c.splayDeg.toFixed(1)},${c.cumulativeTiltDeg.toFixed(1)},${c.heightY.toFixed(2)},${c.aimDistanceZM.toFixed(2)},${c.splOnAxisDba.toFixed(1)},${c.weightKg}`);
+      }
+      const csv = rows.join('\n');
+      if (download && typeof window.downloadText === 'function') {
+        window.downloadText('LineArray_Pin_Splay_21.csv', csv);
+      }
+      return csv;
+    }
+
+    function exportAudioSystem3dJson18({ format = 'json', download = false } = {}) {
+      const j = computeLineArrayJCurve18();
+      const sub = computeSubwooferTopology18();
+      const diag = computeAudioDiagnostics18();
+      if (format === 'xml') {
+        const boxesXml = j.cabinets
+          .map((c) => `    <Cabinet index="${c.boxIndex}" model="${esc18(c.model)}" splayDeg="${c.splayDeg}" tiltDeg="${c.cumulativeTiltDeg}" aimZM="${c.aimDistanceZM}" />`)
+          .join('\n');
+        const xml =
+          `<?xml version="1.0" encoding="UTF-8"?>\n` +
+          `<AudioSystem3D preset="${esc18(j.brandPreset)}" bumperHeightM="${j.bumperHeightM}" subTopology="${esc18(sub.topology)}" rearRejectionDb="${sub.rearRejectionDb}" sti="${diag.stiScore}">\n` +
+          `  <LineArrayHang boxesPerSide="${j.boxesPerSide}" weightPerSideKg="${j.hangWeightPerSideKg}">\n${boxesXml}\n  </LineArrayHang>\n` +
+          `</AudioSystem3D>`;
+        if (download && typeof window.downloadText === 'function') {
+          window.downloadText('AudioSystem_3D_Prediction.xml', xml);
+        }
+        return xml;
+      }
+      const json = JSON.stringify({ lineArray: j, subwoofer: sub, diagnostics: diag }, null, 2);
+      if (download && typeof window.downloadText === 'function') {
+        window.downloadText('AudioSystem_3D_Prediction.json', json);
+      }
+      return json;
+    }
+
+    function computeSubwooferTopology18(cfgOverrides = {}) {
+      const cfg = { ...lumiState.audioWorkstation18, ...cfgOverrides };
+      const count = clamp18(Math.round(Number(cfg.subCount) || 12), 2, 32);
+      const topology = ['stacks_lr', 'cardioid_csa', 'center_sub_arc'].includes(cfg.subTopology) ? cfg.subTopology : 'cardioid_csa';
+      const crossoverHz = clamp18(Number(cfg.crossoverHz) || 80, 50, 120);
+      const speedOfSound = 343;
+      const quarterWaveDelayMs = +(((speedOfSound / crossoverHz) * 0.25 / speedOfSound) * 1000).toFixed(2);
+      const rearRejectionDb = topology === 'cardioid_csa' ? -15.0 : topology === 'center_sub_arc' ? -8.5 : -2.0;
+      const powerAlleyVarianceDb = topology === 'center_sub_arc' ? 1.8 : topology === 'cardioid_csa' ? 3.4 : 6.8;
+
+      const units = [];
+      for (let i = 0; i < count; i++) {
+        const u = (i / Math.max(1, count - 1)) - 0.5;
+        const isRearCsa = topology === 'cardioid_csa' && i % 3 === 1;
+        const x = topology === 'stacks_lr' ? (i < count / 2 ? -6.2 : 6.2) : +(u * 11.5).toFixed(2);
+        const arcDelayMs = topology === 'center_sub_arc' ? +(Math.abs(u) * 4.2).toFixed(2) : isRearCsa ? +(Number(cfg.subDelayMs) || quarterWaveDelayMs).toFixed(2) : 0;
+        units.push({
+          subIndex: i + 1,
+          pos: [x, 0.45, 2.35],
+          orientation: isRearCsa ? 'REAR_REVERSED' : 'FRONT_FIRING',
+          delayMs: arcDelayMs,
+          polarityDeg: isRearCsa && cfg.subPolarityInverted !== false ? 180 : 0,
+          lpfHz: crossoverHz
+        });
+      }
+
+      return {
+        topology,
+        subCount: count,
+        crossoverHz,
+        quarterWaveDelayMs,
+        rearRejectionDb,
+        powerAlleyVarianceDb,
+        polarityInverted: cfg.subPolarityInverted !== false,
+        units
+      };
+    }
+
+    function computeAudioDiagnostics18(cfgOverrides = {}) {
+      const cfg = { ...lumiState.audioWorkstation18, ...cfgOverrides };
+      const j = computeLineArrayJCurve18(cfg);
+      const sub = computeSubwooferTopology18(cfg);
+      const eng = S.engine;
+      const surfaces = Array.isArray(cfg.surfaces) ? cfg.surfaces : Array.isArray(eng?.surfaces) ? eng.surfaces : [];
+
+      const fohSplDba = +(Number(cfg.targetSplFohDba) || 102.0).toFixed(1);
+      const frontRowSplDba = +(fohSplDba + 3.2).toFixed(1);
+      const rearRowSplDba = +(fohSplDba - 2.6).toFixed(1);
+      const uniformityDeltaDb = +(frontRowSplDba - rearRowSplDba).toFixed(1);
+
+      // #7 Acoustic Shadows behind LED Walls
+      const ledShadowZones = [];
+      surfaces.forEach((s, idx) => {
+        const sw = Number(s.physicalWidthM || s.w) || 4;
+        const sx = Number(s.pos?.[0]) || 0;
+        const sz = Number(s.pos?.[2]) || -1.5;
+        if (Math.abs(sx) >= 3.5 && sz > -0.5) {
+          ledShadowZones.push({
+            screenName: s.name || `LED_${idx + 1}`,
+            widthM: sw,
+            hfAttenuationDb: -9.5,
+            shadowSectorDeg: 18,
+            mitigation: 'Raise Line Array Bumper +1.2m or move Side Wing Z back behind PA hang plane'
+          });
+        }
+      });
+
+      // #9 Slapback Echo > 50ms check
+      const depthM = clamp18(Number(cfg.venueDepthM) || 45, 12, 150);
+      const rearWallDelayMs = +(((depthM * 2) / 343) * 1000).toFixed(1);
+      const hasSlapbackEcho = rearWallDelayMs > 50 && Math.abs(j.bottomTiltDeg) < 3.5;
+
+      // #15 Community Noise at 50m / 100m
+      const outdoorAtten = lumiState.structureConfig18?.venueType === 'indoor_hall' ? 22 : 4;
+      const communityNoise50mDba = +(fohSplDba - 20 * Math.log10(50 / 20) - outdoorAtten).toFixed(1);
+      const communityNoise100mDba = +(fohSplDba - 20 * Math.log10(100 / 20) - outdoorAtten).toFixed(1);
+      const residentialCompliant = communityNoise100mDba <= 65.0;
+
+      // #16 WHO Safe Exposure Limits (100 dBA LAeq,15m max recommended)
+      const whoMaxContinuousDba = 100.0;
+      const whoSafeExposureHours = +(8 / Math.pow(2, Math.max(0, fohSplDba - 85) / 3)).toFixed(2);
+      const whoStatus = fohSplDba <= 98 ? 'SAFE' : fohSplDba <= 102 ? 'CAUTION' : 'EXCEEDED';
+
+      // #17 Speech Transmission Index (STI) from RT60 and SNR
+      const rt60 = clamp18(Number(cfg.rt60Sec) || 1.35, 0.3, 4.5);
+      const snrDb = fohSplDba - (Number(cfg.ambientNoiseDb) || 45);
+      const stiRaw = 0.86 - rt60 * 0.14 + Math.min(25, snrDb) * 0.004 - (hasSlapbackEcho ? 0.06 : 0) - ledShadowZones.length * 0.03;
+      const stiScore = +clamp18(stiRaw, 0.32, 0.92).toFixed(2);
+      const stiRating = stiScore >= 0.75 ? 'EXCELLENT' : stiScore >= 0.6 ? 'GOOD' : stiScore >= 0.45 ? 'FAIR' : 'POOR';
+
+      // #22-#24 Live Band Stage Plot & Monitor Rider + Feedback Gain-Before-Feedback (GBF #24)
+      const bp = { ...lumiState.audioWorkstation18.bandPlot, ...(cfg.bandPlot || {}) };
+      const stagePlotChannels = [];
+      if (bp.drums) stagePlotChannels.push({ group: 'Drums', inputs: 'Kick In/Out, Snare T/B, Hi-Hat, 3x Toms, OH L/R (10ch)', wedgeMix: 'Drum Fill Sub+Top' });
+      if (bp.percussion) stagePlotChannels.push({ group: 'Percussion', inputs: 'Congas L/R, Bongos, Timbales, Toys (5ch)', wedgeMix: 'Mix 2 Percussion' });
+      if (bp.grandPiano) stagePlotChannels.push({ group: 'Grand Piano', inputs: 'Condenser Pair Low/High + Yamahiko Pickup (3ch)', wedgeMix: 'IEM Stereo 1' });
+      if (bp.keys) stagePlotChannels.push({ group: 'Keys & Backing Tracks', inputs: 'Main Keys Stereo DI + Synth Stereo + Click/Tracks (6ch)', wedgeMix: 'IEM Stereo 2' });
+      if (bp.horns) stagePlotChannels.push({ group: 'Horns Section', inputs: 'Trumpet, Alto Sax, Tenor Sax, Trombone Clip Mics (4ch)', wedgeMix: 'Mix 3 Brass Wedges' });
+      const vocalCount = clamp18(Number(bp.vocalMics) || 4, 1, 12);
+      stagePlotChannels.push({ group: 'Vocal Mics', inputs: `${vocalCount}x Wireless Supercardioid Capsules`, wedgeMix: `${bp.monitorWedges || 8}x Downstage Wedges + ${bp.iemChannels || 10}x IEM` });
+
+      const stageLeakDb = fohSplDba + sub.rearRejectionDb * 0.5;
+      const gbfMarginDb = +(114 - stageLeakDb - (Number(bp.micGainDb) || 0) - (bp.grandPiano ? 2.5 : 0)).toFixed(1);
+      const feedbackRiskFreqHz = sub.topology === 'stacks_lr' ? 125 : bp.grandPiano ? 2500 : 3150;
+      const feedbackStatus = gbfMarginDb >= 9 ? 'SAFE' : gbfMarginDb >= 4 ? 'RINGING_RISK' : 'FEEDBACK_ALERT';
+
+      return {
+        fohSplDba,
+        frontRowSplDba,
+        rearRowSplDba,
+        uniformityDeltaDb,
+        ledShadowZones,
+        rearWallDelayMs,
+        hasSlapbackEcho,
+        communityNoise50mDba,
+        communityNoise100mDba,
+        residentialCompliant,
+        whoMaxContinuousDba,
+        whoSafeExposureHours,
+        whoStatus,
+        stiScore,
+        stiRating,
+        stagePlotChannels,
+        gbfMarginDb,
+        feedbackRiskFreqHz,
+        feedbackStatus,
+        lineArray: j,
+        subwoofer: sub
+      };
+    }
+
+    function compareAudioSystemsAB18(cfgA = {}, cfgB = {}) {
+      const diagA = computeAudioDiagnostics18(cfgA);
+      const diagB = computeAudioDiagnostics18(cfgB);
+      return {
+        systemA: diagA,
+        systemB: diagB,
+        deltaSplUniformityDb: +(diagB.uniformityDeltaDb - diagA.uniformityDeltaDb).toFixed(2),
+        deltaRearRejectionDb: +(diagB.subwoofer.rearRejectionDb - diagA.subwoofer.rearRejectionDb).toFixed(2),
+        deltaSti: +(diagB.stiScore - diagA.stiScore).toFixed(2),
+        deltaGbfDb: +(diagB.gbfMarginDb - diagA.gbfMarginDb).toFixed(2),
+        recommendedWinner: diagB.stiScore + Math.abs(diagB.subwoofer.rearRejectionDb) * 0.02 >= diagA.stiScore + Math.abs(diagA.subwoofer.rearRejectionDb) * 0.02 ? 'B' : 'A'
+      };
+    }
+
+    function renderSplHeatmapCanvas18(canvas, cfgOverrides = {}) {
+      if (!canvas || typeof canvas.getContext !== 'function') return null;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return null;
+      const w = canvas.width || 640;
+      const h = canvas.height || 320;
+      const diag = computeAudioDiagnostics18(cfgOverrides);
+
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = '#070d19';
+      ctx.fillRect(0, 0, w, h);
+
+      // Draw 2D SPL Coverage Heatmap grid from stage front (left) to venue rear (right)
+      const cols = 24;
+      const rows = 12;
+      const cw = w / cols;
+      const ch = h / rows;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const distNorm = (c + 0.5) / cols;
+          const offAxis = Math.abs((r + 0.5) / rows - 0.5) * 2;
+          const spl = diag.frontRowSplDba - distNorm * 6.5 - offAxis * 3.2;
+          const colHex = spl >= 103 ? '#ef4444' : spl >= 99 ? '#f59e0b' : spl >= 94 ? '#10b981' : '#38bdf8';
+          ctx.fillStyle = rgba18(colHex, 0.65);
+          ctx.fillRect(c * cw, r * ch, cw - 1, ch - 1);
+        }
+      }
+
+      // Draw Wave Flow wavefront arcs
+      ctx.strokeStyle = 'rgba(255,255,255,0.45)';
+      ctx.lineWidth = 1.4;
+      for (let ring = 1; ring <= 6; ring++) {
+        ctx.beginPath();
+        ctx.arc(24, h * 0.5, ring * (w * 0.14), -0.65, 0.65);
+        ctx.stroke();
+      }
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText?.(`FOH ${diag.fohSplDba} dBA | STI ${diag.stiScore} (${diag.stiRating}) | CSA ${diag.subwoofer.rearRejectionDb} dB`, 14, h - 12);
+      return diag;
+    }
+
+    function drawAudioWaveFlowOverlay18(ctx, proj, eng, tSec = 0, spd = 2.0) {
+      if (!ctx || typeof proj !== 'function') return;
+      const origins = [
+        [-6.2, 6.2, 1.2],
+        [6.2, 6.2, 1.2]
+      ];
+      origins.forEach((orig, idx) => {
+        for (let w = 0; w < 4; w++) {
+          const dist = ((tSec * spd * 6.5 + w * 4.2) % 16.8) + 1.5;
+          const pLeft = proj([orig[0] - dist * 0.45, Math.max(0.8, orig[1] - dist * 0.25), orig[2] + dist]);
+          const pMid = proj([orig[0], Math.max(0.8, orig[1] - dist * 0.25), orig[2] + dist * 1.12]);
+          const pRight = proj([orig[0] + dist * 0.45, Math.max(0.8, orig[1] - dist * 0.25), orig[2] + dist]);
+          if (!pLeft || !pMid || !pRight) continue;
+          const alpha = clamp18(1 - dist / 18.5, 0.05, 0.42);
+          ctx.strokeStyle = rgba18(idx === 0 ? '#01ffa0' : '#00d4ff', alpha);
+          ctx.lineWidth = 2.0;
+          ctx.beginPath();
+          ctx.moveTo(pLeft.x, pLeft.y);
+          ctx.quadraticCurveTo(pMid.x, pMid.y, pRight.x, pRight.y);
+          ctx.stroke();
+        }
+      });
+    }
+
+    function openAudioWorkstationModal18() {
+      if (typeof window.dialog !== 'function') return null;
+      const cfg = lumiState.audioWorkstation18;
+      const diag = computeAudioDiagnostics18(cfg);
+      const presetOpts = Object.values(AUDIO_BRAND_PRESETS18)
+        .map((p) => `<option value="${p.id}" ${cfg.brandPreset === p.id ? 'selected' : ''}>${esc18(p.name)}</option>`)
+        .join('');
+
+      const html =
+        `<div class="lmp-modal-grid18">` +
+        `<div class="info-box">` +
+        `<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">` +
+        `<strong>${tr18('Trạm Cân Chỉnh Âm Thanh 3D & Line Array #1..#25', '3D Audio & Line Array Calibration Workstation #1..#25')}</strong>` +
+        `<div style="display:flex;gap:6px">` +
+        `<button type="button" class="btn small" id="audioExportPinCsvBtn18">#21 Pin Splay CSV</button>` +
+        `<button type="button" class="btn small" id="audioExportJsonBtn18">3D Audio JSON</button>` +
+        `<button type="button" class="btn small" id="audioExportXmlBtn18">3D Audio XML</button>` +
+        `</div></div>` +
+        `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px">` +
+        `<label><span>Line Array System</span><select id="audioBrandSelect18">${presetOpts}</select></label>` +
+        `<label><span>Boxes / Side</span><input type="number" id="audioBoxesInput18" min="4" max="24" value="${cfg.boxesPerSide}"></label>` +
+        `<label><span>Bumper Height (m)</span><input type="number" id="audioBumperInput18" min="4" max="20" step="0.5" value="${cfg.bumperHeightM}"></label>` +
+        `<label><span>Sub Topology</span><select id="audioSubTopoSelect18">` +
+        `<option value="cardioid_csa" ${cfg.subTopology === 'cardioid_csa' ? 'selected' : ''}>Cardioid CSA (-15dB)</option>` +
+        `<option value="center_sub_arc" ${cfg.subTopology === 'center_sub_arc' ? 'selected' : ''}>Center Sub-Arc</option>` +
+        `<option value="stacks_lr" ${cfg.subTopology === 'stacks_lr' ? 'selected' : ''}>Stacks L/R</option>` +
+        `</select></label>` +
+        `</div></div>` +
+        `<canvas id="audioHeatmapCanvas18" width="640" height="180" style="width:100%;height:180px;border-radius:8px;border:1px solid var(--border)"></canvas>` +
+        `<div class="info-box" id="audioDiagSummary18">` +
+        `<b>FOH SPL:</b> ${diag.fohSplDba} dBA (Δ ${diag.uniformityDeltaDb} dB) · ` +
+        `<b>STI #17:</b> ${diag.stiScore} (${diag.stiRating}) · ` +
+        `<b>WHO #16:</b> ${diag.whoStatus} (${diag.whoSafeExposureHours}h) · ` +
+        `<b>Community 50m/100m #15:</b> ${diag.communityNoise50mDba}/${diag.communityNoise100mDba} dBA · ` +
+        `<b>Feedback GBF #24:</b> +${diag.gbfMarginDb} dB (${diag.feedbackStatus})` +
+        `</div></div>`;
+
+      window.dialog(tr18('3D Audio & Line Array Workstation (#1..#25)', '3D Audio & Line Array Workstation (#1..#25)'), html, [
+        { label: tr18('Đóng', 'Close'), onClick: () => $('modal')?.close() }
+      ]);
+
+      const can = $('audioHeatmapCanvas18');
+      if (can) renderSplHeatmapCanvas18(can, cfg);
+
+      $('audioExportPinCsvBtn18')?.addEventListener('click', () => {
+        exportPinSplayCsv18({ download: true });
+        window.toast?.(tr18('Đã xuất bảng góc ghim #21 Pin Splay CSV.', 'Exported #21 Pin Splay CSV.'));
+      });
+      $('audioExportJsonBtn18')?.addEventListener('click', () => {
+        exportAudioSystem3dJson18({ format: 'json', download: true });
+      });
+      $('audioExportXmlBtn18')?.addEventListener('click', () => {
+        exportAudioSystem3dJson18({ format: 'xml', download: true });
+      });
+      const syncAudio = () => {
+        cfg.brandPreset = $('audioBrandSelect18')?.value || cfg.brandPreset;
+        cfg.boxesPerSide = clamp18(Number($('audioBoxesInput18')?.value) || 12, 4, 24);
+        cfg.bumperHeightM = clamp18(Number($('audioBumperInput18')?.value) || 8.5, 4, 20);
+        cfg.subTopology = $('audioSubTopoSelect18')?.value || cfg.subTopology;
+        const nextDiag = renderSplHeatmapCanvas18($('audioHeatmapCanvas18'), cfg) || computeAudioDiagnostics18(cfg);
+        const box = $('audioDiagSummary18');
+        if (box) {
+          box.innerHTML =
+            `<b>FOH SPL:</b> ${nextDiag.fohSplDba} dBA (Δ ${nextDiag.uniformityDeltaDb} dB) · ` +
+            `<b>STI #17:</b> ${nextDiag.stiScore} (${nextDiag.stiRating}) · ` +
+            `<b>WHO #16:</b> ${nextDiag.whoStatus} (${nextDiag.whoSafeExposureHours}h) · ` +
+            `<b>Community 50m/100m #15:</b> ${nextDiag.communityNoise50mDba}/${nextDiag.communityNoise100mDba} dBA · ` +
+            `<b>Feedback GBF #24:</b> +${nextDiag.gbfMarginDb} dB (${nextDiag.feedbackStatus})`;
+        }
+      };
+      $('modal')?.querySelectorAll?.('input,select').forEach((el) => {
+        el.addEventListener('input', syncAudio);
+        el.addEventListener('change', syncAudio);
+      });
+      return diag;
+    }
+
+    // =========================================================================
+    // PHASE D — 2D PIXEL MAPPER WORKSTATION & VENUE OUTLET POWER COMPARATOR
+    // =========================================================================
+    const VENUE_OUTLET_SPECS18 = [
+      { id: '16A_1P', label: '16A 1φ Schuko / CEE Blue', phases: 1, ampsPerPhase: 16, maxKw: 3.68 },
+      { id: '16A_3P', label: '16A 3φ CEE Red (5-Pin)', phases: 3, ampsPerPhase: 16, maxKw: 11.04 },
+      { id: '32A_3P', label: '32A 3φ CEE Red (5-Pin)', phases: 3, ampsPerPhase: 32, maxKw: 22.08 },
+      { id: '63A_3P', label: '63A 3φ CEE Red Distro', phases: 3, ampsPerPhase: 63, maxKw: 43.47 },
+      { id: '125A_3P', label: '125A 3φ Main Powerlock / CEE', phases: 3, ampsPerPhase: 125, maxKw: 86.25 }
+    ];
+
+    function compareVenueOutlets18(opts = {}) {
+      const eng = S.engine;
+      const rider = computeEngineeringRider(eng, opts);
+      const selectedId = opts.selectedOutlet || lumiState.venuePower18?.selectedOutlet || '63A_3P';
+      if (lumiState.venuePower18) lumiState.venuePower18.selectedOutlet = selectedId;
+
+      const requiredKw = +(Number(opts.requiredKw) || Number(rider.totalPowerContinuousKw) + Number(rider.lightingPowerW || 0) / 1000 + 2.4).toFixed(2);
+      const peakKw = +(Number(opts.peakKw) || Number(rider.totalPowerMaxKw) + Number(rider.lightingPowerW || 0) / 1000 + 4.2).toFixed(2);
+
+      const outletComparison = VENUE_OUTLET_SPECS18.map((sp) => {
+        const safeContinuousKw = +(sp.maxKw * 0.8).toFixed(2);
+        const utilizationPct = +((requiredKw / sp.maxKw) * 100).toFixed(1);
+        const breakersNeeded = Math.max(1, Math.ceil(requiredKw / safeContinuousKw));
+        return {
+          ...sp,
+          safeContinuousKw,
+          utilizationPct,
+          breakersNeeded,
+          pass: requiredKw <= safeContinuousKw
+        };
+      });
+
+      const currentOutlet = outletComparison.find((o) => o.id === selectedId) || outletComparison[3];
+      const status = currentOutlet.utilizationPct <= 80 ? 'SAFE' : currentOutlet.utilizationPct <= 100 ? 'NEAR_LIMIT' : 'OVERLOAD';
+
+      return {
+        selectedOutlet: currentOutlet.id,
+        selectedLabel: currentOutlet.label,
+        availableKw: currentOutlet.maxKw,
+        safeContinuousKw: currentOutlet.safeContinuousKw,
+        requiredKw,
+        peakKw,
+        loadPercent: currentOutlet.utilizationPct,
+        phaseAmps: {
+          L1: rider.phaseL1Amps,
+          L2: rider.phaseL2Amps,
+          L3: rider.phaseL3Amps
+        },
+        status,
+        outletComparison
+      };
+    }
+
+    function openPixelPowerWorkstationModal18() {
+      if (typeof window.dialog !== 'function') return null;
+      const eng = S.engine;
+      const surf = eng?.surfaces?.find((s) => s.id === eng.selected) || eng?.surfaces?.[0];
+      if (surf) window.normalizeSurfaceHardware?.(surf);
+      const outletReport = compareVenueOutlets18();
+
+      const outletRows = outletReport.outletComparison
+        .map(
+          (o) =>
+            `<tr><td><b>${esc18(o.label)}</b></td><td>${o.maxKw.toFixed(1)} kW</td><td>${o.utilizationPct}%</td><td>${o.breakersNeeded}x</td><td><b>${o.pass ? 'PASS' : 'OVERLOAD'}</b></td></tr>`
+        )
+        .join('');
+
+      const html =
+        `<div class="lmp-modal-grid18">` +
+        `<div class="info-box">` +
+        `<strong>${tr18('Đối Chiếu Tải Điện Sân Khấu Với Ổ Cắm Hội Trường (Venue Outlets)', 'Stage Power vs Real Venue Outlets Comparator')}</strong>` +
+        `<div style="display:flex;gap:8px;align-items:center;margin:8px 0;flex-wrap:wrap">` +
+        `<label><span>Venue Outlet:</span><select id="venueOutletSelect18">` +
+        VENUE_OUTLET_SPECS18.map((o) => `<option value="${o.id}" ${o.id === outletReport.selectedOutlet ? 'selected' : ''}>${esc18(o.label)} (${o.maxKw} kW)</option>`).join('') +
+        `</select></label>` +
+        `<span><b>Load:</b> ${outletReport.requiredKw} kW / ${outletReport.availableKw} kW (${outletReport.loadPercent}% · ${outletReport.status})</span>` +
+        `</div>` +
+        `<table class="bom-table" style="width:100%"><thead><tr><th>Outlet Type</th><th>Max Power</th><th>Utilization</th><th>Lines Needed</th><th>Status</th></tr></thead><tbody>${outletRows}</tbody></table>` +
+        `</div></div>`;
+
+      window.dialog(tr18('2D Pixel Mapper & Venue Power Workstation', '2D Pixel Mapper & Venue Power Workstation'), html, [
+        { label: tr18('Đóng', 'Close'), onClick: () => $('modal')?.close() }
+      ]);
+
+      $('venueOutletSelect18')?.addEventListener('change', (e) => {
+        compareVenueOutlets18({ selectedOutlet: e.target.value });
+        openPixelPowerWorkstationModal18();
+      });
+      return outletReport;
+    }
+
+    // =========================================================================
+    // PHASE E — MY WAREHOUSE, RMA, B2B CROSS-RENT, 5-SHEET BLUEPRINTS & SCREEN CAPTURE
+    // =========================================================================
+    function setWarehouseRmaLock18(skuKey, rmaCount, ownedCount = null) {
+      const stock = lumiState.warehouse18.stock;
+      if (!stock[skuKey]) {
+        stock[skuKey] = {
+          name: skuKey,
+          category: 'Custom Equipment',
+          owned: Math.max(0, Number(ownedCount) || 20),
+          rma: 0,
+          unitSubRentUsd: 25,
+          perCase: 4,
+          caseVolM3: 0.45,
+          caseWeightKg: 60
+        };
+      }
+      if (ownedCount !== null && Number.isFinite(+ownedCount)) {
+        stock[skuKey].owned = Math.max(0, Math.round(+ownedCount));
+      }
+      stock[skuKey].rma = clamp18(Math.round(Number(rmaCount) || 0), 0, stock[skuKey].owned);
+      return {
+        sku: skuKey,
+        owned: stock[skuKey].owned,
+        rma: stock[skuKey].rma,
+        available: Math.max(0, stock[skuKey].owned - stock[skuKey].rma)
+      };
+    }
+
+    function computeWarehouseLogisticsAndShortage18(opts = {}) {
+      const eng = S.engine;
+      const surfaces = Array.isArray(opts.surfaces) ? opts.surfaces : Array.isArray(eng?.surfaces) ? eng.surfaces : [];
+      const lights = Array.isArray(opts.lights) ? opts.lights : Array.isArray(eng?.lights) ? eng.lights : [];
+      const stock = lumiState.warehouse18.stock;
+      const usdToVnd = Number(opts.usdToVnd) || 25400;
+
+      const requiredBySku = {};
+      for (const s of surfaces) {
+        window.normalizeSurfaceHardware?.(s);
+        const sku = s.cabinetModelId && stock[s.cabinetModelId] ? s.cabinetModelId : 'roe_bp2v2_500';
+        const cabs = Number(s.activeCabinets) || (Number(s.cabCols) || 4) * (Number(s.cabRows) || 3);
+        requiredBySku[sku] = (requiredBySku[sku] || 0) + cabs;
+        const procSku = s.processorModelId && stock[s.processorModelId] ? s.processorModelId : 'brompton_sx40';
+        requiredBySku[procSku] = (requiredBySku[procSku] || 0) + 1;
+      }
+
+      lights.forEach((l, idx) => {
+        const cat = classifyFixture18(l, idx, lights.length);
+        const sku = cat === 'beam' || cat === 'spot' ? 'fixture_beam_spot' : cat === 'wash' || cat === 'par' || cat === 'fresnel' ? 'fixture_wash_par' : 'fixture_barra_blinder';
+        requiredBySku[sku] = (requiredBySku[sku] || 0) + 1;
+      });
+
+      const structCalc = computeModularDeckAndLayher18();
+      requiredBySku.deck_module_2x1 = structCalc.totalDeckModules;
+      requiredBySku.audio_line_array_box = (Number(lumiState.audioWorkstation18?.boxesPerSide) || 12) * 2;
+      requiredBySku.audio_sub_218 = Number(lumiState.audioWorkstation18?.subCount) || 12;
+
+      if (opts.requiredOverrides && typeof opts.requiredOverrides === 'object') {
+        Object.assign(requiredBySku, opts.requiredOverrides);
+      }
+
+      const items = [];
+      let totalFlightcases = 0;
+      let totalVolumeM3 = 0;
+      let totalWeightKg = 0;
+      let totalShortageUnits = 0;
+      let totalSubRentUsd = 0;
+
+      for (const [sku, spec] of Object.entries(stock)) {
+        const required = Math.max(0, Math.round(Number(requiredBySku[sku]) || 0));
+        const owned = Math.max(0, Math.round(Number(spec.owned) || 0));
+        const rma = clamp18(Math.round(Number(spec.rma) || 0), 0, owned);
+        const available = Math.max(0, owned - rma);
+        const shortage = Math.max(0, required - available);
+        const flightcases = required > 0 ? Math.ceil(required / Math.max(1, spec.perCase || 4)) : 0;
+        const volM3 = +(flightcases * (spec.caseVolM3 || 0.45)).toFixed(2);
+        const weightKg = Math.round(flightcases * (spec.caseWeightKg || 60));
+        const subRentUsd = shortage * (spec.unitSubRentUsd || 25);
+
+        totalFlightcases += flightcases;
+        totalVolumeM3 += volM3;
+        totalWeightKg += weightKg;
+        totalShortageUnits += shortage;
+        totalSubRentUsd += subRentUsd;
+
+        items.push({
+          sku,
+          name: spec.name,
+          category: spec.category,
+          required,
+          owned,
+          rma,
+          available,
+          shortage,
+          flightcases,
+          volumeM3: volM3,
+          weightKg,
+          unitSubRentUsd: spec.unitSubRentUsd,
+          subRentUsd
+        });
+      }
+
+      totalVolumeM3 = +totalVolumeM3.toFixed(2);
+      const recommendedTruck =
+        totalVolumeM3 <= 12
+          ? '1.5T Production Van (12m³)'
+          : totalVolumeM3 <= 22
+            ? '3.5T Box Truck (22m³)'
+            : totalVolumeM3 <= 42
+              ? '8T Touring Truck (42m³)'
+              : '40ft Semi-Trailer (68m³)';
+
+      return {
+        items,
+        totalFlightcases,
+        totalVolumeM3,
+        totalWeightKg,
+        totalShortageUnits,
+        totalSubRentUsd,
+        totalSubRentVnd: Math.round(totalSubRentUsd * usdToVnd),
+        recommendedTruck,
+        fullyInStock: totalShortageUnits === 0
+      };
+    }
+
+    function fitStageToWarehouseStock18() {
+      const eng = S.engine;
+      window.checkpoint?.();
+      const stock = lumiState.warehouse18.stock;
+      const availOf = (sku) => Math.max(0, (stock[sku]?.owned || 0) - (stock[sku]?.rma || 0));
+
+      // 1. Fit LED surfaces so total cabinets per SKU do not exceed available stock
+      const surfaces = Array.isArray(eng?.surfaces) ? eng.surfaces : [];
+      const usedCabsBySku = {};
+      for (const s of surfaces) {
+        window.normalizeSurfaceHardware?.(s);
+        const sku = s.cabinetModelId && stock[s.cabinetModelId] ? s.cabinetModelId : 'roe_bp2v2_500';
+        const avail = Math.max(1, availOf(sku) - (usedCabsBySku[sku] || 0));
+        const cols = Math.max(1, Number(s.cabCols) || 4);
+        const rows = Math.max(1, Number(s.cabRows) || 3);
+        if (cols * rows > avail) {
+          const scale = Math.sqrt(avail / (cols * rows));
+          s.cabCols = Math.max(1, Math.floor(cols * scale));
+          s.cabRows = Math.max(1, Math.floor(avail / s.cabCols));
+          s.physicalWidthM = +(s.cabCols * ((s.cabW || 500) / 1000)).toFixed(2);
+          s.physicalHeightM = +(s.cabRows * ((s.cabH || 500) / 1000)).toFixed(2);
+          s.physical = [s.physicalWidthM, s.physicalHeightM];
+          s.rows500x1000 = 0;
+          s.rows500x500 = 0;
+          delete s._mixedSpecHeightM;
+          s.virtualTiles = [];
+          window.normalizeSurfaceHardware?.(s);
+        }
+        usedCabsBySku[sku] = (usedCabsBySku[sku] || 0) + (s.activeCabinets ?? s.cabCols * s.cabRows);
+      }
+
+      // 2. Fit DMX Lights to available stock
+      if (Array.isArray(eng?.lights)) {
+        const usedLights = {};
+        const kept = eng.lights.filter((l, idx, lights) => {
+          const cat = classifyFixture18(l, idx, lights.length);
+          const sku = cat === 'beam' || cat === 'spot' ? 'fixture_beam_spot' : cat === 'wash' || cat === 'par' || cat === 'fresnel' ? 'fixture_wash_par' : 'fixture_barra_blinder';
+          usedLights[sku] = (usedLights[sku] || 0) + 1;
+          return usedLights[sku] <= availOf(sku);
+        });
+        if (kept.length !== eng.lights.length) {
+          eng.lights = kept;
+          eng.rebuildFixtures?.();
+        }
+      }
+
+      // 3. Fit Audio Line Array & Subs to available stock
+      const maxBoxesPerSide = Math.max(4, Math.floor(availOf('audio_line_array_box') / 2));
+      if (lumiState.audioWorkstation18.boxesPerSide > maxBoxesPerSide) {
+        lumiState.audioWorkstation18.boxesPerSide = maxBoxesPerSide;
+      }
+      const maxSubs = Math.max(2, availOf('audio_sub_218'));
+      if (lumiState.audioWorkstation18.subCount > maxSubs) {
+        lumiState.audioWorkstation18.subCount = maxSubs;
+      }
+
+      // 4. Fit Stage Deck modules to available stock
+      const maxDecks = Math.max(4, availOf('deck_module_2x1'));
+      const curStruct = computeModularDeckAndLayher18();
+      if (curStruct.totalDeckModules > maxDecks) {
+        lumiState.structureConfig18.catwalkType = 'none';
+        lumiState.structureConfig18.deckWidthM = Math.max(4, Math.floor(Math.sqrt(maxDecks)) * 2);
+        lumiState.structureConfig18.deckDepthM = Math.max(2, Math.floor(maxDecks / (lumiState.structureConfig18.deckWidthM / 2)));
+      }
+
+      window.renderUI?.();
+      return computeWarehouseLogisticsAndShortage18();
+    }
+
+    function exportCrossRentCsv18({ download = false } = {}) {
+      const report = computeWarehouseLogisticsAndShortage18();
+      const rows = ['SKU,ItemName,Category,RequiredQty,OwnedQty,RMA_Locked,AvailableQty,ShortageToRent,Flightcases,Volume_m3,SubRentRate_USD,TotalSubRent_USD'];
+      for (const it of report.items) {
+        rows.push(
+          `${it.sku},"${it.name.replace(/"/g, '""')}",${it.category},${it.required},${it.owned},${it.rma},${it.available},${it.shortage},${it.flightcases},${it.volumeM3.toFixed(2)},${it.unitSubRentUsd},${it.subRentUsd}`
+        );
+      }
+      const csv = rows.join('\n');
+      if (download && typeof window.downloadText === 'function') {
+        window.downloadText('B2B_Cross_Rent_Order.csv', csv);
+      }
+      return csv;
+    }
+
+    function openWarehouseModal18() {
+      if (typeof window.dialog !== 'function') return null;
+      const report = computeWarehouseLogisticsAndShortage18();
+      const itemRows = report.items
+        .map(
+          (it) =>
+            `<tr>` +
+            `<td><b>${esc18(it.name)}</b><br><small>${esc18(it.category)}</small></td>` +
+            `<td>${it.required}</td>` +
+            `<td><input type="number" min="0" max="999" value="${it.owned}" data-wh-owned="${esc18(it.sku)}" style="width:64px"></td>` +
+            `<td><input type="number" min="0" max="${it.owned}" value="${it.rma}" data-wh-rma="${esc18(it.sku)}" style="width:56px"></td>` +
+            `<td><b>${it.available}</b></td>` +
+            `<td><b style="color:${it.shortage > 0 ? '#f59e0b' : '#10b981'}">${it.shortage > 0 ? '-' + it.shortage + ' ($' + it.subRentUsd + ')' : 'OK'}</b></td>` +
+            `<td>${it.flightcases} cases (${it.volumeM3}m³)</td>` +
+            `</tr>`
+        )
+        .join('');
+
+      const html =
+        `<div class="lmp-modal-grid18">` +
+        `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">` +
+        `<div><strong>${tr18('Kho Thiết Bị Thực Tế (My Warehouse), Bảo Trì RMA & Thuê Chéo B2B', 'My Warehouse Inventory, RMA Repair Lock & B2B Cross-Rent')}</strong><br>` +
+        `<small>Flightcases: <b>${report.totalFlightcases}</b> · Volume: <b>${report.totalVolumeM3} m³</b> (${report.totalWeightKg} kg) · Truck: <b>${esc18(report.recommendedTruck)}</b> · Sub-Rent: <b>$${report.totalSubRentUsd}</b></small></div>` +
+        `<div style="display:flex;gap:6px">` +
+        `<button type="button" class="btn small primary" id="whFitStockBtn18">${tr18('Fit to My Stock', 'Fit to My Stock')}</button>` +
+        `<button type="button" class="btn small" id="whExportCrossRentBtn18">B2B Cross-Rent CSV</button>` +
+        `</div></div>` +
+        `<div class="info-box" style="max-height:320px;overflow:auto">` +
+        `<table class="bom-table" style="width:100%"><thead><tr><th>Equipment SKU</th><th>Req</th><th>Owned</th><th>RMA</th><th>Avail</th><th>Shortage</th><th>Logistics</th></tr></thead><tbody>${itemRows}</tbody></table>` +
+        `</div></div>`;
+
+      window.dialog(tr18('My Warehouse, RMA & B2B Cross-Rent', 'My Warehouse, RMA & B2B Cross-Rent'), html, [
+        { label: tr18('Đóng', 'Close'), onClick: () => $('modal')?.close() }
+      ]);
+
+      $('whFitStockBtn18')?.addEventListener('click', () => {
+        const fitted = fitStageToWarehouseStock18();
+        window.toast?.(fitted.fullyInStock
+          ? tr18('Đã co cấu hình sân khấu vừa tồn kho khả dụng.', 'Fitted stage configuration to available warehouse stock.')
+          : tr18(`Đã co cấu hình; còn thiếu ${fitted.totalShortageUnits} thiết bị cần thuê thêm.`, `Configuration reduced; ${fitted.totalShortageUnits} units still require cross-rental.`));
+        openWarehouseModal18();
+      });
+      $('whExportCrossRentBtn18')?.addEventListener('click', () => {
+        exportCrossRentCsv18({ download: true });
+        window.toast?.(tr18('Đã xuất đơn thuê chéo B2B Cross-Rent CSV.', 'Exported B2B Cross-Rent CSV.'));
+      });
+      $('modal')?.querySelectorAll?.('[data-wh-owned],[data-wh-rma]').forEach((inp) => {
+        inp.addEventListener('change', () => {
+          const sku = inp.getAttribute('data-wh-owned') || inp.getAttribute('data-wh-rma');
+          const ownedEl = $('modal')?.querySelector?.(`[data-wh-owned="${sku}"]`);
+          const rmaEl = $('modal')?.querySelector?.(`[data-wh-rma="${sku}"]`);
+          setWarehouseRmaLock18(sku, Number(rmaEl?.value) || 0, Number(ownedEl?.value) || 0);
+          openWarehouseModal18();
+        });
+      });
+      return report;
+    }
+
+    // 5-Sheet Engineering Blueprint Pack (FRONT, TOP, SIDE, ISOMETRIC, STUDIO_RENDER with 1.75m human figure)
+    const BLUEPRINT_VIEWS18 = ['FRONT', 'TOP', 'SIDE', 'ISOMETRIC', 'STUDIO_RENDER'];
+
+    function renderEngineeringBlueprintSheet18(view = 'FRONT', targetCanvas = null, opts = {}) {
+      const vUpper = String(view || 'FRONT').toUpperCase();
+      const validView = BLUEPRINT_VIEWS18.includes(vUpper) ? vUpper : 'FRONT';
+      const can = targetCanvas || document.createElement('canvas');
+      can.width = Number(opts.width) || 1920;
+      can.height = Number(opts.height) || 1080;
+      const ctx = can.getContext?.('2d');
+      if (!ctx) return { view: validView, width: can.width, height: can.height, humanHeightM: 1.75 };
+
+      const w = can.width;
+      const h = can.height;
+      const isStudio = validView === 'STUDIO_RENDER';
+      const struct = computeModularDeckAndLayher18();
+      const rider = computeEngineeringRider(S.engine);
+
+      // 1. Background & CAD Border / Studio Gradient
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = isStudio ? '#050811' : '#0a1222';
+      ctx.fillRect(0, 0, w, h);
+
+      ctx.strokeStyle = isStudio ? '#1e293b' : '#38bdf8';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(28, 28, w - 56, h - 56);
+
+      // 2. Draw Engineering Grid & Stage Geometry Projection
+      const cx = w * 0.48;
+      const floorY = h * 0.72;
+      const pxPerM = 72; // 1 meter = 72 pixels at 1920x1080
+
+      ctx.strokeStyle = 'rgba(56,189,248,0.16)';
+      ctx.lineWidth = 1;
+      for (let gx = 80; gx < w - 80; gx += pxPerM) {
+        ctx.beginPath();
+        ctx.moveTo(gx, 60);
+        ctx.lineTo(gx, h - 140);
+        ctx.stroke();
+      }
+      for (let gy = 80; gy < h - 140; gy += pxPerM) {
+        ctx.beginPath();
+        ctx.moveTo(60, gy);
+        ctx.lineTo(w - 60, gy);
+        ctx.stroke();
+      }
+
+      // Stage Deck & Truss Silhouette per View
+      const deckWpx = struct.deckWidthM * pxPerM;
+      const deckDpx = struct.deckDepthM * pxPerM;
+      const deckHpx = struct.deckHeightM * pxPerM;
+      const trimHpx = 7.5 * pxPerM;
+
+      ctx.strokeStyle = '#01ffa0';
+      ctx.lineWidth = 2.5;
+      if (validView === 'TOP') {
+        ctx.strokeRect(cx - deckWpx * 0.5, h * 0.45 - deckDpx * 0.5, deckWpx, deckDpx);
+      } else if (validView === 'SIDE') {
+        ctx.strokeRect(cx - deckDpx * 0.5, floorY - deckHpx, deckDpx, deckHpx);
+        ctx.strokeRect(cx - deckDpx * 0.5, floorY - trimHpx, deckDpx, 24);
+      } else if (validView === 'ISOMETRIC') {
+        ctx.beginPath();
+        ctx.moveTo(cx, floorY - deckHpx - 110);
+        ctx.lineTo(cx + deckWpx * 0.42, floorY - deckHpx);
+        ctx.lineTo(cx, floorY - deckHpx + 110);
+        ctx.lineTo(cx - deckWpx * 0.42, floorY - deckHpx);
+        ctx.closePath();
+        ctx.stroke();
+      } else {
+        // FRONT or STUDIO_RENDER
+        ctx.strokeRect(cx - deckWpx * 0.5, floorY - deckHpx, deckWpx, deckHpx);
+        ctx.strokeStyle = '#38bdf8';
+        ctx.strokeRect(cx - deckWpx * 0.48, floorY - trimHpx, deckWpx * 0.96, 26);
+        // Main LED Wall
+        ctx.fillStyle = isStudio ? 'rgba(0,212,255,0.24)' : 'rgba(192,132,252,0.18)';
+        ctx.fillRect(cx - 4.5 * pxPerM, floorY - deckHpx - 4.5 * pxPerM, 9.0 * pxPerM, 4.5 * pxPerM);
+        ctx.strokeRect(cx - 4.5 * pxPerM, floorY - deckHpx - 4.5 * pxPerM, 9.0 * pxPerM, 4.5 * pxPerM);
+      }
+
+      // 3. Draw 1.75m Human Scale Reference Silhouette (especially prominent on STUDIO_RENDER & FRONT/SIDE)
+      const humanHeightM = 1.75;
+      const humanPx = humanHeightM * pxPerM;
+      const hx = cx + deckWpx * 0.32;
+      const hyFoot = floorY - deckHpx;
+      const hyHead = hyFoot - humanPx;
+      ctx.strokeStyle = '#fbbf24';
+      ctx.fillStyle = '#fbbf24';
+      ctx.lineWidth = 2.4;
+      ctx.beginPath();
+      ctx.arc(hx, hyHead + 10, 9, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(hx, hyHead + 20);
+      ctx.lineTo(hx, hyFoot - 42);
+      ctx.moveTo(hx - 18, hyHead + 38);
+      ctx.lineTo(hx + 18, hyHead + 38);
+      ctx.moveTo(hx, hyFoot - 42);
+      ctx.lineTo(hx - 14, hyFoot);
+      ctx.moveTo(hx, hyFoot - 42);
+      ctx.lineTo(hx + 14, hyFoot);
+      ctx.stroke();
+      ctx.fillText?.(`1.75m Human Scale`, hx + 18, hyHead + 24);
+
+      // 4. ISO Engineering Title Block
+      ctx.fillStyle = '#0f172a';
+      ctx.fillRect(40, h - 115, w - 80, 75);
+      ctx.strokeStyle = '#38bdf8';
+      ctx.strokeRect(40, h - 115, w - 80, 75);
+      ctx.fillStyle = '#f8fafc';
+      ctx.font = 'bold 20px sans-serif';
+      ctx.fillText?.(`SHEET: ${validView} | ${lumiState.brandIdentity?.brandName || 'ALPHA LED STUDIO'}`, 64, h - 80);
+      ctx.font = '15px sans-serif';
+      ctx.fillText?.(
+        `Stage: ${struct.deckWidthM}x${struct.deckDepthM}x${struct.deckHeightM}m (${struct.deckMaterial.toUpperCase()}) | Total Weight: ${rider.totalWeightKg} kg | Power: ${rider.totalPowerMaxKw} kW | Scale: 1.75m Ref`,
+        64,
+        h - 54
+      );
+
+      let dataUrl = '';
+      try {
+        if (typeof can.toDataURL === 'function') dataUrl = can.toDataURL('image/png');
+      } catch { /* ignore */ }
+
+      return {
+        view: validView,
+        width: w,
+        height: h,
+        humanHeightM,
+        stageDimensionsM: [struct.deckWidthM, struct.deckDepthM, struct.deckHeightM],
+        dataUrl
+      };
+    }
+
+    function exportEngineeringBlueprintPack18({ views = BLUEPRINT_VIEWS18, download = false } = {}) {
+      const sheets = views.map((v) => renderEngineeringBlueprintSheet18(v));
+      if (download && typeof document !== 'undefined') {
+        for (const sh of sheets) {
+          if (sh.dataUrl) {
+            const a = document.createElement('a');
+            a.href = sh.dataUrl;
+            a.download = `Blueprint_${sh.view}_1920x1080.png`;
+            a.click?.();
+          }
+        }
+      }
+      return {
+        sheetCount: sheets.length,
+        views: sheets.map((s) => s.view),
+        sheets
+      };
+    }
+
+    function openEngineeringBlueprintModal18(initialView = 'FRONT') {
+      if (typeof window.dialog !== 'function') return null;
+      const viewBtns = BLUEPRINT_VIEWS18.map(
+        (v) => `<button type="button" class="btn small ${v === initialView ? 'primary' : ''}" data-bp-view="${v}">${v}</button>`
+      ).join('');
+
+      const html =
+        `<div class="lmp-modal-grid18">` +
+        `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">` +
+        `<div style="display:flex;gap:6px;flex-wrap:wrap">${viewBtns}</div>` +
+        `<button type="button" class="btn small primary" id="bpExportAll5Btn18">${tr18('Xuất Bộ 5 Bản Vẽ Kỹ Thuật (1920×1080)', 'Export All 5 Blueprints (1920×1080)')}</button>` +
+        `</div>` +
+        `<canvas id="bpPreviewCanvas18" width="1920" height="1080" style="width:100%;height:auto;max-height:420px;border-radius:8px;border:1px solid var(--border)"></canvas>` +
+        `</div>`;
+
+      window.dialog(tr18('Hồ Sơ Kỹ Thuật 5 Bản Vẽ Chuẩn (CAD Blueprints)', '5-Sheet Engineering Blueprint Dossier'), html, [
+        { label: tr18('Đóng', 'Close'), onClick: () => $('modal')?.close() }
+      ]);
+
+      const can = $('bpPreviewCanvas18');
+      const res = can ? renderEngineeringBlueprintSheet18(initialView, can) : null;
+      $('modal')?.querySelectorAll?.('[data-bp-view]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          openEngineeringBlueprintModal18(btn.getAttribute('data-bp-view'));
+        });
+      });
+      $('bpExportAll5Btn18')?.addEventListener('click', () => {
+        exportEngineeringBlueprintPack18({ download: true });
+        window.toast?.(tr18('Đã xuất đủ 5 bản vẽ kỹ thuật (FRONT, TOP, SIDE, ISOMETRIC, STUDIO_RENDER).', 'Exported 5-sheet engineering blueprint dossier.'));
+      });
+      return res;
+    }
+
+    // Live Screen / Window Capture (getDisplayMedia) onto 3D LED Screens
+    async function startLiveScreenCapture18(opts = {}) {
+      const cap = lumiState.screenCapture18;
+      let stream = opts.mockStream || null;
+      if (!stream) {
+        const md = typeof navigator !== 'undefined' ? navigator.mediaDevices : null;
+        if (!md || typeof md.getDisplayMedia !== 'function') {
+          window.toast?.(tr18('Trình duyệt hiện tại không hỗ trợ getDisplayMedia.', 'Browser does not support getDisplayMedia.'), 3500, 'warn');
+          return { active: false, reason: 'unsupported' };
+        }
+        try {
+          stream = await md.getDisplayMedia({ video: { frameRate: { ideal: 30, max: 60 } }, audio: false });
+        } catch (err) {
+          window.toast?.(tr18('Không thể bắt màn hình: ', 'Screen capture unavailable: ') + err.message, 3500, 'warn');
+          return { active: cap.active, reason: err.name || 'capture-failed' };
+        }
+      }
+
+      stopLiveScreenCapture18();
+
+      const videoEl = opts.videoEl || (typeof document !== 'undefined' ? document.createElement('video') : {});
+      videoEl.muted = true;
+      videoEl.playsInline = true;
+      videoEl.srcObject = stream;
+      window.attachVideoElement?.(videoEl);
+      try {
+        await videoEl.play?.();
+      } catch { /* ignore autoplay in headless */ }
+
+      cap.active = true;
+      cap.stream = stream;
+      cap.videoEl = videoEl;
+      cap.startedAtMs = nowMs18();
+      cap.frameCount = (cap.frameCount || 0) + 1;
+
+      if (typeof stream.getVideoTracks === 'function') {
+        const firstTrack = stream.getVideoTracks()[0];
+        if (firstTrack) {
+          firstTrack.onended = () => { if (cap.stream === stream) stopLiveScreenCapture18(); };
+        }
+      }
+      renderLmpToolbox18();
+      ensureLiveShowLoop18();
+      window.toast?.(tr18('Đang truyền trực tiếp màn hình lên tường LED 3D.', 'Streaming live screen capture onto 3D LED walls.'));
+      return { active: true, stream, videoEl };
+    }
+
+    function stopLiveScreenCapture18() {
+      const cap = lumiState.screenCapture18;
+      if (cap.stream && typeof cap.stream.getTracks === 'function') {
+        cap.stream.getTracks().forEach((t) => t.stop?.());
+      }
+      cap.active = false;
+      cap.stream = null;
+      const eng = S.engine;
+      const video = cap.videoEl;
+      if (video) {
+        video.pause?.();
+        video.srcObject = null;
+        video.remove?.();
+        const tex = eng?.texCache?.get(video);
+        if (tex) {
+          if (tex.callback != null) video.cancelVideoFrameCallback?.(tex.callback);
+          eng.gl.deleteTexture(tex.tex);
+          eng.texCache.delete(video);
+        }
+      }
+      cap.videoEl = null;
+      renderLmpToolbox18();
+      return { active: false };
+    }
+
+    const LMP_TOOL_COLORS18 = {
+      platform: '#10b981',
+      layher: '#f59e0b',
+      stairs: '#14b8a6',
+      straight_truss: '#38bdf8',
+      vertical_truss: '#60a5fa',
+      circular_truss: '#a78bfa',
+      line_array: '#fb923c',
+      sub_stack: '#f472b6',
+      dj_booth: '#e879f9',
+      foh_booth: '#22d3ee',
+      podium: '#fbbf24',
+      live_band: '#fb7185',
+      beams: '#00d4ff',
+      spot: '#c084fc',
+      wash: '#f472b6',
+      par: '#01ffa0',
+      barra: '#fb923c',
+      blinders: '#fbbf24',
+      strobe: '#38bdf8',
+      fresnel: '#f59e0b',
+      lasers: '#10b981',
+      sparkular: '#fbbf24',
+      co2_jets: '#38bdf8',
+      flames: '#ff5500',
+      hazer: '#2dd4bf',
+      aerial_pyro: '#f472b6',
+      main_wall: '#c084fc',
+      side_wings: '#00d4ff',
+      header: '#01ffa0',
+      curved: '#f472b6',
+      l_corner_90: '#fbbf24',
+      cube: '#60a5fa',
+      cylinder_360: '#2dd4bf',
+      pixel_map_2d: '#fb923c'
+    };
+
+    function lmpToolColor18(key) {
+      return LMP_TOOL_COLORS18[key] || '#38bdf8';
+    }
+
+    function lmpToolSvg18(key) {
+      switch (key) {
+        case 'platform':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><polygon points="14,5 25,10.5 14,16 3,10.5" fill="rgba(16,185,129,0.22)" stroke="#10b981" stroke-width="1.6"/><polyline points="3,10.5 3,16 14,21.5 25,16 25,10.5" fill="none" stroke="#34d399" stroke-width="1.5"/><line x1="6" y1="17.5" x2="6" y2="23" stroke="#38bdf8" stroke-width="1.6"/><line x1="14" y1="21.5" x2="14" y2="25" stroke="#38bdf8" stroke-width="1.6"/><line x1="22" y1="17.5" x2="22" y2="23" stroke="#38bdf8" stroke-width="1.6"/></svg>`;
+        case 'layher':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><rect x="4" y="4" width="20" height="19" rx="1.5" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" stroke-width="1.7"/><line x1="14" y1="4" x2="14" y2="23" stroke="#fbbf24" stroke-width="1.4"/><line x1="4" y1="13.5" x2="24" y2="13.5" stroke="#fbbf24" stroke-width="1.4"/><line x1="4" y1="13.5" x2="14" y2="4" stroke="#38bdf8" stroke-width="1.2"/><line x1="14" y1="23" x2="24" y2="13.5" stroke="#38bdf8" stroke-width="1.2"/><circle cx="4" cy="23" r="1.8" fill="#ef4444"/><circle cx="14" cy="23" r="1.8" fill="#ef4444"/><circle cx="24" cy="23" r="1.8" fill="#ef4444"/></svg>`;
+        case 'stairs':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><path d="M4,22 L4,18 L9,18 L9,14 L14,14 L14,10 L19,10 L19,6 L24,6 L24,22 Z" fill="rgba(20,184,166,0.22)" stroke="#14b8a6" stroke-width="1.6" stroke-linejoin="round"/><line x1="4" y1="14" x2="17" y2="4" stroke="#fbbf24" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+        case 'straight_truss':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><rect x="2.5" y="9" width="23" height="10" rx="1.5" fill="rgba(56,189,248,0.14)" stroke="#38bdf8" stroke-width="1.6"/><polyline points="3,18.5 8,9.5 13,18.5 18,9.5 23,18.5 25,14" fill="none" stroke="#01ffa0" stroke-width="1.3" stroke-linejoin="round"/></svg>`;
+        case 'vertical_truss':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><rect x="9.5" y="3" width="9" height="20" rx="1.2" fill="rgba(96,165,250,0.14)" stroke="#60a5fa" stroke-width="1.6"/><polyline points="10,4 18,8.5 10,13 18,17.5 10,22" fill="none" stroke="#c084fc" stroke-width="1.3" stroke-linejoin="round"/><line x1="6" y1="24" x2="22" y2="24" stroke="#ff9900" stroke-width="2.2" stroke-linecap="round"/></svg>`;
+        case 'circular_truss':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="10" fill="rgba(167,139,250,0.12)" stroke="#a78bfa" stroke-width="1.8"/><circle cx="14" cy="14" r="6.5" fill="none" stroke="#22d3ee" stroke-width="1.4" stroke-dasharray="2.5 2"/></svg>`;
+        case 'line_array':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><line x1="8" y1="3.5" x2="20" y2="3.5" stroke="#fb923c" stroke-width="2.2" stroke-linecap="round"/><rect x="9" y="6" width="10" height="3.2" rx="1" fill="rgba(251,146,60,0.22)" stroke="#fb923c" stroke-width="1.3"/><rect x="9.2" y="10.2" width="10" height="3.2" rx="1" fill="rgba(251,191,36,0.22)" stroke="#fbbf24" stroke-width="1.3"/><rect x="9.8" y="14.4" width="9.8" height="3.2" rx="1" transform="rotate(6 14 16)" fill="rgba(56,189,248,0.22)" stroke="#38bdf8" stroke-width="1.3"/><rect x="10.5" y="18.6" width="9.5" height="3.2" rx="1" transform="rotate(14 15 20)" fill="rgba(1,255,160,0.22)" stroke="#01ffa0" stroke-width="1.3"/></svg>`;
+        case 'sub_stack':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><rect x="4" y="8" width="9" height="15" rx="1.5" fill="rgba(244,114,182,0.16)" stroke="#f472b6" stroke-width="1.5"/><rect x="15" y="8" width="9" height="15" rx="1.5" fill="rgba(244,114,182,0.16)" stroke="#f472b6" stroke-width="1.5"/><circle cx="8.5" cy="13" r="2.2" stroke="#fbbf24" stroke-width="1.4" fill="none"/><circle cx="8.5" cy="18.5" r="2.2" stroke="#38bdf8" stroke-width="1.4" fill="none"/><circle cx="19.5" cy="13" r="2.2" stroke="#fbbf24" stroke-width="1.4" fill="none"/><circle cx="19.5" cy="18.5" r="2.2" stroke="#38bdf8" stroke-width="1.4" fill="none"/></svg>`;
+        case 'dj_booth':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><polygon points="3,13 25,13 22.5,23 5.5,23" fill="rgba(232,121,249,0.18)" stroke="#e879f9" stroke-width="1.6"/><circle cx="9.5" cy="9.5" r="2.6" fill="none" stroke="#00d4ff" stroke-width="1.5"/><circle cx="18.5" cy="9.5" r="2.6" fill="none" stroke="#00d4ff" stroke-width="1.5"/><rect x="12.6" y="7.5" width="2.8" height="4" rx="0.6" fill="#fbbf24"/></svg>`;
+        case 'foh_booth':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><rect x="4" y="15" width="20" height="8" rx="1.5" fill="rgba(34,211,238,0.16)" stroke="#22d3ee" stroke-width="1.5"/><rect x="6" y="7" width="7" height="5.5" rx="1" fill="rgba(1,255,160,0.22)" stroke="#01ffa0" stroke-width="1.4"/><rect x="15" y="7" width="7" height="5.5" rx="1" fill="rgba(244,114,182,0.22)" stroke="#f472b6" stroke-width="1.4"/><line x1="8" y1="18" x2="20" y2="18" stroke="#fbbf24" stroke-width="1.6"/></svg>`;
+        case 'podium':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><polygon points="8,9 20,9 18,12 10,12" fill="rgba(251,191,36,0.24)" stroke="#fbbf24" stroke-width="1.5"/><rect x="10.5" y="12" width="7" height="10" fill="rgba(251,191,36,0.12)" stroke="#fbbf24" stroke-width="1.5"/><line x1="7" y1="22.5" x2="21" y2="22.5" stroke="#2dd4bf" stroke-width="1.8" stroke-linecap="round"/><path d="M12,9 Q10,5 8.5,5.5" fill="none" stroke="#fb7185" stroke-width="1.4"/><path d="M16,9 Q18,5 19.5,5.5" fill="none" stroke="#fb7185" stroke-width="1.4"/></svg>`;
+        case 'live_band':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="18" r="4.5" fill="rgba(251,113,133,0.22)" stroke="#fb7185" stroke-width="1.6"/><circle cx="8" cy="13" r="2.6" fill="none" stroke="#38bdf8" stroke-width="1.5"/><circle cx="20" cy="13" r="2.6" fill="none" stroke="#38bdf8" stroke-width="1.5"/><ellipse cx="6.5" cy="7.5" rx="3" ry="1" fill="none" stroke="#fbbf24" stroke-width="1.5"/><ellipse cx="21.5" cy="7.5" rx="3" ry="1" fill="none" stroke="#fbbf24" stroke-width="1.5"/></svg>`;
+        case 'beams':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><polygon points="11.5,11 16.5,11 22,25 6,25" fill="rgba(0,212,255,0.24)"/><rect x="9" y="3" width="10" height="3" rx="1" fill="#64748b"/><path d="M8,6 L8,12 A6,6 0 0,0 20,12 L20,6" fill="none" stroke="#94a3b8" stroke-width="1.6"/><rect x="10.5" y="7" width="7" height="6" rx="2" fill="#00d4ff" stroke="#e0f2fe" stroke-width="1.2"/></svg>`;
+        case 'spot':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><polygon points="11,11 17,11 24,25 4,25" fill="rgba(192,132,252,0.24)"/><line x1="14" y1="12" x2="9" y2="24" stroke="#c084fc" stroke-width="1.2" stroke-dasharray="2 1.5"/><line x1="14" y1="12" x2="14" y2="25" stroke="#fbbf24" stroke-width="1.3"/><line x1="14" y1="12" x2="19" y2="24" stroke="#c084fc" stroke-width="1.2" stroke-dasharray="2 1.5"/><rect x="9" y="3" width="10" height="3" rx="1" fill="#64748b"/><rect x="10" y="6.5" width="8" height="6.5" rx="2" fill="#c084fc" stroke="#f3e8ff" stroke-width="1.2"/></svg>`;
+        case 'wash':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><polygon points="9,12 19,12 26,25 2,25" fill="rgba(244,114,182,0.24)"/><ellipse cx="14" cy="9.5" rx="5.5" ry="4.5" fill="rgba(244,114,182,0.22)" stroke="#f472b6" stroke-width="1.6"/><circle cx="14" cy="9.5" r="2.4" fill="#38bdf8"/></svg>`;
+        case 'par':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="9.5" fill="rgba(1,255,160,0.14)" stroke="#01ffa0" stroke-width="1.6"/><circle cx="14" cy="9.5" r="1.5" fill="#ff007f"/><circle cx="9.8" cy="13" r="1.5" fill="#01ffa0"/><circle cx="18.2" cy="13" r="1.5" fill="#00d4ff"/><circle cx="11.4" cy="17.5" r="1.5" fill="#fbbf24"/><circle cx="16.6" cy="17.5" r="1.5" fill="#c084fc"/><circle cx="14" cy="14" r="1.6" fill="#ffffff"/></svg>`;
+        case 'barra':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><polygon points="3,13 25,13 27,24 1,24" fill="rgba(251,146,60,0.18)"/><rect x="2.5" y="8" width="23" height="5.5" rx="1.5" fill="#0f172a" stroke="#fb923c" stroke-width="1.5"/><circle cx="6" cy="10.8" r="1.3" fill="#ff007f"/><circle cx="10" cy="10.8" r="1.3" fill="#ff9900"/><circle cx="14" cy="10.8" r="1.3" fill="#01ffa0"/><circle cx="18" cy="10.8" r="1.3" fill="#00d4ff"/><circle cx="22" cy="10.8" r="1.3" fill="#c084fc"/></svg>`;
+        case 'blinders':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><rect x="4.5" y="4.5" width="19" height="19" rx="3" fill="rgba(251,191,36,0.16)" stroke="#fbbf24" stroke-width="1.6"/><circle cx="10" cy="10" r="3" fill="#fde047" stroke="#f59e0b" stroke-width="1"/><circle cx="18" cy="10" r="3" fill="#fde047" stroke="#f59e0b" stroke-width="1"/><circle cx="10" cy="18" r="3" fill="#fde047" stroke="#f59e0b" stroke-width="1"/><circle cx="18" cy="18" r="3" fill="#fde047" stroke="#f59e0b" stroke-width="1"/></svg>`;
+        case 'strobe':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><rect x="3.5" y="7" width="21" height="14" rx="2.5" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="1.6"/><rect x="6" y="12.2" width="16" height="3.6" rx="1" fill="#e0f2fe"/><polygon points="15,4 11,13 14.5,13 12.5,24 18,14 14.2,14" fill="#fbbf24"/></svg>`;
+        case 'fresnel':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><polygon points="4,6 9,10 9,18 4,22" fill="rgba(245,158,11,0.24)" stroke="#f59e0b" stroke-width="1.4"/><polygon points="24,6 19,10 19,18 24,22" fill="rgba(245,158,11,0.24)" stroke="#f59e0b" stroke-width="1.4"/><rect x="9" y="8.5" width="10" height="11" rx="2" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/><circle cx="14" cy="14" r="3.2" fill="#fde68a"/></svg>`;
+        case 'lasers':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><rect x="9" y="3.5" width="10" height="5" rx="1.2" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/><line x1="14" y1="8.5" x2="3" y2="24" stroke="#01ffa0" stroke-width="1.5"/><line x1="14" y1="8.5" x2="8.5" y2="25" stroke="#00d4ff" stroke-width="1.4"/><line x1="14" y1="8.5" x2="14" y2="25.5" stroke="#ff007f" stroke-width="1.5"/><line x1="14" y1="8.5" x2="19.5" y2="25" stroke="#fbbf24" stroke-width="1.4"/><line x1="14" y1="8.5" x2="25" y2="24" stroke="#01ffa0" stroke-width="1.5"/></svg>`;
+        case 'sparkular':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><rect x="9" y="20" width="10" height="5" rx="1.2" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/><path d="M14,20 L14,5 M14,17 L8,7 M14,17 L20,7 M14,14 L5,11 M14,14 L23,11" stroke="#fde047" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="5.5" r="1.3" fill="#ff9900"/><circle cx="14" cy="3.5" r="1.4" fill="#ffffff"/><circle cx="20" cy="5.5" r="1.3" fill="#ff9900"/></svg>`;
+        case 'co2_jets':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><rect x="10" y="20" width="8" height="5" rx="1.2" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/><path d="M11,19 C7,14 8,7 14,4 C20,7 21,14 17,19 Z" fill="rgba(56,189,248,0.28)" stroke="#e0f2fe" stroke-width="1.5"/></svg>`;
+        case 'flames':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><rect x="9.5" y="20.5" width="9" height="4.5" rx="1.2" fill="#1e293b" stroke="#ff5500" stroke-width="1.5"/><path d="M14,3.5 C19,9 21,14 17.5,19.5 C16,20.5 12,20.5 10.5,19.5 C7,14 9,9 14,3.5 Z" fill="rgba(255,85,0,0.32)" stroke="#ff9900" stroke-width="1.6"/><path d="M14,9 C16.5,12.5 17,16 14,19.5 C11,16 11.5,12.5 14,9 Z" fill="#fde047"/></svg>`;
+        case 'hazer':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><rect x="4" y="13" width="11" height="9" rx="1.8" fill="rgba(45,212,191,0.18)" stroke="#2dd4bf" stroke-width="1.6"/><path d="M17,14 Q20,12 23,14 T26,14" fill="none" stroke="#2dd4bf" stroke-width="1.6" stroke-linecap="round"/><path d="M17,18 Q20,16 23,18 T26,18" fill="none" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round"/><path d="M16,10 Q19,8 22,10" fill="none" stroke="#c084fc" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+        case 'aerial_pyro':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="13" r="2.2" fill="#fde047"/><path d="M14,3 L14,8 M14,18 L14,23 M4,13 L9,13 M19,13 L24,13 M7,6 L10.5,9.5 M17.5,16.5 L21,20 M21,6 L17.5,9.5 M10.5,16.5 L7,20" stroke="#f472b6" stroke-width="1.6" stroke-linecap="round"/><circle cx="14" cy="3" r="1.4" fill="#ff007f"/><circle cx="24" cy="13" r="1.4" fill="#00d4ff"/><circle cx="4" cy="13" r="1.4" fill="#01ffa0"/><circle cx="14" cy="23" r="1.4" fill="#c084fc"/></svg>`;
+        case 'main_wall':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><rect x="3" y="6" width="22" height="15" rx="1.8" fill="rgba(192,132,252,0.22)" stroke="#c084fc" stroke-width="1.6"/><line x1="10.3" y1="6" x2="10.3" y2="21" stroke="#00d4ff" stroke-width="1.1"/><line x1="17.6" y1="6" x2="17.6" y2="21" stroke="#00d4ff" stroke-width="1.1"/><line x1="3" y1="13.5" x2="25" y2="13.5" stroke="#00d4ff" stroke-width="1.1"/></svg>`;
+        case 'side_wings':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><polygon points="2.5,7 8.5,9 8.5,21 2.5,19" fill="rgba(0,212,255,0.24)" stroke="#00d4ff" stroke-width="1.5"/><rect x="10" y="8" width="8" height="12" rx="1" fill="rgba(192,132,252,0.16)" stroke="#c084fc" stroke-width="1.4"/><polygon points="25.5,7 19.5,9 19.5,21 25.5,19" fill="rgba(0,212,255,0.24)" stroke="#00d4ff" stroke-width="1.5"/></svg>`;
+        case 'header':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><rect x="2.5" y="5.5" width="23" height="5.5" rx="1.2" fill="rgba(1,255,160,0.24)" stroke="#01ffa0" stroke-width="1.6"/><rect x="6" y="13" width="16" height="10" rx="1.2" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="1.2" stroke-dasharray="2 2"/></svg>`;
+        case 'curved':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><path d="M3,7 Q14,12 25,7 L25,19 Q14,24 3,19 Z" fill="rgba(244,114,182,0.22)" stroke="#f472b6" stroke-width="1.6"/><path d="M10,8.8 L10,20.8 M18,8.8 L18,20.8" stroke="#38bdf8" stroke-width="1.2"/></svg>`;
+        case 'l_corner_90':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><polygon points="4,8 14,4 14,18 4,22" fill="rgba(251,191,36,0.24)" stroke="#fbbf24" stroke-width="1.6"/><polygon points="14,4 24,8 24,22 14,18" fill="rgba(0,212,255,0.22)" stroke="#00d4ff" stroke-width="1.6"/></svg>`;
+        case 'cube':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><polygon points="14,3.5 24,8.5 14,13.5 4,8.5" fill="rgba(1,255,160,0.24)" stroke="#01ffa0" stroke-width="1.5"/><polygon points="4,8.5 14,13.5 14,24 4,19" fill="rgba(192,132,252,0.24)" stroke="#c084fc" stroke-width="1.5"/><polygon points="14,13.5 24,8.5 24,19 14,24" fill="rgba(96,165,250,0.24)" stroke="#60a5fa" stroke-width="1.5"/></svg>`;
+        case 'cylinder_360':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><ellipse cx="14" cy="8" rx="9.5" ry="3.8" fill="rgba(45,212,191,0.22)" stroke="#2dd4bf" stroke-width="1.5"/><path d="M4.5,8 L4.5,19 A9.5,3.8 0 0,0 23.5,19 L23.5,8" fill="rgba(192,132,252,0.18)" stroke="#2dd4bf" stroke-width="1.6"/><ellipse cx="14" cy="19" rx="9.5" ry="3.8" fill="none" stroke="#fbbf24" stroke-width="1.2" stroke-dasharray="2.5 2"/></svg>`;
+        case 'pixel_map_2d':
+          return `<svg class="lmp-tb-svg18" viewBox="0 0 28 28" aria-hidden="true"><rect x="3.5" y="5" width="21" height="18" rx="2" fill="#0f172a" stroke="#fb923c" stroke-width="1.6"/><rect x="6" y="7.5" width="7" height="6" fill="#01ffa0"/><rect x="15" y="7.5" width="7" height="6" fill="#00d4ff"/><rect x="6" y="15" width="7" height="5.5" fill="#fbbf24"/><rect x="15" y="15" width="7" height="5.5" fill="#f472b6"/></svg>`;
+        default:
+          return ico18('box');
+      }
+    }
+
+    function renderLmpToolbox18() {
+      const box = $('lmpToolbox18');
+      if (!box) return;
+      box.classList.toggle('is-collapsed', lmpCollapsed18);
+      box.setAttribute('data-active-cat', lmpActiveTab18);
+      const eng = S.engine;
+      const sa = S.stageAssets16;
+      const ls = liveShow18;
+      const items = Array.isArray(sa?.items) ? sa.items : [];
+      const sfxSet = new Set(['cold_spark_fountain', 'co2_jet', 'flame_jet', 'confetti_cannon', 'haze_machine_pro']);
+      const pyroCount = items.filter((it) => sfxSet.has(normalizeSfxType18(it.kind || it.type))).length;
+      const structCount = items.length - pyroCount + (eng?.stage?.length ? 1 : 0);
+      const lightCount = Array.isArray(eng?.lights) ? eng.lights.length : 0;
+      const screenCount = Array.isArray(eng?.surfaces) ? eng.surfaces.length : 0;
+
+      const tabMeta = {
+        sets: {
+          ico: 'crown',
+          short: tr18('Mẫu S1–6', 'Sets S1–6'),
+          title: tr18('Mẫu Sân khấu (S1–S6)', 'Stage Sets (S1–S6)'),
+          badge: `S${ls.activeShow || 1}`,
+          color: '#fbbf24',
+          bgTint: 'rgba(251, 191, 36, 0.12)',
+          borderTint: 'rgba(251, 191, 36, 0.36)'
+        },
+        structure: {
+          ico: 'box',
+          short: tr18('Kết cấu', 'Structure'),
+          title: tr18('Khung & Âm thanh', 'Structures & Audio'),
+          badge: `${structCount} ${tr18('đang bật', 'active')}`,
+          color: '#01ffa0',
+          bgTint: 'rgba(1, 255, 160, 0.10)',
+          borderTint: 'rgba(1, 255, 160, 0.32)'
+        },
+        lighting: {
+          ico: 'moving-head',
+          short: tr18('Ánh sáng', 'Lighting'),
+          title: tr18('Đèn Sân khấu DMX', 'DMX Lighting'),
+          badge: `${lightCount} ${tr18('đang bật', 'active')}`,
+          color: '#00d4ff',
+          bgTint: 'rgba(0, 212, 255, 0.10)',
+          borderTint: 'rgba(0, 212, 255, 0.32)'
+        },
+        pyro: {
+          ico: 'sparkles',
+          short: tr18('Pháo SFX', 'Pyro & SFX'),
+          title: tr18('Pháo & Hiệu ứng SFX', 'Pyrotechnics & SFX'),
+          badge: `${pyroCount} ${tr18('đang bật', 'active')}`,
+          color: '#ff9900',
+          bgTint: 'rgba(255, 153, 0, 0.12)',
+          borderTint: 'rgba(255, 153, 0, 0.36)'
+        },
+        screens: {
+          ico: 'matrix',
+          short: tr18('Màn LED', 'Screens'),
+          title: tr18('Màn hình LED (2D / 3D)', 'LED Screens (2D / 3D)'),
+          badge: `${screenCount} ${tr18('đang bật', 'active')}`,
+          color: '#c084fc',
+          bgTint: 'rgba(192, 132, 252, 0.12)',
+          borderTint: 'rgba(192, 132, 252, 0.36)'
+        }
+      };
+      const curMeta = tabMeta[lmpActiveTab18] || tabMeta.structure;
+
+      let bodyHtml = '';
+      if (lmpActiveTab18 === 'sets') {
+        const setColors = ['#01ffa0', '#00d4ff', '#ff9900', '#f472b6', '#c084fc', '#fbbf24'];
+        bodyHtml =
+          `<div class="lmp-tb-showmodes18">` +
+          [1, 2, 3, 4, 5, 6]
+            .map((n) => {
+              const cfg = STAGE_SETS18[n];
+              const tip = cfg ? tr18(cfg.titleVi, cfg.titleEn) : `Set ${n}`;
+              const sc = setColors[(n - 1) % setColors.length];
+              return `<button type="button" class="lmp-tb-modebtn18 ${!ls.aiAuto && ls.activeShow === n ? 'active' : ''}" style="--set-c:${sc}" data-lmp-showmode="${n}" title="${esc18(tip)}"><span class="lmp-tb-setcode18">S${n}</span><span class="lmp-tb-setlbl18">${esc18(cfg ? tr18(cfg.shortVi, cfg.shortEn).replace(/^S\d+\s*·\s*/, '') : 'Set ' + n)}</span></button>`;
+            })
+            .join('') +
+          `</div>` +
+          `<div class="lmp-tb-strip18">` +
+          `<button type="button" class="lmp-tb-fxbtn18 ${!ls.dockHidden ? 'active' : ''}" data-lmp-docktoggle="1">${!ls.dockHidden ? tr18('Ẩn thanh Live Show', 'Hide Show Dock') : tr18('Hiện thanh Live Show', 'Show Live Dock')}</button>` +
+          `<button type="button" class="lmp-tb-fxbtn18 ${ls.running ? 'active' : ''}" data-lmp-start="1">${ls.running ? tr18('Dừng Show (P)', 'Stop Show (P)') : tr18('Chạy Show (P)', 'Start Show (P)')}</button>` +
+          `</div>` +
+          `<div class="lmp-tb-strip18" style="margin-top:6px">` +
+          `<button type="button" class="lmp-tb-fxbtn18" data-lmp-modal="warehouse">${tr18('Kho & Thuê B2B', 'My Warehouse & RMA')}</button>` +
+          `<button type="button" class="lmp-tb-fxbtn18" data-lmp-modal="blueprints">${tr18('Hồ sơ 5 Bản vẽ', '5-Sheet Blueprints')}</button>` +
+          `</div>`;
+      } else if (lmpActiveTab18 === 'structure') {
+        const structs = [
+          ['platform', tr18('Bục Sân khấu', 'Platform')],
+          ['layher', tr18('Giàn Layher', 'Layher')],
+          ['stairs', tr18('Bậc Thang', 'Stairs')],
+          ['straight_truss', tr18('Truss Ngang', 'Straight Truss')],
+          ['vertical_truss', tr18('Trụ Truss Đứng', 'Vertical Truss')],
+          ['circular_truss', tr18('Truss Tròn', 'Circular Truss')],
+          ['line_array', tr18('Loa Line Array', 'Line Array')],
+          ['sub_stack', tr18('Cụm Loa Sub', 'Sub Stack')],
+          ['dj_booth', tr18('Bàn DJ Booth', 'DJ Booth')],
+          ['foh_booth', tr18('Trạm FOH', 'FOH Booth')],
+          ['podium', tr18('Bục Phát biểu', 'Podium')],
+          ['live_band', tr18('Ban nhạc Live', 'Live Band')]
+        ];
+        bodyHtml =
+          `<div class="lmp-tb-grid18 cols-3">` +
+          structs.map(([k, lbl]) => `<button type="button" class="lmp-tb-add18" data-lmp-struct="${k}" style="--item-c:${lmpToolColor18(k)}" title="${esc18(lbl)}"><i class="lmp-tb-plus18">+</i>${lmpToolSvg18(k)}<span>${esc18(lbl)}</span></button>`).join('') +
+          `</div>` +
+          `<div class="lmp-tb-strip18">` +
+          `<button type="button" class="lmp-tb-fxbtn18" data-lmp-modal="structure">${tr18('Cấu hình Sàn Gương & Đối xứng', 'Deck Mirror & Symmetry')}</button>` +
+          `<button type="button" class="lmp-tb-fxbtn18" data-lmp-modal="audio">${tr18('Trạm Âm thanh #1..#25', 'Audio & Line Array #1..#25')}</button>` +
+          `</div>`;
+      } else if (lmpActiveTab18 === 'lighting') {
+        const lights = [
+          ['beams', tr18('Đèn Beam', 'Beams')],
+          ['spot', tr18('Spot / Profile', 'Spot / Profile')],
+          ['wash', tr18('Đèn Wash', 'Wash')],
+          ['par', tr18('Đèn PAR LED', 'PAR LED')],
+          ['barra', tr18('Thanh LED Bar', 'Barra LED')],
+          ['blinders', tr18('Chớp Blinder', 'Blinders')],
+          ['strobe', tr18('Chớp Strobe', 'Strobe')],
+          ['fresnel', tr18('Đèn Fresnel', 'Fresnel')],
+          ['lasers', tr18('Laser ILDA', 'Lasers')]
+        ];
+        bodyHtml =
+          `<div class="lmp-tb-grid18 cols-3">` +
+          lights.map(([k, lbl]) => `<button type="button" class="lmp-tb-add18" data-lmp-light="${k}" style="--item-c:${lmpToolColor18(k)}" title="${esc18(lbl)}"><i class="lmp-tb-plus18">+</i>${lmpToolSvg18(k)}<span>${esc18(lbl)}</span></button>`).join('') +
+          `</div>` +
+          `<div class="lmp-tb-strip18">` +
+          `<button type="button" class="lmp-tb-fxbtn18" data-lmp-dmx="full">${tr18('BẬT TẤT CẢ', 'FULL ON')}</button>` +
+          `<button type="button" class="lmp-tb-fxbtn18 ${ls.blackout ? 'active' : ''}" data-lmp-dmx="bo">${tr18('TẮT ĐÈN (B.O.)', 'BLACKOUT')}</button>` +
+          `</div>` +
+          `<div class="lmp-tb-strip18" style="margin-top:6px">` +
+          `<button type="button" class="lmp-tb-fxbtn18" data-lmp-modal="dmx">${tr18('Bàn DMX G1–G5 & TV/ILDA', 'DMX G1–G5 & TV/ILDA')}</button>` +
+          `<button type="button" class="lmp-tb-fxbtn18 ${lumiState.dmxProgrammer18?.freezeDmx ? 'active' : ''}" data-lmp-dmx="freeze">${tr18('ĐÓNG BĂNG DMX', 'FREEZE DMX')}</button>` +
+          `</div>`;
+      } else if (lmpActiveTab18 === 'pyro') {
+        const pyros = [
+          ['sparkular', tr18('Pháo điện lạnh', 'Sparkular'), '700W · 3.5m'],
+          ['co2_jets', tr18('Súng khói CO2', 'CO2 Jets'), 'Cryo · 6m'],
+          ['flames', tr18('Máy phun lửa', 'Flame Jets'), 'DMX · 4.5m'],
+          ['hazer', tr18('Máy tạo khói', 'Hazer DMX'), 'MDG · 1500W'],
+          ['aerial_pyro', tr18('Pháo hoa tầm cao', 'Aerial Pyro'), 'Outdoor · 25m']
+        ];
+        bodyHtml =
+          `<div class="lmp-tb-grid18 is-pyro-grid">` +
+          pyros.map(([k, lbl, sub]) => `<button type="button" class="lmp-tb-add18 is-row-card" data-lmp-pyro="${k}" style="--item-c:${lmpToolColor18(k)}" title="${esc18(lbl)}"><i class="lmp-tb-plus18">+</i><span class="lmp-tb-ico-box18">${lmpToolSvg18(k)}</span><span class="lmp-tb-card-txt18"><b>${esc18(lbl)}</b><small>${esc18(sub)}</small></span></button>`).join('') +
+          `</div>` +
+          `<div class="lmp-tb-strip18">` +
+          `<button type="button" class="lmp-tb-fxbtn18" data-lmp-fire="safety">${tr18('KIỂM TRA AN TOÀN', 'SAFETY CHECK')}</button>` +
+          `<button type="button" class="lmp-tb-fxbtn18 is-pyro" data-lmp-fire="all">${tr18('BẮN TẤT CẢ', 'FIRE ALL')}</button>` +
+          `</div>`;
+      } else {
+        const screens = [
+          ['main_wall', tr18('Màn LED Chính', 'Main Wall')],
+          ['side_wings', tr18('Cánh LED L/R', 'Side Wings')],
+          ['header', tr18('Trán LED Ngang', 'Top Header')],
+          ['curved', tr18('Màn LED Cong', 'Curved LED')],
+          ['l_corner_90', tr18('Góc L 90°', 'L-Corner 90°')],
+          ['cube', tr18('Khối Cube 3D', '4-Face Cube')],
+          ['cylinder_360', tr18('Trụ Tròn 360°', '360° Cylinder')],
+          ['pixel_map_2d', tr18('Pixel Map 2D', '2D Pixel Map')]
+        ];
+        const capOn = !!lumiState.screenCapture18?.active;
+        bodyHtml =
+          `<div class="lmp-tb-grid18 cols-3">` +
+          screens.map(([k, lbl]) => `<button type="button" class="lmp-tb-add18" data-lmp-screen="${k}" style="--item-c:${lmpToolColor18(k)}" title="${esc18(lbl)}"><i class="lmp-tb-plus18">+</i>${lmpToolSvg18(k)}<span>${esc18(lbl)}</span></button>`).join('') +
+          `</div>` +
+          `<div class="lmp-tb-strip18">` +
+          `<button type="button" class="lmp-tb-fxbtn18" data-lmp-modal="pixelpower">${tr18('Pixel Voids [B] & Nguồn Điện', 'Pixel Voids [B] & Power')}</button>` +
+          `<button type="button" class="lmp-tb-fxbtn18 ${capOn ? 'active' : ''}" data-lmp-action="screencap">${capOn ? tr18('Dừng Bắt Màn hình', 'Stop Screen Capture') : tr18('Bắt Màn hình Live', 'Live Screen Capture')}</button>` +
+          `</div>`;
+      }
+
+      const catKeys = ['sets', 'structure', 'lighting', 'pyro', 'screens'];
+      const catBarHtml = catKeys
+        .map((k) => {
+          const m = tabMeta[k];
+          const isAct = lmpActiveTab18 === k;
+          return (
+            `<button type="button" role="tab" data-lmp-tab="${k}" aria-selected="${isAct}" class="lmp-tb-cattab18 ${isAct ? 'active' : ''}" style="--cat-c:${m.color};--cat-bg:${m.bgTint};--cat-bd:${m.borderTint}" title="${esc18(m.title)}">` +
+            `<span class="lmp-tb-catico18">${ico18(m.ico)}</span>` +
+            `<span class="lmp-tb-catlbl18">${esc18(m.short)}</span>` +
+            `<i class="lmp-tb-catbar-line18"></i>` +
+            `</button>`
+          );
+        })
+        .join('');
+
+      const railBtn = (k, attrLiteral) => {
+        const m = tabMeta[k];
+        const isAct = !lmpCollapsed18 && lmpActiveTab18 === k;
+        return `<button type="button" role="tab" ${attrLiteral} aria-selected="${isAct}" class="lmp-tb-railbtn18 is-${k} ${isAct ? 'active' : ''}" style="--cat-c:${m.color};--cat-bg:${m.bgTint};--cat-bd:${m.borderTint}" title="${esc18(m.title)}" aria-label="${esc18(m.title)}">${ico18(m.ico)}</button>`;
+      };
+
+      box.innerHTML =
+        `<div class="lmp-tb-rail18" role="tablist" aria-orientation="vertical" aria-label="${tr18('Khay Công cụ Sân khấu', 'Stage Toolbox')}">` +
+        railBtn('sets', 'data-lmp-tab="sets"') +
+        railBtn('structure', 'data-lmp-tab="structure"') +
+        railBtn('lighting', 'data-lmp-tab="lighting"') +
+        railBtn('pyro', 'data-lmp-tab="pyro"') +
+        railBtn('screens', 'data-lmp-tab="screens"') +
+        `<span class="lmp-tb-rail-sep18" role="separator"></span>` +
+        `<button type="button" data-lmp-docktoggle="1" aria-pressed="${!ls.dockHidden}" class="lmp-tb-railbtn18 is-docktoggle ${!ls.dockHidden ? 'active' : ''}" style="--cat-c:#f472b6;--cat-bg:rgba(244,114,182,0.12);--cat-bd:rgba(244,114,182,0.38)" title="${tr18('Ẩn / Hiện Bàn điều khiển Live Show', 'Show / Hide Live Show Dock')}" aria-label="${tr18('Ẩn / Hiện Bàn điều khiển Live Show', 'Show / Hide Live Show Dock')}">${ico18('monitor-play')}</button>` +
+        `</div>` +
+        `<div class="lmp-tb-flyout18" style="--cat-c:${curMeta.color};--cat-bg:${curMeta.bgTint};--cat-bd:${curMeta.borderTint}">` +
+        `<div class="lmp-tb-head18">` +
+        `<span class="lmp-tb-title18">${ico18('package')}<span>${tr18('Hộp công cụ Sân khấu', 'Stage Toolbox')}</span></span>` +
+        `<span class="lmp-tb-head-right18"><button type="button" class="lmp-tb-kbd18" data-lmp-toggle="1" aria-expanded="${!lmpCollapsed18}" title="${tr18('Đóng bảng công cụ', 'Close toolbox drawer')}" aria-label="${tr18('Đóng bảng công cụ', 'Close toolbox drawer')}">${ico18('x')}</button></span>` +
+        `</div>` +
+        `<div class="lmp-tb-catbar18" role="tablist" aria-label="${tr18('Danh mục thiết bị sân khấu', 'Stage Equipment Categories')}">${catBarHtml}</div>` +
+        `<div class="lmp-tb-sec-head18"><span class="lmp-tb-sec-title18">${ico18(curMeta.ico)}<span>${esc18(curMeta.title)}</span></span><b class="lmp-tb-badge18">${esc18(curMeta.badge)}</b></div>` +
+        `<div class="lmp-tb-body18">${bodyHtml}</div>` +
+        `</div>`;
+    }
+
+    function installLmpToolbox18() {
+      installLmpLiveShowDock18();
+      const host = $('viewport') || document.querySelector?.('.left-panel .object-section');
+      if (!host || $('lmpToolbox18')) return;
+      const box = document.createElement('div');
+      box.id = 'lmpToolbox18';
+      box.className = 'lmp-toolbox18 is-collapsed';
+      host.appendChild?.(box);
+
+      box.addEventListener('click', (e) => {
+        const toggleBtn = e.target.closest?.('[data-lmp-toggle]');
+        if (toggleBtn) {
+          lmpCollapsed18 = !lmpCollapsed18;
+          renderLmpToolbox18();
+          return;
+        }
+        const dockToggleBtn = e.target.closest?.('[data-lmp-docktoggle]');
+        if (dockToggleBtn) {
+          toggleLiveShowDock18();
+          return;
+        }
+        const startBtn = e.target.closest?.('[data-lmp-start]');
+        if (startBtn) {
+          toggleLiveShow18();
+          return;
+        }
+        const modeBtn = e.target.closest?.('[data-lmp-showmode]');
+        if (modeBtn) {
+          setLiveShowMode18(modeBtn.getAttribute('data-lmp-showmode'));
+          return;
+        }
+        const showFxBtn = e.target.closest?.('[data-lmp-showfx]');
+        if (showFxBtn) {
+          toggleLiveShowFx18(showFxBtn.getAttribute('data-lmp-showfx'));
+          return;
+        }
+        const tabBtn = e.target.closest?.('[data-lmp-tab]');
+        if (tabBtn) {
+          const nextTab = tabBtn.getAttribute('data-lmp-tab') || 'structure';
+          if (!lmpCollapsed18 && lmpActiveTab18 === nextTab) {
+            lmpCollapsed18 = true;
+          } else {
+            lmpActiveTab18 = nextTab;
+            lmpCollapsed18 = false;
+          }
+          renderLmpToolbox18();
+          return;
+        }
+        const structBtn = e.target.closest?.('[data-lmp-struct]');
+        if (structBtn) {
+          addToolboxStructure18(structBtn.getAttribute('data-lmp-struct'));
+          renderLmpToolbox18();
+          return;
+        }
+        const lightBtn = e.target.closest?.('[data-lmp-light]');
+        if (lightBtn) {
+          addToolboxLighting18(lightBtn.getAttribute('data-lmp-light'));
+          return;
+        }
+        const pyroBtn = e.target.closest?.('[data-lmp-pyro]');
+        if (pyroBtn) {
+          addToolboxPyroSfx18(pyroBtn.getAttribute('data-lmp-pyro'));
+          return;
+        }
+        const screenBtn = e.target.closest?.('[data-lmp-screen]');
+        if (screenBtn) {
+          addToolboxScreen18(screenBtn.getAttribute('data-lmp-screen'));
+          return;
+        }
+        const dmxBtn = e.target.closest?.('[data-lmp-dmx]');
+        if (dmxBtn) {
+          const act = dmxBtn.getAttribute('data-lmp-dmx');
+          if (act === 'strobe') toggleLiveShowFx18('strobe');
+          else if (act === 'blinders') toggleLiveShowFx18('blinders');
+          else if (act === 'laser') toggleLiveShowFx18('laser');
+          else if (act === 'bo') toggleLiveShowFx18('bo');
+          else if (act === 'full') toggleLiveShowFx18('full');
+          else if (act === 'freeze') {
+            toggleFreezeDmx18();
+            renderLmpToolbox18();
+          }
+          return;
+        }
+        const modalBtn = e.target.closest?.('[data-lmp-modal]');
+        if (modalBtn) {
+          const mk = modalBtn.getAttribute('data-lmp-modal');
+          if (mk === 'dmx') openDmxProgrammerModal18();
+          else if (mk === 'structure') openStructureConfigModal18();
+          else if (mk === 'audio') openAudioWorkstationModal18();
+          else if (mk === 'pixelpower') openPixelPowerWorkstationModal18();
+          else if (mk === 'warehouse') openWarehouseModal18();
+          else if (mk === 'blueprints') openEngineeringBlueprintModal18();
+          return;
+        }
+        const actionBtn = e.target.closest?.('[data-lmp-action]');
+        if (actionBtn) {
+          const ak = actionBtn.getAttribute('data-lmp-action');
+          if (ak === 'screencap') {
+            if (lumiState.screenCapture18?.active) stopLiveScreenCapture18();
+            else startLiveScreenCapture18();
+          }
+          return;
+        }
+        const fireBtn = e.target.closest?.('[data-lmp-fire]');
+        if (fireBtn) {
+          const fk = fireBtn.getAttribute('data-lmp-fire');
+          if (fk === 'safety') {
+            const safety = computeSfxSafetyZones({ venueEnv: 'indoor' });
+            window.toast?.(
+              safety.violations.length
+                ? tr18(`Cảnh báo An toàn Pyro: ${safety.violations[0].message}`, `Pyro Safety Warning: ${safety.violations[0].message}`)
+                : tr18(`An toàn Pyro đạt chuẩn (${safety.zones.length} thiết bị).`, `Pyro safety clearances OK (${safety.zones.length} units).`),
+              4500,
+              safety.violations.length ? 'warn' : 'ok'
+            );
+          } else {
+            triggerPyroBurst18(fk);
+          }
+        }
+      });
+
+      box.addEventListener('input', (e) => {
+        const spdInput = e.target.closest?.('[data-lmp-speed]');
+        if (spdInput) {
+          setLiveShowSpeed18(spdInput.value);
+        }
+      });
+
+      renderLmpToolbox18();
     }
 
     window.addEventListener?.('ledstudio:locale', () => {
       lumiState.lang = document.documentElement.dataset.locale === 'en' ? 'en' : 'vi';
       updateTopbarBadge18();
       if ($('aiChat18')) renderChat18();
+      if ($('lmpToolbox18')) renderLmpToolbox18();
+      if ($('lmpLiveShowDock18')) renderLmpLiveShowDock18();
       if ($('account18Menu')?.matches(':popover-open')) renderAccountMenu18();
       window.translateUiText?.();
     });
@@ -4572,8 +10325,96 @@
       openLiveShowModal,
       openBillingModal,
       getWalletUrl18,
-      syncAccount18
+      syncAccount18,
+      stageSets: STAGE_SETS18,
+      applyStageSet18,
+      seedDefaultStageDemo18,
+      addToolboxStructure18,
+      addToolboxLighting18,
+      addToolboxPyroSfx18,
+      addToolboxScreen18,
+      triggerPyroBurst18,
+      buildGeometricLedMesh18,
+      renderLmpToolbox18,
+      installLmpToolbox18,
+      liveShow18,
+      startLiveShow18,
+      stopLiveShow18,
+      toggleLiveShow18,
+      setLiveShowMode18,
+      setLiveShowSpeed18,
+      setParChaseMode18,
+      setBeamFanLaw18,
+      setLaserPattern18,
+      toggleAutoCamera18,
+      toggleLiveShowFx18,
+      launchAerialPyro18,
+      detonateAerialShell18,
+      stepParticlesAndShells18,
+      tickLiveShow18,
+      drawWebglVolumetricExtras18,
+      renderLiveShowOverlay18,
+      toggleLiveShowDock18,
+      renderLmpLiveShowDock18,
+      installLmpLiveShowDock18,
+      quinticSmooth18,
+      samplePaletteGlide18,
+      evalBeamFanLaw18,
+      evalParChaseEngine18,
+      evalBlinderThermalFlash18,
+      evalLaserScanPattern18,
+      evalScreenHaloBleed18,
+      stepAutoCameraDirector18,
+      camTourShots18: LMP_CAM_TOUR_SHOTS18,
+      // Phase A — 3D Lighting Studio, Volumetric Effects, DMX Programmer & Broadcast/ILDA Audit
+      assignFixtureGroup18,
+      computeParUplightChase18,
+      computePixelBarCurtainCells18,
+      drawRotatingFloorGobo18,
+      drawParabolicWallScallop18,
+      toggleFreezeDmx18,
+      applyDmxGroupProgrammer18,
+      computeBroadcastAndIldaAudit18,
+      exportChamsysMagicQCsv18,
+      exportTrussClampTapeCsv18,
+      openDmxProgrammerModal18,
+      // Phase B — Structure Config, Mirror Floor, Live Symmetry 3D & Crowd Bounce
+      stairLayouts18: EN13814_STAIR_LAYOUTS18,
+      computeModularDeckAndLayher18,
+      enforceLiveSymmetry3D18,
+      applyStructureConfig18,
+      drawMirrorDeckReflections18,
+      drawOrganicCrowdBounce18,
+      openStructureConfigModal18,
+      // Phase C — 3D Audio & Line Array Calibration Workstation #1..#25
+      audioBrandPresets18: AUDIO_BRAND_PRESETS18,
+      computeLineArrayJCurve18,
+      exportPinSplayCsv18,
+      exportAudioSystem3dJson18,
+      computeSubwooferTopology18,
+      computeAudioDiagnostics18,
+      compareAudioSystemsAB18,
+      renderSplHeatmapCanvas18,
+      drawAudioWaveFlowOverlay18,
+      openAudioWorkstationModal18,
+      // Phase D — 2D Pixel Mapper & Venue Outlet Power Comparator
+      venueOutletSpecs18: VENUE_OUTLET_SPECS18,
+      compareVenueOutlets18,
+      openPixelPowerWorkstationModal18,
+      // Phase E — My Warehouse, RMA, B2B Cross-Rent, 5-Sheet Blueprints & Screen Capture
+      setWarehouseRmaLock18,
+      computeWarehouseLogisticsAndShortage18,
+      fitStageToWarehouseStock18,
+      exportCrossRentCsv18,
+      openWarehouseModal18,
+      blueprintViews18: BLUEPRINT_VIEWS18,
+      renderEngineeringBlueprintSheet18,
+      exportEngineeringBlueprintPack18,
+      openEngineeringBlueprintModal18,
+      startLiveScreenCapture18,
+      stopLiveScreenCapture18
     };
+    S.lumiCommercial18 = S.lumi18;
   } catch (err) {
     console.error('LumiStage V18 init error:', err);
   }

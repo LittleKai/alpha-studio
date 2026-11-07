@@ -90,7 +90,7 @@ StageEngine.prototype.makeBeam=function(light){
   for(let i=0;i<N;i++){
    const a=i/N*Math.PI*2,b=(i+1)/N*Math.PI*2;
    const points=[[Math.cos(a)*.012,0,Math.sin(a)*.012],[Math.cos(a),1,Math.sin(a)],[Math.cos(b),1,Math.sin(b)]];
-   p.push(...points.flat());uv.push(0,0,0,1,1,1);
+   p.push(...points.flat());uv.push(i/N,0,i/N,1,(i+1)/N,1);
    for(const theta of [a,a,b])norm.push(Math.cos(theta),-1,Math.sin(theta));
   }
   this._unitBeam=makeMesh('Reusable light cone',p,uv,norm,{color:[1,1,1,1]});
@@ -253,7 +253,7 @@ function validateAtlas(plan,expectedItems=plan?.sourceItems){
 }
 function planSurfaceWiring(surface, options = {}) {
  if (!surface || typeof surface !== 'object') {
-  return { pattern: 'H-TL', order: 'snake-tl-h', viewMode: 'front', viewLabel: 'FRONT VIEW (AUDIENCE)', columnHeaders: [], cols: 0, rows: 0, pxW: 0, pxH: 0, cabPixels: 0, portPixelLimit: 650000, totalCabinets: 0, activeCabinets: 0, voidCabinets: 0, totalPixels: 0, dataPorts: [], ports: [], activeNodes: [], voidTiles: [], powerLoops: [], warnings: [] };
+  return { pattern: 'H-TL', startCorner: 'Top-L', powerSplitMode: 'full', safetyGapPx: 0, order: 'snake-tl-h', viewMode: 'front', viewLabel: 'FRONT VIEW (AUDIENCE)', columnHeaders: [], cols: 0, rows: 0, pxW: 0, pxH: 0, cabPixels: 0, portPixelLimit: 650000, totalCabinets: 0, activeCabinets: 0, voidCabinets: 0, totalPixels: 0, dataPorts: [], ports: [], activeNodes: [], voidTiles: [], powerLoops: [], warnings: [] };
  }
  if (typeof normalizeSurfaceHardware === 'function') normalizeSurfaceHardware(surface);
  const spec = surface.cabinetSpec || {};
@@ -263,17 +263,23 @@ function planSurfaceWiring(surface, options = {}) {
   'snake-tl-h': 'H-TL', 'snake-tr-h': 'H-TR', 'snake-bl-h': 'H-BL', 'snake-br-h': 'H-BR',
   'snake-tl-v': 'V-TL', 'snake-tr-v': 'V-TR', 'snake-bl-v': 'V-BL', 'snake-br-v': 'V-BR',
   'snake-tl-right': 'H-TL', 'snake-tr-left': 'H-TR', 'snake-bl-right': 'H-BL', 'snake-br-left': 'H-BR',
-  'snake-tl-down': 'V-TL', 'snake-tr-down': 'V-TR', 'snake-bl-up': 'V-BL', 'snake-br-up': 'V-BR'
+  'snake-tl-down': 'V-TL', 'snake-tr-down': 'V-TR', 'snake-bl-up': 'V-BL', 'snake-br-up': 'V-BR',
+  'Top-L': 'H-TL', 'Top-R': 'H-TR', 'Bot-L': 'H-BL', 'Bot-R': 'H-BR',
+  'top-l': 'H-TL', 'top-r': 'H-TR', 'bot-l': 'H-BL', 'bot-r': 'H-BR'
  };
  const PATTERN_TO_ORDER = {
   'H-TL': 'snake-tl-h', 'H-TR': 'snake-tr-h', 'H-BL': 'snake-bl-h', 'H-BR': 'snake-br-h',
   'V-TL': 'snake-tl-v', 'V-TR': 'snake-tr-v', 'V-BL': 'snake-bl-v', 'V-BR': 'snake-br-v'
  };
- let pattern = cfg.pattern;
+ let pattern = cfg.pattern || (cfg.startCorner ? ORDER_TO_PATTERN[cfg.startCorner] : null);
  if (!VALID_PATTERNS.includes(pattern) && ORDER_TO_PATTERN[cfg.pattern]) pattern = ORDER_TO_PATTERN[cfg.pattern];
  if (!VALID_PATTERNS.includes(pattern) && ORDER_TO_PATTERN[surface.wiringOrder]) pattern = ORDER_TO_PATTERN[surface.wiringOrder];
  if (!VALID_PATTERNS.includes(pattern)) pattern = 'H-TL';
  const order = PATTERN_TO_ORDER[pattern] || String(surface.wiringOrder || 'snake-tl-h');
+ const startCorner = pattern.endsWith('BL') ? 'Bot-L' : pattern.endsWith('BR') ? 'Bot-R' : pattern.endsWith('TR') ? 'Top-R' : 'Top-L';
+ const rawSplit = String(options.powerSplitMode || cfg.powerSplitMode || surface.powerSplitMode || 'full').toLowerCase();
+ const powerSplitMode = ['full', 'horiz_top_bot', 'vert_left_right'].includes(rawSplit) ? rawSplit : 'full';
+ const safetyGapPx = Math.max(0, Math.min(64, Math.round(+(options.safetyGapPx ?? cfg.safetyGapPx ?? surface.safetyGapPx ?? 0))));
  const viewMode = (options.viewMode || cfg.viewMode || surface.wiringViewMode) === 'rear' ? 'rear' : 'front';
  const viewLabel = viewMode === 'rear' ? 'REAR VIEW (TECHNICIAN MIRROR)' : 'FRONT VIEW (AUDIENCE)';
 
@@ -381,34 +387,51 @@ function planSurfaceWiring(surface, options = {}) {
  });
 
  const powerLoops = [];
- let currentLoop = null;
- traversalOrder.forEach((tile) => {
-  const rl = rowLayout ? rowLayout[tile.row] : null;
-  const tileWatts = rl ? Math.max(1, +rl.maxPowerW || cabWatts) : cabWatts;
-  const displayCol = viewMode === 'rear' ? (cols - 1 - tile.col) : tile.col;
-  if (!currentLoop || (currentLoop.watts > 0 && currentLoop.watts + tileWatts > maxWattsPerLoop)) {
-   const lIdx = powerLoops.length + 1;
-   currentLoop = {
-    loopId: 'L' + lIdx,
-    loopIndex: lIdx,
-    watts: 0,
-    amps: 0,
-    loadPercent: 0,
-    cabinets: []
-   };
-   powerLoops.push(currentLoop);
-  }
-  currentLoop.cabinets.push({
-   col: tile.col,
-   row: tile.row,
-   displayCol,
-   displayRow: tile.row,
-   seq: currentLoop.cabinets.length + 1
+ const midRow = Math.ceil(rows / 2);
+ const midCol = Math.ceil(cols / 2);
+ const powerZoneForTile = (tile) => {
+  if (powerSplitMode === 'horiz_top_bot' && rows > 1) return tile.row < midRow ? 'TOP' : 'BOT';
+  if (powerSplitMode === 'vert_left_right' && cols > 1) return tile.col < midCol ? 'LEFT' : 'RIGHT';
+  return 'FULL';
+ };
+ const powerZonesOrder = powerSplitMode === 'horiz_top_bot' && rows > 1
+  ? [traversalOrder.filter(t => t.row < midRow), traversalOrder.filter(t => t.row >= midRow)]
+  : powerSplitMode === 'vert_left_right' && cols > 1
+   ? [traversalOrder.filter(t => t.col < midCol), traversalOrder.filter(t => t.col >= midCol)]
+   : [traversalOrder];
+ for (const zoneTiles of powerZonesOrder) {
+  let currentLoop = null;
+  zoneTiles.forEach((tile) => {
+   const rl = rowLayout ? rowLayout[tile.row] : null;
+   const tileWatts = rl ? Math.max(1, +rl.maxPowerW || cabWatts) : cabWatts;
+   const displayCol = viewMode === 'rear' ? (cols - 1 - tile.col) : tile.col;
+   const zone = powerZoneForTile(tile);
+   if (!currentLoop || (currentLoop.watts > 0 && currentLoop.watts + tileWatts > maxWattsPerLoop)) {
+    const lIdx = powerLoops.length + 1;
+    currentLoop = {
+     loopId: 'L' + lIdx,
+     loopIndex: lIdx,
+     zone,
+     watts: 0,
+     amps: 0,
+     loadPercent: 0,
+     cabinets: []
+    };
+    powerLoops.push(currentLoop);
+   }
+   currentLoop.cabinets.push({
+    col: tile.col,
+    row: tile.row,
+    displayCol,
+    displayRow: tile.row,
+    zone,
+    seq: currentLoop.cabinets.length + 1
+   });
+   currentLoop.watts += tileWatts;
+   currentLoop.amps = Math.round((currentLoop.watts / voltageV) * 100) / 100;
+   currentLoop.loadPercent = Math.round((currentLoop.watts / maxWattsPerLoop) * 1000) / 10;
   });
-  currentLoop.watts += tileWatts;
-  currentLoop.amps = Math.round((currentLoop.watts / voltageV) * 100) / 100;
-  currentLoop.loadPercent = Math.round((currentLoop.watts / maxWattsPerLoop) * 1000) / 10;
- });
+ }
 
  const totalCabinets = cols * rows;
  let voidCabinets = 0;
@@ -421,6 +444,9 @@ function planSurfaceWiring(surface, options = {}) {
 
  return {
   pattern,
+  startCorner,
+  powerSplitMode,
+  safetyGapPx,
   order,
   viewMode,
   viewLabel,
@@ -769,7 +795,7 @@ function openLEDManager(){
  $('toggleSelectedMaps').onclick=()=>{if(!live.selection.size)return;checkpoint();const selected=engine.surfaces.filter(s=>live.selection.has(s.id)),on=selected.every(s=>s.enabled===false);for(const s of selected)s.enabled=on;syncVideos();openLEDManager();renderUI();};update();
 }
 snapshot=function(){const s=LIVE_BASE.snapshot();s.liveState={cues:structuredClone(live.cues),activeAtlasId:engine.activeAtlasId,outputAtlases:engine.outputAtlases?structuredClone(engine.outputAtlases):[],pixelOptions:{...live.pixelOptions}};return s;};
-restore=function(s){live.transition=null;live.queue=null;LIVE_BASE.restore(s);if(s.liveState){live.cues=structuredClone(s.liveState.cues);engine.activeAtlasId=s.liveState.activeAtlasId;engine.outputAtlases=structuredClone(s.liveState.outputAtlases);live.pixelOptions={...s.liveState.pixelOptions};}syncVideos();renderUI();};
+restore=function(s){state._restoring=(state._restoring||0)+1;try{live.transition=null;live.queue=null;LIVE_BASE.restore(s);if(s.liveState){live.cues=structuredClone(s.liveState.cues);engine.activeAtlasId=s.liveState.activeAtlasId;engine.outputAtlases=structuredClone(s.liveState.outputAtlases);live.pixelOptions={...s.liveState.pixelOptions};}syncVideos();state._deferUI=true;}finally{if(!--state._restoring&&typeof flushDeferredRestore==='function')flushDeferredRestore();}};
 async function packLiveExtras(){
  const audio=live.audioTrack?{name:live.audioTrack.file.name,data:await fileData(live.audioTrack.file)}:null;
  return {version:1,cues:live.cues,config:{transitionType:live.transitionType,transitionSeconds:live.transitionSeconds,bpm:live.bpm,quantize:live.quantize,opacity:live.opacity,zoom:live.zoom,hue:live.hue,audioMode:live.audioMode,volume:live.volume,videoVolume:live.videoVolume,musicVolume:live.musicVolume,audioOffset:live.audioOffset,audioLoop:live.audioLoop},audio,

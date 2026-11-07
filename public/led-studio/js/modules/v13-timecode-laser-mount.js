@@ -416,6 +416,7 @@ function decodeIldaFloats(data){
  const aligned=u8.byteOffset%4===0?u8:u8.slice();
  return new Float32Array(aligned.buffer,aligned.byteOffset,aligned.byteLength/4);
 }
+const _ildaSerCache=new WeakMap(),_ildaDeserCache=new WeakMap();
 function serializeIldaShows(shows){
  if(shows==null)return[];
  if(!Array.isArray(shows))throw new Error(tl("Danh sách ILDA show không hợp lệ.","Invalid ILDA show list."));
@@ -425,6 +426,12 @@ function serializeIldaShows(shows){
   if(!s||typeof s!=='object')throw new Error(tl("Mục ILDA show không hợp lệ.","Invalid ILDA show entry."));
   const rawFrames=Array.isArray(s.frames)?s.frames:[];
   if(rawFrames.length>MAX_ILDA_FRAMES)throw new Error(tl("ILDA show vượt quá ","ILDA show exceeds ")+MAX_ILDA_FRAMES+' frames.');
+  const id=String(s.id||'ilda_'+out.length),name=String(s.name||'show.ild').slice(0,120),cached=_ildaSerCache.get(s);
+  if(cached&&cached.framesRef===s.frames&&cached.id===id&&cached.name===name){
+   totalPts+=cached.entry.totalPoints;
+   if(totalPts>MAX_PERSISTED_ILDA_POINTS)throw new Error(tl("Tổng số điểm ILDA vượt quá giới hạn ","Total ILDA points exceed limit: ")+MAX_PERSISTED_ILDA_POINTS+tl(" điểm."," points."));
+   out.push(cached.entry);continue;
+  }
   const frames=[];let showPts=0;
   for(const f of rawFrames){
    if(!f||typeof f!=='object')throw new Error(tl("Khung ILDA không hợp lệ.","Invalid ILDA frame."));
@@ -446,7 +453,7 @@ function serializeIldaShows(shows){
     blanked:encodeIldaBytes(blkBytes)
    });
   }
-  if(frames.length)out.push({id:String(s.id||'ilda_'+out.length),name:String(s.name||'show.ild').slice(0,120),frameCount:frames.length,totalPoints:showPts,frames});
+  if(frames.length){const entry={id,name,frameCount:frames.length,totalPoints:showPts,frames};_ildaSerCache.set(s,{framesRef:s.frames,id,name,entry});out.push(entry);}
  }
  return out;
 }
@@ -458,6 +465,12 @@ function deserializeIldaShows(rawShows){
  for(const s of rawShows){
   if(!s||typeof s!=='object'||!Array.isArray(s.frames))throw new Error(tl("Dữ liệu ILDA show không hợp lệ.","Invalid ILDA show data."));
   if(s.frames.length>MAX_ILDA_FRAMES)throw new Error(tl("ILDA show vượt quá ","ILDA show exceeds ")+MAX_ILDA_FRAMES+' frames.');
+  const id=String(s.id||'ilda_'+out.length),name=String(s.name||'show.ild').slice(0,120),cached=_ildaDeserCache.get(s);
+  if(cached&&cached.framesRef===s.frames&&cached.id===id&&cached.name===name){
+   totalPts+=cached.show.totalPoints;
+   if(totalPts>MAX_PERSISTED_ILDA_POINTS)throw new Error(tl("Tổng số điểm ILDA vượt quá giới hạn ","Total ILDA points exceed limit: ")+MAX_PERSISTED_ILDA_POINTS+tl(" điểm."," points."));
+   out.push(cached.show);continue;
+  }
   const frames=[];let showPts=0;
   for(const f of s.frames){
    if(!f||typeof f!=='object')throw new Error(tl("Khung ILDA không hợp lệ.","Invalid ILDA frame."));
@@ -475,12 +488,12 @@ function deserializeIldaShows(rawShows){
    for(let i=0;i<count;i++)blank[i]=rawBlk[i]?1:0;
    frames.push({number:Number(f.number)||0,name:String(f.name||'').slice(0,32),company:String(f.company||'').slice(0,32),projector:Number(f.projector)||0,count,pointCount:count,position,positions:position,color,colors:color,blank,blanked:blank});
   }
-  if(frames.length)out.push({id:String(s.id||'ilda_'+out.length),name:String(s.name||'show.ild').slice(0,120),frameCount:frames.length,totalPoints:showPts,frames});
+  if(frames.length){const show={id,name,frameCount:frames.length,totalPoints:showPts,frames};_ildaDeserCache.set(s,{framesRef:s.frames,id,name,show});_ildaSerCache.set(show,{framesRef:show.frames,id,name,entry:s});out.push(show);}
  }
  return out;
 }
 const settingsSave=()=>({fixtures:L.fixtures.map(f=>({...f,pos:[...f.pos]})),preset:L.preset,active:L.active,settings:{...L.settings},activeIldaId:L.activeIldaId||null,ildaMeta:(L.ildaShows||[]).slice(0,32).map(s=>({id:String(s.id||''),name:String(s.name||'show.ild').slice(0,120),frameCount:Number(s.frameCount)||1,totalPoints:Number(s.totalPoints)||0})),ildaShows:serializeIldaShows(L.ildaShows),cueMeta:laserClips().map(c=>({id:c.id,preset:c.preset||String(c.source||'').replace(/^laser:/,''),fixtureIds:c.fixtureIds||[],manualFrames:c.manualFrames||null}))});
-function restoreLaser(saved){L.fixtures=(Array.isArray(saved?.fixtures)?saved.fixtures:[]).slice(0,24).filter(f=>f&&Array.isArray(f.pos)&&f.pos.length===3&&f.pos.every(Number.isFinite)).map(f=>({id:String(f.id||uid135()),name:String(f.name||'LASER'),kind:f.kind||'fan',pos:f.pos.map(n=>clamp135(n,-5000,5000)),pan:clamp135(f.pan,-360,360),tilt:clamp135(f.tilt,-89,89),roll:clamp135(f.roll,-180,180),beamCount:clamp135(f.beamCount||7,1,24),fanAngle:clamp135(f.fanAngle||70,5,150),range:clamp135(f.range||17,1,80),intensity:clamp135(f.intensity??.9,0,1.7),speed:clamp135(f.speed||1,.05,4),colorA:typeof f.colorA==='string'?f.colorA:'#00eaff',colorB:typeof f.colorB==='string'?f.colorB:'#ff216e',haze:clamp135(f.haze??.65,0,1),enabled:f.enabled!==false}));L.selected=L.fixtures[0]?.id||null;L.preset=PRESETS[saved?.preset]?saved.preset:'blueFan';L.active=saved?.active!==false;L.settings={...DEFAULT_SETTINGS,...(saved?.settings||{})};L.ildaShows=deserializeIldaShows(saved?.ildaShows);L.activeIldaId=typeof saved?.activeIldaId==='string'&&L.ildaShows.some(s=>s.id===saved.activeIldaId)?saved.activeIldaId:(L.ildaShows[0]?.id||null);const activeShow=L.ildaShows.find(s=>s.id===L.activeIldaId)||L.ildaShows[0]||null;L.scanner=activeShow?new LaserScanner(activeShow.frames,TRAIL_POINTS,{rate:16000}):null;L.lastScannerTick=performance.now();L.previewPlaying=false;L.forceLive=false;L.previewAt=0;const meta=new Map((saved?.cueMeta||[]).map(x=>[x.id,x]));for(const c of laserClips()){const m=meta.get(c.id);c.preset=m?.preset||String(c.source||'').replace(/^laser:/,'');c.fixtureIds=m?.fixtureIds||L.fixtures.map(f=>f.id);if(m?.manualFrames)c.manualFrames=m.manualFrames;}refreshUI();}
+function restoreLaser(saved){L.fixtures=(Array.isArray(saved?.fixtures)?saved.fixtures:[]).slice(0,24).filter(f=>f&&Array.isArray(f.pos)&&f.pos.length===3&&f.pos.every(Number.isFinite)).map(f=>({id:String(f.id||uid135()),name:String(f.name||'LASER'),kind:f.kind||'fan',pos:f.pos.map(n=>clamp135(n,-5000,5000)),pan:clamp135(f.pan,-360,360),tilt:clamp135(f.tilt,-89,89),roll:clamp135(f.roll,-180,180),beamCount:clamp135(f.beamCount||7,1,24),fanAngle:clamp135(f.fanAngle||70,5,150),range:clamp135(f.range||17,1,80),intensity:clamp135(f.intensity??.9,0,1.7),speed:clamp135(f.speed||1,.05,4),colorA:typeof f.colorA==='string'?f.colorA:'#00eaff',colorB:typeof f.colorB==='string'?f.colorB:'#ff216e',haze:clamp135(f.haze??.65,0,1),enabled:f.enabled!==false}));L.selected=L.fixtures[0]?.id||null;L.preset=PRESETS[saved?.preset]?saved.preset:'blueFan';L.active=saved?.active!==false;L.settings={...DEFAULT_SETTINGS,...(saved?.settings||{})};L.ildaShows=deserializeIldaShows(saved?.ildaShows);L.activeIldaId=typeof saved?.activeIldaId==='string'&&L.ildaShows.some(s=>s.id===saved.activeIldaId)?saved.activeIldaId:(L.ildaShows[0]?.id||null);const activeShow=L.ildaShows.find(s=>s.id===L.activeIldaId)||L.ildaShows[0]||null;if(!activeShow){L.scanner=null;L._scannerFrames=null;}else if(!L.scanner||L._scannerFrames!==activeShow.frames){L.scanner=new LaserScanner(activeShow.frames,TRAIL_POINTS,{rate:16000});L._scannerFrames=activeShow.frames;}L.lastScannerTick=performance.now();L.previewPlaying=false;L.forceLive=false;L.previewAt=0;const meta=new Map((saved?.cueMeta||[]).map(x=>[x.id,x]));for(const c of laserClips()){const m=meta.get(c.id);c.preset=m?.preset||String(c.source||'').replace(/^laser:/,'');c.fixtureIds=m?.fixtureIds||L.fixtures.map(f=>f.id);if(m?.manualFrames)c.manualFrames=m.manualFrames;}refreshUI();}
 L.serializeIldaShows=serializeIldaShows;L.deserializeIldaShows=deserializeIldaShows;L.settingsSave=settingsSave;L.restoreLaser=restoreLaser;
 function saveCue(preset=L.preset,at=state.time,dur=null,extras={}){const p=PRESETS[preset]||PRESETS.blueFan;const duration=clamp135(dur??(preset==='epic'?95:12),.1,300),start=clamp135(at,0,599.8);if(start+duration>state.duration){if(typeof ensureDuration10==='function')ensureDuration10(Math.min(600,start+duration+.1));else state.duration=Math.max(state.duration,Math.min(600,start+duration+.1));}
  const tr=track10('vj','laser:all','LASER SHOW / RGB & TIME CODE');const c=addClip(tr.id,{name:extras.name||p.name,start,duration:Math.min(duration,state.duration-start),source:'laser:'+preset,preset,fixtureIds:L.fixtures.map(f=>f.id),fade:.12,color:p.colors[0],params:{beamCount:7,fanAngle:72,intensity:1,speed:1},...extras});

@@ -500,6 +500,7 @@
     releaseOrphans(oldMedia);
     const resetFn = typeof window.demo === 'function' ? window.demo : S.demo;
     resetFn?.();
+    state.loop = false;
     state.projectName = L('Dự án mới', 'Untitled stage');
     state.history = [];
     state.redo = [];

@@ -225,38 +225,84 @@
     setClass16(document.body,'v130-edit-open',false);
     const vp=$('v130Panel');if(vp)vp.hidden=true;
    }
+   if(except!=='fx10' && (S.stage10?.fxOpen||S.stage10?.mixerOpen)){
+    S.closeSide10?.();
+   }
+   if(except==='fx10'){
+    setClass16(document.body,'right-panel-collapsed',false);
+   }
   }
   S.closeAllDocks16=closeAllDocks16;
 
-  // Build procedural 3D meshes for a catalog item in world coordinates
+  // Build procedural 3D meshes for a catalog item in world coordinates (aligned with Design_MCP Batch 2 architectural designs)
   function buildAssetMeshes(item){
-   const k=item.kind, col=[...hexrgb(item.color||CATALOG[k]?.color||'#8c9bb0'),1], dark=[.14,.17,.22,1], steel=[.58,.64,.72,1], parts=[];
+   const k=item.kind, col=[...hexrgb(item.color||CATALOG[k]?.color||'#8c9bb0'),1], dark=[.12,.14,.18,1], steel=[.64,.70,.78,1], gold=[.86,.68,.26,1], parts=[];
    if(k==='truss_tower'){
-    parts.push(boxMesh('Truss Baseplate',[0,.03,0],[.68,.06,.68],dark));
-    for(const sx of [-.16,.16])for(const sz of [-.16,.16])parts.push(rod('Truss Chord',[sx,.06,sz],[sx,3.6,sz],.022,.022,col,8));
-    for(let y=.2;y<3.55;y+=.45){
-     parts.push(boxMesh('Truss Rung X',[0,y,-.16],[.32,.018,.018],steel),boxMesh('Truss Rung X',[0,y,.16],[.32,.018,.018],steel));
-     parts.push(boxMesh('Truss Rung Z',[-.16,y,0],[.018,.018,.32],steel),boxMesh('Truss Rung Z',[.16,y,0],[.018,.018,.32],steel));
+    parts.push(boxMesh('Truss Baseplate',[0,.025,0],[.72,.05,.72],dark));
+    for(const [ox,oz] of [[-1,-1],[1,-1],[-1,1],[1,1]]){
+     parts.push(rod('Truss Outrigger',[ox*.18,.04,oz*.18],[ox*.33,.02,oz*.33],.018,.018,dark,8));
+     parts.push(rod('Truss Foot Spindle',[ox*.32,0,oz*.32],[ox*.32,.055,oz*.32],.038,.038,steel,10));
     }
+    const hw=.145, h=3.52, bays=9, bh=(h-.07)/bays;
+    for(const sx of [-hw,hw])for(const sz of [-hw,hw])parts.push(rod('Truss Chord',[sx,.05,sz],[sx,h,sz],.024,.024,col,10));
+    for(let b=0;b<bays;b++){
+     const y0=.06+b*bh, y1=y0+bh, d=b%2===0?1:-1;
+     parts.push(boxMesh('Truss Rung X',[0,y0,-hw],[hw*2,.016,.016],steel),boxMesh('Truss Rung X',[0,y0,hw],[hw*2,.016,.016],steel));
+     parts.push(boxMesh('Truss Rung Z',[-hw,y0,0],[.016,.016,hw*2],steel),boxMesh('Truss Rung Z',[hw,y0,0],[.016,.016,hw*2],steel));
+     parts.push(rod('Truss Diag F',[-hw*d,y0,hw],[hw*d,y1,hw],.011,.011,steel,6),rod('Truss Diag B',[hw*d,y0,-hw],[-hw*d,y1,-hw],.011,.011,steel,6));
+     parts.push(rod('Truss Diag L',[-hw,y0,-hw*d],[-hw,y1,hw*d],.011,.011,steel,6),rod('Truss Diag R',[hw,y0,hw*d],[hw,y1,-hw*d],.011,.011,steel,6));
+    }
+    parts.push(boxMesh('Truss Top Cap',[0,h+.015,0],[.34,.03,.34],dark));
    }else if(k==='truss_arch'){
-    for(const side of [-2.85,2.85]){
-     parts.push(boxMesh('Truss Arch Base',[side,.03,0],[.65,.06,.65],dark));
-     parts.push(boxMesh('Truss Tower Leg',[side,2.1,0],[.34,4.1,.34],col));
+    const spanX=2.12, hw=.14, topY=3.24;
+    for(const side of [-spanX,spanX]){
+     parts.push(boxMesh('Truss Arch Base',[side,.025,0],[.68,.05,.68],dark));
+     for(const ox of [-hw,hw])for(const oz of [-hw,hw])parts.push(rod('Truss Tower Chord',[side+ox,.05,oz],[side+ox,topY-hw,oz],.022,.022,col,8));
+     for(let b=0;b<7;b++){
+      const y0=.08+b*.43, y1=y0+.43, d=b%2===0?1:-1;
+      parts.push(boxMesh('Truss Leg Rung',[side,y0,hw],[hw*2,.015,.015],steel),boxMesh('Truss Leg Rung',[side,y0,-hw],[hw*2,.015,.015],steel));
+      parts.push(rod('Truss Leg Diag',[side-hw*d,y0,hw],[side+hw*d,y1,hw],.011,.011,steel,6),rod('Truss Leg Diag',[side+hw*d,y0,-hw],[side-hw*d,y1,-hw],.011,.011,steel,6));
+     }
+     parts.push(boxMesh('Truss Corner Block',[side,topY,0],[.32,.32,.32],dark));
     }
-    parts.push(boxMesh('Truss Arch Span',[0,4.15,0],[6.1,.36,.36],col));
+    const xL=-spanX+.16, xR=spanX-.16, spanBays=9, bw=(xR-xL)/spanBays;
+    for(const oy of [-hw,hw])for(const oz of [-hw,hw])parts.push(rod('Truss Span Chord',[xL,topY+oy,oz],[xR,topY+oy,oz],.022,.022,col,8));
+    for(let b=0;b<spanBays;b++){
+     const x0=xL+b*bw, x1=x0+bw, d=b%2===0?1:-1;
+     parts.push(boxMesh('Truss Span Rung',[x0,topY,hw],[.015,hw*2,.015],steel),boxMesh('Truss Span Rung',[x0,topY,-hw],[.015,hw*2,.015],steel));
+     parts.push(rod('Truss Span Diag',[x0,topY-hw*d,hw],[x1,topY+hw*d,hw],.011,.011,steel,6),rod('Truss Span Diag',[x0,topY+hw*d,-hw],[x1,topY-hw*d,-hw],.011,.011,steel,6));
+    }
    }else if(k==='line_array'){
-    parts.push(boxMesh('Line Array Bumper',[0,4.25,0],[.92,.08,.62],steel));
+    parts.push(boxMesh('Line Array Bumper',[0,4.24,-.04],[.98,.07,.68],steel));
+    parts.push(boxMesh('Line Array Hoist Beam',[0,4.31,-.04],[.14,.08,.62],dark));
+    parts.push(rod('Hoist Shackle L',[-.34,4.28,-.04],[-.34,4.42,-.04],.018,.018,steel,8));
+    parts.push(rod('Hoist Shackle R',[.34,4.28,-.04],[.34,4.42,-.04],.018,.018,steel,8));
+    const tilts=[0,.04,.09,.15,.22,.30];
+    let cy=4.02, cz=0;
     for(let i=0;i<6;i++){
-     const y=3.98-i*.28, tilt=i*.045, z=Math.sin(tilt)*i*.04;
-     const cab=boxMesh('Line Array Cabinet '+(i+1),[0,y,z],[.86,.24,.48],col);
+     const tilt=tilts[i], cab=boxMesh('Line Array Cabinet '+(i+1),[0,cy,cz],[.92,.25,.52],col);
      parts.push(cab);
-     parts.push(boxMesh('Speaker Grille',[0,y,z+.245],[.82,.21,.015],[.09,.11,.14,1]));
+     parts.push(boxMesh('Speaker Grille',[0,cy-.01,cz+.262],[.86,.21,.018],[.08,.10,.13,1]));
+     parts.push(boxMesh('Waveguide Horn',[0,cy,cz+.272],[.18,.19,.012],steel));
+     parts.push(boxMesh('Rigging Splay Bar L',[-.47,cy,cz],[.022,.26,.44],steel));
+     parts.push(boxMesh('Rigging Splay Bar R',[.47,cy,cz],[.022,.26,.44],steel));
+     cy-=.265*Math.cos(tilt);
+     cz-=.265*Math.sin(tilt);
     }
    }else if(k==='sub_stack'){
+    parts.push(boxMesh('Sub Caster Base',[0,.025,0],[1.18,.05,.84],dark));
     for(let i=0;i<2;i++){
-     parts.push(boxMesh('Subwoofer 18',[0,.24+i*.46,0],[1.16,.44,.78],col));
-     parts.push(boxMesh('Sub Port',[0,.24+i*.46,.395],[1.06,.36,.015],[.08,.09,.12,1]));
+     const y=.28+i*.49;
+     parts.push(boxMesh('Subwoofer 18',[0,y,0],[1.20,.46,.88],col));
+     parts.push(boxMesh('Sub Port',[0,y,.442],[1.10,.38,.018],[.07,.08,.11,1]));
+     for(const sx of [-.29,.29]){
+      parts.push(rod('Woofer Cone '+i,[sx,y,.435],[sx,y,.456],.17,.15,steel,16));
+      parts.push(ellipsoid('Dust Cap '+i,[sx,y,.458],[.06,.06,.025],dark,12,10));
+     }
+     parts.push(boxMesh('Sub Corner Bumper L',[-.59,y,.435],[.04,.45,.04],steel));
+     parts.push(boxMesh('Sub Corner Bumper R',[.59,y,.435],[.04,.45,.04],steel));
     }
+    parts.push(boxMesh('Ratchet Strap',[0,.52,0],[1.22,.96,.05],[.22,.28,.38,1]));
    }else if(k==='totem_led'){
     parts.push(boxMesh('Totem Base',[0,.04,0],[1.18,.08,.75],dark));
     parts.push(boxMesh('Totem Frame',[0,1.58,-.05],[1.04,3.04,.12],dark));
@@ -264,19 +310,60 @@
     scr.material.emissive=col.slice(0,3).map(v=>v*.22);
     parts.push(scr);
    }else if(k==='dj_booth'){
-    parts.push(boxMesh('DJ Booth Body',[0,.56,-.18],[2.42,1.12,.72],dark));
-    parts.push(boxMesh('DJ Deck Table',[0,.96,-.18],[2.28,.05,.66],[.22,.26,.32,1]));
-    for(const x of [-.45,0,.45])parts.push(boxMesh('CDJ / Mixer',[x,1.02,-.14],[.34,.06,.38],[.10,.12,.16,1]));
-    const scr=boxMesh('LED DJ Booth Screen',[0,.56,.19],[2.36,1.04,.025],col);
-    scr.material.emissive=col.slice(0,3).map(v=>v*.24);
+    parts.push(boxMesh('DJ Booth Base Plinth',[0,.04,0],[2.56,.08,.96],dark));
+    parts.push(boxMesh('DJ Booth Body',[0,.56,-.04],[2.44,.98,.82],dark));
+    parts.push(boxMesh('DJ Faceted Wing L',[-.96,.56,.38],[.54,.92,.08],[.16,.20,.26,1]));
+    parts.push(boxMesh('DJ Faceted Wing R',[.96,.56,.38],[.54,.92,.08],[.16,.20,.26,1]));
+    parts.push(boxMesh('DJ Deck Table',[0,1.04,-.06],[2.38,.05,.78],[.20,.24,.30,1]));
+    for(const x of [-.66,-.28,.28,.66]){
+     parts.push(boxMesh('CDJ Player',[x,1.09,-.06],[.31,.05,.38],[.08,.10,.14,1]));
+     parts.push(rod('CDJ Jog Wheel',[x,1.115,-.03],[x,1.132,-.03],.095,.095,col,16));
+    }
+    parts.push(boxMesh('DJM Mixer',[0,1.095,-.06],[.34,.055,.40],steel));
+    for(const sx of [-1.04,1.04]){
+     parts.push(rod('Monitor Stand',[sx,1.06,.16],[sx,1.22,.16],.025,.025,steel,8));
+     parts.push(boxMesh('Booth Monitor',[sx,1.28,.16],[.20,.26,.22],dark));
+    }
+    const scr=boxMesh('LED DJ Booth Screen',[0,.56,.39],[1.42,.86,.03],col);
+    scr.material.emissive=col.slice(0,3).map(v=>v*.34);
     parts.push(scr);
+    const stripTop=boxMesh('DJ LED Strip Top',[0,.98,.40],[2.38,.035,.035],col);
+    const stripBot=boxMesh('DJ LED Strip Bottom',[0,.10,.40],[2.48,.035,.035],col);
+    stripTop.material.emissive=col.slice(0,3).map(v=>v*.55);
+    stripBot.material.emissive=col.slice(0,3).map(v=>v*.55);
+    parts.push(stripTop,stripBot);
    }else if(k==='stage_riser'){
-    parts.push(boxMesh('Stage Riser Deck',[0,.36,0],[2.0,.08,1.5],col));
-    for(const sx of [-.9,.9])for(const sz of [-.65,.65])parts.push(boxMesh('Riser Leg',[sx,.16,sz],[.08,.32,.08],steel));
+    const w=2.0, d=1.5, h=.60;
+    parts.push(boxMesh('Stage Riser Deck',[0,h-.035,0],[w,.07,d],col));
+    parts.push(boxMesh('Riser Aluminum Trim F',[0,h-.04,d*.5],[w+.02,.085,.025],steel));
+    parts.push(boxMesh('Riser Aluminum Trim B',[0,h-.04,-d*.5],[w+.02,.085,.025],steel));
+    parts.push(boxMesh('Riser Aluminum Trim L',[-w*.5,h-.04,0],[.025,.085,d],steel));
+    parts.push(boxMesh('Riser Aluminum Trim R',[w*.5,h-.04,0],[.025,.085,d],steel));
+    for(const sx of [-.90,0,.90])for(const sz of [-.66,.66]){
+     parts.push(rod('Riser Telescopic Leg',[sx,.02,sz],[sx,h-.07,sz],.024,.024,steel,10));
+     parts.push(rod('Riser Foot Pad',[sx,0,sz],[sx,.025,sz],.055,.055,dark,10));
+    }
+    for(const sz of [-.66,.66]){
+     parts.push(rod('Layher Cross Brace A',[-.88,.08,sz],[0,h-.10,sz],.012,.012,steel,6));
+     parts.push(rod('Layher Cross Brace B',[0,.08,sz],[-.88,h-.10,sz],.012,.012,steel,6));
+     parts.push(rod('Layher Cross Brace C',[0,.08,sz],[.88,h-.10,sz],.012,.012,steel,6));
+     parts.push(rod('Layher Cross Brace D',[.88,.08,sz],[0,h-.10,sz],.012,.012,steel,6));
+    }
    }else if(k==='stage_stairs'){
-    for(let i=0;i<4;i++){
-     const h=(i+1)*.20, z=(1.5-i)*.28;
-     parts.push(boxMesh('Stage Step '+(i+1),[0,h*.5,z],[1.2,h,.28],col));
+    const steps=4, sw=1.12, sd=.29, sh=.195;
+    for(let i=0;i<steps;i++){
+     const y=(i+1)*sh, z=(1.5-i)*sd;
+     parts.push(boxMesh('Stage Step '+(i+1),[0,y-.025,z],[sw,.05,sd],col));
+     parts.push(boxMesh('Step Anti-Slip Nosing '+(i+1),[0,y-.012,z+sd*.46],[sw-.02,.024,.035],steel));
+     parts.push(boxMesh('Step Riser Strut '+(i+1),[0,y*.48,z],[sw-.08,y-.05,.04],dark));
+    }
+    const zBot=1.5*sd+sd*.45, zTop=-1.5*sd-sd*.35, yTop=steps*sh;
+    for(const sx of [-sw*.5-.025,sw*.5+.025]){
+     parts.push(rod('Stair Stringer',[sx,.04,zBot],[sx,yTop-.02,zTop],.026,.026,dark,8));
+     parts.push(rod('Stair Handrail Post Bot',[sx,.04,zBot-.06],[sx,.88,zBot-.06],.018,.018,steel,8));
+     parts.push(rod('Stair Handrail Post Top',[sx,yTop,zTop+.06],[sx,yTop+.82,zTop+.06],.018,.018,steel,8));
+     parts.push(rod('Stair Handrail Top',[sx,.88,zBot-.06],[sx,yTop+.82,zTop+.06],.020,.020,steel,8));
+     parts.push(rod('Stair Handrail Mid',[sx,.52,zBot-.06],[sx,yTop+.46,zTop+.06],.013,.013,steel,8));
     }
    }else if(k==='crowd_barrier'){
     parts.push(boxMesh('Barrier Footplate',[0,.02,.25],[2.0,.04,.95],steel));
@@ -295,13 +382,18 @@
     plume2.material.emissive=[.35,.55,.68];
     parts.push(plume1,plume2);
    }else if(k==='vip_podium'){
-    parts.push(boxMesh('VIP Podium Base',[0,.05,0],[.92,.10,.68],dark));
-    parts.push(boxMesh('VIP Podium Column',[0,.56,-.02],[.54,.94,.38],col));
-    const strip=boxMesh('VIP LED Crest',[0,.58,.18],[.42,.72,.02],[.98,.82,.32,1]);
+    parts.push(boxMesh('VIP Podium Base',[0,.04,0],[.88,.08,.62],dark));
+    parts.push(boxMesh('VIP Podium Plinth Trim',[0,.09,0],[.78,.03,.54],gold));
+    parts.push(boxMesh('VIP Podium Column',[0,.58,-.02],[.58,.96,.38],col));
+    parts.push(boxMesh('VIP Side Pillar L',[-.31,.58,0],[.06,.94,.42],dark));
+    parts.push(boxMesh('VIP Side Pillar R',[.31,.58,0],[.06,.94,.42],dark));
+    const strip=boxMesh('VIP LED Crest',[0,.60,.18],[.38,.68,.025],gold);
     strip.material.emissive=[.45,.34,.08];
     parts.push(strip);
-    parts.push(boxMesh('VIP Lectern Top',[0,1.06,0],[.72,.06,.48],dark));
-    const orb=ellipsoid('Ceremony Touch Sphere',[0,1.26,.04],[.16,.16,.16],col,18,14);
+    parts.push(boxMesh('VIP Lectern Top',[0,1.08,.02],[.78,.05,.52],dark));
+    parts.push(rod('Gooseneck Mic L',[-.18,1.10,.10],[-.12,1.28,.02],.008,.006,steel,8));
+    parts.push(rod('Gooseneck Mic R',[.18,1.10,.10],[.12,1.28,.02],.008,.006,steel,8));
+    const orb=ellipsoid('Ceremony Touch Sphere',[0,1.24,.02],[.14,.14,.14],col,18,14);
     orb.material.emissive=col.slice(0,3).map(v=>v*.55);
     parts.push(orb);
    }else if(k==='led_arch_gate'){
@@ -330,19 +422,30 @@
     parts.push(boxMesh('Backdrop Left Wing',[-1.35,1.25,-.04],[1.1,2.4,.08],[.92,.95,.99,1]));
     parts.push(boxMesh('Backdrop Right Wing',[1.35,1.25,-.04],[1.1,2.4,.08],[.92,.95,.99,1]));
    }else if(k==='gala_round_table'){
-    parts.push(rod('Gala Table Pedestal',[0,.02,0],[0,.74,0],.32,.14,dark,16));
-    parts.push(rod('Gala Table Top Ø1.8m',[0,.74,0],[0,.80,0],.90,.90,col,24));
+    parts.push(rod('Gala Table Pedestal',[0,.02,0],[0,.72,0],.68,.78,col,24));
+    parts.push(rod('Gala Table Gold Hem',[0,0,0],[0,.04,0],.86,.86,gold,24));
+    parts.push(rod('Gala Table Top Ø1.8m',[0,.72,0],[0,.78,0],.92,.92,[.96,.97,.99,1],24));
+    parts.push(rod('Lazy Susan Glass',[0,.78,0],[0,.80,0],.46,.46,steel,20));
+    parts.push(ellipsoid('Floral Centerpiece',[0,.88,0],[.18,.14,.18],gold,14,10));
     for(let i=0;i<10;i++){
      const a=i*Math.PI*2/10, cx=Math.cos(a)*1.28, cz=Math.sin(a)*1.28;
-     parts.push(boxMesh('Gala Chair Seat '+(i+1),[cx,.44,cz],[.42,.08,.42],[.88,.91,.96,1]));
-     parts.push(boxMesh('Gala Chair Back '+(i+1),[cx*1.12,.72,cz*1.12],[.40,.52,.07],[.95,.75,.28,1]));
+     parts.push(boxMesh('Gala Chair Seat '+(i+1),[cx,.44,cz],[.40,.06,.40],[.92,.94,.98,1]));
+     parts.push(rod('Gala Chair Base '+(i+1),[cx,.02,cz],[cx,.42,cz],.16,.14,gold,10));
+     parts.push(boxMesh('Gala Chair Back '+(i+1),[cx*1.12,.74,cz*1.12],[.38,.52,.05],gold));
     }
    }else if(k==='conference_ibm_table'){
-    parts.push(boxMesh('IBM Table Skirt',[0,.38,0],[1.80,.74,.60],col));
-    parts.push(boxMesh('IBM Table Top',[0,.76,0],[1.84,.04,.64],[.94,.96,.98,1]));
-    for(const cx of [-.48,.48]){
-     parts.push(boxMesh('VIP Chair Seat',[cx,.44,-.52],[.46,.08,.46],steel));
-     parts.push(boxMesh('VIP Chair Back',[cx,.76,-.72],[.46,.58,.08],dark));
+    parts.push(boxMesh('IBM Table Skirt',[0,.37,0],[1.80,.72,.64],col));
+    for(let x=-.80;x<=.801;x+=.16)parts.push(boxMesh('IBM Skirt Pleat',[x,.37,.325],[.03,.70,.018],col));
+    parts.push(boxMesh('IBM Gold Trim Top',[0,.72,.325],[1.82,.025,.025],gold));
+    parts.push(boxMesh('IBM Gold Trim Bottom',[0,.025,0],[1.82,.03,.66],gold));
+    parts.push(boxMesh('IBM Table Top',[0,.75,0],[1.84,.04,.68],[.94,.96,.99,1]));
+    for(const cx of [-.46,.46]){
+     parts.push(boxMesh('Delegate Blotter',[cx,.775,-.04],[.42,.01,.28],dark));
+     parts.push(boxMesh('Delegate Nameplate',[cx,.80,.20],[.22,.05,.04],gold));
+     parts.push(rod('Conference Mic',[cx-.14,.78,.08],[cx-.10,.92,-.02],.007,.005,steel,8));
+     parts.push(boxMesh('VIP Chair Seat',[cx,.45,-.56],[.46,.07,.46],dark));
+     parts.push(boxMesh('VIP Chair Back',[cx,.76,-.76],[.46,.56,.07],dark));
+     parts.push(boxMesh('VIP Chair Frame',[cx,.22,-.56],[.44,.42,.44],gold));
     }
    }else if(k==='banquet_chair'){
     parts.push(boxMesh('Banquet Seat',[0,.44,0],[.44,.08,.44],col));
@@ -350,10 +453,20 @@
     parts.push(boxMesh('Banquet Backrest',[0,.76,-.19],[.42,.56,.06],col));
     parts.push(boxMesh('Banquet Gold Sash',[0,.72,-.20],[.44,.12,.08],[.95,.75,.22,1]));
    }else if(k==='foh_control_booth'){
-    parts.push(boxMesh('FOH Riser Deck',[0,.10,0],[2.8,.20,1.8],dark));
-    parts.push(boxMesh('FOH Console Desk',[0,.58,-.15],[2.4,.76,.82],col));
-    parts.push(boxMesh('GrandMA Lighting Console',[-.58,1.02,-.12],[.82,.12,.52],[.14,.18,.24,1]));
-    parts.push(boxMesh('Digital Audio Mixer',[.58,1.02,-.12],[.82,.12,.52],[.18,.22,.30,1]));
+    parts.push(boxMesh('FOH Riser Deck',[0,.06,0],[2.36,.12,1.42],dark));
+    parts.push(boxMesh('FOH Console Desk',[0,.46,-.06],[2.16,.68,.84],dark));
+    parts.push(boxMesh('FOH Table Worktop',[0,.82,-.06],[2.24,.05,.90],[.20,.24,.30,1]));
+    parts.push(boxMesh('FOH Privacy Baffle',[0,.94,.36],[2.20,.22,.05],dark));
+    const fohLed=boxMesh('FOH Front LED Strip',[0,.90,.39],[2.12,.04,.02],col);
+    fohLed.material.emissive=col.slice(0,3).map(v=>v*.45);
+    parts.push(fohLed);
+    parts.push(boxMesh('GrandMA Lighting Console',[-.54,.88,-.06],[.86,.09,.52],[.12,.16,.22,1]));
+    parts.push(boxMesh('Digital Audio Mixer',[.54,.88,-.06],[.86,.09,.52],[.14,.18,.26,1]));
+    for(const sx of [-.54,.54]){
+     const mon=boxMesh('FOH Widescreen Monitor',[sx,1.06,.16],[.64,.26,.04],col);
+     mon.material.emissive=col.slice(0,3).map(v=>v*.28);
+     parts.push(mon);
+    }
    }else if(k==='decor_palm_planter'){
     parts.push(boxMesh('Planter Box',[0,.28,0],[.62,.56,.62],dark));
     parts.push(ellipsoid('Foliage Cluster Center',[0,.88,0],[.42,.52,.42],col,14,12));
@@ -384,12 +497,16 @@
    }
    const s=clamp16(item.scale??1,.1,10), yaw=(item.yaw||0)*Math.PI/180, p=item.pos||[0,0,0];
    const mat=M.mm(M.translate(p),M.mm(M.rotate([0,1,0],yaw),M.trs([0,0,0],IDENTITY_Q,[s,s,s])));
+   const dispName=itemDisplayName16(item);
    for(const m of parts){
     transformMesh(m,mat);
-    m.name=itemDisplayName16(item)+' / '+m.name;
+    m.name=dispName+' / '+m.name;
     m._asset16Id=item.id;
+    m._smartGroupId='asset16_'+item.id;
+    m._groupLabelVi=dispName;
+    m._groupLabelEn=dispName;
     m.sourceKey=m.sourceKey||m.id;
-    m.nodePath=m.nodePath||(item.id+'/'+m.id);
+    m.nodePath=item.id+'/'+(m.nodePath||m.id);
     m._sourceP=new Float32Array(m.p);
    }
    return parts;
@@ -415,11 +532,18 @@
    }
   }
 
+  function assetItemSig16(it){
+   return `${it.kind}|${it.name}|${it.pos?.[0]},${it.pos?.[1]},${it.pos?.[2]}|${it.yaw||0}|${it.scale??1}|${it.color||''}`;
+  }
+
   function syncItemMeshes(item){
    removeAssetMeshes(item.id);
    const meshes=buildAssetMeshes(item);
+   meshes._itemSig16=assetItemSig16(item);
+   meshes._p0=meshes[0]?.p;
    A.meshMap.set(item.id,meshes);
    engine.stage.push(...meshes);
+   engine._stageBatchDirty=true;
    S.mount136?.invalidate?.();
   }
 
@@ -614,6 +738,15 @@
    {id:'prop_chandelier_stage_01',localUrl:'./assets/pilot/prop_chandelier_stage_01.glb',sidecarUrl:'./assets/pilot/prop_chandelier_stage_01.asset.json',thumbUrl:'./assets/pilot/prop_chandelier_stage_01.webp',origin:'mount-point',ofl_fixture:null,size_m:[1.194,1.1,1.1768],title:"Crystal gala / wedding chandelier",get displayTitle(){return this.title;},dims:'GLB Batch 1 · 426 KB · 1936 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'chandelier crystal gala wedding den chum pha le san khau decor',accent:'#fde047'},
    {id:'prop_decor_shelf_01',localUrl:'./assets/pilot/prop_decor_shelf_01.glb',sidecarUrl:'./assets/pilot/prop_decor_shelf_01.asset.json',thumbUrl:'./assets/pilot/prop_decor_shelf_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.2,1.8,0.4255],title:"Four-tier trophy & product display shelf",get displayTitle(){return this.title;},dims:'GLB Batch 1 · 252 KB · 576 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'shelf display rack trophy cup ke trung bay san pham decor',accent:'#38bdf8'},
    {id:'prop_vip_carpet_01',localUrl:'./assets/pilot/prop_vip_carpet_01.glb',sidecarUrl:'./assets/pilot/prop_vip_carpet_01.asset.json',thumbUrl:'./assets/pilot/prop_vip_carpet_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[2.0,0.024,3.6],title:"2×3.6m gold-trimmed VIP red carpet",get displayTitle(){return this.title;},dims:'GLB Batch 1 · 120 KB · 156 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'carpet rug red runner vip tham do khanh tiet su kien decor',accent:'#ef4444'},
+   {id:'stage_deck_modular_01',localUrl:'./assets/pilot/stage_deck_modular_01.glb',sidecarUrl:'./assets/pilot/stage_deck_modular_01.asset.json',thumbUrl:'./assets/pilot/stage_deck_modular_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[2.0,0.805,1.0],title:"2×1m modular Layher stage deck",get displayTitle(){return this.title;},dims:'GLB Batch 2 · 378 KB · 1572 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'stage deck riser platform san san khau buc nang layher modular prop',accent:'#64748b'},
+   {id:'stage_stairs_modular_01',localUrl:'./assets/pilot/stage_stairs_modular_01.glb',sidecarUrl:'./assets/pilot/stage_stairs_modular_01.asset.json',thumbUrl:'./assets/pilot/stage_stairs_modular_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.158,1.639,1.19],title:"4-step modular stage stairs with handrail",get displayTitle(){return this.title;},dims:'GLB Batch 2 · 382 KB · 600 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'stage stairs steps handrail cau thang san khau bac len xuong prop',accent:'#94a3b8'},
+   {id:'truss_box_tower_01',localUrl:'./assets/pilot/truss_box_tower_01.glb',sidecarUrl:'./assets/pilot/truss_box_tower_01.asset.json',thumbUrl:'./assets/pilot/truss_box_tower_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.95,3.62,0.95],title:"3.6m 4-chord box truss tower with outriggers",get displayTitle(){return this.title;},dims:'GLB Batch 2 · 335 KB · 1432 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'truss tower totem box 300x300 cot khung nhom san khau rigging prop',accent:'#93c5fd'},
+   {id:'truss_goalpost_arch_01',localUrl:'./assets/pilot/truss_goalpost_arch_01.glb',sidecarUrl:'./assets/pilot/truss_goalpost_arch_01.asset.json',thumbUrl:'./assets/pilot/truss_goalpost_arch_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[4.67,3.383,0.87],title:"4.6×3.4m goalpost box truss arch",get displayTitle(){return this.title;},dims:'GLB Batch 2 · 435 KB · 3040 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'truss goalpost arch portal khung vom san khau treo den led prop',accent:'#60a5fa'},
+   {id:'audio_line_array_01',localUrl:'./assets/pilot/audio_line_array_01.glb',sidecarUrl:'./assets/pilot/audio_line_array_01.asset.json',thumbUrl:'./assets/pilot/audio_line_array_01.webp',origin:'mount-point',ofl_fixture:null,size_m:[1.06,1.985,0.899],title:"5-cabinet J-curve flown line array cluster",get displayTitle(){return this.title;},dims:'GLB Batch 2 · 382 KB · 444 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'line array speaker pa cluster loa treo san khau am thanh prop',accent:'#38bdf8'},
+   {id:'audio_sub_stack_01',localUrl:'./assets/pilot/audio_sub_stack_01.glb',sidecarUrl:'./assets/pilot/audio_sub_stack_01.asset.json',thumbUrl:'./assets/pilot/audio_sub_stack_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.234,1.233,0.933],title:"Dual-18 ground-stacked subwoofer pair",get displayTitle(){return this.title;},dims:'GLB Batch 2 · 240 KB · 696 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'subwoofer sub stack bass speaker loa tram san khau prop',accent:'#475569'},
+   {id:'booth_dj_console_01',localUrl:'./assets/pilot/booth_dj_console_01.glb',sidecarUrl:'./assets/pilot/booth_dj_console_01.asset.json',thumbUrl:'./assets/pilot/booth_dj_console_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[2.629,1.26,1.035],title:"2.6m touring LED DJ booth & CDJ deck",get displayTitle(){return this.title;},dims:'GLB Batch 2 · 336 KB · 972 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'dj booth console cdj mixer ban dj le hoi edm furniture',accent:'#22d3ee'},
+   {id:'booth_foh_console_01',localUrl:'./assets/pilot/booth_foh_console_01.glb',sidecarUrl:'./assets/pilot/booth_foh_console_01.asset.json',thumbUrl:'./assets/pilot/booth_foh_console_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[2.36,1.42,1.04],title:"2.36m FOH lighting & audio control booth",get displayTitle(){return this.title;},dims:'GLB Batch 2 · 335 KB · 344 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'foh booth console grandma mixer ban dieu khien am thanh anh sang furniture',accent:'#38bdf8'},
+   {id:'furniture_ibm_table_01',localUrl:'./assets/pilot/furniture_ibm_table_01.glb',sidecarUrl:'./assets/pilot/furniture_ibm_table_01.asset.json',thumbUrl:'./assets/pilot/furniture_ibm_table_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.85,0.919,0.77],title:"1.8m pleated-skirt conference IBM table",get displayTitle(){return this.title;},dims:'GLB Batch 2 · 241 KB · 472 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'ibm table conference delegate skirted ban hoi nghi dai bieu vip furniture',accent:'#3b82f6'},
    {id:'gd_human_mocap',fileId:'1GThK9vKEgLE8CErNO_nr6gaQu1ExH89T',title:"Human Mocap Dancer (rigged & animated)",get displayTitle(){return this.title;},dims:'Rigged GLB · 329 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human dancer person mocap nguoi vu cong nhan vat animation',accent:'#38bdf8'},
    {id:'gd_human_base',fileId:'1Kmnv88yxAj4I_f81rSx_IXLThbX29mbV',title:"Human Base Performer (rigged & animated)",get displayTitle(){return this.title;},dims:'Rigged GLB · 310 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human performer actor nguoi nhan vat animation',accent:'#61e8ff'},
    {id:'gd_human_addon',fileId:'1SJ3XeMFQbTfkOroADqdMvYb3_CFXKNxX',title:"Human Stage Action Pack (rigged & animated)",get displayTitle(){return this.title;},dims:'Rigged GLB · 340 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human dance action nguoi bieu dien animation',accent:'#8b7dff'},
@@ -1683,7 +1816,7 @@
   // rendering entirely. Disk entries are keyed by a fingerprint of the code/data the renders depend on;
   // bump THUMB_CACHE_VERSION16 when geometry the fingerprint cannot see changes (the wrapped buildHuman
   // layers in core 04/06 and modules/v12, mesh helpers like rod/torso, node11 merging).
-  const THUMB_CACHE_VERSION16=4;
+  const THUMB_CACHE_VERSION16=5;
   const THUMB_DB16='ledstudio-thumbs16';
   const thumbJobs16=new Map();
   let thumbTimer16=0, thumbDisk16=null, thumbDiskReady16=false;
@@ -2474,7 +2607,11 @@
    }
    A.items=list;
    A.selected=list[0]?.id||null;
-   rebuildAllAssetMeshes();
+   for(const id of [...A.meshMap.keys()])if(!seen.has(id))removeAssetMeshes(id);
+   for(const item of list){
+    const old=A.meshMap.get(item.id);
+    if(!old||!old.length||old._itemSig16!==assetItemSig16(item)||old._p0!==old[0].p||old[0]._deleted8||!engine.stage.includes(old[0]))syncItemMeshes(item);
+   }
    if(A.isOpen)paint();
   }
 
@@ -2482,7 +2619,7 @@
   packLiveExtras=async function(){const out=await oldPack();out.stageAssets16=serializeAssets();return out;};
   restoreLiveExtras=async function(data){await oldRestore(data);restoreAssets(data?.stageAssets16);};
   snapshot=function(){const out=oldSnap();out.stageAssets16=serializeAssets();return out;};
-  restore=function(data){oldResSnap(data);restoreAssets(data?.stageAssets16);};
+  restore=function(data){state._restoring=(state._restoring||0)+1;try{oldResSnap(data);restoreAssets(data?.stageAssets16);}finally{if(!--state._restoring&&typeof flushDeferredRestore==='function')flushDeferredRestore();}};
   S.snapshot=(...args)=>snapshot(...args);
   S.restore=(...args)=>restore(...args);
 
@@ -3348,6 +3485,7 @@
   function buildMenuItems16(menuKey){
    if(menuKey==='view')return [
     {icon:'scan',get label(){return tr('Toàn cảnh sân khấu (Frame All)',"Frame stage (Frame All)");},kbd:'F',run:()=>$('overviewBtn')?.click()},
+    {icon:'rotate-cw',get label(){return tr('Khôi phục Preview (Tắt FX & Test Pattern treo)',"Restore preview (clear stuck FX & test pattern)");},kbd:'',run:()=>$('fixPreview10')?.click()},
     {icon:'box',get label(){return tr('Góc nhìn Chính diện (Front)',"Front view (Front)");},kbd:'1',run:()=>document.querySelector('#cameraBar [data-camera="front"]')?.click()},
     {icon:'box',get label(){return tr('Góc nhìn Phối cảnh 3/4 (ISO)',"Three-quarter isometric view (ISO)");},kbd:'3',run:()=>document.querySelector('#cameraBar [data-camera="iso"]')?.click()},
     {icon:'columns-3',get label(){return tr('Góc nhìn Cạnh bên (Side)',"Side view (Side)");},kbd:'7',run:()=>document.querySelector('#cameraBar [data-camera="side"]')?.click()},
@@ -3564,8 +3702,6 @@
      rtBtn._collapsedState=col;
      setClass16(rtBtn,'is-collapsed',col);
      rtBtn.setAttribute('aria-expanded',String(!col));
-     const hideBtn=$('v16HideRightBtn');
-     if(hideBtn)hideBtn.setAttribute('aria-expanded',String(!col));
      const lbl=col?tr('Hiện bảng thuộc tính bên phải',"Show right properties panel"):tr('Ẩn bảng thuộc tính bên phải',"Hide right properties panel");
      rtBtn.title=lbl;
      rtBtn.setAttribute('aria-label',lbl);
@@ -3666,6 +3802,7 @@
      const searchInp=$('objectSearch');
      if(searchInp && !$('v16ObjFilterBar')){
       window._objFilter16=window._objFilter16||'all';
+      if(window._smartGroup16===undefined)window._smartGroup16=true;
       const fb=document.createElement('div');
       fb.id='v16ObjFilterBar';
       fb.className='v16-obj-filter-bar';
@@ -3673,17 +3810,30 @@
       fb.setAttribute('aria-label',tr('Lọc nhanh vật thể sân khấu',"Quick stage object filter"));
       const renderFilterBtns=()=>{
        const cur=window._objFilter16||'all';
+       const sg=window._smartGroup16!==false;
+       const sgLbl=sg?tr('Gộp thông minh: ĐANG BẬT (di chuyển theo cụm)','Smart Group: ON (move assemblies together)'):tr('Gộp thông minh: ĐANG TẮT (chọn từng chi tiết lẻ)','Smart Group: OFF (select individual sub-meshes)');
        const tabs=[
         ['all','<svg class="ico" aria-hidden="true"><use href="#i-layers"></use></svg>',tr('Tất cả vật thể','All objects')],
         ['led','<svg class="ico ico-led" aria-hidden="true"><use href="#i-grid-3x3"></use></svg>',tr('Màn hình LED','LED screens')],
         ['struct','<svg class="ico ico-stage" aria-hidden="true"><use href="#i-box"></use></svg>',tr('Khung & Sàn sân khấu','Stage & Truss')],
         ['cast','<svg class="ico ico-choreo" aria-hidden="true"><use href="#i-drama"></use></svg>',tr('Đạo cụ 3D & Nhân vật','Props & 3D Cast')]
        ];
-       fb.innerHTML=tabs.map(([id,svg,lbl])=>`<button type="button" role="tab" data-objflt16="${id}" data-tip="${esc16(lbl)}" aria-label="${esc16(lbl)}" aria-selected="${cur===id}" class="${cur===id?'active':''}">${svg}</button>`).join('');
+       fb.innerHTML=tabs.map(([id,svg,lbl])=>`<button type="button" role="tab" data-objflt16="${id}" data-tip="${esc16(lbl)}" aria-label="${esc16(lbl)}" aria-selected="${cur===id}" class="${cur===id?'active':''}">${svg}</button>`).join('')+`<button type="button" data-smartgrp16="1" data-tip="${esc16(sgLbl)}" aria-label="${esc16(sgLbl)}" aria-pressed="${sg}" class="v16-smartgrp-btn${sg?' active':''}"><i class="v16-smartgrp-dot" aria-hidden="true"></i><b>${tr('GỘP','GRP')}</b></button>`;
       };
       renderFilterBtns();
       fb._renderFilterBtns=renderFilterBtns;
       fb.addEventListener('click',e=>{
+       const sgBtn=e.target.closest('button[data-smartgrp16]');
+       if(sgBtn){
+        const next=window._smartGroup16===false;
+        window._smartGroup16=next;
+        if(S.director)S.director.group=next;
+        if(S.group9)S.group9.scope=next?'parent':'single';
+        renderFilterBtns();
+        S.renderLists?.();
+        S.toast?.(next?tr('Đã BẬT Gộp thông minh (chọn & di chuyển nguyên cụm).','Smart Group ON (select & move whole assemblies).'):tr('Đã TẮT Gộp thông minh (chọn từng mesh lẻ).','Smart Group OFF (select individual sub-meshes).'));
+        return;
+       }
        const b=e.target.closest('button[data-objflt16]');
        if(!b)return;
        window._objFilter16=b.dataset.objflt16||'all';
@@ -3850,7 +4000,6 @@
       <span class="v16-prop-crumb"><svg class="ico ico-preset" aria-hidden="true"><use href="#i-sliders-horizontal"></use></svg><span>${tr("THÔNG SỐ &amp; HIỆU CHỈNH","PROPERTIES &amp; ADJUSTMENTS")}</span></span>
       <div class="v16-prop-head-actions">
        <button type="button" id="v16CollapseAllBtn" class="btn small" title="${tr("Thu gọn / Mở rộng toàn bộ các mục thông số","Collapse / expand all property sections")}">${A.allBlocksCollapsed?tr('Mở rộng mục',"Expand sections"):tr('Thu gọn mục',"Collapse sections")}</button>
-       <button type="button" id="v16HideRightBtn" class="icon-btn v16-hide-right-btn" title="${tr("Ẩn bảng thuộc tính bên phải","Hide right properties panel")}" aria-label="${tr("Ẩn bảng thuộc tính bên phải","Hide right properties panel")}" aria-expanded="true"><svg class="ico" aria-hidden="true"><use href="#i-panel-right-close"></use></svg></button>
       </div>
      `;
      ih.prepend(row);
@@ -3862,7 +4011,6 @@
       if(btn)btn.textContent=A.allBlocksCollapsed?tr('Mở rộng mục',"Expand sections"):tr('Thu gọn mục',"Collapse sections");
       decorateInspectorAccordions16();
      });
-     $('v16HideRightBtn')?.addEventListener('click',()=>toggleRightPanel16(true));
     }
     rp.addEventListener('click',e=>{
      if(e.target.closest('button,input,select,a,label'))return;
@@ -3990,6 +4138,7 @@
      lastGizmoYaw=NaN;drawAxisGizmo16();
     });
     const camOrder=['front','iso','side','top'];
+    const camLabels={front:['Chính diện (Front)','Front'],iso:['Phối cảnh 3/4 (ISO)','3/4 ISO'],side:['Cạnh bên (Side)','Side'],top:['Từ trên xuống (Top)','Top']};
     let camIdx=1;
     nav.addEventListener('pointerdown',e=>e.stopPropagation());
     nav.addEventListener('pointerup',e=>e.stopPropagation());
@@ -4001,8 +4150,17 @@
      const act=b.dataset.v16nav;
      if(act==='frame')$('overviewBtn')?.click();
      else if(act==='cam'){
+      const curCam=document.querySelector('#cameraBar [data-camera].active')?.dataset?.camera;
+      const curIdx=camOrder.indexOf(curCam);
+      if(curIdx>=0)camIdx=curIdx;
       camIdx=(camIdx+1)%camOrder.length;
-      document.querySelector(`#cameraBar [data-camera="${camOrder[camIdx]}"]`)?.click();
+      const nextKey=camOrder[camIdx];
+      document.querySelector(`#cameraBar [data-camera="${nextKey}"]`)?.click();
+      const [viLbl,enLbl]=camLabels[nextKey]||[nextKey,nextKey];
+      b.dataset.camAngle=nextKey;
+      b.title=tr(`Đổi góc Camera (Hiện tại: ${viLbl})`,`Change camera (Current: ${enLbl})`);
+      toast(tr(`Đã chuyển góc nhìn Camera: ${viLbl}`,`Switched camera view: ${enLbl}`),2200,'info');
+      lastGizmoYaw=NaN;drawAxisGizmo16();
      }else if(act==='lock'){
       if(typeof window.STUDIO?.setCameraLock === 'function'){
        window.STUDIO.setCameraLock(!engine?.cameraLocked);

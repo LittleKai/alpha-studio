@@ -28,7 +28,8 @@ body.pro127-dock-open .right-panel > :not(#pro127dock){display:none!important}
 #pro127dock input[type=range]{padding:0;accent-color:var(--accent)}
 #pro127dock input[type=checkbox]{width:auto;accent-color:var(--accent)}
 #pro127dock button{cursor:pointer;font:var(--fs-sm) inherit;border:1px solid var(--border-field);background:var(--bg-field);border-radius:6px;color:var(--text-primary);padding:7px 8px;min-height:30px}
-#pro127dock button.primary{background:var(--accent-primary);background-image:linear-gradient(135deg,var(--accent-primary),var(--accent-secondary));border-color:var(--accent-primary);color:var(--on-accent);font-weight:700}
+#pro127dock button.primary{background:var(--button-primary);background-image:none;border-color:var(--button-primary);color:var(--button-on-primary);font-weight:700}
+#pro127dock button.primary:hover:not(:disabled){background:var(--button-primary-hover)!important;border-color:var(--button-primary-hover)!important;color:var(--button-on-primary)!important}
 #pro127dock button.active{background:var(--accent-soft);border-color:var(--accent);color:var(--text-primary)}
 #pro127dock button:disabled{opacity:.55;filter:grayscale(1);cursor:not-allowed}
 #pro127dock .pro127-actions{display:flex;gap:6px;flex-wrap:wrap}
@@ -239,11 +240,16 @@ body.pro127-dock-open.seq-open{--seq-height:clamp(120px,18vh,180px)}
 }
 [data-theme="light"] #pro127bar button.selected,
 [data-theme="light"] #pro127dock button.active,
-[data-theme="light"] #pro127dock button.primary,
 [data-theme="light"] #tc134Panel button.active {
   background: var(--bg-panel) !important;
   border-color: var(--accent) !important;
   color: var(--accent-text) !important;
+  font-weight: 700 !important;
+}
+[data-theme="light"] #pro127dock button.primary:not(:disabled) {
+  background: var(--button-primary) !important;
+  border-color: var(--button-primary) !important;
+  color: var(--button-on-primary) !important;
   font-weight: 700 !important;
 }
 [data-theme="light"] .tc134-scroll {

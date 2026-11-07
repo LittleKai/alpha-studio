@@ -332,8 +332,8 @@ body.ui133-installed.present-mode.m131-present-open #m131Panel {z-index:50!impor
 #laser135Panel button{border:1px solid var(--border-field);border-radius:6px;background:var(--bg-panel);color:var(--text-primary);padding:7px 9px;cursor:pointer;font:600 var(--fs-sm)/1.2 Inter,'Segoe UI',sans-serif;white-space:normal;min-height:30px;transition:background .12s,border .12s}
 #laser135Panel button:hover{background:var(--bg-field);border-color:var(--accent)}
 #laser135Panel button:focus-visible,#laser135Panel input:focus-visible,#laser135Panel select:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
-#laser135Panel button.primary{color:#04202c;background:var(--accent);border-color:var(--accent)}
-#laser135Panel button.primary:hover{background:var(--accent)}
+#laser135Panel button.primary{color:var(--button-on-primary);background:var(--button-primary);border-color:var(--button-primary);font-weight:700}
+#laser135Panel button.primary:hover:not(:disabled){background:var(--button-primary-hover);border-color:var(--button-primary-hover);color:var(--button-on-primary)}
 #laser135Panel button.selected{background:var(--accent-soft);border-color:var(--accent);color:var(--text-primary)}
 #laser135Panel button.danger{border-color:var(--err);color:var(--err-text)}
 #laser135Panel button:disabled{opacity:.55;filter:grayscale(1);cursor:not-allowed}

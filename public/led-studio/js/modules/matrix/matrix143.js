@@ -614,7 +614,7 @@
   packLiveExtras=async function(){const matrix=serialize(),cameraLock=interactionCamera,out=await previousPack();if(cameraLock&&out.director)out.director.cameraFollow=!!cameraLock.follow;out.matrix143=matrix;return out;};
   restoreLiveExtras=async function(data){setQuickPick(false);releaseInteractionCamera();await previousRestoreExtras(data);restoreBank(data?.matrix143);};
   snapshot=function(){const out=previousSnapshot();if(interactionCamera&&out.director)out.director.cameraFollow=!!interactionCamera.follow;out.matrix143=serialize();return out;};
-  restore=function(data){setQuickPick(false);releaseInteractionCamera();previousRestore(data);restoreBank(data?.matrix143);};
+  restore=function(data){state._restoring=(state._restoring||0)+1;try{setQuickPick(false);releaseInteractionCamera();previousRestore(data);restoreBank(data?.matrix143);}finally{if(!--state._restoring&&typeof flushDeferredRestore==='function')flushDeferredRestore();}};
   S.snapshot=(...args)=>snapshot(...args);S.restore=(...args)=>restore(...args);
   // Matrix attachments follow the same captured transform as their source mesh.
   // Only world geometry moves; physical strip dimensions remain in metres.

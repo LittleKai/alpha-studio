@@ -929,8 +929,9 @@ const displayName=value=>{const labels={"Beam 2R / Siêu hẹp":"Beam 2R / ultra
  function installButtons(){
    const bar=$('pro127bar');if(bar)installButton(bar,'#v130Toolbar','v130Toolbar');
    const controls=$('presentControls')?.querySelector('.show-row');
-   if(controls&&!$('v130PresentButtons')){const span=document.createElement('span');span.id='v130PresentButtons';span.innerHTML='<button data-v130-open="vj">VJ FX</button><button data-v130-open="mixer">MIXER</button>';controls.prepend(span);span.querySelectorAll('[data-v130-open]').forEach(b=>b.onclick=()=>open(b.dataset.v130Open));}
+   if(controls&&!$('v130PresentButtons')){const span=document.createElement('span');span.id='v130PresentButtons';span.hidden=true;span.innerHTML='<button data-v130-open="vj">VJ FX</button><button data-v130-open="mixer">MIXER</button>';controls.prepend(span);span.querySelectorAll('[data-v130-open]').forEach(b=>b.onclick=()=>open(b.dataset.v130Open));}
    const oldShow=$('showVJ');if(oldShow&&!oldShow.dataset.v130Hook){oldShow.dataset.v130Hook='1';oldShow.addEventListener('click',e=>{if(state.presenting){e.preventDefault();e.stopImmediatePropagation();open('vj');}},true);}
+   const oldShowAudio=$('showAudio');if(oldShowAudio&&!oldShowAudio.dataset.v130Hook){oldShowAudio.dataset.v130Hook='1';oldShowAudio.addEventListener('click',e=>{if(state.presenting){e.preventDefault();e.stopImmediatePropagation();open('mixer');}},true);}
  }
  function install(){createPanel();installButtons();
    window.addEventListener("ledstudio:locale",()=>window.translateUiText?.(panel));

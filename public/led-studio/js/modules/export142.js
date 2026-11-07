@@ -13,6 +13,7 @@
   function paintEffects(now = performance.now(), clean = true) {
     S.laserShow?.renderFrame?.(now, { clean });
     S.fx141?.renderFrame?.(now, { clean });
+    S.lumi18?.renderLiveShowOverlay18?.(now, { clean });
   }
 
   function compose(canvas, { letterbox = false } = {}) {
@@ -30,8 +31,8 @@
       x = (width - w) / 2; y = (height - h) / 2;
     }
     context.drawImage(E.canvas, x, y, w, h);
-    // Keep the same order as the viewport: older laser, then multi-fixture FX.
-    for (const id of ['laser135Overlay', 'fx141Overlay']) {
+    // Keep the same order as the viewport: older laser, then multi-fixture FX, then Live Show FX.
+    for (const id of ['laser135Overlay', 'fx141Overlay', 'lmpShowOverlay18']) {
       const layer = $(id);
       if (layer?.width && layer?.height && layer.clientWidth && layer.clientHeight) {
         context.drawImage(layer, x, y, w, h);

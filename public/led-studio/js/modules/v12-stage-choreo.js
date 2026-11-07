@@ -483,6 +483,7 @@
   L.extras.clear();
  }
  function discardCache(restore=true){
+  if(!L.cache.size&&!L.extras.size)return;
   if(restore)for(const v of L.cache.values())if(engine.stage.includes(v.mesh)){
     engine.releaseMesh(v.mesh);v.mesh.p=new Float32Array(v.p);v.mesh.n=new Float32Array(v.n);v.mesh.uv=new Float32Array(v.uv);v.mesh.bounds=M.bbox(v.p);v.mesh.hidden=v.hidden;
   }
@@ -788,7 +789,7 @@
  const baseSnapshot=snapshot;
  snapshot=function(){const d=baseSnapshot();d.stageLift124={version:1,items:structuredClone(L.items)};return d};
  const baseRestoreSnapshot=restore;
- restore=function(d){discardCache(true);L.items=[];baseRestoreSnapshot(d);const items=d?.stageLift124?.items||[];L.items=Array.isArray(items)?structuredClone(items):[];L.selected=L.items[0]?.id||null;reCut();renderPanel();renderSequence()};
+ restore=function(d){const nextItems=Array.isArray(d?.stageLift124?.items)?d.stageLift124.items:[];const liftChanged=L.items.length>0||nextItems.length>0||L.cache.size>0||L.extras.size>0;state._restoring=(state._restoring||0)+1;try{if(liftChanged){discardCache(true);L.items=[];}baseRestoreSnapshot(d);if(liftChanged){L.items=structuredClone(nextItems);L.selected=L.items[0]?.id||null;reCut();renderPanel();state._deferUI=true;}}finally{if(!--state._restoring&&typeof flushDeferredRestore==='function')flushDeferredRestore();}};
  // Clear existing surface cuts before stage/project replacement.
  const baseImport=importModel;
  importModel=async function(...args){const previousModel=state.model;const out=await baseImport(...args);if(state.model!==previousModel){discardCache(false);L.items=[];L.selected=null;}renderPanel();return out};

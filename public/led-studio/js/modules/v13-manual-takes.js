@@ -610,7 +610,7 @@ const uiText=(vi,en)=>window.tr?window.tr(vi,en):vi;
    const strip=document.querySelector('.navigation-strip');if(strip&&!byId('ui133Reset')){
     const button=document.createElement('button');button.type='button';button.id='ui133Reset';
     button.className='btn small';button.title=uiText("Đóng bảng nổi và khôi phục giao diện có thể bấm","Close floating panels and restore workspace controls");
-    button.textContent=uiText("Bố cục","Layout");button.onclick=resetWorkspace;
+    button.textContent=uiText("Đóng bảng nổi","Close overlays");button.onclick=resetWorkspace;
     const anchor=byId('assetDrawer');strip.insertBefore(button,anchor||null);
    }
   }

@@ -473,7 +473,7 @@ uniform vec4 uPrevCrop,uPrevRect;uniform vec3 uPrevAccent;
 
 uniform vec4 uColor;uniform vec3 uEmissive;uniform vec3 uEye;
 uniform int uMode,uEffect,uHasTex,uFit,uRotate,uFlipX,uFlipY,uGlobal,uFloor,uSelected,uTest,uStageMap;
-uniform float uTime,uBrightness,uAmbient,uExposure,uHaze,uOpacity,uAspect,uSourceAspect,uCutoff;
+uniform float uTime,uBrightness,uAmbient,uExposure,uHaze,uOpacity,uAspect,uSourceAspect,uCutoff,uBeamProfile;
 uniform vec4 uCrop,uRect;uniform vec2 uMaster;uniform vec3 uAccent;
 uniform vec3 uLightPos[32],uLightDir[32],uLightColor[32];uniform float uLightCone[32];
 uniform float uGoboKind9[32],uGoboSpin9[32],uGoboSize9[32];
@@ -506,7 +506,20 @@ vec3 makeMotion(vec2 uv,int effect,vec3 accent){
 }
 void main(){
  vec2 uv=vUV;
- if(uMode==2){float a=uOpacity*pow(max(0.0,1.0-vUV.y),.55);float rim=pow(abs(dot(normalize(vNormal),normalize(uEye-vPosition))),.75);a*=rim*rim;frag=vec4(uColor.rgb*1.05,a);return;}
+ if(uMode==2){
+  float vy=clamp(vUV.y,0.,1.),rim=abs(dot(normalize(vNormal),normalize(uEye-vPosition))),phi=vUV.x*6.2831853;
+  float s1=sin(vPosition.x*1.5+vPosition.y*.85+uTime*1.3)*cos(vPosition.z*1.3-vPosition.y*.6-uTime*.85);
+  float s2=sin(vPosition.x*3.1-vPosition.z*2.7+uTime*2.05),hz=clamp(.8+s1*.26+s2*.14,.35,1.38);
+  float nozzle=exp(-vy*16.)*2.2,lenF=pow(max(0.,1.-vy),.58),edgeF=pow(rim,1.25),pat=1.,coreW=.24;
+  if(uBeamProfile<.5){edgeF=pow(rim,1.55);lenF=pow(max(0.,1.-vy),.5)+exp(-vy*8.)*.55;coreW=.36;}
+  else if(uBeamProfile<1.5){edgeF=smoothstep(.12,.52,rim)*pow(rim,.85);pat=.62+.38*smoothstep(-.25,.55,cos(phi*6.+uTime*1.85-vy*3.2));coreW=.22;}
+  else if(uBeamProfile<2.5){edgeF=pow(rim,2.2);lenF=pow(max(0.,1.-vy),.82);hz=mix(1.,hz,.65);coreW=.16;}
+  else if(uBeamProfile<3.5){edgeF=pow(rim,1.35);lenF=pow(max(0.,1.-vy),1.05)*(1.+exp(-vy*6.)*.85);coreW=.30;}
+  else{edgeF=pow(rim,1.15);pat=.68+.32*step(.18,fract(vUV.x*16.+sin(uTime*3.2)*.04))*(.75+.25*sin(uTime*32.+vUV.x*50.));lenF=pow(max(0.,1.-vy),.68);coreW=.26;}
+  float a=clamp(uOpacity*lenF*edgeF*pat*hz*(1.+nozzle*.38),0.,1.);
+  vec3 bCol=mix(uColor.rgb*(1.08+nozzle*.45),vec3(1.,.98,.94),clamp(pow(rim,2.8)*coreW*(1.-vy*.55)+nozzle*.28,0.,.78));
+  frag=vec4(bCol,a);return;
+ }
  if(uMode==1){
   if(uRotate==1)uv=vec2(uv.y,1.0-uv.x);else if(uRotate==2)uv=1.0-uv;else if(uRotate==3)uv=vec2(1.0-uv.y,uv.x);
   if(uFlipX==1)uv.x=1.0-uv.x;if(uFlipY==1)uv.y=1.0-uv.y;
@@ -598,7 +611,7 @@ class StageEngine{
   this.uniform('uHasTex',source?1:0,'i');gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,this.texture(source));this.uniform('uTexture',0,'i');gl.drawArrays(gl.TRIANGLES,0,b.count)
  }
  lightUniforms(time){let pos=[],dir=[],colors=[],cones=[],n=Math.max(32,this.lights.length);for(let i=0;i<n;i++){let l=this.lights[i],p=l?.pos||[0,20,0],target=l?.target?.slice()||[0,0,0];if(l?.sweep){let phase=time*(l.speed||.5)+(l.phase||0);target[0]+=Math.sin(phase)*this.size.width*.25;target[2]+=Math.cos(phase*.7)*this.size.depth*.25}let direction=M.norm(M.sub(target,p)),mult=1;if(l&&l.enabled){let fx=l.fx||'steady',depth=l.fxDepth??.55,spd=l.fxSpeed??2.2;if(fx==='pulse'){mult=(1-depth)+(0.5+0.5*Math.sin(time*spd+(l.phase||0)))*depth*2}else if(fx==='strobe'){mult=(Math.sin(time*spd*Math.PI*2+(l.phase||0))>0?1:Math.max(.02,1-depth))}else if(fx==='build'){let cyc=((time%(state.duration||12))/Math.max(.001,(state.duration||12)));mult=1+cyc*Math.max(.05,depth*2)}mult*=l.boost??1}if(i<32){pos.push(...p);dir.push(...direction);colors.push(...(l&&l.enabled?hexrgb(l.color).map(v=>v*l.power*mult):[0,0,0]));cones.push(Math.cos((l?.angle||20)*Math.PI/180))}if(l){l._direction=direction;l._target=target;l._mult=mult}}this.uniform('uLightPos[0]',pos,'3a');this.uniform('uLightDir[0]',dir,'3a');this.uniform('uLightColor[0]',colors,'3a');this.uniform('uLightCone[0]',cones,'1a')}
- makeBeam(light){let p=light.pos,d=light._direction||[0,-1,0],length=Math.min(this.size.width*1.1,Math.hypot(...M.sub(light._target||light.target,p))+3),radius=Math.tan(light.angle*Math.PI/180)*length*.55;let right=M.norm(M.cross(d,Math.abs(d[1])>.95?[1,0,0]:[0,1,0])),up=M.cross(right,d),pos=[],uv=[];for(let i=0;i<32;i++){let a=i/32*Math.PI*2,b=(i+1)/32*Math.PI*2;let r1=M.add(M.mul(right,Math.cos(a)),M.mul(up,Math.sin(a))),r2=M.add(M.mul(right,Math.cos(b)),M.mul(up,Math.sin(b))),end=M.add(p,M.mul(d,length));let pts=[M.add(p,M.mul(r1,.07)),M.add(end,M.mul(r1,radius)),M.add(end,M.mul(r2,radius)),M.add(p,M.mul(r1,.07)),M.add(end,M.mul(r2,radius)),M.add(p,M.mul(r2,.07))];pos.push(...pts.flat());uv.push(0,0,0,1,1,1,0,0,1,1,1,0)}let mesh=makeMesh('beam',pos,uv,null,{color:[...hexrgb(light.color),1]});return mesh}
+ makeBeam(light){let p=light.pos,d=light._direction||[0,-1,0],length=Math.min(this.size.width*1.1,Math.hypot(...M.sub(light._target||light.target,p))+3),radius=Math.tan(light.angle*Math.PI/180)*length*.55;let right=M.norm(M.cross(d,Math.abs(d[1])>.95?[1,0,0]:[0,1,0])),up=M.cross(right,d),pos=[],uv=[];for(let i=0;i<32;i++){let a=i/32*Math.PI*2,b=(i+1)/32*Math.PI*2;let r1=M.add(M.mul(right,Math.cos(a)),M.mul(up,Math.sin(a))),r2=M.add(M.mul(right,Math.cos(b)),M.mul(up,Math.sin(b))),end=M.add(p,M.mul(d,length));let pts=[M.add(p,M.mul(r1,.07)),M.add(end,M.mul(r1,radius)),M.add(end,M.mul(r2,radius)),M.add(p,M.mul(r1,.07)),M.add(end,M.mul(r2,radius)),M.add(p,M.mul(r2,.07))];pos.push(...pts.flat());uv.push(i/32,0,i/32,1,(i+1)/32,1,i/32,0,(i+1)/32,1,(i+1)/32,0)}let mesh=makeMesh('beam',pos,uv,null,{color:[...hexrgb(light.color),1]});return mesh}
  render(time=0,{width=null,height=null}={}){let gl=this.gl;this.frame++;let w=width||Math.round(this.canvas.clientWidth*Math.min(devicePixelRatio,1.25)*(this.previewScale||1)),h=height||Math.round(this.canvas.clientHeight*Math.min(devicePixelRatio,1.25)*(this.previewScale||1));w=Math.max(1,w);h=Math.max(1,h);if(this.canvas.width!==w||this.canvas.height!==h){this.canvas.width=w;this.canvas.height=h}gl.viewport(0,0,w,h);gl.clearColor(.085,.10,.135,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.useProgram(this.program);gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LEQUAL);gl.depthMask(true);gl.disable(gl.BLEND);gl.disable(gl.CULL_FACE);this.uniform('uTime',time);this.uniform('uAmbient',this.settings.ambient);this.uniform('uExposure',this.settings.exposure);this.uniform('uHaze',this.settings.haze);this.uniform('uAccent',hexrgb(this.accent));this.uniform('uMaster',[this.master.width,this.master.height]);this.lightUniforms(time);
   if(this.view==='stage'){this.updateAnimatedMeshes(time);let c=this.camera;this.eye=M.add(c.target,[Math.sin(c.yaw)*Math.cos(c.pitch)*c.distance,Math.sin(c.pitch)*c.distance,Math.cos(c.yaw)*Math.cos(c.pitch)*c.distance]);let near=Math.max(.001,c.distance/2500),far=Math.max(500,c.distance*10);this.vp=M.mm(M.perspective(clamp(c.fov||45,20,80)*Math.PI/180,w/h,near,far),M.lookAt(this.eye,c.target));const planes=M.frustumPlanes(this.vp);this.uniform('uVP',this.vp,'m');this.uniform('uEye',this.eye);this.draw(this.floor);for(let mesh of this.stageDrawMeshes())if(!mesh.hidden&&(!planes||mesh.actorMatrix||M.frustumBox(planes,mesh.bounds)))this.draw(mesh);for(let mesh of this.fixtureMeshes)if(!planes||M.frustumBox(planes,mesh.bounds))this.draw(mesh);if(this.drawCast)this.drawCast(time);gl.enable(gl.POLYGON_OFFSET_FILL);gl.polygonOffset(-2,-2);for(let s of this.surfaces)if(s.enabled!==false&&(!planes||M.frustumBox(planes,s.mesh?.bounds)))this.draw(s.mesh,1,s);gl.disable(gl.POLYGON_OFFSET_FILL);
    if(this.settings.beam>0){gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE);gl.depthMask(false);for(let l of this.lights){if(!l.enabled||l.power<=0)continue;let mesh=this.makeBeam(l);this.draw(mesh,2,null,Math.min(.35,this.settings.beam*.20*Math.max(0,l.power/4.5)*(l._mult??1)));}gl.depthMask(true);gl.disable(gl.BLEND)}
