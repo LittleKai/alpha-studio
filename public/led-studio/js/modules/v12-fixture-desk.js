@@ -253,7 +253,7 @@ fixturePanel=function(){const l=selected128(),v=l?coordinates128(l):null,style=l
  <div class="pro128-switchrow"><label><input type="checkbox" id="p128enabled" ${on?'checked':''}>${uiText(" Bật đèn"," Enable light")}</label><label><input type="checkbox" id="p128sweep" ${l.sweep?'checked':''}>${uiText(" Quét tự động"," Automatic sweep")}</label></div>
  <div class="pro127-grid"><label>${uiText("Motion tự do","Free motion")}<select id="p128motion">${[['static',uiText("Đứng yên","Static")],['sweep',uiText("Sweep ngang","Horizontal sweep")],['tilt',uiText("Tilt lên xuống","Vertical tilt")],['circle','Circle'],['figure8','Figure 8'],['fan','Fan'],['ballyhoo','Ballyhoo']].map(([k,n])=>`<option value="${k}" ${motion===k?'selected':''}>${n}</option>`).join('')}</select></label><label>Dimmer FX<select id="p128dimmer">${[['steady',uiText("Sáng liên tục","Steady")],['pulse',uiText("Pulse / nhịp","Beat pulse")],['build','Build-up'],['strobe',uiText("Strobe - lưu ý nhấp nháy","Strobe — flashing light")]].map(([k,n])=>`<option value="${k}" ${l.fx===k?'selected':''}>${n}</option>`).join('')}</select></label></div>
  ${knob('motionSpeed128',uiText("Tốc độ motion","Motion speed"),(l.motionSpeed128??.55),.03,2,.01,' Hz')}${knob('motionAmp128',uiText("Biên độ motion","Motion amplitude"),(l.motionAmp128??25),0,90,1,'°')}
- <div class="pro127-actions"><button id="p128playLook" class="primary">${uiText("Xem đèn chạy","Preview motion")}</button><button id="p128stopLook">${uiText("Dừng chuyển động","Stop motion")}</button><button id="p128moveCue">${uiText("+ Ghi cue FX","+ Record FX cue")}</button></div>
+ <div class="pro127-actions"><button id="p128playLook" class="primary">${uiText("Xem đèn chạy","Preview motion")}</button><button id="p128stopLook">${uiText("Dừng chuyển động","Stop motion")}</button><button id="p128moveCue">${uiText("+ Ghi cue FX","+ Record FX cue")}</button><button id="pro126DmxCsv">${uiText("Xuất Patch DMX (CSV)","Export DMX Patch (CSV)")}</button></div>
  <h4>${uiText("OPEN FIXTURE LIBRARY (DMX512 · 16-BIT)","Open Fixture Library (DMX512 · 16-bit)")}</h4>
  <div class="pro127-grid"><label>${uiText("Hồ sơ đèn OFL","OFL fixture profile")}<select id="p128oflProfile" data-ofl-profile><option value="">${uiText("-- Chọn profile OFL --","-- Select OFL profile --")}</option>${((typeof window!=='undefined'&&window.OFL_FIXTURES)||[]).map(fx=>`<option value="${safe(fx.id)}" ${l.oflProfileId===fx.id?'selected':''}>${safe(fx.manufacturer)} · ${safe(fx.name)}</option>`).join('')}</select></label><label>${uiText("Chế độ DMX","DMX mode")}<select id="p128oflMode" data-ofl-mode>${(((typeof window!=='undefined'&&window.OFL_FIXTURES)||[]).find(x=>x.id===l.oflProfileId)?.modes||[{name:'Default (16ch)',channelCount:16}]).map((m,mi)=>`<option value="${mi}" ${(l.oflModeIndex||0)===mi?'selected':''}>${safe(m.name)} (${m.channelCount}ch)</option>`).join('')}</select></label></div>
  ${l.oflProfileId?`<div class="pro128-status" id="p128oflSummary">DMX: ${safe(l.oflManufacturer||'')} ${safe(l.oflModel||'')} · ${safe(l.dmxMode||'')} · ${l.dmxChannelCount||16}ch · Pan ${l.panMaxDeg||540}° / Tilt ${l.tiltMaxDeg||270}°</div>`:''}
@@ -325,6 +325,7 @@ bindFixture=function(){oldBindFixture128();const l=selected128();if(!l)return;
  id('p128playLook').onclick=()=>{if(seq.enabled||lighting9.preview)setManualMode();setPlaying(true);engine.settings.beam=Math.max(1.15,engine.settings.beam);toast(uiText("Đang xem motion trực tiếp cho ","Previewing motion for ")+l.name+'.');};
  id('p128stopLook').onclick=()=>{l.motion128='static';l.fx='steady';setPlaying(false);paint();};
  id('p128moveCue').onclick=()=>{const map={sweep:'move_sweep',tilt:'move_tilt',circle:'move_circle',figure8:'move_figure8',fan:'move_fan',ballyhoo:'move_ballyhoo'};P.previewFX=map[l.motion128]||(l.fx==='pulse'?'dim_pulse':'move_static');openDock('fx');toast(uiText("Đã chọn mẫu ","Selected preset ")+P.previewFX+uiText(". Chỉnh rồi bấm “+ Đặt cue vào SHOW TIMELINE”.",". Adjust settings, then select “+ Add cue to show timeline”."));};
+ if(id('pro126DmxCsv'))id('pro126DmxCsv').onclick=()=>N.exportDmxPatchCsv();
  document.querySelectorAll('[data-look128]').forEach(b=>b.onclick=()=>{checkpoint();setManualMode();applyLook128(l,b.dataset.look128);paint();setPlaying(true);toast(uiText("Đang áp dụng ","Applying ")+b.textContent.trim()+uiText(" – thấy ngay trên sân khấu."," — previewed on stage."));});
  if(id('p128oflProfile'))id('p128oflProfile').onchange=e=>{if(!e.target.value)return;checkpoint();setManualMode();applyOflProfile(l.id,e.target.value,0);toast(uiText("Đã áp dụng hồ sơ OFL ","Applied OFL profile ")+e.target.value);};
  if(id('p128oflMode'))id('p128oflMode').onchange=e=>{if(!l.oflProfileId)return;checkpoint();setManualMode();applyOflProfile(l.id,l.oflProfileId,+e.target.value||0);};
@@ -394,6 +395,70 @@ S.fixture128.select=id=>{const l=engine.lights.find(x=>x.id===id);if(!l)return f
 S.fixture128.look=(id,look)=>{const l=engine.lights.find(x=>x.id===id);if(!l)return false;applyLook128(l,look);return true;};
 S.fixture128.types=Object.keys(types);
 S.fixture128.looks=LOOKS128.map(x=>x.id);
+const N = S.pro126 || (S.pro126 = {});
+N.buildDmxPatchTable = function() {
+ const lights = Array.isArray(engine?.lights) ? engine.lights : [];
+ let autoUniverse = 1, autoAddress = 1;
+ const rows = lights.map((l, idx) => {
+  const prof = N.profiles?.[l.profileId || l.fixtureType126] || {};
+  const channels = Math.max(1, Number(l.dmxChannels) || Number(l.dmxChannelCount) || Number(prof.dmx) || 16);
+  let universe = Math.max(1, Number(l.universe) || 0);
+  let startAddress = Math.max(1, Number(l.address) || 0);
+  if (!l.universe || !l.address) {
+   if (autoAddress + channels - 1 > 512) {
+    autoUniverse += 1;
+    autoAddress = 1;
+   }
+   universe = universe || autoUniverse;
+   startAddress = startAddress || autoAddress;
+   autoAddress = startAddress + channels;
+  }
+  const endAddress = startAddress + channels - 1;
+  const pos = Array.isArray(l.pos) ? l.pos : [0, 0, 0];
+  return {
+   index: idx + 1,
+   id: l.id || ('L' + (idx + 1)),
+   name: l.name || ('Fixture ' + (idx + 1)),
+   profileName: prof.name || l.oflModel || l.profileId || l.fixtureType126 || 'Moving Head 16ch',
+   universe,
+   startAddress,
+   endAddress,
+   channels,
+   posX: +(Number(pos[0]) || 0).toFixed(2),
+   posY: +(Number(pos[1]) || 0).toFixed(2),
+   posZ: +(Number(pos[2]) || 0).toFixed(2),
+   conflict: false,
+   outOfRange: endAddress > 512
+  };
+ });
+ for (let i = 0; i < rows.length; i++) {
+  for (let j = i + 1; j < rows.length; j++) {
+   if (rows[i].universe === rows[j].universe) {
+    const overlap = rows[i].startAddress <= rows[j].endAddress && rows[j].startAddress <= rows[i].endAddress;
+    if (overlap) {
+     rows[i].conflict = true;
+     rows[j].conflict = true;
+    }
+   }
+  }
+ }
+ return { rows, hasConflict: rows.some(r => r.conflict || r.outOfRange) };
+};
+N.exportDmxPatchCsv = function() {
+ const table = N.buildDmxPatchTable();
+ const header = 'FixtureIndex,FixtureID,Name,Profile,Universe,StartAddress,EndAddress,Channels,PosX_m,PosY_m,PosZ_m,Status';
+ const lines = table.rows.map(r => {
+  const status = r.outOfRange ? 'OVER_512' : (r.conflict ? 'CONFLICT' : 'OK');
+  const q = v => '"' + String(v ?? '').replace(/"/g, '""') + '"';
+  return [r.index, q(r.id), q(r.name), q(r.profileName), r.universe, r.startAddress, r.endAddress, r.channels, r.posX, r.posY, r.posZ, status].join(',');
+ });
+ const csv = '\uFEFF' + [header, ...lines].join('\r\n');
+ if (typeof downloadText === 'function') {
+  downloadText('ALPHA_DMX_Patch_Sheet.csv', csv, 'text/csv;charset=utf-8');
+ }
+ return csv;
+};
+S.exportDmxPatchCsv = N.exportDmxPatchCsv;
 
 // Create actual stable controls, not a floating modal.
 window.addEventListener('ledstudio:locale',()=>{window.translateUiText?.(id('pro127dock'));window.translateUiText?.(id('pro127bar'));});

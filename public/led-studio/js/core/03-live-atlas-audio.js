@@ -251,11 +251,136 @@ function validateAtlas(plan,expectedItems=plan?.sourceItems){
  }
  return errors;
 }
-function paintAtlas(canvas,page,{labels=true,fullSize=false}={}){
+function planSurfaceWiring(surface, options = {}) {
+ const cols = Math.max(1, Math.round(+surface.cabCols || Math.ceil((+surface.w || 1920) / (+surface.pxW || 192))));
+ const rows = Math.max(1, Math.round(+surface.cabRows || Math.ceil((+surface.h || 1080) / (+surface.pxH || 192))));
+ const pxW = Math.max(8, Math.round(+surface.pxW || Math.round((+surface.w || 1920) / cols)));
+ const pxH = Math.max(8, Math.round(+surface.pxH || Math.round((+surface.h || 1080) / rows)));
+ const cabPixels = pxW * pxH;
+ const portPixelLimit = Math.max(cabPixels, Math.round(+options.portPixelLimit || 650000));
+ const order = String(surface.wiringOrder || 'snake-tl-h');
+ const voidSet = new Set(Array.isArray(surface.virtualTiles) ? surface.virtualTiles.map(String) : []);
+ const vertical = order.endsWith('-v');
+ const startRight = order.includes('-tr-') || order.includes('-br-');
+ const startBottom = order.includes('-bl-') || order.includes('-br-');
+ const orderedCoords = [];
+ if (!vertical) {
+  for (let rStep = 0; rStep < rows; rStep++) {
+   const r = startBottom ? (rows - 1 - rStep) : rStep;
+   const revCol = (rStep % 2 === 1) ? !startRight : startRight;
+   for (let cStep = 0; cStep < cols; cStep++) {
+    const c = revCol ? (cols - 1 - cStep) : cStep;
+    orderedCoords.push({ col: c, row: r, isVoid: voidSet.has(c + ',' + r) });
+   }
+  }
+ } else {
+  for (let cStep = 0; cStep < cols; cStep++) {
+   const c = startRight ? (cols - 1 - cStep) : cStep;
+   const revRow = (cStep % 2 === 1) ? !startBottom : startBottom;
+   for (let rStep = 0; rStep < rows; rStep++) {
+    const r = revRow ? (rows - 1 - rStep) : rStep;
+    orderedCoords.push({ col: c, row: r, isVoid: voidSet.has(c + ',' + r) });
+   }
+  }
+ }
+ const activeNodes = [];
+ const ports = [];
+ let currentPort = null;
+ for (const cell of orderedCoords) {
+  if (cell.isVoid) continue;
+  if (!currentPort || currentPort.pixels + cabPixels > portPixelLimit) {
+   currentPort = { portIndex: ports.length + 1, pixels: 0, nodes: [] };
+   ports.push(currentPort);
+  }
+  const node = {
+   col: cell.col,
+   row: cell.row,
+   portIndex: currentPort.portIndex,
+   chainIndex: currentPort.nodes.length + 1,
+   globalIndex: activeNodes.length + 1,
+   pixels: cabPixels
+  };
+  currentPort.nodes.push(node);
+  currentPort.pixels += cabPixels;
+  activeNodes.push(node);
+ }
+ return { cols, rows, pxW, pxH, cabPixels, portPixelLimit, order, activeNodes, ports, voidTiles: [...voidSet] };
+}
+function exportResolumeArenaXml(plan) {
+ const pages = Array.isArray(plan?.pages) ? plan.pages : [];
+ const name = esc(plan?.projectName || 'ALPHA_LED_STAGE');
+ const screensXml = pages.map((page, pIdx) => {
+  const pw = Math.max(1, Math.round(+page.width || 1920));
+  const ph = Math.max(1, Math.round(+page.height || 1080));
+  const slicesXml = (page.items || []).map((item, sIdx) => {
+   const x = Math.round(+item.x || 0), y = Math.round(+item.y || 0);
+   const w = Math.max(1, Math.round(+item.w || 192)), h = Math.max(1, Math.round(+item.h || 192));
+   return `      <Slice uniqueId="${1000 + pIdx * 100 + sIdx}" name="${esc(item.name || ('Slice_' + (sIdx + 1)))}" isEnabled="1">
+        <InputRect x="${x}" y="${y}" w="${w}" h="${h}" orientation="0"/>
+        <OutputRect x="${x}" y="${y}" w="${w}" h="${h}" orientation="0"/>
+      </Slice>`;
+  }).join('\n');
+  return `    <Screen uniqueId="${100 + pIdx}" name="${esc(page.name || page.id || ('Screen_' + (pIdx + 1)))}" width="${pw}" height="${ph}">
+      <Slices>
+${slicesXml}
+      </Slices>
+    </Screen>`;
+ }).join('\n');
+ return `<?xml version="1.0" encoding="utf-8"?>
+<XmlState name="${name}" version="7.18.0" createdBy="ALPHA Creative LED Studio">
+  <ScreenSetup name="${name}">
+    <CurrentCompositionTextureSize width="${pages[0]?.width || 3840}" height="${pages[0]?.height || 2160}"/>
+    <Screens>
+${screensXml}
+    </Screens>
+  </ScreenSetup>
+</XmlState>`;
+}
+function paintAtlas(canvas,page,{labels=true,fullSize=false,wiring=true}={}){
  const limit=fullSize?1:Math.min(1,1280/page.width,660/page.height);
  canvas.width=Math.max(1,Math.round(page.width*limit));canvas.height=Math.max(1,Math.round(page.height*limit));const g=canvas.getContext('2d');g.fillStyle='#080b12';g.fillRect(0,0,canvas.width,canvas.height);g.scale(limit,limit);
  const colors=['#5bd7c6','#a795fa','#f2b66d','#7eaaf4','#e5a5d0','#9bdba0'];
- page.items.forEach((r,i)=>{g.fillStyle=labels?colors[i%colors.length]:'#ffffff';g.fillRect(r.x,r.y,r.w,r.h);if(labels){g.fillStyle='#102028';g.font='bold '+Math.max(12,Math.min(42,r.w/12,r.h/5))+'px Segoe UI,Arial';g.save();g.beginPath();g.rect(r.x+3,r.y+3,r.w-6,r.h-6);g.clip();g.fillText(r.name,r.x+12,r.y+Math.max(22,Math.min(50,r.h/3)));g.font=Math.max(10,Math.min(28,r.w/15))+'px Segoe UI,Arial';g.fillText(r.w+' x '+r.h+' px',r.x+12,r.y+Math.min(88,r.h*.6));g.restore();}});
+ const portColors=['#ffdf5d','#ff7a59','#4ef2a1','#ff73d0','#5ce1e6','#b892ff'];
+ page.items.forEach((r,i)=>{
+  g.fillStyle=labels?colors[i%colors.length]:'#ffffff';g.fillRect(r.x,r.y,r.w,r.h);
+  const surf=typeof engine!=='undefined'&&engine?.surfaces?.find(s=>s.id===r.surfaceId);
+  if(labels&&wiring&&surf){
+   const wPlan=planSurfaceWiring({...surf,w:r.w,h:r.h});
+   const cw=r.w/wPlan.cols,ch=r.h/wPlan.rows;
+   g.save();
+   g.strokeStyle='rgba(8,11,18,0.35)';g.lineWidth=Math.max(1,1/limit);
+   for(let c=1;c<wPlan.cols;c++){g.beginPath();g.moveTo(r.x+c*cw,r.y);g.lineTo(r.x+c*cw,r.y+r.h);g.stroke();}
+   for(let row=1;row<wPlan.rows;row++){g.beginPath();g.moveTo(r.x,r.y+row*ch);g.lineTo(r.x+r.w,r.y+row*ch);g.stroke();}
+   for(const vt of wPlan.voidTiles){
+    const [vc,vr]=vt.split(',').map(Number);
+    if(Number.isInteger(vc)&&Number.isInteger(vr)){
+     const vx=r.x+vc*cw,vy=r.y+vr*ch;
+     g.fillStyle='rgba(8,11,18,0.82)';g.fillRect(vx+1,vy+1,cw-2,ch-2);
+     g.strokeStyle='rgba(255,107,107,0.75)';g.beginPath();g.moveTo(vx+3,vy+3);g.lineTo(vx+cw-3,vy+ch-3);g.moveTo(vx+cw-3,vy+3);g.lineTo(vx+3,vy+ch-3);g.stroke();
+    }
+   }
+   wPlan.ports.forEach((port,pIdx)=>{
+    const pColor=portColors[pIdx%portColors.length];
+    g.strokeStyle=pColor;g.lineWidth=Math.max(2,2.5/limit);
+    g.beginPath();
+    port.nodes.forEach((n,nIdx)=>{
+     const cx=r.x+(n.col+0.5)*cw,cy=r.y+(n.row+0.5)*ch;
+     if(nIdx===0)g.moveTo(cx,cy);else g.lineTo(cx,cy);
+    });
+    g.stroke();
+    const first=port.nodes[0];
+    if(first){
+     const fx=r.x+(first.col+0.5)*cw,fy=r.y+(first.row+0.5)*ch;
+     g.fillStyle='#080b12';g.beginPath();g.arc(fx,fy,Math.max(8,Math.min(14,cw*0.22)),0,Math.PI*2);g.fill();
+     g.strokeStyle=pColor;g.stroke();
+     g.fillStyle=pColor;g.font='bold '+Math.max(9,Math.min(13,cw*0.18))+'px Segoe UI,Arial';g.textAlign='center';g.textBaseline='middle';
+     g.fillText('P'+port.portIndex,fx,fy);g.textAlign='start';g.textBaseline='alphabetic';
+    }
+   });
+   g.restore();
+  }
+  if(labels){g.fillStyle='#102028';g.font='bold '+Math.max(12,Math.min(42,r.w/12,r.h/5))+'px Segoe UI,Arial';g.save();g.beginPath();g.rect(r.x+3,r.y+3,r.w-6,r.h-6);g.clip();g.fillText(r.name,r.x+12,r.y+Math.max(22,Math.min(50,r.h/3)));g.font=Math.max(10,Math.min(28,r.w/15))+'px Segoe UI,Arial';g.fillText(r.w+' x '+r.h+' px',r.x+12,r.y+Math.min(88,r.h*.6));g.restore();}
+ });
 }
 async function exportAtlasPNG(page,labels=true){
  if(page.width*page.height>48000000)throw Error((window.tr?.('PNG tr\u00ean 48 MP; h\u00e3y xu\u1ea5t JSON ho\u1eb7c chia nh\u1ecf c\u1ee5m.',"PNG exceeds 48 MP; export JSON or split the group.") ?? 'PNG tr\u00ean 48 MP; h\u00e3y xu\u1ea5t JSON ho\u1eb7c chia nh\u1ecf c\u1ee5m.'));
@@ -309,11 +434,13 @@ function openPixelStudio(){
 function showAtlasResults(plan){
  const box=$('atlasResults');if(!box)return;
  box.innerHTML=`<div class="atlas-summary"><div><b>${plan.pages.length}</b><small>${(window.tr?.("Canvas / clip","Canvas / clip") ?? "Canvas / clip")}</small></div><div><b>${plan.fillPercent}%</b><small>${(window.tr?.("Pixel hữu dụng","Pixel utilization") ?? "Pixel hữu dụng")}</small></div><div><b>${(plan.activePixels/1e6).toFixed(2)} MP</b><small>${(window.tr?.("LED thực","Actual LED pixels") ?? "LED thực")}</small></div><div><b>${plan.rawRGBGBperSecond} GB/s</b><small>${(window.tr?.("RGB chưa nén","Uncompressed RGB") ?? "RGB chưa nén")} / ${plan.options.fps} FPS</small></div></div>
- <div class="atlas-pages">${plan.pages.map((p,i)=>`<button class="btn ${i===0?'active':''}" data-page="${i}">${esc(p.name)} / ${p.width} x ${p.height}</button>`).join('')}</div><canvas id="atlasCanvas"></canvas><div class="atlas-actions"><button class="btn" id="exportAtlasGuide">${(window.tr?.("PNG hướng dẫn","Guide PNG") ?? "PNG hướng dẫn")}</button><button class="btn" id="exportAtlasMask">${(window.tr?.("PNG mặt nạ","Mask PNG") ?? "PNG mặt nạ")}</button><button class="btn" id="atlasVisualPNG">${(window.tr?.("PNG nội dung","Visual PNG") ?? "PNG nội dung")}</button><button class="btn" id="atlasRecord">${(window.tr?.("WebM nội dung","Visual WebM") ?? "WebM nội dung")}</button><button class="btn" id="atlasJSON">JSON</button><button class="btn" id="atlasCSV">CSV</button><button class="btn primary" id="loadAtlasClip">${(window.tr?.("Nạp clip đúng cụm này","Load clip for this group") ?? "Nạp clip đúng cụm này")}</button></div><p class="hint-text">${(window.tr?.("Xuất PNG/JSON → làm motion trên canvas này → nạp clip. Chỉ bước nạp clip mới thay crop của cụm được chọn; mặt LED 3D giữ nguyên. Đây là đề xuất packing, không phải sơ đồ đấu nối.","Export PNG/JSON → create motion on this canvas → load clip. Loading a clip updates only the selected group crop; 3D LED surfaces remain unchanged. This is a packing proposal, not a wiring diagram.") ?? "Xuất PNG/JSON → làm motion trên canvas này → nạp clip. Chỉ bước nạp clip mới thay crop của cụm được chọn; mặt LED 3D giữ nguyên. Đây là đề xuất packing, không phải sơ đồ đấu nối.")}</p>`;
- let index=0;const display=i=>{index=i;paintAtlas($('atlasCanvas'),plan.pages[i]);box.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',+b.dataset.page===i));};display(0);
+ <div class="atlas-pages">${plan.pages.map((p,i)=>`<button class="btn ${i===0?'active':''}" data-page="${i}">${esc(p.name)} / ${p.width} x ${p.height}</button>`).join('')}</div><canvas id="atlasCanvas"></canvas><div class="atlas-actions"><button class="btn" id="exportAtlasGuide">${(window.tr?.("PNG hướng dẫn","Guide PNG") ?? "PNG hướng dẫn")}</button><button class="btn" id="exportAtlasMask">${(window.tr?.("PNG mặt nạ","Mask PNG") ?? "PNG mặt nạ")}</button><button class="btn" id="atlasVisualPNG">${(window.tr?.("PNG nội dung","Visual PNG") ?? "PNG nội dung")}</button><button class="btn" id="atlasRecord">${(window.tr?.("WebM nội dung","Visual WebM") ?? "WebM nội dung")}</button><button class="btn" id="atlasJSON">JSON</button><button class="btn" id="atlasCSV">CSV</button><button class="btn" id="atlasResolumeXml">Resolume XML</button><button class="btn" id="atlasWiringToggle">${(window.tr?.("Ẩn/Hiện dây tín hiệu","Toggle wiring overlay") ?? "Ẩn/Hiện dây tín hiệu")}</button><button class="btn primary" id="loadAtlasClip">${(window.tr?.("Nạp clip đúng cụm này","Load clip for this group") ?? "Nạp clip đúng cụm này")}</button></div><p class="hint-text">${(window.tr?.("Xuất PNG/JSON → làm motion trên canvas này → nạp clip. Chỉ bước nạp clip mới thay crop của cụm được chọn; mặt LED 3D giữ nguyên. Đây là đề xuất packing, không phải sơ đồ đấu nối.","Export PNG/JSON → create motion on this canvas → load clip. Loading a clip updates only the selected group crop; 3D LED surfaces remain unchanged. This is a packing proposal, not a wiring diagram.") ?? "Xuất PNG/JSON → làm motion trên canvas này → nạp clip. Chỉ bước nạp clip mới thay crop của cụm được chọn; mặt LED 3D giữ nguyên. Đây là đề xuất packing, không phải sơ đồ đấu nối.")}</p>`;
+ let index=0,showWiring=true;const display=i=>{index=i;paintAtlas($('atlasCanvas'),plan.pages[i],{wiring:showWiring});box.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',+b.dataset.page===i));};display(0);
  box.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>display(+b.dataset.page));
  $('exportAtlasGuide').onclick=()=>exportAtlasPNG(plan.pages[index],true).catch(e=>toast(e.message));$('exportAtlasMask').onclick=()=>exportAtlasPNG(plan.pages[index],false).catch(e=>toast(e.message));
  $('atlasJSON').onclick=()=>exportAtlasJSON(plan);$('atlasCSV').onclick=()=>exportAtlasCSV(plan);
+ $('atlasResolumeXml').onclick=()=>downloadText('ALPHA_Resolume_AdvancedOutput.xml',exportResolumeArenaXml({...plan,projectName:state.projectName||'ALPHA_LED_STAGE'}),'application/xml;charset=utf-8');
+ $('atlasWiringToggle').onclick=()=>{showWiring=!showWiring;display(index);};
  $('atlasVisualPNG').onclick=()=>exportAtlasVisualPNG(plan.pages[index]).catch(e=>toast(e.message,8000));$('atlasRecord').onclick=()=>openAtlasRecording(plan.pages[index]);
  $('loadAtlasClip').onclick=()=>{live.pendingAtlas=plan.pages[index];$('atlasMediaInput').click();};
 }
@@ -729,7 +856,7 @@ function initLiveEvents(){
  const help=$('helpBtn').onclick;$('helpBtn').onclick=()=>{help();$('modalBody').insertAdjacentHTML('afterbegin',`<h3>${(window.tr?.("Sáng tạo trực tiếp","Live creative") ?? "Sáng tạo trực tiếp")}</h3><p><b>LED</b>${(window.tr?.(": chọn nhiều, xóa an toàn, gom cụm. ",": multi-select, safely delete and group. ") ?? ": chọn nhiều, xóa an toàn, gom cụm. ")}<b>Pixel Studio</b>${(window.tr?.(": tính cabinet, xuất atlas PNG/JSON, nạp clip đúng cụm. ",": calculate cabinets, export atlas PNG/JSON and load clips for each group. ") ?? ": tính cabinet, xuất atlas PNG/JSON, nạp clip đúng cụm. ")}<b>LIVE VJ</b>${(window.tr?.(": 8 look pads, QWER/ASDG; Shift+click ghi look; click phải đổi tên. Crossfade/Wipe/Dip/Cut, X blackout, C flash, V strobe cần bật cho phép. Audio nghe tiếng video hoặc nhạc riêng; WebM thu được audio.",": 8 look pads, QWER/ASDG; Shift+click stores a look; right-click renames. Crossfade/Wipe/Dip/Cut, X blackout, C flash, V strobe requires permission. Listen to video audio or separate music; WebM can record audio.") ?? ": 8 look pads, QWER/ASDG; Shift+click ghi look; click phải đổi tên. Crossfade/Wipe/Dip/Cut, X blackout, C flash, V strobe cần bật cho phép. Audio nghe tiếng video hoặc nhạc riêng; WebM thu được audio.")}</p><p>${(window.tr?.("FPS thực phụ thuộc GPU/model; Auto mục tiêu 55 FPS, không nội suy clip 25/30fps.","Actual FPS depends on GPU/model; Auto targets 55 FPS and does not interpolate 25/30fps clips.") ?? "FPS thực phụ thuộc GPU/model; Auto mục tiêu 55 FPS, không nội suy clip 25/30fps.")}</p>`);};
  renderLiveDock();
 }
-const liveAPI={live,toggleLive,keepRendering,launchCue,captureCue,advanceLive,panicLive,deleteMapIds,openLEDManager,openPixelStudio,planAtlas,validateAtlas,nativeEstimate,assignAtlasClip,exportAtlasPNG,exportAtlasJSON,
+const liveAPI={live,toggleLive,keepRendering,launchCue,captureCue,advanceLive,panicLive,deleteMapIds,openLEDManager,openPixelStudio,planAtlas,validateAtlas,nativeEstimate,assignAtlasClip,exportAtlasPNG,exportAtlasJSON,planSurfaceWiring,exportResolumeArenaXml,
  openPerformance,performanceDiagnostics,enableAudio,openAudioPanel,addMusicFile,removeMusic,syncVideos,setPlaying,recordPreview,beginLiveRecording,
  renderUI,loadProject,importModel,demo,assignMaster,mappingData,togglePresentation,activateSpatialLayout,snapshot,restore,
  createAtlasRenderer,exportAtlasVisualPNG,beginAtlasRecording,getPerformance:performanceDiagnostics,activeVideos,packLiveExtras};

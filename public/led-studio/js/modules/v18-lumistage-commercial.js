@@ -1948,6 +1948,108 @@
       prop_unit: 850000   // VNĐ / hạng mục đạo cụ / ngày
     };
 
+    function computeEngineeringRider(ledItems) {
+      const items = Array.isArray(ledItems) ? ledItems : [];
+      let totalActiveCabs = 0;
+      let totalVoidCabs = 0;
+      let totalHangingBars = 0;
+      let totalBallastKg = 0;
+      let totalMaxKw = 0;
+      let totalAreaM2 = 0;
+
+      for (const it of items) {
+        const cols = Math.max(1, Number(it.cabCols) || Math.ceil((Number(it.widthM) || 4) / 0.5));
+        const rows = Math.max(1, Number(it.cabRows) || Math.ceil((Number(it.heightM) || 2.5) / 0.5));
+        const active = Math.max(1, Number(it.activeCabinets) || Number(it.cabinets500) || cols * rows);
+        const voids = Math.max(0, Number(it.voidCount) || 0);
+        const area = Number(it.areaM2) || +(cols * rows * 0.25).toFixed(2);
+        const kw = Number(it.maxKw) || +(area * 0.65).toFixed(2);
+
+        totalActiveCabs += active;
+        totalVoidCabs += voids;
+        totalHangingBars += cols;
+        totalAreaM2 += area;
+        totalMaxKw += kw;
+        // Ground-stack ballast: ~42 kg per m² + height factor for wind stability
+        const heightFactor = Math.max(1, (Number(it.heightM) || 2.5) / 2.5);
+        totalBallastKg += Math.ceil(area * 38 * heightFactor);
+      }
+
+      // 20A PowerCON circuit @ 220V (80% continuous safety derating => ~3.52 kW max per circuit, or max 10 cabinets per line)
+      const powercon20ACircuits = Math.max(
+        1,
+        Math.ceil(totalMaxKw / 3.5),
+        Math.ceil(totalActiveCabs / 10)
+      );
+
+      // Distribute circuits across L1, L2, L3 phases
+      const phaseKw = { L1: 0, L2: 0, L3: 0 };
+      const phases = ['L1', 'L2', 'L3'];
+      const kwPerCircuit = powercon20ACircuits > 0 ? totalMaxKw / powercon20ACircuits : 0;
+      for (let i = 0; i < powercon20ACircuits; i++) {
+        phaseKw[phases[i % 3]] += kwPerCircuit;
+      }
+      const phaseLoadAmps = {
+        L1: Math.ceil((phaseKw.L1 * 1000) / (220 * 0.85)),
+        L2: Math.ceil((phaseKw.L2 * 1000) / (220 * 0.85)),
+        L3: Math.ceil((phaseKw.L3 * 1000) / (220 * 0.85))
+      };
+
+      const maxPhaseAmps = Math.max(phaseLoadAmps.L1, phaseLoadAmps.L2, phaseLoadAmps.L3, 1);
+      const recommendedBreaker =
+        maxPhaseAmps <= 32 ? 'MCCB 3P 32A' :
+        maxPhaseAmps <= 63 ? 'MCCB 3P 63A' :
+        maxPhaseAmps <= 100 ? 'MCCB 3P 100A' :
+        maxPhaseAmps <= 160 ? 'MCCB 3P 160A' : 'MCCB 3P 250A';
+
+      const shacklesCount = totalHangingBars * 2;
+      const hoist1TonCount = Math.max(2, Math.ceil(totalHangingBars / 3));
+
+      return {
+        totalActiveCabs,
+        totalVoidCabs,
+        hangingBars: totalHangingBars,
+        shacklesCount,
+        hoist1TonCount,
+        ballastKg: totalBallastKg,
+        powercon20ACircuits,
+        phaseLoadAmps,
+        recommendedBreaker
+      };
+    }
+
+    function buildStructurePreviewSvg(ledItems) {
+      const items = Array.isArray(ledItems) && ledItems.length ? ledItems : [{ name: 'LED', cabCols: 8, cabRows: 4, virtualTiles: [], panelAngleDeg: 0 }];
+      const first = items[0];
+      const cols = Math.max(1, Math.min(24, Number(first.cabCols) || 8));
+      const rows = Math.max(1, Math.min(14, Number(first.cabRows) || 4));
+      const voidSet = new Set(Array.isArray(first.virtualTiles) ? first.virtualTiles.map(String) : []);
+      const cell = 22;
+      const padX = 28, padY = 34;
+      const svgW = cols * cell + padX * 2;
+      const svgH = rows * cell + padY * 2;
+      let rects = '';
+      // Hanging bar header
+      rects += `<rect x="${padX}" y="${padY - 12}" width="${cols * cell}" height="7" rx="2" fill="#f59e0b" />`;
+      for (let c = 0; c < cols; c++) {
+        const hx = padX + c * cell + cell * 0.5;
+        rects += `<circle cx="${hx}" cy="${padY - 8.5}" r="2.2" fill="#0f172a"/>`;
+      }
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const x = padX + c * cell, y = padY + r * cell;
+          const isVoid = voidSet.has(`${c},${r}`);
+          if (isVoid) {
+            rects += `<rect x="${x + 1}" y="${y + 1}" width="${cell - 2}" height="${cell - 2}" fill="none" stroke="#ef4444" stroke-dasharray="3,2" stroke-width="1"/>`;
+          } else {
+            rects += `<rect x="${x + 1}" y="${y + 1}" width="${cell - 2}" height="${cell - 2}" fill="#0284c7" fill-opacity="0.22" stroke="#38bdf8" stroke-width="1"/>`;
+          }
+        }
+      }
+      const angleNote = Number(first.panelAngleDeg) ? ` · Cong ${first.panelAngleDeg}°/cab` : '';
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svgW} ${svgH}" style="width:100%;max-height:190px;background:#090d16;border:1px solid #1e293b;border-radius:6px"><text x="${padX}" y="16" fill="#e2e8f0" font-size="11" font-family="Segoe UI,Arial" font-weight="600">${String(first.name || 'LED')} (${cols}×${rows} cab${angleNote})</text>${rects}</svg>`;
+    }
+
     function computeStageBom() {
       const eng = getEngine();
       const surfaces = Array.isArray(eng?.surfaces) ? eng.surfaces : [];
@@ -1963,16 +2065,25 @@
 
       const ledItems = surfaces.map((s, idx) => {
         const pitch = Number(s.pitchMm) || 3.91;
-        const wM = +(Number(s.physicalWidthM || s.physical?.width || (s.w * pitch) / 1000 || 4)).toFixed(2);
-        const hM = +(Number(s.physicalHeightM || s.physical?.height || (s.h * pitch) / 1000 || 2.5)).toFixed(2);
-        const areaM2 = +(wM * hM).toFixed(2);
-        const cols500 = Math.max(1, Math.ceil(wM / 0.5));
-        const rows500 = Math.max(1, Math.ceil(hM / 0.5));
-        const cabinets500 = cols500 * rows500;
+        const wM = +(Number(s.physicalWidthM || s.physical?.[0] || s.physical?.width || (s.w * pitch) / 1000 || 4)).toFixed(2);
+        const hM = +(Number(s.physicalHeightM || s.physical?.[1] || s.physical?.height || (s.h * pitch) / 1000 || 2.5)).toFixed(2);
+        const cabWmm = Number(s.cabW) || 500;
+        const cabHmm = Number(s.cabH) || 500;
+        const cols500 = Math.max(1, Number(s.cabCols) || Math.ceil((wM * 1000 - 1) / cabWmm));
+        const rows500 = Math.max(1, Number(s.cabRows) || Math.ceil((hM * 1000 - 1) / cabHmm));
+        const virtualTiles = Array.isArray(s.virtualTiles) ? s.virtualTiles : [];
+        const voidCount = virtualTiles.length;
+        const cabinets500 = Math.max(1, cols500 * rows500 - voidCount);
+        const cabAreaM2 = (cabWmm / 1000) * (cabHmm / 1000);
+        const areaM2 = +(cabinets500 * cabAreaM2).toFixed(2);
         const pixels = (Number(s.w) || 1920) * (Number(s.h) || 1080);
         const maxKw = +(areaM2 * 0.65).toFixed(2); // ~650W/m2 max
         const avgKw = +(areaM2 * 0.28).toFixed(2); // ~280W/m2 average
         const weightKg = Math.round(cabinets500 * 7.8); // ~7.8kg / cabinet 500x500 die-cast
+        const panelAngleDeg = Number(s.panelAngleDeg) || 0;
+        const curveInfo = typeof S.spatial?.computeCurvedSpanMeters === 'function'
+          ? S.spatial.computeCurvedSpanMeters(cols500, cabWmm, panelAngleDeg)
+          : { arcMeters: wM, chordMeters: wM, depthMeters: 0 };
 
         totalLedAreaM2 += areaM2;
         totalCabinets500 += cabinets500;
@@ -1995,6 +2106,15 @@
           resolution: `${s.w} × ${s.h}`,
           pixels,
           cabinets500,
+          cabCols: cols500,
+          cabRows: rows500,
+          activeCabinets: cabinets500,
+          voidCount,
+          virtualTiles,
+          panelAngleDeg,
+          chordMeters: curveInfo.chordMeters,
+          depthMeters: curveInfo.depthMeters,
+          wiringOrder: s.wiringOrder || 'snake-tl-h',
           maxKw,
           avgKw,
           weightKg,
@@ -2125,6 +2245,9 @@
         });
       }
 
+      const engineeringRider = computeEngineeringRider(ledItems);
+      const structureSvg = buildStructurePreviewSvg(ledItems);
+
       return {
         ledItems,
         bomRows,
@@ -2144,6 +2267,8 @@
           totalAvgKw,
           currentPerPhaseAmps,
           totalRiggingWeightKg,
+          engineeringRider,
+          structureSvg,
           warnings
         }
       };
@@ -2256,10 +2381,50 @@
 
       for (const s of eng?.surfaces || []) {
         const c = s.mesh?.bounds?.center || [0, 2.8, -2];
-        const sw = Number(s.physicalWidthM || s.physical?.width || 4);
-        const sh = Number(s.physicalHeightM || s.physical?.height || 3);
-        entities.push(dxfRect('LED_SCREENS', ox + c[0], c[1], sw, sh));
-        entities.push(dxfText('LED_SCREENS', ox + c[0] - sw * 0.42, c[1], 0.24, `${s.name} ${sw}x${sh}m (${s.w}x${s.h}px)`));
+        const sw = Number(s.physicalWidthM || s.physical?.[0] || s.physical?.width || 4);
+        const sh = Number(s.physicalHeightM || s.physical?.[1] || s.physical?.height || 3);
+        const cx = ox + c[0], cy = c[1];
+        entities.push(dxfRect('LED_SCREENS', cx, cy, sw, sh));
+        entities.push(dxfText('LED_SCREENS', cx - sw * 0.42, cy + sh * 0.5 + 0.18, 0.22, `${s.name} ${sw}x${sh}m (${s.w}x${s.h}px)`));
+
+        // Cabinet grid & serpentine wiring layers (PANEL_OUTLINE, VIRTUAL_VOID, WIRING_DATA, WIRING_POWER)
+        const cols = Math.max(1, Math.min(48, Number(s.cabCols) || Math.ceil(sw / 0.5)));
+        const rows = Math.max(1, Math.min(32, Number(s.cabRows) || Math.ceil(sh / 0.5)));
+        const cw = sw / cols, ch = sh / rows;
+        const left = cx - sw * 0.5, top = cy + sh * 0.5;
+        const voidSet = new Set(Array.isArray(s.virtualTiles) ? s.virtualTiles.map(String) : []);
+
+        for (let r = 0; r < rows; r++) {
+          for (let col = 0; col < cols; col++) {
+            const tileCx = left + (col + 0.5) * cw;
+            const tileCy = top - (r + 0.5) * ch;
+            if (voidSet.has(`${col},${r}`)) {
+              entities.push(dxfRect('VIRTUAL_VOID', tileCx, tileCy, cw * 0.92, ch * 0.92));
+            } else {
+              entities.push(dxfRect('PANEL_OUTLINE', tileCx, tileCy, cw, ch));
+            }
+          }
+        }
+
+        const wPlan = typeof S.atlas?.planSurfaceWiring === 'function'
+          ? S.atlas.planSurfaceWiring(s)
+          : null;
+        if (wPlan && Array.isArray(wPlan.ports)) {
+          for (const port of wPlan.ports) {
+            for (let idx = 0; idx + 1 < port.nodes.length; idx++) {
+              const a = port.nodes[idx], b = port.nodes[idx + 1];
+              const x1 = left + (a.col + 0.5) * cw, y1 = top - (a.row + 0.5) * ch;
+              const x2 = left + (b.col + 0.5) * cw, y2 = top - (b.row + 0.5) * ch;
+              entities.push(dxfLine('WIRING_DATA', x1, y1, x2, y2));
+            }
+            const first = port.nodes[0];
+            if (first) {
+              const fx = left + (first.col + 0.25) * cw, fy = top - (first.row + 0.5) * ch;
+              entities.push(dxfText('WIRING_DATA', fx, fy, Math.min(0.14, ch * 0.28), `P${port.portIndex}`));
+            }
+          }
+        }
+        entities.push(dxfLine('WIRING_POWER', left, top + 0.08, left + sw, top + 0.08));
       }
 
       return [
@@ -2597,8 +2762,9 @@
         <div class="card"><strong>Kích thước sàn</strong><br>${s.stageW}m × ${s.stageD}m (${s.stageAreaM2} m²)</div>
         <div class="card"><strong>Tổng diện tích LED</strong><br>${s.totalLedAreaM2} m² (${s.totalCabinets500} cab 500×500)</div>
         <div class="card"><strong>Xử lý điểm ảnh</strong><br>${s.totalPixels.toLocaleString('vi-VN')} px (${s.rj45PortsNeeded} cổng RJ45)</div>
-        <div class="card"><strong>Nguồn điện 3 pha & Tải treo</strong><br>${s.totalMaxKw} kW (~${s.currentPerPhaseAmps}A/pha) · ${s.totalRiggingWeightKg} kg</div>
+        <div class="card"><strong>Nguồn điện 3 pha & Tải treo</strong><br>${s.totalMaxKw} kW (L1:${s.engineeringRider?.phaseLoadAmps?.L1 || s.currentPerPhaseAmps}A · L2:${s.engineeringRider?.phaseLoadAmps?.L2 || s.currentPerPhaseAmps}A · L3:${s.engineeringRider?.phaseLoadAmps?.L3 || s.currentPerPhaseAmps}A · ${s.engineeringRider?.powercon20ACircuits || 1} lộ PowerCON 20A) · Treo ${s.totalRiggingWeightKg} kg (${s.engineeringRider?.hangingBars || 0} thanh treo · Đối trọng ${s.engineeringRider?.ballastKg || 0} kg)</div>
       </div>
+      ${mode === 'tech' && s.structureSvg ? `<div style="margin:12px 0"><strong>Sơ đồ Kết cấu & Khung treo LED (Structure & Rigging Preview)</strong>${s.structureSvg}</div>` : ''}
       <table>
         <thead>
           <tr>
@@ -2979,8 +3145,8 @@
         `<div class="info-box" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">` +
         `<div><small>${tr18("Tổng diện tích LED", "Total LED area")}</small><br><strong>${s.totalLedAreaM2} m² (${s.totalCabinets500} cab)</strong></div>` +
         `<div><small>${tr18("Xử lý điểm ảnh", "Pixel processing")}</small><br><strong>${(s.totalPixels / 1e6).toFixed(2)}M px (${s.rj45PortsNeeded} ${tr18("cổng", "ports")})</strong></div>` +
-        `<div><small>${tr18("Tải điện 3 pha 380V", "380V three-phase load")}</small><br><strong>${s.totalMaxKw} kW (~${s.currentPerPhaseAmps}A/${tr18("pha", "phase")})</strong></div>` +
-        `<div><small>${tr18("Tổng tải treo Truss", "Total truss rigging load")}</small><br><strong>~${s.totalRiggingWeightKg} kg</strong></div>` +
+        `<div><small>${tr18("Tải điện 3 pha 380V", "380V three-phase load")}</small><br><strong>${s.totalMaxKw} kW (L1:${s.engineeringRider?.phaseLoadAmps?.L1 || s.currentPerPhaseAmps}A · L2:${s.engineeringRider?.phaseLoadAmps?.L2 || s.currentPerPhaseAmps}A · L3:${s.engineeringRider?.phaseLoadAmps?.L3 || s.currentPerPhaseAmps}A)</strong><br><small>${s.engineeringRider?.powercon20ACircuits || 1} ${tr18("lộ PowerCON 20A", "PowerCON 20A circuits")} · ${s.engineeringRider?.recommendedBreaker || 'MCCB 3P'}</small></div>` +
+        `<div><small>${tr18("Tải treo & Kết cấu", "Rigging & structure")}</small><br><strong>~${s.totalRiggingWeightKg} kg · ${s.engineeringRider?.hangingBars || 0} ${tr18("thanh treo", "hanging bars")}</strong><br><small>${tr18("Đối trọng stack:", "Ground ballast:")} ~${s.engineeringRider?.ballastKg || 0} kg</small></div>` +
         `</div>` +
         `<div class="info-box" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px">` +
         `<label style="font-size:var(--fs-md)">${tr18("Tên Khách hàng / Đơn vị", "Client / organization")}<input id="lumi18QuoteClient" class="search" value="${esc18(q.clientName)}"></label>` +
@@ -3004,6 +3170,7 @@
         `<button type="button" class="btn small" id="lumi18ExportCsvBtn">${tr18("Xuất Excel (CSV)", "Export Excel (CSV)")}</button>` +
         `<button type="button" class="btn small" id="lumi18PrintTechBtn">${tr18("Hồ sơ Kỹ thuật PDF", "Technical PDF")}</button>` +
         `<button type="button" class="btn small" id="lumi18ExportDxfBtn">${tr18("Xuất AutoCAD .DXF", "Export AutoCAD .DXF")}</button>` +
+        `<button type="button" class="btn small" id="lumi18ExportDmxCsvBtn">${tr18("Bảng Patch DMX (CSV)", "DMX patch table (CSV)")}</button>` +
         `<button type="button" class="btn small" id="lumi18ImportDxfBtn">${tr18("Nhập Mặt bằng .DXF", "Import floor plan .DXF")}</button>` +
         `</div></div>` +
         `</div>`;
@@ -3057,6 +3224,8 @@
       }
       const dxfBtn = $('lumi18ExportDxfBtn');
       if (dxfBtn) dxfBtn.onclick = () => exportStageDxf();
+      const dmxCsvBtn = $('lumi18ExportDmxCsvBtn');
+      if (dmxCsvBtn) dmxCsvBtn.onclick = () => S.exportDmxPatchCsv?.();
 
       const importDxfBtn = $('lumi18ImportDxfBtn');
       if (importDxfBtn) {
@@ -3677,6 +3846,11 @@
         chip.innerHTML = ico18(lumiState.isProActive ? 'crown' : 'wallet') + '<span>' + (lumiState.isProActive ? 'PRO' : lumiState.balanceReady ? lumiState.balanceCredits.toLocaleString() + ' Credit' : tr18('Tài khoản', 'Account')) + '</span>';
         chip.title = tr18('Tài khoản', 'Account'); chip.setAttribute('aria-label', chip.title);
       }
+      const aiToggle = $('aiChat18Toggle');
+      if (aiToggle) {
+        aiToggle.title = tr18('Trợ lý AI · Ctrl+I', 'AI assistant · Ctrl+I');
+        aiToggle.setAttribute('aria-label', aiToggle.title);
+      }
     }
 
 
@@ -3747,9 +3921,9 @@
 
     function injectLumiStageUI() {
       if (S.cloud16?.isClientReviewMode?.()) return;
-      document.title = 'ALPHA Creative LED Studio';
+      document.title = 'Creative LED Studio';
       const brandTitle = document.querySelector?.('.topbar .brand strong');
-      if (brandTitle) brandTitle.innerHTML = 'ALPHA <span>Creative LED Studio</span>';
+      if (brandTitle) brandTitle.innerHTML = '<span class="brand-creative">Creative</span> <span class="brand-studio">LED Studio</span>';
       const brandSub = document.querySelector?.('.topbar .brand small');
       if (brandSub) brandSub.textContent = tr18('Thiết kế sân khấu 3D', '3D stage design');
 
@@ -3790,10 +3964,10 @@
       const actions = document.querySelector?.('.header-actions');
       if (actions && !$('aiChat18Toggle')) {
         const ai = document.createElement('button');
-        ai.id = 'aiChat18Toggle'; ai.type = 'button'; ai.className = 'icon-btn';
+        ai.id = 'aiChat18Toggle'; ai.type = 'button'; ai.className = 'icon-btn ai-toggle-btn';
         ai.title = tr18('Trợ lý AI · Ctrl+I', 'AI assistant · Ctrl+I');
         ai.setAttribute('aria-label', ai.title); ai.setAttribute('aria-controls', 'aiChat18'); ai.setAttribute('aria-expanded', 'false');
-        ai.innerHTML = ico18('bot'); ai.onclick = openStageAiModal;
+        ai.innerHTML = ico18('bot') + '<span class="ai18-toggle-badge">AI</span>'; ai.onclick = openStageAiModal;
         actions.prepend(ai);
         document.addEventListener('keydown', e => { if (e.ctrlKey && e.key.toLowerCase() === 'i' && !S.cloud16?.isClientReviewMode?.()) { e.preventDefault(); openStageAiModal(); } });
         try { const layout = JSON.parse(localStorage.getItem('ledstudio-ai-chat') || '{}'); chatWidth18 = Number(layout.width) || 0; } catch { /* storage unavailable */ }
@@ -3862,6 +4036,8 @@
       parseStagePromptOffline,
       runStageAiPrompt,
       computeStageBom,
+      computeEngineeringRider,
+      buildStructurePreviewSvg,
       buildClientProposalText,
       generateStageDxf,
       exportStageDxf,

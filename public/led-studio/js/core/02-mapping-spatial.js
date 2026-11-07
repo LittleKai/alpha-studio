@@ -507,7 +507,62 @@ planarUV=function(mesh){return measureFace(mesh);};
 faceMesh=function(hit){const m=V031.faceMesh(hit);m.preferredUp=hit.mesh.worldAxes?.[1]||[0,1,0];m.uv=measureFace(m).uv;return m;};
 bindingMetadata=function(mesh,options={}){const base=V031.bindingMetadata(mesh,options),source=engine.stage.find(m=>m.id===base.sourceMeshId);return {...base,bindVersion:'0.4.0',sourceMeshPath:source?.path||null,sourceKey:source?.sourceKey||null,sourceTriangles:mesh._ledBinding?.triangles||options.sourceTriangles||null,referenceSpace:'stage-meters'};};
 sourceForSurface=function(s){if(s.sourceKey){const m=engine.stage.find(m=>m.sourceKey===s.sourceKey);if(m)return m;}if(s.sourceMeshPath){const a=engine.stage.filter(m=>m.path===s.sourceMeshPath);if(a.length===1)return a[0];}return V031.sourceForSurface(s);};
-createSurface=function(mesh,name,options={}){const source=mesh._ledBinding?engine.stage.find(m=>m.id===mesh._ledBinding.sourceMeshId):engine.stage.find(m=>m===mesh);if(source?.worldAxes)mesh.preferredUp=source.worldAxes[1];const info=measureFace(mesh),s=V031.createSurface(mesh,name,{w:clamp(Math.round(info.width*128),8,8192),h:clamp(Math.round(info.height*128),8,8192),...options});s.mesh.preferredUp=mesh.preferredUp?vecCopy(mesh.preferredUp):[0,1,0];s.mappingSpace=options.mappingSpace||'local';s.nativeResolution=options.nativeResolution||{width:s.w,height:s.h,confirmed:false};s.aspectLock=options.aspectLock??true;s.metricFrame={right:info.right,up:info.up,normal:info.normal,origin:info.origin};s.physical=[info.width,info.height];return s;};
+function normalizeSurfaceHardware(s) {
+ const cabW = clamp(Math.round(+s.cabW || 500), 100, 2000);
+ const cabH = clamp(Math.round(+s.cabH || 500), 100, 2000);
+ const pxW = clamp(Math.round(+s.pxW || 192), 8, 2048);
+ const pxH = clamp(Math.round(+s.pxH || 192), 8, 2048);
+ const physW = Math.max(0.25, +(s.physical?.[0] || (s.w / pxW) * (cabW / 1000) || 4));
+ const physH = Math.max(0.25, +(s.physical?.[1] || (s.h / pxH) * (cabH / 1000) || 2.5));
+ const cols = Math.max(1, Math.min(64, Math.ceil((physW * 1000 - 1) / cabW)));
+ const rows = Math.max(1, Math.min(64, Math.ceil((physH * 1000 - 1) / cabH)));
+ const angleDeg = clamp(+(s.panelAngleDeg || 0), -15, 15);
+ const validOrders = ['snake-tl-h','snake-tr-h','snake-bl-h','snake-br-h','snake-tl-v','snake-tr-v','snake-bl-v','snake-br-v'];
+ const wiringOrder = validOrders.includes(s.wiringOrder) ? s.wiringOrder : 'snake-tl-h';
+ const rawVoids = Array.isArray(s.virtualTiles) ? s.virtualTiles : [];
+ const voidSet = new Set();
+ for (const item of rawVoids) {
+  const str = String(item);
+  const parts = str.split(',');
+  const c = +parts[0], r = +parts[1];
+  if (Number.isInteger(c) && Number.isInteger(r) && c >= 0 && c < cols && r >= 0 && r < rows) {
+   voidSet.add(c + ',' + r);
+  }
+ }
+ s.cabW = cabW; s.cabH = cabH; s.pxW = pxW; s.pxH = pxH;
+ s.cabCols = cols; s.cabRows = rows;
+ s.panelAngleDeg = angleDeg;
+ s.wiringOrder = wiringOrder;
+ s.virtualTiles = [...voidSet];
+ s.totalCabinetGrid = cols * rows;
+ s.activeCabinets = Math.max(0, s.totalCabinetGrid - s.virtualTiles.length);
+ return s;
+}
+function toggleVirtualTile(s, col, row) {
+ normalizeSurfaceHardware(s);
+ const c = Math.floor(+col), r = Math.floor(+row);
+ if (c < 0 || c >= s.cabCols || r < 0 || r >= s.cabRows) return s.virtualTiles;
+ const key = c + ',' + r;
+ const set = new Set(s.virtualTiles);
+ if (set.has(key)) set.delete(key); else set.add(key);
+ s.virtualTiles = [...set];
+ s.activeCabinets = Math.max(0, s.totalCabinetGrid - s.virtualTiles.length);
+ return s.virtualTiles;
+}
+function computeCurvedSpanMeters(cols, cabWmm, panelAngleDeg) {
+ const n = Math.max(1, Math.round(+cols || 1));
+ const w = Math.max(0.1, (+cabWmm || 500) / 1000);
+ const arcMeters = +(n * w).toFixed(3);
+ const deg = Math.abs(+panelAngleDeg || 0);
+ if (deg < 0.05 || n <= 1) return { arcMeters, chordMeters: arcMeters, depthMeters: 0 };
+ const theta = (deg * Math.PI) / 180;
+ const totalTheta = n * theta;
+ const radius = w / (2 * Math.sin(theta / 2));
+ const chordMeters = +(2 * radius * Math.sin(totalTheta / 2)).toFixed(3);
+ const depthMeters = +(radius * (1 - Math.cos(totalTheta / 2))).toFixed(3);
+ return { arcMeters, chordMeters, depthMeters };
+}
+createSurface=function(mesh,name,options={}){const source=mesh._ledBinding?engine.stage.find(m=>m.id===mesh._ledBinding.sourceMeshId):engine.stage.find(m=>m===mesh);if(source?.worldAxes)mesh.preferredUp=source.worldAxes[1];const info=measureFace(mesh),s=V031.createSurface(mesh,name,{w:clamp(Math.round(info.width*128),8,8192),h:clamp(Math.round(info.height*128),8,8192),...options});s.mesh.preferredUp=mesh.preferredUp?vecCopy(mesh.preferredUp):[0,1,0];s.mappingSpace=options.mappingSpace||'local';s.nativeResolution=options.nativeResolution||{width:s.w,height:s.h,confirmed:false};s.aspectLock=options.aspectLock??true;s.metricFrame={right:info.right,up:info.up,normal:info.normal,origin:info.origin};s.physical=[info.width,info.height];normalizeSurfaceHardware(s);return s;};
 
 /* Shared stage-space content UVs. Pixel crop and physical geometry are separate. */
 function layoutReference(){const r=engine.layout?.reference;return r&&finiteArray(r.right,3)&&finiteArray(r.up,3)?r:defaultLayout().reference;}
@@ -534,7 +589,7 @@ autoMapCreated=function(){return rebuildSpatialMap({activate:true,record:false})
 autoDetect=function(){busy(true,(typeof window==='undefined'?"Đang phân tích mặt LED...":window.tr?.("Đang phân tích mặt LED...","Analyzing LED faces...")??"Đang phân tích mặt LED..."));setTimeout(()=>{try{const arr=detectLEDCandidates();busy(false);if(!arr.length){toast((typeof window==='undefined'?"Không có ứng viên. Click mặt LED hoặc vẽ 4 góc.":window.tr?.("Không có ứng viên. Click mặt LED hoặc vẽ 4 góc.","No candidates. Click an LED face or draw four corners.")??"Không có ứng viên. Click mặt LED hoặc vẽ 4 góc."));return;}const make=spatial=>{const chosen=[...document.querySelectorAll('[data-detect]:checked')].map(e=>arr[+e.dataset.detect]).filter(c=>!c.existing);if(!chosen.length){toast((typeof window==='undefined'?"Chưa chọn màn mới.":window.tr?.("Chưa chọn màn mới.","No new screen selected.")??"Chưa chọn màn mới."));return;}checkpoint();for(const c of chosen)createSurface(c.face,c.mesh.name,{planar:true});if(spatial)rebuildSpatialMap({activate:true,record:false});engine.view='stage';engine.globalTest=true;state.step='mapping';renderUI();toast((typeof window==='undefined'?"LED gắn từ đúng tam giác gốc. Pixel LED thực cần nhập riêng.":window.tr?.("LED gắn từ đúng tam giác gốc. Pixel LED thực cần nhập riêng.","LED attached to original triangles. Enter actual LED pixels separately.")??"LED gắn từ đúng tam giác gốc. Pixel LED thực cần nhập riêng."),6500);};dialog((typeof window==='undefined'?"Nhận diện LED / cùng hệ quy chiếu":window.tr?.("Nhận diện LED / cùng hệ quy chiếu","Detect LEDs / shared reference frame")??"Nhận diện LED / cùng hệ quy chiếu"),(typeof window==='undefined'?"<p>Gợi ý theo tên/hình học; chọn đúng mặt phát hình. Tỷ lệ 3D lấy nguyên từ model.</p><div class=\"candidate-list\">":window.tr?.("<p>Gợi ý theo tên/hình học; chọn đúng mặt phát hình. Tỷ lệ 3D lấy nguyên từ model.</p><div class=\"candidate-list\">","<p>Suggestions use names/geometry; select the emitting face. 3D scale comes from the model.</p><div class=\"candidate-list\">")??"<p>Gợi ý theo tên/hình học; chọn đúng mặt phát hình. Tỷ lệ 3D lấy nguyên từ model.</p><div class=\"candidate-list\">")+arr.slice(0,80).map((c,i)=>`<label class="check-row"><input type="checkbox" data-detect="${i}" ${c.existing?'disabled':c.recommended?'checked':''}><span><b>${esc(c.mesh.name)}</b><small>${fmt(c.info.width)} \u00d7 ${fmt(c.info.height)} m / ${c.existing?(typeof window==='undefined'?"Đã có mapping":window.tr?.("Đã có mapping","Already mapped")??"Đã có mapping"):esc(c.reasons.join(' / '))}</small></span></label>`).join('')+(typeof window==='undefined'?"</div><p class=\"hint-text\">Map theo sân khấu giữ khoảng hở. Không xếp màn sát thành hàng.</p>":window.tr?.("</div><p class=\"hint-text\">Map theo sân khấu giữ khoảng hở. Không xếp màn sát thành hàng.</p>","</div><p class=\"hint-text\">Stage mapping preserves gaps. Screens are not packed into a row.</p>")??"</div><p class=\"hint-text\">Map theo sân khấu giữ khoảng hở. Không xếp màn sát thành hàng.</p>"),[{label:(typeof window==='undefined'?"Hủy":window.tr?.("Hủy","Cancel")??"Hủy")},{label:(typeof window==='undefined'?"Tạo LED / crop riêng":window.tr?.("Tạo LED / crop riêng","Create LED / manual crop")??"Tạo LED / crop riêng"),action:()=>make(false)},{label:(typeof window==='undefined'?"Tạo + map theo sân khấu":window.tr?.("Tạo + map theo sân khấu","Create + stage mapping")??"Tạo + map theo sân khấu"),primary:true,action:()=>make(true)}]);}catch(e){busy(false);toast(e.message,8500);}},30);};
 assignMaster=function(a,{mode=engine.layout?.mode==='spatial'?'stage':'local'}={}){if(!engine.surfaces.length){toast((typeof window==='undefined'?"Tạo mặt LED trước khi gán video.":window.tr?.("Tạo mặt LED trước khi gán video.","Create an LED face before assigning video.")??"Tạo mặt LED trước khi gán video."));return;}checkpoint();for(const s of engine.surfaces){s.mappingSpace=mode==='stage'?'stage':'local';V031.setSource(s,a.id);}if(mode==='stage')rebuildSpatialMap({width:a.width,height:a.height,activate:true,record:false});else for(const s of engine.surfaces)cropFromMap(s,a);if(a.duration){state.duration=+a.duration.toFixed(2);state.time=0;syncVideos(true);}engine.view='stage';engine.globalTest=false;renderUI();toast(mode==='stage'?(typeof window==='undefined'?"Video theo bố cục 3D: một tỷ lệ chung, giữ khoảng hở.":window.tr?.("Video theo bố cục 3D: một tỷ lệ chung, giữ khoảng hở.","Video follows the 3D layout: shared scale, gaps preserved.")??"Video theo bố cục 3D: một tỷ lệ chung, giữ khoảng hở."):(typeof window==='undefined'?"Video đã chia ô: kiểm tra crop X/Y/rộng/cao từng LED.":window.tr?.("Video đã chia ô: kiểm tra crop X/Y/rộng/cao từng LED.","Tiled video: check crop X/Y/width/height for each LED.")??"Video đã chia ô: kiểm tra crop X/Y/rộng/cao từng LED."),7500);};
 function manualCropMode(s=surface()){if(!s)return;checkpoint();s.mappingSpace='local';engine.releaseMesh(s.mesh);resetFlatCache();renderUI();toast((typeof window==='undefined'?"Crop riêng. Model 3D và kích thước vật lý không thay đổi.":window.tr?.("Crop riêng. Model 3D và kích thước vật lý không thay đổi.","Manual crop. 3D model and physical dimensions unchanged.")??"Crop riêng. Model 3D và kích thước vật lý không thay đổi."));}
-function restoreSpatialBindings(){for(const s of engine.surfaces){const src=sourceForSurface(s);if(src){s.sourceMeshId=src.id;s.sourceKey=src.sourceKey;s.sourceMeshPath=src.path||null;s.mesh.preferredUp=src.worldAxes?.[1]||[0,1,0];}s.mappingSpace ||= 'local';s.nativeResolution ||= {width:s.w,height:s.h,confirmed:false};s.physical=s.mappingMode==='uv'&&finiteArray(s.physical,2)?s.physical:[measureFace(s.mesh).width,measureFace(s.mesh).height];if(s.mappingSpace==='stage'&&engine.layout?.bounds&&engine.layout?.padding){s.mesh.mapUV=calculateMapUV(s);engine.releaseMesh(s.mesh);}}resetFlatCache();}
+function restoreSpatialBindings(){for(const s of engine.surfaces){const src=sourceForSurface(s);if(src){s.sourceMeshId=src.id;s.sourceKey=src.sourceKey;s.sourceMeshPath=src.path||null;s.mesh.preferredUp=src.worldAxes?.[1]||[0,1,0];}s.mappingSpace ||= 'local';s.nativeResolution ||= {width:s.w,height:s.h,confirmed:false};s.physical=s.mappingMode==='uv'&&finiteArray(s.physical,2)?s.physical:[measureFace(s.mesh).width,measureFace(s.mesh).height];normalizeSurfaceHardware(s);if(s.mappingSpace==='stage'&&engine.layout?.bounds&&engine.layout?.padding){s.mesh.mapUV=calculateMapUV(s);engine.releaseMesh(s.mesh);}}resetFlatCache();}
 snapshot=function(){return {...V031.snapshot(),coordinates:structuredClone(engine.coordinates),layout:structuredClone(engine.layout),camera:structuredClone(engine.camera)};};
 restore=function(s){if(s.coordinates?.config)applyCoordinateConfig(s.coordinates.config,{record:false,updateAttachments:false,fit:false});if(s.coordinates)engine.coordinates=structuredClone(s.coordinates);engine.layout=structuredClone(s.layout||defaultLayout());V031.restore(s);if(s.camera)engine.camera=structuredClone(s.camera);restoreSpatialBindings();engine.rebuildFixtures();renderUI();};
 importModel=async function(files,{silent=false}={}){if(state.importing)return;state.importing=true;busy(true,(typeof window==='undefined'?"Đang đọc model và hệ quy chiếu...":window.tr?.("Đang đọc model và hệ quy chiếu...","Reading model and reference frame...")??"Đang đọc model và hệ quy chiếu..."));try{const list=Array.from(files);if(list.reduce((a,f)=>a+f.size,0)>600*1024*1024)throw Error((typeof window==='undefined'?"Model vượt 600 MB.":window.tr?.("Model vượt 600 MB.","Model exceeds 600 MB.")??"Model vượt 600 MB."));const result=await Importer.load(list);engine.setModel(result.meshes);engine.sourcePunctualLights=result.punctualLights||[];engine.surfaces=[];engine.selected=null;engine.lights=[];engine.rebuildFixtures();state.model={name:result.name,files:result.files,demo:false};state.projectName=result.name.replace(/\.[a-z0-9]+$/i,'');state.warnings=result.warnings;state.history=[];state.redo=[];state.selectedMesh=null;state.hit=null;state.rebindId=null;state.selectedLight=null;cancelSpatialPick();engine.globalTest=false;engine.view='stage';state.step='stage';engine.settings.ambient=.65;engine.settings.beam=.6;const ext=result.name.split('.').pop().toLowerCase();engine.coordinates.sourceInfo={format:ext,normalizedByImporter:true,declaredUnit:ext==='obj'?'unspecified (assumed meters)':ext==='dae'?'COLLADA asset unit / up_axis':'glTF meters / Y-up',...result.coordinateInfo};renderUI();if(!silent){toast((typeof window==='undefined'?"Đã nhập ":window.tr?.("Đã nhập ","Imported ")??"Đã nhập ")+result.name+(typeof window==='undefined'?". Kiểm tra kích thước mét trước khi map. Không tự thêm đèn.":window.tr?.(". Kiểm tra kích thước mét trước khi map. Không tự thêm đèn.",". Check dimensions in meters before mapping. No lights added automatically.")??". Kiểm tra kích thước mét trước khi map. Không tự thêm đèn."),8000);if(result.warnings.length)dialog((typeof window==='undefined'?"Lưu ý model":window.tr?.("Lưu ý model","Model notes")??"Lưu ý model"),'<p>'+result.warnings.map(esc).join('<br>')+'</p>');}return result;}finally{state.importing=false;busy(false);}};
@@ -547,7 +602,7 @@ setSource=function(s,id){V031.setSource(s,id);if(engine.media.has(id)){s.mapping
 const oldReplaceSurfaceGeometry=replaceSurfaceGeometry;
 replaceSurfaceGeometry=function(s,face){oldReplaceSurfaceGeometry(s,face);if(s.mappingSpace==='stage')rebuildSpatialMap({activate:false,record:false});};
 const metricSnapshot=snapshot;
-snapshot=function(){const d=metricSnapshot();d.surfaces=d.surfaces.map(s=>({...s,nativeResolution:s.nativeResolution?{...s.nativeResolution}:undefined,physical:s.physical?[...s.physical]:undefined,metricFrame:s.metricFrame?structuredClone(s.metricFrame):undefined}));return d;};
+snapshot=function(){const d=metricSnapshot();d.surfaces=d.surfaces.map(s=>({...s,nativeResolution:s.nativeResolution?{...s.nativeResolution}:undefined,physical:s.physical?[...s.physical]:undefined,metricFrame:s.metricFrame?structuredClone(s.metricFrame):undefined,cabW:s.cabW,cabH:s.cabH,pxW:s.pxW,pxH:s.pxH,cabCols:s.cabCols,cabRows:s.cabRows,panelAngleDeg:s.panelAngleDeg,wiringOrder:s.wiringOrder,virtualTiles:Array.isArray(s.virtualTiles)?[...s.virtualTiles]:[]}));return d;};
 
 /* Anchored fixtures: select source lens, then target in the same metric scene. */
 StageEngine.prototype.rebuildFixtures=function(){for(const m of this.fixtureMeshes)this.releaseMesh(m);this.fixtureMeshes=[];for(const l of this.lights){if(l.origin==='model'||l.origin==='gltf')continue;const size=l.fixtureSize||[.3,.38,.3],mesh=boxMesh(l.name+' / proxy',M.add(l.pos,[0,size[1]*.45,0]),size,[.12,.14,.18,1]);mesh.lightId=l.id;this.fixtureMeshes.push(mesh);}};
@@ -609,6 +664,35 @@ function bindSpatialMappingPanel(s){
   };
  }
 }
+function surfaceHardwarePanel(s){
+ normalizeSurfaceHardware(s);
+ const curve=computeCurvedSpanMeters(s.cabCols,s.cabW,s.panelAngleDeg);
+ const voidSet=new Set(s.virtualTiles);
+ const maxPreviewCols=Math.min(s.cabCols,14),maxPreviewRows=Math.min(s.cabRows,10);
+ let gridHtml='<div class="cab-void-grid" style="display:grid;grid-template-columns:repeat('+maxPreviewCols+',1fr);gap:3px;margin:8px 0;">';
+ for(let r=0;r<maxPreviewRows;r++){
+  for(let c=0;c<maxPreviewCols;c++){
+   const key=c+','+r,isVoid=voidSet.has(key);
+   gridHtml+='<button type="button" class="btn small" data-void-tile="'+key+'" style="padding:3px 2px;font-size:10px;opacity:'+(isVoid?'0.32':'1')+';border-style:'+(isVoid?'dashed':'solid')+';" title="'+(isVoid?'Ô rỗng / Virtual Void':'Cabinet thật ('+(c+1)+','+(r+1)+')')+'">'+(isVoid?'∅':(c+1)+':'+(r+1))+'</button>';
+  }
+ }
+ gridHtml+='</div>';
+ return `<div class="inspector-block hardware-led-panel"><h3 class="block-title"><svg class="ico ico-led" aria-hidden="true"><use href="#i-grid-3x3"></use></svg><span>${(typeof window==='undefined'?"Cabinet, Góc cong & Đi dây":window.tr?.("Cabinet, Góc cong & Đi dây","Cabinet, Curve & Wiring")??"Cabinet, Góc cong & Đi dây")}</span></h3>
+ <div class="field-grid two">${field('surfCabW','Rộng Cab (mm)',s.cabW,{min:100,max:2000,step:50})}${field('surfCabH','Cao Cab (mm)',s.cabH,{min:100,max:2000,step:50})}</div>
+ <div class="field-grid two">${field('surfAngleDeg','Góc khóa cong (°/cab)',s.panelAngleDeg,{min:-15,max:15,step:2.5})}<div class="field"><label>${(typeof window==='undefined'?"Đi dây tín hiệu":window.tr?.("Đi dây tín hiệu","Signal wiring")??"Đi dây tín hiệu")}</label><select id="surfWiringOrder"><option value="snake-tl-h">Ziczac Ngang · Trái-Trên (TL-H)</option><option value="snake-tr-h">Ziczac Ngang · Phải-Trên (TR-H)</option><option value="snake-bl-h">Ziczac Ngang · Trái-Dưới (BL-H)</option><option value="snake-br-h">Ziczac Ngang · Phải-Dưới (BR-H)</option><option value="snake-tl-v">Ziczac Dọc · Trái-Trên (TL-V)</option><option value="snake-tr-v">Ziczac Dọc · Phải-Trên (TR-V)</option><option value="snake-bl-v">Ziczac Dọc · Trái-Dưới (BL-V)</option><option value="snake-br-v">Ziczac Dọc · Phải-Dưới (BR-V)</option></select></div></div>
+ <div class="metric-pair"><div><b>${s.activeCabinets}/${s.totalCabinetGrid} cab</b><span>Lưới ${s.cabCols}×${s.cabRows} (${s.virtualTiles.length} ô rỗng)</span></div><div><b>${curve.chordMeters} m</b><span>Dây cung · Sâu ${curve.depthMeters} m</span></div></div>
+ <p class="hint-text">Click ô cabinet bên dưới để bật/tắt <b>Virtual Tile (Ô rỗng cửa vòm)</b>:</p>${gridHtml}</div>`;
+}
+function bindSurfaceHardwarePanel(s){
+ if($('surfWiringOrder'))$('surfWiringOrder').value=s.wiringOrder||'snake-tl-h';
+ change('surfCabW',v=>{s.cabW=clamp(Math.round(+v)||500,100,2000);normalizeSurfaceHardware(s);renderInspector();});
+ change('surfCabH',v=>{s.cabH=clamp(Math.round(+v)||500,100,2000);normalizeSurfaceHardware(s);renderInspector();});
+ change('surfAngleDeg',v=>{s.panelAngleDeg=clamp(+v||0,-15,15);normalizeSurfaceHardware(s);renderInspector();});
+ change('surfWiringOrder',v=>{s.wiringOrder=v;normalizeSurfaceHardware(s);});
+ document.querySelectorAll('[data-void-tile]').forEach(btn=>{
+  btn.onclick=()=>{const [c,r]=btn.dataset.voidTile.split(',').map(Number);toggleVirtualTile(s,c,r);renderInspector();};
+ });
+}
 function lightingInspector(){
  const l=engine.lights.find(x=>x.id===state.selectedLight)||engine.lights[0];if(l)state.selectedLight=l.id;
  $('inspectorKicker').textContent=(typeof window==='undefined'?"Ánh sáng":window.tr?.("Ánh sáng","Lighting")??"Ánh sáng");$('inspectorTitle').textContent=(typeof window==='undefined'?"Đèn gắn trên model":window.tr?.("Đèn gắn trên model","Model-mounted lights")??"Đèn gắn trên model");$('inspectorSubtitle').textContent=(typeof window==='undefined'?"Chọn vị trí thật, rồi chọn điểm chiếu. Không dựng lại dàn đèn.":window.tr?.("Chọn vị trí thật, rồi chọn điểm chiếu. Không dựng lại dàn đèn.","Select actual positions, then targets. Existing rig preserved.")??"Chọn vị trí thật, rồi chọn điểm chiếu. Không dựng lại dàn đèn.");
@@ -631,7 +715,7 @@ renderInspector=function(){
  if(state.step==='lighting')lightingInspector();else{
   V031.renderInspector();
   const panel=$('inspectorContent');panel.insertAdjacentHTML('afterbegin',spatialWorkflowPanel());
-  const s=surface();if(state.step==='mapping'&&s){panel.insertAdjacentHTML('afterbegin',spatialMappingPanel(s));bindSpatialMappingPanel(s);}
+  const s=surface();if(state.step==='mapping'&&s){panel.insertAdjacentHTML('afterbegin',surfaceHardwarePanel(s));panel.insertAdjacentHTML('afterbegin',spatialMappingPanel(s));bindSpatialMappingPanel(s);bindSurfaceHardwarePanel(s);}
   if(state.step==='stage'){
    const mesh=engine.stage.find(m=>m.id===state.selectedMesh);
    if(mesh){const div=document.createElement('div');div.className='inspector-block';div.innerHTML=(typeof window==='undefined'?"<h3 class=\"block-title\">Object đèn trên model?</h3><button class=\"btn full-btn\" id=\"meshAsLight\">Chọn mặt kính đèn → điểm chiếu</button>":window.tr?.("<h3 class=\"block-title\">Object đèn trên model?</h3><button class=\"btn full-btn\" id=\"meshAsLight\">Chọn mặt kính đèn → điểm chiếu</button>","<h3 class=\"block-title\">Light object on the model?</h3><button class=\"btn full-btn\" id=\"meshAsLight\">Select fixture lens → target</button>")??"<h3 class=\"block-title\">Object đèn trên model?</h3><button class=\"btn full-btn\" id=\"meshAsLight\">Chọn mặt kính đèn → điểm chiếu</button>");panel.prepend(div);$('meshAsLight').onclick=()=>startSpatialPick('light-existing');}
@@ -678,7 +762,7 @@ function initSpatialEvents(){
  $('autoDetect').textContent=(typeof window==='undefined'?"Nhận diện LED":window.tr?.("Nhận diện LED","Detect LEDs")??"Nhận diện LED");
  $('helpBtn').onclick=()=>dialog((typeof window==='undefined'?"V0.4 / cùng hệ quy chiếu":window.tr?.("V0.4 / cùng hệ quy chiếu","Shared reference frame")??"V0.4 / cùng hệ quy chiếu"),(typeof window==='undefined'?"<h3>1. Kiểm tra tỷ lệ</h3><p>Nhập GLB/DAE/OBJ. Xem kích thước mét. Cần sửa: Hệ quy chiếu hoặc Đo 2 điểm.</p><h3>2. Gắn LED</h3><p>Chọn mặt phát hình. Map theo bố cục sân khấu giữ nguyên khoảng hở và góc nghiêng. Nhập pixel LED thực riêng khi có số liệu.</p><h3>3. Chọn đúng kiểu video</h3><p>Hình tổng: spatial master. Clip đã chia ô: manual crop. Không thể tự suy ra bố cục clip đó từ model.</p><h3>4. Đèn</h3><p>Click mặt kính đèn trên model, sau đó click điểm chiếu. Preset chỉ thay đổi look, không di chuyển đèn.</p><h3>5. Lưu</h3><p>File .ledstudio lưu cả hệ quy chiếu, mapping và nguồn sáng. Bản này là preview cục bộ; không có DMX hay cấu hình processor LED.</p>":window.tr?.("<h3>1. Kiểm tra tỷ lệ</h3><p>Nhập GLB/DAE/OBJ. Xem kích thước mét. Cần sửa: Hệ quy chiếu hoặc Đo 2 điểm.</p><h3>2. Gắn LED</h3><p>Chọn mặt phát hình. Map theo bố cục sân khấu giữ nguyên khoảng hở và góc nghiêng. Nhập pixel LED thực riêng khi có số liệu.</p><h3>3. Chọn đúng kiểu video</h3><p>Hình tổng: spatial master. Clip đã chia ô: manual crop. Không thể tự suy ra bố cục clip đó từ model.</p><h3>4. Đèn</h3><p>Click mặt kính đèn trên model, sau đó click điểm chiếu. Preset chỉ thay đổi look, không di chuyển đèn.</p><h3>5. Lưu</h3><p>File .ledstudio lưu cả hệ quy chiếu, mapping và nguồn sáng. Bản này là preview cục bộ; không có DMX hay cấu hình processor LED.</p>","<h3>1. Check scale</h3><p>Import GLB/DAE/OBJ. Check dimensions in meters. Adjust using Reference frame or Measure two points.</p><h3>2. Attach LEDs</h3><p>Select emitting faces. Stage layout mapping preserves gaps and angles. Enter actual LED pixels separately when known.</p><h3>3. Choose the correct video type</h3><p>Full image: spatial master. Tiled clip: manual crop. Clip layout cannot be inferred from the model.</p><h3>4. Lights</h3><p>Click a fixture lens on the model, then its target. Presets change looks without moving lights.</p><h3>5. Save</h3><p>The .ledstudio file saves the reference frame, mapping and light sources. This is a local preview; no DMX or LED processor configuration here.</p>")??"<h3>1. Kiểm tra tỷ lệ</h3><p>Nhập GLB/DAE/OBJ. Xem kích thước mét. Cần sửa: Hệ quy chiếu hoặc Đo 2 điểm.</p><h3>2. Gắn LED</h3><p>Chọn mặt phát hình. Map theo bố cục sân khấu giữ nguyên khoảng hở và góc nghiêng. Nhập pixel LED thực riêng khi có số liệu.</p><h3>3. Chọn đúng kiểu video</h3><p>Hình tổng: spatial master. Clip đã chia ô: manual crop. Không thể tự suy ra bố cục clip đó từ model.</p><h3>4. Đèn</h3><p>Click mặt kính đèn trên model, sau đó click điểm chiếu. Preset chỉ thay đổi look, không di chuyển đèn.</p><h3>5. Lưu</h3><p>File .ledstudio lưu cả hệ quy chiếu, mapping và nguồn sáng. Bản này là preview cục bộ; không có DMX hay cấu hình processor LED.</p>"));
 }
-const spatialAPI={applyCoordinateConfig,calculateFrame,measureFace,rebuildSpatialMap,activateSpatialLayout,manualCropMode,referenceFrameDialog,startSpatialPick,cancelSpatialPick,addAnchoredLight,handleSpatialClick,restoreSpatialBindings,get layout(){return engine.layout;},undo,redo};
+const spatialAPI={applyCoordinateConfig,calculateFrame,measureFace,rebuildSpatialMap,activateSpatialLayout,manualCropMode,referenceFrameDialog,startSpatialPick,cancelSpatialPick,addAnchoredLight,handleSpatialClick,restoreSpatialBindings,normalizeSurfaceHardware,toggleVirtualTile,computeCurvedSpanMeters,get layout(){return engine.layout;},undo,redo};
 
 /* V0.4.1 UI/playback maintenance. No geometry, UV, crop or coordinate mutations. */
 const STABLE_BASE={renderUI,renderInspector,loadProject,exportShot,exportMapPNG};

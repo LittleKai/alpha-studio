@@ -36,21 +36,21 @@
   --icon-violet: #b8a8ff;
   --icon-teal: #5eead4;
   --icon-amber: #f7be5c;
-  --ico-stage: #38bdf8;
-  --ico-led: #2dd4bf;
-  --ico-lights: #f59e0b;
-  --ico-choreo: #f43f5e;
-  --ico-show: #a855f7;
-  --ico-export: #3b82f6;
-  --ico-more: #94a3b8;
-  --ico-drive: #38bdf8;
-  --ico-save: #10b981;
-  --ico-open: #f59e0b;
-  --ico-history: #14b8a6;
-  --ico-preset: #c084fc;
-  --ico-share: #38bdf8;
-  --ico-help: #60a5fa;
-  --ico-vj: #ef4444;
+  --ico-stage: #67e8f9;
+  --ico-led: #5eead4;
+  --ico-lights: #fde047;
+  --ico-choreo: #f9a8d4;
+  --ico-show: #d8b4fe;
+  --ico-export: #7dd3fc;
+  --ico-more: #cbd5e1;
+  --ico-drive: #67e8f9;
+  --ico-save: #6ee7b7;
+  --ico-open: #fcd34d;
+  --ico-history: #5eead4;
+  --ico-preset: #d8b4fe;
+  --ico-share: #67e8f9;
+  --ico-help: #93c5fd;
+  --ico-vj: #fdba74;
   /* State colours: never decoration. Pair with a word or icon. */
   --ok: #4ee0a0; --ok-text: var(--ok); --ok-soft: color-mix(in srgb, var(--ok) 18%, transparent);
   --warn: #f5b041; --warn-text: var(--warn); --warn-soft: color-mix(in srgb, var(--warn) 18%, transparent);
@@ -2007,6 +2007,11 @@ html:not([data-theme="light"]) #v16PropRail button[data-prop16="m131"] .ico{colo
 .brandmark.has-img{background:transparent!important;overflow:hidden}
 .brandmark:has(img){background:transparent!important;overflow:hidden}
 .brandmark img{width:100%;height:100%;object-fit:contain;border-radius:inherit;display:block}
+.brand strong,#bootSplash strong{display:inline-flex;align-items:baseline;gap:6px;line-height:1.15}
+.brand strong .brand-creative,#bootSplash strong .brand-creative{font-family:Georgia,"Palatino Linotype","Book Antiqua",serif;font-style:italic;font-weight:700;font-size:var(--fs-lg);letter-spacing:.4px;margin-left:0;background:linear-gradient(125deg,#67e8f9 0%,#a78bfa 55%,#f9a8d4 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 10px rgba(103,232,249,.22))}
+.brand strong .brand-studio,#bootSplash strong .brand-studio{font-family:"Segoe UI",system-ui,sans-serif;font-weight:800;font-size:var(--fs-sm);letter-spacing:1.5px;text-transform:uppercase;color:var(--text-primary);margin-left:0}
+[data-theme="light"] .brand strong .brand-creative,[data-theme="light"] #bootSplash strong .brand-creative{background:linear-gradient(125deg,#0284c7 0%,#6d28d9 55%,#db2777 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:none}
+[data-theme="light"] .brand strong .brand-studio,[data-theme="light"] #bootSplash strong .brand-studio{color:var(--text-primary)}
 .repair-mapping,#choreoToggle11{background:var(--button-bg)!important;border-color:var(--button-border)!important;color:var(--button-text)!important}
 .repair-mapping:hover:not(:disabled),#choreoToggle11:hover:not(:disabled){background:var(--button-hover)!important;border-color:var(--button-focus)!important}
 html:not([data-theme="light"]) #lockCameraBtn.active,html:not([data-theme="light"]) #showLock.active,html:not([data-theme="light"]) #v16NavLockBtn.active{background:#38270b!important;border-color:#f59e0b!important;color:#fef08a!important}
@@ -2070,7 +2075,17 @@ body.client-review-mode #aiChat18,body.client-review-mode #aiChat18Toggle,body.r
 #v07Timeline:not(.active) .ico{color:var(--ico-show)}#v07Audio .ico{color:var(--ico-preset)}#lumi18LiveShowBtn .ico{color:var(--ico-choreo)}#presentBtn .ico{color:var(--ico-save)}#toolbar18Show .ico{color:var(--ico-show)}
 #exportBtn .ico{color:var(--ico-export)}#lumi18BomBtn .ico{color:var(--ico-stage)}
 #cloud16SaveBtn .ico{color:var(--ico-save)}#cloud16OpenBtn .ico{color:var(--ico-open)}#cloud16PresetsBtn .ico{color:var(--ico-preset)}#cloud16ShareBtn .ico{color:var(--ico-share)}#recovery142OpenBtn .ico{color:var(--ico-history)}#helpBtn .ico{color:var(--ico-help)}#v16AllToolsBtn:not(.active) .ico{color:var(--ico-more)}
-#aiChat18Toggle .ico{color:var(--ico-show)}
+#aiChat18Toggle{width:auto;min-height:30px;padding:0 10px;gap:5px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:linear-gradient(135deg,rgba(56,189,248,.22),rgba(168,85,247,.28));border:1px solid #67e8f9;color:#f4f8ff;box-shadow:0 0 12px rgba(103,232,249,.22),inset 0 1px 0 rgba(255,255,255,.16);font-size:var(--fs-xs);font-weight:700;letter-spacing:.5px;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease,background .16s ease}
+#aiChat18Toggle .ico{color:#67e8f9;filter:drop-shadow(0 0 5px rgba(103,232,249,.45))}
+#aiChat18Toggle .ai18-toggle-badge{font-size:var(--fs-xs);font-weight:800;letter-spacing:.6px;background:linear-gradient(120deg,#e0f2fe,#e9d5ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+#aiChat18Toggle:hover{background:linear-gradient(135deg,rgba(56,189,248,.34),rgba(168,85,247,.4));border-color:#a5f3fc;box-shadow:0 0 16px rgba(103,232,249,.38);transform:translateY(-1px)}
+#aiChat18Toggle[aria-expanded="true"]{background:linear-gradient(135deg,#0284c7,#7c3aed);border-color:#a5f3fc;color:#ffffff;box-shadow:0 0 18px rgba(124,58,237,.48)}
+#aiChat18Toggle[aria-expanded="true"] .ico,#aiChat18Toggle[aria-expanded="true"] .ai18-toggle-badge{color:#ffffff;background:none;-webkit-text-fill-color:#ffffff;filter:none}
+[data-theme="light"] #aiChat18Toggle{background:linear-gradient(135deg,rgba(2,132,199,.14),rgba(124,58,237,.16));border-color:#0284c7;color:#0c4a6e;box-shadow:0 2px 8px rgba(2,132,199,.16)}
+[data-theme="light"] #aiChat18Toggle .ico{color:#0284c7;filter:none}
+[data-theme="light"] #aiChat18Toggle .ai18-toggle-badge{background:linear-gradient(120deg,#0369a1,#6d28d9);-webkit-background-clip:text;background-clip:text;color:transparent}
+[data-theme="light"] #aiChat18Toggle[aria-expanded="true"]{background:linear-gradient(135deg,#0284c7,#6d28d9);border-color:#0369a1;color:#ffffff}
+[data-theme="light"] #aiChat18Toggle[aria-expanded="true"] .ico,[data-theme="light"] #aiChat18Toggle[aria-expanded="true"] .ai18-toggle-badge{color:#ffffff;background:none;-webkit-text-fill-color:#ffffff}
 .export-menu button .ico{width:18px;height:18px;flex:none;margin-right:8px}
 #exportShot .ico,#exportShot4K .ico{color:var(--ico-stage)}#exportCadDxf18 .ico{color:var(--ico-export)}#exportQuotePdf18 .ico{color:var(--ico-preset)}#exportMapPNG .ico{color:var(--ico-led)}#exportJSON .ico{color:var(--ico-open)}#exportCSV .ico{color:var(--ico-save)}#recordBtn .ico{color:var(--ico-vj)}
 #toolbar18Groups .ico,#toolbar18File .ico,.toolbar18-menu>button .ico,.export-menu button .ico{transition:transform .16s ease,filter .16s ease}
@@ -2082,7 +2097,7 @@ body.client-review-mode #aiChat18,body.client-review-mode #aiChat18Toggle,body.r
 .left-panel .section-heading:hover h3,.left-panel .section-kicker:hover{color:var(--text-primary)}
 .left-panel .v16-collapsed .section-heading,.left-panel .v16-collapsed .section-kicker{margin-bottom:0}
 .workflow .workflow-right{overflow:visible;flex:1;min-width:0;justify-content:flex-end}.topbar .header-actions{overflow:visible}.topbar .project-name{flex:1;min-width:0}.topbar .brand{flex:none}.topbar .brand strong{white-space:nowrap}.toolbar18-menu #ledManagerBtn,.toolbar18-menu #atlasBtn,.toolbar18-menu #vjToggle,.toolbar18-menu #v07Cast{display:flex!important}
-@media(max-width:1450px){#toolbar18Groups>.btn{padding:6px 7px}.workflow .steps{gap:4px}.workflow .step{padding:0 4px}.topbar .brand small{display:none}.topbar .project-name{display:flex}.topbar .brand strong span{display:block;font-size:var(--fs-xs)}#newProject>span,#loadProject>span,#saveProject>span,#toolbar18-more>span{display:none}#newProject,#loadProject,#saveProject{padding:0 8px;min-width:32px}#newProject .ico,#loadProject .ico,#saveProject .ico{margin-right:0}}
+@media(max-width:1450px){#toolbar18Groups>.btn{padding:6px 7px}.workflow .steps{gap:4px}.workflow .step{padding:0 4px}.topbar .brand small{display:none}.topbar .project-name{display:flex}.topbar .brand strong .brand-creative{font-size:var(--fs-md)}.topbar .brand strong .brand-studio{font-size:var(--fs-xs);letter-spacing:1.1px}#newProject>span,#loadProject>span,#saveProject>span,#toolbar18-more>span{display:none}#newProject,#loadProject,#saveProject{padding:0 8px;min-width:32px}#newProject .ico,#loadProject .ico,#saveProject .ico{margin-right:0}}
 @media(max-width:1100px){.workflow{overflow:visible;flex-wrap:wrap;align-content:center}#toolbar18Groups>.btn{padding:5px}.workflow .steps .step>span{display:none}.topbar .project-name{display:none}}
 body.mobile-lite #toolbar18Groups{display:none}body.mobile-lite .header-actions #aiChat18Toggle,body.mobile-lite .header-actions #account18Chip{display:inline-flex!important}
 body.client-review-mode #toolbar18File,body.client-review-mode .toolbar18-menu{display:none!important}
