@@ -1,0 +1,65 @@
+{
+  "contract": "led-asset/v1",
+  "id": "stage_bassist",
+  "title": "Stage Bassist \u2014 4-string electric bass & strap",
+  "category": "human",
+  "tags": "human bassist bass guitar band musician stylized rigged animation CC0",
+  "size_m": [
+    1.858683,
+    1.844444,
+    0.392489
+  ],
+  "origin": "floor-center",
+  "tris": 3499,
+  "texture_px": 512,
+  "glb_bytes": 506580,
+  "glb_sha256": "fd75ca98aedb3ec2a0330999baa4efe1db6fd51dbe54ecd5bb1fb75ffdfe11d8",
+  "source": "design-mcp/blender/.pjs/led_stage_assets/_scratch/stage-characters-expansion-20261106/stage-bassist",
+  "author": "Mesh2Motion CC0 rig; Design-MCP stylized pilot derivative and stage bassist motions",
+  "license": "CC0-1.0",
+  "distribution": "commercial-ok",
+  "ofl_fixture": null,
+  "animation_pilot": {
+    "joints": 66,
+    "skins": 1,
+    "animations": 3,
+    "animation_names": [
+      "Bassist 01 - Fingerstyle Groove (8s)",
+      "Bassist 02 - Accent Phrase (8s)",
+      "Bassist 03 - Ready Idle (6s)"
+    ],
+    "default_clip": "Bassist 01 - Fingerstyle Groove (8s)",
+    "bind_height_m": 1.844444,
+    "note": "Authored finger groove, slap/pop accent, and pocket idle clips with spine-bound long-scale 4-string bass and strap",
+    "texture_size": [
+      512,
+      512
+    ],
+    "target_triangle_range": [
+      3000,
+      5000
+    ],
+    "clips": [
+      {
+        "name": "Bassist 01 - Fingerstyle Groove (8s)",
+        "duration_s": 8.0
+      },
+      {
+        "name": "Bassist 02 - Accent Phrase (8s)",
+        "duration_s": 8.0
+      },
+      {
+        "name": "Bassist 03 - Ready Idle (6s)",
+        "duration_s": 6.0
+      }
+    ]
+  },
+  "native_blend_sha256": "1682ba2fc3dd56e35acbb5adeab970a5e0f3cbd3d4611ada45c56bde545c26d1",
+  "atlas_png_sha256": "23868a8754a58c9f1eb8b671c4af3054345d7c76e922e44f99d3ea33361f17e8",
+  "thumbnail_png_sha256": "1ed18fab1dec4398ab1c1b417ed1db7742b8f236f50922764b2daeb414fdc1f5",
+  "acceptance": {
+    "structural_check": "PASS",
+    "runtime_webgl2_acceptance": "PASS (file:// index.html, Cast Library, save/reopen, picking, benchmark <= 1.5x)",
+    "artist_aesthetic_acceptance": "PENDING_HUMAN_REVIEW (automated structural/runtime PASS separated from final human artist sign-off)"
+  }
+}

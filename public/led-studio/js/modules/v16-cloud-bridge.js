@@ -103,6 +103,7 @@
     ['.workflow [data-step="lighting"] b', 'Ánh sáng & show', 'LIGHTING & SHOW'],
     ['#ledManagerBtn', 'Quản lý LED', 'LED Manager'],
     ['#exportBtn', 'Xuất', 'Export'],
+    ['.import-section .section-kicker', 'Tài nguyên dự án', 'Project Assets'],
     ['#importModel strong', 'Nhập sân khấu 3D', 'Import 3D Stage'],
     ['#importModel small', 'Kéo file vào cửa sổ để bắt đầu', 'Drag files into window to start'],
     ['#demoBtn', 'Sân khấu mẫu', 'Demo Stage'],
@@ -234,8 +235,10 @@
       const txt = (leftTitle.textContent || '').trim();
       if (txt === 'Cấu trúc sân khấu' || txt === 'Stage Structure') {
         leftTitle.textContent = isEn ? 'Stage Structure' : 'Cấu trúc sân khấu';
-      } else if (txt === 'Danh sách màn LED' || txt === 'LED Surfaces') {
+      } else if (txt === 'Danh sách màn LED' || txt === 'LED Surfaces' || txt === 'Danh sách LED' || txt === 'LED List') {
         leftTitle.textContent = isEn ? 'LED Surfaces' : 'Danh sách màn LED';
+      } else if (txt === 'Hệ thống đèn' || txt === 'Lighting System') {
+        leftTitle.textContent = isEn ? 'Lighting System' : 'Hệ thống đèn';
       }
     }
     const gridBtn = document.getElementById('show137EditorButton');

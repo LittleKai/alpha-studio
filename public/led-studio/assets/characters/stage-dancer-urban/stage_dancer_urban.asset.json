@@ -1,0 +1,76 @@
+{
+  "contract": "led-asset/v1",
+  "id": "stage_dancer_urban",
+  "title": "Urban Dancer \u2014 streetwear choreography & stage mix",
+  "category": "human",
+  "tags": "human dancer urban hiphop street dance choreography stylized rigged animation CC0",
+  "size_m": [
+    1.858683,
+    1.838545,
+    0.370834
+  ],
+  "origin": "floor-center",
+  "tris": 3219,
+  "texture_px": 512,
+  "glb_bytes": 645000,
+  "glb_sha256": "66b4c8de74c348affe41d7559378564454ffd4984f8870127556739f7ab8197a",
+  "source": "design-mcp/blender/.pjs/led_stage_assets/_scratch/stage-characters-expansion-20261106/stage-dancer-urban",
+  "author": "Mesh2Motion CC0 rig & dance clips; Design-MCP stylized urban dancer derivative and IK-pinned footwork",
+  "license": "CC0-1.0",
+  "distribution": "commercial-ok",
+  "ofl_fixture": null,
+  "animation_pilot": {
+    "joints": 66,
+    "skins": 1,
+    "animations": 3,
+    "animation_names": [
+      "Urban Dancer 01 - Groove (8s)",
+      "Urban Dancer 02 - Footwork (8s)",
+      "Urban Dancer 03 - Stage Mix (16s)"
+    ],
+    "default_clip": "Urban Dancer 01 - Groove (8s)",
+    "bind_height_m": 1.838545,
+    "stance_drift_max_m": 0.001936,
+    "retarget_sources": {
+      "human_base_animations_glb_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+      "human_addon_animations_glb_sha256": "a0d64d555e0d492026b72d58bf8e16c5e86779295f9093e376dcc001915c2c95",
+      "source_clips_used": [
+        "Dance_Simple",
+        "Dance Body Roll",
+        "Dance Reach Hip",
+        "Dance Charleston"
+      ]
+    },
+    "note": "Retargeted CC0 Mesh2Motion dance upper-body (Dance_Simple, Dance Body Roll, Dance Reach Hip, Dance Charleston) combined with analytical 2-bone leg IK stance-foot pinning and 16s crossfade stage mix",
+    "texture_size": [
+      512,
+      512
+    ],
+    "target_triangle_range": [
+      3000,
+      5000
+    ],
+    "clips": [
+      {
+        "name": "Urban Dancer 01 - Groove (8s)",
+        "duration_s": 8.0
+      },
+      {
+        "name": "Urban Dancer 02 - Footwork (8s)",
+        "duration_s": 8.0
+      },
+      {
+        "name": "Urban Dancer 03 - Stage Mix (16s)",
+        "duration_s": 16.0
+      }
+    ]
+  },
+  "native_blend_sha256": "a730d9dfe01e7021a7cf8b6271c2f5bf0396894cd0d94718e84c8ac9db840083",
+  "atlas_png_sha256": "bc0b5db45d65490f2108464dae887cd632d700ac4ce7acb596a88fca89e3987c",
+  "thumbnail_png_sha256": "dad413fae361daadec3bd90310e50f025cdd0beca9ff27eecf27edd8614e882a",
+  "acceptance": {
+    "structural_check": "PASS",
+    "runtime_webgl2_acceptance": "PASS (file:// index.html, Cast Library, save/reopen, picking, benchmark <= 1.5x)",
+    "artist_aesthetic_acceptance": "PENDING_HUMAN_REVIEW (automated structural/runtime PASS separated from final human artist sign-off)"
+  }
+}

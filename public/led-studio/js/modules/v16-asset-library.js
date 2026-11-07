@@ -10,6 +10,7 @@
   const tr=(vi,en)=>window.tr?window.tr(vi,en):vi;
   const clamp16=(v,a,b)=>Math.min(b,Math.max(a,Number.isFinite(+v)?+v:a));
   const esc16=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const loc16=s=>window.localizeObjectName?window.localizeObjectName(s):String(s??'');
 
   const CATALOG={
    truss_tower:{name:"3.6m upright truss tower",legacyName:'Trụ Truss Đứng 3.6m',get displayName(){return this.name;},label:'TRUSS TOWER',get cat(){return tr('Khung / Giàn',"Frame / truss");},color:'#8c9bb0',get desc(){return tr('Cột truss hộp nhôm 0.4×3.6m + đế thép',"0.4×3.6m aluminum box truss with steel base");}},
@@ -73,6 +74,7 @@
    allToolsVisible:false,
    blenderUI:true,
    tShelfHidden:false,
+   rightPanelCollapsed:false,
    openMenuKey:null,
    collapsedBlocks:new Set(loadCollapsed16().keys),
    allBlocksCollapsed:loadCollapsed16().all,
@@ -104,6 +106,7 @@
 
   // Centralized dock coordinator to prevent overlapping right-panel tools (Bug #6 guard)
   function closeAllDocks16(except=''){
+   if(except && except!=='inspector' && A.rightPanelCollapsed)A.rightPanelCollapsed=false;
    if(except!=='aiChat18')S.lumi18?.closeAiChat18?.();
    if(except!=='v16Asset' && A.isOpen)close();
    if(except!=='fx141')S.fx141?.close?.();
@@ -280,6 +283,9 @@
     transformMesh(m,mat);
     m.name=itemDisplayName16(item)+' / '+m.name;
     m._asset16Id=item.id;
+    m.sourceKey=m.sourceKey||m.id;
+    m.nodePath=m.nodePath||(item.id+'/'+m.id);
+    m._sourceP=new Float32Array(m.p);
    }
    return parts;
   }
@@ -321,6 +327,26 @@
    return A.items.find(x=>x.id===A.selected)||A.items[0]||null;
   }
 
+  function activateAddedAssetMove16(meshes,label){
+   A.measureMode=false;A.placeMode=false;
+   if(state.quad){state.quad=false;state.quadPoints=[];$('quadHint')?.classList.add('hidden');}
+   state.step='stage';engine.view='stage';
+   if(meshes?.length){
+    const first=meshes[0];
+    state.selectedMesh=first.id;state.hit=null;engine.selected=null;
+    S.setEditMode8?.('move');
+    if(meshes.length>1&&typeof S.selectionSet9==='function'){
+     S.selectionSet9(meshes.map(m=>({kind:'mesh',id:m.sourceKey||m.id})),{label});
+     state.selectedMesh=first.id;
+    }else{
+     S.selectObject8?.('mesh',first.sourceKey||first.id);
+    }
+   }
+   renderUI?.();
+   syncBlenderState16();
+   S.scrollObjectListToSelection8?.();
+  }
+
   function addCatalogItem(kind,pos=null){
    const spec=CATALOG[kind];
    if(!spec){toast(tr('Loại asset không hợp lệ.',"Invalid asset type."));return null;}
@@ -342,6 +368,7 @@
    A.selected=item.id;
    syncItemMeshes(item);
    engine.view='stage';
+   if(typeof activateAddedAssetMove16==='function')activateAddedAssetMove16(A.meshMap.get(item.id),itemDisplayName16(item));
    paint();
    toast(tr('Đã thêm ',"Added ")+itemDisplayName16(item)+tr(' vào sân khấu 3D.'," to the 3D stage."));
    return item;
@@ -985,9 +1012,14 @@
    }
    const oflMeta=opts.ofl_fixture?resolveOflFixture16(opts.ofl_fixture):null;
    let finalMin=[Infinity,Infinity,Infinity],finalMax=[-Infinity,-Infinity,-Infinity];
+   const propGroup='cc0_'+String(opts.id||title||'prop');
    for(const m of parsed.meshes){
     m.name='CC0 '+title+' / '+m.name;
+    m._importedGlb16=true;
     m._assetOrigin16=isMountPoint?'mount-point':'floor-center';
+    m.sourceKey=m.sourceKey||m.id;
+    m.nodePath=m.nodePath||(propGroup+'/'+m.id);
+    m._sourceP=new Float32Array(m.p);
     if(oflMeta){
      m._oflFixture=oflMeta;
      m._fixturePowerW=oflMeta.powerW;
@@ -999,8 +1031,7 @@
    const rig=buildFixtureRig16(parsed.meshes,shift,oflMeta,String(opts.id||title||'fixture'));
    engine._stageBatchDirty=true;
    S.mount136?.invalidate?.();
-   engine.view='stage';
-   renderUI?.();
+   activateAddedAssetMove16(parsed.meshes,'CC0 '+title);
    paint();
    return {
     id:rig?.id||opts.id||title,
@@ -2023,6 +2054,9 @@
    S.rebuildActCache?.();
    S.renderCastManager?.();
    engine.view='stage';
+   S.setEditMode8?.('move');
+   S.scrollObjectListToSelection8?.();
+   syncBlenderState16();
    if(A.isOpen)paint();
    toast(tr('Đã dàn dựng mẫu 3D: ',"Applied 3D stage preset: ")+ex.label);
    return ex;
@@ -2047,7 +2081,7 @@
       <div class="v16-live-preview">
        <canvas id="v16PropLiveCanvas" width="320" height="240" title="${tr("Kéo chuột để xoay mô hình đạo cụ 3D","Drag to rotate the 3D prop")}"></canvas>
        <div class="v16-live-meta">
-        <strong id="v16PropLiveTitle">${esc16(prevSpec.displayName)}</strong>
+        <strong id="v16PropLiveTitle">${esc16(loc16(prevSpec.displayName))}</strong>
         <small id="v16PropLiveDesc">${esc16(prevSpec.cat)} · ${esc16(prevSpec.desc||prevSpec.label)}</small>
         <div class="v16-grid">
          <button data-add16="${esc16(prevKind)}" id="v16PropLiveAddBtn" class="btn small primary">${tr("+ Đặt vào sân khấu","+ Add to stage")}</button>
@@ -2068,22 +2102,22 @@
       <div class="v16-catgrid">
        ${Object.entries(CATALOG).map(([k,v])=>`
         <button data-add16="${k}" data-prev16="${k}" class="v16-catcard ${k===prevKind?'active':''}">
-         <span class="v16-catthumb"><img src="${getAssetPreviewURL16(k)}" alt="${esc16(v.displayName)}" loading="lazy"></span>
+         <span class="v16-catthumb"><img src="${getAssetPreviewURL16(k)}" alt="${esc16(loc16(v.displayName))}" loading="lazy"></span>
          <span class="v16-cathead"><i class="v16-dot" style="background:${esc16(v.color)}"></i><b>+ ${esc16(v.label)}</b></span>
-         <small>${esc16(v.displayName)}</small>
+         <small>${esc16(loc16(v.displayName))}</small>
         </button>`).join('')}
       </div>
      </section>
      <section class="v16-section">
       <h4>${tr("ASSET ĐÃ ĐẶT TRÊN SÂN KHẤU (","STAGE ASSETS (")}${A.items.length} / 64)</h4>
       <div class="v16-chips">
-       ${A.items.map(x=>`<button data-sel16="${esc16(x.id)}" class="btn small ${x.id===A.selected?'primary':''}">${esc16(itemDisplayName16(x))}</button>`).join('')||`<p class="v16-empty">${tr("Chưa có đạo cụ phụ. Chọn một hạng mục ở trên để đặt vào sân khấu 3D.","No props yet. Choose an item above to add it to the 3D stage.")}</p>`}
+       ${A.items.map(x=>`<button data-sel16="${esc16(x.id)}" class="btn small ${x.id===A.selected?'primary':''}">${esc16(loc16(itemDisplayName16(x)))}</button>`).join('')||`<p class="v16-empty">${tr("Chưa có đạo cụ phụ. Chọn một hạng mục ở trên để đặt vào sân khấu 3D.","No props yet. Choose an item above to add it to the 3D stage.")}</p>`}
       </div>
      </section>
      ${it?`
       <section class="v16-section">
        <div class="v16-row-between">
-        <h4>${tr("CHỈNH SỬA: ","EDIT: ")}${esc16(itemDisplayName16(it))}</h4>
+        <h4>${tr("CHỈNH SỬA: ","EDIT: ")}${esc16(loc16(itemDisplayName16(it)))}</h4>
         <button data-act16="place" class="btn small ${A.placeMode?'primary':''}">${tr("Click đặt trên 3D","Click to place in 3D")}</button>
        </div>
        <div class="v16-grid thirds">
@@ -2136,9 +2170,9 @@
        ${A.searchResults.map((r,idx)=>`
         <div class="v16-rescard">
          <div class="v16-thumb">
-          <img src="${esc16(r.thumb)}" alt="${esc16(r.displayTitle||r.title)}" loading="lazy">
+          <img src="${esc16(r.thumb)}" alt="${esc16(loc16(r.displayTitle||r.title))}" loading="lazy">
          </div>
-         <strong title="${esc16(r.displayTitle||r.title)}">${esc16(r.displayTitle||r.title)}</strong>
+         <strong title="${esc16(loc16(r.displayTitle||r.title))}">${esc16(loc16(r.displayTitle||r.title))}</strong>
          <small>${esc16(r.license)}${r.dims?' · '+esc16(r.dims):''}</small>
          <button data-import16="${idx}" class="btn small primary">+ ${(r.source==='polyhaven_model'||r.source==='gdrive_glb')?tr('Nạp 3D vào Stage',"Add 3D to stage"):tr('Nạp làm Media LED',"Add as LED media")}</button>
         </div>`).join('')}
@@ -2208,7 +2242,7 @@
     A.previewKind=k;
     const spec=CATALOG[k];
     const tEl=$('v16PropLiveTitle'), dEl=$('v16PropLiveDesc'), bEl=$('v16PropLiveAddBtn');
-    if(tEl)tEl.textContent=spec.displayName;
+    if(tEl)tEl.textContent=loc16(spec.displayName);
     if(dEl)dEl.textContent=spec.cat+' · '+(spec.desc||spec.label);
     if(bEl)bEl.dataset.add16=k;
     panel.querySelectorAll('.v16-catcard[data-prev16]').forEach(c=>c.classList.toggle('active',c.dataset.prev16===k));
@@ -2414,7 +2448,7 @@
     renderMeshes3DToCanvas16(cvs,buildPerformerPreviewEntries16(type,{action:A.castPreviewAction,color:A.castPreviewColor||meta.color,height:h,time:tSec}),{
      yaw:A.castPreviewYaw,pitch:0.16,zoom:1.74,noURL:true,
      fixedBounds:getPerformerFixedBounds16(type,h),
-     title:S.castNames?.[type]||type,subtitle:meta.tag,accent:A.castPreviewColor||meta.color,badge:meta.tag
+     title:loc16(S.castNames?.[type]||type),subtitle:meta.tag,accent:A.castPreviewColor||meta.color,badge:meta.tag
     });
    }
    castLiveRAF16=requestAnimationFrame(renderCastLiveFrame16);
@@ -2425,21 +2459,21 @@
    const set=(id,fn)=>{const el=$(id);if(el)fn(el);};
    let eyebrow,title,desc,addLabel;
    if(sel.kind==='act'){
-    const spec=S.ACT_TYPES[sel.id];
+    const spec=S.ACT_TYPES[sel.id],actTitle=loc16(spec.name);
     const members=actMembers16(sel.id);
     const counts={};
     for(const m of members)counts[m.role]=(counts[m.role]||0)+1;
-    const roster=Object.entries(counts).map(([r,n])=>(n>1?n+'× ':'')+(S.castNames?.[r]||r)).join(' · ');
+    const roster=Object.entries(counts).map(([r,n])=>(n>1?n+'× ':'')+loc16(S.castNames?.[r]||r)).join(' · ');
     eyebrow=tr('Xem trước đội hình tiết mục 3D',"Preview 3D act formation");
-    title=`${spec.name} (${spec.tag})`;
+    title=`${actTitle} (${spec.tag})`;
     desc=members.length?tr(`${members.length} người: ${roster}. Thêm cả đội hình vào sân khấu như một tiết mục.`,`${members.length} performers: ${roster}. Add the full formation as a stage act.`):tr('Khoảnh khắc sân khấu (không kèm người biểu diễn).',"Stage scene (no performers).");
-    addLabel=tr(`+ Thêm đội hình "${spec.name}" vào sân khấu`,`+ Add formation "${spec.name}" to stage`);
+    addLabel=tr(`+ Thêm đội hình "${actTitle}" vào sân khấu`,`+ Add formation "${actTitle}" to stage`);
    }else if(sel.kind==='qex'){
     const ex=QUICK_EXAMPLES16.find(x=>x.id===sel.id);
     const parts=[];
-    if(ex.act&&S.ACT_TYPES?.[ex.act])parts.push(tr(`Đội hình ${S.ACT_TYPES[ex.act].name} (${actMembers16(ex.act).length} người)`,`Formation ${S.ACT_TYPES[ex.act].name} (${actMembers16(ex.act).length} performers)`));
-    for(const c of ex.cast||[])parts.push(S.castNames?.[c.type]||c.type);
-    for(const pr of ex.props||[])parts.push(CATALOG[pr.kind]?.displayName||pr.kind);
+    if(ex.act&&S.ACT_TYPES?.[ex.act])parts.push(tr(`Đội hình ${loc16(S.ACT_TYPES[ex.act].name)} (${actMembers16(ex.act).length} người)`,`Formation ${loc16(S.ACT_TYPES[ex.act].name)} (${actMembers16(ex.act).length} performers)`));
+    for(const c of ex.cast||[])parts.push(loc16(S.castNames?.[c.type]||c.type));
+    for(const pr of ex.props||[])parts.push(loc16(CATALOG[pr.kind]?.displayName||pr.kind));
     const tally={};
     for(const p of parts)tally[p]=(tally[p]||0)+1;
     eyebrow=tr('Xem trước mẫu dàn dựng sân khấu',"Preview stage preset");
@@ -2448,7 +2482,7 @@
     addLabel=tr('+ Áp dụng mẫu này vào sân khấu',"+ Apply this stage preset");
    }else{
     const meta=PERFORMER_META16[sel.id]||PERFORMER_META16.singer;
-    const name=S.castNames?.[sel.id]||sel.id;
+    const name=loc16(S.castNames?.[sel.id]||sel.id);
     eyebrow=tr('Xem trước mô hình nhân vật 3D & đạo cụ cầm tay',"Preview 3D performer & handheld props");
     title=`${name} (${meta.tag})`;
     desc=meta.desc;
@@ -2526,11 +2560,11 @@
       </div>
       <div class="cast-add v16-cast-grid">
        ${roles.map(([id,name])=>{
-        const m=PERFORMER_META16[id]||{tag:'STAGE CAST 3D',color:'#38bdf8'};
+        const m=PERFORMER_META16[id]||{tag:'STAGE CAST 3D',color:'#38bdf8'}, disp=loc16(name);
         return `<button type="button" class="cast-card v16-cast-card" data-cast-pick16="role:${esc16(id)}" aria-pressed="false">
-         <div class="v16-cast-thumb"><img src="${esc16(getPerformerPreviewURL16(id))}" alt="${esc16(name)}" decoding="async"></div>
+         <div class="v16-cast-thumb"><img src="${esc16(getPerformerPreviewURL16(id))}" alt="${esc16(disp)}" decoding="async"></div>
          <span>${esc16(m.tag)}</span>
-         <div class="v16-cast-card-foot"><b>${esc16(name)}</b></div>
+         <div class="v16-cast-card-foot"><b>${esc16(disp)}</b></div>
         </button>`;
        }).join('')}
       </div>
@@ -2540,9 +2574,9 @@
         <div class="dir-act-grid" style="margin-top:6px">
          ${actEntries.map(([id,s])=>`
           <button type="button" data-cast-pick16="act:${esc16(id)}" aria-pressed="false">
-           <img class="v16-act-thumb" src="${esc16(getActPreviewURL16(id))}" alt="${esc16(s.name)}" decoding="async" loading="lazy">
+           <img class="v16-act-thumb" src="${esc16(getActPreviewURL16(id))}" alt="${esc16(loc16(s.name))}" decoding="async" loading="lazy">
            <small>${esc16(s.tag)}</small>
-           <strong>${esc16(s.name)}</strong>
+           <strong>${esc16(loc16(s.name))}</strong>
            <span>${tr("XEM TRƯỚC ĐỘI HÌNH","PREVIEW FORMATION")}</span>
           </button>`).join('')}
         </div>
@@ -2621,6 +2655,8 @@
     }
     S.rebuildCast?.();
     S.renderCastManager?.();
+    S.scrollObjectListToSelection8?.();
+    syncBlenderState16();
     if(placeOnFloor && p && S.sq){
      S.sq.placePerson=p.id;
      $('modal')?.close();
@@ -2639,6 +2675,8 @@
     const a=S.addAct8?.(sel.id);
     if(a){
      S.renderCastManager?.();
+     S.scrollObjectListToSelection8?.();
+     syncBlenderState16();
      toast(tr('Đã thêm đội hình 3D: ',"Added 3D formation: ")+a.name);
     }
    });
@@ -2727,9 +2765,36 @@
    return 'inspector';
   }
 
+  function toggleRightPanel16(force){
+   const chatOpen=Boolean($('aiChat18')&&!$('aiChat18').hidden);
+   A.rightPanelCollapsed=typeof force==='boolean'?force:(chatOpen?true:!A.rightPanelCollapsed);
+   if(A.rightPanelCollapsed)S.lumi18?.closeAiChat18?.();
+   syncBlenderState16(false);
+   requestAnimationFrame(()=>{
+    if(engine && !state.presenting){
+     if(engine._fitOnResize)engine.fit?.();
+     engine.render?.(state.time||0);
+     renderOverlays?.();
+    }
+   });
+   return A.rightPanelCollapsed;
+  }
+  S.toggleRightPanel16=toggleRightPanel16;
+
   function openDockByKey16(key){
    if(state.presenting){toast(tr('Thoát chế độ Trình diễn để mở bảng công cụ.',"Exit presentation to open tool panels."));return;}
    const cur=activeDockKey16();
+   if(A.rightPanelCollapsed){
+    A.rightPanelCollapsed=false;
+    if(key===cur){
+     syncBlenderState16();
+     requestAnimationFrame(()=>{if(engine&&!state.presenting){if(engine._fitOnResize)engine.fit?.();engine.render?.(state.time||0);renderOverlays?.();}});
+     return;
+    }
+   }else if(key==='inspector' && cur==='inspector'){
+    toggleRightPanel16(true);
+    return;
+   }
    if(key==='inspector' || (cur===key && key!=='inspector')){
     closeAllDocks16('inspector');
     A._lastDock='inspector';
@@ -2762,19 +2827,23 @@
   S.openDockByKey16=openDockByKey16;
 
   function triggerTShelfTool16(key){
-   if(key==='select'){
+   if(key==='select'||key==='move'||key==='rotate'){
     A.measureMode=false;A.placeMode=false;
-    document.querySelector('#dirToolbar [data-tool-mode="navigate"]')?.click();
+    if(state.quad){state.quad=false;state.quadPoints=[];$('quadHint')?.classList.add('hidden');}
+    const mode=key==='select'?'navigate':key;
+    if(typeof S.setEditMode8==='function')S.setEditMode8(mode);
+    else document.querySelector('#dirToolbar [data-tool-mode="'+mode+'"]')?.click();
     paint();
-   }else if(key==='move'){
-    document.querySelector('#dirToolbar [data-tool-mode="move"]')?.click();
-   }else if(key==='rotate'){
-    document.querySelector('#dirToolbar [data-tool-mode="rotate"]')?.click();
    }else if(key==='quad'){
+    A.measureMode=false;A.placeMode=false;
     $('drawQuad')?.click();
    }else if(key==='measure'){
     A.measureMode=!A.measureMode;
-    if(A.measureMode){A.placeMode=false;toast(tr('Thước đo 3D: Click 2 điểm bất kỳ trên sân khấu 3D để đo khoảng cách.',"3D measure: click any two stage points to measure distance."));}
+    if(A.measureMode){
+     A.placeMode=false;
+     if(state.quad){state.quad=false;state.quadPoints=[];$('quadHint')?.classList.add('hidden');}
+     toast(tr('Thước đo 3D: Click 2 điểm bất kỳ trên sân khấu 3D để đo khoảng cách.',"3D measure: click any two stage points to measure distance."));
+    }
     paint();
    }else if(key==='crease'){
     A.creaseEnabled=!A.creaseEnabled;
@@ -2812,7 +2881,7 @@
     {icon:'package',get label(){return tr('Nạp sân khấu mẫu (Demo Stage)',"Load demo stage");},kbd:'',run:()=>$('demoBtn')?.click()},
     {icon:'video',get label(){return tr('Thêm Video / Ảnh vào Thư viện Media',"Add video / images to media library");},kbd:'',run:()=>$('addMedia')?.click()},
     {sep:true},
-    ...Object.entries(CATALOG).map(([k,v])=>({icon:'plus',label:`+ ${v.displayName}`,kbd:v.label,thumb:getAssetPreviewURL16(k),run:()=>addCatalogItem(k)})),
+    ...Object.entries(CATALOG).map(([k,v])=>({icon:'plus',label:`+ ${loc16(v.displayName)}`,kbd:v.label,thumb:getAssetPreviewURL16(k),run:()=>addCatalogItem(k)})),
     {sep:true},
     {icon:'download',get label(){return tr('Tìm Asset 3D & Texture CC0 (Poly Haven / Wikimedia)',"Find CC0 3D assets & textures (Poly Haven / Wikimedia)");},kbd:'CC0',run:()=>open('search')},
     {icon:'drama',get label(){return tr('Thêm Nhân vật 3D (Cast Performers · 15 vai & 5 mẫu show)',"Add 3D performers (15 roles & 5 show presets)");},kbd:'3D',thumb:getPerformerPreviewURL16('fandancer'),run:()=>openCastLibrary16()}
@@ -2943,6 +3012,30 @@
     const hdr=blk.querySelector(':scope > .block-title, :scope > h3, :scope > .section-kicker, :scope > strong');
     if(!hdr)return;
     setClass16(hdr,'v16-acc-header',true);
+    if(!hdr.querySelector('svg.ico')){
+      const txt=(hdr.textContent||'').toLowerCase();
+      let iconMarkup='';
+      if(/led|pixel|ma trận|canvas/i.test(txt)){
+        iconMarkup='<svg class="ico ico-led" aria-hidden="true"><use href="#i-grid-3x3"></use></svg>';
+      }else if(/đèn|light|chiếu|spot/i.test(txt)){
+        iconMarkup='<svg class="ico ico-lights" aria-hidden="true"><use href="#i-lightbulb"></use></svg>';
+      }else if(/video|clip|media|nội dung/i.test(txt)){
+        iconMarkup='<svg class="ico ico-vj" aria-hidden="true"><use href="#i-clapperboard"></use></svg>';
+      }else if(/show|fx|hiệu ứng/i.test(txt)){
+        iconMarkup='<svg class="ico ico-show" aria-hidden="true"><use href="#i-sparkles"></use></svg>';
+      }else if(/thước|mét|tỷ lệ|scale|khung|mặt đứng/i.test(txt)){
+        iconMarkup='<svg class="ico ico-stage" aria-hidden="true"><use href="#i-ruler"></use></svg>';
+      }else if(/người|diễn|nhân vật|biên đạo|choreo|cast/i.test(txt)){
+        iconMarkup='<svg class="ico ico-choreo" aria-hidden="true"><use href="#i-drama"></use></svg>';
+      }else if(/laser/i.test(txt)){
+        iconMarkup='<svg class="ico ico-save" aria-hidden="true"><use href="#i-laser"></use></svg>';
+      }else if(/sân khấu|stage|mô hình|model/i.test(txt)){
+        iconMarkup='<svg class="ico ico-stage" aria-hidden="true"><use href="#i-box"></use></svg>';
+      }else{
+        iconMarkup='<svg class="ico ico-preset" aria-hidden="true"><use href="#i-sliders-horizontal"></use></svg>';
+      }
+      hdr.insertAdjacentHTML('afterbegin',iconMarkup);
+    }
     const key=(hdr.textContent||'').trim().slice(0,48)||('blk_'+idx);
     if(blk.dataset.v16AccKey!==key)blk.dataset.v16AccKey=key;
     const isCollapsed=A.allBlocksCollapsed ? !A.collapsedBlocks.has('__open_'+key) : A.collapsedBlocks.has(key);
@@ -2974,15 +3067,36 @@
     setClass16(document.body,'v16-blender-ui',!!A.blenderUI);
     setClass16(document.body,'v16-hide-tshelf',!!A.tShelfHidden);
     const activeDock=activeDockKey16();
+    if(A._prevActiveDock && A._prevActiveDock!==activeDock && activeDock!=='inspector' && A.rightPanelCollapsed){
+     A.rightPanelCollapsed=false;
+    }
+    A._prevActiveDock=activeDock;
+    setClass16(document.body,'right-panel-collapsed',!!A.rightPanelCollapsed);
     document.querySelectorAll('#v16PropRail button[data-prop16]').forEach(b=>{
-     setClass16(b,'active',b.dataset.prop16===activeDock);
+     setClass16(b,'active',!A.rightPanelCollapsed && b.dataset.prop16===activeDock);
     });
-    const toolMode=window.director?.mode||'navigate';
+    const rtBtn=$('v16ToggleRightBtn');
+    if(rtBtn && rtBtn._collapsedState!==!!A.rightPanelCollapsed){
+     const col=!!A.rightPanelCollapsed;
+     rtBtn._collapsedState=col;
+     setClass16(rtBtn,'is-collapsed',col);
+     rtBtn.setAttribute('aria-expanded',String(!col));
+     const hideBtn=$('v16HideRightBtn');
+     if(hideBtn)hideBtn.setAttribute('aria-expanded',String(!col));
+     const lbl=col?tr('Hiện bảng thuộc tính bên phải',"Show right properties panel"):tr('Ẩn bảng thuộc tính bên phải',"Hide right properties panel");
+     rtBtn.title=lbl;
+     rtBtn.setAttribute('aria-label',lbl);
+     const useEl=rtBtn.querySelector('use');
+     if(useEl)useEl.setAttribute('href',col?'#i-panel-right-open':'#i-panel-right-close');
+    }
+    const dir=S.director||window.director;
+    const toolMode=dir?.mode||'navigate';
+    const exclusivePick=!!state.quad||!!A.measureMode||!!A.placeMode;
     document.querySelectorAll('#v16TShelf button[data-tshelf16]').forEach(b=>{
      const k=b.dataset.tshelf16;
-     const on=(k==='select'&&toolMode==='navigate'&&!A.measureMode&&!A.placeMode)||
-      (k==='move'&&toolMode==='move')||
-      (k==='rotate'&&toolMode==='rotate')||
+     const on=(k==='select'&&(toolMode==='navigate'||toolMode==='select')&&!exclusivePick)||
+      (k==='move'&&(toolMode==='move'||toolMode==='scale'||toolMode==='box')&&!exclusivePick)||
+      (k==='rotate'&&toolMode==='rotate'&&!exclusivePick)||
       (k==='quad'&&!!state.quad)||
       (k==='measure'&&!!A.measureMode)||
       (k==='crease'&&!!A.creaseEnabled)||
@@ -2995,6 +3109,11 @@
     });
     const crBtn=$('v16QuickCreaseBtn');if(crBtn)setClass16(crBtn,'active',!!A.creaseEnabled);
     const msBtn=$('v16QuickMeasureBtn');if(msBtn)setClass16(msBtn,'active',!!A.measureMode);
+    const fltBar=$('v16ObjFilterBar');
+    if(fltBar){
+     const hideFlt=(state.step||'stage')!=='stage';
+     if(fltBar.hidden!==hideFlt)fltBar.hidden=hideFlt;
+    }
     const lkBtn=$('v16NavLockBtn');
     if(lkBtn){
      const lk=!!engine?.cameraLocked;
@@ -3042,17 +3161,65 @@
     if(impSec){
      impSec.classList.add('v16-collapsed');
      const k=impSec.querySelector('.section-kicker');
-     if(k){k.classList.add('v16-acc-header');k.title=tr('Click để đóng / mở mục Nhập mô hình 3D',"Click to expand / collapse 3D model import");k.onclick=()=>impSec.classList.toggle('v16-collapsed');}
+     if(k){
+      k.classList.remove('v16-acc-header');
+      k.title=tr('Click để ẩn / hiện Tài nguyên dự án',"Click to expand / collapse Project Assets");
+     }
     }
     if(medSec){
      medSec.classList.add('v16-collapsed');
      const h=medSec.querySelector('.section-heading');
-     if(h){h.classList.add('v16-acc-header');h.title=tr('Click để đóng / mở Thư viện Video',"Click to expand / collapse video library");h.onclick=e=>{if(e.target.closest('button'))return;medSec.classList.toggle('v16-collapsed');};}
+     if(h){
+      h.classList.remove('v16-acc-header');
+      h.title=tr('Click để ẩn / hiện Thư viện video',"Click to expand / collapse Video Library");
+     }
     }
     if(objSec){
      const h=objSec.querySelector('.section-heading');
-     if(h){h.classList.add('v16-acc-header');h.title=tr('Click để đóng / mở Cây cấu trúc sân khấu',"Click to expand / collapse stage outliner");h.onclick=e=>{if(e.target.closest('button'))return;objSec.classList.toggle('v16-collapsed');};}
+     if(h){
+      h.classList.remove('v16-acc-header');
+      h.title=tr('Click để ẩn / hiện Cấu trúc sân khấu',"Click to expand / collapse Stage Tree");
+     }
+     const searchInp=$('objectSearch');
+     if(searchInp && !$('v16ObjFilterBar')){
+      window._objFilter16=window._objFilter16||'all';
+      const fb=document.createElement('div');
+      fb.id='v16ObjFilterBar';
+      fb.className='v16-obj-filter-bar';
+      fb.setAttribute('role','tablist');
+      fb.setAttribute('aria-label',tr('Lọc nhanh vật thể sân khấu',"Quick stage object filter"));
+      const renderFilterBtns=()=>{
+       const cur=window._objFilter16||'all';
+       const tabs=[
+        ['all','<svg class="ico" aria-hidden="true"><use href="#i-layers"></use></svg>',tr('Tất cả vật thể','All objects')],
+        ['led','<svg class="ico ico-led" aria-hidden="true"><use href="#i-grid-3x3"></use></svg>',tr('Màn hình LED','LED screens')],
+        ['struct','<svg class="ico ico-stage" aria-hidden="true"><use href="#i-box"></use></svg>',tr('Khung & Sàn sân khấu','Stage & Truss')],
+        ['cast','<svg class="ico ico-choreo" aria-hidden="true"><use href="#i-drama"></use></svg>',tr('Đạo cụ 3D & Nhân vật','Props & 3D Cast')]
+       ];
+       fb.innerHTML=tabs.map(([id,svg,lbl])=>`<button type="button" role="tab" data-objflt16="${id}" data-tip="${esc16(lbl)}" aria-label="${esc16(lbl)}" aria-selected="${cur===id}" class="${cur===id?'active':''}">${svg}</button>`).join('');
+      };
+      renderFilterBtns();
+      fb._renderFilterBtns=renderFilterBtns;
+      fb.addEventListener('click',e=>{
+       const b=e.target.closest('button[data-objflt16]');
+       if(!b)return;
+       window._objFilter16=b.dataset.objflt16||'all';
+       renderFilterBtns();
+       S.renderLists?.();
+      });
+      searchInp.after(fb);
+     }
     }
+    lp.addEventListener('click',e=>{
+     if(e.target.closest('button,input,select,a,label'))return;
+     const hdr=e.target.closest('.section-heading, .section-kicker');
+     if(!hdr || !lp.contains(hdr))return;
+     const sec=hdr.closest('.import-section, .object-section, .media-section');
+     if(!sec)return;
+     const open=!sec.classList.toggle('v16-collapsed');
+     if(sec===impSec)ob.querySelector('[data-outliner16="import"]')?.classList.toggle('active',open);
+     if(sec===medSec)ob.querySelector('[data-outliner16="media"]')?.classList.toggle('active',open);
+    });
     ob.addEventListener('click',e=>{
      const b=e.target.closest('button[data-outliner16]');
      if(!b)return;
@@ -3061,19 +3228,132 @@
     });
    }
 
-   // 2. Right Module Switcher Icon Rail (#v16PropRail) in .workspace
+   // 2. Right Module Switcher Icon Rail (#v16PropRail) in .workspace & Resizable Panel Splitters
    const ws=document.querySelector('.workspace');
    if(ws && !$('v16PropRail')){
     const rail=document.createElement('nav');
     rail.id='v16PropRail';
     rail.className='v16-prop-rail';
     rail.setAttribute('aria-label',tr('Thanh chuyển nhanh mô-đun kỹ thuật',"Technical module shortcuts"));
-    rail.innerHTML=PROP_TABS16.map(t=>`<button type="button" data-prop16="${t.key}" title="${esc16(t.label)}" aria-label="${esc16(t.label)}">${icon(t.icon)}</button>`).join('');
+    const rtLbl=tr('Ẩn bảng thuộc tính bên phải',"Hide right properties panel");
+    rail.innerHTML=`<button type="button" id="v16ToggleRightBtn" class="v16-rail-toggle" title="${esc16(rtLbl)}" aria-label="${esc16(rtLbl)}" aria-expanded="true"><svg class="ico" aria-hidden="true"><use href="#i-panel-right-close"></use></svg></button>`+PROP_TABS16.map(t=>`<button type="button" data-prop16="${t.key}" title="${esc16(t.label)}" aria-label="${esc16(t.label)}">${icon(t.icon)}</button>`).join('');
     rail.addEventListener('click',e=>{
+     if(e.target.closest('#v16ToggleRightBtn')){toggleRightPanel16();return;}
      const b=e.target.closest('button[data-prop16]');
      if(b)openDockByKey16(b.dataset.prop16);
     });
     ws.appendChild(rail);
+   }
+   if(ws && !$('v16LeftSplitter')){
+    try{
+     const savedW=JSON.parse(localStorage.getItem('ledstudio-panel-widths')||'null');
+     if(savedW){
+      if(Number.isFinite(+savedW.left))document.documentElement.style.setProperty('--v16-left-w',Math.round(clamp16(+savedW.left,180,460))+'px');
+      if(Number.isFinite(+savedW.right))document.documentElement.style.setProperty('--v16-sidebar-w',Math.round(clamp16(+savedW.right,240,560))+'px');
+     }
+    }catch(_e){}
+    let resizeRaf=0;
+    const notifyResize16=()=>{
+     if(resizeRaf)return;
+     resizeRaf=requestAnimationFrame(()=>{
+      resizeRaf=0;
+      if(engine && !state.presenting){
+       engine.render?.(state.time||0);
+       renderOverlays?.();
+       lastGizmoYaw=NaN;
+       drawAxisGizmo16();
+      }
+      if(!$('aiChat18')?.hidden)window.dispatchEvent(new Event('resize'));
+     });
+    };
+    const saveWidths16=()=>{
+     try{
+      const cs=getComputedStyle(document.documentElement);
+      const lw=parseInt(cs.getPropertyValue('--v16-left-w'),10)||232;
+      const rw=parseInt(cs.getPropertyValue('--v16-sidebar-w'),10)||326;
+      localStorage.setItem('ledstudio-panel-widths',JSON.stringify({left:lw,right:rw}));
+     }catch(_e){}
+    };
+    const makeSplitter16=(id,side,host)=>{
+     if(!host)return;
+     const minW=side==='left'?180:240, maxW=side==='left'?460:560, defW=side==='left'?232:326;
+     const propName=side==='left'?'--v16-left-w':'--v16-sidebar-w';
+     const sp=document.createElement('div');
+     sp.id=id;
+     sp.className='v16-panel-splitter v16-splitter-'+side;
+     sp.tabIndex=0;
+     sp.setAttribute('role','separator');
+     sp.setAttribute('aria-orientation','vertical');
+     sp.setAttribute('aria-valuemin',String(minW));
+     sp.setAttribute('aria-valuemax',String(maxW));
+     const initVal=parseInt(getComputedStyle(document.documentElement).getPropertyValue(propName),10)||defW;
+     sp.setAttribute('aria-valuenow',String(initVal));
+     sp.title=tr('Kéo để chỉnh độ rộng cột (Nhấp đúp để đặt lại mặc định)',"Drag to resize panel width (Double-click to reset)");
+     sp.setAttribute('aria-label',sp.title);
+     const applyWidth=w=>{
+      const clamped=Math.round(clamp16(w,minW,maxW));
+      document.documentElement.style.setProperty(propName,clamped+'px');
+      sp.setAttribute('aria-valuenow',String(clamped));
+     };
+     let dragging=false;
+     sp.addEventListener('pointerdown',e=>{
+      if(e.button!==0)return;
+      e.preventDefault();
+      e.stopPropagation();
+      dragging=true;
+      setClass16(sp,'is-dragging',true);
+      sp.setPointerCapture?.(e.pointerId);
+     });
+     sp.addEventListener('pointermove',e=>{
+      if(!dragging)return;
+      const r=ws.getBoundingClientRect();
+      if(side==='left'){
+       applyWidth(e.clientX-r.left);
+      }else if(side==='right-inner'){
+       if(A.rightPanelCollapsed)toggleRightPanel16(false);
+       applyWidth(r.right-e.clientX);
+      }else{
+       if(A.rightPanelCollapsed)toggleRightPanel16(false);
+       const railW=$('v16PropRail')?.offsetWidth||36;
+       applyWidth(r.right-railW-e.clientX);
+      }
+      notifyResize16();
+     });
+     const endDrag=e=>{
+      if(!dragging)return;
+      dragging=false;
+      setClass16(sp,'is-dragging',false);
+      if(e?.pointerId!==undefined)sp.releasePointerCapture?.(e.pointerId);
+      saveWidths16();
+      notifyResize16();
+     };
+     sp.addEventListener('pointerup',endDrag);
+     sp.addEventListener('pointercancel',endDrag);
+     sp.addEventListener('keydown',e=>{
+      if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight'&&e.key!=='Home')return;
+      e.preventDefault();
+      if(e.key==='Home'){applyWidth(defW);saveWidths16();notifyResize16();return;}
+      const cur=parseInt(sp.getAttribute('aria-valuenow'),10)||defW;
+      const step=(e.key==='ArrowRight'?12:-12)*(side==='left'?1:-1);
+      if(side!=='left'&&A.rightPanelCollapsed)toggleRightPanel16(false);
+      applyWidth(cur+step);
+      saveWidths16();
+      notifyResize16();
+     });
+     sp.addEventListener('dblclick',e=>{
+      e.preventDefault();
+      e.stopPropagation();
+      applyWidth(defW);
+      saveWidths16();
+      notifyResize16();
+     });
+     host.appendChild(sp);
+    };
+    const mpHost=ws.querySelector('.main-panel');
+    const rpHost=ws.querySelector('.right-panel');
+    makeSplitter16('v16LeftSplitter','left',mpHost);
+    makeSplitter16('v16RightSplitter','right',mpHost);
+    makeSplitter16('v16RightInnerSplitter','right-inner',rpHost);
    }
 
    // 3. Right Inspector Header Collapse-All Toggle & Delegated Accordion Click in .right-panel
@@ -3084,8 +3364,11 @@
      const row=document.createElement('div');
      row.className='v16-prop-headbar';
      row.innerHTML=`
-      <span class="v16-prop-crumb">${tr("THÔNG SỐ &amp; HIỆU CHỈNH","PROPERTIES &amp; ADJUSTMENTS")}</span>
-      <button type="button" id="v16CollapseAllBtn" class="btn small" title="${tr("Thu gọn / Mở rộng toàn bộ các mục thông số","Collapse / expand all property sections")}">${A.allBlocksCollapsed?tr('Mở rộng mục',"Expand sections"):tr('Thu gọn mục',"Collapse sections")}</button>
+      <span class="v16-prop-crumb"><svg class="ico ico-preset" aria-hidden="true"><use href="#i-sliders-horizontal"></use></svg><span>${tr("THÔNG SỐ &amp; HIỆU CHỈNH","PROPERTIES &amp; ADJUSTMENTS")}</span></span>
+      <div class="v16-prop-head-actions">
+       <button type="button" id="v16CollapseAllBtn" class="btn small" title="${tr("Thu gọn / Mở rộng toàn bộ các mục thông số","Collapse / expand all property sections")}">${A.allBlocksCollapsed?tr('Mở rộng mục',"Expand sections"):tr('Thu gọn mục',"Collapse sections")}</button>
+       <button type="button" id="v16HideRightBtn" class="icon-btn v16-hide-right-btn" title="${tr("Ẩn bảng thuộc tính bên phải","Hide right properties panel")}" aria-label="${tr("Ẩn bảng thuộc tính bên phải","Hide right properties panel")}" aria-expanded="true"><svg class="ico" aria-hidden="true"><use href="#i-panel-right-close"></use></svg></button>
+      </div>
      `;
      ih.prepend(row);
      $('v16CollapseAllBtn')?.addEventListener('click',()=>{
@@ -3096,6 +3379,7 @@
       if(btn)btn.textContent=A.allBlocksCollapsed?tr('Mở rộng mục',"Expand sections"):tr('Thu gọn mục',"Collapse sections");
       decorateInspectorAccordions16();
      });
+     $('v16HideRightBtn')?.addEventListener('click',()=>toggleRightPanel16(true));
     }
     rp.addEventListener('click',e=>{
      if(e.target.closest('button,input,select,a,label'))return;
@@ -3261,6 +3545,7 @@
      if(e.target instanceof Element && e.target.closest('input,select,textarea,[contenteditable],dialog[open]'))return;
      if(e.key==='t'||e.key==='T'){e.preventDefault();toggleTShelf16();}
      else if(e.key==='n'||e.key==='N'){e.preventDefault();$('focusBtn')?.click();}
+     else if(e.key===']'){e.preventDefault();toggleRightPanel16();}
     });
     const bodyObs=new MutationObserver(()=>{
      if(_syncingState16)return;
@@ -3349,6 +3634,22 @@
    }
    window.translateUiText?.(panel);
    const lock=$('v16NavLockBtn');if(lock)lock._lkState=undefined;
+   const rtBtn=$('v16ToggleRightBtn');if(rtBtn)rtBtn._collapsedState=undefined;
+   const hideBtn=$('v16HideRightBtn');if(hideBtn){const lbl=tr('Ẩn bảng thuộc tính bên phải',"Hide right properties panel");hideBtn.title=lbl;hideBtn.setAttribute('aria-label',lbl);}
+   const fltBar=$('v16ObjFilterBar');
+   if(fltBar){
+    fltBar.setAttribute('aria-label',tr('Lọc nhanh vật thể sân khấu',"Quick stage object filter"));
+    fltBar._renderFilterBtns?.();
+   }
+   ['v16LeftSplitter','v16RightSplitter','v16RightInnerSplitter'].forEach(id=>{
+    const sp=$(id);
+    if(sp){
+     const lbl=tr('Kéo để chỉnh độ rộng cột (Nhấp đúp để đặt lại mặc định)',"Drag to resize panel width (Double-click to reset)");
+     sp.title=lbl;
+     sp.setAttribute('aria-label',lbl);
+    }
+   });
+   S.renderLists?.();
    syncBlenderState16();
   });
 
@@ -3362,6 +3663,9 @@
    if(rp && prevScroll>0)rp.scrollTop=prevScroll;
    return r;
   };
+  S.renderUI=renderUI;
+  S.syncBlenderState16=syncBlenderState16;
+  S.triggerTShelfTool16=triggerTShelfTool16;
   syncWorkspaceStepUI();
   const vRaw16=String(window.APP_VERSION||'1.2').trim().replace(/^[vV]/,'');
   S.version=vRaw16.split('.').length===2?vRaw16+'.0':vRaw16;

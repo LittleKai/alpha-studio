@@ -1,0 +1,65 @@
+{
+  "contract": "led-asset/v1",
+  "id": "stage_drummer",
+  "title": "Stage Drummer \u2014 seated drummer, sticks & compact drum kit",
+  "category": "human",
+  "tags": "human drummer drums percussion band musician stylized rigged animation CC0",
+  "size_m": [
+    1.858683,
+    1.858031,
+    0.965
+  ],
+  "origin": "floor-center",
+  "tris": 4075,
+  "texture_px": 512,
+  "glb_bytes": 618036,
+  "glb_sha256": "2f10240ccd6588551ea7553a36903aece37731432d2293263e5f6a7392ca5b64",
+  "source": "design-mcp/blender/.pjs/led_stage_assets/_scratch/stage-characters-expansion-20261106/stage-drummer",
+  "author": "Mesh2Motion CC0 rig; Design-MCP stylized pilot derivative and stage drummer motions",
+  "license": "CC0-1.0",
+  "distribution": "commercial-ok",
+  "ofl_fixture": null,
+  "animation_pilot": {
+    "joints": 66,
+    "skins": 1,
+    "animations": 3,
+    "animation_names": [
+      "Drummer 01 - Basic Groove (8s)",
+      "Drummer 02 - Fill Phrase (8s)",
+      "Drummer 03 - Ready Idle (6s)"
+    ],
+    "default_clip": "Drummer 01 - Basic Groove (8s)",
+    "bind_height_m": 1.858031,
+    "note": "Standing bind height measured separately from seated drumming clips; includes Drum_Throne_Pedestal, 2 drumsticks, and compact drum kit",
+    "texture_size": [
+      512,
+      512
+    ],
+    "target_triangle_range": [
+      3000,
+      5000
+    ],
+    "clips": [
+      {
+        "name": "Drummer 01 - Basic Groove (8s)",
+        "duration_s": 8.0
+      },
+      {
+        "name": "Drummer 02 - Fill Phrase (8s)",
+        "duration_s": 8.0
+      },
+      {
+        "name": "Drummer 03 - Ready Idle (6s)",
+        "duration_s": 6.0
+      }
+    ]
+  },
+  "native_blend_sha256": "a1ebef4b8bef0383f10ccb5c28496cd26f09f9036d10f95862dfe09e9470ea40",
+  "atlas_png_sha256": "f5d78b3f1562c3d99f26d63d4aab1d89d8533b76f26a810d2f179fb890473627",
+  "thumbnail_png_sha256": "1997019bdad975afc6e882a46e573544150ddfade46ddb61464583635b190a2a",
+  "acceptance": {
+    "structural_check": "PASS",
+    "runtime_webgl2_acceptance": "PASS (file:// index.html, Cast Library, save/reopen, picking, benchmark <= 1.5x)",
+    "artist_aesthetic_acceptance": "PENDING_HUMAN_REVIEW (automated structural/runtime PASS separated from final human artist sign-off)"
+  }
+}

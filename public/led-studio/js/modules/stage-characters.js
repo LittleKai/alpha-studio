@@ -5,7 +5,13 @@
  try{
  const catalog=[
   {id:'stage-dancer',name:'Stage Dancer',role:'dancer',file:'stage_dancer',height:1.9126,clips:['Dance 01 - Stage Mix (16s)','Dance 02 - Charleston','Dance 03 - Body Roll','Dance 04 - Reach Hip','Dance 05 - Duo Mix (8s)']},
-  {id:'stage-singer',name:'Stage Singer',role:'singer',file:'stage_singer',height:1.81446834,clips:['Singer 01 - Vocal Performance (8s)','Singer 02 - Audience Gesture (8s)','Singer 03 - Quiet Idle (6s)']}
+  {id:'stage-singer',name:'Stage Singer',role:'singer',file:'stage_singer',height:1.81446834,clips:['Singer 01 - Vocal Performance (8s)','Singer 02 - Audience Gesture (8s)','Singer 03 - Quiet Idle (6s)']},
+  {id:'stage-host',name:'Stage Host',role:'singer',file:'stage_host',height:1.834757,clips:['Host 01 - Speaking (8s)','Host 02 - Presenting Gesture (8s)','Host 03 - Neutral Idle (6s)']},
+  {id:'stage-guitarist',name:'Stage Guitarist',role:'guitarist',file:'stage_guitarist',height:1.851566,clips:['Guitarist 01 - Rhythm Strum (8s)','Guitarist 02 - Lead Phrase (8s)','Guitarist 03 - Ready Idle (6s)']},
+  {id:'stage-bassist',name:'Stage Bassist',role:'guitarist',file:'stage_bassist',height:1.844444,clips:['Bassist 01 - Fingerstyle Groove (8s)','Bassist 02 - Accent Phrase (8s)','Bassist 03 - Ready Idle (6s)']},
+  {id:'stage-keyboardist',name:'Stage Keyboardist',role:'keyboardist',file:'stage_keyboardist',height:1.846283,clips:['Keyboardist 01 - Two-Hand Chords (8s)','Keyboardist 02 - Right-Hand Lead (8s)','Keyboardist 03 - Ready Idle (6s)']},
+  {id:'stage-drummer',name:'Stage Drummer',role:'drummer',file:'stage_drummer',height:1.858031,clips:['Drummer 01 - Basic Groove (8s)','Drummer 02 - Fill Phrase (8s)','Drummer 03 - Ready Idle (6s)']},
+  {id:'stage-dancer-urban',name:'Urban Dancer',role:'dancer',file:'stage_dancer_urban',height:1.838545,clips:['Urban Dancer 01 - Groove (8s)','Urban Dancer 02 - Footwork (8s)','Urban Dancer 03 - Stage Mix (16s)']}
  ];
  const base=new URL('../../assets/characters/',document.currentScript.src).href;
  const sources=new Map(),pending=new Map();

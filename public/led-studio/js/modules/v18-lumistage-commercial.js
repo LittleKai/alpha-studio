@@ -643,6 +643,7 @@
       eng.view = 'stage';
       eng.cameraPreset?.('iso');
       window.renderUI?.();
+      S.project142?.scheduleAutoBackup?.();
       window.toast?.(tr18(`Đã dựng mẫu "${tpl.name}" (${widthM}×${depthM}m · P${defaultPitch}). Bấm Ctrl+Z nếu muốn hoàn tác.`, `Built "${templatePresentation18(tpl).name}" (${widthM}×${depthM}m · P${defaultPitch}). Press Ctrl+Z to undo.`));
       return true;
     }
@@ -2918,6 +2919,7 @@
       ensureAiChat18();
       const panel = $('aiChat18');
       if (!panel.hidden) return closeAiChat18();
+      if (document.body?.classList?.contains?.('right-panel-collapsed')) S.toggleRightPanel16?.(false);
       S.closeAllDocks16?.('aiChat18');
       panel.hidden = false;
       syncChatBounds18();
@@ -3684,13 +3686,13 @@
       const actions = document.querySelector('.header-actions');
       if (!workflow || !header || !actions || $('toolbar18Groups')) return;
       const file = document.createElement('div'); file.id = 'toolbar18File';
-      for (const id of ['loadProject', 'saveProject', 'undoBtn', 'redoBtn']) { const b = $(id); if (b) file.appendChild(b); }
+      for (const id of ['newProject', 'loadProject', 'saveProject', 'undoBtn', 'redoBtn']) { const b = $(id); if (b) file.appendChild(b); }
       const center = document.createElement('div'); center.id = 'toolbar18Center';
       const project = header.querySelector('.project-name');
       header.insertBefore(center, project || actions);
       center.appendChild(file);
       if (project) center.appendChild(project);
-      for (const [id, vi, en] of [['undoBtn', 'Hoàn tác · Ctrl+Z', 'Undo · Ctrl+Z'], ['redoBtn', 'Làm lại · Ctrl+Shift+Z', 'Redo · Ctrl+Shift+Z']]) {
+      for (const [id, vi, en] of [['newProject', 'Dự án mới', 'New project'], ['loadProject', 'Mở dự án (.ledstudio)', 'Open project (.ledstudio)'], ['saveProject', 'Lưu dự án · Ctrl+S', 'Save project · Ctrl+S'], ['undoBtn', 'Hoàn tác · Ctrl+Z', 'Undo · Ctrl+Z'], ['redoBtn', 'Làm lại · Ctrl+Shift+Z', 'Redo · Ctrl+Shift+Z']]) {
         const b = $(id); if (b) { b.title = tr18(vi, en); b.setAttribute('aria-label', b.title); }
       }
       const menus = [
@@ -3794,7 +3796,7 @@
         ai.innerHTML = ico18('bot'); ai.onclick = openStageAiModal;
         actions.prepend(ai);
         document.addEventListener('keydown', e => { if (e.ctrlKey && e.key.toLowerCase() === 'i' && !S.cloud16?.isClientReviewMode?.()) { e.preventDefault(); openStageAiModal(); } });
-        try { const layout = JSON.parse(localStorage.getItem('ledstudio-ai-chat') || '{}'); chatWidth18 = Number(layout.width) || 0; if (layout.open) openStageAiModal(); } catch { /* storage unavailable */ }
+        try { const layout = JSON.parse(localStorage.getItem('ledstudio-ai-chat') || '{}'); chatWidth18 = Number(layout.width) || 0; } catch { /* storage unavailable */ }
       }
       injectAccount18(actions);
       const exportMenu = $('exportMenu');

@@ -9,7 +9,9 @@
   const MB = 1024 * 1024, MAX_ASSETS = 300 * MB, AUTO_ASSETS = 25 * MB;
   const MAX_PACKAGE = 450 * MB, AUTO_PACKAGE = 50 * MB;
   const DB_NAME = 'ALPHA_LED_STUDIO_RECOVERY_142', STORE = 'projects';
-  const R = { operation: null, auto: false, lastSave: null, backup: null,
+  let initialAuto = true;
+  try { if (localStorage.getItem('ledstudio-auto-recovery') === '0') initialAuto = false; } catch (_) {}
+  const R = { operation: null, auto: initialAuto, dirty: false, restoringBoot: false, lastSave: null, backup: null,
     message: () => L('Chưa tạo bản dự phòng trong trình duyệt này.', "No backup has been created in this browser."), error: false,
     rescueText: null, rescueName: null, dbPromise: null, startedAt: Date.now() };
   const el = id => document.getElementById(id);
@@ -374,9 +376,10 @@
           await previousLoad(incoming.file);
           releaseOrphans(oldMedia);
           R.rescueText = null; R.rescueName = null;
-          const openedName = incoming.data.model.name;
+          const openedName = incoming.data.projectName || incoming.data.model.name;
           setStatus(() => L('Đã mở ', "Opened ") + openedName + L('. Bản dự phòng hiện có được giữ lại.', ". The existing backup has been kept."));
           toast(L('Đã mở dự án: ', "Project opened: ") + incoming.summary.screens + ' LED · ' + incoming.summary.fixtures + L(' đèn mở rộng.', " extended fixtures."));
+          if (!R.restoringBoot) scheduleAutoBackup142(1200);
           return incoming.summary;
         } catch (loadError) {
           failedMedia = [...state.media];
@@ -462,10 +465,65 @@
     if (!record) return null;
     return { ...publicMeta(record), text: await record.blob.text() };
   }
+  let autoTimer = 0;
+  function scheduleAutoBackup142(delayMs = 1800) {
+    if (!R.auto || R.restoringBoot || R.operation === 'load' || state.loadingProject || state.importing) return;
+    R.dirty = true;
+    clearTimeout(autoTimer);
+    autoTimer = setTimeout(() => {
+      autoTimer = 0;
+      if (R.auto && R.dirty) backup({ automatic: true, fromEdit: true }).catch(() => {});
+    }, delayMs);
+  }
+  async function clearBackup() {
+    clearTimeout(autoTimer);
+    R.dirty = false;
+    try {
+      const db = await database();
+      await new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE, 'readwrite');
+        tx.objectStore(STORE).delete('latest');
+        tx.oncomplete = resolve;
+        tx.onabort = tx.onerror = () => reject(tx.error);
+      });
+    } catch (_) {}
+    R.backup = null;
+    paintStatus();
+  }
+  async function createNewProject142() {
+    clearTimeout(autoTimer);
+    R.dirty = false;
+    if (S.lumi18?.state?.pendingPreview?.active) S.lumi18.revertStagePreview?.();
+    const oldMedia = [...(state.media || [])];
+    state.media = [];
+    if (engine.media?.clear) engine.media.clear();
+    releaseOrphans(oldMedia);
+    const resetFn = typeof window.demo === 'function' ? window.demo : S.demo;
+    resetFn?.();
+    state.projectName = L('Dự án mới', 'Untitled stage');
+    state.history = [];
+    state.redo = [];
+    if (S.cloud16?.state) S.cloud16.state.currentDriveFileId = null;
+    await clearBackup();
+    window.renderUI?.();
+    toast(L('Đã khởi tạo dự án sân khấu mới.', 'Created a new stage project.'));
+  }
+  function promptNewProject142() {
+    if (typeof window.dialog !== 'function') { createNewProject142(); return; }
+    window.dialog(
+      L('Tạo dự án sân khấu mới?', 'Create a new stage project?'),
+      '<p>' + L('Khởi tạo lại sân khấu mặc định để bắt đầu dự án mới. Hãy lưu dự án hiện tại trước nếu bạn cần giữ lại các thay đổi.', 'Reset to the default stage to start a new project. Save your current project first if you want to keep your changes.') + '</p>',
+      [
+        { label: L('Hủy', 'Cancel') },
+        { label: L('Tạo dự án mới', 'New project'), primary: true, action: () => { createNewProject142(); } }
+      ]
+    );
+  }
   async function backup(options = {}) {
     const automatic = options.automatic === true;
-    if (automatic && (!R.auto || document.hidden || state.playing || state.presenting || R.operation || state.importing || state.loadingProject || state.recording)) {
-      if (R.auto && state.playing && !R.operation) setStatus(() => L('Tự dự phòng đang chờ bạn tạm dừng show.', "Automatic backup is waiting for you to pause the show."));
+    const fromEdit = options.fromEdit === true;
+    if (automatic && (!R.auto || document.hidden || (!fromEdit && state.playing) || state.presenting || R.operation || state.importing || state.loadingProject || state.recording)) {
+      if (R.auto && state.playing && !fromEdit && !R.operation) setStatus(() => L('Tự dự phòng đang chờ bạn tạm dừng show.', "Automatic backup is waiting for you to pause the show."));
       return { skipped: true };
     }
     if (automatic && assetBytesNow() > AUTO_ASSETS) { setStatus(() => L('Media vượt 25 MB: hãy dùng Sao lưu ngay hoặc Lưu dự án.', "Media exceeds 25 MB: use Back up now or Save project.")); return { skipped: true, reason: 'size' }; }
@@ -475,10 +533,11 @@
       try {
         const packed = await packCurrent(), size = textSize(packed.text);
         if (automatic && size > AUTO_PACKAGE) { setStatus(() => L('Gói vượt 50 MB: dùng Sao lưu ngay hoặc Lưu dự án.', "Package exceeds 50 MB: use Back up now or Save project.")); return { skipped: true, reason: 'size' }; }
-        const record = { id: 'latest', name: packed.data.model.name, createdAt: new Date().toISOString(),
+        const record = { id: 'latest', name: packed.data.projectName || packed.data.model.name, createdAt: new Date().toISOString(),
           appVersion: '15.1.0', size, assetBytes: packed.summary.assetBytes,
           blob: new Blob([packed.text], { type: 'application/json' }) };
         await writeRecord(record);
+        R.dirty = false;
         const backupAt = record.createdAt;
         setStatus(() => (automatic ? L('Đã tự dự phòng', "Automatic backup created") : L('Đã tạo bản dự phòng', "Backup created")) + L(' đầy đủ lúc ', " in full at ") + dateText(backupAt) + '.');
         if (!automatic) toast(L('Đã tạo bản dự phòng đầy đủ trong trình duyệt.', "Full backup created in this browser."));
@@ -507,7 +566,8 @@
   }
   function setAutoBackup(value) {
     R.auto = value === true;
-    setStatus(() => R.auto ? L('Đã bật dự phòng mỗi 30 giây khi tạm dừng show; tối đa 25 MB tài nguyên.', "Backup enabled every 30 seconds while the show is paused; assets up to 25 MB.") : L('Tự dự phòng đang tắt. Bạn vẫn có thể Sao lưu ngay.', "Automatic backup is off. You can still use Back up now."));
+    try { localStorage.setItem('ledstudio-auto-recovery', R.auto ? '1' : '0'); } catch (_) {}
+    setStatus(() => R.auto ? L('Đã bật tự động lưu và khôi phục dự án đang làm dở; tối đa 25 MB tài nguyên.', "Auto-save and recovery enabled for in-progress projects; assets up to 25 MB.") : L('Tự dự phòng đang tắt. Bạn vẫn có thể Sao lưu ngay.', "Automatic backup is off. You can still use Back up now."));
     return R.auto;
   }
 
@@ -571,10 +631,39 @@
       event.preventDefault(); event.stopImmediatePropagation(); saveProject();
     }
   }, true);
-  S.project142 = { validate, parseFile, load: loadProject, save: saveProject, backup, readBackup,
-    restoreBackup, downloadBackup, downloadRescue, open: openRecovery, setAutoBackup,
+  S.project142 = { validate, parseFile, load: loadProject, save: saveProject, backup, readBackup, clearBackup,
+    restoreBackup, downloadBackup, downloadRescue, open: openRecovery, setAutoBackup, scheduleAutoBackup: scheduleAutoBackup142,
+    newProject: createNewProject142, promptNewProject: promptNewProject142,
     get status() { return { operation: R.operation, auto: R.auto, backup: R.backup ? { ...R.backup } : null,
       message: typeof R.message === 'function' ? R.message() : R.message, error: R.error, lastSave: R.lastSave, hasRescue: !!R.rescueText }; } };
+  S.newProject = createNewProject142;
+  if (el('newProject')) el('newProject').onclick = promptNewProject142;
+  if (typeof window.checkpoint === 'function') {
+    const prevCheckpoint142 = window.checkpoint;
+    window.checkpoint = function (...args) {
+      const out = prevCheckpoint142.apply(this, args);
+      scheduleAutoBackup142();
+      return out;
+    };
+  }
+  if (typeof window.importModel === 'function') {
+    const prevImport142 = window.importModel;
+    window.importModel = async function (...args) {
+      const out = await prevImport142.apply(this, args);
+      if (!R.restoringBoot) scheduleAutoBackup142(1200);
+      return out;
+    };
+    S.importModel = window.importModel;
+  }
+  if (typeof window.addMediaFile === 'function') {
+    const prevMedia142 = window.addMediaFile;
+    window.addMediaFile = async function (...args) {
+      const out = await prevMedia142.apply(this, args);
+      if (!R.restoringBoot && !args[1]?.silent) scheduleAutoBackup142(1200);
+      return out;
+    };
+    S.addMediaFile = window.addMediaFile;
+  }
   const rawVer = String(window.APP_VERSION || '1.2').trim().replace(/^[vV]/, '');
   const shortVer = 'V' + rawVer;
   const semver = rawVer.split('.').length === 2 ? rawVer + '.0' : rawVer;
@@ -626,10 +715,49 @@
     if (brand) brand.textContent = L(`${shortVer} / Sân khấu 3D · 35 FX · DMX & ILDA`, `${shortVer} / 3D Stage · 35 FX · DMX & ILDA`);
     if (presentSpan) presentSpan.textContent = L(`XEM SÂN KHẤU / ${shortVer}`, `STAGE PREVIEW / ${shortVer}`);
     if (brandBox) brandBox.title = L(`Xem thông tin phiên bản (${shortVer})`, `Version info (${shortVer})`);
+    const newBtn = el('newProject');
+    if (newBtn) {
+      const newSp = newBtn.querySelector('span');
+      if (newSp) newSp.textContent = L('Dự án mới', 'New project');
+      newBtn.title = L('Dự án mới', 'New project');
+      newBtn.setAttribute('aria-label', newBtn.title);
+    }
+    const loadBtn = el('loadProject');
+    if (loadBtn) {
+      loadBtn.title = L('Mở dự án (.ledstudio)', 'Open project (.ledstudio)');
+      loadBtn.setAttribute('aria-label', loadBtn.title);
+    }
+    const saveBtn = el('saveProject');
+    if (saveBtn) {
+      saveBtn.title = L('Lưu dự án · Ctrl+S', 'Save project · Ctrl+S');
+      saveBtn.setAttribute('aria-label', saveBtn.title);
+    }
     paintStatus();
   }
   window.addEventListener('ledstudio:locale', refreshLocale);
   refreshLocale();
-  setInterval(() => { if (R.auto) backup({ automatic: true }).catch(() => {}); }, 30000);
-  refreshBackup(); paintStatus();
+  setInterval(() => { if (R.auto && R.dirty) backup({ automatic: true }).catch(() => {}); }, 30000);
+  async function autoRestoreOnBoot142() {
+    try {
+      const isShare = typeof location !== 'undefined' && new URLSearchParams(location.search || '').get('share');
+      if (isShare || S.cloud16?.isClientReviewMode?.()) { await refreshBackup(); paintStatus(); return; }
+      const record = await readBackup();
+      R.backup = publicMeta(record);
+      paintStatus();
+      if (R.auto && record && record.text && !R.operation && !state.importing && !state.loadingProject && !R.dirty) {
+        R.restoringBoot = true;
+        try {
+          await loadProject({ name: (record.name || 'Stage') + '.ledstudio', size: record.size, text: async () => record.text });
+          toast(L('Đã tự động mở lại dự án đang làm dở: ', 'Automatically restored in-progress project: ') + (record.name || state.projectName));
+        } finally {
+          R.restoringBoot = false;
+          R.dirty = false;
+          clearTimeout(autoTimer);
+        }
+      }
+    } catch (_) {
+      paintStatus();
+    }
+  }
+  autoRestoreOnBoot142();
 })();

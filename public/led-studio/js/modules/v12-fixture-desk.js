@@ -128,7 +128,7 @@ restore=function(d){undoBase(d);if(d?.pro127?.boosts)for(const k of ['led','ambi
 function injectLightInspector(){
  if(state.step!=='lighting'||director.panel||!id('inspectorContent')||id('pro127-lightboost'))return;
  const host=id('inspectorContent'), section=document.createElement('section');section.id='pro127-lightboost';section.className='inspector-block pro127-lightboost';
- section.innerHTML=`<div class="block-title">${uiText("TĂNG SÁNG SÂN KHẤU","Stage brightness")}</div>
+ section.innerHTML=`<div class="block-title"><svg class="ico ico-lights" aria-hidden="true"><use href="#i-sun"></use></svg><span>${uiText("TĂNG SÁNG SÂN KHẤU","Stage brightness")}</span></div>
  <label>${uiText("Màn LED ","LED screen ")}<output id="p127inspectLedOut">${P.boosts.led.toFixed(2)}×</output><input type="range" id="p127inspectLed" min=".25" max="3" step=".05" value="${P.boosts.led}"></label>
  <label>${uiText("Sáng môi trường ","Ambient brightness ")}<output id="p127inspectAmbientOut">${P.boosts.ambient.toFixed(2)}×</output><input type="range" id="p127inspectAmbient" min=".1" max="3" step=".05" value="${P.boosts.ambient}"></label>
  <label>${uiText("Cường độ đèn","Light intensity")} <output id="p127inspectLightsOut">${P.boosts.lights.toFixed(2)}×</output><input type="range" id="p127inspectLights" min=".25" max="3" step=".05" value="${P.boosts.lights}"></label>
