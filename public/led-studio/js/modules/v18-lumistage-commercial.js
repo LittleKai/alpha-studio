@@ -272,7 +272,8 @@
       const priorSnapshot = window.snapshot, priorRestore = window.restore;
       window.snapshot = function () {
         const data = priorSnapshot();
-        data.lumi18 = structuredClone({ musicShowCues: lumiState.musicShowCues, activeCueIndex: lumiState.activeCueIndex, brandIdentity: lumiState.brandIdentity, clientName: lumiState.quoteConfig.clientName, seqCues: window.seq?.cues, activeStageSet18: (S.state || window.state)?.activeStageSet18, structureConfig18: lumiState.structureConfig18, audioWorkstation18: lumiState.audioWorkstation18 });
+        const stRef = S.state || window.state;
+        data.lumi18 = structuredClone({ musicShowCues: lumiState.musicShowCues, activeCueIndex: lumiState.activeCueIndex, brandIdentity: lumiState.brandIdentity, clientName: lumiState.quoteConfig.clientName, seqCues: window.seq?.cues, activeStageSet18: stRef?.activeStageSet18, modelMeta18: stRef?.model ? { name: stRef.model.name, demo: !!stRef.model.demo, blank: !!stRef.model.blank } : undefined, structureConfig18: lumiState.structureConfig18, audioWorkstation18: lumiState.audioWorkstation18 });
         return data;
       };
       window.restore = function (data) {
@@ -281,7 +282,11 @@
           Object.assign(lumiState, { musicShowCues: saved.musicShowCues, activeCueIndex: saved.activeCueIndex, brandIdentity: saved.brandIdentity });
           lumiState.quoteConfig.clientName = saved.clientName;
           if (window.seq && Array.isArray(saved.seqCues)) window.seq.cues = saved.seqCues;
-          if (S.state || window.state) (S.state || window.state).activeStageSet18 = saved.activeStageSet18;
+          const stRef = S.state || window.state;
+          if (stRef) {
+            stRef.activeStageSet18 = saved.activeStageSet18;
+            if (saved.modelMeta18 && stRef.model && !stRef.model.files?.length) Object.assign(stRef.model, saved.modelMeta18);
+          }
           if (saved.structureConfig18) lumiState.structureConfig18 = saved.structureConfig18;
           if (saved.audioWorkstation18) lumiState.audioWorkstation18 = saved.audioWorkstation18;
         }
@@ -4318,10 +4323,28 @@
       }
       if (eng && Array.isArray(eng.lights)) {
         const scale = (Number(cue.dimmerPercent) || 100) / 100;
-        eng.lights.forEach((l) => {
+        const sec = String(cue.section || '').toLowerCase();
+        const fanLaw = sec === 'intro' ? 'v_converge' : sec === 'verse' ? 'parallel_wing' : sec === 'build' ? 'x_cross' : sec === 'drop' ? 'v_diverge' : 'parallel_zero';
+        const parMode = sec === 'intro' ? 'carousel' : sec === 'verse' ? 'mirror_domino' : sec === 'build' ? 'dual_carousel' : sec === 'drop' ? 'gala_sparkle' : 'static';
+        const total = eng.lights.length;
+        const tCue = Number(cue.startSec) || 0;
+        eng.lights.forEach((l, i) => {
           l.color = cue.lightColor || l.color;
           l.fx = cue.lightFx || 'steady';
           l.power = +(4.8 * scale).toFixed(2);
+          const cat = classifyFixture18(l, i, total);
+          l.beamProfile18 = cat === 'spot' ? 1 : cat === 'wash' || cat === 'fresnel' ? 2 : cat === 'par' ? 3 : cat === 'bar' ? 4 : 0;
+          if (cat === 'par') {
+            const ch = evalParChaseEngine18(i, total, tCue, 2.0, parMode);
+            l.coneLenScale18 = ch.coneLenScale;
+          } else if ((cat === 'beam' || cat === 'spot') && Array.isArray(l.pos) && Array.isArray(l.target)) {
+            const fl = evalBeamFanLaw18(fanLaw, l.pos[0] || 0, i, total, tCue, 2.0, 0.65);
+            l.target = [
+              +(l.pos[0] + Math.sin(fl.panAngle) * 5.2).toFixed(2),
+              l.target[1],
+              l.target[2]
+            ];
+          }
         });
         eng.rebuildFixtures?.();
       }
@@ -4781,7 +4804,7 @@
         shortEn: 'S1 Live',
         titleVi: 'Set 1 · Sân khấu Live Concert',
         titleEn: 'Set 1 · Live Concert Stage',
-        shell: { widthM: 19, depthM: 7, heightM: 0.6, topY: 6.6, trussMode: 'portal', includePA: true },
+        shell: { widthM: 19, depthM: 7, heightM: 0.6, topY: 6.6, trussMode: 'box', includePA: true },
         rigStyle: 'concert',
         screens: [
           { name: 'LED_MAIN', pos: [0, 3.05, -2.1], wM: 9.0, hM: 4.5, yawDeg: 0, map: { x: 960, y: 160, w: 1920, h: 960, cabinetModelId: 'roe_bp2v2_500', processorModelId: 'brompton_sx40', rows500x1000: 4, rows500x500: 1, shapeType: 'flat' } },
@@ -4790,15 +4813,22 @@
         ],
         assets: [
           { kind: 'stage_riser', pos: [0, 0.6, -0.7], yaw: 0 },
-          { kind: 'sub_stack', pos: [-7.4, 0, 2.2], yaw: 8 },
-          { kind: 'sub_stack', pos: [7.4, 0, 2.2], yaw: -8 },
-          { kind: 'foh_control_booth', pos: [0, 0, 7.6], yaw: 0 }
+          { kind: 'sub_stack', pos: [-7.2, 0, 3.45], yaw: 8 },
+          { kind: 'sub_stack', pos: [7.2, 0, 3.45], yaw: -8 },
+          { kind: 'crowd_barrier', pos: [-5.2, 0, 4.35], yaw: 0 },
+          { kind: 'crowd_barrier', pos: [-3.1, 0, 4.35], yaw: 0 },
+          { kind: 'crowd_barrier', pos: [3.1, 0, 4.35], yaw: 0 },
+          { kind: 'crowd_barrier', pos: [5.2, 0, 4.35], yaw: 0 },
+          { kind: 'foh_control_booth', pos: [0, 0, 9.2], yaw: 0 }
         ],
         cast: [
-          { type: 'singer', pos: [0, 0.6, 1.35], color: '#ff5d8f' },
-          { type: 'guitarist', pos: [-2.35, 0.6, 0.55], color: '#45d4ff' },
-          { type: 'keyboardist', pos: [2.35, 0.6, 0.55], color: '#ffc857' },
-          { type: 'drummer', pos: [0, 1.2, -0.7], color: '#9b7bff' }
+          { type: 'singer', pos: [0, 0.6, 1.35], color: '#ff5d8f', model18: 'stage-singer' },
+          { type: 'guitarist', pos: [-2.35, 0.6, 0.55], color: '#45d4ff', model18: 'stage-guitarist' },
+          { type: 'keyboardist', pos: [2.35, 0.6, 0.55], color: '#ffc857', model18: 'stage-keyboardist' },
+          { type: 'drummer', pos: [0, 1.2, -0.7], color: '#9b7bff', model18: 'stage-drummer' },
+          { type: 'audience', pos: [-3.8, 0, 6.8], yaw: 180, count: 36, columns: 9, spacing: 0.65, phase: 0, color: '#33677f' },
+          { type: 'audience', pos: [3.8, 0, 6.8], yaw: 180, count: 36, columns: 9, spacing: 0.65, phase: 1.8, color: '#803f65' },
+          { type: 'audience', pos: [0, 0, 8.6], yaw: 180, count: 27, columns: 9, spacing: 0.65, phase: 3.6, color: '#345852' }
         ]
       },
       2: {
@@ -4819,17 +4849,23 @@
         assets: [
           { kind: 'dj_booth', pos: [0, 0.6, 0.45], yaw: 0 },
           { kind: 'kinetic_ring', pos: [0, 1.8, 0.45], yaw: 0 },
-          { kind: 'sub_stack', pos: [-8.0, 0, 2.4], yaw: 10 },
-          { kind: 'sub_stack', pos: [8.0, 0, 2.4], yaw: -10 },
+          { kind: 'sub_stack', pos: [-7.8, 0, 3.7], yaw: 10 },
+          { kind: 'sub_stack', pos: [7.8, 0, 3.7], yaw: -10 },
+          { kind: 'crowd_barrier', pos: [-5.4, 0, 4.6], yaw: 0 },
+          { kind: 'crowd_barrier', pos: [-3.2, 0, 4.6], yaw: 0 },
+          { kind: 'crowd_barrier', pos: [3.2, 0, 4.6], yaw: 0 },
+          { kind: 'crowd_barrier', pos: [5.4, 0, 4.6], yaw: 0 },
           { kind: 'co2_jet', pos: [-3.6, 0.6, 2.5], yaw: 0 },
           { kind: 'co2_jet', pos: [-1.4, 0.6, 2.5], yaw: 0 },
           { kind: 'co2_jet', pos: [1.4, 0.6, 2.5], yaw: 0 },
           { kind: 'co2_jet', pos: [3.6, 0.6, 2.5], yaw: 0 }
         ],
         cast: [
-          { type: 'dj', pos: [0, 0.6, -0.15], color: '#22d3ee' },
-          { type: 'leddancer', pos: [-2.8, 0.6, 1.25], color: '#38bdf8' },
-          { type: 'leddancer', pos: [2.8, 0.6, 1.25], color: '#a855f7' }
+          { type: 'dj', pos: [0, 0.6, -0.15], color: '#22d3ee', model18: 'stage-dj' },
+          { type: 'leddancer', pos: [-2.8, 0.6, 1.25], color: '#38bdf8', model18: 'stage-led-dancer' },
+          { type: 'leddancer', pos: [2.8, 0.6, 1.25], color: '#a855f7', model18: 'stage-led-dancer' },
+          { type: 'audience', pos: [-4.2, 0, 7.1], yaw: 180, count: 48, columns: 10, spacing: 0.62, phase: 0, color: '#22d3ee' },
+          { type: 'audience', pos: [4.2, 0, 7.1], yaw: 180, count: 48, columns: 10, spacing: 0.62, phase: 2.1, color: '#a855f7' }
         ]
       },
       3: {
@@ -4854,7 +4890,7 @@
           { kind: 'decor_palm_planter', pos: [6.6, 0.55, 1.5], yaw: 0 }
         ],
         cast: [
-          { type: 'mc', pos: [0.4, 0.55, 1.2], color: '#38bdf8' }
+          { type: 'mc', pos: [0.4, 0.55, 1.2], color: '#38bdf8', model18: 'stage-host' }
         ]
       },
       4: {
@@ -4882,9 +4918,9 @@
           { kind: 'cold_spark_fountain', pos: [4.2, 0.6, 2.4], yaw: 0 }
         ],
         cast: [
-          { type: 'mc', pos: [0, 0.6, 1.4], color: '#fbbf24' },
-          { type: 'violinist', pos: [-1.8, 0.6, 0.5], color: '#f472b6' },
-          { type: 'saxophonist', pos: [1.8, 0.6, 0.5], color: '#60a5fa' }
+          { type: 'mc', pos: [0, 0.6, 1.4], color: '#fbbf24', model18: 'stage-host' },
+          { type: 'violinist', pos: [-1.8, 0.6, 0.5], color: '#f472b6', model18: 'stage-violinist' },
+          { type: 'saxophonist', pos: [1.8, 0.6, 0.5], color: '#60a5fa', model18: 'stage-saxophonist' }
         ]
       },
       5: {
@@ -4910,10 +4946,12 @@
           { kind: 'cold_spark_fountain', pos: [2.8, 0.6, 2.4], yaw: 0 }
         ],
         cast: [
-          { type: 'waterdrummer', pos: [-2.1, 0.6, 0.8], color: '#38bdf8' },
-          { type: 'waterdrummer', pos: [2.1, 0.6, 0.8], color: '#38bdf8' },
-          { type: 'fandancer', pos: [-3.5, 0.6, 1.4], color: '#fb7185' },
-          { type: 'fandancer', pos: [3.5, 0.6, 1.4], color: '#fb7185' }
+          { type: 'waterdrummer', pos: [-2.1, 0.6, 0.8], color: '#38bdf8', model18: 'stage-water-drummer' },
+          { type: 'waterdrummer', pos: [2.1, 0.6, 0.8], color: '#38bdf8', model18: 'stage-water-drummer' },
+          { type: 'fandancer', pos: [-3.5, 0.6, 1.4], color: '#fb7185', model18: 'stage-fan-dancer' },
+          { type: 'fandancer', pos: [3.5, 0.6, 1.4], color: '#fb7185', model18: 'stage-fan-dancer' },
+          { type: 'audience', pos: [-3.6, 0, 6.5], yaw: 180, count: 36, columns: 9, spacing: 0.65, phase: 0, color: '#33677f' },
+          { type: 'audience', pos: [3.6, 0, 6.5], yaw: 180, count: 36, columns: 9, spacing: 0.65, phase: 2.0, color: '#803f65' }
         ]
       },
       6: {
@@ -4935,19 +4973,21 @@
           { kind: 'catwalk_runway', pos: [0, 0, 5.4], yaw: 0 },
           { kind: 'stage_riser', pos: [0, 0.65, -0.9], yaw: 0 },
           { kind: 'dj_booth', pos: [0, 1.25, -0.9], yaw: 0 },
-          { kind: 'sub_stack', pos: [-8.4, 0, 2.6], yaw: 8 },
-          { kind: 'sub_stack', pos: [8.4, 0, 2.6], yaw: -8 },
-          { kind: 'foh_control_booth', pos: [0, 0, 9.2], yaw: 0 },
+          { kind: 'sub_stack', pos: [-8.2, 0, 3.95], yaw: 8 },
+          { kind: 'sub_stack', pos: [8.2, 0, 3.95], yaw: -8 },
+          { kind: 'foh_control_booth', pos: [0, 0, 10.2], yaw: 0 },
           { kind: 'flame_jet', pos: [-5.2, 0.65, 2.6], yaw: 0 },
           { kind: 'flame_jet', pos: [-2.2, 0.65, 2.6], yaw: 0 },
           { kind: 'flame_jet', pos: [2.2, 0.65, 2.6], yaw: 0 },
           { kind: 'flame_jet', pos: [5.2, 0.65, 2.6], yaw: 0 }
         ],
         cast: [
-          { type: 'rapper', pos: [0, 0.65, 1.6], color: '#f97316' },
-          { type: 'dj', pos: [0, 1.25, -1.35], color: '#22d3ee' },
-          { type: 'laserdancer', pos: [-3.0, 0.65, 1.1], color: '#10b981' },
-          { type: 'laserdancer', pos: [3.0, 0.65, 1.1], color: '#10b981' }
+          { type: 'rapper', pos: [0, 0.65, 1.6], color: '#f97316', model18: 'stage-rapper' },
+          { type: 'dj', pos: [0, 1.25, -1.35], color: '#22d3ee', model18: 'stage-dj' },
+          { type: 'laserdancer', pos: [-3.0, 0.65, 1.1], color: '#10b981', model18: 'stage-laser-dancer' },
+          { type: 'laserdancer', pos: [3.0, 0.65, 1.1], color: '#10b981', model18: 'stage-laser-dancer' },
+          { type: 'audience', pos: [-4.6, 0, 7.2], yaw: 180, count: 48, columns: 8, spacing: 0.65, phase: 0, color: '#33677f' },
+          { type: 'audience', pos: [4.6, 0, 7.2], yaw: 180, count: 48, columns: 8, spacing: 0.65, phase: 2.2, color: '#803f65' }
         ]
       }
     };
@@ -4983,8 +5023,21 @@
         if (dirObj) dirObj.loading = true;
         seqObj.people = [];
         if (dirObj && Array.isArray(dirObj.acts)) dirObj.acts = [];
+        const modelIds = new Set();
         setCfg.cast.forEach((c) => {
-          S.addPerson(c.type, { pos: c.pos.slice(), color: c.color });
+          const opt = { pos: c.pos.slice(), color: c.color };
+          if (c.count != null) opt.count = c.count;
+          if (c.columns != null) opt.columns = c.columns;
+          if (c.spacing != null) opt.spacing = c.spacing;
+          if (c.yaw != null) opt.yaw = c.yaw;
+          if (c.phase != null) opt.phase = c.phase;
+          const p = S.addPerson(c.type, opt);
+          if (p && c.model18) {
+            p.model18 = c.model18;
+            p.clip18 = c.clip18 ?? 0;
+            p.speed18 = c.speed18 ?? 1;
+            modelIds.add(c.model18);
+          }
         });
         if (dirObj) {
           dirObj.loading = wasLoading;
@@ -4993,6 +5046,13 @@
         }
         S.rebuildCast?.();
         S.renderCastManager?.();
+        if (modelIds.size && typeof S.characters18?.load === 'function') {
+          Promise.all([...modelIds].map((id) => S.characters18.load(id).catch(() => null))).then(() => {
+            S.rebuildCast?.();
+            S.renderCastManager?.();
+            S.engine?.render?.(window.state?.time || 0);
+          });
+        }
       }
     }
 
@@ -5072,6 +5132,7 @@
       }
       populateSetAssetsAndCast18(setCfg);
       if (st) {
+        st.model = { name: 'ALPHA_Demo_Stage', files: [], demo: true, blank: false };
         st.activeStageSet18 = idx;
         st.selectedMesh = null;
         st.hit = null;
@@ -5290,7 +5351,7 @@
       transitionAlpha: 1,
       aiAuto: false,
       multicolor: true,
-      speed: 2.0,
+      speed: 0.9,
       lightsOn: true,
       blindersOn: false,
       laserOn: true,
@@ -5304,7 +5365,7 @@
       autoCam: false,
       autoCamPausedUntilMs: 0,
       savedCamera: null,
-      dockHidden: true,
+      dockHidden: false,
       dockCollapsed: true,
       motorPhasePan: 0,
       motorPhaseTilt: 0,
@@ -5472,40 +5533,40 @@
     // P2: 3D RGB ILDA Laser Scan Patterns (Ps = 0..3) + IEC 60825-1 +3.20m Horizon Clamp + Exponential Smoothing
     function evalLaserScanPattern18(patternIdx, origin, uIdx, tSec, spd, multicolor = true, palette = LMP_LASER_PALETTES18) {
       const pIdx = ((Math.round(Number(patternIdx) || 0) % 4) + 4) % 4;
-      const beamCount = pIdx === 3 ? 20 : 16;
+      const beamCount = pIdx === 3 ? 6 : 5;
       const pal = Array.isArray(palette) && palette.length ? palette : LMP_LASER_PALETTES18;
       const baseCol = pal[(uIdx + pIdx) % pal.length];
       const altCol = pal[(uIdx + pIdx + 2) % pal.length];
       const rays = [];
       const cacheMap = liveShow18._laserPrevTargets18;
-      const smoothAlpha = 0.38;
+      const smoothAlpha = 0.16;
       const safetyHorizonY = 3.20;
 
       for (let b = 0; b < beamCount; b++) {
         const u = (b / Math.max(1, beamCount - 1)) - 0.5;
-        let yaw = u * 1.15;
+        let yaw = u * 0.82;
         let pitch = -0.02;
         let gate = true;
         if (pIdx === 0) {
           // Pattern 0: Liquid Sky Wave Sheet
-          yaw += Math.sin(tSec * spd * 1.4 + uIdx) * 0.28;
-          pitch = 0.02 + Math.sin(tSec * spd * 3.6 + b * 0.55 + uIdx) * 0.09;
+          yaw += Math.sin(tSec * spd * 0.35 + uIdx) * 0.16;
+          pitch = 0.02 + Math.sin(tSec * spd * 0.72 + b * 0.55 + uIdx) * 0.045;
         } else if (pIdx === 1) {
           // Pattern 1: Geometric Scanning Cone Tunnel
-          const theta = (b / beamCount) * Math.PI * 2 + tSec * spd * 2.4 * (uIdx % 2 === 0 ? 1 : -1);
-          const rad = 0.20 + 0.22 * Math.abs(Math.sin(tSec * spd * 1.6));
+          const theta = (b / beamCount) * Math.PI * 2 + tSec * spd * 0.52 * (uIdx % 2 === 0 ? 1 : -1);
+          const rad = 0.14 + 0.12 * Math.abs(Math.sin(tSec * spd * 0.38));
           yaw = Math.cos(theta) * rad;
           pitch = 0.04 + Math.sin(theta) * rad * 0.65;
         } else if (pIdx === 2) {
           // Pattern 2: Dual-Mirror X-Cross Chopper
           const sign = uIdx % 2 === 0 ? 1 : -1;
-          yaw = sign * 0.28 + u * 0.95 + Math.sin(tSec * spd * 2.8) * 0.22 * sign;
-          pitch = 0.01 + Math.cos(tSec * spd * 2.2 + b * 0.4) * 0.08;
-          gate = ((b + Math.floor(tSec * spd * 12)) % 3) !== 0;
+          yaw = sign * 0.20 + u * 0.68 + Math.sin(tSec * spd * 0.55) * 0.12 * sign;
+          pitch = 0.01 + Math.cos(tSec * spd * 0.48 + b * 0.4) * 0.045;
+          gate = ((b + Math.floor(tSec * spd * 2.2)) % 3) !== 0;
         } else {
           // Pattern 3: Festival Climax Starburst
-          yaw = u * 1.42 + Math.sin(tSec * spd * 2.2 + b * 0.35) * 0.25;
-          pitch = 0.03 + Math.cos(tSec * spd * 3.1 + b * 0.48) * 0.14;
+          yaw = u * 0.92 + Math.sin(tSec * spd * 0.45 + b * 0.35) * 0.14;
+          pitch = 0.03 + Math.cos(tSec * spd * 0.62 + b * 0.48) * 0.075;
         }
         const range = 16.5;
         const safeOriginY = Math.max(safetyHorizonY, Number(origin[1]) || 3.6);
@@ -5640,63 +5701,63 @@
       if (pArr.length > 2200) pArr.splice(0, pArr.length - 2200);
       const [nx, ny, nz] = nozzle.pos;
       if (kind === 'cold_spark_fountain') {
-        const count = Math.max(2, Math.round(5 * intensity));
+        const count = Math.max(5, Math.round(11 * intensity));
         for (let i = 0; i < count; i++) {
           const a = Math.random() * Math.PI * 2;
-          const spread = (Math.random() * 0.75 + 0.1) * (0.6 + 0.4 * intensity);
+          const spread = (Math.random() * 0.85 + 0.08) * (0.65 + 0.35 * intensity);
           pArr.push({
             pType: 1,
             kind: 'spark',
-            x: nx + (Math.random() - 0.5) * 0.12,
-            y: ny + 0.18,
-            z: nz + (Math.random() - 0.5) * 0.12,
+            x: nx + (Math.random() - 0.5) * 0.10,
+            y: ny + 0.12 + Math.random() * 0.25,
+            z: nz + (Math.random() - 0.5) * 0.10,
             vx: Math.cos(a) * spread,
-            vy: (5.6 + Math.random() * 3.6) * (0.75 + 0.35 * intensity),
+            vy: (6.4 + Math.random() * 4.2) * (0.78 + 0.32 * intensity),
             vz: Math.sin(a) * spread,
             deckY: ny,
             age: 0,
-            maxAge: 0.55 + Math.random() * 0.45,
-            size: 2.2 + Math.random() * 2.2,
-            color: Math.random() > 0.35 ? '#ffe680' : '#ffffff',
+            maxAge: 0.52 + Math.random() * 0.42,
+            size: 2.0 + Math.random() * 2.4,
+            color: i % 3 === 0 ? '#ffffff' : i % 3 === 1 ? '#ffe680' : '#ffaa33',
             seed: Math.random() * 100
           });
         }
       } else if (kind === 'co2_jet') {
-        const count = Math.max(2, Math.round(4 * intensity));
+        const count = Math.max(4, Math.round(7 * intensity));
         for (let i = 0; i < count; i++) {
           const a = Math.random() * Math.PI * 2;
-          const spread = Math.random() * 0.95 + 0.15;
+          const spread = Math.random() * 1.15 + 0.12;
           pArr.push({
             pType: 3,
             kind: 'co2',
             x: nx + (Math.random() - 0.5) * 0.16,
-            y: ny + 0.25,
+            y: ny + 0.2 + Math.random() * 0.35,
             z: nz + (Math.random() - 0.5) * 0.16,
             vx: Math.cos(a) * spread,
-            vy: (12.5 + Math.random() * 6.5) * (0.8 + 0.25 * intensity),
+            vy: (11.5 + Math.random() * 6.5) * (0.82 + 0.25 * intensity),
             vz: Math.sin(a) * spread,
             age: 0,
-            maxAge: 0.48 + Math.random() * 0.32,
-            size: 0.24 + Math.random() * 0.22,
-            color: '#dff8ff',
+            maxAge: 0.52 + Math.random() * 0.34,
+            size: 0.42 + Math.random() * 0.38,
+            color: i % 2 === 0 ? '#f0fcff' : '#bae6fd',
             seed: Math.random() * 100
           });
         }
       } else if (kind === 'flame_jet') {
-        const count = Math.max(2, Math.round(4 * intensity));
+        const count = Math.max(4, Math.round(8 * intensity));
         for (let i = 0; i < count; i++) {
           pArr.push({
             pType: 2,
             kind: 'flame',
             x: nx + (Math.random() - 0.5) * 0.18,
-            y: ny + 0.2,
+            y: ny + 0.15 + Math.random() * 0.3,
             z: nz + (Math.random() - 0.5) * 0.18,
-            vx: (Math.random() - 0.5) * 0.65,
-            vy: (4.8 + Math.random() * 3.2) * (0.8 + 0.3 * intensity),
-            vz: (Math.random() - 0.5) * 0.65,
+            vx: (Math.random() - 0.5) * 0.75,
+            vy: (5.4 + Math.random() * 3.8) * (0.82 + 0.28 * intensity),
+            vz: (Math.random() - 0.5) * 0.75,
             age: 0,
-            maxAge: 0.42 + Math.random() * 0.28,
-            size: 0.32 + Math.random() * 0.28,
+            maxAge: 0.44 + Math.random() * 0.28,
+            size: 0.48 + Math.random() * 0.36,
             color: '#ff7b00',
             seed: Math.random() * 100
           });
@@ -5727,10 +5788,10 @@
           x: sx,
           y: sy,
           z: sz,
-          vx: (Math.random() - 0.5) * 1.6 + nz.pos[0] * 0.08,
-          vy: 11.8 + Math.random() * 3.4,
-          vz: (Math.random() - 0.5) * 1.2,
-          targetY: 8.2 + Math.random() * 3.6,
+          vx: (Math.random() - 0.5) * 1.4 - nz.pos[0] * 0.12,
+          vy: 13.5 + Math.random() * 2.8,
+          vz: 0.6 + (Math.random() - 0.5) * 1.0,
+          targetY: 4.8 + Math.random() * 1.8,
           color: col,
           color2: col2,
           burstStyle: styleName,
@@ -6221,7 +6282,7 @@
               fx: l.fx || 'steady',
               beamProfile18: l.beamProfile18 ?? 0,
               gobo9: l.gobo9 ? { ...l.gobo9 } : null,
-              optics: Object.fromEntries(['aperture', 'fixtureProfile18', 'profileId18', 'coneLenScale18', '_blinderBlastScale18', 'dmxGroup18', '_liveCat18'].filter((key) => Object.hasOwn(l, key)).map((key) => [key, l[key]]))
+              optics: Object.fromEntries(['aperture', 'fixtureProfile18', 'profileId18', 'coneLenScale18', '_blinderBlastScale18', 'dmxGroup18', '_liveCat18', '_isBlinder18'].filter((key) => Object.hasOwn(l, key)).map((key) => [key, l[key]]))
             };
           }
           const cat = classifyFixture18(l, idx, total);
@@ -6302,7 +6363,7 @@
               : (dmxProg?.parChaseMode || (showIdx === 1 ? 'carousel' : showIdx === 2 ? 'mirror_domino' : showIdx === 3 ? 'dual_carousel' : 'gala_sparkle'));
             const chaseRes = computeParUplightChase18(idx, total, tSec, spd, chaseMode, parPal);
             l.color = ls.multicolor ? chaseRes.color : parPal[0];
-            l.power = +(Math.max(0.35, chaseRes.level * 7.2) * dimmerScale).toFixed(2);
+            l.power = +(Math.max(0.35, chaseRes.level * (cat === 'bar' ? 4.0 : 6.2)) * dimmerScale).toFixed(2);
             l.angle = +((cat === 'bar' ? 11 : 20) * spreadFactor).toFixed(1);
             l.coneLenScale18 = chaseRes.coneLenScale;
             l.fixtureProfile18 = cat === 'bar' ? 'led_pixel_bar_curtain_v1' : 'par_uplight_v1';
@@ -6330,10 +6391,10 @@
             l.beamProfile18 = 2;
             l.gobo9 = null;
           } else if (cat === 'wash' || cat === 'fresnel') {
-            const pulse = 0.72 + 0.28 * Math.sin(tSec * spd * 2.1 + idx * 0.8);
+            const pulse = 0.72 + 0.28 * Math.sin(tSec * spd * 1.3 + idx * 0.8);
             l.color = cat === 'fresnel' && !ls.multicolor ? '#fde68a' : baseWashCol;
-            l.power = +(5.8 * pulse * dimmerScale).toFixed(2);
-            l.angle = +((cat === 'fresnel' ? 28 : 25) * spreadFactor).toFixed(1);
+            l.power = +(3.4 * pulse * dimmerScale).toFixed(2);
+            l.angle = +((cat === 'fresnel' ? 24 : 19) * spreadFactor).toFixed(1);
             l.fixtureProfile18 = 'wash_v3';
             l.profileId18 = 'wash_v3';
             l.beamProfile18 = 2;
@@ -6350,18 +6411,19 @@
             }
           } else {
             // Moving Head Beams (0=haze_beam_v4) & Spot / Profile (1=spot_profile_v1)
-            const pulse = 0.78 + 0.22 * Math.sin(tSec * spd * 2.6 + idx * 0.65);
+            const pulse = 0.78 + 0.22 * Math.sin(tSec * spd * 1.5 + idx * 0.65);
             l.color = baseBeamCol;
-            l.power = +(7.6 * pulse * dimmerScale).toFixed(2);
-            l.angle = +((cat === 'spot' ? 12 : 6.5) * spreadFactor).toFixed(1);
+            l.power = +(4.4 * pulse * dimmerScale).toFixed(2);
+            l.angle = +((cat === 'spot' ? 11 : 5.2) * spreadFactor).toFixed(1);
             l.aperture = Number(dmxProg?.optics?.aperture) || (cat === 'spot' ? 0.045 : 0.028);
             l.fixtureProfile18 = cat === 'spot' ? 'spot_profile_v1' : 'haze_beam_v4';
             l.profileId18 = l.fixtureProfile18;
             l.beamProfile18 = cat === 'spot' ? 1 : 0;
             const goboPatterns = ['starburst', 'mandala', 'petals', 'tunnel_ring', 'cross_prism'];
+            const goboShaderTypes = [5, 2, 6, 1, 4];
             const gTypeIdx = (idx + showIdx - 1) % 5;
             l.gobo9 = {
-              type: gTypeIdx + 1,
+              type: goboShaderTypes[gTypeIdx],
               pattern: goboPatterns[gTypeIdx],
               angle: tSec * 1.85 * (idx % 2 === 0 ? 1 : -1) + idx * 0.7,
               size: cat === 'spot' ? 1.15 : 0.92
@@ -6390,24 +6452,42 @@
             }
           }
 
-          // Audience Blinder Override [F] (Multi-Cell Thermal Flash)
-          if (ls.blindersOn && (cat === 'blinder' || cat === 'wash' || cat === 'fresnel' || idx % 4 === 3)) {
+          // Audience Blinder Override [F] (Multi-Cell Thermal Flash) — floodlight only, no narrow 3D cone shaft
+          l._isBlinder18 = false;
+          if (ls.blindersOn && (cat === 'blinder' || idx % 4 === 3)) {
             const bHit = evalBlinderThermalFlash18(l, idx, nowMs, true, showIdx);
             l.color = bHit.color;
             l.power = bHit.power;
-            l.angle = 42;
+            l.angle = 38;
+            l.beamProfile18 = 2;
+            l.coneLenScale18 = 0.35;
             l._blinderBlastScale18 = bHit.blastScale;
+            l._isBlinder18 = true;
           }
 
-          // 14 Hz Strobe Override [Z]
+          // 14 Hz Strobe Override [Z] — Synchronous Atomic Xenon Discharge
           if (ls.strobe || (cat === 'strobe' && (showIdx === 3 || showIdx === 4 || showIdx === 6))) {
-            const gate = ((nowMs + idx * 19) % 71.4) < 18.5;
+            const gate = ls.strobe
+              ? ((nowMs % 71.4) < 25.0)
+              : (((nowMs + idx * 19) % 71.4) < 18.5);
             l.color = '#ffffff';
-            l.power = gate ? 11.5 : 0.12;
+            l.power = gate ? 13.5 : 0.02;
           }
 
           activeLightEnergySum += Math.min(1.0, (Number(l.power) || 0) / 8.5);
         });
+
+        if (ls.strobe && !ls.blackout) {
+          const strobeOn = (nowMs % 71.4) < 25.0;
+          for (const fp of floorProjections) {
+            fp.color = '#ffffff';
+            fp.alpha = strobeOn ? Math.min(0.85, fp.alpha * 1.45) : 0.02;
+          }
+          for (const dg of deckGlints) {
+            dg.color = '#ffffff';
+            dg.alpha = strobeOn ? 0.92 : 0.02;
+          }
+        }
 
         // Dynamic 3D stage/sky point light pulses from Pyro & Aerial Firework bursts
         if ((ls._sfxStageGlow?.active || ls._sfxSkyBurst?.active) && eng.lights.length > 0 && !ls.blackout) {
@@ -6430,10 +6510,9 @@
       const laserRenderData = [];
       if (ls.running && ls.laserOn && !ls.blackout) {
         const laserUnits = [
-          [-4.5, 3.6, -1.6],
-          [4.5, 3.6, -1.6]
+          [-4.2, 4.2, -1.6],
+          [4.2, 4.2, -1.6]
         ];
-        if (showIdx === 4 || showIdx === 6) laserUnits.push([0, 5.1, -1.7]);
         const patternIdx = ls.laserPattern && ls.laserPattern !== 'auto'
           ? clamp18(Number(ls.laserPattern) || 0, 0, 3)
           : (showIdx - 1) % 4;
@@ -6483,6 +6562,7 @@
       if (eng._lmpFxProg18 && eng._lmpFxGlRef18 === gl) return eng._lmpFxProg18;
       const vsSrc = `#version 300 es
 precision highp float;
+precision highp int;
 layout(location=0) in vec3 aPos;
 layout(location=1) in vec2 aUV;
 layout(location=2) in vec4 aColor;
@@ -6498,11 +6578,12 @@ void main(){
   gl_Position = uVP * vec4(aPos, 1.0);
   if(uPassMode == 3){
     float dist = max(1.5, gl_Position.w);
-    gl_PointSize = clamp(aUV.x * (220.0 / dist), 2.0, 64.0);
+    gl_PointSize = clamp(aUV.x * (145.0 / dist), 2.0, 28.0);
   }
 }`;
       const fsSrc = `#version 300 es
 precision highp float;
+precision highp int;
 in vec2 vUV;
 in vec4 vColor;
 in vec3 vWorld;
@@ -6515,7 +6596,7 @@ void main(){
     float w1 = sin(vWorld.x * 2.4 + uTime * 3.2) * cos(vWorld.z * 1.9 - uTime * 2.1);
     float w2 = sin(vWorld.x * 5.1 - vWorld.z * 4.3 + uTime * 4.7);
     float turb = clamp(0.65 + 0.25 * w1 + 0.18 * w2, 0.2, 1.35);
-    float edge = smoothstep(0.0, 0.12, vUV.x) * smoothstep(1.0, 0.88, vUV.x);
+    float edge = smoothstep(0.0, 0.12, vUV.x) * (1.0 - smoothstep(0.88, 1.0, vUV.x));
     float a = vColor.a * pow(radial, 0.72) * turb * edge;
     vec3 col = mix(vColor.rgb, vec3(1.0), clamp(pow(radial, 2.5) * 0.45 + max(0.0, w1) * 0.22, 0.0, 0.75));
     frag = vec4(col, clamp(a, 0.0, 1.0));
@@ -6540,20 +6621,30 @@ void main(){
     } else if(patKind >= 6.5){
       fall = pow(max(0.0, 1.0 - r), 2.6);
     }
-    vec3 col = mix(vColor.rgb, vec3(1.0), pow(max(0.0, 1.0 - r), 3.0) * 0.55);
-    frag = vec4(col, clamp(baseAlpha * fall * mask, 0.0, 1.0));
+    vec3 col = mix(vColor.rgb, vec3(1.0), pow(max(0.0, 1.0 - r), 3.0) * 0.45);
+    frag = vec4(col, clamp(baseAlpha * 0.48 * fall * mask, 0.0, 1.0));
     return;
   }
   if(uPassMode == 2){
+    if(vUV.y >= 0.0){
+      float d = abs(vUV.x * 2.0 - 1.0);
+      float lenFade = pow(max(0.0, 1.0 - vUV.y * 0.72), 0.55);
+      float halo = exp(-d * d * 5.2);
+      float core = exp(-d * d * 42.0);
+      vec3 col = mix(vColor.rgb * 1.25, vec3(1.0, 0.99, 0.96), clamp(core * 0.92, 0.0, 1.0));
+      float a = clamp(vColor.a * (halo * 0.62 + core * 0.95) * lenFade, 0.0, 1.0);
+      frag = vec4(col, a);
+      return;
+    }
     frag = vColor;
     return;
   }
   vec2 pc = gl_PointCoord * 2.0 - 1.0;
   float pr = length(pc);
   if(pr > 1.0) discard;
-  float glow = exp(-pr * pr * 3.2);
-  float core = smoothstep(0.42, 0.0, pr);
-  vec3 col = mix(vColor.rgb, vec3(1.0, 0.99, 0.95), core * 0.72);
+  float glow = exp(-pr * pr * 4.2) * (1.0 - smoothstep(0.35, 1.0, pr));
+  float core = 1.0 - smoothstep(0.0, 0.38, pr);
+  vec3 col = mix(vColor.rgb, vec3(1.0, 0.99, 0.95), core * 0.55);
   frag = vec4(col, clamp(vColor.a * glow, 0.0, 1.0));
 }`;
       const compile = (type, src) => {
@@ -6629,7 +6720,7 @@ void main(){
             const l = eng.lights[i];
             if (!l || !l.enabled || l.power <= 0.2) continue;
             const cat = l._liveCat18 || classifyFixture18(l, i, eng.lights.length);
-            if (cat === 'beam' || cat === 'spot') {
+            if ((cat === 'beam' || cat === 'spot') && l.beamProfile18 !== 2) {
               const coreLight = {
                 pos: l.pos,
                 target: l.target,
@@ -6640,7 +6731,7 @@ void main(){
                 beamLength: Math.hypot(l.target[0] - l.pos[0], l.target[1] - l.pos[1], l.target[2] - l.pos[2]) + 1.5
               };
               const mesh = eng.makeBeam(coreLight);
-              eng.draw(mesh, 2, null, Math.min(0.42, 0.24 * (l.power / 6)));
+              eng.draw(mesh, 2, null, Math.min(0.24, 0.14 * (l.power / 6)));
 
               if (cat === 'spot') {
                 const rotBase = l.gobo9?.angle || tSec * 1.6;
@@ -6677,28 +6768,13 @@ void main(){
                   beamLength: 6.5
                 };
                 const mesh = eng.makeBeam(barRay);
-                eng.draw(mesh, 2, null, Math.min(0.28, 0.16 * (l.power / 6)));
+                eng.draw(mesh, 2, null, Math.min(0.11, 0.065 * (l.power / 6)));
               }
             }
           }
         }
 
-        // 2. 3D Volumetric Pyro Cones at each firing Sparkular / CO2 / Flame nozzle
-        for (const nz of ls.activeNozzles) {
-          const pyroCone = {
-            pos: nz.pos,
-            target: [nz.pos[0], nz.pos[1] + nz.heightM, nz.pos[2]],
-            color: nz.color,
-            angle: nz.angle || 12,
-            aperture: 0.04,
-            beamProfile18: 3,
-            beamLength: nz.heightM
-          };
-          const mesh = eng.makeBeam(pyroCone);
-          eng.draw(mesh, 2, null, Math.min(0.45, 0.34 * nz.level));
-        }
-
-        // 3. Single Cached WebGL2 Batch Program for 3D Liquid Sky Laser Sheets, Floor Decals, Laser Rays & GPU Pyro Particles
+        // 2. Single Cached WebGL2 Batch Program for 3D Liquid Sky Laser Sheets, Floor Decals, Laser Rays & GPU Pyro Particles
         const fxProg = ensureLmpFxBatchProgram18(eng);
         if (fxProg && eng.vp) {
           const { prog, vao, buf, data, maxVerts, uVP, uTime, uPassMode } = fxProg;
@@ -6733,13 +6809,14 @@ void main(){
               const [br, bg, bb] = hexToRgb01_18(unit.baseCol);
               const [ar, ag, ab] = hexToRgb01_18(unit.altCol);
               for (let r = 0; r + 1 < rays.length; r++) {
+                if (rays[r].gate === false || rays[r + 1].gate === false) continue;
                 const pA = rays[r].target3d;
                 const pB = rays[r + 1].target3d;
                 const u0 = r / Math.max(1, rays.length - 1);
                 const u1 = (r + 1) / Math.max(1, rays.length - 1);
-                vCount = pushVert(vCount, org[0], org[1], org[2], (u0 + u1) * 0.5, 0, br, bg, bb, 0.24);
-                vCount = pushVert(vCount, pA[0], pA[1], pA[2], u0, 1, ar, ag, ab, 0.08);
-                vCount = pushVert(vCount, pB[0], pB[1], pB[2], u1, 1, br, bg, bb, 0.08);
+                vCount = pushVert(vCount, org[0], org[1], org[2], (u0 + u1) * 0.5, 0, br, bg, bb, 0.14);
+                vCount = pushVert(vCount, pA[0], pA[1], pA[2], u0, 1, ar, ag, ab, 0.04);
+                vCount = pushVert(vCount, pB[0], pB[1], pB[2], u1, 1, br, bg, bb, 0.04);
               }
             }
             if (vCount > 0) {
@@ -6780,23 +6857,48 @@ void main(){
             }
           }
 
-          // Pass 2: 3D 16-Beam ILDA Laser Core Rays & 3D Pyro Velocity Streaks (uPassMode = 2, gl.LINES)
-          let lineVerts = 0;
+          // Pass 2A: 3D ILDA Laser Volumetric Ribbons (uPassMode = 2, gl.TRIANGLES, vUV.y >= 0)
+          let ribbonVerts = 0;
+          const camEye = Array.isArray(eng.eye) ? eng.eye : [0, 3, 28];
           for (const unit of lasers) {
             const org = unit.origin;
             for (const ray of unit.rays) {
+              if (ray.gate === false) continue;
+              const tgt = ray.target3d;
+              const dx = tgt[0] - org[0], dy = tgt[1] - org[1], dz = tgt[2] - org[2];
+              const vx = camEye[0] - org[0], vy = camEye[1] - org[1], vz = camEye[2] - org[2];
+              let sx = dy * vz - dz * vy, sy = dz * vx - dx * vz, sz = dx * vy - dy * vx;
+              const sLen = Math.hypot(sx, sy, sz) || 1;
+              sx /= sLen; sy /= sLen; sz /= sLen;
+              const w0 = 0.032, w1 = 0.095;
               const [r, g, b] = hexToRgb01_18(ray.rayCol);
-              lineVerts = pushVert(lineVerts, org[0], org[1], org[2], 0, 0, 1, 1, 1, 0.95);
-              lineVerts = pushVert(lineVerts, ray.target3d[0], ray.target3d[1], ray.target3d[2], 1, 1, r, g, b, 0.82);
+              const oLx = org[0] - sx * w0, oLy = org[1] - sy * w0, oLz = org[2] - sz * w0;
+              const oRx = org[0] + sx * w0, oRy = org[1] + sy * w0, oRz = org[2] + sz * w0;
+              const tLx = tgt[0] - sx * w1, tLy = tgt[1] - sy * w1, tLz = tgt[2] - sz * w1;
+              const tRx = tgt[0] + sx * w1, tRy = tgt[1] + sy * w1, tRz = tgt[2] + sz * w1;
+              ribbonVerts = pushVert(ribbonVerts, oLx, oLy, oLz, 0, 0, r, g, b, 0.72);
+              ribbonVerts = pushVert(ribbonVerts, oRx, oRy, oRz, 1, 0, r, g, b, 0.72);
+              ribbonVerts = pushVert(ribbonVerts, tRx, tRy, tRz, 1, 1, r, g, b, 0.58);
+              ribbonVerts = pushVert(ribbonVerts, oLx, oLy, oLz, 0, 0, r, g, b, 0.72);
+              ribbonVerts = pushVert(ribbonVerts, tRx, tRy, tRz, 1, 1, r, g, b, 0.58);
+              ribbonVerts = pushVert(ribbonVerts, tLx, tLy, tLz, 0, 1, r, g, b, 0.58);
             }
           }
+          if (ribbonVerts > 0) {
+            gl.uniform1i(uPassMode, 2);
+            gl.bufferSubData(gl.ARRAY_BUFFER, 0, data.subarray(0, ribbonVerts * 9));
+            gl.drawArrays(gl.TRIANGLES, 0, ribbonVerts);
+          }
+
+          // Pass 2B: 3D Pyro Velocity Streaks (uPassMode = 2, gl.LINES, vUV.y < 0)
+          let lineVerts = 0;
           for (const s of ls.aerialShells) {
             for (let t = 0; t + 1 < s.trail.length; t++) {
               const p0 = s.trail[t];
               const p1 = s.trail[t + 1];
               const a = ((t + 1) / s.trail.length) * 0.85;
-              lineVerts = pushVert(lineVerts, p0[0], p0[1], p0[2], 0, 0, 1, 0.9, 0.5, a * 0.5);
-              lineVerts = pushVert(lineVerts, p1[0], p1[1], p1[2], 1, 1, 1, 0.98, 0.85, a);
+              lineVerts = pushVert(lineVerts, p0[0], p0[1], p0[2], 0, -1, 1, 0.9, 0.5, a * 0.5);
+              lineVerts = pushVert(lineVerts, p1[0], p1[1], p1[2], 1, -1, 1, 0.98, 0.85, a);
             }
           }
           for (let i = 0; i < ls.particles.length; i++) {
@@ -6806,8 +6908,8 @@ void main(){
             const alpha = (1 - u) * 0.9;
             if (alpha <= 0.05) continue;
             const [r, g, b] = hexToRgb01_18(p.color || '#ffe680');
-            lineVerts = pushVert(lineVerts, p.px, p.py, p.pz, 0, 0, r, g, b, alpha * 0.35);
-            lineVerts = pushVert(lineVerts, p.x, p.y, p.z, 1, 1, 1, 0.98, 0.9, alpha);
+            lineVerts = pushVert(lineVerts, p.px, p.py, p.pz, 0, -1, r, g, b, alpha * 0.35);
+            lineVerts = pushVert(lineVerts, p.x, p.y, p.z, 1, -1, 1, 0.98, 0.9, alpha);
           }
           if (lineVerts > 0) {
             gl.uniform1i(uPassMode, 2);
@@ -6818,16 +6920,17 @@ void main(){
           // Pass 3: 3D GPU Pyro & Firework Point Sprites (uPassMode = 3, gl.POINTS)
           let ptVerts = 0;
           for (const s of ls.aerialShells) {
-            ptVerts = pushVert(ptVerts, s.x, s.y, s.z, 4.8, 0, 1, 0.96, 0.8, 0.98);
+            ptVerts = pushVert(ptVerts, s.x, s.y, s.z, 3.6, 0, 1, 0.96, 0.8, 0.85);
           }
           for (let i = 0; i < ls.particles.length; i++) {
             const p = ls.particles[i];
+            if (p.pType === 2 || p.pType === 3) continue; // CO2 & Flame rendered in 2D multi-layer pass to prevent additive white blowout
             const u = clamp18(p.age / Math.max(0.05, p.maxAge), 0, 1);
             const twinkle = p.pType === 5 && u > 0.55 ? (Math.sin(nowMs * 0.05 + p.seed) > 0 ? 1 : 0.25) : 1;
-            const alpha = (1 - u) * twinkle * (p.pType === 3 ? 0.42 : 0.92);
-            if (alpha <= 0.04) continue;
+            const alpha = (1 - u) * twinkle * 0.36;
+            if (alpha <= 0.03) continue;
             const [r, g, b] = hexToRgb01_18(p.color || '#ffe680');
-            const ptSize = p.pType === 3 ? p.size * 18 : p.pType === 2 ? p.size * 16 : p.size * 2.2;
+            const ptSize = clamp18(p.size * 2.2, 1.8, 5.2);
             ptVerts = pushVert(ptVerts, p.x, p.y, p.z, ptSize, u, r, g, b, alpha);
           }
           if (ptVerts > 0) {
@@ -6846,7 +6949,7 @@ void main(){
       return true;
     }
 
-    function renderLiveShowOverlay18(nowMs = nowMs18(), { clean = false } = {}) {
+    function renderLiveShowOverlay18(nowMs = nowMs18(), { clean = false, force2d = false } = {}) {
       const can = $('lmpShowOverlay18');
       const eng = S.engine;
       if (!can || !eng) return null;
@@ -6890,20 +6993,53 @@ void main(){
       const tSec = ls.showElapsedSec || nowMs / 1000;
       const spd = clamp18(ls.speed || 2.0, 0.2, 5.0);
       const showIdx = ls.effectiveShow || 1;
+      const hasWebglBatch = Boolean(eng.gl && typeof eng.makeBeam === 'function' && ensureLmpFxBatchProgram18(eng) && !force2d);
 
       // 0. Planar Mirror Reflective Deck Reflections (Phase B)
       if (lumiState.structureConfig18?.deckMaterial === 'mirror' && !ls.blackout) {
         drawMirrorDeckReflections18(ctx, proj, eng, tSec, spd);
       }
 
-      // 1. Sky / Audience Flash from Aerial Pyro or Strobe/Blinders
-      if (nowMs < ls.skyFlashUntilMs && !ls.blackout) {
-        const flashAlpha = clamp18((ls.skyFlashUntilMs - nowMs) / 450, 0, 1) * 0.22;
-        const skyGrad = ctx.createLinearGradient(0, 0, 0, h * 0.75);
-        skyGrad.addColorStop(0, rgba18(ls.skyFlashColor, flashAlpha));
-        skyGrad.addColorStop(1, rgba18(ls.skyFlashColor, 0));
-        ctx.fillStyle = skyGrad;
-        ctx.fillRect(0, 0, w, h);
+      // 1. Sky / Audience Flash from Aerial Pyro or 14Hz Strobe / Audience Blinders
+      if (!ls.blackout) {
+        if (nowMs < ls.skyFlashUntilMs) {
+          const flashAlpha = clamp18((ls.skyFlashUntilMs - nowMs) / 450, 0, 1) * 0.28;
+          const skyGrad = ctx.createLinearGradient(0, 0, 0, h * 0.82);
+          skyGrad.addColorStop(0, rgba18(ls.skyFlashColor, flashAlpha));
+          skyGrad.addColorStop(1, rgba18(ls.skyFlashColor, 0));
+          ctx.fillStyle = skyGrad;
+          ctx.fillRect(0, 0, w, h);
+        }
+        if (ls.strobe) {
+          const prefersReduced = typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+          if (prefersReduced) {
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+            ctx.fillRect(0, 0, w, h);
+          } else if ((nowMs % 71.4) < 25.0) {
+            const stGrad = ctx.createRadialGradient(w * 0.5, h * 0.42, 10, w * 0.5, h * 0.42, Math.max(w, h) * 0.65);
+            stGrad.addColorStop(0, 'rgba(255,255,255,0.34)');
+            stGrad.addColorStop(0.55, 'rgba(220,240,255,0.16)');
+            stGrad.addColorStop(1, 'rgba(255,255,255,0)');
+            ctx.fillStyle = stGrad;
+            ctx.fillRect(0, 0, w, h);
+          } else {
+            ctx.save();
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.fillStyle = 'rgba(2, 4, 10, 0.44)';
+            ctx.fillRect(0, 0, w, h);
+            ctx.restore();
+          }
+        }
+        if (ls.blindersOn) {
+          const blPulse = 0.10 + 0.04 * Math.sin(nowMs * 0.014);
+          const blGrad = ctx.createRadialGradient(w * 0.5, h * 0.36, 10, w * 0.5, h * 0.42, Math.max(w, h) * 0.62);
+          blGrad.addColorStop(0, `rgba(255,220,130,${blPulse.toFixed(3)})`);
+          blGrad.addColorStop(0.35, `rgba(255,165,45,${(blPulse * 0.48).toFixed(3)})`);
+          blGrad.addColorStop(0.7, `rgba(255,130,20,${(blPulse * 0.14).toFixed(3)})`);
+          blGrad.addColorStop(1, 'rgba(255,120,0,0)');
+          ctx.fillStyle = blGrad;
+          ctx.fillRect(0, 0, w, h);
+        }
       }
 
       // 2. Render Volumetric Moving Head Shafts, Barra LED 12-Cell Curtains (pixel_bar_curtain_v1), Parabolic Wall Scallops (par_uplight_v1), Lens Head Flares & Rotating Floor Gobo Projections (spot_profile_v1)
@@ -6917,7 +7053,7 @@ void main(){
           const cat = l._liveCat18 || classifyFixture18(l, i, eng.lights.length);
           const intensity = clamp18(l.power / 8.5, 0.1, 1.35);
 
-          if (cat === 'bar' && p1) {
+          if (!hasWebglBatch && cat === 'bar' && p1) {
             // 12-cell Barra LED linear array + curtain rays (pixel_bar_curtain_v1: 0.92 x 6.5 x 0.45m)
             const cells = computePixelBarCurtainCells18(l.pos, l.target, tSec, spd, i, l.color);
             for (const cell of cells) {
@@ -6937,7 +7073,7 @@ void main(){
               ctx.arc(cp0.x, cp0.y, 2.6, 0, Math.PI * 2);
               ctx.fill();
             }
-          } else if (p1) {
+          } else if (!hasWebglBatch && p1) {
             // Parabolic Wall-Wash Scallop + Floor Pool for par_uplight_v1
             if (cat === 'par') {
               drawParabolicWallScallop18(ctx, proj, l.pos, l.color, intensity, 3.6, 1.45);
@@ -7003,30 +7139,69 @@ void main(){
             }
           }
 
-          // Fixture lens head flare
-          const flareR = cat === 'blinder' ? 24 * intensity : 12 * intensity;
+          // Fixture lens head flare + Multi-Cell COB Audience Blinder (4-Lite Molefay) & 14Hz Xenon Starburst
+          const isBlinderActive = Boolean(l._isBlinder18) || (ls.blindersOn && (cat === 'blinder' || i % 4 === 3));
+          const flareR = isBlinderActive ? 34 * intensity : cat === 'blinder' ? 18 * intensity : 11 * intensity;
           if (flareR > 2) {
-            const fg = ctx.createRadialGradient(p0.x, p0.y, 0.5, p0.x, p0.y, flareR);
-            fg.addColorStop(0, 'rgba(255,255,255,0.92)');
-            fg.addColorStop(0.28, rgba18(l.color, 0.72));
-            fg.addColorStop(1, rgba18(l.color, 0));
+            // Smooth 6-stop Gaussian falloff (eliminates circular Mach-band ring border)
+            const fg = ctx.createRadialGradient(p0.x, p0.y, 0.2, p0.x, p0.y, flareR);
+            const col = isBlinderActive ? '#ffaa28' : l.color;
+            const cAlpha = isBlinderActive ? 0.78 : 0.65;
+            fg.addColorStop(0, '#ffffff');
+            fg.addColorStop(0.14, rgba18(isBlinderActive ? '#ffe89e' : '#ffffff', cAlpha * 0.92));
+            fg.addColorStop(0.32, rgba18(col, cAlpha * 0.52));
+            fg.addColorStop(0.56, rgba18(col, cAlpha * 0.20));
+            fg.addColorStop(0.80, rgba18(col, cAlpha * 0.05));
+            fg.addColorStop(1, rgba18(col, 0));
             ctx.fillStyle = fg;
             ctx.beginPath();
             ctx.arc(p0.x, p0.y, flareR, 0, Math.PI * 2);
             ctx.fill();
+
+            if (isBlinderActive) {
+              // 4-Lite 2x2 Warm Tungsten COB Reflector Pod (no center horizontal line or cone wedge)
+              const cellOffX = 4.2;
+              const cellOffY = 3.2;
+              for (const ox of [-cellOffX, cellOffX]) {
+                for (const oy of [-cellOffY, cellOffY]) {
+                  const cx = p0.x + ox;
+                  const cy = p0.y + oy;
+                  const cg = ctx.createRadialGradient(cx, cy, 0.2, cx, cy, 6.2);
+                  cg.addColorStop(0, '#ffffff');
+                  cg.addColorStop(0.38, 'rgba(255,235,160,0.92)');
+                  cg.addColorStop(0.75, 'rgba(255,165,40,0.28)');
+                  cg.addColorStop(1, 'rgba(255,140,0,0)');
+                  ctx.fillStyle = cg;
+                  ctx.beginPath();
+                  ctx.arc(cx, cy, 6.2, 0, Math.PI * 2);
+                  ctx.fill();
+                }
+              }
+            } else if (ls.strobe && (nowMs % 71.4) < 25.0) {
+              // Crisp 6-point Xenon Atomic Strobe discharge spikes on ON phase
+              ctx.strokeStyle = 'rgba(235,248,255,0.88)';
+              ctx.lineWidth = 1.5;
+              for (let s = 0; s < 3; s++) {
+                const ang = (s * Math.PI) / 3 + (nowMs * 0.005);
+                const rSpike = flareR * 1.55;
+                ctx.beginPath();
+                ctx.moveTo(p0.x - Math.cos(ang) * rSpike, p0.y - Math.sin(ang) * rSpike);
+                ctx.lineTo(p0.x + Math.cos(ang) * rSpike, p0.y + Math.sin(ang) * rSpike);
+                ctx.stroke();
+              }
+            }
           }
         }
       }
 
-      // 3. 16-Beam ILDA Laser Fan & Liquid Sky Wave Sheet (4 patterns from ledmapper.pro)
+      // 3. ILDA Laser Fan & Liquid Sky Wave Sheet (coherent optical core + emitter aperture glow)
       if (ls.running && ls.laserOn && !ls.blackout) {
         const laserUnits = [
-          [-4.5, 3.4, -1.6],
-          [4.5, 3.4, -1.6]
+          [-4.2, 4.2, -1.6],
+          [4.2, 4.2, -1.6]
         ];
-        if (showIdx === 4 || showIdx === 6) laserUnits.push([0, 5.1, -1.7]);
         const patternIdx = ls.laserPattern === 'auto' ? (showIdx - 1) % 4 : (Number(ls.laserPattern) || 0) % 4;
-        const beamCount = patternIdx === 3 ? 20 : 16;
+        const beamCount = patternIdx === 3 ? 6 : 5;
 
         laserUnits.forEach((origin, uIdx) => {
           const pOrigin = proj(origin);
@@ -7036,32 +7211,27 @@ void main(){
           const baseCol = laserPal[(uIdx + showIdx - 1) % laserPal.length];
           const altCol = laserPal[(uIdx + showIdx + 1) % laserPal.length];
           const ends = [];
-
           for (let b = 0; b < beamCount; b++) {
             const u = (b / (beamCount - 1)) - 0.5;
-            let yaw = u * 1.15;
+            let yaw = u * 0.82;
             let pitch = -0.02;
             let gate = true;
             if (patternIdx === 0) {
-              // Pattern 0: Wide Sine Fan + Liquid Sky Wave Sheet
-              yaw += Math.sin(tSec * spd * 1.4 + uIdx) * 0.28;
-              pitch = 0.02 + Math.sin(tSec * spd * 3.6 + b * 0.55 + uIdx) * 0.09;
+              yaw += Math.sin(tSec * spd * 0.35 + uIdx) * 0.16;
+              pitch = 0.02 + Math.sin(tSec * spd * 0.72 + b * 0.55 + uIdx) * 0.045;
             } else if (patternIdx === 1) {
-              // Pattern 1: Geometric Scanning Cone Tunnel
-              const theta = (b / beamCount) * Math.PI * 2 + tSec * spd * 2.4 * (uIdx % 2 === 0 ? 1 : -1);
-              const rad = 0.20 + 0.22 * Math.abs(Math.sin(tSec * spd * 1.6));
+              const theta = (b / beamCount) * Math.PI * 2 + tSec * spd * 0.52 * (uIdx % 2 === 0 ? 1 : -1);
+              const rad = 0.14 + 0.12 * Math.abs(Math.sin(tSec * spd * 0.38));
               yaw = Math.cos(theta) * rad;
               pitch = 0.04 + Math.sin(theta) * rad * 0.65;
             } else if (patternIdx === 2) {
-              // Pattern 2: Dual-Mirror X-Cross Chopper
               const sign = uIdx % 2 === 0 ? 1 : -1;
-              yaw = sign * 0.28 + u * 0.95 + Math.sin(tSec * spd * 2.8) * 0.22 * sign;
-              pitch = 0.01 + Math.cos(tSec * spd * 2.2 + b * 0.4) * 0.08;
-              gate = ((b + Math.floor(tSec * spd * 12)) % 3) !== 0;
+              yaw = sign * 0.20 + u * 0.68 + Math.sin(tSec * spd * 0.55) * 0.12 * sign;
+              pitch = 0.01 + Math.cos(tSec * spd * 0.48 + b * 0.4) * 0.045;
+              gate = ((b + Math.floor(tSec * spd * 2.2)) % 3) !== 0;
             } else {
-              // Pattern 3: Festival Climax Starburst
-              yaw = u * 1.42 + Math.sin(tSec * spd * 2.2 + b * 0.35) * 0.25;
-              pitch = 0.03 + Math.cos(tSec * spd * 3.1 + b * 0.48) * 0.14;
+              yaw = u * 0.92 + Math.sin(tSec * spd * 0.45 + b * 0.35) * 0.14;
+              pitch = 0.03 + Math.cos(tSec * spd * 0.62 + b * 0.48) * 0.075;
             }
             if (!gate) continue;
             const range = 16.5;
@@ -7076,57 +7246,57 @@ void main(){
             ends.push({ pEnd, rayCol });
           }
 
-          // Liquid Sky Interference Sheet fill between adjacent rays
-          if (ends.length >= 2) {
+          if (!hasWebglBatch && ends.length >= 2) {
             ctx.beginPath();
             ctx.moveTo(pOrigin.x, pOrigin.y);
             for (const e of ends) ctx.lineTo(e.pEnd.x, e.pEnd.y);
             ctx.closePath();
             const sheetGrad = ctx.createRadialGradient(pOrigin.x, pOrigin.y, 2, pOrigin.x, pOrigin.y, 260);
-            sheetGrad.addColorStop(0, rgba18(baseCol, 0.22));
-            sheetGrad.addColorStop(0.6, rgba18(altCol, 0.08));
+            sheetGrad.addColorStop(0, rgba18(baseCol, 0.16));
+            sheetGrad.addColorStop(0.6, rgba18(altCol, 0.05));
             sheetGrad.addColorStop(1, rgba18(baseCol, 0));
             ctx.fillStyle = sheetGrad;
             ctx.fill();
           }
 
-          // Crisp coherent laser rays
-          for (const { pEnd, rayCol } of ends) {
-            ctx.strokeStyle = rgba18(rayCol, 0.28);
-            ctx.lineWidth = 4.5;
-            ctx.beginPath();
-            ctx.moveTo(pOrigin.x, pOrigin.y);
-            ctx.lineTo(pEnd.x, pEnd.y);
-            ctx.stroke();
+          if (!hasWebglBatch) {
+            for (const { pEnd, rayCol } of ends) {
+              ctx.strokeStyle = rgba18(rayCol, 0.24);
+              ctx.lineWidth = 3.8;
+              ctx.beginPath();
+              ctx.moveTo(pOrigin.x, pOrigin.y);
+              ctx.lineTo(pEnd.x, pEnd.y);
+              ctx.stroke();
 
-            ctx.strokeStyle = rgba18(rayCol, 0.92);
-            ctx.lineWidth = 1.4;
-            ctx.beginPath();
-            ctx.moveTo(pOrigin.x, pOrigin.y);
-            ctx.lineTo(pEnd.x, pEnd.y);
-            ctx.stroke();
+              ctx.strokeStyle = rgba18(rayCol, 0.86);
+              ctx.lineWidth = 1.25;
+              ctx.beginPath();
+              ctx.moveTo(pOrigin.x, pOrigin.y);
+              ctx.lineTo(pEnd.x, pEnd.y);
+              ctx.stroke();
 
-            ctx.strokeStyle = 'rgba(235,255,255,0.78)';
-            ctx.lineWidth = 0.65;
-            ctx.beginPath();
-            ctx.moveTo(pOrigin.x, pOrigin.y);
-            ctx.lineTo(pEnd.x, pEnd.y);
-            ctx.stroke();
+              ctx.strokeStyle = 'rgba(235,255,255,0.78)';
+              ctx.lineWidth = 0.6;
+              ctx.beginPath();
+              ctx.moveTo(pOrigin.x, pOrigin.y);
+              ctx.lineTo(pEnd.x, pEnd.y);
+              ctx.stroke();
+            }
           }
 
           // Laser aperture emitter glow
-          const lg = ctx.createRadialGradient(pOrigin.x, pOrigin.y, 0.5, pOrigin.x, pOrigin.y, 16);
+          const lg = ctx.createRadialGradient(pOrigin.x, pOrigin.y, 0.5, pOrigin.x, pOrigin.y, 14);
           lg.addColorStop(0, '#ffffff');
-          lg.addColorStop(0.3, rgba18(baseCol, 0.85));
+          lg.addColorStop(0.32, rgba18(baseCol, 0.85));
           lg.addColorStop(1, rgba18(baseCol, 0));
           ctx.fillStyle = lg;
           ctx.beginPath();
-          ctx.arc(pOrigin.x, pOrigin.y, 16, 0, Math.PI * 2);
+          ctx.arc(pOrigin.x, pOrigin.y, 14, 0, Math.PI * 2);
           ctx.fill();
         });
       }
 
-      // 4. Render Active Pyro Nozzle Plumes (Sparkular, CO2, Flames) + Base Stage Glow
+      // 4. Render Active Pyro Nozzle Cores & Floor Glow (realistic multi-layer optical bloom without white blowout)
       for (const nz of ls.activeNozzles) {
         const pBase = proj(nz.pos);
         const pTop = proj([nz.pos[0], nz.pos[1] + nz.heightM, nz.pos[2]]);
@@ -7134,86 +7304,124 @@ void main(){
         const plumeH = Math.max(12, Math.hypot(pTop.x - pBase.x, pTop.y - pBase.y));
 
         if (nz.kind === 'cold_spark_fountain') {
+          // Razor-thin white-gold high-temperature sparkular jet needle spine
           const g = ctx.createLinearGradient(pBase.x, pBase.y, pTop.x, pTop.y);
-          g.addColorStop(0, 'rgba(255,255,255,0.95)');
-          g.addColorStop(0.35, 'rgba(255,225,110,0.65)');
-          g.addColorStop(1, 'rgba(255,140,0,0)');
-          ctx.strokeStyle = g;
-          ctx.lineWidth = Math.max(6, plumeH * 0.14);
-          ctx.lineCap = 'round';
-          ctx.beginPath();
-          ctx.moveTo(pBase.x, pBase.y);
-          ctx.lineTo(pTop.x, pTop.y);
-          ctx.stroke();
-        } else if (nz.kind === 'co2_jet') {
-          const topW = Math.max(14, plumeH * 0.28);
-          const g = ctx.createLinearGradient(pBase.x, pBase.y, pTop.x, pTop.y);
-          g.addColorStop(0, 'rgba(240,253,255,0.85)');
-          g.addColorStop(0.45, 'rgba(185,242,255,0.42)');
-          g.addColorStop(1, 'rgba(140,225,255,0)');
+          g.addColorStop(0, 'rgba(255,255,255,0.92)');
+          g.addColorStop(0.24, 'rgba(255,225,115,0.58)');
+          g.addColorStop(0.68, 'rgba(255,155,25,0.14)');
+          g.addColorStop(1, 'rgba(255,110,0,0)');
           ctx.fillStyle = g;
           ctx.beginPath();
-          ctx.moveTo(pBase.x - 3, pBase.y);
-          ctx.lineTo(pBase.x + 3, pBase.y);
-          ctx.lineTo(pTop.x + topW, pTop.y);
-          ctx.lineTo(pTop.x - topW, pTop.y);
+          ctx.moveTo(pBase.x - 1.5, pBase.y);
+          ctx.lineTo(pBase.x + 1.5, pBase.y);
+          ctx.lineTo(pTop.x + Math.max(3.5, plumeH * 0.05), pTop.y);
+          ctx.lineTo(pTop.x - Math.max(3.5, plumeH * 0.05), pTop.y);
           ctx.closePath();
           ctx.fill();
-        } else if (nz.kind === 'flame_jet') {
-          const whipX = Math.sin(nowMs * 0.02 + nz.pos[0]) * (plumeH * 0.08);
-          const g = ctx.createLinearGradient(pBase.x, pBase.y, pTop.x + whipX, pTop.y);
-          g.addColorStop(0, 'rgba(255,252,190,0.96)');
-          g.addColorStop(0.35, 'rgba(255,130,0,0.82)');
-          g.addColorStop(0.75, 'rgba(220,30,0,0.45)');
-          g.addColorStop(1, 'rgba(120,10,0,0)');
-          ctx.strokeStyle = g;
-          ctx.lineWidth = Math.max(10, plumeH * 0.22);
-          ctx.lineCap = 'round';
+        } else if (nz.kind === 'co2_jet') {
+          // Pressurized Cryo CO2 jet stream rendered in source-over so vapor stays cool ice-blue/white mist
+          ctx.save();
+          ctx.globalCompositeOperation = 'source-over';
+          const topW = Math.max(14, plumeH * 0.24);
+          const wobble = Math.sin(nowMs * 0.025 + nz.pos[0]) * 3.5;
+          const g = ctx.createLinearGradient(pBase.x, pBase.y, pTop.x + wobble, pTop.y);
+          g.addColorStop(0, 'rgba(248,254,255,0.82)');
+          g.addColorStop(0.32, 'rgba(205,242,255,0.42)');
+          g.addColorStop(0.72, 'rgba(155,222,250,0.16)');
+          g.addColorStop(1, 'rgba(130,210,245,0)');
+          ctx.fillStyle = g;
           ctx.beginPath();
-          ctx.moveTo(pBase.x, pBase.y);
-          ctx.quadraticCurveTo((pBase.x + pTop.x) * 0.5 - whipX * 0.6, (pBase.y + pTop.y) * 0.5, pTop.x + whipX, pTop.y);
-          ctx.stroke();
+          ctx.moveTo(pBase.x - 2.0, pBase.y);
+          ctx.lineTo(pBase.x + 2.0, pBase.y);
+          ctx.lineTo(pTop.x + wobble + topW, pTop.y);
+          ctx.lineTo(pTop.x + wobble - topW, pTop.y);
+          ctx.closePath();
+          ctx.fill();
+          ctx.restore();
+        } else if (nz.kind === 'flame_jet') {
+          // Tapered organic teardrop flame tongue (bezier-sculpted crimson/orange outer + white-hot base)
+          const whipX = Math.sin(nowMs * 0.026 + nz.pos[0] * 1.9) * (plumeH * 0.12);
+          const baseW = Math.max(4.5, plumeH * 0.085);
+          const bellyW = Math.max(8.5, plumeH * 0.16);
+          const midY = pBase.y + (pTop.y - pBase.y) * 0.46;
+          const tipX = pTop.x + whipX;
+          const tipY = pTop.y;
+
+          ctx.save();
+          ctx.globalCompositeOperation = 'source-over';
+          const outerG = ctx.createLinearGradient(pBase.x, pBase.y, tipX, tipY);
+          outerG.addColorStop(0, 'rgba(255,190,60,0.85)');
+          outerG.addColorStop(0.35, 'rgba(245,88,0,0.78)');
+          outerG.addColorStop(0.76, 'rgba(185,18,0,0.42)');
+          outerG.addColorStop(1, 'rgba(80,4,0,0)');
+          ctx.fillStyle = outerG;
+          ctx.beginPath();
+          ctx.moveTo(pBase.x - baseW, pBase.y);
+          ctx.quadraticCurveTo(pBase.x - bellyW, midY, tipX, tipY);
+          ctx.quadraticCurveTo(pBase.x + bellyW, midY, pBase.x + baseW, pBase.y);
+          ctx.closePath();
+          ctx.fill();
+          ctx.restore();
+
+          // Inner luminous thermal core
+          const coreTipX = pBase.x + whipX * 0.45;
+          const coreTipY = pBase.y + (pTop.y - pBase.y) * 0.62;
+          const coreG = ctx.createLinearGradient(pBase.x, pBase.y, coreTipX, coreTipY);
+          coreG.addColorStop(0, 'rgba(220,245,255,0.95)');
+          coreG.addColorStop(0.18, 'rgba(255,250,190,0.92)');
+          coreG.addColorStop(0.65, 'rgba(255,150,15,0.55)');
+          coreG.addColorStop(1, 'rgba(255,90,0,0)');
+          ctx.fillStyle = coreG;
+          ctx.beginPath();
+          ctx.moveTo(pBase.x - baseW * 0.52, pBase.y);
+          ctx.quadraticCurveTo(pBase.x - bellyW * 0.48, (pBase.y + coreTipY) * 0.5, coreTipX, coreTipY);
+          ctx.quadraticCurveTo(pBase.x + bellyW * 0.48, (pBase.y + coreTipY) * 0.5, pBase.x + baseW * 0.52, pBase.y);
+          ctx.closePath();
+          ctx.fill();
         }
 
-        // Nozzle floor glow
-        const baseR = Math.max(16, plumeH * 0.32);
-        const bg = ctx.createRadialGradient(pBase.x, pBase.y, 1, pBase.x, pBase.y, baseR);
-        bg.addColorStop(0, 'rgba(255,255,255,0.9)');
-        bg.addColorStop(0.35, rgba18(nz.color, 0.55 * nz.level));
+        // Perspective-compressed elliptical nozzle floor pool glow (not a spherical ball)
+        const baseR = Math.max(12, plumeH * 0.22);
+        const bg = ctx.createRadialGradient(pBase.x, pBase.y, 0.5, pBase.x, pBase.y, baseR);
+        bg.addColorStop(0, 'rgba(255,255,255,0.75)');
+        bg.addColorStop(0.32, rgba18(nz.color, 0.38 * nz.level));
+        bg.addColorStop(0.72, rgba18(nz.color, 0.10 * nz.level));
         bg.addColorStop(1, rgba18(nz.color, 0));
         ctx.fillStyle = bg;
         ctx.beginPath();
-        ctx.arc(pBase.x, pBase.y, baseR, 0, Math.PI * 2);
+        ctx.ellipse(pBase.x, pBase.y, baseR, baseR * 0.42, 0, 0, Math.PI * 2);
         ctx.fill();
       }
 
-      // 5. Render Rising Aerial Pyro Comet Shells
+      // 5. Render Rising Aerial Pyro Comet Shells (golden mortar comet tails)
       for (const s of ls.aerialShells) {
         const pHead = proj([s.x, s.y, s.z]);
         if (!pHead) continue;
-        if (s.trail.length >= 2) {
-          ctx.strokeStyle = rgba18('#ffe680', 0.78);
+        const pTail = proj([s.x - s.vx * 0.14, s.y - Math.max(1.4, s.vy * 0.14), s.z - s.vz * 0.14]);
+        if (pTail) {
+          const tg = ctx.createLinearGradient(pHead.x, pHead.y, pTail.x, pTail.y);
+          tg.addColorStop(0, '#ffffff');
+          tg.addColorStop(0.32, rgba18(s.color || '#ffe680', 0.90));
+          tg.addColorStop(1, rgba18('#ff8800', 0));
+          ctx.strokeStyle = tg;
           ctx.lineWidth = 2.6;
+          ctx.lineCap = 'round';
           ctx.beginPath();
-          let started = false;
-          for (const pt of s.trail) {
-            const pr = proj(pt);
-            if (!pr) continue;
-            if (!started) { ctx.moveTo(pr.x, pr.y); started = true; }
-            else ctx.lineTo(pr.x, pr.y);
-          }
-          if (started) {
-            ctx.lineTo(pHead.x, pHead.y);
-            ctx.stroke();
-          }
+          ctx.moveTo(pTail.x, pTail.y);
+          ctx.lineTo(pHead.x, pHead.y);
+          ctx.stroke();
         }
-        ctx.fillStyle = '#ffffff';
+        const hg = ctx.createRadialGradient(pHead.x, pHead.y, 0.4, pHead.x, pHead.y, 6.5);
+        hg.addColorStop(0, '#ffffff');
+        hg.addColorStop(0.38, rgba18(s.color || '#ffe680', 0.82));
+        hg.addColorStop(1, rgba18(s.color || '#ffe680', 0));
+        ctx.fillStyle = hg;
         ctx.beginPath();
-        ctx.arc(pHead.x, pHead.y, 3.8, 0, Math.PI * 2);
+        ctx.arc(pHead.x, pHead.y, 6.5, 0, Math.PI * 2);
         ctx.fill();
       }
 
-      // 6. Render 3D Physics Particles (Sparkular sparks, CO2 clouds, Flame tongues, Aerial Firework stars)
+      // 6. Render 3D Physics Particles (Razor-Sharp Titanium Sparks, Volumetric Cryo Mist, Tapered Flame Tongues & Jewel-Like Long-Tail Firework Stars)
       for (let i = 0; i < ls.particles.length; i++) {
         const p = ls.particles[i];
         const pr = proj([p.x, p.y, p.z]);
@@ -7222,64 +7430,113 @@ void main(){
         const lifeAlpha = 1 - u;
 
         if (p.kind === 'spark' || p.kind === 'gold_mine' || p.kind === 'mine_gold') {
-          const prevPr = p.px !== undefined ? proj([p.px, p.py, p.pz]) : null;
-          ctx.strokeStyle = u < 0.35 ? `rgba(255,255,240,${(lifeAlpha * 0.95).toFixed(2)})` : `rgba(255,190,60,${(lifeAlpha * 0.85).toFixed(2)})`;
-          ctx.lineWidth = Math.max(1.2, p.size * (1 - u * 0.5));
+          const tail3d = [
+            p.x - (p.vx || 0) * 0.055,
+            p.y - (p.vy || 4) * 0.055,
+            p.z - (p.vz || 0) * 0.055
+          ];
+          const prevPr = proj(tail3d);
+          ctx.strokeStyle = u < 0.34 ? `rgba(255,255,245,${(lifeAlpha * 0.95).toFixed(2)})` : `rgba(255,192,62,${(lifeAlpha * 0.86).toFixed(2)})`;
+          ctx.lineWidth = clamp18(p.size * 0.48 * (1 - u * 0.45), 1.0, 1.9);
+          ctx.lineCap = 'round';
           ctx.beginPath();
-          ctx.moveTo(prevPr ? prevPr.x : pr.x, prevPr ? prevPr.y : pr.y + 4);
+          ctx.moveTo(prevPr ? prevPr.x : pr.x, prevPr ? prevPr.y : pr.y + 6);
           ctx.lineTo(pr.x, pr.y);
           ctx.stroke();
+
+          if (u < 0.58) {
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.arc(pr.x, pr.y, 1.15, 0, Math.PI * 2);
+            ctx.fill();
+          }
         } else if (p.kind === 'co2') {
-          const rPx = clamp18(p.size * 18, 4, 34);
+          // Render cryo vapor puffs with source-over so clouds look like cold mist, never glowing white lightbulbs
+          ctx.save();
+          ctx.globalCompositeOperation = 'source-over';
+          const rPx = clamp18(p.size * 22 * (0.55 + u * 0.75), 6, 36);
           const cg = ctx.createRadialGradient(pr.x, pr.y, 0.5, pr.x, pr.y, rPx);
-          cg.addColorStop(0, `rgba(240,252,255,${(lifeAlpha * 0.36).toFixed(3)})`);
-          cg.addColorStop(1, 'rgba(180,235,255,0)');
+          const mistAlpha = Math.sin(u * Math.PI) * 0.26;
+          cg.addColorStop(0, `rgba(242,252,255,${mistAlpha.toFixed(3)})`);
+          cg.addColorStop(0.48, `rgba(195,235,250,${(mistAlpha * 0.52).toFixed(3)})`);
+          cg.addColorStop(0.82, `rgba(160,218,242,${(mistAlpha * 0.16).toFixed(3)})`);
+          cg.addColorStop(1, 'rgba(140,210,240,0)');
           ctx.fillStyle = cg;
           ctx.beginPath();
-          ctx.arc(pr.x, pr.y, rPx, 0, Math.PI * 2);
+          ctx.ellipse(pr.x, pr.y, rPx * 0.88, rPx * 1.15, 0, 0, Math.PI * 2);
           ctx.fill();
+          ctx.restore();
         } else if (p.kind === 'flame') {
-          const rPx = clamp18(p.size * 22 * (1 - u * 0.35), 4, 32);
-          const col = u < 0.25 ? '#fff7ae' : u < 0.6 ? '#ff7b00' : '#d91b00';
-          const fg = ctx.createRadialGradient(pr.x, pr.y, 0.5, pr.x, pr.y, rPx);
-          fg.addColorStop(0, rgba18(col, lifeAlpha * 0.62));
-          fg.addColorStop(1, rgba18(col, 0));
+          // Vertically stretched licking flame wisp (teardrop tongue, not a round circle)
+          const rW = clamp18(p.size * 11 * (1 - u * 0.42), 3.5, 16);
+          const rH = rW * 2.15;
+          const col = u < 0.22 ? '#fff4a8' : u < 0.56 ? '#ff6a00' : '#b81400';
+          ctx.save();
+          if (u >= 0.42) ctx.globalCompositeOperation = 'source-over';
+          const fg = ctx.createRadialGradient(pr.x, pr.y + rH * 0.15, 0.5, pr.x, pr.y, rH);
+          fg.addColorStop(0, u < 0.18 ? 'rgba(255,255,240,0.78)' : rgba18(col, lifeAlpha * 0.52));
+          fg.addColorStop(0.45, rgba18(col, lifeAlpha * 0.28));
+          fg.addColorStop(0.82, rgba18('#6e0800', lifeAlpha * 0.08));
+          fg.addColorStop(1, 'rgba(60,0,0,0)');
           ctx.fillStyle = fg;
           ctx.beginPath();
-          ctx.arc(pr.x, pr.y, rPx, 0, Math.PI * 2);
+          ctx.moveTo(pr.x, pr.y - rH);
+          ctx.quadraticCurveTo(pr.x + rW, pr.y, pr.x, pr.y + rH * 0.55);
+          ctx.quadraticCurveTo(pr.x - rW, pr.y, pr.x, pr.y - rH);
+          ctx.closePath();
           ctx.fill();
+          ctx.restore();
         } else if (p.kind === 'muzzle_flash') {
-          const rPx = clamp18(p.size * 16 * lifeAlpha, 4, 42);
+          const rPx = clamp18(p.size * 11 * lifeAlpha, 4, 24);
           const mg = ctx.createRadialGradient(pr.x, pr.y, 0.5, pr.x, pr.y, rPx);
-          mg.addColorStop(0, `rgba(255,255,255,${(lifeAlpha * 0.92).toFixed(2)})`);
-          mg.addColorStop(0.45, rgba18(p.color || '#ffe680', lifeAlpha * 0.65));
+          mg.addColorStop(0, `rgba(255,255,255,${(lifeAlpha * 0.72).toFixed(2)})`);
+          mg.addColorStop(0.42, rgba18(p.color || '#ffe680', lifeAlpha * 0.38));
           mg.addColorStop(1, rgba18(p.color || '#ffe680', 0));
           ctx.fillStyle = mg;
           ctx.beginPath();
           ctx.arc(pr.x, pr.y, rPx, 0, Math.PI * 2);
           ctx.fill();
         } else if (p.kind === 'firework_star' || p.kind === 'crackle_star' || p.kind === 'firework_crackle' || p.kind === 'willow_trail' || p.kind === 'comet_micro') {
-          const twinkle = u > 0.55 ? (Math.sin(nowMs * 0.05 + p.seed) > 0 ? 1 : 0.25) : 1;
+          const twinkle = u > 0.52 ? (Math.sin(nowMs * 0.065 + p.seed) > 0 ? 1 : 0.22) : 1;
           const alpha = lifeAlpha * twinkle;
           if (alpha <= 0.04) continue;
-          const prevPr = p.px !== undefined ? proj([p.px, p.py, p.pz]) : null;
+          const tailDt = p.isWillow ? 0.135 : 0.092;
+          const prevPr = proj([
+            p.x - (p.vx || 0) * tailDt,
+            p.y - (p.vy || 0) * tailDt,
+            p.z - (p.vz || 0) * tailDt
+          ]);
           if (prevPr) {
-            ctx.strokeStyle = rgba18(p.color, alpha * 0.85);
-            ctx.lineWidth = Math.max(1.2, p.size * (1 - u * 0.4));
+            const sg = ctx.createLinearGradient(pr.x, pr.y, prevPr.x, prevPr.y);
+            sg.addColorStop(0, '#ffffff');
+            sg.addColorStop(0.28, rgba18(p.color, alpha * 0.90));
+            sg.addColorStop(0.72, rgba18(p.color, alpha * 0.32));
+            sg.addColorStop(1, rgba18(p.color, 0));
+            ctx.strokeStyle = sg;
+            ctx.lineWidth = clamp18(p.size * 0.52 * (1 - u * 0.38), 1.0, 2.1);
+            ctx.lineCap = 'round';
             ctx.beginPath();
             ctx.moveTo(prevPr.x, prevPr.y);
             ctx.lineTo(pr.x, pr.y);
             ctx.stroke();
           }
-          ctx.fillStyle = u < 0.25 ? '#ffffff' : rgba18(p.color, alpha);
+          // Jewel-sharp star head (compact radius prevents 96 stars from merging into a white blob)
+          const starR = clamp18(p.size * 0.95 * (1 - u * 0.35), 1.8, 3.8);
+          const hg = ctx.createRadialGradient(pr.x, pr.y, 0.2, pr.x, pr.y, starR);
+          hg.addColorStop(0, '#ffffff');
+          hg.addColorStop(0.38, rgba18(p.color, alpha * 0.85));
+          hg.addColorStop(0.75, rgba18(p.color, alpha * 0.22));
+          hg.addColorStop(1, rgba18(p.color, 0));
+          ctx.fillStyle = hg;
           ctx.beginPath();
-          ctx.arc(pr.x, pr.y, Math.max(1.5, p.size * (1 - u * 0.45)), 0, Math.PI * 2);
+          ctx.arc(pr.x, pr.y, starR, 0, Math.PI * 2);
           ctx.fill();
         }
       }
 
-      // 7. Render Organic Crowd Bounce silhouettes (Phase B) & Acoustic Wave Flow (Phase C)
-      if (lumiState.structureConfig18?.crowdBounce && ls.running) {
+      // 7. Render Organic Crowd Bounce silhouettes (Phase B, only when explicitly requested via crowdBounce2dOverlay) & Acoustic Wave Flow (Phase C)
+      const has3DCrowd = ((S.seq || window.seq)?.people || []).some((p) => p && !p.hidden && p.type === 'audience');
+      if (lumiState.structureConfig18?.crowdBounce2dOverlay && ls.running && !has3DCrowd) {
         drawOrganicCrowdBounce18(ctx, proj, eng, tSec, spd, ls.running);
       }
       if (lumiState.audioWorkstation18?.waveFlowVisible && ls.running) {
@@ -7323,21 +7580,27 @@ void main(){
         ls.savedSettings = eng.settings ? { ...eng.settings } : null;
         ls.savedMotion = { accent: eng.accent, effect: eng.effect };
         if (eng.settings) {
-          eng.settings.beam = Math.max(Number(eng.settings.beam) || 0.45, 0.88);
-          eng.settings.haze = Math.max(Number(eng.settings.haze) || 18, 26);
-          eng.settings.exposure = Math.max(Number(eng.settings.exposure) || 1.0, 1.18);
+          eng.settings.ambient = Math.min(Number(eng.settings.ambient) || 0.7, 0.22);
+          eng.settings.beam = Math.max(Number(eng.settings.beam) || 0.45, 0.94);
+          eng.settings.haze = Math.max(Number(eng.settings.haze) || 18, 32);
+          eng.settings.exposure = Math.max(Number(eng.settings.exposure) || 1.0, 1.24);
         }
       }
       ls.running = true;
+      ls.dockHidden = false;
       ls.blackout = false;
       ls.lastTickMs = nowMs18();
-      hookEngineRender18();
-      if (S.laser135) {
-        S.laser135.active = ls.laserOn;
-        S.laser135.previewPlaying = ls.laserOn;
+      if (ls.sfxOn) {
+        ls.sparkUntilMs = Math.max(ls.sparkUntilMs || 0, ls.lastTickMs + 1800);
       }
-      if (window.state && !window.state.playing && typeof window.setPlaying === 'function') {
-        try { window.setPlaying(true); } catch { /* ignore */ }
+      hookEngineRender18();
+      if (S.laser135 && S.laser135.preset !== 'ildaShow') {
+        S.laser135.previewPlaying = false;
+      }
+      const st18 = S.state || window.state;
+      const playFn18 = S.setPlaying || window.setPlaying;
+      if (st18 && !st18.playing && typeof playFn18 === 'function') {
+        try { playFn18(true); } catch { /* ignore */ }
       }
       tickLiveShow18(nowMs18());
       if (eng && typeof eng.render === 'function') {
@@ -7372,7 +7635,9 @@ void main(){
       ls._sfxSkyBurst.power = 0;
       if (eng && Array.isArray(eng.lights)) {
         eng.lights.forEach((l) => {
-          if (l && l._origShow18) {
+          if (!l) return;
+          delete l._isBlinder18;
+          if (l._origShow18) {
             l.target = l._origShow18.target.slice();
             l.color = l._origShow18.color;
             l.power = l._origShow18.power;
@@ -7382,7 +7647,7 @@ void main(){
             l.fx = l._origShow18.fx;
             l.beamProfile18 = l._origShow18.beamProfile18 ?? 0;
             l.gobo9 = l._origShow18.gobo9 ? { ...l._origShow18.gobo9 } : null;
-            for (const key of ['aperture', 'fixtureProfile18', 'profileId18', 'coneLenScale18', '_blinderBlastScale18', 'dmxGroup18', '_liveCat18']) delete l[key];
+            for (const key of ['aperture', 'fixtureProfile18', 'profileId18', 'coneLenScale18', '_blinderBlastScale18', 'dmxGroup18', '_liveCat18', '_isBlinder18']) delete l[key];
             Object.assign(l, l._origShow18.optics);
             delete l._origShow18;
           }
@@ -7517,10 +7782,26 @@ void main(){
         ls.blindersOn = !ls.blindersOn;
         if (ls.blindersOn && !ls.running) startLiveShow18();
       } else if (fxKey === 'laser') {
-        ls.laserOn = !ls.laserOn;
-        if (S.laser135) S.laser135.active = ls.laserOn;
+        if (!ls.running) {
+          ls.laserOn = true;
+          startLiveShow18();
+        } else {
+          ls.laserOn = !ls.laserOn;
+        }
+        if (S.laser135 && S.laser135.preset !== 'ildaShow') S.laser135.previewPlaying = false;
       } else if (fxKey === 'sfx') {
-        ls.sfxOn = !ls.sfxOn;
+        if (!ls.running) {
+          ls.sfxOn = true;
+          ls.dockCollapsed = false;
+          startLiveShow18();
+          triggerPyroBurst18('all');
+        } else {
+          ls.sfxOn = !ls.sfxOn;
+          if (ls.sfxOn) {
+            ls.dockCollapsed = false;
+            triggerPyroBurst18('all');
+          }
+        }
       } else if (fxKey === 'strobe') {
         ls.strobe = !ls.strobe;
         if (ls.strobe && !ls.running) startLiveShow18();
@@ -7799,7 +8080,10 @@ void main(){
           }
           const prof = Number(light?.beamProfile18) || 0;
           this.uniform?.('uBeamProfile', prof);
-          if (res && typeof res === 'object') res._beamProfile18 = prof;
+          if (res && typeof res === 'object') {
+            res._beamProfile18 = prof;
+            res._isBlinder18 = Boolean(light?._isBlinder18);
+          }
           return res;
         };
         if (typeof eng.draw === 'function') {
@@ -7819,6 +8103,10 @@ void main(){
               }
             }
             if (mode === 2) {
+              if (mesh?._isBlinder18) {
+                mesh._isBlinder18 = false;
+                return;
+              }
               this.selectPass?.(2);
               this.uniform?.('uBeamProfile', Number(mesh?._beamProfile18) || 0);
             }
@@ -7867,8 +8155,8 @@ void main(){
       if (vp && !$('lmpLiveShowDock18')) {
         const dock = document.createElement('div');
         dock.id = 'lmpLiveShowDock18';
-        dock.className = 'is-hidden';
-        dock.hidden = true;
+        dock.className = liveShow18.dockHidden ? 'is-hidden' : 'is-collapsed';
+        dock.hidden = !!liveShow18.dockHidden;
         dock.setAttribute?.('role', 'region');
         dock.setAttribute?.('aria-label', tr18('Bàn điều khiển Live Show', 'Live Show Control Dock'));
         vp.appendChild?.(dock);
@@ -7951,26 +8239,40 @@ void main(){
 
       hookEngineRender18();
 
+      const syncPlayBtn18 = (btnId) => {
+        const btn = $(btnId);
+        if (btn && !btn._lmpPlaySyncHooked18) {
+          btn._lmpPlaySyncHooked18 = true;
+          btn.addEventListener?.('click', () => {
+            if (window.seq?.enabled) return;
+            if (!window.state?.playing && liveShow18.running) {
+              stopLiveShow18();
+            }
+          });
+        }
+      };
+      syncPlayBtn18('playBtn');
+      syncPlayBtn18('showPlay');
+
       // Global & Scoped keyboard shortcuts for Live Show (P, C, M, F, L, X, Z, B, 1-6, 7-0, Escape)
       if (!window._lmpShowKeysInstalled18) {
         window._lmpShowKeysInstalled18 = true;
         document.addEventListener?.('keydown', (e) => {
           if (e.target?.matches?.('input,textarea,select,[contenteditable]') || $('modal')?.open || e.ctrlKey || e.metaKey || e.altKey) return;
           const k = String(e.key || '').toLowerCase();
-          const showActiveOrDockOpen = liveShow18.running || !liveShow18.dockHidden;
           if (k === 'p') {
             e.preventDefault?.();
             toggleLiveShow18();
           } else if (k === 'escape' && liveShow18.running && !window.state?.pickTask && !document.body?.classList?.contains('present-mode')) {
             e.preventDefault?.();
             stopLiveShow18();
-          } else if (k === 'f' && showActiveOrDockOpen) {
+          } else if (k === 'f' && liveShow18.running) {
             e.preventDefault?.();
             toggleLiveShowFx18('blinders');
-          } else if (k === 'l' && showActiveOrDockOpen) {
+          } else if (k === 'l' && liveShow18.running) {
             e.preventDefault?.();
             toggleLiveShowFx18('laser');
-          } else if (/^[1-6]$/.test(k) && showActiveOrDockOpen) {
+          } else if (/^[1-6]$/.test(k) && liveShow18.running) {
             e.preventDefault?.();
             setLiveShowMode18(Number(k), { applySet: false });
           } else if (k === 'c' && liveShow18.running) {
@@ -7999,16 +8301,16 @@ void main(){
                   : tr18('Đã tắt chế độ Paint Voids [Phím B].', 'Paint Voids [Key B] disabled.')
               );
             }
-          } else if (k === '7' && showActiveOrDockOpen) {
+          } else if (k === '7' && liveShow18.running) {
             e.preventDefault?.();
             triggerPyroBurst18('cold_spark_fountain');
-          } else if (k === '8' && showActiveOrDockOpen) {
+          } else if (k === '8' && liveShow18.running) {
             e.preventDefault?.();
             triggerPyroBurst18('co2_jet');
-          } else if (k === '9' && showActiveOrDockOpen) {
+          } else if (k === '9' && liveShow18.running) {
             e.preventDefault?.();
             triggerPyroBurst18('flame_jet');
-          } else if (k === '0' && showActiveOrDockOpen) {
+          } else if (k === '0' && liveShow18.running) {
             e.preventDefault?.();
             triggerPyroBurst18('confetti_cannon');
           }

@@ -2871,23 +2871,27 @@
 
   function filterRiggedGrid16(){
    const cat=document.querySelector('#modalBody [data-cast-cat16].active')?.dataset.castCat16||A.castRiggedCat16||'all';
+   A.castRiggedCat16=cat;
    const q=($('v16CastSearchInp')?.value??A.castSearch16??'').trim().toLowerCase();
    const ch18=S.characters18;
    document.querySelectorAll('.v16-cast-grid [data-character18]').forEach(card=>{
     const cid=card.dataset.character18;
-    const cCat=card.dataset.cat18||'dancer';
+    const spec=ch18?.catalog?.find(x=>x.id===cid);
+    const cCat=card.dataset.cat18||spec?.cat||'dancer';
     const catMatch=cat==='all'||cCat===cat;
     let qMatch=!q;
     if(q){
      const txt=(card.textContent||'').toLowerCase();
-     const spec=ch18?.catalog?.find(x=>x.id===cid);
      const clipTxt=spec?[...spec.clips,...(spec.clipsVi||[])].join(' ').toLowerCase():'';
      qMatch=txt.includes(q)||clipTxt.includes(q)||cid.includes(q);
     }
-    card.hidden=!(catMatch&&qMatch);
+    const vis=!!(catMatch&&qMatch);
+    card.hidden=!vis;
+    card.style.display=vis?'':'none';
    });
-   document.querySelectorAll('[data-rigged-cat16]').forEach(b=>{
-    const on=b.dataset.riggedCat16===cat;
+   document.querySelectorAll('#modalBody [data-cast-cat16],[data-rigged-cat16]').forEach(b=>{
+    const key=b.dataset.castCat16||b.dataset.riggedCat16;
+    const on=key===cat;
     b.classList.toggle('active',on);
     b.setAttribute('aria-pressed',on?'true':'false');
    });
@@ -2923,6 +2927,8 @@
 
   function openCastLibrary16(initialTab){
    stopCastLiveLoop16();
+   A.castRiggedCat16='all';
+   A.castSearch16='';
    const roles=Object.entries(S.castNames||{});
    if(!S.castNames?.[A.castPreviewType])A.castPreviewType=roles[0]?.[0]||'singer';
    A.castPreviewColor=(PERFORMER_META16[A.castPreviewType]||PERFORMER_META16.singer).color;
@@ -2974,11 +2980,11 @@
       <div class="v16-cast-pane" data-cast-pane16="rigged">
        <div class="v16-cast-subbar">
         <div class="v16-cast-pills" role="group" aria-label="${tr('Lọc nhóm vai diễn','Filter character role category')}">
-         <button type="button" class="v16-cat-pill active" data-cast-cat16="all">${tr('Tất cả (16)','All (16)')}</button>
-         <button type="button" class="v16-cat-pill" data-cast-cat16="dancer">${tr('Vũ đạo & Truyền thống','Dance & Traditional')}</button>
-         <button type="button" class="v16-cat-pill" data-cast-cat16="vocal">${tr('Ca sĩ & Rapper','Vocal & Rap')}</button>
-         <button type="button" class="v16-cat-pill" data-cast-cat16="host">${tr('MC & Khách VIP','Host & VIP')}</button>
-         <button type="button" class="v16-cat-pill" data-cast-cat16="musician">${tr('Ban nhạc & DJ','Band & DJ')}</button>
+         <button type="button" class="v16-cat-pill active" data-cast-cat16="all" aria-pressed="true">${tr('Tất cả (16)','All (16)')}</button>
+         <button type="button" class="v16-cat-pill" data-cast-cat16="dancer" aria-pressed="false">${tr('Vũ đạo & Truyền thống','Dance & Traditional')}</button>
+         <button type="button" class="v16-cat-pill" data-cast-cat16="vocal" aria-pressed="false">${tr('Ca sĩ & Rapper','Vocal & Rap')}</button>
+         <button type="button" class="v16-cat-pill" data-cast-cat16="host" aria-pressed="false">${tr('MC & Khách VIP','Host & VIP')}</button>
+         <button type="button" class="v16-cat-pill" data-cast-cat16="musician" aria-pressed="false">${tr('Ban nhạc & DJ','Band & DJ')}</button>
         </div>
         <input id="v16CastSearchInp" class="v16-cast-search" type="search" placeholder="${tr('Tìm tên nhân vật, nhạc cụ, điệu múa...','Search character, instrument, dance...')}">
        </div>
@@ -3189,11 +3195,20 @@
    // Rigged category filter pills + search
    document.querySelectorAll('#modalBody [data-cast-cat16]').forEach(pill=>{
     pill.onclick=()=>{
-     document.querySelectorAll('#modalBody [data-cast-cat16]').forEach(p=>p.classList.toggle('active',p===pill));
+     A.castRiggedCat16=pill.dataset.castCat16||'all';
+     document.querySelectorAll('#modalBody [data-cast-cat16]').forEach(p=>{
+      const on=p===pill;
+      p.classList.toggle('active',on);
+      p.setAttribute('aria-pressed',on?'true':'false');
+     });
      filterRiggedGrid16();
+     const visCards=[...document.querySelectorAll('#v16CastRiggedGrid [data-character18]')].filter(c=>!c.hidden);
+     if(visCards.length&&!visCards.some(c=>c.dataset.character18===A.castPreviewChar18)){
+      selectCastItem16('char18',visCards[0].dataset.character18);
+     }
     };
    });
-   $('v16CastSearchInp')?.addEventListener('input',()=>filterRiggedGrid16());
+   $('v16CastSearchInp')?.addEventListener('input',e=>{A.castSearch16=e.target?.value||'';filterRiggedGrid16();});
 
    // Quick navigation buttons in Acts pane
    $('v16CastOpenRundownBtn')?.addEventListener('click',()=>{
@@ -3309,6 +3324,7 @@
    const countEl=$('v16CastTabCountRigged');
    const cards=document.querySelectorAll('#v16CastRiggedGrid [data-character18]');
    if(countEl && cards.length)countEl.textContent=String(cards.length);
+   filterRiggedGrid16();
    const activeTab=document.querySelector('#modalBody [data-cast-tab16].active')?.dataset.castTab16||'rigged';
    if(activeTab==='rigged'){
     const keep=S.characters18?.catalog?.find(c=>c.id===A.castPreviewChar18);

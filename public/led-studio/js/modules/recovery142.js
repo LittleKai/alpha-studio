@@ -205,7 +205,7 @@
     const model = requireObject(project.model, 'Model');
     if (typeof model.name !== 'string' || !model.name.length || model.name.length > 1024) fail(L('Tên model không hợp lệ.', "Invalid model name."));
     const modelFiles = array(model.files, L('Tệp model', "Model files"), 2000, true);
-    if (!model.demo && !modelFiles.length) fail(L('Dự án thiếu tệp model gốc.', "The project is missing its original model files."));
+    if (!model.demo && !model.blank && !modelFiles.length) fail(L('Dự án thiếu tệp model gốc.', "The project is missing its original model files."));
     const media = array(project.media, 'Media', 100);
     const screens = array(project.screens, 'LED', 300);
     uniqueRows(media, 'Media'); uniqueRows(screens, 'LED');
@@ -490,35 +490,97 @@
     R.backup = null;
     paintStatus();
   }
-  async function createNewProject142() {
+  async function createNewProject142(mode = 'demo') {
+    const isBlank = mode === 'blank' || (mode && typeof mode === 'object' && (mode.mode === 'blank' || mode.blank === true));
     clearTimeout(autoTimer);
     R.dirty = false;
+    setPlaying(false);
+    if (S.lumi18?.liveShow18?.running) S.lumi18.stopLiveShow18?.();
     if (S.lumi18?.state?.pendingPreview?.active) S.lumi18.revertStagePreview?.();
     const oldMedia = [...(state.media || [])];
     state.media = [];
     if (engine.media?.clear) engine.media.clear();
     releaseOrphans(oldMedia);
     const resetFn = typeof window.demo === 'function' ? window.demo : S.demo;
-    resetFn?.();
+    const restoreExtrasFn = typeof window.restoreLiveExtras === 'function' ? window.restoreLiveExtras : S.restoreLiveExtras;
+    if (isBlank) {
+      resetFn?.();
+      await restoreExtrasFn?.(null);
+      if (S.stageAssets16?.clearAll) S.stageAssets16.clearAll();
+      for (const s of engine.surfaces || []) engine.releaseMesh?.(s.mesh);
+      engine.surfaces = [];
+      engine.selected = null;
+      engine.setModel([]);
+      engine.lights = [];
+      engine.rebuildFixtures?.();
+      state.model = { name: 'Empty_Stage', files: [], demo: false, blank: true };
+      state.selectedMesh = null;
+      state.hit = null;
+      state.selectedLight = null;
+      state.rebindId = null;
+      state.activeStageSet18 = 0;
+      state.step = 'stage';
+      engine.view = 'stage';
+      engine.cameraPreset?.('iso');
+      if (engine.camera) {
+        engine.camera.yaw = 0.15;
+        engine.camera.pitch = 0.22;
+        engine.camera.distance = 18;
+        engine.camera.target = [0, 1.5, 0];
+      }
+      document.querySelector?.('.import-section')?.classList?.remove('v16-collapsed');
+    } else {
+      await restoreExtrasFn?.(null);
+      resetFn?.();
+    }
     state.loop = false;
     state.projectName = L('Dự án mới', 'Untitled stage');
     state.history = [];
     state.redo = [];
-    if (S.cloud16?.state) S.cloud16.state.currentDriveFileId = null;
+    if (S.cloud16?.state) {
+      S.cloud16.state.currentDriveFileId = null;
+      S.cloud16.state.driveFileId = null;
+      S.cloud16.state.driveModelName = null;
+      S.cloud16.state.driveStage = null;
+      S.cloud16.state.shareProjectId = null;
+      S.cloud16.state.shareStage = null;
+    }
     await clearBackup();
     window.renderUI?.();
-    toast(L('Đã khởi tạo dự án sân khấu mới.', 'Created a new stage project.'));
+    toast(isBlank
+      ? L('Đã tạo dự án trắng. Hãy nhập model 3D (.glb, .gltf, .dae, .obj) của bạn để bắt đầu.', 'Created a blank project. Import your 3D model (.glb, .gltf, .dae, .obj) to begin.')
+      : L('Đã khởi tạo dự án sân khấu mẫu.', 'Created a new demo stage project.'));
+    return { mode: isBlank ? 'blank' : 'demo' };
   }
   function promptNewProject142() {
-    if (typeof window.dialog !== 'function') { createNewProject142(); return; }
+    if (typeof window.dialog !== 'function') { createNewProject142('demo'); return; }
     window.dialog(
       L('Tạo dự án sân khấu mới?', 'Create a new stage project?'),
-      '<p>' + L('Khởi tạo lại sân khấu mặc định để bắt đầu dự án mới. Hãy lưu dự án hiện tại trước nếu bạn cần giữ lại các thay đổi.', 'Reset to the default stage to start a new project. Save your current project first if you want to keep your changes.') + '</p>',
+      '<p>' + L('Chọn kiểu khởi tạo dự án mới. Hãy lưu dự án hiện tại trước nếu bạn cần giữ lại các thay đổi.', 'Choose how to initialize the new project. Save your current project first if you want to keep your changes.') + '</p>' +
+      '<div class="new-proj142-grid">' +
+        '<button type="button" id="newProjDemo142" class="new-proj142-card" data-new-proj-mode="demo">' +
+          '<svg class="ico" aria-hidden="true"><use href="#i-layers"></use></svg>' +
+          '<strong>' + L('Dự án mẫu (Demo)', 'Demo project') + '</strong>' +
+          '<span>' + L('Sân khấu mẫu dựng sẵn khung Truss, 3 màn hình LED, dàn đèn DMX và nghệ sĩ 3D để thử nghiệm ngay.', 'Pre-built demo stage with Truss, 3 LED screens, DMX lighting rig and 3D performers.') + '</span>' +
+        '</button>' +
+        '<button type="button" id="newProjBlank142" class="new-proj142-card" data-new-proj-mode="blank">' +
+          '<svg class="ico" aria-hidden="true"><use href="#i-upload"></use></svg>' +
+          '<strong>' + L('Dự án trắng (Tự import)', 'Blank project (Import own)') + '</strong>' +
+          '<span>' + L('Trắng hoàn toàn — xóa hết sân khấu, màn LED, đèn và đạo cụ để bạn nhập model 3D của riêng mình.', 'Completely blank — clears all stage meshes, LEDs, lights and props so you can import your own 3D model.') + '</span>' +
+        '</button>' +
+      '</div>',
       [
         { label: L('Hủy', 'Cancel') },
-        { label: L('Tạo dự án mới', 'New project'), primary: true, action: () => { createNewProject142(); } }
+        { label: L('Dự án trắng (Tự import)', 'Blank project (Import own)'), action: () => { createNewProject142('blank'); } },
+        { label: L('Dự án mẫu (Demo)', 'Demo project'), primary: true, action: () => { createNewProject142('demo'); } }
       ]
     );
+    const bindCard = (id, m) => {
+      const btn = el(id);
+      if (btn) btn.onclick = () => { el('modal')?.close?.(); createNewProject142(m); };
+    };
+    bindCard('newProjDemo142', 'demo');
+    bindCard('newProjBlank142', 'blank');
   }
   async function backup(options = {}) {
     const automatic = options.automatic === true;

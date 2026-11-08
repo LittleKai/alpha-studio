@@ -22,8 +22,7 @@ function openVJ(){let body='<div class="pro126-panel"><p class="pro126-hint">'+u
 const oldHuman=buildHuman;
 buildHuman=function(d,lite=false,pose=0){let nodes=oldHuman(d,lite,pose);if(lite||d.type==='audience')return nodes;const body=nodes.find(n=>n.name==='body'),head=nodes.find(n=>n.name==='head');if(body&&head){const skin=[...hexrgb(d.skin||'#c49372'),1],coat=[...hexrgb(d.color||'#47779b'),1];body.meshes.push(rod('Continuous neck',[0,1.35,0],[0,1.52,0],.064,.077,skin,12));body.meshes.push(ellipsoid('Collar transition',[0,1.37,0],[.15,.075,.13],coat,14,10));head.meshes.push(ellipsoid('Jaw bridge',[0,1.50,.03],[.09,.06,.07],skin,12,8));}
 return nodes;};
-function insertBar(){if($id('pro126bar'))return;const viewport=document.querySelector('.main-panel');if(!viewport)return;const bar=document.createElement('div');bar.id='pro126bar';bar.innerHTML='<button id="p126Lights">+ Đèn & Pan/Tilt</button><button id="p126TimeFX">Timecode FX 24</button><button id="p126VJ">VJ FX+</button><button id="p126Cast">Nhân vật 3D</button><span style="color:#8aabb8;font-size:var(--fs-sm)">V12.6 · Look Development</span>';const anchor=viewport.querySelector('.navigation-strip')||viewport.querySelector('.view-toolbar');if(anchor){anchor.style.overflowX='auto';anchor.appendChild(bar);}else viewport.prepend(bar);$id('p126Lights').onclick=openLights;$id('p126TimeFX').onclick=openTimeFX;$id('p126VJ').onclick=openVJ;$id('p126Cast').onclick=()=>{openCastLibrary();};}
-insertBar();try{rebuildCast();}catch(e){console.warn('Cast rebuild:',e)}S.openProLights126=openLights;S.openProTimeFX126=openTimeFX;S.openProVJ126=openVJ;S.version='1.2.6';
+try{rebuildCast();}catch(e){console.warn('Cast rebuild:',e)}S.openProLights126=openLights;S.openProTimeFX126=openTimeFX;S.openProVJ126=openVJ;S.version='1.2.6';
 })();
 
 (function(){
@@ -176,33 +175,39 @@ function updatePosition128(l,p,keepAim=true){if(!l||!p?.every(Number.isFinite))r
 function updateTarget128(l,target){if(!l||!target?.every(Number.isFinite))return;l.target=[...target];l.sweep=false;l.motionBase128=angleState128(l);}
 function angleState128(l){const d=M.sub(l.target,l.pos),len=Math.max(.3,Math.hypot(...d));return {pan:Math.atan2(d[0],d[2])*180/Math.PI,tilt:Math.atan2(d[1],Math.hypot(d[0],d[2]))*180/Math.PI,length:len};}
 function fromAngles128(l,pan,tilt,len){const pa=pan*Math.PI/180,ti=tilt*Math.PI/180,d=Math.cos(ti),r=Math.max(.3,len||angleState128(l).length);return [l.pos[0]+Math.sin(pa)*d*r,l.pos[1]+Math.sin(ti)*r,l.pos[2]+Math.cos(pa)*d*r];}
-function lensShape128(kind){if(/beam|laser/i.test(kind))return 'beam';if(/wash|fresnel|par|uplight|audience/i.test(kind))return 'wash';if(/batten|sunstrip|pixel|ledtube/i.test(kind))return 'bar';if(/blinder|strobe/i.test(kind))return 'flash';return 'spot';}
+function lensShape128(kind){if(/beam|laser/i.test(kind))return 'beam';if(/wash|fresnel|par|uplight|audience/i.test(kind))return 'wash';if(/bar|batten|sunstrip|pixel|ledtube/i.test(kind))return 'bar';if(/blinder|strobe/i.test(kind))return 'flash';return 'spot';}
 const prevFixtureBuild128=StageEngine.prototype.rebuildFixtures;
 StageEngine.prototype.rebuildFixtures=function(){if(this!==engine)return prevFixtureBuild128.call(this);
  for(const m of this.fixtureMeshes)this.releaseMesh(m);this.fixtureMeshes=[];
  for(const l of this.lights){if(l._deleted8||l.origin==='model'||l.origin==='gltf')continue;
-  const kind=l.fixtureType128||l.fixtureType127||l.fixtureType126||'beam',category=lensShape128(kind),p=l.pos,col=[...hexrgb(l.color||'#a5e1ff'),1];let meshes=[],metal=[.11,.15,.20,1],silver=[.25,.33,.40,1];
+  const kind=l.fixtureType128||l.fixtureType127||l.fixtureType126||l.type||'beam',category=lensShape128(kind),p=l.pos,col=[...hexrgb(l.color||'#a5e1ff'),1];let meshes=[],metal=[.11,.15,.20,1],silver=[.25,.33,.40,1];
   if(category==='bar'){
    meshes.push(boxMesh('LED strip housing',M.add(p,[0,.025,0]),[.92,.13,.22],metal));
-   const bulbs=[];for(let i=0;i<8;i++){const bulb=ellipsoid('LED pixel',M.add(p,[-.38+i*.108,.1,.095]),[.033,.024,.024],col,8,5);bulb.material.emissive=col.slice(0,3).map(v=>v*1.6);bulbs.push(bulb);}meshes.push(...mergeCast(bulbs,'Pixel emitters'));
+   const bulbs=[];for(let i=0;i<8;i++){const bulb=ellipsoid('LED pixel',M.add(p,[-.38+i*.108,.1,.095]),[.033,.024,.024],col,8,5);bulb.material.emissive=col.slice(0,3).map(v=>v*1.6);bulbs.push(bulb);}const em=mergeCast(bulbs,'Pixel emitters');for(const m of em)m._light128=l;meshes.push(...em);
   }else if(category==='flash'){
    meshes.push(boxMesh('Blinder casing',M.add(p,[0,0,0]),[.55,.28,.22],metal));
-   const chips=[];for(let x of [-.14,.14])for(let y of [-.065,.065]){const bulb=ellipsoid('Lamp',M.add(p,[x,y,.13]),[.085,.07,.015],col,10,6);bulb.material.emissive=col.slice(0,3).map(v=>v*1.8);chips.push(bulb);}meshes.push(...mergeCast(chips,'Blinder emitters'));
+   const chips=[];for(let x of [-.14,.14])for(let y of [-.065,.065]){const bulb=ellipsoid('Lamp',M.add(p,[x,y,.13]),[.085,.07,.015],col,10,6);bulb.material.emissive=col.slice(0,3).map(v=>v*1.8);chips.push(bulb);}const em=mergeCast(chips,'Blinder emitters');for(const m of em)m._light128=l;meshes.push(...em);
   }else if(category==='wash'){
    meshes.push(boxMesh('Wash yoke',M.add(p,[0,-.1,0]),[.30,.11,.24],metal));meshes.push(ellipsoid('Wash head',M.add(p,[0,.03,0]),[.19,.16,.17],silver,14,8));
-   const lens=ellipsoid('Soft lens',M.add(p,[0,.03,.17]),[.13,.12,.02],col,12,7);lens.material.emissive=col.slice(0,3).map(v=>v*.9);meshes.push(lens);
+   const lens=ellipsoid('Soft lens',M.add(p,[0,.03,.17]),[.13,.12,.02],col,12,7);lens.material.emissive=col.slice(0,3).map(v=>v*.9);lens._light128=l;meshes.push(lens);
+  }else if(category==='beam'){
+   meshes.push(boxMesh('Fixture yoke',M.add(p,[0,-.12,0]),[.20,.14,.20],metal));meshes.push(boxMesh('Moving fixture head',M.add(p,[0,.01,0]),[.17,.24,.20],[.15,.20,.26,1]));
+   const lens=ellipsoid('Spot emitter',M.add(p,[0,.015,.115]),[.06,.06,.014],col,12,8);lens.material.emissive=col.slice(0,3).map(v=>v*1.8);lens._light128=l;meshes.push(lens);
   }else{
-   meshes.push(boxMesh('Fixture yoke',M.add(p,[0,-.13,0]),[.21,.15,.22],metal));meshes.push(boxMesh('Moving fixture head',M.add(p,[0,.015,0]),[.19,.27,.22],silver));
-   const lens=ellipsoid('Spot emitter',M.add(p,[0,.02,.125]),[.08,.08,.012],col,12,8);lens.material.emissive=col.slice(0,3).map(v=>v*1.5);meshes.push(lens);
+   meshes.push(boxMesh('Fixture yoke',M.add(p,[0,-.14,0]),[.24,.16,.24],metal));meshes.push(boxMesh('Moving fixture head',M.add(p,[0,.02,0]),[.23,.31,.25],silver));
+   const lens=ellipsoid('Spot emitter',M.add(p,[0,.025,.14]),[.095,.095,.014],col,12,8);lens.material.emissive=col.slice(0,3).map(v=>v*1.5);lens._light128=l;meshes.push(lens);
   }
   for(const m of meshes){m.lightId=l.id;m.fixtureShape128=category;this.fixtureMeshes.push(m);}
  }
 };
+engine?.rebuildFixtures?.();
 // Keep beam geometry from V10 but visually distinguish soft/wide and crisp/very narrow emitters.
 const prevMakeBeam128=StageEngine.prototype.makeBeam;
 StageEngine.prototype.makeBeam=function(l){if(this===engine)this._beamFixture128=l;return prevMakeBeam128.call(this,l);};
 const prevDraw128=StageEngine.prototype.draw;
-StageEngine.prototype.draw=function(mesh,mode=0,screen=null,alpha=1){if(this===engine&&mode===2&&this._beamFixture128){const shape=lensShape128(this._beamFixture128.fixtureType128||this._beamFixture128.fixtureType127||'beam');alpha*=shape==='beam'?1.25:shape==='wash'?.58:shape==='flash'?.85:shape==='bar'?.67:1.03;}
+StageEngine.prototype.draw=function(mesh,mode=0,screen=null,alpha=1){
+ if(this===engine&&mode===0&&mesh?._light128){const l=mesh._light128,rgb=hexrgb(l.color||'#a5e1ff'),on=l.enabled!==false&&(l.power||0)>0,gain=on?Math.min(3.2,Math.max(.35,(l.power||4)/3.8)*(l._mult??1)):.05;mesh.material.color=[...rgb,1];mesh.material.emissive=rgb.map(v=>v*gain);}
+ if(this===engine&&mode===2&&this._beamFixture128){const shape=lensShape128(this._beamFixture128.fixtureType128||this._beamFixture128.fixtureType127||this._beamFixture128.type||'beam');alpha*=shape==='beam'?1.28:shape==='wash'?.78:shape==='flash'?.92:shape==='bar'?.86:1.08;}
  return prevDraw128.call(this,mesh,mode,screen,alpha);
 };
 // Local programmable looks. A running show timecode always takes priority.

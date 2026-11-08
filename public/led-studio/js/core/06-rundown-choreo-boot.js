@@ -71,7 +71,7 @@ StageEngine.prototype.makeBeam=function(light){
    for(const [theta,y]of [[a,0],[a,1],[b,1],[a,0],[b,1],[b,0]]){p.push(Math.cos(theta),y,Math.sin(theta));n.push(Math.cos(theta),-.2,Math.sin(theta));uv.push(theta/(2*Math.PI),y);}}
   this._cone10=makeMesh('Shared beam V10',p,uv,n,{color:[1,1,1,1]});
  }
- const d=light._direction||M.norm(M.sub(light.target,light.pos)),origin=light.pos,len=clamp(light.beamLength||Math.hypot(...M.sub(light._target||light.target,origin)),.05,1000),radius=Math.max(.004,Math.tan(clamp(light.angle||12,1,60)*Math.PI/180)*len),right=M.norm(M.cross(d,Math.abs(d[1])>.95?[1,0,0]:[0,1,0])),up=M.cross(right,d);
+ const d=light._direction||M.norm(M.sub(light.target,light.pos)),origin=light.pos,len=clamp(light.beamLength||(Math.hypot(...M.sub(light._target||light.target,origin))+2.6),.05,1000),radius=Math.max(.004,Math.tan(clamp(light.angle||12,1,60)*Math.PI/180)*len),right=M.norm(M.cross(d,Math.abs(d[1])>.95?[1,0,0]:[0,1,0])),up=M.cross(right,d);
  // The shader narrows the origin to the physical aperture via uBeamAperture10.
  this.uniform('uBeamMatrix',new Float32Array([right[0]*radius,right[1]*radius,right[2]*radius,0,d[0]*len,d[1]*len,d[2]*len,0,up[0]*radius,up[1]*radius,up[2]*radius,0,...origin,1]),'m');
  this.uniform('uBeamAperture10',clamp((light.aperture||.025)/radius,.001,1));

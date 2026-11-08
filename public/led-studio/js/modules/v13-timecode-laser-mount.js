@@ -675,9 +675,10 @@ let cachedRect=null,ratio=1;
 function sizeOverlay(){const w=drawCan.clientWidth,h=drawCan.clientHeight;if(w<=0||h<=0)return false;const cap=L.settings.quality==='ultra'?1.7:L.settings.quality==='high'?1.35:1;ratio=Math.min(window.devicePixelRatio||1,cap);const cw=Math.round(w*ratio),ch=Math.round(h*ratio);if(drawCan.width!==cw||drawCan.height!==ch){drawCan.width=cw;drawCan.height=ch;}ctx.setTransform(ratio,0,0,ratio,0,0);return true;}
 function drawLaserFrame(now,{clean=false}={}){if(!ctx)return;
  if(!L.active||!L.fixtures.length||engine.view!=='stage'||!engine.vp){if(L._overlayDirty&&drawCan.width>0){ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,drawCan.width,drawCan.height);L._overlayDirty=false;}return;}
- if(!sizeOverlay())return;L._overlayDirty=true;const w=drawCan.clientWidth,h=drawCan.clientHeight;ctx.clearRect(0,0,w,h);
  const status=showStatus(state.time);if(!status)return;
  const pat=patternFor(status.preset,status.local,status.duration),cue=status.cue;
+ if(S.lumi18?.liveShow18?.running&&S.lumi18?.liveShow18?.laserOn&&!S.lumi18?.liveShow18?.blackout&&engine.gl&&!L.forceLive&&(pat.name!=='ildaShow'||!L.scanner)){if(L._overlayDirty&&drawCan.width>0){ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,drawCan.width,drawCan.height);L._overlayDirty=false;}return;}
+ if(!sizeOverlay())return;L._overlayDirty=true;const w=drawCan.clientWidth,h=drawCan.clientHeight;ctx.clearRect(0,0,w,h);
  const fade=cue?Math.min(1,(status.local+.001)/Math.max(.03,status.fade),(cue.duration-status.local)/Math.max(.03,status.fade)):1;
  const pwr=clamp135(fade,0,1)*pat.intensity;
  const sources=cue?.fixtureIds?.length?L.fixtures.filter(x=>cue.fixtureIds.includes(x.id)):L.fixtures;

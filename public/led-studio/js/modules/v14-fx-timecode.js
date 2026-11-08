@@ -118,7 +118,45 @@ const uiText=(vi,en)=>window.tr?window.tr(vi,en):vi;
    }
  }
  const priorRender=engine.render.bind(engine);
- engine.render=function(...args){if(engine.view==='stage')ensureModels();return priorRender(...args);};
+ function renderWebglBeams141(time=state.time||0){
+   if(engine.view!=='stage'||!engine.gl||typeof engine.makeBeam!=='function'||(engine.settings?.beam??.35)<=0||!F.fixtures.length)return false;
+   const gl=engine.gl;gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE);gl.depthMask(false);
+   try{
+     for(const f of F.fixtures){
+       if(!f.enabled)continue;
+       const vals=evaluate(f,time),avg=vals.reduce((s,v)=>s+v.level,0)/Math.max(1,vals.length);
+       if(avg<=.02)continue;
+       const yaw=(f.pan||0)*Math.PI/180,tilt=(f.tilt??(f.kind==='laser'?-50:-24))*Math.PI/180;
+       const dx=Math.sin(yaw)*Math.cos(tilt),dy=Math.sin(tilt),dz=Math.cos(yaw)*Math.cos(tilt);
+       if(f.kind==='par'){
+         const len=5.5,col=vals[Math.floor(vals.length/2)]?.color||f.color;
+         const mesh=engine.makeBeam({pos:f.pos,target:[f.pos[0]+dx*len,f.pos[1]+dy*len,f.pos[2]+dz*len],color:col,angle:26,aperture:.08,beamProfile18:3,beamLength:len});
+         engine.draw(mesh,2,null,Math.min(.38,.24*avg));
+       }else if(f.kind==='line'){
+         const len=6.2,step=Math.max(1,Math.floor(vals.length/6));
+         for(let i=0;i<vals.length;i+=step){
+           const v=vals[i];if(v.level<=.03)continue;
+           const p0=position(f,i,vals.length);
+           const mesh=engine.makeBeam({pos:p0,target:[p0[0]+dx*len,p0[1]+dy*len,p0[2]+dz*len],color:v.color,angle:6.5,aperture:.025,beamProfile18:4,beamLength:len});
+           engine.draw(mesh,2,null,Math.min(.30,.18*v.level));
+         }
+       }else if(f.kind==='laser'){
+         const opts=effectFor(f,time),now=(opts?.local??time)*(opts?.speed??1),rng=f.range||12;
+         const sweep=(opts?.preset==='laserSweep'?Math.sin(now*2):opts?.preset==='laserBurst'?Math.sin(now*3):0)*.24;
+         for(let i=0;i<vals.length;i++){
+           const v=vals[i];if(v.level<=.03)continue;
+           const p0=position(f,i,vals.length),ofs=(i/Math.max(1,vals.length-1)-.5)*(f.spread||50)*Math.PI/180;
+           const ryaw=yaw+ofs+sweep,end=[p0[0]+Math.sin(ryaw)*Math.cos(tilt)*rng,p0[1]+Math.sin(tilt)*rng,p0[2]+Math.cos(ryaw)*Math.cos(tilt)*rng];
+           const clipped=S.mount136.clipBeam?.(p0,end)||end;
+           const mesh=engine.makeBeam({pos:p0,target:clipped,color:v.color,angle:1.8,aperture:.012,beamProfile18:0,beamLength:Math.hypot(clipped[0]-p0[0],clipped[1]-p0[1],clipped[2]-p0[2])});
+           engine.draw(mesh,2,null,Math.min(.42,.28*v.level));
+         }
+       }
+     }
+   }finally{gl.depthMask(true);gl.disable(gl.BLEND);}
+   return true;
+ }
+ engine.render=function(time=0,...args){if(engine.view==='stage')ensureModels();const out=priorRender(time,...args);if(engine.view==='stage')renderWebglBeams141(time||state.time||0);return out;};
  // Additive Canvas2D world-projected pixel visuals; no shader edits to LED mapping.
  const overlay=document.createElement('canvas');overlay.id='fx141Overlay';overlay.setAttribute('aria-label','PAR LED, LINE BAR and LASER BAR visual preview');
  $('viewport').appendChild(overlay);const g=overlay.getContext('2d',{alpha:true});
@@ -216,17 +254,17 @@ const uiText=(vi,en)=>window.tr?window.tr(vi,en):vi;
  function drawGizmo(){if(!F.isOpen||!F.dragMode||state.presenting)return;const f=current();if(!f)return;const p=project(f.pos);if(!p)return;g.lineWidth=2.5;g.font='bold 11px Segoe UI';
    for(const [axis,vec,col] of [[0,[.75,0,0],'#ff7777'],[1,[0,.75,0],'#65e49a'],[2,[0,0,.75],'#75b9ff']]){const end=project(f.pos.map((v,i)=>v+vec[i]));if(!end)continue;g.strokeStyle=col;g.fillStyle=col;g.beginPath();g.moveTo(p.x,p.y);g.lineTo(end.x,end.y);g.stroke();g.beginPath();g.arc(end.x,end.y,6,0,Math.PI*2);g.fill();g.fillText('XYZ'[axis],end.x+8,end.y+3);}
  }
- function renderFrame(now=performance.now(),{clean=false}={}){
+ function renderFrame(now=performance.now(),{clean=false,force2d=false}={}){
    if(!g)return;if(!F.fixtures.length&&(!F.isOpen||!F.dragMode)){if(F._overlayDirty&&overlay.width>0){g.setTransform(1,0,0,1,0,0);g.clearRect(0,0,overlay.width,overlay.height);F._overlayDirty=false;}return overlay;}const w=overlay.clientWidth,h=overlay.clientHeight;if(w<2||h<2)return;F._overlayDirty=true;
    const scale=Math.min(1.5,window.devicePixelRatio||1),cw=Math.ceil(w*scale),ch=Math.ceil(h*scale);
    if(overlay.width!==cw||overlay.height!==ch){overlay.width=cw;overlay.height=ch;}
    g.setTransform(scale,0,0,scale,0,0);g.clearRect(0,0,w,h);
    if(!engine.vp||engine.view!=='stage')return;
    g.save();g.globalCompositeOperation='screen';
-   const time=state.time;
+   const time=state.time,hasWebgl3d=Boolean(engine.gl&&typeof engine.makeBeam==='function'&&(engine.settings?.beam??.35)>0&&!force2d);
    for(const f of F.fixtures){if(!f.enabled)continue;const vals=evaluate(f,time),avg=vals.reduce((s,v)=>s+v.level,0)/vals.length;
-     if(f.kind==='par'&&avg>.02)drawWash(f,vals[Math.floor(vals.length/2)].color,Math.min(1.4,avg));
-     if(f.kind==='laser')drawLaser(f,vals,time);
+     if(!hasWebgl3d&&f.kind==='par'&&avg>.02)drawWash(f,vals[Math.floor(vals.length/2)].color,Math.min(1.4,avg));
+     if(!hasWebgl3d&&f.kind==='laser')drawLaser(f,vals,time);
      for(let i=0;i<vals.length;i++){const v=vals[i];paintGlow(position(f,i,vals.length),v.color,Math.min(1.8,v.level),f.kind==='par'?19:f.kind==='line'?12:11);}
    }
    if(!clean)drawGizmo();g.restore();return overlay;
@@ -398,7 +436,7 @@ const uiText=(vi,en)=>window.tr?window.tr(vi,en):vi;
  const oldDemo=demo;
  demo=function(...args){const previousModel=state.model,result=oldDemo(...args);if(state.model!==previousModel){resetModel();F.fixtures=[];F.selected=null;F.live=null;paint();}return result;};S.demo=demo;
  // Stable extension API; values always refer to the live bank after import/undo.
- Object.assign(F,{add,addGroup,open,close,preview,saveCue,autoShow,evaluate,effectFor,editCue,deleteCue,duplicateCue,removeFixture,configure,renderFrame,canvas:overlay,
+ Object.assign(F,{add,addGroup,open,close,preview,saveCue,autoShow,evaluate,effectFor,editCue,deleteCue,duplicateCue,removeFixture,configure,renderFrame,renderWebglBeams141,canvas:overlay,
    stopPreview(){F.live=null;},
    targetEntries,serialize:bankData,restoreBank,
    updateFixture(id,changes){const f=F.fixtures.find(q=>q.id===id);if(!f)return false;return transaction(()=>{const selected=F.selected;F.selected=id;try{for(const [key,value]of Object.entries(changes||{}))setFixture(key,value,false);}finally{F.selected=selected;}paint();return true;});},

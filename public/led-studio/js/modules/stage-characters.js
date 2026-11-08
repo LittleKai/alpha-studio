@@ -161,7 +161,7 @@
    const ga=m._gltfAnim;
    if(!scenes.has(ga.sceneAnim)){
     const {clips,...pose}=ga.sceneAnim;
-    scenes.set(ga.sceneAnim,{...structuredClone(pose),clips});
+    scenes.set(ga.sceneAnim,{...structuredClone(pose),clips,lastTime:-1,dirty:true});
    }
    const mesh=makeMesh(m.name,m.p.slice(),m.uv,m.n.slice(),{...m.material});
    mesh.cast11=true;
