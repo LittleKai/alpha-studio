@@ -810,7 +810,7 @@ const expandedSmartGroups9=new Set();
 renderLists=function(){D8.renderLists();_sgCache9=null;if(!director.ready)return;const selectedMeshIds=state.step==='stage'&&director.selection&&typeof selectionMeshes8==='function'?new Set(selectionMeshes8().map(m=>m.id)):null;
  if(state.step==='stage'&&(typeof window==='undefined'||window._smartGroup16!==false)){
   const list=$('objectList'),query=$('objectSearch').value.trim().toLowerCase(),loc=typeof localizeObjectName==='function'?localizeObjectName:v=>v,flt=typeof window!=='undefined'&&window._objFilter16||'all';
-  const visibleStage=engine.stage.filter(m=>{if(m._deleted8)return false;if(flt!=='all'&&typeof matchesObjectFilter16==='function'&&!matchesObjectFilter16(m,flt))return false;if(!query)return true;const raw=(m.name||'').toLowerCase(),info=smartGroupInfo9(m);return raw.includes(query)||loc(m.name).toLowerCase().includes(query)||(info.name&&loc(info.name).toLowerCase().includes(query));});
+  const visibleStage=engine.stage.filter(m=>{if(m._deleted8||m._sfxKind16)return false;if(flt!=='all'&&typeof matchesObjectFilter16==='function'&&!matchesObjectFilter16(m,flt))return false;if(!query)return true;const raw=(m.name||'').toLowerCase(),info=smartGroupInfo9(m);return raw.includes(query)||loc(m.name).toLowerCase().includes(query)||(info.name&&loc(info.name).toLowerCase().includes(query));});
   if(visibleStage.some(m=>smartGroupInfo9(m).members.length>1)){
    list.innerHTML='';const seenGroups=new Set();
    for(const m of visibleStage){
@@ -850,11 +850,64 @@ renderLists=function(){D8.renderLists();_sgCache9=null;if(!director.ready)return
   }else{
    document.querySelectorAll('#objectList .object-row').forEach(b=>{if(selectedMeshIds?.size)b.classList.toggle('selected',selectedMeshIds.has(b.dataset?.itemId));const action=b.onclick;b.onclick=e=>{if(state.step==='stage'&&director.mode==='navigate'&&(director.selection?.kind==='person'||director.selection?.kind==='act')){director.selection=null;director.panel=null;}action(e);if(director.mode!=='navigate'){if(state.step==='stage'&&state.selectedMesh){const m=engine.stage.find(m=>m.id===state.selectedMesh);if(m)selectObject8('mesh',m.sourceKey||m.id);}else if(state.step==='lighting'&&state.selectedLight)selectObject8('light',state.selectedLight);}};});
   }
+ }else if(state.step==='lighting'&&(typeof window==='undefined'||window._smartGroup16!==false)){
+  const list=$('objectList'),query=$('objectSearch').value.trim().toLowerCase(),loc=typeof localizeObjectName==='function'?localizeObjectName:v=>v,lightFlt=typeof window!=='undefined'&&window._lightFilter16||'all';
+  const sfxItems=typeof window!=='undefined'&&Array.isArray(window.STUDIO?.stageAssets16?.items)?window.STUDIO.stageAssets16.items.filter(it=>/^(cold_spark_fountain|co2_jet|flame_jet|confetti_cannon|haze_machine_pro)$/.test(it.kind||it.type||'')).map(it=>({...it,_isPyroSfx18:true})):[];
+  const allLightItems=[...engine.lights,...sfxItems].filter(it=>{if(lightFlt!=='all'&&typeof matchesLightingFilter16==='function'&&!matchesLightingFilter16(it,lightFlt))return false;if(!query)return true;const raw=(it.name||'').toLowerCase();return raw.includes(query)||loc(it.name||'').toLowerCase().includes(query);});
+  const grpBuckets=new Map();
+  for(const it of allLightItems){
+   const catKey=it._lmpBatchId18||(it._isPyroSfx18?'sfx_'+(it.kind||it.type||'pyro'):'lgt_'+((it.type||'beam').toLowerCase()));
+   if(!grpBuckets.has(catKey))grpBuckets.set(catKey,[]);
+   grpBuckets.get(catKey).push(it);
+  }
+  if([...grpBuckets.values()].some(arr=>arr.length>1)){
+   list.innerHTML='';const seenLightGroups=new Set();
+   const grpTitleMap={lgt_beam:tr('Cụm Đèn Beam Moving Head','Moving Head Beam Rig'),lgt_spot:tr('Cụm Đèn Spot / Profile','Spot / Profile Rig'),lgt_wash:tr('Cụm Đèn Wash Zoom','Wash Zoom Rig'),lgt_par:tr('Hệ Đèn PAR LED','PAR LED Wash Array'),lgt_bar:tr('Thanh LED Bar / Katana','LED Pixel Bar Array'),lgt_blinder:tr('Đèn Chớp Khán giả (Blinder)','Audience Blinder Bank'),lgt_strobe:tr('Đèn Chớp Strobe 14Hz','Atomic Strobe Bank'),lgt_fresnel:tr('Đèn Mặt Fresnel','Theater Fresnel Array'),lgt_laser:tr('Hệ Laser ILDA RGB','RGB ILDA Laser System'),sfx_cold_spark_fountain:tr('Cụm Pháo điện lạnh Sparkular','Sparkular Cold Spark Bank'),sfx_co2_jet:tr('Cụm Súng khói lạnh CO2','CO2 Cryo Jet Bank'),sfx_flame_jet:tr('Cụm Máy phun lửa DMX','DMX Flame Jet Bank'),sfx_confetti_cannon:tr('Cụm Pháo hoa & Kim tuyến','Aerial Pyro & Confetti Bank'),sfx_haze_machine_pro:tr('Hệ Máy tạo khói Hazer','Pro DMX Hazer System')};
+   for(const it of allLightItems){
+    const catKey=it._lmpBatchId18||(it._isPyroSfx18?'sfx_'+(it.kind||it.type||'pyro'):'lgt_'+((it.type||'beam').toLowerCase()));
+    const members=grpBuckets.get(catKey)||[it];
+    if(members.length>1){
+     if(seenLightGroups.has(catKey))continue;seenLightGroups.add(catKey);
+     const isSel=members.some(x=>x._isPyroSfx18?state.selectedSfx18===x.id:(!state.selectedSfx18&&state.selectedLight===x.id)),isExp=expandedSmartGroups9.has(catKey);
+     const baseLabel=it._lmpBatchLabel18||grpTitleMap[catKey]||(loc(it.name||'').replace(/\s*#\d+$/,''));
+     const b=document.createElement('button');b.className='object-row is-smart-group '+(isSel?'selected':'');b.dataset.groupId=catKey;b.dataset.itemId=members[0].id;
+     const detail=members.length+(it._isPyroSfx18?tr(' thiết bị SFX',' SFX units'):tr(' đèn DMX',' DMX fixtures'));
+     const grpIcon=typeof objectRowIcon9==='function'?objectRowIcon9(members[0],'lighting',true):'<span class="row-icon">&#9635;</span>';
+     b.innerHTML=`${grpIcon}<span class="row-main"><strong>${esc(baseLabel)}</strong><small>${esc(detail)}</small></span><span class="row-group-exp" data-exp-grp="${esc(catKey)}" title="${esc(tr('Mở rộng / Thu gọn danh sách thiết bị','Expand / Collapse fixture list'))}">${isExp?'&#9662; ':'&#9656; '}${members.length}</span>`;
+     b.onclick=e=>{if(e?.target?.closest?.('[data-exp-grp]')){e.stopPropagation?.();if(expandedSmartGroups9.has(catKey))expandedSmartGroups9.delete(catKey);else expandedSmartGroups9.add(catKey);renderLists();return;}
+      const first=members[0];
+      if(first._isPyroSfx18){state.selectedSfx18=first.id;state.selectedLight=null;if(typeof window!=='undefined'&&window.STUDIO?.stageAssets16)window.STUDIO.stageAssets16.selected=first.id;}
+      else{state.selectedSfx18=null;state.selectedLight=first.id;if(director.mode!=='navigate')selectObject8('light',first.id);}
+      if(typeof window!=='undefined'&&typeof window.STUDIO?.lumi18?.openBatchConfigurator18==='function')window.STUDIO.lumi18.openBatchConfigurator18(catKey,members);
+      renderUI();};
+     list.appendChild(b);
+     if(isExp){
+      for(const sub of members){
+       const isSfx=!!sub._isPyroSfx18,subSel=isSfx?state.selectedSfx18===sub.id:(!state.selectedSfx18&&state.selectedLight===sub.id);
+       const cb=document.createElement('button');cb.className='object-row is-group-child '+(subSel?'selected':'');cb.dataset.itemId=sub.id;if(isSfx)cb.dataset.sfxId=sub.id;
+       const subDet=isSfx?(tr('Pháo & SFX','Pyro & SFX')+(Array.isArray(sub.pos)?` · [${sub.pos.map(v=>Number(v).toFixed(1)).join(', ')}]m`:'')):(sub.enabled?tr('Bật','On'):tr('Tắt','Off'))+' / '+sub.angle+'°';
+       const subIcon=typeof objectRowIcon9==='function'?objectRowIcon9(sub,'lighting',false):'<span class="row-icon">&#9671;</span>';
+       cb.innerHTML=`${subIcon}<span class="row-main"><strong>${esc(loc(sub.name))}</strong><small>${esc(subDet)}</small></span>`;
+       cb.onclick=()=>{if(isSfx){state.selectedSfx18=sub.id;state.selectedLight=null;if(typeof window!=='undefined'&&window.STUDIO?.stageAssets16)window.STUDIO.stageAssets16.selected=sub.id;}else{state.selectedSfx18=null;state.selectedLight=sub.id;if(director.mode!=='navigate')selectObject8('light',sub.id);}renderUI();};
+       list.appendChild(cb);
+      }
+     }
+    }else{
+     const isSfx=!!it._isPyroSfx18,isSel=isSfx?state.selectedSfx18===it.id:(!state.selectedSfx18&&state.selectedLight===it.id);
+     const b=document.createElement('button');b.className='object-row '+(isSel?'selected':'');b.dataset.itemId=it.id;if(isSfx)b.dataset.sfxId=it.id;
+     const detail=isSfx?(tr('Pháo & SFX','Pyro & SFX')+(Array.isArray(it.pos)?` · [${it.pos.map(v=>Number(v).toFixed(1)).join(', ')}]m`:'')):(it.enabled?tr('Bật','On'):tr('Tắt','Off'))+' / '+it.angle+'°';
+     const singleIcon=typeof objectRowIcon9==='function'?objectRowIcon9(it,'lighting',false):'<span class="row-icon">&#9671;</span>';
+     b.innerHTML=`${singleIcon}<span class="row-main"><strong>${esc(loc(it.name))}</strong><small>${esc(detail)}</small></span>`;
+     b.onclick=()=>{if(isSfx){state.selectedSfx18=it.id;state.selectedLight=null;if(typeof window!=='undefined'&&window.STUDIO?.stageAssets16)window.STUDIO.stageAssets16.selected=it.id;}else{state.selectedSfx18=null;state.selectedLight=it.id;if(director.mode!=='navigate')selectObject8('light',it.id);}renderUI();};
+     list.appendChild(b);
+    }
+   }
+  }
  }else{
   document.querySelectorAll('#objectList .object-row').forEach(b=>{if(selectedMeshIds?.size)b.classList.toggle('selected',selectedMeshIds.has(b.dataset?.itemId));const action=b.onclick;b.onclick=e=>{if(state.step==='stage'&&director.mode==='navigate'&&(director.selection?.kind==='person'||director.selection?.kind==='act')){director.selection=null;director.panel=null;}action(e);if(director.mode!=='navigate'){if(state.step==='stage'&&state.selectedMesh){const m=engine.stage.find(m=>m.id===state.selectedMesh);if(m)selectObject8('mesh',m.sourceKey||m.id);}else if(state.step==='lighting'&&state.selectedLight)selectObject8('light',state.selectedLight);}};});
  }
  if(state.step!=='stage')return;
- const cast=[...director.acts.map(item=>({kind:'act',item})),...seq.people.filter(p=>!p.actId).map(item=>({kind:'person',item}))],list=$('objectList'),query=$('objectSearch').value.trim().toLowerCase(),count=engine.stage.filter(m=>!m._deleted8).length+cast.length,loc=typeof localizeObjectName==='function'?localizeObjectName:v=>v,flt=typeof window!=='undefined'&&window._objFilter16||'all';
+ const cast=[...director.acts.map(item=>({kind:'act',item})),...seq.people.filter(p=>!p.actId).map(item=>({kind:'person',item}))],list=$('objectList'),query=$('objectSearch').value.trim().toLowerCase(),count=engine.stage.filter(m=>!m._deleted8&&!m._sfxKind16).length+cast.length,loc=typeof localizeObjectName==='function'?localizeObjectName:v=>v,flt=typeof window!=='undefined'&&window._objFilter16||'all';
  $('leftCount').textContent=count;$('meshCount').textContent=count+tr(' đối tượng',' objects');
  if(flt==='led'||flt==='struct')return;
  for(const {kind,item} of cast){
@@ -998,7 +1051,7 @@ function initGroups9(){
  },true);
  document.addEventListener('pointermove',e=>{const g=group9.marquee;if(!g)return;e.preventDefault();const r=engine.canvas.getBoundingClientRect();Object.assign(box.style,{left:(Math.min(g.x,e.clientX)-r.left)+'px',top:(Math.min(g.y,e.clientY)-r.top)+'px',width:Math.abs(e.clientX-g.x)+'px',height:Math.abs(e.clientY-g.y)+'px'});},true);
  document.addEventListener('pointerup',e=>{if(group9.marquee){e.preventDefault();e.stopImmediatePropagation();marqueeEnd9(e);}},true);
- document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,select')||$('modal').open)return;if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='a'){e.preventDefault();e.stopImmediatePropagation();selectStage9();}else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='g'){e.preventDefault();e.stopImmediatePropagation();const g=saveGroup9($('g9Name')?.value||'');if(g)toast((window.tr?.("Đã gộp nhóm: ","Saved group: ")??"Đã gộp nhóm: ")+g.name);}else if(e.key.toLowerCase()==='b'&&!e.ctrlKey&&!e.metaKey){e.preventDefault();setEditMode8('box');}else if(e.key==='Escape'&&group9.marquee){group9.marquee=null;box.hidden=true;}},true);
+ document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,select')||$('modal').open)return;const liveRun=typeof STUDIO!=='undefined'&&!!STUDIO.lumi18?.liveShow18?.running;if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='a'){e.preventDefault();e.stopImmediatePropagation();selectStage9();}else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='g'){e.preventDefault();e.stopImmediatePropagation();const g=saveGroup9($('g9Name')?.value||'');if(g)toast((window.tr?.("Đã gộp nhóm: ","Saved group: ")??"Đã gộp nhóm: ")+g.name);}else if(e.key.toLowerCase()==='b'&&!e.ctrlKey&&!e.metaKey&&!liveRun&&state.step!=='mapping'){e.preventDefault();setEditMode8('box');}else if(e.key==='Escape'&&group9.marquee){group9.marquee=null;box.hidden=true;}},true);
 }
 const groups9API={group9,smartGroupInfo9,selectionSet9,selectStage9,saveGroup9,selectGroup9,currentMembers9,allStageMembers9,groupAncestors9,parentMembers9,selectionMeshes8,selectionBounds8,selectionPivot8,captureTransform8,transformFrom8,applyTransform8,deleteSelectedObject8,selectObject8,renderDirectorPanel,dirData,restoreDirector};
 

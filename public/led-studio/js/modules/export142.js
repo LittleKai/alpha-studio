@@ -89,8 +89,21 @@
       E.view = 'stage';
       document.querySelectorAll('[data-view]').forEach(button => button.classList.toggle('active', button.dataset.view === 'stage'));
     }
-    const result = render(time, options);
-    if (recording && state.recording && E.view === 'stage' && !options.width && !options.height) {
+    const isLiveRecFrame = Boolean(recording && state.recording && E.view === 'stage' && !options.width && !options.height);
+    const hasCustomRecAspect = Boolean(isLiveRecFrame && recording.aspectMode && recording.aspectMode !== 'auto' && recording.width && recording.height);
+    const renderOpts = hasCustomRecAspect
+      ? { ...options, width: recording.width, height: recording.height }
+      : options;
+    const result = render(time, renderOpts);
+    if (isLiveRecFrame) {
+      if (hasCustomRecAspect && Array.isArray(recording.overlays)) {
+        for (const ov of recording.overlays) {
+          if (ov?.el) {
+            if (ov.el.width !== recording.width) ov.el.width = recording.width;
+            if (ov.el.height !== recording.height) ov.el.height = recording.height;
+          }
+        }
+      }
       const now = performance.now();
       if (now - recording.lastFrame >= 1000 / recording.fps - 1) {
         recording.lastFrame = now;
@@ -110,7 +123,24 @@
     return result;
   };
 
-  beginLiveRecording = function ({ duration = 10, fps = 30, withAudio = true } = {}) {
+  function computeVideoRecDimensions142(canvasW, canvasH, aspectMode = 'auto') {
+    const mode = aspectMode === '9:16' || aspectMode === '16:9' ? aspectMode : 'auto';
+    if (mode === '9:16') return { width: 1080, height: 1920, aspectMode: '9:16' };
+    if (mode === '16:9') return { width: 1920, height: 1080, aspectMode: '16:9' };
+    const cw = Math.max(2, Number(canvasW) || 1920);
+    const ch = Math.max(2, Number(canvasH) || 1080);
+    const aspect = Math.max(0.2, cw / Math.max(1, ch));
+    let width = Math.max(320, Math.min(1920, Math.floor(cw / 2) * 2));
+    let height = Math.max(180, Math.floor(width / aspect / 2) * 2);
+    if (height > 1080) {
+      height = 1080;
+      width = Math.max(2, Math.floor(1080 * aspect / 2) * 2);
+    }
+    return { width, height, aspectMode: 'auto' };
+  }
+  window.computeVideoRecDimensions142 = computeVideoRecDimensions142;
+
+  beginLiveRecording = function ({ duration = 10, fps = 30, withAudio = true, aspectMode = 'auto' } = {}) {
     if (state.recording) throw Error(mxTr("Đang ghi video. Hãy dừng bản ghi hiện tại trước.","Recording in progress. Stop the current recording first."));
     if (!window.MediaRecorder || !HTMLCanvasElement.prototype.captureStream) {
       throw Error(mxTr("Trình duyệt chưa hỗ trợ ghi canvas. Hãy dùng Chrome, Edge hoặc Firefox.","Browser does not support canvas recording. Use Chrome, Edge or Firefox."));
@@ -123,22 +153,39 @@
     const mime = candidates.find(type => MediaRecorder.isTypeSupported(type));
     if (!mime) throw Error(mxTr("Trình duyệt không có bộ mã hóa WebM phù hợp.","Browser has no compatible WebM encoder."));
     const canvas = document.createElement('canvas');
-    const aspect = Math.max(.2, E.canvas.clientWidth / Math.max(1, E.canvas.clientHeight));
-    canvas.width = Math.max(320, Math.min(1920, Math.floor(E.canvas.width / 2) * 2));
-    canvas.height = Math.max(180, Math.floor(canvas.width / aspect / 2) * 2);
-    if (canvas.height > 1080) {
-      canvas.height = 1080;
-      canvas.width = Math.max(2, Math.floor(1080 * aspect / 2) * 2);
-    }
+    const recDims = computeVideoRecDimensions142(E.canvas.width || E.canvas.clientWidth, E.canvas.height || E.canvas.clientHeight, aspectMode);
+    canvas.width = recDims.width;
+    canvas.height = recDims.height;
     // A CPU-backed output surface avoids unflushed GPU canvas frames reaching
     // captureStream on software/remote renderers. The stage itself stays WebGL.
     canvas.getContext('2d', { alpha: false, willReadFrequently: true });
-    const previous = { guides: E.showGuides, grid: E.settings.grid, view: E.view };
+    const overlayCanvases = [ $('laser135Overlay'), $('fx141Overlay'), $('lmpShowOverlay18') ].filter(Boolean);
+    const previous = {
+      guides: E.showGuides, grid: E.settings.grid, view: E.view,
+      fitOnResize: E._fitOnResize,
+      canvasW: E.canvas.width, canvasH: E.canvas.height,
+      overlays: overlayCanvases.map(el => ({ el, w: el.width, h: el.height }))
+    };
+    const restoreStageCanvas = () => {
+      E.view = previous.view; E.showGuides = previous.guides; E.settings.grid = previous.grid;
+      E._fitOnResize = previous.fitOnResize;
+      if (recDims.aspectMode !== 'auto') {
+        E.canvas.width = previous.canvasW;
+        E.canvas.height = previous.canvasH;
+        for (const ov of previous.overlays) { ov.el.width = ov.w; ov.el.height = ov.h; }
+      }
+    };
     const chunks = [];
     let stream, recorder;
     try {
       E.view = 'stage'; E.showGuides = false; E.settings.grid = false;
-      E.render(state.time); paintEffects(); compose(canvas, { letterbox: true });
+      if (recDims.aspectMode !== 'auto') {
+        E._fitOnResize = false;
+        E.canvas.width = recDims.width;
+        E.canvas.height = recDims.height;
+        for (const ov of previous.overlays) { ov.el.width = recDims.width; ov.el.height = recDims.height; }
+      }
+      E.render(state.time, recDims.aspectMode !== 'auto' ? { width: recDims.width, height: recDims.height } : {}); paintEffects(); compose(canvas, { letterbox: true });
       // Explicitly publish each composed frame. Some Chromium/offscreen canvas
       // paths do not produce any encoded frames from captureStream(fps) alone.
       stream = canvas.captureStream(0);
@@ -153,7 +200,7 @@
       recorder = new MediaRecorder(stream, {
         mimeType: mime, videoBitsPerSecond: 10000000, audioBitsPerSecond: 160000
       });
-      const session = { canvas, stream, track: stream.getVideoTracks()[0], fps, frames: 0, lastFrame: -Infinity, started: performance.now(), error: null };
+      const session = { canvas, stream, track: stream.getVideoTracks()[0], fps, aspectMode: recDims.aspectMode, width: recDims.width, height: recDims.height, overlays: previous.overlays, frames: 0, lastFrame: -Infinity, started: performance.now(), error: null };
       recording = session;
       state.recorder = recorder; state.recording = true; state.recordAudio = withAudio;
       recorder.onstart = () => {
@@ -180,17 +227,18 @@
         for (const track of stream.getTracks()) track.stop();
         recording = null;
         state.recording = false; state.recordAudio = false; state.recorder = null;
-        E.view = previous.view; E.showGuides = previous.guides; E.settings.grid = previous.grid;
+        restoreStageCanvas();
         const blob = new Blob(chunks, { type: mime });
         if (!blob.size && !session.error) session.error = mxTr("Trình duyệt không tạo được khung hình video. Giữ tab hiển thị rồi thử lại.","Browser could not create video frames. Keep the tab visible and try again.");
         window.__lastRecording = {
           bytes: blob.size, type: mime, requestedFPS: fps, audio: withAudio,
-          width: canvas.width, height: canvas.height, compositedFX: true,
+          width: canvas.width, height: canvas.height, aspectMode: recDims.aspectMode, compositedFX: true,
           renderedFrames: session.frames, elapsedSeconds: (performance.now() - session.started) / 1000,
           error: session.error
         };
         if (blob.size) {
-          download('ALPHA_Stage_V143_FX' + (withAudio ? '_Audio' : '') + '.webm', blob);
+          const tag = recDims.aspectMode === '9:16' ? '_Vertical_9x16' : (recDims.aspectMode === '16:9' ? '_16x9' : '');
+          download('ALPHA_Stage_V143_FX' + tag + (withAudio ? '_Audio' : '') + '.webm', blob);
         }
         E.render(state.time); paintEffects(performance.now(), false); renderOverlays(); renderUI();
         toast(session.error ? mxTr("Bản ghi dừng sớm: ","Recording stopped early: ") + session.error : mxTr("Đã ghi WebM gồm sân khấu và hiệu ứng LED Matrix viền / PAR / LINE / Laser.","Recorded WebM with stage, Matrix outlines / PAR / LINE / Laser effects."), 6500);
@@ -211,7 +259,7 @@
       }
       for (const track of stream?.getTracks() || []) track.stop();
       recording = null; state.recording = false; state.recordAudio = false; state.recorder = null;
-      E.view = previous.view; E.showGuides = previous.guides; E.settings.grid = previous.grid;
+      restoreStageCanvas();
       throw error;
     }
   };
@@ -221,14 +269,16 @@
     dialog(mxTr("Ghi sân khấu + hiệu ứng","Record stage + effects"),
       ("<p>"+mxTr("Ghi phối cảnh gồm LED, LED Matrix viền, PAR, LINE, Laser và bus âm thanh tùy chọn. Video chạy theo thời gian thực; số khung hình phụ thuộc hiệu năng máy.","Record the stage view with LEDs, Matrix outlines, PAR, LINE, Laser and optional audio bus. Recording runs in real time; frame rate depends on machine performance.")+"</p>") +
       ("<div class=\"pro-settings\"><label>"+mxTr("Thời lượng / giây","Duration / seconds")+"<input id=\"recordSeconds\" type=\"number\" min=\"1\" max=\"120\" value=\"10\"></label>") +
-      ("<label>"+mxTr("FPS mục tiêu","Target FPS")+"<select id=\"recordFPS\"><option>30</option><option>50</option><option>60</option></select></label>") +
+      ("<label>"+mxTr("FPS mục tiêu","Target FPS")+"<select id=\"recordFPS\"><option>30</option><option>50</option><option selected>60</option></select></label>") +
+      ("<label>"+mxTr("Tỷ lệ khung hình","Aspect Ratio")+"<select id=\"recordAspectMode\"><option value=\"auto\">Auto (Viewport)</option><option value=\"16:9\">16:9 Landscape (1920×1080)</option><option value=\"9:16\">9:16 Vertical (1080×1920 · TikTok/Reels)</option></select></label>") +
       ("<label class=\"check-row\"><input type=\"checkbox\" id=\"recordWithAudio\" checked>"+mxTr("Thu bus âm thanh","Record audio bus")+"</label></div>") +
       ("<p class=\"hint-text\">"+mxTr("Giữ tab hiển thị khi ghi. Góc xem giữ ở chế độ sân khấu; bạn vẫn có thể di chuyển camera. Khi dừng, ứng dụng trở lại chế độ xem ban đầu.","Keep the tab visible during recording. Stage view remains active and the camera can move. The original view is restored when recording stops.")+"</p>"),
       [{ label: mxTr("Hủy","Cancel") }, { label: mxTr("Bắt đầu ghi","Start recording"), primary: true, action: async () => {
         try {
           const withAudio = $('recordWithAudio').checked;
+          const aspectMode = $('recordAspectMode')?.value || 'auto';
           if (withAudio && !await enableAudio(true)) return;
-          beginLiveRecording({ duration: +$('recordSeconds').value, fps: +$('recordFPS').value, withAudio });
+          beginLiveRecording({ duration: +$('recordSeconds').value, fps: +$('recordFPS').value, withAudio, aspectMode });
         } catch (error) { toast(error.message, 8000); }
       } }]);
   };
@@ -288,6 +338,8 @@
   S.drawLumiWatermark = drawLumiWatermark;
   S.recordPreview = recordPreview;
   S.beginLiveRecording = beginLiveRecording;
-  S.capture142 = { captureFrame, compose, paintEffects, beginRecording: beginLiveRecording,
-    get recording() { return recording ? { frames: recording.frames, fps: recording.fps, width: recording.canvas.width, height: recording.canvas.height, error: recording.error } : null; } };
+  S.computeVideoRecDimensions142 = computeVideoRecDimensions142;
+  S.export142 = { exportShot, exportShot4K, beginLiveRecording, computeVideoRecDimensions142 };
+  S.capture142 = { captureFrame, compose, paintEffects, beginRecording: beginLiveRecording, computeVideoRecDimensions142,
+    get recording() { return recording ? { frames: recording.frames, fps: recording.fps, width: recording.canvas.width, height: recording.canvas.height, aspectMode: recording.aspectMode || 'auto', error: recording.error } : null; } };
 })();

@@ -116,6 +116,7 @@
 
     const lumiState = {
       lang: (S.cloud16?.state?.locale || document.documentElement?.dataset?.locale) === 'en' ? 'en' : 'vi',
+      aiEnabled: false,
       telemetryOptIn: loadTelemetryOptIn(),
       musicShowCues: [],
       activeCueIndex: -1,
@@ -188,21 +189,31 @@
         }
       },
       structureConfig18: {
+        venueEnabled: false,
         venueType: 'indoor_hall', // 'indoor_hall' | 'outdoor_roof' | 'coliseum_arena'
         venueXRay: false,
+        wallFinish: 'drape_black', // 'drape_black' | 'concrete' | 'brick_acoustic'
+        hideIndoorWalls: false,
+        hideFabrics: false,
+        daylightMode: 'night', // 'night' | 'day'
+        paWingWidthM: 2.5,
+        paWingHeightM: 6.0,
+        seatingLayout: 'none', // 'none' | 'gala_banquet' | 'corporate_chairs'
+        corridorType: 'central_side', // 'central' | 'side' | 'central_side'
         deckWidthM: 14,
         deckDepthM: 8,
         deckHeightM: 1.2,
         deckMaterial: 'mirror', // 'mirror' | 'black_wood'
         moduleSize: '2x1m',
         stairLayout: 'front_dual', // 'front_center' | 'front_dual' | 'side_lr' | 'rear_tech' | 'catwalk_tip' | 'all_around'
-        catwalkType: 'straight', // 'none' | 'straight' | 'circular_cnc' | 'octagonal_45'
+        catwalkType: 'none', // 'none' | 'straight' | 'circular_cnc' | 'octagonal_45'
         catwalkLengthM: 6.0,
         bStageWidthM: 4.0,
         layherBayStandard: '2.07m', // '2.07m' | '2.57m' | '2.00m'
         liveSymmetry3D: false,
         crowdBounce: true,
-        crowdCount: 36
+        crowdCount: 36,
+        _crowdInertiaEnergy18: 0
       },
       audioWorkstation18: {
         brandPreset: 'lacoustics_k2',
@@ -261,6 +272,9 @@
       },
       screenCapture18: {
         active: false,
+        sourceType: 'screen', // 'screen' | 'webcam'
+        fitMode: 'cover', // 'cover' | 'contain'
+        deviceId: '',
         stream: null,
         videoEl: null,
         startedAtMs: 0,
@@ -287,10 +301,38 @@
             stRef.activeStageSet18 = saved.activeStageSet18;
             if (saved.modelMeta18 && stRef.model && !stRef.model.files?.length) Object.assign(stRef.model, saved.modelMeta18);
           }
-          if (saved.structureConfig18) lumiState.structureConfig18 = saved.structureConfig18;
-          if (saved.audioWorkstation18) lumiState.audioWorkstation18 = saved.audioWorkstation18;
+          if (saved.structureConfig18) Object.assign(lumiState.structureConfig18, sanitizeStructureConfig18(saved.structureConfig18));
+          if (saved.audioWorkstation18) Object.assign(lumiState.audioWorkstation18, saved.audioWorkstation18);
         }
-        return priorRestore(data);
+        const res = priorRestore(data);
+        if (data.lumi18?.structureConfig18) applyStructureConfig18(lumiState.structureConfig18, { fromRestore: true });
+        return res;
+      };
+    }
+
+    if (typeof window.packLiveExtras === 'function' && typeof window.restoreLiveExtras === 'function') {
+      const priorPackExtras18 = window.packLiveExtras;
+      const priorRestoreExtras18 = window.restoreLiveExtras;
+      window.packLiveExtras = async function (...args) {
+        const extras = (await priorPackExtras18.apply(this, args)) || {};
+        extras.lumi18 = structuredClone({
+          structureConfig18: lumiState.structureConfig18,
+          audioWorkstation18: lumiState.audioWorkstation18,
+          brandIdentity: lumiState.brandIdentity
+        });
+        return extras;
+      };
+      window.restoreLiveExtras = async function (project, ...rest) {
+        const out = await priorRestoreExtras18.call(this, project, ...rest);
+        const saved18 = project?.liveExtras?.lumi18 || project?.lumi18;
+        if (saved18?.structureConfig18) {
+          Object.assign(lumiState.structureConfig18, sanitizeStructureConfig18(saved18.structureConfig18));
+          applyStructureConfig18(lumiState.structureConfig18, { fromRestore: true });
+        }
+        if (saved18?.audioWorkstation18) {
+          Object.assign(lumiState.audioWorkstation18, saved18.audioWorkstation18);
+        }
+        return out;
       };
     }
 
@@ -1214,6 +1256,8 @@
         (m) =>
           m &&
           (m === surf.mesh ||
+            (surf.id && m._surfaceId18 === surf.id) ||
+            (surf._lmpBatchId18 && m._lmpBatchId18 === surf._lmpBatchId18 && (!surf.name || m.name === surf.name)) ||
             (surf.sourceMeshId && m.id === surf.sourceMeshId) ||
             (surf.frameMeshId && m.id === surf.frameMeshId) ||
             (surf.name && (m.name === surf.name || m.name === surf.name + '_Frame')))
@@ -3781,6 +3825,18 @@
       if (panel?.contains(document.activeElement)) $('aiChat18Toggle')?.focus();
     }
 
+    function setAiEnabled18(enabled) {
+      lumiState.aiEnabled = Boolean(enabled);
+      const ai = $('aiChat18Toggle');
+      if (ai) {
+        ai.hidden = !lumiState.aiEnabled;
+        ai.disabled = !lumiState.aiEnabled;
+        ai.style.display = lumiState.aiEnabled ? '' : 'none';
+      }
+      if (!lumiState.aiEnabled) closeAiChat18();
+      return lumiState.aiEnabled;
+    }
+
     function openStageAiModal() {
       if (S.cloud16?.isClientReviewMode?.()) return;
       ensureAiChat18();
@@ -4687,9 +4743,13 @@
         ai.id = 'aiChat18Toggle'; ai.type = 'button'; ai.className = 'icon-btn ai-toggle-btn';
         ai.title = tr18('Trợ lý AI · Ctrl+I', 'AI assistant · Ctrl+I');
         ai.setAttribute('aria-label', ai.title); ai.setAttribute('aria-controls', 'aiChat18'); ai.setAttribute('aria-expanded', 'false');
-        ai.innerHTML = ico18('bot') + '<span class="ai18-toggle-badge">AI</span>'; ai.onclick = openStageAiModal;
+        ai.innerHTML = ico18('bot') + '<span class="ai18-toggle-badge">AI</span>';
+        ai.hidden = !lumiState.aiEnabled;
+        ai.disabled = !lumiState.aiEnabled;
+        ai.style.display = lumiState.aiEnabled ? '' : 'none';
+        ai.onclick = () => { if (lumiState.aiEnabled) openStageAiModal(); };
         actions.prepend(ai);
-        document.addEventListener('keydown', e => { if (e.ctrlKey && e.key.toLowerCase() === 'i' && !S.cloud16?.isClientReviewMode?.()) { e.preventDefault(); openStageAiModal(); } });
+        document.addEventListener('keydown', e => { if (lumiState.aiEnabled && e.ctrlKey && e.key.toLowerCase() === 'i' && !S.cloud16?.isClientReviewMode?.()) { e.preventDefault(); openStageAiModal(); } });
         try { const layout = JSON.parse(localStorage.getItem('ledstudio-ai-chat') || '{}'); chatWidth18 = Number(layout.width) || 0; } catch { /* storage unavailable */ }
       }
       injectAccount18(actions);
@@ -5117,13 +5177,20 @@
           if (map.rows500x1000 !== undefined) surf.rows500x1000 = map.rows500x1000;
           if (map.rows500x500 !== undefined) surf.rows500x500 = map.rows500x500;
           if (map.shapeType) surf.shapeType = map.shapeType;
-          if (map.curveDegPerCab !== undefined) surf.curveDegPerCab = map.curveDegPerCab;
+          if (map.curveDegPerCab !== undefined) {
+            surf.curveDegPerCab = map.curveDegPerCab;
+            surf.panelAngleDeg = Number(map.curveDegPerCab) || 0;
+            surf.columnAnglesDeg = [];
+          }
           surf.physicalWidthM = s.cfg.wM;
           surf.physicalHeightM = s.cfg.hM;
           surf.physical = [s.cfg.wM, s.cfg.hM];
           surf.pos = s.cfg.pos.slice();
           surf.yawDeg = s.cfg.yawDeg || 0;
+          if (s.mesh) s.mesh._surfaceId18 = surf.id;
+          if (surf.mesh) surf.mesh._surfaceId18 = surf.id;
           window.normalizeSurfaceHardware?.(surf);
+          window.rebuildSurface3DMesh?.(surf);
         }
       }
       eng.selected = eng.surfaces[0]?.id || null;
@@ -5181,43 +5248,72 @@
     let lmpActiveTab18 = 'structure';
     let lmpCollapsed18 = true;
 
-    function addToolboxStructure18(kind) {
+    function addToolboxStructure18(kind, opts = {}) {
       const sa = S.stageAssets16;
       if (typeof sa?.addCatalogItem !== 'function') return null;
       const deckH = Math.max(0.4, (S.engine?.stageBounds?.min?.[1] || 0) + 0.5);
-      return singleUndo18(() => {
-        if (kind === 'platform') return sa.addCatalogItem('stage_riser', [0, deckH, 0.8]);
-        if (kind === 'layher') return sa.addCatalogItem('truss_tower', [-8.4, 0, -1.5]);
-        if (kind === 'stairs') return sa.addCatalogItem('stage_stairs', [0, 0, 3.6]);
-        if (kind === 'straight_truss') return sa.addCatalogItem('truss_arch', [0, deckH, -1.2]);
-        if (kind === 'vertical_truss') return sa.addCatalogItem('truss_tower', [5.8, deckH, -1.2]);
-        if (kind === 'circular_truss') return sa.addCatalogItem('kinetic_ring', [0, deckH + 1.4, 0.4]);
-        if (kind === 'line_array') {
-          sa.addCatalogItem('line_array', [-7.2, deckH, 0.9]);
-          return sa.addCatalogItem('line_array', [7.2, deckH, 0.9]);
+      const batchId = opts.batchId || `batch_struct_${kind}_${Date.now().toString(36)}`;
+      const spanM = Number.isFinite(+opts.spanM) ? clamp18(+opts.spanM, 2, 24) : 14.4;
+      const scaleVal = Number.isFinite(+opts.scale) ? clamp18(+opts.scale, 0.3, 3.0) : 1;
+      const yOff = Number.isFinite(+opts.offsetY) ? +opts.offsetY : 0;
+      const zOff = Number.isFinite(+opts.offsetZ) ? +opts.offsetZ : 0;
+      const sym = opts.symmetry !== undefined ? Boolean(opts.symmetry) : (kind === 'line_array' || kind === 'sub_stack' || kind === 'layher' || kind === 'vertical_truss');
+      const count = Number.isFinite(+opts.count) ? Math.max(1, Math.min(16, Math.round(+opts.count))) : ((kind === 'line_array' || kind === 'sub_stack') ? 2 : 1);
+      const tagItem = (it) => {
+        if (!it) return null;
+        it._lmpBatchId18 = batchId;
+        it._lmpToolKind18 = kind;
+        it._lmpCategory18 = 'structure';
+        if (scaleVal !== 1) {
+          it.scale = scaleVal;
+          sa.syncItemMeshes?.(it);
         }
-        if (kind === 'sub_stack') {
-          sa.addCatalogItem('sub_stack', [-7.4, 0, 2.2]);
-          return sa.addCatalogItem('sub_stack', [7.4, 0, 2.2]);
-        }
-        if (kind === 'dj_booth') return sa.addCatalogItem('dj_booth', [0, deckH, 0.5]);
-        if (kind === 'foh_booth') return sa.addCatalogItem('foh_control_booth', [0, 0, 7.6]);
-        if (kind === 'podium') return sa.addCatalogItem('vip_podium', [0, deckH, 1.4]);
-        if (kind === 'ibm_table') return sa.addCatalogItem('conference_ibm_table', [0, 0, 5.2]);
-        if (kind === 'gala_table') return sa.addCatalogItem('gala_round_table', [0, 0, 5.8]);
+        return it;
+      };
+      const run = () => {
+        const mapCatalog = {
+          platform: { id: 'stage_riser', pos: [0, deckH + yOff, 0.8 + zOff] },
+          layher: { id: 'truss_tower', pos: [-spanM * 0.5, yOff, -1.5 + zOff] },
+          stairs: { id: 'stage_stairs', pos: [0, yOff, 3.6 + zOff] },
+          straight_truss: { id: 'truss_arch', pos: [0, deckH + yOff, -1.2 + zOff] },
+          vertical_truss: { id: 'truss_tower', pos: [spanM * 0.4, deckH + yOff, -1.2 + zOff] },
+          circular_truss: { id: 'kinetic_ring', pos: [0, deckH + 1.4 + yOff, 0.4 + zOff] },
+          line_array: { id: 'line_array', pos: [-spanM * 0.5, deckH + yOff, 0.9 + zOff] },
+          sub_stack: { id: 'sub_stack', pos: [-spanM * 0.5, yOff, 2.2 + zOff] },
+          dj_booth: { id: 'dj_booth', pos: [0, deckH + yOff, 0.5 + zOff] },
+          foh_booth: { id: 'foh_control_booth', pos: [0, yOff, 7.6 + zOff] },
+          podium: { id: 'vip_podium', pos: [0, deckH + yOff, 1.4 + zOff] },
+          ibm_table: { id: 'conference_ibm_table', pos: [0, yOff, 5.2 + zOff] },
+          gala_table: { id: 'gala_round_table', pos: [0, yOff, 5.8 + zOff] }
+        };
         if (kind === 'live_band') {
-          const riser = sa.addCatalogItem('stage_riser', [0, deckH, -0.4]);
-          if (typeof S.addAct8 === 'function') S.addAct8('live_band', { pos: [0, deckH + 0.38, -0.4] });
+          const riser = tagItem(sa.addCatalogItem('stage_riser', [0, deckH + yOff, -0.4 + zOff]));
+          if (!opts.skipAct && typeof S.addAct8 === 'function') S.addAct8('live_band', { pos: [0, deckH + 0.38 + yOff, -0.4 + zOff] });
           return riser;
         }
-        return sa.addCatalogItem(kind, [0, deckH, 0.5]);
-      });
+        const entry = mapCatalog[kind] || { id: kind, pos: [0, deckH + yOff, 0.5 + zOff] };
+        if (count === 1 && !sym) {
+          return tagItem(sa.addCatalogItem(entry.id, entry.pos));
+        }
+        const effCount = sym && count < 2 ? 2 : count;
+        const created = [];
+        for (let i = 0; i < effCount; i++) {
+          const u = effCount === 1 ? 0 : (i / (effCount - 1)) - 0.5;
+          const x = effCount === 1 ? entry.pos[0] : +(u * spanM).toFixed(2);
+          const it = tagItem(sa.addCatalogItem(entry.id, [x, entry.pos[1], entry.pos[2]]));
+          if (it) created.push(it);
+        }
+        return created[created.length - 1] || null;
+      };
+      return opts.noCheckpoint ? run() : singleUndo18(run);
     }
 
-    function addToolboxLighting18(kind) {
+    function addToolboxLighting18(rawKind, opts = {}) {
       const eng = S.engine;
       if (!eng) return [];
-      window.checkpoint?.();
+      const kindMap = { par_led: 'par', strobe_bar: 'strobe', laser_bar: 'lasers', laser: 'lasers', blinder: 'blinders', beam: 'beams' };
+      const kind = kindMap[rawKind] || rawKind;
+      if (!opts.noCheckpoint) window.checkpoint?.();
       if (!Array.isArray(eng.lights)) eng.lights = [];
       const w = Math.max(8, eng.size?.width || 16);
       const h = Math.max(5, eng.size?.height || 7);
@@ -5233,7 +5329,20 @@
         fresnel: { label: 'Fresnel 200W', type: 'fresnel', model: 'Theater Fresnel 200W Warm', oflProfileId: 'vn-stage/par-led-54x3w', count: 4, weightKg: 6.8, powerW: 220, beamAngleDeg: 35, angle: 24, flux: 16000, ch: 4, color: '#fde68a', y: +(h * 0.94).toFixed(2), z: +(d * 0.28).toFixed(2), ty: 1.2, tz: 0.4, sweep: false, fx: 'steady' },
         lasers: { label: 'ILDA Laser 10W', type: 'laser', model: 'KVANT Clubmax 10W ILDA', oflProfileId: 'vn-stage/beam-230-7r', count: 2, weightKg: 12, powerW: 320, beamAngleDeg: 4, angle: 5, flux: 26000, ch: 16, color: '#10b981', y: 2.2, z: -1.6, ty: 1.6, tz: 4.8, sweep: true, fx: 'pulse' }
       };
-      const cfg = presets[kind] || presets.beams;
+      const baseCfg = presets[kind] || presets.beams;
+      const count = Number.isFinite(+opts.count) ? Math.max(1, Math.min(24, Math.round(+opts.count))) : baseCfg.count;
+      const spanM = Number.isFinite(+opts.spanM) ? clamp18(+opts.spanM, 2, 24) : Math.max(6, +(w * 0.78).toFixed(2));
+      const mountZone = opts.mountZone || (baseCfg.y < 1.2 ? 'floor' : 'overhead');
+      const posY = mountZone === 'floor' ? 0.58 : mountZone === 'front' ? +(h * 0.94).toFixed(2) : baseCfg.y;
+      const posZ = mountZone === 'floor' ? 2.45 : mountZone === 'front' ? +(d * 0.28).toFixed(2) : baseCfg.z;
+      const zoomAngle = Number.isFinite(+opts.zoomDeg) ? clamp18(+opts.zoomDeg, 4, 60) : baseCfg.angle;
+      const panOffRad = ((Number(opts.panOffsetDeg) || 0) * Math.PI) / 180;
+      const tiltOffM = ((Number(opts.tiltOffsetDeg) || 0) / 45) * 2.4;
+      const customColor = opts.color && /^#[0-9a-f]{6}$/i.test(opts.color) ? opts.color : baseCfg.color;
+      const parLayout = opts.parLayout || 'linear';
+      const batchId = opts.batchId || `batch_light_${kind}_${Date.now().toString(36)}`;
+      const cfg = { ...baseCfg, count, y: posY, z: posZ, angle: zoomAngle, beamAngleDeg: zoomAngle, color: customColor };
+
       let lastU = 1;
       let nextAddr = 1;
       eng.lights.forEach((l) => {
@@ -5252,7 +5361,7 @@
       const autoRig = typeof autoRigFn === 'function'
         ? autoRigFn({
             trussId: cfg.y < 1.2 ? 'STAGE_DECK_FRONT' : 'TRUSS_MAIN',
-            spanM: Math.max(6, +(w * 0.78).toFixed(2)),
+            spanM,
             centerX: 0,
             trimHeightM: cfg.y,
             z: cfg.z,
@@ -5268,7 +5377,7 @@
           })
         : {
             fixtures: Array.from({ length: cfg.count }, (_, idx) => ({
-              x: +(((idx / Math.max(1, cfg.count - 1)) - 0.5) * Math.max(4, w * 0.65)).toFixed(2),
+              x: cfg.count === 1 ? 0 : +(((idx / Math.max(1, cfg.count - 1)) - 0.5) * spanM).toFixed(2),
               dmxUniverse: lastU,
               dmxAddress: nextAddr + idx * cfg.ch,
               dmxChannels: cfg.ch,
@@ -5276,44 +5385,82 @@
             }))
           };
       const baseIdx = eng.lights.length;
-      const added = autoRig.fixtures.map((f, i) => ({
-        id: `light_${Date.now().toString(36)}_${baseIdx + i}`,
-        name: `${cfg.label} #${baseIdx + i + 1}`,
-        type: cfg.type,
-        model: cfg.model,
-        oflModel: cfg.model,
-        oflProfileId: cfg.oflProfileId,
-        weightKg: cfg.weightKg,
-        powerW: cfg.powerW,
-        beamAngleDeg: cfg.beamAngleDeg,
-        luminousFluxLm: cfg.flux,
-        dmxUniverse: f.dmxUniverse,
-        dmxAddress: f.dmxAddress,
-        dmxChannels: f.dmxChannels,
-        trussId: f.trussId,
-        pos: [f.x, cfg.y, cfg.z],
-        target: [+(f.x * 0.85).toFixed(2), cfg.ty, cfg.tz],
-        color: cfg.color,
-        power: 4.5,
-        angle: cfg.angle,
-        enabled: true,
-        sweep: cfg.sweep,
-        speed: 0.4,
-        phase: i * 0.45,
-        fx: cfg.fx,
-        fxDepth: cfg.fx === 'strobe' ? 0.95 : 0.55,
-        fxSpeed: cfg.fx === 'strobe' ? 8.5 : 2.2,
-        boost: 1.15
-      }));
+      const added = autoRig.fixtures.map((f, i) => {
+        let fx = cfg.count === 1 ? 0 : +(((i / Math.max(1, cfg.count - 1)) - 0.5) * spanM).toFixed(2);
+        let fy = cfg.y;
+        let fz = cfg.z;
+        let tx = +(fx * 0.85 + Math.sin(panOffRad) * 3.5).toFixed(2);
+        let ty = +(cfg.ty + tiltOffM).toFixed(2);
+        let tz = cfg.tz;
+        if (parLayout === 'u_shape' && cfg.count >= 3) {
+          const u = i / Math.max(1, cfg.count - 1);
+          const halfW = spanM * 0.5;
+          if (u < 0.33) {
+            fx = -halfW;
+            fz = +(-d * 0.25 + (0.33 - u) * 3 * (d * 0.55)).toFixed(2);
+            tx = +(-halfW * 0.45).toFixed(2);
+            tz = fz;
+          } else if (u > 0.67) {
+            fx = halfW;
+            fz = +(-d * 0.25 + (u - 0.67) * 3 * (d * 0.55)).toFixed(2);
+            tx = +(halfW * 0.45).toFixed(2);
+            tz = fz;
+          } else {
+            const bu = (u - 0.33) / 0.34 - 0.5;
+            fx = +(bu * spanM).toFixed(2);
+            fz = +(-d * 0.28).toFixed(2);
+            tx = fx;
+            tz = +(fz + 1.2).toFixed(2);
+          }
+        }
+        return {
+          id: `light_${Date.now().toString(36)}_${baseIdx + i}`,
+          name: `${cfg.label} #${baseIdx + i + 1}`,
+          type: cfg.type,
+          model: cfg.model,
+          oflModel: cfg.model,
+          oflProfileId: cfg.oflProfileId,
+          weightKg: cfg.weightKg,
+          powerW: cfg.powerW,
+          beamAngleDeg: cfg.beamAngleDeg,
+          luminousFluxLm: cfg.flux,
+          dmxUniverse: f.dmxUniverse,
+          dmxAddress: f.dmxAddress,
+          dmxChannels: f.dmxChannels,
+          trussId: f.trussId,
+          pos: [fx, fy, fz],
+          target: [tx, ty, tz],
+          color: cfg.color,
+          power: 4.5,
+          angle: cfg.angle,
+          enabled: true,
+          sweep: cfg.sweep,
+          speed: 0.4,
+          phase: i * 0.45,
+          fx: cfg.fx,
+          fxDepth: cfg.fx === 'strobe' ? 0.95 : 0.55,
+          fxSpeed: cfg.fx === 'strobe' ? 8.5 : 2.2,
+          boost: 1.15,
+          _lmpBatchId18: batchId,
+          _lmpBatchLabel18: `${cfg.label} (${cfg.count})`,
+          _lmpToolKind18: kind
+        };
+      });
       eng.lights.push(...added);
-      if (window.state && added[0]) window.state.selectedLight = added[0].id;
+      if (window.state && added[0]) {
+        window.state.step = 'lighting';
+        window.state.selectedSfx18 = null;
+        window.state.selectedLight = added[0].id;
+      }
       if (kind === 'lasers' && S.laserShow?.enable) {
         try { S.laserShow.enable(true); } catch { /* ignore */ }
       }
       eng.rebuildFixtures?.();
       window.renderUI?.();
       renderLmpToolbox18();
-      window.toast?.(tr18(`Đã thêm ${added.length} đèn ${cfg.label} (Auto-Rig DMX U${lastU}).`, `Added ${added.length} ${cfg.label} fixtures (Auto-Rig DMX U${lastU}).`));
+      if (!opts.silent) {
+        window.toast?.(tr18(`Đã thêm ${added.length} đèn ${cfg.label} (Auto-Rig DMX U${lastU}).`, `Added ${added.length} ${cfg.label} fixtures (Auto-Rig DMX U${lastU}).`));
+      }
       return added;
     }
 
@@ -6268,6 +6415,7 @@
         const defaultLaws = ['v_converge', 'v_diverge', 'x_cross', 'parallel_wing', 'parallel_zero', 'x_cross'];
         const reqFanLaw = (ls.fanLaw && ls.fanLaw !== 'auto') ? ls.fanLaw : ((ls.beamFanLaw && ls.beamFanLaw !== 'auto') ? ls.beamFanLaw : 'auto');
         const activeFanLaw = reqFanLaw !== 'auto' ? reqFanLaw : defaultLaws[(showIdx - 1) % defaultLaws.length];
+        const hasDedicatedStrobe = eng.lights.some((x, i) => x && classifyFixture18(x, i, total) === 'strobe');
 
         eng.lights.forEach((l, idx) => {
           if (!l) return;
@@ -6291,12 +6439,20 @@
           l.dmxGroup18 = grpId;
           const grpCfg = dmxProg?.groups?.[grpId] || { panOffsetDeg: 0, tiltOffsetDeg: 0, fanningSpreadDeg: 0, dimmer: 100 };
 
-          if (ls.blackout || !ls.lightsOn || (Number(grpCfg.dimmer) || 100) <= 0) {
-            if (cat === 'blinder' && ls.blindersOn && !ls.blackout) {
-              // Blinders can still flash when blindersOn is explicitly held
-            } else {
+          if (ls.blackout || (Number(grpCfg.dimmer) ?? 100) <= 0) {
+            l.power = 0;
+            l.enabled = false;
+            l._isBlinder18 = false;
+            return;
+          }
+          if (!ls.lightsOn) {
+            const allowBlinderOnly = ls.blindersOn && (cat === 'blinder' || idx % 4 === 3);
+            const allowStrobeOnly = ls.strobe && (cat === 'strobe' || !hasDedicatedStrobe);
+            const allowLaserOnly = ls.laserOn && cat === 'laser';
+            if (!allowBlinderOnly && !allowStrobeOnly && !allowLaserOnly) {
               l.power = 0;
               l.enabled = false;
+              l._isBlinder18 = false;
               return;
             }
           }
@@ -6357,7 +6513,41 @@
           const dimmerScale = clamp18((Number(grpCfg.dimmer) ?? 100) / 100, 0, 1.5);
           const spreadFactor = clamp18(Number(dmxProg?.optics?.spreadFactor) || 1.0, 0.4, 2.5);
 
-          if (cat === 'par' || cat === 'bar') {
+          if (cat === 'laser') {
+            if (!ls.laserOn) {
+              l.power = 0;
+              l.enabled = false;
+              l.gobo9 = null;
+              return;
+            }
+            const customLaserPal = dmxProg?.groupPalettes?.laser;
+            const laserPal = Array.isArray(customLaserPal) && customLaserPal.length ? customLaserPal : LMP_LASER_PALETTES18;
+            l.color = ls.multicolor ? samplePaletteGlide18(laserPal, idx * 0.5 + tSec * spd * 0.6) : laserPal[0];
+            l.power = +(3.4 * dimmerScale).toFixed(2);
+            l.angle = 4.5;
+            l.fixtureProfile18 = 'ilda_laser_v1';
+            l.profileId18 = 'ilda_laser_v1';
+            l.beamProfile18 = 0;
+            l.gobo9 = null;
+          } else if (cat === 'strobe') {
+            const strobeActive = ls.strobe || (ls.lightsOn && (showIdx === 3 || showIdx === 4 || showIdx === 6));
+            if (!strobeActive) {
+              l.power = 0;
+              l.enabled = false;
+              l.gobo9 = null;
+              return;
+            }
+            const gate = ls.strobe
+              ? ((nowMs % 71.4) < 25.0)
+              : (((nowMs + idx * 19) % 71.4) < 18.5);
+            l.color = '#ffffff';
+            l.power = gate ? +(13.5 * dimmerScale).toFixed(2) : 0.02;
+            l.angle = +(32 * spreadFactor).toFixed(1);
+            l.fixtureProfile18 = 'atomic_strobe_v1';
+            l.profileId18 = 'atomic_strobe_v1';
+            l.beamProfile18 = 2;
+            l.gobo9 = null;
+          } else if (cat === 'par' || cat === 'bar') {
             const chaseMode = (ls.parChaseMode && ls.parChaseMode !== 'auto')
               ? ls.parChaseMode
               : (dmxProg?.parChaseMode || (showIdx === 1 ? 'carousel' : showIdx === 2 ? 'mirror_domino' : showIdx === 3 ? 'dual_carousel' : 'gala_sparkle'));
@@ -6466,10 +6656,10 @@
           }
 
           // 14 Hz Strobe Override [Z] — Synchronous Atomic Xenon Discharge
-          if (ls.strobe || (cat === 'strobe' && (showIdx === 3 || showIdx === 4 || showIdx === 6))) {
-            const gate = ls.strobe
-              ? ((nowMs % 71.4) < 25.0)
-              : (((nowMs + idx * 19) % 71.4) < 18.5);
+          // When stage has dedicated strobe fixtures, only strobe fixtures flash white so moving heads/PAR keep their colors.
+          // When stage has no dedicated strobe fixtures, fallback to flashing stage lights at 14 Hz.
+          if (ls.strobe && (cat === 'strobe' || !hasDedicatedStrobe)) {
+            const gate = (nowMs % 71.4) < 25.0;
             l.color = '#ffffff';
             l.power = gate ? 13.5 : 0.02;
           }
@@ -6477,7 +6667,7 @@
           activeLightEnergySum += Math.min(1.0, (Number(l.power) || 0) / 8.5);
         });
 
-        if (ls.strobe && !ls.blackout) {
+        if (ls.strobe && !ls.blackout && !hasDedicatedStrobe) {
           const strobeOn = (nowMs % 71.4) < 25.0;
           for (const fp of floorProjections) {
             fp.color = '#ffffff';
@@ -6509,10 +6699,17 @@
       // 3. Evaluate 3D RGB ILDA Laser Scan Patterns (Ps = 0..3) with +3.20m horizon clamp
       const laserRenderData = [];
       if (ls.running && ls.laserOn && !ls.blackout) {
-        const laserUnits = [
-          [-4.2, 4.2, -1.6],
-          [4.2, 4.2, -1.6]
-        ];
+        const stageLaserUnits = Array.isArray(eng?.lights)
+          ? eng.lights
+              .filter((l, i) => l && classifyFixture18(l, i, eng.lights.length) === 'laser' && Array.isArray(l.pos))
+              .map((l) => l.pos)
+          : [];
+        const laserUnits = stageLaserUnits.length
+          ? stageLaserUnits
+          : [
+              [-4.2, 4.2, -1.6],
+              [4.2, 4.2, -1.6]
+            ];
         const patternIdx = ls.laserPattern && ls.laserPattern !== 'auto'
           ? clamp18(Number(ls.laserPattern) || 0, 0, 3)
           : (showIdx - 1) % 4;
@@ -6946,6 +7143,7 @@ void main(){
         gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
         gl.disable(gl.BLEND);
       }
+      if (Number.isFinite(eng.frame)) eng._lmpVolumetricFrame18 = eng.frame;
       return true;
     }
 
@@ -6953,6 +7151,9 @@ void main(){
       const can = $('lmpShowOverlay18');
       const eng = S.engine;
       if (!can || !eng) return null;
+      if (clean && !force2d && Number.isFinite(eng.frame) && eng._lmpVolumetricFrame18 !== eng.frame) {
+        drawWebglVolumetricExtras18(eng, nowMs);
+      }
       const ctx = can.getContext?.('2d', { alpha: true });
       if (!ctx) return null;
 
@@ -7800,6 +8001,8 @@ void main(){
           if (ls.sfxOn) {
             ls.dockCollapsed = false;
             triggerPyroBurst18('all');
+          } else {
+            ls.dockCollapsed = true;
           }
         }
       } else if (fxKey === 'strobe') {
@@ -7821,6 +8024,7 @@ void main(){
       }
       renderLmpToolbox18();
       renderLmpLiveShowDock18();
+      if (window.state?.step === 'lighting') window.renderInspector?.();
       return ls;
     }
 
@@ -7885,28 +8089,63 @@ void main(){
       return totalTriggered;
     }
 
-    function addToolboxPyroSfx18(kind) {
+    function addToolboxPyroSfx18(rawKind, opts = {}) {
       const sa = S.stageAssets16;
       if (typeof sa?.addCatalogItem !== 'function') return [];
+      const kindMap = { cold_spark: 'sparkular', cold_spark_fountain: 'sparkular', co2_jet: 'co2_jets', flame_jet: 'flames', confetti_cannon: 'aerial_pyro', haze_machine_pro: 'hazer' };
+      const kind = kindMap[rawKind] || rawKind;
       const deckH = Math.max(0.4, (S.engine?.stageBounds?.min?.[1] || 0) + 0.5);
       const mapKind = {
-        sparkular: { id: 'cold_spark_fountain', xs: [-4.8, -1.6, 1.6, 4.8], z: 2.55 },
-        co2_jets: { id: 'co2_jet', xs: [-4.2, -1.4, 1.4, 4.2], z: 2.4 },
-        flames: { id: 'flame_jet', xs: [-5.4, -2.0, 2.0, 5.4], z: 2.15 },
-        hazer: { id: 'haze_machine_pro', xs: [-7.4, 7.4], z: -0.6 },
-        aerial_pyro: { id: 'confetti_cannon', xs: [-5.6, -2.2, 2.2, 5.6], z: 2.75 }
+        sparkular: { id: 'cold_spark_fountain', labelVi: 'Pháo điện lạnh Sparkular', labelEn: 'Sparkular Cold Sparks', xs: [-4.8, -1.6, 1.6, 4.8], z: 2.55 },
+        co2_jets: { id: 'co2_jet', labelVi: 'Súng khói lạnh CO2', labelEn: 'CO2 Cryo Jets', xs: [-4.2, -1.4, 1.4, 4.2], z: 2.4 },
+        flames: { id: 'flame_jet', labelVi: 'Máy phun lửa DMX', labelEn: 'DMX Flame Jets', xs: [-5.4, -2.0, 2.0, 5.4], z: 2.15 },
+        hazer: { id: 'haze_machine_pro', labelVi: 'Máy tạo khói Hazer', labelEn: 'Pro DMX Hazer', xs: [-7.4, 7.4], z: -0.6 },
+        aerial_pyro: { id: 'confetti_cannon', labelVi: 'Pháo hoa tầm cao & Kim tuyến', labelEn: 'Aerial Pyro & Confetti', xs: [-5.6, -2.2, 2.2, 5.6], z: 2.75 }
       };
       const cfg = mapKind[kind] || mapKind.sparkular;
-      const created = singleUndo18(() => cfg.xs.map((x) => sa.addCatalogItem(cfg.id, [x, deckH, cfg.z])).filter(Boolean));
+      const count = Number.isFinite(+opts.count) ? Math.max(1, Math.min(16, Math.round(+opts.count))) : cfg.xs.length;
+      const defaultSpan = Math.abs((cfg.xs[cfg.xs.length - 1] || 4.8) - (cfg.xs[0] || -4.8)) || 9.6;
+      const spanM = Number.isFinite(+opts.spanM) ? clamp18(+opts.spanM, 2, 24) : defaultSpan;
+      const mountZone = opts.mountZone || (kind === 'hazer' ? 'back' : 'front');
+      const posZ = mountZone === 'back' ? -1.2 : mountZone === 'mid' ? 0.6 : cfg.z;
+      const scaleVal = Number.isFinite(+opts.scale) ? clamp18(+opts.scale, 0.4, 2.5) : 1;
+      const batchId = opts.batchId || `batch_pyro_${kind}_${Date.now().toString(36)}`;
+      const xs = count === cfg.xs.length && !opts.spanM && !opts.count
+        ? cfg.xs
+        : Array.from({ length: count }, (_, i) => (count === 1 ? 0 : +(((i / Math.max(1, count - 1)) - 0.5) * spanM).toFixed(2)));
+      const runCreate = () => xs.map((x) => {
+        const it = sa.addCatalogItem(cfg.id, [x, deckH, posZ]);
+        if (it) {
+          it._isPyroSfx18 = true;
+          it._lmpBatchId18 = batchId;
+          it._lmpBatchLabel18 = `${tr18(cfg.labelVi, cfg.labelEn)} (${count})`;
+          it._lmpToolKind18 = kind;
+          it._lmpCategory18 = 'pyro';
+          if (scaleVal !== 1) {
+            it.scale = scaleVal;
+            sa.syncItemMeshes?.(it);
+          }
+        }
+        return it;
+      }).filter(Boolean);
+      const created = opts.noCheckpoint ? runCreate() : singleUndo18(runCreate);
+      if (window.state) {
+        window.state.step = 'lighting';
+        window.state.selectedLight = null;
+        if (created[0]) window.state.selectedSfx18 = created[0].id;
+      }
       if (kind === 'hazer' && S.engine?.settings) {
         S.engine.settings.haze = 28;
       }
+      window.renderUI?.();
       renderLmpToolbox18();
-      triggerPyroBurst18(cfg.id);
+      if (!opts.silent) {
+        triggerPyroBurst18(cfg.id);
+      }
       return created;
     }
 
-    function addToolboxScreen18(kind) {
+    function addToolboxScreen18(kind, opts = {}) {
       const eng = S.engine;
       if (!eng || typeof window.createSurface !== 'function') return null;
       if (kind === 'pixel_map_2d') {
@@ -7914,7 +8153,7 @@ void main(){
         mapBtn?.click();
         return null;
       }
-      window.checkpoint?.();
+      if (!opts.noCheckpoint) window.checkpoint?.();
       const idx = (eng.surfaces?.length || 0) + 1;
       const presets = {
         main_wall: { name: `LED_MAIN_${idx}`, wM: 4.0, hM: 2.5, pos: [0, 2.6, -1.8], yawDeg: 0, cabinetModelId: 'roe_bp2v2_500', processorModelId: 'brompton_sx40', rows500x1000: 2, rows500x500: 1, shapeType: 'flat', curveDegPerCab: 0 },
@@ -7925,8 +8164,14 @@ void main(){
         cube: { name: `LED_CUBE_${idx}`, wM: 6.0, hM: 1.5, pos: [0, 4.8, 0.4], yawDeg: 25, cabinetModelId: 'absen_pl25_500', processorModelId: 'brompton_s8', shapeType: 'cube', curveDegPerCab: 0 },
         cylinder_360: { name: `LED_CYLINDER_${idx}`, wM: 6.0, hM: 2.5, pos: [0, 2.6, 0.5], yawDeg: 0, cabinetModelId: 'roe_bp2v2_500', processorModelId: 'brompton_sx40', rows500x1000: 2, rows500x500: 1, shapeType: 'cylinder_360', curveDegPerCab: 0 }
       };
-      const cfg = presets[kind] || presets.main_wall;
+      const baseCfg = presets[kind] || presets.main_wall;
+      const wM = Number.isFinite(+opts.widthM) ? clamp18(+opts.widthM, 1, 24) : baseCfg.wM;
+      const hM = Number.isFinite(+opts.heightM) ? clamp18(+opts.heightM, 0.5, 12) : baseCfg.hM;
+      const curveDegPerCab = Number.isFinite(+opts.curveDegPerCab) ? clamp18(+opts.curveDegPerCab, -20, 20) : baseCfg.curveDegPerCab;
+      const batchId = opts.batchId || `batch_screen_${kind}_${Date.now().toString(36)}`;
+      const cfg = { ...baseCfg, wM, hM, curveDegPerCab };
       const q = buildGeometricLedMesh18(cfg.name, cfg.wM, cfg.hM, cfg.shapeType, cfg.curveDegPerCab);
+      q._lmpBatchId18 = batchId;
       const ry = ((cfg.yawDeg || 0) * Math.PI) / 180;
       const mat = window.M.mm(window.M.translate(cfg.pos), window.M.rotate([0, 1, 0], ry));
       window.transformMesh(q, mat);
@@ -7941,19 +8186,30 @@ void main(){
         rows500x1000: cfg.rows500x1000,
         rows500x500: cfg.rows500x500,
         shapeType: cfg.shapeType,
-        curveDegPerCab: cfg.curveDegPerCab
+        curveDegPerCab: cfg.curveDegPerCab,
+        panelAngleDeg: Number(cfg.curveDegPerCab) || 0
       });
+      surf.curveDegPerCab = cfg.curveDegPerCab;
+      surf.panelAngleDeg = Number(cfg.curveDegPerCab) || 0;
+      surf.columnAnglesDeg = [];
       surf.physicalWidthM = cfg.wM;
       surf.physicalHeightM = cfg.hM;
       surf.physical = [cfg.wM, cfg.hM];
       surf.pos = cfg.pos.slice();
       surf.yawDeg = cfg.yawDeg;
+      surf._lmpBatchId18 = batchId;
+      surf._lmpToolKind18 = kind;
+      q._surfaceId18 = surf.id;
+      if (surf.mesh) surf.mesh._surfaceId18 = surf.id;
       window.normalizeSurfaceHardware?.(surf);
+      window.rebuildSurface3DMesh?.(surf);
       eng.selected = surf.id;
       eng._stageBatchDirty = true;
       window.renderUI?.();
       renderLmpToolbox18();
-      window.toast?.(tr18(`Đã thêm màn hình ${cfg.name} (${cfg.wM}×${cfg.hM}m · ${cfg.shapeType}).`, `Added LED screen ${cfg.name} (${cfg.wM}×${cfg.hM}m · ${cfg.shapeType}).`));
+      if (!opts.silent) {
+        window.toast?.(tr18(`Đã thêm màn hình ${cfg.name} (${cfg.wM}×${cfg.hM}m · ${cfg.shapeType}).`, `Added LED screen ${cfg.name} (${cfg.wM}×${cfg.hM}m · ${cfg.shapeType}).`));
+      }
       return surf;
     }
 
@@ -7962,6 +8218,75 @@ void main(){
       renderLmpLiveShowDock18();
       renderLmpToolbox18();
       return !liveShow18.dockHidden;
+    }
+
+    function getLmpFxSelectOptions18() {
+      const ls = liveShow18;
+      const curFanLaw = (ls.fanLaw && ls.fanLaw !== 'auto') ? ls.fanLaw : (ls.beamFanLaw || 'auto');
+      const chaseList = [
+        ['auto', tr18('PAR: Tự động theo Show', 'PAR: Auto (By Show)')],
+        ['carousel', tr18('PAR: Đuổi vòng tròn (Carousel)', 'PAR: Carousel Chase')],
+        ['mirror_domino', tr18('PAR: Đối xứng tâm (Mirror Domino)', 'PAR: Mirror Domino')],
+        ['dual_carousel', tr18('PAR: Đuổi kép 2 hướng (Dual Carousel)', 'PAR: Dual Carousel')],
+        ['gala_sparkle', tr18('PAR: Lấp lánh Gala (Gala Sparkle)', 'PAR: Gala Sparkle')],
+        ['static', tr18('PAR: Tĩnh đồng nhất (Static Wash)', 'PAR: Static Wash')]
+      ];
+      const fanList = [
+        ['auto', tr18('Beam Fan: Tự động theo Show', 'Beam Fan: Auto (By Show)')],
+        ['v_converge', tr18('Beam Fan: Chụm chữ V (V-Converge)', 'Beam Fan: V-Converge')],
+        ['v_diverge', tr18('Beam Fan: Xòe chữ V (V-Diverge)', 'Beam Fan: V-Diverge')],
+        ['x_cross', tr18('Beam Fan: Đan chéo chữ X (X-Cross)', 'Beam Fan: X-Cross')],
+        ['parallel_wing', tr18('Beam Fan: Quạt cánh song song (Parallel Wing)', 'Beam Fan: Parallel Wing')],
+        ['parallel_zero', tr18('Beam Fan: Thẳng đứng song song (Parallel Zero)', 'Beam Fan: Parallel Zero')]
+      ];
+      const laserList = [
+        ['auto', tr18('Laser: Tự động theo Show', 'Laser: Auto (By Show)')],
+        ['0', tr18('P0 · Màn sương ngang (Liquid Sky)', 'P0 · Liquid Sky Horizon')],
+        ['1', tr18('P1 · Đường hầm nón (Cone Tunnel)', 'P1 · Cone Tunnel')],
+        ['2', tr18('P2 · Chặt chéo tia (X-Chopper)', 'P2 · X-Chopper')],
+        ['3', tr18('P3 · Pháo bông đa tia (Starburst)', 'P3 · Starburst')]
+      ];
+      return {
+        curFanLaw,
+        parChase: chaseList.slice(1),
+        fanLaw: fanList.slice(1),
+        laserPat: laserList.slice(1),
+        chaseOpts: chaseList.map(([val, lbl]) => `<option value="${val}" ${ls.parChaseMode === val ? 'selected' : ''}>${esc18(lbl)}</option>`).join(''),
+        fanOpts: fanList.map(([val, lbl]) => `<option value="${val}" ${curFanLaw === val ? 'selected' : ''}>${esc18(lbl)}</option>`).join(''),
+        laserOpts: laserList.map(([val, lbl]) => `<option value="${val}" ${String(ls.laserPattern) === val ? 'selected' : ''}>${esc18(lbl)}</option>`).join('')
+      };
+    }
+
+    function openLmpHelpModal18() {
+      const title = tr18('Hướng dẫn Hệ thống Đèn, Pháo SFX & Live Show', 'Lighting, Pyro SFX & Live Show Guide');
+      const body =
+        `<div class="lmp-help-modal18 lmp-help-body18">` +
+        `<div class="lmp-help-sec18">` +
+        `<h4>1. ${tr18('Các kênh điều khiển độc lập trên thanh Live Show', 'Independent Live Show Control Channels')}</h4>` +
+        `<ul class="lmp-help-list18">` +
+        `<li><b>${tr18('ĐÈN (LIGHTS · Phím M)', 'LIGHTS (Key M)')}:</b> ${tr18('Bật/tắt hệ đèn sân khấu chính (Moving Head Beam, Spot, Wash, PAR LED, Barra LED, Fresnel). Tắt ĐÈN không làm tắt Strobe, Blinder hay Laser.', 'Toggles primary stage fixtures (Beam, Spot, Wash, PAR, Barra, Fresnel) independently of Strobe, Blinders, and Laser.')}</li>` +
+        `<li><b>${tr18('CHỚP 14HZ (STROBE · Phím Z)', 'STROBE 14HZ (Key Z)')}:</b> ${tr18('Hoạt động độc lập với ĐÈN. Khi sân khấu có đèn Atomic Strobe chuyên dụng, chỉ dàn Strobe chớp trắng 14Hz (giữ nguyên màu của Moving Head/PAR) và vẫn chớp ngay cả khi tắt ĐÈN.', 'Operates independently of LIGHTS. Fires dedicated Atomic Strobe fixtures at 14Hz white without overriding Moving Head/PAR colors, even when LIGHTS is OFF.')}</li>` +
+        `<li><b>${tr18('CHỚP KHÁN GIẢ (BLINDERS · Phím F)', 'BLINDERS (Key F)')}:</b> ${tr18('Đèn chớp vàng ấm chiếu về phía khán giả kèm mô phỏng quán tính nhiệt dây tóc Halogen, hoạt động độc lập cả khi tắt ĐÈN.', 'Warm tungsten audience flood flash with thermal decay, active even when LIGHTS is OFF.')}</li>` +
+        `<li><b>LASER (Phím L):</b> ${tr18('Hệ thống quét 16 tia Laser ILDA RGB tự động lấy tâm từ vị trí đèn Laser trên sân khấu.', '16-beam RGB ILDA laser scan engine anchored to stage laser fixtures.')}</li>` +
+        `<li><b>${tr18('PHÁO (PYRO · Phím X)', 'PYRO (Key X)')}:</b> ${tr18('Tự động kích hoạt pháo & khói theo 7 pha kịch bản. Khi tắt PHÁO, khay nút bắn pháo thủ công (Phím 7–0) sẽ tự động thu gọn.', '7-phase automatic Pyro & SFX sequencer. Turning PYRO off automatically collapses the manual Pyro trigger row.')}</li>` +
+        `</ul>` +
+        `</div>` +
+        `<div class="lmp-help-sec18">` +
+        `<h4>2. ${tr18('Động cơ Hiệu ứng Đèn & Laser (Trên Right Panel · Hệ thống đèn)', 'Lighting & Laser FX Engine (Right Panel · Lighting System)')}</h4>` +
+        `<ul class="lmp-help-list18">` +
+        `<li><b>${tr18('Chế độ đuổi đèn PAR (PAR Chase)', 'PAR Chase Mode')}:</b> ${tr18('Điều khiển hiệu ứng chạy màu của dải đèn PAR & Barra LED: Đuổi vòng tròn (Carousel), Đối xứng tâm (Mirror Domino), Đuổi kép 2 hướng (Dual Carousel), Lấp lánh Gala (Gala Sparkle) hoặc Tĩnh đồng nhất (Static).', 'Controls PAR & Barra LED color chase: Carousel, Mirror Domino, Dual Carousel, Gala Sparkle, or Static Wash.')}</li>` +
+        `<li><b>${tr18('Quy luật quạt chùm tia (Beam Fan Law)', 'Beam Fan Law')}:</b> ${tr18('Định hình góc quét đối xứng của dàn Moving Head Beam/Spot: Chụm chữ V (V-Converge), Xòe chữ V (V-Diverge), Đan chéo chữ X (X-Cross), Quạt cánh song song (Parallel Wing) hoặc Thẳng đứng (Parallel Zero).', 'Shapes symmetric pan/tilt fanning for Moving Head Beams/Spots: V-Converge, V-Diverge, X-Cross, Parallel Wing, or Parallel Zero.')}</li>` +
+        `<li><b>${tr18('Mẫu quét tia Laser ILDA (Laser Pattern)', 'ILDA Laser Pattern')}:</b> ${tr18('Chuyển đổi 4 hình học quét Laser 3D: P0 Màn sương ngang (Liquid Sky), P1 Đường hầm nón (Cone Tunnel), P2 Chặt chéo tia (X-Chopper), P3 Pháo bông đa tia (Starburst).', 'Switches 4 3D ILDA scan geometries: P0 Liquid Sky, P1 Cone Tunnel, P2 X-Chopper, P3 Starburst.')}</li>` +
+        `</ul>` +
+        `</div>` +
+        `<div class="lmp-help-sec18">` +
+        `<h4>3. ${tr18('Thêm & Điều chỉnh Thiết bị (ADD / EDIT trên Right Panel)', 'Adding & Configuring Objects (ADD / EDIT in Right Panel)')}</h4>` +
+        `<p>${tr18('Khi click vào bất kỳ thiết bị nào trong Stage Toolbox (Kết cấu, Ánh sáng, Pháo SFX, Màn LED), cụm thiết bị sẽ xuất hiện trực tiếp trên sân khấu 3D kèm bảng ADD / EDIT ở cột phải (Right Panel) để chỉnh Đối xứng L/R, Bề rộng phủ (m), Số lượng, Sơ đồ chuỗi (click icon để xoá lẻ 1 thiết bị), Góc Zoom hoặc Bố cục chữ U.', 'Clicking any item in the Stage Toolbox spawns a live 3D batch and opens the ADD / EDIT configurator in the Right Panel with Live Symmetry (L/R), Width to Cover (m), Count, interactive chain diagram (click an icon to remove 1 unit), Zoom, and U-Shape layout.')}</p>` +
+        `</div>` +
+        `</div>`;
+      if (typeof window.dialog === 'function') {
+        window.dialog(title, body, [{ label: tr18('Đã hiểu', 'Got it'), primary: true }]);
+      }
     }
 
     function renderLmpLiveShowDock18() {
@@ -7978,36 +8303,6 @@ void main(){
           return `<button type="button" class="lmp-dock-btn18 is-cue ${!ls.aiAuto && ls.activeShow === n ? 'active' : ''}" data-lmp-showmode="${n}" title="${esc18(tip)}">${esc18(cfg?.code || 'S' + n)}</button>`;
         })
         .join('');
-      const chaseOpts = [
-        ['auto', tr18('PAR: Tự động', 'PAR: Auto')],
-        ['carousel', 'Carousel'],
-        ['mirror_domino', 'Mirror Domino'],
-        ['dual_carousel', 'Dual Carousel'],
-        ['gala_sparkle', 'Gala Sparkle'],
-        ['static', 'Static']
-      ]
-        .map(([val, lbl]) => `<option value="${val}" ${ls.parChaseMode === val ? 'selected' : ''}>${esc18(lbl)}</option>`)
-        .join('');
-      const curFanLaw = (ls.fanLaw && ls.fanLaw !== 'auto') ? ls.fanLaw : (ls.beamFanLaw || 'auto');
-      const fanOpts = [
-        ['auto', tr18('Fan: Tự động', 'Fan: Auto')],
-        ['v_converge', 'V-Converge'],
-        ['v_diverge', 'V-Diverge'],
-        ['x_cross', 'X-Cross'],
-        ['parallel_wing', 'Parallel Wing'],
-        ['parallel_zero', 'Parallel Zero']
-      ]
-        .map(([val, lbl]) => `<option value="${val}" ${curFanLaw === val ? 'selected' : ''}>${esc18(lbl)}</option>`)
-        .join('');
-      const laserOpts = [
-        ['auto', tr18('Laser: Tự động', 'Laser: Auto')],
-        ['0', 'P0 · Liquid Sky'],
-        ['1', 'P1 · Cone Tunnel'],
-        ['2', 'P2 · X-Chopper'],
-        ['3', 'P3 · Starburst']
-      ]
-        .map(([val, lbl]) => `<option value="${val}" ${String(ls.laserPattern) === val ? 'selected' : ''}>${esc18(lbl)}</option>`)
-        .join('');
       dock.innerHTML =
         `<div class="lmp-dock-row18">` +
         `<button type="button" id="lmpDockStartShowBtn18" class="lmp-dock-btn18 is-start ${ls.running ? 'is-running' : ''}" data-lmp-start="1" title="${tr18('Chạy / Dừng Live Show (Phím P / Esc)', 'Start / Stop Live Show (Key P / Esc)')}">${ico18(ls.running ? 'square' : 'play')}<span>${ls.running ? tr18('DỪNG SHOW', 'STOP SHOW') : tr18('CHẠY SHOW', 'START SHOW')}</span><kbd class="lmp-dock-kbd18">P</kbd></button>` +
@@ -8020,12 +8315,13 @@ void main(){
         `<button type="button" class="lmp-dock-btn18 ${ls.lightsOn ? 'active' : ''}" data-lmp-showfx="lights" title="${tr18('Đèn Moving Head & PAR (Phím M)', 'Moving Heads & PARs (Key M)')}">${tr18('ĐÈN', 'LIGHTS')}</button>` +
         `<button type="button" class="lmp-dock-btn18 ${ls.blindersOn ? 'active' : ''}" data-lmp-showfx="blinders" title="${tr18('Đèn chớp Blinder khán giả (Phím F)', 'Audience Blinders (Key F)')}">${tr18('CHỚP KHÁN GIẢ', 'BLINDERS')}</button>` +
         `<button type="button" class="lmp-dock-btn18 ${ls.laserOn ? 'active' : ''}" data-lmp-showfx="laser" title="${tr18('Laser 16 tia ILDA & Liquid Sky (Phím L)', '16-Beam ILDA Laser & Liquid Sky (Key L)')}">LASER</button>` +
-        `<button type="button" class="lmp-dock-btn18 ${ls.sfxOn ? 'active' : ''}" data-lmp-showfx="sfx" title="${tr18('Pháo & SFX tự động 7 pha (Phím X)', '7-Phase Auto Pyro & SFX (Key X)')}">${tr18('PHÁO', 'PYRO')}</button>` +
-        `<button type="button" class="lmp-dock-btn18 ${ls.strobe ? 'active' : ''}" data-lmp-showfx="strobe" title="${tr18('Đèn chớp Strobe 14 Hz (Phím Z)', '14 Hz Strobe (Key Z)')}">${tr18('CHỚP 14HZ', 'STROBE')}</button>` +
+        `<button type="button" class="lmp-dock-btn18 ${ls.sfxOn ? 'active' : ''}" data-lmp-showfx="sfx" title="${tr18('Pháo & SFX tự động 7 pha (Phím X) · Tắt sẽ tự ẩn khay bắn pháo', '7-Phase Auto Pyro & SFX (Key X) · Turning off auto-collapses Pyro row')}">${tr18('PHÁO', 'PYRO')}</button>` +
+        `<button type="button" class="lmp-dock-btn18 ${ls.strobe ? 'active' : ''}" data-lmp-showfx="strobe" title="${tr18('Đèn chớp Strobe 14 Hz độc lập với ĐÈN (Phím Z)', 'Independent 14 Hz Strobe (Key Z)')}">${tr18('CHỚP 14HZ', 'STROBE')}</button>` +
         `<button type="button" class="lmp-dock-btn18 ${ls.autoCam ? 'active' : ''}" data-lmp-autocam="1" title="${tr18('Đạo diễn Camera tự động 5 góc quay (Tạm dừng 8s khi kéo chuột)', '5-Shot Auto Camera Director (8s pause on manual orbit)')}">${tr18('AUTO CAM', 'AUTO CAM')}</button>` +
         `<button type="button" class="lmp-dock-btn18 is-bo ${ls.blackout ? 'active' : ''}" data-lmp-showfx="bo" title="${tr18('Tắt toàn bộ đèn Blackout (Phím B)', 'Blackout (Key B)')}">${tr18('TẮT ĐÈN', 'B.O.')}</button>` +
         `</div>` +
-        `<button type="button" class="lmp-dock-btn18 is-fold ${!ls.dockCollapsed ? 'active' : ''}" data-lmp-dockfold="1" aria-expanded="${!ls.dockCollapsed}" title="${tr18('Thu gọn / Mở rộng bàn bắn Pyro', 'Collapse / Expand Pyro row')}">${ico18('chevron-down')}<span>SFX</span></button>` +
+        `<button type="button" class="lmp-dock-btn18 is-fold ${!ls.dockCollapsed ? 'active' : ''}" data-lmp-dockfold="1" aria-expanded="${!ls.dockCollapsed}" title="${tr18('Thu gọn / Mở rộng bàn bắn Pyro thủ công', 'Collapse / Expand manual Pyro trigger row')}">${ico18('chevron-down')}<span>${tr18('BẮN PHÁO', 'PYRO PAD')}</span></button>` +
+        `<button type="button" class="lmp-dock-btn18 is-help" data-lmp-help="1" title="${tr18('Hướng dẫn chức năng Kênh Show, Đèn & Pháo SFX (?)', 'Lighting, Pyro SFX & Live Show Guide (?)')}" aria-label="${tr18('Hướng dẫn chức năng', 'Help guide')}">?</button>` +
         `<button type="button" class="lmp-dock-btn18 is-hide" data-lmp-dockhide="1" title="${tr18('Ẩn bàn điều khiển Live Show', 'Hide Live Show Dock')}" aria-label="${tr18('Ẩn bàn điều khiển Live Show', 'Hide Live Show Dock')}">${ico18('x')}</button>` +
         `</div>` +
         `<div class="lmp-dock-row18 lmp-dock-extra18">` +
@@ -8036,11 +8332,7 @@ void main(){
         `<button type="button" class="lmp-dock-btn18 is-pyro" data-lmp-fire="confetti_cannon" title="${tr18('Pháo hoa tầm cao & Kim tuyến (Phím 0)', 'Aerial Pyro Fireworks (Key 0)')}">${ico18('sun')}<span>${tr18('PHÁO HOA [0]', 'AERIAL [0]')}</span></button>` +
         `<button type="button" class="lmp-dock-btn18 is-pyro is-finale" data-lmp-fire="all" title="${tr18('Kích hoạt toàn bộ hiệu ứng Grand Finale', 'Grand Finale Fire All')}">${ico18('sparkles')}<span>${tr18('BẮN TẤT CẢ', 'FIRE ALL')}</span></button>` +
         `</div>` +
-        `<div class="lmp-dock-group18 is-fx-selects" role="group" aria-label="${tr18('Chế độ Chase, Fan Law & Laser', 'Chase, Fan Law & Laser Selectors')}">` +
-        `<select class="lmp-dock-select18" data-lmp-parchase="1" aria-label="${tr18('Chế độ đuổi đèn PAR', 'PAR Chase Engine')}" title="${tr18('Chế độ đuổi đèn PAR', 'PAR Chase Engine')}">${chaseOpts}</select>` +
-        `<select class="lmp-dock-select18" data-lmp-fanlaw="1" aria-label="${tr18('Quy luật quạt chùm tia Beam', 'Beam Fan Law')}" title="${tr18('Quy luật quạt chùm tia Beam', 'Beam Fan Law')}">${fanOpts}</select>` +
-        `<select class="lmp-dock-select18" data-lmp-laserpat="1" aria-label="${tr18('Mẫu quét tia Laser ILDA', 'ILDA Laser Scan Pattern')}" title="${tr18('Mẫu quét tia Laser ILDA', 'ILDA Laser Scan Pattern')}">${laserOpts}</select>` +
-        `</div>` +
+        `<button type="button" class="lmp-dock-btn18" data-lmp-openfxpanel="1" title="${tr18('Mở bảng Động cơ Hiệu ứng PAR Chase, Beam Fan & Laser ở Cột Phải (Right Panel)', 'Open PAR Chase, Beam Fan & Laser FX Engine in Right Panel')}">${ico18('sliders-horizontal')}<span>${tr18('ĐỘNG CƠ FX (CỘT PHẢI)', 'FX ENGINE (RIGHT PANEL)')}</span></button>` +
         `<label class="lmp-tb-speedrow18" title="${tr18('Tốc độ chạy Show (0.2x - 5.0x)', 'Show Speed (0.2x - 5.0x)')}"><span>${tr18('TỐC ĐỘ', 'SPD')}</span><input type="range" min="0.2" max="5.0" step="0.1" value="${ls.speed.toFixed(1)}" data-lmp-speed="1"><b>${ls.speed.toFixed(1)}x</b></label>` +
         `</div>`;
     }
@@ -8095,8 +8387,16 @@ void main(){
               const globalTest = this.globalTest;
               this.media.set(cap, { element: video, width: video.videoWidth, height: video.videoHeight });
               this.globalTest = false;
+              const fitMode = cap.fitMode === 'contain' ? 'contain' : 'cover';
+              const fitRect = computeLiveCaptureFitRect18(video.videoWidth, video.videoHeight, surface.w || 1920, surface.h || 1080, fitMode);
               try {
-                return baseDraw18(mesh, mode, { ...surface, source: cap, crop: [0, 0, video.videoWidth, video.videoHeight], mappingSpace: 'uv' }, opacity);
+                return baseDraw18(mesh, mode, {
+                  ...surface,
+                  source: cap,
+                  crop: [fitRect.cropX, fitRect.cropY, fitRect.cropW, fitRect.cropH],
+                  fit: fitMode === 'contain' ? 1 : 2,
+                  mappingSpace: 'uv'
+                }, opacity);
               } finally {
                 this.globalTest = globalTest;
                 this.media.delete(cap);
@@ -8127,7 +8427,9 @@ void main(){
           const now = nowMs18();
           tickLiveShow18(now);
           const out = baseRender18(time, options);
-          drawWebglVolumetricExtras18(this, now);
+          if (!Number.isFinite(this.frame) || this._lmpVolumetricFrame18 !== this.frame) {
+            drawWebglVolumetricExtras18(this, now);
+          }
           renderLiveShowOverlay18(now);
           return out;
         };
@@ -8191,6 +8493,18 @@ void main(){
           if (foldBtn) {
             liveShow18.dockCollapsed = !liveShow18.dockCollapsed;
             renderLmpLiveShowDock18();
+            return;
+          }
+          const helpBtn = e.target.closest?.('[data-lmp-help]');
+          if (helpBtn) {
+            openLmpHelpModal18();
+            return;
+          }
+          const openFxBtn = e.target.closest?.('[data-lmp-openfxpanel]');
+          if (openFxBtn) {
+            if (window.state) window.state.step = 'lighting';
+            document.body?.classList?.remove?.('right-panel-collapsed');
+            window.renderUI?.();
             return;
           }
           const hideBtn = e.target.closest?.('[data-lmp-dockhide]');
@@ -8287,7 +8601,7 @@ void main(){
           } else if (k === 'z' && liveShow18.running) {
             e.preventDefault?.();
             toggleLiveShowFx18('strobe');
-          } else if (k === 'b') {
+          } else if (k === 'b' && (liveShow18.running || !window.state?.step || window.state.step === 'mapping' || $('surfPaintVoidsBtn'))) {
             e.preventDefault?.();
             if (liveShow18.running) {
               toggleLiveShowFx18('bo');
@@ -8924,19 +9238,166 @@ void main(){
       return { mirroredFixtures, mirroredAssets };
     }
 
-    function applyStructureConfig18(partialCfg = {}) {
-      const cfg = lumiState.structureConfig18;
-      Object.assign(cfg, partialCfg);
+    function sanitizeStructureConfig18(rawCfg = {}) {
+      const base = lumiState.structureConfig18 || {};
+      const src = rawCfg && typeof rawCfg === 'object' ? rawCfg : {};
+      const pick = (k, def) => (src[k] !== undefined ? src[k] : base[k] !== undefined ? base[k] : def);
+      const venueTypes = ['indoor_hall', 'outdoor_roof', 'coliseum_arena'];
+      const wallFinishes = ['drape_black', 'concrete', 'brick_acoustic'];
+      const deckMats = ['mirror', 'black_wood'];
+      const stairLayouts = Object.keys(EN13814_STAIR_LAYOUTS18);
+      const catwalkTypes = ['none', 'straight', 'circular_cnc', 'octagonal_45'];
+      const bayStds = ['2.07m', '2.57m', '2.00m'];
+      const seatingLayouts = ['none', 'gala_banquet', 'corporate_chairs'];
+      const corridorTypes = ['central', 'side', 'central_side'];
+      const vType = venueTypes.includes(pick('venueType', 'indoor_hall')) ? pick('venueType', 'indoor_hall') : 'indoor_hall';
+      const wFin = wallFinishes.includes(pick('wallFinish', 'drape_black')) ? pick('wallFinish', 'drape_black') : 'drape_black';
+      const dMat = deckMats.includes(pick('deckMaterial', 'mirror')) ? pick('deckMaterial', 'mirror') : 'mirror';
+      const sLay = stairLayouts.includes(pick('stairLayout', 'front_dual')) ? pick('stairLayout', 'front_dual') : 'front_dual';
+      const cTyp = catwalkTypes.includes(pick('catwalkType', 'none')) ? pick('catwalkType', 'none') : 'none';
+      const bStd = bayStds.includes(pick('layherBayStandard', '2.07m')) ? pick('layherBayStandard', '2.07m') : '2.07m';
+      const seatLay = seatingLayouts.includes(pick('seatingLayout', 'none')) ? pick('seatingLayout', 'none') : 'none';
+      const corrTyp = corridorTypes.includes(pick('corridorType', 'central_side')) ? pick('corridorType', 'central_side') : 'central_side';
+      return {
+        venueEnabled: !!pick('venueEnabled', false),
+        venueType: vType,
+        venueXRay: !!pick('venueXRay', false),
+        wallFinish: wFin,
+        hideIndoorWalls: !!pick('hideIndoorWalls', false),
+        hideFabrics: !!pick('hideFabrics', false),
+        daylightMode: pick('daylightMode', 'night') === 'day' ? 'day' : 'night',
+        paWingWidthM: clamp18(Number(pick('paWingWidthM', 2.5)) || 2.5, 1.0, 8.0),
+        paWingHeightM: clamp18(Number(pick('paWingHeightM', 6.0)) || 6.0, 2.0, 14.0),
+        seatingLayout: seatLay,
+        corridorType: corrTyp,
+        deckWidthM: clamp18(Number(pick('deckWidthM', 14)) || 14, 4, 48),
+        deckDepthM: clamp18(Number(pick('deckDepthM', 8)) || 8, 2, 32),
+        deckHeightM: clamp18(Number(pick('deckHeightM', 1.2)) || 1.2, 0.2, 4.0),
+        deckMaterial: dMat,
+        moduleSize: '2x1m',
+        stairLayout: sLay,
+        catwalkType: cTyp,
+        catwalkLengthM: clamp18(Number(pick('catwalkLengthM', 6.0)) || 6.0, 0, 20),
+        bStageWidthM: clamp18(Number(pick('bStageWidthM', 4.0)) || 4.0, 2, 10),
+        layherBayStandard: bStd,
+        liveSymmetry3D: !!pick('liveSymmetry3D', false),
+        crowdBounce: pick('crowdBounce', true) !== false,
+        crowdCount: clamp18(Math.round(Number(pick('crowdCount', 36)) || 36), 6, 72),
+        _crowdInertiaEnergy18: clamp18(Number(pick('_crowdInertiaEnergy18', 0)) || 0, 0, 1)
+      };
+    }
+
+    function buildVenueArchitectureMeshes18(cfg) {
+      const meshes = [];
+      const boxFn = typeof window.boxMesh === 'function'
+        ? window.boxMesh
+        : (name, center, size, color) => ({ id: name, name, p: new Float32Array(36 * 3), uv: new Float32Array(36 * 2), n: new Float32Array(36 * 3), bounds: { min: center, max: center, center }, color });
+      const deckW = Number(cfg.deckWidthM) || 14;
+      const deckD = Number(cfg.deckDepthM) || 8;
+      const pushArch = (m, isWall = false) => {
+        if (!m) return;
+        m._venueArch18 = true;
+        m._isVenueWall18 = isWall;
+        m.wireframe18 = !!cfg.venueXRay;
+        if (isWall && cfg.hideIndoorWalls) m.hidden = true;
+        meshes.push(m);
+      };
+
+      if (cfg.venueType === 'indoor_hall') {
+        if (cfg.seatingLayout === 'gala_banquet') {
+          for (let r = 0; r < 3; r++) {
+            for (let c = -2; c <= 2; c++) {
+              if (cfg.corridorType !== 'side' && c === 0) continue;
+              const tx = c * 3.6;
+              const tz = 4.5 + r * 3.8;
+              pushArch(boxFn(`Venue_Gala_Table_${r + 1}_${c + 3}`, [tx, 0.42, tz], [1.8, 0.78, 1.8], [0.85, 0.78, 0.62, 1]), false);
+            }
+          }
+        } else if (cfg.seatingLayout === 'corporate_chairs') {
+          for (let r = 0; r < 4; r++) {
+            for (const side of [-1, 1]) {
+              const rx = side * 4.2;
+              const rz = 4.0 + r * 2.2;
+              pushArch(boxFn(`Venue_Seminar_Row_${r + 1}_${side < 0 ? 'L' : 'R'}`, [rx, 0.45, rz], [5.4, 0.85, 0.65], [0.16, 0.28, 0.46, 1]), false);
+            }
+          }
+        }
+      } else if (cfg.venueType === 'outdoor_roof') {
+        const roofW = deckW + 3.0;
+        const roofD = deckD + 2.0;
+        const roofH = 9.2;
+        pushArch(boxFn('Venue_Outdoor_RoofCanopy', [0, roofH, -0.5], [roofW, 0.85, roofD], [0.14, 0.17, 0.22, 1]), false);
+        const corners = [
+          [-roofW * 0.48, roofH * 0.5, -roofD * 0.46],
+          [roofW * 0.48, roofH * 0.5, -roofD * 0.46],
+          [-roofW * 0.48, roofH * 0.5, roofD * 0.38],
+          [roofW * 0.48, roofH * 0.5, roofD * 0.38]
+        ];
+        corners.forEach((pt, idx) => {
+          pushArch(boxFn(`Venue_Outdoor_Tower_${idx + 1}`, pt, [0.45, roofH, 0.45], [0.55, 0.60, 0.68, 1]), false);
+        });
+        const paW = clamp18(Number(cfg.paWingWidthM) || 2.5, 1.0, 8.0);
+        const paH = clamp18(Number(cfg.paWingHeightM) || 6.0, 2.0, 14.0);
+        pushArch(boxFn('Venue_Outdoor_PAWing_L', [-roofW * 0.5 - paW * 0.6, paH * 0.5, 0.2], [paW, paH, 1.2], [0.10, 0.13, 0.18, 1]), false);
+        pushArch(boxFn('Venue_Outdoor_PAWing_R', [roofW * 0.5 + paW * 0.6, paH * 0.5, 0.2], [paW, paH, 1.2], [0.10, 0.13, 0.18, 1]), false);
+        if (!cfg.hideFabrics) {
+          pushArch(boxFn('Venue_Outdoor_Fabric_L', [-roofW * 0.49, roofH * 0.5, -0.4], [0.08, roofH * 0.88, roofD * 0.82], [0.05, 0.06, 0.08, 1]), false);
+          pushArch(boxFn('Venue_Outdoor_Fabric_R', [roofW * 0.49, roofH * 0.5, -0.4], [0.08, roofH * 0.88, roofD * 0.82], [0.05, 0.06, 0.08, 1]), false);
+        }
+      } else if (cfg.venueType === 'coliseum_arena') {
+        const tiers = [
+          { name: 'LowerBowl', radius: Math.max(14, deckW * 0.95), y: 1.8, h: 2.4, col: [0.15, 0.19, 0.26, 1] },
+          { name: 'VIPRing', radius: Math.max(18, deckW * 1.22), y: 4.4, h: 1.6, col: [0.24, 0.20, 0.14, 1] },
+          { name: 'UpperBowl', radius: Math.max(22, deckW * 1.48), y: 6.8, h: 3.0, col: [0.12, 0.15, 0.22, 1] }
+        ];
+        const segs = 7;
+        for (const tier of tiers) {
+          for (let s = 0; s < segs; s++) {
+            const ang = -Math.PI * 0.15 + (s / (segs - 1)) * (Math.PI * 1.3);
+            const sx = +(Math.cos(ang) * tier.radius).toFixed(2);
+            const sz = +(Math.sin(ang) * tier.radius + 4.0).toFixed(2);
+            pushArch(boxFn(`Venue_Coliseum_${tier.name}_${s + 1}`, [sx, tier.y, sz], [5.2, tier.h, 2.6], tier.col), false);
+          }
+        }
+      }
+      return meshes;
+    }
+
+    function applyStructureConfig18(partialCfg = {}, opts = {}) {
+      const clean = sanitizeStructureConfig18(partialCfg);
+      const enableVenue = partialCfg.venueEnabled !== undefined
+        ? !!partialCfg.venueEnabled
+        : (opts.fromRestore ? !!lumiState.structureConfig18.venueEnabled : true);
+      const cfg = Object.assign(lumiState.structureConfig18, clean, { venueEnabled: enableVenue });
       const calc = computeModularDeckAndLayher18(cfg);
       const eng = S.engine;
+      let venueMeshesAdded = 0;
       if (eng) {
         if (eng.settings) {
           eng.settings.floorReflect = calc.reflectivity;
           eng.settings.venueXRay = calc.venueXRay;
+          if (!opts.fromRestore || cfg.venueEnabled) {
+            if (cfg.daylightMode === 'day') {
+              eng.settings.ambient = 1.15;
+              eng.settings.exposure = 1.35;
+            } else if (!opts.fromRestore) {
+              eng.settings.ambient = 0.48;
+              eng.settings.exposure = 1.0;
+            }
+          }
         }
         if (Array.isArray(eng.stage)) {
+          for (const m of eng.stage) {
+            if (m && (m._venueArch18 || /^Venue_Indoor_/i.test(m.name || ''))) eng.releaseMesh?.(m);
+          }
+          eng.stage = eng.stage.filter((m) => !m || (!m._venueArch18 && !/^Venue_Indoor_/i.test(m.name || '')));
+          if (cfg.venueEnabled) {
+            const venueMeshes = buildVenueArchitectureMeshes18(cfg);
+            eng.stage.push(...venueMeshes);
+            venueMeshesAdded = venueMeshes.length;
+          }
           eng.stage.forEach((m) => {
-            if (!m) return;
+            if (!m || m._venueArch18) return;
             const nm = String(m.name || '').toLowerCase();
             if (nm.includes('deck') || nm.includes('floor') || nm.includes('stage')) {
               m.color = calc.deckMaterial === 'mirror' ? [0.06, 0.09, 0.14] : [0.08, 0.07, 0.06];
@@ -8952,7 +9413,14 @@ void main(){
         }
         eng._stageBatchDirty = true;
       }
-      return calc;
+      return {
+        ...calc,
+        venueEnabled: !!cfg.venueEnabled,
+        venueMeshesAdded,
+        daylightMode: cfg.daylightMode,
+        hideIndoorWalls: !!cfg.hideIndoorWalls,
+        seatingLayout: cfg.seatingLayout
+      };
     }
 
     function drawMirrorDeckReflections18(ctx, proj, eng, tSec, spd) {
@@ -8980,14 +9448,24 @@ void main(){
 
     function drawOrganicCrowdBounce18(ctx, proj, eng, tSec = 0, spd = 2.0, running = true) {
       if (!ctx || typeof proj !== 'function') return 0;
-      const count = clamp18(Number(lumiState.structureConfig18?.crowdCount) || 24, 6, 72);
+      const cfg = lumiState.structureConfig18;
+      if (cfg) {
+        if (running) {
+          cfg._crowdInertiaEnergy18 = 1.0;
+        } else {
+          const nextE = (Number(cfg._crowdInertiaEnergy18) || 0) * 0.82;
+          cfg._crowdInertiaEnergy18 = nextE < 0.005 ? 0 : +nextE.toFixed(4);
+        }
+      }
+      const energy = cfg ? Number(cfg._crowdInertiaEnergy18) || 0 : (running ? 1 : 0);
+      const count = clamp18(Number(cfg?.crowdCount) || 24, 6, 72);
       let drawn = 0;
       for (let i = 0; i < count; i++) {
         const row = Math.floor(i / 12);
         const col = i % 12;
         const x = (col - 5.5) * 1.15 + (row % 2) * 0.45;
         const z = 4.2 + row * 1.25;
-        const bounce = running ? Math.abs(Math.sin(tSec * spd * 4.2 + i * 0.65)) * 0.24 : 0;
+        const bounce = energy > 0 ? Math.abs(Math.sin(tSec * spd * 4.2 + i * 0.65)) * 0.24 * energy : 0;
         const headY = 1.68 + bounce;
         const pHead = proj([x, headY, z]);
         const pShoulders = proj([x, headY - 0.35, z]);
@@ -9024,8 +9502,8 @@ void main(){
         `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px">` +
         `<label><span>Venue Type</span><select id="structVenueType18">` +
         `<option value="indoor_hall" ${cfg.venueType === 'indoor_hall' ? 'selected' : ''}>Indoor Hall</option>` +
-        `<option value="outdoor_roof" ${cfg.venueType === 'outdoor_roof' ? 'selected' : ''}>Outdoor Roof</option>` +
-        `<option value="coliseum_arena" ${cfg.venueType === 'coliseum_arena' ? 'selected' : ''}>Coliseum Arena</option>` +
+        `<option value="outdoor_roof" ${cfg.venueType === 'outdoor_roof' ? 'selected' : ''}>Outdoor Roof + PA Wings</option>` +
+        `<option value="coliseum_arena" ${cfg.venueType === 'coliseum_arena' ? 'selected' : ''}>Coliseum Arena (3-Tier)</option>` +
         `</select></label>` +
         `<label><span>Deck Surface</span><select id="structDeckMat18">` +
         `<option value="mirror" ${cfg.deckMaterial === 'mirror' ? 'selected' : ''}>Mirror Reflective Deck</option>` +
@@ -9043,8 +9521,18 @@ void main(){
         `<option value="circular_cnc" ${cfg.catwalkType === 'circular_cnc' ? 'selected' : ''}>Circular CNC</option>` +
         `<option value="octagonal_45" ${cfg.catwalkType === 'octagonal_45' ? 'selected' : ''}>Octagonal 45°</option>` +
         `</select></label>` +
+        `<label><span>Seating Layout</span><select id="structSeatingLayout18">` +
+        `<option value="none" ${cfg.seatingLayout === 'none' ? 'selected' : ''}>Standing / Crowd</option>` +
+        `<option value="gala_banquet" ${cfg.seatingLayout === 'gala_banquet' ? 'selected' : ''}>Gala Banquet Tables</option>` +
+        `<option value="corporate_chairs" ${cfg.seatingLayout === 'corporate_chairs' ? 'selected' : ''}>Corporate Seminar Rows</option>` +
+        `</select></label>` +
+        `<label><span>Daylight vs Show Night</span><select id="structDaylightMode18">` +
+        `<option value="night" ${cfg.daylightMode === 'night' ? 'selected' : ''}>Night Show Mode</option>` +
+        `<option value="day" ${cfg.daylightMode === 'day' ? 'selected' : ''}>Daylight Rigging Check</option>` +
+        `</select></label>` +
         `<div style="display:flex;flex-direction:column;gap:4px;justify-content:center">` +
         `<label style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="structVenueXRay18" ${cfg.venueXRay ? 'checked' : ''}><span>Venue X-Ray</span></label>` +
+        `<label style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="structHideWalls18" ${cfg.hideIndoorWalls ? 'checked' : ''}><span>Hide Indoor Walls (Camera Free)</span></label>` +
         `<label style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="structLiveSym18" ${cfg.liveSymmetry3D ? 'checked' : ''}><span>Live Symmetry 3D (X=0)</span></label>` +
         `<label style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="structCrowdBounce18" ${cfg.crowdBounce ? 'checked' : ''}><span>Organic Crowd Bounce</span></label>` +
         `</div></div></div>` +
@@ -9059,13 +9547,18 @@ void main(){
       ]);
 
       const syncStruct = () => {
+        window.checkpoint?.();
         const res = applyStructureConfig18({
+          venueEnabled: true,
           venueType: $('structVenueType18')?.value || cfg.venueType,
           deckMaterial: $('structDeckMat18')?.value || cfg.deckMaterial,
           layherBayStandard: $('structLayherBay18')?.value || cfg.layherBayStandard,
           stairLayout: $('structStairLayout18')?.value || cfg.stairLayout,
           catwalkType: $('structCatwalkType18')?.value || cfg.catwalkType,
+          seatingLayout: $('structSeatingLayout18')?.value || cfg.seatingLayout,
+          daylightMode: $('structDaylightMode18')?.value || cfg.daylightMode,
           venueXRay: !!$('structVenueXRay18')?.checked,
+          hideIndoorWalls: !!$('structHideWalls18')?.checked,
           liveSymmetry3D: !!$('structLiveSym18')?.checked,
           crowdBounce: !!$('structCrowdBounce18')?.checked
         });
@@ -9544,6 +10037,14 @@ void main(){
       const html =
         `<div class="lmp-modal-grid18">` +
         `<div class="info-box">` +
+        `<strong>${tr18('Xuất File Kỹ Thuật Miễn Phí (PNG Trong Suốt, Bản Vẽ CAD 2D & Resolume 6/7 XML)', 'Free Technical Exports (Transparent PNG, 2D CAD Frame & Resolume 6/7 XML)')}</strong>` +
+        `<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">` +
+        `<button type="button" class="btn small primary" id="ppExportTransPng18">PNG Transparent (Alpha=0)</button>` +
+        `<button type="button" class="btn small" id="ppExportCad2dPng18">2D CAD Map (A–H / 1–12 + Cajetin)</button>` +
+        `<button type="button" class="btn small" id="ppExportRes6Xml18">Resolume Arena 6 XML</button>` +
+        `<button type="button" class="btn small" id="ppExportRes7Xml18">Resolume Arena 7 XML</button>` +
+        `</div></div>` +
+        `<div class="info-box">` +
         `<strong>${tr18('Đối Chiếu Tải Điện Sân Khấu Với Ổ Cắm Hội Trường (Venue Outlets)', 'Stage Power vs Real Venue Outlets Comparator')}</strong>` +
         `<div style="display:flex;gap:8px;align-items:center;margin:8px 0;flex-wrap:wrap">` +
         `<label><span>Venue Outlet:</span><select id="venueOutletSelect18">` +
@@ -9561,6 +10062,30 @@ void main(){
       $('venueOutletSelect18')?.addEventListener('change', (e) => {
         compareVenueOutlets18({ selectedOutlet: e.target.value });
         openPixelPowerWorkstationModal18();
+      });
+      $('ppExportTransPng18')?.addEventListener('click', () => {
+        if (surf && typeof window.exportSurfaceCalibrationPng === 'function') {
+          window.exportSurfaceCalibrationPng(surf, { transparent: true });
+        }
+      });
+      $('ppExportCad2dPng18')?.addEventListener('click', () => {
+        if (surf && typeof window.exportSurfaceCalibrationPng === 'function') {
+          window.exportSurfaceCalibrationPng(surf, {
+            cadFrame: true,
+            cajetinMeta: {
+              project: window.state?.projectName || 'ALPHA LED STAGE',
+              client: lumiState.quoteConfig?.clientName || 'STAGE PRODUCTION',
+              technician: lumiState.brandIdentity?.brandName || 'LED ENGINEER',
+              version: 'V1.0'
+            }
+          });
+        }
+      });
+      $('ppExportRes6Xml18')?.addEventListener('click', () => {
+        window.downloadResolumeXml?.(window.live?.atlasPlan, { version: 6, includePolygons: true });
+      });
+      $('ppExportRes7Xml18')?.addEventListener('click', () => {
+        window.downloadResolumeXml?.(window.live?.atlasPlan, { version: 7, includePolygons: true });
       });
       return outletReport;
     }
@@ -10017,21 +10542,95 @@ void main(){
       return res;
     }
 
-    // Live Screen / Window Capture (getDisplayMedia) onto 3D LED Screens
+    function computeLiveCaptureFitRect18(videoW, videoH, targetW, targetH, fitMode = 'cover') {
+      const vw = Math.max(1, Number(videoW) || 1920);
+      const vh = Math.max(1, Number(videoH) || 1080);
+      const tw = Math.max(1, Number(targetW) || 1920);
+      const th = Math.max(1, Number(targetH) || 1080);
+      const mode = fitMode === 'contain' ? 'contain' : 'cover';
+      const srcAspect = vw / vh;
+      const dstAspect = tw / th;
+      if (mode === 'contain') {
+        let drawW = tw;
+        let drawH = th;
+        if (srcAspect > dstAspect) {
+          drawH = Math.max(1, Math.round(tw / srcAspect));
+        } else {
+          drawW = Math.max(1, Math.round(th * srcAspect));
+        }
+        const padX = Math.max(0, Math.round((tw - drawW) * 0.5));
+        const padY = Math.max(0, Math.round((th - drawH) * 0.5));
+        return {
+          mode: 'contain',
+          cropX: 0,
+          cropY: 0,
+          cropW: vw,
+          cropH: vh,
+          drawX: padX,
+          drawY: padY,
+          drawW,
+          drawH,
+          padX,
+          padY
+        };
+      }
+      let cropW = vw;
+      let cropH = vh;
+      if (srcAspect > dstAspect) {
+        cropW = Math.max(1, Math.round(vh * dstAspect));
+      } else {
+        cropH = Math.max(1, Math.round(vw / dstAspect));
+      }
+      const cropX = Math.max(0, Math.round((vw - cropW) * 0.5));
+      const cropY = Math.max(0, Math.round((vh - cropH) * 0.5));
+      return {
+        mode: 'cover',
+        cropX,
+        cropY,
+        cropW,
+        cropH,
+        drawX: 0,
+        drawY: 0,
+        drawW: tw,
+        drawH: th,
+        padX: 0,
+        padY: 0
+      };
+    }
+
+    // Live Screen / Window / Webcam / USB Capture Card onto 3D LED Screens
     async function startLiveScreenCapture18(opts = {}) {
       const cap = lumiState.screenCapture18;
+      const sourceType = opts.sourceType === 'webcam' ? 'webcam' : 'screen';
+      const fitMode = opts.fitMode === 'contain' ? 'contain' : 'cover';
       let stream = opts.mockStream || null;
       if (!stream) {
         const md = typeof navigator !== 'undefined' ? navigator.mediaDevices : null;
-        if (!md || typeof md.getDisplayMedia !== 'function') {
-          window.toast?.(tr18('Trình duyệt hiện tại không hỗ trợ getDisplayMedia.', 'Browser does not support getDisplayMedia.'), 3500, 'warn');
-          return { active: false, reason: 'unsupported' };
-        }
-        try {
-          stream = await md.getDisplayMedia({ video: { frameRate: { ideal: 30, max: 60 } }, audio: false });
-        } catch (err) {
-          window.toast?.(tr18('Không thể bắt màn hình: ', 'Screen capture unavailable: ') + err.message, 3500, 'warn');
-          return { active: cap.active, reason: err.name || 'capture-failed' };
+        if (sourceType === 'webcam') {
+          if (!md || typeof md.getUserMedia !== 'function') {
+            window.toast?.(tr18('Trình duyệt không hỗ trợ getUserMedia (Webcam/Capture Card).', 'Browser does not support getUserMedia.'), 3500, 'warn');
+            return { active: false, sourceType, fitMode, reason: 'unsupported' };
+          }
+          try {
+            const videoConstraint = opts.deviceId
+              ? { deviceId: { exact: String(opts.deviceId) }, width: { ideal: 1920 }, height: { ideal: 1080 } }
+              : { width: { ideal: 1920 }, height: { ideal: 1080 } };
+            stream = await md.getUserMedia({ video: videoConstraint, audio: false });
+          } catch (err) {
+            window.toast?.(tr18('Không thể mở Webcam / Capture Card: ', 'Webcam capture unavailable: ') + err.message, 3500, 'warn');
+            return { active: cap.active, sourceType, fitMode, reason: err.name || 'webcam-failed' };
+          }
+        } else {
+          if (!md || typeof md.getDisplayMedia !== 'function') {
+            window.toast?.(tr18('Trình duyệt hiện tại không hỗ trợ getDisplayMedia.', 'Browser does not support getDisplayMedia.'), 3500, 'warn');
+            return { active: false, sourceType, fitMode, reason: 'unsupported' };
+          }
+          try {
+            stream = await md.getDisplayMedia({ video: { frameRate: { ideal: 30, max: 60 } }, audio: false });
+          } catch (err) {
+            window.toast?.(tr18('Không thể bắt màn hình: ', 'Screen capture unavailable: ') + err.message, 3500, 'warn');
+            return { active: cap.active, sourceType, fitMode, reason: err.name || 'capture-failed' };
+          }
         }
       }
 
@@ -10047,6 +10646,9 @@ void main(){
       } catch { /* ignore autoplay in headless */ }
 
       cap.active = true;
+      cap.sourceType = sourceType;
+      cap.fitMode = fitMode;
+      cap.deviceId = String(opts.deviceId || '');
       cap.stream = stream;
       cap.videoEl = videoEl;
       cap.startedAtMs = nowMs18();
@@ -10060,8 +10662,184 @@ void main(){
       }
       renderLmpToolbox18();
       ensureLiveShowLoop18();
-      window.toast?.(tr18('Đang truyền trực tiếp màn hình lên tường LED 3D.', 'Streaming live screen capture onto 3D LED walls.'));
-      return { active: true, stream, videoEl };
+      window.toast?.(tr18('Đang truyền trực tiếp tín hiệu hình ảnh lên tường LED 3D.', 'Streaming live video capture onto 3D LED walls.'));
+      return { active: true, sourceType, fitMode, stream, videoEl };
+    }
+
+    const PAR_ATMOSPHERE_PRESETS18 = {
+      wedding_gold: { id: 'wedding_gold', labelVi: 'Tiệc Cưới Vàng Ấm & Trắng Ngọc', labelEn: 'Wedding Warm Gold & Pearl', colors: ['#ffd166', '#fff3b0', '#f4a261'] },
+      gala_pink_cyan: { id: 'gala_pink_cyan', labelVi: 'Gala Hồng Magenta & Xanh Cyan', labelEn: 'Gala Magenta & Cyan', colors: ['#ff007f', '#00f0ff', '#c084fc'] },
+      corporate_blue: { id: 'corporate_blue', labelVi: 'Hội Nghị Xanh Royal & Trắng Lạnh', labelEn: 'Corporate Royal Blue & Ice', colors: ['#0077ff', '#38bdf8', '#e0f2fe'] },
+      emerald_gold: { id: 'emerald_gold', labelVi: 'Ngọc Lục Bảo & Vàng Hoàng Gia', labelEn: 'Emerald & Imperial Gold', colors: ['#01ffa0', '#10b981', '#fbbf24'] },
+      sunset_lounge: { id: 'sunset_lounge', labelVi: 'Hoàng Hôn Cam Đỏ & Tím Trầm', labelEn: 'Sunset Amber & Deep Violet', colors: ['#ff5500', '#fb923c', '#8b5cf6'] }
+    };
+
+    function deployParWallContour18({ layout = 'u_contour_3wall', presetId = 'wedding_gold', countPerWall = 6, autoSnapWalls = true, recordUndo = true } = {}) {
+      if (recordUndo !== false) window.checkpoint?.();
+      const eng = S.engine;
+      const preset = PAR_ATMOSPHERE_PRESETS18[presetId] || PAR_ATMOSPHERE_PRESETS18.wedding_gold;
+      const perWall = clamp18(Math.round(Number(countPerWall) || 6), 2, 16);
+      const cfg = lumiState.structureConfig18 || {};
+      const deckW = Number(cfg.deckWidthM) || 14;
+      const deckD = Number(cfg.deckDepthM) || 8;
+      const hallW = autoSnapWalls ? Math.max(24, deckW + 12) : deckW + 4;
+      const backZ = autoSnapWalls ? -deckD * 0.5 - 2.2 : -deckD * 0.5;
+      const frontZ = autoSnapWalls ? deckD * 0.5 + 8.0 : deckD * 0.5 + 2.0;
+      const halfW = hallW * 0.5 - 0.35;
+
+      if (Array.isArray(eng?.lights)) {
+        eng.lights = eng.lights.filter((l) => !l || !l._parContour18);
+      }
+
+      const fixtures = [];
+      const pushPar = (wallTag, idxOnWall, pos, target, globalIdx) => {
+        if (Array.isArray(eng?.lights) && eng.lights.length >= 128) return;
+        const color = preset.colors[globalIdx % preset.colors.length];
+        const fx = {
+          id: `par_u_${wallTag}_${idxOnWall + 1}`,
+          name: `PAR U-${wallTag.toUpperCase()}-${idxOnWall + 1}`,
+          type: 'par',
+          dmxGroup18: 'G4',
+          wall: wallTag,
+          pos: pos.map((v) => +Number(v).toFixed(2)),
+          target: target.map((v) => +Number(v).toFixed(2)),
+          color,
+          power: 4.2,
+          angle: 16,
+          enabled: true,
+          sweep: false,
+          fx: 'steady',
+          origin: 'placed',
+          fixtureSize: [0.26, 0.28, 0.26],
+          aperture: 0.03,
+          _parContour18: true,
+          _parPresetId18: preset.id
+        };
+        fixtures.push(fx);
+        if (Array.isArray(eng?.lights)) {
+          eng.lights.push(fx);
+        }
+      };
+
+      let gIdx = 0;
+      for (let i = 0; i < perWall; i++) {
+        const t = perWall === 1 ? 0.5 : i / (perWall - 1);
+        const z = backZ + 1.0 + t * (frontZ - backZ - 2.0);
+        pushPar('left', i, [-halfW, 0.25, z], [-halfW + 0.15, 6.5, z], gIdx++);
+      }
+      for (let i = 0; i < perWall; i++) {
+        const t = perWall === 1 ? 0.5 : i / (perWall - 1);
+        const x = -halfW + 1.2 + t * (hallW - 2.4);
+        pushPar('back', i, [x, 0.25, backZ], [x, 6.5, backZ + 0.15], gIdx++);
+      }
+      if (layout === 'u_contour_3wall') {
+        for (let i = 0; i < perWall; i++) {
+          const t = perWall === 1 ? 0.5 : i / (perWall - 1);
+          const z = backZ + 1.0 + t * (frontZ - backZ - 2.0);
+          pushPar('right', i, [halfW, 0.25, z], [halfW - 0.15, 6.5, z], gIdx++);
+        }
+      }
+
+      eng?.rebuildFixtures?.();
+      if (eng) eng._stageBatchDirty = true;
+      Object.assign(fixtures, {
+        layout,
+        presetId: preset.id,
+        countPerWall: perWall,
+        totalAdded: fixtures.length,
+        fixtures
+      });
+      return fixtures;
+    }
+
+    function attachFixturesToTruss18({ trussId, fixtureKind = 'beam', count = 6, zoomDeg = 25, panDeg = 0, tiltDeg = -15, recordUndo = true } = {}) {
+      if (recordUndo !== false) window.checkpoint?.();
+      const sa = S.stageAssets16;
+      const eng = S.engine;
+      const items = Array.isArray(sa?.items) ? sa.items : [];
+      const truss = items.find((it) => it && it.id === trussId) || items[0] || { id: trussId || 'truss_default', kind: 'truss_straight_6m', pos: [0, 6.8, -1.5], rot: [0, 0, 0], scale: 1 };
+      const resolvedTrussId = trussId || truss.id;
+      const normKind = fixtureKind === 'beams' ? 'beam' : (fixtureKind || 'beam');
+      const n = clamp18(Math.round(Number(count) || 6), 1, 24);
+      const zDeg = clamp18(Number(zoomDeg) || 25, 2, 60);
+      const pRad = ((Number(panDeg) || 0) * Math.PI) / 180;
+      const tRad = ((Number(tiltDeg) || -15) * Math.PI) / 180;
+      const tPos = Array.isArray(truss.pos) ? truss.pos : [0, 6.8, -1.5];
+      const scale = Math.max(0.2, Number(truss.scale) || 1);
+      const kindStr = String(truss.kind || truss.type || resolvedTrussId || '').toLowerCase();
+      const isCircle = kindStr.includes('ring') || kindStr.includes('circle') || kindStr.includes('circular');
+
+      if (Array.isArray(eng?.lights)) {
+        eng.lights = eng.lights.filter((l) => !l || l.parentTrussId !== resolvedTrussId);
+      }
+
+      const fixtures = [];
+      for (let i = 0; i < n; i++) {
+        if (Array.isArray(eng?.lights) && eng.lights.length >= 128) break;
+        let fxPos;
+        if (isCircle) {
+          const radius = 2.0 * scale;
+          const theta = (i / n) * Math.PI * 2;
+          fxPos = [
+            +(tPos[0] + Math.cos(theta) * radius).toFixed(3),
+            +(tPos[1] - 0.22).toFixed(3),
+            +(tPos[2] + Math.sin(theta) * radius).toFixed(3)
+          ];
+        } else {
+          const spanM = 6.0 * scale;
+          const u = n === 1 ? 0 : (i / (n - 1) - 0.5) * (spanM * 0.88);
+          const yaw = ((Number(truss.rot?.[1]) || 0) * Math.PI) / 180;
+          fxPos = [
+            +(tPos[0] + Math.cos(yaw) * u).toFixed(3),
+            +(tPos[1] - 0.22).toFixed(3),
+            +(tPos[2] - Math.sin(yaw) * u).toFixed(3)
+          ];
+        }
+        const throwLen = 7.5;
+        const dx = Math.sin(pRad) * Math.sin(Math.abs(tRad)) * throwLen;
+        const dy = -Math.cos(tRad) * throwLen;
+        const dz = Math.cos(pRad) * Math.sin(Math.abs(tRad)) * (-throwLen);
+        const target = [
+          +(fxPos[0] + dx).toFixed(3),
+          +Math.max(0, fxPos[1] + dy).toFixed(3),
+          +(fxPos[2] - dz).toFixed(3)
+        ];
+        const fx = {
+          id: `truss_fx_${resolvedTrussId}_${i + 1}`,
+          name: `${normKind.toUpperCase()} #${i + 1} (@${resolvedTrussId})`,
+          type: normKind,
+          trussId: resolvedTrussId,
+          parentTrussId: resolvedTrussId,
+          pos: fxPos,
+          target,
+          color: '#00d4ff',
+          power: 5.5,
+          angle: zDeg,
+          zoomDeg: zDeg,
+          panDeg: Number(panDeg) || 0,
+          tiltDeg: Number(tiltDeg) || -15,
+          enabled: true,
+          sweep: false,
+          fx: 'steady',
+          origin: 'placed',
+          fixtureSize: [0.3, 0.38, 0.3],
+          aperture: 0.03
+        };
+        fixtures.push(fx);
+        if (Array.isArray(eng?.lights)) {
+          eng.lights.push(fx);
+        }
+      }
+      eng?.rebuildFixtures?.();
+      if (eng) eng._stageBatchDirty = true;
+      Object.assign(fixtures, {
+        trussId: resolvedTrussId,
+        isCircularTruss: isCircle,
+        fixtureKind: normKind,
+        attachedCount: fixtures.length,
+        fixtures
+      });
+      return fixtures;
     }
 
     function stopLiveScreenCapture18() {
@@ -10337,6 +11115,7 @@ void main(){
           `<div class="lmp-tb-strip18" style="margin-top:6px">` +
           `<button type="button" class="lmp-tb-fxbtn18" data-lmp-modal="dmx">${tr18('Bàn DMX G1–G5 & TV/ILDA', 'DMX G1–G5 & TV/ILDA')}</button>` +
           `<button type="button" class="lmp-tb-fxbtn18 ${lumiState.dmxProgrammer18?.freezeDmx ? 'active' : ''}" data-lmp-dmx="freeze">${tr18('ĐÓNG BĂNG DMX', 'FREEZE DMX')}</button>` +
+          `<button type="button" class="lmp-tb-fxbtn18" data-lmp-action="par_u_contour">${tr18('PAR 3 Vách Chữ U', 'PAR 3-Wall U-Contour')}</button>` +
           `</div>`;
       } else if (lmpActiveTab18 === 'pyro') {
         const pyros = [
@@ -10366,13 +11145,19 @@ void main(){
           ['pixel_map_2d', tr18('Pixel Map 2D', '2D Pixel Map')]
         ];
         const capOn = !!lumiState.screenCapture18?.active;
+        const capSrc = lumiState.screenCapture18?.sourceType || 'screen';
+        const capFit = lumiState.screenCapture18?.fitMode === 'contain' ? 'Contain' : 'Cover';
         bodyHtml =
           `<div class="lmp-tb-grid18 cols-3">` +
           screens.map(([k, lbl]) => `<button type="button" class="lmp-tb-add18" data-lmp-screen="${k}" style="--item-c:${lmpToolColor18(k)}" title="${esc18(lbl)}"><i class="lmp-tb-plus18">+</i>${lmpToolSvg18(k)}<span>${esc18(lbl)}</span></button>`).join('') +
           `</div>` +
           `<div class="lmp-tb-strip18">` +
           `<button type="button" class="lmp-tb-fxbtn18" data-lmp-modal="pixelpower">${tr18('Pixel Voids [B] & Nguồn Điện', 'Pixel Voids [B] & Power')}</button>` +
-          `<button type="button" class="lmp-tb-fxbtn18 ${capOn ? 'active' : ''}" data-lmp-action="screencap">${capOn ? tr18('Dừng Bắt Màn hình', 'Stop Screen Capture') : tr18('Bắt Màn hình Live', 'Live Screen Capture')}</button>` +
+          `<button type="button" class="lmp-tb-fxbtn18 ${capOn && capSrc === 'screen' ? 'active' : ''}" data-lmp-action="screencap">${capOn && capSrc === 'screen' ? tr18('Dừng Bắt Màn hình', 'Stop Screen Capture') : tr18('Bắt Màn hình Live', 'Live Screen Capture')}</button>` +
+          `</div>` +
+          `<div class="lmp-tb-strip18" style="margin-top:6px">` +
+          `<button type="button" class="lmp-tb-fxbtn18 ${capOn && capSrc === 'webcam' ? 'active' : ''}" data-lmp-action="webcamcap">${capOn && capSrc === 'webcam' ? tr18('Dừng Webcam / Capture', 'Stop Webcam / Capture') : tr18('Webcam / Capture Card', 'Webcam / Capture Card')}</button>` +
+          `<button type="button" class="lmp-tb-fxbtn18" data-lmp-action="capfit">${tr18('Tỷ lệ: ' + capFit, 'Fit: ' + capFit)}</button>` +
           `</div>`;
       }
 
@@ -10418,8 +11203,781 @@ void main(){
         `</div>`;
     }
 
+    let _suppressRpInspectorRebuild18 = false;
+
+    const LMP_TOOL_LABELS18 = {
+      platform: ['Bục Sân khấu Modular', 'Modular Stage Platform'],
+      layher: ['Tháp Giàn giáo Layher', 'Layher Scaffold Tower'],
+      stairs: ['Bậc Thang Sân khấu', 'Stage Stairs'],
+      straight_truss: ['Đà Truss Ngang', 'Straight Truss Span'],
+      vertical_truss: ['Trụ Truss Đứng', 'Vertical Truss Tower'],
+      circular_truss: ['Vòng Truss Tròn Kinetic', 'Circular Kinetic Truss'],
+      line_array: ['Hệ Loa Line Array L/R', 'L/R Line Array PA'],
+      sub_stack: ['Cụm Loa Subwoofer', 'Subwoofer Stack'],
+      dj_booth: ['Bàn DJ Booth 3D', '3D DJ Booth'],
+      foh_booth: ['Trạm Điều khiển FOH', 'FOH Control Booth'],
+      podium: ['Bục Phát biểu VIP', 'VIP Lectern Podium'],
+      live_band: ['Bục Ban nhạc Live', 'Live Band Riser'],
+      beams: ['Đèn Moving Head Beam 230', 'Beam 230 7R Moving Head'],
+      spot: ['Đèn Moving Head Spot / Profile', 'Spot / Profile 350W'],
+      wash: ['Đèn Moving Head Wash Zoom', 'Wash Zoom 36x18W'],
+      par: ['Đèn PAR LED 54x3W RGBW', 'PAR LED 54x3W RGBW'],
+      barra: ['Thanh LED Pixel Bar 1m', 'Barra LED Pixel Bar 1m'],
+      blinders: ['Đèn Chớp Khán giả Blinder 4-Lite', 'Audience Blinder 4-Lite'],
+      strobe: ['Đèn Chớp Atomic Strobe 14Hz', 'Atomic 3000 DMX Strobe'],
+      fresnel: ['Đèn Mặt Theater Fresnel 200W', 'Theater Fresnel 200W'],
+      lasers: ['Hệ Đèn Laser ILDA RGB 10W', 'KVANT ILDA RGB Laser 10W'],
+      sparkular: ['Pháo Điện Lạnh Sparkular', 'Sparkular Cold Sparks'],
+      co2_jets: ['Súng Khói Lạnh CO2 Cryo', 'CO2 Cryo Jets'],
+      flames: ['Máy Phun Lửa DMX G-Flame', 'DMX Flame Projectors'],
+      hazer: ['Máy Tạo Khói Hazer MDG', 'MDG Pro DMX Hazer'],
+      aerial_pyro: ['Pháo Hoa Tầm Cao & Kim Tuyến', 'Aerial Pyro & StadiumShot'],
+      main_wall: ['Màn Hình LED Chính (Main Wall)', 'Main LED Wall'],
+      side_wings: ['Cánh LED Hai Bên (Side Wings)', 'Side Wing LEDs'],
+      header: ['Trán LED Ngang (Top Header)', 'Top Header LED'],
+      curved: ['Màn Hình LED Cong (Curved LED)', 'Curved Panorama LED'],
+      l_corner_90: ['Màn Hình LED Góc Chữ L 90°', '90° L-Corner Anamorphic LED'],
+      cube: ['Khối LED Cube 4 Mặt Treo', '4-Face Rigged LED Cube'],
+      cylinder_360: ['Trụ Tròn LED 360°', '360° Cylindrical LED Column']
+    };
+
+    function removeBatchItems18(batchId) {
+      if (!batchId) return 0;
+      let removed = 0;
+      const eng = S.engine;
+      const sa = S.stageAssets16;
+      if (Array.isArray(eng?.lights)) {
+        const before = eng.lights.length;
+        eng.lights = eng.lights.filter((l) => l?._lmpBatchId18 !== batchId);
+        removed += before - eng.lights.length;
+        if (removed > 0) eng.rebuildFixtures?.();
+      }
+      if (Array.isArray(sa?.items)) {
+        const toDel = sa.items.filter((it) => it?._lmpBatchId18 === batchId || it?.id === batchId).map((it) => it.id);
+        toDel.forEach((id) => {
+          if (typeof sa.deleteItem === 'function') {
+            if (sa.deleteItem(id, { record: false, silent: true })) removed++;
+          } else if (typeof sa.removeItem === 'function') {
+            sa.removeItem(id);
+            removed++;
+          } else {
+            const idx = sa.items.findIndex((x) => x.id === id);
+            if (idx >= 0) {
+              sa.items.splice(idx, 1);
+              removed++;
+            }
+          }
+        });
+      }
+      if (Array.isArray(eng?.surfaces)) {
+        const surfToDel = eng.surfaces.filter((s) => s?._lmpBatchId18 === batchId);
+        const stageToRemove = new Set();
+        surfToDel.forEach((s) => {
+          if (s.mesh) {
+            stageToRemove.add(s.mesh);
+            eng.releaseMesh?.(s.mesh);
+          }
+          for (const m of findSurfaceStageMeshes(eng, s)) {
+            stageToRemove.add(m);
+            eng.releaseMesh?.(m);
+          }
+          removed++;
+        });
+        if (Array.isArray(eng.stage)) {
+          for (const m of eng.stage) {
+            if (m && m._lmpBatchId18 === batchId) {
+              stageToRemove.add(m);
+              eng.releaseMesh?.(m);
+            }
+          }
+          if (stageToRemove.size > 0) {
+            eng.stage = eng.stage.filter((m) => !stageToRemove.has(m));
+            eng._stageBatchDirty = true;
+          }
+        }
+        if (surfToDel.length) {
+          eng.surfaces = eng.surfaces.filter((s) => s?._lmpBatchId18 !== batchId);
+          eng.selected = eng.surfaces[0]?.id || null;
+          eng._stageBatchDirty = true;
+        }
+      }
+      return removed;
+    }
+
+    function buildChainDiagramSvg18(cfg) {
+      const count = Math.max(1, Math.min(24, Number(cfg.count) || 1));
+      const col = lmpToolColor18(cfg.kind) || '#00d4ff';
+      const w = 280;
+      const h = 54;
+      const padX = 22;
+      const spanPx = w - padX * 2;
+      const nodes = [];
+      for (let i = 0; i < count; i++) {
+        const cx = count === 1 ? w / 2 : +(padX + (i / (count - 1)) * spanPx).toFixed(1);
+        const cy = cfg.parLayout === 'u_shape' && count >= 3
+          ? (i < count / 3 || i >= (2 * count) / 3 ? 36 : 18)
+          : 26;
+        nodes.push({ idx: i, cx, cy });
+      }
+      const polyline = nodes.length > 1
+        ? `<polyline points="${nodes.map((n) => `${n.cx},${n.cy}`).join(' ')}" fill="none" stroke="rgba(148,163,184,0.45)" stroke-width="1.6" stroke-dasharray="3 2"/>`
+        : '';
+      const centerLine = cfg.symmetry
+        ? `<line x1="${w / 2}" y1="6" x2="${w / 2}" y2="${h - 6}" stroke="rgba(1,255,160,0.45)" stroke-width="1.2" stroke-dasharray="2 2"/>`
+        : '';
+      const circles = nodes
+        .map(
+          (n) =>
+            `<g class="lmp-chain-node18" data-rp-remove-idx="${n.idx}" role="button" tabindex="0" aria-label="${tr18(`Thiết bị #${n.idx + 1} (Click để bớt 1)`, `Unit #${n.idx + 1} (Click to remove 1)`)}" title="${tr18(`Thiết bị #${n.idx + 1} — Click để bớt 1 đơn vị`, `Unit #${n.idx + 1} — Click to remove 1 unit`)}">` +
+            `<circle cx="${n.cx}" cy="${n.cy}" r="8.5" fill="rgba(15,23,42,0.92)" stroke="${col}" stroke-width="1.8"/>` +
+            `<text x="${n.cx}" y="${n.cy + 3}" text-anchor="middle" fill="#f8fafc" font-size="8.5" font-weight="700">${n.idx + 1}</text>` +
+            `</g>`
+        )
+        .join('');
+      return `<svg class="lmp-chain-svg18" viewBox="0 0 ${w} ${h}" role="img" aria-label="${tr18('Sơ đồ chuỗi thiết bị', 'Equipment chain diagram')}">${centerLine}${polyline}${circles}</svg>`;
+    }
+
+    function rebuildBatchConfigurator18(options = {}) {
+      if (options && options.batchId) {
+        lumiState.rpConfig18 = options;
+      }
+      const cfg = lumiState.rpConfig18;
+      if (!cfg) return;
+      _suppressRpInspectorRebuild18 = options.rebuildInspectorDom === false;
+      try {
+        removeBatchItems18(cfg.batchId);
+        if (cfg.category === 'lighting') {
+          addToolboxLighting18(cfg.kind, {
+            batchId: cfg.batchId,
+            count: cfg.count,
+            spanM: cfg.spanM,
+            symmetry: cfg.symmetry,
+            mountZone: cfg.mountZone,
+            zoomDeg: cfg.zoomDeg,
+            parLayout: cfg.parLayout,
+            panOffsetDeg: cfg.panOffsetDeg,
+            tiltOffsetDeg: cfg.tiltOffsetDeg,
+            color: cfg.color,
+            noCheckpoint: true,
+            silent: true
+          });
+        } else if (cfg.category === 'pyro') {
+          addToolboxPyroSfx18(cfg.kind, {
+            batchId: cfg.batchId,
+            count: cfg.count,
+            spanM: cfg.spanM,
+            symmetry: cfg.symmetry,
+            mountZone: cfg.mountZone,
+            scale: cfg.scale,
+            noCheckpoint: true,
+            silent: true
+          });
+        } else if (cfg.category === 'structure') {
+          addToolboxStructure18(cfg.kind, {
+            batchId: cfg.batchId,
+            count: cfg.count,
+            spanM: cfg.spanM,
+            symmetry: cfg.symmetry,
+            scale: cfg.scale,
+            offsetY: cfg.offsetY,
+            offsetZ: cfg.offsetZ,
+            skipAct: true,
+            noCheckpoint: true,
+            silent: true
+          });
+        } else if (cfg.category === 'screens') {
+          addToolboxScreen18(cfg.kind, {
+            batchId: cfg.batchId,
+            widthM: cfg.widthM,
+            heightM: cfg.heightM,
+            curveDegPerCab: cfg.curveDegPerCab,
+            noCheckpoint: true,
+            silent: true
+          });
+        }
+      } finally {
+        _suppressRpInspectorRebuild18 = false;
+      }
+      const chainHost = $('lmpRpChainHost18');
+      if (chainHost) chainHost.innerHTML = buildChainDiagramSvg18(cfg);
+      if (options.rebuildInspectorDom !== false) {
+        window._lmpRpConfigSig18 = `${cfg.batchId}:${cfg.count}:${cfg.parLayout}:${cfg.symmetry}:${cfg.mountZone}`;
+        window.renderInspector?.();
+      }
+      return cfg;
+    }
+
+    function openToolboxConfigurator18(rawCategory, rawKind, opts = {}) {
+      const catMap = { light: 'lighting', sfx: 'pyro', screen: 'screens' };
+      const category = catMap[rawCategory] || rawCategory;
+      if (category === 'screens' && rawKind === 'pixel_map_2d') {
+        return addToolboxScreen18('pixel_map_2d');
+      }
+      const kindMap = {
+        moving: 'beams', par_led: 'par', strobe_bar: 'strobe', laser_bar: 'lasers', laser: 'lasers', blinder: 'blinders', beam: 'beams',
+        cold_spark: 'sparkular', cold_spark_fountain: 'sparkular', co2_jet: 'co2_jets', flame_jet: 'flames', confetti_cannon: 'aerial_pyro', haze_machine_pro: 'hazer'
+      };
+      const kind = kindMap[rawKind] || rawKind;
+      const batchId = opts.batchId || `batch_${category}_${kind}_${Date.now().toString(36)}`;
+      const defaultCounts = {
+        beams: 4, spot: 4, wash: 4, par: 6, barra: 4, blinders: 4, strobe: 4, fresnel: 4, lasers: 2,
+        sparkular: 4, co2_jets: 4, flames: 4, hazer: 2, aerial_pyro: 4,
+        line_array: 2, sub_stack: 2, layher: 2, vertical_truss: 2
+      };
+      const defaultColors = {
+        beams: '#38bdf8', spot: '#a855f7', wash: '#ec4899', par: '#22c55e', barra: '#00f5d4',
+        blinders: '#fbbf24', strobe: '#ffffff', fresnel: '#fde68a', lasers: '#10b981'
+      };
+      const defaultZoom = {
+        beams: 7, spot: 12, wash: 24, par: 20, barra: 12, blinders: 28, strobe: 30, fresnel: 24, lasers: 5
+      };
+      const cfg = {
+        batchId,
+        category,
+        kind,
+        mode: opts.mode || 'add',
+        count: opts.count ?? (defaultCounts[kind] || 1),
+        spanM: opts.spanM ?? (category === 'pyro' ? 9.6 : 12.0),
+        symmetry: opts.symmetry ?? (defaultCounts[kind] >= 2),
+        mountZone: opts.mountZone || (kind === 'barra' ? 'floor' : category === 'pyro' ? (kind === 'hazer' ? 'back' : 'front') : 'overhead'),
+        zoomDeg: opts.zoomDeg ?? (defaultZoom[kind] || 18),
+        parLayout: opts.parLayout || 'linear',
+        panOffsetDeg: opts.panOffsetDeg ?? 0,
+        tiltOffsetDeg: opts.tiltOffsetDeg ?? 0,
+        color: opts.color || defaultColors[kind] || '#38bdf8',
+        scale: opts.scale ?? 1.0,
+        offsetY: opts.offsetY ?? 0,
+        offsetZ: opts.offsetZ ?? 0,
+        widthM: opts.widthM ?? (kind === 'header' ? 8.0 : kind === 'side_wings' ? 2.0 : 4.0),
+        heightM: opts.heightM ?? (kind === 'header' ? 1.0 : kind === 'side_wings' ? 4.0 : 2.5),
+        curveDegPerCab: opts.curveDegPerCab ?? (kind === 'curved' ? -5 : 0)
+      };
+      lumiState.rpConfig18 = cfg;
+      window._lmpRpConfigSig18 = `${cfg.batchId}:${cfg.count}:${cfg.mode}`;
+      document.body?.classList?.remove?.('right-panel-collapsed');
+
+      let result = null;
+      if (!opts.skipInitialSpawn) {
+        if (category === 'lighting') result = addToolboxLighting18(kind, { ...cfg });
+        else if (category === 'pyro') result = addToolboxPyroSfx18(kind, { ...cfg });
+        else if (category === 'structure') result = addToolboxStructure18(kind, { ...cfg });
+        else if (category === 'screens') result = addToolboxScreen18(kind, { ...cfg });
+      }
+      cfg.items = result;
+      window.renderInspector?.();
+      return cfg;
+    }
+
+    function openBatchConfigurator18(batchId, members = []) {
+      if (!Array.isArray(members) || !members.length) return null;
+      const first = members[0];
+      const isPyro = Boolean(first._isPyroSfx18 || /^(cold_spark_fountain|co2_jet|flame_jet|confetti_cannon|haze_machine_pro)$/.test(first.kind || first.type || ''));
+      const category = first._lmpCategory18 || (isPyro ? 'pyro' : 'lighting');
+      const reversePyroKind = {
+        cold_spark_fountain: 'sparkular',
+        co2_jet: 'co2_jets',
+        flame_jet: 'flames',
+        haze_machine_pro: 'hazer',
+        confetti_cannon: 'aerial_pyro'
+      };
+      const reverseLightKind = {
+        beam: 'beams', spot: 'spot', wash: 'wash', par: 'par', bar: 'barra',
+        blinder: 'blinders', strobe: 'strobe', fresnel: 'fresnel', laser: 'lasers'
+      };
+      const kind = first._lmpToolKind18 || (isPyro ? reversePyroKind[first.kind || first.type] || 'sparkular' : reverseLightKind[first.type] || 'beams');
+      const xs = members.map((m) => Number(m.pos?.[0]) || 0);
+      const spanM = xs.length > 1 ? Math.max(2, +(Math.max(...xs) - Math.min(...xs)).toFixed(1)) : 8.0;
+      members.forEach((m) => { m._lmpBatchId18 = batchId; });
+      return openToolboxConfigurator18(category, kind, {
+        batchId,
+        mode: 'edit',
+        count: members.length,
+        spanM,
+        symmetry: members.length >= 2,
+        zoomDeg: Number(first.angle) || 18,
+        color: first.color || '#38bdf8',
+        scale: Number(first.scale) || 1,
+        skipInitialSpawn: true
+      });
+    }
+
+    function buildLmpConfigCardHtml18(cfg) {
+      if (!cfg) return '';
+      const pair = LMP_TOOL_LABELS18[cfg.kind] || [cfg.kind, cfg.kind];
+      const objTitle = tr18(pair[0], pair[1]);
+      const col = lmpToolColor18(cfg.kind) || '#00d4ff';
+      const isAdd = cfg.mode !== 'edit';
+      const badgeTxt = isAdd ? tr18('THÊM & CẤU HÌNH CỤM', 'ADD & CONFIGURE BATCH') : tr18('CHỈNH SỬA CỤM THIẾT BỊ', 'EDIT EQUIPMENT BATCH');
+
+      let extraFields = '';
+      if (cfg.category === 'lighting') {
+        extraFields +=
+          `<div class="lmp-rp-row18">` +
+          `<label>${tr18('Vị trí treo (Mount Zone)', 'Mount Zone')}</label>` +
+          `<div class="lmp-rp-seg18">` +
+          `<button type="button" class="${cfg.mountZone === 'overhead' ? 'active' : ''}" data-rp-mount="overhead">${tr18('Đà Truss Cao', 'Overhead Truss')}</button>` +
+          `<button type="button" class="${cfg.mountZone === 'front' ? 'active' : ''}" data-rp-mount="front">${tr18('Đà Trước (FOH)', 'Front Truss')}</button>` +
+          `<button type="button" class="${cfg.mountZone === 'floor' ? 'active' : ''}" data-rp-mount="floor">${tr18('Đặt Sàn (Floor)', 'Stage Deck')}</button>` +
+          `</div>` +
+          `</div>`;
+        if (cfg.kind === 'par' || cfg.kind === 'barra') {
+          extraFields +=
+            `<div class="lmp-rp-row18">` +
+            `<label>${tr18('Bố cục dải đèn (Layout)', 'Array Layout')}</label>` +
+            `<div class="lmp-rp-seg18">` +
+            `<button type="button" class="${cfg.parLayout !== 'u_shape' ? 'active' : ''}" data-rp-parlayout="linear">${tr18('Hàng ngang (Linear)', 'Linear Row')}</button>` +
+            `<button type="button" class="${cfg.parLayout === 'u_shape' ? 'active' : ''}" data-rp-parlayout="u_shape">${tr18('Chữ U 3 vách (U-Shape)', '3-Wall U-Shape')}</button>` +
+            `</div>` +
+            `</div>`;
+        }
+        if (cfg.kind === 'wash' || cfg.kind === 'spot' || cfg.kind === 'beams' || cfg.kind === 'fresnel') {
+          extraFields +=
+            `<label class="lmp-rp-slider18">` +
+            `<span>${tr18('Góc mở chùm tia / Zoom (°)', 'Beam / Wash Zoom (°)')} <b id="lmpRpZoomVal18">${cfg.zoomDeg}°</b></span>` +
+            `<input type="range" min="4" max="55" step="1" value="${cfg.zoomDeg}" data-rp-zoom="1">` +
+            `</label>`;
+        }
+        if (cfg.kind === 'beams' || cfg.kind === 'spot' || cfg.kind === 'lasers') {
+          extraFields +=
+            `<div class="lmp-rp-grid2-18">` +
+            `<label class="lmp-rp-slider18">` +
+            `<span>Pan Aim <b id="lmpRpPanVal18">${cfg.panOffsetDeg}°</b></span>` +
+            `<input type="range" min="-60" max="60" step="2" value="${cfg.panOffsetDeg}" data-rp-pan="1">` +
+            `</label>` +
+            `<label class="lmp-rp-slider18">` +
+            `<span>Tilt Aim <b id="lmpRpTiltVal18">${cfg.tiltOffsetDeg}°</b></span>` +
+            `<input type="range" min="-45" max="45" step="2" value="${cfg.tiltOffsetDeg}" data-rp-tilt="1">` +
+            `</label>` +
+            `</div>`;
+        }
+        extraFields +=
+          `<div class="lmp-rp-row18 is-inline">` +
+          `<label>${tr18('Màu sắc cụm đèn', 'Batch Color')}</label>` +
+          `<input type="color" value="${esc18(cfg.color)}" data-rp-color="1" class="lmp-rp-color18">` +
+          `</div>`;
+      } else if (cfg.category === 'pyro') {
+        extraFields +=
+          `<div class="lmp-rp-row18">` +
+          `<label>${tr18('Tuyến bố trí (Stage Line)', 'Stage Placement Line')}</label>` +
+          `<div class="lmp-rp-seg18">` +
+          `<button type="button" class="${cfg.mountZone === 'front' ? 'active' : ''}" data-rp-mount="front">${tr18('Mép Trước', 'Front Edge')}</button>` +
+          `<button type="button" class="${cfg.mountZone === 'mid' ? 'active' : ''}" data-rp-mount="mid">${tr18('Giữa Sân', 'Mid Stage')}</button>` +
+          `<button type="button" class="${cfg.mountZone === 'back' ? 'active' : ''}" data-rp-mount="back">${tr18('Hậu Cảnh', 'Upstage Back')}</button>` +
+          `</div>` +
+          `</div>` +
+          `<label class="lmp-rp-slider18">` +
+          `<span>${tr18('Tỷ lệ kích thước / Độ cao tia', 'Unit / Plume Scale')} <b id="lmpRpScaleVal18">${Number(cfg.scale).toFixed(2)}x</b></span>` +
+          `<input type="range" min="0.5" max="2.2" step="0.05" value="${cfg.scale}" data-rp-scale="1">` +
+          `</label>` +
+          `<button type="button" class="btn full-btn lmp-rp-testfire18" data-rp-testfire="1">${ico18('sparkles')}<span>${tr18('Bắn thử cụm Pyro này (Test Fire)', 'Test Fire Pyro Batch')}</span></button>`;
+      } else if (cfg.category === 'structure') {
+        extraFields +=
+          `<label class="lmp-rp-slider18">` +
+          `<span>${tr18('Tỷ lệ kích thước (Scale)', 'Scale Multiplier')} <b id="lmpRpScaleVal18">${Number(cfg.scale).toFixed(2)}x</b></span>` +
+          `<input type="range" min="0.5" max="2.5" step="0.05" value="${cfg.scale}" data-rp-scale="1">` +
+          `</label>` +
+          `<div class="lmp-rp-grid2-18">` +
+          `<label class="lmp-rp-slider18">` +
+          `<span>${tr18('Cao độ Y (m)', 'Height Y (m)')} <b id="lmpRpPosYVal18">${Number(cfg.offsetY).toFixed(1)}m</b></span>` +
+          `<input type="range" min="-2" max="6" step="0.2" value="${cfg.offsetY}" data-rp-posy="1">` +
+          `</label>` +
+          `<label class="lmp-rp-slider18">` +
+          `<span>${tr18('Độ sâu Z (m)', 'Depth Z (m)')} <b id="lmpRpPosZVal18">${Number(cfg.offsetZ).toFixed(1)}m</b></span>` +
+          `<input type="range" min="-6" max="8" step="0.2" value="${cfg.offsetZ}" data-rp-posz="1">` +
+          `</label>` +
+          `</div>` +
+          (String(cfg.kind || '').includes('truss')
+            ? `<button type="button" class="btn full-btn" style="margin-top:6px" data-rp-attachtruss="1">${ico18('sparkles')}<span>${tr18('Gắn cụm đèn Beam lên Đà Truss này', 'Attach Beam Fixtures to Truss')}</span></button>`
+            : '');
+      } else if (cfg.category === 'screens') {
+        extraFields +=
+          `<div class="lmp-rp-grid2-18">` +
+          `<label class="lmp-rp-slider18">` +
+          `<span>${tr18('Rộng (Width m)', 'Width (m)')} <b id="lmpRpScrWVal18">${Number(cfg.widthM).toFixed(1)}m</b></span>` +
+          `<input type="range" min="1" max="20" step="0.5" value="${cfg.widthM}" data-rp-scrw="1">` +
+          `</label>` +
+          `<label class="lmp-rp-slider18">` +
+          `<span>${tr18('Cao (Height m)', 'Height (m)')} <b id="lmpRpScrHVal18">${Number(cfg.heightM).toFixed(1)}m</b></span>` +
+          `<input type="range" min="0.5" max="10" step="0.5" value="${cfg.heightM}" data-rp-scrh="1">` +
+          `</label>` +
+          `</div>` +
+          `<label class="lmp-rp-slider18">` +
+          `<span>${tr18('Độ cong mỗi Cabinet (°)', 'Curve Angle (°/cab)')} <b id="lmpRpCurveVal18">${cfg.curveDegPerCab}°</b></span>` +
+          `<input type="range" min="-15" max="15" step="1" value="${cfg.curveDegPerCab}" data-rp-curve="1">` +
+          `</label>`;
+      }
+
+      const showBatchArrayControls = cfg.category !== 'screens';
+      return (
+        `<div id="lmpRpConfigCard18" class="inspector-block lmp-rp-config18" style="--rp-c:${col}">` +
+        `<div class="lmp-rp-head18">` +
+        `<span class="lmp-rp-ico18">${lmpToolSvg18(cfg.kind)}</span>` +
+        `<div class="lmp-rp-titlewrap18"><small>${esc18(badgeTxt)}</small><strong>${esc18(objTitle)}</strong></div>` +
+        `<button type="button" class="lmp-help-btn18" data-lmp-help="1" title="${tr18('Hướng dẫn chức năng (?)', 'Feature guide (?)')}">?</button>` +
+        `</div>` +
+        (showBatchArrayControls
+          ? `<div class="lmp-rp-symrow18">` +
+            `<label class="check-row"><input type="checkbox" data-rp-sym="1" ${cfg.symmetry ? 'checked' : ''}><span>${tr18('Đối xứng Trái / Phải (Live Symmetry L/R)', 'Live Symmetry (L/R Mirror)')}</span></label>` +
+            `</div>` +
+            `<div class="lmp-rp-grid2-18">` +
+            `<label class="lmp-rp-slider18">` +
+            `<span>${tr18('Bề rộng phủ (m)', 'Width to Cover (m)')} <b id="lmpRpSpanVal18">${Number(cfg.spanM).toFixed(1)}m</b></span>` +
+            `<input type="range" min="2" max="24" step="0.4" value="${cfg.spanM}" data-rp-span="1">` +
+            `</label>` +
+            `<label class="lmp-rp-slider18">` +
+            `<span>${tr18('Số lượng (Units)', 'Units (Count)')} <b id="lmpRpCountVal18">${cfg.count}</b></span>` +
+            `<input type="range" min="1" max="16" step="1" value="${cfg.count}" data-rp-count="1">` +
+            `</label>` +
+            `</div>` +
+            `<div class="lmp-rp-chainbox18">` +
+            `<div class="lmp-rp-chainhdr18"><span>${tr18('Sơ đồ chuỗi thiết bị (Click icon để bớt 1)', 'Unit Chain Diagram (Click icon to remove 1)')}</span><b>${cfg.count} ${tr18('đơn vị', 'units')}</b></div>` +
+            `<div id="lmpRpChainHost18">${buildChainDiagramSvg18(cfg)}</div>` +
+            `</div>`
+          : '') +
+        extraFields +
+        `<div class="lmp-rp-actions18">` +
+        `<button type="button" class="btn danger" data-rp-cancel="1">${tr18('Huỷ / Xoá cụm', 'Cancel / Remove')}</button>` +
+        `<button type="button" class="btn primary" data-rp-confirm="1">${tr18('Xác nhận đặt trên sân khấu', 'Confirm on Stage')}</button>` +
+        `</div>` +
+        `</div>`
+      );
+    }
+
+    function buildLmpLightingFxEngineHtml18() {
+      const ls = liveShow18;
+      const { chaseOpts, fanOpts, laserOpts } = getLmpFxSelectOptions18();
+      const sfxItem = window.state?.selectedSfx18 && Array.isArray(S.stageAssets16?.items)
+        ? S.stageAssets16.items.find((x) => x.id === window.state.selectedSfx18)
+        : null;
+      const sfxCardHtml = sfxItem && !lumiState.rpConfig18
+        ? `<div class="inspector-block lmp-rp-sfxcard18">` +
+          `<div class="lmp-rp-head18">` +
+          `<span class="lmp-rp-ico18">${ico18('sparkles')}</span>` +
+          `<div class="lmp-rp-titlewrap18"><small>${tr18('THIẾT BỊ PHÁO & SFX ĐANG CHỌN', 'SELECTED PYRO & SFX UNIT')}</small><strong>${esc18(sfxItem.name || sfxItem.kind)}</strong></div>` +
+          `</div>` +
+          `<div class="field-grid three">` +
+          [0, 1, 2].map((i) => `<div class="field"><label>${['X (m)', 'Y (m)', 'Z (m)'][i]}</label><input type="number" step="0.1" value="${Number(sfxItem.pos?.[i] || 0).toFixed(2)}" data-rp-sfxpos="${i}"></div>`).join('') +
+          `</div>` +
+          `<div class="lmp-rp-actions18" style="margin-top:8px">` +
+          `<button type="button" class="btn" data-lmp-fire="${esc18(sfxItem.kind || 'all')}">${ico18('sparkles')}<span>${tr18('Bắn thử (Test Fire)', 'Test Fire')}</span></button>` +
+          `<button type="button" class="btn danger" data-rp-sfxdel="${esc18(sfxItem.id)}">${tr18('Xoá thiết bị', 'Delete Unit')}</button>` +
+          `</div>` +
+          `</div>`
+        : '';
+
+      return (
+        sfxCardHtml +
+        `<div id="lmpRpFxEngineCard18" class="inspector-block lmp-rp-fxcard18">` +
+        `<div class="lmp-rp-head18">` +
+        `<span class="lmp-rp-ico18">${ico18('sliders-horizontal')}</span>` +
+        `<div class="lmp-rp-titlewrap18"><small>${tr18('ĐIỀU KHIỂN ĐỘC LẬP & ĐỘNG CƠ SHOW', 'INDEPENDENT CHANNELS & SHOW ENGINE')}</small><strong>${tr18('Hệ thống Đèn, Laser & Pháo SFX', 'Lights, Laser & Pyro SFX Engine')}</strong></div>` +
+        `<button type="button" class="lmp-help-btn18" data-lmp-help="1" title="${tr18('Giải thích sự khác nhau giữa ĐÈN, CHỚP 14HZ, BLINDER, LASER, PHÁO và các chế độ Chase/Fan (?)', 'Explain LIGHTS, STROBE 14HZ, BLINDERS, LASER, PYRO & Chase/Fan modes (?)')}">?</button>` +
+        `</div>` +
+        `<div class="lmp-rp-chgrid18" role="group" aria-label="${tr18('Kênh thiết bị độc lập', 'Independent Fixture Channels')}">` +
+        `<button type="button" class="lmp-rp-chbtn18 ${ls.lightsOn ? 'active' : ''}" data-lmp-showfx="lights" title="${tr18('Bật/Tắt đèn Moving Head, PAR, Barra, Fresnel (Phím M)', 'Toggle Moving Heads, PAR, Barra, Fresnel (Key M)')}"><span>${tr18('ĐÈN CHÍNH [M]', 'LIGHTS [M]')}</span><b>${ls.lightsOn ? 'ON' : 'OFF'}</b></button>` +
+        `<button type="button" class="lmp-rp-chbtn18 is-strobe ${ls.strobe ? 'active' : ''}" data-lmp-showfx="strobe" title="${tr18('Đèn Chớp Strobe 14Hz độc lập (Phím Z)', 'Independent 14Hz Atomic Strobe (Key Z)')}"><span>${tr18('CHỚP 14HZ [Z]', 'STROBE [Z]')}</span><b>${ls.strobe ? '14Hz' : 'OFF'}</b></button>` +
+        `<button type="button" class="lmp-rp-chbtn18 is-blinder ${ls.blindersOn ? 'active' : ''}" data-lmp-showfx="blinders" title="${tr18('Đèn Chớp Khán giả Blinder độc lập (Phím F)', 'Independent Audience Blinders (Key F)')}"><span>${tr18('BLINDER [F]', 'BLINDER [F]')}</span><b>${ls.blindersOn ? 'ON' : 'OFF'}</b></button>` +
+        `<button type="button" class="lmp-rp-chbtn18 is-laser ${ls.laserOn ? 'active' : ''}" data-lmp-showfx="laser" title="${tr18('Hệ thống Laser 16 tia ILDA (Phím L)', '16-Beam ILDA Laser System (Key L)')}"><span>LASER [L]</span><b>${ls.laserOn ? 'ON' : 'OFF'}</b></button>` +
+        `<button type="button" class="lmp-rp-chbtn18 is-pyro ${ls.sfxOn ? 'active' : ''}" data-lmp-showfx="sfx" title="${tr18('Hệ thống Pháo & Khói tự động (Phím X)', 'Auto Pyro & SFX System (Key X)')}"><span>${tr18('PHÁO SFX [X]', 'PYRO SFX [X]')}</span><b>${ls.sfxOn ? 'ON' : 'OFF'}</b></button>` +
+        `<button type="button" class="lmp-rp-chbtn18 is-bo ${ls.blackout ? 'active' : ''}" data-lmp-showfx="bo" title="${tr18('Tắt toàn bộ ánh sáng Blackout (Phím B)', 'Master Blackout (Key B)')}"><span>${tr18('TẮT ĐÈN [B]', 'B.O. [B]')}</span><b>${ls.blackout ? 'B.O.' : 'READY'}</b></button>` +
+        `</div>` +
+        `<div class="lmp-rp-selects18">` +
+        `<label class="lmp-rp-selrow18"><span>${tr18('Chế độ đuổi đèn PAR & Barra', 'PAR & Barra Chase Mode')}</span><select data-lmp-parchase="1">${chaseOpts}</select></label>` +
+        `<label class="lmp-rp-selrow18"><span>${tr18('Quy luật quạt chùm tia Moving Head', 'Moving Head Beam Fan Law')}</span><select data-lmp-fanlaw="1">${fanOpts}</select></label>` +
+        `<label class="lmp-rp-selrow18"><span>${tr18('Mẫu quét tia Laser ILDA 3D', '3D ILDA Laser Scan Pattern')}</span><select data-lmp-laserpat="1">${laserOpts}</select></label>` +
+        `</div>` +
+        `<label class="lmp-rp-slider18" style="margin-top:6px">` +
+        `<span>${tr18('Tốc độ chạy Show (Show Speed)', 'Live Show Speed')} <b id="lmpRpSpeedVal18">${ls.speed.toFixed(1)}x</b></span>` +
+        `<input type="range" min="0.2" max="5.0" step="0.1" value="${ls.speed.toFixed(1)}" data-lmp-speed="1">` +
+        `</label>` +
+        (ls.sfxOn
+          ? `<div class="lmp-rp-pyropad18">` +
+            `<small>${tr18('Kích hoạt nhanh Pháo & SFX thủ công (Đang bật PHÁO)', 'Quick Manual Pyro Triggers (PYRO Active)')}</small>` +
+            `<div class="lmp-rp-pyrobtns18">` +
+            `<button type="button" class="btn small" data-lmp-fire="cold_spark_fountain">${tr18('Pháo điện [7]', 'Spark [7]')}</button>` +
+            `<button type="button" class="btn small" data-lmp-fire="co2_jet">CO2 [8]</button>` +
+            `<button type="button" class="btn small" data-lmp-fire="flame_jet">${tr18('Lửa [9]', 'Flame [9]')}</button>` +
+            `<button type="button" class="btn small" data-lmp-fire="confetti_cannon">${tr18('Pháo hoa [0]', 'Aerial [0]')}</button>` +
+            `<button type="button" class="btn small primary" data-lmp-fire="all">${tr18('Bắn tất cả', 'Fire All')}</button>` +
+            `</div>` +
+            `</div>`
+          : '') +
+        `</div>`
+      );
+    }
+
+    function bindLmpRightPanelEvents18(box) {
+      if (!box || box._lmpRpBound18) return;
+      box._lmpRpBound18 = true;
+
+      box.addEventListener('click', (e) => {
+        const helpBtn = e.target.closest?.('[data-lmp-help]');
+        if (helpBtn) {
+          openLmpHelpModal18();
+          return;
+        }
+        const fxBtn = e.target.closest?.('[data-lmp-showfx]');
+        if (fxBtn) {
+          toggleLiveShowFx18(fxBtn.getAttribute('data-lmp-showfx'));
+          return;
+        }
+        const fireBtn = e.target.closest?.('[data-lmp-fire]');
+        if (fireBtn) {
+          triggerPyroBurst18(fireBtn.getAttribute('data-lmp-fire'));
+          return;
+        }
+        const sfxDelBtn = e.target.closest?.('[data-rp-sfxdel]');
+        if (sfxDelBtn) {
+          const id = sfxDelBtn.getAttribute('data-rp-sfxdel');
+          S.stageAssets16?.deleteItem?.(id);
+          if (window.state?.selectedSfx18 === id) window.state.selectedSfx18 = null;
+          window.renderUI?.();
+          return;
+        }
+        const cfg = lumiState.rpConfig18;
+        if (!cfg) return;
+
+        const rmNode = e.target.closest?.('[data-rp-remove-idx]');
+        if (rmNode) {
+          if (cfg.count > 1) {
+            cfg.count -= 1;
+            const cntLbl = $('lmpRpCountVal18');
+            if (cntLbl) cntLbl.textContent = String(cfg.count);
+            rebuildBatchConfigurator18({ rebuildInspectorDom: true });
+          } else {
+            window.toast?.(tr18('Cụm thiết bị cần tối thiểu 1 đơn vị (bấm Huỷ nếu muốn xoá hết).', 'Batch requires at least 1 unit (click Cancel to remove all).'), 3200, 'warn');
+          }
+          return;
+        }
+        const mountBtn = e.target.closest?.('[data-rp-mount]');
+        if (mountBtn) {
+          cfg.mountZone = mountBtn.getAttribute('data-rp-mount') || 'overhead';
+          rebuildBatchConfigurator18({ rebuildInspectorDom: true });
+          return;
+        }
+        const layoutBtn = e.target.closest?.('[data-rp-parlayout]');
+        if (layoutBtn) {
+          cfg.parLayout = layoutBtn.getAttribute('data-rp-parlayout') || 'linear';
+          if (cfg.parLayout === 'u_shape' && cfg.count < 6) cfg.count = 6;
+          rebuildBatchConfigurator18({ rebuildInspectorDom: true });
+          return;
+        }
+        const testFireBtn = e.target.closest?.('[data-rp-testfire]');
+        if (testFireBtn) {
+          triggerPyroBurst18('all');
+          return;
+        }
+        const attachTrussBtn = e.target.closest?.('[data-rp-attachtruss]');
+        if (attachTrussBtn) {
+          const items = Array.isArray(S.stageAssets16?.items) ? S.stageAssets16.items : [];
+          const trussIt = items.find((it) => it && it._lmpBatchId18 === cfg.batchId) || items[0];
+          const res = attachFixturesToTruss18({ trussId: trussIt?.id, fixtureKind: 'beam', count: 6 });
+          window.renderUI?.();
+          window.toast?.(tr18(`Đã gắn ${res.attachedCount} đèn Beam lên đà Truss (${res.trussId}).`, `Attached ${res.attachedCount} Beam fixtures to Truss (${res.trussId}).`));
+          return;
+        }
+        const cancelBtn = e.target.closest?.('[data-rp-cancel]');
+        if (cancelBtn) {
+          removeBatchItems18(cfg.batchId);
+          lumiState.rpConfig18 = null;
+          window._lmpRpConfigSig18 = '';
+          window.renderUI?.();
+          renderLmpToolbox18();
+          window.toast?.(tr18('Đã huỷ và gỡ cụm thiết bị vừa chọn.', 'Cancelled and removed equipment batch.'));
+          return;
+        }
+        const confirmBtn = e.target.closest?.('[data-rp-confirm]');
+        if (confirmBtn) {
+          lumiState.rpConfig18 = null;
+          window._lmpRpConfigSig18 = '';
+          window.renderUI?.();
+          renderLmpToolbox18();
+          window.toast?.(tr18('Đã xác nhận cụm thiết bị trên sân khấu 3D.', 'Confirmed equipment batch on 3D stage.'));
+        }
+      });
+
+      box.addEventListener('change', (e) => {
+        const parSel = e.target.closest?.('[data-lmp-parchase]');
+        if (parSel) {
+          setParChaseMode18(parSel.value);
+          return;
+        }
+        const fanSel = e.target.closest?.('[data-lmp-fanlaw]');
+        if (fanSel) {
+          setBeamFanLaw18(fanSel.value);
+          return;
+        }
+        const laserSel = e.target.closest?.('[data-lmp-laserpat]');
+        if (laserSel) {
+          setLaserPattern18(laserSel.value);
+          return;
+        }
+        const sfxPosInp = e.target.closest?.('[data-rp-sfxpos]');
+        if (sfxPosInp && window.state?.selectedSfx18) {
+          const axis = Number(sfxPosInp.getAttribute('data-rp-sfxpos')) || 0;
+          const sfxItem = S.stageAssets16?.items?.find?.((x) => x.id === window.state.selectedSfx18);
+          if (sfxItem && Array.isArray(sfxItem.pos)) {
+            sfxItem.pos[axis] = clamp18(Number(sfxPosInp.value) || 0, -50, 50);
+            S.stageAssets16?.syncItemMeshes?.(sfxItem);
+            window.renderLists?.();
+          }
+          return;
+        }
+        const cfg = lumiState.rpConfig18;
+        if (!cfg) return;
+        const symChk = e.target.closest?.('[data-rp-sym]');
+        if (symChk) {
+          cfg.symmetry = Boolean(symChk.checked);
+          if (cfg.symmetry && cfg.count < 2) cfg.count = 2;
+          rebuildBatchConfigurator18({ rebuildInspectorDom: true });
+        }
+      });
+
+      box.addEventListener('input', (e) => {
+        const spdInput = e.target.closest?.('[data-lmp-speed]');
+        if (spdInput) {
+          setLiveShowSpeed18(spdInput.value);
+          const lbl = $('lmpRpSpeedVal18');
+          if (lbl) lbl.textContent = `${liveShow18.speed.toFixed(1)}x`;
+          return;
+        }
+        const cfg = lumiState.rpConfig18;
+        if (!cfg) return;
+        const spanInp = e.target.closest?.('[data-rp-span]');
+        if (spanInp) {
+          cfg.spanM = clamp18(Number(spanInp.value) || 8, 2, 24);
+          const lbl = $('lmpRpSpanVal18');
+          if (lbl) lbl.textContent = `${cfg.spanM.toFixed(1)}m`;
+          rebuildBatchConfigurator18({ rebuildInspectorDom: false });
+          return;
+        }
+        const cntInp = e.target.closest?.('[data-rp-count]');
+        if (cntInp) {
+          cfg.count = Math.max(1, Math.min(24, Math.round(Number(cntInp.value) || 1)));
+          const lbl = $('lmpRpCountVal18');
+          if (lbl) lbl.textContent = String(cfg.count);
+          rebuildBatchConfigurator18({ rebuildInspectorDom: false });
+          return;
+        }
+        const zoomInp = e.target.closest?.('[data-rp-zoom]');
+        if (zoomInp) {
+          cfg.zoomDeg = clamp18(Number(zoomInp.value) || 18, 4, 60);
+          const lbl = $('lmpRpZoomVal18');
+          if (lbl) lbl.textContent = `${cfg.zoomDeg}°`;
+          rebuildBatchConfigurator18({ rebuildInspectorDom: false });
+          return;
+        }
+        const panInp = e.target.closest?.('[data-rp-pan]');
+        if (panInp) {
+          cfg.panOffsetDeg = clamp18(Number(panInp.value) || 0, -60, 60);
+          const lbl = $('lmpRpPanVal18');
+          if (lbl) lbl.textContent = `${cfg.panOffsetDeg}°`;
+          rebuildBatchConfigurator18({ rebuildInspectorDom: false });
+          return;
+        }
+        const tiltInp = e.target.closest?.('[data-rp-tilt]');
+        if (tiltInp) {
+          cfg.tiltOffsetDeg = clamp18(Number(tiltInp.value) || 0, -45, 45);
+          const lbl = $('lmpRpTiltVal18');
+          if (lbl) lbl.textContent = `${cfg.tiltOffsetDeg}°`;
+          rebuildBatchConfigurator18({ rebuildInspectorDom: false });
+          return;
+        }
+        const colInp = e.target.closest?.('[data-rp-color]');
+        if (colInp) {
+          cfg.color = colInp.value || '#38bdf8';
+          rebuildBatchConfigurator18({ rebuildInspectorDom: false });
+          return;
+        }
+        const scaleInp = e.target.closest?.('[data-rp-scale]');
+        if (scaleInp) {
+          cfg.scale = clamp18(Number(scaleInp.value) || 1, 0.4, 2.5);
+          const lbl = $('lmpRpScaleVal18');
+          if (lbl) lbl.textContent = `${cfg.scale.toFixed(2)}x`;
+          rebuildBatchConfigurator18({ rebuildInspectorDom: false });
+          return;
+        }
+        const posYInp = e.target.closest?.('[data-rp-posy]');
+        if (posYInp) {
+          cfg.offsetY = clamp18(Number(posYInp.value) || 0, -4, 8);
+          const lbl = $('lmpRpPosYVal18');
+          if (lbl) lbl.textContent = `${cfg.offsetY.toFixed(1)}m`;
+          rebuildBatchConfigurator18({ rebuildInspectorDom: false });
+          return;
+        }
+        const posZInp = e.target.closest?.('[data-rp-posz]');
+        if (posZInp) {
+          cfg.offsetZ = clamp18(Number(posZInp.value) || 0, -8, 10);
+          const lbl = $('lmpRpPosZVal18');
+          if (lbl) lbl.textContent = `${cfg.offsetZ.toFixed(1)}m`;
+          rebuildBatchConfigurator18({ rebuildInspectorDom: false });
+          return;
+        }
+        const scrWInp = e.target.closest?.('[data-rp-scrw]');
+        if (scrWInp) {
+          cfg.widthM = clamp18(Number(scrWInp.value) || 4, 1, 24);
+          const lbl = $('lmpRpScrWVal18');
+          if (lbl) lbl.textContent = `${cfg.widthM.toFixed(1)}m`;
+          rebuildBatchConfigurator18({ rebuildInspectorDom: false });
+          return;
+        }
+        const scrHInp = e.target.closest?.('[data-rp-scrh]');
+        if (scrHInp) {
+          cfg.heightM = clamp18(Number(scrHInp.value) || 2.5, 0.5, 12);
+          const lbl = $('lmpRpScrHVal18');
+          if (lbl) lbl.textContent = `${cfg.heightM.toFixed(1)}m`;
+          rebuildBatchConfigurator18({ rebuildInspectorDom: false });
+          return;
+        }
+        const curveInp = e.target.closest?.('[data-rp-curve]');
+        if (curveInp) {
+          cfg.curveDegPerCab = clamp18(Number(curveInp.value) || 0, -15, 15);
+          const lbl = $('lmpRpCurveVal18');
+          if (lbl) lbl.textContent = `${cfg.curveDegPerCab}°`;
+          rebuildBatchConfigurator18({ rebuildInspectorDom: false });
+        }
+      });
+    }
+
+    function renderLmpRightPanelSection18() {
+      if (_suppressRpInspectorRebuild18) return;
+      const box = $('inspectorContent');
+      if (!box) return;
+      bindLmpRightPanelEvents18(box);
+      const cfg = lumiState.rpConfig18;
+      const isLightingStep = (window.state?.step || 'stage') === 'lighting';
+      if (!cfg && !isLightingStep) return;
+
+      const existingCfg = $('lmpRpConfigCard18');
+      existingCfg?.remove?.();
+      const existingFx = $('lmpRpFxEngineCard18');
+      existingFx?.remove?.();
+      box.querySelectorAll?.('.lmp-rp-sfxcard18')?.forEach?.((el) => el?.remove?.());
+
+      const htmlParts = [];
+      if (cfg) htmlParts.push(buildLmpConfigCardHtml18(cfg));
+      if (isLightingStep) htmlParts.push(buildLmpLightingFxEngineHtml18());
+      if (htmlParts.length) {
+        box.insertAdjacentHTML?.('afterbegin', htmlParts.join(''));
+      }
+    }
+
+    function hookRightPanelInspector18() {
+      if (window._lmpInspectorHooked18 || typeof window.renderInspector !== 'function') return;
+      window._lmpInspectorHooked18 = true;
+      const prevRenderInspector18 = window.renderInspector;
+      window.renderInspector = function (...args) {
+        if (_suppressRpInspectorRebuild18) return;
+        const out = prevRenderInspector18.apply(this, args);
+        renderLmpRightPanelSection18();
+        return out;
+      };
+      if (S.renderInspector) S.renderInspector = window.renderInspector;
+    }
+
     function installLmpToolbox18() {
       installLmpLiveShowDock18();
+      hookRightPanelInspector18();
       const host = $('viewport') || document.querySelector?.('.left-panel .object-section');
       if (!host || $('lmpToolbox18')) return;
       const box = document.createElement('div');
@@ -10463,28 +12021,32 @@ void main(){
             lmpActiveTab18 = nextTab;
             lmpCollapsed18 = false;
           }
+          if ((nextTab === 'lighting' || nextTab === 'pyro') && window.state && window.state.step !== 'lighting') {
+            window.state.step = 'lighting';
+            window.renderUI?.();
+          }
           renderLmpToolbox18();
           return;
         }
         const structBtn = e.target.closest?.('[data-lmp-struct]');
         if (structBtn) {
-          addToolboxStructure18(structBtn.getAttribute('data-lmp-struct'));
+          openToolboxConfigurator18('structure', structBtn.getAttribute('data-lmp-struct'));
           renderLmpToolbox18();
           return;
         }
         const lightBtn = e.target.closest?.('[data-lmp-light]');
         if (lightBtn) {
-          addToolboxLighting18(lightBtn.getAttribute('data-lmp-light'));
+          openToolboxConfigurator18('lighting', lightBtn.getAttribute('data-lmp-light'));
           return;
         }
         const pyroBtn = e.target.closest?.('[data-lmp-pyro]');
         if (pyroBtn) {
-          addToolboxPyroSfx18(pyroBtn.getAttribute('data-lmp-pyro'));
+          openToolboxConfigurator18('pyro', pyroBtn.getAttribute('data-lmp-pyro'));
           return;
         }
         const screenBtn = e.target.closest?.('[data-lmp-screen]');
         if (screenBtn) {
-          addToolboxScreen18(screenBtn.getAttribute('data-lmp-screen'));
+          openToolboxConfigurator18('screens', screenBtn.getAttribute('data-lmp-screen'));
           return;
         }
         const dmxBtn = e.target.closest?.('[data-lmp-dmx]');
@@ -10516,8 +12078,18 @@ void main(){
         if (actionBtn) {
           const ak = actionBtn.getAttribute('data-lmp-action');
           if (ak === 'screencap') {
-            if (lumiState.screenCapture18?.active) stopLiveScreenCapture18();
-            else startLiveScreenCapture18();
+            if (lumiState.screenCapture18?.active && lumiState.screenCapture18.sourceType === 'screen') stopLiveScreenCapture18();
+            else startLiveScreenCapture18({ sourceType: 'screen', fitMode: lumiState.screenCapture18?.fitMode || 'cover' });
+          } else if (ak === 'webcamcap') {
+            if (lumiState.screenCapture18?.active && lumiState.screenCapture18.sourceType === 'webcam') stopLiveScreenCapture18();
+            else startLiveScreenCapture18({ sourceType: 'webcam', fitMode: lumiState.screenCapture18?.fitMode || 'cover' });
+          } else if (ak === 'capfit') {
+            lumiState.screenCapture18.fitMode = lumiState.screenCapture18.fitMode === 'contain' ? 'cover' : 'contain';
+            renderLmpToolbox18();
+          } else if (ak === 'par_u_contour') {
+            const res = deployParWallContour18({ layout: 'u_contour_3wall', presetId: 'wedding_gold', countPerWall: 6, autoSnapWalls: true });
+            window.renderUI?.();
+            window.toast?.(tr18(`Đã bố trí ${res.totalAdded} đèn PAR LED chữ U dọc 3 vách hội trường.`, `Deployed ${res.totalAdded} PAR LED fixtures along 3-wall U-contour.`));
           }
           return;
         }
@@ -10623,6 +12195,7 @@ void main(){
       openStageTemplatesModal,
       openStageAiModal,
       closeAiChat18,
+      setAiEnabled18,
       openBomAndQuoteModal,
       openLiveShowModal,
       openBillingModal,
@@ -10635,6 +12208,16 @@ void main(){
       addToolboxLighting18,
       addToolboxPyroSfx18,
       addToolboxScreen18,
+      openToolboxConfigurator18,
+      openBatchConfigurator18,
+      removeBatchItems18,
+      buildChainDiagramSvg18,
+      buildLmpConfigCardHtml18,
+      buildLmpLightingFxEngineHtml18,
+      rebuildBatchConfigurator18,
+      renderLmpRightPanelSection18,
+      openLmpHelpModal18,
+      getLmpFxSelectOptions18,
       triggerPyroBurst18,
       buildGeometricLedMesh18,
       renderLmpToolbox18,
@@ -10713,8 +12296,14 @@ void main(){
       renderEngineeringBlueprintSheet18,
       exportEngineeringBlueprintPack18,
       openEngineeringBlueprintModal18,
+      computeLiveCaptureFitRect18,
       startLiveScreenCapture18,
-      stopLiveScreenCapture18
+      stopLiveScreenCapture18,
+      sanitizeStructureConfig18,
+      buildVenueArchitectureMeshes18,
+      parAtmospherePresets18: PAR_ATMOSPHERE_PRESETS18,
+      deployParWallContour18,
+      attachFixturesToTruss18
     };
     S.lumiCommercial18 = S.lumi18;
   } catch (err) {

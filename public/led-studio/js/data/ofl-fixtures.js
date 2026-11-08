@@ -510,6 +510,31 @@
           ]
         }
       ]
+    },
+    {
+      id: 'vn-stage/laser-rgb-10w',
+      aliases: ['kvant/clubmax-10w', 'laser-rgb-10w'],
+      manufacturer: 'Kvant / VN Stage',
+      name: 'Kvant Clubmax 10W RGB Show Laser',
+      category: 'laser',
+      physical: { beamAngleMin: 0.5, beamAngleMax: 52, lumens: 15000, powerW: 320, weightKg: 9.8, panMaxDeg: 180, tiltMaxDeg: 180 },
+      modes: [
+        {
+          name: '16ch ILDA/DMX Scanner',
+          channelCount: 16,
+          channels: [
+            { offset: 1, name: 'Dimmer / Laser Safety', type: 'Intensity', resolution: 8, defaultValue: 255 },
+            { offset: 2, name: 'Strobe', type: 'ShutterStrobe', resolution: 8, defaultValue: 0 },
+            { offset: 3, name: 'Pattern / Cue', type: 'Gobo', resolution: 8, defaultValue: 0 },
+            { offset: 4, name: 'X Scan (Pan)', type: 'Pan', resolution: 16, fineOffset: 5, defaultValue: 128 },
+            { offset: 6, name: 'Y Scan (Tilt)', type: 'Tilt', resolution: 16, fineOffset: 7, defaultValue: 128 },
+            { offset: 8, name: 'Zoom / Scan Size', type: 'Zoom', resolution: 8, defaultValue: 128 },
+            { offset: 9, name: 'Red Diode', type: 'ColorIntensity', color: 'Red', resolution: 8, defaultValue: 255 },
+            { offset: 10, name: 'Green Diode', type: 'ColorIntensity', color: 'Green', resolution: 8, defaultValue: 255 },
+            { offset: 11, name: 'Blue Diode', type: 'ColorIntensity', color: 'Blue', resolution: 8, defaultValue: 255 }
+          ]
+        }
+      ]
     }
   ];
 

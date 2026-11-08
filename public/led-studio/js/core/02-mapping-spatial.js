@@ -89,14 +89,6 @@ const OBJECT_NAME_PAIRS=[
  ['Ghế Hội Nghị Đại Biểu Khung Đồng','Brass-frame VIP conference chair'],['Bục Phát Biểu & Bàn Lễ Tân VIP Gỗ Sồi','Oak VIP lectern & reception desk'],
  ['Chậu Cây Cảnh Nhiệt Đới Sân Khấu','Tropical stage planter'],['Đèn Chùm Pha Lê Gala / Tiệc Cưới','Crystal gala / wedding chandelier'],
  ['Kệ Trưng Bày Cúp & Sản Phẩm 4 Tầng','Four-tier trophy & product display shelf'],['Thảm Đỏ Khánh Tiết VIP Viền Vàng 2×3.6m','2×3.6m gold-trimmed VIP red carpet'],
- ['Vũ công Mocap 3D (Có xương & Animation)','Human Mocap Dancer (rigged & animated)'],
- ['Nhân vật 3D Cơ bản (Có xương & Animation)','Human Base Performer (rigged & animated)'],
- ['Gói Chuyển Động Vũ Đạo 3D (Có xương & Animation)','Human Stage Action Pack (rigged & animated)'],
- ['Rồng 3D Đại Cảnh','3D stage dragon'],['Chim / Phượng Hoàng 3D Vỗ Cánh','3D bird / phoenix with wing animation'],
- ['Ngựa 3D Phi Nước Đại','3D galloping horse'],['Hồ Ly / Cáo 3D Chuyển Động','Animated 3D fox'],
- ['Quái Thú Kaiju 3D Đại Cảnh','3D stage Kaiju monster'],['Cá Mập 3D Đại Dương','3D ocean shark'],
- ['Rắn Thần 3D Chuyển Động','Animated 3D serpent'],['Nhện Máy 3D Halloween / Sci-Fi','3D Halloween / Sci-Fi robot spider'],
- ['Ghế Đơn Sân Khấu (Quaternius CC0)','Stage chair (Quaternius CC0)'],
  ['Vũ Công Đương Đại (Nữ)','Stage Dancer'],['Vũ Công Đương Đại (Nam)','Stage Dancer (Male)'],['Vũ Công Urban (Nam)','Urban Dancer'],
  ['Ca Sĩ Sân Khấu (Nữ)','Stage Singer'],['Ca Sĩ Sân Khấu (Nam)','Stage Singer (Male)'],
  ['MC Sân Khấu (Nam)','Stage Host'],['MC Sân Khấu (Nữ)','Stage Host (Female)'],
@@ -146,7 +138,25 @@ const OBJECT_NAME_PAIRS=[
  ['Nếp gấp khăn bàn IBM','IBM Skirt Pleat'],['Viền vàng mép trên bàn IBM','IBM Gold Trim Top'],['Viền vàng chân bàn IBM','IBM Gold Trim Bottom'],
  ['Tấm lót da đại biểu','Delegate Blotter'],['Biển tên đại biểu','Delegate Nameplate'],['Micro hội nghị','Conference Mic'],['Khung ghế VIP','VIP Chair Frame'],
  ['Mặt bàn kỹ thuật FOH','FOH Table Worktop'],['Vách chắn kỹ thuật FOH','FOH Privacy Baffle'],
- ['Dải LED mặt trước FOH','FOH Front LED Strip'],['Màn hình rộng điều khiển FOH','FOH Widescreen Monitor']
+ ['Dải LED mặt trước FOH','FOH Front LED Strip'],['Màn hình rộng điều khiển FOH','FOH Widescreen Monitor'],
+ ['Đèn Chớp Khán Giả 4×100W COB Molefay (Tách Yoke/Head DMX)','4-Lite Audience Blinder 4×100W (DMX yoke / head)'],
+ ['Đèn Laser RGB Kvant Clubmax 10W (Tách Yoke/Head DMX)','Kvant Clubmax 10W RGB Show Laser (DMX yoke / head)'],
+ ['Đèn Chớp Hybrid Xenon/LED Atomic 3000 (Tách Yoke/Head DMX)','Atomic 3000W LED Strobe & Blinder (DMX yoke / head)'],
+ ['Máy Pháo Điện Lạnh Sparkular BT01 700W','Sparkular BT01 700W Cold Spark Fountain'],
+ ['Súng Cột Khói Lạnh MagicFX CO2 Cryo Jet','MagicFX CO2 Cryo Jet Stage Cannon'],
+ ['Máy Phun Lửa Galaxis G-Flame DMX','Galaxis G-Flame DMX Stage Flame Projector'],
+ ['Pháo Kim Tuyến Đại Cảnh MagicFX StadiumShot III','MagicFX StadiumShot III Confetti Cannon'],
+ ['Loa Kiểm Âm Sân Khấu Stage Monitor 15" Đồng Trục','15" Coaxial 45-deg Stage Wedge Monitor'],
+ ['Rào Chắn Khán Giả Hợp Kim Nhôm Mojo 2m','2m Aluminum Mojo Crowd Control Barrier'],
+ ['Trụ Nghi Thức Ấn Nút & Quả Cầu LED Khai Mạc','VIP Opening Ceremony LED Touch Sphere Pillar'],
+ ['Cụm Tời DMX Kinetic Winch & Vòng Quả Cầu LED','DMX Kinetic Winch & LED Ring Orb'],
+ ['Bộ Trống Acoustic Drum Kit 5 Trống & 4 Cymbal','5-Piece Touring Acoustic Drum Kit & Cymbals'],
+ ['Đàn Đại Dương Cầm Concert Grand Piano 1.8m','1.8m Concert Grand Piano & Bench'],
+ ['Cụm Máy Quay Truyền Hình Broadcast & Tripod Dolly','4K Broadcast Pedestal Camera & Teleprompter'],
+ ['Loa Kiểm Âm Wedge Monitor 15"','15" coaxial stage wedge monitor'],
+ ['Bộ Trống Acoustic Lưu Diễn 5 Trống','5-piece touring acoustic drum kit'],
+ ['Đại Dương Cầm Concert Grand Piano 1.8m','1.8m concert grand piano'],
+ ['Máy Quay Truyền Hình 4K Pedestal','4K broadcast pedestal camera']
 ];
 const OBJECT_NAME_MAP=new Map();
 for(const pair of OBJECT_NAME_PAIRS){OBJECT_NAME_MAP.set(pair[0],pair);OBJECT_NAME_MAP.set(pair[1],pair);}
@@ -174,7 +184,9 @@ function localizeObjectName(raw){
  return direct;
 }
 function matchesObjectFilter16(mesh,filter){
- if(!filter||filter==='all'||!mesh)return true;
+ if(!mesh)return false;
+ if(mesh._sfxKind16)return false;
+ if(!filter||filter==='all')return true;
  const n=String(mesh.name||'').toLowerCase();
  const isProp=!!(mesh._asset16Id||mesh._importedGlb16||mesh._assetOrigin16||/^cc0\s/i.test(n));
  const isLed=!isProp&&!/^frame[_ ]/i.test(n)&&/\b(led|screen|display)\b|^led_/i.test(n);
@@ -499,26 +511,44 @@ function buildStageShellMeshes(opts={}){
  return meshes;
 }
 if(typeof window!=='undefined')window.buildStageShellMeshes=buildStageShellMeshes;
-function demo(){state.rebindId=null;engine.view='stage';engine.showGuides=true;engine.globalTest=false;engine.mapExact=false;state.step='stage';state.quad=false;state.quadPoints=[];state.duration=12;state.time=0;$('quadHint').classList.add('hidden');let meshes=buildStageShellMeshes({widthM:19,depthM:7,heightM:.6,topY:6.6,trussMode:'box',includePA:true}),screens=[];let addLED=(name,c,w,h,ry=0,map={})=>{let q=quadMesh(name,[[-w/2,h/2,0],[w/2,h/2,0],[w/2,-h/2,0],[-w/2,-h/2,0]],{color:[.04,.05,.08,1]});let mat=M.mm(M.translate(c),M.rotate([0,1,0],ry));let grp='led_asm_'+name,gvi='Cụm Màn LED: '+name,gen='LED Screen Assembly: '+name;transformMesh(q,mat);q._smartGroupId=grp;q.nodePath=grp+'/panel';q._groupLabelVi=gvi;q._groupLabelEn=gen;meshes.push(q);screens.push({mesh:q,map});let b=boxMesh(name.replace('LED','Frame'),[0,0,-.10],[w+.12,h+.12,.18],[.12,.13,.17,1]);transformMesh(b,mat);b._smartGroupId=grp;b.nodePath=grp+'/frame';b._groupLabelVi=gvi;b._groupLabelEn=gen;meshes.push(b)};
+function demo(){state.rebindId=null;engine.view='stage';engine.showGuides=true;engine.globalTest=false;engine.mapExact=false;state.step='stage';state.quad=false;state.quadPoints=[];state.duration=12;state.time=0;$('quadHint').classList.add('hidden');let meshes=buildStageShellMeshes({widthM:19,depthM:7,heightM:.6,topY:6.6,trussMode:'box',includePA:true}),screens=[];let addLED=(name,c,w,h,ry=0,map={})=>{let q=quadMesh(name,[[-w/2,h/2,0],[w/2,h/2,0],[w/2,-h/2,0],[-w/2,-h/2,0]],{color:[.04,.05,.08,1]});let mat=M.mm(M.translate(c),M.rotate([0,1,0],ry));let grp='led_asm_'+name,gvi='Cụm Màn LED: '+name,gen='LED Screen Assembly: '+name;transformMesh(q,mat);q._smartGroupId=grp;q.nodePath=grp+'/panel';q._groupLabelVi=gvi;q._groupLabelEn=gen;meshes.push(q);screens.push({mesh:q,pos:c,yawDeg:+(ry*180/Math.PI).toFixed(2),wM:w,hM:h,map});let b=boxMesh(name.replace('LED','Frame'),[0,0,-.10],[w+.12,h+.12,.18],[.12,.13,.17,1]);transformMesh(b,mat);b._smartGroupId=grp;b.nodePath=grp+'/frame';b._groupLabelVi=gvi;b._groupLabelEn=gen;meshes.push(b)};
  addLED('LED_MAIN',[0,3.05,-2.1],9.0,4.5,0,{x:960,y:160,w:1920,h:960,cabinetModelId:'roe_bp2v2_500',processorModelId:'brompton_sx40',rows500x1000:4,rows500x500:1,shapeType:'flat'});addLED('LED_WING_L',[-6.25,3.05,-1.65],2.5,4.5,.18,{x:320,y:160,w:520,h:960,cabinetModelId:'absen_pl39_1000',processorModelId:'novastar_vx1000',shapeType:'flat'});addLED('LED_WING_R',[6.25,3.05,-1.65],2.5,4.5,-.18,{x:3000,y:160,w:520,h:960,cabinetModelId:'absen_pl39_1000',processorModelId:'novastar_vx1000',shapeType:'flat'});
- engine.setModel(meshes);engine.surfaces=[];engine.master={width:3840,height:1280};for(let s of screens){let surf=createSurface(s.mesh,s.mesh.name,s.map);if(surf&&s.map){if(s.map.cabinetModelId)surf.cabinetModelId=s.map.cabinetModelId;if(s.map.processorModelId)surf.processorModelId=s.map.processorModelId;if(s.map.rows500x1000!==undefined)surf.rows500x1000=s.map.rows500x1000;if(s.map.rows500x500!==undefined)surf.rows500x500=s.map.rows500x500;if(s.map.shapeType)surf.shapeType=s.map.shapeType;}}engine.selected=engine.surfaces[0].id;state.model={name:'ALPHA_Demo_Stage',files:[],demo:true};state.projectName='ALPHA_Demo_Stage';state.selectedMesh=null;state.hit=null;engine.cameraPreset('iso');engine.camera.yaw=.15;engine.camera.pitch=.2;rigPreset('concert',false);state.history=[];state.redo=[];renderUI();}
+ engine.setModel(meshes);engine.surfaces=[];engine.master={width:3840,height:1280};for(let s of screens){let surf=createSurface(s.mesh,s.mesh.name,s.map);if(surf&&s.map){if(s.map.cabinetModelId)surf.cabinetModelId=s.map.cabinetModelId;if(s.map.processorModelId)surf.processorModelId=s.map.processorModelId;if(s.map.rows500x1000!==undefined)surf.rows500x1000=s.map.rows500x1000;if(s.map.rows500x500!==undefined)surf.rows500x500=s.map.rows500x500;if(s.map.shapeType)surf.shapeType=s.map.shapeType;surf.pos=s.pos.slice();surf.yawDeg=s.yawDeg;surf.physical=[s.wM,s.hM];surf.physicalWidthM=s.wM;surf.physicalHeightM=s.hM;s.mesh._surfaceId18=surf.id;if(surf.mesh)surf.mesh._surfaceId18=surf.id;normalizeSurfaceHardware(surf);}}engine.selected=engine.surfaces[0].id;state.model={name:'ALPHA_Demo_Stage',files:[],demo:true};state.projectName='ALPHA_Demo_Stage';state.selectedMesh=null;state.hit=null;engine.cameraPreset('iso');engine.camera.yaw=.15;engine.camera.pitch=.2;rigPreset('concert',false);state.history=[];state.redo=[];renderUI();}
 function stageRigAnchors(){const bars=(engine.stage||[]).filter(m=>m&&m.name==='Truss crossbar'&&!m.hidden);if(!bars.length)return null;const zc=m=>(m.bounds.min[2]+m.bounds.max[2])*.5,minZc=Math.min(...bars.map(zc)),backBars=bars.filter(m=>zc(m)<=minZc+1),frontBars=bars.filter(m=>zc(m)>minZc+1.5);const backZ=+((Math.min(...backBars.map(m=>m.bounds.min[2]))+Math.max(...backBars.map(m=>m.bounds.max[2])))*.5).toFixed(2),backHangY=+(Math.min(...backBars.map(m=>m.bounds.min[1]))-.15).toFixed(2),frontZ=frontBars.length?+((Math.min(...frontBars.map(m=>m.bounds.min[2]))+Math.max(...frontBars.map(m=>m.bounds.max[2])))*.5).toFixed(2):null,frontHangY=frontBars.length?+(Math.min(...frontBars.map(m=>m.bounds.min[1]))-.15).toFixed(2):backHangY,halfW=+((Math.max(...backBars.map(m=>m.bounds.max[0]))-Math.min(...backBars.map(m=>m.bounds.min[0])))*.5).toFixed(2);const deck=engine.stage.find(m=>m&&m.name==='Stage platform'&&!m.hidden),deckY=+(deck?deck.bounds.max[1]:.6).toFixed(2),deckFrontZ=+(deck?deck.bounds.max[2]:3).toFixed(2),mainLed=(engine.surfaces||[]).find(s=>/MAIN/i.test(s.name))||engine.surfaces?.[0],ledZ=+(mainLed?.mesh?mainLed.mesh.bounds.max[2]:backZ+.45).toFixed(2);const bases=(engine.stage||[]).filter(m=>m&&m.name==='Truss Baseplate'&&!m.hidden).map(m=>[+((m.bounds.min[0]+m.bounds.max[0])*.5).toFixed(2),+((m.bounds.min[2]+m.bounds.max[2])*.5).toFixed(2)]),refZ=frontZ??backZ,leftBases=bases.filter(c=>c[0]<0).sort((a,b)=>Math.abs(a[1]-refZ)-Math.abs(b[1]-refZ)),rightBases=bases.filter(c=>c[0]>0).sort((a,b)=>Math.abs(a[1]-refZ)-Math.abs(b[1]-refZ));return{backZ,backHangY,frontZ,frontHangY,halfW,deckY,deckFrontZ,ledZ,towers:[leftBases[0]||[-halfW,refZ],rightBases[0]||[halfW,refZ]]};}
 if(typeof window!=='undefined')window.stageRigAnchors=stageRigAnchors;
 function rigPreset(name,history=true){if(history)checkpoint();let w=engine.size.width,h=engine.size.height,d=Math.max(engine.size.depth,5),A=stageRigAnchors();let colors=name==='warm'?['#ffd09a','#ffb86b']:name==='cool'?['#d6eeff','#7fc9ff']:['#66d5ff','#be7bff'];if(A){let spanM=Math.max(4,+(A.halfW*2).toFixed(2)),endClearM=Math.max(.65,+(spanM*.09).toFixed(3)),usableSpanM=Math.max(1,spanM-endClearM*2),beamCols=name==='warm'?['#ffd09a','#ffb86b']:name==='cool'?['#d6eeff','#7fc9ff']:['#38bdf8','#e0f2fe','#818cf8'],washCols=name==='warm'?['#ffb86b','#ffd09a']:name==='cool'?['#7fc9ff','#bae6fd']:['#c084fc','#38bdf8'],fz=A.frontZ??A.backZ,fy=A.frontZ!==null?A.frontHangY:A.backHangY,fTruss=A.frontZ!==null?'TRUSS_FRONT':'TRUSS_MAIN';let backBeams=[-.39,-.13,.13,.39].map((u,i)=>{let rawX=+(u*usableSpanM).toFixed(3),distFromLeft=rawX+spanM*.5,spigotMod=distFromLeft%2,nudge=Math.min(spigotMod,2-spigotMod)<.06?(rawX<0?-.08:.08):0,posX=+(rawX+nudge).toFixed(3);return{id:'light_'+i,name:'Beam '+String(i+1).padStart(2,'0'),type:'beam',fixtureType128:'beam5r',aperture:.03,beamProfile18:0,model:'Robe Pointe 280W',oflModel:'Robe Pointe 280W',oflProfileId:'vn-stage/beam-230-7r',weightKg:15,powerW:380,beamAngleDeg:5,luminousFluxLm:18500,dmxUniverse:1,dmxAddress:1+i*16,dmxChannels:16,trussId:'TRUSS_MAIN',pos:[posX,A.backHangY,A.backZ],target:[+(posX*1.18).toFixed(2),+(A.deckY+3.9+(i%2)*.55).toFixed(2),+(A.deckFrontZ+4.4).toFixed(2)],color:beamCols[i%beamCols.length],power:name==='blackout'?0:name==='warm'?2.6:3.2,angle:5,enabled:name!=='blackout',sweep:name==='concert',speed:.32,phase:i*.45,fx:'steady',fxDepth:.5,fxSpeed:2.0,boost:1}});let frontWashes=[-4.6,4.6].map((wx,j)=>{let px=+(wx*(A.halfW/8.9)).toFixed(2);return{id:'light_'+(4+j),name:'Wash '+String(j+1).padStart(2,'0'),type:'wash',fixtureType128:'washRGB',aperture:.08,beamProfile18:2,model:'Martin MAC Aura XB',oflModel:'Martin MAC Aura XB',oflProfileId:'vn-stage/par-led-54x3w',weightKg:19,powerW:450,beamAngleDeg:28,luminousFluxLm:22000,dmxUniverse:1,dmxAddress:65+j*16,dmxChannels:16,trussId:fTruss,pos:[px,fy,fz],target:[+(px*.72).toFixed(2),A.deckY,-.35],color:washCols[j%washCols.length],power:name==='blackout'?0:name==='warm'?2.5:2.8,angle:name==='cool'?22:18,enabled:name!=='blackout',sweep:false,speed:.25,phase:j*.5,fx:'steady',fxDepth:.4,fxSpeed:1.8,boost:1}});let keyProfiles=[-1.25,1.25].map((kx,j)=>({id:'light_'+(6+j),name:'Key Profile '+String(j+1).padStart(2,'0'),type:'spot',fixtureType128:'profile',aperture:.028,beamProfile18:1,model:'Moving Head Spot 350W',oflModel:'Moving Head Spot 350W',oflProfileId:'generic/moving-head-spot-350w',weightKg:21,powerW:420,beamAngleDeg:12,luminousFluxLm:24000,dmxUniverse:1,dmxAddress:97+j*20,dmxChannels:20,trussId:fTruss,pos:[kx,fy,fz],target:[+(kx*.35).toFixed(2),+(A.deckY+1.15).toFixed(2),.45],color:'#fff1dc',power:name==='blackout'?0:2.5,angle:11,enabled:name!=='blackout',sweep:false,speed:.2,phase:j*.6,fx:'steady',fxDepth:.3,fxSpeed:1.5,boost:1}));let floorBars=[-5.2,-2.1,2.1,5.2].map((bx,j)=>({id:'light_'+(8+j),name:'Barra LED '+String(j+1).padStart(2,'0'),type:'bar',fixtureType128:'pixel',aperture:.07,beamProfile18:4,model:'Katana LED Matrix Bar 1m',oflModel:'Katana LED Matrix Bar 1m',oflProfileId:'vn-stage/katana-led-bar-1m',weightKg:8.5,powerW:280,beamAngleDeg:12,luminousFluxLm:14000,dmxUniverse:1,dmxAddress:137+j*24,dmxChannels:24,trussId:'STAGE_DECK_FRONT',pos:[bx,+(A.deckY+.04).toFixed(2),+(A.ledZ+.65).toFixed(2)],target:[bx,+(A.deckY+4.8).toFixed(2),+(A.ledZ+.82).toFixed(2)],color:name==='warm'?'#ffb86b':(j%2===0?'#00f5d4':'#f59e0b'),power:name==='blackout'?0:2.8,angle:10,enabled:name!=='blackout',sweep:false,speed:.4,phase:j*.5,fx:'pulse',fxDepth:.45,fxSpeed:2.4,boost:1}));let blinders=[-3.2,3.2].map((bx,j)=>({id:'light_'+(12+j),name:'Blinder '+String(j+1).padStart(2,'0'),type:'blinder',fixtureType128:'blinder',aperture:.085,beamProfile18:3,model:'Audience Blinder 4-Lite',oflModel:'Audience Blinder 4-Lite',oflProfileId:'vn-stage/cob-blinder-4x100w',weightKg:9.5,powerW:400,beamAngleDeg:45,luminousFluxLm:32000,dmxUniverse:1,dmxAddress:233+j*8,dmxChannels:8,trussId:fTruss,pos:[bx,fy,fz],target:[+(bx*1.12).toFixed(2),1.35,+(A.deckFrontZ+3.2).toFixed(2)],color:'#ffbe6b',power:name==='blackout'?0:1.1,angle:24,enabled:name!=='blackout',sweep:false,speed:.25,phase:j*.8,fx:'steady',fxDepth:.4,fxSpeed:1.8,boost:1}));let sideSpots=A.towers.map((tCol,j)=>({id:'light_'+(14+j),name:'Spot Profile '+String(j+1).padStart(2,'0'),type:'spot',fixtureType128:'hybrid',aperture:.045,beamProfile18:1,model:'Moving Head Spot 350W',oflModel:'Moving Head Spot 350W',oflProfileId:'generic/moving-head-spot-350w',weightKg:21,powerW:420,beamAngleDeg:14,luminousFluxLm:24000,dmxUniverse:1,dmxAddress:249+j*20,dmxChannels:20,trussId:j===0?'TOWER_L':'TOWER_R',pos:[+(tCol[0]-Math.sign(tCol[0]||1)*.16).toFixed(2),+(A.deckY+2.65).toFixed(2),tCol[1]],target:[0,+(A.deckY+1.1).toFixed(2),.2],color:name==='warm'?'#ffd09a':'#f472b6',power:name==='blackout'?0:2.9,angle:10,enabled:name!=='blackout',sweep:name==='concert',speed:.28,phase:1.2+j*1.5,fx:'steady',fxDepth:.5,fxSpeed:2.0,boost:1}));engine.lights=[...backBeams,...frontWashes,...keyProfiles,...floorBars,...blinders,...sideSpots];}else{let spanM=Math.max(4,+(w*.94).toFixed(2)),endClearM=Math.max(.42,+(spanM*.08).toFixed(3)),usableSpanM=Math.max(.5,spanM-endClearM*2);let topLights=Array.from({length:6},(_,i)=>{let u=i/5-.5,rawX=+(u*usableSpanM).toFixed(3),distFromLeft=rawX+spanM*.5,spigotMod=distFromLeft%2,nudge=Math.min(spigotMod,2-spigotMod)<.06?(rawX<0?-.08:.08):0,posX=+(rawX+nudge).toFixed(3),isBeam=name!=='cool'&&i%2===0;return{id:'light_'+i,name:(isBeam?'Beam ':'Wash ')+String(i+1).padStart(2,'0'),type:isBeam?'beam':'wash',fixtureType128:isBeam?'beam5r':'washRGB',aperture:isBeam?.03:.08,model:isBeam?'Robe Pointe 280W':'Martin MAC Aura XB',oflModel:isBeam?'Robe Pointe 280W':'Martin MAC Aura XB',oflProfileId:isBeam?'vn-stage/beam-230-7r':'vn-stage/par-led-54x3w',weightKg:isBeam?15:19,powerW:isBeam?380:450,beamAngleDeg:isBeam?5:28,luminousFluxLm:isBeam?18500:22000,dmxUniverse:1,dmxAddress:1+i*16,dmxChannels:16,trussId:'TRUSS_MAIN',pos:[posX,+(h*.93).toFixed(2),+(-d*.23).toFixed(2)],target:[+(u*w*(name==='concert'?-.45:.65)).toFixed(2),.25,+(d*.55).toFixed(2)],color:colors[i%2],power:name==='blackout'?0:name==='warm'?3.2:4.5,angle:isBeam?8:(name==='cool'?24:16),enabled:name!=='blackout',sweep:name==='concert',speed:.35,phase:i*.4,fx:'steady',fxDepth:.55,fxSpeed:2.2,boost:1}});let floorBars=[-5.4,-1.8,1.8,5.4].map((bx,j)=>({id:'light_'+(6+j),name:'Barra LED '+String(j+1).padStart(2,'0'),type:'bar',fixtureType128:'pixel',aperture:.07,model:'Katana LED Matrix Bar 1m',oflModel:'Katana LED Matrix Bar 1m',oflProfileId:'vn-stage/katana-led-bar-1m',weightKg:8.5,powerW:280,beamAngleDeg:12,luminousFluxLm:14000,dmxUniverse:1,dmxAddress:97+j*24,dmxChannels:24,trussId:'STAGE_DECK_FRONT',pos:[bx,.58,2.45],target:[bx*.85,4.6,.4],color:name==='warm'?'#ffb86b':'#00f5d4',power:name==='blackout'?0:3.6,angle:12,enabled:name!=='blackout',sweep:false,speed:.4,phase:j*.5,fx:'pulse',fxDepth:.45,fxSpeed:2.4,boost:1}));let blinders=[-3.4,3.4].map((bx,j)=>({id:'light_'+(10+j),name:'Blinder '+String(j+1).padStart(2,'0'),type:'blinder',fixtureType128:'blinder',aperture:.085,model:'Audience Blinder 4-Lite',oflModel:'Audience Blinder 4-Lite',oflProfileId:'vn-stage/cob-blinder-4x100w',weightKg:9.5,powerW:400,beamAngleDeg:45,luminousFluxLm:32000,dmxUniverse:1,dmxAddress:193+j*8,dmxChannels:8,trussId:'TRUSS_MAIN',pos:[bx,+(h*.91).toFixed(2),+(-d*.16).toFixed(2)],target:[bx*1.15,.8,+(d*.68).toFixed(2)],color:'#ffbe6b',power:name==='blackout'?0:3.8,angle:26,enabled:name!=='blackout',sweep:false,speed:.25,phase:j*.8,fx:'steady',fxDepth:.4,fxSpeed:1.8,boost:1}));let sideSpots=[-7.6,7.6].map((bx,j)=>({id:'light_'+(12+j),name:'Spot Profile '+String(j+1).padStart(2,'0'),type:'spot',fixtureType128:'hybrid',aperture:.045,model:'Moving Head Spot 350W',oflModel:'Moving Head Spot 350W',oflProfileId:'generic/moving-head-spot-350w',weightKg:21,powerW:420,beamAngleDeg:14,luminousFluxLm:24000,dmxUniverse:1,dmxAddress:209+j*20,dmxChannels:20,trussId:j===0?'TOWER_L':'TOWER_R',pos:[bx,4.4,-1.35],target:[0,1.4,1.2],color:name==='warm'?'#ffd09a':'#ff6bcb',power:name==='blackout'?0:4.2,angle:11,enabled:name!=='blackout',sweep:name==='concert',speed:.3,phase:1.2+j*1.5,fx:'steady',fxDepth:.5,fxSpeed:2.0,boost:1}));engine.lights=[...topLights,...floorBars,...blinders,...sideSpots];}state.selectedLight=engine.lights[0].id;engine.settings.ambient=name==='blackout'?.12:name==='warm'?.55:.5;engine.settings.beam=name==='blackout'?0:.42;engine.rebuildFixtures();if(history){renderUI();toast((typeof window==='undefined'?"Đã áp preset ánh sáng: ":window.tr?.("Đã áp preset ánh sáng: ","Lighting preset applied: ")??"Đã áp preset ánh sáng: ")+name)}}
 function lightingFXPreset(mode){checkpoint();for(let i=0;i<engine.lights.length;i++){let l=engine.lights[i];if(mode==='boost'){l.enabled=true;l.sweep=true;l.fx='build';l.fxDepth=.65;l.fxSpeed=1.2;l.boost=1.5;l.power=Math.max(l.power,4.8)}else if(mode==='pulse'){l.enabled=true;l.fx='pulse';l.fxDepth=.55;l.fxSpeed=2.6;l.boost=1.12}else if(mode==='strobe'){l.enabled=true;l.fx='strobe';l.fxDepth=.98;l.fxSpeed=8.5;l.boost=1.25}else if(mode==='steady'){l.fx='steady';l.fxDepth=.35;l.fxSpeed=2;l.boost=1}else if(mode==='sweep'){l.sweep=true;l.fx='steady';l.boost=1.08}}renderUI();toast((typeof window==='undefined'?"Đã áp show FX: ":window.tr?.("Đã áp show FX: ","Show effects applied: ")??"Đã áp show FX: ")+mode)}
 function setStep(step){state.rebindId=null;$('quadHint').classList.add('hidden');state.step=step;state.quad=false;state.quadPoints=[];renderUI();}
 function selectSurface(id){engine.selected=id;state.step='mapping';renderUI()}
-function renderLists(){let query=$('objectSearch').value.trim().toLowerCase(),arr=state.step==='stage'?engine.stage:state.step==='mapping'?engine.surfaces:engine.lights,loc=typeof localizeObjectName==='function'?localizeObjectName:s=>s,flt=state.step==='stage'&&typeof window!=='undefined'&&window._objFilter16||'all';let visible=arr.filter(m=>{if(m._deleted8)return false;if(state.step==='stage'&&flt!=='all'&&typeof matchesObjectFilter16==='function'&&!matchesObjectFilter16(m,flt))return false;const raw=m.name.toLowerCase();return raw.includes(query)||loc(m.name).toLowerCase().includes(query);});$('leftTitle').textContent=state.step==='stage'?(typeof window==='undefined'?"Cấu trúc sân khấu":window.tr?.("Cấu trúc sân khấu","Stage structure")??"Cấu trúc sân khấu"):state.step==='mapping'?(typeof window==='undefined'?"Danh sách LED":window.tr?.("Danh sách LED","LED list")??"Danh sách LED"):(typeof window==='undefined'?"Hệ thống đèn":window.tr?.("Hệ thống đèn","Lighting system")??"Hệ thống đèn");const leftSvgUse=typeof document!=='undefined'&&document.querySelector?.('.object-section .section-heading svg use');const leftSvg=typeof document!=='undefined'&&document.querySelector?.('.object-section .section-heading svg');if(leftSvgUse&&leftSvg){if(state.step==='stage'){leftSvgUse.setAttribute('href','#i-layers');leftSvg.className.baseVal='ico ico-stage';}else if(state.step==='mapping'){leftSvgUse.setAttribute('href','#i-grid-3x3');leftSvg.className.baseVal='ico ico-led';}else{leftSvgUse.setAttribute('href','#i-lightbulb');leftSvg.className.baseVal='ico ico-lights';}}$('leftCount').textContent=arr.length;$('meshCount').textContent=engine.stage.length+(typeof window==='undefined'?" đối tượng":window.tr?.(" đối tượng"," objects")??" đối tượng");$('objectList').innerHTML='';if(!state._skipStageRows8){let slice=visible.slice(0,250);if(state.step==='stage'&&state.selectedMesh&&!slice.some(x=>x.id===state.selectedMesh)){let selItem=visible.find(x=>x.id===state.selectedMesh);if(selItem)slice.push(selItem);}for(let item of slice){let b=document.createElement('button'),sel=state.step==='stage'?state.selectedMesh===item.id:state.step==='mapping'?engine.selected===item.id:state.selectedLight===item.id;b.className='object-row '+(sel?'selected':'');b.dataset.itemId=item.id;let detail=state.step==='stage'?fmt(item.p.length/9)+(typeof window==='undefined'?" tam giác":window.tr?.(" tam giác"," triangles")??" tam giác"):state.step==='mapping'?`${item.w} x ${item.h} / ${engine.media.get(item.source)?.name||item.source}`:(item.enabled?(typeof window==='undefined'?"Bật":window.tr?.("Bật","On")??"Bật"):(typeof window==='undefined'?"Tắt":window.tr?.("Tắt","Off")??"Tắt"))+' / '+item.angle+'°';b.innerHTML=`${objectRowIcon9(item,state.step,false)}<span class="row-main"><strong>${esc(loc(item.name))}</strong><small>${esc(detail)}</small></span>${state.step==='mapping'?'<i class="row-dot"></i>':''}`;b.onclick=()=>{if(state.step==='stage'){state.selectedMesh=item.id;state.hit=null;engine.selected=null;renderUI()}else if(state.step==='mapping')selectSurface(item.id);else{state.selectedLight=item.id;renderUI()}};$('objectList').appendChild(b)}if(!visible.length)$('objectList').innerHTML=(typeof window==='undefined'?"<p class=\"hint-text\">Chưa có mục nào. Hãy nhập model hoặc tạo LED.</p>":window.tr?.("<p class=\"hint-text\">Chưa có mục nào. Hãy nhập model hoặc tạo LED.</p>","<p class=\"hint-text\">No items yet. Import a model or create LEDs.</p>")??"<p class=\"hint-text\">Chưa có mục nào. Hãy nhập model hoặc tạo LED.</p>");}$('repairMapping').style.display=state.step==='lighting'?'none':'';$('repairMapping').disabled=!engine.surfaces.length;$('autoDetect').style.display=state.step==='lighting'?'none':'';$('drawQuad').style.display=state.step==='lighting'?'none':'';
+function renderLists(){let query=$('objectSearch').value.trim().toLowerCase(),sfxItems=state.step==='lighting'&&typeof window!=='undefined'&&Array.isArray(window.STUDIO?.stageAssets16?.items)?window.STUDIO.stageAssets16.items.filter(it=>/^(cold_spark_fountain|co2_jet|flame_jet|confetti_cannon|haze_machine_pro)$/.test(it.kind||it.type||'')).map(it=>({...it,_isPyroSfx18:true})):[],arr=state.step==='stage'?engine.stage.filter(m=>!m._sfxKind16&&!m._venueArch18):state.step==='mapping'?engine.surfaces:[...engine.lights,...sfxItems],loc=typeof localizeObjectName==='function'?localizeObjectName:s=>s,flt=state.step==='stage'&&typeof window!=='undefined'&&window._objFilter16||'all',lightFlt=state.step==='lighting'&&typeof window!=='undefined'&&window._lightFilter16||'all';let visible=arr.filter(m=>{if(m._deleted8||m._sfxKind16||m._venueArch18)return false;if(state.step==='stage'&&flt!=='all'&&typeof matchesObjectFilter16==='function'&&!matchesObjectFilter16(m,flt))return false;if(state.step==='lighting'&&lightFlt!=='all'&&typeof matchesLightingFilter16==='function'&&!matchesLightingFilter16(m,lightFlt))return false;const raw=(m.name||'').toLowerCase();return raw.includes(query)||loc(m.name||'').toLowerCase().includes(query);});$('leftTitle').textContent=state.step==='stage'?(typeof window==='undefined'?"Cấu trúc sân khấu":window.tr?.("Cấu trúc sân khấu","Stage structure")??"Cấu trúc sân khấu"):state.step==='mapping'?(typeof window==='undefined'?"Danh sách LED":window.tr?.("Danh sách LED","LED list")??"Danh sách LED"):(typeof window==='undefined'?"Hệ thống đèn":window.tr?.("Hệ thống đèn","Lighting system")??"Hệ thống đèn");const leftSvgUse=typeof document!=='undefined'&&document.querySelector?.('.object-section .section-heading svg use');const leftSvg=typeof document!=='undefined'&&document.querySelector?.('.object-section .section-heading svg');if(leftSvgUse&&leftSvg){if(state.step==='stage'){leftSvgUse.setAttribute('href','#i-layers');leftSvg.className.baseVal='ico ico-stage';}else if(state.step==='mapping'){leftSvgUse.setAttribute('href','#i-grid-3x3');leftSvg.className.baseVal='ico ico-led';}else{leftSvgUse.setAttribute('href','#i-lightbulb');leftSvg.className.baseVal='ico ico-lights';}}$('leftCount').textContent=arr.length;$('meshCount').textContent=engine.stage.filter(m=>!m._sfxKind16&&!m._venueArch18&&!m._deleted8).length+(typeof window==='undefined'?" đối tượng":window.tr?.(" đối tượng"," objects")??" đối tượng");$('objectList').innerHTML='';if(!state._skipStageRows8){let slice=visible.slice(0,250);if(state.step==='stage'&&state.selectedMesh&&!slice.some(x=>x.id===state.selectedMesh)){let selItem=visible.find(x=>x.id===state.selectedMesh);if(selItem)slice.push(selItem);}for(let item of slice){let b=document.createElement('button'),isSfx=!!item._isPyroSfx18,sel=state.step==='stage'?state.selectedMesh===item.id:state.step==='mapping'?engine.selected===item.id:isSfx?(state.selectedSfx18===item.id):(!state.selectedSfx18&&state.selectedLight===item.id);b.className='object-row '+(sel?'selected':'');b.dataset.itemId=item.id;if(isSfx)b.dataset.sfxId=item.id;let detail=state.step==='stage'?fmt(item.p.length/9)+(typeof window==='undefined'?" tam giác":window.tr?.(" tam giác"," triangles")??" tam giác"):state.step==='mapping'?`${item.w} x ${item.h} / ${engine.media.get(item.source)?.name||item.source}`:isSfx?((typeof window==='undefined'?"Pháo & SFX":window.tr?.("Pháo & SFX","Pyro & SFX")??"Pháo & SFX")+(Array.isArray(item.pos)?` · [${item.pos.map(v=>Number(v).toFixed(1)).join(', ')}]m`:'')):(item.enabled?(typeof window==='undefined'?"Bật":window.tr?.("Bật","On")??"Bật"):(typeof window==='undefined'?"Tắt":window.tr?.("Tắt","Off")??"Tắt"))+' / '+item.angle+'°';b.innerHTML=`${objectRowIcon9(item,state.step,false)}<span class="row-main"><strong>${esc(loc(item.name))}</strong><small>${esc(detail)}</small></span>${state.step==='mapping'?'<i class="row-dot"></i>':''}`;b.onclick=()=>{if(state.step==='stage'){state.selectedMesh=item.id;state.hit=null;engine.selected=null;renderUI()}else if(state.step==='mapping')selectSurface(item.id);else if(isSfx){state.selectedSfx18=item.id;state.selectedLight=null;if(typeof window!=='undefined'&&window.STUDIO?.stageAssets16){window.STUDIO.stageAssets16.selected=item.id;const ms=window.STUDIO.stageAssets16.meshMap?.get?.(item.id);if(ms?.[0])state.selectedMesh=ms[0].id;}renderUI()}else{state.selectedSfx18=null;state.selectedLight=item.id;renderUI()}};$('objectList').appendChild(b)}if(!visible.length)$('objectList').innerHTML=(typeof window==='undefined'?"<p class=\"hint-text\">Chưa có mục nào. Hãy nhập model hoặc tạo LED.</p>":window.tr?.("<p class=\"hint-text\">Chưa có mục nào. Hãy nhập model hoặc tạo LED.</p>","<p class=\"hint-text\">No items yet. Import a model or create LEDs.</p>")??"<p class=\"hint-text\">Chưa có mục nào. Hãy nhập model hoặc tạo LED.</p>");}$('repairMapping').style.display=state.step==='lighting'?'none':'';$('repairMapping').disabled=!engine.surfaces.length;$('autoDetect').style.display=state.step==='lighting'?'none':'';$('drawQuad').style.display=state.step==='lighting'?'none':'';
  $('mediaList').innerHTML='';if(!state.media.length)$('mediaList').innerHTML=(typeof window==='undefined'?"<div class=\"media-empty\">Thả video mapped vào đây.<br>Một master video, nhiều vùng LED.</div>":window.tr?.("<div class=\"media-empty\">Thả video mapped vào đây.<br>Một master video, nhiều vùng LED.</div>","<div class=\"media-empty\">Drop mapped video here.<br>One master video, multiple LED regions.</div>")??"<div class=\"media-empty\">Thả video mapped vào đây.<br>Một master video, nhiều vùng LED.</div>");for(let a of state.media){let row=document.createElement('div');row.className='media-row';row.innerHTML=`<img class="media-thumb" alt="${window.tr?.('Ảnh thu nhỏ media','Media thumbnail')??'Ảnh thu nhỏ media'}"><div><strong>${esc(a.name)}</strong><small>${a.width} x ${a.height} ${a.duration?' / '+a.duration.toFixed(1)+'s':''}</small></div>`;row.querySelector('img').src=a.thumb;row.onclick=()=>{if(surface()){checkpoint();setSource(surface(),a.id);state.step='mapping';renderUI();toast((typeof window==='undefined'?"Đã gán ":window.tr?.("Đã gán ","Assigned ")??"Đã gán ")+a.name+(typeof window==='undefined'?" cho LED đang chọn.":window.tr?.(" cho LED đang chọn."," to the selected LED.")??" cho LED đang chọn."))}else{state.step='mapping';renderUI();toast((typeof window==='undefined'?"Chọn một LED để gán video.":window.tr?.("Chọn một LED để gán video.","Select an LED to assign video.")??"Chọn một LED để gán video."))}};$('mediaList').appendChild(row)}$('sampleVideo')?.classList?.toggle?.('is-compact',state.media.length>0);
 }
+function matchesLightingFilter16(item,filter){
+ if(!filter||filter==='all'||!item)return true;
+ const raw=((item.type||item.kind||'')+' '+(item.name||'')).toLowerCase();
+ const isSfx=!!(item._isPyroSfx18||item._sfxKind16||/spark|co2|flame|haze|pyro|confetti|pháo|khói|lửa/.test(raw));
+ if(filter==='sfx')return isSfx;
+ if(isSfx)return false;
+ const isLaser=/laser/.test(raw);
+ if(filter==='laser')return isLaser;
+ if(isLaser)return false;
+ const isStatic=/par|bar|barra|katana|blinder|strobe|atomic|fresnel|chớp/.test(raw);
+ if(filter==='static')return isStatic;
+ if(filter==='moving')return !isStatic;
+ return true;
+}
+if(typeof window!=='undefined')window.matchesLightingFilter16=matchesLightingFilter16;
 function objectRowIcon9(obj,kind='mesh',isGroup=false){
- const raw=((obj?.name||'')+' '+(obj?._smartGroupId||'')+' '+(obj?._groupLabelEn||'')+' '+(obj?.nodePath||'')+' '+(obj?.path||'')+' '+(obj?.type||'')+' '+(obj?.shapeType||'')).toLowerCase();
+ const raw=((obj?.name||'')+' '+(obj?._smartGroupId||'')+' '+(obj?._groupLabelEn||'')+' '+(obj?.nodePath||'')+' '+(obj?.path||'')+' '+(obj?.type||'')+' '+(obj?.kind||'')+' '+(obj?.shapeType||'')).toLowerCase();
  let cat='mesh',ico=isGroup?'layers':'box',col='#60a5fa';
  if(kind==='lighting'||kind==='light'){
-  const t=(obj?.type||raw);
-  if(/laser/.test(t)){cat='light-laser';ico='laser';col='#22c55e';}
+  const t=((obj?.type||obj?.kind||'')+' '+raw).toLowerCase();
+  if(/co2|haze|smoke|cryo|khói|sương/.test(t)){cat='sfx-cryo';ico='cloud';col='#67e8f9';}
+  else if(/flame|fire|lửa/.test(t)){cat='sfx-flame';ico='zap';col='#f97316';}
+  else if(obj?._isPyroSfx18||/spark|pyro|confetti|pháo/.test(t)){cat='sfx-spark';ico='sparkles';col='#fbbf24';}
+  else if(/laser/.test(t)){cat='light-laser';ico='laser';col='#22c55e';}
   else if(/blinder|chandelier/.test(t)){cat='light-blinder';ico='sun';col='#eab308';}
-  else if(/strobe/.test(t)){cat='light-strobe';ico='zap';col='#38bdf8';}
+  else if(/strobe|atomic/.test(t)){cat='light-strobe';ico='zap';col='#38bdf8';}
   else if(/bar|barra|katana/.test(t)){cat='light-bar';ico='sliders-horizontal';col='#c084fc';}
   else if(/par|fresnel/.test(t)){cat='light-par';ico='lightbulb';col='#fb923c';}
   else{cat='light-moving';ico='moving-head';col='#f59e0b';}
@@ -647,7 +677,7 @@ function showHelp(){dialog((typeof window==='undefined'?"Creative LED Studio / h
 function initEvents(){document.querySelectorAll('[data-step]').forEach(b=>b.onclick=()=>setStep(b.dataset.step));document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{engine.view=b.dataset.view;renderUI()});document.querySelectorAll('[data-camera]').forEach(b=>b.onclick=()=>{engine.cameraPreset(b.dataset.camera);document.querySelectorAll('[data-camera]').forEach(x=>x.classList.toggle('active',x===b))});engine.onClick=onStageClick;
  $('importModel').onclick=()=>$('modelInput').click();$('importFolder').onclick=()=>$('folderInput').click();$('folderInput').onchange=async e=>{if(e.target.files.length){const list=Array.from(e.target.files);if(!list.some(f=>/\.(glb|gltf|dae|obj|skp)$/i.test(f.name))){toast((typeof window==='undefined'?"Thư mục đã chọn không chứa file model 3D (.glb, .gltf, .dae, .obj).":window.tr?.("Thư mục đã chọn không chứa file model 3D (.glb, .gltf, .dae, .obj).","Selected folder contains no 3D model files (.glb, .gltf, .dae, .obj).")??"Thư mục đã chọn không chứa file model 3D (.glb, .gltf, .dae, .obj)."),7000,'warn');e.target.value='';return;}try{await importModel(list)}catch(err){toast(err.message,9000);if(/SKP/.test(err.message))sketchupHelp()}}e.target.value=''};$('modelInput').onchange=async e=>{if(!e.target.files.length)return;try{await importModel(e.target.files)}catch(err){toast(err.message,9000);if(/SKP/.test(err.message))sketchupHelp()}e.target.value=''};$('addMedia').onclick=()=>$('mediaInput').click();$('mediaInput').onchange=async e=>{if(!e.target.files.length)return;try{await importMedia(e.target.files)}catch(err){toast(err.message,8000)}e.target.value=''};$('demoBtn').onclick=()=>dialog((typeof window==='undefined'?"Mở lại sân khấu mẫu?":window.tr?.("Mở lại sân khấu mẫu?","Reopen demo stage?")??"Mở lại sân khấu mẫu?"),(typeof window==='undefined'?"<p>Thao tác này thay model và mapping hiện tại. Thư viện video vẫn được giữ. Nên lưu dự án trước.</p>":window.tr?.("<p>Thao tác này thay model và mapping hiện tại. Thư viện video vẫn được giữ. Nên lưu dự án trước.</p>","<p>This replaces the current model and mapping. The video library is preserved. Save the project first.</p>")??"<p>Thao tác này thay model và mapping hiện tại. Thư viện video vẫn được giữ. Nên lưu dự án trước.</p>"),[{label:(typeof window==='undefined'?"Hủy":window.tr?.("Hủy","Cancel")??"Hủy")},{label:(typeof window==='undefined'?"Mở sân khấu mẫu":window.tr?.("Mở sân khấu mẫu","Open demo stage")??"Mở sân khấu mẫu"),primary:true,action:demo}]);$('skpHelp').onclick=sketchupHelp;$('helpBtn').onclick=showHelp;$('closeModal').onclick=()=>$('modal').close();$('objectSearch').oninput=renderLists;$('autoDetect').onclick=autoDetect;$('drawQuad').onclick=startQuad;$('repairMapping').onclick=()=>repairMapping3D();$('undoBtn').onclick=undo;$('redoBtn').onclick=redo;$('fitBtn').onclick=()=>engine.fit();$('testPattern').onclick=()=>{engine.globalTest=!engine.globalTest;renderUI()};$('guidesBtn').onclick=()=>{engine.showGuides=!engine.showGuides;renderUI()};$('presentBtn').onclick=togglePresentation;$('exitPresent').onclick=togglePresentation;$('playBtn').onclick=()=>{setPlaying(!state.playing);renderUI()};$('restartBtn').onclick=()=>{state.time=0;syncVideos(true)};$('loopBtn').onclick=()=>{state.loop=!state.loop;renderUI()};$('duration').onchange=e=>{state.duration=clamp(+e.target.value||12,1,600);state.time=Math.min(state.time,state.duration);renderUI()};$('seek').oninput=e=>{state.time=+e.target.value/100;syncVideos(true)};$('orbitShow').onchange=e=>state.orbit=e.target.checked;$('saveProject').onclick=saveProject;$('loadProject').onclick=()=>$('projectInput').click();$('projectInput').onchange=async e=>{if(e.target.files[0])try{await loadProject(e.target.files[0])}catch(err){toast((typeof window==='undefined'?"Không mở được dự án: ":window.tr?.("Không mở được dự án: ","Cannot open project: ")??"Không mở được dự án: ")+err.message,9000)}e.target.value=''};
  $('exportBtn').onclick=e=>{e.stopPropagation();$('exportMenu').classList.toggle('hidden')};document.addEventListener('click',e=>{if(!$('exportMenu').contains(e.target)&&e.target!==$('exportBtn'))$('exportMenu').classList.add('hidden')});$('screenshotBtn').onclick=exportShot;$('exportShot').onclick=exportShot;$('exportMapPNG').onclick=exportMapPNG;$('exportJSON').onclick=exportJSON;$('exportCSV').onclick=exportCSV;$('recordBtn').onclick=recordPreview;$('sampleVideo').onclick=async()=>{busy(true,(typeof window==='undefined'?"Đang nạp clip mapped mẫu...":window.tr?.("Đang nạp clip mapped mẫu...","Loading demo mapped clip...")??"Đang nạp clip mapped mẫu..."));if(typeof DEMO_VIDEO_DATA==='undefined')await new Promise(ok=>{const sc=document.createElement('script');sc.src='js/data/demo-video.js';sc.onload=sc.onerror=ok;document.head.appendChild(sc)});if(typeof DEMO_VIDEO_DATA==='undefined'){busy(false);toast((typeof window==='undefined'?"Không nạp được js/data/demo-video.js. Mở file Demo_Master.mp4 trong thư mục Samples.":window.tr?.("Không nạp được js/data/demo-video.js. Mở file Demo_Master.mp4 trong thư mục Samples.","Cannot load js/data/demo-video.js. Open Demo_Master.mp4 in the Samples folder.")??"Không nạp được js/data/demo-video.js. Mở file Demo_Master.mp4 trong thư mục Samples."));return}try{let a=state.media.find(a=>a.name==='ALPHA_Master_Demo.mp4');if(!a){let blob=await(await fetch(DEMO_VIDEO_DATA)).blob();a=await addMediaFile(new File([blob],'ALPHA_Master_Demo.mp4',{type:'video/mp4'}),{silent:true})}if(!surface()&&engine.surfaces.length)engine.selected=engine.surfaces[0].id;assignMaster(a);state.step='mapping';renderUI()}catch(e){toast(e.message,8000)}finally{busy(false)}};
- document.addEventListener('keydown',e=>{if(e.key==='Escape'){cancelSpatialPick();state.rebindId=null;if(state.presenting)togglePresentation();state.quad=false;state.quadPoints=[];$('quadHint').classList.add('hidden');$('exportMenu').classList.add('hidden');return}if(e.target.matches('input,textarea,select')||$('modal').open)return;if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();saveProject()}else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();e.shiftKey?redo():undo()}else if(e.code==='Space'){e.preventDefault();$('playBtn').click()}else if(e.key.toLowerCase()==='f')engine.fit();else if(['1','2','3'].includes(e.key))setStep(['stage','mapping','lighting'][+e.key-1]);});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'){cancelSpatialPick();state.rebindId=null;if(state.presenting)togglePresentation();state.quad=false;state.quadPoints=[];$('quadHint').classList.add('hidden');$('exportMenu').classList.add('hidden');return}if(e.target.matches('input,textarea,select')||$('modal').open)return;const liveRun=typeof STUDIO!=='undefined'&&!!STUDIO.lumi18?.liveShow18?.running;if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();saveProject()}else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();e.shiftKey?redo():undo()}else if(e.code==='Space'){e.preventDefault();$('playBtn').click()}else if(e.key.toLowerCase()==='f'&&!liveRun)engine.fit();else if(['1','2','3'].includes(e.key)&&!liveRun)setStep(['stage','mapping','lighting'][+e.key-1]);});
  let dragDepth=0;window.addEventListener('dragenter',e=>{if(e.dataTransfer?.types.includes('Files')){e.preventDefault();dragDepth++;$('dropOverlay').classList.remove('hidden')}});window.addEventListener('dragover',e=>{if(e.dataTransfer?.types.includes('Files'))e.preventDefault()});window.addEventListener('dragleave',e=>{dragDepth--;if(dragDepth<=0)$('dropOverlay').classList.add('hidden')});window.addEventListener('drop',async e=>{e.preventDefault();dragDepth=0;$('dropOverlay').classList.add('hidden');let files=Array.from(e.dataTransfer?.files||[]);try{if(files.some(f=>/\.(glb|gltf|dae|obj|skp)$/i.test(f.name)))await importModel(files);else if(files.some(f=>/\.ledstudio$/i.test(f.name)))await loadProject(files.find(f=>/\.ledstudio$/i.test(f.name)));else if(files.length)await importMedia(files)}catch(err){toast(err.message,9000);if(/SKP/.test(err.message))sketchupHelp()}});
  let mapDrag=null;engine.canvas.addEventListener('pointerdown',e=>{if(engine.view!=='map'||e.button!==0)return;let p=mapXY(e);let s=[...engine.surfaces].reverse().find(s=>p[0]>=s.x&&p[0]<=s.x+s.w&&p[1]>=s.y&&p[1]<=s.y+s.h);if(s){if(s.mappingSpace==='stage'){selectSurface(s.id);toast((typeof window==='undefined'?"Map không gian bị khóa. Chuyển LED sang Crop riêng trước khi di chuyển ô đầu ra.":window.tr?.("Map không gian bị khóa. Chuyển LED sang Crop riêng trước khi di chuyển ô đầu ra.","Spatial map is locked. Switch this LED to Manual crop before moving its output tile.")??"Map không gian bị khóa. Chuyển LED sang Crop riêng trước khi di chuyển ô đầu ra."));return;}checkpoint();selectSurface(s.id);mapDrag={s,start:p,x:s.x,y:s.y};engine.canvas.setPointerCapture(e.pointerId)}});engine.canvas.addEventListener('pointermove',e=>{if(!mapDrag)return;let p=mapXY(e),snap=e.shiftKey?8:1;mapDrag.s.x=Math.max(0,Math.round((mapDrag.x+p[0]-mapDrag.start[0])/snap)*snap);mapDrag.s.y=Math.max(0,Math.round((mapDrag.y+p[1]-mapDrag.start[1])/snap)*snap)});engine.canvas.addEventListener('pointerup',()=>{if(mapDrag){updateTest(mapDrag.s);mapDrag=null;renderUI()}});engine.canvas.addEventListener('pointercancel',()=>mapDrag=null);
  engine.canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();state.playing=false;toast((typeof window==='undefined'?"GPU context bị mất. Lưu dự án nếu có thể, tải lại trang và dùng model nhẹ hơn.":window.tr?.("GPU context bị mất. Lưu dự án nếu có thể, tải lại trang và dùng model nhẹ hơn.","GPU context lost. Save the project if possible, reload and use a lighter model.")??"GPU context bị mất. Lưu dự án nếu có thể, tải lại trang và dùng model nhẹ hơn."),20000)});window.addEventListener('beforeunload',()=>{for(let a of state.media){a.element.pause?.();URL.revokeObjectURL(a.url)}})
@@ -665,7 +695,7 @@ function vecCopy(a){return Array.from(a);}
 function defaultLayout(){return {version:1,mode:'manual',reference:{origin:[0,0,0],right:[1,0,0],up:[0,1,0],normal:[0,0,1]},fit:'contain',revision:0};}
 function sourceKey(m,i){return (m.path||m.name||'mesh')+'::'+i;}
 function stageBounds(meshes){const min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity];for(const m of meshes)for(let k=0;k<3;k++){min[k]=Math.min(min[k],m.bounds.min[k]);max[k]=Math.max(max[k],m.bounds.max[k]);}if(!meshes.length)return {min:[-1,0,-1],max:[1,1,1],size:[2,1,2],center:[0,.5,0]};return {min,max,size:M.sub(max,min),center:M.mul(M.add(min,max),.5)};}
-function configureStageBounds(){const b=stageBounds(engine.stage.filter(m=>!m.hidden));engine.stageBounds=b;engine.size={width:Math.max(.0001,b.size[0]),height:Math.max(.0001,b.size[1]),depth:Math.max(.0001,b.size[2])};engine.releaseMesh(engine.floor);const span=Math.max(10,...b.size)*6;engine.floor=boxMesh('Environment floor',[b.center[0],b.min[1]-.055,b.center[2]],[span,.1,span],[.10,.11,.13,1]);engine.floor.isFloor=true;}
+function configureStageBounds(){const vis=engine.stage.filter(m=>!m.hidden),nonVenue=vis.filter(m=>!m._venueArch18),b=stageBounds(nonVenue.length?nonVenue:vis);engine.stageBounds=b;engine.size={width:Math.max(.0001,b.size[0]),height:Math.max(.0001,b.size[1]),depth:Math.max(.0001,b.size[2])};engine.releaseMesh(engine.floor);const span=Math.max(10,...b.size)*6;engine.floor=boxMesh('Environment floor',[b.center[0],b.min[1]-.055,b.center[2]],[span,.1,span],[.10,.11,.13,1]);engine.floor.isFloor=true;}
 function normalizedConfig(config){const c={...DEFAULT_FRAME,...config};if(!Number.isFinite(+c.scale)||+c.scale<=0||+c.scale>1e6)throw Error((typeof window==='undefined'?"Hệ số tỷ lệ phải dương và không vượt 1.000.000.":window.tr?.("Hệ số tỷ lệ phải dương và không vượt 1.000.000.","Scale must be positive and at most 1,000,000.")??"Hệ số tỷ lệ phải dương và không vượt 1.000.000."));if(!Number.isFinite(+c.yaw))throw Error((typeof window==='undefined'?"Góc xoay không hợp lệ.":window.tr?.("Góc xoay không hợp lệ.","Invalid yaw.")??"Góc xoay không hợp lệ."));c.scale=+c.scale;c.yaw=+c.yaw;c.up=['keep','z','x'].includes(c.up)?c.up:'keep';c.origin=c.origin==='source'?'source':'base-center';return c;}
 function calculateFrame(config,meshes=engine.stage){
  const c=normalizedConfig(config),up=c.up==='z'?M.rotate([1,0,0],-Math.PI/2):c.up==='x'?M.rotate([0,0,1],Math.PI/2):M.identity();
@@ -693,7 +723,7 @@ function applyCoordinateConfig(config,{record=true,updateAttachments=true,fit=tr
  }
  engine.coordinates=frame;configureStageBounds();resetFlatCache();if(engine.surfaces.some(s=>s.mappingSpace==='stage'))rebuildSpatialMap({activate:false,record:false});engine.rebuildFixtures();if(fit)engine.fit();state.hit=null;state.quadPoints=[];state.measurePoints=[];if(!state._restoring)renderUI();else state._deferUI=true;return frame;
 }
-StageEngine.prototype.fit=function(){const b=stageBounds(this.stage),r=Math.max(.25,this.canvas.clientWidth/Math.max(1,this.canvas.clientHeight));this.stageBounds=b;this.camera.target=[...b.center];this.camera.distance=Math.max(.02,b.size[1]*1.5,b.size[0]*1.5/r,b.size[2]*1.15)*1.25;this.camera.yaw=.13;this.camera.pitch=.23;};
+StageEngine.prototype.fit=function(){const vis=this.stage.filter(m=>!m.hidden),nonVenue=vis.filter(m=>!m._venueArch18),b=stageBounds(nonVenue.length?nonVenue:vis),r=Math.max(.25,this.canvas.clientWidth/Math.max(1,this.canvas.clientHeight));this.stageBounds=b;this.camera.target=[...b.center];this.camera.distance=Math.max(.02,b.size[1]*1.5,b.size[0]*1.5/r,b.size[2]*1.15)*1.25;this.camera.yaw=.13;this.camera.pitch=.23;};
 
 /* Plane-local minimum-area rectangle, not a world-axis bounding box. */
 const metricCache=new WeakMap();
@@ -807,6 +837,9 @@ function normalizeSurfaceHardware(s) {
   });
  }
 
+ if (!s.panelAngleDeg && Number.isFinite(+s.curveDegPerCab) && +s.curveDegPerCab !== 0) {
+  s.panelAngleDeg = clamp(+s.curveDegPerCab, -30, 30);
+ }
  const angleDeg = clamp(+(s.panelAngleDeg || 0), -30, 30);
  const orderToPattern = {
   'snake-tl-h': 'H-TL', 'snake-tr-h': 'H-TR', 'snake-bl-h': 'H-BL', 'snake-br-h': 'H-BR',
@@ -852,10 +885,12 @@ function normalizeSurfaceHardware(s) {
  }
  const activeVoidSet = new Set(sortedVoids);
 
- const rawAngles = Array.isArray(s.columnAnglesDeg) ? s.columnAnglesDeg : null;
+ const rawAngles = Array.isArray(s.columnAnglesDeg) && s.columnAnglesDeg.length ? s.columnAnglesDeg : null;
+ const hasCustomSections = Array.isArray(s.curvatureSections) && s.curvatureSections.length > 0;
+ const rawAllZero = rawAngles ? rawAngles.every(a => !(Number(a) || 0)) : true;
  const columnAnglesDeg = [];
  for (let c = 0; c < cols; c++) {
-  const v = rawAngles && Number.isFinite(+rawAngles[c]) ? +rawAngles[c] : angleDeg;
+  const v = (rawAngles && !(angleDeg !== 0 && rawAllZero && !hasCustomSections) && Number.isFinite(+rawAngles[c])) ? +rawAngles[c] : angleDeg;
   columnAnglesDeg.push(clamp(v, -30, 30));
  }
 
@@ -1055,20 +1090,27 @@ function computeGeometricScreenLayout(surface) {
 function renderSurfaceCalibrationTestCard(surfaceArg, targetCanvas, opts = {}) {
  const s = surfaceArg && typeof surfaceArg === 'object' ? surfaceArg : {};
  normalizeSurfaceHardware(s);
+ const transparent = !!opts.transparent;
+ const cadFrame = !!opts.cadFrame;
+ const cajetinMeta = opts.cajetinMeta && typeof opts.cajetinMeta === 'object' ? opts.cajetinMeta : null;
  const widthPx = clamp(Math.round(+(opts.widthPx || s.totalResX || (s.cabCols * s.pxW) || 1920)), 64, 16384);
  const heightPx = clamp(Math.round(+(opts.heightPx || s.totalResY || (s.cabRows * s.pxH) || 1080)), 64, 16384);
  const canvas = targetCanvas || (typeof document !== 'undefined' ? document.createElement('canvas') : { width: 0, height: 0, getContext: () => null });
  canvas.width = widthPx;
  canvas.height = heightPx;
  const ctx = canvas.getContext ? canvas.getContext('2d') : null;
- if (!ctx) return { canvas, widthPx, heightPx, cols: s.cabCols, rows: s.cabRows, activeCabinets: s.activeCabinets };
+ if (!ctx) return { canvas, widthPx, heightPx, cols: s.cabCols, rows: s.cabRows, activeCabinets: s.activeCabinets, transparent, cadFrame };
 
  ctx.save?.();
- ctx.fillStyle = '#0b101d';
- ctx.fillRect(0, 0, widthPx, heightPx);
+ ctx.clearRect?.(0, 0, widthPx, heightPx);
+ if (!transparent) {
+  ctx.fillStyle = '#0b101d';
+  ctx.fillRect(0, 0, widthPx, heightPx);
+ }
 
  // Draw cabinet grid (including mixed 500x1000 + 500x500 row heights)
  const voidSet = new Set(s.virtualTiles || []);
+ const voidRects = [];
  const rowLayout = Array.isArray(s.rowLayout) && s.rowLayout.length === s.cabRows
   ? s.rowLayout
   : Array.from({ length: s.cabRows }, (_, r) => ({ row: r, pxW: s.pxW, pxH: s.pxH, heightMm: s.cabH }));
@@ -1081,6 +1123,11 @@ function renderSurfaceCalibrationTestCard(surfaceArg, targetCanvas, opts = {}) {
    const x0 = Math.round(c * colW);
    const cw = Math.round((c + 1) * colW) - x0;
    const isVoid = voidSet.has(c + ',' + r);
+   if (isVoid && transparent) {
+    voidRects.push([x0, yCursor, cw, rowH]);
+    ctx.clearRect?.(x0, yCursor, cw, rowH);
+    continue;
+   }
    ctx.fillStyle = isVoid ? '#05070d' : ((c + r) % 2 === 0 ? '#131d33' : '#192642');
    ctx.fillRect(x0, yCursor, cw, rowH);
    ctx.strokeStyle = isVoid ? 'rgba(248,113,113,0.45)' : 'rgba(56,189,248,0.55)';
@@ -1095,14 +1142,16 @@ function renderSurfaceCalibrationTestCard(surfaceArg, targetCanvas, opts = {}) {
   yCursor += rowH;
  }
 
- // SMPTE Color Bars at bottom 8%
- const smpteColors = ['#e5e7eb', '#facc15', '#22d3ee', '#22c55e', '#e879f9', '#ef4444', '#3b82f6', '#111827'];
- const barH = Math.max(16, Math.round(heightPx * 0.08));
- const barY = heightPx - barH;
- const barW = widthPx / smpteColors.length;
- for (let i = 0; i < smpteColors.length; i++) {
-  ctx.fillStyle = smpteColors[i];
-  ctx.fillRect(Math.round(i * barW), barY, Math.ceil(barW), barH);
+ // SMPTE Color Bars at bottom 8% (only when not transparent or no CAD footer overlap)
+ if (!transparent) {
+  const smpteColors = ['#e5e7eb', '#facc15', '#22d3ee', '#22c55e', '#e879f9', '#ef4444', '#3b82f6', '#111827'];
+  const barH = Math.max(16, Math.round(heightPx * 0.08));
+  const barY = heightPx - barH;
+  const barW = widthPx / smpteColors.length;
+  for (let i = 0; i < smpteColors.length; i++) {
+   ctx.fillStyle = smpteColors[i];
+   ctx.fillRect(Math.round(i * barW), barY, Math.ceil(barW), barH);
+  }
  }
 
  // Outer 1px alignment border & full diagonals
@@ -1142,6 +1191,53 @@ function renderSurfaceCalibrationTestCard(surfaceArg, targetCanvas, opts = {}) {
  ctx.fillStyle = '#38bdf8';
  ctx.font = Math.max(11, Math.round(bannerH * 0.21)) + 'px monospace';
  ctx.fillText(s.cabCols + 'x' + s.cabRows + ' cab (' + s.activeCabinets + ' active) · ' + s.totalPhysicalWidthM + 'x' + s.totalPhysicalHeightM + ' m', cx, cy + Math.round(bannerH * 0.18));
+
+ if (cadFrame) {
+  const cadCols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+  ctx.fillStyle = '#facc15';
+  ctx.font = 'bold 12px monospace';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  for (let i = 0; i < cadCols.length; i++) {
+   const gx = Math.round(((i + 0.5) / cadCols.length) * widthPx);
+   ctx.fillText(cadCols[i], gx, 4);
+   ctx.fillText(cadCols[i], gx, Math.max(4, heightPx - 18));
+  }
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  for (let j = 1; j <= 12; j++) {
+   const gy = Math.round(((j - 0.5) / 12) * heightPx);
+   ctx.fillText(String(j), 4, gy);
+   ctx.fillText(String(j), Math.max(4, widthPx - 20), gy);
+  }
+  // Dual dimension callout (m + px) and CAD title block (cajetinMeta)
+  const proj = String(cajetinMeta?.project || s.name || s.id || 'ALPHA LED STAGE');
+  const client = String(cajetinMeta?.client || 'STAGE PRODUCTION');
+  const author = String(cajetinMeta?.technician || cajetinMeta?.author || 'ALPHA LED Studio');
+  const reviewer = String(cajetinMeta?.reviewer || 'Tech Lead');
+  const ver = String(cajetinMeta?.version || '1.0');
+  const tbW = Math.min(widthPx - 24, 380);
+  const tbH = 72;
+  const tbX = Math.max(12, widthPx - tbW - 12);
+  const tbY = Math.max(12, heightPx - tbH - 12);
+  ctx.fillStyle = 'rgba(8,11,18,0.92)';
+  ctx.fillRect(tbX, tbY, tbW, tbH);
+  ctx.strokeStyle = '#facc15';
+  ctx.strokeRect(tbX, tbY, tbW, tbH);
+  ctx.fillStyle = '#f8fafc';
+  ctx.font = '11px monospace';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'top';
+  ctx.fillText(`PROJECT: ${proj} | CLIENT: ${client}`, tbX + 8, tbY + 6);
+  ctx.fillText(`CAD DIM: ${s.totalPhysicalWidthM}m x ${s.totalPhysicalHeightM}m (${widthPx}x${heightPx}px)`, tbX + 8, tbY + 26);
+  ctx.fillText(`BY: ${author} | REV: ${reviewer} | V${ver}`, tbX + 8, tbY + 46);
+ }
+ // L3: guarantee every pixel in void tiles is alpha=0 after overlays/diagonals/banner
+ if (transparent && voidRects.length) {
+  for (const [vx, vy, vw, vh] of voidRects) {
+   ctx.clearRect?.(vx, vy, vw, vh);
+  }
+ }
  ctx.restore?.();
 
  return {
@@ -1151,10 +1247,12 @@ function renderSurfaceCalibrationTestCard(surfaceArg, targetCanvas, opts = {}) {
   cols: s.cabCols,
   rows: s.cabRows,
   activeCabinets: s.activeCabinets,
+  transparent,
+  cadFrame,
   screenName: String(s.name || s.id || 'LED_SCREEN')
  };
 }
-function exportSurfaceCalibrationPng(surfaceOrId) {
+function exportSurfaceCalibrationPng(surfaceOrId, opts = {}) {
  const tLoc = (vi, en) => (typeof window === 'undefined' ? vi : window.tr?.(vi, en) ?? vi);
  let s = surfaceOrId;
  if (typeof surfaceOrId === 'string' && typeof engine !== 'undefined' && Array.isArray(engine?.surfaces)) {
@@ -1165,12 +1263,13 @@ function exportSurfaceCalibrationPng(surfaceOrId) {
   if (typeof toast === 'function') toast(tLoc('Chưa chọn màn LED để xuất Test Card.', 'Select an LED screen before exporting a Test Card.'), 4300, 'warn');
   return null;
  }
- const meta = renderSurfaceCalibrationTestCard(s);
+ const meta = renderSurfaceCalibrationTestCard(s, null, opts);
  if (typeof document !== 'undefined' && meta.canvas?.toDataURL) {
   const a = document.createElement('a');
   a.href = meta.canvas.toDataURL('image/png');
   const slug = String(s.name || s.id || 'screen').replace(/[^a-zA-Z0-9_-]+/g, '_');
-  a.download = slug + '_' + meta.widthPx + 'x' + meta.heightPx + '_testcard.png';
+  const suffix = opts.transparent ? '_pixelmap_trans.png' : '_testcard.png';
+  a.download = slug + '_' + meta.widthPx + 'x' + meta.heightPx + suffix;
   document.body?.appendChild?.(a);
   a.click?.();
   document.body?.removeChild?.(a);
@@ -1199,6 +1298,7 @@ function toggleVirtualTile(s, col, row, forceVoid) {
   return ar - br || ac - bc;
  });
  s.activeCabinets = Math.max(1, s.totalCabinetGrid - s.virtualTiles.length);
+ if (typeof rebuildSurface3DMesh === 'function') rebuildSurface3DMesh(s);
  return set.has(key);
 }
 function setColumnCurvatureAngle(s, colIndex, angleDeg) {
@@ -1214,7 +1314,9 @@ function setColumnCurvatureAngle(s, colIndex, angleDeg) {
   } else s.columnAnglesDeg = s.columnAnglesDeg.slice();
   s.columnAnglesDeg[c] = deg;
  }
- return computeCurvedSpanMeters(s);
+ const span = computeCurvedSpanMeters(s);
+ if (typeof rebuildSurface3DMesh === 'function') rebuildSurface3DMesh(s);
+ return span;
 }
 function computeCurvedSpanMeters(surfaceOrCols, cabWmmArg, panelAngleDegArg) {
  let cols = 1, cabWmm = 500, angles = [0];
@@ -1273,6 +1375,416 @@ function computeCurvedSpanMeters(surfaceOrCols, cabWmmArg, panelAngleDegArg) {
   depthMeters: depthOffsetM
  };
 }
+function rebuildSurface3DMesh(s) {
+ if (!s || typeof s !== 'object') return null;
+ // B4 / M2 scope guard: do not rebuild face-bound imported surfaces or quad-picked surfaces without explicit 3D pos
+ if (s._ledBinding || s.mesh?._ledBinding || s._quadPicked || s.mesh?._quadPicked || !Array.isArray(s.pos) || s.pos.length !== 3) {
+  return s.mesh || null;
+ }
+ normalizeSurfaceHardware(s);
+ if (typeof makeMesh !== 'function') return s.mesh || null;
+ const cols = Math.max(1, s.cabCols || 1);
+ const rows = Math.max(1, s.cabRows || 1);
+ const wM = Math.max(0.25, +(s.totalPhysicalWidthM || s.physical?.[0] || cols * ((s.cabW || 500) / 1000)));
+ const hM = Math.max(0.25, +(s.totalPhysicalHeightM || s.physical?.[1] || rows * ((s.cabH || 500) / 1000)));
+ const shapeType = String(s.shapeType || 'flat').toLowerCase();
+
+ // S6: follow rowLayout heights from top (v=0, y=+hM/2) to bottom (v=1, y=-hM/2)
+ const rl = Array.isArray(s.rowLayout) && s.rowLayout.length === rows
+  ? s.rowLayout
+  : Array.from({ length: rows }, (_, r) => ({ row: r, heightMm: s.cabH || 500 }));
+ const totalHmm = Math.max(1, rl.reduce((acc, r) => acc + (Number(r.heightMm) || 500), 0));
+ const rowBounds = [];
+ let vAcc = 0;
+ for (let r = 0; r < rows; r++) {
+  const frac = (Number(rl[r]?.heightMm) || 500) / totalHmm;
+  const v0 = vAcc;
+  const v1 = Math.min(1, vAcc + frac);
+  const yTop = hM / 2 - v0 * hM;
+  const yBot = hM / 2 - v1 * hM;
+  rowBounds.push({ v0, v1, yTop, yBot });
+  vAcc = v1;
+ }
+
+ // Compute per-column (x0, z0, x1, z1) in local space, recentered on midpoint
+ const colSegs = [];
+ if (shapeType === 'cylinder_360') {
+  const rad = Math.max(0.4, wM / (Math.PI * 2));
+  for (let c = 0; c < cols; c++) {
+   const a0 = (c / cols) * Math.PI * 2;
+   const a1 = ((c + 1) / cols) * Math.PI * 2;
+   colSegs.push({
+    x0: Math.sin(a0) * rad, z0: Math.cos(a0) * rad,
+    x1: Math.sin(a1) * rad, z1: Math.cos(a1) * rad
+   });
+  }
+ } else if (shapeType === 'cube') {
+  const side = Math.max(0.5, wM / 4);
+  const r = side / 2;
+  const corners = [[-r, r, r, r], [r, r, r, -r], [r, -r, -r, -r], [-r, -r, -r, r]];
+  for (let c = 0; c < cols; c++) {
+   const faceIdx = Math.min(3, Math.floor((c / cols) * 4));
+   const faceCols = Math.max(1, cols / 4);
+   const t0 = (c - faceIdx * faceCols) / faceCols;
+   const t1 = (c + 1 - faceIdx * faceCols) / faceCols;
+   const [fx0, fz0, fx1, fz1] = corners[faceIdx];
+   colSegs.push({
+    x0: fx0 + (fx1 - fx0) * t0, z0: fz0 + (fz1 - fz0) * t0,
+    x1: fx0 + (fx1 - fx0) * t1, z1: fz0 + (fz1 - fz0) * t1
+   });
+  }
+ } else if (shapeType === 'l_corner_90') {
+  const splitCol = clamp(Math.round(+(s.cornerSplitCol || Math.floor(cols / 2))), 1, Math.max(1, cols - 1));
+  const cabWM = wM / cols;
+  let minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
+  const raw = [];
+  for (let c = 0; c < cols; c++) {
+   let x0, z0, x1, z1;
+   if (c < splitCol) {
+    x0 = c * cabWM; z0 = 0; x1 = (c + 1) * cabWM; z1 = 0;
+   } else {
+    const k = c - splitCol;
+    x0 = splitCol * cabWM; z0 = k * cabWM; x1 = splitCol * cabWM; z1 = (k + 1) * cabWM;
+   }
+   raw.push({ x0, z0, x1, z1 });
+   minX = Math.min(minX, x0, x1); maxX = Math.max(maxX, x0, x1);
+   minZ = Math.min(minZ, z0, z1); maxZ = Math.max(maxZ, z0, z1);
+  }
+  const cx = (minX + maxX) / 2, cz = (minZ + maxZ) / 2;
+  for (const seg of raw) {
+   colSegs.push({ x0: seg.x0 - cx, z0: seg.z0 - cz, x1: seg.x1 - cx, z1: seg.z1 - cz });
+  }
+ } else {
+  const span = computeCurvedSpanMeters(s);
+  const coords = span.columnCoords || [];
+  let minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
+  for (const cc of coords) {
+   minX = Math.min(minX, cc.x0, cc.x1); maxX = Math.max(maxX, cc.x0, cc.x1);
+   minZ = Math.min(minZ, -cc.z0, -cc.z1); maxZ = Math.max(maxZ, -cc.z0, -cc.z1);
+  }
+  const cx = Number.isFinite(minX) ? (minX + maxX) / 2 : 0;
+  const cz = Number.isFinite(minZ) ? (minZ + maxZ) / 2 : 0;
+  for (let c = 0; c < cols; c++) {
+   const cc = coords[c] || { x0: (c / cols - 0.5) * wM, z0: 0, x1: ((c + 1) / cols - 0.5) * wM, z1: 0 };
+   colSegs.push({
+    x0: cc.x0 - cx, z0: -cc.z0 - cz,
+    x1: cc.x1 - cx, z1: -cc.z1 - cz
+   });
+  }
+ }
+
+ const voidSet = new Set(Array.isArray(s.virtualTiles) ? s.virtualTiles : []);
+ const p = [];
+ const uv = [];
+ const emitCell = (c, r) => {
+  const seg = colSegs[c];
+  const rb = rowBounds[r];
+  const u0 = c / cols, u1 = (c + 1) / cols;
+  p.push(
+   seg.x0, rb.yTop, seg.z0, seg.x1, rb.yTop, seg.z1, seg.x1, rb.yBot, seg.z1,
+   seg.x0, rb.yTop, seg.z0, seg.x1, rb.yBot, seg.z1, seg.x0, rb.yBot, seg.z0
+  );
+  uv.push(
+   u0, rb.v0, u1, rb.v0, u1, rb.v1,
+   u0, rb.v0, u1, rb.v1, u0, rb.v1
+  );
+ };
+ for (let r = 0; r < rows; r++) {
+  for (let c = 0; c < cols; c++) {
+   if (voidSet.has(c + ',' + r)) continue;
+   emitCell(c, r);
+  }
+ }
+ // S7 empty-mesh fallback: never emit Float32Array(0) if all tiles were marked void
+ if (p.length === 0) emitCell(0, 0);
+
+ const oldSurfMesh = s.mesh;
+ const baseColor = oldSurfMesh?.color || [0.04, 0.05, 0.08, 1];
+ const newMesh = makeMesh(s.name || 'LED_SURFACE', p, uv, null, { color: baseColor });
+ const targetPos = Array.isArray(s.pos) && s.pos.length === 3
+  ? s.pos
+  : (Array.isArray(oldSurfMesh?.bounds?.center) ? oldSurfMesh.bounds.center : [0, 0, 0]);
+ const yawRad = ((+(s.yawDeg || 0)) * Math.PI) / 180;
+ if (typeof M !== 'undefined' && typeof transformMesh === 'function') {
+  const mat = M.mm(M.translate(targetPos), M.rotate([0, 1, 0], yawRad));
+  transformMesh(newMesh, mat);
+ }
+ if (oldSurfMesh && typeof oldSurfMesh === 'object') {
+  for (const k of Object.keys(oldSurfMesh)) {
+   if (k !== 'id' && k !== 'p' && k !== 'pos' && k !== 'uv' && k !== 'n' && k !== 'bounds' && k !== 'vao' && k !== 'vbo' && k !== 'ibo') {
+    newMesh[k] = oldSurfMesh[k];
+   }
+  }
+  if (Array.isArray(oldSurfMesh.preferredUp)) newMesh.preferredUp = oldSurfMesh.preferredUp.slice();
+ }
+ if (s._lmpBatchId18) newMesh._lmpBatchId18 = s._lmpBatchId18;
+ newMesh._surfaceId18 = s.id;
+
+ const eng = typeof engine !== 'undefined' ? engine : null;
+ if (eng) {
+  if (s.mappingSpace === 'stage' && typeof calculateMapUV === 'function' && eng.layout?.bounds && eng.layout?.padding) {
+   newMesh.mapUV = calculateMapUV({ ...s, mesh: newMesh }, eng.layout, eng.master);
+  } else if (oldSurfMesh?.mapUV && oldSurfMesh.mapUV.length === newMesh.uv.length) {
+   newMesh.mapUV = new Float32Array(oldSurfMesh.mapUV);
+  } else {
+   delete newMesh.mapUV;
+  }
+  if (oldSurfMesh) eng.releaseMesh?.(oldSurfMesh);
+  s.mesh = newMesh;
+  // B4 / M1 / M2: also update matching stage shell mesh in engine.stage while preserving all metadata tags
+  if (Array.isArray(eng.stage)) {
+   for (let i = 0; i < eng.stage.length; i++) {
+    const m = eng.stage[i];
+    if (!m) continue;
+    const isMatchedShell =
+     m._surfaceId18 === s.id ||
+     (s.sourceMeshId && m.id === s.sourceMeshId) ||
+     (s._lmpBatchId18 && m._lmpBatchId18 === s._lmpBatchId18 && m.name === s.name);
+    if (isMatchedShell) {
+     eng.releaseMesh?.(m);
+     const stageCopy = makeMesh(s.name || m.name, new Float32Array(newMesh.p), new Float32Array(newMesh.uv), null, {
+      color: m.color || baseColor
+     });
+     for (const k of Object.keys(m)) {
+      if (k !== 'p' && k !== 'pos' && k !== 'uv' && k !== 'n' && k !== 'bounds' && k !== 'vao' && k !== 'vbo' && k !== 'ibo') {
+       stageCopy[k] = m[k];
+      }
+     }
+     if (s._lmpBatchId18) stageCopy._lmpBatchId18 = s._lmpBatchId18;
+     stageCopy._surfaceId18 = s.id;
+     eng.stage[i] = stageCopy;
+    }
+   }
+  }
+  eng._stageBatchDirty = true;
+ } else {
+  s.mesh = newMesh;
+ }
+ return s.mesh;
+}
+
+function applyCurvatureSections(s, sections = [], opts = {}) {
+ if (!s || typeof s !== 'object') return null;
+ normalizeSurfaceHardware(s);
+ const cols = Math.max(1, s.cabCols || 1);
+ const baseAngles = Array.isArray(s.columnAnglesDeg) && s.columnAnglesDeg.length === cols
+  ? s.columnAnglesDeg.slice()
+  : Array.from({ length: cols }, () => clamp(+(s.panelAngleDeg || 0), -30, 30));
+ const allowedModes = new Set(['locked_flat', 'concave', 'convex', 's_wave', 'corner_90']);
+ const normalizedSections = [];
+ const rawList = Array.isArray(sections) ? sections : [];
+ let cursor = 0;
+ for (let i = 0; i < rawList.length; i++) {
+  const sec = rawList[i];
+  if (!sec || typeof sec !== 'object') continue;
+  let rawStart, rawEnd;
+  if (sec.startCol !== undefined || sec.endCol !== undefined) {
+   rawStart = Math.floor(+(sec.startCol ?? cursor));
+   rawEnd = Math.floor(+(sec.endCol ?? cols));
+  } else if (sec.cols !== undefined) {
+   const spanC = Math.max(1, Math.floor(+sec.cols || 1));
+   rawStart = cursor;
+   rawEnd = cursor + spanC;
+  } else {
+   rawStart = cursor;
+   rawEnd = cols;
+  }
+  // L1: clamp non-overlapping ranges and skip collapsed sections
+  const startCol = clamp(Math.max(cursor, rawStart), 0, cols);
+  const endCol = clamp(rawEnd, startCol, cols);
+  if (startCol >= endCol) continue;
+  cursor = endCol;
+  const rawDeg = clamp(+(sec.angleDeg ?? 0), -30, 30);
+  const rawMode = String(sec.mode || '').toLowerCase();
+  const inferredMode = rawDeg < 0 ? 'concave' : (rawDeg > 0 ? 'convex' : 'locked_flat');
+  const mode = allowedModes.has(rawMode) ? rawMode : inferredMode;
+  const id = String(sec.id || String.fromCharCode(65 + (normalizedSections.length % 26)));
+  const label = String(sec.label || ('Section ' + id));
+  normalizedSections.push({ id, label, startCol, endCol, mode, angleDeg: mode === 'locked_flat' ? 0 : rawDeg });
+  const spanCols = Math.max(1, endCol - startCol);
+  for (let c = startCol; c < endCol; c++) {
+   if (mode === 'locked_flat') {
+    baseAngles[c] = 0;
+   } else if (mode === 'concave') {
+    baseAngles[c] = rawDeg <= 0 ? rawDeg : -Math.abs(rawDeg);
+   } else if (mode === 'convex') {
+    baseAngles[c] = rawDeg >= 0 ? rawDeg : Math.abs(rawDeg);
+   } else if (mode === 's_wave') {
+    const rel = c - startCol;
+    const mag = Math.abs(rawDeg) || 10;
+    baseAngles[c] = rel < spanCols / 2 ? mag : -mag;
+   } else if (mode === 'corner_90') {
+    const mid = startCol + Math.floor(spanCols / 2);
+    baseAngles[c] = c === mid ? clamp(rawDeg || 30, -30, 30) : 0;
+   }
+  }
+ }
+ if (opts.liveSymmetry) {
+  const half = Math.floor(cols / 2);
+  for (let c = 0; c < half; c++) {
+   baseAngles[cols - 1 - c] = baseAngles[c];
+  }
+ }
+ s.curvatureSections = normalizedSections.map(sec => ({ ...sec }));
+ s.columnAnglesDeg = baseAngles.slice();
+ const span = computeCurvedSpanMeters(s);
+ rebuildSurface3DMesh(s);
+ return { sections: s.curvatureSections, columnAnglesDeg: s.columnAnglesDeg, span };
+}
+
+function renderCurvatureSectionsSvg(s) {
+ if (!s || typeof s !== 'object') return '';
+ normalizeSurfaceHardware(s);
+ const span = computeCurvedSpanMeters(s);
+ const coords = span.columnCoords || [];
+ const sections = Array.isArray(s.curvatureSections) && s.curvatureSections.length
+  ? s.curvatureSections
+  : [{ id: 'A', label: 'Section A', startCol: 0, endCol: s.cabCols || 1, mode: 'flat', angleDeg: +(s.panelAngleDeg || 0) }];
+ let minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
+ for (const cc of coords) {
+  minX = Math.min(minX, cc.x0, cc.x1); maxX = Math.max(maxX, cc.x0, cc.x1);
+  minZ = Math.min(minZ, cc.z0, cc.z1); maxZ = Math.max(maxZ, cc.z0, cc.z1);
+ }
+ const wSpan = Math.max(0.5, maxX - minX);
+ const zSpan = Math.max(0.4, maxZ - minZ);
+ const scale = Math.min(260 / wSpan, 64 / zSpan);
+ const ox = 180 - ((minX + maxX) / 2) * scale;
+ const oy = 56 - ((minZ + maxZ) / 2) * scale;
+ const linesSvg = coords.map((cc) => {
+  const x0 = +(ox + cc.x0 * scale).toFixed(1);
+  const y0 = +(oy + cc.z0 * scale).toFixed(1);
+  const x1 = +(ox + cc.x1 * scale).toFixed(1);
+  const y1 = +(oy + cc.z1 * scale).toFixed(1);
+  const color = Math.abs(cc.angleDeg) < 0.05 ? '#38bdf8' : (cc.angleDeg < 0 ? '#a855f7' : '#22c55e');
+  return `<line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y1}" stroke="${color}" stroke-width="4" stroke-linecap="round"/>`;
+ }).join('');
+ const badgesSvg = sections.map((sec, i) => {
+  const bx = 16 + i * 112;
+  return `<g transform="translate(${bx},96)"><rect x="0" y="0" width="104" height="22" rx="4" fill="#111827" stroke="#38bdf8" stroke-width="1"/><text x="52" y="15" text-anchor="middle" fill="#e2e8f0" font-size="10" font-family="monospace">${esc(sec.id)}: ${esc(sec.label)} (${Number(sec.angleDeg || 0)}°)</text></g>`;
+ }).join('');
+ return `<svg class="curvature-topview-svg" viewBox="0 0 360 144" width="100%" height="144" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="360" height="144" rx="6" fill="#090d16"/><text x="180" y="16" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">${esc(s.name || 'LED')} · Arc ${span.arcWidthM}m · Space ${span.chordWidthM}×${span.depthOffsetM}m</text>${linesSvg}${badgesSvg}<text x="180" y="136" text-anchor="middle" fill="#facc15" font-size="10" font-weight="bold" font-family="monospace">▼ TOWARDS AUDIENCE ▼</text></svg>`;
+}
+
+function copyPasteSurfaceCurvature(sourceSurface, targetSurface) {
+ if (!sourceSurface || !targetSurface) return null;
+ normalizeSurfaceHardware(sourceSurface);
+ normalizeSurfaceHardware(targetSurface);
+ const srcCols = Math.max(1, sourceSurface.cabCols || 1);
+ const dstCols = Math.max(1, targetSurface.cabCols || 1);
+ const srcAngles = Array.isArray(sourceSurface.columnAnglesDeg) && sourceSurface.columnAnglesDeg.length === srcCols
+  ? sourceSurface.columnAnglesDeg
+  : Array.from({ length: srcCols }, () => clamp(+(sourceSurface.panelAngleDeg || 0), -30, 30));
+ const nextAngles = [];
+ for (let c = 0; c < dstCols; c++) {
+  const srcIdx = Math.min(srcCols - 1, Math.floor((c / dstCols) * srcCols));
+  nextAngles.push(clamp(+(srcAngles[srcIdx] || 0), -30, 30));
+ }
+ targetSurface.columnAnglesDeg = nextAngles;
+ targetSurface.panelAngleDeg = clamp(+(sourceSurface.panelAngleDeg || 0), -30, 30);
+ if (Array.isArray(sourceSurface.curvatureSections) && sourceSurface.curvatureSections.length) {
+  let cursor = 0;
+  const remapped = [];
+  for (const sec of sourceSurface.curvatureSections) {
+   const startCol = clamp(Math.max(cursor, Math.round((sec.startCol / srcCols) * dstCols)), 0, dstCols);
+   const endCol = clamp(Math.max(startCol, Math.round((sec.endCol / srcCols) * dstCols)), startCol, dstCols);
+   if (startCol < endCol) {
+    remapped.push({ ...sec, startCol, endCol });
+    cursor = endCol;
+   }
+  }
+  targetSurface.curvatureSections = remapped;
+ }
+ rebuildSurface3DMesh(targetSurface);
+ return targetSurface.columnAnglesDeg.slice();
+}
+
+function mirrorWingSurface3D(sourceSurface, partnerOrOpts = null, maybeOpts = {}) {
+ if (!sourceSurface || typeof sourceSurface !== 'object') return null;
+ normalizeSurfaceHardware(sourceSurface);
+ const isPartnerSurf = partnerOrOpts && typeof partnerOrOpts === 'object' && ('cabCols' in partnerOrOpts || 'mesh' in partnerOrOpts || 'w' in partnerOrOpts);
+ const explicitPartner = isPartnerSurf ? partnerOrOpts : null;
+ const eng = typeof engine !== 'undefined' ? engine : null;
+ const srcPos = Array.isArray(sourceSurface.pos) && sourceSurface.pos.length === 3
+  ? sourceSurface.pos
+  : (Array.isArray(sourceSurface.mesh?.bounds?.center) ? sourceSurface.mesh.bounds.center : [-4, 2.5, -1.5]);
+ const px = Number.isFinite(+srcPos[0]) ? -(+srcPos[0]) : 0;
+ const py = Number.isFinite(+srcPos[1]) ? +srcPos[1] : 2.5;
+ const pz = Number.isFinite(+srcPos[2]) ? +srcPos[2] : -1.5;
+ const mirrorPos = [px === 0 ? 0 : px, py, pz];
+ const mirrorYaw = -(+(sourceSurface.yawDeg || 0));
+ const srcAngles = Array.isArray(sourceSurface.columnAnglesDeg) && sourceSurface.columnAnglesDeg.length === sourceSurface.cabCols
+  ? sourceSurface.columnAnglesDeg
+  : Array.from({ length: sourceSurface.cabCols || 1 }, () => +(sourceSurface.panelAngleDeg || 0));
+ const mirrorAngles = srcAngles.slice().reverse().map((a) => {
+  const v = clamp(-(+a || 0), -30, 30);
+  return v === 0 ? 0 : v;
+ });
+ const rawName = String(sourceSurface.name || 'LED_WING');
+ const mirrorName = /_L$/i.test(rawName)
+  ? rawName.replace(/_L$/i, m => (m === '_l' ? '_r' : '_R'))
+  : (/_R$/i.test(rawName)
+   ? rawName.replace(/_R$/i, m => (m === '_r' ? '_l' : '_L'))
+   : (rawName.includes('_L_')
+    ? rawName.replace(/_L_(?!.*_L_)/, '_R_')
+    : (rawName.includes('_R_')
+     ? rawName.replace(/_R_(?!.*_R_)/, '_L_')
+     : rawName + '_MIRROR')));
+
+ let target = explicitPartner || eng?.surfaces?.find((x) => x.id !== sourceSurface.id && x.name === mirrorName) || null;
+ if (!target && typeof createSurface === 'function') {
+  const baseMesh = typeof quadMesh === 'function'
+   ? quadMesh(mirrorName, [[-1, 1, 0], [1, 1, 0], [1, -1, 0], [-1, -1, 0]], { color: [0.04, 0.05, 0.08, 1] })
+   : makeMesh(mirrorName, [-1, 1, 0, 1, 1, 0, 1, -1, 0, -1, 1, 0, 1, -1, 0, -1, -1, 0], [0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1]);
+  if (Array.isArray(eng?.stage)) eng.stage.push(baseMesh);
+  target = createSurface(baseMesh, mirrorName, {
+   x: sourceSurface.x ?? 0,
+   y: sourceSurface.y ?? 0,
+   w: sourceSurface.w ?? 1920,
+   h: sourceSurface.h ?? 1080,
+   cabinetModelId: sourceSurface.cabinetModelId,
+   processorModelId: sourceSurface.processorModelId,
+   cabCols: sourceSurface.cabCols,
+   cabRows: sourceSurface.cabRows,
+   shapeType: sourceSurface.shapeType || 'flat',
+   pos: mirrorPos,
+   yawDeg: mirrorYaw,
+   physical: sourceSurface.physical ? sourceSurface.physical.slice() : [sourceSurface.totalPhysicalWidthM || 2, sourceSurface.totalPhysicalHeightM || 2]
+  });
+  if (target && baseMesh) baseMesh._surfaceId18 = target.id;
+ }
+ if (!target) return null;
+ target.pos = mirrorPos.slice();
+ target.yawDeg = mirrorYaw === 0 ? 0 : mirrorYaw;
+ target.cabCols = sourceSurface.cabCols;
+ target.cabRows = sourceSurface.cabRows;
+ target.physical = sourceSurface.physical ? sourceSurface.physical.slice() : [sourceSurface.totalPhysicalWidthM || 2, sourceSurface.totalPhysicalHeightM || 2];
+ target.physicalWidthM = target.physical[0];
+ target.physicalHeightM = target.physical[1];
+ target.columnAnglesDeg = mirrorAngles;
+ const negPanel = -(+(sourceSurface.panelAngleDeg || 0));
+ target.panelAngleDeg = negPanel === 0 ? 0 : negPanel;
+ if (Array.isArray(sourceSurface.virtualTiles)) {
+  const cols = Math.max(1, sourceSurface.cabCols || 1);
+  target.virtualTiles = sourceSurface.virtualTiles.map((vt) => {
+   const [c, r] = String(vt).split(',').map(Number);
+   return (cols - 1 - c) + ',' + r;
+  });
+ }
+ rebuildSurface3DMesh(target);
+ return target;
+}
+globalThis.rebuildSurface3DMesh = rebuildSurface3DMesh;
+globalThis.applyCurvatureSections = applyCurvatureSections;
+globalThis.renderCurvatureSectionsSvg = renderCurvatureSectionsSvg;
+globalThis.copyPasteSurfaceCurvature = copyPasteSurfaceCurvature;
+globalThis.mirrorWingSurface3D = mirrorWingSurface3D;
+globalThis.renderSurfaceCalibrationTestCard = renderSurfaceCalibrationTestCard;
+globalThis.exportSurfaceCalibrationPng = exportSurfaceCalibrationPng;
+globalThis.toggleVirtualTile = toggleVirtualTile;
+globalThis.setColumnCurvatureAngle = setColumnCurvatureAngle;
+globalThis.computeCurvedSpanMeters = computeCurvedSpanMeters;
+globalThis.normalizeSurfaceHardware = normalizeSurfaceHardware;
+globalThis.computeGeometricScreenLayout = computeGeometricScreenLayout;
 createSurface=function(mesh,name,options={}){const source=mesh._ledBinding?engine.stage.find(m=>m.id===mesh._ledBinding.sourceMeshId):engine.stage.find(m=>m===mesh);if(source?.worldAxes)mesh.preferredUp=source.worldAxes[1];const info=measureFace(mesh),s=V031.createSurface(mesh,name,{w:clamp(Math.round(info.width*128),8,8192),h:clamp(Math.round(info.height*128),8,8192),...options});s.mesh.preferredUp=mesh.preferredUp?vecCopy(mesh.preferredUp):[0,1,0];s.mappingSpace=options.mappingSpace||'local';s.nativeResolution=options.nativeResolution||{width:s.w,height:s.h,confirmed:false};s.aspectLock=options.aspectLock??true;s.metricFrame={right:info.right,up:info.up,normal:info.normal,origin:info.origin};s.physical=[info.width,info.height];normalizeSurfaceHardware(s);return s;};
 
 /* Shared stage-space content UVs. Pixel crop and physical geometry are separate. */
@@ -1304,10 +1816,10 @@ function sameFloatArray(a,b){if(a===b)return true;if(!a||!b||a.length!==b.length
 function sameCoordFrame(a,b){if(!a||!b)return false;const ca=a.config,cb=b.config;if(!ca||!cb||ca.scale!==cb.scale||ca.yaw!==cb.yaw||ca.up!==cb.up||ca.origin!==cb.origin)return false;return sameFloatArray(a.matrix,b.matrix);}
 function restoreSpatialBindings(){let dirty=false;for(const s of engine.surfaces){const src=sourceForSurface(s);if(src){s.sourceMeshId=src.id;s.sourceKey=src.sourceKey;s.sourceMeshPath=src.path||null;s.mesh.preferredUp=src.worldAxes?.[1]||[0,1,0];}s.mappingSpace ||= 'local';s.nativeResolution ||= {width:s.w,height:s.h,confirmed:false};s.physical=s.mappingMode==='uv'&&finiteArray(s.physical,2)?s.physical:[measureFace(s.mesh).width,measureFace(s.mesh).height];normalizeSurfaceHardware(s);if(s.mappingSpace==='stage'&&engine.layout?.bounds&&engine.layout?.padding){const nextUV=calculateMapUV(s);if(!sameFloatArray(s.mesh.mapUV,nextUV)){s.mesh.mapUV=nextUV;engine.releaseMesh(s.mesh);dirty=true;}}}if(dirty)resetFlatCache();}
 snapshot=function(){return {...V031.snapshot(),coordinates:structuredClone(engine.coordinates),layout:structuredClone(engine.layout),camera:structuredClone(engine.camera)};};
-restore=function(s){state._restoring=(state._restoring||0)+1;try{if(s.coordinates?.config&&!sameCoordFrame(s.coordinates,engine.coordinates))applyCoordinateConfig(s.coordinates.config,{record:false,updateAttachments:false,fit:false});if(s.coordinates)engine.coordinates=structuredClone(s.coordinates);engine.layout=structuredClone(s.layout||defaultLayout());const cloned={...s,surfaces:Array.isArray(s.surfaces)?s.surfaces.map(x=>({...x,crop:x.crop?.slice(),nativeResolution:x.nativeResolution?{...x.nativeResolution}:undefined,physical:x.physical?[...x.physical]:undefined,metricFrame:x.metricFrame?structuredClone(x.metricFrame):undefined,cabinetSpec:x.cabinetSpec?{...x.cabinetSpec}:undefined,virtualTiles:Array.isArray(x.virtualTiles)?[...x.virtualTiles]:[],columnAnglesDeg:Array.isArray(x.columnAnglesDeg)?[...x.columnAnglesDeg]:undefined,wiringConfig:x.wiringConfig?{...x.wiringConfig}:undefined,rowLayout:Array.isArray(x.rowLayout)?x.rowLayout.map(r=>({...r})):undefined,cabinetModelId:x.cabinetModelId,processorModelId:x.processorModelId,shapeType:x.shapeType,wiringViewMode:x.wiringViewMode,rows500x1000:x.rows500x1000,rows500x500:x.rows500x500})):[]};V031.restore(cloned);if(s.camera)engine.camera=structuredClone(s.camera);restoreSpatialBindings();state._deferFixtures=true;state._deferUI=true;}finally{if(!--state._restoring)flushDeferredRestore();}};
+restore=function(s){state._restoring=(state._restoring||0)+1;try{if(s.coordinates?.config&&!sameCoordFrame(s.coordinates,engine.coordinates))applyCoordinateConfig(s.coordinates.config,{record:false,updateAttachments:false,fit:false});if(s.coordinates)engine.coordinates=structuredClone(s.coordinates);engine.layout=structuredClone(s.layout||defaultLayout());const cloned={...s,surfaces:Array.isArray(s.surfaces)?s.surfaces.map(x=>({...x,crop:x.crop?.slice(),nativeResolution:x.nativeResolution?{...x.nativeResolution}:undefined,physical:x.physical?[...x.physical]:undefined,metricFrame:x.metricFrame?structuredClone(x.metricFrame):undefined,cabinetSpec:x.cabinetSpec?{...x.cabinetSpec}:undefined,virtualTiles:Array.isArray(x.virtualTiles)?[...x.virtualTiles]:[],columnAnglesDeg:Array.isArray(x.columnAnglesDeg)?[...x.columnAnglesDeg]:undefined,curvatureSections:Array.isArray(x.curvatureSections)?x.curvatureSections.map(c=>({...c})):undefined,wiringConfig:x.wiringConfig?{...x.wiringConfig}:undefined,rowLayout:Array.isArray(x.rowLayout)?x.rowLayout.map(r=>({...r})):undefined,cabinetModelId:x.cabinetModelId,processorModelId:x.processorModelId,shapeType:x.shapeType,wiringViewMode:x.wiringViewMode,rows500x1000:x.rows500x1000,rows500x500:x.rows500x500})):[]};V031.restore(cloned);if(s.camera)engine.camera=structuredClone(s.camera);restoreSpatialBindings();state._deferFixtures=true;state._deferUI=true;}finally{if(!--state._restoring)flushDeferredRestore();}};
 importModel=async function(files,{silent=false}={}){if(state.importing)return;state.importing=true;busy(true,(typeof window==='undefined'?"Đang đọc model và hệ quy chiếu...":window.tr?.("Đang đọc model và hệ quy chiếu...","Reading model and reference frame...")??"Đang đọc model và hệ quy chiếu..."));try{const list=Array.from(files);if(list.reduce((a,f)=>a+f.size,0)>600*1024*1024)throw Error((typeof window==='undefined'?"Model vượt 600 MB.":window.tr?.("Model vượt 600 MB.","Model exceeds 600 MB.")??"Model vượt 600 MB."));const result=await Importer.load(list);engine.setModel(result.meshes);engine.sourcePunctualLights=result.punctualLights||[];engine.surfaces=[];engine.selected=null;engine.lights=[];engine.rebuildFixtures();state.model={name:result.name,files:result.files,demo:false};state.projectName=result.name.replace(/\.[a-z0-9]+$/i,'');state.warnings=result.warnings;state.history=[];state.redo=[];state.selectedMesh=null;state.hit=null;state.rebindId=null;state.selectedLight=null;cancelSpatialPick();engine.globalTest=false;engine.view='stage';state.step='stage';engine.settings.ambient=.65;engine.settings.beam=.6;const ext=result.name.split('.').pop().toLowerCase();engine.coordinates.sourceInfo={format:ext,normalizedByImporter:true,declaredUnit:ext==='obj'?'unspecified (assumed meters)':ext==='dae'?'COLLADA asset unit / up_axis':'glTF meters / Y-up',...result.coordinateInfo};renderUI();if(!silent){toast((typeof window==='undefined'?"Đã nhập ":window.tr?.("Đã nhập ","Imported ")??"Đã nhập ")+result.name+(typeof window==='undefined'?". Kiểm tra kích thước mét trước khi map. Không tự thêm đèn.":window.tr?.(". Kiểm tra kích thước mét trước khi map. Không tự thêm đèn.",". Check dimensions in meters before mapping. No lights added automatically.")??". Kiểm tra kích thước mét trước khi map. Không tự thêm đèn."),8000);if(result.warnings.length)dialog((typeof window==='undefined'?"Lưu ý model":window.tr?.("Lưu ý model","Model notes")??"Lưu ý model"),'<p>'+result.warnings.map(esc).join('<br>')+'</p>');}return result;}finally{state.importing=false;busy(false);}};
 demo=function(){engine.lights=[];V031.demo();state.projectName='ALPHA_Demo_Stage';engine.layout ||= defaultLayout();for(const s of engine.surfaces){s.mappingSpace='stage';normalizeSurfaceHardware(s);}rebuildSpatialMap({width:3840,height:1280,activate:true,record:false});for(const s of engine.surfaces)normalizeSurfaceHardware(s);state.history=[];state.redo=[];renderUI();};
-mappingData=function(){const d=V031.mappingData();d.coordinates=structuredClone(engine.coordinates);d.layout=structuredClone(engine.layout);d.screens.forEach((s,i)=>{const x=engine.surfaces[i];normalizeSurfaceHardware(x);s.mappingSpace=x.mappingSpace;s.nativeResolution=x.nativeResolution;s.sourceKey=x.sourceKey;s.worldBounds=x.mesh.bounds;s.cabinetSpec={...x.cabinetSpec};s.virtualTiles=[...x.virtualTiles];s.columnAnglesDeg=[...x.columnAnglesDeg];s.wiringConfig={...x.wiringConfig};s.note='outputRect is a content viewport, not a receiver-card configuration';});return d;};
+mappingData=function(){const d=V031.mappingData();d.coordinates=structuredClone(engine.coordinates);d.layout=structuredClone(engine.layout);d.screens.forEach((s,i)=>{const x=engine.surfaces[i];normalizeSurfaceHardware(x);s.mappingSpace=x.mappingSpace;s.nativeResolution=x.nativeResolution;s.sourceKey=x.sourceKey;s.worldBounds=x.mesh.bounds;s.cabinetSpec={...x.cabinetSpec};s.virtualTiles=[...x.virtualTiles];s.columnAnglesDeg=[...x.columnAnglesDeg];s.curvatureSections=Array.isArray(x.curvatureSections)?x.curvatureSections.map(c=>({...c})):[];s.wiringConfig={...x.wiringConfig};s.note='outputRect is a content viewport, not a receiver-card configuration';});return d;};
 mappingWarnings=function(){const arr=V031.mappingWarnings();if(engine.surfaces.some(s=>!s.nativeResolution?.confirmed))arr.push((typeof window==='undefined'?"Chưa xác nhận độ phân giải LED thực cho tất cả màn. Kích thước xem thử không phải pixel map phần cứng.":window.tr?.("Chưa xác nhận độ phân giải LED thực cho tất cả màn. Kích thước xem thử không phải pixel map phần cứng.","Physical LED resolution is not confirmed for all screens. Preview dimensions are not a hardware pixel map.")??"Chưa xác nhận độ phân giải LED thực cho tất cả màn. Kích thước xem thử không phải pixel map phần cứng."));return arr;};
 // Per-screen media selection is explicit local crop. Master assignment bypasses
 // this override and retains shared spatial UVs when requested.
@@ -1315,7 +1827,7 @@ setSource=function(s,id){V031.setSource(s,id);if(engine.media.has(id)){s.mapping
 const oldReplaceSurfaceGeometry=replaceSurfaceGeometry;
 replaceSurfaceGeometry=function(s,face){oldReplaceSurfaceGeometry(s,face);if(s.mappingSpace==='stage')rebuildSpatialMap({activate:false,record:false});};
 const metricSnapshot=snapshot;
-snapshot=function(){const d=metricSnapshot();d.surfaces=d.surfaces.map(s=>({...s,nativeResolution:s.nativeResolution?{...s.nativeResolution}:undefined,physical:s.physical?[...s.physical]:undefined,metricFrame:s.metricFrame?structuredClone(s.metricFrame):undefined,cabW:s.cabW,cabH:s.cabH,pxW:s.pxW,pxH:s.pxH,cabCols:s.cabCols,cabRows:s.cabRows,panelAngleDeg:s.panelAngleDeg,wiringOrder:s.wiringOrder,cabinetSpec:s.cabinetSpec?{...s.cabinetSpec}:undefined,virtualTiles:Array.isArray(s.virtualTiles)?[...s.virtualTiles]:[],columnAnglesDeg:Array.isArray(s.columnAnglesDeg)?[...s.columnAnglesDeg]:undefined,wiringConfig:s.wiringConfig?{...s.wiringConfig}:undefined,rowLayout:Array.isArray(s.rowLayout)?s.rowLayout.map(r=>({...r})):undefined,cabinetModelId:s.cabinetModelId,processorModelId:s.processorModelId,shapeType:s.shapeType,wiringViewMode:s.wiringViewMode,rows500x1000:s.rows500x1000,rows500x500:s.rows500x500}));return d;};
+snapshot=function(){const d=metricSnapshot();d.surfaces=d.surfaces.map(s=>({...s,nativeResolution:s.nativeResolution?{...s.nativeResolution}:undefined,physical:s.physical?[...s.physical]:undefined,metricFrame:s.metricFrame?structuredClone(s.metricFrame):undefined,cabW:s.cabW,cabH:s.cabH,pxW:s.pxW,pxH:s.pxH,cabCols:s.cabCols,cabRows:s.cabRows,panelAngleDeg:s.panelAngleDeg,wiringOrder:s.wiringOrder,cabinetSpec:s.cabinetSpec?{...s.cabinetSpec}:undefined,virtualTiles:Array.isArray(s.virtualTiles)?[...s.virtualTiles]:[],columnAnglesDeg:Array.isArray(s.columnAnglesDeg)?[...s.columnAnglesDeg]:undefined,curvatureSections:Array.isArray(s.curvatureSections)?s.curvatureSections.map(c=>({...c})):undefined,wiringConfig:s.wiringConfig?{...s.wiringConfig}:undefined,rowLayout:Array.isArray(s.rowLayout)?s.rowLayout.map(r=>({...r})):undefined,cabinetModelId:s.cabinetModelId,processorModelId:s.processorModelId,shapeType:s.shapeType,wiringViewMode:s.wiringViewMode,rows500x1000:s.rows500x1000,rows500x500:s.rows500x500}));return d;};
 
 /* Anchored fixtures: select source lens, then target in the same metric scene. */
 StageEngine.prototype.rebuildFixtures=function(){if(typeof state!=='undefined'&&state._restoring){state._deferFixtures=true;return;}const sig=this.lights.map(l=>(l._deleted8||l.origin==='model'||l.origin==='gltf')?'':`${l.id}|${l.name}|${l.pos?.[0]},${l.pos?.[1]},${l.pos?.[2]}|${l.fixtureSize?.join(',')||''}`).join(';');if(this._fixtureSig===sig&&(this.fixtureMeshes.length||!sig.replace(/;/g,'')))return;this._fixtureSig=sig;for(const m of this.fixtureMeshes)this.releaseMesh(m);this.fixtureMeshes=[];for(const l of this.lights){if(l._deleted8||l.origin==='model'||l.origin==='gltf')continue;const size=l.fixtureSize||[.3,.38,.3],mesh=boxMesh(l.name+' / proxy',M.add(l.pos,[0,size[1]*.45,0]),size,[.12,.14,.18,1]);mesh.lightId=l.id;this.fixtureMeshes.push(mesh);}};
@@ -1419,6 +1931,8 @@ function surfaceHardwarePanel(s){
  <label class="check-row" style="margin:4px 0;"><input type="checkbox" id="surfSafetyGap16" ${(s.safetyGapPx||0)>=16?'checked':''}><span>${tLoc(' Biên an toàn 16px Safety Gap (Pixel Mapper)',' 16px Safety Gap Border (Pixel Mapper)')}</span></label>
  <div class="metric-pair"><div><b>${s.activeCabinets}/${s.totalCabinetGrid} cab</b><span>${tLoc(`Lưới ${s.cabCols}×${s.cabRows} · ${s.totalWeightKg} kg`,`Grid ${s.cabCols}×${s.cabRows} · ${s.totalWeightKg} kg`)}</span></div><div><b>${geom.footprintWidthM}×${geom.footprintDepthM} m</b><span>${tLoc(`Dây cung ${curve.chordWidthM} m · Sâu ${curve.depthOffsetM} m`,`Chord ${curve.chordWidthM} m · Depth ${curve.depthOffsetM} m`)}</span></div></div>
  <div class="actions-row" style="margin-top:6px;"><button type="button" class="btn ${paintActive?'primary':''}" id="surfPaintVoidsBtn">${tLoc('Đục rỗng Panel Ảo [Phím B]','Paint Voids [Key B]')}</button><button type="button" class="btn" id="exportSurfTestCardBtn">${tLoc('Xuất Test Card 1:1','Export 1:1 Test Card')}</button></div>
+ <div class="actions-row" style="margin-top:4px;"><button type="button" class="btn small" id="surfCurve3SecBtn">${tLoc('Chia 3 đoạn cong (A/B/C)','3-Section Curve (A/B/C)')}</button><button type="button" class="btn small" id="surfMirrorWingBtn">${tLoc('Đối xứng Wing 3D (L/R)','Mirror Wing 3D (L/R)')}</button></div>
+ <div style="margin:6px 0;">${renderCurvatureSectionsSvg(s)}</div>
  <p class="hint-text">${tLoc('Góc từng cột & Lưới <b>Virtual Tile (Ô rỗng [B])</b> — click hoặc giữ chuột quét:','Per-column angles & <b>Virtual Tile (Void [B])</b> grid — click or drag to paint:')}</p>${colAngleHtml}${gridHtml}</div>`;
 }
 function bindSurfaceHardwarePanel(s){
@@ -1444,8 +1958,8 @@ function bindSurfaceHardwarePanel(s){
  change('surfCabH',v=>{s._cabHOverride=clamp(Math.round(+v)||500,100,2000);delete s.rows500x1000;delete s.rows500x500;normalizeSurfaceHardware(s);renderInspector();});
  change('surfRows1000',v=>{s.rows500x1000=clamp(Math.round(+v)||0,0,64);s.rows500x500=clamp(Math.round(+(s.rows500x500??0)),0,64);normalizeSurfaceHardware(s);renderInspector();});
  change('surfRows500',v=>{s.rows500x500=clamp(Math.round(+v)||0,0,64);s.rows500x1000=clamp(Math.round(+(s.rows500x1000??0)),0,64);normalizeSurfaceHardware(s);renderInspector();});
- change('surfShapeType',v=>{s.shapeType=v||'flat';normalizeSurfaceHardware(s);renderInspector();});
- change('surfAngleDeg',v=>{s.panelAngleDeg=clamp(+v||0,-30,30);s.columnAnglesDeg=Array.from({length:s.cabCols||1},()=>s.panelAngleDeg);normalizeSurfaceHardware(s);renderInspector();});
+ change('surfShapeType',v=>{s.shapeType=v||'flat';normalizeSurfaceHardware(s);rebuildSurface3DMesh(s);renderInspector();});
+ change('surfAngleDeg',v=>{s.panelAngleDeg=clamp(+v||0,-30,30);s.columnAnglesDeg=Array.from({length:s.cabCols||1},()=>s.panelAngleDeg);normalizeSurfaceHardware(s);rebuildSurface3DMesh(s);renderInspector();});
  change('surfWiringOrder',v=>{s.wiringOrder=v;if(s.wiringConfig){delete s.wiringConfig.pattern;delete s.wiringConfig.startCorner;}normalizeSurfaceHardware(s);renderInspector();});
  change('surfPowerSplitMode',v=>{s.powerSplitMode=v||'full';if(s.wiringConfig)s.wiringConfig.powerSplitMode=s.powerSplitMode;normalizeSurfaceHardware(s);renderInspector();});
  change('surfSafetyGap16',v=>{s.safetyGapPx=v?16:0;if(s.wiringConfig)s.wiringConfig.safetyGapPx=s.safetyGapPx;if(typeof live!=='undefined'&&live.pixelOptions)live.pixelOptions.gap=v?16:8;normalizeSurfaceHardware(s);renderInspector();});
@@ -1478,6 +1992,22 @@ function bindSurfaceHardwarePanel(s){
   renderInspector();
  };
  if($('exportSurfTestCardBtn'))$('exportSurfTestCardBtn').onclick=()=>exportSurfaceCalibrationPng(s);
+ if($('surfCurve3SecBtn'))$('surfCurve3SecBtn').onclick=()=>{
+  checkpoint();
+  const cols=Math.max(1,s.cabCols||1),c1=Math.max(1,Math.floor(cols/3)),c2=Math.max(1,Math.floor(cols/3));
+  applyCurvatureSections(s,[
+   {id:'A',label:'Sec A',startCol:0,endCol:c1,mode:'concave',angleDeg:-10},
+   {id:'B',label:'Sec B',startCol:c1,endCol:Math.min(cols,c1+c2),mode:'locked_flat',angleDeg:0},
+   {id:'C',label:'Sec C',startCol:Math.min(cols,c1+c2),endCol:cols,mode:'convex',angleDeg:10}
+  ]);
+  renderInspector();
+ };
+ if($('surfMirrorWingBtn'))$('surfMirrorWingBtn').onclick=()=>{
+  checkpoint();
+  const partner=engine.surfaces.find(x=>x.id!==s.id&&(/WING/i.test(x.name)||x.name===String(s.name||'').replace(/_L$/i,'_R').replace(/_R$/i,'_L')))||null;
+  mirrorWingSurface3D(s,partner,{mirrorCurve:true});
+  renderUI();
+ };
  let painting=false;
  const paintTile=btn=>{
   if(!painting){
@@ -1565,7 +2095,7 @@ function initSpatialEvents(){
  $('autoDetect').textContent=(typeof window==='undefined'?"Nhận diện LED":window.tr?.("Nhận diện LED","Detect LEDs")??"Nhận diện LED");
  $('helpBtn').onclick=()=>dialog((typeof window==='undefined'?"V0.4 / cùng hệ quy chiếu":window.tr?.("V0.4 / cùng hệ quy chiếu","Shared reference frame")??"V0.4 / cùng hệ quy chiếu"),(typeof window==='undefined'?"<h3>1. Kiểm tra tỷ lệ</h3><p>Nhập GLB/DAE/OBJ. Xem kích thước mét. Cần sửa: Hệ quy chiếu hoặc Đo 2 điểm.</p><h3>2. Gắn LED</h3><p>Chọn mặt phát hình. Map theo bố cục sân khấu giữ nguyên khoảng hở và góc nghiêng. Nhập pixel LED thực riêng khi có số liệu.</p><h3>3. Chọn đúng kiểu video</h3><p>Hình tổng: spatial master. Clip đã chia ô: manual crop. Không thể tự suy ra bố cục clip đó từ model.</p><h3>4. Đèn</h3><p>Click mặt kính đèn trên model, sau đó click điểm chiếu. Preset chỉ thay đổi look, không di chuyển đèn.</p><h3>5. Lưu</h3><p>File .ledstudio lưu cả hệ quy chiếu, mapping và nguồn sáng. Bản này là preview cục bộ; không có DMX hay cấu hình processor LED.</p>":window.tr?.("<h3>1. Kiểm tra tỷ lệ</h3><p>Nhập GLB/DAE/OBJ. Xem kích thước mét. Cần sửa: Hệ quy chiếu hoặc Đo 2 điểm.</p><h3>2. Gắn LED</h3><p>Chọn mặt phát hình. Map theo bố cục sân khấu giữ nguyên khoảng hở và góc nghiêng. Nhập pixel LED thực riêng khi có số liệu.</p><h3>3. Chọn đúng kiểu video</h3><p>Hình tổng: spatial master. Clip đã chia ô: manual crop. Không thể tự suy ra bố cục clip đó từ model.</p><h3>4. Đèn</h3><p>Click mặt kính đèn trên model, sau đó click điểm chiếu. Preset chỉ thay đổi look, không di chuyển đèn.</p><h3>5. Lưu</h3><p>File .ledstudio lưu cả hệ quy chiếu, mapping và nguồn sáng. Bản này là preview cục bộ; không có DMX hay cấu hình processor LED.</p>","<h3>1. Check scale</h3><p>Import GLB/DAE/OBJ. Check dimensions in meters. Adjust using Reference frame or Measure two points.</p><h3>2. Attach LEDs</h3><p>Select emitting faces. Stage layout mapping preserves gaps and angles. Enter actual LED pixels separately when known.</p><h3>3. Choose the correct video type</h3><p>Full image: spatial master. Tiled clip: manual crop. Clip layout cannot be inferred from the model.</p><h3>4. Lights</h3><p>Click a fixture lens on the model, then its target. Presets change looks without moving lights.</p><h3>5. Save</h3><p>The .ledstudio file saves the reference frame, mapping and light sources. This is a local preview; no DMX or LED processor configuration here.</p>")??"<h3>1. Kiểm tra tỷ lệ</h3><p>Nhập GLB/DAE/OBJ. Xem kích thước mét. Cần sửa: Hệ quy chiếu hoặc Đo 2 điểm.</p><h3>2. Gắn LED</h3><p>Chọn mặt phát hình. Map theo bố cục sân khấu giữ nguyên khoảng hở và góc nghiêng. Nhập pixel LED thực riêng khi có số liệu.</p><h3>3. Chọn đúng kiểu video</h3><p>Hình tổng: spatial master. Clip đã chia ô: manual crop. Không thể tự suy ra bố cục clip đó từ model.</p><h3>4. Đèn</h3><p>Click mặt kính đèn trên model, sau đó click điểm chiếu. Preset chỉ thay đổi look, không di chuyển đèn.</p><h3>5. Lưu</h3><p>File .ledstudio lưu cả hệ quy chiếu, mapping và nguồn sáng. Bản này là preview cục bộ; không có DMX hay cấu hình processor LED.</p>"));
 }
-const spatialAPI={applyCoordinateConfig,calculateFrame,measureFace,rebuildSpatialMap,activateSpatialLayout,manualCropMode,referenceFrameDialog,startSpatialPick,cancelSpatialPick,addAnchoredLight,handleSpatialClick,restoreSpatialBindings,normalizeSurfaceHardware,toggleVirtualTile,setColumnCurvatureAngle,computeCurvedSpanMeters,computeGeometricScreenLayout,renderSurfaceCalibrationTestCard,exportSurfaceCalibrationPng,LED_CABINET_CATALOG,LED_PROCESSOR_CATALOG,get layout(){return engine.layout;},undo,redo};
+const spatialAPI={applyCoordinateConfig,calculateFrame,measureFace,rebuildSpatialMap,activateSpatialLayout,manualCropMode,referenceFrameDialog,startSpatialPick,cancelSpatialPick,addAnchoredLight,handleSpatialClick,restoreSpatialBindings,normalizeSurfaceHardware,toggleVirtualTile,setColumnCurvatureAngle,rebuildSurface3DMesh,applyCurvatureSections,renderCurvatureSectionsSvg,copyPasteSurfaceCurvature,mirrorWingSurface3D,computeCurvedSpanMeters,computeGeometricScreenLayout,renderSurfaceCalibrationTestCard,exportSurfaceCalibrationPng,LED_CABINET_CATALOG,LED_PROCESSOR_CATALOG,get layout(){return engine.layout;},undo,redo};
 
 /* V0.4.1 UI/playback maintenance. No geometry, UV, crop or coordinate mutations. */
 const STABLE_BASE={renderUI,renderInspector,loadProject,exportShot,exportMapPNG};
@@ -1644,7 +2174,7 @@ function toggleFocus(){
 function toggleDrawer(side){const cls='drawer-'+side,other=side==='left'?'drawer-right':'drawer-left';document.body.classList.toggle(cls);document.body.classList.remove(other);}
 
 renderInspector=function(){
- const panel=document.querySelector('.right-panel'),key=state.step+':'+(engine.selected||'')+':'+(state.selectedLight||'')+':'+(state.selectedMesh||'');
+ const panel=document.querySelector('.right-panel'),key=state.step+':'+(engine.selected||'')+':'+(state.selectedLight||'')+':'+(state.selectedSfx18||'')+':'+(state.selectedMesh||'')+':'+(typeof window!=='undefined'&&window._lmpRpConfigSig18||'');
  const same=stableUI.lastInspector===key,y=panel.scrollTop;STABLE_BASE.renderInspector();panel.scrollTop=same?y:0;stableUI.lastInspector=key;
 };
 renderUI=function(){
@@ -1789,7 +2319,7 @@ function initStableEvents(){
  $('previewQuality').onchange=e=>{engine.previewScale=+e.target.value;updateStableControls();};
  bindTimeline('seek');bindTimeline('showSeek');
  $('hudLabels').addEventListener('click',e=>{const marker=e.target.closest('[data-light-id]');if(!marker||!engine.lights.some(l=>l.id===marker.dataset.lightId))return;e.stopPropagation();state.selectedLight=marker.dataset.lightId;renderUI();});
- document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,select')||$('modal').open)return;if(e.key.toLowerCase()==='f'){e.preventDefault();e.stopImmediatePropagation();showOverview();}else if(e.key.toLowerCase()==='l'&&!e.ctrlKey&&!e.metaKey){e.preventDefault();setCameraLock(!engine.cameraLocked);}else if(e.key==='Escape'&&!state.presenting){document.body.classList.remove('drawer-left','drawer-right');}},true);
+ document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,select')||$('modal').open)return;const liveRun=typeof STUDIO!=='undefined'&&!!STUDIO.lumi18?.liveShow18?.running;if(e.key.toLowerCase()==='f'&&!liveRun){e.preventDefault();e.stopImmediatePropagation();showOverview();}else if(e.key.toLowerCase()==='l'&&!e.ctrlKey&&!e.metaKey&&!liveRun){e.preventDefault();setCameraLock(!engine.cameraLocked);}else if(e.key==='Escape'&&!state.presenting){document.body.classList.remove('drawer-left','drawer-right');}},true);
  const observer=new ResizeObserver(entries=>{const r=entries[0].contentRect,w=Math.round(r.width),h=Math.round(r.height);document.documentElement.style.setProperty("--drawer-top",Math.round($("viewport").getBoundingClientRect().top)+"px");if(w<1||h<1||stableUI.lastViewport[0]===w&&stableUI.lastViewport[1]===h)return;stableUI.lastViewport=[w,h];stableUI.resizeCount++;if(engine._fitOnResize&&engine.stage.length&&engine.view==='stage')engine.fit();});observer.observe($('viewport'));stableUI.observer=observer;
  document.addEventListener('visibilitychange',()=>{state.lastFrame=performance.now();stableUI.mediaClock=null;if(document.hidden){for(const a of state.media)if(a.type==='video')a.element.pause();stableUI.visibilityPaused=true;}else{if(stableUI.visibilityPaused)syncVideos(true);stableUI.visibilityPaused=false;}});
  window.addEventListener('blur',()=>{if(stableUI.scrubbing){stableUI.scrubbing=false;setPlaying(stableUI.scrubResume);}});

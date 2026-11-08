@@ -479,7 +479,9 @@ function escXml(str) {
   .replace(/'/g, '&apos;');
 }
 
-function exportResolumeArenaXml(surfacesOrPlan = [], masterSize = {}) {
+function exportResolumeArenaXml(surfacesOrPlan = [], masterSize = {}, opts = {}) {
+ const version = Number(opts?.version) === 6 ? 6 : 7;
+ const includePolygons = opts?.includePolygons !== false;
  const isPlanObj = surfacesOrPlan && !Array.isArray(surfacesOrPlan) && Array.isArray(surfacesOrPlan.pages);
  const page0 = isPlanObj ? surfacesOrPlan.pages[0] : null;
  const compW = Math.max(1, Math.round(+masterSize?.width || +page0?.width || 3840));
@@ -495,6 +497,23 @@ function exportResolumeArenaXml(surfacesOrPlan = [], masterSize = {}) {
   const h = Math.max(1, Math.round(Number.isFinite(+s?.h) && +s.h > 0 ? +s.h : (+s?.nativeResolution?.height || 1080)));
   const uid = sliceId++;
   const name = escXml(s?.name || s?.id || `Slice_${idx + 1}`);
+  const polyPts = [
+   `            <Point x="${x}" y="${y}"/>`,
+   `            <Point x="${x + w}" y="${y}"/>`,
+   `            <Point x="${x + w}" y="${y + h}"/>`,
+   `            <Point x="${x}" y="${y + h}"/>`
+  ].join('\n');
+  const polyXml = includePolygons ? [
+   `          <Polygon>`,
+   polyPts,
+   `          </Polygon>`,
+   `          <InputPolygon>`,
+   polyPts,
+   `          </InputPolygon>`,
+   `          <OutputPolygon>`,
+   polyPts,
+   `          </OutputPolygon>`
+  ] : [];
   return [
    `        <Slice uniqueId="${uid}" name="${name}" isEnabled="1">`,
    `          <InputRect x="${x}" y="${y}" w="${w}" h="${h}" orientation="0">`,
@@ -509,6 +528,7 @@ function exportResolumeArenaXml(surfacesOrPlan = [], masterSize = {}) {
    `            <v x="${x + w}" y="${y + h}"/>`,
    `            <v x="${x}" y="${y + h}"/>`,
    `          </OutputRect>`,
+   ...polyXml,
    `        </Slice>`
   ].join('\n');
  }).join('\n');
@@ -518,10 +538,11 @@ function exportResolumeArenaXml(surfacesOrPlan = [], masterSize = {}) {
  ].join('\n');
  }).join('\n');
 
+ const minorVer = version === 6 ? 1 : 18;
  return [
   `<?xml version="1.0" encoding="utf-8"?>`,
-  `<XmlState name="Arena Advanced Output" version="7.18.0" createdBy="ALPHA Creative LED Studio">`,
-  `  <versionInfo name="Resolume Arena" majorVersion="7" minorVersion="18" microVersion="0"/>`,
+  `<XmlState name="Arena Advanced Output" version="${version}.${minorVer}.0" createdBy="ALPHA Creative LED Studio">`,
+  `  <versionInfo name="Resolume Arena" majorVersion="${version}" minorVersion="${minorVer}" microVersion="0"/>`,
   `  <ScreenSetup name="ALPHA_LED_Stage_Setup">`,
   `    <CurrentCompositionTextureSize width="${compW}" height="${compH}"/>`,
   `    <Screens>`,
@@ -532,24 +553,30 @@ function exportResolumeArenaXml(surfacesOrPlan = [], masterSize = {}) {
  ].join('\n');
 }
 
-function downloadResolumeXml(plan = live.atlasPlan) {
+function downloadResolumeXml(plan = live.atlasPlan, opts = {}) {
  const surfaces = (typeof engine !== 'undefined' && Array.isArray(engine?.surfaces) && engine.surfaces.length && !plan)
   ? engine.surfaces
   : (plan || []);
  const master = plan?.pages?.[0]
   ? { width: plan.pages[0].width, height: plan.pages[0].height }
   : (typeof engine !== 'undefined' && engine?.master ? engine.master : { width: 3840, height: 2160 });
- const xml = exportResolumeArenaXml(surfaces, master);
- downloadText('ALPHA_Resolume_Arena_Output.xml', xml, 'application/xml;charset=utf-8');
+ const version = Number(opts?.version) === 6 ? 6 : 7;
+ const xml = exportResolumeArenaXml(surfaces, master, { ...opts, version });
+ downloadText(`ALPHA_Resolume_Arena_${version}_Output.xml`, xml, 'application/xml;charset=utf-8');
 }
 
-function paintAtlas(canvas,page,{labels=true,fullSize=false,wiring=true,showData=true,showPower=false,pattern=null,viewMode='front'}={}){
+function paintAtlas(canvas,page,{labels=true,fullSize=false,wiring=true,showData=true,showPower=false,pattern=null,viewMode='front',transparent=false,cadFrame=false,cajetinMeta=null}={}){
  const limit=fullSize?1:Math.min(1,1280/page.width,660/page.height);
- canvas.width=Math.max(1,Math.round(page.width*limit));canvas.height=Math.max(1,Math.round(page.height*limit));const g=canvas.getContext('2d');g.fillStyle='#080b12';g.fillRect(0,0,canvas.width,canvas.height);g.scale(limit,limit);
+ canvas.width=Math.max(1,Math.round(page.width*limit));canvas.height=Math.max(1,Math.round(page.height*limit));const g=canvas.getContext('2d');
+ g.clearRect(0,0,canvas.width,canvas.height);
+ if(!transparent){g.fillStyle='#080b12';g.fillRect(0,0,canvas.width,canvas.height);}
+ g.scale(limit,limit);
  const colors=['#5bd7c6','#a795fa','#f2b66d','#7eaaf4','#e5a5d0','#9bdba0'];
  const portColors=['#ffdf5d','#ff7a59','#4ef2a1','#ff73d0','#5ce1e6','#b892ff'];
  page.items.forEach((r,i)=>{
-  g.fillStyle=labels?colors[i%colors.length]:'#ffffff';g.fillRect(r.x,r.y,r.w,r.h);
+  if(labels||!transparent){
+   g.fillStyle=labels?colors[i%colors.length]:'#ffffff';g.fillRect(r.x,r.y,r.w,r.h);
+  }
   const surf=typeof engine!=='undefined'&&engine?.surfaces?.find(s=>s.id===r.surfaceId);
   if(labels&&wiring&&surf){
    const wPlan=planSurfaceWiring({...surf,w:r.w,h:r.h},{...(pattern?{pattern}:{}),viewMode});
@@ -565,15 +592,21 @@ function paintAtlas(canvas,page,{labels=true,fullSize=false,wiring=true,showData
    g.strokeStyle='rgba(8,11,18,0.35)';g.lineWidth=Math.max(1,1/limit);
    for(let c=1;c<wPlan.cols;c++){g.beginPath();g.moveTo(r.x+c*cw,r.y);g.lineTo(r.x+c*cw,r.y+r.h);g.stroke();}
    for(let row=1;row<wPlan.rows;row++){g.beginPath();g.moveTo(r.x,rowY[row]);g.lineTo(r.x+r.w,rowY[row]);g.stroke();}
+   const voidRects=[];
    for(const vt of wPlan.voidTiles){
     const [vc,vr]=vt.split(',').map(Number);
     if(Number.isInteger(vc)&&Number.isInteger(vr)){
      const dispVc=wPlan.viewMode==='rear'?(wPlan.cols-1-vc):vc;
      const vx=r.x+dispVc*cw,vy=rowY[vr]??(r.y+vr*ch),vh=rowH[vr]??ch;
-     g.fillStyle='rgba(8,11,18,0.82)';g.fillRect(vx+1,vy+1,cw-2,vh-2);
-     g.strokeStyle='rgba(255,107,107,0.75)';g.beginPath();g.moveTo(vx+3,vy+3);g.lineTo(vx+cw-3,vy+vh-3);g.moveTo(vx+cw-3,vy+3);g.lineTo(vx+3,vy+vh-3);g.stroke();
+     if(transparent){
+      voidRects.push([vx,vy,cw,vh]);
+     }else{
+      g.fillStyle='rgba(8,11,18,0.82)';g.fillRect(vx+1,vy+1,cw-2,vh-2);
+      g.strokeStyle='rgba(255,107,107,0.75)';g.beginPath();g.moveTo(vx+3,vy+3);g.lineTo(vx+cw-3,vy+vh-3);g.moveTo(vx+cw-3,vy+3);g.lineTo(vx+3,vy+vh-3);g.stroke();
+     }
     }
    }
+   r._voidRects18=voidRects;
    if(showData){
     wPlan.dataPorts.forEach((port,pIdx)=>{
      const pColor=portColors[pIdx%portColors.length];
@@ -619,12 +652,51 @@ function paintAtlas(canvas,page,{labels=true,fullSize=false,wiring=true,showData
    g.restore();
   }
   if(labels){g.fillStyle='#102028';g.font='bold '+Math.max(12,Math.min(42,r.w/12,r.h/5))+'px Segoe UI,Arial';g.save();g.beginPath();g.rect(r.x+3,r.y+3,r.w-6,r.h-6);g.clip();g.fillText(r.name+(viewMode==='rear'?' [REAR VIEW]':''),r.x+12,r.y+Math.max(22,Math.min(50,r.h/3)));g.font=Math.max(11,Math.min(28,r.w/15))+'px Segoe UI,Arial';g.fillText(r.w+' x '+r.h+' px',r.x+12,r.y+Math.min(88,r.h*.6));g.restore();}
+  if(transparent&&Array.isArray(r._voidRects18)){
+   for(const [vx,vy,vw,vh] of r._voidRects18)g.clearRect(vx,vy,vw,vh);
+  }
  });
+ if(cadFrame){
+  const w=page.width,h=page.height,bw=Math.max(18,Math.min(36,Math.round(Math.min(w,h)*0.025)));
+  g.save();
+  g.strokeStyle='rgba(56,189,248,0.85)';g.lineWidth=Math.max(1.5,1.5/limit);
+  g.strokeRect(bw/2,bw/2,w-bw,h-bw);
+  g.fillStyle='rgba(8,11,18,0.88)';
+  const colsCad=8,rowsCad=12,letters='ABCDEFGH';
+  g.font=`bold ${Math.max(10,Math.round(bw*0.48))}px Segoe UI,Arial`;
+  g.textAlign='center';g.textBaseline='middle';
+  for(let c=0;c<colsCad;c++){
+   const cx=(c+0.5)*(w/colsCad),chL=letters[c]||String(c+1);
+   g.fillStyle='#38bdf8';g.fillText(chL,cx,bw*0.45);g.fillText(chL,cx,h-bw*0.45);
+  }
+  for(let r=0;r<rowsCad;r++){
+   const cy=(r+0.5)*(h/rowsCad);
+   g.fillStyle='#38bdf8';g.fillText(String(r+1),bw*0.45,cy);g.fillText(String(r+1),w-bw*0.45,cy);
+  }
+  const meta=cajetinMeta||{};
+  const proj=String(meta.project||'ALPHA LED STAGE').slice(0,48);
+  const client=String(meta.client||'TECHNICAL HANDOFF').slice(0,40);
+  const tech=String(meta.technician||meta.author||'LED ENGINEER').slice(0,36);
+  const rev=meta.reviewer?` · CHK: ${String(meta.reviewer).slice(0,24)}`:'';
+  const ver=String(meta.version||'V1.0').slice(0,16);
+  const tbW=Math.min(w-bw*2,Math.max(260,Math.round(w*0.32))),tbH=Math.min(h-bw*2,Math.max(64,Math.round(h*0.11)));
+  const tx=w-bw-tbW-4,ty=h-bw-tbH-4;
+  g.fillStyle='rgba(8,11,18,0.92)';g.fillRect(tx,ty,tbW,tbH);
+  g.strokeStyle='#38bdf8';g.strokeRect(tx,ty,tbW,tbH);
+  g.fillStyle='#f8fafc';g.textAlign='left';g.font=`bold ${Math.max(11,Math.round(tbH*0.22))}px Segoe UI,Arial`;
+  g.fillText(`PROJECT: ${proj}`,tx+10,ty+tbH*0.28);
+  g.fillStyle='#94a3b8';g.font=`${Math.max(10,Math.round(tbH*0.18))}px Segoe UI,Arial`;
+  g.fillText(`CLIENT: ${client} · ENG: ${tech}${rev}`,tx+10,ty+tbH*0.56);
+  g.fillStyle='#38bdf8';
+  g.fillText(`ATLAS: ${page.id||'P1'} (${w}×${h}px) · REV: ${ver}`,tx+10,ty+tbH*0.82);
+  g.restore();
+ }
 }
-async function exportAtlasPNG(page,labels=true){
+async function exportAtlasPNG(page,labels=true,opts={}){
  if(page.width*page.height>48000000)throw Error((window.tr?.('PNG tr\u00ean 48 MP; h\u00e3y xu\u1ea5t JSON ho\u1eb7c chia nh\u1ecf c\u1ee5m.',"PNG exceeds 48 MP; export JSON or split the group.") ?? 'PNG tr\u00ean 48 MP; h\u00e3y xu\u1ea5t JSON ho\u1eb7c chia nh\u1ecf c\u1ee5m.'));
- const c=document.createElement('canvas');paintAtlas(c,page,{labels,fullSize:true});
- const blob=await new Promise(r=>c.toBlob(r,'image/png'));download('ALPHA_'+page.id+'_'+page.width+'x'+page.height+(labels?'_GUIDE':'_MASK')+'.png',blob);
+ const c=document.createElement('canvas');paintAtlas(c,page,{labels,fullSize:true,...opts});
+ const suffix=opts?.transparent?'_TRANSPARENT':(labels?'_GUIDE':'_MASK');
+ const blob=await new Promise(r=>c.toBlob(r,'image/png'));download('ALPHA_'+page.id+'_'+page.width+'x'+page.height+suffix+'.png',blob);
 }
 function exportAtlasJSON(plan=live.atlasPlan){if(!plan)return;downloadText('ALPHA_Optimized_LED_Atlas.json',JSON.stringify(plan,null,2));}
 function exportAtlasCSV(plan=live.atlasPlan){

@@ -36,7 +36,11 @@
    haze_machine_pro:{name:"1500W stage haze machine",legacyName:'Máy Phun Sương Haze Sân Khấu 1500W',get displayName(){return this.name;},label:'HAZE 1500W',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#64748b',get desc(){return tr('Máy tạo sương mỏng làm nổi tia đèn Beam',"Fine haze machine to reveal beam lighting");}},
    cold_spark_fountain:{name:"700W Sparkular cold spark fountain",legacyName:'Máy Pháo Điện Lạnh Sparkular 700W',get displayName(){return this.name;},label:'COLD SPARK',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#fbbf24',get desc(){return tr('Máy bắn tia pháo điện lạnh cao 3m an toàn trong nhà',"Indoor cold spark effect up to 3m high");}},
    flame_jet:{name:"DMX stage flame jet",legacyName:'Máy Phun Lửa Sân Khấu DMX',get displayName(){return this.name;},label:'FLAME JET',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#ef4444',get desc(){return tr('Máy phun cột lửa sân khấu cao 6m điều khiển DMX',"6m DMX stage flame projector with safety lock");}},
-   confetti_cannon:{name:"DMX stadium confetti cannon",legacyName:'Máy Bắn Kim Tuyến Confetti DMX',get displayName(){return this.name;},label:'CONFETTI FX',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#a855f7',get desc(){return tr('Pháo bắn kim tuyến / giấy màu áp lực cao cho Finale',"High-output stadium confetti cannon for show finales");}}
+   confetti_cannon:{name:"DMX stadium confetti cannon",legacyName:'Máy Bắn Kim Tuyến Confetti DMX',get displayName(){return this.name;},label:'CONFETTI FX',get cat(){return tr('Đạo cụ / FX',"Props / FX");},color:'#a855f7',get desc(){return tr('Pháo bắn kim tuyến / giấy màu áp lực cao cho Finale',"High-output stadium confetti cannon for show finales");}},
+   wedge_monitor:{name:'15" coaxial stage wedge monitor',legacyName:'Loa Kiểm Âm Wedge Monitor 15"',get displayName(){return this.name;},label:'WEDGE 15"',get cat(){return tr('Âm thanh',"Audio");},color:'#1e293b',get desc(){return tr('Loa kiểm âm đặt sàn góc vát 45° cho ca sĩ & ban nhạc',"45-deg floor wedge monitor for vocalists and live band");}},
+   drum_kit:{name:"5-piece touring acoustic drum kit",legacyName:'Bộ Trống Acoustic Lưu Diễn 5 Trống',get displayName(){return this.name;},label:'DRUM KIT',get cat(){return tr('Nhạc cụ / Ban nhạc',"Live band / Instruments");},color:'#dc2626',get desc(){return tr('Bộ trống Kick 22", Snare, 3 Tom, 4 Cymbal đồng trên thảm',"22\" kick, snare, 3 toms and 4 brass cymbals on drum rug");}},
+   grand_piano:{name:"1.8m concert grand piano",legacyName:'Đại Dương Cầm Concert Grand Piano 1.8m',get displayName(){return this.name;},label:'GRAND PIANO',get cat(){return tr('Nhạc cụ / Ban nhạc',"Live band / Instruments");},color:'#0f172a',get desc(){return tr('Đàn đại dương cầm đen bóng mở nắp kèm khung đồng & ghế',"Polished ebony concert grand piano with open lid, brass harp and bench");}},
+   broadcast_camera:{name:"4K broadcast pedestal camera",legacyName:'Máy Quay Truyền Hình 4K Pedestal',get displayName(){return this.name;},label:'BROADCAST CAM',get cat(){return tr('Truyền hình / FO',"Broadcast / Camera");},color:'#334155',get desc(){return tr('Máy quay truyền hình 4K kèm ống kính hộp, Teleprompter & đèn Tally',"4K studio camera with box lens, teleprompter hood and red tally light");}}
   };
 
   function itemDisplayName16(item){
@@ -366,17 +370,32 @@
      parts.push(rod('Stair Handrail Mid',[sx,.52,zBot-.06],[sx,yTop+.46,zTop+.06],.013,.013,steel,8));
     }
    }else if(k==='crowd_barrier'){
-    parts.push(boxMesh('Barrier Footplate',[0,.02,.25],[2.0,.04,.95],steel));
-    parts.push(boxMesh('Barrier Wall',[0,.56,-.05],[1.98,1.08,.08],col));
-    parts.push(boxMesh('Barrier Top Rail',[0,1.11,-.05],[2.0,.06,.12],dark));
+    parts.push(boxMesh('Barrier Footplate',[0,.018,.32],[2.0,.036,1.12],steel));
+    parts.push(boxMesh('Barrier Rear Step',[0,.08,-.12],[1.96,.04,.24],dark));
+    parts.push(boxMesh('Barrier Front Wall',[0,.56,.22],[1.98,1.04,.045],col));
+    parts.push(rod('Barrier Rounded Top Rail',[-1.0,1.11,.20],[1.0,1.11,.20],.038,.038,steel,12));
+    for(const sx of [-.88,-.30,.30,.88]){
+     parts.push(rod('Barrier Rear Brace',[sx,.08,-.20],[sx,1.06,.18],.022,.022,steel,8));
+    }
    }else if(k==='kinetic_ring'){
+    parts.push(boxMesh('Kinetic DMX Winch Housing',[0,4.52,0],[.34,.22,.28],dark));
+    for(const a of [0,2.094,4.188]){
+     const rx=Math.cos(a)*.92, rz=Math.sin(a)*.92;
+     parts.push(rod('Kinetic Lift Cable',[0,4.42,0],[rx,3.82,rz],.005,.005,steel,6));
+    }
     const ring=ring8('Kinetic LED Ring',[0,3.8,0],1.2,.045,col,'y',48);
-    ring.material.emissive=col.slice(0,3).map(v=>v*.45);
-    parts.push(ring);
+    ring.material.emissive=col.slice(0,3).map(v=>v*.55);
+    const orb=ellipsoid('Kinetic Center Orb',[0,3.8,0],[.22,.22,.22],[.96,.98,1,1],16,12);
+    orb.material.emissive=col.slice(0,3).map(v=>v*.75);
+    parts.push(ring,orb);
    }else if(k==='co2_jet'){
-    parts.push(boxMesh('CO2 Base Housing',[0,.16,0],[.52,.32,.44],dark));
-    parts.push(rod('CO2 Nozzle',[0,.30,0],[0,.54,0],.055,.075,steel,12));
-    const plume1=rod('CO2 Cryo Plume Lower',[0,.54,0],[0,1.65,0],.07,.24,[col[0],col[1],col[2],1],14);
+    parts.push(boxMesh('CO2 Heavy Steel Base',[0,.025,0],[.34,.05,.30],dark));
+    parts.push(boxMesh('CO2 Yoke Bracket L',[-.14,.16,0],[.025,.24,.08],steel));
+    parts.push(boxMesh('CO2 Yoke Bracket R',[.14,.16,0],[.025,.24,.08],steel));
+    parts.push(boxMesh('CO2 Cryo Valve Body',[0,.18,0],[.24,.22,.22],dark));
+    parts.push(rod('CO2 Brass Quick Coupler',[-.12,.12,-.08],[-.18,.12,-.14],.018,.018,gold,10));
+    parts.push(rod('CO2 Cryo Barrel',[0,.28,0],[0,.46,0],.048,.058,steel,14));
+    const plume1=rod('CO2 Cryo Plume Lower',[0,.46,0],[0,1.65,0],.06,.24,[col[0],col[1],col[2],1],14);
     const plume2=rod('CO2 Cryo Plume Upper',[0,1.65,0],[0,2.75,0],.24,.42,[.82,.94,1,1],14);
     plume1.material.emissive=col.slice(0,3).map(v=>v*.45);
     plume2.material.emissive=[.35,.55,.68];
@@ -476,32 +495,79 @@
     parts.push(boxMesh('Haze Flightcase',[0,.22,0],[.58,.44,.46],col));
     parts.push(boxMesh('Haze Nozzle Vent',[0,.28,.24],[.26,.12,.04],steel));
    }else if(k==='cold_spark_fountain'){
-    parts.push(boxMesh('Sparkular Base',[0,.14,0],[.28,.28,.28],dark));
-    const sp1=rod('Cold Spark Plume',[0,.28,0],[0,2.45,0],.04,.32,col,14);
+    parts.push(boxMesh('Sparkular BT01 Housing',[0,.135,0],[.25,.25,.25],dark));
+    parts.push(boxMesh('Sparkular Chamfer Top',[0,.27,0],[.23,.025,.23],steel));
+    parts.push(rod('Sparkular Titanium Nozzle',[0,.28,0],[0,.315,0],.038,.048,gold,12));
+    const lcd=boxMesh('Sparkular DMX LCD',[0,.14,.128],[.09,.045,.008],[.15,.78,.98,1]);
+    lcd.material.emissive=[.08,.45,.65];
+    const sp1=rod('Cold Spark Plume',[0,.315,0],[0,2.45,0],.035,.32,col,14);
     sp1.material.emissive=[.95,.78,.25];
-    parts.push(sp1);
+    parts.push(lcd,sp1);
    }else if(k==='flame_jet'){
-    parts.push(boxMesh('Flame Jet Base',[0,.16,0],[.36,.32,.36],dark));
-    parts.push(rod('Flame Nozzle',[0,.32,0],[0,.48,0],.05,.07,steel,12));
-    const fl1=rod('Flame Core Lower',[0,.48,0],[0,2.1,0],.06,.34,[1,.42,.12,1],14);
+    parts.push(boxMesh('G-Flame Housing',[0,.17,0],[.38,.32,.34],dark));
+    parts.push(boxMesh('G-Flame Hazard Stripe',[0,.06,.172],[.34,.04,.008],[.96,.75,.12,1]));
+    parts.push(boxMesh('G-Flame Brass Guard Cage',[0,.36,0],[.22,.08,.22],gold));
+    parts.push(rod('G-Flame Burner Nozzle',[0,.33,0],[0,.46,0],.045,.065,steel,12));
+    const fl1=rod('Flame Core Lower',[0,.46,0],[0,2.1,0],.06,.34,[1,.42,.12,1],14);
     const fl2=rod('Flame Tip Upper',[0,2.1,0],[0,3.8,0],.34,.08,[1,.78,.22,1],14);
     fl1.material.emissive=[.98,.38,.08];
     fl2.material.emissive=[.98,.68,.15];
     parts.push(fl1,fl2);
    }else if(k==='confetti_cannon'){
-    parts.push(boxMesh('Confetti Tank Base',[0,.24,0],[.48,.48,.48],dark));
-    parts.push(rod('Confetti Barrel',[0,.45,0],[0,1.25,.28],.09,.12,col,14));
-    const burst=ellipsoid('Confetti Burst Cloud',[0,2.2,.52],[.55,.85,.55],[.95,.55,.98,1],12,10);
+    parts.push(boxMesh('StadiumShot Roadcase Base',[0,.18,0],[.56,.32,.52],dark));
+    parts.push(rod('Accumulation Pressure Tank',[-.18,.38,-.06],[.18,.38,-.06],.13,.13,steel,14));
+    parts.push(rod('Confetti Cannon Barrel',[0,.42,.04],[0,1.12,.30],.085,.105,col,14));
+    const burst=ellipsoid('Confetti Burst Cloud',[0,2.15,.52],[.55,.85,.55],[.95,.55,.98,1],12,10);
     burst.material.emissive=[.45,.22,.52];
     parts.push(burst);
+   }else if(k==='wedge_monitor'){
+    parts.push(boxMesh('Wedge Monitor Enclosure',[0,.18,0],[.58,.32,.44],dark));
+    parts.push(boxMesh('Wedge Slanted Baffle',[0,.24,.04],[.54,.22,.36],col));
+    parts.push(rod('Wedge 15" Coaxial Driver',[0,.24,.06],[0,.29,.12],.17,.17,steel,16));
+   }else if(k==='drum_kit'){
+    parts.push(boxMesh('Drum Riser Rug',[0,.01,0],[1.78,.02,1.42],[.14,.16,.20,1]));
+    parts.push(rod('22" Kick Drum',[0,.32,-.06],[0,.32,.36],.28,.28,col,18));
+    parts.push(rod('14" Snare Drum',[-.34,.42,.22],[-.34,.56,.22],.18,.18,steel,14));
+    parts.push(rod('10" Rack Tom L',[-.18,.68,.06],[-.18,.84,.06],.13,.13,col,14));
+    parts.push(rod('12" Rack Tom R',[.18,.68,.06],[.18,.84,.06],.15,.15,col,14));
+    parts.push(rod('16" Floor Tom',[.42,.28,.16],[.42,.62,.16],.20,.20,col,14));
+    for(const [cx,cy,cz,r] of [[-.56,.86,.26,.18],[-.48,1.12,-.10,.23],[.52,1.08,-.12,.26],[.64,.96,.20,.22]]){
+     parts.push(rod('Cymbal Stand',[cx,.02,cz],[cx,cy,cz],.012,.010,steel,8));
+     parts.push(rod('Brass Cymbal',[cx,cy,cz],[cx,cy+.018,cz],r,r*.92,gold,16));
+    }
+   }else if(k==='grand_piano'){
+    for(const [lx,lz] of [[-.62,.62],[.62,.62],[0,-.78]]){
+     parts.push(rod('Piano Turned Leg',[lx,.02,lz],[lx,.68,lz],.045,.032,dark,10));
+    }
+    parts.push(boxMesh('Grand Piano Rim Front',[0,.78,.32],[1.52,.26,.82],dark));
+    parts.push(rod('Grand Piano Tail Curve',[0,.65,-.36],[0,.91,-.36],.72,.72,dark,18));
+    parts.push(boxMesh('Piano Cast-Iron Harp',[0,.92,-.04],[1.32,.03,1.28],gold));
+    parts.push(boxMesh('Piano 88-Keybed',[0,.74,.76],[1.26,.04,.16],[.96,.97,.99,1]));
+    parts.push(boxMesh('Piano Open Lid',[.12,1.28,-.04],[1.46,.025,1.42],dark));
+    parts.push(rod('Piano Lid Prop Stick',[.58,.88,.24],[.42,1.26,.24],.012,.010,gold,8));
+    parts.push(boxMesh('Pianist Bench',[0,.46,1.12],[.76,.08,.36],dark));
+   }else if(k==='broadcast_camera'){
+    for(const a of [0,2.094,4.188]){
+     parts.push(rod('Pedestal Outrigger',[0,.08,0],[Math.cos(a)*.42,.06,Math.sin(a)*.42],.028,.024,dark,8));
+    }
+    parts.push(rod('Pneumatic Pedestal Column',[0,.08,0],[0,1.28,0],.095,.072,dark,14));
+    parts.push(ring8('Pedestal Steering Ring',[0,1.02,0],.26,.018,steel,'y',24));
+    parts.push(boxMesh('4K Broadcast Camera Body',[0,1.42,-.04],[.24,.26,.42],col));
+    parts.push(boxMesh('20x Box Zoom Lens',[0,1.42,.28],[.22,.22,.36],dark));
+    parts.push(boxMesh('Teleprompter Hood',[0,1.44,.52],[.36,.30,.18],dark));
+    const tally=boxMesh('On-Air Red Tally',[0,1.58,.18],[.08,.035,.04],[1,.15,.15,1]);
+    tally.material.emissive=[.95,.08,.08];
+    parts.push(tally);
    }
    const s=clamp16(item.scale??1,.1,10), yaw=(item.yaw||0)*Math.PI/180, p=item.pos||[0,0,0];
    const mat=M.mm(M.translate(p),M.mm(M.rotate([0,1,0],yaw),M.trs([0,0,0],IDENTITY_Q,[s,s,s])));
    const dispName=itemDisplayName16(item);
+   const isSfxItem=Boolean(SFX_CATALOG[item.kind]);
    for(const m of parts){
     transformMesh(m,mat);
     m.name=dispName+' / '+m.name;
     m._asset16Id=item.id;
+    m._sfxKind16=isSfxItem?item.kind:null;
     m._smartGroupId='asset16_'+item.id;
     m._groupLabelVi=dispName;
     m._groupLabelEn=dispName;
@@ -559,9 +625,14 @@
   function activateAddedAssetMove16(meshes,label){
    A.measureMode=false;A.placeMode=false;
    if(state.quad){state.quad=false;state.quadPoints=[];$('quadHint')?.classList.add('hidden');}
-   state.step='stage';engine.view='stage';
+   const isSfx=Boolean(meshes?.[0]?._sfxKind16);
+   state.step=isSfx?'lighting':'stage';engine.view='stage';
    if(meshes?.length){
     const first=meshes[0];
+    if(isSfx){
+     state.selectedSfx18=first._asset16Id;
+     state.selectedLight=null;
+    }
     state.selectedMesh=first.id;state.hit=null;engine.selected=null;
     S.setEditMode8?.('move');
     if(meshes.length>1&&typeof S.selectionSet9==='function'){
@@ -747,18 +818,20 @@
    {id:'booth_dj_console_01',localUrl:'./assets/pilot/booth_dj_console_01.glb',sidecarUrl:'./assets/pilot/booth_dj_console_01.asset.json',thumbUrl:'./assets/pilot/booth_dj_console_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[2.629,1.26,1.035],title:"2.6m touring LED DJ booth & CDJ deck",get displayTitle(){return this.title;},dims:'GLB Batch 2 · 336 KB · 972 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'dj booth console cdj mixer ban dj le hoi edm furniture',accent:'#22d3ee'},
    {id:'booth_foh_console_01',localUrl:'./assets/pilot/booth_foh_console_01.glb',sidecarUrl:'./assets/pilot/booth_foh_console_01.asset.json',thumbUrl:'./assets/pilot/booth_foh_console_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[2.36,1.42,1.04],title:"2.36m FOH lighting & audio control booth",get displayTitle(){return this.title;},dims:'GLB Batch 2 · 335 KB · 344 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'foh booth console grandma mixer ban dieu khien am thanh anh sang furniture',accent:'#38bdf8'},
    {id:'furniture_ibm_table_01',localUrl:'./assets/pilot/furniture_ibm_table_01.glb',sidecarUrl:'./assets/pilot/furniture_ibm_table_01.asset.json',thumbUrl:'./assets/pilot/furniture_ibm_table_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.85,0.919,0.77],title:"1.8m pleated-skirt conference IBM table",get displayTitle(){return this.title;},dims:'GLB Batch 2 · 241 KB · 472 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'ibm table conference delegate skirted ban hoi nghi dai bieu vip furniture',accent:'#3b82f6'},
-   {id:'gd_human_mocap',fileId:'1GThK9vKEgLE8CErNO_nr6gaQu1ExH89T',title:"Human Mocap Dancer (rigged & animated)",get displayTitle(){return this.title;},dims:'Rigged GLB · 329 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human dancer person mocap nguoi vu cong nhan vat animation',accent:'#38bdf8'},
-   {id:'gd_human_base',fileId:'1Kmnv88yxAj4I_f81rSx_IXLThbX29mbV',title:"Human Base Performer (rigged & animated)",get displayTitle(){return this.title;},dims:'Rigged GLB · 310 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human performer actor nguoi nhan vat animation',accent:'#61e8ff'},
-   {id:'gd_human_addon',fileId:'1SJ3XeMFQbTfkOroADqdMvYb3_CFXKNxX',title:"Human Stage Action Pack (rigged & animated)",get displayTitle(){return this.title;},dims:'Rigged GLB · 340 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage human dance action nguoi bieu dien animation',accent:'#8b7dff'},
-   {id:'gd_dragon_anim',fileId:'1tnxVDQwxnPpqLKhm0b1i_AbV0VNtCHvl',title:"3D stage dragon",get displayTitle(){return this.title;},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage dragon mascot fx rong phuong dai canh animation',accent:'#f59e0b'},
-   {id:'gd_bird_anim',fileId:'1hRG_Qv0xsuN0gFQCKf9BbQzgLdH_PcrV',title:"3D bird / phoenix with wing animation",get displayTitle(){return this.title;},dims:'Rigged GLB · 329 KB',license:'Design_MCP / Mesh2Motion CC0',tags:'stage bird phoenix wing chim phuong hoang animation',accent:'#fb7185'},
-   {id:'gd_horse_anim',fileId:'18WGQJUIp4nv5ibeK3D_mtKK6MqODW7Kq',title:"3D galloping horse",get displayTitle(){return this.title;},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage horse animal ngua thu animation',accent:'#a855f7'},
-   {id:'gd_fox_anim',fileId:'1PdWashC3t9RcQlfXjuqzjJELaBbI1Zwa',title:"Animated 3D fox",get displayTitle(){return this.title;},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage fox animal cao ho ly animation',accent:'#f97316'},
-   {id:'gd_kaiju_anim',fileId:'1TPyDHRF7f_ykt_cvm0QWtJNWi5H59KGv',title:"3D stage Kaiju monster",get displayTitle(){return this.title;},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage monster kaiju boss quai thu animation',accent:'#ef4444'},
-   {id:'gd_shark_anim',fileId:'1EF9eobaWvmifUc1NTMi1A42UMLAs_jeK',title:"3D ocean shark",get displayTitle(){return this.title;},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage shark ocean sea ca map dai duong animation',accent:'#0ea5e9'},
-   {id:'gd_snake_anim',fileId:'1r2sXhxMWjXGRBkCDeK-tCN5oSnpKMGPt',title:"Animated 3D serpent",get displayTitle(){return this.title;},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage snake animal ran animation',accent:'#10b981'},
-   {id:'gd_spider_anim',fileId:'1xRYooI8UKl0KVqLWwlMTZYsklGdH-17S',title:"3D Halloween / Sci-Fi robot spider",get displayTitle(){return this.title;},dims:'Rigged GLB · Animation',license:'Design_MCP / Mesh2Motion CC0',tags:'stage spider scifi halloween nhen animation',accent:'#6366f1'},
-   {id:'gd_chair_cc0',fileId:'13tGfeOv5c0QxacaQbXPZEmui6sOR--YD',title:"Stage chair (Quaternius CC0)",get displayTitle(){return this.title;},dims:'GLB 3D · 13 KB',license:'CC0 1.0 (Quaternius)',tags:'stage chair seat stool ghe ngoi talkshow',accent:'#34d399'}
+   {id:'fixture_blinder_4lite_01',localUrl:'./assets/pilot/fixture_blinder_4lite_01.glb',sidecarUrl:'./assets/pilot/fixture_blinder_4lite_01.asset.json',thumbUrl:'./assets/pilot/fixture_blinder_4lite_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/cob-blinder-4x100w',size_m:[0.48,0.49,0.1875],title:"4-Lite Audience Blinder 4×100W (DMX yoke / head)",get displayTitle(){return this.title;},dims:'GLB Batch 3 · 367 KB · 804 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'blinder 4lite 4x100w cob audience warm amber den chop khan gia san khau dmx fixture',accent:'#f59e0b'},
+   {id:'fixture_laser_rgb_kvant_01',localUrl:'./assets/pilot/fixture_laser_rgb_kvant_01.glb',sidecarUrl:'./assets/pilot/fixture_laser_rgb_kvant_01.asset.json',thumbUrl:'./assets/pilot/fixture_laser_rgb_kvant_01.webp',origin:'mount-point',ofl_fixture:'vn-stage/laser-rgb-10w',size_m:[0.38,0.327,0.292],title:"Kvant Clubmax 10W RGB Show Laser (DMX yoke / head)",get displayTitle(){return this.title;},dims:'GLB Batch 3 · 341 KB · 212 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'laser rgb kvant clubmax 10w ilda scanner den laser san khau dmx fixture',accent:'#10b981'},
+   {id:'fixture_strobe_atomic_3000_01',localUrl:'./assets/pilot/fixture_strobe_atomic_3000_01.glb',sidecarUrl:'./assets/pilot/fixture_strobe_atomic_3000_01.asset.json',thumbUrl:'./assets/pilot/fixture_strobe_atomic_3000_01.webp',origin:'mount-point',ofl_fixture:'adj/jolt-300',size_m:[0.48,0.32,0.196],title:"Atomic 3000W LED Strobe & Blinder (DMX yoke / head)",get displayTitle(){return this.title;},dims:'GLB Batch 3 · 364 KB · 212 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'strobe atomic 3000 jolt flash blinder den chop 14hz san khau dmx fixture',accent:'#e2e8f0'},
+   {id:'sfx_cold_spark_bt01',localUrl:'./assets/pilot/sfx_cold_spark_bt01.glb',sidecarUrl:'./assets/pilot/sfx_cold_spark_bt01.asset.json',thumbUrl:'./assets/pilot/sfx_cold_spark_bt01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.252,0.3145,0.257],title:"Sparkular BT01 700W Cold Spark Fountain",get displayTitle(){return this.title;},dims:'GLB Batch 3 · 249 KB · 468 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'sfx cold spark sparkular bt01 fountain may phao dien lanh san khau prop',accent:'#fbbf24'},
+   {id:'sfx_co2_cryo_jet',localUrl:'./assets/pilot/sfx_co2_cryo_jet.glb',sidecarUrl:'./assets/pilot/sfx_co2_cryo_jet.asset.json',thumbUrl:'./assets/pilot/sfx_co2_cryo_jet.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.34,0.426,0.3],title:"MagicFX CO2 Cryo Jet Stage Cannon",get displayTitle(){return this.title;},dims:'GLB Batch 3 · 248 KB · 512 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'sfx co2 cryo jet cannon smoke plume sung ban khoi lanh co2 san khau prop',accent:'#38bdf8'},
+   {id:'sfx_flame_projector_gflame',localUrl:'./assets/pilot/sfx_flame_projector_gflame.glb',sidecarUrl:'./assets/pilot/sfx_flame_projector_gflame.asset.json',thumbUrl:'./assets/pilot/sfx_flame_projector_gflame.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.402,0.44,0.361],title:"Galaxis G-Flame DMX Stage Flame Projector",get displayTitle(){return this.title;},dims:'GLB Batch 3 · 251 KB · 376 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'sfx flame projector gflame fire pyro may phun lua san khau dmx prop',accent:'#ef4444'},
+   {id:'sfx_confetti_stadium_shot',localUrl:'./assets/pilot/sfx_confetti_stadium_shot.glb',sidecarUrl:'./assets/pilot/sfx_confetti_stadium_shot.asset.json',thumbUrl:'./assets/pilot/sfx_confetti_stadium_shot.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.58,1.1215,0.6186],title:"MagicFX StadiumShot III Confetti Cannon",get displayTitle(){return this.title;},dims:'GLB Batch 3 · 243 KB · 348 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'sfx confetti stadium shot cannon streamer phao ban kim tuyen giay mau prop',accent:'#a855f7'},
+   {id:'audio_wedge_monitor_15_01',localUrl:'./assets/pilot/audio_wedge_monitor_15_01.glb',sidecarUrl:'./assets/pilot/audio_wedge_monitor_15_01.asset.json',thumbUrl:'./assets/pilot/audio_wedge_monitor_15_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.622,0.4315,0.4948],title:'15" Coaxial 45-deg Stage Wedge Monitor',get displayTitle(){return this.title;},dims:'GLB Batch 4 · 177 KB · 264 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'audio wedge monitor 15 coaxial floor speaker loa kiem am san khau prop',accent:'#475569'},
+   {id:'prop_mojo_crowd_barrier_01',localUrl:'./assets/pilot/prop_mojo_crowd_barrier_01.glb',sidecarUrl:'./assets/pilot/prop_mojo_crowd_barrier_01.asset.json',thumbUrl:'./assets/pilot/prop_mojo_crowd_barrier_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[2.0,1.1499,1.1709],title:"2m Aluminum Mojo Crowd Control Barrier",get displayTitle(){return this.title;},dims:'GLB Batch 4 · 319 KB · 252 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'mojo crowd barrier barricade aluminum rao chan khan gia an toan prop',accent:'#94a3b8'},
+   {id:'prop_ceremony_touch_pillar_01',localUrl:'./assets/pilot/prop_ceremony_touch_pillar_01.glb',sidecarUrl:'./assets/pilot/prop_ceremony_touch_pillar_01.asset.json',thumbUrl:'./assets/pilot/prop_ceremony_touch_pillar_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.56,1.37,0.56],title:"VIP Opening Ceremony LED Touch Sphere Pillar",get displayTitle(){return this.title;},dims:'GLB Batch 4 · 220 KB · 560 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'ceremony touch pillar sphere orb khai mac vip tru cau led cham tay prop',accent:'#f59e0b'},
+   {id:'prop_kinetic_winch_orb_01',localUrl:'./assets/pilot/prop_kinetic_winch_orb_01.glb',sidecarUrl:'./assets/pilot/prop_kinetic_winch_orb_01.asset.json',thumbUrl:'./assets/pilot/prop_kinetic_winch_orb_01.webp',origin:'mount-point',ofl_fixture:null,size_m:[1.1351,1.8,1.1351],title:"DMX Kinetic Winch & LED Ring Orb",get displayTitle(){return this.title;},dims:'GLB Batch 4 · 216 KB · 560 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'kinetic winch orb led ring ceiling matrix toi dmx vong led treo tran prop',accent:'#38bdf8'},
+   {id:'prop_drum_kit_touring_01',localUrl:'./assets/pilot/prop_drum_kit_touring_01.glb',sidecarUrl:'./assets/pilot/prop_drum_kit_touring_01.asset.json',thumbUrl:'./assets/pilot/prop_drum_kit_touring_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.78,1.2668,1.42],title:"5-Piece Touring Acoustic Drum Kit & Cymbals",get displayTitle(){return this.title;},dims:'GLB Batch 5 · 373 KB · 1348 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'drum kit acoustic band kick snare toms cymbals bo trong bieu dien live band prop',accent:'#dc2626'},
+   {id:'prop_grand_piano_stage_01',localUrl:'./assets/pilot/prop_grand_piano_stage_01.glb',sidecarUrl:'./assets/pilot/prop_grand_piano_stage_01.asset.json',thumbUrl:'./assets/pilot/prop_grand_piano_stage_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[1.56,1.6347,2.0],title:"1.8m Concert Grand Piano & Bench",get displayTitle(){return this.title;},dims:'GLB Batch 5 · 304 KB · 640 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'grand piano concert ebony keys bench dan dai duong cam san khau furniture',accent:'#f59e0b'},
+   {id:'prop_camera_jimmy_jib_01',localUrl:'./assets/pilot/prop_camera_jimmy_jib_01.glb',sidecarUrl:'./assets/pilot/prop_camera_jimmy_jib_01.asset.json',thumbUrl:'./assets/pilot/prop_camera_jimmy_jib_01.webp',origin:'floor-center',ofl_fixture:null,size_m:[0.8028,1.7797,0.9564],title:"4K Broadcast Pedestal Camera & Teleprompter",get displayTitle(){return this.title;},dims:'GLB Batch 5 · 217 KB · 432 tris',license:'Design_MCP / Blender 5.1.2 CC0-1.0',tags:'camera broadcast pedestal teleprompter tally 4k may quay truyen hinh san khau prop',accent:'#ef4444'}
   ];
 
   const SEARCH_SYNONYMS16={
@@ -800,11 +873,6 @@
    'vũ công':['dancer','human','person','mocap','animation','performer'],
    'ca sĩ':['singer','human','person','performer','microphone'],
    'nhân vật':['human','person','character','actor','dancer','animation'],
-   'phượng hoàng':['phoenix','bird','wing','dragon','animation'],
-   'cá mập':['shark','ocean','sea','fish','animation'],
-   'quái thú':['kaiju','monster','dragon','boss','animation'],
-   'quái vật':['monster','kaiju','dragon','creature','animation'],
-   'hồ ly':['fox','animal','animation'],
    'nhạc cụ':['gramophone','boombox','guitar','piano','drum','music','audio'],
    'ô tô':['car','vehicle','truck','automobile','wheel'],
    'xe hơi':['car','vehicle','automobile'],
@@ -884,16 +952,38 @@
    'bạc':['silver','metal','chrome','aluminum','steel'],
    neon:['neon','light','cyberpunk','led','glow','stage','concert'],
    'người':['human','person','dancer','performer','character','mocap','actor'],
-   'rồng':['dragon','kaiju','monster','bird','phoenix','animation'],
-   'chim':['bird','phoenix','wing','animal','animation'],
-   'ngựa':['horse','animal','equestrian','animation'],
-   'cáo':['fox','animal','animation'],
-   'rắn':['snake','serpent','reptile','animation'],
-   'nhện':['spider','insect','scifi','halloween','animation'],
    'cửa':['door','window','gate','arch','entrance','wooden'],
-   'xe':['car','vehicle','truck','bicycle','cart','wheel'],
-   animation:['animation','rigged','mocap','human','dragon','bird','horse','fox','kaiju','shark']
+   'xe':['car','vehicle','truck','bicycle','cart','wheel']
   };
+
+  // 1-to-1 mapping from procedural CATALOG keys to bundled CC0 Blender GLBs in assets/pilot/
+  const CATALOG_GLB_UPGRADE_MAP16={
+   truss_tower:'truss_box_tower_01',
+   truss_arch:'truss_goalpost_arch_01',
+   line_array:'audio_line_array_01',
+   sub_stack:'audio_sub_stack_01',
+   dj_booth:'booth_dj_console_01',
+   stage_riser:'stage_deck_modular_01',
+   stage_stairs:'stage_stairs_modular_01',
+   crowd_barrier:'prop_mojo_crowd_barrier_01',
+   kinetic_ring:'prop_kinetic_winch_orb_01',
+   co2_jet:'sfx_co2_cryo_jet',
+   vip_podium:'prop_ceremony_touch_pillar_01',
+   gala_round_table:'furniture_banquet_table_01',
+   conference_ibm_table:'furniture_ibm_table_01',
+   banquet_chair:'furniture_conference_chair_01',
+   foh_control_booth:'booth_foh_console_01',
+   decor_palm_planter:'prop_stage_plant_01',
+   cold_spark_fountain:'sfx_cold_spark_bt01',
+   flame_jet:'sfx_flame_projector_gflame',
+   confetti_cannon:'sfx_confetti_stadium_shot',
+   wedge_monitor:'audio_wedge_monitor_15_01',
+   drum_kit:'prop_drum_kit_touring_01',
+   grand_piano:'prop_grand_piano_stage_01',
+   broadcast_camera:'prop_camera_jimmy_jib_01'
+  };
+  const OVERLAPPING_GLB_IDS16=new Set(Object.values(CATALOG_GLB_UPGRADE_MAP16));
+  const UNIQUE_GLB_ASSETS16=GDRIVE_ASSETS16.filter(x=>!OVERLAPPING_GLB_IDS16.has(x.id));
 
   function stripVi16(s){
    return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').trim();
@@ -1340,6 +1430,28 @@
     };
    }
    inp.click();
+  }
+
+  async function importGlbById16(glbId){
+   const r=GDRIVE_ASSETS16.find(x=>x.id===glbId);
+   if(!r||!r.localUrl)return null;
+   try{
+    busy(true,tr('Đang tải asset 3D / Media: ',"Loading 3D asset / media: ")+r.title+'...');
+    const glbRes=await fetch(r.localUrl);
+    if(!glbRes.ok)throw Error(tr('Không tải được file GLB cục bộ (HTTP ',"Could not load local GLB file (HTTP ")+glbRes.status+').');
+    const glbBlob=await glbRes.blob();
+    const glbFile=new File([glbBlob],(r.id||'model')+'.glb',{type:'model/gltf-binary'});
+    let sidecar=null;
+    if(r.sidecarUrl){
+     try{const scRes=await fetch(r.sidecarUrl);if(scRes.ok)sidecar=await scRes.json();}catch(_){}
+    }
+    return await importLocalGlbProp(glbFile,{id:r.id,title:r.title,origin:r.origin,ofl_fixture:r.ofl_fixture,sidecar,preserveMetricScale:true});
+   }catch(err){
+    toast(tr('Lỗi tải asset: ',"Asset download failed: ")+(err?.message||err));
+    return null;
+   }finally{
+    busy(false);
+   }
   }
 
   async function importOnlineResult(idx){
@@ -1816,7 +1928,7 @@
   // rendering entirely. Disk entries are keyed by a fingerprint of the code/data the renders depend on;
   // bump THUMB_CACHE_VERSION16 when geometry the fingerprint cannot see changes (the wrapped buildHuman
   // layers in core 04/06 and modules/v12, mesh helpers like rod/torso, node11 merging).
-  const THUMB_CACHE_VERSION16=5;
+  const THUMB_CACHE_VERSION16=6;
   const THUMB_DB16='ledstudio-thumbs16';
   const thumbJobs16=new Map();
   let thumbTimer16=0, thumbDisk16=null, thumbDiskReady16=false;
@@ -1946,6 +2058,8 @@
   function getAssetPreviewURL16(kind){
    const spec=CATALOG[kind];
    if(!spec)return '';
+   const mappedGlb=CATALOG_GLB_UPGRADE_MAP16[kind];
+   if(mappedGlb)return `./assets/pilot/${mappedGlb}.webp`;
    return queueThumb16('asset:'+tr('vi','en')+':'+kind,spec.displayName,spec.label,spec.color,()=>{
     const meshes=buildAssetMeshes({id:'prev_'+kind,kind,name:spec.name,pos:[0,0,0],yaw:0,scale:1,color:spec.color});
     const cvs=document.createElement('canvas');
@@ -2352,6 +2466,17 @@
       </div>
      </section>
      <section class="v16-section">
+      <h4>${tr("ĐÈN DMX & ĐẠO CỤ GLB BỔ SUNG (OFFLINE · ","EXTRA DMX FIXTURES & GLB PROPS (OFFLINE · ")}${UNIQUE_GLB_ASSETS16.length}${tr(" MẪU)"," MODELS)")}</h4>
+      <div class="v16-catgrid">
+       ${UNIQUE_GLB_ASSETS16.map(g=>`
+        <button data-importglb16="${esc16(g.id)}" class="v16-catcard" title="${esc16(g.dims)}">
+         <span class="v16-catthumb"><img src="${esc16(g.thumbUrl||'')}" alt="${esc16(loc16(g.displayTitle||g.title))}" loading="lazy"></span>
+         <span class="v16-cathead"><i class="v16-dot" style="background:${esc16(g.accent||'#38bdf8')}"></i><b>+ ${esc16(g.ofl_fixture?'DMX FIXTURE':'GLB PROP')}</b></span>
+         <small>${esc16(loc16(g.displayTitle||g.title))}</small>
+        </button>`).join('')}
+      </div>
+     </section>
+     <section class="v16-section">
       <h4>${tr("ASSET ĐÃ ĐẶT TRÊN SÂN KHẤU (","STAGE ASSETS (")}${A.items.length} / 64)</h4>
       <div class="v16-chips">
        ${A.items.map(x=>`<button data-sel16="${esc16(x.id)}" class="btn small ${x.id===A.selected?'primary':''}">${esc16(loc16(itemDisplayName16(x)))}</button>`).join('')||`<p class="v16-empty">${tr("Chưa có đạo cụ phụ. Chọn một hạng mục ở trên để đặt vào sân khấu 3D.","No props yet. Choose an item above to add it to the 3D stage.")}</p>`}
@@ -2387,15 +2512,15 @@
      ['camera','Camera / TV'],
      ['ghế',tr('Bàn ghế Talkshow',"Talkshow furniture")],
      ['cây',tr('Cây cảnh',"Plants")],
-     ['animation',tr('Nhân vật & Rồng 3D (GDrive)',"3D characters & dragons (GDrive)")]
+     ['sfx',tr('Khói / Pháo / SFX',"Smoke / Pyro / SFX")]
     ];
     bodyHtml=`
      <section class="v16-section">
-      <h4>${tr("TÌM ASSET 3D &amp; MEDIA (CC0 / GOOGLE DRIVE DESIGN_MCP)","FIND 3D ASSETS &amp; MEDIA (CC0 / GOOGLE DRIVE DESIGN_MCP)")}</h4>
+      <h4>${tr("TÌM ASSET 3D &amp; MEDIA (CC0 / DESIGN_MCP GLB)","FIND 3D ASSETS &amp; MEDIA (CC0 / DESIGN_MCP GLB)")}</h4>
       <label>${tr("Nguồn dữ liệu mở","Open asset source")}
        <select id="v16SearchSource">
         <option value="polyhaven_models" ${A.searchSource==='polyhaven_models'?'selected':''}>${tr("Poly Haven — Mô hình 3D Đạo cụ / Nội thất (CC0)","Poly Haven — 3D props / furniture (CC0)")}</option>
-        <option value="gdrive_models" ${A.searchSource==='gdrive_models'?'selected':''}>Google Drive Design_MCP — ${GDRIVE_ASSETS16.length} Model GLB 3D &amp; Animation</option>
+        <option value="gdrive_models" ${A.searchSource==='gdrive_models'?'selected':''}>Design_MCP (Offline) — ${GDRIVE_ASSETS16.length} Model GLB 3D Sân khấu</option>
         <option value="polyhaven_textures" ${A.searchSource==='polyhaven_textures'?'selected':''}>${tr("Poly Haven — Texture / Phông nền Sân khấu (CC0)","Poly Haven — stage textures / backdrops (CC0)")}</option>
         <option value="wikimedia_images" ${A.searchSource==='wikimedia_images'?'selected':''}>${tr("Wikimedia Commons — Ảnh / Visual Sân khấu (CC0 / CC-BY)","Wikimedia Commons — stage images / visuals (CC0 / CC-BY)")}</option>
        </select>
@@ -2505,11 +2630,12 @@
    if(b.dataset.qsearch16!==undefined){
     const qVal=b.dataset.qsearch16;
     A.searchQuery=qVal;
-    if(qVal==='animation')A.searchSource='gdrive_models';
+    if(qVal==='sfx')A.searchSource='gdrive_models';
     runOnlineSearch();
     return;
    }
    if(b.dataset.add16){A.previewKind=b.dataset.add16;addCatalogItem(b.dataset.add16);return;}
+   if(b.dataset.importglb16){importGlbById16(b.dataset.importglb16);return;}
    if(b.dataset.qex16){applyQuickCastExample16(b.dataset.qex16);return;}
    if(b.dataset.sel16){A.selected=b.dataset.sel16;paint();return;}
    if(b.dataset.import16!==undefined){importOnlineResult(+b.dataset.import16);return;}
@@ -2650,8 +2776,8 @@
   }
   Object.assign(A,{
    open,close,addCatalogItem,deleteItem,computeWindSafety,computeCreaseEdges,runOnlineSearch,
-   commitImportedMeshesToStage16,importLocalGlbProp,openLocalGlbFilePicker16,
-   resolveOflFixture16,setFixturePanTilt:setFixturePanTilt16,GDRIVE_ASSETS16,
+   commitImportedMeshesToStage16,importLocalGlbProp,openLocalGlbFilePicker16,importGlbById16,
+   resolveOflFixture16,setFixturePanTilt:setFixturePanTilt16,GDRIVE_ASSETS16,CATALOG_GLB_UPGRADE_MAP16,UNIQUE_GLB_ASSETS16,
    expandSearchTerms16,translateViToEn16,
    serialize:serializeAssets,restore:restoreAssets,
    getAssetPreviewURL16,getPerformerPreviewURL16,getActPreviewURL16,renderMeshes3DToCanvas16,
@@ -3746,8 +3872,13 @@
     const msBtn=$('v16QuickMeasureBtn');if(msBtn)setClass16(msBtn,'active',!!A.measureMode);
     const fltBar=$('v16ObjFilterBar');
     if(fltBar){
-     const hideFlt=(state.step||'stage')!=='stage';
+     const curStep=state.step||'stage';
+     const hideFlt=curStep!=='stage'&&curStep!=='lighting';
      if(fltBar.hidden!==hideFlt)fltBar.hidden=hideFlt;
+     if(fltBar._lastStep16!==curStep){
+      fltBar._lastStep16=curStep;
+      fltBar._renderFilterBtns?.();
+     }
     }
     const lkBtn=$('v16NavLockBtn');
     if(lkBtn){
@@ -3818,17 +3949,27 @@
      const searchInp=$('objectSearch');
      if(searchInp && !$('v16ObjFilterBar')){
       window._objFilter16=window._objFilter16||'all';
+      window._lightFilter16=window._lightFilter16||'all';
       if(window._smartGroup16===undefined)window._smartGroup16=true;
       const fb=document.createElement('div');
       fb.id='v16ObjFilterBar';
       fb.className='v16-obj-filter-bar';
       fb.setAttribute('role','tablist');
-      fb.setAttribute('aria-label',tr('Lọc nhanh vật thể sân khấu',"Quick stage object filter"));
+      fb.setAttribute('aria-label',tr('Lọc nhanh vật thể sân khấu & hệ thống đèn',"Quick stage object & lighting filter"));
       const renderFilterBtns=()=>{
-       const cur=window._objFilter16||'all';
+       const isLightStep=(state.step||'stage')==='lighting';
+       const cur=isLightStep?(window._lightFilter16||'all'):(window._objFilter16||'all');
        const sg=window._smartGroup16!==false;
-       const sgLbl=sg?tr('Gộp thông minh: ĐANG BẬT (di chuyển theo cụm)','Smart Group: ON (move assemblies together)'):tr('Gộp thông minh: ĐANG TẮT (chọn từng chi tiết lẻ)','Smart Group: OFF (select individual sub-meshes)');
-       const tabs=[
+       const sgLbl=isLightStep
+        ?(sg?tr('Gộp thông minh: ĐANG BẬT (gộp theo loại đèn & cụm Pyro)','Smart Group: ON (group by fixture & Pyro batch)'):tr('Gộp thông minh: ĐANG TẮT (hiển thị từng đèn / đầu phun lẻ)','Smart Group: OFF (list individual fixtures & nozzles)'))
+        :(sg?tr('Gộp thông minh: ĐANG BẬT (di chuyển theo cụm)','Smart Group: ON (move assemblies together)'):tr('Gộp thông minh: ĐANG TẮT (chọn từng chi tiết lẻ)','Smart Group: OFF (select individual sub-meshes)'));
+       const tabs=isLightStep?[
+        ['all','<svg class="ico" aria-hidden="true"><use href="#i-layers"></use></svg>',tr('Tất cả đèn & SFX','All lights & SFX')],
+        ['moving','<svg class="ico ico-lights" aria-hidden="true"><use href="#i-moving-head"></use></svg>',tr('Moving Head (Beam / Spot / Wash)','Moving Head (Beam / Spot / Wash)')],
+        ['static','<svg class="ico ico-lights" aria-hidden="true"><use href="#i-sun"></use></svg>',tr('Đèn Tĩnh & Chớp (PAR / Barra / Blinder / Strobe / Fresnel)','Static & Strobe (PAR / Barra / Blinder / Strobe / Fresnel)')],
+        ['laser','<svg class="ico ico-laser" aria-hidden="true"><use href="#i-laser"></use></svg>',tr('Laser ILDA','ILDA Lasers')],
+        ['sfx','<svg class="ico ico-show" aria-hidden="true"><use href="#i-sparkles"></use></svg>',tr('Pháo & Hiệu ứng SFX (Pyro / CO2 / Lửa / Khói)','Pyrotechnics & SFX (Spark / CO2 / Flame / Haze)')]
+       ]:[
         ['all','<svg class="ico" aria-hidden="true"><use href="#i-layers"></use></svg>',tr('Tất cả vật thể','All objects')],
         ['led','<svg class="ico ico-led" aria-hidden="true"><use href="#i-grid-3x3"></use></svg>',tr('Màn hình LED','LED screens')],
         ['struct','<svg class="ico ico-stage" aria-hidden="true"><use href="#i-box"></use></svg>',tr('Khung & Sàn sân khấu','Stage & Truss')],
@@ -3838,6 +3979,7 @@
       };
       renderFilterBtns();
       fb._renderFilterBtns=renderFilterBtns;
+      fb._lastStep16=state.step||'stage';
       fb.addEventListener('click',e=>{
        const sgBtn=e.target.closest('button[data-smartgrp16]');
        if(sgBtn){
@@ -3847,12 +3989,16 @@
         if(S.group9)S.group9.scope=next?'parent':'single';
         renderFilterBtns();
         S.renderLists?.();
-        S.toast?.(next?tr('Đã BẬT Gộp thông minh (chọn & di chuyển nguyên cụm).','Smart Group ON (select & move whole assemblies).'):tr('Đã TẮT Gộp thông minh (chọn từng mesh lẻ).','Smart Group OFF (select individual sub-meshes).'));
+        S.toast?.(next?tr('Đã BẬT Gộp thông minh (chọn & di chuyển nguyên cụm).','Smart Group ON (select & move whole assemblies).'):tr('Đã TẮT Gộp thông minh (chọn từng phần tử lẻ).','Smart Group OFF (select individual items).'));
         return;
        }
        const b=e.target.closest('button[data-objflt16]');
        if(!b)return;
-       window._objFilter16=b.dataset.objflt16||'all';
+       if((state.step||'stage')==='lighting'){
+        window._lightFilter16=b.dataset.objflt16||'all';
+       }else{
+        window._objFilter16=b.dataset.objflt16||'all';
+       }
        renderFilterBtns();
        S.renderLists?.();
       });
