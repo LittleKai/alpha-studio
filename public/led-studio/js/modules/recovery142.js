@@ -370,7 +370,8 @@
       try {
         const incoming = await parseFile(file);
         playback = pauseForTransaction();
-        before = await packCurrent(); oldMedia = [...state.media];
+        if (!R.restoringBoot) before = await packCurrent();
+        oldMedia = [...state.media];
         busy(true, L('Đang mở dự án đã kiểm tra...', "Opening validated project..."));
         try {
           await previousLoad(incoming.file);
@@ -383,6 +384,12 @@
           return incoming.summary;
         } catch (loadError) {
           failedMedia = [...state.media];
+          if (!before) {
+            releaseOrphans([...oldMedia, ...failedMedia]);
+            try { if (typeof demo === 'function') demo(); } catch (_) {}
+            resume(playback, true); playback = null;
+            fail(L('Không mở được gói dự phòng khi khởi động: ', "Unable to open boot backup package: ") + loadError.message);
+          }
           R.rescueText = before.text; R.rescueName = before.data.model.name;
           busy(true, L('Gói mới mở không thành công. Đang phục hồi phiên trước...', "The new package could not be opened. Restoring the previous session..."));
           try {
@@ -804,11 +811,14 @@
     try {
       const isShare = typeof location !== 'undefined' && new URLSearchParams(location.search || '').get('share');
       if (isShare || S.cloud16?.isClientReviewMode?.()) { await refreshBackup(); paintStatus(); return; }
+      const splashSub = typeof document !== 'undefined' ? document.querySelector?.('#bootSplash small') : null;
+      if (splashSub) splashSub.textContent = L('Đang kiểm tra dự án đang làm dở…', 'Checking in-progress project…');
       const record = await readBackup();
       R.backup = publicMeta(record);
       paintStatus();
       if (R.auto && record && record.text && !R.operation && !state.importing && !state.loadingProject && !R.dirty) {
         R.restoringBoot = true;
+        if (splashSub) splashSub.textContent = L('Đang mở lại dự án: ', 'Restoring project: ') + (record.name || 'Stage') + '…';
         try {
           await loadProject({ name: (record.name || 'Stage') + '.ledstudio', size: record.size, text: async () => record.text });
           toast(L('Đã tự động mở lại dự án đang làm dở: ', 'Automatically restored in-progress project: ') + (record.name || state.projectName));
@@ -822,5 +832,7 @@
       paintStatus();
     }
   }
-  autoRestoreOnBoot142();
+  const bootRestorePromise142 = autoRestoreOnBoot142();
+  S.bootRestorePromise142 = bootRestorePromise142;
+  if (typeof window !== 'undefined') window.__bootRestorePromise142 = bootRestorePromise142;
 })();

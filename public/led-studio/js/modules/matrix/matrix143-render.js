@@ -228,9 +228,11 @@
   }
   function project(point){const p=E.project(point);return p&&Number.isFinite(p.x+p.y+p.z)&&p.z>-1&&p.z<1?p:null;}
   function stroke(points,closed,color,dashed=false,width=1.4){ctx.beginPath();let first=null,pen=false;for(const point of points){const p=project(point);if(!p){pen=false;continue;}if(!first)first=p;if(pen)ctx.lineTo(p.x,p.y);else ctx.moveTo(p.x,p.y);pen=true;}if(closed&&first&&pen)ctx.lineTo(first.x,first.y);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.setLineDash(dashed?[5,4]:[]);ctx.stroke();ctx.setLineDash([]);}
+  let guidesDirty=true;
   function drawGuides(now=performance.now(),{clean=false}={}){
-    const width=E.canvas.clientWidth,height=E.canvas.clientHeight,dpr=Math.min(devicePixelRatio||1,1.5);if(canvas.width!==Math.round(width*dpr)||canvas.height!==Math.round(height*dpr)){canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,width,height);
-    if(clean||!X.isOpen||S.state.presenting||E.view!=='stage')return;
+    if(clean||!X.isOpen||S.state.presenting||E.view!=='stage'){if((clean||guidesDirty)&&canvas.width>0&&canvas.height>0){ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);guidesDirty=false;}return;}
+    const width=E.canvas.clientWidth,height=E.canvas.clientHeight,dpr=Math.min(devicePixelRatio||1,1.5);guidesDirty=true;
+    if(canvas.width!==Math.round(width*dpr)||canvas.height!==Math.round(height*dpr)){canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,width,height);
     const guide=X.candidateGuideState();
     for(const {candidate:c,index}of guide.items){const focused=c.id===X.candidateFocus,picked=X.quick150&&c.id===X.quickFocus150;
       const color=focused?'#ffdb8b':c.checked?'#55f0c5':X.quick150?'rgba(121,191,199,.62)':'#6fafa7';

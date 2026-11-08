@@ -625,7 +625,7 @@ const uiText=(vi,en)=>window.tr?window.tr(vi,en):vi;
   }
   const presentationObserver=new MutationObserver(watchPresentation);
   presentationObserver.observe(body,{attributes:true,attributeFilter:['class']});
-  for(const id of ['showExit','exitPresent','presentBtn']){
+  for(const id of ['showExit','exitPresent','presentBtn','transportPresentBtn']){
    byId(id)?.addEventListener('click',()=>queueMicrotask(watchPresentation));
   }
   document.addEventListener('keydown',ev=>{if(ev.key==='Escape')queueMicrotask(watchPresentation);},false);

@@ -169,6 +169,10 @@
       dmxProgrammer18: {
         freezeDmx: false,
         parChaseMode: 'carousel', // 'carousel' | 'mirror_domino' | 'dual_carousel' | 'gala_sparkle'
+        parUseAlternateColor: false,
+        parSecondaryColor: '#ffe600',
+        frontColorTempK: 4200, // 3200 (Warm Tungsten) | 4200 (Neutral Studio) | 5600 (Daylight Broadcast)
+        frontKeyLightPct: 88,  // 15..100%
         groupPalettes: {
           beam: ['#00f0ff', '#ff007f', '#ffe600', '#0055ff'],
           wash: ['#ff007f', '#00f0ff', '#7700ff', '#ffaa00'],
@@ -403,7 +407,8 @@
         id: 'conference',
         name: 'Hội nghị Doanh nghiệp / Đại hội Cổ đông',
         category: 'Corporate / Conference',
-        summary: 'Sân khấu 12×6m, 1 LED chính P3.91 (7×3.5m) + 2 LED cánh (2.5×3.5m), bục phát biểu VIP, bàn đại biểu IBM, 16 đèn Par/Beam.',
+        previewWebp: './assets/templates/conference.webp',
+        summary: 'Sân khấu 12×6m, 1 LED chính P3.91 (7×3.5m) + 2 LED cánh (2.5×3.5m), bục phát biểu VIP, bàn đại biểu IBM, MC dẫn chương trình & 16 đèn Par/Beam.',
         widthM: 12,
         depthM: 6,
         heightM: 0.8,
@@ -417,20 +422,27 @@
         truss: 'portal',
         lightCount: 16,
         props: [
-          { kind: 'vip_podium', pos: [-2.4, 0.8, 0.8] },
-          { kind: 'conference_ibm_table', pos: [-2.5, 0, 3.8] },
-          { kind: 'conference_ibm_table', pos: [2.5, 0, 3.8] },
-          { kind: 'stage_monitor_wedge', pos: [-1.5, 0.8, 1.8] },
-          { kind: 'stage_monitor_wedge', pos: [1.5, 0.8, 1.8] },
-          { kind: 'decor_palm_planter', pos: [-5.6, 0.8, 1.5] },
-          { kind: 'decor_palm_planter', pos: [5.6, 0.8, 1.5] }
+          { kind: 'vip_podium', pos: [-2.4, 0.8, 0.8], yaw: 10 },
+          { kind: 'conference_ibm_table', pos: [-2.5, 0, 3.8], yaw: 0 },
+          { kind: 'conference_ibm_table', pos: [2.5, 0, 3.8], yaw: 0 },
+          { kind: 'stage_monitor_wedge', pos: [-1.5, 0.8, 1.8], yaw: 0 },
+          { kind: 'stage_monitor_wedge', pos: [1.5, 0.8, 1.8], yaw: 0 },
+          { kind: 'decor_palm_planter', pos: [-5.6, 0.8, 1.5], yaw: 0 },
+          { kind: 'decor_palm_planter', pos: [5.6, 0.8, 1.5], yaw: 0 }
+        ],
+        cast: [
+          { type: 'mc', pos: [-2.1, 0.8, 0.65], color: '#38bdf8', model18: 'stage-host' },
+          { type: 'mc', pos: [0.4, 0.8, 0.9], color: '#60a5fa', model18: 'stage-host-female' },
+          { type: 'audience', pos: [-2.5, 0, 5.4], yaw: 180, count: 24, columns: 6, spacing: 0.7, phase: 0, color: '#33677f' },
+          { type: 'audience', pos: [2.5, 0, 5.4], yaw: 180, count: 24, columns: 6, spacing: 0.7, phase: 1.5, color: '#3b82f6' }
         ]
       },
       wedding: {
         id: 'wedding',
         name: 'Tiệc cưới Sang trọng',
         category: 'Wedding / Romance',
-        summary: 'Sân khấu 14×7m kèm đường dẫn Catwalk, LED chính 8×4m + 4 cột LED Totem, cổng vòm hoa/backdrop, bàn tiệc tròn Gala, pháo điện lạnh.',
+        previewWebp: './assets/templates/wedding.webp',
+        summary: 'Sân khấu 14×7m kèm đường dẫn Catwalk, LED chính 8×4m + 4 cột LED Totem, cổng vòm hoa/backdrop, bàn tiệc tròn Gala, Violin/Saxophone & pháo điện lạnh.',
         widthM: 14,
         depthM: 7,
         heightM: 0.7,
@@ -446,19 +458,26 @@
         truss: 'arch',
         lightCount: 20,
         props: [
-          { kind: 'backdrop_arch', pos: [0, 0.7, -1.2] },
-          { kind: 'catwalk_t', pos: [0, 0, 4.2] },
-          { kind: 'cold_spark_fountain', pos: [-2.2, 0.7, 1.8] },
-          { kind: 'cold_spark_fountain', pos: [2.2, 0.7, 1.8] },
-          { kind: 'gala_round_table', pos: [-3.6, 0, 4.5] },
-          { kind: 'gala_round_table', pos: [3.6, 0, 4.5] }
+          { kind: 'backdrop_arch', pos: [0, 0.7, -1.2], yaw: 0 },
+          { kind: 'catwalk_t', pos: [0, 0, 4.2], yaw: 0 },
+          { kind: 'cold_spark_fountain', pos: [-2.2, 0.7, 1.8], yaw: 0 },
+          { kind: 'cold_spark_fountain', pos: [2.2, 0.7, 1.8], yaw: 0 },
+          { kind: 'gala_round_table', pos: [-3.6, 0, 4.5], yaw: 0 },
+          { kind: 'gala_round_table', pos: [3.6, 0, 4.5], yaw: 0 }
+        ],
+        cast: [
+          { type: 'singer', pos: [-0.5, 0.7, 0.8], color: '#f472b6', model18: 'stage-singer' },
+          { type: 'mc', pos: [0.5, 0.7, 0.8], color: '#fbbf24', model18: 'stage-host' },
+          { type: 'violinist', pos: [-2.4, 0.7, 0.5], color: '#f9a8d4', model18: 'stage-violinist' },
+          { type: 'saxophonist', pos: [2.4, 0.7, 0.5], color: '#fcd34d', model18: 'stage-saxophonist' }
         ]
       },
       concert: {
         id: 'concert',
         name: 'Đại nhạc hội EDM',
         category: 'Concert / EDM',
-        summary: 'Sân khấu đại cảnh 24×12m, LED chính 14×6m + 4 cánh LED nghiêng + Header, bàn DJ trung tâm, Line Array, 32 đèn Moving Head Beam.',
+        previewWebp: './assets/templates/concert.webp',
+        summary: 'Sân khấu đại cảnh 24×12m, LED chính 14×6m + 4 cánh LED nghiêng + Mặt DJ LED, bàn DJ trung tâm, Line Array, 4 súng CO2 & 32 đèn Moving Head Beam.',
         widthM: 24,
         depthM: 12,
         heightM: 1.2,
@@ -475,23 +494,32 @@
         truss: 'box',
         lightCount: 32,
         props: [
-          { kind: 'dj_booth', pos: [0, 1.2, 0.2] },
-          { kind: 'line_array', pos: [-10.5, 5.2, 0.5] },
-          { kind: 'line_array', pos: [10.5, 5.2, 0.5] },
-          { kind: 'sub_stack', pos: [-9.5, 0, 2.8] },
-          { kind: 'sub_stack', pos: [9.5, 0, 2.8] },
-          { kind: 'co2_cannon', pos: [-4.5, 1.2, 2.2] },
-          { kind: 'co2_cannon', pos: [-1.5, 1.2, 2.2] },
-          { kind: 'co2_cannon', pos: [1.5, 1.2, 2.2] },
-          { kind: 'co2_cannon', pos: [4.5, 1.2, 2.2] },
-          { kind: 'foh_control_booth', pos: [0, 0, 9.5] }
+          { kind: 'dj_booth', pos: [0, 1.2, 0.2], yaw: 0 },
+          { kind: 'line_array', pos: [-10.5, 5.2, 0.5], yaw: 0 },
+          { kind: 'line_array', pos: [10.5, 5.2, 0.5], yaw: 0 },
+          { kind: 'sub_stack', pos: [-9.5, 0, 2.8], yaw: 8 },
+          { kind: 'sub_stack', pos: [9.5, 0, 2.8], yaw: -8 },
+          { kind: 'co2_cannon', pos: [-4.5, 1.2, 2.2], yaw: 0 },
+          { kind: 'co2_cannon', pos: [-1.5, 1.2, 2.2], yaw: 0 },
+          { kind: 'co2_cannon', pos: [1.5, 1.2, 2.2], yaw: 0 },
+          { kind: 'co2_cannon', pos: [4.5, 1.2, 2.2], yaw: 0 },
+          { kind: 'foh_control_booth', pos: [0, 0, 9.5], yaw: 0 }
+        ],
+        cast: [
+          { type: 'dj', pos: [0, 1.2, -0.35], color: '#22d3ee', model18: 'stage-dj' },
+          { type: 'leddancer', pos: [-3.2, 1.2, 1.2], color: '#38bdf8', model18: 'stage-led-dancer' },
+          { type: 'leddancer', pos: [3.2, 1.2, 1.2], color: '#a855f7', model18: 'stage-led-dancer' },
+          { type: 'rapper', pos: [0, 1.2, 1.8], color: '#f97316', model18: 'stage-rapper' },
+          { type: 'audience', pos: [-4.5, 0, 6.8], yaw: 180, count: 48, columns: 10, spacing: 0.65, phase: 0, color: '#22d3ee' },
+          { type: 'audience', pos: [4.5, 0, 6.8], yaw: 180, count: 48, columns: 10, spacing: 0.65, phase: 2.1, color: '#a855f7' }
         ]
       },
       grand_opening: {
         id: 'grand_opening',
         name: 'Lễ Khai trương / Khánh thành / Ra mắt SP',
         category: 'Activation / Launch',
-        summary: 'Sân khấu 10×5m gọn đẹp, LED chính 6×3.5m + 2 Standee LED 1×2.5m, cổng LED Arch, bục VIP, pháo điện Kim tuyến.',
+        previewWebp: './assets/templates/grand_opening.webp',
+        summary: 'Sân khấu 10×5m gọn đẹp, LED chính 6×3.5m + 2 Standee LED 1×2.5m, cổng LED Arch, bục VIP, Trống nước & Múa quạt nghệ thuật.',
         widthM: 10,
         depthM: 5,
         heightM: 0.6,
@@ -505,19 +533,27 @@
         truss: 'portal',
         lightCount: 12,
         props: [
-          { kind: 'led_arch', pos: [0, 0.6, -1.5] },
-          { kind: 'vip_podium', pos: [-1.8, 0.6, 0.6] },
-          { kind: 'cold_spark_fountain', pos: [-2.5, 0.6, 1.5] },
-          { kind: 'cold_spark_fountain', pos: [2.5, 0.6, 1.5] },
-          { kind: 'decor_palm_planter', pos: [-4.5, 0.6, 1.2] },
-          { kind: 'decor_palm_planter', pos: [4.5, 0.6, 1.2] }
+          { kind: 'led_arch', pos: [0, 0.6, -1.5], yaw: 0 },
+          { kind: 'vip_podium', pos: [-1.8, 0.6, 0.6], yaw: 8 },
+          { kind: 'cold_spark_fountain', pos: [-2.5, 0.6, 1.5], yaw: 0 },
+          { kind: 'cold_spark_fountain', pos: [2.5, 0.6, 1.5], yaw: 0 },
+          { kind: 'decor_palm_planter', pos: [-4.5, 0.6, 1.2], yaw: 0 },
+          { kind: 'decor_palm_planter', pos: [4.5, 0.6, 1.2], yaw: 0 }
+        ],
+        cast: [
+          { type: 'mc', pos: [-1.5, 0.6, 0.5], color: '#fbbf24', model18: 'stage-host' },
+          { type: 'waterdrummer', pos: [-0.8, 0.6, 0.9], color: '#38bdf8', model18: 'stage-water-drummer' },
+          { type: 'waterdrummer', pos: [0.8, 0.6, 0.9], color: '#38bdf8', model18: 'stage-water-drummer' },
+          { type: 'fandancer', pos: [-2.4, 0.6, 1.1], color: '#fb7185', model18: 'stage-fan-dancer' },
+          { type: 'fandancer', pos: [2.4, 0.6, 1.1], color: '#fb7185', model18: 'stage-fan-dancer' }
         ]
       },
       gala_dinner: {
         id: 'gala_dinner',
         name: 'Gala Dinner / Year End Party (YEP)',
         category: 'Gala / YEP',
-        summary: 'Sân khấu 16×8m, LED chính 9×4.5m + 2 cánh LED 2.5×4m, vòng LED Kinetic trần, 4 bàn tiệc Gala tròn, 24 đèn Beam & Katana.',
+        previewWebp: './assets/templates/gala_dinner.webp',
+        summary: 'Sân khấu 16×8m, LED chính 9×4.5m + 2 cánh LED 2.5×4m, vòng LED Kinetic trần, 4 bàn tiệc Gala tròn, ban nhạc & 24 đèn Beam/Katana.',
         widthM: 16,
         depthM: 8,
         heightM: 0.9,
@@ -531,21 +567,28 @@
         truss: 'box',
         lightCount: 24,
         props: [
-          { kind: 'kinetic_ring', pos: [0, 5.2, 0] },
-          { kind: 'vip_podium', pos: [-3.2, 0.9, 1.0] },
-          { kind: 'gala_round_table', pos: [-4.2, 0, 4.6] },
-          { kind: 'gala_round_table', pos: [-1.4, 0, 5.0] },
-          { kind: 'gala_round_table', pos: [1.4, 0, 5.0] },
-          { kind: 'gala_round_table', pos: [4.2, 0, 4.6] },
-          { kind: 'cold_spark_fountain', pos: [-3.0, 0.9, 2.2] },
-          { kind: 'cold_spark_fountain', pos: [3.0, 0.9, 2.2] }
+          { kind: 'kinetic_ring', pos: [0, 5.2, 0], yaw: 0 },
+          { kind: 'vip_podium', pos: [-3.2, 0.9, 1.0], yaw: 10 },
+          { kind: 'gala_round_table', pos: [-4.2, 0, 4.6], yaw: 0 },
+          { kind: 'gala_round_table', pos: [-1.4, 0, 5.0], yaw: 0 },
+          { kind: 'gala_round_table', pos: [1.4, 0, 5.0], yaw: 0 },
+          { kind: 'gala_round_table', pos: [4.2, 0, 4.6], yaw: 0 },
+          { kind: 'cold_spark_fountain', pos: [-3.0, 0.9, 2.2], yaw: 0 },
+          { kind: 'cold_spark_fountain', pos: [3.0, 0.9, 2.2], yaw: 0 }
+        ],
+        cast: [
+          { type: 'singer', pos: [0, 0.9, 1.2], color: '#ff5d8f', model18: 'stage-singer' },
+          { type: 'dancer', pos: [-2.0, 0.9, 1.0], color: '#f472b6', model18: 'stage-dancer' },
+          { type: 'dancer', pos: [2.0, 0.9, 1.0], color: '#38bdf8', model18: 'stage-dancer-male' },
+          { type: 'saxophonist', pos: [3.2, 0.9, 0.6], color: '#fbbf24', model18: 'stage-saxophonist' }
         ]
       },
       outdoor_festival: {
         id: 'outdoor_festival',
         name: 'Lễ hội Ngoài trời / Beerfest / Countdown',
         category: 'Outdoor / Festival',
-        summary: 'Sân khấu 20×10m mái vòm Truss chống gió, LED chính 12×5m P4.81 Outdoor, rào chắn Mojo, tháp FOH, Line Array & Sub.',
+        previewWebp: './assets/templates/outdoor_festival.webp',
+        summary: 'Sân khấu 20×10m mái vòm Truss chống gió, LED chính 12×5m P4.81 Outdoor + Header Banner, rào chắn Mojo, tháp FOH, Full Band & Khán giả.',
         widthM: 20,
         depthM: 10,
         heightM: 1.1,
@@ -560,17 +603,25 @@
         truss: 'box',
         lightCount: 28,
         props: [
-          { kind: 'truss_arch', pos: [0, 1.1, -1.8] },
-          { kind: 'line_array', pos: [-8.8, 4.8, 0.4] },
-          { kind: 'line_array', pos: [8.8, 4.8, 0.4] },
-          { kind: 'sub_stack', pos: [-7.8, 0, 2.6] },
-          { kind: 'sub_stack', pos: [7.8, 0, 2.6] },
-          { kind: 'crowd_barrier', pos: [-3.5, 0, 4.5] },
-          { kind: 'crowd_barrier', pos: [0, 0, 4.5] },
-          { kind: 'crowd_barrier', pos: [3.5, 0, 4.5] },
-          { kind: 'foh_control_booth', pos: [0, 0, 8.5] },
-          { kind: 'haze_machine_pro', pos: [-6.0, 1.1, -1.5] },
-          { kind: 'haze_machine_pro', pos: [6.0, 1.1, -1.5] }
+          { kind: 'truss_arch', pos: [0, 1.1, -1.8], yaw: 0 },
+          { kind: 'line_array', pos: [-8.8, 4.8, 0.4], yaw: 0 },
+          { kind: 'line_array', pos: [8.8, 4.8, 0.4], yaw: 0 },
+          { kind: 'sub_stack', pos: [-7.8, 0, 2.6], yaw: 8 },
+          { kind: 'sub_stack', pos: [7.8, 0, 2.6], yaw: -8 },
+          { kind: 'crowd_barrier', pos: [-3.5, 0, 4.5], yaw: 0 },
+          { kind: 'crowd_barrier', pos: [0, 0, 4.5], yaw: 0 },
+          { kind: 'crowd_barrier', pos: [3.5, 0, 4.5], yaw: 0 },
+          { kind: 'foh_control_booth', pos: [0, 0, 8.5], yaw: 0 },
+          { kind: 'haze_machine_pro', pos: [-6.0, 1.1, -1.5], yaw: 0 },
+          { kind: 'haze_machine_pro', pos: [6.0, 1.1, -1.5], yaw: 0 }
+        ],
+        cast: [
+          { type: 'singer', pos: [0, 1.1, 1.4], color: '#ff5d8f', model18: 'stage-singer' },
+          { type: 'guitarist', pos: [-2.6, 1.1, 0.7], color: '#45d4ff', model18: 'stage-guitarist' },
+          { type: 'keyboardist', pos: [2.6, 1.1, 0.7], color: '#ffc857', model18: 'stage-keyboardist' },
+          { type: 'drummer', pos: [0, 1.1, -0.8], color: '#9b7bff', model18: 'stage-drummer' },
+          { type: 'audience', pos: [-3.8, 0, 6.2], yaw: 180, count: 40, columns: 8, spacing: 0.65, phase: 0, color: '#33677f' },
+          { type: 'audience', pos: [3.8, 0, 6.2], yaw: 180, count: 40, columns: 8, spacing: 0.65, phase: 1.9, color: '#803f65' }
         ]
       }
     };
@@ -711,7 +762,9 @@
       const eng = getEngine();
       if (!eng || typeof window.boxMesh !== 'function' || typeof window.quadMesh !== 'function') return false;
 
+      return singleUndo18(() => {
       window.checkpoint?.();
+      if (S.stageLift?.items) S.stageLift.items.length = 0;
       const widthM = Math.max(4, Math.min(80, Number(overrides.widthM) || tpl.widthM));
       const depthM = Math.max(3, Math.min(50, Number(overrides.depthM) || tpl.depthM));
       const heightM = Math.max(0.2, Math.min(4, Number(overrides.heightM) || tpl.heightM));
@@ -824,6 +877,7 @@
         if (s.rows500x500 !== undefined) surf.rows500x500 = s.rows500x500;
         if (s.shapeType) surf.shapeType = s.shapeType;
         window.normalizeSurfaceHardware?.(surf);
+        window.rebuildSurface3DMesh?.(surf);
         cursorX += s.wPx;
         maxH = Math.max(maxH, s.hPx);
       }
@@ -838,26 +892,23 @@
 
       populateStageLights(eng, overrides.lightCount || tpl.lightCount, widthM, depthM, maxTopY + 0.4, tpl.style);
 
-      if (S.stageAssets16?.clearAll) {
-        S.stageAssets16.clearAll();
-        for (const p of tpl.props || []) {
-          const resolvedKind = resolveCatalogPropKind(p.kind, S.stageAssets16.catalog);
-          if (S.stageAssets16.catalog?.[resolvedKind]) {
-            const scaledPos = [+(p.pos[0] * scaleX).toFixed(2), +p.pos[1].toFixed(2), +(p.pos[2] * scaleZ).toFixed(2)];
-            const item = {
-              id: 'AST16_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 6),
-              kind: resolvedKind,
-              name: S.stageAssets16.catalog[resolvedKind].name,
-              pos: scaledPos,
-              yaw: 0,
-              scale: 1,
-              color: S.stageAssets16.catalog[resolvedKind].color
-            };
-            S.stageAssets16.items.push(item);
-            S.stageAssets16.syncItemMeshes?.(item);
-          }
-        }
-      }
+      const scaledAssets = (tpl.props || []).map((p) => {
+        const resolvedKind = resolveCatalogPropKind(p.kind, S.stageAssets16?.catalog);
+        const py = p.pos[1] > 0.05 ? +(heightM + Math.max(0, p.pos[1] - tpl.heightM)).toFixed(2) : 0;
+        return {
+          kind: resolvedKind,
+          pos: [+(p.pos[0] * scaleX).toFixed(2), py, +(p.pos[2] * scaleZ).toFixed(2)],
+          yaw: p.yaw || 0
+        };
+      });
+      const scaledCast = (tpl.cast || []).map((c) => {
+        const cy = c.pos[1] > 0.05 ? +(heightM + Math.max(0, c.pos[1] - tpl.heightM)).toFixed(2) : 0;
+        return {
+          ...c,
+          pos: [+(c.pos[0] * scaleX).toFixed(2), cy, +(c.pos[2] * scaleZ).toFixed(2)]
+        };
+      });
+      populateSetAssetsAndCast18({ id: tpl.id, assets: scaledAssets, cast: scaledCast });
 
       eng.view = 'stage';
       eng.cameraPreset?.('iso');
@@ -865,6 +916,7 @@
       S.project142?.scheduleAutoBackup?.();
       window.toast?.(tr18(`Đã dựng mẫu "${tpl.name}" (${widthM}×${depthM}m · P${defaultPitch}). Bấm Ctrl+Z nếu muốn hoàn tác.`, `Built "${templatePresentation18(tpl).name}" (${widthM}×${depthM}m · P${defaultPitch}). Press Ctrl+Z to undo.`));
       return true;
+      });
     }
 
     // =========================================================================
@@ -3554,27 +3606,27 @@
       const en = {
         "Hội nghị Doanh nghiệp / Đại hội Cổ đông": [
           "Corporate conference / shareholders meeting",
-          "12×6m stage, main P3.91 LED (7×3.5m), two LED wings (2.5×3.5m), VIP podium, IBM delegate tables and 16 Par/Beam lights."
+          "12×6m stage, main P3.91 LED (7×3.5m), two LED wings (2.5×3.5m), VIP podium, IBM delegate tables, MCs and 16 Par/Beam lights."
         ],
         "Tiệc cưới Sang trọng": [
           "Luxury wedding",
-          "14×7m stage with catwalk, 8×4m main LED, four LED totems, floral arch, round banquet tables and cold sparks."
+          "14×7m stage with catwalk, 8×4m main LED, four LED totems, floral arch, round banquet tables, Violin/Saxophone and cold sparks."
         ],
         "Đại nhạc hội EDM": [
           "EDM concert",
-          "24×12m stage, 14×6m main LED, four angled LED wings and header, central DJ desk, line arrays and 32 moving head beams."
+          "24×12m stage, 14×6m main LED, four angled LED wings and DJ front LED, central DJ desk, line arrays, CO2 cannons and 32 moving head beams."
         ],
         "Lễ Khai trương / Khánh thành / Ra mắt SP": [
           "Grand opening / product launch",
-          "10×5m stage, 6×3.5m main LED, two 1×2.5m LED standees, LED arch, VIP podium and confetti."
+          "10×5m stage, 6×3.5m main LED, two 1×2.5m LED standees, LED arch, VIP podium, Water Drummers & Fan Dancers."
         ],
         "Gala Dinner / Year End Party (YEP)": [
           "Gala Dinner / Year End Party",
-          "16×8m stage, 9×4.5m main LED, two 2.5×4m wings, overhead kinetic LED ring, four round gala tables and 24 Beam/Katana lights."
+          "16×8m stage, 9×4.5m main LED, two 2.5×4m wings, overhead kinetic LED ring, four round gala tables, band & dancers and 24 Beam/Katana lights."
         ],
         "Lễ hội Ngoài trời / Beerfest / Countdown": [
           "Outdoor festival / Beerfest / Countdown",
-          "20×10m stage with wind-resistant truss roof, 12×5m outdoor P4.81 LED, Mojo barriers, FOH tower, line arrays and subs."
+          "20×10m stage with wind-resistant truss roof, 12×5m outdoor P4.81 LED + Header Banner, Mojo barriers, FOH tower, Full Band & Audience."
         ]
       };
       const categoriesVi = { conference: 'Doanh nghiệp / Hội nghị', wedding: 'Tiệc cưới / Lãng mạn', concert: 'Nhạc hội / EDM', grand_opening: 'Khai trương / Ra mắt', gala_dinner: 'Gala / Tất niên', outdoor_festival: 'Ngoài trời / Lễ hội' };
@@ -3583,18 +3635,47 @@
 
     function openStageTemplatesModal() {
       if (typeof window.dialog !== 'function') return;
+      const thumbStyle = 'width:128px;height:72px;object-fit:cover;border-radius:6px;border:1px solid rgba(148,163,184,0.28);flex-shrink:0;cursor:zoom-in;background:#070c18';
       const cardsHtml = Object.values(VN_STAGE_TEMPLATES)
-        .map(
-          (tpl) =>
-            `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px">` +
-            `<div><strong>${esc18(templatePresentation18(tpl).name)}</strong> <small style="color:#38bdf8">[${esc18(templatePresentation18(tpl).category)}]</small><br>` +
-            `<small>${esc18(templatePresentation18(tpl).summary)}</small></div>` +
+        .map((tpl) => {
+          const pres = templatePresentation18(tpl);
+          const previewSrc = tpl.previewWebp || `./assets/templates/${tpl.id}.webp`;
+          return (
+            `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px;border-left:3px solid #38bdf8">` +
+            `<img src="${esc18(previewSrc)}" alt="${esc18(pres.name)}" loading="lazy" decoding="async" data-lumi18-preview="${esc18(previewSrc)}" data-lumi18-preview-title="${esc18(pres.name)}" style="${thumbStyle}" title="${esc18(tr18('Nhấn để phóng to hình review (.webp)', 'Click to zoom review image (.webp)'))}">` +
+            `<div style="flex:1;min-width:0"><strong>${esc18(pres.name)}</strong> <small style="color:#38bdf8">[${esc18(pres.category)} · ${tpl.widthM}×${tpl.depthM}m · P${tpl.pitchMm}]</small><br>` +
+            `<small style="display:block;margin-top:2px;line-height:1.35">${esc18(pres.summary)}</small></div>` +
             `<button type="button" class="btn small primary" data-lumi18-tpl="${esc18(tpl.id)}">${tr18("Dựng 3D", "Build 3D")}</button>` +
             `</div>`
-        )
+          );
+        })
+        .join('');
+      const stageSetsHtml = [1, 2, 3, 4, 5, 6]
+        .map((n) => {
+          const cfg = STAGE_SETS18[n];
+          if (!cfg) return '';
+          const title = tr18(cfg.titleVi, cfg.titleEn);
+          const desc = tr18(cfg.descVi || cfg.titleVi, cfg.descEn || cfg.titleEn);
+          const previewSrc = cfg.previewWebp || `./assets/templates/s${n}.webp`;
+          return (
+            `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px;border-left:3px solid #f59e0b">` +
+            `<img src="${esc18(previewSrc)}" alt="${esc18(title)}" loading="lazy" decoding="async" data-lumi18-preview="${esc18(previewSrc)}" data-lumi18-preview-title="${esc18(title)}" style="${thumbStyle}" title="${esc18(tr18('Nhấn để phóng to hình review (.webp)', 'Click to zoom review image (.webp)'))}">` +
+            `<div style="flex:1;min-width:0"><strong>${esc18(cfg.code)} · ${esc18(title)}</strong> ` +
+            `<small style="color:#fbbf24">[${esc18(`${cfg.shell?.widthM || 18}×${cfg.shell?.depthM || 7}m · ${cfg.screens?.length || 3} LED`)}]</small><br>` +
+            `<small style="display:block;margin-top:2px;line-height:1.35">${esc18(desc)}</small></div>` +
+            `<button type="button" class="btn small primary" data-lumi18-stageset="${n}">${tr18('Dựng ' + cfg.code, 'Build ' + cfg.code)}</button>` +
+            `</div>`
+          );
+        })
         .join('');
 
       const paramHtml =
+        `<div style="max-height:500px;overflow:auto;padding-right:4px">` +
+        `<div id="lumi18TplLightbox" style="display:none;margin-bottom:10px;padding:8px;background:rgba(7,12,24,0.95);border:1px solid rgba(56,189,248,0.45);border-radius:8px;text-align:center">` +
+        `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><strong id="lumi18TplLightboxTitle" style="font-size:var(--fs-sm);color:#38bdf8"></strong><button type="button" class="btn small" id="lumi18TplLightboxClose">${tr18('Thu gọn ảnh', 'Close preview')}</button></div>` +
+        `<img id="lumi18TplLightboxImg" src="" alt="" style="max-width:100%;max-height:240px;border-radius:6px;border:1px solid rgba(148,163,184,0.25)">` +
+        `</div>` +
+        `<div style="font-size:var(--fs-sm);font-weight:700;color:#38bdf8;text-transform:uppercase;letter-spacing:.04em;margin:2px 0 6px">${tr18('6 Mẫu Sân Khấu Sự Kiện Việt Nam (Tuỳ chỉnh Kích thước & Pixel Pitch)', '6 Vietnamese Event Stage Templates (Customizable Size & Pixel Pitch)')}</div>` +
         `<div class="info-box" style="margin-bottom:10px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px">` +
         `<label style="font-size:var(--fs-md)">${tr18("Rộng sàn (m)", "Stage width (m)")}<input id="lumi18TplW" type="number" min="4" max="60" step="1" placeholder="${tr18("Mặc định mẫu", "Template default")}" class="search"></label>` +
         `<label style="font-size:var(--fs-md)">${tr18("Sâu sàn (m)", "Stage depth (m)")}<input id="lumi18TplD" type="number" min="3" max="40" step="1" placeholder="${tr18("Mặc định mẫu", "Template default")}" class="search"></label>` +
@@ -3607,9 +3688,41 @@
         `<option value="4.81">${tr18("P4.81 Outdoor / Lễ hội", "P4.81 outdoor / festivals")}</option>` +
         `</select></label>` +
         `</div>` +
-        `<div style="max-height:360px;overflow:auto">${cardsHtml}</div>`;
+        cardsHtml +
+        `<div style="font-size:var(--fs-sm);font-weight:700;color:#fbbf24;text-transform:uppercase;letter-spacing:.04em;margin:12px 0 6px">${tr18('Bộ Sân Khấu Dựng Sẵn S1–S6 (Kèm Hệ Đèn DMX & Pháo SFX)', 'Preset Stage Sets S1–S6 (With DMX Lighting & Pyro SFX)')}</div>` +
+        stageSetsHtml +
+        `</div>`;
 
-      window.dialog(tr18('6 Mẫu Sân Khấu Sự Kiện Việt Nam', '6 Vietnamese event stage templates'), paramHtml, [{ label: tr18('Đóng', 'Close') }]);
+      window.dialog(tr18('Mẫu Sân Khấu Sự Kiện Việt Nam & Bộ Set S1–S6', 'Vietnamese Event Stage Templates & S1–S6 Preset Sets'), paramHtml, [{ label: tr18('Đóng', 'Close') }]);
+      $('modal')?.classList?.add('pro-wide');
+      document.querySelectorAll?.('[data-lumi18-preview]')?.forEach((img) => {
+        img.onclick = () => {
+          const box = $('lumi18TplLightbox');
+          const big = $('lumi18TplLightboxImg');
+          const lbl = $('lumi18TplLightboxTitle');
+          if (!box || !big) return;
+          big.src = img.getAttribute('data-lumi18-preview') || '';
+          big.alt = img.getAttribute('data-lumi18-preview-title') || '';
+          if (lbl) lbl.textContent = big.alt;
+          box.style.display = 'block';
+          box.scrollIntoView?.({ behavior: 'smooth', block: 'nearest' });
+        };
+      });
+      const closePreviewBtn = $('lumi18TplLightboxClose');
+      if (closePreviewBtn) {
+        closePreviewBtn.onclick = () => {
+          const box = $('lumi18TplLightbox');
+          if (box) box.style.display = 'none';
+        };
+      }
+      document.querySelectorAll?.('[data-lumi18-stageset]')?.forEach((btn) => {
+        btn.onclick = () => {
+          const setIdx = Number(btn.getAttribute('data-lumi18-stageset') || 0);
+          const modal = $('modal');
+          if (modal && typeof modal.close === 'function') modal.close();
+          if (setIdx >= 1 && setIdx <= 6) applyStageSet18(setIdx);
+        };
+      });
       document.querySelectorAll?.('[data-lumi18-tpl]')?.forEach((btn) => {
         btn.onclick = () => {
           const tplId = btn.getAttribute('data-lumi18-tpl');
@@ -4864,6 +4977,9 @@
         shortEn: 'S1 Live',
         titleVi: 'Set 1 · Sân khấu Live Concert',
         titleEn: 'Set 1 · Live Concert Stage',
+        descVi: 'Sân khấu 19×7m, LED chính 9×4.5m + 2 LED cánh, bục ban nhạc Live Band (Ca sĩ, Guitar, Keyboard, Trống), loa Sub, rào Mojo & trạm FOH.',
+        descEn: '19×7m stage, 9×4.5m main LED + 2 wings, Live Band riser (Singer, Guitar, Keyboard, Drums), subwoofers, Mojo barriers & FOH booth.',
+        previewWebp: './assets/templates/s1.webp',
         shell: { widthM: 19, depthM: 7, heightM: 0.6, topY: 6.6, trussMode: 'box', includePA: true },
         rigStyle: 'concert',
         screens: [
@@ -4898,6 +5014,9 @@
         shortEn: 'S2 EDM',
         titleVi: 'Set 2 · Sân khấu Lễ hội EDM & DJ',
         titleEn: 'Set 2 · EDM DJ Festival Stage',
+        descVi: 'Sân khấu 21×7.5m, LED chính 10×4.5m + 2 cánh + Header, bàn DJ trung tâm, vòng Kinetic Ring, 4 súng CO2, DJ & vũ công LED.',
+        descEn: '21×7.5m stage, 10×4.5m main LED + 2 wings + Header, central DJ booth, Kinetic Ring, 4 CO2 jets, DJ & LED dancers.',
+        previewWebp: './assets/templates/s2.webp',
         shell: { widthM: 21, depthM: 7.5, heightM: 0.6, topY: 7.0, trussMode: 'box', includePA: true },
         rigStyle: 'concert',
         screens: [
@@ -4935,6 +5054,9 @@
         shortEn: 'S3 Conf',
         titleVi: 'Set 3 · Sân khấu Hội nghị & Keynote',
         titleEn: 'Set 3 · Conference & Keynote Stage',
+        descVi: 'Sân khấu 17×6.2m, LED Widescreen 10×3.5m + 2 cánh, bục VIP phát biểu, bàn đại biểu IBM, chậu cảnh trang trí & MC.',
+        descEn: '17×6.2m stage, 10×3.5m widescreen LED + 2 wings, VIP podium, IBM delegate tables, decorative planters & Keynote Host.',
+        previewWebp: './assets/templates/s3.webp',
         shell: { widthM: 17, depthM: 6.2, heightM: 0.55, topY: 6.2, trussMode: 'portal', includePA: true },
         rigStyle: 'cool',
         screens: [
@@ -4960,6 +5082,9 @@
         shortEn: 'S4 Gala',
         titleVi: 'Set 4 · Sân khấu Gala Dinner & Trao giải',
         titleEn: 'Set 4 · Gala Dinner & Awards Stage',
+        descVi: 'Sân khấu 18×6.8m kèm đường dẫn Catwalk, LED cong 9×4m + 2 cánh, bàn tiệc Gala tròn, 4 máy pháo điện lạnh, MC, Violin & Saxophone.',
+        descEn: '18×6.8m stage with Catwalk runway, curved 9×4m LED + 2 wings, round Gala tables, 4 cold spark machines, Host, Violin & Saxophone.',
+        previewWebp: './assets/templates/s4.webp',
         shell: { widthM: 18, depthM: 6.8, heightM: 0.6, topY: 6.5, trussMode: 'portal', includePA: true },
         rigStyle: 'warm',
         screens: [
@@ -4990,6 +5115,9 @@
         shortEn: 'S5 Open',
         titleVi: 'Set 5 · Sân khấu Lễ Khai mạc & Nghệ thuật',
         titleEn: 'Set 5 · Grand Opening & Cultural Stage',
+        descVi: 'Sân khấu 18×6.8m, LED chính 8.5×4.5m + 2 cánh, cổng vòm LED Arch Gate, 2 cột Totem LED, Trống nước & Múa quạt nghệ thuật.',
+        descEn: '18×6.8m stage, 8.5×4.5m main LED + 2 wings, LED Arch Gate, 2 LED totems, Water Drummers & Cultural Fan Dancers.',
+        previewWebp: './assets/templates/s5.webp',
         shell: { widthM: 18, depthM: 6.8, heightM: 0.6, topY: 6.6, trussMode: 'portal', includePA: true },
         rigStyle: 'warm',
         screens: [
@@ -5021,6 +5149,9 @@
         shortEn: 'S6 Arena',
         titleVi: 'Set 6 · Sân khấu Đại nhạc hội Arena Tour',
         titleEn: 'Set 6 · Arena Tour 360° Stage',
+        descVi: 'Sân khấu 22×8m kèm Catwalk, LED chính 10×4.5m + 2 cánh + Khối LED Cube 4 mặt treo trần, 4 máy phun lửa DMX, Rapper, DJ & Vũ công Laser.',
+        descEn: '22×8m stage with Catwalk, 10×4.5m main LED + 2 wings + overhead 4-face LED Cube, 4 DMX flame jets, Rapper, DJ & Laser Dancers.',
+        previewWebp: './assets/templates/s6.webp',
         shell: { widthM: 22, depthM: 8.0, heightM: 0.65, topY: 7.4, trussMode: 'box', includePA: true },
         rigStyle: 'concert',
         screens: [
@@ -5286,21 +5417,22 @@
           ibm_table: { id: 'conference_ibm_table', pos: [0, yOff, 5.2 + zOff] },
           gala_table: { id: 'gala_round_table', pos: [0, yOff, 5.8 + zOff] }
         };
+        const addOpts = { noCheckpoint: !!opts.noCheckpoint, silent: !!opts.silent, keepInspectorPanel: Boolean(lumiState.rpConfig18 || _suppressRpInspectorRebuild18) };
         if (kind === 'live_band') {
-          const riser = tagItem(sa.addCatalogItem('stage_riser', [0, deckH + yOff, -0.4 + zOff]));
+          const riser = tagItem(sa.addCatalogItem('stage_riser', [0, deckH + yOff, -0.4 + zOff], addOpts));
           if (!opts.skipAct && typeof S.addAct8 === 'function') S.addAct8('live_band', { pos: [0, deckH + 0.38 + yOff, -0.4 + zOff] });
           return riser;
         }
         const entry = mapCatalog[kind] || { id: kind, pos: [0, deckH + yOff, 0.5 + zOff] };
         if (count === 1 && !sym) {
-          return tagItem(sa.addCatalogItem(entry.id, entry.pos));
+          return tagItem(sa.addCatalogItem(entry.id, entry.pos, addOpts));
         }
         const effCount = sym && count < 2 ? 2 : count;
         const created = [];
         for (let i = 0; i < effCount; i++) {
           const u = effCount === 1 ? 0 : (i / (effCount - 1)) - 0.5;
           const x = effCount === 1 ? entry.pos[0] : +(u * spanM).toFixed(2);
-          const it = tagItem(sa.addCatalogItem(entry.id, [x, entry.pos[1], entry.pos[2]]));
+          const it = tagItem(sa.addCatalogItem(entry.id, [x, entry.pos[1], entry.pos[2]], addOpts));
           if (it) created.push(it);
         }
         return created[created.length - 1] || null;
@@ -5324,8 +5456,8 @@
         wash: { label: 'Wash Zoom', type: 'wash', model: 'Martin MAC Aura XB', oflProfileId: 'vn-stage/wash-zoom-36x18', count: 4, weightKg: 19, powerW: 450, beamAngleDeg: 28, angle: 22, flux: 22000, ch: 16, color: '#ec4899', y: +(h * 0.9).toFixed(2), z: +(-d * 0.15).toFixed(2), ty: 0.3, tz: +(d * 0.35).toFixed(2), sweep: false, fx: 'steady' },
         par: { label: 'PAR LED 54x3W', type: 'par', model: 'PAR LED 54x3W RGBW', oflProfileId: 'vn-stage/par-led-54x3w', count: 6, weightKg: 4.5, powerW: 180, beamAngleDeg: 25, angle: 20, flux: 9500, ch: 8, color: '#22c55e', y: +(h * 0.85).toFixed(2), z: +(-d * 0.08).toFixed(2), ty: 0.2, tz: +(d * 0.25).toFixed(2), sweep: false, fx: 'steady' },
         barra: { label: 'Barra LED 1m', type: 'bar', model: 'Katana LED Matrix Bar 1m', oflProfileId: 'vn-stage/katana-led-bar-1m', count: 4, weightKg: 8.5, powerW: 280, beamAngleDeg: 12, angle: 12, flux: 14000, ch: 24, color: '#00f5d4', y: 0.58, z: 2.45, ty: 4.6, tz: 0.4, sweep: false, fx: 'pulse' },
-        blinders: { label: 'Blinder 4-Lite', type: 'blinder', model: 'Audience Blinder 4-Lite', oflProfileId: 'vn-stage/cob-blinder-4x100w', count: 4, weightKg: 9.5, powerW: 400, beamAngleDeg: 45, angle: 28, flux: 32000, ch: 8, color: '#fbbf24', y: +(h * 0.91).toFixed(2), z: +(d * 0.05).toFixed(2), ty: 0.8, tz: +(d * 0.75).toFixed(2), sweep: false, fx: 'steady' },
-        strobe: { label: 'Atomic Strobe', type: 'strobe', model: 'Atomic 3000 DMX Strobe', oflProfileId: 'vn-stage/atomic-strobe-3000w', count: 4, weightKg: 7.5, powerW: 1500, beamAngleDeg: 50, angle: 30, flux: 45000, ch: 6, color: '#ffffff', y: +(h * 0.89).toFixed(2), z: +(-d * 0.18).toFixed(2), ty: 0.5, tz: +(d * 0.5).toFixed(2), sweep: false, fx: 'strobe' },
+        blinders: { label: 'Blinder 4-Lite', type: 'blinder', model: 'Audience Blinder 4-Lite', oflProfileId: 'vn-stage/cob-blinder-4x100w', count: 4, weightKg: 9.5, powerW: 400, beamAngleDeg: 45, angle: 28, flux: 32000, ch: 8, color: '#fbbf24', y: 0.58, z: 2.35, ty: 4.2, tz: 0.85, sweep: false, fx: 'steady' },
+        strobe: { label: 'Atomic Strobe', type: 'strobe', model: 'Atomic 3000 DMX Strobe', oflProfileId: 'vn-stage/atomic-strobe-3000w', count: 4, weightKg: 7.5, powerW: 1500, beamAngleDeg: 50, angle: 30, flux: 45000, ch: 6, color: '#ffffff', y: 0.58, z: 2.15, ty: 4.4, tz: 0.65, sweep: false, fx: 'strobe' },
         fresnel: { label: 'Fresnel 200W', type: 'fresnel', model: 'Theater Fresnel 200W Warm', oflProfileId: 'vn-stage/par-led-54x3w', count: 4, weightKg: 6.8, powerW: 220, beamAngleDeg: 35, angle: 24, flux: 16000, ch: 4, color: '#fde68a', y: +(h * 0.94).toFixed(2), z: +(d * 0.28).toFixed(2), ty: 1.2, tz: 0.4, sweep: false, fx: 'steady' },
         lasers: { label: 'ILDA Laser 10W', type: 'laser', model: 'KVANT Clubmax 10W ILDA', oflProfileId: 'vn-stage/beam-230-7r', count: 2, weightKg: 12, powerW: 320, beamAngleDeg: 4, angle: 5, flux: 26000, ch: 16, color: '#10b981', y: 2.2, z: -1.6, ty: 1.6, tz: 4.8, sweep: true, fx: 'pulse' }
       };
@@ -5456,7 +5588,8 @@
         try { S.laserShow.enable(true); } catch { /* ignore */ }
       }
       eng.rebuildFixtures?.();
-      window.renderUI?.();
+      if (_suppressRpInspectorRebuild18) window.renderLists?.();
+      else window.renderUI?.();
       renderLmpToolbox18();
       if (!opts.silent) {
         window.toast?.(tr18(`Đã thêm ${added.length} đèn ${cfg.label} (Auto-Rig DMX U${lastU}).`, `Added ${added.length} ${cfg.label} fixtures (Auto-Rig DMX U${lastU}).`));
@@ -5514,6 +5647,8 @@
       savedCamera: null,
       dockHidden: false,
       dockCollapsed: true,
+      dockMini: false,
+      dockPos: null,
       motorPhasePan: 0,
       motorPhaseTilt: 0,
       showElapsedSec: 0,
@@ -5652,69 +5787,141 @@
       return { panAngle, tiltWave, law };
     }
 
-    // P5: Audience Blinder & Hybrid Strobe Multi-Cell Thermal Flash Engine
+    // P5: Audience Blinder & Hybrid Strobe Multi-Cell Thermal Flash Engine (Spatial Pseudo-Random Bucket Gating + 2x2 Individual COB Lamp Flicker)
     function evalBlinderThermalFlash18(l, idx, nowMs, blindersOn = false, showIdx = 1) {
       const px = Number(l?.pos?.[0]) || 0;
       const py = Number(l?.pos?.[1]) || 4;
       const pz = Number(l?.pos?.[2]) || 0;
       const hash = Math.abs(px * 917.3 + py * 431.7 + pz * 193.1 + idx * 257.9);
-      const periodMs = 155;
+      const periodMs = 260;
+      const bucket = Math.floor((nowMs + hash) / periodMs);
       const localT = (nowMs + hash) % periodMs;
-      const active = blindersOn || showIdx === 4 || showIdx === 6;
+      const rawSin = Math.sin(bucket * 12.9898 + idx * 78.233 + hash * 0.017) * 43758.5453;
+      const cellGate = (Math.abs(rawSin) % 1) < 0.58;
+      const active = Boolean(blindersOn);
       let ka = 0;
       if (active) {
-        if (localT < 48) ka = 1.0;
-        else if (localT < 118) ka = Math.pow(1 - (localT - 48) / 70, 1.85);
+        if (cellGate && localT < 68) ka = 1.0;
+        else if (cellGate && localT < 195) ka = Math.pow(1 - (localT - 68) / 127, 1.85);
         else ka = 0.08;
-        if (blindersOn) ka = Math.max(ka, 0.50 + 0.50 * ka);
+        ka = Math.max(ka, 0.54 + 0.46 * ka);
       } else {
-        ka = 0.16 + 0.14 * Math.max(0, Math.sin(nowMs * 0.004 + idx * 0.9));
+        ka = 0.12 + 0.10 * Math.max(0, Math.sin(nowMs * 0.0025 + idx * 0.9 + showIdx * 0.3));
       }
       ka = clamp18(ka, 0, 1);
       const color = ka > 0.72 ? '#ffffff' : ka > 0.35 ? '#ffe600' : '#ff7700';
       const blastScale = +(3.2 + 5.8 * ka).toFixed(2);
-      const power = +(active ? 4.2 + ka * 8.4 : 1.8 + ka * 2.4).toFixed(2);
-      return { ka, color, blastScale, power, hash };
+      const power = +(active ? 4.6 + ka * 7.2 : 1.1 + ka * 1.1).toFixed(2);
+      const cells = [];
+      for (let c = 0; c < 4; c++) {
+        const hotPop = ka > 0.68 && ((Math.floor(nowMs / 45) + idx * 3 + c * 7) % 5 === 0);
+        cells.push({
+          index: c,
+          color: hotPop ? '#ffffff' : color,
+          intensity: +(ka * (hotPop ? 1.18 : 0.92)).toFixed(3),
+          hotPop
+        });
+      }
+      return { ka, color, blastScale, power, hash, cellGate, cells };
     }
 
-    // P2: 3D RGB ILDA Laser Scan Patterns (Ps = 0..3) + IEC 60825-1 +3.20m Horizon Clamp + Exponential Smoothing
-    function evalLaserScanPattern18(patternIdx, origin, uIdx, tSec, spd, multicolor = true, palette = LMP_LASER_PALETTES18) {
+    function evalFrontKeylightCct18(colorTempK = 4200, keyLightPct = 88) {
+      const cct = Number.isFinite(+colorTempK) ? +colorTempK : 4200;
+      const pct = clamp18(Number.isFinite(+keyLightPct) ? +keyLightPct : 88, 15, 100);
+      const hexColor = cct <= 3500 ? '#ffdfa8' : cct >= 5400 ? '#f2f6ff' : '#fff2d6';
+      return {
+        colorTempK: cct <= 3500 ? 3200 : cct >= 5400 ? 5600 : 4200,
+        hexColor,
+        keyLightPct: pct,
+        dimmerScale: +(pct / 100).toFixed(3)
+      };
+    }
+
+    function evalStrobePulse18(cat, idx = 0, grpIdx = 0, nowMs = nowMs18()) {
+      const c = String(cat || 'strobe').toLowerCase();
+      const inBreathPause = (nowMs % 2500) > 2300;
+      let periodMs = 71.4; // 14Hz default (Beam/Spot/Strobe)
+      let dutyMs = 25.0;
+      let phaseMs = c === 'strobe' ? 0 : ((Number(grpIdx) || 0) % 3) * (71.4 / 3);
+      if (c === 'wash') {
+        periodMs = 83.33; // 12Hz Wash strobe
+        dutyMs = 26.0;
+        phaseMs = ((Number(idx) || 0) % 3) * 20.0;
+      } else if (c === 'par' || c === 'bar') {
+        periodMs = 76.92; // 13Hz PAR/Barra strobe
+        dutyMs = 24.0;
+        phaseMs = ((Number(idx) || 0) % 3) * 26.0;
+      }
+      const localT = (nowMs + phaseMs) % periodMs;
+      const gate = !inBreathPause && localT < dutyMs;
+      return { gate, inBreathPause, periodMs: +periodMs.toFixed(2), dutyMs, localT: +localT.toFixed(2) };
+    }
+
+    // P2: 16-Beam 3D RGB ILDA Laser Scan Patterns (Ps = 0..3) + 3D Roll + Center-Out activeFrac + IEC 60825-1 +3.20m Horizon Clamp + Exponential Smoothing
+    function evalLaserScanPattern18(patternIdx, origin, uIdx, tSec, spd, multicolor = true, palette = LMP_LASER_PALETTES18, beamCountOverride = null) {
       const pIdx = ((Math.round(Number(patternIdx) || 0) % 4) + 4) % 4;
-      const beamCount = pIdx === 3 ? 6 : 5;
+      const beamCount = beamCountOverride != null ? Math.max(4, Math.min(24, Number(beamCountOverride) || 16)) : (pIdx === 3 ? 6 : 5);
       const pal = Array.isArray(palette) && palette.length ? palette : LMP_LASER_PALETTES18;
-      const baseCol = pal[(uIdx + pIdx) % pal.length];
-      const altCol = pal[(uIdx + pIdx + 2) % pal.length];
+      const baseCol = samplePaletteGlide18(pal, uIdx * 0.7 + pIdx + tSec * spd * 0.28);
+      const altCol = samplePaletteGlide18(pal, uIdx * 0.7 + pIdx + 2 + tSec * spd * 0.28);
       const rays = [];
       const cacheMap = liveShow18._laserPrevTargets18;
-      const smoothAlpha = 0.16;
+      const smoothAlpha = 0.20;
       const safetyHorizonY = 3.20;
+      const dirSign = uIdx % 2 === 0 ? 1 : -1;
+
+      let rollRad = 0;
+      let activeFrac = 1.0;
+      let spreadScale = 1.0;
+      if (pIdx === 0) {
+        // Pattern 0: Liquid Sky Wave Sheet with center-out breathing fan
+        rollRad = Math.sin(tSec * spd * 0.28 + dirSign * 0.7) * 0.14;
+        activeFrac = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(tSec * spd * 0.48 + uIdx * 1.1));
+        spreadScale = 0.85 + 0.25 * Math.sin(tSec * spd * 0.32 + uIdx);
+      } else if (pIdx === 1) {
+        // Pattern 1: Geometric Scanning Cone Tunnel with continuous roll spin
+        rollRad = dirSign * tSec * spd * 0.65;
+        activeFrac = 1.0;
+        spreadScale = 0.72 + 0.22 * Math.abs(Math.sin(tSec * spd * 0.38));
+      } else if (pIdx === 2) {
+        // Pattern 2: Dual-Mirror X-Cross Chopper with tilted roll plane
+        rollRad = dirSign * (0.26 + 0.14 * Math.sin(tSec * spd * 0.42));
+        activeFrac = 0.92;
+        spreadScale = 0.90;
+      } else {
+        // Pattern 3: Festival Climax Starburst with center-out progressive reveal
+        rollRad = Math.sin(tSec * spd * 0.22 + uIdx * 0.8) * 0.22;
+        activeFrac = 0.28 + 0.72 * Math.pow(0.5 + 0.5 * Math.sin(tSec * spd * 0.52 + uIdx * 0.9), 1.35);
+        spreadScale = 0.95 + 0.18 * Math.cos(tSec * spd * 0.44);
+      }
+
+      const cosR = Math.cos(rollRad);
+      const sinR = Math.sin(rollRad);
 
       for (let b = 0; b < beamCount; b++) {
         const u = (b / Math.max(1, beamCount - 1)) - 0.5;
-        let yaw = u * 0.82;
-        let pitch = -0.02;
-        let gate = true;
+        const beamIntensity = clamp18((activeFrac - Math.abs(u) * 1.84) / 0.18, 0, 1);
+        let localYaw = u * 0.88 * spreadScale;
+        let localPitch = 0.01;
+        let gate = beamIntensity > 0.04;
         if (pIdx === 0) {
-          // Pattern 0: Liquid Sky Wave Sheet
-          yaw += Math.sin(tSec * spd * 0.35 + uIdx) * 0.16;
-          pitch = 0.02 + Math.sin(tSec * spd * 0.72 + b * 0.55 + uIdx) * 0.045;
+          localYaw += Math.sin(tSec * spd * 0.35 + uIdx) * 0.16;
+          localPitch = 0.02 + Math.sin(tSec * spd * 0.72 + b * 0.42 + uIdx) * 0.045;
         } else if (pIdx === 1) {
-          // Pattern 1: Geometric Scanning Cone Tunnel
-          const theta = (b / beamCount) * Math.PI * 2 + tSec * spd * 0.52 * (uIdx % 2 === 0 ? 1 : -1);
-          const rad = 0.14 + 0.12 * Math.abs(Math.sin(tSec * spd * 0.38));
-          yaw = Math.cos(theta) * rad;
-          pitch = 0.04 + Math.sin(theta) * rad * 0.65;
+          const theta = (b / beamCount) * Math.PI * 2 + tSec * spd * 0.52 * dirSign;
+          const rad = (0.14 + 0.12 * Math.abs(Math.sin(tSec * spd * 0.38))) * spreadScale;
+          localYaw = Math.cos(theta) * rad;
+          localPitch = 0.04 + Math.sin(theta) * rad * 0.65;
         } else if (pIdx === 2) {
-          // Pattern 2: Dual-Mirror X-Cross Chopper
-          const sign = uIdx % 2 === 0 ? 1 : -1;
-          yaw = sign * 0.20 + u * 0.68 + Math.sin(tSec * spd * 0.55) * 0.12 * sign;
-          pitch = 0.01 + Math.cos(tSec * spd * 0.48 + b * 0.4) * 0.045;
-          gate = ((b + Math.floor(tSec * spd * 2.2)) % 3) !== 0;
+          localYaw = dirSign * 0.20 + u * 0.72 * spreadScale + Math.sin(tSec * spd * 0.55) * 0.12 * dirSign;
+          localPitch = 0.01 + Math.cos(tSec * spd * 0.48 + b * 0.35) * 0.045;
+          gate = gate && (((b + Math.floor(tSec * spd * 2.4)) % 3) !== 0);
         } else {
-          // Pattern 3: Festival Climax Starburst
-          yaw = u * 0.92 + Math.sin(tSec * spd * 0.45 + b * 0.35) * 0.14;
-          pitch = 0.03 + Math.cos(tSec * spd * 0.62 + b * 0.48) * 0.075;
+          localYaw = u * 0.96 * spreadScale + Math.sin(tSec * spd * 0.45 + b * 0.32) * 0.14;
+          localPitch = 0.03 + Math.cos(tSec * spd * 0.62 + b * 0.42) * 0.075;
         }
+        const yaw = localYaw * cosR - localPitch * sinR;
+        const pitch = Math.max(-0.015, localYaw * sinR + localPitch * cosR);
         const range = 16.5;
         const safeOriginY = Math.max(safetyHorizonY, Number(origin[1]) || 3.6);
         const rawX = origin[0] + Math.sin(yaw) * Math.cos(pitch) * range;
@@ -5730,10 +5937,22 @@
             ]
           : [rawX, rawY, rawZ];
         cacheMap?.set(key, target3d);
-        const rayCol = multicolor ? (b % 2 === 0 ? baseCol : altCol) : '#00ff66';
-        rays.push({ b, u, target3d, rayCol, gate });
+        const rayCol = multicolor
+          ? (b % 3 === 0 ? baseCol : b % 3 === 1 ? altCol : pal[(uIdx + b) % pal.length])
+          : '#00ff66';
+        rays.push({ b, u, target3d, rayCol, gate, beamIntensity: +beamIntensity.toFixed(3) });
       }
-      return { origin: [origin[0], Math.max(safetyHorizonY, Number(origin[1]) || 3.6), origin[2]], patternIdx: pIdx, baseCol, altCol, rays, safetyHorizonY };
+      return {
+        origin: [origin[0], Math.max(safetyHorizonY, Number(origin[1]) || 3.6), origin[2]],
+        patternIdx: pIdx,
+        beamCount,
+        rollRad: +rollRad.toFixed(4),
+        activeFrac: +activeFrac.toFixed(3),
+        baseCol,
+        altCol,
+        rays,
+        safetyHorizonY
+      };
     }
 
     // P8: Screen Halo Ambient Bleed (dmx_screenhalo_)
@@ -5812,6 +6031,7 @@
       const sa = S.stageAssets16;
       const items = Array.isArray(sa?.items) ? sa.items : [];
       const deckY = Math.max(0.45, (S.engine?.stageBounds?.min?.[1] || 0) + 0.5);
+      const halfSpan = Math.max(4.5, (S.engine?.size?.width || 16) * 0.45);
       const byType = {
         cold_spark_fountain: [],
         co2_jet: [],
@@ -5838,75 +6058,217 @@
       }
       for (const k of Object.keys(byType)) {
         byType[k].sort((a, b) => a.pos[0] - b.pos[0]);
+        const list = byType[k];
+        list.forEach((nz, idx) => {
+          const uNorm = list.length > 1 ? (idx / (list.length - 1)) * 2 - 1 : clamp18(nz.pos[0] / halfSpan, -1, 1);
+          nz.uNorm = +uNorm.toFixed(4);
+          nz.tiltX = +(uNorm * 0.14).toFixed(4);
+          nz.tiltZ = k === 'co2_jet' ? 0.22 : k === 'flame_jet' ? 0.12 : 0.08;
+        });
       }
       return byType;
     }
 
+    // Per-effect 3-sub-mode Pyro choreography (Sparkular sine/sweep/step, Flame L->R runner/V-wave/punch+salvo, CO2 pulse/cryo-sweep/wing-alt)
+    function evalPyroChoreoGate18(effectKind, idx, total, uNorm = 0, phaseFrac = 0.5, subMode = 0, tSec = 0, spd = 2.0) {
+      const k = normalizeSfxType18(effectKind);
+      const u = clamp18(Number.isFinite(+uNorm) ? +uNorm : (total > 1 ? (idx / (total - 1)) * 2 - 1 : 0), -1, 1);
+      const absU = Math.abs(u);
+      const mode = ((Math.round(Number(subMode) || 0) % 3) + 3) % 3;
+      const ke = clamp18(phaseFrac, 0, 1);
+
+      if (k === 'flame_jet') {
+        const finaleSalvo = ke > 0.64 && ke < 0.86;
+        if (mode === 0) {
+          // Sub-mode 0: Left-to-right chasing fire runner wave + finale salvo
+          const u01 = (u + 1) * 0.5;
+          const runner = ((tSec * spd * 0.68) % 1 + 1) % 1;
+          return (Math.abs(u01 - runner) < 0.28 || finaleSalvo) ? 1.0 : 0;
+        }
+        if (mode === 1) {
+          // Sub-mode 1: Symmetric center-out / center-in V-wave
+          const wave = Math.abs(Math.sin(tSec * spd * 1.45));
+          return (Math.abs(absU - wave) < 0.32 || finaleSalvo) ? 1.0 : 0;
+        }
+        // Sub-mode 2: Odd/even alternating fire punch + finale salvo
+        const altMatch = (idx % 2) === (Math.floor(tSec * spd * 2.4) % 2);
+        return ((altMatch && Math.sin(tSec * spd * 5.2) > -0.15) || finaleSalvo) ? 1.05 : 0;
+      }
+
+      if (k === 'co2_jet') {
+        if (mode === 0) {
+          // Sub-mode 0: Dual pressure burst windows
+          return ((ke > 0.04 && ke < 0.42) || (ke > 0.52 && ke < 0.88)) ? 1.0 : 0;
+        }
+        if (mode === 1) {
+          // Sub-mode 1: Center-out cryo sweep
+          const sweepTarget = clamp18((ke - 0.12) / 0.72, 0, 1);
+          return Math.abs(absU - sweepTarget) < 0.40 ? 1.0 : 0;
+        }
+        // Sub-mode 2: Inner core vs outer wing alternation
+        const innerTurn = Math.floor(tSec * spd * 1.8) % 2 === 0;
+        return (innerTurn ? absU < 0.55 : absU >= 0.45) ? 1.0 : 0;
+      }
+
+      // Default: cold_spark_fountain (Sparkular)
+      if (mode === 0) {
+        // Sub-mode 0: Continuous sine wave height modulation across stage span
+        return +clamp18(0.65 + 0.42 * Math.sin(tSec * spd * 2.5 - absU * 2.8), 0.22, 1.15).toFixed(3);
+      }
+      if (mode === 1) {
+        // Sub-mode 1: Center-out progressive fountain reveal
+        return absU <= Math.max(0.35, ke * 1.65) ? 1.0 : 0;
+      }
+      // Sub-mode 2: Odd/even alternating fountain step
+      return (idx % 2) === (Math.floor(tSec * spd * 2.8) % 2) ? 1.05 : 0.24;
+    }
+
     // P6: 9-Type 3D Pyro/SFX Particle Spawner (Types 1=spark, 2=flame, 3=co2, 4=shell, 5=star, 6=crackle, 7=gold_mine, 8=willow_trail, 9=muzzle_flash)
+    const LMP_FIREWORK_HDR_PALETTES18 = [
+      [[2.4, 1.85, 0.65], [2.8, 2.55, 1.8], [1.8, 0.85, 0.2]],
+      [[0.15, 2.2, 2.6], [2.5, 0.25, 1.45], [2.6, 2.6, 2.8]],
+      [[2.6, 0.35, 0.2], [2.4, 1.9, 0.55], [0.35, 1.25, 2.8]],
+      [[0.1, 2.5, 1.35], [1.65, 0.45, 2.6], [2.5, 2.1, 0.85]]
+    ];
+
     function spawnNozzleParticles18(nozzle, kind, intensity = 1) {
       const pArr = liveShow18.particles;
-      if (pArr.length > 2200) pArr.splice(0, pArr.length - 2200);
+      if (pArr.length > 4200) pArr.splice(0, pArr.length - 4200);
       const [nx, ny, nz] = nozzle.pos;
+      const tiltX = Number(nozzle.tiltX) || 0;
+      const tiltZ = Number(nozzle.tiltZ) || (kind === 'co2_jet' ? 0.22 : 0.10);
       if (kind === 'cold_spark_fountain') {
-        const count = Math.max(5, Math.round(11 * intensity));
+        if (Math.random() < 0.75 && pArr.length < 4200) {
+          pArr.push({
+            pType: 9,
+            kind: 'muzzle_flash',
+            x: nx,
+            y: ny + 0.12,
+            z: nz,
+            px: nx,
+            py: ny + 0.12,
+            pz: nz,
+            vx: 0,
+            vy: 2.8,
+            vz: 0,
+            age: 0,
+            maxAge: 0.08,
+            baseSize: 0.72,
+            size: 0.72,
+            renderSize: 0.72,
+            renderAlpha: 0.95,
+            baseHdrColor: [2.8, 2.4, 1.5],
+            hdrColor: [2.8, 2.4, 1.5],
+            color: '#fff6cc',
+            seed: Math.random() * 50
+          });
+        }
+        const count = Math.max(5, Math.round(5 * clamp18(intensity, 0.6, 1.2)));
         for (let i = 0; i < count; i++) {
-          const a = Math.random() * Math.PI * 2;
-          const spread = (Math.random() * 0.85 + 0.08) * (0.65 + 0.35 * intensity);
+          const he = Math.random() * Math.PI * 2;
+          const pt = Math.pow(Math.random(), 1.4) * 0.92;
+          const vyBase = (8.8 + Math.random() * 4.4) * (0.75 + 0.25 * intensity);
+          const hot = Math.random() > 0.35;
+          const bSize = 0.36 + Math.random() * 0.24;
+          const hdr = hot ? [2.8, 2.45, 1.65] : [2.4, 1.75, 0.65];
           pArr.push({
             pType: 1,
             kind: 'spark',
-            x: nx + (Math.random() - 0.5) * 0.10,
-            y: ny + 0.12 + Math.random() * 0.25,
-            z: nz + (Math.random() - 0.5) * 0.10,
-            vx: Math.cos(a) * spread,
-            vy: (6.4 + Math.random() * 4.2) * (0.78 + 0.32 * intensity),
-            vz: Math.sin(a) * spread,
+            x: nx + (Math.random() - 0.5) * 0.05,
+            y: ny + Math.random() * 0.12,
+            z: nz + (Math.random() - 0.5) * 0.05,
+            vx: Math.cos(he) * pt + vyBase * tiltX * 0.35,
+            vy: vyBase,
+            vz: Math.sin(he) * pt + vyBase * tiltZ * 0.25,
             deckY: ny,
             age: 0,
-            maxAge: 0.52 + Math.random() * 0.42,
-            size: 2.0 + Math.random() * 2.4,
+            maxAge: 0.68 + Math.random() * 0.48,
+            baseSize: bSize,
+            size: bSize,
+            renderSize: bSize,
+            renderAlpha: 1.0,
+            streakDt: 0.028,
+            baseHdrColor: hdr,
+            hdrColor: hdr,
             color: i % 3 === 0 ? '#ffffff' : i % 3 === 1 ? '#ffe680' : '#ffaa33',
             seed: Math.random() * 100
           });
         }
       } else if (kind === 'co2_jet') {
-        const count = Math.max(4, Math.round(7 * intensity));
+        const count = Math.max(4, Math.round(4 * clamp18(intensity, 0.6, 1.25)));
         for (let i = 0; i < count; i++) {
-          const a = Math.random() * Math.PI * 2;
-          const spread = Math.random() * 1.15 + 0.12;
+          const ge = (12.5 + Math.random() * 4.5) * (0.85 + 0.15 * intensity);
+          const bSize = 1.15 + Math.random() * 0.55;
           pArr.push({
             pType: 3,
             kind: 'co2',
-            x: nx + (Math.random() - 0.5) * 0.16,
-            y: ny + 0.2 + Math.random() * 0.35,
-            z: nz + (Math.random() - 0.5) * 0.16,
-            vx: Math.cos(a) * spread,
-            vy: (11.5 + Math.random() * 6.5) * (0.82 + 0.25 * intensity),
-            vz: Math.sin(a) * spread,
+            x: nx + (Math.random() - 0.5) * 0.12,
+            y: ny,
+            z: nz + (Math.random() - 0.5) * 0.12,
+            vx: tiltX * ge + (Math.random() - 0.5) * 1.4,
+            vy: ge,
+            vz: tiltZ * ge + (Math.random() - 0.5) * 1.4,
             age: 0,
-            maxAge: 0.52 + Math.random() * 0.34,
-            size: 0.42 + Math.random() * 0.38,
+            maxAge: 0.42 + Math.random() * 0.25,
+            baseSize: bSize,
+            size: bSize,
+            renderSize: bSize,
+            renderAlpha: 0.52,
+            baseHdrColor: [0.82, 0.95, 1.0],
+            hdrColor: [0.82, 0.95, 1.0],
             color: i % 2 === 0 ? '#f0fcff' : '#bae6fd',
             seed: Math.random() * 100
           });
         }
       } else if (kind === 'flame_jet') {
-        const count = Math.max(4, Math.round(8 * intensity));
+        const count = Math.max(4, Math.round(4 * clamp18(intensity, 0.6, 1.25)));
         for (let i = 0; i < count; i++) {
+          const vyBase = (4.6 + Math.random() * 2.6) * (0.85 + 0.15 * intensity);
+          const bSize = 1.35 + Math.random() * 0.50;
           pArr.push({
             pType: 2,
             kind: 'flame',
-            x: nx + (Math.random() - 0.5) * 0.18,
-            y: ny + 0.15 + Math.random() * 0.3,
-            z: nz + (Math.random() - 0.5) * 0.18,
-            vx: (Math.random() - 0.5) * 0.75,
-            vy: (5.4 + Math.random() * 3.8) * (0.82 + 0.28 * intensity),
-            vz: (Math.random() - 0.5) * 0.75,
+            x: nx + (Math.random() - 0.5) * 0.14,
+            y: ny,
+            z: nz + (Math.random() - 0.5) * 0.14,
+            vx: (Math.random() - 0.5) * 0.95 + vyBase * tiltX * 0.45,
+            vy: vyBase,
+            vz: (Math.random() - 0.5) * 0.95 + vyBase * tiltZ * 0.35,
             age: 0,
-            maxAge: 0.44 + Math.random() * 0.28,
-            size: 0.48 + Math.random() * 0.36,
+            maxAge: 0.34 + Math.random() * 0.20,
+            baseSize: bSize,
+            size: bSize,
+            renderSize: bSize,
+            renderAlpha: 0.88,
+            baseHdrColor: [1.4, 0.95, 0.35],
+            hdrColor: [1.35, 0.95, 0.45],
             color: '#ff7b00',
             seed: Math.random() * 100
+          });
+        }
+        if (Math.random() < 0.42 && pArr.length < 4200) {
+          pArr.push({
+            pType: 9,
+            kind: 'muzzle_flash',
+            x: nx,
+            y: ny + 0.15,
+            z: nz,
+            px: nx,
+            py: ny + 0.15,
+            pz: nz,
+            vx: 0,
+            vy: 1.0,
+            vz: 0,
+            age: 0,
+            maxAge: 0.12,
+            baseSize: 1.85,
+            size: 1.85,
+            renderSize: 1.85,
+            renderAlpha: 0.95,
+            baseHdrColor: [2.6, 1.8, 0.75],
+            hdrColor: [2.6, 1.8, 0.75],
+            color: '#ffae42',
+            seed: Math.random() * 50
           });
         }
       }
@@ -5914,11 +6276,21 @@
 
     const LMP_BURST_STYLES18 = ['peony_fib', 'saturn_ring', 'chrysanthemum_dual', 'willow_crossette'];
 
-    function launchAerialPyro18(volleyCount = 4, forcedStyle = null) {
+    function isIndoorAerialRestricted18() {
+      const sc = lumiState.structureConfig18;
+      return Boolean(sc?.venueEnabled && sc?.venueType === 'indoor_hall' && !sc?.allowIndoorAerial);
+    }
+
+    function launchAerialPyro18(volleyCount = 4, forcedStyle = null, opts = {}) {
+      if (!opts.allowIndoor && isIndoorAerialRestricted18()) {
+        return 0;
+      }
       const nozzles = getStageSfxNozzles18().confetti_cannon;
       const count = clamp18(volleyCount, 1, 8);
       const now = nowMs18();
       const pArr = liveShow18.particles;
+      const palIdx = Math.floor(now / 250) % LMP_FIREWORK_HDR_PALETTES18.length;
+      const pal = LMP_FIREWORK_HDR_PALETTES18[palIdx];
       for (let i = 0; i < count; i++) {
         const nz = nozzles[i % nozzles.length] || { pos: [(i - (count - 1) / 2) * 3.2, 0.8, -1.8] };
         const col = LMP_FIREWORK_COLORS18[(i + Math.floor(now / 250)) % LMP_FIREWORK_COLORS18.length];
@@ -5926,19 +6298,23 @@
         const styleName = forcedStyle && LMP_BURST_STYLES18.includes(forcedStyle)
           ? forcedStyle
           : LMP_BURST_STYLES18[(i + Math.floor(now / 400)) % LMP_BURST_STYLES18.length];
-        const sx = nz.pos[0] + (Math.random() - 0.5) * 0.5;
-        const sy = nz.pos[1] + 0.4;
+        const sx = nz.pos[0] + (Math.random() - 0.5) * 0.25;
+        const sy = nz.pos[1] + 0.45;
         const sz = nz.pos[2];
+        const uNorm = count === 1 ? 0 : (i / (count - 1)) * 2 - 1;
 
         liveShow18.aerialShells.push({
           pType: 4,
           x: sx,
           y: sy,
           z: sz,
-          vx: (Math.random() - 0.5) * 1.4 - nz.pos[0] * 0.12,
-          vy: 13.5 + Math.random() * 2.8,
-          vz: 0.6 + (Math.random() - 0.5) * 1.0,
-          targetY: 4.8 + Math.random() * 1.8,
+          vx: uNorm * 2.4 + (Math.random() - 0.5) * 1.1,
+          vy: 14.5 + Math.random() * 2.8,
+          vz: -0.6 + (Math.random() - 0.5) * 0.9,
+          targetY: 5.8 + Math.random() * 2.2,
+          baseSize: 1.35,
+          hdrColor: [2.6, 2.1, 1.1],
+          palIdx: (palIdx + i) % LMP_FIREWORK_HDR_PALETTES18.length,
           color: col,
           color2: col2,
           burstStyle: styleName,
@@ -5950,25 +6326,31 @@
           pType: 9,
           kind: 'muzzle_flash',
           x: sx,
-          y: sy,
+          y: sy + 0.15,
           z: sz,
           px: sx,
-          py: sy,
+          py: sy + 0.15,
           pz: sz,
           vx: 0,
-          vy: 1.2,
+          vy: 1.5,
           vz: 0,
           age: 0,
           maxAge: 0.14,
-          size: 5.5,
+          baseSize: 2.8,
+          size: 2.8,
+          renderSize: 2.8,
+          renderAlpha: 0.95,
+          baseHdrColor: [2.6, 1.9, 0.9],
+          hdrColor: [2.6, 1.9, 0.9],
           color: '#ffffff',
           seed: i * 13.7
         });
 
-        // Type 7: Low-altitude Gold Mine fan from mortar base
-        for (let m = 0; m < 8; m++) {
-          const ma = (m / 8) * Math.PI * 2 + Math.random() * 0.3;
-          const mSpd = 0.8 + Math.random() * 0.9;
+        // Type 7: Upward Gold Mine launch fan from mortar pad
+        const mineHdr = pal[i % pal.length];
+        for (let m = 0; m < 4; m++) {
+          const fanAng = uNorm * 0.28 + (Math.random() - 0.5) * 0.18;
+          const mineSpd = 14.5 + Math.random() * 3.5;
           pArr.push({
             pType: 7,
             kind: 'gold_mine',
@@ -5978,14 +6360,20 @@
             px: sx,
             py: sy,
             pz: sz,
-            vx: Math.cos(ma) * mSpd,
-            vy: 4.5 + Math.random() * 2.8,
-            vz: Math.sin(ma) * mSpd,
+            vx: Math.sin(fanAng) * mineSpd,
+            vy: Math.cos(fanAng) * mineSpd,
+            vz: (Math.random() - 0.5) * 1.2,
             age: 0,
-            maxAge: 0.42 + Math.random() * 0.22,
-            size: 2.6,
+            maxAge: 0.95 + Math.random() * 0.25,
+            baseSize: 1.45,
+            size: 1.45,
+            renderSize: 1.45,
+            renderAlpha: 1.0,
+            streakDt: 0.065,
+            baseHdrColor: mineHdr,
+            hdrColor: mineHdr,
             color: '#ffd166',
-            seed: m * 7.1
+            seed: m * 7.1 + i
           });
         }
       }
@@ -5998,71 +6386,161 @@
     // P6: 4 Aerial Burst Geometries (0=peony_fib, 1=saturn_ring, 2=chrysanthemum_dual, 3=willow_crossette)
     function detonateAerialShell18(shell) {
       const pArr = liveShow18.particles;
-      if (pArr.length > 2200) pArr.splice(0, pArr.length - 1800);
+      if (pArr.length > 4200) pArr.splice(0, pArr.length - 3400);
       const style = String(shell?.burstStyle || 'peony_fib');
-      const starCount = style === 'peony_fib' ? 84 : 68;
-      const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+      const palIdx = Number.isFinite(shell?.palIdx) ? shell.palIdx % LMP_FIREWORK_HDR_PALETTES18.length : 0;
+      const pal = LMP_FIREWORK_HDR_PALETTES18[palIdx] || LMP_FIREWORK_HDR_PALETTES18[0];
+      const goldenAngle = Math.PI * (1 + Math.sqrt(5));
 
-      for (let i = 0; i < starCount; i++) {
-        let dx = 0;
-        let dy = 0;
-        let dz = 0;
-        let spd = 4.6 + Math.random() * 3.2;
-        let maxAge = 0.88 + Math.random() * 0.52;
-        let starCol = i % 3 === 0 ? '#ffffff' : i % 2 === 0 ? shell.color : shell.color2;
-        let isWillow = false;
-        let canCrossette = false;
+      // Type 9: Intense Apex Sky Flash (size = 7.5, maxAge = 0.22, HDR [3.2, 2.9, 2.2])
+      pArr.push({
+        pType: 9,
+        kind: 'muzzle_flash',
+        x: shell.x,
+        y: shell.y,
+        z: shell.z,
+        px: shell.x,
+        py: shell.y,
+        pz: shell.z,
+        vx: 0,
+        vy: 0,
+        vz: 0,
+        age: 0,
+        maxAge: 0.22,
+        baseSize: 7.5,
+        size: 7.5,
+        renderSize: 7.5,
+        renderAlpha: 0.95,
+        baseHdrColor: [3.2, 2.9, 2.2],
+        hdrColor: [3.2, 2.9, 2.2],
+        color: '#fff8dc',
+        seed: Math.random() * 50
+      });
 
-        if ((style === 'saturn_ring' || style === 'ring') && i < 32) {
-          const theta = (i / 32) * Math.PI * 2;
-          const tilt = 0.28;
-          dx = Math.cos(theta);
-          dy = Math.sin(theta) * Math.sin(tilt);
-          dz = Math.sin(theta) * Math.cos(tilt);
-          spd = 6.2 + (i % 2) * 0.8;
-          starCol = '#ffe600';
-        } else {
-          const y = 1 - (i / Math.max(1, starCount - 1)) * 2;
-          const r = Math.sqrt(Math.max(0, 1 - y * y));
-          const theta = goldenAngle * i;
-          dx = Math.cos(theta) * r;
-          dy = y;
-          dz = Math.sin(theta) * r;
-          if (style === 'chrysanthemum_dual') {
-            const shellLayer = i % 2 === 0 ? 1.22 : 0.72;
-            spd *= shellLayer;
-            isWillow = true;
-          } else if (style === 'willow_crossette') {
-            spd *= 0.92;
-            maxAge = 1.25 + Math.random() * 0.45;
-            starCol = i % 4 === 0 ? '#ffffff' : '#ffd166';
-            isWillow = true;
-            canCrossette = i % 6 === 0;
-          }
+      if (style === 'saturn_ring' || style === 'ring') {
+        const tilt = (Math.random() - 0.5) * 0.55;
+        const cosT = Math.cos(tilt);
+        const sinT = Math.sin(tilt);
+        for (let i = 0; i < 72; i++) {
+          const theta = (i / 72) * Math.PI * 2;
+          const spd = 11.2 + (Math.random() - 0.5) * 0.8;
+          const hdr = pal[0];
+          pArr.push({
+            pType: 5,
+            kind: 'firework_star',
+            burstStyle: style,
+            isWillow: false,
+            canCrossette: false,
+            didSplit: false,
+            x: shell.x,
+            y: shell.y,
+            z: shell.z,
+            px: shell.x,
+            py: shell.y,
+            pz: shell.z,
+            vx: Math.cos(theta) * spd,
+            vy: Math.sin(theta) * spd * cosT + 1.5,
+            vz: Math.sin(theta) * spd * sinT,
+            age: 0,
+            maxAge: 1.45 + Math.random() * 0.35,
+            baseSize: 1.1,
+            size: 1.1,
+            renderSize: 1.1,
+            renderAlpha: 1.0,
+            streakDt: 0.052,
+            baseHdrColor: hdr,
+            hdrColor: hdr,
+            color: '#ffe600',
+            seed: Math.random() * 100
+          });
         }
+        for (let i = 0; i < 68; i++) {
+          const u = Math.random();
+          const v = Math.random();
+          const theta = u * 2 * Math.PI;
+          const phi = Math.acos(2 * v - 1);
+          const spd = 5.6 + Math.random() * 2.6;
+          const sinPhi = Math.sin(phi);
+          const hdr = pal[1];
+          pArr.push({
+            pType: 5,
+            kind: 'firework_star',
+            burstStyle: style,
+            isWillow: false,
+            canCrossette: false,
+            didSplit: false,
+            x: shell.x,
+            y: shell.y,
+            z: shell.z,
+            px: shell.x,
+            py: shell.y,
+            pz: shell.z,
+            vx: sinPhi * Math.cos(theta) * spd,
+            vy: Math.cos(phi) * spd + 1.2,
+            vz: sinPhi * Math.sin(theta) * spd,
+            age: 0,
+            maxAge: 1.25 + Math.random() * 0.40,
+            baseSize: 0.95,
+            size: 0.95,
+            renderSize: 0.95,
+            renderAlpha: 1.0,
+            streakDt: 0.052,
+            baseHdrColor: hdr,
+            hdrColor: hdr,
+            color: shell.color2 || '#00f0ff',
+            seed: Math.random() * 100
+          });
+        }
+      } else {
+        const starCount = style === 'peony_fib' ? 150 : 165;
+        for (let i = 0; i < starCount; i++) {
+          const frac = (i + 0.5) / starCount;
+          const phi = Math.acos(1 - 2 * frac);
+          const theta = goldenAngle * i + (Math.random() - 0.5) * 0.2;
+          const sinPhi = Math.sin(phi);
+          const dx = sinPhi * Math.cos(theta);
+          const dy = Math.cos(phi);
+          const dz = sinPhi * Math.sin(theta);
+          const layerScale = style === 'chrysanthemum_dual' && i % 4 === 0 ? 0.58 : 1.0;
+          const spd = (8.8 + Math.random() * 5.2) * layerScale;
+          const isWillow = style === 'peony_fib' || style === 'willow_crossette' || (style === 'chrysanthemum_dual' && i % 3 === 0);
+          const canCrossette = style === 'willow_crossette' && i % 6 === 0;
+          const maxAge = isWillow ? 1.85 + Math.random() * 0.95 : 1.25 + Math.random() * 0.75;
+          const bSize = i % 4 === 0 ? 1.22 : 0.92;
+          const hdr = style === 'peony_fib'
+            ? (i % 5 === 0 ? pal[0] : LMP_FIREWORK_HDR_PALETTES18[0][i % 3])
+            : pal[i % pal.length];
+          const starCol = i % 3 === 0 ? '#ffffff' : i % 2 === 0 ? (shell.color || '#ffd166') : (shell.color2 || '#ffaa33');
 
-        pArr.push({
-          pType: 5,
-          kind: 'firework_star',
-          burstStyle: style,
-          isWillow,
-          canCrossette,
-          didSplit: false,
-          x: shell.x,
-          y: shell.y,
-          z: shell.z,
-          px: shell.x,
-          py: shell.y,
-          pz: shell.z,
-          vx: dx * spd,
-          vy: dy * spd + 1.1,
-          vz: dz * spd,
-          age: 0,
-          maxAge,
-          size: 2.6 + Math.random() * 2.0,
-          color: starCol,
-          seed: Math.random() * 100
-        });
+          pArr.push({
+            pType: 5,
+            kind: 'firework_star',
+            burstStyle: style,
+            isWillow,
+            canCrossette,
+            didSplit: false,
+            x: shell.x,
+            y: shell.y,
+            z: shell.z,
+            px: shell.x,
+            py: shell.y,
+            pz: shell.z,
+            vx: dx * spd,
+            vy: dy * spd + (style === 'peony_fib' ? 2.2 : 1.8),
+            vz: dz * spd,
+            age: 0,
+            maxAge,
+            baseSize: bSize,
+            size: bSize,
+            renderSize: bSize,
+            renderAlpha: 1.0,
+            streakDt: isWillow ? 0.085 : 0.052,
+            baseHdrColor: hdr,
+            hdrColor: hdr,
+            color: starCol,
+            seed: Math.random() * 100
+          });
+        }
       }
       const now = nowMs18();
       liveShow18.skyFlashUntilMs = now + 420;
@@ -6078,6 +6556,7 @@
     function stepParticlesAndShells18(dt, nowMs) {
       const shells = liveShow18.aerialShells;
       const pArr = liveShow18.particles;
+      const tSec = nowMs * 0.001;
       for (let i = shells.length - 1; i >= 0; i--) {
         const s = shells[i];
         s.trail.push([s.x, s.y, s.z]);
@@ -6085,26 +6564,31 @@
         s.x += s.vx * dt;
         s.y += s.vy * dt;
         s.z += s.vz * dt;
-        s.vy -= 4.8 * dt;
-        // Type 8: Rising comet micro-trail
-        if (Math.random() < 0.72 && pArr.length < 2200) {
+        s.vy -= 9.2 * dt;
+        // Type 8: Rising comet micro-trail (Zd)
+        if (Math.random() < 0.88 && pArr.length < 4200) {
           pArr.push({
             pType: 8,
             kind: 'willow_trail',
-            x: s.x,
-            y: s.y,
-            z: s.z,
+            x: s.x - s.vx * dt * Math.random(),
+            y: s.y - s.vy * dt * Math.random(),
+            z: s.z - s.vz * dt * Math.random(),
             px: s.x,
-            py: s.y + 0.15,
+            py: s.y,
             pz: s.z,
-            vx: (Math.random() - 0.5) * 0.65,
-            vy: -1.0 - Math.random() * 1.2,
-            vz: (Math.random() - 0.5) * 0.65,
+            vx: (Math.random() - 0.5) * 1.1,
+            vy: -0.6 - Math.random() * 0.8,
+            vz: (Math.random() - 0.5) * 1.1,
             age: 0,
-            maxAge: 0.28 + Math.random() * 0.16,
-            size: 1.9,
+            maxAge: 0.34 + Math.random() * 0.22,
+            baseSize: 0.48,
+            size: 0.48,
+            renderSize: 0.48,
+            renderAlpha: 0.85,
+            baseHdrColor: [2.3, 1.75, 0.75],
+            hdrColor: [2.3, 1.75, 0.75],
             color: '#ffe680',
-            seed: i
+            seed: i + Math.random() * 20
           });
         }
         if (s.y >= s.targetY || s.vy <= 0.6) {
@@ -6123,21 +6607,76 @@
         p.px = p.x;
         p.py = p.y;
         p.pz = p.z;
-        const u = p.age / Math.max(0.05, p.maxAge);
+        const u = clamp18(p.age / Math.max(0.04, p.maxAge), 0, 1);
 
-        if (p.kind === 'spark' || p.pType === 1 || p.pType === 7) {
-          p.vy -= 9.8 * dt;
+        if (p.pType === 7 || p.kind === 'gold_mine') {
+          p.vy -= 11.5 * dt;
+          const drag = Math.max(0.1, 1 - 0.55 * dt);
+          p.vx *= drag;
+          p.vz *= drag;
           p.x += p.vx * dt;
           p.y += p.vy * dt;
           p.z += p.vz * dt;
-          if (p.y <= (p.deckY || 0.45) && p.vy < 0) {
-            p.y = p.deckY || 0.45;
-            p.vy = Math.abs(p.vy) * 0.28;
-            p.vx *= 0.7;
-            p.vz *= 0.7;
+          p.renderAlpha = 1 - Math.pow(u, 2.2);
+          p.renderSize = (p.baseSize || 1.45) * (1.1 - u * 0.4);
+          p.streakDt = 0.065;
+          if (Math.random() < 0.88 && pArr.length < 4200) {
+            const bHdr = p.baseHdrColor || [2.4, 1.85, 0.65];
+            pArr.push({
+              pType: 8,
+              kind: 'willow_trail',
+              x: p.x - p.vx * dt * Math.random(),
+              y: p.y - p.vy * dt * Math.random(),
+              z: p.z - p.vz * dt * Math.random(),
+              px: p.x,
+              py: p.y,
+              pz: p.z,
+              vx: (Math.random() - 0.5) * 1.1,
+              vy: -0.6 - Math.random() * 0.8,
+              vz: (Math.random() - 0.5) * 1.1,
+              age: 0,
+              maxAge: 0.42 + Math.random() * 0.28,
+              baseSize: 0.62,
+              size: 0.62,
+              renderSize: 0.62,
+              renderAlpha: 0.85,
+              baseHdrColor: bHdr,
+              hdrColor: bHdr,
+              color: '#ffd166',
+              seed: p.seed + Math.random() * 10
+            });
           }
-          // Type 6 crackle micro-pop near end of spark life
-          if (u > 0.78 && !p._crackled && Math.random() < 0.08 && pArr.length < 2200) {
+        } else if (p.kind === 'spark' || p.pType === 1) {
+          p.vy -= 13.5 * dt;
+          const drag = Math.max(0.1, 1 - 1.15 * dt);
+          p.vx *= drag;
+          p.vz *= drag;
+          p.vx += Math.sin(p.age * 32 + p.seed) * 0.85 * dt;
+          p.vz += Math.cos(p.age * 28 + p.seed * 1.7) * 0.85 * dt;
+          p.x += p.vx * dt;
+          p.y += p.vy * dt;
+          p.z += p.vz * dt;
+          const floorY = (p.deckY || 0.45) + 0.03;
+          if (p.y < floorY && p.vy < 0) {
+            p.y = floorY;
+            p.vy = -p.vy * (0.32 + (Math.floor(p.seed) % 3) * 0.08);
+            p.vx *= 1.35;
+            p.vz *= 1.35;
+          }
+          const isCrackle = u > 0.58;
+          const crackle = isCrackle
+            ? (Math.sin(p.age * 78 + p.seed * 5.3) > 0.15 ? 1.35 : 0.25)
+            : (0.85 + 0.15 * Math.sin(p.age * 42 + p.seed));
+          p.renderAlpha = (1 - Math.pow(u, 1.85)) * crackle;
+          p.renderSize = (p.baseSize || 0.48) * (isCrackle ? 1.15 : 1 - u * 0.35);
+          const vt = Math.max(0, 1 - u);
+          p.hdrColor = [
+            2.4 * Math.pow(vt, 0.25),
+            1.85 * Math.pow(vt, 0.85),
+            1.25 * Math.pow(vt, 2.2)
+          ];
+          p.streakDt = 0.028 * (1 - u * 0.35);
+          if (u > 0.78 && !p._crackled && Math.random() < 0.08 && pArr.length < 4200) {
             p._crackled = true;
             pArr.push({
               pType: 6,
@@ -6153,38 +6692,63 @@
               vz: (Math.random() - 0.5) * 3.2,
               age: 0,
               maxAge: 0.16,
-              size: 2.1,
+              baseSize: 0.72,
+              size: 0.72,
+              renderSize: 0.72,
+              renderAlpha: 1.0,
+              streakDt: 0.04,
+              baseHdrColor: [2.8, 2.5, 1.8],
+              hdrColor: [2.8, 2.5, 1.8],
               color: '#ffffff',
               seed: p.seed
             });
           }
         } else if (p.kind === 'co2' || p.pType === 3) {
-          const drag = Math.pow(0.90, dt * 60);
+          const drag = Math.max(0.1, 1 - 3.6 * dt);
           p.vx *= drag;
-          p.vy *= Math.pow(0.91, dt * 60);
-          p.vz *= drag;
-          p.x += p.vx * dt + Math.sin(nowMs * 0.015 + p.seed) * 0.8 * dt;
-          p.y += p.vy * dt;
-          p.z += p.vz * dt;
-          p.size += 1.65 * dt;
-        } else if (p.kind === 'flame' || p.pType === 2) {
-          p.vy += 3.8 * dt;
-          const whip = Math.sin(nowMs * 0.018 + p.y * 2.2 + p.seed) * 1.45;
-          p.x += (p.vx + whip) * dt;
-          p.y += p.vy * dt;
-          p.z += p.vz * dt;
-          p.size += 0.55 * dt;
-          // Blackbody thermal color ramp: white-yellow -> orange -> red -> dark smoke
-          p.color = u < 0.22 ? '#fff7ae' : u < 0.52 ? '#ff8800' : u < 0.82 ? '#d92200' : '#3a2622';
-        } else if (p.kind === 'firework_star' || p.pType === 5) {
-          const drag = Math.pow(p.isWillow ? 0.955 : 0.94, dt * 60);
-          p.vx *= drag;
-          p.vy = p.vy * drag - (p.isWillow ? 2.6 : 3.4) * dt;
+          p.vy *= drag;
           p.vz *= drag;
           p.x += p.vx * dt;
           p.y += p.vy * dt;
           p.z += p.vz * dt;
-          if (p.isWillow && Math.random() < 0.35 && pArr.length < 2200) {
+          p.renderSize = (p.baseSize || 1.35) * (1 + u * 3.2);
+          p.size = p.renderSize;
+          p.renderAlpha = Math.sin(u * Math.PI) * (1 - u) * 0.52;
+          p.hdrColor = [0.82, 0.95, 1.0];
+        } else if (p.kind === 'flame' || p.pType === 2) {
+          p.vy += 2.2 * dt;
+          p.vx += Math.sin(tSec * 16 + p.seed) * 1.8 * dt;
+          p.x += p.vx * dt;
+          p.y += p.vy * dt;
+          p.z += p.vz * dt;
+          p.renderSize = (p.baseSize || 1.55) * (1.15 - u * 0.55);
+          p.size = p.renderSize;
+          p.renderAlpha = (1 - Math.pow(u, 1.5)) * 0.88;
+          const rem = Math.max(0, 1 - u);
+          p.hdrColor = [
+            1.35,
+            Math.max(0.08, 0.95 * Math.pow(rem, 1.45)),
+            Math.max(0, 0.45 * Math.pow(rem, 3.2))
+          ];
+          p.color = u < 0.22 ? '#fff7ae' : u < 0.52 ? '#ff8800' : u < 0.82 ? '#d92200' : '#3a2622';
+        } else if (p.kind === 'firework_star' || p.pType === 5 || p.pType === 6) {
+          const isW = Boolean(p.isWillow);
+          const drag = Math.max(0.1, 1 - (isW ? 1.35 : 1.85) * dt);
+          p.vx *= drag;
+          p.vz *= drag;
+          p.vy = p.vy * drag - (isW ? 6.2 : 4.4) * dt;
+          p.x += p.vx * dt;
+          p.y += p.vy * dt;
+          p.z += p.vz * dt;
+          const flashBoost = Math.max(0, 1 - u * 5.5) * 1.4;
+          const bHdr = p.baseHdrColor || [2.4, 1.85, 0.65];
+          p.hdrColor = [bHdr[0] + flashBoost, bHdr[1] + flashBoost, bHdr[2] + flashBoost];
+          const twinkle = u > 0.58 ? (Math.sin(p.age * 68 + p.seed * 3.7) > 0 ? 1.25 : 0.22) : 1;
+          p.renderAlpha = (1 - Math.pow(u, isW ? 1.55 : 1.75)) * twinkle;
+          p.renderSize = (p.baseSize || 1.0) * (1.12 - u * 0.48);
+          p.streakDt = isW ? 0.085 : 0.052;
+
+          if (isW && Math.random() < 0.52 && u < 0.88 && pArr.length < 4200) {
             pArr.push({
               pType: 8,
               kind: 'willow_trail',
@@ -6194,17 +6758,46 @@
               px: p.px,
               py: p.py,
               pz: p.pz,
-              vx: p.vx * 0.15,
-              vy: -0.6,
-              vz: p.vz * 0.15,
+              vx: p.vx * 0.08 + (Math.random() - 0.5) * 0.45,
+              vy: -0.85 - Math.random() * 0.6,
+              vz: p.vz * 0.08 + (Math.random() - 0.5) * 0.45,
               age: 0,
-              maxAge: 0.32,
-              size: 1.5,
+              maxAge: 0.38 + Math.random() * 0.25,
+              baseSize: 0.42,
+              size: 0.42,
+              renderSize: 0.42,
+              renderAlpha: 0.85,
+              baseHdrColor: [2.1, 1.5, 0.55],
+              hdrColor: [2.1, 1.5, 0.55],
               color: '#ffd166',
               seed: p.seed
             });
+          } else if (!isW && Math.random() < 0.24 && u < 0.55 && pArr.length < 4200) {
+            pArr.push({
+              pType: 8,
+              kind: 'willow_trail',
+              x: p.x,
+              y: p.y,
+              z: p.z,
+              px: p.px,
+              py: p.py,
+              pz: p.pz,
+              vx: (Math.random() - 0.5) * 0.35,
+              vy: -0.5,
+              vz: (Math.random() - 0.5) * 0.35,
+              age: 0,
+              maxAge: 0.24,
+              baseSize: 0.36,
+              size: 0.36,
+              renderSize: 0.36,
+              renderAlpha: 0.85,
+              baseHdrColor: [bHdr[0] * 0.85, bHdr[1] * 0.85, bHdr[2] * 0.85],
+              hdrColor: [bHdr[0] * 0.85, bHdr[1] * 0.85, bHdr[2] * 0.85],
+              color: p.color || '#ffd166',
+              seed: p.seed
+            });
           }
-          if (p.canCrossette && !p.didSplit && u > 0.62 && pArr.length < 2150) {
+          if (p.canCrossette && !p.didSplit && u > 0.62 && pArr.length < 4150) {
             p.didSplit = true;
             const dirs = [[1, 0.3, 0], [-1, 0.3, 0], [0, 0.3, 1], [0, 0.3, -1]];
             for (const [cx, cy, cz] of dirs) {
@@ -6222,18 +6815,37 @@
                 vz: cz * 3.4,
                 age: 0,
                 maxAge: 0.28,
-                size: 2.2,
+                baseSize: 0.82,
+                size: 0.82,
+                renderSize: 0.82,
+                renderAlpha: 1.0,
+                streakDt: 0.045,
+                baseHdrColor: [2.8, 2.5, 1.8],
+                hdrColor: [2.8, 2.5, 1.8],
                 color: '#ffffff',
                 seed: p.seed
               });
             }
           }
-        } else {
-          // Types 6 (crackle_star), 8 (willow_trail), 9 (muzzle_flash)
-          p.vy -= 2.4 * dt;
+        } else if (p.pType === 8 || p.kind === 'willow_trail') {
+          p.vy -= 1.8 * dt;
+          const drag = Math.max(0.1, 1 - 2.2 * dt);
+          p.vx *= drag;
+          p.vz *= drag;
           p.x += p.vx * dt;
           p.y += p.vy * dt;
           p.z += p.vz * dt;
+          const flicker = 0.55 + 0.45 * Math.sin(p.age * 52 + p.seed * 2.3);
+          p.renderAlpha = (1 - u) * flicker * 0.85;
+          p.renderSize = (p.baseSize || 0.48) * (1 - u * 0.5);
+          const bHdr = p.baseHdrColor || [2.3, 1.75, 0.75];
+          p.hdrColor = [bHdr[0], bHdr[1] * (1 - u * 0.35), bHdr[2] * (1 - u * 0.65)];
+        } else {
+          // Type 9: Muzzle / Sky Flash (Kd)
+          p.y += p.vy * dt;
+          p.renderSize = (p.baseSize || 2.8) * (1 + u * 1.8);
+          p.renderAlpha = Math.pow(1 - u, 2.2) * 0.95;
+          p.hdrColor = p.baseHdrColor || [2.8, 2.4, 1.5];
         }
       }
 
@@ -6324,28 +6936,21 @@
       const activeNozzles = [];
       const phaseDuration = 4.5 / Math.max(0.4, spd * 0.5);
       const W = Math.floor(tSec / phaseDuration) % 7;
+      const phaseFrac = (tSec % phaseDuration) / phaseDuration;
       ls.sfxPhase = W;
       const subMode = Math.floor(tSec / (phaseDuration / 3)) % 3;
-
-      const nozzleGate = (idx, total, mode) => {
-        if (mode === 0) return 1;
-        if (mode === 1) {
-          const half = Math.max(1, (total - 1) / 2);
-          const wave = Math.abs(Math.abs(idx - half) - Math.abs(Math.sin(tSec * spd * 2.2)) * half);
-          return clamp18(1 - wave / Math.max(0.9, half * 0.65), 0, 1);
-        }
-        return (idx % 2 === Math.floor(tSec * spd * 3.0) % 2) ? 1 : 0;
-      };
 
       const sparkAuto = ls.running && ls.sfxOn && !ls.blackout && (W === 0 || W === 3 || W === 5 || W === 6);
       const flameAuto = ls.running && ls.sfxOn && !ls.blackout && (W === 1 || W === 3 || W === 4 || W === 6);
       const co2Auto = ls.running && ls.sfxOn && !ls.blackout && (W === 2 || W === 4 || W === 5 || W === 6);
-      const aerialAuto = ls.running && ls.sfxOn && !ls.blackout && (W === 6 || showIdx === 4 || showIdx === 6);
+      const aerialAuto = ls.running && ls.sfxOn && !ls.blackout && !isIndoorAerialRestricted18() && (W === 6 || showIdx === 4 || showIdx === 6);
 
       if (sparkAuto || nowMs < ls.sparkUntilMs) {
         const list = nozzlesByType.cold_spark_fountain;
         list.forEach((nz, idx) => {
-          const lvl = nowMs < ls.sparkUntilMs ? 1 : nozzleGate(idx, list.length, subMode);
+          const lvl = nowMs < ls.sparkUntilMs
+            ? 1
+            : evalPyroChoreoGate18('cold_spark_fountain', idx, list.length, nz.uNorm, phaseFrac, subMode, tSec, spd);
           if (lvl > 0.15) {
             activeNozzles.push({ ...nz, level: lvl, color: '#ffd166', heightM: 4.2 * lvl, angle: 11 });
             spawnNozzleParticles18(nz, 'cold_spark_fountain', lvl);
@@ -6357,7 +6962,9 @@
         const pulseGate = nowMs < ls.co2UntilMs ? 1 : (Math.sin(tSec * spd * 3.8) > -0.15 ? 1 : 0);
         if (pulseGate > 0) {
           list.forEach((nz, idx) => {
-            const lvl = nowMs < ls.co2UntilMs ? 1 : nozzleGate(idx, list.length, subMode);
+            const lvl = nowMs < ls.co2UntilMs
+              ? 1
+              : evalPyroChoreoGate18('co2_jet', idx, list.length, nz.uNorm, phaseFrac, subMode, tSec, spd);
             if (lvl > 0.15) {
               activeNozzles.push({ ...nz, level: lvl, color: '#c8f6ff', heightM: 6.8 * lvl, angle: 15 });
               spawnNozzleParticles18(nz, 'co2_jet', lvl);
@@ -6370,7 +6977,9 @@
         const flameGate = nowMs < ls.flameUntilMs ? 1 : (Math.sin(tSec * spd * 4.5) > -0.25 ? 1 : 0);
         if (flameGate > 0) {
           list.forEach((nz, idx) => {
-            const lvl = nowMs < ls.flameUntilMs ? 1 : nozzleGate(idx, list.length, subMode);
+            const lvl = nowMs < ls.flameUntilMs
+              ? 1
+              : evalPyroChoreoGate18('flame_jet', idx, list.length, nz.uNorm, phaseFrac, subMode, tSec, spd);
             if (lvl > 0.15) {
               activeNozzles.push({ ...nz, level: lvl, color: '#ff6a00', heightM: 4.8 * lvl, angle: 14 });
               spawnNozzleParticles18(nz, 'flame_jet', lvl);
@@ -6415,7 +7024,7 @@
         const defaultLaws = ['v_converge', 'v_diverge', 'x_cross', 'parallel_wing', 'parallel_zero', 'x_cross'];
         const reqFanLaw = (ls.fanLaw && ls.fanLaw !== 'auto') ? ls.fanLaw : ((ls.beamFanLaw && ls.beamFanLaw !== 'auto') ? ls.beamFanLaw : 'auto');
         const activeFanLaw = reqFanLaw !== 'auto' ? reqFanLaw : defaultLaws[(showIdx - 1) % defaultLaws.length];
-        const hasDedicatedStrobe = eng.lights.some((x, i) => x && classifyFixture18(x, i, total) === 'strobe');
+        const hasDedicatedStrobe = eng.lights.some((x, i) => x && (classifyFixture18(x, i, total) === 'strobe' || Boolean(x.strobeCapable18)));
 
         eng.lights.forEach((l, idx) => {
           if (!l) return;
@@ -6445,9 +7054,10 @@
             l._isBlinder18 = false;
             return;
           }
+          const isFloorMount = (Number(l.pos?.[1]) || 5) < 1.3;
           if (!ls.lightsOn) {
-            const allowBlinderOnly = ls.blindersOn && (cat === 'blinder' || idx % 4 === 3);
-            const allowStrobeOnly = ls.strobe && (cat === 'strobe' || !hasDedicatedStrobe);
+            const allowBlinderOnly = ls.blindersOn && (cat === 'blinder' || (isFloorMount && idx % 4 === 3));
+            const allowStrobeOnly = ls.strobe && (cat === 'strobe' || Boolean(l.strobeCapable18) || !hasDedicatedStrobe);
             const allowLaserOnly = ls.laserOn && cat === 'laser';
             if (!allowBlinderOnly && !allowStrobeOnly && !allowLaserOnly) {
               l.power = 0;
@@ -6530,18 +7140,17 @@
             l.beamProfile18 = 0;
             l.gobo9 = null;
           } else if (cat === 'strobe') {
-            const strobeActive = ls.strobe || (ls.lightsOn && (showIdx === 3 || showIdx === 4 || showIdx === 6));
+            const strobeActive = Boolean(ls.strobe);
             if (!strobeActive) {
               l.power = 0;
               l.enabled = false;
               l.gobo9 = null;
               return;
             }
-            const gate = ls.strobe
-              ? ((nowMs % 71.4) < 25.0)
-              : (((nowMs + idx * 19) % 71.4) < 18.5);
+            const grpNum = Number(String(grpId || 'G1').replace(/\D/g, '')) || 1;
+            const stRes = evalStrobePulse18('strobe', idx, grpNum, nowMs);
             l.color = '#ffffff';
-            l.power = gate ? +(13.5 * dimmerScale).toFixed(2) : 0.02;
+            l.power = stRes.gate ? +(13.5 * dimmerScale).toFixed(2) : 0.02;
             l.angle = +(32 * spreadFactor).toFixed(1);
             l.fixtureProfile18 = 'atomic_strobe_v1';
             l.profileId18 = 'atomic_strobe_v1';
@@ -6551,8 +7160,12 @@
             const chaseMode = (ls.parChaseMode && ls.parChaseMode !== 'auto')
               ? ls.parChaseMode
               : (dmxProg?.parChaseMode || (showIdx === 1 ? 'carousel' : showIdx === 2 ? 'mirror_domino' : showIdx === 3 ? 'dual_carousel' : 'gala_sparkle'));
-            const chaseRes = computeParUplightChase18(idx, total, tSec, spd, chaseMode, parPal);
-            l.color = ls.multicolor ? chaseRes.color : parPal[0];
+            const chaseRes = computeParUplightChase18(idx, total, tSec, spd, chaseMode, parPal, {
+              useAlternateColor: Boolean(dmxProg?.parUseAlternateColor),
+              secondaryColor: dmxProg?.parSecondaryColor || '#ffe600',
+              isContour: Boolean(l._isWallContour18 || l.parLayout === 'u_shape')
+            });
+            l.color = ls.multicolor ? chaseRes.color : (dmxProg?.parUseAlternateColor && idx % 2 === 1 ? (dmxProg.parSecondaryColor || '#ffe600') : parPal[0]);
             l.power = +(Math.max(0.35, chaseRes.level * (cat === 'bar' ? 4.0 : 6.2)) * dimmerScale).toFixed(2);
             l.angle = +((cat === 'bar' ? 11 : 20) * spreadFactor).toFixed(1);
             l.coneLenScale18 = chaseRes.coneLenScale;
@@ -6576,14 +7189,21 @@
             l.power = +(bRes.power * dimmerScale).toFixed(2);
             l.angle = +(44 * spreadFactor).toFixed(1);
             l._blinderBlastScale18 = bRes.blastScale;
+            l._blinderCells18 = bRes.cells;
             l.fixtureProfile18 = 'wash_v3';
             l.profileId18 = 'wash_v3';
             l.beamProfile18 = 2;
             l.gobo9 = null;
           } else if (cat === 'wash' || cat === 'fresnel') {
             const pulse = 0.72 + 0.28 * Math.sin(tSec * spd * 1.3 + idx * 0.8);
-            l.color = cat === 'fresnel' && !ls.multicolor ? '#fde68a' : baseWashCol;
-            l.power = +(3.4 * pulse * dimmerScale).toFixed(2);
+            if (cat === 'fresnel' || Boolean(l.isFrontLight)) {
+              const cctRes = evalFrontKeylightCct18(l.frontColorTempK ?? dmxProg?.frontColorTempK ?? 4200, l.frontKeyLightPct ?? dmxProg?.frontKeyLightPct ?? 88);
+              l.color = cctRes.hexColor;
+              l.power = +(3.8 * cctRes.dimmerScale * dimmerScale).toFixed(2);
+            } else {
+              l.color = baseWashCol;
+              l.power = +(3.4 * pulse * dimmerScale).toFixed(2);
+            }
             l.angle = +((cat === 'fresnel' ? 24 : 19) * spreadFactor).toFixed(1);
             l.fixtureProfile18 = 'wash_v3';
             l.profileId18 = 'wash_v3';
@@ -6642,9 +7262,9 @@
             }
           }
 
-          // Audience Blinder Override [F] (Multi-Cell Thermal Flash) — floodlight only, no narrow 3D cone shaft
+          // Audience Blinder Override [F] (Multi-Cell Thermal Flash) — floor/blinder fixtures only, never overhead moving heads
           l._isBlinder18 = false;
-          if (ls.blindersOn && (cat === 'blinder' || idx % 4 === 3)) {
+          if (ls.blindersOn && (cat === 'blinder' || (py < 1.3 && idx % 4 === 3))) {
             const bHit = evalBlinderThermalFlash18(l, idx, nowMs, true, showIdx);
             l.color = bHit.color;
             l.power = bHit.power;
@@ -6652,26 +7272,28 @@
             l.beamProfile18 = 2;
             l.coneLenScale18 = 0.35;
             l._blinderBlastScale18 = bHit.blastScale;
+            l._blinderCells18 = bHit.cells;
             l._isBlinder18 = true;
           }
 
-          // 14 Hz Strobe Override [Z] — Synchronous Atomic Xenon Discharge
-          // When stage has dedicated strobe fixtures, only strobe fixtures flash white so moving heads/PAR keep their colors.
-          // When stage has no dedicated strobe fixtures, fallback to flashing stage lights at 14 Hz.
-          if (ls.strobe && (cat === 'strobe' || !hasDedicatedStrobe)) {
-            const gate = (nowMs % 71.4) < 25.0;
+          // Multi-Frequency Strobe Override [Z] (14Hz Beam/Strobe, 12Hz Wash, 13Hz PAR with 2500ms Breath Pause)
+          // Front Fresnel Keylights remain steady so performers stay broadcast-lit.
+          if (ls.strobe && cat !== 'fresnel' && !l.isFrontLight && (cat === 'strobe' || Boolean(l.strobeCapable18) || !hasDedicatedStrobe)) {
+            const grpNum = Number(String(grpId || 'G1').replace(/\D/g, '')) || 1;
+            const stRes = evalStrobePulse18(cat, idx, grpNum, nowMs);
+            const decay = stRes.localT < 48.0 ? (1 - Math.max(0, stRes.localT - stRes.dutyMs) / 26.0) * 0.35 : 0.04;
             l.color = '#ffffff';
-            l.power = gate ? 13.5 : 0.02;
+            l.power = stRes.gate ? (cat === 'strobe' ? 13.5 : 8.2) : (cat === 'strobe' ? 0.02 : +(0.25 + decay * 2.5).toFixed(2));
           }
 
           activeLightEnergySum += Math.min(1.0, (Number(l.power) || 0) / 8.5);
         });
 
         if (ls.strobe && !ls.blackout && !hasDedicatedStrobe) {
-          const strobeOn = (nowMs % 71.4) < 25.0;
+          const strobeOn = evalStrobePulse18('strobe', 0, 0, nowMs).gate;
           for (const fp of floorProjections) {
             fp.color = '#ffffff';
-            fp.alpha = strobeOn ? Math.min(0.85, fp.alpha * 1.45) : 0.02;
+            fp.alpha = strobeOn ? Math.min(0.65, fp.alpha * 1.2) : 0.06;
           }
           for (const dg of deckGlints) {
             dg.color = '#ffffff';
@@ -6716,7 +7338,7 @@
         const customLaserPal = dmxProg?.groupPalettes?.laser;
         const laserPal = Array.isArray(customLaserPal) && customLaserPal.length ? customLaserPal : LMP_LASER_PALETTES18;
         laserUnits.forEach((origin, uIdx) => {
-          laserRenderData.push(evalLaserScanPattern18(patternIdx, origin, uIdx, tSec, spd, ls.multicolor, laserPal));
+          laserRenderData.push(evalLaserScanPattern18(patternIdx, origin, uIdx, tSec, spd, ls.multicolor, laserPal, 16));
         });
       }
       ls._laserRenderData = laserRenderData;
@@ -6774,8 +7396,8 @@ void main(){
   vWorld = aPos;
   gl_Position = uVP * vec4(aPos, 1.0);
   if(uPassMode == 3){
-    float dist = max(1.5, gl_Position.w);
-    gl_PointSize = clamp(aUV.x * (145.0 / dist), 2.0, 28.0);
+    float dist = max(1.0, gl_Position.w);
+    gl_PointSize = clamp(aUV.x * (360.0 / dist), 1.5, 115.0);
   }
 }`;
       const fsSrc = `#version 300 es
@@ -6833,16 +7455,19 @@ void main(){
       frag = vec4(col, a);
       return;
     }
+    if(vColor.a <= 0.004) discard;
     frag = vColor;
     return;
   }
-  vec2 pc = gl_PointCoord * 2.0 - 1.0;
-  float pr = length(pc);
-  if(pr > 1.0) discard;
-  float glow = exp(-pr * pr * 4.2) * (1.0 - smoothstep(0.35, 1.0, pr));
-  float core = 1.0 - smoothstep(0.0, 0.38, pr);
-  vec3 col = mix(vColor.rgb, vec3(1.0, 0.99, 0.95), core * 0.55);
-  frag = vec4(col, clamp(vColor.a * glow, 0.0, 1.0));
+  if(vColor.a <= 0.004) discard;
+  vec2 uv = gl_PointCoord - vec2(0.5);
+  float d = length(uv) * 2.0;
+  if(d > 1.0) discard;
+  float core = exp(-d * d * 9.5);
+  float halo = pow(1.0 - d, 2.4) * 0.65;
+  float intensity = core + halo;
+  vec3 finalCol = vColor.rgb * (1.0 + core * 1.15) + vec3(core * 0.45);
+  frag = vec4(finalCol, clamp(intensity * vColor.a, 0.0, 1.0));
 }`;
       const compile = (type, src) => {
         const s = gl.createShader(type);
@@ -6869,7 +7494,7 @@ void main(){
       }
       const vao = gl.createVertexArray();
       const buf = gl.createBuffer();
-      const maxVerts = 8192;
+      const maxVerts = 16384;
       const data = new Float32Array(maxVerts * 9);
       gl.bindVertexArray(vao);
       gl.bindBuffer(gl.ARRAY_BUFFER, buf);
@@ -7061,6 +7686,8 @@ void main(){
             const org = unit.origin;
             for (const ray of unit.rays) {
               if (ray.gate === false) continue;
+              const bInt = Number.isFinite(ray.beamIntensity) ? ray.beamIntensity : 1;
+              if (bInt <= 0.04) continue;
               const tgt = ray.target3d;
               const dx = tgt[0] - org[0], dy = tgt[1] - org[1], dz = tgt[2] - org[2];
               const vx = camEye[0] - org[0], vy = camEye[1] - org[1], vz = camEye[2] - org[2];
@@ -7073,12 +7700,12 @@ void main(){
               const oRx = org[0] + sx * w0, oRy = org[1] + sy * w0, oRz = org[2] + sz * w0;
               const tLx = tgt[0] - sx * w1, tLy = tgt[1] - sy * w1, tLz = tgt[2] - sz * w1;
               const tRx = tgt[0] + sx * w1, tRy = tgt[1] + sy * w1, tRz = tgt[2] + sz * w1;
-              ribbonVerts = pushVert(ribbonVerts, oLx, oLy, oLz, 0, 0, r, g, b, 0.72);
-              ribbonVerts = pushVert(ribbonVerts, oRx, oRy, oRz, 1, 0, r, g, b, 0.72);
-              ribbonVerts = pushVert(ribbonVerts, tRx, tRy, tRz, 1, 1, r, g, b, 0.58);
-              ribbonVerts = pushVert(ribbonVerts, oLx, oLy, oLz, 0, 0, r, g, b, 0.72);
-              ribbonVerts = pushVert(ribbonVerts, tRx, tRy, tRz, 1, 1, r, g, b, 0.58);
-              ribbonVerts = pushVert(ribbonVerts, tLx, tLy, tLz, 0, 1, r, g, b, 0.58);
+              ribbonVerts = pushVert(ribbonVerts, oLx, oLy, oLz, 0, 0, r, g, b, 0.72 * bInt);
+              ribbonVerts = pushVert(ribbonVerts, oRx, oRy, oRz, 1, 0, r, g, b, 0.72 * bInt);
+              ribbonVerts = pushVert(ribbonVerts, tRx, tRy, tRz, 1, 1, r, g, b, 0.58 * bInt);
+              ribbonVerts = pushVert(ribbonVerts, oLx, oLy, oLz, 0, 0, r, g, b, 0.72 * bInt);
+              ribbonVerts = pushVert(ribbonVerts, tRx, tRy, tRz, 1, 1, r, g, b, 0.58 * bInt);
+              ribbonVerts = pushVert(ribbonVerts, tLx, tLy, tLz, 0, 1, r, g, b, 0.58 * bInt);
             }
           }
           if (ribbonVerts > 0) {
@@ -7087,26 +7714,35 @@ void main(){
             gl.drawArrays(gl.TRIANGLES, 0, ribbonVerts);
           }
 
-          // Pass 2B: 3D Pyro Velocity Streaks (uPassMode = 2, gl.LINES, vUV.y < 0)
+          // Pass 2B: 3D Pyro Velocity Streaks (uPassMode = 2, gl.LINES, vUV.y < 0, head alpha = min(1, a), tail alpha = 0)
           let lineVerts = 0;
           for (const s of ls.aerialShells) {
-            for (let t = 0; t + 1 < s.trail.length; t++) {
-              const p0 = s.trail[t];
-              const p1 = s.trail[t + 1];
-              const a = ((t + 1) / s.trail.length) * 0.85;
-              lineVerts = pushVert(lineVerts, p0[0], p0[1], p0[2], 0, -1, 1, 0.9, 0.5, a * 0.5);
-              lineVerts = pushVert(lineVerts, p1[0], p1[1], p1[2], 1, -1, 1, 0.98, 0.85, a);
-            }
+            const sHdr = s.hdrColor || [2.6, 2.1, 1.1];
+            const tx = s.x - (s.vx || 0) * 0.055;
+            const ty = s.y - (s.vy || 0) * 0.055;
+            const tz = s.z - (s.vz || 0) * 0.055;
+            lineVerts = pushVert(lineVerts, s.x, s.y, s.z, 1, -1, 2.8, 2.6, 2.0, 1.0);
+            lineVerts = pushVert(lineVerts, tx, ty, tz, 0, -1, sHdr[0], sHdr[1], sHdr[2], 0.0);
           }
           for (let i = 0; i < ls.particles.length; i++) {
             const p = ls.particles[i];
-            if (p.px === undefined || p.pType === 3) continue;
-            const u = clamp18(p.age / Math.max(0.05, p.maxAge), 0, 1);
-            const alpha = (1 - u) * 0.9;
-            if (alpha <= 0.05) continue;
-            const [r, g, b] = hexToRgb01_18(p.color || '#ffe680');
-            lineVerts = pushVert(lineVerts, p.px, p.py, p.pz, 0, -1, r, g, b, alpha * 0.35);
-            lineVerts = pushVert(lineVerts, p.x, p.y, p.z, 1, -1, 1, 0.98, 0.9, alpha);
+            const sDt = Number(p.streakDt) || 0;
+            if (sDt <= 0 || p.pType === 2 || p.pType === 3 || p.pType === 8 || p.pType === 9) continue;
+            const u = clamp18(p.age / Math.max(0.04, p.maxAge), 0, 1);
+            const alpha = Number.isFinite(p.renderAlpha) ? p.renderAlpha : (1 - u) * 0.9;
+            if (alpha <= 0.008) continue;
+            const hdr = p.hdrColor || hexToRgb01_18(p.color || '#ffe680');
+            const tx = p.x - (p.vx || 0) * sDt;
+            const ty = p.y - (p.vy || 0) * sDt;
+            const tz = p.z - (p.vz || 0) * sDt;
+            const headR = p.pType === 7 ? 2.8 : hdr[0] * (p.pType === 1 ? 1.15 : 1.0);
+            const headG = p.pType === 7 ? 2.6 : hdr[1] * (p.pType === 1 ? 1.15 : 1.0);
+            const headB = p.pType === 7 ? 2.0 : hdr[2] * (p.pType === 1 ? 1.15 : 1.0);
+            const tailR = p.pType === 7 ? hdr[0] : hdr[0] * (p.pType === 1 ? 0.65 : 0.45);
+            const tailG = p.pType === 7 ? hdr[1] : hdr[1] * (p.pType === 1 ? 0.45 : 0.35);
+            const tailB = p.pType === 7 ? hdr[2] : hdr[2] * 0.20;
+            lineVerts = pushVert(lineVerts, p.x, p.y, p.z, 1, -1, headR, headG, headB, Math.min(1.0, alpha));
+            lineVerts = pushVert(lineVerts, tx, ty, tz, 0, -1, tailR, tailG, tailB, 0.0);
           }
           if (lineVerts > 0) {
             gl.uniform1i(uPassMode, 2);
@@ -7114,21 +7750,38 @@ void main(){
             gl.drawArrays(gl.LINES, 0, lineVerts);
           }
 
-          // Pass 3: 3D GPU Pyro & Firework Point Sprites (uPassMode = 3, gl.POINTS)
+          // Pass 3: 3D GPU Pyro & Firework HDR Point Sprites (uPassMode = 3, gl.POINTS — Sparkular, Flame blackbody, CO2 cryo mist, Aerial shells & Stars)
           let ptVerts = 0;
           for (const s of ls.aerialShells) {
-            ptVerts = pushVert(ptVerts, s.x, s.y, s.z, 3.6, 0, 1, 0.96, 0.8, 0.85);
+            const sHdr = s.hdrColor || [2.6, 2.1, 1.1];
+            ptVerts = pushVert(ptVerts, s.x, s.y, s.z, s.baseSize || 1.35, 0, sHdr[0], sHdr[1], sHdr[2], 1.0);
           }
           for (let i = 0; i < ls.particles.length; i++) {
             const p = ls.particles[i];
-            if (p.pType === 2 || p.pType === 3) continue; // CO2 & Flame rendered in 2D multi-layer pass to prevent additive white blowout
-            const u = clamp18(p.age / Math.max(0.05, p.maxAge), 0, 1);
-            const twinkle = p.pType === 5 && u > 0.55 ? (Math.sin(nowMs * 0.05 + p.seed) > 0 ? 1 : 0.25) : 1;
-            const alpha = (1 - u) * twinkle * 0.36;
-            if (alpha <= 0.03) continue;
-            const [r, g, b] = hexToRgb01_18(p.color || '#ffe680');
-            const ptSize = clamp18(p.size * 2.2, 1.8, 5.2);
-            ptVerts = pushVert(ptVerts, p.x, p.y, p.z, ptSize, u, r, g, b, alpha);
+            const u = clamp18(p.age / Math.max(0.04, p.maxAge), 0, 1);
+            const alpha = Number.isFinite(p.renderAlpha)
+              ? p.renderAlpha
+              : p.pType === 2 || p.kind === 'flame'
+                ? (1 - Math.pow(u, 1.5)) * 0.88
+                : p.pType === 3 || p.kind === 'co2'
+                  ? Math.sin(u * Math.PI) * (1 - u) * 0.52
+                  : (1 - u) * 0.85;
+            if (alpha <= 0.004) continue;
+            const ptSize = Number.isFinite(p.renderSize)
+              ? p.renderSize
+              : p.pType === 2 || p.kind === 'flame'
+                ? (p.baseSize || p.size || 1.45) * (1.15 - u * 0.55)
+                : p.pType === 3 || p.kind === 'co2'
+                  ? (p.baseSize || p.size || 1.35) * (1 + u * 3.2)
+                  : (p.baseSize || p.size || 0.85);
+            const hdr = p.hdrColor || (
+              p.pType === 2 || p.kind === 'flame'
+                ? [1.35, Math.max(0.08, 0.95 * Math.pow(Math.max(0, 1 - u), 1.45)), Math.max(0, 0.45 * Math.pow(Math.max(0, 1 - u), 3.2))]
+                : p.pType === 3 || p.kind === 'co2'
+                  ? [0.82, 0.95, 1.0]
+                  : hexToRgb01_18(p.color || '#ffe680')
+            );
+            ptVerts = pushVert(ptVerts, p.x, p.y, p.z, ptSize, u, hdr[0], hdr[1], hdr[2], alpha);
           }
           if (ptVerts > 0) {
             gl.uniform1i(uPassMode, 3);
@@ -7212,28 +7865,17 @@ void main(){
           ctx.fillRect(0, 0, w, h);
         }
         if (ls.strobe) {
-          const prefersReduced = typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
-          if (prefersReduced) {
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
-            ctx.fillRect(0, 0, w, h);
-          } else if ((nowMs % 71.4) < 25.0) {
-            const stGrad = ctx.createRadialGradient(w * 0.5, h * 0.42, 10, w * 0.5, h * 0.42, Math.max(w, h) * 0.65);
-            stGrad.addColorStop(0, 'rgba(255,255,255,0.34)');
-            stGrad.addColorStop(0.55, 'rgba(220,240,255,0.16)');
-            stGrad.addColorStop(1, 'rgba(255,255,255,0)');
-            ctx.fillStyle = stGrad;
-            ctx.fillRect(0, 0, w, h);
-          } else {
-            ctx.save();
-            ctx.globalCompositeOperation = 'source-over';
-            ctx.fillStyle = 'rgba(2, 4, 10, 0.44)';
-            ctx.fillRect(0, 0, w, h);
-            ctx.restore();
-          }
+          const stPulse = 0.035 + 0.025 * Math.sin(nowMs * 0.038);
+          const stGrad = ctx.createRadialGradient(w * 0.5, h * 0.72, 10, w * 0.5, h * 0.72, Math.max(w, h) * 0.52);
+          stGrad.addColorStop(0, `rgba(225,242,255,${stPulse.toFixed(3)})`);
+          stGrad.addColorStop(0.55, `rgba(180,220,255,${(stPulse * 0.45).toFixed(3)})`);
+          stGrad.addColorStop(1, 'rgba(255,255,255,0)');
+          ctx.fillStyle = stGrad;
+          ctx.fillRect(0, 0, w, h);
         }
         if (ls.blindersOn) {
-          const blPulse = 0.10 + 0.04 * Math.sin(nowMs * 0.014);
-          const blGrad = ctx.createRadialGradient(w * 0.5, h * 0.36, 10, w * 0.5, h * 0.42, Math.max(w, h) * 0.62);
+          const blPulse = 0.045 + 0.018 * Math.sin(nowMs * 0.008);
+          const blGrad = ctx.createRadialGradient(w * 0.5, h * 0.68, 10, w * 0.5, h * 0.68, Math.max(w, h) * 0.50);
           blGrad.addColorStop(0, `rgba(255,220,130,${blPulse.toFixed(3)})`);
           blGrad.addColorStop(0.35, `rgba(255,165,45,${(blPulse * 0.48).toFixed(3)})`);
           blGrad.addColorStop(0.7, `rgba(255,130,20,${(blPulse * 0.14).toFixed(3)})`);
@@ -7340,14 +7982,14 @@ void main(){
             }
           }
 
-          // Fixture lens head flare + Multi-Cell COB Audience Blinder (4-Lite Molefay) & 14Hz Xenon Starburst
-          const isBlinderActive = Boolean(l._isBlinder18) || (ls.blindersOn && (cat === 'blinder' || i % 4 === 3));
-          const flareR = isBlinderActive ? 34 * intensity : cat === 'blinder' ? 18 * intensity : 11 * intensity;
+          // Fixture lens head flare + Multi-Cell COB Audience Blinder (4-Lite Molefay) & Xenon Starburst
+          const isBlinderActive = Boolean(l._isBlinder18) || (ls.blindersOn && (cat === 'blinder' || ((Number(l.pos?.[1]) || 5) < 1.3 && i % 4 === 3)));
+          const flareR = isBlinderActive ? 14 * intensity : cat === 'blinder' ? 9 * intensity : 8 * intensity;
           if (flareR > 2) {
             // Smooth 6-stop Gaussian falloff (eliminates circular Mach-band ring border)
             const fg = ctx.createRadialGradient(p0.x, p0.y, 0.2, p0.x, p0.y, flareR);
             const col = isBlinderActive ? '#ffaa28' : l.color;
-            const cAlpha = isBlinderActive ? 0.78 : 0.65;
+            const cAlpha = isBlinderActive ? 0.62 : 0.52;
             fg.addColorStop(0, '#ffffff');
             fg.addColorStop(0.14, rgba18(isBlinderActive ? '#ffe89e' : '#ffffff', cAlpha * 0.92));
             fg.addColorStop(0.32, rgba18(col, cAlpha * 0.52));
@@ -7360,31 +8002,35 @@ void main(){
             ctx.fill();
 
             if (isBlinderActive) {
-              // 4-Lite 2x2 Warm Tungsten COB Reflector Pod (no center horizontal line or cone wedge)
-              const cellOffX = 4.2;
-              const cellOffY = 3.2;
+              // 4-Lite 2x2 Warm Tungsten COB Reflector Pod with individual per-cell thermal flicker
+              const cellOffX = 3.2;
+              const cellOffY = 2.4;
+              const cellModels = Array.isArray(l._blinderCells18) ? l._blinderCells18 : null;
+              let cIdx = 0;
               for (const ox of [-cellOffX, cellOffX]) {
                 for (const oy of [-cellOffY, cellOffY]) {
+                  const cm = cellModels?.[cIdx++];
+                  const cellR = cm?.hotPop ? 5.2 : 4.4;
                   const cx = p0.x + ox;
                   const cy = p0.y + oy;
-                  const cg = ctx.createRadialGradient(cx, cy, 0.2, cx, cy, 6.2);
+                  const cg = ctx.createRadialGradient(cx, cy, 0.2, cx, cy, cellR);
                   cg.addColorStop(0, '#ffffff');
-                  cg.addColorStop(0.38, 'rgba(255,235,160,0.92)');
-                  cg.addColorStop(0.75, 'rgba(255,165,40,0.28)');
+                  cg.addColorStop(0.38, cm?.hotPop ? 'rgba(255,255,255,0.95)' : 'rgba(255,235,160,0.82)');
+                  cg.addColorStop(0.75, 'rgba(255,165,40,0.22)');
                   cg.addColorStop(1, 'rgba(255,140,0,0)');
                   ctx.fillStyle = cg;
                   ctx.beginPath();
-                  ctx.arc(cx, cy, 6.2, 0, Math.PI * 2);
+                  ctx.arc(cx, cy, cellR, 0, Math.PI * 2);
                   ctx.fill();
                 }
               }
-            } else if (ls.strobe && (nowMs % 71.4) < 25.0) {
-              // Crisp 6-point Xenon Atomic Strobe discharge spikes on ON phase
-              ctx.strokeStyle = 'rgba(235,248,255,0.88)';
-              ctx.lineWidth = 1.5;
+            } else if (ls.strobe && (cat === 'strobe' || Boolean(l.strobeCapable18)) && evalStrobePulse18(cat, i, 0, nowMs).gate) {
+              // Crisp 6-point Xenon Atomic Strobe discharge spikes on ON phase (floor/dedicated strobes only)
+              ctx.strokeStyle = 'rgba(235,248,255,0.68)';
+              ctx.lineWidth = 1.2;
               for (let s = 0; s < 3; s++) {
                 const ang = (s * Math.PI) / 3 + (nowMs * 0.005);
-                const rSpike = flareR * 1.55;
+                const rSpike = flareR * 1.25;
                 ctx.beginPath();
                 ctx.moveTo(p0.x - Math.cos(ang) * rSpike, p0.y - Math.sin(ang) * rSpike);
                 ctx.lineTo(p0.x + Math.cos(ang) * rSpike, p0.y + Math.sin(ang) * rSpike);
@@ -7395,56 +8041,30 @@ void main(){
         }
       }
 
-      // 3. ILDA Laser Fan & Liquid Sky Wave Sheet (coherent optical core + emitter aperture glow)
+      // 3. 16-Beam ILDA Laser Fan & Liquid Sky Wave Sheet (coherent optical core + emitter aperture glow)
       if (ls.running && ls.laserOn && !ls.blackout) {
-        const laserUnits = [
-          [-4.2, 4.2, -1.6],
-          [4.2, 4.2, -1.6]
-        ];
         const patternIdx = ls.laserPattern === 'auto' ? (showIdx - 1) % 4 : (Number(ls.laserPattern) || 0) % 4;
-        const beamCount = patternIdx === 3 ? 6 : 5;
+        const customLaserPal = lumiState.dmxProgrammer18?.groupPalettes?.laser;
+        const laserPal = Array.isArray(customLaserPal) && customLaserPal.length ? customLaserPal : LMP_LASER_PALETTES18;
+        const units = Array.isArray(ls._laserRenderData) && ls._laserRenderData.length
+          ? ls._laserRenderData
+          : [[-4.2, 4.2, -1.6], [4.2, 4.2, -1.6]].map((org, uIdx) =>
+              evalLaserScanPattern18(patternIdx, org, uIdx, tSec, spd, ls.multicolor, laserPal, 16)
+            );
 
-        laserUnits.forEach((origin, uIdx) => {
-          const pOrigin = proj(origin);
+        units.forEach((unit) => {
+          const pOrigin = proj(unit.origin);
           if (!pOrigin) return;
-          const customLaserPal = lumiState.dmxProgrammer18?.groupPalettes?.laser;
-          const laserPal = Array.isArray(customLaserPal) && customLaserPal.length ? customLaserPal : LMP_LASER_PALETTES18;
-          const baseCol = laserPal[(uIdx + showIdx - 1) % laserPal.length];
-          const altCol = laserPal[(uIdx + showIdx + 1) % laserPal.length];
+          const baseCol = unit.baseCol || laserPal[0];
+          const altCol = unit.altCol || laserPal[1 % laserPal.length];
           const ends = [];
-          for (let b = 0; b < beamCount; b++) {
-            const u = (b / (beamCount - 1)) - 0.5;
-            let yaw = u * 0.82;
-            let pitch = -0.02;
-            let gate = true;
-            if (patternIdx === 0) {
-              yaw += Math.sin(tSec * spd * 0.35 + uIdx) * 0.16;
-              pitch = 0.02 + Math.sin(tSec * spd * 0.72 + b * 0.55 + uIdx) * 0.045;
-            } else if (patternIdx === 1) {
-              const theta = (b / beamCount) * Math.PI * 2 + tSec * spd * 0.52 * (uIdx % 2 === 0 ? 1 : -1);
-              const rad = 0.14 + 0.12 * Math.abs(Math.sin(tSec * spd * 0.38));
-              yaw = Math.cos(theta) * rad;
-              pitch = 0.04 + Math.sin(theta) * rad * 0.65;
-            } else if (patternIdx === 2) {
-              const sign = uIdx % 2 === 0 ? 1 : -1;
-              yaw = sign * 0.20 + u * 0.68 + Math.sin(tSec * spd * 0.55) * 0.12 * sign;
-              pitch = 0.01 + Math.cos(tSec * spd * 0.48 + b * 0.4) * 0.045;
-              gate = ((b + Math.floor(tSec * spd * 2.2)) % 3) !== 0;
-            } else {
-              yaw = u * 0.92 + Math.sin(tSec * spd * 0.45 + b * 0.35) * 0.14;
-              pitch = 0.03 + Math.cos(tSec * spd * 0.62 + b * 0.48) * 0.075;
-            }
-            if (!gate) continue;
-            const range = 16.5;
-            const target3d = [
-              origin[0] + Math.sin(yaw) * Math.cos(pitch) * range,
-              Math.max(3.2, origin[1] + Math.sin(pitch) * range),
-              origin[2] + Math.cos(yaw) * Math.cos(pitch) * range
-            ];
-            const pEnd = proj(target3d);
+          for (const ray of unit.rays || []) {
+            if (ray.gate === false) continue;
+            const bInt = Number.isFinite(ray.beamIntensity) ? ray.beamIntensity : 1;
+            if (bInt <= 0.04) continue;
+            const pEnd = proj(ray.target3d);
             if (!pEnd) continue;
-            const rayCol = ls.multicolor ? (b % 2 === 0 ? baseCol : altCol) : '#00ff66';
-            ends.push({ pEnd, rayCol });
+            ends.push({ pEnd, rayCol: ray.rayCol, beamIntensity: bInt });
           }
 
           if (!hasWebglBatch && ends.length >= 2) {
@@ -7461,22 +8081,22 @@ void main(){
           }
 
           if (!hasWebglBatch) {
-            for (const { pEnd, rayCol } of ends) {
-              ctx.strokeStyle = rgba18(rayCol, 0.24);
+            for (const { pEnd, rayCol, beamIntensity } of ends) {
+              ctx.strokeStyle = rgba18(rayCol, 0.24 * beamIntensity);
               ctx.lineWidth = 3.8;
               ctx.beginPath();
               ctx.moveTo(pOrigin.x, pOrigin.y);
               ctx.lineTo(pEnd.x, pEnd.y);
               ctx.stroke();
 
-              ctx.strokeStyle = rgba18(rayCol, 0.86);
+              ctx.strokeStyle = rgba18(rayCol, 0.86 * beamIntensity);
               ctx.lineWidth = 1.25;
               ctx.beginPath();
               ctx.moveTo(pOrigin.x, pOrigin.y);
               ctx.lineTo(pEnd.x, pEnd.y);
               ctx.stroke();
 
-              ctx.strokeStyle = 'rgba(235,255,255,0.78)';
+              ctx.strokeStyle = `rgba(235,255,255,${(0.78 * beamIntensity).toFixed(3)})`;
               ctx.lineWidth = 0.6;
               ctx.beginPath();
               ctx.moveTo(pOrigin.x, pOrigin.y);
@@ -7497,10 +8117,15 @@ void main(){
         });
       }
 
-      // 4. Render Active Pyro Nozzle Cores & Floor Glow (realistic multi-layer optical bloom without white blowout)
+      // 4. Render Active Pyro Nozzle Cores & Floor Glow (2D fallback only when WebGL2 3D GPU particle batch is unavailable)
+      if (!hasWebglBatch) {
       for (const nz of ls.activeNozzles) {
         const pBase = proj(nz.pos);
-        const pTop = proj([nz.pos[0], nz.pos[1] + nz.heightM, nz.pos[2]]);
+        const pTop = proj([
+          nz.pos[0] + nz.heightM * (Number(nz.tiltX) || 0),
+          nz.pos[1] + nz.heightM,
+          nz.pos[2] + nz.heightM * (Number(nz.tiltZ) || 0)
+        ]);
         if (!pBase || !pTop) continue;
         const plumeH = Math.max(12, Math.hypot(pTop.x - pBase.x, pTop.y - pBase.y));
 
@@ -7593,36 +8218,40 @@ void main(){
         ctx.ellipse(pBase.x, pBase.y, baseR, baseR * 0.42, 0, 0, Math.PI * 2);
         ctx.fill();
       }
-
-      // 5. Render Rising Aerial Pyro Comet Shells (golden mortar comet tails)
-      for (const s of ls.aerialShells) {
-        const pHead = proj([s.x, s.y, s.z]);
-        if (!pHead) continue;
-        const pTail = proj([s.x - s.vx * 0.14, s.y - Math.max(1.4, s.vy * 0.14), s.z - s.vz * 0.14]);
-        if (pTail) {
-          const tg = ctx.createLinearGradient(pHead.x, pHead.y, pTail.x, pTail.y);
-          tg.addColorStop(0, '#ffffff');
-          tg.addColorStop(0.32, rgba18(s.color || '#ffe680', 0.90));
-          tg.addColorStop(1, rgba18('#ff8800', 0));
-          ctx.strokeStyle = tg;
-          ctx.lineWidth = 2.6;
-          ctx.lineCap = 'round';
-          ctx.beginPath();
-          ctx.moveTo(pTail.x, pTail.y);
-          ctx.lineTo(pHead.x, pHead.y);
-          ctx.stroke();
-        }
-        const hg = ctx.createRadialGradient(pHead.x, pHead.y, 0.4, pHead.x, pHead.y, 6.5);
-        hg.addColorStop(0, '#ffffff');
-        hg.addColorStop(0.38, rgba18(s.color || '#ffe680', 0.82));
-        hg.addColorStop(1, rgba18(s.color || '#ffe680', 0));
-        ctx.fillStyle = hg;
-        ctx.beginPath();
-        ctx.arc(pHead.x, pHead.y, 6.5, 0, Math.PI * 2);
-        ctx.fill();
       }
 
-      // 6. Render 3D Physics Particles (Razor-Sharp Titanium Sparks, Volumetric Cryo Mist, Tapered Flame Tongues & Jewel-Like Long-Tail Firework Stars)
+      // 5. Render Rising Aerial Pyro Comet Shells (2D fallback when WebGL2 batch is unavailable)
+      if (!hasWebglBatch) {
+        for (const s of ls.aerialShells) {
+          const pHead = proj([s.x, s.y, s.z]);
+          if (!pHead) continue;
+          const pTail = proj([s.x - s.vx * 0.14, s.y - Math.max(1.4, s.vy * 0.14), s.z - s.vz * 0.14]);
+          if (pTail) {
+            const tg = ctx.createLinearGradient(pHead.x, pHead.y, pTail.x, pTail.y);
+            tg.addColorStop(0, '#ffffff');
+            tg.addColorStop(0.32, rgba18(s.color || '#ffe680', 0.90));
+            tg.addColorStop(1, rgba18('#ff8800', 0));
+            ctx.strokeStyle = tg;
+            ctx.lineWidth = 2.6;
+            ctx.lineCap = 'round';
+            ctx.beginPath();
+            ctx.moveTo(pTail.x, pTail.y);
+            ctx.lineTo(pHead.x, pHead.y);
+            ctx.stroke();
+          }
+          const hg = ctx.createRadialGradient(pHead.x, pHead.y, 0.4, pHead.x, pHead.y, 6.5);
+          hg.addColorStop(0, '#ffffff');
+          hg.addColorStop(0.38, rgba18(s.color || '#ffe680', 0.82));
+          hg.addColorStop(1, rgba18(s.color || '#ffe680', 0));
+          ctx.fillStyle = hg;
+          ctx.beginPath();
+          ctx.arc(pHead.x, pHead.y, 6.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // 6. Render 3D Physics Particles (2D fallback only when WebGL2 3D GPU particle batch is unavailable)
+      if (!hasWebglBatch) {
       for (let i = 0; i < ls.particles.length; i++) {
         const p = ls.particles[i];
         const pr = proj([p.x, p.y, p.z]);
@@ -7734,6 +8363,7 @@ void main(){
           ctx.fill();
         }
       }
+      }
 
       // 7. Render Organic Crowd Bounce silhouettes (Phase B, only when explicitly requested via crowdBounce2dOverlay) & Acoustic Wave Flow (Phase C)
       const has3DCrowd = ((S.seq || window.seq)?.people || []).some((p) => p && !p.hidden && p.type === 'audience');
@@ -7834,6 +8464,24 @@ void main(){
       ls._sfxStageGlow.power = 0;
       ls._sfxSkyBurst.active = false;
       ls._sfxSkyBurst.power = 0;
+      ls.particles = [];
+      ls.aerialShells = [];
+      ls.sparkUntilMs = 0;
+      ls.co2UntilMs = 0;
+      ls.flameUntilMs = 0;
+      if (liveShowRafId18 && typeof cancelAnimationFrame === 'function') {
+        cancelAnimationFrame(liveShowRafId18);
+        liveShowRafId18 = 0;
+      }
+      const st18 = S.state || window.state;
+      const playFn18 = S.setPlaying || window.setPlaying;
+      if (st18?.playing && !st18?.recording) {
+        if (typeof playFn18 === 'function') {
+          try { playFn18(false); } catch { st18.playing = false; }
+        } else {
+          st18.playing = false;
+        }
+      }
       if (eng && Array.isArray(eng.lights)) {
         eng.lights.forEach((l) => {
           if (!l) return;
@@ -7888,7 +8536,7 @@ void main(){
     function setLiveShowMode18(mode, opts = {}) {
       const ls = liveShow18;
       if (mode === 'ai') {
-        ls.aiAuto = !ls.aiAuto;
+        ls.aiAuto = opts.fromSelect ? true : !ls.aiAuto;
       } else {
         ls.aiAuto = false;
         const idx = clamp18(Math.round(+mode) || 1, 1, 6);
@@ -7955,6 +8603,8 @@ void main(){
       const eng = S.engine;
       const next = typeof force === 'boolean' ? force : !ls.autoCam;
       if (next && !ls.autoCam && eng?.camera) {
+        if (typeof S.setOrbit === 'function') S.setOrbit(false);
+        else if (S.state) S.state.orbit = false;
         ls.savedCamera = {
           yaw: eng.camera.yaw,
           pitch: eng.camera.pitch,
@@ -7993,13 +8643,11 @@ void main(){
       } else if (fxKey === 'sfx') {
         if (!ls.running) {
           ls.sfxOn = true;
-          ls.dockCollapsed = false;
           startLiveShow18();
           triggerPyroBurst18('all');
         } else {
           ls.sfxOn = !ls.sfxOn;
           if (ls.sfxOn) {
-            ls.dockCollapsed = false;
             triggerPyroBurst18('all');
           } else {
             ls.dockCollapsed = true;
@@ -8113,8 +8761,9 @@ void main(){
       const xs = count === cfg.xs.length && !opts.spanM && !opts.count
         ? cfg.xs
         : Array.from({ length: count }, (_, i) => (count === 1 ? 0 : +(((i / Math.max(1, count - 1)) - 0.5) * spanM).toFixed(2)));
+      const addOpts = { noCheckpoint: true, silent: !!opts.silent, keepInspectorPanel: Boolean(lumiState.rpConfig18 || _suppressRpInspectorRebuild18) };
       const runCreate = () => xs.map((x) => {
-        const it = sa.addCatalogItem(cfg.id, [x, deckH, posZ]);
+        const it = sa.addCatalogItem(cfg.id, [x, deckH, posZ], addOpts);
         if (it) {
           it._isPyroSfx18 = true;
           it._lmpBatchId18 = batchId;
@@ -8137,7 +8786,8 @@ void main(){
       if (kind === 'hazer' && S.engine?.settings) {
         S.engine.settings.haze = 28;
       }
-      window.renderUI?.();
+      if (_suppressRpInspectorRebuild18) window.renderLists?.();
+      else window.renderUI?.();
       renderLmpToolbox18();
       if (!opts.silent) {
         triggerPyroBurst18(cfg.id);
@@ -8205,7 +8855,9 @@ void main(){
       window.rebuildSurface3DMesh?.(surf);
       eng.selected = surf.id;
       eng._stageBatchDirty = true;
-      window.renderUI?.();
+      if (window.state) window.state.step = 'mapping';
+      if (_suppressRpInspectorRebuild18) window.renderLists?.();
+      else window.renderUI?.();
       renderLmpToolbox18();
       if (!opts.silent) {
         window.toast?.(tr18(`Đã thêm màn hình ${cfg.name} (${cfg.wM}×${cfg.hM}m · ${cfg.shapeType}).`, `Added LED screen ${cfg.name} (${cfg.wM}×${cfg.hM}m · ${cfg.shapeType}).`));
@@ -8296,33 +8948,61 @@ void main(){
       dock.classList.toggle('is-hidden', !!ls.dockHidden);
       dock.hidden = !!ls.dockHidden;
       dock.classList.toggle('is-collapsed', !!ls.dockCollapsed);
-      const showBtns = [1, 2, 3, 4, 5, 6]
+      dock.classList.toggle('is-mini', !!ls.dockMini);
+      const hasCustomPos = Boolean(ls.dockPos && Number.isFinite(ls.dockPos.left) && Number.isFinite(ls.dockPos.top));
+      dock.classList.toggle('is-custom-pos', hasCustomPos);
+      dock.classList.toggle('is-pop-down', Boolean(hasCustomPos && ls.dockPos.top < 110));
+      if (dock.style) {
+        if (hasCustomPos) {
+          dock.style.left = `${Math.round(ls.dockPos.left)}px`;
+          dock.style.top = `${Math.round(ls.dockPos.top)}px`;
+          dock.style.bottom = 'auto';
+          dock.style.transform = 'none';
+        } else {
+          dock.style.left = '';
+          dock.style.top = '';
+          dock.style.bottom = '';
+          dock.style.transform = '';
+        }
+      }
+      const showOptions = [1, 2, 3, 4, 5, 6]
         .map((n) => {
           const cfg = STAGE_SETS18[n];
+          const lbl = cfg ? tr18(cfg.shortVi || cfg.code, cfg.shortEn || cfg.code) : `S${n}`;
           const tip = cfg ? tr18(cfg.titleVi, cfg.titleEn) : `Set ${n}`;
-          return `<button type="button" class="lmp-dock-btn18 is-cue ${!ls.aiAuto && ls.activeShow === n ? 'active' : ''}" data-lmp-showmode="${n}" title="${esc18(tip)}">${esc18(cfg?.code || 'S' + n)}</button>`;
+          const sel = !ls.aiAuto && ls.activeShow === n ? ' selected' : '';
+          return `<option value="${n}" title="${esc18(tip)}"${sel}>${esc18(lbl)}</option>`;
         })
+        .concat([
+          `<option value="ai" title="${tr18('Đạo diễn tự động (Đổi kịch bản mỗi 8 giây)', 'Auto Director (Cycles every 8s)')}"${ls.aiAuto ? ' selected' : ''}>${tr18('Auto · Đạo diễn', 'Auto · Director')}</option>`
+        ])
         .join('');
       dock.innerHTML =
-        `<div class="lmp-dock-row18">` +
+        `<div class="lmp-dock-row18 is-top">` +
+        `<span class="lmp-dock-grip18" data-lmp-drag="1" title="${tr18('Kéo để di chuyển thanh Show · Nhấp đúp để về giữa đáy', 'Drag to move Live Show bar · Double-click to reset center-bottom')}"><svg viewBox="0 0 8 14" aria-hidden="true"><circle cx="2" cy="2.5" r="1.1" fill="currentColor"/><circle cx="6" cy="2.5" r="1.1" fill="currentColor"/><circle cx="2" cy="7" r="1.1" fill="currentColor"/><circle cx="6" cy="7" r="1.1" fill="currentColor"/><circle cx="2" cy="11.5" r="1.1" fill="currentColor"/><circle cx="6" cy="11.5" r="1.1" fill="currentColor"/></svg></span>` +
         `<button type="button" id="lmpDockStartShowBtn18" class="lmp-dock-btn18 is-start ${ls.running ? 'is-running' : ''}" data-lmp-start="1" title="${tr18('Chạy / Dừng Live Show (Phím P / Esc)', 'Start / Stop Live Show (Key P / Esc)')}">${ico18(ls.running ? 'square' : 'play')}<span>${ls.running ? tr18('DỪNG SHOW', 'STOP SHOW') : tr18('CHẠY SHOW', 'START SHOW')}</span><kbd class="lmp-dock-kbd18">P</kbd></button>` +
-        `<div class="lmp-dock-group18 is-cues" role="group" aria-label="${tr18('Mẫu sân khấu & Chế độ Show', 'Stage Sets & Show Modes')}">` +
-        showBtns +
-        `<button type="button" class="lmp-dock-btn18 is-cue ${ls.aiAuto ? 'active' : ''}" data-lmp-showmode="ai" title="${tr18('Đạo diễn AI tự động (Đổi kịch bản mỗi 8 giây)', 'AI Auto Director (Cycles every 8s)')}">AI</button>` +
-        `<button type="button" class="lmp-dock-btn18 is-cue ${ls.multicolor ? 'active' : ''}" data-lmp-showfx="multicolor" title="${tr18('Bảng màu Đa sắc (Phím C)', 'Multicolor Palettes (Key C)')}">${tr18('ĐA SẮC', 'MULTI')}</button>` +
+        `<div class="lmp-dock-group18 is-cues" role="group" aria-label="${tr18('Chế độ Hiệu ứng Show', 'Show Effect Modes')}">` +
+        `<select class="lmp-dock-select18 lmp-dock-minionly18" data-lmp-showselect="1" aria-label="${tr18('Kịch bản ánh sáng Show', 'Show Lighting Style')}" title="${tr18('Chọn phong cách ánh sáng Show (1–6 / Auto)', 'Select Show Lighting Style (1–6 / Auto)')}">${showOptions}</select>` +
+        `<button type="button" class="lmp-dock-btn18 is-cue lmp-dock-fullonly18 ${ls.aiAuto ? 'active' : ''}" data-lmp-showmode="ai" title="${tr18('Đạo diễn tự động (Đổi kịch bản mỗi 8 giây)', 'Auto Director (Cycles every 8s)')}">Auto</button>` +
+        `<button type="button" class="lmp-dock-btn18 is-cue lmp-dock-fullonly18 ${ls.multicolor ? 'active' : ''}" data-lmp-showfx="multicolor" title="${tr18('Bảng màu Đa sắc (Phím C)', 'Multicolor Palettes (Key C)')}">${tr18('Đa sắc', 'Multi')}</button>` +
+        `<button type="button" class="lmp-dock-btn18 is-cue lmp-dock-fullonly18" data-lmp-opentemplates="1" title="${tr18('Mở Mẫu Sân Khấu Sự Kiện Việt Nam & Bộ Set Dựng Sẵn S1–S6', 'Open Vietnamese Event Stage Templates & S1–S6 Preset Sets')}">${ico18('layout-grid')}<span>${tr18('Mẫu Sân Khấu', 'Stage Sets')}</span></button>` +
         `</div>` +
-        `<div class="lmp-dock-group18 is-buses" role="group" aria-label="${tr18('Kênh điều khiển Show', 'Show Channels')}">` +
-        `<button type="button" class="lmp-dock-btn18 ${ls.lightsOn ? 'active' : ''}" data-lmp-showfx="lights" title="${tr18('Đèn Moving Head & PAR (Phím M)', 'Moving Heads & PARs (Key M)')}">${tr18('ĐÈN', 'LIGHTS')}</button>` +
-        `<button type="button" class="lmp-dock-btn18 ${ls.blindersOn ? 'active' : ''}" data-lmp-showfx="blinders" title="${tr18('Đèn chớp Blinder khán giả (Phím F)', 'Audience Blinders (Key F)')}">${tr18('CHỚP KHÁN GIẢ', 'BLINDERS')}</button>` +
-        `<button type="button" class="lmp-dock-btn18 ${ls.laserOn ? 'active' : ''}" data-lmp-showfx="laser" title="${tr18('Laser 16 tia ILDA & Liquid Sky (Phím L)', '16-Beam ILDA Laser & Liquid Sky (Key L)')}">LASER</button>` +
-        `<button type="button" class="lmp-dock-btn18 ${ls.sfxOn ? 'active' : ''}" data-lmp-showfx="sfx" title="${tr18('Pháo & SFX tự động 7 pha (Phím X) · Tắt sẽ tự ẩn khay bắn pháo', '7-Phase Auto Pyro & SFX (Key X) · Turning off auto-collapses Pyro row')}">${tr18('PHÁO', 'PYRO')}</button>` +
-        `<button type="button" class="lmp-dock-btn18 ${ls.strobe ? 'active' : ''}" data-lmp-showfx="strobe" title="${tr18('Đèn chớp Strobe 14 Hz độc lập với ĐÈN (Phím Z)', 'Independent 14 Hz Strobe (Key Z)')}">${tr18('CHỚP 14HZ', 'STROBE')}</button>` +
-        `<button type="button" class="lmp-dock-btn18 ${ls.autoCam ? 'active' : ''}" data-lmp-autocam="1" title="${tr18('Đạo diễn Camera tự động 5 góc quay (Tạm dừng 8s khi kéo chuột)', '5-Shot Auto Camera Director (8s pause on manual orbit)')}">${tr18('AUTO CAM', 'AUTO CAM')}</button>` +
-        `<button type="button" class="lmp-dock-btn18 is-bo ${ls.blackout ? 'active' : ''}" data-lmp-showfx="bo" title="${tr18('Tắt toàn bộ đèn Blackout (Phím B)', 'Blackout (Key B)')}">${tr18('TẮT ĐÈN', 'B.O.')}</button>` +
-        `</div>` +
-        `<button type="button" class="lmp-dock-btn18 is-fold ${!ls.dockCollapsed ? 'active' : ''}" data-lmp-dockfold="1" aria-expanded="${!ls.dockCollapsed}" title="${tr18('Thu gọn / Mở rộng bàn bắn Pyro thủ công', 'Collapse / Expand manual Pyro trigger row')}">${ico18('chevron-down')}<span>${tr18('BẮN PHÁO', 'PYRO PAD')}</span></button>` +
-        `<button type="button" class="lmp-dock-btn18 is-help" data-lmp-help="1" title="${tr18('Hướng dẫn chức năng Kênh Show, Đèn & Pháo SFX (?)', 'Lighting, Pyro SFX & Live Show Guide (?)')}" aria-label="${tr18('Hướng dẫn chức năng', 'Help guide')}">?</button>` +
+        `<label class="lmp-tb-speedrow18 lmp-dock-fullonly18" title="${tr18('Tốc độ chạy Show (0.2x - 5.0x)', 'Show Speed (0.2x - 5.0x)')}"><span>${tr18('Tốc độ', 'Spd')}</span><input type="range" min="0.2" max="5.0" step="0.1" value="${ls.speed.toFixed(1)}" data-lmp-speed="1"><b>${ls.speed.toFixed(1)}x</b></label>` +
+        `<button type="button" class="lmp-dock-btn18 is-help lmp-dock-fullonly18" data-lmp-help="1" title="${tr18('Hướng dẫn chức năng Kênh Show, Đèn & Pháo SFX (?)', 'Lighting, Pyro SFX & Live Show Guide (?)')}" aria-label="${tr18('Hướng dẫn chức năng', 'Help guide')}">?</button>` +
+        `<button type="button" class="lmp-dock-btn18 is-mini-btn ${ls.dockMini ? 'active' : ''}" data-lmp-dockmini="1" title="${ls.dockMini ? tr18('Mở rộng 2 dòng điều khiển Show', 'Expand 2-row Live Show dock') : tr18('Thu nhỏ còn 1 thanh gọn (Mini-Pill)', 'Minimize to 1-line Mini-Pill')}" aria-label="${tr18('Thu nhỏ / Mở rộng thanh Show', 'Minimize / Expand Live Show bar')}">${ico18(ls.dockMini ? 'maximize' : 'columns-3')}</button>` +
         `<button type="button" class="lmp-dock-btn18 is-hide" data-lmp-dockhide="1" title="${tr18('Ẩn bàn điều khiển Live Show', 'Hide Live Show Dock')}" aria-label="${tr18('Ẩn bàn điều khiển Live Show', 'Hide Live Show Dock')}">${ico18('x')}</button>` +
+        `</div>` +
+        `<div class="lmp-dock-row18 is-bottom lmp-dock-fullonly18">` +
+        `<div class="lmp-dock-group18 is-buses" role="group" aria-label="${tr18('Kênh điều khiển Show', 'Show Channels')}">` +
+        `<button type="button" class="lmp-dock-btn18 ${ls.lightsOn ? 'active' : ''}" data-lmp-showfx="lights" title="${tr18('Đèn Moving Head & PAR (Phím M)', 'Moving Heads & PARs (Key M)')}">${ico18('sun')}<span>${tr18('ĐÈN', 'LIGHTS')}</span></button>` +
+        `<button type="button" class="lmp-dock-btn18 ${ls.blindersOn ? 'active' : ''}" data-lmp-showfx="blinders" title="${tr18('Đèn chớp Blinder khán giả (Phím F)', 'Audience Blinders (Key F)')}">${ico18('zap')}<span>${tr18('CHỚP KHÁN GIẢ', 'BLINDERS')}</span></button>` +
+        `<button type="button" class="lmp-dock-btn18 ${ls.laserOn ? 'active' : ''}" data-lmp-showfx="laser" title="${tr18('Laser 16 tia ILDA & Liquid Sky (Phím L)', '16-Beam ILDA Laser & Liquid Sky (Key L)')}"><span>LASER</span></button>` +
+        `<button type="button" class="lmp-dock-btn18 ${ls.sfxOn ? 'active' : ''}" data-lmp-showfx="sfx" title="${tr18('Pháo & SFX tự động 7 pha (Phím X)', '7-Phase Auto Pyro & SFX (Key X)')}">${ico18('sparkles')}<span>${tr18('PHÁO', 'PYRO')}</span></button>` +
+        `<button type="button" class="lmp-dock-btn18 ${ls.strobe ? 'active' : ''}" data-lmp-showfx="strobe" title="${tr18('Đèn chớp Strobe 14 Hz độc lập với ĐÈN (Phím Z)', 'Independent 14 Hz Strobe (Key Z)')}"><span>${tr18('CHỚP 14HZ', 'STROBE')}</span></button>` +
+        `<button type="button" class="lmp-dock-btn18 ${ls.autoCam ? 'active' : ''}" data-lmp-autocam="1" title="${tr18('Đạo diễn Camera tự động 5 góc quay (Tạm dừng 8s khi kéo chuột)', '5-Shot Auto Camera Director (8s pause on manual orbit)')}">${ico18('video')}<span>AUTO CAM</span></button>` +
+        `<button type="button" class="lmp-dock-btn18 is-bo ${ls.blackout ? 'active' : ''}" data-lmp-showfx="bo" title="${tr18('Tắt toàn bộ đèn Blackout (Phím B)', 'Blackout (Key B)')}"><span>${tr18('TẮT ĐÈN', 'B.O.')}</span></button>` +
+        `</div>` +
+        `<button type="button" class="lmp-dock-btn18 is-fold ${!ls.dockCollapsed ? 'active' : ''}" data-lmp-dockfold="1" aria-expanded="${!ls.dockCollapsed}" title="${tr18('Mở / Đóng khay bắn Pháo thủ công', 'Open / Close manual Pyro trigger popover')}">${ico18('sparkles')}<span>${tr18('BẮN PHÁO', 'PYRO PAD')}</span>${ico18('chevron-down')}</button>` +
         `</div>` +
         `<div class="lmp-dock-row18 lmp-dock-extra18">` +
         `<div class="lmp-dock-group18 is-pyro-bank" role="group" aria-label="${tr18('Kích hoạt Pháo & SFX thủ công', 'Manual Pyro Triggers')}">` +
@@ -8332,8 +9012,6 @@ void main(){
         `<button type="button" class="lmp-dock-btn18 is-pyro" data-lmp-fire="confetti_cannon" title="${tr18('Pháo hoa tầm cao & Kim tuyến (Phím 0)', 'Aerial Pyro Fireworks (Key 0)')}">${ico18('sun')}<span>${tr18('PHÁO HOA [0]', 'AERIAL [0]')}</span></button>` +
         `<button type="button" class="lmp-dock-btn18 is-pyro is-finale" data-lmp-fire="all" title="${tr18('Kích hoạt toàn bộ hiệu ứng Grand Finale', 'Grand Finale Fire All')}">${ico18('sparkles')}<span>${tr18('BẮN TẤT CẢ', 'FIRE ALL')}</span></button>` +
         `</div>` +
-        `<button type="button" class="lmp-dock-btn18" data-lmp-openfxpanel="1" title="${tr18('Mở bảng Động cơ Hiệu ứng PAR Chase, Beam Fan & Laser ở Cột Phải (Right Panel)', 'Open PAR Chase, Beam Fan & Laser FX Engine in Right Panel')}">${ico18('sliders-horizontal')}<span>${tr18('ĐỘNG CƠ FX (CỘT PHẢI)', 'FX ENGINE (RIGHT PANEL)')}</span></button>` +
-        `<label class="lmp-tb-speedrow18" title="${tr18('Tốc độ chạy Show (0.2x - 5.0x)', 'Show Speed (0.2x - 5.0x)')}"><span>${tr18('TỐC ĐỘ', 'SPD')}</span><input type="range" min="0.2" max="5.0" step="0.1" value="${ls.speed.toFixed(1)}" data-lmp-speed="1"><b>${ls.speed.toFixed(1)}x</b></label>` +
         `</div>`;
     }
 
@@ -8437,10 +9115,15 @@ void main(){
       }
       if (typeof S.keepRendering === 'function' && !S._lmpKeepRenderingHooked18) {
         const baseKeep18 = S.keepRendering.bind(S);
-        S.keepRendering = function () {
+        const waker18 = () => {
           const ls = liveShow18;
-          if (lumiState.screenCapture18.active || ls.running || ls.particles.length > 0 || ls.aerialShells.length > 0) return true;
-          return baseKeep18();
+          return Boolean(lumiState.screenCapture18.active || ls.running || ls.particles.length > 0 || ls.aerialShells.length > 0);
+        };
+        baseKeep18(waker18);
+        S.keepRendering = function (fn) {
+          if (typeof fn === 'function') return baseKeep18(fn);
+          if (waker18()) return true;
+          return Boolean(baseKeep18());
         };
         S._lmpKeepRenderingHooked18 = true;
       }
@@ -8495,16 +9178,21 @@ void main(){
             renderLmpLiveShowDock18();
             return;
           }
+          const openTplBtn = e.target.closest?.('[data-lmp-opentemplates]');
+          if (openTplBtn) {
+            openStageTemplatesModal();
+            return;
+          }
           const helpBtn = e.target.closest?.('[data-lmp-help]');
           if (helpBtn) {
             openLmpHelpModal18();
             return;
           }
-          const openFxBtn = e.target.closest?.('[data-lmp-openfxpanel]');
-          if (openFxBtn) {
-            if (window.state) window.state.step = 'lighting';
-            document.body?.classList?.remove?.('right-panel-collapsed');
-            window.renderUI?.();
+          const miniBtn = e.target.closest?.('[data-lmp-dockmini]');
+          if (miniBtn) {
+            liveShow18.dockMini = !liveShow18.dockMini;
+            if (liveShow18.dockMini) liveShow18.dockCollapsed = true;
+            renderLmpLiveShowDock18();
             return;
           }
           const hideBtn = e.target.closest?.('[data-lmp-dockhide]');
@@ -8513,6 +9201,11 @@ void main(){
           }
         });
         dock.addEventListener?.('change', (e) => {
+          const showSel = e.target.closest?.('[data-lmp-showselect]');
+          if (showSel) {
+            setLiveShowMode18(showSel.value, { fromSelect: true });
+            return;
+          }
           const parSel = e.target.closest?.('[data-lmp-parchase]');
           if (parSel) {
             setParChaseMode18(parSel.value);
@@ -8534,6 +9227,70 @@ void main(){
             liveShow18.speed = clamp18(Number(spdInput.value) || 2.0, 0.2, 5.0);
             const b = dock.querySelector?.('.lmp-tb-speedrow18 b');
             if (b) b.textContent = `${liveShow18.speed.toFixed(1)}x`;
+          }
+        });
+        let dragState18 = null;
+        dock.addEventListener?.('pointerdown', (e) => {
+          if (e.button !== undefined && e.button !== 0) return;
+          const isGrip = Boolean(e.target.closest?.('[data-lmp-drag]'));
+          const isInteractive = Boolean(e.target.closest?.('button, select, input, label, a'));
+          if (!isGrip && isInteractive) return;
+          const vpRect = vp.getBoundingClientRect?.();
+          const dockRect = dock.getBoundingClientRect?.();
+          if (!vpRect || !dockRect || !vpRect.width || !vpRect.height) return;
+          dragState18 = {
+            pointerId: e.pointerId,
+            startX: e.clientX,
+            startY: e.clientY,
+            origLeft: dockRect.left - vpRect.left,
+            origTop: dockRect.top - vpRect.top,
+            vpW: vpRect.width,
+            vpH: vpRect.height,
+            dockW: dockRect.width,
+            dockH: dockRect.height,
+            moved: false
+          };
+          dock.classList.add('is-dragging');
+          try { dock.setPointerCapture?.(e.pointerId); } catch { /* ignore */ }
+          if (isGrip) e.preventDefault?.();
+        });
+        dock.addEventListener?.('pointermove', (e) => {
+          if (!dragState18 || (e.pointerId !== undefined && e.pointerId !== dragState18.pointerId)) return;
+          const dx = e.clientX - dragState18.startX;
+          const dy = e.clientY - dragState18.startY;
+          if (!dragState18.moved && Math.hypot(dx, dy) < 3) return;
+          dragState18.moved = true;
+          const maxL = Math.max(6, dragState18.vpW - dragState18.dockW - 6);
+          const maxT = Math.max(6, dragState18.vpH - dragState18.dockH - 6);
+          const nextL = clamp18(dragState18.origLeft + dx, 6, maxL);
+          const nextT = clamp18(dragState18.origTop + dy, 6, maxT);
+          liveShow18.dockPos = { left: nextL, top: nextT };
+          dock.classList.add('is-custom-pos');
+          dock.classList.toggle('is-pop-down', nextT < 110);
+          if (dock.style) {
+            dock.style.left = `${Math.round(nextL)}px`;
+            dock.style.top = `${Math.round(nextT)}px`;
+            dock.style.bottom = 'auto';
+            dock.style.transform = 'none';
+          }
+        });
+        const endDockDrag18 = (e) => {
+          if (!dragState18 || (e?.pointerId !== undefined && e.pointerId !== dragState18.pointerId)) return;
+          try { dock.releasePointerCapture?.(dragState18.pointerId); } catch { /* ignore */ }
+          dock.classList.remove('is-dragging');
+          dragState18 = null;
+        };
+        dock.addEventListener?.('pointerup', endDockDrag18);
+        dock.addEventListener?.('pointercancel', endDockDrag18);
+        dock.addEventListener?.('dblclick', (e) => {
+          if (!e.target.closest?.('[data-lmp-drag]')) return;
+          liveShow18.dockPos = null;
+          renderLmpLiveShowDock18();
+        });
+        vp.addEventListener?.('pointerdown', (e) => {
+          if (!liveShow18.dockCollapsed && !dock.contains?.(e.target)) {
+            liveShow18.dockCollapsed = true;
+            renderLmpLiveShowDock18();
           }
         });
         renderLmpLiveShowDock18();
@@ -8647,11 +9404,13 @@ void main(){
       return 'G3';
     }
 
-    function computeParUplightChase18(idx, total, tSec, spd, chaseMode = 'carousel', palette = ['#01ffa0', '#00d4ff', '#ff007f', '#ffe600']) {
+    function computeParUplightChase18(idx, total, tSec, spd, chaseMode = 'carousel', palette = ['#01ffa0', '#00d4ff', '#ff007f', '#ffe600'], opts = {}) {
       const n = Math.max(1, Number(total) || 1);
       const pal = Array.isArray(palette) && palette.length ? palette : ['#01ffa0', '#00d4ff', '#ff007f', '#ffe600'];
       const mode = String(chaseMode || 'carousel').toLowerCase();
-      const baseColor = samplePaletteGlide18(pal, idx * 0.35 + tSec * spd * 0.65);
+      const useAlt = Boolean(opts.useAlternateColor ?? lumiState.dmxProgrammer18?.parUseAlternateColor);
+      const secCol = opts.secondaryColor || lumiState.dmxProgrammer18?.parSecondaryColor || '#ffe600';
+      const baseColor = useAlt && idx % 2 === 1 ? secCol : samplePaletteGlide18(pal, idx * 0.35 + tSec * spd * 0.65);
       let level = 0.85;
       let color = baseColor;
       let isSparkle = false;
@@ -8663,13 +9422,13 @@ void main(){
         const wave = Math.abs(Math.abs(idx - half) - Math.abs(Math.sin(tSec * spd * 1.95)) * half);
         level = clamp18(1 - wave / Math.max(1.1, half * 0.62), 0.12, 1.15);
         const symIdx = Math.round(Math.abs(idx - half));
-        color = pal[symIdx % pal.length];
+        color = useAlt && symIdx % 2 === 1 ? secCol : pal[symIdx % pal.length];
       } else if (mode === 'dual_carousel') {
         const h1 = (tSec * spd * 3.4) % n;
         const h2 = (h1 + n / 2) % n;
         level = Math.max(dominoTail18(idx, n, h1, Math.max(1.8, n * 0.35)), dominoTail18(idx, n, h2, Math.max(1.8, n * 0.35)));
         level = clamp18(level, 0.14, 1.15);
-        color = pal[(idx + Math.floor(tSec * spd)) % pal.length];
+        color = useAlt && idx % 2 === 1 ? secCol : pal[(idx + Math.floor(tSec * spd)) % pal.length];
       } else if (mode === 'gala_sparkle') {
         const h1 = (tSec * spd * 3.6) % n;
         const h2 = (h1 + n / 3) % n;
@@ -8693,7 +9452,7 @@ void main(){
       }
 
       const coneLenScale = +(0.32 + 0.68 * Math.sqrt(clamp18(level, 0.08, 1.0))).toFixed(3);
-      return { mode, level: +level.toFixed(3), color, coneLenScale, isSparkle, profileId: 'par_uplight_v1' };
+      return { mode, level: +level.toFixed(3), color, coneLenScale, isSparkle, useAlternateColor: useAlt, profileId: 'par_uplight_v1' };
     }
     const evalParChaseEngine18 = computeParUplightChase18;
 
@@ -8808,6 +9567,15 @@ void main(){
       const prog = lumiState.dmxProgrammer18;
       if (overrides.parChaseMode) prog.parChaseMode = String(overrides.parChaseMode);
       if (typeof overrides.freezeDmx === 'boolean') prog.freezeDmx = overrides.freezeDmx;
+      if (typeof overrides.parUseAlternateColor === 'boolean') prog.parUseAlternateColor = overrides.parUseAlternateColor;
+      if (overrides.parSecondaryColor) prog.parSecondaryColor = String(overrides.parSecondaryColor);
+      if (overrides.frontColorTempK !== undefined) {
+        const cct = Number(overrides.frontColorTempK) || 4200;
+        prog.frontColorTempK = cct <= 3500 ? 3200 : cct >= 5400 ? 5600 : 4200;
+      }
+      if (overrides.frontKeyLightPct !== undefined) {
+        prog.frontKeyLightPct = clamp18(overrides.frontKeyLightPct, 15, 100);
+      }
       if (overrides.groupPalettes && typeof overrides.groupPalettes === 'object') {
         for (const k of ['beam', 'wash', 'par', 'laser']) {
           if (Array.isArray(overrides.groupPalettes[k]) && overrides.groupPalettes[k].length) {
@@ -11057,9 +11825,13 @@ void main(){
               const cfg = STAGE_SETS18[n];
               const tip = cfg ? tr18(cfg.titleVi, cfg.titleEn) : `Set ${n}`;
               const sc = setColors[(n - 1) % setColors.length];
-              return `<button type="button" class="lmp-tb-modebtn18 ${!ls.aiAuto && ls.activeShow === n ? 'active' : ''}" style="--set-c:${sc}" data-lmp-showmode="${n}" title="${esc18(tip)}"><span class="lmp-tb-setcode18">S${n}</span><span class="lmp-tb-setlbl18">${esc18(cfg ? tr18(cfg.shortVi, cfg.shortEn).replace(/^S\d+\s*·\s*/, '') : 'Set ' + n)}</span></button>`;
+              const previewSrc = cfg?.previewWebp || `./assets/templates/s${n}.webp`;
+              return `<button type="button" class="lmp-tb-modebtn18 ${!ls.aiAuto && ls.activeShow === n ? 'active' : ''}" style="--set-c:${sc}" data-lmp-showmode="${n}" title="${esc18(tip)}"><img src="${esc18(previewSrc)}" alt="S${n}" loading="lazy" decoding="async" style="width:100%;height:34px;object-fit:cover;border-radius:4px;margin-bottom:2px;border:1px solid rgba(148,163,184,0.22)"><span class="lmp-tb-setcode18">S${n}</span><span class="lmp-tb-setlbl18">${esc18(cfg ? tr18(cfg.shortVi, cfg.shortEn).replace(/^S\d+\s*·\s*/, '') : 'Set ' + n)}</span></button>`;
             })
             .join('') +
+          `</div>` +
+          `<div class="lmp-tb-strip18" style="margin-bottom:6px">` +
+          `<button type="button" class="lmp-tb-fxbtn18" data-lmp-modal="templates" style="grid-column:1 / -1">${tr18('Mẫu Sân Khấu Sự Kiện Việt Nam & Hình Review', 'VN Event Stage Templates & Previews')}</button>` +
           `</div>` +
           `<div class="lmp-tb-strip18">` +
           `<button type="button" class="lmp-tb-fxbtn18 ${!ls.dockHidden ? 'active' : ''}" data-lmp-docktoggle="1">${!ls.dockHidden ? tr18('Ẩn thanh Live Show', 'Hide Show Dock') : tr18('Hiện thanh Live Show', 'Show Live Dock')}</button>` +
@@ -11454,7 +12226,15 @@ void main(){
       };
       lumiState.rpConfig18 = cfg;
       window._lmpRpConfigSig18 = `${cfg.batchId}:${cfg.count}:${cfg.mode}`;
+      S.closeAllDocks16?.('inspector');
+      if (S.choreo11?.open) S.choreo11.open = false;
+      if (S.stage10?.open) S.stage10.open = false;
+      S.toggleRightPanel16?.(false);
       document.body?.classList?.remove?.('right-panel-collapsed');
+      if (S.director?.panel === 'objects') S.director.panel = null;
+      if (window.state) {
+        window.state.step = category === 'screens' ? 'mapping' : category === 'structure' ? 'stage' : 'lighting';
+      }
 
       let result = null;
       if (!opts.skipInitialSpawn) {
@@ -11464,6 +12244,8 @@ void main(){
         else if (category === 'screens') result = addToolboxScreen18(kind, { ...cfg });
       }
       cfg.items = result;
+      if (S.director?.panel === 'objects') S.director.panel = null;
+      window.renderUI?.();
       window.renderInspector?.();
       return cfg;
     }
@@ -12021,8 +12803,9 @@ void main(){
             lmpActiveTab18 = nextTab;
             lmpCollapsed18 = false;
           }
-          if ((nextTab === 'lighting' || nextTab === 'pyro') && window.state && window.state.step !== 'lighting') {
-            window.state.step = 'lighting';
+          const targetStep = nextTab === 'screens' ? 'mapping' : nextTab === 'structure' ? 'stage' : 'lighting';
+          if (window.state && window.state.step !== targetStep) {
+            window.state.step = targetStep;
             window.renderUI?.();
           }
           renderLmpToolbox18();
@@ -12067,6 +12850,7 @@ void main(){
         if (modalBtn) {
           const mk = modalBtn.getAttribute('data-lmp-modal');
           if (mk === 'dmx') openDmxProgrammerModal18();
+          else if (mk === 'templates') openStageTemplatesModal();
           else if (mk === 'structure') openStructureConfigModal18();
           else if (mk === 'audio') openAudioWorkstationModal18();
           else if (mk === 'pixelpower') openPixelPowerWorkstationModal18();
@@ -12216,6 +13000,7 @@ void main(){
       buildLmpLightingFxEngineHtml18,
       rebuildBatchConfigurator18,
       renderLmpRightPanelSection18,
+      isSuppressingInspectorRebuild18: () => _suppressRpInspectorRebuild18,
       openLmpHelpModal18,
       getLmpFxSelectOptions18,
       triggerPyroBurst18,
@@ -12233,6 +13018,10 @@ void main(){
       setLaserPattern18,
       toggleAutoCamera18,
       toggleLiveShowFx18,
+      getStageSfxNozzles18,
+      spawnNozzleParticles18,
+      evalPyroChoreoGate18,
+      isIndoorAerialRestricted18,
       launchAerialPyro18,
       detonateAerialShell18,
       stepParticlesAndShells18,
@@ -12247,6 +13036,8 @@ void main(){
       evalBeamFanLaw18,
       evalParChaseEngine18,
       evalBlinderThermalFlash18,
+      evalFrontKeylightCct18,
+      evalStrobePulse18,
       evalLaserScanPattern18,
       evalScreenHaloBleed18,
       stepAutoCameraDirector18,

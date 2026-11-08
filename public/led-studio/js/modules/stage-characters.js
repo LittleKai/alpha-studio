@@ -261,7 +261,7 @@
   dialog(title,`<div class="stage-character18">
    <div class="stage-char18-media">
     <div class="stage-char18-thumb-wrap">
-     <img id="characterThumb18" src="${esc(base+id+'/thumbnail.png')}" alt="${esc(title)}">
+     <img id="characterThumb18" src="${esc(base+id+'/thumbnail.webp')}" alt="${esc(title)}">
     </div>
     <div class="stage-char18-badges">
      <span class="stage-char18-pill">${esc(tr18('66 Xương · Atlas 512','66 Bones · 512 Atlas'))}</span>
@@ -302,7 +302,7 @@
   if(genderSel)genderSel.onchange=()=>{
    activeId=genderSel.value;
    const nc=spec(activeId),thumb=$('characterThumb18');
-   if(nc&&thumb){thumb.src=base+activeId+'/thumbnail.png';thumb.alt=loc18(nc.name);}
+   if(nc&&thumb){thumb.src=base+activeId+'/thumbnail.webp';thumb.alt=loc18(nc.name);}
    syncClipSelect18();
   };
   const shareSrcSel=$('characterShareSource18'),shareClipSel=$('characterShareClip18'),shareBtn=$('characterShareApply18');
@@ -383,7 +383,7 @@
    b.dataset.cat18=c.cat||'dancer';b.dataset.castPick16='char18:'+c.id;
    if(pair)b.dataset.variants18=pair.female+','+pair.male;
    const badge=pair?tr18(`NAM & NỮ · CÓ XƯƠNG / ${c.clips.length} ĐỘNG TÁC`,`MALE & FEMALE · RIGGED / ${c.clips.length} CLIPS`):tr18(`CÓ XƯƠNG / ${c.clips.length} ĐỘNG TÁC`,`RIGGED / ${c.clips.length} CLIPS`);
-   b.innerHTML=`<div class="v16-cast-thumb"><img src="${esc(base+c.id+'/thumbnail.png')}" alt="${esc(title)}" decoding="async"></div><span>${esc(badge)}</span><div class="v16-cast-card-foot"><b>${esc(title)}</b></div>`;
+   b.innerHTML=`<div class="v16-cast-thumb"><img src="${esc(base+c.id+'/thumbnail.webp')}" alt="${esc(title)}" decoding="async"></div><span>${esc(badge)}</span><div class="v16-cast-card-foot"><b>${esc(title)}</b></div>`;
    b.onclick=()=>{if(typeof S.selectCastItem16==='function'&&$('v16CastStageTitle'))S.selectCastItem16('char18',c.id);else openCharacter(c.id);};
    b.ondblclick=()=>openCharacter(c.id);
    grid.prepend(b);

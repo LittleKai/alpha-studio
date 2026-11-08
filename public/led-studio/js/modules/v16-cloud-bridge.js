@@ -90,6 +90,8 @@
     ['#loadProject', 'Mở dự án', 'Open Project'],
     ['#saveProject', 'Lưu dự án', 'Save Project'],
     ['#presentBtn', 'Trình diễn', 'Present'],
+    ['#transportPresentBtn', 'Trình diễn', 'Present'],
+    ['.quality-label-text', 'Chất lượng xem', 'Preview quality'],
     ['#recovery142OpenBtn', 'Dự phòng', 'Recovery'],
     ['#cloud16SaveBtn', 'Lưu Drive', 'Save to Drive'],
     ['#cloud16OpenBtn', 'Mở Drive', 'Open Drive'],
@@ -264,7 +266,8 @@
       ['demoBtn', 'Khôi phục sân khấu mẫu mặc định', 'Restore default demo stage'],
       ['importFolder', 'Nhập thư mục chứa model DAE / glTF kèm ảnh texture', 'Import folder containing DAE / glTF model and textures'],
       ['skpHelp', 'Hướng dẫn xuất file GLB / DAE từ SketchUp', 'Guide for exporting GLB / DAE from SketchUp'],
-      ['loopBtn', 'Bật / tắt lặp lại timeline', 'Toggle timeline loop']
+      ['loopBtn', 'Bật / tắt lặp lại timeline', 'Toggle timeline loop'],
+      ['transportPresentBtn', 'Bắt đầu Trình diễn toàn màn hình', 'Start fullscreen presentation']
     ]) {
       const btn = document.getElementById(id);
       if (btn) btn.title = t16(viTitle, enTitle);
@@ -1953,17 +1956,21 @@
     const params = new URLSearchParams(window.location.search);
     const shareToken = params.get('share');
     if (!shareToken) return false;
+    const splashSub = typeof document !== 'undefined' ? document.querySelector?.('#bootSplash small') : null;
+    if (splashSub) splashSub.textContent = t16('Đang tải bản xem duyệt 3D…', 'Loading 3D review scene…');
     return await loadSharedProject(shareToken);
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      injectCloudButtons();
-      checkClientReviewShareLink();
+    window.__bootSharePromise16 = new Promise((resolve) => {
+      document.addEventListener('DOMContentLoaded', () => {
+        injectCloudButtons();
+        Promise.resolve(checkClientReviewShareLink()).then(resolve, () => resolve(false));
+      });
     });
   } else {
     injectCloudButtons();
-    checkClientReviewShareLink();
+    window.__bootSharePromise16 = Promise.resolve(checkClientReviewShareLink()).catch(() => false);
   }
 
   STUDIO.cloud16 = {

@@ -269,7 +269,7 @@ const uiText=(vi,en)=>window.tr?window.tr(vi,en):vi;
    }
    if(!clean)drawGizmo();g.restore();return overlay;
  }
- function draw(now){requestAnimationFrame(draw);if(now-F.lastRaf<(document.hidden?110:21))return;F.lastRaf=now;renderFrame(now);}
+ function draw(now){requestAnimationFrame(draw);if(now-F.lastRaf<(document.hidden?110:21))return;const liveActive=Boolean(F.live&&(now-F.live.started)/1000<F.live.duration);if(!state.playing&&!liveActive&&!F.drag){const c=engine.camera||{},t=c.target||[0,0,0],idleSig=`${(state.time||0).toFixed(3)}|${(c.yaw||0).toFixed(4)}|${(c.pitch||0).toFixed(4)}|${(c.distance||0).toFixed(3)}|${(t[0]||0).toFixed(3)},${(t[1]||0).toFixed(3)},${(t[2]||0).toFixed(3)}|${engine.view}|${state.presenting?1:0}|${F.isOpen?1:0}|${F.dragMode?1:0}|${JSON.stringify([F.fixtures,F.selected,F.allowStrobe,F.live,seq.enabled,seq.bpm,seq.tracks,seq.clips.filter(isFX),c.fov,engine.settings?.beam,window.devicePixelRatio])}|${overlay.clientWidth}x${overlay.clientHeight}`;if(F._lastIdleSig===idleSig)return;F._lastIdleSig=idleSig;}else{F._lastIdleSig='';}F.lastRaf=now;renderFrame(now);}
  function pickAxis(e){const f=current(),p=project(f?.pos||[0,0,0]);if(!f||!p)return null;const r=overlay.getBoundingClientRect(),xy={x:e.clientX-r.left,y:e.clientY-r.top};
    for(let axis=0;axis<3;axis++){const to=[...f.pos];to[axis]+=.75;const end=project(to);if(!end)continue;if(Math.hypot(xy.x-end.x,xy.y-end.y)<22)return axis;}return null;
  }

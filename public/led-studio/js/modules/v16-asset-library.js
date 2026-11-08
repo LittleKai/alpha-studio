@@ -389,17 +389,11 @@
     orb.material.emissive=col.slice(0,3).map(v=>v*.75);
     parts.push(ring,orb);
    }else if(k==='co2_jet'){
-    parts.push(boxMesh('CO2 Heavy Steel Base',[0,.025,0],[.34,.05,.30],dark));
-    parts.push(boxMesh('CO2 Yoke Bracket L',[-.14,.16,0],[.025,.24,.08],steel));
-    parts.push(boxMesh('CO2 Yoke Bracket R',[.14,.16,0],[.025,.24,.08],steel));
-    parts.push(boxMesh('CO2 Cryo Valve Body',[0,.18,0],[.24,.22,.22],dark));
-    parts.push(rod('CO2 Brass Quick Coupler',[-.12,.12,-.08],[-.18,.12,-.14],.018,.018,gold,10));
-    parts.push(rod('CO2 Cryo Barrel',[0,.28,0],[0,.46,0],.048,.058,steel,14));
-    const plume1=rod('CO2 Cryo Plume Lower',[0,.46,0],[0,1.65,0],.06,.24,[col[0],col[1],col[2],1],14);
-    const plume2=rod('CO2 Cryo Plume Upper',[0,1.65,0],[0,2.75,0],.24,.42,[.82,.94,1,1],14);
-    plume1.material.emissive=col.slice(0,3).map(v=>v*.45);
-    plume2.material.emissive=[.35,.55,.68];
-    parts.push(plume1,plume2);
+    parts.push(boxMesh('SFX CO2 Housing',[0,.08,0],[.24,.16,.22],[.106,.122,.149,1]));
+    parts.push(rod('SFX CO2 Nozzle',[0,.16,0],[0,.28,0],.044,.038,[.259,.286,.329,1],16));
+    const ringCo2=ring8('SFX CO2 Status Ring',[0,.285,0],.038*1.15,.012,[0,.898,1,1],'y',24);
+    ringCo2.material.emissive=[0,.76,.85];
+    parts.push(ringCo2);
    }else if(k==='vip_podium'){
     parts.push(boxMesh('VIP Podium Base',[0,.04,0],[.88,.08,.62],dark));
     parts.push(boxMesh('VIP Podium Plinth Trim',[0,.09,0],[.78,.03,.54],gold));
@@ -492,34 +486,29 @@
     parts.push(ellipsoid('Foliage Cluster Left',[-.22,.76,.12],[.28,.36,.28],[.16,.72,.38,1],12,10));
     parts.push(ellipsoid('Foliage Cluster Right',[.22,.76,-.12],[.28,.36,.28],[.16,.72,.38,1],12,10));
    }else if(k==='haze_machine_pro'){
-    parts.push(boxMesh('Haze Flightcase',[0,.22,0],[.58,.44,.46],col));
-    parts.push(boxMesh('Haze Nozzle Vent',[0,.28,.24],[.26,.12,.04],steel));
+    parts.push(boxMesh('SFX Hazer Housing',[0,.22,0],[.58,.44,.48],[.106,.122,.149,1]));
+    parts.push(rod('SFX Hazer Nozzle',[0,.44,0],[0,.52,0],.098,.085,[.259,.286,.329,1],16));
+    const ringHz=ring8('SFX Hazer Status Ring',[0,.525,0],.085*1.15,.012,[.004,1,.627,1],'y',24);
+    ringHz.material.emissive=[.003,.85,.53];
+    parts.push(ringHz);
    }else if(k==='cold_spark_fountain'){
-    parts.push(boxMesh('Sparkular BT01 Housing',[0,.135,0],[.25,.25,.25],dark));
-    parts.push(boxMesh('Sparkular Chamfer Top',[0,.27,0],[.23,.025,.23],steel));
-    parts.push(rod('Sparkular Titanium Nozzle',[0,.28,0],[0,.315,0],.038,.048,gold,12));
-    const lcd=boxMesh('Sparkular DMX LCD',[0,.14,.128],[.09,.045,.008],[.15,.78,.98,1]);
-    lcd.material.emissive=[.08,.45,.65];
-    const sp1=rod('Cold Spark Plume',[0,.315,0],[0,2.45,0],.035,.32,col,14);
-    sp1.material.emissive=[.95,.78,.25];
-    parts.push(lcd,sp1);
+    parts.push(boxMesh('SFX Sparkular Housing',[0,.08,0],[.24,.16,.22],[.106,.122,.149,1]));
+    parts.push(rod('SFX Sparkular Nozzle',[0,.16,0],[0,.28,0],.044,.038,[.259,.286,.329,1],16));
+    const ringSp=ring8('SFX Sparkular Status Ring',[0,.285,0],.038*1.15,.012,[1,.80,.20,1],'y',24);
+    ringSp.material.emissive=[.85,.68,.17];
+    parts.push(ringSp);
    }else if(k==='flame_jet'){
-    parts.push(boxMesh('G-Flame Housing',[0,.17,0],[.38,.32,.34],dark));
-    parts.push(boxMesh('G-Flame Hazard Stripe',[0,.06,.172],[.34,.04,.008],[.96,.75,.12,1]));
-    parts.push(boxMesh('G-Flame Brass Guard Cage',[0,.36,0],[.22,.08,.22],gold));
-    parts.push(rod('G-Flame Burner Nozzle',[0,.33,0],[0,.46,0],.045,.065,steel,12));
-    const fl1=rod('Flame Core Lower',[0,.46,0],[0,2.1,0],.06,.34,[1,.42,.12,1],14);
-    const fl2=rod('Flame Tip Upper',[0,2.1,0],[0,3.8,0],.34,.08,[1,.78,.22,1],14);
-    fl1.material.emissive=[.98,.38,.08];
-    fl2.material.emissive=[.98,.68,.15];
-    parts.push(fl1,fl2);
+    parts.push(boxMesh('SFX Flame Housing',[0,.08,0],[.24,.16,.22],[.106,.122,.149,1]));
+    parts.push(rod('SFX Flame Nozzle',[0,.16,0],[0,.28,0],.044,.038,[.259,.286,.329,1],16));
+    const ringFl=ring8('SFX Flame Status Ring',[0,.285,0],.038*1.15,.012,[1,.333,.067,1],'y',24);
+    ringFl.material.emissive=[.85,.28,.06];
+    parts.push(ringFl);
    }else if(k==='confetti_cannon'){
-    parts.push(boxMesh('StadiumShot Roadcase Base',[0,.18,0],[.56,.32,.52],dark));
-    parts.push(rod('Accumulation Pressure Tank',[-.18,.38,-.06],[.18,.38,-.06],.13,.13,steel,14));
-    parts.push(rod('Confetti Cannon Barrel',[0,.42,.04],[0,1.12,.30],.085,.105,col,14));
-    const burst=ellipsoid('Confetti Burst Cloud',[0,2.15,.52],[.55,.85,.55],[.95,.55,.98,1],12,10);
-    burst.material.emissive=[.45,.22,.52];
-    parts.push(burst);
+    parts.push(boxMesh('SFX Aerial Mortar Housing',[0,.11,0],[.34,.22,.34],[.106,.122,.149,1]));
+    parts.push(rod('SFX Aerial Mortar Barrel',[0,.22,0],[0,.68,0],.075,.065,[.259,.286,.329,1],16));
+    const ringAe=ring8('SFX Aerial Status Ring',[0,.685,0],.065*1.15,.012,[1,.60,0,1],'y',24);
+    ringAe.material.emissive=[.85,.51,0];
+    parts.push(ringAe);
    }else if(k==='wedge_monitor'){
     parts.push(boxMesh('Wedge Monitor Enclosure',[0,.18,0],[.58,.32,.44],dark));
     parts.push(boxMesh('Wedge Slanted Baffle',[0,.24,.04],[.54,.22,.36],col));
@@ -622,11 +611,12 @@
    return A.items.find(x=>x.id===A.selected)||A.items[0]||null;
   }
 
-  function activateAddedAssetMove16(meshes,label){
+  function activateAddedAssetMove16(meshes,label,opts={}){
    A.measureMode=false;A.placeMode=false;
    if(state.quad){state.quad=false;state.quadPoints=[];$('quadHint')?.classList.add('hidden');}
    const isSfx=Boolean(meshes?.[0]?._sfxKind16);
    state.step=isSfx?'lighting':'stage';engine.view='stage';
+   const keepRp=Boolean(opts.keepInspectorPanel||S.lumi18?.state?.rpConfig18||S.lumi18?.isSuppressingInspectorRebuild18?.());
    if(meshes?.length){
     const first=meshes[0];
     if(isSfx){
@@ -641,17 +631,18 @@
     }else{
      S.selectObject8?.('mesh',first.sourceKey||first.id);
     }
+    if(keepRp&&S.director?.panel==='objects')S.director.panel=null;
    }
-   renderUI?.();
+   if(!S.lumi18?.isSuppressingInspectorRebuild18?.())renderUI?.();
    syncBlenderState16();
    S.scrollObjectListToSelection8?.();
   }
 
-  function addCatalogItem(kind,pos=null){
+  function addCatalogItem(kind,pos=null,opts={}){
    const spec=CATALOG[kind];
    if(!spec){toast(tr('Loại asset không hợp lệ.',"Invalid asset type."));return null;}
    if(A.items.length>=64){toast(tr('Giới hạn tối đa 64 Stage Asset trong một dự án.',"A project supports up to 64 stage assets."));return null;}
-   checkpoint();
+   if(!opts.noCheckpoint)checkpoint();
    const count=A.items.filter(x=>x.kind===kind).length+1;
    const b=engine.stageBounds||{min:[-9,0,-4],max:[9,7,4]};
    const defaultPos=pos||[(count%2?1:-1)*Math.min(4.5,1.2*count),Math.max(0,b.min?.[1]||0),1.2];
@@ -668,9 +659,9 @@
    A.selected=item.id;
    syncItemMeshes(item);
    engine.view='stage';
-   if(typeof activateAddedAssetMove16==='function')activateAddedAssetMove16(A.meshMap.get(item.id),itemDisplayName16(item));
+   if(typeof activateAddedAssetMove16==='function')activateAddedAssetMove16(A.meshMap.get(item.id),itemDisplayName16(item),opts);
    paint();
-   toast(tr('Đã thêm ',"Added ")+itemDisplayName16(item)+tr(' vào sân khấu 3D.'," to the 3D stage."));
+   if(!opts.silent)toast(tr('Đã thêm ',"Added ")+itemDisplayName16(item)+tr(' vào sân khấu 3D.'," to the 3D stage."));
    return item;
   }
 
@@ -2059,7 +2050,7 @@
    const spec=CATALOG[kind];
    if(!spec)return '';
    const mappedGlb=CATALOG_GLB_UPGRADE_MAP16[kind];
-   if(mappedGlb)return `./assets/pilot/${mappedGlb}.webp`;
+   if(mappedGlb && !SFX_CATALOG[kind])return `./assets/pilot/${mappedGlb}.webp`;
    return queueThumb16('asset:'+tr('vi','en')+':'+kind,spec.displayName,spec.label,spec.color,()=>{
     const meshes=buildAssetMeshes({id:'prev_'+kind,kind,name:spec.name,pos:[0,0,0],yaw:0,scale:1,color:spec.color});
     const cvs=document.createElement('canvas');
@@ -2801,7 +2792,7 @@
 
   function castPreviewSrc16(){
    const sel=castSelection16();
-   if(sel.kind==='char18')return (S.characters18?.base||'assets/characters/')+sel.id+'/thumbnail.png';
+   if(sel.kind==='char18')return (S.characters18?.base||'assets/characters/')+sel.id+'/thumbnail.webp';
    if(sel.kind==='act')return getActPreviewURL16(sel.id);
    if(sel.kind==='qex')return getQuickExamplePreviewURL16(sel.id);
    return getPerformerPreviewURL16(sel.id);
@@ -3770,7 +3761,7 @@
    if(!ic)return;
    // Guard #3: never mutate DOM classes or attributes while user is dragging a range input
    if(document.activeElement?.type==='range')return;
-   const blocks=[...ic.querySelectorAll('.inspector-block, .spatial-workflow, .binding-panel')];
+   const blocks=[...ic.querySelectorAll('.inspector-block:not(#lmpRpConfigCard18):not(#lmpRpFxEngineCard18), .spatial-workflow, .binding-panel')];
    blocks.forEach((blk,idx)=>{
     const hdr=blk.querySelector(':scope > .block-title, :scope > h3, :scope > .section-kicker, :scope > strong');
     if(!hdr)return;
@@ -4175,7 +4166,7 @@
      });
     }
     rp.addEventListener('click',e=>{
-     if(e.target.closest('button,input,select,a,label'))return;
+     if(e.target.closest('button,input,select,a,label,#lmpRpConfigCard18,#lmpRpFxEngineCard18'))return;
      const hdr=e.target.closest('.v16-acc-header, .inspector-block > .block-title, .inspector-block > h3, .v16-section > h4, #fx141Panel section > h4');
      if(!hdr)return;
      const blk=hdr.closest('.inspector-block, .spatial-workflow, .binding-panel, .v16-section, section');

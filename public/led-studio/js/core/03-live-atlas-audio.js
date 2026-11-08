@@ -1,6 +1,55 @@
 /* V0.5 renderer maintenance: no geometry/UV changes to user models. */
 const perfState={fps:0,p95:0,frameTimes:[],lastReport:0,lastAdjust:0,lowWindows:0,highWindows:0,
+  stutterWindows:0,fpsGuideShownSession:false,bootAt:0,
   uploadedFrames:0,draws:0,cpuMs:0,qualityChanges:0,target:55,lastOverlay:0,lastLabels:0,lastNow:0};
+const FPS_GUIDE_STORAGE_KEY='ledstudio-hide-fps-guide';
+function isFpsGuidePermanentlyHidden(){try{return typeof localStorage!=='undefined'&&localStorage.getItem(FPS_GUIDE_STORAGE_KEY)==='1';}catch(e){return false;}}
+function setFpsGuidePermanentlyHidden(hide){try{if(typeof localStorage==='undefined')return;if(hide)localStorage.setItem(FPS_GUIDE_STORAGE_KEY,'1');else localStorage.removeItem(FPS_GUIDE_STORAGE_KEY);}catch(e){}}
+function applyPreviewQualityChoice(val){
+ if(state.recording)return false;
+ const pq=$('previewQuality');if(pq)pq.value=String(val);
+ engine.autoQuality=val==='auto';
+ if(!engine.autoQuality)engine.previewScale=+val||1;
+ else engine.previewScale=Math.min(1,engine.previewScale||.65);
+ perfState.lowWindows=0;perfState.highWindows=0;perfState.stutterWindows=0;
+ document.querySelector?.('.quality-label')?.classList?.remove('is-fps-alert');
+ updateStableControls();
+ return true;
+}
+function maybeShowFpsQualityGuide(fps=perfState.fps,p95=perfState.p95){
+ if(perfState.fpsGuideShownSession||isFpsGuidePermanentlyHidden())return false;
+ if(state.recording||state.offlineExport||state.clientReviewMode||$('modal')?.open)return false;
+ if(!engine.autoQuality&&(engine.previewScale||1)<=.45)return false;
+ perfState.fpsGuideShownSession=true;
+ const qLabel=document.querySelector?.('.quality-label');
+ qLabel?.classList?.add('is-fps-alert');
+ const curVal=engine.autoQuality?'auto':String(engine.previewScale||1);
+ const curNameMap={'1':window.tr?.('Chuẩn (100%)','Standard (100%)')??'Chuẩn (100%)','1.25':window.tr?.('Nét (125%)','High (125%)')??'Nét (125%)','auto':'Auto / 55 FPS','0.65':window.tr?.('Nhẹ (65%)','Light (65%)')??'Nhẹ (65%)','0.45':window.tr?.('Siêu nhẹ (45%)','Ultra Light (45%)')??'Siêu nhẹ (45%)'};
+ const curName=curNameMap[curVal]||curNameMap['1'];
+ const fpsText=Math.max(1,Math.round(fps||0));
+ const p95Text=Math.max(1,Math.round(p95||0));
+ const saveCheckPref=()=>{const chk=$('fpsGuideHideForever');if(chk?.checked)setFpsGuidePermanentlyHidden(true);};
+ dialog(
+  window.tr?.('Phát hiện tụt FPS — Gợi ý tối ưu Chất lượng xem','Low FPS Detected — Preview Quality Guide')??'Phát hiện tụt FPS — Gợi ý tối ưu Chất lượng xem',
+  `<div class="info-box warn" style="margin-bottom:12px"><b>${window.tr?.('Khung nhìn 3D đang có dấu hiệu giật / tụt khung hình','3D viewport is experiencing frame drops / stutter')}</b> (${fpsText} FPS · P95 ${p95Text} ms · ${window.tr?.('Mức hiện tại:','Current mode:')} <b>${curName}</b>).</div>`+
+  `<p>${window.tr?.('Mặc định phần mềm ưu tiên hiển thị <b>Chuẩn (100%)</b> để hình ảnh sắc nét nhất. Khi sân khấu bật đồng thời nhiều đèn Beam, Laser, Pháo SFX hoặc video độ phân giải cao, GPU có thể bị quá tải.','By default, the studio uses <b>Standard (100%)</b> for maximum sharpness. When many Volumetric Beams, Lasers, Pyro SFX, or high-resolution videos run together, GPU load may spike.')}</p>`+
+  `<p>${window.tr?.('<b>Cách chỉnh lại:</b> Nhìn xuống <b>thanh Transport (góc dưới bên phải)</b>, tại mục <b>Chất lượng xem</b> (cạnh nút <b>Trình diễn</b>), bạn nên đổi sang:','<b>How to adjust:</b> Look at the <b>bottom-right Transport bar</b>, locate <b>Preview quality</b> (next to <b>Present</b>), and switch to:')}</p>`+
+  `<ul style="margin:8px 0 12px 18px;line-height:1.6;font-size:var(--fs-sm);color:var(--text-secondary)">`+
+  `<li><b>Auto / 55 FPS (${window.tr?.('Khuyên dùng','Recommended')}):</b> ${window.tr?.('Tự động hạ nhẹ độ phân giải khi cảnh nặng để duy trì ~55 FPS và tự nâng lại khi cảnh nhẹ.','Automatically adapts preview resolution during heavy scenes to maintain ~55 FPS.')}</li>`+
+  `<li><b>${window.tr?.('Nhẹ (65%) / Siêu nhẹ (45%)','Light (65%) / Ultra Light (45%)')}:</b> ${window.tr?.('Giảm tải GPU cố định suốt phiên làm việc (không làm giảm chất lượng khi xuất ảnh/video).','Reduces GPU load consistently while editing (does not affect exported image/video quality).')}</li>`+
+  `</ul>`+
+  `<label class="check-row" style="margin-top:12px;padding:8px 10px;border-radius:6px;background:var(--bg-field);border:1px solid var(--border-primary);display:flex;align-items:center;gap:8px;cursor:pointer;font-size:var(--fs-sm);color:var(--text-primary)">`+
+  `<input type="checkbox" id="fpsGuideHideForever"> `+
+  `<span>${window.tr?.('Không hiện lại thông báo này vĩnh viễn (nếu không chọn, sẽ không hiện lại cho đến khi vào lại trang)','Do not show this message again permanently (if unchecked, hidden until page reload)')}</span>`+
+  `</label>`,
+  [
+   {label:window.tr?.('Đã hiểu','Got it')??'Đã hiểu',primary:true,action:()=>{saveCheckPref();qLabel?.classList?.remove('is-fps-alert');}}
+  ]
+ );
+ const chk=$('fpsGuideHideForever');
+ if(chk)chk.onchange=e=>setFpsGuidePermanentlyHidden(!!e.target.checked);
+ return true;
+}
 const PERF_BASE={draw:StageEngine.prototype.draw,render:StageEngine.prototype.render,
  uniform:StageEngine.prototype.uniform,releaseMesh:StageEngine.prototype.releaseMesh};
 const sharedUniformNames=new Set(['uVP','uEye','uTime','uAmbient','uExposure','uHaze','uAccent','uMaster','uLightCount','uLightPos[0]','uLightDir[0]','uLightColor[0]','uLightCone[0]','uBeamMatrix']);
@@ -118,16 +167,26 @@ StageEngine.prototype.render=function(time=0,options={}){
  const canvas=PERF_BASE.render.call(this,time,options);perfState.cpuMs=performance.now()-t;return canvas;
 };
 function reportPerformance(now,dt){
+ const isolatedStall=dt>.25&&!(perfState.lastFrameDelta>.25);perfState.lastFrameDelta=dt;
+ if(isolatedStall){perfState.frameTimes.length=0;perfState.stutterWindows=0;perfState.lowWindows=0;perfState.highWindows=0;return;}
  if(dt>0&&dt<15){perfState.frameTimes.push(dt*1000);if(perfState.frameTimes.length>180)perfState.frameTimes.shift();}
  if(now-perfState.lastReport<1000)return;
  const times=[];let sum=0;for(let i=perfState.frameTimes.length-1;i>=0;i--){times.unshift(perfState.frameTimes[i]);sum+=perfState.frameTimes[i];if(sum>=1500)break;}const sorted=[...times].sort((a,b)=>a-b);
  perfState.fps=sum?times.length*1000/sum:0;perfState.p95=sorted[Math.floor(sorted.length*.95)]||0;perfState.lastReport=now;
+ if(!perfState.bootAt)perfState.bootAt=now;
  if(engine.autoQuality&&now-perfState.lastAdjust>3000&&times.length>=5&&!state.recording){
   const fps=perfState.fps;let scale=engine.previewScale||1;
   if(fps<50){perfState.lowWindows++;perfState.highWindows=0;}else if(fps>58){perfState.highWindows++;perfState.lowWindows=0;}else{perfState.lowWindows=0;perfState.highWindows=0;}
   if(perfState.lowWindows>=1&&scale>.45){scale=Math.max(.45,Math.round((scale-.1)*100)/100);perfState.lowWindows=0;}
   else if(perfState.highWindows>=6&&scale<1){scale=Math.min(1,Math.round((scale+.05)*100)/100);perfState.highWindows=0;}
   if(scale!==engine.previewScale){engine.previewScale=scale;perfState.qualityChanges++;perfState.lastAdjust=now;}
+ }else if(!engine.autoQuality&&(engine.previewScale||1)>.45&&now-perfState.bootAt>4000&&times.length>=8&&!state.recording&&!state.offlineExport&&($('busy')?$('busy').classList.contains('hidden'):true)){
+  if(perfState.fps>0&&(perfState.fps<28||(perfState.fps<36&&perfState.p95>42))){
+   perfState.stutterWindows=(perfState.stutterWindows||0)+1;
+   if(perfState.stutterWindows>=2){perfState.stutterWindows=0;maybeShowFpsQualityGuide(perfState.fps,perfState.p95);}
+  }else if(perfState.fps>=40&&perfState.p95<=34){
+   perfState.stutterWindows=0;
+  }
  }
  setText('fps',Math.round(perfState.fps)+' FPS / '+Math.round((engine.previewScale||1)*100)+'%');
  setText('liveFPS',Math.round(perfState.fps));
@@ -1122,19 +1181,24 @@ assignMaster=function(a,options){engine.activeAtlasId=null;live.transition=null;
 const proMapData=mappingData;
 mappingData=function(){const d=proMapData();d.liveVersion='0.5.0';d.outputAtlases=engine.outputAtlases||[];d.activeAtlasId=engine.activeAtlasId||null;d.screens.forEach((s,i)=>{s.cluster=engine.surfaces[i].cluster||'Main';s.atlasId=engine.surfaces[i].atlasId||null;});return d;};
 /* Eco idle: when nothing on stage can change (paused, no input, camera and time still),
-   redraw the 3D view ~10x/s instead of every frame. Any input wakes it instantly.
+   pause WebGL2 and 2D overlay redraws completely. Any input or state change wakes it instantly.
    Modules with wall-clock previews register a predicate via STUDIO.keepRendering(fn). */
 const idleRender={lastInput:0,held:false,lastDraw:0,lastKey:'',wakers:[],eco:false};
 function keepRendering(fn){if(typeof fn==='function')idleRender.wakers.push(fn);}
-{const wake=e=>{idleRender.lastInput=performance.now();if(e.type==='pointerdown')idleRender.held=true;else if(e.type==='pointerup'||e.type==='pointercancel')idleRender.held=false;};
+{const wake=e=>{
+  if(e.type==='pointerdown')idleRender.held=true;
+  else if(e.type==='pointerup'||e.type==='pointercancel')idleRender.held=false;
+  if(e.type==='pointermove'&&!idleRender.held&&!state.quad&&!state.rebindId&&!state.pendingLight&&!state.pickTask&&!(typeof choreo11!=='undefined'&&(choreo11.place||choreo11.drag))&&!(typeof director!=='undefined'&&director.drag))return;
+  idleRender.lastInput=performance.now();
+ };
  for(const type of ['pointerdown','pointermove','pointerup','pointercancel','wheel','keydown','input','touchstart'])window.addEventListener(type,wake,{capture:true,passive:true});
  window.addEventListener('blur',()=>{idleRender.held=false;});}
 function sceneIdle(now){
- const c=engine.camera,key=state.time+'|'+c.yaw+'|'+c.pitch+'|'+c.distance+'|'+c.target+'|'+c.fov+'|'+engine.view;
+ const c=engine.camera,key=state.time+'|'+c.yaw+'|'+c.pitch+'|'+c.distance+'|'+c.target+'|'+c.fov+'|'+engine.view+'|'+engine.stage.length+'|'+engine.surfaces.length+'|'+engine.lights.length+'|'+(engine.selected||'')+'|'+(state.selectedLight||'')+'|'+(state.selectedMesh||'')+'|'+engine.showGuides+'|'+engine.globalTest;
  const changed=key!==idleRender.lastKey;idleRender.lastKey=key;
  if(changed||state.playing||state.recording||state.atlasRecording)return false;
  if($('modal')?.open)return true;
- if(live.open||idleRender.held||now-idleRender.lastInput<2500)return false;
+ if(live.open||idleRender.held||now-idleRender.lastInput<350)return false;
  for(const fn of idleRender.wakers){try{if(fn())return false;}catch(e){}}
  return true;
 }
@@ -1146,23 +1210,30 @@ loop=function(now){
   if(state.playing&&!stableUI.scrubbing){advancePlayback(dt);updateRange10();if(state.time>=state.duration){if(state.loop){state.time%=state.duration;syncVideos(true);}else{state.time=state.duration;setPlaying(false);}}}
   advanceLive(dt);
   if(state.orbit&&state.playing&&engine.view==='stage'&&!engine.cameraLocked)engine.camera.yaw+=Math.min(.1,dt)*.07;
-  if(now-stableUI.lastSync>100)syncVideos();
-  if(now-live.lastAudioSync>65){sampleAudioMeter();routeAudio();live.lastAudioSync=now;}
   if(state.atlasRecording&&now-state.atlasRecording.lastFrame>=1000/state.atlasRecording.fps){state.atlasRecording.renderer.render(state.time,{restore:false});state.atlasRecording.lastFrame=now;}
   const idle=sceneIdle(now);
-  if(!idle||now-idleRender.lastDraw>=100){engine.render(state.time);idleRender.lastDraw=now;}
-  if(now-perfState.lastOverlay>33){renderOverlays();perfState.lastOverlay=now;}
-  if(now-stableUI.lastTransport>70){updateStableControls();updateCuePads();stableUI.lastTransport=now;}
-  if(!idle)reportPerformance(now,realDt);else if(!idleRender.eco)setText('fps','ECO / '+Math.round((engine.previewScale||1)*100)+'%');
+  if(!idle){
+   if(now-stableUI.lastSync>100)syncVideos();
+   if(now-live.lastAudioSync>65){sampleAudioMeter();routeAudio();live.lastAudioSync=now;}
+   engine.render(state.time);idleRender.lastDraw=now;
+   if(now-perfState.lastOverlay>33){renderOverlays();perfState.lastOverlay=now;}
+   if(now-stableUI.lastTransport>70){updateStableControls();updateCuePads();stableUI.lastTransport=now;}
+   reportPerformance(now,realDt);
+  }else if(!idleRender.eco){
+   syncVideos();
+   engine.render(state.time);renderOverlays();updateStableControls();updateCuePads();
+   idleRender.lastDraw=now;perfState.lastOverlay=now;stableUI.lastTransport=now;
+   setText('fps','ECO / '+Math.round((engine.previewScale||1)*100)+'%');
+  }
   idleRender.eco=idle;
   if(now-perfState.lastLabels>1000){setText('engineState',state.recording?'REC / WebM'+(state.recordAudio?' + AUDIO':''):engine.surfaces.length+' LED / '+engine.lights.filter(l=>l.enabled).length+' lights');perfState.lastLabels=now;}
  }catch(e){if(!stableUI.loopErrors.includes(e.message)){stableUI.loopErrors.push(e.message);console.error(e);toast('Preview: '+e.message,8000);}state.playing=false;syncMusic();updateStableControls();}
  requestAnimationFrame(loop);
 };
 function initLiveEvents(){
- engine.autoQuality=true;engine.previewScale=1;engine.activeAtlasId=null;engine.outputAtlases=[];
+ engine.autoQuality=false;engine.previewScale=1;engine.activeAtlasId=null;engine.outputAtlases=[];
  $('ledManagerBtn').onclick=openLEDManager;$('atlasBtn').onclick=openPixelStudio;$('vjToggle').onclick=()=>toggleLive();$('showVJ').onclick=()=>toggleLive();$('showAudio').onclick=()=>enableAudio(!live.audioEnabled);
- $('previewQuality').onchange=e=>{if(state.recording){toast((window.tr?.('D\u1eebng ghi tr\u01b0\u1edbc khi \u0111\u1ed5i \u0111\u1ed9 ph\u00e2n gi\u1ea3i.',"Stop recording before changing resolution.") ?? 'D\u1eebng ghi tr\u01b0\u1edbc khi \u0111\u1ed5i \u0111\u1ed9 ph\u00e2n gi\u1ea3i.'));updateStableControls();return;}engine.autoQuality=e.target.value==='auto';if(!engine.autoQuality)engine.previewScale=+e.target.value;else engine.previewScale=Math.min(1,engine.previewScale);perfState.lowWindows=0;perfState.highWindows=0;updateStableControls();};
+ $('previewQuality').onchange=e=>{if(state.recording){toast((window.tr?.('D\u1eebng ghi tr\u01b0\u1edbc khi \u0111\u1ed5i \u0111\u1ed9 ph\u00e2n gi\u1ea3i.',"Stop recording before changing resolution.") ?? 'D\u1eebng ghi tr\u01b0\u1edbc khi \u0111\u1ed5i \u0111\u1ed9 ph\u00e2n gi\u1ea3i.'));updateStableControls();return;}applyPreviewQualityChoice(e.target.value);};
  $('musicInput').onchange=async e=>{try{if(e.target.files[0]){await addMusicFile(e.target.files[0]);if($('modal').open&&$('audioMode'))openAudioPanel();}}catch(err){toast(err.message,8000);}e.target.value='';};
  $('atlasMediaInput').onchange=async e=>{if(!e.target.files[0]||!live.pendingAtlas)return;busy(true,(window.tr?.('\u0110ang g\u00e1n clip theo c\u1ee5m...',"Assigning clip to group...") ?? '\u0110ang g\u00e1n clip theo c\u1ee5m...'));try{await assignAtlasClip(live.pendingAtlas,e.target.files[0]);$('modal').close();}catch(err){toast(err.message,8500);}finally{busy(false);e.target.value='';}};
  const tools=document.querySelector('.left-tools');const b=document.createElement('button');b.className='btn small';b.id='batchMaps';b.textContent=(window.tr?.('Ch\u1ecdn / x\u00f3a nhi\u1ec1u',"Select / delete multiple") ?? 'Ch\u1ecdn / x\u00f3a nhi\u1ec1u');tools.appendChild(b);b.onclick=openLEDManager;
@@ -1184,7 +1255,7 @@ function initLiveEvents(){
  renderLiveDock();
 }
 const liveAPI={live,toggleLive,keepRendering,launchCue,captureCue,advanceLive,panicLive,deleteMapIds,openLEDManager,openPixelStudio,planAtlas,validateAtlas,nativeEstimate,assignAtlasClip,exportAtlasPNG,exportAtlasJSON,planSurfaceWiring,exportResolumeArenaXml,downloadResolumeXml,
- openPerformance,performanceDiagnostics,enableAudio,openAudioPanel,addMusicFile,removeMusic,syncVideos,setPlaying,recordPreview,beginLiveRecording,
+ openPerformance,performanceDiagnostics,maybeShowFpsQualityGuide,applyPreviewQualityChoice,enableAudio,openAudioPanel,addMusicFile,removeMusic,syncVideos,setPlaying,recordPreview,beginLiveRecording,
  renderUI,loadProject,importModel,demo,assignMaster,mappingData,togglePresentation,activateSpatialLayout,snapshot,restore,
  createAtlasRenderer,exportAtlasVisualPNG,beginAtlasRecording,getPerformance:performanceDiagnostics,activeVideos,packLiveExtras};
 
