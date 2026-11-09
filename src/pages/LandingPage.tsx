@@ -95,9 +95,10 @@ const IconPhone: React.FC<IconProps> = ({ className = 'h-3.5 w-3.5' }) => (
     </svg>
 );
 
-const IconZalo: React.FC<IconProps> = ({ className = 'h-3.5 w-3.5' }) => (
+const IconCopy: React.FC<IconProps> = ({ className = 'h-3.5 w-3.5' }) => (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+        <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
     </svg>
 );
 
@@ -480,6 +481,43 @@ const LandingPage: React.FC = () => {
     const goToStudio = useCallback(() => navigate('/studio'), [navigate]);
     const goToGpuServer = useCallback(() => navigateToProtectedPage('/server'), [navigateToProtectedPage]);
 
+    const [copiedPhone, setCopiedPhone] = useState<string | null>(null);
+    const copyTimeoutRef = useRef<number | null>(null);
+
+    useEffect(() => {
+        return () => {
+            if (copyTimeoutRef.current !== null) {
+                window.clearTimeout(copyTimeoutRef.current);
+            }
+        };
+    }, []);
+
+    const handleCopyPhone = useCallback(async (phone: string) => {
+        try {
+            if (navigator.clipboard?.writeText) {
+                await navigator.clipboard.writeText(phone);
+            } else {
+                const textarea = document.createElement('textarea');
+                textarea.value = phone;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            }
+            setCopiedPhone(phone);
+            if (copyTimeoutRef.current !== null) {
+                window.clearTimeout(copyTimeoutRef.current);
+            }
+            copyTimeoutRef.current = window.setTimeout(() => {
+                setCopiedPhone(null);
+            }, 2000);
+        } catch (err) {
+            console.error('Failed to copy phone number:', err);
+        }
+    }, []);
+
     const desc = language === 'vi'
         ? 'Thiết kế 3D sự kiện, render SketchUp, nội thất và dựng kiến trúc từ CAD. Xem dự án thực tế của Alpha Studio và gửi brief thiết kế.'
         : 'Event 3D design, SketchUp rendering, furniture design and CAD architectural modelling. Explore Alpha Studio projects and send your design brief.';
@@ -518,23 +556,29 @@ const LandingPage: React.FC = () => {
             links: [
                 { label: t('landing.nav.academy'), to: '/courses' },
                 { label: t('landing.nav.enterStudio'), to: '/studio' },
+                { label: t('studio.hub.cards.generate.title'), to: '/studio/generate' },
+                { label: t('studio.hub.cards.edit.title'), to: '/studio/edit' },
                 { label: t('landing.nav.aiCloud'), to: '/server' },
+                { label: t('landing.footer.linkConnect'), to: '/workflow' },
             ],
         },
         {
             title: t('landing.footer.toolsTitle'),
             links: [
+                { label: t('studio.hub.cards.eventLibrary.title'), to: '/studio/event-library' },
+                { label: t('studio.hub.cards.ledStudio.title'), to: '/studio/led-studio' },
                 { label: t('landing.toolsShowcase.crm.title'), to: '/studio/crm' },
                 { label: t('landing.toolsShowcase.vocab.title'), to: '/studio/vocab' },
-                { label: t('landing.toolsShowcase.skills.title'), to: '/studio/ai-skills' },
+                { label: t('landing.toolsShowcase.vietyaku.title'), to: '/studio/vietyaku' },
             ],
         },
         {
             title: t('landing.footer.companyTitle'),
             links: [
+                { label: t('landing.services.heroTitle'), to: '/services' },
                 { label: t('landing.nav.about'), to: '/about' },
-                { label: t('landing.nav.services'), to: '/services' },
                 { label: t('landing.nav.news'), to: '/news' },
+                { label: t('landing.footer.linkWallet'), to: '/wallet' },
             ],
         },
     ];
@@ -934,116 +978,128 @@ const LandingPage: React.FC = () => {
             {/* Footer */}
             <footer id="contact" className="pt-16 pb-10 border-t border-[var(--border-primary)] bg-[var(--bg-primary)] mt-auto">
                 <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 items-start">
-                        <div className="lg:col-span-3 space-y-4 lg:pr-4">
-                            <div className="flex items-center gap-2">
-                                <img src="/alpha-logo-animated.svg" alt="Alpha Studio" className="h-8 w-8 rounded-lg object-contain" />
-                                <span className="text-sm font-bold text-[var(--text-primary)] tracking-widest">ALPHA STUDIO</span>
+                    {/* Tier 1: Brand Masthead & Direct Contact Ledger */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-[var(--border-primary)] items-start">
+                        <div className="lg:col-span-7 flex flex-col justify-between space-y-8">
+                            <div className="space-y-4">
+                                <Link
+                                    to="/"
+                                    className="inline-flex items-center gap-3 group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] rounded-lg"
+                                >
+                                    <img src="/alpha-logo-animated.svg" alt="Alpha Studio" width="36" height="36" className="h-9 w-9 rounded-xl object-contain" />
+                                    <div className="flex flex-col">
+                                        <span className="text-lg font-extrabold tracking-tight text-[var(--text-primary)] leading-none">
+                                            Alpha Studio
+                                        </span>
+                                        <span className="mt-1 text-xs font-medium text-[var(--text-tertiary)]">
+                                            giaiphapsangtao.com
+                                        </span>
+                                    </div>
+                                </Link>
+                                <p className="text-lg sm:text-xl font-bold tracking-tight text-[var(--text-primary)] leading-snug max-w-[48ch] text-balance">
+                                    {t('landing.footer.tagline')}
+                                </p>
                             </div>
-                            <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-[38ch]">
-                                {t('landing.footer.tagline')}
-                            </p>
-                        </div>
 
-                        <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-8">
-                            {footerColumns.map((column) => (
-                                <nav key={column.title} aria-label={column.title} className="space-y-4">
-                                    <h3 className="text-[10px] font-black uppercase tracking-[0.22em] text-[var(--text-tertiary)]">{column.title}</h3>
-                                    <ul className="space-y-2.5">
-                                        {column.links.map((link) => (
-                                            <li key={link.to}>
-                                                <Link
-                                                    to={link.to}
-                                                    className="text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors"
-                                                >
-                                                    {link.label}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </nav>
-                            ))}
+                            <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-[var(--border-primary)]">
+                                <div>
+                                    <dt className="text-sm font-bold text-[var(--text-primary)]">
+                                        {t('landing.footer.scope3dTitle')}
+                                    </dt>
+                                    <dd className="mt-1.5 text-sm text-[var(--text-secondary)] leading-relaxed">
+                                        {t('landing.footer.scope3dDesc')}
+                                    </dd>
+                                </div>
+                                <div>
+                                    <dt className="text-sm font-bold text-[var(--text-primary)]">
+                                        {t('landing.footer.scopeTechTitle')}
+                                    </dt>
+                                    <dd className="mt-1.5 text-sm text-[var(--text-secondary)] leading-relaxed">
+                                        {t('landing.footer.scopeTechDesc')}
+                                    </dd>
+                                </div>
+                            </dl>
                         </div>
 
                         <address
                             aria-label={t('landing.footer.contactTitle')}
-                            className="md:col-span-2 lg:col-span-4 not-italic rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-card)] p-5 sm:p-6 space-y-4"
+                            className="lg:col-span-5 not-italic rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-card)] p-6 sm:p-7 space-y-5"
                         >
-                            <div className="flex items-center justify-between gap-3">
-                                <div>
-                                    <h3 className="text-xs font-black uppercase tracking-[0.18em] text-[var(--text-primary)]">
-                                        {t('landing.footer.contactTitle')}
-                                    </h3>
-                                    <p className="mt-1 text-xs text-[var(--text-secondary)]">
-                                        {t('landing.footer.contactSubtitle')}
-                                    </p>
-                                </div>
-                                <span className="relative flex h-2.5 w-2.5 shrink-0" aria-hidden="true">
-                                    <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent-primary)] opacity-70 animate-ping" />
-                                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--accent-primary)]" />
-                                </span>
+                            <div>
+                                <h2 className="text-lg font-extrabold tracking-tight text-[var(--text-primary)]">
+                                    {t('landing.footer.contactTitle')}
+                                </h2>
+                                <p className="mt-1 text-sm text-[var(--text-secondary)] leading-relaxed">
+                                    {t('landing.footer.contactSubtitle')}
+                                </p>
                             </div>
 
-                            <ul className="divide-y divide-[var(--border-primary)] border-y border-[var(--border-primary)]">
+                            <ol className="divide-y divide-[var(--border-primary)] border-y border-[var(--border-primary)]">
                                 {[
                                     {
                                         name: t('landing.footer.contactNamePrimary'),
+                                        role: t('landing.footer.contactRolePrimary'),
                                         phone: '0901555697',
-                                        telHref: 'tel:+84901555697',
-                                        zaloHref: 'https://zalo.me/0901555697',
                                     },
                                     {
                                         name: t('landing.footer.contactName'),
+                                        role: t('landing.footer.contactRoleSecondary'),
                                         phone: '0933805525',
-                                        telHref: 'tel:+84933805525',
-                                        zaloHref: 'https://zalo.me/0933805525',
                                     },
-                                ].map((person, index) => (
-                                    <li key={person.phone} className="py-3.5 flex flex-wrap items-center justify-between gap-3">
-                                        <div className="min-w-0">
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-[11px] font-black tabular-nums text-[var(--accent-primary)]">
-                                                    {String(index + 1).padStart(2, '0')}
-                                                </span>
-                                                <span className="text-sm font-bold text-[var(--text-primary)]">
-                                                    {person.name}
-                                                </span>
+                                ].map((person, index) => {
+                                    const isCopied = copiedPhone === person.phone;
+                                    return (
+                                        <li key={person.phone} className="py-4 flex flex-wrap items-center justify-between gap-3">
+                                            <div className="min-w-0">
+                                                <div className="flex items-baseline gap-2.5">
+                                                    <span className="text-xs font-extrabold tabular-nums text-[var(--accent-primary)]">
+                                                        {String(index + 1).padStart(2, '0')}
+                                                    </span>
+                                                    <span className="text-base font-bold text-[var(--text-primary)]">
+                                                        {person.name}
+                                                    </span>
+                                                </div>
+                                                <p className="mt-0.5 pl-6 text-xs text-[var(--text-secondary)]">
+                                                    {person.role}
+                                                </p>
                                             </div>
-                                        </div>
 
-                                        <div className="flex items-center gap-2">
-                                            <a
-                                                href={person.telHref}
-                                                aria-label={`${t('landing.footer.contactPhone')}: ${person.phone} (${person.name})`}
-                                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--border-secondary)] text-xs font-bold tabular-nums text-[var(--text-primary)] hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)] transition-colors"
+                                            <button
+                                                type="button"
+                                                onClick={() => handleCopyPhone(person.phone)}
+                                                title={t('landing.footer.contactCopyHint')}
+                                                aria-label={`${t('landing.footer.contactCopyHint')}: ${person.phone} (${person.name})`}
+                                                className={`min-h-[40px] inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border text-sm font-bold tabular-nums cursor-pointer transition-[color,border-color,background-color,transform] duration-200 active:translate-y-px disabled:opacity-55 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] ${
+                                                    isCopied
+                                                        ? 'border-[var(--accent-primary)] bg-[var(--accent-primary)] text-[var(--text-on-accent)]'
+                                                        : 'border-[var(--border-secondary)] bg-[var(--bg-primary)] text-[var(--text-primary)] hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)]'
+                                                }`}
                                             >
-                                                <IconPhone className="h-3.5 w-3.5 text-[var(--accent-primary)]" />
+                                                <IconPhone className={`h-3.5 w-3.5 shrink-0 ${isCopied ? 'text-[var(--text-on-accent)]' : 'text-[var(--accent-primary)]'}`} />
                                                 <span>{person.phone}</span>
-                                            </a>
-                                            <a
-                                                href={person.zaloHref}
-                                                target="_blank"
-                                                rel="noreferrer"
-                                                aria-label={`${t('landing.footer.contactZalo')}: ${person.phone} (${person.name})`}
-                                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--accent-primary)]/12 text-xs font-bold text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-colors"
-                                            >
-                                                <IconZalo className="h-3.5 w-3.5" />
-                                                <span>{t('landing.footer.contactZalo')}</span>
-                                            </a>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
+                                                {isCopied ? (
+                                                    <span className="inline-flex items-center gap-1 text-xs font-extrabold" role="status" aria-live="polite">
+                                                        <IconCheck className="h-3.5 w-3.5 shrink-0" />
+                                                        <span>{t('landing.footer.contactCopied')}</span>
+                                                    </span>
+                                                ) : (
+                                                    <IconCopy className="h-3.5 w-3.5 shrink-0 text-[var(--text-tertiary)]" />
+                                                )}
+                                            </button>
+                                        </li>
+                                    );
+                                })}
+                            </ol>
 
-                            <div className="flex items-center gap-3 pt-0.5">
-                                <IconMail className="h-4 w-4 shrink-0 text-[var(--accent-primary)]" />
+                            <div className="flex items-start gap-3 pt-0.5">
+                                <IconMail className="h-4 w-4 mt-1 shrink-0 text-[var(--accent-primary)]" />
                                 <div className="min-w-0 flex-1">
-                                    <span className="block text-[11px] font-semibold text-[var(--text-tertiary)]">
+                                    <span className="block text-xs font-medium text-[var(--text-tertiary)]">
                                         {t('landing.footer.contactEmail')}
                                     </span>
                                     <a
                                         href="mailto:giaiphapkhonggiansangtao@gmail.com"
-                                        className="block text-xs sm:text-sm font-bold text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors break-all"
+                                        className="mt-0.5 inline-block text-sm font-bold text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors duration-200 break-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] rounded"
                                     >
                                         giaiphapkhonggiansangtao@gmail.com
                                     </a>
@@ -1052,10 +1108,35 @@ const LandingPage: React.FC = () => {
                         </address>
                     </div>
 
-                    <div className="pt-6 border-t border-[var(--border-primary)] flex flex-col md:flex-row justify-between items-center gap-4">
-                        <p className="text-[10px] text-[var(--text-tertiary)] font-bold uppercase tracking-widest text-center md:text-left">
-                            © 2026 {t('landing.footer.copyright')}
+                    {/* Tier 2: Sitemap Directory */}
+                    <div className="py-10 border-b border-[var(--border-primary)] grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-12">
+                        {footerColumns.map((column) => (
+                            <nav key={column.title} aria-label={column.title} className="space-y-4">
+                                <h3 className="text-sm font-bold text-[var(--text-primary)]">{column.title}</h3>
+                                <ul className="space-y-2.5">
+                                    {column.links.map((link) => (
+                                        <li key={link.to}>
+                                            <Link
+                                                to={link.to}
+                                                className="inline-block text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] rounded"
+                                            >
+                                                {link.label}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </nav>
+                        ))}
+                    </div>
+
+                    {/* Tier 3: Colophon */}
+                    <div className="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-[var(--text-tertiary)]">
+                        <p className="text-center sm:text-left">
+                            © 2026 Alpha Studio. {t('landing.footer.copyright')}
                         </p>
+                        <span className="font-semibold text-[var(--text-secondary)]">
+                            giaiphapsangtao.com
+                        </span>
                     </div>
                 </div>
             </footer>
