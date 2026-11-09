@@ -366,15 +366,15 @@ export function createDeterministicAvatar({
     const bgHex = prng.pick(bgPalette);
     const bgColor = new Color(bgHex);
 
-    const contrastCandidates =
+    const contrastCandidates: readonly string[] =
         styleName === 'shape-grid'
-            ? styleSpec.colors.shape.values
+            ? CC0_AVATAR_STYLES['shape-grid'].colors.shape.values
             : styleName === 'initials'
-              ? styleSpec.colors.text.values
+              ? CC0_AVATAR_STYLES.initials.colors.text.values
               : ['#ffffff', '#000000'];
 
     const sortedContrast = bgColor.sortByContrast(
-        contrastCandidates.map((hex) => new Color(hex))
+        contrastCandidates.map((hex: string) => new Color(hex))
     );
     const fgHex = sortedContrast[0].toHex();
 
