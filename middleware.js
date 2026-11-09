@@ -4,9 +4,24 @@ const next = () => new Response(null, { headers: { 'x-middleware-next': '1' } })
 const notFound = () => new Response('<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>404 | Alpha Studio</title><h1>404 — Không tìm thấy trang / Page not found</h1><p><a href="/services">Xem dịch vụ thiết kế / Design services</a></p></html>', { status: 404, headers: { 'content-type': 'text/html; charset=utf-8', 'x-robots-tag': 'noindex' } });
 
 export default async function middleware(request) {
-    const pathname = new URL(request.url).pathname.replace(/\/+$/, '') || '/';
+    const url = new URL(request.url);
+    const pathname = url.pathname.replace(/\/+$/, '') || '/';
+    if (/^\/led-studio(?:\/|$)/.test(pathname)) {
+        const dest = (request.headers.get('sec-fetch-dest') || '').toLowerCase();
+        const site = (request.headers.get('sec-fetch-site') || '').toLowerCase();
+        if (site === 'cross-site') {
+            return new Response('Forbidden', { status: 403, headers: { 'content-type': 'text/plain; charset=utf-8', 'x-robots-tag': 'noindex, noarchive, nosnippet' } });
+        }
+        if (dest === 'document') {
+            if (pathname === '/led-studio' || pathname === '/led-studio/index.html') {
+                return Response.redirect(`${SITE}/studio/led-studio${url.search}`, 307);
+            }
+            return new Response('Forbidden', { status: 403, headers: { 'content-type': 'text/plain; charset=utf-8', 'x-robots-tag': 'noindex, noarchive, nosnippet' } });
+        }
+        return next();
+    }
     if (/^\/(?:event-creative-city|co-loa-living-spiral|studio\/interior-design)(?:\/|$)/.test(pathname)) return next();
-    if (STATIC_PAGES.has(pathname) || pathname === '/google5ffb428154593171.html' || /^\/(?:assets|vocab|crm|led-studio|tinymce|vendor)(?:\/|$)/.test(pathname) || /^\/(?:students|partners|users)\/[^/]+$/.test(pathname) || /^\/workflow\/projects\/[^/]+$/.test(pathname)) return next();
+    if (STATIC_PAGES.has(pathname) || pathname === '/google5ffb428154593171.html' || /^\/(?:assets|vocab|crm|tinymce|vendor)(?:\/|$)/.test(pathname) || /^\/(?:students|partners|users)\/[^/]+$/.test(pathname) || /^\/workflow\/projects\/[^/]+$/.test(pathname)) return next();
 
     const legacy = pathname.match(/^\/studio\/skills(?:\/(.+))?$/);
     if (legacy) return Response.redirect(`${SITE}/studio/ai-skills${legacy[1] ? `/${legacy[1]}` : ''}`, 308);
@@ -26,4 +41,4 @@ export default async function middleware(request) {
     }
 }
 
-export const config = { matcher: '/((?!api/|assets/|vocab/|crm/|led-studio/|tinymce/|vendor/|.*\\.[^/]+$).*)' };
+export const config = { matcher: ['/led-studio/:path*', '/((?!api/|assets/|vocab/|crm/|led-studio/|tinymce/|vendor/|.*\\.[^/]+$).*)'] };

@@ -13,6 +13,9 @@ test('unknown pages return 404; public detail URLs verify existence and fail saf
         assert.equal((await middleware(request('/studio/led-studio'))).headers.get('x-middleware-next'), '1');
         assert.equal((await middleware(request('/studio/led-studio?share=abc123'))).headers.get('x-middleware-next'), '1');
         assert.equal((await middleware(request('/led-studio'))).headers.get('x-middleware-next'), '1');
+        assert.equal((await middleware(new Request('https://giaiphapsangtao.com/led-studio/index.html?share=1', { headers: { 'sec-fetch-dest': 'document' } }))).status, 307);
+        assert.equal((await middleware(new Request('https://giaiphapsangtao.com/led-studio/js/lumi-studio.min.js', { headers: { 'sec-fetch-dest': 'document' } }))).status, 403);
+        assert.equal((await middleware(new Request('https://giaiphapsangtao.com/led-studio/js/lumi-studio.min.js', { headers: { 'sec-fetch-site': 'cross-site' } }))).status, 403);
         assert.equal((await middleware(request('/workflow/projects/123'))).headers.get('x-middleware-next'), '1');
         assert.equal((await middleware(request('/google5ffb428154593171.html'))).headers.get('x-middleware-next'), '1');
 

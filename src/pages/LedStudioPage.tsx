@@ -58,6 +58,7 @@ export default function LedStudioPage() {
         title={t('studio.ledStudio.seoTitle')}
         description={t('studio.ledStudio.seoDesc')}
         path="/studio/led-studio"
+        ogImage="https://giaiphapsangtao.com/led-studio-logo.png"
         jsonLd={[
           buildBreadcrumbJsonLd([
             { name: t('common.home'), path: '/' },

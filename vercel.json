@@ -34,9 +34,21 @@
       "continue": true
     },
     {
-      "src": "^/led-studio/(?:css/[^/]+\\.css|js/(?:core|modules)/.+\\.js|js/data/(?:meshopt-decoder|ofl-fixtures)\\.js)$",
+      "src": "^/led-studio/(?:css/[^/]+\\.css|js/.+\\.js)$",
       "headers": {
-        "cache-control": "public, max-age=31536000, immutable"
+        "cache-control": "public, max-age=31536000, immutable",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-robots-tag": "noindex, noarchive, nosnippet"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/led-studio/(.*)$",
+      "headers": {
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-robots-tag": "noindex, noarchive, nosnippet"
       },
       "continue": true
     },

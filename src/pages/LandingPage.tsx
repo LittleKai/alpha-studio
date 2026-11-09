@@ -89,6 +89,25 @@ const IconCheck: React.FC<IconProps> = ({ className = 'h-3 w-3' }) => (
     </svg>
 );
 
+const IconPhone: React.FC<IconProps> = ({ className = 'h-3.5 w-3.5' }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+);
+
+const IconZalo: React.FC<IconProps> = ({ className = 'h-3.5 w-3.5' }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+    </svg>
+);
+
+const IconMail: React.FC<IconProps> = ({ className = 'h-4 w-4' }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <rect width="20" height="16" x="2" y="4" rx="2" />
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </svg>
+);
+
 // ─── Courses Slider Section (Split Layout) ───────────────────────────
 interface CoursesSliderProps {
     courses: Course[];
@@ -915,8 +934,8 @@ const LandingPage: React.FC = () => {
             {/* Footer */}
             <footer id="contact" className="pt-16 pb-10 border-t border-[var(--border-primary)] bg-[var(--bg-primary)] mt-auto">
                 <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12">
-                        <div className="space-y-4 lg:pr-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 items-start">
+                        <div className="lg:col-span-3 space-y-4 lg:pr-4">
                             <div className="flex items-center gap-2">
                                 <img src="/alpha-logo-animated.svg" alt="Alpha Studio" className="h-8 w-8 rounded-lg object-contain" />
                                 <span className="text-sm font-bold text-[var(--text-primary)] tracking-widest">ALPHA STUDIO</span>
@@ -926,52 +945,109 @@ const LandingPage: React.FC = () => {
                             </p>
                         </div>
 
-                        {footerColumns.map((column) => (
-                            <nav key={column.title} aria-label={column.title} className="space-y-4">
-                                <h3 className="text-[10px] font-black uppercase tracking-[0.22em] text-[var(--text-tertiary)]">{column.title}</h3>
-                                <ul className="space-y-2.5">
-                                    {column.links.map((link) => (
-                                        <li key={link.to}>
-                                            <Link
-                                                to={link.to}
-                                                className="text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors"
-                                            >
-                                                {link.label}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </nav>
-                        ))}
+                        <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-8">
+                            {footerColumns.map((column) => (
+                                <nav key={column.title} aria-label={column.title} className="space-y-4">
+                                    <h3 className="text-[10px] font-black uppercase tracking-[0.22em] text-[var(--text-tertiary)]">{column.title}</h3>
+                                    <ul className="space-y-2.5">
+                                        {column.links.map((link) => (
+                                            <li key={link.to}>
+                                                <Link
+                                                    to={link.to}
+                                                    className="text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors"
+                                                >
+                                                    {link.label}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </nav>
+                            ))}
+                        </div>
 
-                        <address aria-label={t('landing.footer.contactTitle')} className="not-italic space-y-4">
-                            <h3 className="text-[10px] font-black uppercase tracking-[0.22em] text-[var(--text-tertiary)]">
-                                {t('landing.footer.contactTitle')}
-                            </h3>
-                            <div className="space-y-2.5 text-sm text-[var(--text-secondary)]">
-                                <p className="font-bold text-[var(--text-primary)]">
-                                    {t('landing.footer.contactNameLabel')}: {t('landing.footer.contactName')}
-                                </p>
-                                <a
-                                    href="tel:+84933805525"
-                                    className="block hover:text-[var(--accent-primary)] transition-colors"
-                                >
-                                    {t('landing.footer.contactPhone')}: 0933805525
-                                </a>
-                                <a
-                                    href="https://zalo.me/0933805525"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="block hover:text-[var(--accent-primary)] transition-colors"
-                                >
-                                    {t('landing.footer.contactZalo')}: 0933805525
-                                </a>
-                                <a
-                                    href="mailto:aduc5525@gmail.com"
-                                    className="block break-words hover:text-[var(--accent-primary)] transition-colors"
-                                >
-                                    {t('landing.footer.contactEmail')}: aduc5525@gmail.com
-                                </a>
+                        <address
+                            aria-label={t('landing.footer.contactTitle')}
+                            className="md:col-span-2 lg:col-span-4 not-italic rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-card)] p-5 sm:p-6 space-y-4"
+                        >
+                            <div className="flex items-center justify-between gap-3">
+                                <div>
+                                    <h3 className="text-xs font-black uppercase tracking-[0.18em] text-[var(--text-primary)]">
+                                        {t('landing.footer.contactTitle')}
+                                    </h3>
+                                    <p className="mt-1 text-xs text-[var(--text-secondary)]">
+                                        {t('landing.footer.contactSubtitle')}
+                                    </p>
+                                </div>
+                                <span className="relative flex h-2.5 w-2.5 shrink-0" aria-hidden="true">
+                                    <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent-primary)] opacity-70 animate-ping" />
+                                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--accent-primary)]" />
+                                </span>
+                            </div>
+
+                            <ul className="divide-y divide-[var(--border-primary)] border-y border-[var(--border-primary)]">
+                                {[
+                                    {
+                                        name: t('landing.footer.contactNamePrimary'),
+                                        phone: '0901555697',
+                                        telHref: 'tel:+84901555697',
+                                        zaloHref: 'https://zalo.me/0901555697',
+                                    },
+                                    {
+                                        name: t('landing.footer.contactName'),
+                                        phone: '0933805525',
+                                        telHref: 'tel:+84933805525',
+                                        zaloHref: 'https://zalo.me/0933805525',
+                                    },
+                                ].map((person, index) => (
+                                    <li key={person.phone} className="py-3.5 flex flex-wrap items-center justify-between gap-3">
+                                        <div className="min-w-0">
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-[11px] font-black tabular-nums text-[var(--accent-primary)]">
+                                                    {String(index + 1).padStart(2, '0')}
+                                                </span>
+                                                <span className="text-sm font-bold text-[var(--text-primary)]">
+                                                    {person.name}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-center gap-2">
+                                            <a
+                                                href={person.telHref}
+                                                aria-label={`${t('landing.footer.contactPhone')}: ${person.phone} (${person.name})`}
+                                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--border-secondary)] text-xs font-bold tabular-nums text-[var(--text-primary)] hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)] transition-colors"
+                                            >
+                                                <IconPhone className="h-3.5 w-3.5 text-[var(--accent-primary)]" />
+                                                <span>{person.phone}</span>
+                                            </a>
+                                            <a
+                                                href={person.zaloHref}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                aria-label={`${t('landing.footer.contactZalo')}: ${person.phone} (${person.name})`}
+                                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--accent-primary)]/12 text-xs font-bold text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-colors"
+                                            >
+                                                <IconZalo className="h-3.5 w-3.5" />
+                                                <span>{t('landing.footer.contactZalo')}</span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <div className="flex items-center gap-3 pt-0.5">
+                                <IconMail className="h-4 w-4 shrink-0 text-[var(--accent-primary)]" />
+                                <div className="min-w-0 flex-1">
+                                    <span className="block text-[11px] font-semibold text-[var(--text-tertiary)]">
+                                        {t('landing.footer.contactEmail')}
+                                    </span>
+                                    <a
+                                        href="mailto:giaiphapkhonggiansangtao@gmail.com"
+                                        className="block text-xs sm:text-sm font-bold text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors break-all"
+                                    >
+                                        giaiphapkhonggiansangtao@gmail.com
+                                    </a>
+                                </div>
                             </div>
                         </address>
                     </div>
