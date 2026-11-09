@@ -64,7 +64,7 @@
 <input id="musicInput" type="file" accept="audio/*,.mp3,.wav,.ogg,.m4a,.flac" hidden><input id="atlasMediaInput" type="file" accept="video/*,image/*" hidden>
 
   <!-- Core Data & Engine -->
-  <script src="version.js?v=08e22ec2dc"></script>
+  <script src="version.js?v=1993681ff7"></script>
   <script src="js/data/meshopt-decoder.js?v=34aa1a72a0"></script>
   <script src="js/data/ofl-fixtures.js?v=e3b9766cc7"></script>
   <script src="js/core/01-math-webgl.js?v=5e83553476"></script>
@@ -87,13 +87,13 @@
   <script src="js/modules/matrix/matrix146-controls.js?v=a8a5e197af"></script>
   <script src="js/modules/matrix/matrix151-controls.js?v=690e503a00"></script>
   <script src="js/modules/matrix/matrix143-render.js?v=4869c2ac09"></script>
-  <script src="js/modules/v16-asset-library.js?v=857eaa15ca"></script>
+  <script src="js/modules/v16-asset-library.js?v=83dabfaadb"></script>
   <script src="js/modules/export142.js?v=cf3468e616"></script>
   <script src="js/modules/recovery142.js?v=ea839846da"></script>
   <script src="js/modules/v16-cloud-bridge.js?v=de37378bbc"></script>
   <script src="js/modules/atlas-export.js?v=7690691997"></script>
   <script src="js/modules/v17-mobile-lite.js?v=0aebcc427d"></script>
-  <script src="js/modules/v18-lumistage-commercial.js?v=dfd127f1fe"></script>
+  <script src="js/modules/v18-lumistage-commercial.js?v=19b1df4fd7"></script>
   <script src="js/modules/stage-characters.js?v=d776c9db37"></script>
   <!-- All modules have run: wait for boot project restore/share load, then reveal after painted frame. -->
   <script>(()=>{const hide=()=>requestAnimationFrame(()=>{const s=document.getElementById('bootSplash');if(!s||s.classList.contains('done'))return;s.classList.add('done');setTimeout(()=>s.remove(),350)});const jobs=[window.__bootRestorePromise142,window.__bootSharePromise16].filter(Boolean);if(!jobs.length){hide();return;}const guard=new Promise(r=>setTimeout(r,15000));Promise.race([Promise.allSettled(jobs),guard]).then(hide);})();</script>

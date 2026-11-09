@@ -3633,16 +3633,293 @@
       return { name: tr18(tpl.name, en[tpl.name]?.[0] || tpl.name), summary: tr18(tpl.summary, en[tpl.name]?.[1] || tpl.summary), category: tr18(categoriesVi[tpl.id] || tpl.category, tpl.category) };
     }
 
+    const _templatePreviewCache18 = new Map();
+
+    function templateConfigSignature18(kind, idOrIdx, overrides = {}) {
+      if (kind === 'set') {
+        const cfg = STAGE_SETS18[idOrIdx];
+        return 'set:' + idOrIdx + ':' + JSON.stringify([cfg?.shell, cfg?.rigStyle, cfg?.screens, cfg?.assets, cfg?.cast]);
+      }
+      const tpl = VN_STAGE_TEMPLATES[idOrIdx];
+      return 'tpl:' + idOrIdx + ':' + JSON.stringify([
+        Number(overrides.widthM) || tpl?.widthM,
+        Number(overrides.depthM) || tpl?.depthM,
+        Number(overrides.heightM) || tpl?.heightM,
+        Number(overrides.pitchMm) || tpl?.pitchMm,
+        tpl?.truss,
+        tpl?.style,
+        tpl?.lightCount,
+        tpl?.screens,
+        tpl?.props,
+        tpl?.cast
+      ]);
+    }
+
+    function buildStagePreviewEntries18(kind, idOrIdx, overrides = {}) {
+      const sa = S.stageAssets16;
+      const entries = [];
+      if (typeof window.boxMesh !== 'function' || typeof window.quadMesh !== 'function' || typeof window.M?.mm !== 'function') {
+        return { entries, bounds: null, badge: '', accent: '#38bdf8', title: '' };
+      }
+      let shellOpts, screensCfg, propsList, castList, style, lightCount, badge, accent, title;
+      if (kind === 'set') {
+        const cfg = STAGE_SETS18[idOrIdx] || STAGE_SETS18[1];
+        shellOpts = { ...(cfg.shell || { widthM: 18, depthM: 7, heightM: 0.6, topY: 6.6, trussMode: 'box', includePA: true }) };
+        screensCfg = (cfg.screens || []).map((scr) => ({
+          name: scr.name,
+          pos: scr.pos.slice(),
+          wM: scr.wM,
+          hM: scr.hM,
+          yawDeg: scr.yawDeg || 0,
+          shapeType: scr.shapeType || scr.map?.shapeType || 'flat',
+          curveDegPerCab: scr.curveDegPerCab ?? scr.map?.curveDegPerCab ?? 0
+        }));
+        propsList = (cfg.assets || []).map((a) => ({ kind: a.kind, pos: a.pos.slice(), yaw: a.yaw || 0, scale: a.scale || 1, color: a.color }));
+        castList = (cfg.cast || []).map((c) => ({ ...c, pos: c.pos.slice() }));
+        style = cfg.rigStyle || 'concert';
+        lightCount = 16;
+        badge = `${cfg.code} · ${shellOpts.widthM}×${shellOpts.depthM}m · ${screensCfg.length} LED`;
+        accent = '#fbbf24';
+        title = tr18(cfg.titleVi, cfg.titleEn);
+      } else {
+        const tpl = VN_STAGE_TEMPLATES[idOrIdx] || VN_STAGE_TEMPLATES.conference;
+        const widthM = Math.max(4, Math.min(80, Number(overrides.widthM) || tpl.widthM));
+        const depthM = Math.max(3, Math.min(50, Number(overrides.depthM) || tpl.depthM));
+        const heightM = Math.max(0.2, Math.min(4, Number(overrides.heightM) || tpl.heightM));
+        const pitchMm = Math.max(1.2, Math.min(16, Number(overrides.pitchMm) || tpl.pitchMm || 3.91));
+        const scaleX = widthM / tpl.widthM;
+        const scaleZ = depthM / tpl.depthM;
+        let maxTopY = heightM + 4.5;
+        screensCfg = (tpl.screens || []).map((scr) => {
+          const wM = +(scr.wM * scaleX).toFixed(2);
+          const hM = +scr.hM.toFixed(2);
+          const cx = +(scr.pos[0] * scaleX).toFixed(2);
+          const cy = +(heightM + hM / 2 + Math.max(0.15, scr.pos[1] - tpl.heightM - scr.hM / 2)).toFixed(2);
+          const cz = +(scr.pos[2] * scaleZ).toFixed(2);
+          maxTopY = Math.max(maxTopY, cy + hM / 2);
+          return {
+            name: scr.name,
+            pos: [cx, cy, cz],
+            wM,
+            hM,
+            yawDeg: scr.yawDeg || 0,
+            shapeType: scr.shapeType || 'flat',
+            curveDegPerCab: scr.curveDegPerCab || 0
+          };
+        });
+        shellOpts = {
+          widthM,
+          depthM,
+          heightM,
+          topY: Math.max(heightM + 4.5, maxTopY + 0.55),
+          trussMode: tpl.truss || 'portal',
+          includePA: true
+        };
+        const cat = sa?.catalog || {};
+        propsList = (tpl.props || []).map((p) => {
+          const resolvedKind = resolveCatalogPropKind(p.kind, cat);
+          const py = p.pos[1] > 0.05 ? +(heightM + Math.max(0, p.pos[1] - tpl.heightM)).toFixed(2) : 0;
+          return {
+            kind: resolvedKind,
+            pos: [+(p.pos[0] * scaleX).toFixed(2), py, +(p.pos[2] * scaleZ).toFixed(2)],
+            yaw: p.yaw || 0,
+            scale: p.scale || 1
+          };
+        });
+        castList = (tpl.cast || []).map((c) => {
+          const cy = c.pos[1] > 0.05 ? +(heightM + Math.max(0, c.pos[1] - tpl.heightM)).toFixed(2) : 0;
+          return {
+            ...c,
+            pos: [+(c.pos[0] * scaleX).toFixed(2), cy, +(c.pos[2] * scaleZ).toFixed(2)]
+          };
+        });
+        style = tpl.style || 'concert';
+        lightCount = tpl.lightCount || 16;
+        badge = `${widthM}×${depthM}m · P${pitchMm} · ${screensCfg.length} LED`;
+        accent = style === 'warm' ? '#fbbf24' : style === 'cool' ? '#38bdf8' : '#c084fc';
+        title = templatePresentation18(tpl).name;
+      }
+
+      const shellMeshes = typeof window.buildStageShellMeshes === 'function'
+        ? window.buildStageShellMeshes(shellOpts)
+        : [];
+      for (const m of shellMeshes) entries.push({ mesh: m, matrix: null });
+
+      const ledAccent = style === 'warm' ? [0.98, 0.58, 0.20] : style === 'cool' ? [0.16, 0.68, 0.96] : [0.24, 0.72, 0.98];
+      const ledSecondary = style === 'warm' ? [0.95, 0.32, 0.48] : style === 'cool' ? [0.22, 0.88, 0.76] : [0.76, 0.34, 0.98];
+      screensCfg.forEach((scr, idx) => {
+        const shape = scr.shapeType || 'flat';
+        const curve = scr.curveDegPerCab || 0;
+        const ry = ((scr.yawDeg || 0) * Math.PI) / 180;
+        const mat = window.M.mm(window.M.translate(scr.pos), window.M.rotate([0, 1, 0], ry));
+        const glow = idx % 2 === 0 ? ledAccent : ledSecondary;
+        const q = (shape !== 'flat' || curve)
+          ? buildGeometricLedMesh18(scr.name, scr.wM, scr.hM, shape, curve)
+          : window.quadMesh(
+              scr.name,
+              [[-scr.wM / 2, scr.hM / 2, 0], [scr.wM / 2, scr.hM / 2, 0], [scr.wM / 2, -scr.hM / 2, 0], [-scr.wM / 2, -scr.hM / 2, 0]],
+              { color: [glow[0] * 0.42, glow[1] * 0.48, glow[2] * 0.58, 1] }
+            );
+        if (q.material) {
+          q.material.color = [glow[0] * 0.42, glow[1] * 0.48, glow[2] * 0.58, 1];
+          q.material.emissive = [glow[0] * 0.52, glow[1] * 0.56, glow[2] * 0.64];
+          q.material.doubleSided = true;
+        }
+        window.transformMesh(q, mat);
+        entries.push({ mesh: q, matrix: null });
+
+        if (shape === 'flat' && !curve) {
+          const border = window.boxMesh(scr.name + '_Border', [0, 0, -0.04], [scr.wM + 0.14, scr.hM + 0.14, 0.08], [glow[0], glow[1], glow[2], 1]);
+          if (border.material) border.material.emissive = [glow[0] * 0.45, glow[1] * 0.45, glow[2] * 0.45];
+          window.transformMesh(border, mat);
+          entries.push({ mesh: border, matrix: null });
+
+          const innerGraphic = window.boxMesh(scr.name + '_Graphic', [0, 0, 0.02], [scr.wM * 0.66, scr.hM * 0.48, 0.02], [ledSecondary[0], ledSecondary[1], ledSecondary[2], 1]);
+          if (innerGraphic.material) innerGraphic.material.emissive = [ledSecondary[0] * 0.72, ledSecondary[1] * 0.72, ledSecondary[2] * 0.72];
+          window.transformMesh(innerGraphic, mat);
+          entries.push({ mesh: innerGraphic, matrix: null });
+        }
+      });
+
+      const fixtureCount = Math.min(12, Math.max(6, Math.round(lightCount * 0.5)));
+      const spanX = shellOpts.widthM * 0.84;
+      const hangY = (shellOpts.topY || 6.6) - 0.18;
+      const backZ = -(shellOpts.depthM || 7) * 0.35;
+      for (let i = 0; i < fixtureCount; i++) {
+        const u = fixtureCount > 1 ? i / (fixtureCount - 1) - 0.5 : 0;
+        const fx = +(u * spanX).toFixed(2);
+        const fCol = i % 2 === 0 ? ledAccent : ledSecondary;
+        const head = window.boxMesh('Fixture_' + i, [fx, hangY, backZ], [0.28, 0.34, 0.26], [fCol[0], fCol[1], fCol[2], 1]);
+        if (head.material) head.material.emissive = [fCol[0] * 0.85, fCol[1] * 0.85, fCol[2] * 0.85];
+        entries.push({ mesh: head, matrix: null });
+      }
+
+      if (typeof sa?.buildAssetMeshes === 'function') {
+        const cat = sa.catalog || {};
+        propsList.forEach((pr, idx) => {
+          const spec = cat[pr.kind];
+          if (!spec) return;
+          const meshes = sa.buildAssetMeshes({
+            id: `prev_prop_${idx}`,
+            kind: pr.kind,
+            name: spec.name,
+            pos: pr.pos,
+            yaw: pr.yaw || 0,
+            scale: pr.scale || 1,
+            color: pr.color || spec.color || '#38bdf8'
+          });
+          for (const m of meshes) entries.push({ mesh: m, matrix: null });
+        });
+      }
+
+      if (typeof sa?.buildPerformerPreviewEntries16 === 'function') {
+        castList.forEach((c, idx) => {
+          if (c.type === 'audience') {
+            if (typeof sa.getCrowdEntries16 === 'function' && typeof sa.offsetEntries16 === 'function') {
+              const crowd = sa.offsetEntries16(sa.getCrowdEntries16(), c.pos || [0, 0, 5.5]);
+              for (const ce of crowd) entries.push(ce);
+            }
+          } else {
+            const pEntries = sa.buildPerformerPreviewEntries16(c.type || 'singer', {
+              pos: c.pos || [0, shellOpts.heightM || 0.6, 0.8],
+              color: c.color || '#38bdf8',
+              phase: c.phase ?? idx * 0.45,
+              time: 0.65
+            });
+            for (const pe of pEntries) entries.push(pe);
+          }
+        });
+      }
+
+      const hw = (shellOpts.widthM || 16) * 0.56;
+      const hd = (shellOpts.depthM || 8) * 0.65;
+      const topY = (shellOpts.topY || 6.6) + 0.4;
+      return {
+        entries,
+        bounds: { min: [-hw, 0, -hd * 0.72], max: [hw, topY, hd * 1.15] },
+        badge,
+        accent,
+        title
+      };
+    }
+
+    function renderStageTemplatePreviewDataUrl18(kind, idOrIdx, overrides = {}, opts = {}) {
+      const sa = S.stageAssets16;
+      if (typeof sa?.renderMeshes3DToCanvas16 !== 'function' || typeof document === 'undefined') {
+        return kind === 'set' ? `./assets/templates/s${idOrIdx}.webp` : `./assets/templates/${idOrIdx}.webp`;
+      }
+      const sig = templateConfigSignature18(kind, idOrIdx, overrides) + ':' + (opts.width || 480) + 'x' + (opts.height || 270);
+      if (!opts.force && _templatePreviewCache18.has(sig)) {
+        return _templatePreviewCache18.get(sig);
+      }
+      const scene = buildStagePreviewEntries18(kind, idOrIdx, overrides);
+      const cvs = document.createElement('canvas');
+      cvs.width = opts.width || 480;
+      cvs.height = opts.height || 270;
+      sa.renderMeshes3DToCanvas16(cvs, scene.entries, {
+        yaw: opts.yaw ?? 0.26,
+        pitch: opts.pitch ?? 0.22,
+        zoom: opts.zoom ?? 1.52,
+        fovScale: opts.fovScale ?? 1.18,
+        maxTris: opts.maxTris || 60000,
+        fixedBounds: scene.bounds,
+        badge: scene.badge,
+        accent: scene.accent,
+        title: scene.title,
+        noURL: true
+      });
+      let dataUrl = '';
+      try {
+        dataUrl = cvs.toDataURL('image/webp', 0.9);
+        if (!dataUrl || !dataUrl.startsWith('data:image/webp')) {
+          dataUrl = cvs.toDataURL('image/png');
+        }
+      } catch (_) {
+        dataUrl = kind === 'set' ? `./assets/templates/s${idOrIdx}.webp` : `./assets/templates/${idOrIdx}.webp`;
+      }
+      if (dataUrl) {
+        _templatePreviewCache18.set(sig, dataUrl);
+        if (kind === 'set' && STAGE_SETS18[idOrIdx] && !Object.keys(overrides).length) {
+          STAGE_SETS18[idOrIdx].runtimePreviewUrl18 = dataUrl;
+        } else if (kind === 'tpl' && VN_STAGE_TEMPLATES[idOrIdx] && !Object.keys(overrides).length) {
+          VN_STAGE_TEMPLATES[idOrIdx].runtimePreviewUrl18 = dataUrl;
+        }
+      }
+      return dataUrl;
+    }
+
+    function refreshTemplateModalPreviews18(overrides = {}) {
+      if (typeof document === 'undefined') return;
+      document.querySelectorAll?.('[data-lumi18-tpl-img]')?.forEach((img) => {
+        const tplId = img.getAttribute('data-lumi18-tpl-img');
+        if (!tplId || !VN_STAGE_TEMPLATES[tplId]) return;
+        const url = renderStageTemplatePreviewDataUrl18('tpl', tplId, overrides);
+        if (url) {
+          img.src = url;
+          img.setAttribute('data-lumi18-preview', url);
+        }
+      });
+      document.querySelectorAll?.('[data-lumi18-set-img]')?.forEach((img) => {
+        const setIdx = Number(img.getAttribute('data-lumi18-set-img') || 0);
+        if (!STAGE_SETS18[setIdx]) return;
+        const url = renderStageTemplatePreviewDataUrl18('set', setIdx);
+        if (url) {
+          img.src = url;
+          img.setAttribute('data-lumi18-preview', url);
+        }
+      });
+    }
+
     function openStageTemplatesModal() {
       if (typeof window.dialog !== 'function') return;
       const thumbStyle = 'width:128px;height:72px;object-fit:cover;border-radius:6px;border:1px solid rgba(148,163,184,0.28);flex-shrink:0;cursor:zoom-in;background:#070c18';
       const cardsHtml = Object.values(VN_STAGE_TEMPLATES)
         .map((tpl) => {
           const pres = templatePresentation18(tpl);
-          const previewSrc = tpl.previewWebp || `./assets/templates/${tpl.id}.webp`;
+          const previewSrc = tpl.runtimePreviewUrl18 || tpl.previewWebp || `./assets/templates/${tpl.id}.webp`;
           return (
             `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px;border-left:3px solid #38bdf8">` +
-            `<img src="${esc18(previewSrc)}" alt="${esc18(pres.name)}" loading="lazy" decoding="async" data-lumi18-preview="${esc18(previewSrc)}" data-lumi18-preview-title="${esc18(pres.name)}" style="${thumbStyle}" title="${esc18(tr18('Nhấn để phóng to hình review (.webp)', 'Click to zoom review image (.webp)'))}">` +
+            `<img src="${esc18(previewSrc)}" alt="${esc18(pres.name)}" loading="lazy" decoding="async" data-lumi18-tpl-img="${esc18(tpl.id)}" data-lumi18-preview="${esc18(previewSrc)}" data-lumi18-preview-title="${esc18(pres.name)}" style="${thumbStyle}" title="${esc18(tr18('Nhấn để phóng to hình review (.webp)', 'Click to zoom review image (.webp)'))}">` +
             `<div style="flex:1;min-width:0"><strong>${esc18(pres.name)}</strong> <small style="color:#38bdf8">[${esc18(pres.category)} · ${tpl.widthM}×${tpl.depthM}m · P${tpl.pitchMm}]</small><br>` +
             `<small style="display:block;margin-top:2px;line-height:1.35">${esc18(pres.summary)}</small></div>` +
             `<button type="button" class="btn small primary" data-lumi18-tpl="${esc18(tpl.id)}">${tr18("Dựng 3D", "Build 3D")}</button>` +
@@ -3656,10 +3933,10 @@
           if (!cfg) return '';
           const title = tr18(cfg.titleVi, cfg.titleEn);
           const desc = tr18(cfg.descVi || cfg.titleVi, cfg.descEn || cfg.titleEn);
-          const previewSrc = cfg.previewWebp || `./assets/templates/s${n}.webp`;
+          const previewSrc = cfg.runtimePreviewUrl18 || cfg.previewWebp || `./assets/templates/s${n}.webp`;
           return (
             `<div class="info-box" style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px;border-left:3px solid #f59e0b">` +
-            `<img src="${esc18(previewSrc)}" alt="${esc18(title)}" loading="lazy" decoding="async" data-lumi18-preview="${esc18(previewSrc)}" data-lumi18-preview-title="${esc18(title)}" style="${thumbStyle}" title="${esc18(tr18('Nhấn để phóng to hình review (.webp)', 'Click to zoom review image (.webp)'))}">` +
+            `<img src="${esc18(previewSrc)}" alt="${esc18(title)}" loading="lazy" decoding="async" data-lumi18-set-img="${n}" data-lumi18-preview="${esc18(previewSrc)}" data-lumi18-preview-title="${esc18(title)}" style="${thumbStyle}" title="${esc18(tr18('Nhấn để phóng to hình review (.webp)', 'Click to zoom review image (.webp)'))}">` +
             `<div style="flex:1;min-width:0"><strong>${esc18(cfg.code)} · ${esc18(title)}</strong> ` +
             `<small style="color:#fbbf24">[${esc18(`${cfg.shell?.widthM || 18}×${cfg.shell?.depthM || 7}m · ${cfg.screens?.length || 3} LED`)}]</small><br>` +
             `<small style="display:block;margin-top:2px;line-height:1.35">${esc18(desc)}</small></div>` +
@@ -3735,6 +4012,20 @@
           applyStageTemplate(tplId, { widthM, depthM, heightM, pitchMm });
         };
       });
+      const readModalOverrides = () => ({
+        widthM: Number($('lumi18TplW')?.value || 0) || undefined,
+        depthM: Number($('lumi18TplD')?.value || 0) || undefined,
+        heightM: Number($('lumi18TplH')?.value || 0) || undefined,
+        pitchMm: Number($('lumi18TplPitch')?.value || 0) || undefined
+      });
+      ['lumi18TplW', 'lumi18TplD', 'lumi18TplH', 'lumi18TplPitch'].forEach((id) => {
+        const el = $(id);
+        if (!el) return;
+        const onParamChange = () => refreshTemplateModalPreviews18(readModalOverrides());
+        el.addEventListener('change', onParamChange);
+        el.addEventListener('input', onParamChange);
+      });
+      setTimeout(() => refreshTemplateModalPreviews18(readModalOverrides()), 16);
     }
 
     const tr18 = (vi, en) => typeof window.tr === 'function' ? window.tr(vi, en) : lumiState.lang === 'en' ? en : vi;
@@ -11825,8 +12116,8 @@ void main(){
               const cfg = STAGE_SETS18[n];
               const tip = cfg ? tr18(cfg.titleVi, cfg.titleEn) : `Set ${n}`;
               const sc = setColors[(n - 1) % setColors.length];
-              const previewSrc = cfg?.previewWebp || `./assets/templates/s${n}.webp`;
-              return `<button type="button" class="lmp-tb-modebtn18 ${!ls.aiAuto && ls.activeShow === n ? 'active' : ''}" style="--set-c:${sc}" data-lmp-showmode="${n}" title="${esc18(tip)}"><img src="${esc18(previewSrc)}" alt="S${n}" loading="lazy" decoding="async" style="width:100%;height:34px;object-fit:cover;border-radius:4px;margin-bottom:2px;border:1px solid rgba(148,163,184,0.22)"><span class="lmp-tb-setcode18">S${n}</span><span class="lmp-tb-setlbl18">${esc18(cfg ? tr18(cfg.shortVi, cfg.shortEn).replace(/^S\d+\s*·\s*/, '') : 'Set ' + n)}</span></button>`;
+              const previewSrc = cfg?.runtimePreviewUrl18 || cfg?.previewWebp || `./assets/templates/s${n}.webp`;
+              return `<button type="button" class="lmp-tb-modebtn18 ${!ls.aiAuto && ls.activeShow === n ? 'active' : ''}" style="--set-c:${sc}" data-lmp-showmode="${n}" title="${esc18(tip)}"><img src="${esc18(previewSrc)}" alt="S${n}" loading="lazy" decoding="async" data-lumi18-set-img="${n}" style="width:100%;height:34px;object-fit:cover;border-radius:4px;margin-bottom:2px;border:1px solid rgba(148,163,184,0.22)"><span class="lmp-tb-setcode18">S${n}</span><span class="lmp-tb-setlbl18">${esc18(cfg ? tr18(cfg.shortVi, cfg.shortEn).replace(/^S\d+\s*·\s*/, '') : 'Set ' + n)}</span></button>`;
             })
             .join('') +
           `</div>` +
@@ -12987,6 +13278,9 @@ void main(){
       syncAccount18,
       stageSets: STAGE_SETS18,
       applyStageSet18,
+      buildStagePreviewEntries18,
+      renderStageTemplatePreviewDataUrl18,
+      refreshTemplateModalPreviews18,
       seedDefaultStageDemo18,
       addToolboxStructure18,
       addToolboxLighting18,

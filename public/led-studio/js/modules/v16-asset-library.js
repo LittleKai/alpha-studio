@@ -2772,6 +2772,7 @@
    expandSearchTerms16,translateViToEn16,
    serialize:serializeAssets,restore:restoreAssets,
    getAssetPreviewURL16,getPerformerPreviewURL16,getActPreviewURL16,renderMeshes3DToCanvas16,
+   buildAssetMeshes,buildPerformerPreviewEntries16,getCrowdEntries16,offsetEntries16,
    applyQuickCastExample16,QUICK_EXAMPLES16
   });
 
