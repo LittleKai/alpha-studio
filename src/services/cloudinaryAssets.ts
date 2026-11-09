@@ -17,7 +17,7 @@ export type AssetQuality = 'standard' | 'high';
  * | `high` | master 1920×1080 prefix `hq/`, `f_auto,q_auto:best` (~318KB) | Cloudinary `hq/…/vid/`, 1920×1080 CRF 23 (~10.5MB/clip) |
  */
 
-let dynamicLandingQuality: AssetQuality = 'high';
+let dynamicLandingQuality: AssetQuality = 'standard';
 
 export const setLandingQuality = (quality: AssetQuality) => {
     dynamicLandingQuality = quality;
@@ -26,7 +26,7 @@ export const setLandingQuality = (quality: AssetQuality) => {
 export const getLandingQuality = (): AssetQuality => dynamicLandingQuality;
 
 /** Landing page — chất lượng mặc định. */
-export const LANDING_QUALITY: AssetQuality = 'high';
+export const LANDING_QUALITY: AssetQuality = 'standard';
 
 /**
  * Danh sách chính xác các public_id đang có bản `hq/` 1920×1080 trên Cloudinary —

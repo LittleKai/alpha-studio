@@ -15,7 +15,7 @@
     "test:watch": "vitest",
     "skills:merge": "node scripts/merge_and_split_skills.js",
     "skills:split": "node scripts/split_skills.js",
-    "postinstall": "node -e \"const fs=require('fs');const p='public/tinymce';if(!fs.existsSync(p)){fs.cpSync('node_modules/tinymce',p,{recursive:true})}\" && npx puppeteer browsers install chrome"
+    "postinstall": "node -e \"const fs=require('fs'),{execSync}=require('child_process'),p='public/tinymce';if(!fs.existsSync(p))fs.cpSync('node_modules/tinymce',p,{recursive:true});if(!process.env.VERCEL&&!process.env.CI)execSync('npx puppeteer browsers install chrome',{stdio:'inherit'})\""
   },
   "dependencies": {
     "@google/genai": "^1.17.0",

@@ -19,6 +19,10 @@
       "status": 410
     },
     {
+      "src": "^/(?:data/.*|vocab/assets/(?:NOTICES|assets/.+\\.db)|vocab/canvaskit/.*)$",
+      "status": 410
+    },
+    {
       "src": "^/sitemap\\.xml$",
       "dest": "https://alpha-studio-backend.fly.dev/sitemap.xml"
     },
@@ -34,7 +38,21 @@
       "continue": true
     },
     {
-      "src": "^/led-studio/(?:css/[^/]+\\.css|js/.+\\.js)$",
+      "src": "^/event-creative-city/vid/(.*)$",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/tinymce/(.*)$",
+      "headers": {
+        "cache-control": "public, max-age=604800, stale-while-revalidate=86400"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/led-studio/(?:css/[^/]+\\.css|js/(?!data/demo-video\\.js$).+\\.js)$",
       "headers": {
         "cache-control": "public, max-age=31536000, immutable",
         "x-content-type-options": "nosniff",
@@ -42,6 +60,44 @@
         "x-robots-tag": "noindex, noarchive, nosnippet"
       },
       "continue": true
+    },
+    {
+      "src": "^/led-studio/assets/(.*)$",
+      "headers": {
+        "cache-control": "public, max-age=86400, stale-while-revalidate=604800",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-robots-tag": "noindex, noarchive, nosnippet"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/led-studio(?:/.*)?$",
+      "has": [
+        {
+          "type": "header",
+          "key": "sec-fetch-site",
+          "value": "cross-site"
+        }
+      ],
+      "status": 403,
+      "headers": {
+        "x-robots-tag": "noindex, noarchive, nosnippet"
+      }
+    },
+    {
+      "src": "^/led-studio/(?!index\\.html$).+$",
+      "has": [
+        {
+          "type": "header",
+          "key": "sec-fetch-dest",
+          "value": "document"
+        }
+      ],
+      "status": 403,
+      "headers": {
+        "x-robots-tag": "noindex, noarchive, nosnippet"
+      }
     },
     {
       "src": "^/led-studio/(.*)$",

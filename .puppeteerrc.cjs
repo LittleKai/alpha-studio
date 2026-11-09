@@ -6,4 +6,5 @@ const { join } = require('path');
 
 module.exports = {
     cacheDirectory: join(__dirname, '.puppeteer-cache'),
+    skipDownload: Boolean(process.env.VERCEL || process.env.CI),
 };

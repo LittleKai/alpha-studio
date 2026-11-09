@@ -41,4 +41,4 @@ export default async function middleware(request) {
     }
 }
 
-export const config = { matcher: ['/led-studio/:path*', '/((?!api/|assets/|vocab/|crm/|led-studio/|tinymce/|vendor/|.*\\.[^/]+$).*)'] };
+export const config = { matcher: ['/led-studio', '/led-studio/index.html', '/((?!api/|assets/|vocab/|crm/|led-studio/|tinymce/|vendor/|.*\\.[^/]+$).*)'] };

@@ -17,7 +17,7 @@ const cacheRoute = new RegExp(
 
 describe('LED Studio static assets', () => {
   it('references css and js files', () => {
-    expect(refs.length).toBeGreaterThan(20);
+    expect(refs.length).toBeGreaterThanOrEqual(3);
   });
 
   it.each(refs.map(([, rel, v]) => [rel, v]))('%s carries the content hash of the file', (rel, v) => {

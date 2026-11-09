@@ -426,7 +426,7 @@ const LandingPage: React.FC = () => {
     }, []);
 
     // Video / Asset Quality state
-    const [videoQuality, setVideoQuality] = useState<AssetQuality>('high');
+    const [videoQuality, setVideoQuality] = useState<AssetQuality>('standard');
 
     // Fetch public system settings (video quality, etc.)
     useEffect(() => {

@@ -151,7 +151,7 @@ const HeroCinemaVideo: React.FC<HeroCinemaVideoProps> = ({ theme, onClipChange, 
                     }}
                     muted
                     playsInline
-                    preload="auto"
+                    preload={slot === front ? 'auto' : 'metadata'}
                     tabIndex={-1}
                     onCanPlay={handleCanPlay(slot)}
                     onTimeUpdate={handleTimeUpdate(slot)}
