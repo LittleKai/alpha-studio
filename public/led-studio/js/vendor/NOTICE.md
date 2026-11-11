@@ -20,3 +20,27 @@ Research source pin for Mediabunny was `aa5923124db643ff865c756a1558c2d1d37ae9bd
 - **video-to-3d-mocap**, https://github.com/cg960/video-to-3d-mocap/tree/cb52a6991090aeeace827af99f8574b218be7b7d, MIT License, Copyright (c) 2026 cg960. Selective algorithm port in `js/modules/v19-video-dance-mocap.js` (`mocap/skeleton.py`, `mocap/temporal.py`, `mocap/exporters.py`, `mocap/backends/__init__.py`, `blender_scripts/retarget_in_blender.py`, `mocap/tracking.py::postprocess_tracks`).
 - **toyxyz_RGBMocap**, https://github.com/toyxyz/toyxyz_RGBMocap/tree/9617daed16ebc943cd00b358d29329deba4529d8, MIT License, Copyright (c) 2026 toyxyz. Selective algorithm port in `js/core/01-math-webgl.js` and `js/modules/v19-video-dance-mocap.js` (`mocap/pear/foot_lock.py`, `mocap/pear/temporal_filter.py`, `mocap/contact_trajectory.py`, `mocap/multilevel_contacts.py`, `mocap/hand_lock.py`, `mocap/palm_contact.py`, `mocap/anatomical_ik.py`, `mocap/mixamo_rig.py`, `mocap/source_bvh.py`, `mocap/biped_bvh.py`, `mocap/export_options.py`, `mocap/bvh_bind.py`, `mocap/bone_overlay.py`, `mocap/foot_contacts.py`, `mocap/footlock_editor.py`).
 - **instanthmr**, https://github.com/naturalpad-studio/instanthmr/tree/eac9ca7c2cca3e02461636d88206a251ee613c5e, Apache-2.0 License, Copyright 2026 NaturalPad Studio. Selective algorithm port in `js/modules/v19-video-dance-mocap.js` (`instanthmr/smoothing.py::_Tracks`, `instanthmr/pipeline.py::keypoint_box`, `tools/build_contact_floor.py::fit_floor`).
+
+---
+
+## waveform-playlist (Audio Peaks, Fade Curves, Musical Ticks & Linked Annotation Boundary Math)
+
+- **Source**: `https://github.com/naomiaro/waveform-playlist/tree/d620a1d202b8033ec038b8c87cd307c3d7d2557b` (`packages/webaudio-peaks/src/index.ts`, `packages/core/src/utils/peaksGenerator.ts`, `packages/dawcore/src/utils/peak-rendering.ts`, `packages/core/src/fades.ts`, `packages/core/src/utils/musicalTicks.ts`, `packages/core/src/utils/beatsAndBars.ts`, `packages/core/src/utils/meterDetection.ts`, `packages/core/src/annotations/boundaries.ts`, `packages/dawcore/src/utils/annotation-playing.ts`, `packages/core/src/clipTimeHelpers.ts`)
+- **Target**: `js/core/04-sequencer-director.js`, `js/core/06-rundown-choreo-boot.js`, `js/modules/v13-timecode-laser-mount.js`
+- **License**: MIT License — Copyright (c) 2015 Naomi. Full license text in `js/vendor/waveform-playlist-LICENSE.txt`.
+
+---
+
+## wavesurfer.js (Spatially Indexed Column-Grid Marker Stacking & Pointer-Anchored Zoom)
+
+- **Source**: `https://github.com/katspaugh/wavesurfer.js/tree/66742bade56d51c43ce881dfdc1c107ba6acaaeb` (`src/label-stacking.ts`, `src/renderer-utils.ts`, and zoom/minimap UI interaction patterns in `src/plugins/zoom.ts` & `src/plugins/minimap.ts`)
+- **Target**: `js/core/04-sequencer-director.js`, `js/modules/v13-timecode-laser-mount.js`
+- **License**: BSD-3-Clause License — Copyright (c) 2012-2023, katspaugh and contributors. Full license text and disclaimer in `js/vendor/wavesurfer-LICENSE.txt`.
+
+---
+
+## 3d-director-desk (Cubic-Bezier Route Easing, Hold Windows & Constant-Speed Arc-Length Timing)
+
+- **Source**: `https://github.com/xiaozangao/3d-director-desk/tree/a6c931cd36d8263d986706f74ab4efe9d5151959` (fork of `jiguang132/storyai-3d-director-desk`, `src/editor/schema/routeTiming.ts`, `src/editor/motion/routeCustomEasingPresets.ts`, `src/editor/motion/ObjectMotionTransport.tsx`)
+- **Target**: `js/core/06-rundown-choreo-boot.js`
+- **License**: MIT License — Copyright (c) 2026 YZ. Full license text in `js/vendor/3d-director-desk-LICENSE.txt`.
