@@ -21,6 +21,7 @@ import { emptySection, type SectionKind } from '../../services/eventLibraryServi
 import SectionEditor from '../library/SectionEditor';
 import { fillLocalized, localizedText } from '../../utils/localized';
 import { cdnFromUrl } from '../../services/cloudinaryAssets';
+import ViewCountBadge from '../ui/ViewCountBadge';
 
 interface ArticlesAdminTabProps {
     category: 'about' | 'services' | 'news';
@@ -707,6 +708,14 @@ export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
                                                 <span className="text-xs text-[var(--text-tertiary)]">
                                                     #{article.order}
                                                 </span>
+                                                {isServices && (
+                                                    <ViewCountBadge
+                                                        count={article.viewCount}
+                                                        label={t('landing.services.viewCount')}
+                                                        language={language}
+                                                        className="text-xs text-[var(--text-tertiary)]"
+                                                    />
+                                                )}
                                                 <span className="text-xs text-[var(--text-tertiary)]">
                                                     {new Date(article.updatedAt).toLocaleDateString()}
                                                 </span>

@@ -6,6 +6,7 @@ import { uploadToCloudinary } from '../services/cloudinaryService';
 import { uploadToB2 } from '../services/b2StorageService';
 import ChangePasswordModal from '../components/modals/ChangePasswordModal';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
+import SEOHead from '../components/ui/SEOHead';
 
 interface FeaturedWork {
     image: string;
@@ -358,6 +359,7 @@ const ProfilePage: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+            <SEOHead title="Hồ sơ" description="" path="/profile" noindex />
             {/* Header */}
             <div className="bg-gray-800/50 border-b border-gray-700 sticky top-0 z-10 backdrop-blur-sm">
                 <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">

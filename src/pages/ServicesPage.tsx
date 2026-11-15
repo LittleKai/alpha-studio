@@ -2,10 +2,12 @@ import { useState, useEffect, useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
-import { getArticles, type Article } from '../services/articleService';
+import ViewCountBadge from '../components/ui/ViewCountBadge';
+import { getArticles, sumArticleViews, type Article } from '../services/articleService';
 import { getServiceCategories, type ServiceCategory } from '../services/serviceCategoryService';
 import { localizedText } from '../utils/localized';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
+import { buildItemListJsonLd } from '../utils/seoMeta';
 
 /** Tông màu theo `accent` của phân mục — chữ trắng khi nền có màu (theo yêu cầu UI). */
 const ACCENT_TONES: Record<string, {
@@ -135,9 +137,13 @@ export default function ServicesPage() {
         setSearchParams(slug ? { cat: slug } : {}, { replace: true });
     };
 
-    // Tổng số ảnh của toàn bộ bài đang hiển thị — số liệu ở dải hero
+    // Tổng số ảnh và lượt xem của toàn bộ bài đang hiển thị — số liệu ở dải hero
     const totalImages = useMemo(
         () => articles.reduce((n, a) => n + countImages(a), 0),
+        [articles]
+    );
+    const totalViews = useMemo(
+        () => sumArticleViews(articles),
         [articles]
     );
 
@@ -149,6 +155,10 @@ export default function ServicesPage() {
                     ? 'Dựng 3D sự kiện từ ảnh, render SketchUp, thiết kế nội thất và dựng nhà phố từ CAD. Xem dự án, ảnh đầu vào và kết quả bàn giao của Alpha Studio.'
                     : 'Event 3D from reference images, SketchUp rendering, furniture design and CAD architectural modelling. See Alpha Studio projects and deliverables.'}
                 path="/services"
+                jsonLd={articles.length ? [buildItemListJsonLd(
+                    articles.map(a => ({ name: localizedText(a.title, language), path: `/services/${a.slug}`, image: a.thumbnail ? cdnFromUrl(a.thumbnail) : undefined })),
+                    language === 'vi' ? 'Dự án thiết kế 3D' : '3D Design Projects'
+                )] : undefined}
             />
 
             {/* Hero */}
@@ -198,6 +208,15 @@ export default function ServicesPage() {
                                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
                                 <span className="text-lg font-black text-[var(--text-primary)] tabular-nums">{totalImages}</span>
                                 <span className="text-[var(--text-secondary)] text-xs font-medium">{t('landing.services.imageCount')}</span>
+                            </div>
+                        )}
+                        {totalViews > 0 && (
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--bg-card)] border border-[var(--border-primary)] shadow-sm backdrop-blur-sm">
+                                <span className="w-2 h-2 rounded-full bg-amber-500" />
+                                <span className="text-lg font-black text-[var(--text-primary)] tabular-nums">
+                                    {totalViews.toLocaleString(language === 'vi' ? 'vi-VN' : 'en-US')}
+                                </span>
+                                <span className="text-[var(--text-secondary)] text-xs font-medium">{t('landing.services.viewCount')}</span>
                             </div>
                         )}
                     </div>
@@ -364,6 +383,12 @@ export default function ServicesPage() {
                                         )}
 
                                         <div className="flex flex-wrap items-center gap-2 text-[11px] text-[var(--text-tertiary)]">
+                                            <ViewCountBadge
+                                                count={article.viewCount}
+                                                label={t('landing.services.viewCount')}
+                                                language={language}
+                                                className="px-2 py-0.5 rounded-md bg-[var(--bg-secondary)] border border-[var(--border-primary)]"
+                                            />
                                             {images > 0 && (
                                                 <span className="px-2 py-0.5 rounded-md bg-[var(--bg-secondary)] border border-[var(--border-primary)]">
                                                     {images} {t('landing.services.imageCount')}

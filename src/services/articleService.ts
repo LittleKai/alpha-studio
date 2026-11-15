@@ -52,6 +52,7 @@ export interface Article {
     serviceCategory: ServiceCategory | null;
     sections: LibrarySection[];
     attachments: ArticleAttachment[];
+    viewCount?: number;
     createdAt: string;
     updatedAt: string;
 }
@@ -92,9 +93,23 @@ export const getArticles = async (
     return res.json();
 };
 
+export const normalizeArticleViewCount = (viewCount?: number): number => {
+    const n = Number(viewCount);
+    return Number.isFinite(n) && n > 0 ? Math.floor(n) : 0;
+};
+
+export const sumArticleViews = (articles: ReadonlyArray<Pick<Article, 'viewCount'>>): number => {
+    return articles.reduce((sum, article) => sum + normalizeArticleViewCount(article.viewCount), 0);
+};
+
+export const buildArticleSlugUrl = (apiUrl: string, slug: string, trackView = false): string => {
+    const base = `${apiUrl}/articles/${encodeURIComponent(slug)}`;
+    return trackView ? `${base}?trackView=1` : base;
+};
+
 // Public: Get single article by slug
-export const getArticleBySlug = async (slug: string) => {
-    const res = await fetchWithRetry(`${API_URL}/articles/${slug}`, {
+export const getArticleBySlug = async (slug: string, options?: { trackView?: boolean }) => {
+    const res = await fetchWithRetry(buildArticleSlugUrl(API_URL, slug, options?.trackView), {
         headers: getHeaders(),
     });
     if (!res.ok) throw new Error(await parseErrorMessage(res, 'Article not found'));

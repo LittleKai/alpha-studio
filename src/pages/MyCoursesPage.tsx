@@ -5,6 +5,7 @@ import { useAuth } from '../auth/context';
 import { getMyEnrolledCourses, Enrollment } from '../services/courseService';
 import { localizedText } from '../utils/localized';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
+import SEOHead from '../components/ui/SEOHead';
 
 // Category color mapping
 const categoryColors: Record<string, string> = {
@@ -119,6 +120,7 @@ const MyCoursesPage: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
+            <SEOHead title="Khóa học của tôi" description="" path="/my-courses" noindex />
             {/* Header */}
             <header className="sticky top-0 z-40 glass-card border-b border-[var(--border-primary)]">
                 <div className="container mx-auto px-6 py-4">

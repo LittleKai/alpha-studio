@@ -13,6 +13,7 @@ import ToolDownloadsAdminTab from '../components/admin/ToolDownloadsAdminTab';
 import CrmAdminTab from '../components/admin/CrmAdminTab';
 import AnalyticsAdminTab from '../components/admin/AnalyticsAdminTab';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
+import SEOHead from '../components/ui/SEOHead';
 import {
     getUsers,
     getUserDetails,
@@ -109,6 +110,7 @@ export default function AdminPage() {
 
     return (
         <Layout>
+            <SEOHead title="Admin" description="" path="/admin" noindex />
             <div className="min-h-screen bg-[var(--bg-primary)] p-6">
                 <div className="max-w-7xl mx-auto">
                     {/* Header */}

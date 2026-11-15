@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildBreadcrumbJsonLd, buildSeoMeta, SITE_URL } from './seoMeta';
+import { buildBreadcrumbJsonLd, buildItemListJsonLd, buildSeoMeta, DEFAULT_OG_IMAGE, SITE_URL } from './seoMeta';
 import * as seo from './seoMeta';
 
 it('derives a readable description from article content without scripts or markup', () => {
@@ -58,6 +58,19 @@ describe('buildSeoMeta', () => {
     const meta = buildSeoMeta({ title: 'Example', description: '', jsonLd: { headline } });
     expect(meta.jsonLdScripts[0]).not.toContain('<');
     expect(JSON.parse(meta.jsonLdScripts[0]).headline).toBe(headline);
+  });
+
+  it('uses dedicated 1200x630 og-image by default and builds ItemList JSON-LD', () => {
+    const meta = buildSeoMeta({ title: 'Test', description: 'Desc', path: '/' });
+    expect(meta.image).toBe(`${SITE_URL}/og-image.png`);
+    expect(DEFAULT_OG_IMAGE).toBe(`${SITE_URL}/og-image.png`);
+
+    const list = buildItemListJsonLd([
+      { name: 'Dự án A', path: '/services/du-an-a', image: `${SITE_URL}/a.webp` },
+    ], 'Dự án thiết kế 3D');
+    expect(list['@type']).toBe('ItemList');
+    expect(list.numberOfItems).toBe(1);
+    expect((list.itemListElement as any[])[0].url).toBe(`${SITE_URL}/services/du-an-a`);
   });
 });
 

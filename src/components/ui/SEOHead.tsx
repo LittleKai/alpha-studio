@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useEffect } from 'react';
 import { useTranslation } from '../../i18n/context';
-import { buildSeoMeta, type SeoLocale, SITE_URL } from '../../utils/seoMeta';
+import { buildSeoMeta, DEFAULT_OG_IMAGE, type SeoLocale, SITE_URL } from '../../utils/seoMeta';
 
 export interface SEOHeadProps {
   title: string;
@@ -31,6 +31,8 @@ export default function SEOHead({ title, description, ogImage, ogType = 'website
       <meta property="og:title" content={meta.fullTitle} />
       <meta property="og:description" content={meta.description} />
       <meta property="og:image" content={meta.image} />
+      {meta.image === DEFAULT_OG_IMAGE && <meta property="og:image:width" content="1200" />}
+      {meta.image === DEFAULT_OG_IMAGE && <meta property="og:image:height" content="630" />}
       <meta property="og:url" content={meta.url} />
       <meta property="og:type" content={meta.ogType} />
       <meta property="og:site_name" content="Alpha Studio" />

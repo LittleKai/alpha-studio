@@ -73,7 +73,7 @@ export default function NewsDetailPage() {
                     '@type': 'Article',
                     headline: localizedText(article.title, language),
                     description,
-                    image: article.thumbnail || 'https://giaiphapsangtao.com/alpha-logo-2.png',
+                    image: article.thumbnail || 'https://giaiphapsangtao.com/og-image.png',
                     url: `https://giaiphapsangtao.com/news/${slug}`,
                     author: { '@type': 'Organization', name: 'Alpha Studio' },
                     publisher: {

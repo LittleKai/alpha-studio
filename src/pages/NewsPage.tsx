@@ -5,6 +5,7 @@ import SEOHead from '../components/ui/SEOHead';
 import { getArticles, type Article } from '../services/articleService';
 import { localizedText } from '../utils/localized';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
+import { buildItemListJsonLd } from '../utils/seoMeta';
 
 export default function NewsPage() {
     const { t, language } = useTranslation();
@@ -34,6 +35,10 @@ export default function NewsPage() {
                     ? 'Cập nhật những tin tức mới nhất về các khóa học, sự kiện và xu hướng AI trong ngành sáng tạo.'
                     : 'Stay up to date with the latest news, events, and AI trends in the creative industry.'}
                 path="/news"
+                jsonLd={articles.length ? [buildItemListJsonLd(
+                    articles.map(a => ({ name: localizedText(a.title, language), path: `/news/${a.slug}`, image: a.thumbnail ? cdnFromUrl(a.thumbnail) : undefined })),
+                    language === 'vi' ? 'Tin tức mới nhất' : 'Latest News'
+                )] : undefined}
             />
             {/* Hero Section */}
             <section className="relative py-20 px-6 text-center overflow-hidden">

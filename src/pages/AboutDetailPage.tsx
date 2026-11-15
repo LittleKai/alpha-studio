@@ -72,7 +72,7 @@ export default function AboutDetailPage() {
                     '@type': 'Article',
                     headline: localizedText(article.title, language),
                     description: localizedText(article.excerpt, language),
-                    image: article.thumbnail || 'https://giaiphapsangtao.com/alpha-logo-2.png',
+                    image: article.thumbnail || 'https://giaiphapsangtao.com/og-image.png',
                     url: `https://giaiphapsangtao.com/about/${slug}`,
                     author: { '@type': 'Organization', name: 'Alpha Studio' },
                     publisher: {

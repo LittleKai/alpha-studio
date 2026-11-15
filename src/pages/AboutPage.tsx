@@ -5,6 +5,7 @@ import SEOHead from '../components/ui/SEOHead';
 import { getArticles, type Article } from '../services/articleService';
 import { localizedText } from '../utils/localized';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
+import { buildItemListJsonLd } from '../utils/seoMeta';
 
 export default function AboutPage() {
     const { t, language } = useTranslation();
@@ -34,6 +35,10 @@ export default function AboutPage() {
                     ? 'Tìm hiểu về Alpha Studio — nền tảng đào tạo AI hàng đầu Việt Nam, sứ mệnh, tầm nhìn và đội ngũ của chúng tôi.'
                     : 'Learn about Alpha Studio — Vietnam\'s leading AI training platform, our mission, vision and team.'}
                 path="/about"
+                jsonLd={articles.length ? [buildItemListJsonLd(
+                    articles.map(a => ({ name: localizedText(a.title, language), path: `/about/${a.slug}`, image: a.thumbnail ? cdnFromUrl(a.thumbnail) : undefined })),
+                    language === 'vi' ? 'Bài viết về Alpha Studio' : 'About Alpha Studio'
+                )] : undefined}
             />
             {/* Hero Section */}
             <section className="relative py-20 px-6 text-center overflow-hidden">

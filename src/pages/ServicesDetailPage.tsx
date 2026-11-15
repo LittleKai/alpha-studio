@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { getArticleBySlug, getArticleAttachmentDownloadUrl, type Article } from '../services/articleService';
 import SEOHead from '../components/ui/SEOHead';
+import ViewCountBadge from '../components/ui/ViewCountBadge';
 import { localizedSection, localizedText } from '../utils/localized';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
 import { formatArticleDate } from '../utils/articleDate';
@@ -46,7 +47,7 @@ export default function ServicesDetailPage() {
             if (!slug) return;
             try {
                 setLoading(true);
-                const res = await getArticleBySlug(slug);
+                const res = await getArticleBySlug(slug, { trackView: true });
                 setArticle(res.data);
             } catch (error) {
                 console.error('Failed to load service article:', error);
@@ -199,7 +200,7 @@ export default function ServicesDetailPage() {
                     '@type': 'Article',
                     headline: title,
                     description: excerpt,
-                    image: article.thumbnail || 'https://giaiphapsangtao.com/alpha-logo-2.png',
+                    image: article.thumbnail || 'https://giaiphapsangtao.com/og-image.png',
                     url: `https://giaiphapsangtao.com/services/${slug}`,
                     author: { '@type': 'Organization', name: 'Alpha Studio' },
                     publisher: {
@@ -280,6 +281,12 @@ export default function ServicesDetailPage() {
                                 </span>
                             )}
                             {formattedDate && <span>{formattedDate}</span>}
+                            <ViewCountBadge
+                                count={article.viewCount}
+                                label={t('landing.services.viewCount')}
+                                language={language}
+                                iconClassName="w-4 h-4"
+                            />
                             {imageCount > 0 && (
                                 <span>{imageCount} {t('landing.services.imageCount')}</span>
                             )}

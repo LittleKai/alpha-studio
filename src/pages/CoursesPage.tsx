@@ -4,6 +4,7 @@ import { useTranslation } from '../i18n/context';
 import SEOHead from '../components/ui/SEOHead';
 import { getCourses, Course, CourseQueryParams, PaginationInfo } from '../services/courseService';
 import { localizedText } from '../utils/localized';
+import { buildItemListJsonLd } from '../utils/seoMeta';
 import { cdnFromUrl } from '../services/cloudinaryAssets';
 
 // Category options
@@ -149,6 +150,10 @@ const CoursesPage: React.FC = () => {
                 title={language === 'vi' ? 'Khóa Học AI — Alpha Studio' : 'AI Courses — Alpha Studio'}
                 description={desc}
                 path="/courses"
+                jsonLd={courses.length ? [buildItemListJsonLd(
+                    courses.map(c => ({ name: getLocalizedText(c.title as { vi: string; en: string }), path: `/courses/${c.slug}`, image: c.thumbnail ? cdnFromUrl(c.thumbnail) : undefined })),
+                    language === 'vi' ? 'Danh sách khóa học AI' : 'AI Course Catalog'
+                )] : undefined}
             />
             {/* Header */}
             <div className="bg-[var(--bg-secondary)]/50 border-b border-[var(--border-primary)]">

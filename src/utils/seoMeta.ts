@@ -1,5 +1,5 @@
 export const SITE_URL = 'https://giaiphapsangtao.com';
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/alpha-logo-2.png`;
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 export function buildSeoDescription(excerpt: string, html: string, fallback: string): string {
   const text = (excerpt.trim() || html)
@@ -53,6 +53,23 @@ export function buildSeoMeta(input: SeoMetaInput): SeoMetaOutput {
     ogLocale: input.locale === 'en' ? 'en_US' : 'vi_VN',
     robots: input.noindex ? 'noindex, nofollow' : 'index, follow',
     jsonLdScripts: jsonLd.map((value) => JSON.stringify(value).replace(/</g, '\\u003c')),
+  };
+}
+
+export function buildItemListJsonLd(items: { name: string; path: string; image?: string; description?: string }[], listName: string): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: listName,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      url: `${SITE_URL}${normalizePath(item.path)}`,
+      ...(item.image ? { image: item.image } : {}),
+      ...(item.description ? { description: item.description } : {}),
+    })),
   };
 }
 
