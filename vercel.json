@@ -54,7 +54,7 @@
     {
       "src": "^/led-studio/(?:css/[^/]+\\.css|js/(?!data/demo-video\\.js$).+\\.js)$",
       "headers": {
-        "cache-control": "public, max-age=31536000, immutable",
+        "cache-control": "private, max-age=31536000, immutable",
         "x-content-type-options": "nosniff",
         "x-frame-options": "SAMEORIGIN",
         "x-robots-tag": "noindex, noarchive, nosnippet"
@@ -64,7 +64,7 @@
     {
       "src": "^/led-studio/assets/(.*)$",
       "headers": {
-        "cache-control": "public, max-age=86400, stale-while-revalidate=604800",
+        "cache-control": "private, max-age=86400, stale-while-revalidate=604800",
         "x-content-type-options": "nosniff",
         "x-frame-options": "SAMEORIGIN",
         "x-robots-tag": "noindex, noarchive, nosnippet"
@@ -82,6 +82,7 @@
       ],
       "status": 403,
       "headers": {
+        "cache-control": "no-store",
         "x-robots-tag": "noindex, noarchive, nosnippet"
       }
     },
@@ -96,12 +97,14 @@
       ],
       "status": 403,
       "headers": {
+        "cache-control": "no-store",
         "x-robots-tag": "noindex, noarchive, nosnippet"
       }
     },
     {
       "src": "^/led-studio/(.*)$",
       "headers": {
+        "content-security-policy": "frame-ancestors 'self'; object-src 'none'; base-uri 'self'",
         "x-content-type-options": "nosniff",
         "x-frame-options": "SAMEORIGIN",
         "x-robots-tag": "noindex, noarchive, nosnippet"
@@ -109,7 +112,19 @@
       "continue": true
     },
     {
+      "src": "^/api/led-studio/session-ticket$",
+      "dest": "https://alpha-studio-backend.fly.dev/api/led-studio/session-ticket"
+    },
+    {
       "handle": "filesystem"
+    },
+    {
+      "src": "^/led-studio(?:/.*)?$",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "x-robots-tag": "noindex, noarchive, nosnippet"
+      }
     },
     {
       "src": "/(.*)",

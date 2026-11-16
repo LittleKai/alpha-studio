@@ -119,7 +119,34 @@ export default {
       seoTitle: "LumiStage (LED Stage Studio 3D) — Thiết kế sân khấu, Mapping LED, AI & Báo giá",
       seoDesc: "LumiStage (by Alpha Studio · GROUPLIFE): Ứng dụng WebGL2 thiết kế sân khấu 3D, trợ lý AI Gemini Flash 3.8, bóc tách BOM/Báo giá, xuất AutoCAD .DXF, điều khiển đèn DMX512 OFL và Laser ILDA.",
       breadcrumb: "LumiStage · LED Stage Studio 3D",
-      badge: "LUMISTAGE V18 · BY ALPHA STUDIO"
+      badge: "LUMISTAGE V18 · BY ALPHA STUDIO",
+      showcase: {
+        heading: "LumiStage — Thiết kế Sân khấu Sự kiện 3D, Mapping LED & Ánh sáng DMX",
+        subtitle: "Nền tảng WebGL2 60 FPS trực quan cho đạo diễn sân khấu, kỹ sư AVL và đơn vị tổ chức sự kiện: dựng sân khấu hệ mét, đi dây cabinet NovaStar/Brompton, chạy 35 hiệu ứng LED Matrix, lập trình 128 đèn DMX512/ILDA và xuất bản vẽ kỹ thuật AutoCAD .DXF, .MVR & Báo giá thương mại.",
+        openBtn: "Đăng nhập để mở Sân khấu 3D",
+        backBtn: "Quay lại AI Studio",
+        pillar1Title: "Sân khấu 3D & Pixel Mapping Hệ Mét",
+        pillar1Desc: "6 bộ sân khấu mẫu Việt Nam, màn hình LED cong/trụ/lượn sóng, đi dây tín hiệu RJ45 & nguồn PowerCON, đóng gói Atlas 4K và xuất XML Resolume Arena.",
+        pillar2Title: "128 Đèn DMX512, Laser ILDA & Vũ đạo 3D",
+        pillar2Desc: "22 hồ sơ đèn OFL 16-bit xoay Pan/Tilt thật, 35 hiệu ứng viền LED Matrix 3D, Timecode 200Hz, pháo điện Pyro TCVN và 19 nghệ sĩ 3D biểu diễn trực tiếp.",
+        pillar3Title: "Trợ lý AI, Hồ sơ Kỹ thuật 3 Pha & CAD",
+        pillar3Desc: "Thiết kế nhanh bằng tiếng Việt qua Gemini Flash 3.8, tính tải điện 3 pha 380V & độ võng Truss, xuất AutoCAD .DXF đa lớp, .MVR DIN 15800 và link duyệt 3D cho khách hàng."
+      },
+      gate: {
+        verifyingSession: "Đang khởi tạo phiên làm việc 3D an toàn…",
+        verifyingShare: "Đang xác thực liên kết xem duyệt sân khấu 3D…",
+        passwordTitle: "Dự án 3D được bảo vệ bằng mật khẩu",
+        passwordDesc: "Vui lòng nhập mật khẩu do đơn vị thiết kế cung cấp để mở bản xem duyệt 3D.",
+        passwordPlaceholder: "Nhập mật khẩu xem dự án…",
+        passwordSubmit: "Mở bản duyệt 3D",
+        invalidPassword: "Mật khẩu không đúng. Vui lòng kiểm tra lại.",
+        shareInvalidTitle: "Liên kết chia sẻ không khả dụng",
+        shareInvalidDesc: "Liên kết xem duyệt 3D này không tồn tại, đã bị tắt hoặc đã hết thời hạn hiệu lực.",
+        shareProExpiredDesc: "Liên kết này đã tạm ngưng vì gói LumiStage PRO của chủ dự án đã hết hạn.",
+        sessionErrorTitle: "Không thể khởi tạo phiên LumiStage",
+        sessionErrorDesc: "Phiên đăng nhập đã hết hạn hoặc kết nối máy chủ tạm thời gián đoạn.",
+        retryBtn: "Thử lại"
+      }
     },
     hub: {
       hero: {

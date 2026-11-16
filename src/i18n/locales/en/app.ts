@@ -119,7 +119,34 @@ export default {
       seoTitle: "LumiStage (LED Stage Studio 3D) — Stage Design, LED Mapping, AI & Quotation",
       seoDesc: "LumiStage (by Alpha Studio · GROUPLIFE): WebGL2 3D event stage designer, Gemini Flash 3.8 AI stage assistant, automatic BOM & quotation, AutoCAD .DXF, OFL DMX512 lighting desk, and ILDA laser studio.",
       breadcrumb: "LumiStage · LED Stage Studio 3D",
-      badge: "LUMISTAGE V18 · BY ALPHA STUDIO"
+      badge: "LUMISTAGE V18 · BY ALPHA STUDIO",
+      showcase: {
+        heading: "LumiStage — 3D Event Stage Design, LED Mapping & DMX Lighting Studio",
+        subtitle: "Real-time 60 FPS WebGL2 workstation for stage directors, AVL engineers, and event agencies: metric 3D stage modeling, NovaStar/Brompton cabinet wiring, 35 LED Matrix effects, 128-fixture DMX512/ILDA show control, and AutoCAD .DXF, .MVR & commercial quotation exports.",
+        openBtn: "Sign in to Launch 3D Studio",
+        backBtn: "Back to AI Studio",
+        pillar1Title: "Metric 3D Stage & Pixel Mapping",
+        pillar1Desc: "6 production-ready stage templates, curved/cylindrical LED walls, RJ45 data & PowerCON loop planning, 4K Atlas packing, and Resolume Arena XML export.",
+        pillar2Title: "128 DMX512 Fixtures, ILDA Laser & 3D Cast",
+        pillar2Desc: "22 16-bit OFL moving-head profiles, 35 3D LED Matrix contour effects, 200Hz Timecode sequencer, NFPA/TCVN pyro simulation, and 19 rigged 3D performers.",
+        pillar3Title: "AI Stage Architect, 3-Phase Rider & CAD",
+        pillar3Desc: "Natural-language stage layout with Gemini Flash 3.8, 380V 3-phase load & truss deflection engineering, multi-layer AutoCAD .DXF, DIN 15800 .MVR, and 3D client review links."
+      },
+      gate: {
+        verifyingSession: "Initializing secure 3D studio session…",
+        verifyingShare: "Verifying 3D stage review link…",
+        passwordTitle: "Password-Protected 3D Project",
+        passwordDesc: "Enter the password provided by the stage designer to open this 3D review link.",
+        passwordPlaceholder: "Enter project password…",
+        passwordSubmit: "Open 3D Review",
+        invalidPassword: "Incorrect password. Please try again.",
+        shareInvalidTitle: "Share Link Unavailable",
+        shareInvalidDesc: "This 3D review link does not exist, was disabled, or has expired.",
+        shareProExpiredDesc: "This review link is inactive because the project owner's LumiStage PRO plan has expired.",
+        sessionErrorTitle: "Unable to Start LumiStage Session",
+        sessionErrorDesc: "Your login session expired or the server connection was temporarily interrupted.",
+        retryBtn: "Retry"
+      }
     },
     hub: {
       hero: {

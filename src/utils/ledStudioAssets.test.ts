@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { join, resolve } from 'node:path';
+import vm from 'node:vm';
 import { describe, expect, it } from 'vitest';
 
 // public/led-studio is synced from led-stage-studio (scripts/sync-to-public.mjs), which tags each
@@ -30,5 +31,61 @@ describe('LED Studio static assets', () => {
     for (const [, rel] of refs) expect(cacheRoute.test(`/led-studio/${rel}`)).toBe(true);
     expect(cacheRoute.test('/led-studio/index.html')).toBe(false);
     expect(cacheRoute.test('/led-studio/js/data/demo-video.js')).toBe(false);
+  });
+
+  it('ships production-locked lumi-studio.min.js (rejects localhost & non-iframe) and omits .asset.json / .pack.js', () => {
+    const bundleCode = readFileSync(resolve(root, 'js/lumi-studio.min.js'), 'utf8');
+    const runGuard = (loc: { protocol: string; hostname: string }, framed: boolean) => {
+      const engineStateEl = { textContent: '3D engine ready' };
+      const win: Record<string, unknown> = {
+        location: loc,
+        document: { getElementById: (id: string) => (id === 'engineState' ? engineStateEl : null) }
+      };
+      win.self = win;
+      win.top = framed ? { __shell: true } : win;
+      const ctx = vm.createContext({
+        window: win,
+        globalThis: win,
+        self: win,
+        Proxy,
+        Reflect,
+        Set,
+        Map,
+        Object,
+        String,
+        Number,
+        Boolean,
+        Array,
+        Uint8Array,
+        Uint32Array,
+        TextDecoder,
+        Buffer,
+        Math
+      });
+      try {
+        vm.runInContext(bundleCode, ctx);
+      } catch {
+        // Expected DOM/WebGL stub termination after passing host guard
+      }
+      return engineStateEl.textContent;
+    };
+
+    expect(runGuard({ protocol: 'http:', hostname: 'localhost' }, true)).toBe('Unauthorized domain');
+    expect(runGuard({ protocol: 'https:', hostname: 'giaiphapsangtao.com' }, false)).toBe('Unauthorized domain');
+    expect(runGuard({ protocol: 'https:', hostname: 'giaiphapsangtao.com' }, true)).not.toBe('Unauthorized domain');
+
+    const walkFiles = (dir: string, acc: string[] = []): string[] => {
+      if (!existsSync(dir)) return acc;
+      for (const ent of readdirSync(dir, { withFileTypes: true })) {
+        const p = join(dir, ent.name);
+        if (ent.isDirectory()) walkFiles(p, acc);
+        else acc.push(p.replace(/\\/g, '/'));
+      }
+      return acc;
+    };
+    const assetFiles = walkFiles(resolve(root, 'assets'));
+    expect(assetFiles.filter((f) => f.endsWith('.asset.json'))).toEqual([]);
+    expect(assetFiles.filter((f) => f.endsWith('.pack.js'))).toEqual([]);
+    expect(assetFiles.some((f) => f.endsWith('.pack.bin'))).toBe(true);
   });
 });
