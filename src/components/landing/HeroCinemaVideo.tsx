@@ -1,13 +1,14 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { AssetQuality, cdnImage, videoBasePath } from '../../services/cloudinaryAssets';
+import HeroDarkStoryboardThree from './HeroDarkStoryboardThree';
 
 /**
- * Nền video hero: phát nối tiếp bảy clip của một bộ Event Creative City.
- * Bộ tối dùng look Neon Night, bộ sáng dùng look Storyboard sống.
- *
- * Chỉ hai clip được giữ trong DOM (clip đang chiếu + clip kế tiếp) nên trang
- * không tải cả bộ ~30MB ngay khi mở. Clip kế tiếp được nạp trong lúc clip hiện
- * tại đang chạy và bắt đầu sớm hơn một nhịp để hai lớp kịp chồng mờ vào nhau.
+ * Nền hero theo theme:
+ * - `dark`: sa bàn 3D Isometric (`hero-dark-diorama.glb` dựng & bake Cycles AO từ Blender 5.3,
+ *   tích hợp kho thiết bị/nghệ sĩ CC0 của `led-stage-studio`, Selective HDR Bloom, đèn 3 khớp Pan/Tilt,
+ *   màn LED cong GLSL & pháo điện lạnh Cold Spark qua 7 chặng ~2.5s/chặng).
+ * - `light`: chuỗi bảy clip Storyboard sống (`living-storyboard`), chỉ giữ hai `<video>`
+ *   trong DOM (đang chiếu + kế tiếp) để chồng mờ mượt mà không tải cả bộ ngay từ đầu.
  */
 
 const CLIP_COUNT = 7;
@@ -24,18 +25,21 @@ interface HeroCinemaVideoProps {
     quality?: AssetQuality;
 }
 
-const HeroCinemaVideo: React.FC<HeroCinemaVideoProps> = ({ theme, onClipChange, stillAlt, quality }) => {
-    const set = {
-        dark: {
-            basePath: videoBasePath('neon', quality),
-            still: cdnImage('event-creative-city/01-event-gate', { sizing: 'w_1600', quality }),
-        },
-        light: {
-            basePath: videoBasePath('living-storyboard', quality),
-            still: cdnImage('event-creative-city/concepts/living-storyboard/01-creative-desk', { sizing: 'w_1600', quality }),
-        },
-    }[theme];
+interface LightStoryboardVideoProps {
+    basePath: string;
+    still: string;
+    onClipChange?: (index: number) => void;
+    stillAlt: string;
+    reduceMotion: boolean;
+}
 
+const LightStoryboardVideo: React.FC<LightStoryboardVideoProps> = ({
+    basePath,
+    still,
+    onClipChange,
+    stillAlt,
+    reduceMotion,
+}) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const videoRefs = useRef<(HTMLVideoElement | null)[]>([null, null]);
     const frontRef = useRef<0 | 1>(0);
@@ -45,15 +49,6 @@ const HeroCinemaVideo: React.FC<HeroCinemaVideoProps> = ({ theme, onClipChange, 
     const [clips, setClips] = useState<[number, number]>([0, 1]);
     const [front, setFront] = useState<0 | 1>(0);
     const [ready, setReady] = useState(false);
-    const [reduceMotion, setReduceMotion] = useState(false);
-
-    useEffect(() => {
-        const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-        const sync = () => setReduceMotion(motionQuery.matches);
-        sync();
-        motionQuery.addEventListener('change', sync);
-        return () => motionQuery.removeEventListener('change', sync);
-    }, []);
 
     useEffect(() => {
         onClipChange?.(clips[front]);
@@ -131,7 +126,7 @@ const HeroCinemaVideo: React.FC<HeroCinemaVideoProps> = ({ theme, onClipChange, 
     if (reduceMotion) {
         return (
             <div className="absolute inset-0 z-0 overflow-hidden">
-                <img src={set.still} alt={stillAlt} className="w-full h-full object-cover" />
+                <img src={still} alt={stillAlt} className="w-full h-full object-cover" />
             </div>
         );
     }
@@ -142,7 +137,7 @@ const HeroCinemaVideo: React.FC<HeroCinemaVideoProps> = ({ theme, onClipChange, 
                 <video
                     key={`${slot}-${clips[slot]}`}
                     ref={(element) => { videoRefs.current[slot] = element; }}
-                    src={`${set.basePath}/L${clips[slot]}.mp4`}
+                    src={`${basePath}/L${clips[slot]}.mp4`}
                     className="absolute inset-0 w-full h-full object-cover"
                     style={{
                         opacity: ready && slot === front ? 1 : 0,
@@ -159,6 +154,40 @@ const HeroCinemaVideo: React.FC<HeroCinemaVideoProps> = ({ theme, onClipChange, 
                 />
             ))}
         </div>
+    );
+};
+
+const HeroCinemaVideo: React.FC<HeroCinemaVideoProps> = ({ theme, onClipChange, stillAlt, quality }) => {
+    const [reduceMotion, setReduceMotion] = useState(false);
+
+    useEffect(() => {
+        const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const sync = () => setReduceMotion(motionQuery.matches);
+        sync();
+        motionQuery.addEventListener('change', sync);
+        return () => motionQuery.removeEventListener('change', sync);
+    }, []);
+
+    if (theme === 'dark') {
+        return (
+            <HeroDarkStoryboardThree
+                onClipChange={onClipChange}
+                stillAlt={stillAlt}
+                quality={quality}
+                reduceMotion={reduceMotion}
+                fallbackStill={cdnImage('event-creative-city/01-event-gate', { sizing: 'w_1600', quality })}
+            />
+        );
+    }
+
+    return (
+        <LightStoryboardVideo
+            basePath={videoBasePath('living-storyboard', quality)}
+            still={cdnImage('event-creative-city/concepts/living-storyboard/01-creative-desk', { sizing: 'w_1600', quality })}
+            onClipChange={onClipChange}
+            stillAlt={stillAlt}
+            reduceMotion={reduceMotion}
+        />
     );
 };
 

@@ -10,26 +10,17 @@ import HeroCinemaVideo from './HeroCinemaVideo';
 import type { AssetQuality } from '../../services/cloudinaryAssets';
 
 interface LandingHeroProps {
-    stats: { courses: number; students: number; partners: number };
-    onOpenGpuServer: () => void;
     quality?: AssetQuality;
 }
 
 const JOURNEY_KEYS = ['step1', 'step2', 'step3', 'step4', 'step5', 'step6', 'step7'] as const;
 
-const LandingHero: React.FC<LandingHeroProps> = ({ stats, onOpenGpuServer, quality }) => {
+const LandingHero: React.FC<LandingHeroProps> = ({ quality }) => {
     const { t } = useTranslation();
     const { theme } = useTheme();
     const [activeClip, setActiveClip] = useState(0);
 
     const handleClipChange = useCallback((index: number) => setActiveClip(index), []);
-
-    const statItems = [
-        { value: stats.courses > 0 ? `${stats.courses}+` : '—', label: t('landing.hero.stats.courses') },
-        { value: stats.students > 0 ? `${stats.students}+` : '—', label: t('landing.hero.stats.students') },
-        { value: stats.partners > 0 ? `${stats.partners}+` : '—', label: t('landing.hero.stats.partners') },
-        { value: 'RTX 4090', label: t('landing.hero.stats.gpu') },
-    ];
 
     return (
         // 60px = chiều cao nav sticky, trừ đi để hero vừa đúng một màn hình
@@ -56,7 +47,7 @@ const LandingHero: React.FC<LandingHeroProps> = ({ stats, onOpenGpuServer, quali
 
             <div className="relative z-10 container mx-auto px-6 py-24 md:py-28 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 {/* Cột nội dung */}
-                <Reveal staggerChildren={0.1} delay={0.05} className="lg:col-span-7 space-y-7">
+                <Reveal staggerChildren={0.1} delay={0.05} className="lg:col-span-7 space-y-8">
                     <RevealItem y={12}>
                         <span className="inline-flex items-center gap-2.5 rounded-full border border-[var(--border-secondary)] bg-[var(--bg-card)] backdrop-blur-md px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.18em] text-[var(--text-primary)]">
                             <span className="relative flex h-2 w-2">
@@ -87,23 +78,6 @@ const LandingHero: React.FC<LandingHeroProps> = ({ stats, onOpenGpuServer, quali
                                 {t('landing.services.viewProjects')}
                             </Link>
                         </HoverSpring>
-                        <HoverSpring scale={1.03} y={-2} className="inline-block">
-                            <button
-                                onClick={onOpenGpuServer}
-                                className="py-3.5 px-8 font-black text-xs md:text-sm rounded-full border border-[var(--border-secondary)] bg-[var(--bg-card-alpha)] backdrop-blur-md text-[var(--text-primary)] tracking-wider uppercase transition-all duration-300 cursor-pointer hover:border-[var(--accent-primary)] active:scale-[0.98]"
-                            >
-                                {t('landing.hero.gpuServer')}
-                            </button>
-                        </HoverSpring>
-                    </RevealItem>
-
-                    <RevealItem y={15} className="grid grid-cols-2 sm:grid-cols-4 gap-px pt-4 rounded-2xl overflow-hidden border border-[var(--border-primary)] bg-[var(--border-primary)] max-w-[620px]">
-                        {statItems.map((stat) => (
-                            <div key={stat.label} className="bg-[var(--bg-card)] backdrop-blur-md px-4 py-4">
-                                <div className="text-xl md:text-2xl font-black text-[var(--text-primary)] leading-none">{stat.value}</div>
-                                <div className="mt-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--text-tertiary)]">{stat.label}</div>
-                            </div>
-                        ))}
                     </RevealItem>
                 </Reveal>
 

@@ -12,6 +12,14 @@ const VENDOR_CHUNKS: Record<string, RegExp> = {
 
 export default defineConfig({
   plugins: [react()],
+  optimizeDeps: {
+    include: [
+      'three',
+      'three/addons/loaders/GLTFLoader.js',
+      'three/addons/postprocessing/UnrealBloomPass.js',
+      'three/addons/environments/RoomEnvironment.js',
+    ],
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

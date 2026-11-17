@@ -479,7 +479,6 @@ const LandingPage: React.FC = () => {
     }, [isAuthenticated, navigate]);
 
     const goToStudio = useCallback(() => navigate('/studio'), [navigate]);
-    const goToGpuServer = useCallback(() => navigateToProtectedPage('/server'), [navigateToProtectedPage]);
 
     const [copiedPhone, setCopiedPhone] = useState<string | null>(null);
     const copyTimeoutRef = useRef<number | null>(null);
@@ -592,11 +591,7 @@ const LandingPage: React.FC = () => {
                 jsonLd={landingJsonLd}
             />
 
-            <LandingHero
-                stats={{ courses: courses.length, students: featuredStudents.length, partners: partners.length }}
-                onOpenGpuServer={goToGpuServer}
-                quality={videoQuality}
-            />
+            <LandingHero quality={videoQuality} />
 
             <ServiceCategoriesSection />
 
