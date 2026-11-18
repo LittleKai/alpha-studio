@@ -221,7 +221,7 @@ export default {
       chatProviderTitle: "Use OpenClaw for AI Chat",
       chatProviderDesc: "Keep this on to preserve per-user context through OpenClaw. Turn it off to call gcli directly via GCLI_DIRECT_URL, which is simpler but does not keep session context.",
       gcliBotModelLabel: "gcli model for AI Bot",
-      gcliBotModelDesc: "Pick the gcli model used when OpenClaw is off. Default is gemini-2.5-flash.",
+      gcliBotModelDesc: "Pick the gcli model used when OpenClaw is off. Default is gemini-3.1-flash-lite.",
       modelDefault: "default",
       landingQualityTitle: "Landing Page Video & Media Quality",
       landingQualityDesc: "Configure the video background and Event Creative City media quality on the landing page.",

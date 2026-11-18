@@ -113,7 +113,6 @@ export default function StudioAdminTab() {
                                 >
                                     <option value="gemini-3.1-flash-lite">gemini-3.1-flash-lite (Gemini 3.1 Flash Lite - {t('admin.studio.modelDefault')})</option>
                                     <option value="gemini-3.8-flash">gemini-3.8-flash (Gemini 3.8 Flash Low)</option>
-                                    <option value="gemini-2.5-flash">gemini-2.5-flash (Legacy / Sắp dừng)</option>
                                 </select>
                             </div>
                         )}

@@ -43,19 +43,19 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, tone, tit
 
 const SHOTS = [
     {
-        src: '/crm-preview.png',
+        src: '/images/crm/crm-dashboard.png',
         captionKey: 'studio.hub.cards.crm.page.shot1',
     },
     {
-        src: '/crm-preview.png',
+        src: '/images/crm/crm-customers.png',
         captionKey: 'studio.hub.cards.crm.page.shot2',
     },
     {
-        src: '/crm-preview.png',
+        src: '/images/crm/crm-bulk.png',
         captionKey: 'studio.hub.cards.crm.page.shot3',
     },
     {
-        src: '/crm-preview.png',
+        src: '/images/crm/crm-chatbot.png',
         captionKey: 'studio.hub.cards.crm.page.shot4',
     },
 ];

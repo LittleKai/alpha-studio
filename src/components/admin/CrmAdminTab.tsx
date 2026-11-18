@@ -296,10 +296,10 @@ export default function CrmAdminTab() {
                                                         {new Date(s.periodStart).toLocaleDateString('vi-VN')} &rarr; {new Date(s.periodEnd).toLocaleDateString('vi-VN')}
                                                     </td>
                                                     <td className="p-3 text-center font-semibold">
-                                                        {s.includedAiLimit - s.includedAiUsed} / {s.includedAiLimit} Used
+                                                        {Number((s.includedAiLimit - s.includedAiUsed).toFixed(2))} / {s.includedAiLimit} Cr
                                                     </td>
                                                     <td className="p-3 text-center font-semibold text-emerald-400">
-                                                        +{s.extraAiRemaining} Requests
+                                                        +{Number(Number(s.extraAiRemaining || 0).toFixed(2))} Cr
                                                     </td>
                                                     <td className="p-3 text-center">
                                                         {(s.autoRenewCredit ?? s.autoRenew) ? 'Có' : 'Không'}

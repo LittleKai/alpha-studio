@@ -19,9 +19,9 @@ export interface RenewalConfirmationDetails {
 
 export const CRM_MONTHLY_RENEWAL_PLAN: CrmMonthlyRenewalPlan = {
     productId: 'crm_monthly',
-    priceCredits: 1050,
+    priceCredits: 1000,
     priceVnd: 100000,
-    includedAiLimit: 100,
+    includedAiLimit: 200,
     durationLabel: '1 tháng',
 };
 
@@ -47,11 +47,11 @@ export function buildRenewalConfirmationDetails(
             },
             {
                 label: 'Hạn mức AI mới',
-                value: `${CRM_MONTHLY_RENEWAL_PLAN.includedAiLimit} yêu cầu AI / chu kỳ`,
+                value: `${CRM_MONTHLY_RENEWAL_PLAN.includedAiLimit} AI Credits / chu kỳ`,
             },
             {
                 label: 'Hiệu lực',
-                value: `Gia hạn thêm ${CRM_MONTHLY_RENEWAL_PLAN.durationLabel} và đặt lại quota gói chính`,
+                value: `Gia hạn thêm ${CRM_MONTHLY_RENEWAL_PLAN.durationLabel} và đặt lại hạn mức gói chính`,
             },
         ],
     };

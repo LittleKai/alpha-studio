@@ -231,7 +231,7 @@ export default {
       chatProviderTitle: "Sử dụng OpenClaw cho AI Chat",
       chatProviderDesc: "Bật để giữ context theo từng user qua OpenClaw. Tắt để gọi gcli trực tiếp qua GCLI_DIRECT_URL, nhanh hơn nhưng không giữ session context.",
       gcliBotModelLabel: "Model gcli cho AI Bot",
-      gcliBotModelDesc: "Chọn model gcli khi OpenClaw tắt. Mặc định gemini-2.5-flash.",
+      gcliBotModelDesc: "Chọn model gcli khi OpenClaw tắt. Mặc định gemini-3.1-flash-lite.",
       modelDefault: "mặc định",
       landingQualityTitle: "Chất lượng Video & Media Landing Page",
       landingQualityDesc: "Tùy chỉnh chất lượng video nền Hero Cinema và hình ảnh Event Creative City trên trang chủ.",
