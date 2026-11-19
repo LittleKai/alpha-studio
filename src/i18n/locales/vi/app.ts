@@ -383,7 +383,12 @@ export default {
             loadError: "Không thể tải thông tin dịch vụ.",
             checkoutError: "Lỗi khi xử lý thanh toán.",
             releaseLoadError: "Không thể tải thông tin phiên bản ứng dụng.",
-            retryBtn: "Tải lại"
+            retryBtn: "Tải lại",
+            guestPromptTitle: "Đăng nhập để xem trạng thái giấy phép & ví AI",
+            guestPromptDesc: "Tài khoản mới được tặng 30 ngày dùng thử + 100 AI Credits. Đăng nhập để kiểm tra hạn mức, gia hạn gói hoặc nạp thêm AI Credits.",
+            guestSignInBtn: "Đăng nhập ngay",
+            walletBalanceLabel: "Số dư ví: {{balance}} Credits",
+            monthlyPlanPriceLabel: "100.000đ / tháng · hoặc 1.000 Credits"
           },
           page: {
             tag: "Hệ sinh thái Zalo Marketing & CRM",

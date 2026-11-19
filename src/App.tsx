@@ -37,7 +37,6 @@ const WalletPage = lazy(() => import('./pages/WalletPage'));
 const VocabPage = lazy(() => import('./pages/VocabPage'));
 const VietYakuPage = lazy(() => import('./pages/VietYakuPage'));
 const CrmPage = lazy(() => import('./pages/CrmPage'));
-const CrmSubscriptionPage = lazy(() => import('./pages/CrmSubscriptionPage'));
 const SkillsPage = lazy(() => import('./pages/SkillsPage'));
 const SkillDetailPage = lazy(() => import('./pages/SkillDetailPage'));
 const EventLibraryPage = lazy(() => import('./pages/EventLibraryPage'));
@@ -172,7 +171,7 @@ const App: React.FC = () => {
                     <Route path="/studio/edit" element={<StudioEditPage />} />
                     <Route path="/studio/vocab" element={<VocabPage />} />
                     <Route path="/studio/crm" element={<CrmPage />} />
-                    <Route path="/studio/crm/subscription" element={<ProtectedRoute><CrmSubscriptionPage /></ProtectedRoute>} />
+                    <Route path="/studio/crm/subscription" element={<Navigate to="/studio/crm#subscription" replace />} />
                     <Route path="/studio/vietyaku" element={<VietYakuPage />} />
                     <Route path="/studio/event-library" element={<EventLibraryPage />} />
                     <Route path="/studio/event-library/:slug" element={<EventLibraryItemPage />} />

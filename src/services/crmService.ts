@@ -122,7 +122,10 @@ export interface CrmReleaseInfo {
     version: string;
     windowsInstallerUrl: string;
     androidApkUrl: string;
+    windowsSize?: number;
+    androidSize?: number;
     releaseNotes?: string;
+    releaseUrl?: string;
     sha256?: string;
     publishedAt: string;
 }
@@ -275,6 +278,7 @@ export const getLatestCrmRelease = async (): Promise<CrmReleaseInfo> => {
     const res = await fetch(`${API_URL}/crm/releases/latest`, {
         method: 'GET',
         headers: getHeaders(false),
+        cache: 'no-store',
     });
 
     if (!res.ok) {

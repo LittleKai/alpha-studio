@@ -383,7 +383,12 @@ export default {
             loadError: "Failed to load subscription services.",
             checkoutError: "Error processing the checkout request.",
             releaseLoadError: "Unable to load application version info.",
-            retryBtn: "Retry"
+            retryBtn: "Retry",
+            guestPromptTitle: "Sign in to view your license & AI wallet",
+            guestPromptDesc: "New accounts get a 30-day free trial + 100 AI Credits. Sign in to check your quota, renew your plan, or top up AI Credits.",
+            guestSignInBtn: "Sign in now",
+            walletBalanceLabel: "Wallet: {{balance}} Credits",
+            monthlyPlanPriceLabel: "100,000 VND / month · or 1,000 Credits"
           },
           page: {
             tag: "Zalo Marketing & CRM Ecosystem",
