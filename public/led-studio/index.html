@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Alpha LED Studio</title>
+  <title>Alpha LED Studio - Thiết Kế Sân Khấu, Mapping LED</title>
   <link rel="icon" type="image/webp" href="favicon.webp">
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="favicon.webp">
@@ -32,7 +32,7 @@
 <main class="main-panel">
  <div class="view-toolbar"><div class="view-tabs"><button data-view="stage" class="active">Sân khấu 3D</button><button data-view="map">Pixel Map</button><button data-view="solo">LED đang chọn</button></div><div class="view-actions"><div id="envPresetWrap" class="env21-wrap"><button id="envPresetBtn" type="button" class="btn small env21-btn" aria-haspopup="dialog" aria-expanded="false" title="Môi trường 3D"><svg class=ico aria-hidden=true><use href=#i-moon></use></svg><span class="env21-btn-lbl">Môi trường</span></button><div id="envPresetPopover" class="env21-popover hidden" role="dialog" aria-label="Môi trường &amp; Thời tiết 3D"></div></div><button id="testPattern" class="icon-btn" title="Bật / tắt test pattern"><svg class=ico aria-hidden=true><use href=#i-grid-3x3></use></svg></button><button id="guidesBtn" class="icon-btn active" title="Hiện / ẩn nhãn LED"><svg class=ico aria-hidden=true><use href=#i-tag></use></svg></button><button id="fitBtn" class="icon-btn" title="Frame stage - F" hidden><svg class=ico aria-hidden=true><use href=#i-scan></use></svg></button></div></div>
 <div class="navigation-strip"><button class="btn small" id="overviewBtn" title="F"><svg class=ico aria-hidden=true><use href=#i-scan></use></svg><span>Toàn cảnh</span></button><div class="camera-bar" id="cameraBar"><button data-camera="front">Front</button><button data-camera="iso" class="active">3/4</button><button data-camera="side">Side</button><button data-camera="top">Top</button></div><span class="nav-spacer"></span><button class="btn small" id="lockCameraBtn" aria-pressed="false">Khóa góc</button><button class="btn small" id="focusBtn" aria-pressed="false">Mở rộng</button><button class="btn small drawer-toggle" id="assetDrawer">Dữ liệu</button><button class="btn small drawer-toggle" id="inspectorDrawer">Thông số</button></div>
- <div class="viewport" id="viewport"><canvas id="glcanvas" aria-label="3D stage viewport"></canvas><canvas id="mapOverlay"></canvas><div id="hudLabels"></div><div class="view-meta"><span class="live-pill"><i></i> Xem trực tiếp</span><span id="modelLabel">ALPHA / Demo stage</span></div><div id="quadHint" class="quad-hint hidden"></div><div class="viewport-foot"><div id="interactionHint">Kéo: xoay &nbsp; / &nbsp; Chuột phải: di chuyển &nbsp; / &nbsp; Cuộn: zoom</div><span id="fps">-- fps</span></div><div id="emptyHint" class="empty-hint hidden"></div></div>
+ <div class="viewport" id="viewport"><canvas id="glcanvas" aria-label="3D stage viewport"></canvas><canvas id="mapOverlay"></canvas><div id="hudLabels"></div><div id="quadHint" class="quad-hint hidden"></div><div class="viewport-foot"><div id="interactionHint">Kéo: xoay &nbsp; / &nbsp; Chuột phải: di chuyển &nbsp; / &nbsp; Cuộn: zoom</div><span id="fps">-- fps</span></div><div id="emptyHint" class="empty-hint hidden"></div></div>
  <div class="selection-strip hidden" hidden><span id="selectionStatus">Chọn một bề mặt trên model để tạo LED.</span><button class="text-btn" id="screenshotBtn">Chụp phối cảnh</button></div>
 </main>
 <aside class="right-panel">
@@ -58,7 +58,7 @@
 <input id="musicInput" type="file" accept="audio/*,.mp3,.wav,.ogg,.m4a,.flac" hidden><input id="atlasMediaInput" type="file" accept="video/*,image/*" hidden>
 
   <!-- Core Data & Engine -->
-  <script src="js/lumi-studio.min.js?v=4deabc3590"></script>
+  <script src="js/lumi-studio.min.js?v=d0abe2d18d"></script>
   <script src="js/data/meshopt-decoder.js?v=cb1eaebe3f"></script>
 </body>
 </html>
