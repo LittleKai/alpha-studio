@@ -33,6 +33,7 @@ const NewsPage = lazy(() => import('./pages/NewsPage'));
 const NewsDetailPage = lazy(() => import('./pages/NewsDetailPage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 const ServicesDetailPage = lazy(() => import('./pages/ServicesDetailPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
 const WalletPage = lazy(() => import('./pages/WalletPage'));
 const VocabPage = lazy(() => import('./pages/VocabPage'));
 const VietYakuPage = lazy(() => import('./pages/VietYakuPage'));
@@ -164,6 +165,7 @@ const App: React.FC = () => {
                     <Route path="/news/:slug" element={<NewsDetailPage />} />
                     <Route path="/services" element={<ServicesPage />} />
                     <Route path="/services/:slug" element={<ServicesDetailPage />} />
+                    <Route path="/contact" element={<ContactPage />} />
 
                     {/* Studio hub + tool sub-routes — public, auth enforced per-use inside each tool */}
                     <Route path="/studio" element={<StudioHub />} />
@@ -207,6 +209,7 @@ const App: React.FC = () => {
                 <Route path="/studio/skills" element={<Navigate to="/studio/ai-skills" replace />} />
                 <Route path="/studio/skills/:slug" element={<SkillLegacyRedirect />} />
                 <Route path="/vocab" element={<Navigate to="/studio/vocab" replace />} />
+                <Route path="/lien-he" element={<Navigate to="/contact" replace />} />
             </Routes>
         </Suspense>
     );

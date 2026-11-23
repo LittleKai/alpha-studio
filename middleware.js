@@ -1,5 +1,5 @@
 const SITE = 'https://giaiphapsangtao.com';
-const STATIC_PAGES = new Set(['/', '/courses', '/about', '/news', '/services', '/studio', '/studio/ai-skills', '/studio/event-library', '/studio/vietyaku', '/studio/crm', '/studio/vocab', '/studio/led-studio', '/studio/generate', '/studio/edit', '/studio/crm/subscription', '/workflow', '/server', '/profile', '/profile/view', '/my-courses', '/wallet', '/admin', '/admin/courses']);
+const STATIC_PAGES = new Set(['/', '/courses', '/about', '/news', '/services', '/contact', '/lien-he', '/studio', '/studio/ai-skills', '/studio/event-library', '/studio/vietyaku', '/studio/crm', '/studio/vocab', '/studio/led-studio', '/studio/generate', '/studio/edit', '/studio/crm/subscription', '/workflow', '/server', '/profile', '/profile/view', '/my-courses', '/wallet', '/admin', '/admin/courses']);
 const LED_SUBRESOURCE_DESTS = new Set(['script', 'style', 'empty', 'image', 'worker']);
 
 const next = (extraHeaders = {}) => new Response(null, { headers: { 'x-middleware-next': '1', ...extraHeaders } });

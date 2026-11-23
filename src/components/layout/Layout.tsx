@@ -136,6 +136,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
     const isWorkflowPage = location.pathname.startsWith('/workflow');
     const isAboutPage = location.pathname.startsWith('/about');
     const isServicesPage = location.pathname.startsWith('/services');
+    const isContactPage = location.pathname.startsWith('/contact');
     const isNewsPage = location.pathname.startsWith('/news');
 
     if (!showNav || isWorkflowPage) {
@@ -179,6 +180,9 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                         </Link>
                         <Link to="/services" className={`whitespace-nowrap transition-colors ${isServicesPage ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
                             {t('landing.nav.services')}
+                        </Link>
+                        <Link to="/contact" className={`whitespace-nowrap transition-colors ${isContactPage ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
+                            {t('landing.nav.contact')}
                         </Link>
                         {!isStudioPage && (
                             <Link to="/studio" className="whitespace-nowrap border px-2 py-0.5 lg:px-2.5 lg:py-0.5 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-[var(--accent-shadow)] text-[var(--accent-primary)] border-[var(--accent-primary)]/35 hover:bg-[var(--accent-primary)]/14 hover:border-[var(--accent-primary)]">
@@ -403,6 +407,25 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                         </svg>
                                         <span>{t('landing.nav.services')}</span>
+                                    </span>
+                                    <SparkleIcon />
+                                </Link>
+
+                                <Link 
+                                    onClick={closeMobile} 
+                                    to="/contact" 
+                                    className={`mean-bird-button relative flex items-center justify-between px-4 py-3 rounded-xl text-[14.5px] font-semibold transition-all duration-200 ${
+                                        isContactPage 
+                                            ? 'active' 
+                                            : 'text-[var(--text-primary)]'
+                                    }`}
+                                >
+                                    <div className="dots_border"></div>
+                                    <span className="relative z-10 flex items-center gap-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                        <span>{t('landing.nav.contact')}</span>
                                     </span>
                                     <SparkleIcon />
                                 </Link>

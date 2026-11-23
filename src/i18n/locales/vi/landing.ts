@@ -10,6 +10,7 @@ export default {
       aiCloud: "AI Cloud Server",
       news: "Tin Tức",
       services: "Dịch Vụ",
+      contact: "Liên hệ",
       enterStudio: "AI Studio",
       profile: "Hồ sơ cá nhân"
     },
@@ -255,7 +256,63 @@ export default {
       contactCopyHint: "Nhấn để sao chép số điện thoại",
       contactCopied: "Đã chép",
       contactZalo: "Zalo",
+      contactWhatsApp: "WhatsApp",
+      contactFacebook: "Facebook",
       contactEmail: "Email nhận brief & hợp tác",
+    },
+    contact: {
+      badge: "Alpha Studio · Tư vấn & Thiết kế Theo Yêu Cầu",
+      title: "Liên hệ đặt thiết kế & dựng hình 3D",
+      subtitle: "Cần sân khấu 3D theo mặt bằng riêng, dựng asset / nhân vật 3D hoặc biên đạo vũ đạo StagePack theo nhạc? Chọn hạng mục và gửi brief trực tiếp qua Zalo, WhatsApp, Facebook hoặc Email.",
+      fromLedStudioBadge: "Mở từ Alpha LED Studio · Sân khấu 3D hiện tại của bạn vẫn giữ nguyên ở tab cũ",
+      topicHeading: "1. Chọn hạng mục bạn cần",
+      topics: {
+        "stage-design": {
+          label: "Thiết kế sân khấu 3D",
+          short: "Sân khấu · LED · DMX",
+          desc: "Dựng phối cảnh sân khấu theo bản vẽ CAD/PDF, mặt bằng hội trường, hệ màn LED, truss và bố trí đèn DMX.",
+          placeholder: "Ví dụ: Sân khấu Gala Dinner 18x8m tại hội trường khách sạn, cần 1 màn LED chính cong, 2 cánh phụ, giàn beam + bản vẽ 2D kích thước..."
+        },
+        "custom-asset": {
+          label: "Dựng Asset & Nhân vật 3D",
+          short: "GLB · Đạo cụ · Ca sĩ / Vũ công",
+          desc: "Dựng mô hình đạo cụ, cổng chào, booth, bàn nâng, trang phục hoặc nhân vật 3D chuẩn rig nạp trực tiếp vào LED Studio.",
+          placeholder: "Ví dụ: Cần dựng 1 cổng chào 3D thương hiệu + 2 vũ công trang phục áo dài LED chuẩn .GLB kích thước thật..."
+        },
+        "choreography": {
+          label: "Biên đạo 3D & StagePack",
+          short: "Vũ đạo · .BVH · Theo nhạc",
+          desc: "Dựng tuyến di chuyển đội hình, trích xuất/chỉnh sửa animation 66 xương và đóng gói .stagepack đồng bộ BPM theo bản nhạc của show.",
+          placeholder: "Ví dụ: Tiết mục mở màn 5 vũ công + 1 ca sĩ trên bản nhạc 3 phút (124 BPM), có đoạn chuyển đội hình chữ V ở cao trào..."
+        },
+        "general": {
+          label: "Tư vấn & Hợp tác khác",
+          short: "Đào tạo · Giải pháp Studio",
+          desc: "Trao đổi về khóa học AI, tích hợp giải pháp doanh nghiệp, hoặc yêu cầu báo giá dự án tổng thể.",
+          placeholder: "Mô tả ngắn mục tiêu dự án, thời gian dự kiến hoặc vấn đề bạn đang cần đội ngũ Alpha Studio hỗ trợ..."
+        }
+      },
+      formTitle: "2. Tạo nhanh tin nhắn Brief",
+      formSubtitle: "Điền nhanh thông tin dưới đây để tự động tạo nội dung tin nhắn gửi ngay qua WhatsApp, Email hoặc sao chép dán vào Zalo / Facebook.",
+      nameLabel: "Tên của bạn / Đơn vị",
+      namePlaceholder: "VD: Minh · Production House",
+      contactInfoLabel: "SĐT / Zalo / Email liên hệ lại",
+      contactInfoPlaceholder: "VD: 09xx xxx xxx hoặc email@company.com",
+      deadlineLabel: "Thời hạn mong muốn (nếu có)",
+      deadlinePlaceholder: "VD: Trước 20/11 hoặc Gấp trong 3 ngày",
+      detailsLabel: "Mô tả yêu cầu / kích thước / file đã có",
+      recipientLabel: "Chọn người nhận brief trực tiếp",
+      previewLabel: "Nội dung tin nhắn sẽ gửi",
+      btnWhatsApp: "Gửi qua WhatsApp",
+      btnEmail: "Gửi Email",
+      btnCopyBrief: "Sao chép Brief (dán Zalo / FB)",
+      copiedBrief: "Đã chép Brief!",
+      briefNote: "Với Zalo và Facebook, hãy nhấn \"Sao chép Brief\" rồi dán ngay vào khung chat của người phụ trách bên cạnh.",
+      directTitle: "Kênh liên hệ trực tiếp",
+      directSubtitle: "Nhắn ngay cho phụ trách phù hợp qua Zalo, WhatsApp, Facebook hoặc nhấn số điện thoại để sao chép.",
+      emailTitle: "Email nhận brief & file đính kèm (CAD, PDF, nhạc)",
+      emailAction: "Mở ứng dụng Email",
+      backToStudioHint: "Đang mở từ LED Studio? Sau khi gửi tin nhắn, bạn chỉ cần quay lại tab trước để tiếp tục thiết kế."
     }
   }
 };

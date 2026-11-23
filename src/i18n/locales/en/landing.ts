@@ -10,6 +10,7 @@ export default {
       aiCloud: "AI Cloud Server",
       news: "News",
       services: "Services",
+      contact: "Contact",
       enterStudio: "AI Studio",
       profile: "Profile"
     },
@@ -255,7 +256,63 @@ export default {
       contactCopyHint: "Click to copy phone number",
       contactCopied: "Copied",
       contactZalo: "Zalo",
+      contactWhatsApp: "WhatsApp",
+      contactFacebook: "Facebook",
       contactEmail: "Project briefs & inquiries",
+    },
+    contact: {
+      badge: "Alpha Studio · Custom 3D Design & Production",
+      title: "Request Custom 3D Design & Production",
+      subtitle: "Need a bespoke 3D stage built from your floor plan, custom .GLB props/performers, or a music-synced StagePack choreography? Pick a topic and reach out via Zalo, WhatsApp, Facebook, or Email.",
+      fromLedStudioBadge: "Opened from Alpha LED Studio · Your active 3D scene stays untouched in the previous tab",
+      topicHeading: "1. Select what you need",
+      topics: {
+        "stage-design": {
+          label: "Custom 3D Stage Design",
+          short: "Stage · LED · DMX",
+          desc: "3D event staging from CAD/PDF drawings, venue dimensions, curved LED walls, truss rigging, and DMX lighting layouts.",
+          placeholder: "Example: 18x8m Gala Dinner ballroom stage with curved main LED wall, side wings, moving-head rig, and 2D layout..."
+        },
+        "custom-asset": {
+          label: "Custom 3D Assets & Performers",
+          short: "GLB Props · Characters",
+          desc: "Bespoke 3D props, welcome arches, booths, stage lifts, costumes, or rigged performers ready to import into LED Studio.",
+          placeholder: "Example: Need 1 branded 3D arch prop + 2 LED-costume dancers in real-scale .GLB format..."
+        },
+        "choreography": {
+          label: "3D Choreography & StagePack",
+          short: "Dance · .BVH · BPM Sync",
+          desc: "Formation routing, 66-bone animation cleanup, and complete .stagepack bundles synced to your show audio BPM.",
+          placeholder: "Example: Opening act for 5 dancers + 1 singer on a 3-minute track (124 BPM) with a V-formation climax..."
+        },
+        "general": {
+          label: "General Inquiry & Partnership",
+          short: "Training · Solutions",
+          desc: "Inquire about AI training workshops, enterprise pipelines, or full-turnkey creative event production.",
+          placeholder: "Briefly describe your project goal, schedule, or how the Alpha Studio team can help..."
+        }
+      },
+      formTitle: "2. Quick Brief Builder",
+      formSubtitle: "Fill in a few details to pre-format your message for WhatsApp, Email, or one-click copy into Zalo / Facebook Messenger.",
+      nameLabel: "Your Name / Studio",
+      namePlaceholder: "e.g., Alex · Production House",
+      contactInfoLabel: "Phone / Zalo / Return Email",
+      contactInfoPlaceholder: "e.g., +84 9xx xxx xxx or name@company.com",
+      deadlineLabel: "Target Deadline (optional)",
+      deadlinePlaceholder: "e.g., Before Nov 20 or Within 3 days",
+      detailsLabel: "Project details / dimensions / available files",
+      recipientLabel: "Send directly to",
+      previewLabel: "Generated brief preview",
+      btnWhatsApp: "Send via WhatsApp",
+      btnEmail: "Send Email",
+      btnCopyBrief: "Copy Brief (for Zalo / FB)",
+      copiedBrief: "Brief Copied!",
+      briefNote: "For Zalo and Facebook, click \"Copy Brief\" and paste straight into the chat with your chosen contact.",
+      directTitle: "Direct Channels",
+      directSubtitle: "Message the team directly on Zalo, WhatsApp, or Facebook, or click a phone number to copy.",
+      emailTitle: "Email for briefs & attachments (CAD, PDF, audio)",
+      emailAction: "Open Email App",
+      backToStudioHint: "Came from LED Studio? Just switch back to your previous browser tab after sending your brief."
     }
   }
 };

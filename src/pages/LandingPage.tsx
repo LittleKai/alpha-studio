@@ -20,6 +20,7 @@ import ConnectBento from '../components/landing/ConnectBento';
 import { fetchWithRetry } from '../services/apiRetry';
 import { AssetQuality, cdnFromUrl, setLandingQuality } from '../services/cloudinaryAssets';
 import { localizedText } from '../utils/localized';
+import { CONTACT_EMAIL, CONTACT_PEOPLE, buildWhatsAppUrl } from '../utils/contactBrief';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
@@ -99,6 +100,26 @@ const IconCopy: React.FC<IconProps> = ({ className = 'h-3.5 w-3.5' }) => (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
         <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+    </svg>
+);
+
+const IconZalo: React.FC<IconProps> = ({ className = 'h-3.5 w-3.5' }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+        <path d="M9 9h6l-6 6h6" />
+    </svg>
+);
+
+const IconWhatsApp: React.FC<IconProps> = ({ className = 'h-3.5 w-3.5' }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 20.5l1.5-5.3A8.5 8.5 0 1 1 21 11.5Z" />
+        <path d="M9.5 8.8c.2-.4.5-.4.7-.4h.5c.2 0 .4.1.5.4l.6 1.4c.1.2.1.4-.1.6l-.5.6a6.4 6.4 0 0 0 2.6 2.6l.6-.5c.2-.2.4-.2.6-.1l1.4.6c.3.1.4.3.4.5v.5c0 .3-.2.6-.5.8-.5.3-1.5.5-2.9-.1-1.6-.7-3.4-2.5-4.1-4.1-.6-1.4-.4-2.4-.1-2.9Z" />
+    </svg>
+);
+
+const IconFacebook: React.FC<IconProps> = ({ className = 'h-3.5 w-3.5' }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.6V3.9c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1V10H7.7v3h2.6v8h3.2z" />
     </svg>
 );
 
@@ -575,6 +596,7 @@ const LandingPage: React.FC = () => {
             title: t('landing.footer.companyTitle'),
             links: [
                 { label: t('landing.services.heroTitle'), to: '/services' },
+                { label: t('landing.nav.contact'), to: '/contact' },
                 { label: t('landing.nav.about'), to: '/about' },
                 { label: t('landing.nav.news'), to: '/news' },
                 { label: t('landing.footer.linkWallet'), to: '/wallet' },
@@ -1030,75 +1052,107 @@ const LandingPage: React.FC = () => {
                             </div>
 
                             <ol className="divide-y divide-[var(--border-primary)] border-y border-[var(--border-primary)]">
-                                {[
-                                    {
-                                        name: t('landing.footer.contactNamePrimary'),
-                                        role: t('landing.footer.contactRolePrimary'),
-                                        phone: '0901555697',
-                                    },
-                                    {
-                                        name: t('landing.footer.contactName'),
-                                        role: t('landing.footer.contactRoleSecondary'),
-                                        phone: '0933805525',
-                                    },
-                                ].map((person, index) => {
+                                {CONTACT_PEOPLE.map((person, index) => {
+                                    const personName = t(person.nameKey);
                                     const isCopied = copiedPhone === person.phone;
                                     return (
-                                        <li key={person.phone} className="py-4 flex flex-wrap items-center justify-between gap-3">
-                                            <div className="min-w-0">
-                                                <div className="flex items-baseline gap-2.5">
-                                                    <span className="text-xs font-extrabold tabular-nums text-[var(--accent-primary)]">
-                                                        {String(index + 1).padStart(2, '0')}
-                                                    </span>
-                                                    <span className="text-base font-bold text-[var(--text-primary)]">
-                                                        {person.name}
-                                                    </span>
+                                        <li key={person.phone} className="py-4 space-y-2.5">
+                                            <div className="flex flex-wrap items-center justify-between gap-3">
+                                                <div className="min-w-0">
+                                                    <div className="flex items-baseline gap-2.5">
+                                                        <span className="text-xs font-extrabold tabular-nums text-[var(--accent-primary)]">
+                                                            {String(index + 1).padStart(2, '0')}
+                                                        </span>
+                                                        <span className="text-base font-bold text-[var(--text-primary)]">
+                                                            {personName}
+                                                        </span>
+                                                    </div>
+                                                    <p className="mt-0.5 pl-6 text-xs text-[var(--text-secondary)]">
+                                                        {t(person.roleKey)}
+                                                    </p>
                                                 </div>
-                                                <p className="mt-0.5 pl-6 text-xs text-[var(--text-secondary)]">
-                                                    {person.role}
-                                                </p>
+
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleCopyPhone(person.phone)}
+                                                    title={t('landing.footer.contactCopyHint')}
+                                                    aria-label={`${t('landing.footer.contactCopyHint')}: ${person.phone} (${personName})`}
+                                                    className={`min-h-[40px] inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border text-sm font-bold tabular-nums cursor-pointer transition-[color,border-color,background-color,transform] duration-200 active:translate-y-px disabled:opacity-55 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] ${
+                                                        isCopied
+                                                            ? 'border-[var(--accent-primary)] bg-[var(--accent-primary)] text-[var(--text-on-accent)]'
+                                                            : 'border-[var(--border-secondary)] bg-[var(--bg-primary)] text-[var(--text-primary)] hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)]'
+                                                    }`}
+                                                >
+                                                    <IconPhone className={`h-3.5 w-3.5 shrink-0 ${isCopied ? 'text-[var(--text-on-accent)]' : 'text-[var(--accent-primary)]'}`} />
+                                                    <span>{person.phone}</span>
+                                                    {isCopied ? (
+                                                        <span className="inline-flex items-center gap-1 text-xs font-extrabold" role="status" aria-live="polite">
+                                                            <IconCheck className="h-3.5 w-3.5 shrink-0" />
+                                                            <span>{t('landing.footer.contactCopied')}</span>
+                                                        </span>
+                                                    ) : (
+                                                        <IconCopy className="h-3.5 w-3.5 shrink-0 text-[var(--text-tertiary)]" />
+                                                    )}
+                                                </button>
                                             </div>
 
-                                            <button
-                                                type="button"
-                                                onClick={() => handleCopyPhone(person.phone)}
-                                                title={t('landing.footer.contactCopyHint')}
-                                                aria-label={`${t('landing.footer.contactCopyHint')}: ${person.phone} (${person.name})`}
-                                                className={`min-h-[40px] inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border text-sm font-bold tabular-nums cursor-pointer transition-[color,border-color,background-color,transform] duration-200 active:translate-y-px disabled:opacity-55 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] ${
-                                                    isCopied
-                                                        ? 'border-[var(--accent-primary)] bg-[var(--accent-primary)] text-[var(--text-on-accent)]'
-                                                        : 'border-[var(--border-secondary)] bg-[var(--bg-primary)] text-[var(--text-primary)] hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)]'
-                                                }`}
-                                            >
-                                                <IconPhone className={`h-3.5 w-3.5 shrink-0 ${isCopied ? 'text-[var(--text-on-accent)]' : 'text-[var(--accent-primary)]'}`} />
-                                                <span>{person.phone}</span>
-                                                {isCopied ? (
-                                                    <span className="inline-flex items-center gap-1 text-xs font-extrabold" role="status" aria-live="polite">
-                                                        <IconCheck className="h-3.5 w-3.5 shrink-0" />
-                                                        <span>{t('landing.footer.contactCopied')}</span>
-                                                    </span>
-                                                ) : (
-                                                    <IconCopy className="h-3.5 w-3.5 shrink-0 text-[var(--text-tertiary)]" />
-                                                )}
-                                            </button>
+                                            <div className="pl-6 flex flex-wrap gap-2">
+                                                <a
+                                                    href={person.zaloUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="min-h-[36px] inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold shadow-sm hover:-translate-y-0.5 transition-all"
+                                                >
+                                                    <IconZalo className="h-3.5 w-3.5 shrink-0" />
+                                                    <span>{t('landing.footer.contactZalo')}</span>
+                                                </a>
+                                                <a
+                                                    href={buildWhatsAppUrl(person.whatsappNumber)}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="min-h-[36px] inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-sm hover:-translate-y-0.5 transition-all"
+                                                >
+                                                    <IconWhatsApp className="h-3.5 w-3.5 shrink-0" />
+                                                    <span>{t('landing.footer.contactWhatsApp')}</span>
+                                                </a>
+                                                <a
+                                                    href={person.facebookUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    aria-label={`${t('landing.footer.contactFacebook')} - ${personName}`}
+                                                    className="min-h-[36px] inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-sm hover:-translate-y-0.5 transition-all"
+                                                >
+                                                    <IconFacebook className="h-3.5 w-3.5 shrink-0" />
+                                                    <span>{t('landing.footer.contactFacebook')}</span>
+                                                </a>
+                                            </div>
                                         </li>
                                     );
                                 })}
                             </ol>
 
-                            <div className="flex items-start gap-3 pt-0.5">
-                                <IconMail className="h-4 w-4 mt-1 shrink-0 text-[var(--accent-primary)]" />
-                                <div className="min-w-0 flex-1">
-                                    <span className="block text-xs font-medium text-[var(--text-tertiary)]">
-                                        {t('landing.footer.contactEmail')}
-                                    </span>
-                                    <a
-                                        href="mailto:giaiphapkhonggiansangtao@gmail.com"
-                                        className="mt-0.5 inline-block text-sm font-bold text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors duration-200 break-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] rounded"
-                                    >
-                                        giaiphapkhonggiansangtao@gmail.com
-                                    </a>
+                            <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
+                                <div className="flex items-start gap-3 min-w-0 flex-1">
+                                    <IconMail className="h-4 w-4 mt-1 shrink-0 text-[var(--accent-primary)]" />
+                                    <div className="min-w-0 flex-1">
+                                        <span className="block text-xs font-medium text-[var(--text-tertiary)]">
+                                            {t('landing.footer.contactEmail')}
+                                        </span>
+                                        <a
+                                            href={`mailto:${CONTACT_EMAIL}`}
+                                            className="mt-0.5 inline-block text-sm font-bold text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors duration-200 break-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] rounded"
+                                        >
+                                            {CONTACT_EMAIL}
+                                        </a>
+                                    </div>
                                 </div>
+                                <Link
+                                    to="/contact"
+                                    className="shrink-0 min-h-[38px] inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[var(--accent-primary)] text-[var(--text-on-accent)] text-xs font-extrabold shadow-sm hover:-translate-y-0.5 transition-all"
+                                >
+                                    <span>{t('landing.nav.contact')}</span>
+                                    <IconArrow className="h-3.5 w-3.5 shrink-0" />
+                                </Link>
                             </div>
                         </address>
                     </div>
