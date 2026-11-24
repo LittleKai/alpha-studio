@@ -24,6 +24,13 @@ All stage rendering, procedural GPU material baking (`js/modules/v20-stage-pbr-b
 
 Full provenance, commit pins, SHA-256 checksums, and license texts (MIT, BSD-3-Clause, ISC, Apache-2.0, MPL-2.0) for **Mediabunny 1.65.0**, **Lucide 1.68.0**, **MediaPipe Tasks Vision 0.10.14**, **Meshopt Decoder**, **Mocapy** (MIT), **video-to-3d-mocap** (MIT), **toyxyz_RGBMocap** (MIT), **instanthmr** (Apache-2.0), **waveform-playlist** (MIT), **wavesurfer.js** (BSD-3-Clause), **3d-director-desk** (MIT), **WebAV** (MIT), and **maxrects-packer** (MIT) are documented in `js/vendor/NOTICE.md` alongside their respective `js/vendor/*-LICENSE.txt` files.
 
+## Auto-to-Music Show Generation Provenance & Clean-Room References
+
+1. **`Destinhue/dsh-better-ears`** (`https://github.com/Destinhue/dsh-better-ears@faa33351583f0740990cf401a9ce8d16cb9e0887`, `MIT` License) — algorithmic reference and pure-JS DSP adaptation for log-mel spectral flux onset detection, parabolic sub-frame interpolation, octave-rivalry coherence, Ellis DP beat tracking, dual Kick/Chroma mod-4 downbeat selection, and 300–3500 Hz vocal-band share gating (`js/core/04-sequencer-director.js`, `js/core/05-lighting-desk.js`).
+2. **`JohnBreault/xlights-mcp-server`** (`https://github.com/JohnBreault/xlights-mcp-server@6cc8d03c6a7c501e403cd15f8f424c38611265f7`, `MIT` License) — algorithmic reference for `O(T)` prefix-sum checkerboard novelty segmentation, downbeat snapping, multi-scale `0.25s/2s/8s` energy slopes, `2/3/4` meter inference, and 3-layer role-based multi-system show orchestration (`Bed`, `Motion`, `Drop-Accent`, anti-repeat memory, palette cycling, vocal suppression).
+3. **`audiojs/beat`** (`https://github.com/audiojs/beat@ba1a223805421e248a7a7ea87b41d9dfde1ba08a`, `MIT` License) — algorithmic reference for raised-cosine `±10%` `gridPhase` alignment, Davies & Plumbley half-tempo octave disambiguation (`>130 BPM`), and synthetic multi-genre regression test patterns (`tests/bvh-tempo.test.mjs`, `tests/auto-music-show.test.mjs`).
+4. **Clean-Room Signal-Processing & Control Reference (`LedFx/LedFx@28ad9d514501fc5b52178565e2c84f748543ff08`, `GPL-3.0`, strict `extraction_set = []`)** — `0` bytes of GPL source code or assets were copied. Standard mathematical formulations for dual-slope asymmetric exponential smoothing (`ExpFilter` rise/decay), adaptive peak normalization, transient delta, `200ms` strobe cooldown, and priority frequency-band hysteresis (`switch_time`) were authored cleanly from scratch in vanilla JavaScript (`js/core/04-sequencer-director.js`, `js/modules/v13-timecode-laser-mount.js`, `js/modules/v14-fx-timecode.js`, `js/modules/matrix/matrix143.js`).
+
 ### MIT License Reference Text (Applicable to MIT-Licensed Upstream Algorithmic References)
 
 ```text
