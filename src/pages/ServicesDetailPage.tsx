@@ -158,6 +158,10 @@ export default function ServicesDetailPage() {
         () => visibleSections.reduce((n, s) => n + (s.kind === 'gallery' ? (s.images?.length || 0) : 0), 0),
         [visibleSections]
     );
+    const videoCount = useMemo(
+        () => visibleSections.reduce((n, s) => n + (s.kind === 'videos' ? (s.videos?.filter(v => v.url?.trim()).length || 0) : 0), 0),
+        [visibleSections]
+    );
 
     if (loading) {
         return (
@@ -289,6 +293,9 @@ export default function ServicesDetailPage() {
                             />
                             {imageCount > 0 && (
                                 <span>{imageCount} {t('landing.services.imageCount')}</span>
+                            )}
+                            {videoCount > 0 && (
+                                <span>{videoCount} {t('landing.services.videoCount')}</span>
                             )}
                             {attachments.length > 0 && (
                                 <button

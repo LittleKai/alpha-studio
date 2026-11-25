@@ -100,6 +100,14 @@ function countImages(article: Article): number {
     );
 }
 
+/** Số video xem trước của một bài — cộng dồn các khối videos. */
+function countVideos(article: Article): number {
+    return (article.sections || []).reduce(
+        (n, s) => n + (s.kind === 'videos' ? (s.videos?.filter(v => v.url?.trim()).length || 0) : 0),
+        0
+    );
+}
+
 export default function ServicesPage() {
     const { t, language } = useTranslation();
     const [searchParams, setSearchParams] = useSearchParams();
@@ -346,6 +354,7 @@ export default function ServicesPage() {
                         {articles.map(article => {
                             const tone = toneOf(article.serviceCategory?.accent);
                             const images = countImages(article);
+                            const videos = countVideos(article);
                             const files = article.attachments?.length || 0;
                             return (
                                 <Link
@@ -392,6 +401,11 @@ export default function ServicesPage() {
                                             {images > 0 && (
                                                 <span className="px-2 py-0.5 rounded-md bg-[var(--bg-secondary)] border border-[var(--border-primary)]">
                                                     {images} {t('landing.services.imageCount')}
+                                                </span>
+                                            )}
+                                            {videos > 0 && (
+                                                <span className="px-2 py-0.5 rounded-md bg-[var(--bg-secondary)] border border-[var(--border-primary)]">
+                                                    {videos} {t('landing.services.videoCount')}
                                                 </span>
                                             )}
                                             {files > 0 && (

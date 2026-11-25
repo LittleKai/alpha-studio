@@ -69,9 +69,20 @@ export interface LibraryMetric {
  * Chữ trong khối là một ngôn ngữ, khác `title`/`summary`/`content` ở cấp mục.
  */
 export const SECTION_KINDS = [
-    'richText', 'keyValue', 'metrics', 'bulletGroups', 'steps', 'quote', 'gallery', 'linkedItems'
+    'richText', 'keyValue', 'metrics', 'bulletGroups', 'steps', 'quote', 'gallery', 'videos', 'linkedItems'
 ] as const;
 export type SectionKind = typeof SECTION_KINDS[number];
+
+export interface LibraryVideoItem {
+    url: string;
+    fileKey?: string;
+    poster?: string;
+    title: string;
+    titleEn?: string;
+    caption?: string;
+    captionEn?: string;
+    duration?: string;
+}
 
 export interface LibrarySection {
     kind: SectionKind;
@@ -92,6 +103,7 @@ export interface LibrarySection {
     quoteEn?: string;
     quoteByEn?: string;
     images?: string[];
+    videos?: LibraryVideoItem[];
     links?: { slug: string; label: string }[];
     linksEn?: { slug: string; label: string }[];
 }
@@ -107,6 +119,7 @@ export function emptySection(kind: SectionKind): LibrarySection {
         case 'steps': return { ...base, steps: [{ title: '', desc: '' }] };
         case 'quote': return { ...base, quote: '', quoteBy: '' };
         case 'gallery': return { ...base, images: [] };
+        case 'videos': return { ...base, videos: [] };
         case 'linkedItems': return { ...base, links: [{ slug: '', label: '' }] };
     }
 }

@@ -34,6 +34,11 @@ export function localizedSection(section: LibrarySection, language: string): Lib
         steps: section.stepsEn?.length ? section.stepsEn : section.steps,
         quote: section.quoteEn || section.quote,
         quoteBy: section.quoteByEn || section.quoteBy,
+        videos: section.videos?.map(v => ({
+            ...v,
+            title: v.titleEn || v.title,
+            caption: v.captionEn || v.caption
+        })),
         links: section.linksEn?.length ? section.linksEn : section.links
     };
 }

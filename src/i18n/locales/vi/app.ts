@@ -755,6 +755,7 @@ export default {
         steps: "Các bước",
         quote: "Trích dẫn",
         gallery: "Bộ ảnh",
+        videos: "Video xem trước",
         linkedItems: "Liên kết nội dung"
       },
       editor: {
@@ -817,6 +818,13 @@ export default {
         quoteText: "Nội dung trích dẫn",
         quoteBy: "Nguồn / nhãn (vd: Emotional Value)",
         addImages: "Thêm ảnh",
+        addVideo: "Thêm video",
+        uploadVideo: "Tải video lên",
+        videoTitle: "Tiêu đề video",
+        videoUrl: "URL video (MP4/WebM)",
+        videoPoster: "URL ảnh bìa poster (tuỳ chọn)",
+        videoDuration: "Thời lượng (vd: 0:41)",
+        videoCaption: "Mô tả ngắn (tuỳ chọn)",
         linkHint: "Dán slug của mục khác trong thư viện, ví dụ: booth-design-prompt-abc123",
         linkSlug: "slug",
         linkLabel: "Nhãn hiển thị",

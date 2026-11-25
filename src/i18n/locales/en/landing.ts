@@ -223,6 +223,7 @@ export default {
       featured: "Featured",
       categoryCount: "categories",
       imageCount: "images",
+      videoCount: "videos",
       viewCount: "views",
       openImage: "Click an image to enlarge",
       loadingImage: "Loading image",

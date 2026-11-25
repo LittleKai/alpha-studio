@@ -4,10 +4,9 @@ import type { ServiceCategory } from './serviceCategoryService';
 
 /**
  * Kind khối cho phép trong bài dịch vụ — khớp `SERVICE_SECTION_KINDS` ở backend
- * (server/utils/contentSections.js). Bài dịch vụ chỉ cần vài khối giới thiệu,
- * không dùng đủ 8 kind như thư viện sự kiện.
+ * (server/utils/contentSections.js).
  */
-export const SERVICE_SECTION_KINDS = ['richText', 'bulletGroups', 'steps', 'gallery'] as const;
+export const SERVICE_SECTION_KINDS = ['richText', 'bulletGroups', 'steps', 'gallery', 'videos'] as const;
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 

@@ -138,6 +138,7 @@ export function isSectionEmpty(section: LibrarySection, language = 'vi'): boolea
         case 'steps': return !section.steps?.some(s => s.title.trim() || s.desc.trim());
         case 'quote': return !section.quote?.trim();
         case 'gallery': return !section.images?.length;
+        case 'videos': return !section.videos?.some(v => v.url?.trim());
         case 'linkedItems': return !section.links?.some(l => l.slug.trim());
     }
 }
@@ -288,6 +289,62 @@ export default function SectionRenderer({ section, index, language = 'vi' }: { s
                         ))}
                     </div>
                 );
+
+            case 'videos': {
+                const videos = (section.videos || []).filter(v => v.url?.trim());
+                return (
+                    <div className={`grid grid-cols-1 ${videos.length > 1 ? 'md:grid-cols-2' : ''} gap-4`}>
+                        {videos.map((video, i) => {
+                            const url = video.url.trim();
+                            const poster = video.poster?.trim() || '';
+                            const cleanUrl = url.split(/[?#]/)[0].toLowerCase();
+                            const mimeType = cleanUrl.endsWith('.webm')
+                                ? 'video/webm'
+                                : cleanUrl.endsWith('.mp4')
+                                    ? 'video/mp4'
+                                    : undefined;
+                            return (
+                            <div
+                                key={`${url}-${i}`}
+                                className="rounded-xl overflow-hidden border border-[var(--border-primary)] bg-[var(--bg-secondary)] shadow-sm flex flex-col"
+                            >
+                                <video
+                                    controls
+                                    playsInline
+                                    preload="metadata"
+                                    poster={poster ? cdnFromUrl(poster, 'w_800') : undefined}
+                                    className="w-full aspect-video bg-black object-contain"
+                                >
+                                    <source
+                                        src={url}
+                                        type={mimeType}
+                                    />
+                                </video>
+                                {(video.title || video.duration || video.caption) && (
+                                    <div className="p-3.5 space-y-1.5">
+                                        {(video.title || video.duration) && (
+                                            <div className="flex items-center justify-between gap-2">
+                                                {video.title && (
+                                                    <div className="text-sm font-bold text-[var(--text-primary)]">{video.title}</div>
+                                                )}
+                                                {video.duration && (
+                                                    <span className={`shrink-0 px-2 py-0.5 rounded-md text-[11px] font-semibold tabular-nums border ${palette.tagBg} ${palette.tagBorder} ${palette.tagText}`}>
+                                                        {video.duration}
+                                                    </span>
+                                                )}
+                                            </div>
+                                        )}
+                                        {video.caption && (
+                                            <p className="text-xs text-[var(--text-secondary)] leading-relaxed">{video.caption}</p>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+                            );
+                        })}
+                    </div>
+                );
+            }
 
             case 'linkedItems':
                 return (

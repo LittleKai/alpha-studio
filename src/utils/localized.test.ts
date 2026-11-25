@@ -72,4 +72,36 @@ describe('localizedSection', () => {
         expect(localizedSection(section, 'en').steps?.[0].title).toBe('Read the documents');
         expect(localizedSection({ ...section, stepsEn: [] }, 'en').steps?.[0].title).toBe('Đọc hồ sơ');
     });
+
+    it('localizes video section titles and captions with Vietnamese fallback', () => {
+        const section = {
+            kind: 'videos' as const,
+            title: 'Video xem trước',
+            titleEn: 'Preview videos',
+            videos: [
+                {
+                    url: 'https://cdn.example/demo.mp4',
+                    fileKey: 'services/demo/demo.mp4',
+                    poster: 'https://res.cloudinary.com/demo/image/upload/v1/p.webp',
+                    title: 'Bản gốc',
+                    titleEn: 'English title',
+                    caption: 'Mô tả VI',
+                    captionEn: 'English caption',
+                    duration: '0:41'
+                },
+                {
+                    url: 'https://cdn.example/demo2.mp4',
+                    title: 'Chỉ có VI',
+                    caption: 'Chú thích VI'
+                }
+            ]
+        };
+        const en = localizedSection(section, 'en');
+        expect(en.title).toBe('Preview videos');
+        expect(en.videos?.[0].title).toBe('English title');
+        expect(en.videos?.[0].caption).toBe('English caption');
+        expect(en.videos?.[0].duration).toBe('0:41');
+        expect(en.videos?.[1].title).toBe('Chỉ có VI');
+        expect(en.videos?.[1].caption).toBe('Chú thích VI');
+    });
 });

@@ -1,8 +1,11 @@
+import { useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { useTranslation } from '../../i18n/context';
 import { useTheme } from '../../theme/context';
+import { useAuth } from '../../auth/context';
 import { libraryEditorInit } from './libraryEditorInit';
 import { uploadImage } from '../../services/cloudinaryService';
+import { uploadToB2 } from '../../services/b2StorageService';
 import type { LibrarySection } from '../../services/eventLibraryService';
 import { cdnFromUrl } from '../../services/cloudinaryAssets';
 import { SECTION_PALETTES } from './SectionRenderer';
@@ -59,6 +62,12 @@ interface Props {
 export default function SectionEditor({ section, index, total, onChange, onRemove, onMove, readOnly = false }: Props) {
     const { t } = useTranslation();
     const { theme } = useTheme();
+    const { token } = useAuth();
+    const [uploadingVideos, setUploadingVideos] = useState(false);
+    const sectionRef = useRef(section);
+    const onChangeRef = useRef(onChange);
+    sectionRef.current = section;
+    onChangeRef.current = onChange;
     const set = (patch: Partial<LibrarySection>) => onChange({ ...section, ...patch });
 
     // Cập nhật phần tử thứ `i` của một mảng con trong khối
@@ -274,6 +283,96 @@ export default function SectionEditor({ section, index, total, onChange, onRemov
                                 }}
                             />
                         </label>
+                    </div>
+                );
+            }
+
+            case 'videos': {
+                const videos = section.videos || [];
+                return (
+                    <div className="space-y-3">
+                        {videos.map((video, i) => (
+                            <div key={i} className="rounded-xl border border-[var(--border-primary)] bg-[var(--bg-secondary)]/50 p-3 space-y-2">
+                                <div className="flex gap-2 items-center">
+                                    <input
+                                        value={video.title}
+                                        onChange={e => set({ videos: patchAt(videos, i, { title: e.target.value }) })}
+                                        placeholder={t('eventLibrary.editor.videoTitle')}
+                                        className={`${inputClass} flex-[2] font-semibold`}
+                                    />
+                                    <input
+                                        value={video.duration || ''}
+                                        onChange={e => set({ videos: patchAt(videos, i, { duration: e.target.value }) })}
+                                        placeholder={t('eventLibrary.editor.videoDuration')}
+                                        className={`${inputClass} w-28`}
+                                    />
+                                    <RemoveRowButton onClick={() => set({ videos: videos.filter((_, idx) => idx !== i) })} label={t('eventLibrary.editor.removeRow')} />
+                                </div>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                    <input
+                                        value={video.url}
+                                        onChange={e => set({ videos: patchAt(videos, i, { url: e.target.value, fileKey: '' }) })}
+                                        placeholder={t('eventLibrary.editor.videoUrl')}
+                                        className={`${inputClass} font-mono text-xs`}
+                                    />
+                                    <input
+                                        value={video.poster || ''}
+                                        onChange={e => set({ videos: patchAt(videos, i, { poster: e.target.value }) })}
+                                        placeholder={t('eventLibrary.editor.videoPoster')}
+                                        className={`${inputClass} font-mono text-xs`}
+                                    />
+                                </div>
+                                <input
+                                    value={video.caption || ''}
+                                    onChange={e => set({ videos: patchAt(videos, i, { caption: e.target.value }) })}
+                                    placeholder={t('eventLibrary.editor.videoCaption')}
+                                    className={inputClass}
+                                />
+                            </div>
+                        ))}
+                        <div className="flex flex-wrap items-center gap-4">
+                            <AddRowButton
+                                onClick={() => set({ videos: [...videos, { url: '', fileKey: '', poster: '', title: '', caption: '', duration: '' }] })}
+                                label={t('eventLibrary.editor.addVideo')}
+                            />
+                            {token && (
+                                <label className="inline-block text-sm font-semibold cursor-pointer hover:underline" style={{ color: ACCENT }}>
+                                    {uploadingVideos ? t('eventLibrary.editor.uploading') : `+ ${t('eventLibrary.editor.uploadVideo')}`}
+                                    <input
+                                        type="file"
+                                        accept="video/mp4,video/webm"
+                                        multiple
+                                        disabled={uploadingVideos || readOnly}
+                                        className="hidden"
+                                        onChange={async e => {
+                                            const files = Array.from(e.target.files || []);
+                                            e.target.value = '';
+                                            if (!files.length) return;
+                                            setUploadingVideos(true);
+                                            try {
+                                                const uploaded = await Promise.all(files.map(async f => {
+                                                    const res = await uploadToB2(f, 'services/videos', token);
+                                                    return {
+                                                        url: res.url,
+                                                        fileKey: res.key,
+                                                        poster: '',
+                                                        title: f.name.replace(/\.[^.]+$/, ''),
+                                                        caption: '',
+                                                        duration: ''
+                                                    };
+                                                }));
+                                                const latest = sectionRef.current;
+                                                onChangeRef.current({ ...latest, videos: [...(latest.videos || []), ...uploaded] });
+                                            } catch (err) {
+                                                alert(err instanceof Error ? err.message : t('eventLibrary.editor.uploadFailed'));
+                                            } finally {
+                                                setUploadingVideos(false);
+                                            }
+                                        }}
+                                    />
+                                </label>
+                            )}
+                        </div>
                     </div>
                 );
             }

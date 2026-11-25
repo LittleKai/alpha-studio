@@ -755,6 +755,7 @@ export default {
         steps: "Steps",
         quote: "Quote",
         gallery: "Image gallery",
+        videos: "Preview videos",
         linkedItems: "Linked content"
       },
       editor: {
@@ -817,6 +818,13 @@ export default {
         quoteText: "Quote text",
         quoteBy: "Source / label (e.g. Emotional Value)",
         addImages: "Add images",
+        addVideo: "Add video",
+        uploadVideo: "Upload video",
+        videoTitle: "Video title",
+        videoUrl: "Video URL (MP4/WebM)",
+        videoPoster: "Poster image URL (optional)",
+        videoDuration: "Duration (e.g. 0:41)",
+        videoCaption: "Short caption (optional)",
         linkHint: "Paste the slug of another library item, e.g. booth-design-prompt-abc123",
         linkSlug: "slug",
         linkLabel: "Display label",
