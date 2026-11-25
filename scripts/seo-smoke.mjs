@@ -18,7 +18,7 @@ for (const route of routes) {
     assert.match(head, /name="robots"[^>]*content="index, follow"/, `${route}: indexable`);
     assert.match(html, /<h1\b/);
     const jsonLd = [...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)];
-    if (/^\/(?:news|services|about|studio\/ai-skills|studio\/event-library)\/[^/]+$/.test(route)) assert.ok(jsonLd.length, `${route}: missing JSON-LD`);
+    if (/^\/(?:news|services|about|studio\/event-library)\/[^/]+$/.test(route)) assert.ok(jsonLd.length, `${route}: missing JSON-LD`);
     for (const [, json] of jsonLd) {
         JSON.parse(json);
         schemas++;

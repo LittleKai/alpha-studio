@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from '../../i18n/context';
+import { LanguageFlag } from '../ui/LanguageSwitcher';
 
 interface Props {
   onLaunch: () => void;
@@ -41,11 +42,12 @@ const ShowcaseHeader: React.FC<Props> = ({ onLaunch }) => {
         <div className="sc-header-actions">
           <button
             type="button"
-            className="sc-lang"
+            className="sc-lang inline-flex items-center gap-1.5"
             onClick={() => changeLanguage(language === 'vi' ? 'en' : 'vi')}
             aria-label="Language"
           >
-            {language === 'vi' ? 'VI' : 'EN'}
+            <LanguageFlag lang={language === 'vi' ? 'vi' : 'en'} />
+            <span>{language === 'vi' ? 'VI' : 'EN'}</span>
           </button>
           <button type="button" className="sc-cta-primary sc-cta-sm" onClick={onLaunch}>
             {t('landing.nav.enterStudio')}

@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect, useRef } from 'react';
-import { Routes, Route, useNavigate, Navigate, useLocation, useParams, Outlet, Link } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate, useLocation, Outlet, Link } from 'react-router-dom';
 // Routing Components (keep these non-lazy as they're small and used everywhere)
 import { ProtectedRoute } from './components/routing';
 import { Layout } from './components/layout';
@@ -38,8 +38,6 @@ const WalletPage = lazy(() => import('./pages/WalletPage'));
 const VocabPage = lazy(() => import('./pages/VocabPage'));
 const VietYakuPage = lazy(() => import('./pages/VietYakuPage'));
 const CrmPage = lazy(() => import('./pages/CrmPage'));
-const SkillsPage = lazy(() => import('./pages/SkillsPage'));
-const SkillDetailPage = lazy(() => import('./pages/SkillDetailPage'));
 const EventLibraryPage = lazy(() => import('./pages/EventLibraryPage'));
 const EventLibraryItemPage = lazy(() => import('./pages/EventLibraryItemPage'));
 const LedStudioPage = lazy(() => import('./pages/LedStudioPage'));
@@ -90,11 +88,6 @@ const WorkflowPage: React.FC = () => {
 const AdminCoursesPage: React.FC = () => {
     const navigate = useNavigate();
     return <CourseManagement onBack={() => navigate('/')} />;
-};
-
-const SkillLegacyRedirect: React.FC = () => {
-    const { slug } = useParams<{ slug: string }>();
-    return <Navigate to={slug ? `/studio/ai-skills/${slug}` : '/studio/ai-skills'} replace />;
 };
 
 const NotFoundPage: React.FC = () => {
@@ -178,10 +171,6 @@ const App: React.FC = () => {
                     <Route path="/studio/event-library" element={<EventLibraryPage />} />
                     <Route path="/studio/event-library/:slug" element={<EventLibraryItemPage />} />
 
-                    {/* AI Skills Routes */}
-                    <Route path="/studio/ai-skills" element={<SkillsPage />} />
-                    <Route path="/studio/ai-skills/:slug" element={<SkillDetailPage />} />
-
                     {/* Protected Routes (require login) */}
                     <Route path="/server" element={<ProtectedRoute><AIServerConnect /></ProtectedRoute>} />
                     <Route path="/my-courses" element={<ProtectedRoute><MyCoursesPage /></ProtectedRoute>} />
@@ -206,8 +195,6 @@ const App: React.FC = () => {
                 </Route>
 
                 {/* Legacy redirects */}
-                <Route path="/studio/skills" element={<Navigate to="/studio/ai-skills" replace />} />
-                <Route path="/studio/skills/:slug" element={<SkillLegacyRedirect />} />
                 <Route path="/vocab" element={<Navigate to="/studio/vocab" replace />} />
                 <Route path="/lien-he" element={<Navigate to="/contact" replace />} />
             </Routes>

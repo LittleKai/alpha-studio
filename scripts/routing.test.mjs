@@ -9,7 +9,10 @@ test('unknown pages return 404; public detail URLs verify existence and fail saf
     try {
         assert.equal((await middleware(request('/does-not-exist'))).status, 404);
         assert.equal((await middleware(request('/event-creative-city'))).headers.get('x-middleware-next'), '1');
-        assert.equal((await middleware(request('/studio/skills/firecrawl'))).status, 308);
+        assert.equal((await middleware(request('/studio/ai-skills'))).headers.get('x-middleware-next'), '1');
+        assert.equal((await middleware(request('/studio/ai-skills/firecrawl'))).headers.get('x-middleware-next'), '1');
+        assert.equal((await middleware(request('/studio/skills'))).headers.get('x-middleware-next'), '1');
+        assert.equal((await middleware(request('/studio/skills/firecrawl'))).headers.get('x-middleware-next'), '1');
         assert.equal((await middleware(request('/studio/led-studio'))).headers.get('x-middleware-next'), '1');
         assert.equal((await middleware(request('/studio/led-studio?share=abc123'))).headers.get('x-middleware-next'), '1');
         assert.equal((await middleware(new Request('https://giaiphapsangtao.com/led-studio/index.html?share=1', { headers: { 'sec-fetch-dest': 'document' } }))).status, 307);
@@ -27,8 +30,7 @@ test('unknown pages return 404; public detail URLs verify existence and fail saf
             .filter((route) => route.startsWith('/') && !route.includes(':') && !route.includes('*'));
         for (const route of appRoutes) {
             const res = await middleware(request(route));
-            if (route === '/studio/skills') assert.equal(res.status, 308, route);
-            else assert.equal(res.headers.get('x-middleware-next'), '1', `App route ${route} must be allowed by middleware.js`);
+            assert.equal(res.headers.get('x-middleware-next'), '1', `App route ${route} must be allowed by middleware.js`);
         }
         globalThis.fetch = async () => new Response('{}', { status: 404 });
         assert.equal((await middleware(request('/services/missing'))).status, 404);

@@ -127,7 +127,7 @@ const VietYakuPage: React.FC = () => {
                     <div className="relative group">
                         <div className="absolute inset-0 bg-rose-500/20 rounded-3xl blur-xl group-hover:bg-rose-500/30 transition-all" />
                         <img
-                            src="/vietyaku-logo.png"
+                            src="/vietyaku-logo.webp"
                             alt="VietYaku"
                             className="relative h-24 w-24 rounded-3xl shadow-xl shadow-rose-500/10 ring-2 ring-rose-500/30"
                         />

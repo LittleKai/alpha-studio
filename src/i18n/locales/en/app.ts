@@ -153,11 +153,10 @@ export default {
         badge: "Alpha Studio Ecosystem · Public preview",
         title1: "AI Studio",
         title2: "The creative toolkit",
-        subtitle: "Six specialized tools open to every account: Event Knowledge Library, AI Skills Library, LED Stage Studio 3D, Alpha CRM for Zalo marketing, VocabFlip for vocabulary practice, and VietYaku for Japanese and Chinese translation.",
+        subtitle: "Five specialized tools open to every account: Event Knowledge Library, LED Stage Studio 3D, Alpha CRM for Zalo marketing, VocabFlip for vocabulary practice, and VietYaku for Japanese and Chinese translation.",
         stats: {
           live: "Tools live",
           upcoming: "Coming soon",
-          skills: "AI skills",
           effects: "3D stage effects",
           beta: "Free access"
         },
@@ -165,7 +164,7 @@ export default {
         railNote: "Jump directly to a tool above or compare their capabilities in the grid below."
       },
       sections: {
-        activeEyebrow: "06 tools ready",
+        activeEyebrow: "05 tools ready",
         activeTitle: "Pick a tool to start",
         upcomingEyebrow: "Roadmap",
         upcomingTitle: "Coming to the Studio"
@@ -173,7 +172,6 @@ export default {
       comingSoon: "Coming soon",
       badges: {
         eventLibrary: "Case Studies & Prompts",
-        skills: "3000+ Agent Skills",
         ledStudio: "WebGL2 3D & DMX",
         crm: "Zalo Marketing AI",
         vocab: "FSRS Flashcards",
@@ -183,10 +181,6 @@ export default {
         eventLibrary: {
           value: "Real KPI & ROI",
           label: "Actual budget, reach, and run-of-show data from shipped events"
-        },
-        skills: {
-          value: "3,000+ Skills",
-          label: "One-click install for Claude Code, Cursor, and Antigravity agents"
         },
         ledStudio: {
           value: "35 FX / DMX & ILDA",
@@ -210,11 +204,6 @@ export default {
           f1: "Event case studies with real budget, reach and KPI figures",
           f2: "Prompts, workflows, templates and playbooks ready for each event format",
           f3: "Publish your own Workflow projects to the library — private or public"
-        },
-        skills: {
-          f1: "Search 3000+ skills by category, technology, or author",
-          f2: "Every skill has a detail page with use cases and a GitHub link",
-          f3: "Copy a skill straight into your own AI agent"
         },
         crm: {
           f1: "Bulk messaging and automated customer care over Zalo",
@@ -240,7 +229,6 @@ export default {
       open: "Open",
       meta: {
         eventLibrary: "Web · No install needed",
-        skills: "Web · No install needed",
         crm: "Windows & Android · 1-month trial",
         vocab: "Web, Windows & Android",
         vietyaku: "Windows · Android (Coming Soon)",
@@ -579,10 +567,6 @@ export default {
             requirementPortable: "Runs portable on Windows — your personal data stays in a userdata folder next to the .exe.",
             requirementSize: "The download is fairly large because the Japanese and Chinese dictionaries are bundled in."
           }
-        },
-        skills: {
-          title: "AI Skills Hub",
-          desc: "Explore 3000+ open-source skills to supercharge your AI Agents"
         }
       }
     },
@@ -876,174 +860,6 @@ export default {
         publishing: "Publishing...",
         titleRequired: "Please enter a title",
         failed: "Failed to publish to the library"
-      }
-    },
-    skills: {
-      title: "AI Skills Hub",
-      subtitle: "Explore powerful programming skills that expand your AI Agent's capabilities",
-      searchPlaceholder: "Search skills, technologies, or authors...",
-      category: "Category",
-      allCategories: "All Categories",
-      difficulty: "Difficulty",
-      allDifficulties: "All Difficulties",
-      timeSaving: "Time Saved",
-      worksWith: "Works with",
-      installCommand: "Install Command",
-      copySuccess: "Install command copied!",
-      copyPrompt: "Copy Prompt",
-      backToList: "Back to list",
-      backToStudio: "Back to Studio",
-      backToSkills: "Back to Skills Hub",
-      admin: {
-        title: "Admin",
-        edit: "Edit skill",
-        delete: "Delete skill",
-        deleteFailed: "Could not delete the skill"
-      },
-      overview: "Overview",
-      setup: "Setup & Config",
-      usage: "Usage Examples",
-      requirements: "Requirements",
-      sourceRepo: "Source Repo",
-      author: "Author",
-      tier: "Tier",
-      noSkillsFound: "No matching skills found.",
-      relatedSkills: "Related Skills",
-      compatibleTools: "Compatible Tools",
-      mcpServers: "MCP Servers",
-      bestFor: "Best For",
-      tags: "Tags",
-      filters: "Filters",
-      qualityTier: "Quality Tier",
-      timeSavings: "Time Savings",
-      installType: "Install Type",
-      sortLabel: "Sort:",
-      sortRecommended: "Recommended",
-      sortPopular: "Most Popular",
-      sortTimeSaved: "Most Time Saved",
-      sortQuickest: "Quickest",
-      sortRecent: "Recently Added",
-      sortAZ: "A-Z",
-      viewLabel: "View:",
-      statsSkills: "Skills",
-      statsVerified: "Verified",
-      statsTimeSaved: "hours saved monthly",
-      badgeText: "Premium Skills for AI Coding Agents",
-      heroTitle: "AI Skills for Every Role",
-      resetFilters: "Reset Filters",
-      installTypeTitle: "Install Type",
-      allLevels: "All Levels",
-      showingStats: "Showing {start}-{end} of {total} skills",
-      prevPage: "Previous",
-      nextPage: "Next",
-      quickInstall: "Quick Install",
-      viewOnGithub: "View on GitHub",
-      jumpTo: "Jump To",
-      viewAllSkills: "View all skills",
-      needHelp: "Need help?",
-      b2bPromoText: "We build custom AI skills and automations for B2B companies.",
-      talkToUs: "Talk to us",
-      usingThisSkill: "Using this skill?",
-      discoverStackText: "Discover what else in your stack connects to AI.",
-      freeAiScan: "Free AI scan",
-      aboutThisSkill: "About This Skill",
-      useCases: "Use Cases",
-      setupInstructions: "Copy the install command below and run it in your terminal.",
-      altInstall: "Alternative Install (Git Clone)",
-      promptTemplate: "Prompt Template & Instructions",
-      instructionScript: "Instruction & Script",
-      terminal: "Terminal",
-      copied: "Copied",
-      install: "Install",
-      savesPerTask: "Saves {time}/task",
-      timeRangeShort: "< 60 mins",
-      timeRangeMedium: "60 - 180 mins",
-      timeRangeLong: "> 180 mins",
-      gitCloneTime: "15 mins to implement",
-      npmInstallTime: "5 mins to install",
-      savesPerUse: "Saves ~{time} per use",
-      updatedMonthsAgo: "Updated {months} months ago",
-      claudeCodeReq: "Claude Code or compatible AI agent",
-      quickStart: "Quick Start Guide",
-      stepInstallTitle: "Install the Skill",
-      stepInstallDesc: "Copy the install command above and run it in your terminal.",
-      stepOpenTitle: "Open Your AI Agent",
-      stepOpenDesc: "Launch Claude Code, Cursor, or your preferred AI coding agent.",
-      stepTryTitle: "Try It Out",
-      stepTryDesc: "Use the prompt template or examples below to test the skill.",
-      stepCustomizeTitle: "Customize",
-      stepCustomizeDesc: "Adapt the skill to your specific use case and workflow.",
-      compatibilityDesc: "This skill is fully compatible with the following AI coding assistants and environments:",
-      envNative: "Native execution environment",
-      envEditor: "Editor agent integrations",
-      mcpDesc: "This skill supports Model Context Protocol (MCP), allowing it to be exposed as a secure server tools interface for any LLM-powered application.",
-      mcpConfigRegister: "# Register in your Claude Desktop configuration:",
-      categories: {
-        seo: "SEO",
-        design: "Design",
-        development: "Development",
-        devTools: "Developer Tools",
-        dataAnalytics: "Data & Analytics",
-        crmPipeline: "CRM & Pipeline",
-        salesOutreach: "Sales & Outreach",
-        marketing: "Marketing",
-        researchIntel: "Research & Intelligence",
-        communication: "Communication",
-        marketingContent: "Marketing & Content",
-        productivity: "Productivity",
-        optimization: "Optimization"
-      },
-      bestForTags: {
-        seo: ["SEO", "Optimization"],
-        design: ["Design", "UI/UX"],
-        development: ["Development", "Coding"],
-        devTools: ["Developer", "Tools"],
-        dataAnalytics: ["Data", "Analytics"],
-        crmPipeline: ["CRM", "Pipeline"],
-        salesOutreach: ["Sales", "Outreach"],
-        marketing: ["Marketing", "Growth"],
-        researchIntel: ["Research", "Intelligence"],
-        communication: ["Communication", "Collaboration"],
-        marketingContent: ["Marketing", "Content"],
-        productivity: ["Productivity", "Operations"],
-        optimization: ["Optimization", "Performance"]
-      },
-      difficulties: {
-        beginner: "Beginner",
-        intermediate: "Intermediate",
-        advanced: "Advanced"
-      },
-      installTypes: {
-        gitClone: "Git Clone",
-        npm: "npm install",
-        pip: "pip install",
-        mcp: "MCP Server",
-        default: "Quick Install"
-      },
-      tiers: {
-        gold: "Gold",
-        silver: "Silver",
-        bronze: "Bronze"
-      },
-      useCasesList: {
-        marketing: [
-          { title: "E-Commerce", text: "Extracting product data from e-commerce sites for inventory management and analysis." },
-          { title: "Content Publishing", text: "Converting blog content into structured markdown for easier content management and publication." },
-          { title: "Competitor Research", text: "Aggregating competitor campaign information from various sources to inform strategic business decisions." },
-          { title: "Feedback Sentiment", text: "Collecting user reviews from multiple platforms to enhance product feedback analysis." }
-        ],
-        dev: [
-          { title: "API Crawling", text: "Crawling API reference documentation to feed vector stores for AI Agent context expansion." },
-          { title: "Schema Generation", text: "Transforming unstructured web pages into JSON schemas for database migrations." },
-          { title: "CI/CD Monitoring", text: "Scraping deployment logs and build metrics to automate system reports." },
-          { title: "Codebase Analysis", text: "Querying public git repositories to build dependency charts and security audits." }
-        ],
-        default: [
-          { title: "Data Collection", text: "Gathering clean text outputs from web portals to train custom LLM models." },
-          { title: "Report Generation", text: "Summarizing competitor websites to compile market intelligence reports automatically." },
-          { title: "Lead Generation", text: "Parsing public directory lists to extract contact nodes for outreach databases." },
-          { title: "Pipeline Automation", text: "Connecting disparate online data nodes into structured, daily-updated data pipelines." }
-        ]
       }
     },
     // ─── Edit tab (Gemini) ──────────────────────────────────────────

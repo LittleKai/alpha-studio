@@ -15,7 +15,7 @@ import { useTheme } from '../../theme/context';
  * Cả hai biến thể đều có chân tile: nền tảng/trạng thái bên trái, nút mở bên phải.
  */
 
-export type StudioToolKey = 'eventLibrary' | 'skills' | 'crm' | 'vocab' | 'vietyaku' | 'ledStudio';
+export type StudioToolKey = 'eventLibrary' | 'crm' | 'vocab' | 'vietyaku' | 'ledStudio';
 
 /** Bộ màu nhận diện riêng của từng tool — làm các tile phân biệt rõ nhau. */
 export interface ToolAccent {
@@ -55,7 +55,7 @@ export const STUDIO_TOOLS: StudioTool[] = [
         to: '/studio/event-library',
         span: 'sm:col-span-3',
         featured: true,
-        logo: <img src="/event-library-logo.png" alt="" className="w-full h-full object-contain rounded-lg" />,
+        logo: <img src="/event-library-logo.webp" alt="" className="w-full h-full object-contain rounded-lg" />,
         motif: (
             <svg aria-hidden="true" data-kind="diagram" viewBox="0 0 96 96" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
                 <rect x="10" y="14" width="76" height="68" rx="8" strokeOpacity="0.45" />
@@ -78,60 +78,11 @@ export const STUDIO_TOOLS: StudioTool[] = [
         },
     },
     {
-        key: 'skills',
-        index: '02',
-        to: '/studio/ai-skills',
-        span: 'sm:col-span-2',
-        logo: <img src="/skills-logo.png" alt="" className="w-full h-full object-contain rounded-lg" />,
-        motif: (
-            <svg aria-hidden="true" data-kind="diagram" viewBox="0 0 96 96" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
-                <rect x="14" y="18" width="24" height="24" rx="6" />
-                <rect x="58" y="18" width="24" height="24" rx="6" strokeOpacity="0.5" />
-                <rect x="36" y="56" width="24" height="24" rx="6" />
-                <path d="M38 30 H58 M26 42 L42 56 M70 42 L54 56" strokeOpacity="0.5" strokeLinecap="round" />
-                <path d="M22 27 L26 30 L22 33 M28 33 H32" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-        ),
-        accent: {
-            textLight: 'text-cyan-700',
-            textDark: 'text-cyan-400',
-            chip: 'bg-cyan-500/10 border-cyan-500/25',
-            hoverBorder: 'hover:border-cyan-500/60',
-            glow: 'bg-cyan-500',
-            rgb: '6 182 212',
-        },
-    },
-    {
-        key: 'ledStudio',
-        index: '03',
-        to: '/studio/led-studio',
-        span: 'sm:col-span-3',
-        featured: true,
-        logo: <img src="/led-studio-logo.png" alt="" className="w-full h-full object-contain rounded-lg" />,
-        motif: (
-            <svg aria-hidden="true" data-kind="diagram" viewBox="0 0 96 96" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
-                <polygon points="16,22 80,14 80,62 16,54" strokeWidth="1.8" />
-                <line x1="36" y1="19.5" x2="36" y2="56.5" strokeOpacity="0.4" />
-                <line x1="58" y1="16.8" x2="58" y2="59.2" strokeOpacity="0.4" />
-                <line x1="16" y1="38" x2="80" y2="38" strokeOpacity="0.4" />
-                <path d="M24 14 L8 82 M24 14 L42 82 M68 10 L52 82 M68 10 L88 82" strokeOpacity="0.35" strokeDasharray="3 3" />
-            </svg>
-        ),
-        accent: {
-            textLight: 'text-sky-700',
-            textDark: 'text-cyan-300',
-            chip: 'bg-cyan-500/10 border-cyan-500/25',
-            hoverBorder: 'hover:border-cyan-400/60',
-            glow: 'bg-cyan-400',
-            rgb: '97 232 255',
-        },
-    },
-    {
         key: 'crm',
-        index: '04',
+        index: '02',
         to: '/studio/crm',
         span: 'sm:col-span-2',
-        logo: <img src="/crm-logo.png" alt="" className="w-full h-full object-contain" />,
+        logo: <img src="/crm-logo.webp" alt="" className="w-full h-full object-contain" />,
         motif: (
             <svg aria-hidden="true" data-kind="diagram" viewBox="0 0 96 96" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
                 <path d="M14 20 H82 L62 48 V74 L34 66 V48 L14 20 Z" strokeLinejoin="round" />
@@ -151,11 +102,36 @@ export const STUDIO_TOOLS: StudioTool[] = [
         },
     },
     {
+        key: 'ledStudio',
+        index: '03',
+        to: '/studio/led-studio',
+        span: 'sm:col-span-3',
+        featured: true,
+        logo: <img src="/led-studio-logo.webp" alt="" className="w-full h-full object-contain rounded-lg" />,
+        motif: (
+            <svg aria-hidden="true" data-kind="diagram" viewBox="0 0 96 96" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
+                <polygon points="16,22 80,14 80,62 16,54" strokeWidth="1.8" />
+                <line x1="36" y1="19.5" x2="36" y2="56.5" strokeOpacity="0.4" />
+                <line x1="58" y1="16.8" x2="58" y2="59.2" strokeOpacity="0.4" />
+                <line x1="16" y1="38" x2="80" y2="38" strokeOpacity="0.4" />
+                <path d="M24 14 L8 82 M24 14 L42 82 M68 10 L52 82 M68 10 L88 82" strokeOpacity="0.35" strokeDasharray="3 3" />
+            </svg>
+        ),
+        accent: {
+            textLight: 'text-sky-700',
+            textDark: 'text-cyan-300',
+            chip: 'bg-cyan-500/10 border-cyan-500/25',
+            hoverBorder: 'hover:border-cyan-400/60',
+            glow: 'bg-cyan-400',
+            rgb: '97 232 255',
+        },
+    },
+    {
         key: 'vocab',
-        index: '05',
+        index: '04',
         to: '/studio/vocab',
         span: 'sm:col-span-2',
-        logo: <img src="/vocab/icons/Icon-192.png" alt="" className="w-full h-full object-contain rounded" />,
+        logo: <img src="/vocab-logo.webp" alt="" className="w-full h-full object-contain rounded" />,
         motif: (
             <svg aria-hidden="true" data-kind="diagram" viewBox="0 0 96 96" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
                 <rect x="26" y="14" width="52" height="38" rx="6" strokeOpacity="0.4" />
@@ -176,11 +152,11 @@ export const STUDIO_TOOLS: StudioTool[] = [
     },
     {
         key: 'vietyaku',
-        index: '06',
+        index: '05',
         to: '/studio/vietyaku',
-        span: 'sm:col-span-3',
+        span: 'sm:col-span-5',
         featured: true,
-        logo: <img src="/vietyaku-logo.png" alt="" className="w-full h-full object-contain rounded" />,
+        logo: <img src="/vietyaku-logo.webp" alt="" className="w-full h-full object-contain rounded" />,
         motif: (
             <svg aria-hidden="true" data-kind="diagram" viewBox="0 0 96 96" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
                 <rect x="12" y="18" width="30" height="60" rx="6" />

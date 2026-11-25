@@ -40,9 +40,11 @@ export default function ServicesDetailPage() {
     const [loading, setLoading] = useState(true);
     const [preview, setPreview] = useState<{ images: string[]; index: number } | null>(null);
     const [activeSection, setActiveSection] = useState('');
+    const [tocOpen, setTocOpen] = useState(false);
     const contentRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        setTocOpen(false);
         const load = async () => {
             if (!slug) return;
             try {
@@ -81,11 +83,21 @@ export default function ServicesDetailPage() {
         };
     }, [loading, article]);
 
+    useEffect(() => {
+        if (!tocOpen) return;
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setTocOpen(false);
+        };
+        window.addEventListener('keydown', onKeyDown);
+        return () => window.removeEventListener('keydown', onKeyDown);
+    }, [tocOpen]);
+
     const scrollToSection = (id: string) => {
         const el = document.getElementById(id);
         if (!el) return;
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         setActiveSection(id);
+        setTocOpen(false);
     };
 
     const visibleSections = useMemo(
@@ -191,6 +203,52 @@ export default function ServicesDetailPage() {
     const excerpt = localizedText(article.excerpt, language);
     const formattedDate = formatArticleDate(article.createdAt, language);
 
+    const tocCard = tocEntries.length > 0 ? (
+        <nav
+            aria-label={t('landing.services.toc')}
+            className="bg-[var(--bg-card)] p-5 rounded-2xl border border-[var(--border-primary)] space-y-3 shadow-md select-none"
+        >
+            <h2 className="text-xs font-bold uppercase tracking-wider px-3 pb-2 border-b border-[var(--border-primary)]/50 flex items-center gap-2 text-violet-600 dark:text-violet-400">
+                <span className="w-1.5 h-3.5 rounded-full bg-violet-500" />
+                {t('landing.services.toc')}
+            </h2>
+            <div className="flex flex-col gap-1.5 text-sm font-semibold">
+                {tocEntries.map(entry => (
+                    <button
+                        key={entry.id}
+                        onClick={() => scrollToSection(entry.id)}
+                        style={{
+                            '--accent-color': entry.color,
+                            '--accent-tint': `${entry.color}14`
+                        } as React.CSSProperties}
+                        className={`mean-bird-button w-full text-left px-3 py-2.5 rounded-lg transition-all cursor-pointer ${
+                            activeSection === entry.id ? 'active font-bold' : 'text-[var(--text-secondary)]'
+                        }`}
+                    >
+                        <span className="truncate min-w-0">{entry.label}</span>
+                        <div className="dots_border"></div>
+                        <SparkleIcon />
+                    </button>
+                ))}
+            </div>
+        </nav>
+    ) : null;
+
+    const tagsCard = article.tags.length > 0 ? (
+        <div className="bg-[var(--bg-card)] p-5 rounded-2xl border border-[var(--border-primary)] shadow-sm">
+            <div className="flex flex-wrap gap-1.5">
+                {article.tags.map(tag => (
+                    <span
+                        key={tag}
+                        className="px-2.5 py-1 rounded-lg text-xs font-semibold border bg-rose-500/10 dark:bg-rose-500/20 border-rose-500/30 dark:border-rose-400/40 text-rose-700 dark:text-rose-200"
+                    >
+                        #{tag}
+                    </span>
+                ))}
+            </div>
+        </div>
+    ) : null;
+
     return (
         <div className="min-h-screen bg-[var(--bg-primary)] pb-20">
             <SEOHead
@@ -248,7 +306,7 @@ export default function ServicesDetailPage() {
                     </button>
 
                     <div
-                        className="max-w-3xl space-y-4 rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-primary)]/90 p-6 md:p-8 backdrop-blur-md"
+                        className="w-full space-y-4 rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-primary)]/90 p-6 md:p-8 backdrop-blur-md"
                         style={{
                             backgroundColor: 'color-mix(in srgb, var(--bg-primary) 88%, transparent)'
                         }}
@@ -313,49 +371,9 @@ export default function ServicesDetailPage() {
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Sidebar dính theo khi cuộn — cột này có thể cao hơn màn hình nên
                     tự cuộn bên trong, nếu không phần dưới sẽ không với tới được */}
-                <aside className="lg:col-span-1 space-y-6 lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:overscroll-contain lg:pr-1 detail-sidebar">
-                    {tocEntries.length > 0 && (
-                        <nav className="bg-[var(--bg-card)] p-5 rounded-2xl border border-[var(--border-primary)] space-y-3 shadow-md select-none">
-                            <h2 className="text-xs font-bold uppercase tracking-wider px-3 pb-2 border-b border-[var(--border-primary)]/50 flex items-center gap-2 text-violet-600 dark:text-violet-400">
-                                <span className="w-1.5 h-3.5 rounded-full bg-violet-500" />
-                                {t('landing.services.toc')}
-                            </h2>
-                            <div className="flex flex-col gap-1.5 text-sm font-semibold">
-                                {tocEntries.map(entry => (
-                                    <button
-                                        key={entry.id}
-                                        onClick={() => scrollToSection(entry.id)}
-                                        style={{
-                                            '--accent-color': entry.color,
-                                            '--accent-tint': `${entry.color}14`
-                                        } as React.CSSProperties}
-                                        className={`mean-bird-button w-full text-left px-3 py-2.5 rounded-lg transition-all cursor-pointer ${
-                                            activeSection === entry.id ? 'active font-bold' : 'text-[var(--text-secondary)]'
-                                        }`}
-                                    >
-                                        <span className="truncate min-w-0">{entry.label}</span>
-                                        <div className="dots_border"></div>
-                                        <SparkleIcon />
-                                    </button>
-                                ))}
-                            </div>
-                        </nav>
-                    )}
-
-                    {article.tags.length > 0 && (
-                        <div className="bg-[var(--bg-card)] p-5 rounded-2xl border border-[var(--border-primary)] shadow-sm">
-                            <div className="flex flex-wrap gap-1.5">
-                                {article.tags.map(tag => (
-                                    <span
-                                        key={tag}
-                                        className="px-2.5 py-1 rounded-lg text-xs font-semibold border bg-rose-500/10 dark:bg-rose-500/20 border-rose-500/30 dark:border-rose-400/40 text-rose-700 dark:text-rose-200"
-                                    >
-                                        #{tag}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-                    )}
+                <aside className="hidden lg:block lg:col-span-1 space-y-6 lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:overscroll-contain lg:pr-1 detail-sidebar">
+                    {tocCard}
+                    {tagsCard}
                 </aside>
 
                 <div
@@ -433,6 +451,8 @@ export default function ServicesDetailPage() {
                         </div>
                     )}
 
+                    {tagsCard && <div className="lg:hidden">{tagsCard}</div>}
+
                     {/* Bình luận cuối bài — dùng lại bộ bình luận của Prompt */}
                     <div
                         id="comments"
@@ -448,6 +468,47 @@ export default function ServicesDetailPage() {
                 <p className="mb-4">{t('landing.services.projectContact')}</p>
                 <a href="https://zalo.me/0933805525" className="inline-flex px-5 py-3 rounded-xl font-bold bg-[var(--accent-primary)] text-[var(--text-on-accent)]">{t('landing.services.sendBrief')}</a>
             </aside>
+
+            {/* Nút mục lục nổi khi bố cục thu về 1 cột (< lg), đặt phía trên FloatingChat */}
+            {tocCard && (
+                <>
+                    <button
+                        type="button"
+                        onClick={() => setTocOpen(prev => !prev)}
+                        aria-expanded={tocOpen}
+                        aria-label={t('landing.services.toc')}
+                        className="fixed bottom-24 right-6 z-40 lg:hidden inline-flex items-center gap-2 h-12 px-4 rounded-full bg-[var(--accent-primary)] text-[var(--text-on-accent)] text-sm font-bold shadow-xl border border-white/15 cursor-pointer transition-transform hover:scale-105 active:scale-95"
+                    >
+                        {tocOpen ? (
+                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        ) : (
+                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h12M4 18h8" />
+                            </svg>
+                        )}
+                        <span>{t('landing.services.toc')}</span>
+                    </button>
+
+                    {tocOpen && (
+                        <>
+                            <div
+                                className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm lg:hidden"
+                                onClick={() => setTocOpen(false)}
+                            />
+                            <div
+                                role="dialog"
+                                aria-modal="true"
+                                aria-label={t('landing.services.toc')}
+                                className="fixed bottom-40 right-6 z-40 w-[calc(100vw-3rem)] max-w-sm max-h-[60vh] overflow-y-auto overscroll-contain rounded-2xl shadow-2xl lg:hidden detail-sidebar"
+                            >
+                                {tocCard}
+                            </div>
+                        </>
+                    )}
+                </>
+            )}
             {preview && (
                 <ImageLightbox
                     src={preview.images[preview.index]}

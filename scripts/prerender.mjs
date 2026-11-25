@@ -35,7 +35,7 @@ export function getSitemapRoutes(xml) {
         const decoded = decodeURIComponent(url.pathname);
         if (url.origin !== 'https://giaiphapsangtao.com' || url.search || url.hash || decoded.includes('\\') || decoded.split('/').some(part => part === '..' || part === '.')) throw new Error(`Invalid sitemap URL: ${value}`);
         return url.pathname.replace(/\/+$/, '') || '/';
-    }).filter(route => !route.startsWith('/studio/ai-skills/'));
+    });
     if (!routes.length) throw new Error('Sitemap has no canonical routes');
     return [...new Set(routes)];
 }
@@ -159,15 +159,14 @@ async function main() {
             while (cursor < allRoutes.length) {
                 const route = allRoutes[cursor++];
                 try {
-                    const isSkill = route.startsWith('/studio/ai-skills/');
-                    await page.goto(`http://localhost:${PREVIEW_PORT}${route}`, { waitUntil: isSkill ? 'domcontentloaded' : 'networkidle0', timeout: 30000 });
+                    await page.goto(`http://localhost:${PREVIEW_PORT}${route}`, { waitUntil: 'networkidle0', timeout: 30000 });
                     await page.waitForFunction(expected => {
                         const canonical = document.querySelector('link[rel="canonical"]');
                         return canonical && new URL(canonical.href).pathname.replace(/\/+$/, '') === expected.replace(/\/+$/, '') && document.querySelector('h1')?.textContent?.trim();
                     }, { timeout: 30000, polling: 100 }, route);
                     saveHtml(await page.content(), route);
                     success++;
-                    if (success % 100 === 0 || !isSkill) console.log(`[prerender] ✓ ${route} (${success}/${allRoutes.length})`);
+                    console.log(`[prerender] ✓ ${route} (${success}/${allRoutes.length})`);
                 } catch (err) {
                     console.warn(`[prerender] ✗ ${route} — ${err.message}`);
                     failed++;

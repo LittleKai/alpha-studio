@@ -16,21 +16,21 @@ import {
 
 const TOOL_LOGOS: Record<string, { logo: string; to: string; color: string; bg: string; border: string }> = {
     vietyaku: {
-        logo: '/vietyaku-logo.png',
+        logo: '/vietyaku-logo.webp',
         to: '/studio/vietyaku',
         color: 'text-rose-500 dark:text-rose-400',
         bg: 'bg-rose-500/10',
         border: 'border-rose-500/30',
     },
     vocabflip: {
-        logo: '/vocab/icons/Icon-192.png',
+        logo: '/vocab-logo.webp',
         to: '/studio/vocab',
         color: 'text-emerald-500 dark:text-emerald-400',
         bg: 'bg-emerald-500/10',
         border: 'border-emerald-500/30',
     },
     crm: {
-        logo: '/crm-logo.png',
+        logo: '/crm-logo.webp',
         to: '/studio/crm',
         color: 'text-blue-500 dark:text-blue-400',
         bg: 'bg-blue-500/10',
@@ -317,7 +317,7 @@ export default function ToolDownloadsAdminTab() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         {tools.map((tool) => {
                             const meta = TOOL_LOGOS[tool.toolId] || {
-                                logo: '/skills-logo.png',
+                                logo: '/alpha-symbol-only.png',
                                 to: '/studio',
                                 color: 'text-violet-500 dark:text-violet-400',
                                 bg: 'bg-violet-500/10',

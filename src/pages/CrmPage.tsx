@@ -464,7 +464,7 @@ const CrmPage: React.FC = () => {
                 <section className="space-y-8">
                     <header className="flex flex-col items-center gap-5 text-center">
                         <img
-                            src="/crm-logo.png"
+                            src="/crm-logo.webp"
                             alt="Alpha CRM"
                             className="h-20 w-20 rounded-2xl border border-sky-500/25 bg-[var(--bg-card)] p-1.5 object-contain shadow-md"
                         />

@@ -27,7 +27,7 @@ import LoadingSpinner from '../ui/LoadingSpinner';
 // StudentProfileModal and PartnerRegistrationModal not used - moved to separate view components
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
-import { JobsView, PartnersView, PromptsView, LibraryPublisherView, SkillsView } from './views';
+import { JobsView, PartnersView, PromptsView, LibraryPublisherView } from './views';
 import ProfileEditModal from '../modals/ProfileEditModal';
 import PublishToLibraryModal, { type PublishSource } from '../modals/PublishToLibraryModal';
 import './WorkflowDashboard.css';
@@ -112,14 +112,14 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
   // Navigation State
   const [searchParams, setSearchParams] = useSearchParams();
-  // Deep link: /workflow?view=<skills|library>&edit=<slug> — nút Sửa trên trang
+  // Deep link: /workflow?view=library&edit=<slug> — nút Sửa trên trang
   // chi tiết công khai mở tab mới vào đúng view này với form đã nạp sẵn.
   const deepLinkView = searchParams.get('view');
-  const [activeView, setActiveView] = useState<'documents' | 'projects' | 'jobs' | 'partners' | 'affiliate' | 'creative' | 'library' | 'skills'>(
-    deepLinkView === 'skills' || deepLinkView === 'library' ? deepLinkView : 'documents'
+  const [activeView, setActiveView] = useState<'documents' | 'projects' | 'jobs' | 'partners' | 'affiliate' | 'creative' | 'library'>(
+    deepLinkView === 'library' ? 'library' : 'documents'
   );
   const [initialEditSlug, setInitialEditSlug] = useState<string | null>(
-    deepLinkView === 'skills' || deepLinkView === 'library' ? searchParams.get('edit') : null
+    deepLinkView === 'library' ? searchParams.get('edit') : null
   );
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -1448,13 +1448,6 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       );
       case 'jobs': return <JobsView searchQuery={searchQuery} />;
       case 'partners': return <PartnersView searchQuery={searchQuery} />;
-      case 'skills': return (
-        <SkillsView
-          searchQuery={searchQuery}
-          initialEditSlug={initialEditSlug}
-          onInitialEditConsumed={clearEditParam}
-        />
-      );
       default: return (
         <div className="workflow-content-scroll workflow-documents-page">
             <div className="workflow-page-heading">
@@ -1585,7 +1578,6 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       affiliate: t('workflow.sidebar.affiliate'),
       creative: t('workflow.sidebar.sharePrompts'),
       library: t('workflow.sidebar.libraryPublisher'),
-      skills: t('workflow.sidebar.skillsLibrary'),
   }[activeView];
 
   return (
@@ -1655,14 +1647,6 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                             </span>
                             <span>{t('workflow.sidebar.libraryPublisher')}</span>
                         </button>
-                        {user?.role === 'admin' && (
-                            <button onClick={() => { navigate('/workflow'); setActiveView('skills'); setSelectedProject(null); }} className={`workflow-nav-item ${activeView === 'skills' ? 'is-active' : ''}`} title={t('workflow.sidebar.skillsLibrary')}>
-                                <span className="workflow-nav-icon-wrap bg-orange-500/15 text-orange-400 border border-orange-500/30 text-xl">
-                                    🧠
-                                </span>
-                                <span>{t('workflow.sidebar.skillsLibrary')}</span>
-                            </button>
-                        )}
                     </div>
                 </section>
             </nav>

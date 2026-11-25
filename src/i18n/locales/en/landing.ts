@@ -124,10 +124,10 @@ export default {
     },
     toolsShowcase: {
       title: "AI Studio Tools Ecosystem",
-      subtitle: "A professional suite of tools for learning, task management, and AI skills development.",
+      subtitle: "A professional suite of tools for learning, task management, 3D event staging, and translation.",
       explore: "Enter Studio",
       hubTitle: "Alpha Studio Hub — every tool in one place",
-      hubDesc: "Six specialized tools open for 3D event staging, AI agent skills, Zalo marketing, vocabulary, and translation.",
+      hubDesc: "Five specialized tools open for 3D event staging, event knowledge, Zalo marketing, vocabulary, and translation.",
       crm: {
         title: "Alpha CRM",
         desc: "Client, project, and automated billing management system, optimizing workflows for professional event freelancers."
@@ -135,10 +135,6 @@ export default {
       vocab: {
         title: "VocabFlip",
         desc: "Learn specialized event and design English terminology through an intelligent, interactive flashcard system."
-      },
-      skills: {
-        title: "AI Skills Library",
-        desc: "A comprehensive repository of prompts, sample workflows, and guides for applying generative AI models in practice."
       },
       vietyaku: {
         title: "VietYaku",

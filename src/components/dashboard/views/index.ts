@@ -2,4 +2,3 @@ export { default as JobsView } from './JobsView';
 export { default as PartnersView } from './PartnersView';
 export { default as PromptsView } from './PromptsView';
 export { default as LibraryPublisherView } from './LibraryPublisherView';
-export { default as SkillsView } from './SkillsView';

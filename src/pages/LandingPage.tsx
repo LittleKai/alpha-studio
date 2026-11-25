@@ -617,8 +617,67 @@ const LandingPage: React.FC = () => {
 
             <ServiceCategoriesSection />
 
+            {/* Tools Showcase Section — cùng ngôn ngữ thiết kế với hub /studio */}
+            <section className="py-20 bg-[var(--bg-tertiary)] border-t border-[var(--border-primary)] relative overflow-hidden">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--accent-primary)]/5 rounded-full blur-[160px] -z-10"></div>
+                <div className="container mx-auto px-6">
+                    <SectionHeading
+                        eyebrow={t('landing.sections.toolsEyebrow')}
+                        title={t('landing.toolsShowcase.title')}
+                        subtitle={t('landing.toolsShowcase.subtitle')}
+                        action={(
+                            <HoverSpring scale={1.05} y={-2} className="inline-block">
+                                <button
+                                    onClick={goToStudio}
+                                    className="liquid-cta-hover inline-flex items-center gap-2 py-3 px-7 rounded-full border border-[var(--border-secondary)] hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-all duration-300 text-sm font-bold text-[var(--accent-primary)]"
+                                >
+                                    {t('landing.toolsShowcase.explore')}
+                                    <IconArrow />
+                                </button>
+                            </HoverSpring>
+                        )}
+                    />
+
+                    <Reveal staggerChildren={0.12} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {STUDIO_TOOLS.map((tool) => (
+                            <RevealItem key={tool.key}>
+                                <StudioToolTile tool={tool} variant="compact" />
+                            </RevealItem>
+                        ))}
+                    </Reveal>
+
+                    {/* Dải dẫn về hub /studio — nơi có đủ cả công cụ sắp ra mắt */}
+                    <Reveal y={24} className="mt-4">
+                        <button
+                            onClick={goToStudio}
+                            className="group w-full flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 text-left rounded-2xl border border-dashed border-[var(--border-secondary)] bg-[var(--bg-card)] px-6 py-5 transition-colors duration-300 hover:border-[var(--accent-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]"
+                        >
+                            <span className="inline-flex items-center justify-center w-11 h-11 flex-shrink-0 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] text-[var(--accent-primary)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h6v6H4zM14 6h6v6h-6zM4 16h6v4H4zM14 16h6v4h-6z" />
+                                </svg>
+                            </span>
+                            <span className="flex-1 min-w-0">
+                                <span className="block text-base font-black tracking-tight text-[var(--text-primary)]">
+                                    {t('landing.toolsShowcase.hubTitle')}
+                                </span>
+                                <span className="mt-1 block text-sm leading-relaxed text-[var(--text-secondary)]">
+                                    {t('landing.toolsShowcase.hubDesc')}
+                                </span>
+                            </span>
+                            <span className="inline-flex items-center gap-1.5 flex-shrink-0 text-xs font-black uppercase tracking-wider text-[var(--accent-primary)]">
+                                {t('landing.toolsShowcase.explore')}
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </span>
+                        </button>
+                    </Reveal>
+                </div>
+            </section>
+
             {/* Featured Courses Section */}
-            <section className="py-20 border-t border-[var(--border-primary)] relative overflow-hidden bg-[var(--bg-tertiary)]">
+            <section className="py-20 border-t border-[var(--border-primary)] relative overflow-hidden bg-[var(--bg-primary)]">
                 <div className="container mx-auto px-6">
                     <SectionHeading
                         eyebrow={t('landing.sections.coursesEyebrow')}
@@ -684,65 +743,6 @@ const LandingPage: React.FC = () => {
                             formatPrice={formatPrice}
                         />
                     )}
-                </div>
-            </section>
-
-            {/* Tools Showcase Section — cùng ngôn ngữ thiết kế với hub /studio */}
-            <section className="py-20 bg-[var(--bg-primary)] border-t border-[var(--border-primary)] relative overflow-hidden">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--accent-primary)]/5 rounded-full blur-[160px] -z-10"></div>
-                <div className="container mx-auto px-6">
-                    <SectionHeading
-                        eyebrow={t('landing.sections.toolsEyebrow')}
-                        title={t('landing.toolsShowcase.title')}
-                        subtitle={t('landing.toolsShowcase.subtitle')}
-                        action={(
-                            <HoverSpring scale={1.05} y={-2} className="inline-block">
-                                <button
-                                    onClick={goToStudio}
-                                    className="liquid-cta-hover inline-flex items-center gap-2 py-3 px-7 rounded-full border border-[var(--border-secondary)] hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-all duration-300 text-sm font-bold text-[var(--accent-primary)]"
-                                >
-                                    {t('landing.toolsShowcase.explore')}
-                                    <IconArrow />
-                                </button>
-                            </HoverSpring>
-                        )}
-                    />
-
-                    <Reveal staggerChildren={0.12} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {STUDIO_TOOLS.map((tool) => (
-                            <RevealItem key={tool.key}>
-                                <StudioToolTile tool={tool} variant="compact" />
-                            </RevealItem>
-                        ))}
-                    </Reveal>
-
-                    {/* Dải dẫn về hub /studio — nơi có đủ cả công cụ sắp ra mắt */}
-                    <Reveal y={24} className="mt-4">
-                        <button
-                            onClick={goToStudio}
-                            className="group w-full flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 text-left rounded-2xl border border-dashed border-[var(--border-secondary)] bg-[var(--bg-card)] px-6 py-5 transition-colors duration-300 hover:border-[var(--accent-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]"
-                        >
-                            <span className="inline-flex items-center justify-center w-11 h-11 flex-shrink-0 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] text-[var(--accent-primary)]">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h6v6H4zM14 6h6v6h-6zM4 16h6v4H4zM14 16h6v4h-6z" />
-                                </svg>
-                            </span>
-                            <span className="flex-1 min-w-0">
-                                <span className="block text-base font-black tracking-tight text-[var(--text-primary)]">
-                                    {t('landing.toolsShowcase.hubTitle')}
-                                </span>
-                                <span className="mt-1 block text-sm leading-relaxed text-[var(--text-secondary)]">
-                                    {t('landing.toolsShowcase.hubDesc')}
-                                </span>
-                            </span>
-                            <span className="inline-flex items-center gap-1.5 flex-shrink-0 text-xs font-black uppercase tracking-wider text-[var(--accent-primary)]">
-                                {t('landing.toolsShowcase.explore')}
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </span>
-                        </button>
-                    </Reveal>
                 </div>
             </section>
 

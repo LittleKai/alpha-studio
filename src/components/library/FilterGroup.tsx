@@ -2,7 +2,7 @@ import { useState, type ReactNode } from 'react';
 
 /**
  * Khối lọc thu gọn được trong sidebar của các trang thư viện
- * (`SkillsPage`, `EventLibraryPage`).
+ * (`EventLibraryPage`).
  *
  * Chỉ chứa phần khung — tiêu đề, mũi tên xoay, đường kẻ dưới. Danh sách lựa
  * chọn do trang gọi tự dựng bằng `FilterCheckbox` / `FilterRadio`, vì mỗi thư

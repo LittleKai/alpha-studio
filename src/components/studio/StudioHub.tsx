@@ -50,8 +50,7 @@ export default function StudioHub() {
     }, [hash]);
 
     const statItems = [
-        { value: '06', label: t('studio.hub.hero.stats.live') },
-        { value: '3000+', label: t('studio.hub.hero.stats.skills') },
+        { value: String(STUDIO_TOOLS.length).padStart(2, '0'), label: t('studio.hub.hero.stats.live') },
         { value: '35+', label: t('studio.hub.hero.stats.effects') },
         { value: '100%', label: t('studio.hub.hero.stats.beta') },
     ];
@@ -110,7 +109,7 @@ export default function StudioHub() {
                             {t('studio.hub.hero.subtitle')}
                         </RevealItem>
 
-                        <RevealItem y={15} className="grid grid-cols-2 sm:grid-cols-4 gap-px pt-2 rounded-2xl overflow-hidden border border-[var(--border-primary)] bg-[var(--border-primary)] max-w-[620px]">
+                        <RevealItem y={15} className="grid grid-cols-1 sm:grid-cols-3 gap-px pt-2 rounded-2xl overflow-hidden border border-[var(--border-primary)] bg-[var(--border-primary)] max-w-[620px]">
                             {statItems.map((stat) => (
                                 <div key={stat.label} className="bg-[var(--bg-card)] backdrop-blur-md px-4 py-4">
                                     <div className="text-xl md:text-2xl font-extrabold text-[var(--text-primary)] leading-none tabular-nums">{stat.value}</div>
@@ -120,7 +119,7 @@ export default function StudioHub() {
                         </RevealItem>
                     </Reveal>
 
-                    {/* Tool rail — mục lục 6 công cụ đang mở, đồng bộ thứ tự với Bento */}
+                    {/* Tool rail — mục lục 5 công cụ đang mở, đồng bộ thứ tự với Bento */}
                     <Reveal y={24} delay={0.25} className="hidden lg:block lg:col-span-5">
                         <div className="ml-auto w-full max-w-[380px] rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-card)] backdrop-blur-xl p-6 shadow-[var(--glass-shadow)]">
                             <div className="flex items-center justify-between mb-3">

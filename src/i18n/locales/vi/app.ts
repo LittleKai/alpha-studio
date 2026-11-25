@@ -153,11 +153,10 @@ export default {
         badge: "Hệ sinh thái Alpha Studio · Bản thử nghiệm",
         title1: "AI Studio",
         title2: "Bộ công cụ sáng tạo",
-        subtitle: "Sáu công cụ chuyên biệt mở sẵn cho mọi tài khoản: Thư viện tri thức sự kiện, Thư viện Kỹ năng AI, LED Stage Studio 3D, Alpha CRM cho tiếp thị Zalo, VocabFlip học từ vựng và VietYaku hỗ trợ dịch thuật Nhật – Trung.",
+        subtitle: "Năm công cụ chuyên biệt mở sẵn cho mọi tài khoản: Thư viện tri thức sự kiện, LED Stage Studio 3D, Alpha CRM cho tiếp thị Zalo, VocabFlip học từ vựng và VietYaku hỗ trợ dịch thuật Nhật – Trung.",
         stats: {
           live: "Công cụ đang mở",
           upcoming: "Sắp ra mắt",
-          skills: "Kỹ năng AI",
           effects: "Hiệu ứng sân khấu 3D",
           beta: "Mở miễn phí"
         },
@@ -165,7 +164,7 @@ export default {
         railNote: "Chọn nhanh một công cụ bên trên hoặc khám phá chi tiết từng tính năng ở lưới bên dưới."
       },
       sections: {
-        activeEyebrow: "06 công cụ sẵn sàng",
+        activeEyebrow: "05 công cụ sẵn sàng",
         activeTitle: "Chọn công cụ để bắt đầu",
         upcomingEyebrow: "Lộ trình",
         upcomingTitle: "Sắp có mặt trong Studio"
@@ -173,7 +172,6 @@ export default {
       comingSoon: "Sắp ra mắt",
       badges: {
         eventLibrary: "Case Study & Prompt",
-        skills: "3000+ Kỹ năng Agent",
         ledStudio: "WebGL2 3D & DMX",
         crm: "Zalo Marketing AI",
         vocab: "Flashcard FSRS",
@@ -183,10 +181,6 @@ export default {
         eventLibrary: {
           value: "KPI & ROI thực tế",
           label: "Ngân sách, reach và kịch bản từ dự án sự kiện đã triển khai"
-        },
-        skills: {
-          value: "3.000+ Skills",
-          label: "Gắn trực tiếp 1 chạm vào Claude Code, Cursor và Antigravity"
         },
         ledStudio: {
           value: "35 FX / DMX & ILDA",
@@ -210,11 +204,6 @@ export default {
           f1: "Case study sự kiện kèm số liệu ngân sách, reach và KPI thực tế",
           f2: "Prompt, workflow, template và playbook dùng được ngay cho từng loại sự kiện",
           f3: "Đăng dự án của bạn từ Workflow lên thư viện — riêng tư hoặc công khai"
-        },
-        skills: {
-          f1: "Tìm kiếm hơn 3000 kỹ năng theo danh mục, công nghệ hoặc tác giả",
-          f2: "Mỗi kỹ năng có trang chi tiết kèm tình huống ứng dụng và link GitHub",
-          f3: "Sao chép nội dung kỹ năng để gắn thẳng vào AI Agent của bạn"
         },
         crm: {
           f1: "Gửi tin nhắn hàng loạt và chăm sóc khách hàng tự động qua Zalo",
@@ -240,7 +229,6 @@ export default {
       open: "Mở",
       meta: {
         eventLibrary: "Web · Không cần cài đặt",
-        skills: "Web · Không cần cài đặt",
         crm: "Windows & Android · Dùng thử 1 tháng",
         vocab: "Web, Windows & Android",
         vietyaku: "Windows · Android (Sắp ra mắt)",
@@ -579,10 +567,6 @@ export default {
             requirementPortable: "Chạy dạng portable trên Windows — dữ liệu cá nhân lưu trong thư mục userdata cạnh file .exe.",
             requirementSize: "Dung lượng tải khá lớn do bộ từ điển Nhật và Trung được đóng gói sẵn."
           }
-        },
-        skills: {
-          title: "Thư viện Kỹ năng AI",
-          desc: "Khám phá 3000+ kỹ năng mã nguồn mở giúp mở rộng năng lực AI Agent của bạn"
         }
       }
     },
@@ -876,174 +860,6 @@ export default {
         publishing: "Đang đăng...",
         titleRequired: "Vui lòng nhập tiêu đề",
         failed: "Đăng lên thư viện thất bại"
-      }
-    },
-    skills: {
-      title: "Thư viện Kỹ năng AI",
-      subtitle: "Tham khảo các kỹ năng lập trình mạnh mẽ giúp mở rộng năng lực của AI Agent",
-      searchPlaceholder: "Tìm kiếm kỹ năng, công nghệ hoặc tác giả...",
-      category: "Danh mục",
-      allCategories: "Tất cả danh mục",
-      difficulty: "Độ khó",
-      allDifficulties: "Tất cả độ khó",
-      timeSaving: "Tiết kiệm thời gian",
-      worksWith: "Hoạt động với",
-      installCommand: "Lệnh cài đặt",
-      copySuccess: "Đã sao chép lệnh!",
-      copyPrompt: "Sao chép Prompt",
-      backToList: "Quay lại danh sách",
-      backToStudio: "Quay lại Studio",
-      backToSkills: "Quay lại thư viện kỹ năng",
-      admin: {
-        title: "Quản trị",
-        edit: "Sửa skill",
-        delete: "Xoá skill",
-        deleteFailed: "Không xoá được skill"
-      },
-      overview: "Tổng quan",
-      setup: "Cài đặt & Cấu hình",
-      usage: "Ví dụ sử dụng",
-      requirements: "Yêu cầu hệ thống",
-      sourceRepo: "Repository nguồn",
-      author: "Tác giả",
-      tier: "Cấp độ",
-      noSkillsFound: "Không tìm thấy kỹ năng phù hợp.",
-      relatedSkills: "Kỹ năng liên quan",
-      compatibleTools: "Công cụ tương thích",
-      mcpServers: "Máy chủ MCP",
-      bestFor: "Phù hợp nhất cho",
-      tags: "Thẻ",
-      filters: "Bộ lọc",
-      qualityTier: "Cấp chất lượng",
-      timeSavings: "Tiết kiệm thời gian",
-      installType: "Hình thức",
-      sortLabel: "Sắp xếp:",
-      sortRecommended: "Gợi ý",
-      sortPopular: "Phổ biến nhất",
-      sortTimeSaved: "Tiết kiệm nhất",
-      sortQuickest: "Nhanh nhất",
-      sortRecent: "Mới thêm",
-      sortAZ: "A-Z",
-      viewLabel: "Hiển thị:",
-      statsSkills: "kỹ năng",
-      statsVerified: "đã xác thực",
-      statsTimeSaved: "giờ tiết kiệm",
-      badgeText: "Kỹ năng cao cấp cho AI Agent",
-      heroTitle: "Kỹ năng AI cho mọi vai trò",
-      resetFilters: "Đặt lại bộ lọc",
-      installTypeTitle: "Hình thức cài đặt",
-      allLevels: "Tất cả mức độ",
-      showingStats: "Hiển thị {start}-{end} trong {total} kỹ năng",
-      prevPage: "Trước",
-      nextPage: "Sau",
-      quickInstall: "Cài đặt nhanh",
-      viewOnGithub: "Xem trên GitHub",
-      jumpTo: "Mục lục",
-      viewAllSkills: "Xem tất cả kỹ năng",
-      needHelp: "Cần hỗ trợ?",
-      b2bPromoText: "Chúng tôi xây dựng các kỹ năng và quy trình tự động hóa AI tùy chỉnh cho doanh nghiệp B2B.",
-      talkToUs: "Liên hệ ngay",
-      usingThisSkill: "Đang dùng kỹ năng này?",
-      discoverStackText: "Khám phá xem các công cụ khác trong hệ thống của bạn kết nối với AI như thế nào.",
-      freeAiScan: "Quét AI miễn phí",
-      aboutThisSkill: "Về kỹ năng này",
-      useCases: "Trường hợp sử dụng",
-      setupInstructions: "Sao chép lệnh cài đặt bên dưới và chạy trong terminal của bạn.",
-      altInstall: "Cài đặt thay thế (Git Clone)",
-      promptTemplate: "Mẫu Prompt & Hướng dẫn",
-      instructionScript: "Hướng dẫn & Kịch bản",
-      terminal: "Terminal",
-      copied: "Đã sao chép",
-      install: "Cài đặt",
-      savesPerTask: "Tiết kiệm {time}/tác vụ",
-      timeRangeShort: "dưới 60 phút",
-      timeRangeMedium: "60 - 180 phút",
-      timeRangeLong: "trên 180 phút",
-      gitCloneTime: "15 phút triển khai",
-      npmInstallTime: "5 phút cài đặt",
-      savesPerUse: "Tiết kiệm ~{time} mỗi lần dùng",
-      updatedMonthsAgo: "Cập nhật {months} tháng trước",
-      claudeCodeReq: "Claude Code hoặc AI Agent tương thích",
-      quickStart: "Hướng dẫn nhanh",
-      stepInstallTitle: "Cài đặt kỹ năng",
-      stepInstallDesc: "Sao chép lệnh cài đặt ở trên và chạy trong terminal của bạn.",
-      stepOpenTitle: "Mở AI Agent của bạn",
-      stepOpenDesc: "Mở Claude Code, Cursor hoặc AI agent lập trình mà bạn muốn sử dụng.",
-      stepTryTitle: "Chạy thử",
-      stepTryDesc: "Sử dụng mẫu prompt hoặc ví dụ bên dưới để chạy thử kỹ năng.",
-      stepCustomizeTitle: "Tùy biến",
-      stepCustomizeDesc: "Tùy biến cấu hình kỹ năng phù hợp với quy trình làm việc của bạn.",
-      compatibilityDesc: "Kỹ năng này tương thích hoàn toàn với các trợ lý lập trình AI và môi trường sau:",
-      envNative: "Môi trường thực thi gốc",
-      envEditor: "Tích hợp Agent biên tập",
-      mcpDesc: "Kỹ năng này hỗ trợ Model Context Protocol (MCP), cho phép tích hợp trực tiếp như một dịch vụ MCP mở rộng tính năng cho AI Agent.",
-      mcpConfigRegister: "# Đăng ký trong cấu hình Claude Desktop của bạn:",
-      categories: {
-        seo: "SEO",
-        design: "Thiết kế",
-        development: "Phát triển",
-        devTools: "Công cụ Lập trình viên",
-        dataAnalytics: "Dữ liệu & Phân tích",
-        crmPipeline: "CRM & Phễu khách hàng",
-        salesOutreach: "Bán hàng & Tiếp cận",
-        marketing: "Tiếp thị",
-        researchIntel: "Nghiên cứu & Tình báo",
-        communication: "Giao tiếp",
-        marketingContent: "Tiếp thị & Nội dung",
-        productivity: "Hiệu suất",
-        optimization: "Tối ưu hóa"
-      },
-      bestForTags: {
-        seo: ["SEO", "Tối ưu hóa"],
-        design: ["Thiết kế", "Giao diện"],
-        development: ["Lập trình", "Phát triển"],
-        devTools: ["Công cụ", "Lập trình viên"],
-        dataAnalytics: ["Dữ liệu", "Phân tích"],
-        crmPipeline: ["CRM", "Quy trình"],
-        salesOutreach: ["Bán hàng", "Tiếp cận"],
-        marketing: ["Tiếp thị", "Tăng trưởng"],
-        researchIntel: ["Nghiên cứu", "Thông tin"],
-        communication: ["Giao tiếp", "Kết nối"],
-        marketingContent: ["Tiếp thị", "Nội dung"],
-        productivity: ["Hiệu suất", "Vận hành"],
-        optimization: ["Tối ưu", "Hiệu năng"]
-      },
-      difficulties: {
-        beginner: "Sơ cấp",
-        intermediate: "Trung cấp",
-        advanced: "Cao cấp"
-      },
-      installTypes: {
-        gitClone: "Bản sao Git (Git Clone)",
-        npm: "Cài đặt npm",
-        pip: "Cài đặt pip",
-        mcp: "MCP Server",
-        default: "Cài đặt nhanh"
-      },
-      tiers: {
-        gold: "Vàng",
-        silver: "Bạc",
-        bronze: "Đồng"
-      },
-      useCasesList: {
-        marketing: [
-          { title: "Thương mại điện tử", text: "Trích xuất dữ liệu sản phẩm từ các trang thương mại điện tử để quản lý tồn kho và phân tích." },
-          { title: "Xuất bản nội dung", text: "Chuyển đổi nội dung blog thành định dạng markdown có cấu trúc để quản lý và xuất bản dễ dàng hơn." },
-          { title: "Nghiên cứu đối thủ", text: "Thu thập thông tin chiến dịch của đối thủ cạnh tranh từ nhiều nguồn để hỗ trợ ra quyết định chiến lược." },
-          { title: "Đánh giá phản hồi", text: "Thu thập đánh giá của người dùng từ nhiều nền tảng để cải thiện phân tích phản hồi sản phẩm." }
-        ],
-        dev: [
-          { title: "Thu thập tài liệu API", text: "Thu thập tài liệu tham khảo API để đưa vào vector store mở rộng ngữ cảnh cho AI Agent." },
-          { title: "Tự động tạo Schema", text: "Chuyển đổi trang web không cấu trúc thành JSON schema để phục vụ migrate cơ sở dữ liệu." },
-          { title: "Giám sát CI/CD", text: "Thu thập log triển khai và chỉ số build để tự động hóa báo cáo hệ thống." },
-          { title: "Phân tích Codebase", text: "Truy vấn các repository git công khai để xây dựng biểu đồ phụ thuộc và kiểm tra bảo mật." }
-        ],
-        default: [
-          { title: "Thu thập dữ liệu", text: "Thu thập dữ liệu văn bản sạch từ các cổng thông tin để huấn luyện các mô hình LLM tùy chỉnh." },
-          { title: "Tạo báo cáo tự động", text: "Tóm tắt các trang web đối thủ để tự động biên soạn báo cáo phân tích thị trường." },
-          { title: "Tìm kiếm khách hàng", text: "Phân tích danh sách thư mục công khai để trích xuất thông tin liên hệ cho cơ sở dữ liệu tiếp cận khách hàng." },
-          { title: "Tự động hóa luồng dữ liệu", text: "Kết nối các điểm dữ liệu trực tuyến rời rạc thành các luồng dữ liệu có cấu trúc, cập nhật hàng ngày." }
-        ]
       }
     },
     // ─── Edit tab (Gemini) ──────────────────────────────────────────

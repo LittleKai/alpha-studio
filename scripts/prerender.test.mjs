@@ -4,12 +4,12 @@ import { readFileSync } from 'node:fs';
 import { dedupeSeoHead } from './prerender.mjs';
 import * as prerender from './prerender.mjs';
 
-test('discovers canonical sitemap routes and skips individual skill detail pages', () => {
+test('discovers canonical sitemap routes from sitemap XML', () => {
     assert.equal(typeof prerender.getSitemapRoutes, 'function');
-    const xml = '<urlset><url><loc>https://giaiphapsangtao.com/</loc></url><url><loc>https://giaiphapsangtao.com/studio/ai-skills</loc></url><url><loc>https://giaiphapsangtao.com/studio/ai-skills/optimization</loc></url></urlset>';
-    assert.deepEqual(prerender.getSitemapRoutes(xml), ['/', '/studio/ai-skills']);
+    const xml = '<urlset><url><loc>https://giaiphapsangtao.com/</loc></url><url><loc>https://giaiphapsangtao.com/studio/event-library</loc></url><url><loc>https://giaiphapsangtao.com/services</loc></url></urlset>';
+    assert.deepEqual(prerender.getSitemapRoutes(xml), ['/', '/studio/event-library', '/services']);
     assert.throws(() => prerender.getSitemapRoutes('<html>Unavailable</html>'));
-    assert.throws(() => prerender.getSitemapRoutes('<loc>https://other.example/skills</loc>'));
+    assert.throws(() => prerender.getSitemapRoutes('<loc>https://other.example/services</loc>'));
 });
 
 test('dedupeSeoHead keeps the rendered Helmet tags and removes static duplicates', () => {
@@ -29,7 +29,7 @@ test('dedupeSeoHead keeps the rendered Helmet tags and removes static duplicates
 test('retired URL rules return 410 while preserving landing video paths', () => {
     const config = JSON.parse(readFileSync(new URL('../vercel.json', import.meta.url), 'utf8'));
     const goneRoutes = config.routes.filter((route) => route.status === 410);
-    for (const path of ['/event-creative-city', '/event-creative-city/', '/co-loa-living-spiral', '/studio/interior-design', '/studio/interior-design/project-1']) {
+    for (const path of ['/event-creative-city', '/event-creative-city/', '/co-loa-living-spiral', '/studio/interior-design', '/studio/interior-design/project-1', '/studio/ai-skills', '/studio/ai-skills/firecrawl', '/studio/skills', '/studio/skills/firecrawl']) {
         assert.ok(goneRoutes.some((route) => new RegExp(route.src).test(path)), path);
     }
     for (const path of ['/event-creative-city/vid/neon/L0.mp4', '/event-creative-city/vid/living-storyboard/L6.mp4', '/studio/event-library']) {

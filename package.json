@@ -13,8 +13,6 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "skills:merge": "node scripts/merge_and_split_skills.js",
-    "skills:split": "node scripts/split_skills.js",
     "postinstall": "node -e \"const fs=require('fs'),{execSync}=require('child_process'),p='public/tinymce';if(!fs.existsSync(p))fs.cpSync('node_modules/tinymce',p,{recursive:true});if(!process.env.VERCEL&&!process.env.CI)execSync('npx puppeteer browsers install chrome',{stdio:'inherit'})\""
   },
   "dependencies": {

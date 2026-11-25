@@ -2,7 +2,7 @@ import React from 'react';
 import StudioBackButton from './StudioBackButton';
 
 export interface StudioBackNavProps {
-    /** Trang tổng hợp của công cụ, ví dụ /studio/ai-skills */
+    /** Trang tổng hợp của công cụ, ví dụ /studio/event-library */
     to: string;
     /** Nhãn nút quay lại trang tổng hợp */
     label: string;

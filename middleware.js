@@ -1,5 +1,5 @@
 const SITE = 'https://giaiphapsangtao.com';
-const STATIC_PAGES = new Set(['/', '/courses', '/about', '/news', '/services', '/contact', '/lien-he', '/studio', '/studio/ai-skills', '/studio/event-library', '/studio/vietyaku', '/studio/crm', '/studio/vocab', '/studio/led-studio', '/studio/generate', '/studio/edit', '/studio/crm/subscription', '/workflow', '/server', '/profile', '/profile/view', '/my-courses', '/wallet', '/admin', '/admin/courses']);
+const STATIC_PAGES = new Set(['/', '/courses', '/about', '/news', '/services', '/contact', '/lien-he', '/studio', '/studio/event-library', '/studio/vietyaku', '/studio/crm', '/studio/vocab', '/studio/led-studio', '/studio/generate', '/studio/edit', '/studio/crm/subscription', '/workflow', '/server', '/profile', '/profile/view', '/my-courses', '/wallet', '/admin', '/admin/courses']);
 const LED_SUBRESOURCE_DESTS = new Set(['script', 'style', 'empty', 'image', 'worker']);
 
 const next = (extraHeaders = {}) => new Response(null, { headers: { 'x-middleware-next': '1', ...extraHeaders } });
@@ -120,15 +120,13 @@ export default async function middleware(request) {
         return next();
     }
 
-    if (/^\/(?:event-creative-city|co-loa-living-spiral|studio\/interior-design)(?:\/|$)/.test(pathname)) return next();
+    if (/^\/(?:event-creative-city|co-loa-living-spiral|studio\/interior-design|studio\/(?:ai-)?skills)(?:\/|$)/.test(pathname)) return next();
     if (STATIC_PAGES.has(pathname) || pathname === '/google5ffb428154593171.html' || /^\/(?:assets|vocab|crm|tinymce|vendor)(?:\/|$)/.test(pathname) || /^\/(?:students|partners|users)\/[^/]+$/.test(pathname) || /^\/workflow\/projects\/[^/]+$/.test(pathname)) return next();
 
-    const legacy = pathname.match(/^\/studio\/skills(?:\/(.+))?$/);
-    if (legacy) return Response.redirect(`${SITE}/studio/ai-skills${legacy[1] ? `/${legacy[1]}` : ''}`, 308);
-    const match = pathname.match(/^\/(about|news|services|courses|studio\/ai-skills|studio\/event-library)\/([^/]+)$/);
+    const match = pathname.match(/^\/(about|news|services|courses|studio\/event-library)\/([^/]+)$/);
     if (!match) return notFound();
     const [, group, slug] = match;
-    const apiGroup = ['about', 'news', 'services'].includes(group) ? 'articles' : group.replace('studio/ai-skills', 'skills').replace('studio/event-library', 'event-library');
+    const apiGroup = ['about', 'news', 'services'].includes(group) ? 'articles' : group.replace('studio/event-library', 'event-library');
     try {
         const response = await fetch(`https://alpha-studio-backend.fly.dev/api/${apiGroup}/${slug}`, { signal: AbortSignal.timeout(8000) });
         if (response.status === 404) return notFound();

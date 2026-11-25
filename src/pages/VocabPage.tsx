@@ -147,7 +147,7 @@ const VocabPage: React.FC = () => {
                     <div className="relative group">
                         <div className="absolute inset-0 bg-emerald-500/20 rounded-3xl blur-xl group-hover:bg-emerald-500/30 transition-all" />
                         <img
-                            src="/vocab/icons/Icon-192.png"
+                            src="/vocab-logo.webp"
                             alt="VocabFlip"
                             className="relative h-24 w-24 rounded-3xl shadow-xl shadow-emerald-500/10 ring-2 ring-emerald-500/30 object-contain bg-slate-900"
                         />

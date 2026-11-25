@@ -124,10 +124,10 @@ export default {
     },
     toolsShowcase: {
       title: "Hệ Sinh Thái Công Cụ AI Studio",
-      subtitle: "Bộ công cụ chuyên nghiệp phục vụ học tập, quản lý công việc và phát triển kỹ năng AI.",
+      subtitle: "Bộ công cụ chuyên nghiệp phục vụ học tập, quản lý công việc, dàn dựng sân khấu 3D và dịch thuật.",
       explore: "Truy cập Studio",
       hubTitle: "Alpha Studio Hub — toàn bộ công cụ trong một nơi",
-      hubDesc: "Sáu công cụ chuyên biệt đang mở cho sự kiện 3D, kỹ năng AI Agent, tiếp thị Zalo, học từ vựng và dịch thuật.",
+      hubDesc: "Năm công cụ chuyên biệt đang mở cho sự kiện 3D, thư viện tri thức, tiếp thị Zalo, học từ vựng và dịch thuật.",
       crm: {
         title: "Alpha CRM",
         desc: "Hệ thống quản lý khách hàng, dự án và thanh toán tự động, tối ưu hóa quy trình làm việc cho freelancer sự kiện chuyên nghiệp."
@@ -135,10 +135,6 @@ export default {
       vocab: {
         title: "VocabFlip",
         desc: "Học thuật ngữ tiếng Anh chuyên ngành sự kiện và thiết kế qua hệ thống thẻ từ vựng (flashcards) thông minh và tương tác."
-      },
-      skills: {
-        title: "Thư viện kỹ năng AI",
-        desc: "Kho tài liệu tổng hợp prompt, quy trình làm việc (workflow) mẫu và hướng dẫn ứng dụng các mô hình AI tạo sinh vào thực tế."
       },
       vietyaku: {
         title: "VietYaku",
