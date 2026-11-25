@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { parseLanguage, translate } from './translate';
+import enLocale from './locales/en';
+import viLocale from './locales/vi';
 
 const vi = { common: { home: 'Trang chủ', empty: '' }, only: { vi: 'chỉ vi' } };
 const en = { common: { home: 'Home', extra: 'Extra' } };
@@ -37,5 +39,12 @@ describe('parseLanguage', () => {
     expect(parseLanguage('vi')).toBe('vi');
     expect(parseLanguage('fr')).toBe('vi');
     expect(parseLanguage(null)).toBe('vi');
+  });
+});
+
+describe('locale barrels', () => {
+  it('exposes no undefined top-level keys in en or vi barrels', () => {
+    expect(Object.entries(enLocale).filter(([, v]) => v === undefined)).toEqual([]);
+    expect(Object.entries(viLocale).filter(([, v]) => v === undefined)).toEqual([]);
   });
 });

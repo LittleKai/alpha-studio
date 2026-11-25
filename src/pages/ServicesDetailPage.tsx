@@ -204,17 +204,15 @@ export default function ServicesDetailPage() {
     const formattedDate = formatArticleDate(article.createdAt, language);
 
     const tocCard = tocEntries.length > 0 ? (
-        <nav
-            aria-label={t('landing.services.toc')}
-            className="bg-[var(--bg-card)] p-5 rounded-2xl border border-[var(--border-primary)] space-y-3 shadow-md select-none"
-        >
+        <div className="bg-[var(--bg-card)] p-5 rounded-2xl border border-[var(--border-primary)] space-y-3 shadow-md select-none">
             <h2 className="text-xs font-bold uppercase tracking-wider px-3 pb-2 border-b border-[var(--border-primary)]/50 flex items-center gap-2 text-violet-600 dark:text-violet-400">
                 <span className="w-1.5 h-3.5 rounded-full bg-violet-500" />
                 {t('landing.services.toc')}
             </h2>
-            <div className="flex flex-col gap-1.5 text-sm font-semibold">
+            <nav aria-label={t('landing.services.toc')} className="flex flex-col gap-1.5 text-sm font-semibold">
                 {tocEntries.map(entry => (
                     <button
+                        type="button"
                         key={entry.id}
                         onClick={() => scrollToSection(entry.id)}
                         style={{
@@ -230,8 +228,8 @@ export default function ServicesDetailPage() {
                         <SparkleIcon />
                     </button>
                 ))}
-            </div>
-        </nav>
+            </nav>
+        </div>
     ) : null;
 
     const tagsCard = article.tags.length > 0 ? (
@@ -477,7 +475,7 @@ export default function ServicesDetailPage() {
                         onClick={() => setTocOpen(prev => !prev)}
                         aria-expanded={tocOpen}
                         aria-label={t('landing.services.toc')}
-                        className="fixed bottom-24 right-6 z-40 lg:hidden inline-flex items-center gap-2 h-12 px-4 rounded-full bg-[var(--accent-primary)] text-[var(--text-on-accent)] text-sm font-bold shadow-xl border border-white/15 cursor-pointer transition-transform hover:scale-105 active:scale-95"
+                        className={`fixed bottom-24 right-6 ${tocOpen ? 'z-[55]' : 'z-40'} lg:hidden inline-flex items-center gap-2 h-12 px-4 rounded-full bg-[var(--accent-primary)] text-[var(--text-on-accent)] text-sm font-bold shadow-xl border border-white/15 cursor-pointer transition-transform hover:scale-105 active:scale-95`}
                     >
                         {tocOpen ? (
                             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
@@ -494,14 +492,14 @@ export default function ServicesDetailPage() {
                     {tocOpen && (
                         <>
                             <div
-                                className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm lg:hidden"
+                                className="fixed inset-0 z-[54] bg-black/40 backdrop-blur-sm lg:hidden"
                                 onClick={() => setTocOpen(false)}
                             />
                             <div
                                 role="dialog"
                                 aria-modal="true"
                                 aria-label={t('landing.services.toc')}
-                                className="fixed bottom-40 right-6 z-40 w-[calc(100vw-3rem)] max-w-sm max-h-[60vh] overflow-y-auto overscroll-contain rounded-2xl shadow-2xl lg:hidden detail-sidebar"
+                                className="fixed bottom-40 right-6 z-[55] w-[calc(100vw-3rem)] max-w-sm max-h-[min(60vh,calc(100dvh-11rem))] overflow-y-auto overscroll-contain rounded-2xl shadow-2xl lg:hidden detail-sidebar"
                             >
                                 {tocCard}
                             </div>

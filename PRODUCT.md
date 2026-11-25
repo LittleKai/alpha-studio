@@ -9,7 +9,7 @@ web
 ## Users
 
 - **Khách đặt dịch vụ thiết kế 3D & sản xuất sự kiện (chuyển đổi chính)**: agency sự kiện, doanh nghiệp, chủ đầu tư tìm hiểu năng lực thực tế qua dự án mẫu (sân khấu 3D/LED, render SketchUp, nội thất, kiến trúc CAD) và gửi brief để trao đổi phạm vi, báo giá, tiến độ.
-- **Kỹ thuật viên, designer & freelancer sự kiện (nuôi dưỡng hệ sinh thái)**: sử dụng các công cụ trong Alpha Studio Hub (Alpha LED Studio 3D, Alpha CRM, AI Skills, Event Library, VocabFlip, VietYaku, Alpha Connect).
+- **Kỹ thuật viên, designer & freelancer sự kiện (nuôi dưỡng hệ sinh thái)**: sử dụng các công cụ trong Alpha Studio Hub (Alpha LED Studio 3D, Alpha CRM, Event Library, VocabFlip, VietYaku, Alpha Connect).
 - **Học viên đào tạo AI ứng dụng (nuôi dưỡng hệ sinh thái)**: tìm hiểu lộ trình khóa học, tham gia học và làm bài trên nền tảng AI cho ngành sự kiện & sáng tạo.
 
 ## Product Purpose
@@ -45,7 +45,7 @@ Alpha Studio kết hợp dịch vụ thiết kế 3D trình bày minh bạch t�
 ## Evidence on Hand
 
 - **Dự án & case study dịch vụ thực tế trên `/services`**: Dựng 3D sự kiện từ ảnh tham chiếu, chuyển 14 góc SketchUp căn hộ thành ảnh thực tế, thiết kế nội thất từ AI & bản vẽ kỹ thuật, dựng nhà phố Tân Cổ Điển từ hồ sơ CAD (tổng hợp tại `../docs/SERVICES_BRIEF_AND_COPY.md`).
-- **Bộ công cụ vận hành thực tế**: Alpha LED Studio (`/studio/led-studio`, nguồn tại `../tools/led-stage-studio/`), Alpha CRM (`/studio/crm`), Thư viện kỹ năng AI (`/studio/ai-skills`), Thư viện sự kiện (`/studio/event-library`), VocabFlip (`/studio/vocab`), VietYaku (`/studio/vietyaku`).
+- **Bộ công cụ vận hành thực tế**: Alpha LED Studio (`/studio/led-studio`, nguồn tại `../tools/led-stage-studio/`), Alpha CRM (`/studio/crm`), Thư viện sự kiện (`/studio/event-library`), VocabFlip (`/studio/vocab`), VietYaku (`/studio/vietyaku`).
 - **Thông tin chưa có (cấm tự bịa)**: Không có bảng giá dịch vụ thiết kế 3D cố định, không có trích dẫn chứng thực khách hàng, đánh giá báo chí hay cam kết chỉ số ROI cụ thể chưa được xác minh.
 
 ## Product Principles
