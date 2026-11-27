@@ -5,8 +5,11 @@ import { useConfirm } from '../ui/ConfirmDialog';
 import {
     sendChatMessage,
     fetchChatHistory,
+    fetchChatUsage,
     clearChatHistory,
+    ChatApiError,
     type ChatMessage,
+    type ChatUsage,
 } from '../../services/chatService';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
@@ -18,6 +21,7 @@ export default function FloatingChat() {
 
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState<ChatMessage[]>([]);
+    const [usage, setUsage] = useState<ChatUsage | null>(null);
     const [inputVal, setInputVal] = useState('');
     const [isSending, setIsSending] = useState(false);
     const [isLoadingHistory, setIsLoadingHistory] = useState(false);
@@ -34,10 +38,14 @@ export default function FloatingChat() {
         if (!isOpen || !isAuthenticated || hasLoadedHistory) return;
         let cancelled = false;
         setIsLoadingHistory(true);
-        fetchChatHistory()
-            .then((history) => {
+        Promise.all([
+            fetchChatHistory(),
+            fetchChatUsage().catch(() => null),
+        ])
+            .then(([history, nextUsage]) => {
                 if (cancelled) return;
                 setMessages(history);
+                if (nextUsage) setUsage(nextUsage);
                 setHasLoadedHistory(true);
             })
             .catch((err) => {
@@ -56,6 +64,7 @@ export default function FloatingChat() {
     useEffect(() => {
         if (!isAuthenticated) {
             setMessages([]);
+            setUsage(null);
             setHasLoadedHistory(false);
         }
     }, [isAuthenticated]);
@@ -64,11 +73,13 @@ export default function FloatingChat() {
         setIsOpen((v) => !v);
     }, []);
 
+    const isQuotaExhausted = Boolean(usage && !usage.unlimited && (usage.remaining ?? 0) <= 0);
+
     const handleSend = useCallback(
         async (e: React.FormEvent) => {
             e.preventDefault();
             const trimmed = inputVal.trim();
-            if (!trimmed || isSending) return;
+            if (!trimmed || isSending || isQuotaExhausted) return;
 
             const tempId = `temp_${Date.now()}`;
             const tempUserMsg: ChatMessage = {
@@ -82,13 +93,17 @@ export default function FloatingChat() {
             setIsSending(true);
 
             try {
-                const { userMessage, assistantMessage } = await sendChatMessage(trimmed);
+                const { userMessage, assistantMessage, usage: nextUsage } = await sendChatMessage(trimmed);
+                if (nextUsage) setUsage(nextUsage);
                 setMessages((prev) => {
                     const without = prev.filter((m) => m._id !== tempId);
                     return [...without, userMessage, assistantMessage];
                 });
             } catch (error: any) {
                 console.error('Send chat error:', error);
+                if (error instanceof ChatApiError && error.usage) {
+                    setUsage(error.usage);
+                }
                 setMessages((prev) => [
                     ...prev,
                     {
@@ -102,7 +117,7 @@ export default function FloatingChat() {
                 setIsSending(false);
             }
         },
-        [inputVal, isSending, t]
+        [inputVal, isSending, isQuotaExhausted, t]
     );
 
     const handleClear = useCallback(async () => {
@@ -222,7 +237,18 @@ export default function FloatingChat() {
                     </div>
 
                     {isAuthenticated && (
-                        <div className="p-3 bg-[var(--bg-card)] border-t border-[var(--border-primary)] z-10">
+                        <div className="p-3 bg-[var(--bg-card)] border-t border-[var(--border-primary)] z-10 space-y-1.5">
+                            {usage && (
+                                <div className="flex items-center justify-between px-1 text-[11px] text-[var(--text-secondary)]">
+                                    <span>
+                                        {usage.unlimited
+                                            ? t('chat.quotaUnlimited')
+                                            : t('chat.quotaRemaining')
+                                                .replace('{{remaining}}', String(usage.remaining ?? 0))
+                                                .replace('{{limit}}', String(usage.limit ?? 10))}
+                                    </span>
+                                </div>
+                            )}
                             <form onSubmit={handleSend} className="relative flex items-end">
                                 <textarea
                                     value={inputVal}
@@ -233,15 +259,15 @@ export default function FloatingChat() {
                                             handleSend(e);
                                         }
                                     }}
-                                    placeholder={t('chat.inputPlaceholder')}
-                                    className="w-full bg-[var(--bg-secondary)] text-[var(--text-primary)] text-sm border border-[var(--border-primary)] focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)] rounded-xl py-2.5 pl-3 pr-12 resize-none outline-none custom-scrollbar"
+                                    placeholder={isQuotaExhausted ? t('chat.quotaExhaustedPlaceholder') : t('chat.inputPlaceholder')}
+                                    className="w-full bg-[var(--bg-secondary)] text-[var(--text-primary)] text-sm border border-[var(--border-primary)] focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)] rounded-xl py-2.5 pl-3 pr-12 resize-none outline-none custom-scrollbar disabled:opacity-60"
                                     rows={1}
                                     style={{ minHeight: '44px', maxHeight: '120px' }}
-                                    disabled={isSending}
+                                    disabled={isSending || isQuotaExhausted}
                                 />
                                 <button
                                     type="submit"
-                                    disabled={!inputVal.trim() || isSending}
+                                    disabled={!inputVal.trim() || isSending || isQuotaExhausted}
                                     className="absolute right-2 bottom-1.5 w-8 h-8 flex items-center justify-center bg-[var(--accent-primary)] text-white rounded-lg hover:bg-[var(--accent-secondary)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                                 >
                                     <svg className="w-4 h-4 ml-0.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">

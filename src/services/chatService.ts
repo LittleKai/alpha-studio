@@ -17,10 +17,40 @@ export interface ChatMessage {
     updatedAt?: string;
 }
 
+export interface ChatUsage {
+    used: number;
+    limit: number | null;
+    remaining: number | null;
+    unlimited: boolean;
+}
+
+export class ChatApiError extends Error {
+    status: number;
+    usage?: ChatUsage;
+
+    constructor(message: string, status: number, usage?: ChatUsage) {
+        super(message);
+        this.name = 'ChatApiError';
+        this.status = status;
+        this.usage = usage;
+    }
+}
+
 interface ApiResponse<T> {
     success: boolean;
     message?: string;
     data?: T;
+}
+
+export async function fetchChatUsage(): Promise<ChatUsage> {
+    const response = await fetch(`${API_URL}/chat/usage`, {
+        headers: getAuthHeaders(),
+    });
+    const data: ApiResponse<ChatUsage> = await response.json();
+    if (!response.ok || !data.success || !data.data) {
+        throw new Error(data.message || 'Lỗi kiểm tra lượt chat');
+    }
+    return data.data;
 }
 
 export async function fetchChatHistory(limit = 50): Promise<ChatMessage[]> {
@@ -37,16 +67,24 @@ export async function fetchChatHistory(limit = 50): Promise<ChatMessage[]> {
 export async function sendChatMessage(content: string): Promise<{
     userMessage: ChatMessage;
     assistantMessage: ChatMessage;
+    usage?: ChatUsage;
 }> {
     const response = await fetch(`${API_URL}/chat/send`, {
         method: 'POST',
         headers: jsonHeaders(),
         body: JSON.stringify({ content }),
     });
-    const data: ApiResponse<{ userMessage: ChatMessage; assistantMessage: ChatMessage }> =
-        await response.json();
+    const data: ApiResponse<{
+        userMessage: ChatMessage;
+        assistantMessage: ChatMessage;
+        usage?: ChatUsage;
+    }> = await response.json();
     if (!response.ok || !data.success || !data.data?.assistantMessage) {
-        throw new Error(data.message || 'Lỗi gửi tin nhắn');
+        throw new ChatApiError(
+            data.message || 'Lỗi gửi tin nhắn',
+            response.status,
+            data.data?.usage
+        );
     }
     return data.data;
 }

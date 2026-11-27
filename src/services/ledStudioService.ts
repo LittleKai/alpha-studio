@@ -179,3 +179,162 @@ export async function createLedStudioShareLink(
   }
   return json.data;
 }
+
+export interface LedStudioWorkspaceProjectSummary {
+  id: string;
+  title: string;
+  revision: number;
+  hasLocalOnlyMedia: boolean;
+  manifestBytes: number;
+  createdAt: string;
+  updatedAt: string;
+  stageSummary?: {
+    widthM?: number;
+    depthM?: number;
+    heightM?: number;
+    ledCount?: number;
+    lightCount?: number;
+    cueCount?: number;
+  };
+}
+
+export interface LedStudioWorkspaceProjectsState {
+  projects: LedStudioWorkspaceProjectSummary[];
+  usedSlots: number;
+  maxSlots: number;
+  usedBytes: number;
+  maxBytes: number;
+  proActive: boolean;
+}
+
+export async function listLedStudioWorkspaceProjects(
+  token?: string | null
+): Promise<LedStudioWorkspaceProjectsState> {
+  const res = await fetch(`${API_BASE}/led-studio/workspace/projects`, {
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+    credentials: 'include'
+  });
+  const json = await res.json();
+  if (!res.ok || !json.success) {
+    throw new Error(json.message || 'Failed to load workspace projects');
+  }
+  return json.data;
+}
+
+export async function deleteLedStudioWorkspaceProject(
+  projectId: string,
+  revision: number,
+  token?: string | null
+): Promise<void> {
+  const res = await fetch(
+    `${API_BASE}/led-studio/workspace/projects/${encodeURIComponent(projectId)}?revision=${encodeURIComponent(String(revision))}`,
+    {
+      method: 'DELETE',
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+      credentials: 'include'
+    }
+  );
+  const json = await res.json();
+  if (!res.ok || !json.success) {
+    throw new Error(json.message || 'Failed to delete workspace project');
+  }
+}
+
+export interface LedStudioWorkspaceAssetsSummary {
+  referencedCount: number;
+  referencedBytes: number;
+  purgeableCount: number;
+  purgeableBytes: number;
+  expiredPendingCount: number;
+}
+
+export interface LedStudioWorkspacePurgePreview {
+  previewId: string;
+  totalFiles: number;
+  totalBytes: number;
+  expiresAt: string;
+}
+
+export interface LedStudioWorkspacePurgeResult {
+  previewId: string;
+  deletedCount: number;
+  deletedBytes: number;
+  skippedCount: number;
+  failedCount: number;
+  failedItems: Array<{ assetId: string; error: string }>;
+}
+
+export async function getLedStudioWorkspaceAssetsSummary(
+  token?: string | null
+): Promise<LedStudioWorkspaceAssetsSummary> {
+  const res = await fetch(`${API_BASE}/admin/led-studio-workspace-assets/summary`, {
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+    credentials: 'include'
+  });
+  const json = await res.json();
+  if (!res.ok || !json.success) {
+    throw new Error(json.message || 'Failed to load LED Studio asset summary');
+  }
+  return json.data;
+}
+
+export async function createLedStudioWorkspacePurgePreview(
+  token?: string | null
+): Promise<LedStudioWorkspacePurgePreview> {
+  const res = await fetch(`${API_BASE}/admin/led-studio-workspace-assets/purge-preview`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {})
+    },
+    credentials: 'include',
+    body: JSON.stringify({})
+  });
+  const json = await res.json();
+  if (!res.ok || !json.success) {
+    throw new Error(json.message || 'Failed to create purge preview');
+  }
+  return json.data;
+}
+
+export async function executeLedStudioWorkspacePurge(
+  previewId: string,
+  token?: string | null
+): Promise<LedStudioWorkspacePurgeResult> {
+  const res = await fetch(
+    `${API_BASE}/admin/led-studio-workspace-assets/purges/${encodeURIComponent(previewId)}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token ? { Authorization: `Bearer ${token}` } : {})
+      },
+      credentials: 'include',
+      body: JSON.stringify({})
+    }
+  );
+  const json = await res.json();
+  if (!res.ok || !json.success) {
+    throw new Error(json.message || 'Failed to execute purge');
+  }
+  return json.data;
+}
+
+export async function reconcileLedStudioWorkspaceUploads(
+  token?: string | null
+): Promise<{ expiredCount: number }> {
+  const res = await fetch(`${API_BASE}/admin/led-studio-workspace-assets/reconcile-uploads`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {})
+    },
+    credentials: 'include',
+    body: JSON.stringify({})
+  });
+  const json = await res.json();
+  if (!res.ok || !json.success) {
+    throw new Error(json.message || 'Failed to reconcile uploads');
+  }
+  return json.data;
+}

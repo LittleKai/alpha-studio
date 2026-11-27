@@ -9,6 +9,7 @@ import ServiceCategoriesAdminTab from '../components/admin/ServiceCategoriesAdmi
 import CloudAdminTab from '../components/admin/CloudAdminTab';
 import FeaturedStudentsAdminTab from '../components/admin/FeaturedStudentsAdminTab';
 import StudioAdminTab from '../components/admin/StudioAdminTab';
+import LedStudioWorkspaceAssetsAdminTab from '../components/admin/LedStudioWorkspaceAssetsAdminTab';
 import ToolDownloadsAdminTab from '../components/admin/ToolDownloadsAdminTab';
 import CrmAdminTab from '../components/admin/CrmAdminTab';
 import AnalyticsAdminTab from '../components/admin/AnalyticsAdminTab';
@@ -37,7 +38,7 @@ type TopTabType = 'articles' | 'community' | 'transactions' | 'cloud' | 'studio'
 type ArticlesSubTabType = 'about' | 'news' | 'services' | 'service-categories';
 type CommunitySubTabType = 'featuredStudents';
 type SubTabType = 'users' | 'transactionsList' | 'webhooks';
-type StudioSubTabType = 'api-settings';
+type StudioSubTabType = 'api-settings' | 'led-studio-assets';
 type AnalyticsSubTabType = 'traffic' | 'tool-downloads' | 'crm';
 
 export default function AdminPage() {
@@ -100,6 +101,7 @@ export default function AdminPage() {
 
     const studioSubTabs = [
         { id: 'api-settings' as StudioSubTabType, label: t('admin.studio.subtabs.apiSettings') || 'Cài đặt API' },
+        ...(!isMod ? [{ id: 'led-studio-assets' as StudioSubTabType, label: t('admin.studio.subtabs.ledStudioAssets') || 'Asset LED Studio' }] : []),
     ];
 
     const analyticsSubTabs = [
@@ -179,6 +181,7 @@ export default function AdminPage() {
                                 ))}
                             </div>
                             {activeStudioSubTab === 'api-settings' && <StudioAdminTab />}
+                            {activeStudioSubTab === 'led-studio-assets' && !isMod && <LedStudioWorkspaceAssetsAdminTab />}
                         </div>
                     )}
                     {activeTopTab === 'analytics' && (

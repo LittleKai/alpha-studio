@@ -146,6 +146,27 @@ export default {
         sessionErrorTitle: "Unable to Start LumiStage Session",
         sessionErrorDesc: "Your login session expired or the server connection was temporarily interrupted.",
         retryBtn: "Retry"
+      },
+      myProjects: {
+        title: "My Projects",
+        newBtn: "+ New Project",
+        openBtn: "Open",
+        deleteTitle: "Delete Web Project",
+        deleteConfirm: "Delete \"{title}\" to free 1 slot? Uploaded B2 asset versions are retained for admin cleanup.",
+        deleteAction: "Delete",
+        storageUsage: "Referenced storage: {used} / {max}",
+        autosaveInfo: "Auto-saves stage setup, web catalog references, and custom models/images. Custom video and audio require an active Pro plan for cloud sync.",
+        quotaFullHint: "Web project limit reached. Delete a project before creating a new one.",
+        localOnlyMediaBadge: "Has device-only video/audio",
+        legacyTitle: "Legacy Saves (Read-only)",
+        loading: "Loading projects…",
+        empty: "No web projects yet.",
+        statusIdle: "Ready",
+        statusSaving: "Saving…",
+        statusSaved: "Saved",
+        statusLocalOnly: "Saved (device-only media)",
+        statusOffline: "Offline (draft kept locally)",
+        statusError: "Sync error"
       }
     },
     hub: {

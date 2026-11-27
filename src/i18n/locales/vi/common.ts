@@ -98,6 +98,9 @@ export default {
     clearBtn: "Xóa lịch sử trò chuyện",
     clearConfirm: "Xóa toàn bộ lịch sử chat hiển thị? Lưu ý: trợ lý AI vẫn có thể nhớ ngữ cảnh trước đó.",
     clearError: "Không thể xóa lịch sử. Hãy thử lại sau.",
+    quotaRemaining: "Còn {{remaining}}/{{limit}} lượt hôm nay",
+    quotaUnlimited: "Không giới hạn lượt hỏi",
+    quotaExhaustedPlaceholder: "Đã hết lượt hỏi hôm nay. Quay lại vào ngày mai!",
   },
   profile: {
     editProfile: "Chỉnh sửa hồ sơ",

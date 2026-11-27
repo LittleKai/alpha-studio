@@ -50,11 +50,19 @@ export default {
         bounceRateHint: "Sessions with a single pageview",
         loggedInViews: "Logged-in views",
         loggedInViewsHint: "From registered members",
+        chatbotTurns: "Chatbot turns",
+        chatbotTurnsHint: "Messages sent to web AI assistant",
+        chatbotUsers: "Chatbot users",
+        chatbotUsersHint: "Accounts that chatted",
         vsPrevious: "vs previous period"
       },
       trend: {
         title: "Traffic trend",
         hint: "Pageviews, visitors and sessions per day"
+      },
+      chatbotTrend: {
+        title: "Daily Chatbot Usage",
+        hint: "Messages sent to the website AI assistant each day"
       },
       channelsTitle: "Acquisition channels",
       channelsHint: "How visitors reach the website",
@@ -230,7 +238,25 @@ export default {
       landingQualityStandard: "Standard Quality (810p Bandwidth Saving)",
       landingQualityStandardDesc: "810p CRF 31 videos (80% smaller), loaded from local host to save bandwidth.",
       subtabs: {
-        apiSettings: "API Settings"
+        apiSettings: "API Settings",
+        ledStudioAssets: "LED Studio Assets"
+      },
+      ledAssets: {
+        title: "LED Studio Assets (B2 Private)",
+        subtitle: "Monitor referenced storage and purge unreferenced B2 asset versions.",
+        refresh: "Refresh",
+        reconcileBtn: "Reconcile Expired Uploads",
+        purgeBtn: "Preview & Purge Unreferenced",
+        referencedLabel: "Referenced Assets",
+        purgeableLabel: "Purgeable (Unreferenced)",
+        expiredUploadsLabel: "Expired Pending Uploads",
+        confirmTitle: "Confirm B2 Asset Version Purge",
+        confirmMessage: "Permanently delete {count} unreferenced asset versions ({size}) from private B2 storage. Any asset re-attached in the meantime will be skipped.",
+        confirmAction: "Purge from B2",
+        nothingToPurge: "No unreferenced assets to purge.",
+        purgeDone: "Purged {deleted} assets, skipped {skipped} (re-referenced), failed {failed}.",
+        reconciled: "Marked {count} expired upload sessions.",
+        failedItemsTitle: "Failed Items (Create New Preview to Retry)"
       }
     },
     toolDownloads: {

@@ -50,11 +50,19 @@ export default {
         bounceRateHint: "Phiên chỉ xem đúng 1 trang",
         loggedInViews: "Lượt xem đã đăng nhập",
         loggedInViewsHint: "Của thành viên có tài khoản",
+        chatbotTurns: "Lượt dùng Chatbot",
+        chatbotTurnsHint: "Tin nhắn gửi trợ lý AI web",
+        chatbotUsers: "Người dùng Chatbot",
+        chatbotUsersHint: "Tài khoản đã trò chuyện",
         vsPrevious: "so với kỳ trước"
       },
       trend: {
         title: "Xu hướng truy cập",
         hint: "Lượt xem, người truy cập và phiên theo từng ngày"
+      },
+      chatbotTrend: {
+        title: "Lượt dùng Chatbot theo ngày",
+        hint: "Số tin nhắn người dùng gửi trợ lý AI trên website mỗi ngày"
       },
       channelsTitle: "Kênh truy cập",
       channelsHint: "Khách đến website qua đâu",
@@ -240,7 +248,25 @@ export default {
       landingQualityStandard: "Chất lượng tiêu chuẩn (Standard / Low - 810p Tiết kiệm)",
       landingQualityStandardDesc: "Video 810p CRF 31 nhẹ hơn 80%, nạp từ host local để tối ưu băng thông.",
       subtabs: {
-        apiSettings: "Cài đặt API"
+        apiSettings: "Cài đặt API",
+        ledStudioAssets: "Asset LED Studio"
+      },
+      ledAssets: {
+        title: "Asset LED Studio (B2 Private)",
+        subtitle: "Theo dõi dung lượng và xóa các phiên bản asset B2 không còn dự án nào tham chiếu.",
+        refresh: "Làm mới",
+        reconcileBtn: "Đối soát upload hết hạn",
+        purgeBtn: "Xem trước & Xóa asset hết tham chiếu",
+        referencedLabel: "Đang được tham chiếu",
+        purgeableLabel: "Có thể xóa (hết tham chiếu)",
+        expiredUploadsLabel: "Upload hết hạn chờ dọn",
+        confirmTitle: "Xác nhận xóa asset LED Studio trên B2",
+        confirmMessage: "Sẽ xóa vĩnh viễn {count} phiên bản asset ({size}) đã hết tham chiếu khỏi B2 private. Asset mới được gắn lại sẽ tự động bỏ qua.",
+        confirmAction: "Xác nhận xóa B2",
+        nothingToPurge: "Hiện không có asset hết tham chiếu nào cần xóa.",
+        purgeDone: "Đã xóa {deleted} asset, bỏ qua {skipped} (được gắn lại), lỗi {failed}.",
+        reconciled: "Đã đánh dấu hết hạn {count} phiên upload quá hạn.",
+        failedItemsTitle: "Các mục xóa lỗi (tạo xem trước mới để thử lại)"
       }
     },
     toolDownloads: {

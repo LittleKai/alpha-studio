@@ -146,6 +146,27 @@ export default {
         sessionErrorTitle: "Không thể khởi tạo phiên LumiStage",
         sessionErrorDesc: "Phiên đăng nhập đã hết hạn hoặc kết nối máy chủ tạm thời gián đoạn.",
         retryBtn: "Thử lại"
+      },
+      myProjects: {
+        title: "Dự án của tôi",
+        newBtn: "+ Dự án mới",
+        openBtn: "Mở",
+        deleteTitle: "Xóa dự án web",
+        deleteConfirm: "Xóa dự án \"{title}\" khỏi danh sách để giải phóng 1 chỗ? Các file asset trên B2 vẫn được giữ lại cho quản trị viên dọn sau.",
+        deleteAction: "Xóa dự án",
+        storageUsage: "Dung lượng đang tham chiếu: {used} / {max}",
+        autosaveInfo: "Tự động lưu cấu hình sân khấu, tham chiếu catalog web và model/ảnh riêng. Video và nhạc riêng cần gói Pro đang hoạt động để đồng bộ cloud.",
+        quotaFullHint: "Đã đạt giới hạn số dự án web. Hãy xóa bớt một dự án trước khi tạo mới.",
+        localOnlyMediaBadge: "Có video/nhạc chỉ dùng trên thiết bị",
+        legacyTitle: "Bản lưu cũ (chỉ mở)",
+        loading: "Đang tải danh sách dự án…",
+        empty: "Chưa có dự án web nào.",
+        statusIdle: "Sẵn sàng",
+        statusSaving: "Đang lưu…",
+        statusSaved: "Đã lưu",
+        statusLocalOnly: "Đã lưu (media riêng chỉ trên thiết bị)",
+        statusOffline: "Chờ mạng (đã giữ bản nháp)",
+        statusError: "Lỗi đồng bộ"
       }
     },
     hub: {

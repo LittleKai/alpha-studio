@@ -98,6 +98,9 @@ export default {
     clearBtn: "Clear chat history",
     clearConfirm: "Clear all displayed chat history? Note: the AI assistant may still recall earlier context.",
     clearError: "Failed to clear history. Please try again.",
+    quotaRemaining: "{{remaining}}/{{limit}} turns left today",
+    quotaUnlimited: "Unlimited messages",
+    quotaExhaustedPlaceholder: "Daily limit reached. Please come back tomorrow!",
   },
   profile: {
     editProfile: "Edit Profile",

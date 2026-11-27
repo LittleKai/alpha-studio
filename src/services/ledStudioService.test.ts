@@ -1,7 +1,12 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
   acquireLedStudioSessionTicket,
-  resolveLedStudioTicketGate
+  resolveLedStudioTicketGate,
+  listLedStudioWorkspaceProjects,
+  deleteLedStudioWorkspaceProject,
+  getLedStudioWorkspaceAssetsSummary,
+  createLedStudioWorkspacePurgePreview,
+  executeLedStudioWorkspacePurge
 } from './ledStudioService';
 
 describe('acquireLedStudioSessionTicket', () => {
@@ -114,5 +119,83 @@ describe('resolveLedStudioTicketGate', () => {
         { hasShareToken: true, silentRenewal: false, currentGateState: 'verifying' }
       )
     ).toEqual({ nextGateState: 'ready', ok: true, passwordError: false });
+  });
+});
+
+describe('ledStudioWorkspace & admin asset APIs', () => {
+  const origFetch = globalThis.fetch;
+
+  afterEach(() => {
+    globalThis.fetch = origFetch;
+    vi.restoreAllMocks();
+  });
+
+  it('calls workspace projects list and delete with revision query param', async () => {
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            success: true,
+            data: { projects: [], usedSlots: 1, maxSlots: 5, usedBytes: 0, maxBytes: 1024, proActive: false }
+          }),
+          { status: 200, headers: { 'content-type': 'application/json' } }
+        )
+      )
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({ success: true, data: { id: 'p1' } }),
+          { status: 200, headers: { 'content-type': 'application/json' } }
+        )
+      );
+    globalThis.fetch = fetchMock;
+
+    const listRes = await listLedStudioWorkspaceProjects('tok_123');
+    expect(listRes.maxSlots).toBe(5);
+    expect(String(fetchMock.mock.calls[0][0])).toContain('/led-studio/workspace/projects');
+
+    await deleteLedStudioWorkspaceProject('p1', 3, 'tok_123');
+    expect(String(fetchMock.mock.calls[1][0])).toContain('/led-studio/workspace/projects/p1?revision=3');
+    expect(fetchMock.mock.calls[1][1]?.method).toBe('DELETE');
+  });
+
+  it('calls admin workspace assets summary, purge-preview, and purges execute', async () => {
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            success: true,
+            data: { referencedCount: 2, referencedBytes: 100, purgeableCount: 1, purgeableBytes: 50, expiredPendingCount: 0 }
+          }),
+          { status: 200, headers: { 'content-type': 'application/json' } }
+        )
+      )
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            success: true,
+            data: { previewId: 'prev_1', totalFiles: 1, totalBytes: 50, expiresAt: '2026-11-28T00:10:00Z' }
+          }),
+          { status: 200, headers: { 'content-type': 'application/json' } }
+        )
+      )
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            success: true,
+            data: { previewId: 'prev_1', deletedCount: 1, deletedBytes: 50, skippedCount: 0, failedCount: 0, failedItems: [] }
+          }),
+          { status: 200, headers: { 'content-type': 'application/json' } }
+        )
+      );
+    globalThis.fetch = fetchMock;
+
+    const sum = await getLedStudioWorkspaceAssetsSummary('adm_tok');
+    expect(sum.purgeableCount).toBe(1);
+    const prev = await createLedStudioWorkspacePurgePreview('adm_tok');
+    expect(prev.previewId).toBe('prev_1');
+    const exec = await executeLedStudioWorkspacePurge('prev_1', 'adm_tok');
+    expect(exec.deletedCount).toBe(1);
   });
 });

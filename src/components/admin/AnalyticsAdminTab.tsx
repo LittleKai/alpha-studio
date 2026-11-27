@@ -162,7 +162,7 @@ export default function AnalyticsAdminTab() {
             </div>
 
             {/* KPIs */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
                 <StatCard
                     label={t('admin.analytics.kpi.visitors')}
                     value={formatNumber(summary.visitors)}
@@ -221,6 +221,22 @@ export default function AnalyticsAdminTab() {
                     hint={t('admin.analytics.kpi.loggedInViewsHint')}
                     accent="#64748b"
                 />
+                <StatCard
+                    label={t('admin.analytics.kpi.chatbotTurns')}
+                    value={formatNumber(summary.chatbotTurns ?? 0)}
+                    current={summary.chatbotTurns ?? 0}
+                    previous={summary.previous.chatbotTurns}
+                    hint={t('admin.analytics.kpi.chatbotTurnsHint')}
+                    accent="#06b6d4"
+                />
+                <StatCard
+                    label={t('admin.analytics.kpi.chatbotUsers')}
+                    value={formatNumber(summary.chatbotUsers ?? 0)}
+                    current={summary.chatbotUsers ?? 0}
+                    previous={summary.previous.chatbotUsers}
+                    hint={t('admin.analytics.kpi.chatbotUsersHint')}
+                    accent="#8b5cf6"
+                />
             </div>
 
             {/* Traffic trend */}
@@ -231,6 +247,17 @@ export default function AnalyticsAdminTab() {
                         { label: t('admin.analytics.kpi.pageviews'), color: '#a855f7', values: daily.map((d) => d.views) },
                         { label: t('admin.analytics.kpi.visitors'), color: '#0ea5e9', values: daily.map((d) => d.visitors) },
                         { label: t('admin.analytics.kpi.sessions'), color: '#22c55e', values: daily.map((d) => d.sessions) },
+                    ]}
+                />
+            </ChartCard>
+
+            {/* Chatbot trend */}
+            <ChartCard title={t('admin.analytics.chatbotTrend.title')} hint={t('admin.analytics.chatbotTrend.hint')}>
+                <LineChart
+                    labels={labels}
+                    height={170}
+                    series={[
+                        { label: t('admin.analytics.kpi.chatbotTurns'), color: '#06b6d4', values: daily.map((d) => d.chatbotTurns ?? 0) },
                     ]}
                 />
             </ChartCard>

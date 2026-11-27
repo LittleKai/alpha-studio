@@ -17,6 +17,7 @@ export interface AnalyticsDailyPoint {
     views: number;
     visitors: number;
     sessions: number;
+    chatbotTurns?: number;
 }
 
 export interface AnalyticsCampaign {
@@ -36,6 +37,8 @@ export interface AnalyticsSummary {
     newVisitors: number;
     returningVisitors: number;
     loggedInViews: number;
+    chatbotTurns?: number;
+    chatbotUsers?: number;
     bounceRate: number;
     pagesPerSession: number;
     paidSessions: number;
@@ -45,6 +48,8 @@ export interface AnalyticsSummary {
         sessions: number;
         newVisitors: number;
         loggedInViews: number;
+        chatbotTurns?: number;
+        chatbotUsers?: number;
     };
 }
 
