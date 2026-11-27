@@ -43,6 +43,15 @@ Full provenance, commit pins, SHA-256 checksums, and license texts (MIT, BSD-3-C
    - **SMPTE ST 12M-1 / Published Standard (`libltc` `LGPL` architectural reference only, `extraction_set = []`)** — `0` bytes of LGPL code copied. Zero-dependency SMPTE 12M 80-bit biphase-mark WAV encoder (mono, stereo Y-cable, batch ZIP) and clean-room JavaScript `LtcDecoder` + `TimecodeFollower` (`js/modules/v22-ltc-timecode.js`).
    - **`QLC+` (`GPL-2.0`):** Explicitly deferred / not integrated.
 
+## V23 grandMA2 FixtureType XML, Extended OFL & Bi-Directional Art-Net/sACN DMX IN Provenance
+
+1. **MIT Dataset Attribution:**
+   - **`OpenLightingProject/open-fixture-library`** (`https://github.com/OpenLightingProject/open-fixture-library@d4cc0dd6dc58eddb5edcca2186292b421dc8bf92`, `MIT`) — curated offline stage fixture definitions, physical DMX channel footprints, `ShutterStrobe` capability bands, ColorWheel color tables, and multi-cell matrix layouts (`js/data/ofl-fixtures.js`).
+2. **Clean-Room Technique & Protocol References (`extraction_set = []`, `0` foreign code bytes copied):**
+   - **`chienchuanw/gma2-mcp`** (`https://github.com/chienchuanw/gma2-mcp@a906bce9c813ae737d40bba82ae8ecda58c077c0`, `Apache-2.0`, `extraction_set = []`) — architectural reference for grandMA2 FixtureType XML `<Modules><ChannelType><ChannelFunction><ChannelSet>` & `<Instances>` resolution and `_SHUTTER_SCOPED` query disambiguation (`js/modules/v22-fixture-profile-ir.js`, `js/modules/v18-pro-exporters-local.js`).
+   - **`margau/dmxnet`** (`https://github.com/margau/dmxnet@fe5280fccabd59aa45fca8a47d62c23cb14ac460`, `MIT`, `extraction_set = []`) — Art-Net 4 RX `ArtDmx` strict BE `Length` / 15-bit `Port-Address` validation and 239-byte `ArtPollReply` auto-discovery (`scripts/dmx-udp-bridge.mjs`).
+   - **`InanisOmnia/sACN`** (`https://github.com/InanisOmnia/sACN@fbda3cda905db0295a201191025ad145a6f7393b`, `Apache-2.0`, `extraction_set = []`) — ANSI E1.31 RX multi-console priority/HTP/LTP universe merging, mod-256 sequence continuity check, and `Stream_Terminated` source eviction (`scripts/dmx-udp-bridge.mjs`).
+
 ### MIT License Reference Text (Applicable to MIT-Licensed Upstream Algorithmic References)
 
 ```text
