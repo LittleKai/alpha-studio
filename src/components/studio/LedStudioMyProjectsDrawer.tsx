@@ -14,8 +14,10 @@ interface Props {
   open: boolean;
   onClose: () => void;
   activeProjectId: string | null;
+  refreshKey?: number;
   onOpenWorkspaceProject: (projectId: string) => void;
   onOpenLegacyProject: (projectId: string) => void;
+  onShareWorkspaceProject?: (projectId: string) => void;
   onCreateNewProject: () => void;
   onProjectDeleted?: (projectId: string) => void;
 }
@@ -31,8 +33,10 @@ export default function LedStudioMyProjectsDrawer({
   open,
   onClose,
   activeProjectId,
+  refreshKey = 0,
   onOpenWorkspaceProject,
   onOpenLegacyProject,
+  onShareWorkspaceProject,
   onCreateNewProject,
   onProjectDeleted
 }: Props) {
@@ -68,7 +72,7 @@ export default function LedStudioMyProjectsDrawer({
     if (open) {
       void refresh();
     }
-  }, [open, refresh]);
+  }, [open, refreshKey, refresh]);
 
   if (!open) return null;
 
@@ -194,6 +198,30 @@ export default function LedStudioMyProjectsDrawer({
                             {t('studio.ledStudio.myProjects.localOnlyMediaBadge')}
                           </div>
                         )}
+                        {(p.shareEnabled || p.reviewStatus === 'approved' || p.reviewStatus === 'changes_requested' || (p.reviewCommentsCount ?? 0) > 0) && (
+                          <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
+                            {p.shareEnabled && (
+                              <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-sky-500/15 text-sky-600 dark:text-sky-300 border border-sky-500/30">
+                                {t('studio.ledStudio.myProjects.sharedBadge')}
+                              </span>
+                            )}
+                            {p.reviewStatus === 'approved' && (
+                              <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/15 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30">
+                                {t('studio.ledStudio.myProjects.approvedBadge')}
+                              </span>
+                            )}
+                            {p.reviewStatus === 'changes_requested' && (
+                              <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-red-500/15 text-red-600 dark:text-red-300 border border-red-500/30">
+                                {t('studio.ledStudio.myProjects.changesBadge')}
+                              </span>
+                            )}
+                            {(p.reviewCommentsCount ?? 0) > 0 && (
+                              <span className="px-1.5 py-0.5 rounded text-[10px] font-medium bg-[var(--bg-primary)] text-[var(--text-secondary)] border border-[var(--border-primary)]">
+                                {t('studio.ledStudio.myProjects.commentsBadge').replace('{count}', String(p.reviewCommentsCount))}
+                              </span>
+                            )}
+                          </div>
+                        )}
                       </div>
                       <div className="flex items-center gap-1.5 shrink-0">
                         <button
@@ -206,6 +234,18 @@ export default function LedStudioMyProjectsDrawer({
                         >
                           {t('studio.ledStudio.myProjects.openBtn')}
                         </button>
+                        {onShareWorkspaceProject && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              onShareWorkspaceProject(p.id);
+                              onClose();
+                            }}
+                            className="px-2.5 py-1 text-xs font-medium rounded-lg border border-[var(--border-primary)] text-[var(--text-primary)] hover:bg-[var(--bg-primary)]"
+                          >
+                            {t('studio.ledStudio.myProjects.shareBtn')}
+                          </button>
+                        )}
                         <button
                           type="button"
                           disabled={deletingId === p.id}

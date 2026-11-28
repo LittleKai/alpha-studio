@@ -186,6 +186,15 @@ export interface LedStudioWorkspaceProjectSummary {
   revision: number;
   hasLocalOnlyMedia: boolean;
   manifestBytes: number;
+  shareEnabled?: boolean;
+  shareExpiresAt?: string | null;
+  shareUntilPro?: boolean;
+  passwordProtected?: boolean;
+  reviewStatus?: 'pending' | 'approved' | 'changes_requested';
+  reviewBy?: string;
+  reviewNote?: string;
+  reviewUpdatedAt?: string | null;
+  reviewCommentsCount?: number;
   createdAt: string;
   updatedAt: string;
   stageSummary?: {

@@ -36,16 +36,23 @@ export default function LedStudioPage() {
   const [showLoginDialog, setShowLoginDialog] = useState<boolean>(false);
   const [workspaceReady, setWorkspaceReady] = useState<boolean>(false);
   const [projectsOpen, setProjectsOpen] = useState<boolean>(false);
-  const [workspaceStatus, setWorkspaceStatus] = useState<{
-    projectId: string | null;
-    title: string;
-    syncState: string;
-  }>({ projectId: null, title: '', syncState: 'idle' });
+  const [activeProjectId, setActiveProjectId] = useState<string | null>(null);
   const prevWorkspaceStatusRef = useRef<{ projectId: string | null; syncState: string }>({
     projectId: null,
     syncState: 'idle'
   });
   const [slotSummary, setSlotSummary] = useState<{ used: number; max: number } | null>(null);
+  const [drawerRefreshKey, setDrawerRefreshKey] = useState<number>(0);
+
+  const postSlotsToIframe = useCallback((slots: { used: number; max: number } | null) => {
+    if (!slots) return;
+    const win = iframeRef.current?.contentWindow;
+    if (!win) return;
+    win.postMessage(
+      { type: 'ALPHA_LED_WORKSPACE_SLOTS', used: slots.used, max: slots.max },
+      window.location.origin
+    );
+  }, []);
 
   const updateGateState = useCallback((next: LedStudioGateState) => {
     gateStateRef.current = next;
@@ -69,21 +76,30 @@ export default function LedStudioPage() {
         proActive: isRolePro || isSubActive,
         shareToken: shareToken || null,
         sharePassword: verifiedSharePassword || null,
-        apiBaseUrl: LED_STUDIO_API_BASE,
-        googleClientId: import.meta.env.VITE_GOOGLE_CLIENT_ID || null
+        apiBaseUrl: LED_STUDIO_API_BASE
       },
       window.location.origin
     );
-  }, [language, token, user, shareToken, verifiedSharePassword]);
+    if (slotSummary) {
+      postSlotsToIframe(slotSummary);
+    }
+  }, [language, token, user, shareToken, verifiedSharePassword, slotSummary, postSlotsToIframe]);
 
   useEffect(() => {
     if (shareToken || gateState !== 'ready' || !token) {
       setWorkspaceReady(false);
       return;
     }
-    void listLedStudioWorkspaceProjects(token)
-      .then((res) => setSlotSummary({ used: res.usedSlots, max: res.maxSlots }))
-      .catch(() => {});
+    const refreshSlots = () => {
+      void listLedStudioWorkspaceProjects(token)
+        .then((res) => {
+          const next = { used: res.usedSlots, max: res.maxSlots };
+          setSlotSummary(next);
+          postSlotsToIframe(next);
+        })
+        .catch(() => {});
+    };
+    refreshSlots();
 
     const onMessage = (event: MessageEvent) => {
       if (event.origin !== window.location.origin) return;
@@ -98,24 +114,20 @@ export default function LedStudioPage() {
           nextProjectId !== prev.projectId ||
           (nextSyncState === 'saved' && prev.syncState !== 'saved');
         prevWorkspaceStatusRef.current = { projectId: nextProjectId, syncState: nextSyncState };
-
-        setWorkspaceStatus({
-          projectId: nextProjectId,
-          title: msg.title || '',
-          syncState: nextSyncState
-        });
+        setActiveProjectId(nextProjectId);
         if (shouldRefreshSlots) {
-          void listLedStudioWorkspaceProjects(token)
-            .then((res) => setSlotSummary({ used: res.usedSlots, max: res.maxSlots }))
-            .catch(() => {});
+          refreshSlots();
         }
-      } else if (msg.type === 'ALPHA_LED_WORKSPACE_QUOTA_FULL') {
+      } else if (msg.type === 'ALPHA_LED_WORKSPACE_QUOTA_FULL' || msg.type === 'ALPHA_LED_WORKSPACE_OPEN_DRAWER') {
         setProjectsOpen(true);
+      } else if (msg.type === 'ALPHA_LED_WORKSPACE_REFRESH') {
+        refreshSlots();
+        setDrawerRefreshKey((k) => k + 1);
       }
     };
     window.addEventListener('message', onMessage);
     return () => window.removeEventListener('message', onMessage);
-  }, [shareToken, gateState, token]);
+  }, [shareToken, gateState, token, postSlotsToIframe]);
 
   const requestTicket = useCallback(
     async (opts: { password?: string; silentRenewal?: boolean } = {}) => {
@@ -277,56 +289,9 @@ export default function LedStudioPage() {
     const iframeQuery = iframeParams.toString();
     const iframeSrc = `/led-studio/index.html${iframeQuery ? `?${iframeQuery}` : ''}`;
 
-    const syncLabel =
-      workspaceStatus.syncState === 'saving'
-        ? t('studio.ledStudio.myProjects.statusSaving')
-        : workspaceStatus.syncState === 'saved'
-          ? t('studio.ledStudio.myProjects.statusSaved')
-          : workspaceStatus.syncState === 'local_only'
-            ? t('studio.ledStudio.myProjects.statusLocalOnly')
-            : workspaceStatus.syncState === 'offline'
-              ? t('studio.ledStudio.myProjects.statusOffline')
-              : workspaceStatus.syncState === 'error'
-                ? t('studio.ledStudio.myProjects.statusError')
-                : t('studio.ledStudio.myProjects.statusIdle');
-
     return (
       <div className="flex flex-col h-[100dvh] bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden">
         {seoHead}
-        {!shareToken && isAuthenticated && workspaceReady && (
-          <div className="h-10 px-3 border-b border-[var(--border-primary)] bg-[var(--bg-secondary)] flex items-center justify-between gap-3 text-xs shrink-0">
-            <div className="flex items-center gap-2 min-w-0">
-              <span className="font-semibold text-[var(--text-primary)] truncate">
-                {workspaceStatus.title || 'LumiStage'}
-              </span>
-              <span className="px-2 py-0.5 rounded-full border border-[var(--border-primary)] text-[var(--text-secondary)]">
-                {syncLabel}
-              </span>
-            </div>
-            <div className="flex items-center gap-2 shrink-0">
-              <button
-                type="button"
-                onClick={() => setProjectsOpen(true)}
-                className="px-2.5 py-1 rounded-md border border-[var(--border-primary)] text-[var(--text-primary)] hover:bg-[var(--bg-primary)] font-medium"
-              >
-                {t('studio.ledStudio.myProjects.title')}
-                {slotSummary ? ` (${slotSummary.used}/${slotSummary.max})` : ''}
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  iframeRef.current?.contentWindow?.postMessage(
-                    { type: 'ALPHA_LED_WORKSPACE_COMMAND', action: 'newProject', mode: 'demo' },
-                    window.location.origin
-                  );
-                }}
-                className="px-2.5 py-1 rounded-md bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-semibold"
-              >
-                {t('studio.ledStudio.myProjects.newBtn')}
-              </button>
-            </div>
-          </div>
-        )}
         <iframe
           ref={iframeRef}
           src={iframeSrc}
@@ -339,7 +304,8 @@ export default function LedStudioPage() {
           <LedStudioMyProjectsDrawer
             open={projectsOpen}
             onClose={() => setProjectsOpen(false)}
-            activeProjectId={workspaceStatus.projectId}
+            activeProjectId={activeProjectId}
+            refreshKey={drawerRefreshKey}
             onOpenWorkspaceProject={(projectId) => {
               iframeRef.current?.contentWindow?.postMessage(
                 { type: 'ALPHA_LED_WORKSPACE_COMMAND', action: 'openProject', projectId },
@@ -352,20 +318,30 @@ export default function LedStudioPage() {
                 window.location.origin
               );
             }}
+            onShareWorkspaceProject={(projectId) => {
+              iframeRef.current?.contentWindow?.postMessage(
+                { type: 'ALPHA_LED_WORKSPACE_COMMAND', action: 'shareProject', projectId },
+                window.location.origin
+              );
+            }}
             onCreateNewProject={() => {
               iframeRef.current?.contentWindow?.postMessage(
-                { type: 'ALPHA_LED_WORKSPACE_COMMAND', action: 'newProject', mode: 'demo' },
+                { type: 'ALPHA_LED_WORKSPACE_COMMAND', action: 'promptNewProject' },
                 window.location.origin
               );
             }}
             onProjectDeleted={(deletedId) => {
-              if (workspaceStatus.projectId === deletedId) {
-                setWorkspaceStatus({ projectId: null, title: '', syncState: 'idle' });
+              if (activeProjectId === deletedId) {
+                setActiveProjectId(null);
                 prevWorkspaceStatusRef.current = { projectId: null, syncState: 'idle' };
               }
               if (token) {
                 void listLedStudioWorkspaceProjects(token)
-                  .then((res) => setSlotSummary({ used: res.usedSlots, max: res.maxSlots }))
+                  .then((res) => {
+                    const next = { used: res.usedSlots, max: res.maxSlots };
+                    setSlotSummary(next);
+                    postSlotsToIframe(next);
+                  })
                   .catch(() => {});
               }
               iframeRef.current?.contentWindow?.postMessage(

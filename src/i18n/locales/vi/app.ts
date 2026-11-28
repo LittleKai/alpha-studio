@@ -130,18 +130,18 @@ export default {
         pillar2Title: "128 Đèn DMX512, Laser ILDA & Vũ đạo 3D",
         pillar2Desc: "22 hồ sơ đèn OFL 16-bit xoay Pan/Tilt thật, 35 hiệu ứng viền LED Matrix 3D, Timecode 200Hz, pháo điện Pyro TCVN và 19 nghệ sĩ 3D biểu diễn trực tiếp.",
         pillar3Title: "Trợ lý AI, Hồ sơ Kỹ thuật 3 Pha & CAD",
-        pillar3Desc: "Thiết kế nhanh bằng tiếng Việt qua Gemini Flash 3.8, tính tải điện 3 pha 380V & độ võng Truss, xuất AutoCAD .DXF đa lớp, .MVR DIN 15800 và link duyệt 3D cho khách hàng."
+        pillar3Desc: "Thiết kế nhanh bằng tiếng Việt qua Gemini Flash 3.8, tính tải điện 3 pha 380V & độ võng Truss, xuất AutoCAD .DXF đa lớp, .MVR DIN 15800 và link chia sẻ 3D cho khách hàng."
       },
       gate: {
         verifyingSession: "Đang khởi tạo phiên làm việc 3D an toàn…",
-        verifyingShare: "Đang xác thực liên kết xem duyệt sân khấu 3D…",
+        verifyingShare: "Đang xác thực liên kết xem sân khấu 3D…",
         passwordTitle: "Dự án 3D được bảo vệ bằng mật khẩu",
-        passwordDesc: "Vui lòng nhập mật khẩu do đơn vị thiết kế cung cấp để mở bản xem duyệt 3D.",
+        passwordDesc: "Vui lòng nhập mật khẩu do đơn vị thiết kế cung cấp để mở bản xem sân khấu 3D.",
         passwordPlaceholder: "Nhập mật khẩu xem dự án…",
-        passwordSubmit: "Mở bản duyệt 3D",
+        passwordSubmit: "Mở bản xem 3D",
         invalidPassword: "Mật khẩu không đúng. Vui lòng kiểm tra lại.",
         shareInvalidTitle: "Liên kết chia sẻ không khả dụng",
-        shareInvalidDesc: "Liên kết xem duyệt 3D này không tồn tại, đã bị tắt hoặc đã hết thời hạn hiệu lực.",
+        shareInvalidDesc: "Liên kết chia sẻ sân khấu 3D này không tồn tại, đã bị tắt hoặc đã hết thời hạn hiệu lực.",
         shareProExpiredDesc: "Liên kết này đã tạm ngưng vì gói LumiStage PRO của chủ dự án đã hết hạn.",
         sessionErrorTitle: "Không thể khởi tạo phiên LumiStage",
         sessionErrorDesc: "Phiên đăng nhập đã hết hạn hoặc kết nối máy chủ tạm thời gián đoạn.",
@@ -151,6 +151,11 @@ export default {
         title: "Dự án của tôi",
         newBtn: "+ Dự án mới",
         openBtn: "Mở",
+        shareBtn: "Chia sẻ",
+        sharedBadge: "Đang chia sẻ",
+        approvedBadge: "Khách đã chốt",
+        changesBadge: "Yêu cầu sửa",
+        commentsBadge: "{count} góp ý",
         deleteTitle: "Xóa dự án web",
         deleteConfirm: "Xóa dự án \"{title}\" khỏi danh sách để giải phóng 1 chỗ? Các file asset trên B2 vẫn được giữ lại cho quản trị viên dọn sau.",
         deleteAction: "Xóa dự án",
@@ -244,7 +249,7 @@ export default {
         ledStudio: {
           f1: "6 mẫu sân khấu sự kiện VN, trợ lý AI Gemini Flash 3.8 (1/3 giá chính thức + BYOK) & bố trí bàn ghế/tia nhìn 3D",
           f2: "35 hiệu ứng LED Matrix 3D, bàn điều khiển 128 đèn DMX512 (OFL) & Laser Show chuẩn ILDA (.ild)",
-          f3: "Tự động bóc tách khối lượng (BOM), xuất Báo giá PDF/CSV, bản vẽ 2D AutoCAD (.DXF), ảnh 4K & link duyệt 3D"
+          f3: "Tự động bóc tách khối lượng (BOM), xuất Báo giá PDF/CSV, bản vẽ 2D AutoCAD (.DXF), ảnh 4K & link chia sẻ 3D"
         }
       },
       open: "Mở",

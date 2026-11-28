@@ -130,19 +130,19 @@ export default {
         pillar2Title: "128 DMX512 Fixtures, ILDA Laser & 3D Cast",
         pillar2Desc: "22 16-bit OFL moving-head profiles, 35 3D LED Matrix contour effects, 200Hz Timecode sequencer, NFPA/TCVN pyro simulation, and 19 rigged 3D performers.",
         pillar3Title: "AI Stage Architect, 3-Phase Rider & CAD",
-        pillar3Desc: "Natural-language stage layout with Gemini Flash 3.8, 380V 3-phase load & truss deflection engineering, multi-layer AutoCAD .DXF, DIN 15800 .MVR, and 3D client review links."
+        pillar3Desc: "Natural-language stage layout with Gemini Flash 3.8, 380V 3-phase load & truss deflection engineering, multi-layer AutoCAD .DXF, DIN 15800 .MVR, and 3D client share links."
       },
       gate: {
         verifyingSession: "Initializing secure 3D studio session…",
-        verifyingShare: "Verifying 3D stage review link…",
+        verifyingShare: "Verifying 3D stage share link…",
         passwordTitle: "Password-Protected 3D Project",
-        passwordDesc: "Enter the password provided by the stage designer to open this 3D review link.",
+        passwordDesc: "Enter the password provided by the stage designer to open this 3D stage preview.",
         passwordPlaceholder: "Enter project password…",
-        passwordSubmit: "Open 3D Review",
+        passwordSubmit: "Open 3D Preview",
         invalidPassword: "Incorrect password. Please try again.",
         shareInvalidTitle: "Share Link Unavailable",
-        shareInvalidDesc: "This 3D review link does not exist, was disabled, or has expired.",
-        shareProExpiredDesc: "This review link is inactive because the project owner's LumiStage PRO plan has expired.",
+        shareInvalidDesc: "This 3D share link does not exist, was disabled, or has expired.",
+        shareProExpiredDesc: "This share link is inactive because the project owner's LumiStage PRO plan has expired.",
         sessionErrorTitle: "Unable to Start LumiStage Session",
         sessionErrorDesc: "Your login session expired or the server connection was temporarily interrupted.",
         retryBtn: "Retry"
@@ -151,6 +151,11 @@ export default {
         title: "My Projects",
         newBtn: "+ New Project",
         openBtn: "Open",
+        shareBtn: "Share",
+        sharedBadge: "Shared",
+        approvedBadge: "Approved",
+        changesBadge: "Changes requested",
+        commentsBadge: "{count} comments",
         deleteTitle: "Delete Web Project",
         deleteConfirm: "Delete \"{title}\" to free 1 slot? Uploaded B2 asset versions are retained for admin cleanup.",
         deleteAction: "Delete",
@@ -244,7 +249,7 @@ export default {
         ledStudio: {
           f1: "6 Vietnamese stage templates, Gemini Flash 3.8 AI stage assistant (1/3 official price + BYOK) & 3D seating sightline check",
           f2: "35 3D LED Matrix effects, 128-fixture Open Fixture Library DMX512 lighting desk & ILDA (.ild) laser scanner",
-          f3: "Automatic BOM & Quotation (PDF/CSV), 2D AutoCAD (.DXF) export/import, 4K PNG renders & password-protected 3D review links"
+          f3: "Automatic BOM & Quotation (PDF/CSV), 2D AutoCAD (.DXF) export/import, 4K PNG renders & password-protected 3D share links"
         }
       },
       open: "Open",
